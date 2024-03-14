@@ -14,7 +14,8 @@ Get an action group.
 
 ### List (Default)
 ```
-Get-AzActionGroup [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzActionGroup [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -31,7 +32,8 @@ Get-AzActionGroup -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Def
 
 ### GetViaIdentity
 ```
-Get-AzActionGroup -InputObject <IActionGroupIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzActionGroup -InputObject <IActionGroupIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.Api20221001Preview.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Description(@"Lists all of the available API operations for Connected Cluster resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.HttpPath(Path = "/providers/Microsoft.Kubernetes/operations", ApiVersion = "2022-10-01-preview")]
     public partial class GetAzConnectedKubernetesOperation_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Runtime.IEventListener
     {

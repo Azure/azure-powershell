@@ -23,12 +23,14 @@ using System.Linq;
 using System.Management.Automation;
 using System;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Cmdlet
 {
     /// <summary>
     /// Cmdlet to create a new Azure Sql FailoverGroup
     /// </summary>
+    [GenericBreakingChangeWithVersion("The default value of FailoverPolicy will change from Automatic to Manual", "12.0.0", "5.0.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseFailoverGroup"), OutputType(typeof(AzureSqlFailoverGroupModel))]
     public class NewAzureSqlFailoverGroup : AzureSqlFailoverGroupCmdletBase
     {

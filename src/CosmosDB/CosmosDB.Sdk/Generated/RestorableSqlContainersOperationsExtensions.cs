@@ -13,7 +13,11 @@ namespace Microsoft.Azure.Management.CosmosDB
     public static partial class RestorableSqlContainersOperationsExtensions
     {
         /// <summary>
-        /// Show the event feed of all mutations done on all the Azure Cosmos DB SQL containers under a specific database.  This helps in scenario where container was accidentally deleted.  This API requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39; permission
+        /// Show the event feed of all mutations done on all the Azure Cosmos DB SQL
+        /// containers under a specific database.  This helps in scenario where
+        /// container was accidentally deleted.  This API requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39;
+        /// permission
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -39,7 +43,11 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Show the event feed of all mutations done on all the Azure Cosmos DB SQL containers under a specific database.  This helps in scenario where container was accidentally deleted.  This API requires &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39; permission
+        /// Show the event feed of all mutations done on all the Azure Cosmos DB SQL
+        /// containers under a specific database.  This helps in scenario where
+        /// container was accidentally deleted.  This API requires
+        /// &#39;Microsoft.DocumentDB/locations/restorableDatabaseAccounts/.../read&#39;
+        /// permission
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

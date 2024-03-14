@@ -13,8 +13,6 @@ namespace Microsoft.Azure.Management.Compute
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Models;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -25,8 +23,9 @@ namespace Microsoft.Azure.Management.Compute
     {
             /// <summary>
             /// The operation to create or update a capacity reservation group. When
-            /// updating a capacity reservation group, only tags may be modified. Please
-            /// refer to https://aka.ms/CapacityReservation for more details.
+            /// updating a capacity reservation group, only tags and sharing profile may be
+            /// modified. Please refer to https://aka.ms/CapacityReservation for more
+            /// details.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -47,8 +46,9 @@ namespace Microsoft.Azure.Management.Compute
 
             /// <summary>
             /// The operation to create or update a capacity reservation group. When
-            /// updating a capacity reservation group, only tags may be modified. Please
-            /// refer to https://aka.ms/CapacityReservation for more details.
+            /// updating a capacity reservation group, only tags and sharing profile may be
+            /// modified. Please refer to https://aka.ms/CapacityReservation for more
+            /// details.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Management.Compute
 
             /// <summary>
             /// The operation to update a capacity reservation group. When updating a
-            /// capacity reservation group, only tags may be modified.
+            /// capacity reservation group, only tags and sharing profile may be modified.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -86,17 +86,17 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='capacityReservationGroupName'>
             /// The name of the capacity reservation group.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags
+            /// <param name='parameters'>
+            /// Parameters supplied to the Update capacity reservation Group operation.
             /// </param>
-            public static CapacityReservationGroup Update(this ICapacityReservationGroupsOperations operations, string resourceGroupName, string capacityReservationGroupName, IDictionary<string, string> tags = default(IDictionary<string, string>))
+            public static CapacityReservationGroup Update(this ICapacityReservationGroupsOperations operations, string resourceGroupName, string capacityReservationGroupName, CapacityReservationGroupUpdate parameters)
             {
-                return operations.UpdateAsync(resourceGroupName, capacityReservationGroupName, tags).GetAwaiter().GetResult();
+                return operations.UpdateAsync(resourceGroupName, capacityReservationGroupName, parameters).GetAwaiter().GetResult();
             }
 
             /// <summary>
             /// The operation to update a capacity reservation group. When updating a
-            /// capacity reservation group, only tags may be modified.
+            /// capacity reservation group, only tags and sharing profile may be modified.
             /// </summary>
             /// <param name='operations'>
             /// The operations group for this extension method.
@@ -107,15 +107,15 @@ namespace Microsoft.Azure.Management.Compute
             /// <param name='capacityReservationGroupName'>
             /// The name of the capacity reservation group.
             /// </param>
-            /// <param name='tags'>
-            /// Resource tags
+            /// <param name='parameters'>
+            /// Parameters supplied to the Update capacity reservation Group operation.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<CapacityReservationGroup> UpdateAsync(this ICapacityReservationGroupsOperations operations, string resourceGroupName, string capacityReservationGroupName, IDictionary<string, string> tags = default(IDictionary<string, string>), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<CapacityReservationGroup> UpdateAsync(this ICapacityReservationGroupsOperations operations, string resourceGroupName, string capacityReservationGroupName, CapacityReservationGroupUpdate parameters, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, capacityReservationGroupName, tags, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.UpdateWithHttpMessagesAsync(resourceGroupName, capacityReservationGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

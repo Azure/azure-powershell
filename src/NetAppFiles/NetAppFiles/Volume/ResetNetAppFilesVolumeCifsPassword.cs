@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -140,9 +141,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RevertVolumeMessage, Name)))
-            {                
-                AzureNetAppFilesManagementClient.Volumes.ResetCifsPassword(ResourceGroupName, AccountName, PoolName, Name);
-                success = true;
+            {
+                try
+                {
+                    AzureNetAppFilesManagementClient.Volumes.ResetCifsPassword(ResourceGroupName, AccountName, PoolName, Name);
+                    success = true;
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
 
             if (PassThru)

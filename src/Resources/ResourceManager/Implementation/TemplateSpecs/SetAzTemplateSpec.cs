@@ -195,21 +195,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
                     {
                         case UpdateVersionByIdFromJsonFileParameterSet:
                         case UpdateVersionByNameFromJsonFileParameterSet:
-                            string filePath = this.TryResolvePath(TemplateFile);
+                            var filePath = this.TryResolvePath(TemplateFile);
                             if (!File.Exists(filePath))
                             {
                                 throw new PSInvalidOperationException(
                                     string.Format(ProjectResources.InvalidFilePath, TemplateFile)
                                 );
                             }
-                            if (BicepUtility.IsBicepFile(TemplateFile))
-                            {
-                                filePath = BicepUtility.Create().BuildFile(this.ResolvePath(TemplateFile), this.WriteVerbose, this.WriteWarning);
-                            }
 
-                            // Note: We set uiFormDefinitionFilePath to null below because we process the UIFormDefinition
-                            // specified by the cmdlet parameters later within this method...
-                            packagedTemplate = TemplateSpecPackagingEngine.Pack(filePath, uiFormDefinitionFilePath: null);
+                            packagedTemplate = BicepUtility.IsBicepFile(TemplateFile) ?
+                                TemplateSpecPackagingEngine.PackBicep(filePath, this.WriteVerbose, this.WriteWarning) :
+                                TemplateSpecPackagingEngine.Pack(filePath);
                             break;
                         case UpdateVersionByIdFromJsonParameterSet:
                         case UpdateVersionByNameFromJsonParameterSet:

@@ -15,8 +15,8 @@ Create a new Activity Log Alert rule or update an existing one.
 ```
 New-AzActivityLogAlert -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Action <IActionGroup[]> -Condition <IAlertRuleAnyOfOrLeafCondition[]> -Location <String> -Scope <String[]>
- [-Description <String>] [-Enabled <Boolean>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Description <String>] [-Enabled <Boolean>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

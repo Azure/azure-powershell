@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PaloAltoNetworks-help.xml
 Module Name: Az.PaloAltoNetworks
 online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/reset-azpaloaltonetworkslocalrulecounter
 schema: 2.0.0
@@ -16,13 +16,20 @@ Reset counters
 ```
 Reset-AzPaloAltoNetworksLocalRuleCounter -LocalRulestackName <String> -Priority <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-FirewallName <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResetViaIdentityLocalRulestack
+```
+Reset-AzPaloAltoNetworksLocalRuleCounter -Priority <String>
+ -LocalRulestackInputObject <IPaloAltoNetworksIdentity> [-FirewallName <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResetViaIdentity
 ```
 Reset-AzPaloAltoNetworksLocalRuleCounter -InputObject <IPaloAltoNetworksIdentity> [-FirewallName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,6 +99,22 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -LocalRulestackInputObject
+Identity Parameter
+To construct, see NOTES section for LOCALRULESTACKINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPaloAltoNetworksIdentity
+Parameter Sets: ResetViaIdentityLocalRulestack
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LocalRulestackName
 LocalRulestack resource name
 
@@ -112,7 +135,7 @@ Local Rule priority
 
 ```yaml
 Type: System.String
-Parameter Sets: Reset
+Parameter Sets: Reset, ResetViaIdentityLocalRulestack
 Aliases:
 
 Required: True
@@ -215,4 +238,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
-

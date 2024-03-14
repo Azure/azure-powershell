@@ -21,9 +21,10 @@ New-AzNetAppFilesVolume -ResourceGroupName <String> -Location <String> -AccountN
  [-SnapshotPolicyId <String>] [-Backup <PSNetAppFilesVolumeBackupProperties>] [-ProtocolType <String[]>]
  [-SnapshotDirectoryVisible] [-BackupId <String>] [-SecurityStyle <String>] [-ThroughputMibps <Double>]
  [-KerberosEnabled] [-SmbEncryption] [-SmbContinuouslyAvailable] [-LdapEnabled] [-CoolAccess]
- [-CoolnessPeriod <Int32>] [-UnixPermission <String>] [-AvsDataStore <String>] [-IsDefaultQuotaEnabled]
- [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>]
- [-CapacityPoolResourceId <String>] [-ProximityPlacementGroup <String>] [-VolumeSpecName <String>]
+ [-CoolnessPeriod <Int32>] [-CoolAccessRetrievalPolicy <String>] [-UnixPermission <String>]
+ [-AvsDataStore <String>] [-IsDefaultQuotaEnabled] [-DefaultUserQuotaInKiB <Int64>]
+ [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>] [-CapacityPoolResourceId <String>]
+ [-ProximityPlacementGroup <String>] [-VolumeSpecName <String>]
  [-PlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSKeyValuePairs]>]
  [-EnableSubvolume] [-Zone <String[]>] [-EncryptionKeySource <String>]
  [-KeyVaultPrivateEndpointResourceId <String>] [-DeleteBaseSnapshot] [-SmbAccessBasedEnumeration <String>]
@@ -39,14 +40,16 @@ New-AzNetAppFilesVolume -Name <String> -UsageThreshold <Int64> -SubnetId <String
  [-SnapshotPolicyId <String>] [-Backup <PSNetAppFilesVolumeBackupProperties>] [-ProtocolType <String[]>]
  [-SnapshotDirectoryVisible] [-SecurityStyle <String>] [-ThroughputMibps <Double>] [-KerberosEnabled]
  [-SmbEncryption] [-SmbContinuouslyAvailable] [-LdapEnabled] [-CoolAccess] [-CoolnessPeriod <Int32>]
- [-UnixPermission <String>] [-AvsDataStore <String>] [-IsDefaultQuotaEnabled] [-DefaultUserQuotaInKiB <Int64>]
- [-DefaultGroupQuotaInKiB <Int64>] [-NetworkFeature <String>] [-CapacityPoolResourceId <String>]
- [-ProximityPlacementGroup <String>] [-VolumeSpecName <String>]
+ [-CoolAccessRetrievalPolicy <String>] [-UnixPermission <String>] [-AvsDataStore <String>]
+ [-IsDefaultQuotaEnabled] [-DefaultUserQuotaInKiB <Int64>] [-DefaultGroupQuotaInKiB <Int64>]
+ [-NetworkFeature <String>] [-CapacityPoolResourceId <String>] [-ProximityPlacementGroup <String>]
+ [-VolumeSpecName <String>]
  [-PlacementRule <System.Collections.Generic.IList`1[Microsoft.Azure.Commands.NetAppFiles.Models.PSKeyValuePairs]>]
  [-EnableSubvolume] [-Zone <String[]>] [-EncryptionKeySource <String>]
  [-KeyVaultPrivateEndpointResourceId <String>] [-DeleteBaseSnapshot] [-SmbAccessBasedEnumeration <String>]
  [-SmbNonBrowsable <String>] [-IsLargeVolume] [-Tag <Hashtable>] -PoolObject <PSNetAppFilesPool>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -157,6 +160,24 @@ Specifies whether Cool Access(tiering) is enabled for the volume (default false)
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CoolAccessRetrievalPolicy
+CoolAccessRetrievalPolicy determines the data retrieval behavior from the cool tier to standard storage based on the read pattern for cool access enabled volumes. The possible values for this field are: 
+ Default - Data will be pulled from cool tier to standard storage on random reads. This policy is the default.
+ OnRead - All client-driven data read is pulled from cool tier to standard storage on both sequential and random reads.
+ Never - No client-driven data is pulled from cool tier to standard storage.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

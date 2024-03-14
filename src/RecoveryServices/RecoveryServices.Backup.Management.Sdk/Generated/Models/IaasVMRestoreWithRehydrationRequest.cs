@@ -30,8 +30,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="recoveryType">Type of this recovery.
-        /// Possible values include: 'Invalid', 'OriginalLocation',
-        /// 'AlternateLocation', 'RestoreDisks', 'Offline'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;OriginalLocation&#39;,
+        /// &#39;AlternateLocation&#39;, &#39;RestoreDisks&#39;, &#39;Offline&#39;</param>
 
         /// <param name="sourceResourceId">Fully qualified ARM ID of the VM which is being recovered.
         /// </param>
@@ -106,11 +106,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// identity.
         /// </param>
 
+        /// <param name="extendedLocation">Target extended location where the VM should be restored,
+        /// should be null if restore is to be done in public cloud
+        /// </param>
+
+        /// <param name="securedVMDetails">Stores Secured VM Details
+        /// </param>
+
+        /// <param name="targetDiskNetworkAccessSettings">Specifies target network access settings for disks of VM to be restored,
+        /// </param>
+
         /// <param name="recoveryPointRehydrationInfo">RP Rehydration Info
         /// </param>
-        public IaasVMRestoreWithRehydrationRequest(string recoveryPointId = default(string), string recoveryType = default(string), string sourceResourceId = default(string), string targetVirtualMachineId = default(string), string targetResourceGroupId = default(string), string storageAccountId = default(string), string virtualNetworkId = default(string), string subnetId = default(string), string targetDomainNameId = default(string), string region = default(string), string affinityGroup = default(string), bool? createNewCloudService = default(bool?), bool? originalStorageAccountOption = default(bool?), EncryptionDetails encryptionDetails = default(EncryptionDetails), System.Collections.Generic.IList<int?> restoreDiskLunList = default(System.Collections.Generic.IList<int?>), bool? restoreWithManagedDisks = default(bool?), string diskEncryptionSetId = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), IdentityInfo identityInfo = default(IdentityInfo), IdentityBasedRestoreDetails identityBasedRestoreDetails = default(IdentityBasedRestoreDetails), RecoveryPointRehydrationInfo recoveryPointRehydrationInfo = default(RecoveryPointRehydrationInfo))
+        public IaasVMRestoreWithRehydrationRequest(string recoveryPointId = default(string), string recoveryType = default(string), string sourceResourceId = default(string), string targetVirtualMachineId = default(string), string targetResourceGroupId = default(string), string storageAccountId = default(string), string virtualNetworkId = default(string), string subnetId = default(string), string targetDomainNameId = default(string), string region = default(string), string affinityGroup = default(string), bool? createNewCloudService = default(bool?), bool? originalStorageAccountOption = default(bool?), EncryptionDetails encryptionDetails = default(EncryptionDetails), System.Collections.Generic.IList<int?> restoreDiskLunList = default(System.Collections.Generic.IList<int?>), bool? restoreWithManagedDisks = default(bool?), string diskEncryptionSetId = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), IdentityInfo identityInfo = default(IdentityInfo), IdentityBasedRestoreDetails identityBasedRestoreDetails = default(IdentityBasedRestoreDetails), ExtendedLocation extendedLocation = default(ExtendedLocation), SecuredVMDetails securedVMDetails = default(SecuredVMDetails), TargetDiskNetworkAccessSettings targetDiskNetworkAccessSettings = default(TargetDiskNetworkAccessSettings), RecoveryPointRehydrationInfo recoveryPointRehydrationInfo = default(RecoveryPointRehydrationInfo))
 
-        : base(recoveryPointId, recoveryType, sourceResourceId, targetVirtualMachineId, targetResourceGroupId, storageAccountId, virtualNetworkId, subnetId, targetDomainNameId, region, affinityGroup, createNewCloudService, originalStorageAccountOption, encryptionDetails, restoreDiskLunList, restoreWithManagedDisks, diskEncryptionSetId, zones, identityInfo, identityBasedRestoreDetails)
+        : base(recoveryPointId, recoveryType, sourceResourceId, targetVirtualMachineId, targetResourceGroupId, storageAccountId, virtualNetworkId, subnetId, targetDomainNameId, region, affinityGroup, createNewCloudService, originalStorageAccountOption, encryptionDetails, restoreDiskLunList, restoreWithManagedDisks, diskEncryptionSetId, zones, identityInfo, identityBasedRestoreDetails, extendedLocation, securedVMDetails, targetDiskNetworkAccessSettings)
         {
             this.RecoveryPointRehydrationInfo = recoveryPointRehydrationInfo;
             CustomInit();

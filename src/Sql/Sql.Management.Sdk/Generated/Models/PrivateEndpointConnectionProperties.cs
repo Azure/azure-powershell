@@ -34,8 +34,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="provisioningState">State of the private endpoint connection.
-        /// Possible values include: 'Approving', 'Ready', 'Dropping', 'Failed',
-        /// 'Rejecting'</param>
+        /// Possible values include: &#39;Approving&#39;, &#39;Ready&#39;, &#39;Dropping&#39;, &#39;Failed&#39;,
+        /// &#39;Rejecting&#39;</param>
         public PrivateEndpointConnectionProperties(PrivateEndpointProperty privateEndpoint = default(PrivateEndpointProperty), System.Collections.Generic.IList<string> groupIds = default(System.Collections.Generic.IList<string>), PrivateLinkServiceConnectionStateProperty privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionStateProperty), string provisioningState = default(string))
 
         {

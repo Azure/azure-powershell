@@ -28,7 +28,8 @@ Approve-AzNetAppFilesReplication -ResourceId <String> [-PassThru] [-DefaultProfi
 ### ByObjectParameterSet
 ```
 Approve-AzNetAppFilesReplication -InputObject <PSNetAppFilesVolume> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

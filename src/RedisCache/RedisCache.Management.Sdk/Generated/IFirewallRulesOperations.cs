@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// Gets all firewall rules in the specified redis cache.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// Create or update a redis cache firewall rule
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// Gets a single firewall rule in a specified redis cache.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// Deletes a single firewall rule in a specified redis cache.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='cacheName'>
         /// The name of the Redis cache.

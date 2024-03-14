@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the NetworkFunction service.
 
 ---
-## Status
-[![Az.NetworkFunction](https://img.shields.io/powershellgallery/v/Az.NetworkFunction.svg?style=flat-square&label=Az.NetworkFunction "Az.NetworkFunction")](https://www.powershellgallery.com/packages/Az.NetworkFunction/)
 
 ## Info
 - Modifiable: yes

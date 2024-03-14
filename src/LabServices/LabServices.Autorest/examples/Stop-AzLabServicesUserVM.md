@@ -1,6 +1,6 @@
 ### Example 1: Stop user assigned VM in the lab.
 ```powershell
-PS C:\> Stop-AzLabServicesUserVM -ResourceGroupName "Group Name" -LabName "Lab Name" -Email "user@contoso.com"
+Stop-AzLabServicesUserVM -ResourceGroupName "Group Name" -LabName "Lab Name" -Email "user@contoso.com"
 
 ```
 

@@ -81,6 +81,32 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse> ReimageAllWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Approve upgrade on deferred rolling upgrade for OS disk on a VM
+        /// scale set instance.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// The name of the VM scale set.
+        /// </param>
+        /// <param name='instanceId'>
+        /// The instance ID of the virtual machine.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationHeaderResponse<VirtualMachineScaleSetVMsApproveRollingUpgradeHeaders>> ApproveRollingUpgradeWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Deallocates a specific virtual machine in a VM scale set. Shuts
         /// down the virtual machine and releases the compute resources it
         /// uses. You are not billed for the compute resources of this virtual
@@ -125,6 +151,16 @@ namespace Microsoft.Azure.Management.Compute
         /// Parameters supplied to the Update Virtual Machine Scale Sets VM
         /// operation.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The ETag of the transformation. Omit this value to always overwrite
+        /// the current resource. Specify the last-seen ETag value to prevent
+        /// accidentally overwriting concurrent changes.
+        /// </param>
+        /// <param name='ifNoneMatch'>
+        /// Set to '*' to allow a new record set to be created, but to prevent
+        /// updating an existing record set. Other values will result in error
+        /// from server as they are not supported.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -140,7 +176,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineScaleSetVM>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, VirtualMachineScaleSetVM parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualMachineScaleSetVM>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, VirtualMachineScaleSetVM parameters, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a virtual machine from a VM scale set.
         /// </summary>
@@ -460,6 +496,39 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse> SimulateEvictionWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Attach and detach data disks to/from a virtual machine in a VM
+        /// scale set.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// The name of the VM scale set.
+        /// </param>
+        /// <param name='instanceId'>
+        /// The instance ID of the virtual machine.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the attach and detach data disks operation
+        /// on a Virtual Machine Scale Sets VM.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<StorageProfile,VirtualMachineScaleSetVMsAttachDetachDataDisksHeaders>> AttachDetachDataDisksWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, AttachDetachDataDisksRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Run command on a virtual machine in a VM scale set.
         /// </summary>
         /// <param name='resourceGroupName'>
@@ -547,6 +616,32 @@ namespace Microsoft.Azure.Management.Compute
         /// </exception>
         Task<AzureOperationResponse> BeginReimageAllWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
+        /// Approve upgrade on deferred rolling upgrade for OS disk on a VM
+        /// scale set instance.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// The name of the VM scale set.
+        /// </param>
+        /// <param name='instanceId'>
+        /// The instance ID of the virtual machine.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationHeaderResponse<VirtualMachineScaleSetVMsApproveRollingUpgradeHeaders>> BeginApproveRollingUpgradeWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
         /// Deallocates a specific virtual machine in a VM scale set. Shuts
         /// down the virtual machine and releases the compute resources it
         /// uses. You are not billed for the compute resources of this virtual
@@ -591,6 +686,16 @@ namespace Microsoft.Azure.Management.Compute
         /// Parameters supplied to the Update Virtual Machine Scale Sets VM
         /// operation.
         /// </param>
+        /// <param name='ifMatch'>
+        /// The ETag of the transformation. Omit this value to always overwrite
+        /// the current resource. Specify the last-seen ETag value to prevent
+        /// accidentally overwriting concurrent changes.
+        /// </param>
+        /// <param name='ifNoneMatch'>
+        /// Set to '*' to allow a new record set to be created, but to prevent
+        /// updating an existing record set. Other values will result in error
+        /// from server as they are not supported.
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -606,7 +711,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<VirtualMachineScaleSetVM>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, VirtualMachineScaleSetVM parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<VirtualMachineScaleSetVM>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, VirtualMachineScaleSetVM parameters, string ifMatch = default(string), string ifNoneMatch = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Deletes a virtual machine from a VM scale set.
         /// </summary>
@@ -770,6 +875,39 @@ namespace Microsoft.Azure.Management.Compute
         /// Thrown when a required parameter is null
         /// </exception>
         Task<AzureOperationResponse> BeginPerformMaintenanceWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        /// <summary>
+        /// Attach and detach data disks to/from a virtual machine in a VM
+        /// scale set.
+        /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group.
+        /// </param>
+        /// <param name='vmScaleSetName'>
+        /// The name of the VM scale set.
+        /// </param>
+        /// <param name='instanceId'>
+        /// The instance ID of the virtual machine.
+        /// </param>
+        /// <param name='parameters'>
+        /// Parameters supplied to the attach and detach data disks operation
+        /// on a Virtual Machine Scale Sets VM.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown when a required parameter is null
+        /// </exception>
+        Task<AzureOperationResponse<StorageProfile,VirtualMachineScaleSetVMsAttachDetachDataDisksHeaders>> BeginAttachDetachDataDisksWithHttpMessagesAsync(string resourceGroupName, string vmScaleSetName, string instanceId, AttachDetachDataDisksRequest parameters, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Run command on a virtual machine in a VM scale set.
         /// </summary>

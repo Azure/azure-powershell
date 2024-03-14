@@ -1,6 +1,6 @@
 ### Example 1: Create a stream analytics job
 ```powershell
-PS C:\> New-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-02-pwsh -Location westcentralus -SkuName Standard
+New-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-02-pwsh -Location westcentralus -SkuName Standard
 
 Location        Name          Type                                    ETag
 --------        ----          ----                                    ----

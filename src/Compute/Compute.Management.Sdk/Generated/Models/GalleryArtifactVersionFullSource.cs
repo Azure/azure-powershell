@@ -31,16 +31,19 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Initializes a new instance of the GalleryArtifactVersionFullSource
         /// class.
         /// </summary>
-        /// <param name="id">The id of the gallery artifact version source. Can
-        /// specify a disk uri, snapshot uri, user image or storage account
-        /// resource.</param>
+        /// <param name="id">The id of the gallery artifact version
+        /// source.</param>
         /// <param name="communityGalleryImageId">The resource Id of the source
         /// Community Gallery Image.  Only required when using Community
         /// Gallery Image as a source.</param>
-        public GalleryArtifactVersionFullSource(string id = default(string), string communityGalleryImageId = default(string))
+        /// <param name="virtualMachineId">The resource Id of the source
+        /// virtual machine.  Only required when capturing a virtual machine to
+        /// source this Gallery Image Version.</param>
+        public GalleryArtifactVersionFullSource(string id = default(string), string communityGalleryImageId = default(string), string virtualMachineId = default(string))
             : base(id)
         {
             CommunityGalleryImageId = communityGalleryImageId;
+            VirtualMachineId = virtualMachineId;
             CustomInit();
         }
 
@@ -55,6 +58,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "communityGalleryImageId")]
         public string CommunityGalleryImageId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the resource Id of the source virtual machine.  Only
+        /// required when capturing a virtual machine to source this Gallery
+        /// Image Version.
+        /// </summary>
+        [JsonProperty(PropertyName = "virtualMachineId")]
+        public string VirtualMachineId { get; set; }
 
     }
 }

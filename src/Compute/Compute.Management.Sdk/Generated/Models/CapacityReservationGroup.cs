@@ -52,17 +52,26 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="instanceView">The capacity reservation group instance
         /// view which has the list of instance views for all the capacity
         /// reservations that belong to the capacity reservation group.</param>
+        /// <param name="sharingProfile">Specifies the settings to enable
+        /// sharing across subscriptions for the capacity reservation group
+        /// resource. Pls. keep in mind the capacity reservation group resource
+        /// generally can be shared across subscriptions belonging to a single
+        /// azure AAD tenant or cross AAD tenant if there is a trust
+        /// relationship established between the AAD tenants. **Note:** Minimum
+        /// api-version: 2023-09-01. Please refer to
+        /// https://aka.ms/computereservationsharing for more details.</param>
         /// <param name="zones">Availability Zones to use for this capacity
         /// reservation group. The zones can be assigned only during creation.
         /// If not provided, the group supports only regional resources in the
         /// region. If provided, enforces each capacity reservation in the
         /// group to be in one of the zones.</param>
-        public CapacityReservationGroup(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SubResourceReadOnly> capacityReservations = default(IList<SubResourceReadOnly>), IList<SubResourceReadOnly> virtualMachinesAssociated = default(IList<SubResourceReadOnly>), CapacityReservationGroupInstanceView instanceView = default(CapacityReservationGroupInstanceView), IList<string> zones = default(IList<string>))
+        public CapacityReservationGroup(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), IList<SubResourceReadOnly> capacityReservations = default(IList<SubResourceReadOnly>), IList<SubResourceReadOnly> virtualMachinesAssociated = default(IList<SubResourceReadOnly>), CapacityReservationGroupInstanceView instanceView = default(CapacityReservationGroupInstanceView), ResourceSharingProfile sharingProfile = default(ResourceSharingProfile), IList<string> zones = default(IList<string>))
             : base(location, id, name, type, tags)
         {
             CapacityReservations = capacityReservations;
             VirtualMachinesAssociated = virtualMachinesAssociated;
             InstanceView = instanceView;
+            SharingProfile = sharingProfile;
             Zones = zones;
             CustomInit();
         }
@@ -93,6 +102,19 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "properties.instanceView")]
         public CapacityReservationGroupInstanceView InstanceView { get; private set; }
+
+        /// <summary>
+        /// Gets or sets specifies the settings to enable sharing across
+        /// subscriptions for the capacity reservation group resource. Pls.
+        /// keep in mind the capacity reservation group resource generally can
+        /// be shared across subscriptions belonging to a single azure AAD
+        /// tenant or cross AAD tenant if there is a trust relationship
+        /// established between the AAD tenants. **Note:** Minimum api-version:
+        /// 2023-09-01. Please refer to
+        /// https://aka.ms/computereservationsharing for more details.
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.sharingProfile")]
+        public ResourceSharingProfile SharingProfile { get; set; }
 
         /// <summary>
         /// Gets or sets availability Zones to use for this capacity

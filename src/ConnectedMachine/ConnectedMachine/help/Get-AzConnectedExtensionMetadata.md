@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedMachine-help.xml
 Module Name: Az.ConnectedMachine
 online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedextensionmetadata
 schema: 2.0.0
@@ -15,13 +15,15 @@ Gets an Extension Metadata based on location, publisher, extensionType and versi
 ### List (Default)
 ```
 Get-AzConnectedExtensionMetadata -ExtensionType <String> -Location <String> -Publisher <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzConnectedExtensionMetadata -ExtensionType <String> -Location <String> -Publisher <String>
- -Version <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] -Version <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,7 +53,6 @@ Get-AzConnectedExtensionMetadata -ExtensionType 'CustomScriptExtension' -Locatio
 Name SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifi
                                                                                               edBy
 ---- ------------------- ------------------- ----------------------- ------------------------ --------------------
-
 ```
 
 Get a specific machine extension metadata
@@ -161,4 +162,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

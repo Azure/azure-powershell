@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudKeyVaultCertificateObject
 schema: 2.0.0
@@ -13,8 +13,8 @@ Create an in-memory object for KeyVaultCertificateProperties.
 ## SYNTAX
 
 ```
-New-AzSpringCloudKeyVaultCertificateObject -Name <String> -VaultUri <String> [-ExcludePrivateKey <Boolean>]
- [-Version <String>] [<CommonParameters>]
+New-AzSpringCloudKeyVaultCertificateObject -Name <String> -VaultUri <String> [-Version <String>]
+ [-ExcludePrivateKey <Boolean>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,4 +112,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

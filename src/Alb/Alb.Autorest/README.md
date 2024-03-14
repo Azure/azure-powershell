@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Alb service.
 
 ---
-## Status
-[![Az.Alb](https://img.shields.io/powershellgallery/v/Az.Alb.svg?style=flat-square&label=Az.Alb "Az.Alb")](https://www.powershellgallery.com/packages/Az.Alb/)
 
 ## Info
 - Modifiable: yes
@@ -35,24 +33,18 @@ module-version: 0.1.0
 title: Alb
 subject-prefix: $(service-name)
 inlining-threshold: 100
-resourcegroup-append: true
-nested-object-to-string: true
 
 # pin the swagger version by using the commit id instead of branch name
-commit: f7c77a57cf879e3938f5084c3d0cf0611b5834e7
+commit: 1b338481329645df2d9460738cbaab6109472488
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/servicenetworking/resource-manager/readme.md
 
 try-require: 
   - $(repo)/specification/servicenetworking/resource-manager/readme.powershell.md
 
 directive:
-  # Bug: https://github.com/Azure/autorest.powershell/issues/983
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociationPropertiesInternal)Property).AssociationType = value;', '((Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IAssociationPropertiesInternal)Property).AssociationType = value ?? "";');
   # Fix swagger issues
   - from: swagger-document
     where: $.definitions.TrafficControllerUpdateProperties
@@ -69,7 +61,10 @@ directive:
       subject: $1
   # Remove the unexpanded parameter set
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update)(?!.*?Expanded|JsonFilePath|JsonString)
+    remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$
     remove: true
 # Param and table formatting
   - where:
@@ -149,16 +144,20 @@ directive:
   - where:
       verb: New
     set:
-      preview-message: Application Gateway for Containers is currently in Preview.
+      preview-announcement:
+        preview-message: Application Gateway for Containers is currently in Preview.
   - where:
       verb: Get
     set:
-      preview-message: Application Gateway for Containers is currently in Preview.
+      preview-announcement:
+        preview-message: Application Gateway for Containers is currently in Preview.
   - where:
       verb: Update
     set:
-      preview-message: Application Gateway for Containers is currently in Preview.
+      preview-announcement:
+        preview-message: Application Gateway for Containers is currently in Preview.
   - where:
       verb: Remove
     set:
-      preview-message: Application Gateway for Containers is currently in Preview.
+      preview-announcement:
+        preview-message: Application Gateway for Containers is currently in Preview.

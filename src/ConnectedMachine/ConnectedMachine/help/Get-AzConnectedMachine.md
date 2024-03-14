@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedMachine-help.xml
 Module Name: Az.ConnectedMachine
 online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/get-azconnectedmachine
 schema: 2.0.0
@@ -14,19 +14,20 @@ Retrieves information about the model view or the instance view of a hybrid mach
 
 ### List1 (Default)
 ```
-Get-AzConnectedMachine [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedMachine [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzConnectedMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Expand <InstanceViewTypes>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzConnectedMachine -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzConnectedMachine -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +47,6 @@ winwestus2_1   westus2  windows  Connected  Succeeded
 linwestus2_1   westus2  linux    Connected  Succeeded
 winwestus2_2   westus2  windows  Connected  Succeeded
 winwestus2_3   westus2  windows  Connected  Succeeded
-
 ```
 
 Lists all connected machines in a subscription.
@@ -101,8 +101,8 @@ Accept wildcard characters: False
 The expand expression to apply on the operation.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Support.InstanceViewTypes
-Parameter Sets: Get
+Type: System.String
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
@@ -170,4 +170,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

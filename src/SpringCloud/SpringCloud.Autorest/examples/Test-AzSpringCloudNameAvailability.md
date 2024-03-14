@@ -10,6 +10,3 @@ The resource name is invalid. It can contain only lowercase letters, numbers and
 ```
 
 Checks that the resource name is valid and is not already in use.
-
-
-

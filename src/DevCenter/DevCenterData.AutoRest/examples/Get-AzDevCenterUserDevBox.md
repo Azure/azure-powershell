@@ -18,19 +18,19 @@ This command lists dev boxes under the project "DevProject" assigned to the curr
 
 ### Example 4: List dev boxes by dev center name
 ```powershell
-Get-AzDevCenterUserDevBox -DevCenter Contoso
+Get-AzDevCenterUserDevBox -DevCenterName Contoso
 ```
 This command lists dev boxes under the dev center "Contoso".
 
 ### Example 5: List dev boxes by dev center and user id
 ```powershell
-Get-AzDevCenterUserDevBox -DevCenter Contoso -UserId "me"
+Get-AzDevCenterUserDevBox -DevCenterName Contoso -UserId "me"
 ```
 This command lists dev boxes under the dev center "Contoso" assigned to the currently signed-in user.
 
 ### Example 6: List dev boxes by dev center, user id, and project
 ```powershell
-Get-AzDevCenterUserDevBox -DevCenter Contoso -ProjectName DevProject -UserId 786a823c-8037-48ab-89b8-8599901e67d0
+Get-AzDevCenterUserDevBox -DevCenterName Contoso -ProjectName DevProject -UserId 786a823c-8037-48ab-89b8-8599901e67d0
 ```
 This command lists dev boxes under the project "DevProject" assigned to user "786a823c-8037-48ab-89b8-8599901e67d0".
 
@@ -42,7 +42,7 @@ This command gets the dev box "myDevBox" assigned to user "786a823c-8037-48ab-89
 
 ### Example 8: Get a dev box by dev center
 ```powershell
-Get-AzDevCenterUserDevBox -DevCenter Contoso -ProjectName DevProject -UserId "me" -Name myDevBox
+Get-AzDevCenterUserDevBox -DevCenterName Contoso -ProjectName DevProject -UserId "me" -Name myDevBox
 ```
 This command gets the dev box "myDevBox" assigned to the currently signed-in user.
 
@@ -56,6 +56,6 @@ This command gets the dev box "myDevBox" assigned to the currently signed-in use
 ### Example 10: Get a dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject" }
-Get-AzDevCenterUserDevBox -DevCenter Contoso -InputObject $devBoxInput 
+Get-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput 
 ```
 This command gets the dev box "myDevBox" assigned to user "786a823c-8037-48ab-89b8-8599901e67d0".

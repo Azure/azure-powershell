@@ -100,7 +100,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISubnet[]]
     # Subnet - list of subnets under the logical network
-    # To construct, see NOTES section for SUBNET properties and create a hash table.
+    # .
     ${Subnet},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -146,7 +146,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
+    # Wait forNET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]

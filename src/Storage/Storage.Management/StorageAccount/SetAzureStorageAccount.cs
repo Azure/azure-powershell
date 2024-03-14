@@ -219,6 +219,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             get; set;
         }
 
+        [CmdletParameterBreakingChangeWithVersion("UpgradeToStorageV2", "12.0.0", "7.0.0", ChangeDescription = "A prompt that needs users' confirmation will be added when upgrading a storage account from StorageV1 or BlobStorage to StorageV2. Suppress it with -Force.")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Upgrade Storage Account Kind to StorageV2.")]
@@ -394,7 +395,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Allow or disallow public access to all blobs or containers in the storage account.")]
+            HelpMessage = "Allow or disallow anonymous access to all blobs or containers in the storage account.")]
         [ValidateNotNullOrEmpty]
         public bool AllowBlobPublicAccess
         {

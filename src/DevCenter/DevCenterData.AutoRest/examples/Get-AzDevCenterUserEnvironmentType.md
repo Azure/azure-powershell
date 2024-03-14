@@ -6,7 +6,7 @@ This command lists environment types under the project "DevProject".
 
 ### Example 2: List environment types by dev center and project
 ```powershell
-Get-AzDevCenterUserEnvironmentType -DevCenter Contoso -ProjectName DevProject
+Get-AzDevCenterUserEnvironmentType -DevCenterName Contoso -ProjectName DevProject
 ```
 This command lists environment types under the project "DevProject".
 

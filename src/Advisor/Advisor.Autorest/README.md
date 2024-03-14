@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Advisor service.
 
 ---
-## Status
-[![Az.Advisor](https://img.shields.io/powershellgallery/v/Az.Advisor.svg?style=flat-square&label=Az.Advisor "Az.Advisor")](https://www.powershellgallery.com/packages/Az.Advisor/)
 
 ## Info
 - Modifiable: yes

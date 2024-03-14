@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
 online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/invoke-azsqlvmtroubleshoot
 schema: 2.0.0
@@ -17,7 +17,7 @@ Starts SQL virtual machine troubleshooting.
 Invoke-AzSqlVMTroubleshoot -ResourceGroupName <String> -SqlVirtualMachineName <String>
  [-SubscriptionId <String>] [-EndTimeUtc <DateTime>] [-StartTimeUtc <DateTime>]
  [-TroubleshootingScenario <TroubleshootingScenario>] [-UnhealthyReplicaInfoAvailabilityGroupName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TroubleshootViaIdentityExpanded
@@ -25,7 +25,7 @@ Invoke-AzSqlVMTroubleshoot -ResourceGroupName <String> -SqlVirtualMachineName <S
 Invoke-AzSqlVMTroubleshoot -InputObject <ISqlVirtualMachineIdentity> [-EndTimeUtc <DateTime>]
  [-StartTimeUtc <DateTime>] [-TroubleshootingScenario <TroubleshootingScenario>]
  [-UnhealthyReplicaInfoAvailabilityGroupName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,10 +41,7 @@ Invoke-AzSqlVMTroubleshoot -ResourceGroupName 'ResourceGroup01' -SqlVirtualMachi
 ```output
 EndTimeUtc StartTimeUtc TroubleshootingScenario VirtualMachineResourceId
 ---------- ------------ ----------------------- ------------------------
-
 ```
-
-
 
 ### Example 2
 ```powershell
@@ -55,10 +52,7 @@ $sqlvm | Invoke-AzSqlVMTroubleshoot -StartTimeUtc '2023-03-15T17:10:00Z' -EndTim
 ```output
 EndTimeUtc StartTimeUtc TroubleshootingScenario VirtualMachineResourceId
 ---------- ------------ ----------------------- ------------------------
-
 ```
-
-
 
 ## PARAMETERS
 
@@ -290,4 +284,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Subscription ID that identifies an Azure subscription.
 
 ## RELATED LINKS
-

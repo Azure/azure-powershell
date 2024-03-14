@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 {
@@ -166,14 +167,24 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 Size = PoolSize,
                 Location = Location,
                 Tags = tagPairs,
-                QosType = QosType,
-                CoolAccess = CoolAccess
+                QosType = QosType                
             };
+            if (CoolAccess.IsPresent)
+            {
+                capacityPoolBody.CoolAccess = CoolAccess;
+            }
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
-                var anfPool = AzureNetAppFilesManagementClient.Pools.Update(ResourceGroupName, AccountName, Name, capacityPoolBody).ToPsNetAppFilesPool();
-                WriteObject(anfPool);
+                try
+                {
+                    var anfPool = AzureNetAppFilesManagementClient.Pools.Update(ResourceGroupName, AccountName, Name, capacityPoolBody).ToPsNetAppFilesPool();
+                    WriteObject(anfPool);
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

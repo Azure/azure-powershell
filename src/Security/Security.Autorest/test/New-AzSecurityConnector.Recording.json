@@ -1,0 +1,307 @@
+{
+  "New-AzSecurityConnector+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-tests/providers/Microsoft.Security/securityConnectors/aws-sdktest01?api-version=2023-10-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-tests/providers/Microsoft.Security/securityConnectors/aws-sdktest01?api-version=2023-10-01-preview",
+      "Content": "{\r\n  \"location\": \"CentralUS\",\r\n  \"properties\": {\r\n    \"hierarchyIdentifier\": \"891376984375\",\r\n    \"environmentName\": \"AWS\",\r\n    \"offerings\": [\r\n      {\r\n        \"offeringType\": \"CspmMonitorAws\",\r\n        \"nativeCloudConnection\": {\r\n          \"cloudRoleArn\": \"arn:aws:iam::891376984375:role/CspmMonitorAws\"\r\n        }\r\n      },\r\n      {\r\n        \"offeringType\": \"DefenderCspmAws\",\r\n        \"vmScanners\": {\r\n          \"configuration\": {\r\n            \"cloudRoleArn\": \"arn:aws:iam::891376984375:role/DefenderForCloud-AgentlessScanner\",\r\n            \"scanningMode\": \"Default\"\r\n          },\r\n          \"enabled\": true\r\n        },\r\n        \"dataSensitivityDiscovery\": {\r\n          \"enabled\": true,\r\n          \"cloudRoleArn\": \"arn:aws:iam::891376984375:role/SensitiveDataDiscovery\"\r\n        },\r\n        \"databasesDspm\": {\r\n          \"enabled\": true,\r\n          \"cloudRoleArn\": \"arn:aws:iam::891376984375:role/DefenderForCloud-DataSecurityPostureDB\"\r\n        },\r\n        \"ciem\": {\r\n          \"ciemDiscovery\": {\r\n            \"cloudRoleArn\": \"arn:aws:iam::891376984375:role/DefenderForCloud-Ciem\"\r\n          },\r\n          \"ciemOidc\": {\r\n            \"cloudRoleArn\": \"arn:aws:iam::891376984375:role/DefenderForCloud-OidcCiem\",\r\n            \"azureActiveDirectoryAppName\": \"mciem-aws-oidc-connector\"\r\n          }\r\n        },\r\n        \"mdcContainersImageAssessment\": {\r\n          \"enabled\": true,\r\n          \"cloudRoleArn\": \"arn:aws:iam::891376984375:role/MDCContainersImageAssessmentRole\"\r\n        },\r\n        \"mdcContainersAgentlessDiscoveryK8s\": {\r\n          \"enabled\": true,\r\n          \"cloudRoleArn\": \"arn:aws:iam::891376984375:role/MDCContainersAgentlessDiscoveryK8sRole\"\r\n        }\r\n      },\r\n      {\r\n        \"offeringType\": \"DefenderForContainersAws\",\r\n        \"kubernetesService\": {\r\n          \"cloudRoleArn\": \"arn:aws:iam::891376984375:role/DefenderForCloud-Containers-K8s\"\r\n        },\r\n        \"kubernetesScubaReader\": {\r\n          \"cloudRoleArn\": \"arn:aws:iam::891376984375:role/DefenderForCloud-DataCollection\"\r\n        },\r\n        \"cloudWatchToKinesis\": {\r\n          \"cloudRoleArn\": \"arn:aws:iam::891376984375:role/DefenderForCloud-Containers-K8s-cloudwatch-to-kinesis\"\r\n        },\r\n        \"kinesisToS3\": {\r\n          \"cloudRoleArn\": \"arn:aws:iam::891376984375:role/DefenderForCloud-Containers-K8s-kinesis-to-s3\"\r\n        },\r\n        \"mdcContainersImageAssessment\": {\r\n          \"enabled\": true,\r\n          \"cloudRoleArn\": \"arn:aws:iam::891376984375:role/MDCContainersImageAssessmentRole\"\r\n        },\r\n        \"mdcContainersAgentlessDiscoveryK8s\": {\r\n          \"enabled\": true,\r\n          \"cloudRoleArn\": \"arn:aws:iam::891376984375:role/MDCContainersAgentlessDiscoveryK8sRole\"\r\n        },\r\n        \"enableContainerVulnerabilityAssessment\": false,\r\n        \"autoProvisioning\": true,\r\n        \"kubeAuditRetentionTime\": 30,\r\n        \"scubaExternalId\": \"a47ae0a2-7bf7-482a-897a-7a139d30736c\"\r\n      }\r\n    ],\r\n    \"environmentData\": {\r\n      \"environmentType\": \"AwsAccount\",\r\n      \"scanInterval\": 24\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "3012" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-request-id": [ "c008130c-14ff-4ce9-9b44-55c21d7c4309" ],
+        "x-ms-correlation-request-id": [ "c008130c-14ff-4ce9-9b44-55c21d7c4309" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T023654Z:c008130c-14ff-4ce9-9b44-55c21d7c4309" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 936563AD1C4241FBB137D02BFEB3DD58 Ref B: CO6AA3150218037 Ref C: 2024-02-14T02:36:19Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:36:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "288" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"statusCode\":400,\"errorMessage\":\"error occured for security connector: Identity provider is missing from AWS account/s. Defender for Cloud cannot authenticate without it. Create the identity provider to complete the onboarding.\",\"errorCorrelation\":\"30fb370a-cd29-4275-894e-6336726bd38e\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzSecurityConnector+[NoContext]+GCP+$PUT+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-tests/providers/Microsoft.Security/securityConnectors/gcp-sdktest01?api-version=2023-10-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-tests/providers/Microsoft.Security/securityConnectors/gcp-sdktest01?api-version=2023-10-01-preview",
+      "Content": "{\r\n  \"location\": \"CentralUS\",\r\n  \"properties\": {\r\n    \"hierarchyIdentifier\": \"843025268399\",\r\n    \"environmentName\": \"GCP\",\r\n    \"offerings\": [\r\n      {\r\n        \"offeringType\": \"CspmMonitorGcp\",\r\n        \"nativeCloudConnection\": {\r\n          \"workloadIdentityProviderId\": \"cspm\",\r\n          \"serviceAccountEmailAddress\": \"microsoft-defender-cspm@myproject.iam.gserviceaccount.com\"\r\n        }\r\n      },\r\n      {\r\n        \"offeringType\": \"DefenderCspmGcp\",\r\n        \"ciemDiscovery\": {\r\n          \"workloadIdentityProviderId\": \"ciem-discovery\",\r\n          \"serviceAccountEmailAddress\": \"microsoft-defender-ciem@myproject.iam.gserviceaccount.com\",\r\n          \"azureActiveDirectoryAppName\": \"mciem-gcp-oidc-app\"\r\n        },\r\n        \"vmScanners\": {\r\n          \"configuration\": {\r\n            \"scanningMode\": \"Default\",\r\n            \"exclusionTags\": {\r\n              \"key\": \"value\"\r\n            }\r\n          },\r\n          \"enabled\": true\r\n        },\r\n        \"dataSensitivityDiscovery\": {\r\n          \"enabled\": true,\r\n          \"workloadIdentityProviderId\": \"data-security-posture-storage\",\r\n          \"serviceAccountEmailAddress\": \"mdc-data-sec-posture-storage@myproject.iam.gserviceaccount.com\"\r\n        },\r\n        \"mdcContainersImageAssessment\": {\r\n          \"enabled\": true,\r\n          \"workloadIdentityProviderId\": \"containers\",\r\n          \"serviceAccountEmailAddress\": \"mdc-containers-artifact-assess@myproject.iam.gserviceaccount.com\"\r\n        },\r\n        \"mdcContainersAgentlessDiscoveryK8s\": {\r\n          \"enabled\": true,\r\n          \"workloadIdentityProviderId\": \"containers\",\r\n          \"serviceAccountEmailAddress\": \"mdc-containers-k8s-operator@myproject.iam.gserviceaccount.com\"\r\n        }\r\n      },\r\n      {\r\n        \"offeringType\": \"DefenderForContainersGcp\",\r\n        \"nativeCloudConnection\": {\r\n          \"serviceAccountEmailAddress\": \"microsoft-defender-containers@myproject.iam.gserviceaccount.com\",\r\n          \"workloadIdentityProviderId\": \"containers\"\r\n        },\r\n        \"dataPipelineNativeCloudConnection\": {\r\n          \"serviceAccountEmailAddress\": \"ms-defender-containers-stream@myproject.iam.gserviceaccount.com\",\r\n          \"workloadIdentityProviderId\": \"containers-streams\"\r\n        },\r\n        \"mdcContainersImageAssessment\": {\r\n          \"enabled\": true,\r\n          \"workloadIdentityProviderId\": \"containers\",\r\n          \"serviceAccountEmailAddress\": \"mdc-containers-artifact-assess@myproject.iam.gserviceaccount.com\"\r\n        },\r\n        \"mdcContainersAgentlessDiscoveryK8s\": {\r\n          \"enabled\": true,\r\n          \"workloadIdentityProviderId\": \"containers\",\r\n          \"serviceAccountEmailAddress\": \"mdc-containers-k8s-operator@myproject.iam.gserviceaccount.com\"\r\n        },\r\n        \"auditLogsAutoProvisioningFlag\": true,\r\n        \"defenderAgentAutoProvisioningFlag\": true,\r\n        \"policyAgentAutoProvisioningFlag\": true\r\n      }\r\n    ],\r\n    \"environmentData\": {\r\n      \"environmentType\": \"GcpProject\",\r\n      \"projectDetails\": {\r\n        \"projectNumber\": \"843025268399\",\r\n        \"projectId\": \"asc-sdk-samples\"\r\n      },\r\n      \"scanInterval\": 24\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "3096" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-request-id": [ "e2ca6d46-6fa3-4289-980c-d67533cbfef3" ],
+        "x-ms-correlation-request-id": [ "e2ca6d46-6fa3-4289-980c-d67533cbfef3" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T023656Z:e2ca6d46-6fa3-4289-980c-d67533cbfef3" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6163C9E4157E42B0BC5A1CE226DF723A Ref B: CO6AA3150218037 Ref C: 2024-02-14T02:36:55Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:36:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "278" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"statusCode\":400,\"errorMessage\":\"error occured for security connector: There is a problem with authenticating to your GCP project. Please contact the support with given tracing ID c03b073f-7df8-48a2-8945-fd40ca5b3076.\",\"errorCorrelation\":\"d708e7c4-8856-4e8a-859b-0fd4a03b09f9\"}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzSecurityConnector+[NoContext]+AzureDevOps+$PUT+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/ado-pwsh-test01?api-version=2023-10-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/ado-pwsh-test01?api-version=2023-10-01-preview",
+      "Content": "{\r\n  \"location\": \"CentralUS\",\r\n  \"properties\": {\r\n    \"hierarchyIdentifier\": \"de659ead-f948-45b3-9a2c-b75e8914c958\",\r\n    \"environmentName\": \"AzureDevOps\",\r\n    \"offerings\": [\r\n      {\r\n        \"offeringType\": \"CspmMonitorAzureDevOps\"\r\n      }\r\n    ],\r\n    \"environmentData\": {\r\n      \"environmentType\": \"AzureDevOpsScope\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "337" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-request-id": [ "18b5ff97-9d9e-4f5a-8ab7-8e72621672f4" ],
+        "x-ms-correlation-request-id": [ "18b5ff97-9d9e-4f5a-8ab7-8e72621672f4" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T023658Z:18b5ff97-9d9e-4f5a-8ab7-8e72621672f4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 55307052E2444078A7C9B0F4936C9FF6 Ref B: CO6AA3150218037 Ref C: 2024-02-14T02:36:56Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:36:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "771" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorAzureDevOps\"}],\"environmentName\":\"AzureDevOps\",\"hierarchyIdentifier\":\"de659ead-f948-45b3-9a2c-b75e8914c958\",\"environmentData\":{\"environmentType\":\"AzureDevOpsScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/securityconnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/ado-pwsh-test01\",\"name\":\"ado-pwsh-test01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"CentralUS\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2024-02-14T02:36:57.1659085Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-02-14T02:36:57.1659085Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzSecurityConnector+[NoContext]+AzureDevOps+$DELETE+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/ado-pwsh-test01?api-version=2023-10-01-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/ado-pwsh-test01?api-version=2023-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "576baa68-c3b0-443b-bca0-1fbbea10b8c4" ],
+        "CommandName": [ "Remove-AzSecurityConnector" ],
+        "FullCommandName": [ "Remove-AzSecurityConnector_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-request-id": [ "ef2c1540-6e02-4cfd-97a4-3e762c130390" ],
+        "x-ms-correlation-request-id": [ "ef2c1540-6e02-4cfd-97a4-3e762c130390" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T023702Z:ef2c1540-6e02-4cfd-97a4-3e762c130390" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 54B2705FC9FD4D34B98A997B3F5EF366 Ref B: CO6AA3150218037 Ref C: 2024-02-14T02:36:58Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:37:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzSecurityConnector+[NoContext]+GitHub+$PUT+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/gh-pwsh-test01?api-version=2023-10-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/gh-pwsh-test01?api-version=2023-10-01-preview",
+      "Content": "{\r\n  \"location\": \"CentralUS\",\r\n  \"properties\": {\r\n    \"hierarchyIdentifier\": \"2ba1410d-87af-4481-8d45-e9bc26880cec\",\r\n    \"environmentName\": \"Github\",\r\n    \"offerings\": [\r\n      {\r\n        \"offeringType\": \"CspmMonitorGithub\"\r\n      }\r\n    ],\r\n    \"environmentData\": {\r\n      \"environmentType\": \"GithubScope\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "322" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-request-id": [ "5b2b9182-fc9c-42b1-880f-6bd135b46153" ],
+        "x-ms-correlation-request-id": [ "5b2b9182-fc9c-42b1-880f-6bd135b46153" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T023704Z:5b2b9182-fc9c-42b1-880f-6bd135b46153" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 462582CCA1BF47AEA8005D25D8C5F0E2 Ref B: CO6AA3150218037 Ref C: 2024-02-14T02:37:02Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:37:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "754" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorGithub\"}],\"environmentName\":\"Github\",\"hierarchyIdentifier\":\"2ba1410d-87af-4481-8d45-e9bc26880cec\",\"environmentData\":{\"environmentType\":\"GithubScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/securityconnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/gh-pwsh-test01\",\"name\":\"gh-pwsh-test01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"CentralUS\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2024-02-14T02:37:03.3126891Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-02-14T02:37:03.3126891Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzSecurityConnector+[NoContext]+GitHub+$DELETE+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/gh-pwsh-test01?api-version=2023-10-01-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/gh-pwsh-test01?api-version=2023-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "584b8cbe-cc2a-425c-aefe-7ccf64d0ebd0" ],
+        "CommandName": [ "Remove-AzSecurityConnector" ],
+        "FullCommandName": [ "Remove-AzSecurityConnector_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-request-id": [ "570c6d35-7d1b-4de8-b93b-201eecfefda1" ],
+        "x-ms-correlation-request-id": [ "570c6d35-7d1b-4de8-b93b-201eecfefda1" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T023707Z:570c6d35-7d1b-4de8-b93b-201eecfefda1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: AFFB00BC0FF645D18186DBC01A3FA34B Ref B: CO6AA3150218037 Ref C: 2024-02-14T02:37:04Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:37:06 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "New-AzSecurityConnector+[NoContext]+GitLab+$PUT+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/gl-pwsh-test01?api-version=2023-10-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/gl-pwsh-test01?api-version=2023-10-01-preview",
+      "Content": "{\r\n  \"location\": \"CentralUS\",\r\n  \"properties\": {\r\n    \"hierarchyIdentifier\": \"15397162-d8b4-44d1-a5c4-024ca4aabd44\",\r\n    \"environmentName\": \"GitLab\",\r\n    \"offerings\": [\r\n      {\r\n        \"offeringType\": \"CspmMonitorGitLab\"\r\n      }\r\n    ],\r\n    \"environmentData\": {\r\n      \"environmentType\": \"GitlabScope\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "322" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "249" ],
+        "x-ms-request-id": [ "85f3d0fb-a4d0-4238-858b-34b83152be89" ],
+        "x-ms-correlation-request-id": [ "85f3d0fb-a4d0-4238-858b-34b83152be89" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T023709Z:85f3d0fb-a4d0-4238-858b-34b83152be89" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 087746C22C2C431D9997F8F7686EDC4D Ref B: CO6AA3150218037 Ref C: 2024-02-14T02:37:07Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:37:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "754" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"offerings\":[{\"offeringType\":\"CspmMonitorGitLab\"}],\"environmentName\":\"GitLab\",\"hierarchyIdentifier\":\"15397162-d8b4-44d1-a5c4-024ca4aabd44\",\"environmentData\":{\"environmentType\":\"GitlabScope\"}},\"id\":\"/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/securityconnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/gl-pwsh-test01\",\"name\":\"gl-pwsh-test01\",\"type\":\"Microsoft.Security/securityconnectors\",\"location\":\"CentralUS\",\"tags\":{},\"systemData\":{\"createdBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"createdByType\":\"Application\",\"createdAt\":\"2024-02-14T02:37:08.1489183Z\",\"lastModifiedBy\":\"c3d82ccb-fee1-430c-949e-6c0a217c00a8\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2024-02-14T02:37:08.1489183Z\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzSecurityConnector+[NoContext]+GitLab+$DELETE+https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/gl-pwsh-test01?api-version=2023-10-01-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/gl-pwsh-test01?api-version=2023-10-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "f76c6a23-8d96-4eaf-a936-a9f414450181" ],
+        "CommandName": [ "Remove-AzSecurityConnector" ],
+        "FullCommandName": [ "Remove-AzSecurityConnector_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.3.11", "Az.Security/1.5.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "248" ],
+        "x-ms-request-id": [ "0549f91e-3ad1-43f7-9499-218e1b2c07e6" ],
+        "x-ms-correlation-request-id": [ "0549f91e-3ad1-43f7-9499-218e1b2c07e6" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240214T023711Z:0549f91e-3ad1-43f7-9499-218e1b2c07e6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: D0593C4AAE944026AEC523A89A91FACB Ref B: CO6AA3150218037 Ref C: 2024-02-14T02:37:09Z" ],
+        "Date": [ "Wed, 14 Feb 2024 02:37:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

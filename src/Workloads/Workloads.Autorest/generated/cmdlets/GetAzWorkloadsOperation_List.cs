@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Description(@"Lists all the available API operations under this PR")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.HttpPath(Path = "/providers/Microsoft.Workloads/operations", ApiVersion = "2023-10-01-preview")]
     public partial class GetAzWorkloadsOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener
     {

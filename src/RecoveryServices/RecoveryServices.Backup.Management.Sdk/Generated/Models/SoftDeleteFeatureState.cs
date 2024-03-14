@@ -16,5 +16,6 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public const string Invalid = "Invalid";
         public const string Enabled = "Enabled";
         public const string Disabled = "Disabled";
+        public const string AlwaysON = "AlwaysON";
     }
 }

@@ -2643,5 +2643,115 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("VaultLocationRequiredForCRR", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Ignite (November) 2023 onwards Virtual Machine deployments using PS and CLI will default to Trusted Launch configuration. You need to ensure Policy Name used with this command is of type Enhanced Policy for Trusted Launch VMs. Non-Trusted Launch Virtual Machines will not be impacted by this change. To know more about default change and Trusted Launch, please visit https://aka.ms/TLaD.
+        /// </summary>
+        public static string TrustedLaunchDefaultWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("TrustedLaunchDefaultWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to RestoreToEdgeZone parameter can't be used for cross region or cross subscription restore.
+        /// </summary>
+        public static string CSRAndCRRNotSupportedWithEdgeZoneRestore
+        {
+            get
+            {
+                return ResourceManager.GetString("CSRAndCRRNotSupportedWithEdgeZoneRestore", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please make sure that the recovery point belongs to an edge zone VM and contains extended location.
+        /// </summary>
+        public static string InvalidEdgeZoneVM
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidEdgeZoneVM", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to The parameter BackupSnapshotResourceGroupSuffix cannot be used without the BackupSnapshotResourceGroup parameter. Please provide the BackupSnapshotResourceGroup parameter or remove the BackupSnapshotResourceGroupSuffix parameter.
+        /// </summary>
+        public static string RequiredBackupSnapshotResourceGroup
+        {
+            get
+            {
+                return ResourceManager.GetString("RequiredBackupSnapshotResourceGroup", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Snapshot recovery point time is less than 4 Hrs ago, please try later or with another recovery point.
+        /// </summary>
+        public static string UnbakedSnapshotRecoveryPoint
+        {
+            get
+            {
+                return ResourceManager.GetString("UnbakedSnapshotRecoveryPoint", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Upgrading to enhanced policy can incur additional charges. Once upgraded to the enhanced policy, it is not possible to revert back to the standard policy.
+        /// </summary>
+        public static string StdToEnhPolicyMigrationWarning
+        {
+            get
+            {
+                return ResourceManager.GetString("StdToEnhPolicyMigrationWarning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to SnapshotConsistencyType parameter can only be used for enhanced AzureVM policy.
+        /// </summary>
+        public static string SnapshotConsistencyTypeCantBeSetForStandardPolicy
+        {
+            get
+            {
+                return ResourceManager.GetString("SnapshotConsistencyTypeCantBeSetForStandardPolicy", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to SnapshotConsistencyType parameter can only be used for WorkloadType AzureVM.
+        /// </summary>
+        public static string InvalidParameterSnapshotConsistencyType
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidParameterSnapshotConsistencyType", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to An error occured while fetching AAD properties, this property is needed to get CRR access token.
+        /// </summary>
+        public static string AADPropertiesCouldNotBeFetchedException
+        {
+            get
+            {
+                return ResourceManager.GetString("AADPropertiesCouldNotBeFetchedException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to fetch CRR access token. Please retry the operation or contact Microsoft support if issue persists.
+        /// </summary>
+        public static string CRRAccessTokenCouldNotBeFetchedException
+        {
+            get
+            {
+                return ResourceManager.GetString("CRRAccessTokenCouldNotBeFetchedException", resourceCulture);
+            }
+        }
     }
 }

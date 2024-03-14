@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 6.0.1
+* Fixed the resolve path issue in `Install-AzAksCliTool`.
+
 ## Version 6.0.0
 * Removed parameter `DockerBridgeCidr` from `New-AzAksCluster`
 * Fixed the resolve path issue in `Install-AzAksCliTool`. [#22853]

@@ -19,9 +19,10 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
-using System.Globalization;
+using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
 {
@@ -163,18 +164,24 @@ namespace Microsoft.Azure.Commands.NetAppFiles.SnapshotPolicy
 
             var snapshotPolicyPatch = new Management.NetApp.Models.SnapshotPolicyPatch()
             {
-                Location = Location,
-                Enabled = Enabled,
+                Location = Location,                
                 HourlySchedule = (HourlySchedule != null) ? HourlySchedule.ConvertFromPs() : null,
                 DailySchedule = (DailySchedule != null) ? DailySchedule.ConvertFromPs() : null,
                 WeeklySchedule = (WeeklySchedule != null) ? WeeklySchedule.ConvertFromPs() : null,
-                MonthlySchedule = (MonthlySchedule != null) ? MonthlySchedule.ConvertFromPs() : null
-            };
-
+                MonthlySchedule = (MonthlySchedule != null) ? MonthlySchedule.ConvertFromPs() : null,
+                Enabled = Enabled
+            };                    
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-                var anfSnapshotPolicy = AzureNetAppFilesManagementClient.SnapshotPolicies.Update(ResourceGroupName, AccountName, snapshotPolicyName: Name, snapshotPolicyPatch);
-                WriteObject(anfSnapshotPolicy.ConvertToPs());
+                try
+                {
+                    var anfSnapshotPolicy = AzureNetAppFilesManagementClient.SnapshotPolicies.Update(ResourceGroupName, AccountName, snapshotPolicyName: Name, snapshotPolicyPatch);
+                    WriteObject(anfSnapshotPolicy.ConvertToPs());
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

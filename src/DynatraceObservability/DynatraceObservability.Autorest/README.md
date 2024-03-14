@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the DynatraceObservability service.
 
 ---
-## Status
-[![Az.DynatraceObservability](https://img.shields.io/powershellgallery/v/Az.DynatraceObservability.svg?style=flat-square&label=Az.DynatraceObservability "Az.DynatraceObservability")](https://www.powershellgallery.com/packages/Az.DynatraceObservability/)
 
 ## Info
 - Modifiable: yes

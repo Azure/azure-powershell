@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Description(@"Lists all of the available SQL Virtual Machine Rest API operations.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.HttpPath(Path = "/providers/Microsoft.SqlVirtualMachine/operations", ApiVersion = "2022-08-01-preview")]
     public partial class GetAzSqlVMOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.IEventListener
     {

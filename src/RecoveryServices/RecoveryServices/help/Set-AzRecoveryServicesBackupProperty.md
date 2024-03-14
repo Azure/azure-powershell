@@ -26,12 +26,21 @@ The **Set-AzRecoveryServicesBackupProperty** cmdlet sets backup storage properti
 
 ### Example 1: Set GeoRedundant storage for a vault
 ```powershell
-$Vault01 = Get-AzRecoveryServicesVault -Name "TestVault"
+$Vault = Get-AzRecoveryServicesVault -Name "TestVault"
 Set-AzRecoveryServicesBackupProperty -Vault $Vault01 -BackupStorageRedundancy GeoRedundant
 ```
 
+The first command gets the vault named TestVault, and then stores it in the $Vault variable.
+The second command sets the backup storage redundancy for $Vault to GeoRedundant.
+
+### Example 2: Enable cross region restore for a vault
+```powershell
+$Vault = Get-AzRecoveryServicesVault -Name "TestVault"
+Set-AzRecoveryServicesBackupProperty -Vault $Vault01 -EnableCrossRegionRestore
+```
+
 The first command gets the vault named TestVault, and then stores it in the $Vault01 variable.
-The second command sets the backup storage redundancy for $Vault01 to GeoRedundant.
+The second command enables cross region restore for recovery services vault $Vault
 
 ## PARAMETERS
 

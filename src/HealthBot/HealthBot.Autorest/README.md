@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the HealthBot service.
 
 ---
-## Status
-[![Az.HealthBot](https://img.shields.io/powershellgallery/v/Az.HealthBot.svg?style=flat-square&label=Az.HealthBot "Az.HealthBot")](https://www.powershellgallery.com/packages/Az.HealthBot/)
 
 ## Info
 - Modifiable: yes

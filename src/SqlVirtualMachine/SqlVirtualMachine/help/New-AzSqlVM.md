@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
 online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azsqlvm
 schema: 2.0.0
@@ -13,7 +13,7 @@ Creates or updates a SQL virtual machine.
 ## SYNTAX
 
 ```
-New-AzSqlVM -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+New-AzSqlVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-AdditionalFeatureServerConfigurationIsRServicesEnabled] [-AssessmentSettingEnable]
  [-AssessmentSettingRunImmediately] [-AutoBackupSettingBackupScheduleType <BackupScheduleType>]
  [-AutoBackupSettingBackupSystemDb] [-AutoBackupSettingDaysOfWeek <AutoBackupDaysOfWeek[]>]
@@ -26,15 +26,14 @@ New-AzSqlVM -Name <String> -ResourceGroupName <String> -Location <String> [-Subs
  [-AutoPatchingSettingDayOfWeek <DayOfWeek>] [-AutoPatchingSettingEnable]
  [-AutoPatchingSettingMaintenanceWindowDuration <Int32>]
  [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-AzureAdAuthenticationSettingClientId <String>]
- [-EnableAutomaticUpgrade] [-IdentityType <IdentityType>]
- [-KeyVaultCredentialSettingAzureKeyVaultUrl <String>] [-KeyVaultCredentialSettingCredentialName <String>]
- [-KeyVaultCredentialSettingEnable] [-KeyVaultCredentialSettingServicePrincipalName <String>]
+ [-EnableAutomaticUpgrade] [-IdentityType <IdentityType>] [-KeyVaultCredentialSettingAzureKeyVaultUrl <String>]
+ [-KeyVaultCredentialSettingCredentialName <String>] [-KeyVaultCredentialSettingEnable]
+ [-KeyVaultCredentialSettingServicePrincipalName <String>]
  [-KeyVaultCredentialSettingServicePrincipalSecret <String>] [-LeastPrivilegeMode <LeastPrivilegeMode>]
  [-LicenseType <SqlServerLicenseType>] [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>]
  [-ScheduleEnable] [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>]
  [-ScheduleWeeklyInterval <Int32>] [-Sku <SqlImageSku>]
- [-SqlConnectivityUpdateSettingConnectivityType <ConnectivityType>]
- [-SqlConnectivityUpdateSettingPort <Int32>]
+ [-SqlConnectivityUpdateSettingConnectivityType <ConnectivityType>] [-SqlConnectivityUpdateSettingPort <Int32>]
  [-SqlConnectivityUpdateSettingSqlAuthUpdatePassword <SecureString>]
  [-SqlConnectivityUpdateSettingSqlAuthUpdateUserName <String>] [-SqlDataSettingDefaultFilePath <String>]
  [-SqlDataSettingLun <Int32[]>] [-SqlInstanceSettingCollation <String>] [-SqlInstanceSettingIsIfiEnabled]
@@ -52,10 +51,10 @@ New-AzSqlVM -Name <String> -ResourceGroupName <String> -Location <String> [-Subs
  [-StorageConfigurationSettingDiskConfigurationType <DiskConfigurationType>]
  [-StorageConfigurationSettingSqlSystemDbOnDataDisk]
  [-StorageConfigurationSettingStorageWorkloadType <StorageWorkloadType>] [-Tag <Hashtable>]
- [-VirtualMachineResourceId <String>] [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
+ [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +72,7 @@ New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastu
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Create a SQL virtual machine with default settings.
@@ -86,7 +85,7 @@ New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastu
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Create a SQL virtual machine with specific sku and license type.
@@ -99,7 +98,7 @@ New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastu
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Create a SQL virtual machine with AHUB billing tag.
@@ -112,7 +111,7 @@ New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastu
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Create a SQL virtual machine with DR billing tag.
@@ -129,7 +128,7 @@ New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastu
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Create a SQL virtual machine and configure auto backup settings.
@@ -143,7 +142,7 @@ New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastu
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Create a SQL virtual machine and configure auto patching settings.
@@ -156,7 +155,7 @@ New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastu
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Create a SQL virtual machine and configure assessment settings.
@@ -169,7 +168,7 @@ New-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -Location 'eastu
 ```output
 Location	Name		ResourceGroupName
 --------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+eastus		sqlvm1		ResourceGroup01
 ```
 
 Create a SQL virtual machine as a background job.
@@ -1365,21 +1364,6 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VirtualMachineResourceId
-ARM Resource id of underlying virtual machine created from SQL marketplace image.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

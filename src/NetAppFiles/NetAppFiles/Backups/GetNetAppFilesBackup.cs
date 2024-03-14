@@ -19,11 +19,13 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Globalization;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 {
@@ -86,7 +88,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = FieldsParameterSet,
             HelpMessage = "The name of the ANF backup")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The name of the ANF volume",
+            ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("BackupName")]
         [ResourceNameCompleter(
@@ -172,7 +179,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
                 Management.NetApp.Models.Backup anfBackup = null;
                 if (accountBackup)
                 {
-                    anfBackup = AzureNetAppFilesManagementClient.AccountBackups.Get(ResourceGroupName, AccountName,  backupName: Name);
+                    anfBackup = AzureNetAppFilesManagementClient.AccountBackups.Get(ResourceGroupName, AccountName, backupName: Name);
                 }
                 else
                 {
@@ -182,19 +189,25 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             }
             else
             {
-                List<PSNetAppFilesBackup> anfBackups = null;
-                if (accountBackup)
+                try
                 {
-                    var backups = AzureNetAppFilesManagementClient.AccountBackups.List(ResourceGroupName, accountName: AccountName).ToList(); 
-                    anfBackups = backups.ConvertToPS();
+                    List<PSNetAppFilesBackup> anfBackups = null;
+                    if (accountBackup)
+                    {
+                        var backups = AzureNetAppFilesManagementClient.AccountBackups.List(ResourceGroupName, accountName: AccountName).ToList();
+                        anfBackups = backups.ConvertToPS();
+                    }
+                    else
+                    {
+                        var backups = AzureNetAppFilesManagementClient.Backups.List(ResourceGroupName, accountName: AccountName, poolName: PoolName, volumeName: VolumeName).ToList();
+                        anfBackups = backups.ConvertToPS();
+                    }
+                    WriteObject(anfBackups, true);
                 }
-                else
+                catch (ErrorResponseException ex)
                 {
-                    //anfBackups = AzureNetAppFilesManagementClient.Backups.List(ResourceGroupName, accountName: AccountName, poolName: PoolName, volumeName: VolumeName)..Select(e => e.ConvertToPs());
-                    var backups = AzureNetAppFilesManagementClient.Backups.List(ResourceGroupName, accountName: AccountName, poolName: PoolName, volumeName: VolumeName).ToList();
-                    anfBackups = backups.ConvertToPS();
+                    throw new CloudException(ex.Body.Error.Message, ex);
                 }
-                WriteObject(anfBackups, true);
             }
         }
     }

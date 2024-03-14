@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
             var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object);
 
-            var output = bicepUtility.BuildParams("foo.bicepparam", new Dictionary<string, object>());
+            var output = bicepUtility.BuildBicepParamFile("foo.bicepparam", new Dictionary<string, object>());
             var parameters = TemplateUtility.ParseTemplateParameterJson(output.parametersJson);
 
             parameters["tag1"].Value.Should().Be("日本語テスト_param");
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
             var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object);
 
-            FluentActions.Invoking(() => bicepUtility.BuildParams("foo.bicepparam", new Dictionary<string, object>()))
+            FluentActions.Invoking(() => bicepUtility.BuildBicepParamFile("foo.bicepparam", new Dictionary<string, object>()))
                 .Should().Throw<AzPSApplicationException>().WithMessage("Oops something went wrong!");
         }
 
@@ -105,8 +105,8 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
             var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object);
 
-            FluentActions.Invoking(() => bicepUtility.BuildParams("foo.bicepparam", new Dictionary<string, object>()))
-                .Should().Throw<AzPSApplicationException>().WithMessage("Please use bicep '0.16.1' or higher verison.");
+            FluentActions.Invoking(() => bicepUtility.BuildBicepParamFile("foo.bicepparam", new Dictionary<string, object>()))
+                .Should().Throw<AzPSApplicationException>().WithMessage("Please use bicep 0.16.1 or higher.");
         }
 
         [Fact]
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
             var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object);
 
-            FluentActions.Invoking(() => bicepUtility.BuildParams("foo.bicepparam", new Dictionary<string, object>()))
+            FluentActions.Invoking(() => bicepUtility.BuildBicepParamFile("foo.bicepparam", new Dictionary<string, object>()))
                 .Should().Throw<AzPSApplicationException>().WithMessage("Cannot find Bicep. Please add Bicep to your PATH or visit *");
         }
 
@@ -138,8 +138,50 @@ namespace Microsoft.Azure.Commands.Resources.Test.UnitTests.Utilities
 
             var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object);
 
-            FluentActions.Invoking(() => bicepUtility.BuildParams("foo.bicepparam", new Dictionary<string, object>()))
+            FluentActions.Invoking(() => bicepUtility.BuildBicepParamFile("foo.bicepparam", new Dictionary<string, object>()))
                 .Should().Throw<AzPSArgumentException>().WithMessage("Invalid Bicepparam file path.");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void WithSource_adds_with_source_to_CLI()
+        {
+            var invokerMock = new Mock<IProcessInvoker>(MockBehavior.Strict);
+            invokerMock.Setup(x => x.Invoke(It.Is<ProcessInput>(p => p.Arguments == "-v")))
+                .Returns(new ProcessOutput { ExitCode = 0, Stderr = "", Stdout = "Bicep CLI version 0.23.1 (b02de2da48)" });
+            invokerMock.Setup(x => x.Invoke(It.Is<ProcessInput>(p => p.Arguments == "publish \"foo.bicep\" --target \"br:example.azurecr.io/hello/world:v1\" --with-source")))
+                .Returns(new ProcessOutput { ExitCode = 0, Stderr = "", Stdout = "" });
+
+            invokerMock.Setup(x => x.CheckExecutableExists("bicep"))
+                .Returns(true);
+
+            var dataStoreMock = new Mock<IDataStore>();
+            dataStoreMock.Setup(x => x.FileExists("foo.bicep"))
+                .Returns(true);
+
+            var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object);
+
+            bicepUtility.PublishFile("foo.bicep", "br:example.azurecr.io/hello/world:v1", null, withSource: true);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void WithSource_fails_for_old_bicep_version()
+        {
+            var invokerMock = new Mock<IProcessInvoker>(MockBehavior.Strict);
+            invokerMock.Setup(x => x.Invoke(It.Is<ProcessInput>(p => p.Arguments == "-v")))
+                .Returns(new ProcessOutput { ExitCode = 0, Stderr = "", Stdout = "Bicep CLI version 0.15.1 (d62b94db31)" });
+            invokerMock.Setup(x => x.CheckExecutableExists("bicep"))
+                .Returns(true);
+
+            var dataStoreMock = new Mock<IDataStore>();
+            dataStoreMock.Setup(x => x.FileExists("foo.bicep"))
+                .Returns(true);
+
+            var bicepUtility = new BicepUtility(invokerMock.Object, dataStoreMock.Object);
+
+            FluentActions.Invoking(() => bicepUtility.PublishFile("foo.bicep", "br:example.azurecr.io/hello/world:v1", null, withSource: true))
+                .Should().Throw<AzPSApplicationException>().WithMessage("Please use bicep 0.23.1 or higher.");
         }
     }
 }

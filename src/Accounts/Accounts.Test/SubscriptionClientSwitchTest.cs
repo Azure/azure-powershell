@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                     {
                         subscriptionClients.Dequeue();
                     }
-                    throw e;
+                    throw;
                 }
                 return Task.FromResult(result);
             };
@@ -193,7 +193,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                     {
                         subscriptionClients.Dequeue();
                     }
-                    throw e;
+                    throw;
                 }
                 return Task.FromResult(result);
             };
@@ -265,7 +265,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                     {
                         subscriptionClients.Dequeue();
                     }
-                    throw e;
+                    throw;
                 }
                 return Task.FromResult(result);
             };

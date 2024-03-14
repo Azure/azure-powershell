@@ -24,4 +24,24 @@ Describe 'Stop-AzWorkloadsSapDatabaseInstance' {
         $stopResponseId = Stop-AzWorkloadsSapDatabaseInstance -InputObject $env.DbServerIdSub2
         $stopResponseId.Status | Should -Be $env.ProvisioningState
     }
+	
+	It 'SoftStopExpanded' {
+        $stopResponse = Stop-AzWorkloadsSapDatabaseInstance -Name $env.SapDatabseInstanceName -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName -SoftStopTimeoutSecond 300
+        $stopResponse.Status | Should -Be $env.ProvisioningState
+    }
+
+    It 'SoftStopViaIdentityExpanded' {
+        $stopResponseId = Stop-AzWorkloadsSapDatabaseInstance -InputObject $env.DbServerIdSub2 -SoftStopTimeoutSecond 300
+        $stopResponseId.Status | Should -Be $env.ProvisioningState
+    }
+
+    It 'StopExpandedWithVM' {
+        $stopResponse = Stop-AzWorkloadsSapDatabaseInstance -Name $env.SapDatabseInstanceName -ResourceGroupName $env.ResourceGroupName -SapVirtualInstanceName $env.SapVirtualInstanceName -DeallocateVM
+        $stopResponse.Status | Should -Be $env.ProvisioningState
+    }
+
+    It 'StopViaIdentityExpandedWithVM' {
+        $stopResponseId = Stop-AzWorkloadsSapDatabaseInstance -InputObject $env.DbServerIdSub2 -DeallocateVM
+        $stopResponseId.Status | Should -Be $env.ProvisioningState
+    }
 }

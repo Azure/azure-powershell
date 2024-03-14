@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.0
+* Fixed a bug of parameter `VirtualMachineResourceId` of cmdlet `New-AzSqlVM`.
+
 ## Version 2.1.0
 * Added more parameters on cmdlet `Update-AzSqlVM`.
 

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.2.0
+* Fixed Ambiguous Positional Argument for `New-AzWebAppSlot`
+
 ## Version 3.1.2
 * Adjusted `Publish-AzWebApp` default behavior
 

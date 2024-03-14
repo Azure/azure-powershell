@@ -32,14 +32,14 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
 
         /// <param name="instanceSize">Instance type for the service.
-        /// Possible values include: 'Cosmos.D4s', 'Cosmos.D8s', 'Cosmos.D16s'</param>
+        /// Possible values include: &#39;Cosmos.D4s&#39;, &#39;Cosmos.D8s&#39;, &#39;Cosmos.D16s&#39;</param>
 
         /// <param name="instanceCount">Instance count for the service.
         /// </param>
 
         /// <param name="status">Describes the status of a service.
-        /// Possible values include: 'Creating', 'Running', 'Updating', 'Deleting',
-        /// 'Error', 'Stopped'</param>
+        /// Possible values include: &#39;Creating&#39;, &#39;Running&#39;, &#39;Updating&#39;, &#39;Deleting&#39;,
+        /// &#39;Error&#39;, &#39;Stopped&#39;</param>
 
         /// <param name="locations">An array that contains all of the locations for the service.
         /// </param>

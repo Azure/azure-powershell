@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the MSGraph service.
 
 ---
-## Status
-[![Az.MSGraph](https://img.shields.io/powershellgallery/v/Az.MSGraph.svg?style=flat-square&label=Az.MSGraph "Az.MSGraph")](https://www.powershellgallery.com/packages/Az.MSGraph/)
 
 ## Info
 - Modifiable: yes
@@ -176,7 +174,8 @@ directive:
   - where:
       subject: ^applicationfederatedidentitycredential$|GroupGraphRefMember$|grouprefmember$|groupmember$
     set:
-      preview-message: This cmdlet is using API version beta which is under preview.
+      preview-announcement:
+        preview-message: This cmdlet is using API version beta which is under preview.
 
   - where:
       subject: ^applicationfederatedidentitycredentials$
@@ -193,6 +192,33 @@ directive:
       property-name: Item
     set:
       property-name: Items
+
+  - where:
+      subject: serviceprincipalapproleassignment$
+      verb: New
+    hide: true
+
+  - where:
+      subject: serviceprincipalapproleassignment$
+      parameter-name: ^DeletedDateTime$
+    hide: true
+
+  - where:
+      verb: Update
+      subject: serviceprincipalapproleassignment$
+      parameter-name: ^PrincipalId$|^DisplayName$|^ResourceDisplayName$|^ResourceId$
+    hide: true
+
+  - where:
+      model-name: MicrosoftGraphAppRoleAssignment
+    set:
+      format-table:
+        properties:
+          - Id
+          - AppRoleId
+          - PrincipalDisplayName
+          - PrincipalId
+          - CreatedDateTime
 
   - where:
       subject: application$|applicationpassword$|applicationkey$|serviceprincipal$|serviceprincipalpassword$|serviceprincipalkey$|groupmember$|user$|GroupGraphRefMember$|grouprefmember$

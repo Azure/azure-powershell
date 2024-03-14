@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="dataMoveLevel">DataMove Level
-        /// Possible values include: 'Invalid', 'Vault', 'Container'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Vault&#39;, &#39;Container&#39;</param>
 
         /// <param name="sourceContainerArmIds">Source Container ArmIds
         /// This needs to be populated only if DataMoveLevel is set to container

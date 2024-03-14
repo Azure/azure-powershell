@@ -13,7 +13,8 @@ Create an in-memory object for EventHubDestination.
 ## SYNTAX
 
 ```
-New-AzEventHubDestinationObject [-EventHubResourceId <String>] [-Name <String>] [<CommonParameters>]
+New-AzEventHubDestinationObject [-EventHubResourceId <String>] [-Name <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

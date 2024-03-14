@@ -25,5 +25,6 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         public const string Unlinking = "Unlinking";
         public const string Unprovisioning = "Unprovisioning";
         public const string Updating = "Updating";
+        public const string ConfiguringAAD = "ConfiguringAAD";
     }
 }

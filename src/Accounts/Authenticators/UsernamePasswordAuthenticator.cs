@@ -51,7 +51,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var clientId = Constants.PowerShellClientId;
             var authority = upParameters.Environment.ActiveDirectoryAuthority;
 
-            var requestContext = new TokenRequestContext(scopes);
+            var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
             UsernamePasswordCredential passwordCredential;
 
             var credentialOptions = new UsernamePasswordCredentialOptions()

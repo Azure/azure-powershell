@@ -22,8 +22,8 @@ Update-AzDataCollectionEndpoint -Name <String> -ResourceGroupName <String> [-Sub
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDataCollectionEndpoint -InputObject <IDataCollectionRuleIdentity> [-IdentityType <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

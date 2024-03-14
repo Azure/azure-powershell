@@ -876,7 +876,8 @@ namespace Microsoft.Azure.Management.CosmosDB
 
         }
         /// <summary>
-        /// Create or update a managed Cassandra data center. When updating, overwrite all properties. To update only some properties, use PATCH.
+        /// Create or update a managed Cassandra data center. When updating, overwrite
+        /// all properties. To update only some properties, use PATCH.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

@@ -6,12 +6,12 @@
   },
   "commands": [
     {
-      "name": "Get-AzAppConfigurationStore",
-      "description": "Get or list app configuration stores.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
+      "name": "Get-AzAppConfigurationStoreKey",
+      "description": "Lists the access key for the specified configuration store.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/ListKeys",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstore"
+          "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstorekey"
         },
         "parameterSets": [
           {
@@ -25,95 +25,19 @@
       },
       "examples": [
         {
-          "description": "Get or list app configuration stores.",
+          "description": "Lists all store keys of an app configuration store.",
           "parameters": [
             {
-              "name": "-Name",
-              "value": "[Path.configStoreName]"
+              "name": "-ResourceGroupName",
+              "value": "[path.resourceGroupName]"
             },
             {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
+              "name": "-Name",
+              "value": "[path.configStoreName]"
             },
             {
               "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
-    },
-    {
-        "name": "Get-AzAppConfigurationStoreKey",
-        "description": "Lists the access key for the specified configuration store.",
-        "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}/ListKeys",
-        "help": {
-            "learnMore": {
-                "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/get-azappconfigurationstorekey"
-            },
-            "parameterSets": [
-                {
-                    "parameters": [
-                        "-Name <String>",
-                        "-ResourceGroupName <String>",
-                        "[-SubscriptionId <String[]>]"
-                    ]
-                }
-            ]
-        },
-        "examples": [
-            {
-                "description": "Lists all store keys of an app configuration store.",
-                "parameters": [
-                    {
-                        "name": "-ResourceGroupName",
-                        "value": "[path.resourceGroupName]"
-                    },
-                    {
-                        "name": "-Name",
-                        "value": "[path.configStoreName]"
-                    },
-                    {
-                        "name": "-SubscriptionId",
-                        "value": "[path.subscriptionId]"
-                    }
-                ]
-            }
-        ]
-    },
-    {
-      "name": "Remove-AzAppConfigurationStore",
-      "description": "Deletes a configuration store.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppConfiguration/configurationStores/{configStoreName}",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.appconfiguration/remove-azappconfigurationstore"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-Name <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Deletes a configuration store.",
-          "parameters": [
-            {
-              "name": "-Name",
-              "value": "[Path.configStoreName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
+              "value": "[path.subscriptionId]"
             }
           ]
         }

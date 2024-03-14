@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using System;
 using System.Collections.Generic;
 
@@ -85,8 +86,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Recovery point move rediness info
         /// </summary>
         public IDictionary<string, RecoveryPointMoveReadinessInfo> RecoveryPointMoveReadinessInfo;
-
-        // TODO: public extendedLocation for edge zone support
+        
+        /// <summary>
+        /// Gets or sets extended location of the VM recovery point,
+        /// should be null if VM is in public cloud
+        /// </summary>        
+        public ExtendedLocation ExtendedLocation { get; set; }
 
         public AzureVmRecoveryPoint()
         {

@@ -10,6 +10,7 @@
 
 namespace Microsoft.Azure.Management.Resources.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Collections;
     using System.Collections.Generic;
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Management.Resources.Models
         /// removed.</param>
         /// <param name="applyToChildScopes">DenySettings will be applied to
         /// child scopes.</param>
-        public DenySettings(string mode = default(string), IList<string> excludedPrincipals = default(IList<string>), IList<string> excludedActions = default(IList<string>), bool? applyToChildScopes = default(bool?))
+        public DenySettings(string mode, IList<string> excludedPrincipals = default(IList<string>), IList<string> excludedActions = default(IList<string>), bool? applyToChildScopes = default(bool?))
         {
             Mode = mode;
             ExcludedPrincipals = excludedPrincipals;
@@ -95,5 +96,18 @@ namespace Microsoft.Azure.Management.Resources.Models
         [JsonProperty(PropertyName = "applyToChildScopes")]
         public bool? ApplyToChildScopes { get; set; }
 
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (Mode == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Mode");
+            }
+        }
     }
 }

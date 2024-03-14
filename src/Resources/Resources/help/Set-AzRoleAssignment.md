@@ -24,14 +24,14 @@ Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if 
 
 ### RoleAssignmentParameterSet (Default)
 ```
-Set-AzRoleAssignment -InputObject <PSRoleAssignment> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Set-AzRoleAssignment -InputObject <PSRoleAssignment> [-SkipClientSideScopeValidation] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputFileParameterSet
 ```
-Set-AzRoleAssignment -InputFile <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Set-AzRoleAssignment -InputFile <String> [-SkipClientSideScopeValidation] [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -148,6 +148,21 @@ Accept wildcard characters: False
 
 ### -PassThru
 If specified, displays the updated role assignment
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipClientSideScopeValidation
+If specified, skip client side scope validation.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Peering service.
 
 ---
-## Status
-[![Az.Peering](https://img.shields.io/powershellgallery/v/Az.Peering.svg?style=flat-square&label=Az.Peering "Az.Peering")](https://www.powershellgallery.com/packages/Az.Peering/)
 
 ## Info
 - Modifiable: yes

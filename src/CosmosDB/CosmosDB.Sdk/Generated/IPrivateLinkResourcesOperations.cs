@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.CosmosDB
     public partial interface IPrivateLinkResourcesOperations
     {
         /// <summary>
-        /// Gets the private link resources that need to be created for a Cosmos DB account.
+        /// Gets the private link resources that need to be created for a Cosmos DB
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Gets the private link resources that need to be created for a Cosmos DB account.
+        /// Gets the private link resources that need to be created for a Cosmos DB
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -40,10 +42,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<PrivateLinkResource>>> ListByDatabaseAccountWithHttpMessagesAsync(string resourceGroupName, string accountName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Gets the private link resources that need to be created for a Cosmos DB account.
+        /// Gets the private link resources that need to be created for a Cosmos DB
+        /// account.
         /// </summary>
         /// <remarks>
-        /// Gets the private link resources that need to be created for a Cosmos DB account.
+        /// Gets the private link resources that need to be created for a Cosmos DB
+        /// account.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

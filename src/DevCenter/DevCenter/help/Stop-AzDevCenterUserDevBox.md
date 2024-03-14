@@ -26,13 +26,13 @@ Stop-AzDevCenterUserDevBox -Endpoint <String> -InputObject <IDevCenterdataIdenti
 
 ### StopViaIdentityByDevCenter
 ```
-Stop-AzDevCenterUserDevBox -DevCenter <String> -InputObject <IDevCenterdataIdentity> [-Hibernate]
+Stop-AzDevCenterUserDevBox -DevCenterName <String> -InputObject <IDevCenterdataIdentity> [-Hibernate]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StopByDevCenter
 ```
-Stop-AzDevCenterUserDevBox -DevCenter <String> -Name <String> -ProjectName <String> [-UserId <String>]
+Stop-AzDevCenterUserDevBox -DevCenterName <String> -Name <String> -ProjectName <String> [-UserId <String>]
  [-Hibernate] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -104,13 +104,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DevCenter
+### -DevCenterName
 The DevCenter upon which to execute operations.
 
 ```yaml
 Type: System.String
 Parameter Sets: StopViaIdentityByDevCenter, StopByDevCenter
-Aliases:
+Aliases: DevCenter
 
 Required: True
 Position: Named

@@ -31,7 +31,7 @@ New-AzWorkloadsSapVirtualInstance -ResourceGroupName 'PowerShell-CLI-TestRG' -Na
 New-AzWorkloadsSapVirtualInstance -ResourceGroupName 'TestRG' -Name L46 -Location eastus -Environment 'NonProd' -SapProduct 'S4HANA' -CentralServerVmId '/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/powershell-cli-testrg/providers/microsoft.compute/virtualmachines/l46ascsvm' -Tag @{k1 = "v1"; k2 = "v2"} -ManagedResourceGroupName "L46-rg" -ManagedRgStorageAccountName 'acssstoragel46' -IdentityType 'UserAssigned' -UserAssignedIdentity @{'/subscriptions/49d64d54-e966-4c46-a868-1999802b762c/resourcegroups/SAP-E2ETest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/E2E-RBAC-MSI'= @{}}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapVirtualInstance
+Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapVirtualInstance
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,7 +43,7 @@ CONFIGURATION <ISapConfiguration>: Defines if the SAP system is being created us
 https://learn.microsoft.com/powershell/module/az.workloads/new-azworkloadssapvirtualinstance
 #>
 function New-AzWorkloadsSapVirtualInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapVirtualInstance])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapVirtualInstance])]
 [CmdletBinding(DefaultParameterSetName='CreateWithJsonString', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -69,7 +69,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapConfiguration]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapConfiguration]
     # Defines if the SAP system is being created using Azure Center for SAP solutions (ACSS) or if an existing SAP system is being registered with ACSS
     # To construct, see NOTES section for CONFIGURATION properties and create a hash table.
     ${Configuration},
@@ -106,6 +106,18 @@ param(
     [System.String]
     # Managed resource group name
     ${ManagedResourceGroupName},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedResourcesNetworkAccessType])]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Support.ManagedResourcesNetworkAccessType]
+    # Specifies the network access configuration for the resources that will be deployed in the Managed Resource Group.
+    # The options to choose from are Public and Private.
+    # If 'Private' is chosen, the Storage Account service tag should be enabled on the subnets in which the SAP VMs exist.
+    # This is required for establishing connectivity between VM extensions and the managed resource group storage account.
+    # This setting is currently applicable only to Storage Account.
+    # Learn more here https://go.microsoft.com/fwlink/linkid=2247228
+    ${ManagedResourcesNetworkAccessType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category('Body')]

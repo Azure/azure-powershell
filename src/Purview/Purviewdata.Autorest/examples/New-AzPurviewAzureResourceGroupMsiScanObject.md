@@ -1,6 +1,6 @@
 ### Example 1: Create Azure resource group Msi scan object
 ```powershell
-PS C:\> New-AzPurviewAzureResourceGroupMsiScanObject -Kind 'AzureResourceGroupMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference'
+New-AzPurviewAzureResourceGroupMsiScanObject -Kind 'AzureResourceGroupMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference'
 
 CollectionLastModifiedAt  :
 CollectionReferenceName   : parv-brs-2

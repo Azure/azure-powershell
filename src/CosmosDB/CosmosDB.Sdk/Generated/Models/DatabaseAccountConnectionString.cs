@@ -31,13 +31,13 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </param>
 
         /// <param name="keyKind">Kind of the connection string key
-        /// Possible values include: 'Primary', 'Secondary', 'PrimaryReadonly',
-        /// 'SecondaryReadonly'</param>
+        /// Possible values include: &#39;Primary&#39;, &#39;Secondary&#39;, &#39;PrimaryReadonly&#39;,
+        /// &#39;SecondaryReadonly&#39;</param>
 
         /// <param name="type">Type of the connection string
-        /// Possible values include: 'Sql', 'Table', 'MongoDB', 'Cassandra',
-        /// 'CassandraConnectorMetadata', 'Gremlin', 'SqlDedicatedGateway',
-        /// 'GremlinV2', 'Undefined'</param>
+        /// Possible values include: &#39;Sql&#39;, &#39;Table&#39;, &#39;MongoDB&#39;, &#39;Cassandra&#39;,
+        /// &#39;CassandraConnectorMetadata&#39;, &#39;Gremlin&#39;, &#39;SqlDedicatedGateway&#39;,
+        /// &#39;GremlinV2&#39;, &#39;Undefined&#39;</param>
         public DatabaseAccountConnectionString(string connectionString = default(string), string description = default(string), string keyKind = default(string), string type = default(string))
 
         {

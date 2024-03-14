@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.VMware-help.xml
 Module Name: Az.VMware
 online version: https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareaddon
 schema: 2.0.0
@@ -14,7 +14,7 @@ Create or update a addon in a private cloud
 
 ```
 New-AzVMwareAddon -PrivateCloudName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Property <IAddonProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-Property <IAddonProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -104,7 +104,7 @@ The properties of an addon resource
 To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddonProperties
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -199,4 +199,3 @@ To create the parameters described below, construct a hash table containing the 
   - `AddonType <AddonType>`: The type of private cloud addon
 
 ## RELATED LINKS
-
