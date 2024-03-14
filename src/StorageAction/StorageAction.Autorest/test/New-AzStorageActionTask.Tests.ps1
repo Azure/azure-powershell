@@ -16,7 +16,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStorageActionTask'))
 
 Describe 'New-AzStorageActionTask' {
     It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            $ifOperation = New-AzStorageActionTaskOperationObject -Name DeleteBlob -OnFailure break -OnSuccess continue
+            New-AzStorageActionTask -Name mytask1 -ResourceGroupName joyer-test -Location eastus2euap -Enabled -Description 'my storage task' -IfCondition "[[equals(AccessTier, 'Cool')]]" -IfOperation $ifoperation -IdentityType None
+        } | Should -Not -Throw
     }
 
     It 'CreateViaJsonString' -skip {

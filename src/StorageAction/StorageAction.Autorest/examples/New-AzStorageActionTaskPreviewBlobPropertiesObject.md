@@ -1,22 +1,27 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create blob property object
 ```powershell
-{{ Add code here }}
+$creationTime = New-AzStorageActionTaskPreviewKeyValuePropertiesObject -Key "Creation-Time" -Value "Wed, 07 Jun 2023 05:23:29 GMT"
+$metadata = New-AzStorageActionTaskPreviewKeyValuePropertiesObject -Key "mKey1" -Value "mValue1"
+$tags = New-AzStorageActionTaskPreviewKeyValuePropertiesObject -Key "tKey1" -Value "tValue1"
+New-AzStorageActionTaskPreviewBlobPropertiesObject -Name 'folder1/file1.txt' -Metadata $metadata -Property $creationTime -Tag $tags
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+MatchedBlock : 
+Metadata     : {{
+                 "key": "mKey1",
+                 "value": "mValue1"
+               }}
+Name         : folder1/file1.txt
+Property     : {{
+                 "key": "Creation-Time",
+                 "value": "Wed, 07 Jun 2023 05:23:29 GMT"
+               }}
+Tag          : {{
+                 "key": "tKey1",
+                 "value": "tValue1"
+               }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command create a blob property object.
 

@@ -15,8 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStorageActionTask'))
 }
 
 Describe 'Update-AzStorageActionTask' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        {
+            $elseoperation = New-AzStorageActionTaskOperationObject -Name DeleteBlob -OnFailure break -OnSuccess continue
+            Update-AzStorageActionTask -Name mytask1 -ResourceGroupName ps1-test -IfCondition "[[equals(AccessTier, 'Cool')]]" -IfOperation $ifoperation -ElseOperation $elseoperation
+        } | Should -Not -Throw
     }
 
     It 'UpdateViaJsonString' -skip {
@@ -27,15 +30,7 @@ Describe 'Update-AzStorageActionTask' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Update' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

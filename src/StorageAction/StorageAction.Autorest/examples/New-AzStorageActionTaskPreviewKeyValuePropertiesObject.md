@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create key and value property
 ```powershell
-{{ Add code here }}
+New-AzStorageActionTaskPreviewKeyValuePropertiesObject -Key "Creation-Time" -Value "Wed, 07 Jun 2023 05:23:29 GMT"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Key           Value
+---           -----
+Creation-Time Wed, 07 Jun 2023 05:23:29 GMT
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command create a key-value property object.
 

@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStorageActionTaskPrevie
 }
 
 Describe 'New-AzStorageActionTaskPreviewKeyValuePropertiesObject' {
-    It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It '__AllParameterSets' {
+        {
+            New-AzStorageActionTaskPreviewKeyValuePropertiesObject -Key "Etag" -Value "0x6FB67175454D36D"
+        } | Should -Not -Throw
     }
 }

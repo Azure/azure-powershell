@@ -15,7 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStorageActionTasksRepor
 }
 
 Describe 'Get-AzStorageActionTasksReport' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $report = Get-AzStorageActionTasksReport -ResourceGroupName joyer-test -StorageTaskName mytask1
+            $report.count | Should -BeGreaterThan 1
+        } | Should -Not -Throw
     }
 }

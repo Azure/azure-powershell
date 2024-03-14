@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Lists all the storage tasks
 ```powershell
-{{ Add code here }}
+Get-AzStorageActionTaskAssignment -ResourceGroupName joyer-test -StorageTaskName mytask1 | Format-List
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id : subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/joyer-test/providers/microsoft.storage/storageaccounts/storagetasktest202402281/storagetaskassignments/testassign1
+
+Id : subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/joyer-test/providers/microsoft.storage/storageaccounts/storagetasktest202402281/storagetaskassignments/testassign2
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command lists all the storage task assignments.
 

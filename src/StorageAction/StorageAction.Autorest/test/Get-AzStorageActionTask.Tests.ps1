@@ -15,16 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStorageActionTask'))
 }
 
 Describe 'Get-AzStorageActionTask' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        {
+            $list_sub = Get-AzStorageActionTask
+            $list_sub | Should -BeGreaterThan 1
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {
+            $task = Get-AzStorageActionTask -Name mytask1 -ResourceGroupName ps1-test
+            $task.Name | Should -Be mytask1
+        } | Should -Not -Throw
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        {
+            $list_group = Get-AzStorageActionTask -ResourceGroupName ps1-test
+            $list_group | Should -BeGreaterThan 1
+        } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {

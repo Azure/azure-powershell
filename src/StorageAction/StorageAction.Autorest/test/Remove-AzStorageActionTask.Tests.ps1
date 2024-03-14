@@ -15,8 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStorageActionTask'))
 }
 
 Describe 'Remove-AzStorageActionTask' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        {
+            Remove-AzStorageActionTask -Name mytask2 -ResourceGroupName joyer-test
+        } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {

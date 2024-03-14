@@ -42,6 +42,11 @@ require:
 try-require: 
   - $(repo)/specification/storageactions/resource-manager/readme.powershell.md
 
+# The next three configurations are activated by default.
+# identity-correction-for-post: true
+# resourcegroup-append: true
+# nested-object-to-string: true
+
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
 # Normally, title is the service name
@@ -54,7 +59,7 @@ directive:
 #   # 2. For New-* cmdlets, ViaIdentity is not required
 #   # Following two directives are v4 specific
   - where:
-      variant: ^(Create|Update)(?!.*?Expanded|JsonFilePath|JsonString)
+      variant: ^(Create|Update|Preview)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       subject: StorageTask
@@ -73,10 +78,6 @@ directive:
       subject: StorageTasksReport
     set:
       subject: TasksReport
-  - where:
-      verb: Invoke
-      subject: PreviewStorageTaskAction
-      variant: Preview|PreviewViaIdentity
   - model-cmdlet:
     - model-name: StorageTaskOperation
       cmdlet-name: New-AzStorageActionTaskOperationObject
