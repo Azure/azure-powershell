@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Description(@"The operation to start a virtual machine instance.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.HttpPath(Path = "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/start", ApiVersion = "2023-09-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.HttpPath(Path = "/{resourceUri}/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/start", ApiVersion = "2024-01-01")]
     public partial class StartAzStackHCIVMVirtualMachine_Start : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IContext

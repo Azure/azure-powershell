@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Description(@"Lists all of the logical networks in the specified subscription. Use the nextLink property in the response to get the next page of logical networks.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/logicalNetworks", ApiVersion = "2023-09-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.AzureStackHCI/logicalNetworks", ApiVersion = "2024-01-01")]
     public partial class GetAzStackHCIVMLogicalNetwork_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IContext
