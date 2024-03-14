@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Newtonsoft.Json;
 using System;
 using System.Management.Automation;
 using System.Text.RegularExpressions;
@@ -40,6 +41,9 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
         [ValidateNotNullOrEmpty]
         public string Password { get; set; }
 
+        [Parameter(Mandatory = false, ParameterSetName = WithoutNameAndPasswordParameterSet)]
+        [Parameter(Mandatory = false, ParameterSetName = WithNameAndPasswordParameterSet)]
+        public SwitchParameter ExposeToken { get; set; }
         protected override void InitDebuggingFilter()
         {
             AddDebuggingFilter(new Regex("(\\s*access_token\\s*=\\s*)[^\"]+"));
@@ -60,6 +64,16 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
 
             string LoginScript = string.Format("'{2}' | docker login {0} -u {1} --password-stdin", this.RegistryDataPlaneClient.GetEndPoint(), this.UserName, this.Password);
             WriteObject(this.ExecuteScript<object>(LoginScript));
+            if (ExposeToken) {
+                WriteWarning("You can perform manual login using the provided access token below, for example: 'docker login <loginServer> -u 00000000-0000-0000-0000-000000000000 -p <accessToken>'");
+                var cred = new
+                {
+                    loginServer = Name + ".azurecr.io",
+                    accessToken = this.RegistryDataPlaneClient.Authenticate()
+
+                };
+                WriteObject(JsonConvert.SerializeObject(cred, Formatting.Indented));
+            }
         }
     }
 }
