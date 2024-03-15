@@ -35,7 +35,6 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="capacity">Capacity (instance count) of an application gateway.
         /// </param>
-        ///
 
         /// <param name="family">Family of an application gateway.
         /// Possible values include: &#39;Generation_1&#39;, &#39;Generation_2&#39;
