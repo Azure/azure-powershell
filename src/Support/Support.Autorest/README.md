@@ -154,6 +154,14 @@ directive:
       subject: FilesNoSubscription
     hide: true
   - where:
+      verb: Get
+      subject: SupportTicket
+    hide: true
+  - where:
+      verb: Get
+      subject: SupportTicketsNoSubscription
+    hide: true
+  - where:
       verb: Update
       subject: File
     remove: true

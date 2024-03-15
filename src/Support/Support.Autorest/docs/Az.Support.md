@@ -48,11 +48,13 @@ Gets a specific Azure service for support ticket creation.
 Get ticket details for an Azure subscription.
 Support ticket data is available for 18 months after ticket creation.
 If a ticket was created more than 18 months ago, a request for data might cause an error.
+If no parameters are specified, then this command will retrieve all tickets created in the last week by default.
 
 ### [Get-AzSupportTicketsNoSubscription](Get-AzSupportTicketsNoSubscription.md)
 Gets details for a specific support ticket.
 Support ticket data is available for 18 months after ticket creation.
 If a ticket was created more than 18 months ago, a request for data might cause an error.
+If no parameters are specified, then this command will retrieve all tickets created in the last week by default.
 
 ### [New-AzSupportCommunication](New-AzSupportCommunication.md)
 Adds a new customer communication to an Azure support ticket.
