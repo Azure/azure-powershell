@@ -19,6 +19,13 @@
 -->
 ## Upcoming Release
 
+## Version 3.6.0
+* Added new properties `ResourceTags`  and `UpgradePolicy` to `PSCloudPool` and `PSPoolSpecification`.
+* Added new property `UpgradingOS` to `PSNodeCounts`.
+* Added new properties `Caching`, `DiskSizeGB`, `ManagedDisk` and `WriteAcceleratorEnabled` to `PSOSDisk`.
+* Added new properties `SecurityProfile` and `ServiceArtifactReference` to `PSVirtualMachineConfigurations`.
+* Added new property `ScaleSetVmResourceId` to `PSVirtualMachineInfo`.
+
 ## Version 3.5.0
 * Removed cmdlets: `Get-AzBatchPoolStatistic` and `Get-AzBatchJobStatistic`
 * Deprecated cmdlets: `Get-AzBatchCertificate` and `New-AzBatchCertificate`

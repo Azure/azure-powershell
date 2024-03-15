@@ -29,19 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSVirtualMachineInfo
+    public partial class PSServiceArtifactReference
     {
         
-        internal Microsoft.Azure.Batch.VirtualMachineInfo omObject;
+        internal Microsoft.Azure.Batch.ServiceArtifactReference omObject;
         
-        private PSImageReference imageReference;
-        
-        public PSVirtualMachineInfo()
+        public PSServiceArtifactReference(string id)
         {
-            this.omObject = new Microsoft.Azure.Batch.VirtualMachineInfo();
+            this.omObject = new Microsoft.Azure.Batch.ServiceArtifactReference(id);
         }
         
-        internal PSVirtualMachineInfo(Microsoft.Azure.Batch.VirtualMachineInfo omObject)
+        internal PSServiceArtifactReference(Microsoft.Azure.Batch.ServiceArtifactReference omObject)
         {
             if ((omObject == null))
             {
@@ -50,40 +48,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public PSImageReference ImageReference
+        public string Id
         {
             get
             {
-                if (((this.imageReference == null) 
-                            && (this.omObject.ImageReference != null)))
-                {
-                    this.imageReference = new PSImageReference(this.omObject.ImageReference);
-                }
-                return this.imageReference;
+                return this.omObject.Id;
             }
             set
             {
-                if ((value == null))
-                {
-                    this.omObject.ImageReference = null;
-                }
-                else
-                {
-                    this.omObject.ImageReference = value.omObject;
-                }
-                this.imageReference = value;
-            }
-        }
-        
-        public string ScaleSetVmResourceId
-        {
-            get
-            {
-                return this.omObject.ScaleSetVmResourceId;
-            }
-            set
-            {
-                this.omObject.ScaleSetVmResourceId = value;
+                this.omObject.Id = value;
             }
         }
     }

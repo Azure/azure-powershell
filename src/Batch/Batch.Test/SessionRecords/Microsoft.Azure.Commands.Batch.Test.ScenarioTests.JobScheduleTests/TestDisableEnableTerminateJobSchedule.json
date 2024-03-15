@@ -1,24 +1,24 @@
 {
   "Entries": [
     {
-      "RequestUri": "/jobschedules?api-version=2023-05-01.17.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDIzLTA1LTAxLjE3LjA=",
+      "RequestUri": "/jobschedules?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDI0LTAyLTAxLjE5LjA=",
       "RequestMethod": "POST",
       "RequestHeaders": {
         "client-request-id": [
-          "c4070567-07ac-47b0-890d-34d489761e6c"
+          "cf003513-b166-4231-9ece-2d7858ee7214"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 16 Jun 2023 07:20:15 GMT"
+          "Thu, 21 Mar 2024 23:18:43 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.2824.12007",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Type": [
@@ -34,16 +34,16 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DB6E3A22B467F7"
+          "0x8DC49FD412C6DC4"
         ],
         "Location": [
-          "https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule"
+          "https://billstestba24326.uksouth.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "80dd1368-da47-442e-bb50-f1f5af3030fc"
+          "5079b275-ea21-4798-9907-83dbd3bc8534"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -55,40 +55,40 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule"
+          "https://billstestba24326.uksouth.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule"
         ],
         "Date": [
-          "Fri, 16 Jun 2023 07:20:16 GMT"
+          "Thu, 21 Mar 2024 23:18:44 GMT"
         ],
         "Last-Modified": [
-          "Fri, 16 Jun 2023 07:20:17 GMT"
+          "Thu, 21 Mar 2024 23:18:44 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/disable?api-version=2023-05-01.17.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL2Rpc2FibGU/YXBpLXZlcnNpb249MjAyMy0wNS0wMS4xNy4w",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/disable?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL2Rpc2FibGU/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4w",
       "RequestMethod": "POST",
       "RequestHeaders": {
         "client-request-id": [
-          "c1975223-78f6-4e8c-bc27-8a60a22c84bf"
+          "c400e8a9-83a2-4c09-bc44-b9d8ba6c1d06"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 16 Jun 2023 07:20:17 GMT"
+          "Thu, 21 Mar 2024 23:18:44 GMT"
         ],
         "x-ms-client-request-id": [
-          "1e8b904f-8b6c-4d06-9435-04731fa295b3"
+          "0df4f656-a934-414c-a22f-58bf4dff4ab1"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.2824.12007",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
@@ -98,13 +98,13 @@
       "RequestBody": "",
       "ResponseHeaders": {
         "ETag": [
-          "0x8DB6E3A2419E008"
+          "0x8DC49FD41C3AEA5"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "a494aa16-bf5f-4dd7-9fa6-fbf18697f580"
+          "736d08ec-3279-4baf-a080-b414ee5ae9c6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -116,43 +116,43 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/disable"
+          "https://billstestba24326.uksouth.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/disable"
         ],
         "Date": [
-          "Fri, 16 Jun 2023 07:20:19 GMT"
+          "Thu, 21 Mar 2024 23:18:45 GMT"
         ],
         "Content-Length": [
           "0"
         ],
         "Last-Modified": [
-          "Fri, 16 Jun 2023 07:20:19 GMT"
+          "Thu, 21 Mar 2024 23:18:45 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 204
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2023-05-01.17.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMjMtMDUtMDEuMTcuMA==",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMjQtMDItMDEuMTkuMA==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "client-request-id": [
-          "b779abe6-ae71-4663-a779-0457eff07371"
+          "fb291350-b9ce-41e9-a7c2-8f43da2a7bcb"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 16 Jun 2023 07:20:18 GMT"
+          "Thu, 21 Mar 2024 23:18:45 GMT"
         ],
         "x-ms-client-request-id": [
-          "05adc738-bf5b-4d94-8d96-97f608858d53"
+          "569302e4-9c99-453f-8fad-22dd294fc082"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.2824.12007",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -162,13 +162,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DB6E3A2419E008"
+          "0x8DC49FD41C3AEA5"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "3a2ea1b6-146e-4e4f-a330-ed0259c7ab4a"
+          "3df0e50b-28ac-4b41-8ff1-9edece87129b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -180,40 +180,40 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 16 Jun 2023 07:20:19 GMT"
+          "Thu, 21 Mar 2024 23:18:45 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 16 Jun 2023 07:20:19 GMT"
+          "Thu, 21 Mar 2024 23:18:45 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://hoppeeastasia2.eastasia.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n  \"eTag\": \"0x8DB6E3A2419E008\",\r\n  \"lastModified\": \"2023-06-16T07:20:19.5891208Z\",\r\n  \"creationTime\": \"2023-06-16T07:20:17.2464119Z\",\r\n  \"state\": \"disabled\",\r\n  \"stateTransitionTime\": \"2023-06-16T07:20:19.5891208Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2023-06-16T07:20:17.2464119Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"maxParallelTasks\": -1,\r\n    \"allowTaskPreemption\": false,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://billstestba24326.uksouth.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"url\": \"https://billstestba24326.uksouth.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n  \"eTag\": \"0x8DC49FD41C3AEA5\",\r\n  \"lastModified\": \"2024-03-21T23:18:45.8664613Z\",\r\n  \"creationTime\": \"2024-03-21T23:18:44.8752068Z\",\r\n  \"state\": \"disabled\",\r\n  \"stateTransitionTime\": \"2024-03-21T23:18:45.8664613Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2024-03-21T23:18:44.8752068Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"maxParallelTasks\": -1,\r\n    \"allowTaskPreemption\": false,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://billstestba24326.uksouth.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n    }\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2023-05-01.17.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMjMtMDUtMDEuMTcuMA==",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMjQtMDItMDEuMTkuMA==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "client-request-id": [
-          "e160cd9d-d4df-4456-a218-73dc77cd659d"
+          "9399c8c3-f5dd-4272-8e43-726b5eb8fc56"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 16 Jun 2023 07:20:18 GMT"
+          "Thu, 21 Mar 2024 23:18:46 GMT"
         ],
         "x-ms-client-request-id": [
-          "e4429ddb-650e-4a95-9074-c79c90f72a13"
+          "8def17c2-fded-4ebd-8e0e-38b37e9dfe50"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.2824.12007",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -223,13 +223,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DB6E3A246E3136"
+          "0x8DC49FD42535C15"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "8fb5a0a7-99e0-4548-b8cf-9ba147b9f3cb"
+          "a69aa540-fc49-4b77-a8f7-75363569b56e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -241,40 +241,40 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 16 Jun 2023 07:20:19 GMT"
+          "Thu, 21 Mar 2024 23:18:46 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 16 Jun 2023 07:20:20 GMT"
+          "Thu, 21 Mar 2024 23:18:46 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://hoppeeastasia2.eastasia.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n  \"eTag\": \"0x8DB6E3A246E3136\",\r\n  \"lastModified\": \"2023-06-16T07:20:20.1417014Z\",\r\n  \"creationTime\": \"2023-06-16T07:20:17.2464119Z\",\r\n  \"state\": \"terminating\",\r\n  \"stateTransitionTime\": \"2023-06-16T07:20:20.1417014Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2023-06-16T07:20:19.8821504Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"maxParallelTasks\": -1,\r\n    \"allowTaskPreemption\": false,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n    }\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://billstestba24326.uksouth.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n  \"url\": \"https://billstestba24326.uksouth.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n  \"eTag\": \"0x8DC49FD42535C15\",\r\n  \"lastModified\": \"2024-03-21T23:18:46.8080661Z\",\r\n  \"creationTime\": \"2024-03-21T23:18:44.8752068Z\",\r\n  \"state\": \"completed\",\r\n  \"stateTransitionTime\": \"2024-03-21T23:18:46.8650795Z\",\r\n  \"previousState\": \"active\",\r\n  \"previousStateTransitionTime\": \"2024-03-21T23:18:46.3373097Z\",\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"maxParallelTasks\": -1,\r\n    \"allowTaskPreemption\": false,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"recentJob\": {\r\n      \"url\": \"https://billstestba24326.uksouth.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n      \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n    },\r\n    \"endTime\": \"2024-03-21T23:18:46.8650795Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/enable?api-version=2023-05-01.17.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL2VuYWJsZT9hcGktdmVyc2lvbj0yMDIzLTA1LTAxLjE3LjA=",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/enable?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL2VuYWJsZT9hcGktdmVyc2lvbj0yMDI0LTAyLTAxLjE5LjA=",
       "RequestMethod": "POST",
       "RequestHeaders": {
         "client-request-id": [
-          "366c4a80-9f07-4350-ab72-88840a3dd36c"
+          "4195090d-1544-4a6d-a8ac-36696bf167fb"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 16 Jun 2023 07:20:18 GMT"
+          "Thu, 21 Mar 2024 23:18:45 GMT"
         ],
         "x-ms-client-request-id": [
-          "879f1157-ace3-477e-a133-12c5e43c6a1e"
+          "bf35e95f-0cc8-49b5-b6ee-9ff02ca4801f"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.2824.12007",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
@@ -284,13 +284,13 @@
       "RequestBody": "",
       "ResponseHeaders": {
         "ETag": [
-          "0x8DB6E3A24469680"
+          "0x8DC49FD420B8729"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "43774771-89e3-45c5-bc92-471fac615459"
+          "f6462a17-aacf-4fe0-89ea-70c4e0b6520c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -302,43 +302,43 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/enable"
+          "https://billstestba24326.uksouth.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/enable"
         ],
         "Date": [
-          "Fri, 16 Jun 2023 07:20:19 GMT"
+          "Thu, 21 Mar 2024 23:18:45 GMT"
         ],
         "Content-Length": [
           "0"
         ],
         "Last-Modified": [
-          "Fri, 16 Jun 2023 07:20:19 GMT"
+          "Thu, 21 Mar 2024 23:18:46 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 204
     },
     {
-      "RequestUri": "/jobschedules?api-version=2023-05-01.17.0&$filter=id%20eq%20%27testDisableEnableTerminateJobSchedule%27",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDIzLTA1LTAxLjE3LjAmJGZpbHRlcj1pZCUyMGVxJTIwJTI3dGVzdERpc2FibGVFbmFibGVUZXJtaW5hdGVKb2JTY2hlZHVsZSUyNw==",
+      "RequestUri": "/jobschedules?api-version=2024-02-01.19.0&$filter=id%20eq%20%27testDisableEnableTerminateJobSchedule%27",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDI0LTAyLTAxLjE5LjAmJGZpbHRlcj1pZCUyMGVxJTIwJTI3dGVzdERpc2FibGVFbmFibGVUZXJtaW5hdGVKb2JTY2hlZHVsZSUyNw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "client-request-id": [
-          "15bbe42a-372a-4b23-aa7b-1607ec412412"
+          "6a840ec1-e04b-4286-a168-e8c2995d4472"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 16 Jun 2023 07:20:18 GMT"
+          "Thu, 21 Mar 2024 23:18:46 GMT"
         ],
         "x-ms-client-request-id": [
-          "58f14463-5e39-4a97-b0e5-f3560894c237"
+          "ee705343-490e-4955-a42c-8d548797cfa4"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.2824.12007",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -351,7 +351,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "9d549192-f3a3-4db1-8c31-e774e382bfc5"
+          "584d24e0-4016-4143-97f8-f8fa31ecdbae"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -363,37 +363,37 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 16 Jun 2023 07:20:19 GMT"
+          "Thu, 21 Mar 2024 23:18:45 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://hoppeeastasia2.eastasia.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n      \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n      \"eTag\": \"0x8DB6E3A24469680\",\r\n      \"lastModified\": \"2023-06-16T07:20:19.8821504Z\",\r\n      \"creationTime\": \"2023-06-16T07:20:17.2464119Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2023-06-16T07:20:19.8821504Z\",\r\n      \"previousState\": \"disabled\",\r\n      \"previousStateTransitionTime\": \"2023-06-16T07:20:19.5891208Z\",\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"maxParallelTasks\": -1,\r\n        \"allowTaskPreemption\": false,\r\n        \"usesTaskDependencies\": false,\r\n        \"onAllTasksComplete\": \"noaction\",\r\n        \"onTaskFailure\": \"noaction\",\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"recentJob\": {\r\n          \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n          \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://billstestba24326.uksouth.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"testDisableEnableTerminateJobSchedule\",\r\n      \"url\": \"https://billstestba24326.uksouth.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule\",\r\n      \"eTag\": \"0x8DC49FD420B8729\",\r\n      \"lastModified\": \"2024-03-21T23:18:46.3373097Z\",\r\n      \"creationTime\": \"2024-03-21T23:18:44.8752068Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2024-03-21T23:18:46.3373097Z\",\r\n      \"previousState\": \"disabled\",\r\n      \"previousStateTransitionTime\": \"2024-03-21T23:18:45.8664613Z\",\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"maxParallelTasks\": -1,\r\n        \"allowTaskPreemption\": false,\r\n        \"usesTaskDependencies\": false,\r\n        \"onAllTasksComplete\": \"noaction\",\r\n        \"onTaskFailure\": \"noaction\",\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"recentJob\": {\r\n          \"url\": \"https://billstestba24326.uksouth.batch.azure.com/jobs/testDisableEnableTerminateJobSchedule:job-1\",\r\n          \"id\": \"testDisableEnableTerminateJobSchedule:job-1\"\r\n        }\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/terminate?api-version=2023-05-01.17.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL3Rlcm1pbmF0ZT9hcGktdmVyc2lvbj0yMDIzLTA1LTAxLjE3LjA=",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule/terminate?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlL3Rlcm1pbmF0ZT9hcGktdmVyc2lvbj0yMDI0LTAyLTAxLjE5LjA=",
       "RequestMethod": "POST",
       "RequestHeaders": {
         "client-request-id": [
-          "e060dc86-add2-410b-aaba-f70ced5ceda6"
+          "396c7715-7f91-42e9-8284-f134d2e1479c"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 16 Jun 2023 07:20:18 GMT"
+          "Thu, 21 Mar 2024 23:18:46 GMT"
         ],
         "x-ms-client-request-id": [
-          "6e95a929-4d54-496c-8af8-9e37404ed6d4"
+          "25a2d065-2571-4e74-8cc4-e0d60e22c074"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.2824.12007",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
@@ -406,13 +406,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DB6E3A246E3136"
+          "0x8DC49FD42535C15"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "44b8ba47-b8f3-4d6e-883c-9095971ff5dc"
+          "65185128-005e-4dfc-a782-49aea73241bc"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -424,37 +424,37 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/terminate"
+          "https://billstestba24326.uksouth.batch.azure.com/jobschedules/testDisableEnableTerminateJobSchedule/terminate"
         ],
         "Date": [
-          "Fri, 16 Jun 2023 07:20:19 GMT"
+          "Thu, 21 Mar 2024 23:18:46 GMT"
         ],
         "Last-Modified": [
-          "Fri, 16 Jun 2023 07:20:20 GMT"
+          "Thu, 21 Mar 2024 23:18:46 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2023-05-01.17.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMjMtMDUtMDEuMTcuMA==",
+      "RequestUri": "/jobschedules/testDisableEnableTerminateJobSchedule?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy90ZXN0RGlzYWJsZUVuYWJsZVRlcm1pbmF0ZUpvYlNjaGVkdWxlP2FwaS12ZXJzaW9uPTIwMjQtMDItMDEuMTkuMA==",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "client-request-id": [
-          "95497671-ee33-44f6-957a-8eb20d5970b9"
+          "73661d40-6850-4478-8c33-079e0129000a"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 16 Jun 2023 07:20:19 GMT"
+          "Thu, 21 Mar 2024 23:18:46 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.2824.12007",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
@@ -470,7 +470,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "a8a2db22-195b-40f3-8405-b364a08baa9d"
+          "45ada735-ce3b-4ed1-a827-1c8d0921a8b7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -482,7 +482,7 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 16 Jun 2023 07:20:19 GMT"
+          "Thu, 21 Mar 2024 23:18:46 GMT"
         ]
       },
       "ResponseBody": "",
@@ -491,9 +491,9 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "21abd678-18c5-4660-9fdd-8c5ba6b6fe1f",
-    "AZURE_BATCH_ACCOUNT": "hoppeeastasia2",
-    "AZURE_BATCH_ENDPOINT": "https://hoppeeastasia2.eastasia.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "123"
+    "SubscriptionId": "6602ac9a-5dad-41bd-a792-592c704b6a31",
+    "AZURE_BATCH_ACCOUNT": "billstestba24326",
+    "AZURE_BATCH_ENDPOINT": "https://billstestba24326.uksouth.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "automation"
   }
 }
