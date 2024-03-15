@@ -256,7 +256,6 @@ Accept wildcard characters: False
 
 ### -ClusterPatchRequest
 The patch for a cluster.
-To construct, see NOTES section for CLUSTERPATCHREQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatch
@@ -272,7 +271,6 @@ Accept wildcard characters: False
 
 ### -ClusterpoolInputObject
 Identity Parameter
-To construct, see NOTES section for CLUSTERPOOLINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
@@ -288,7 +286,6 @@ Accept wildcard characters: False
 
 ### -ClusterProfileScriptActionProfile
 The script action profile list.
-To construct, see NOTES section for CLUSTERPROFILESCRIPTACTIONPROFILE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScriptActionProfile[]
@@ -304,7 +301,6 @@ Accept wildcard characters: False
 
 ### -ClusterProfileServiceConfigsProfile
 The service configs profiles.
-To construct, see NOTES section for CLUSTERPROFILESERVICECONFIGSPROFILE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile[]
@@ -336,7 +332,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
@@ -443,7 +438,6 @@ Accept wildcard characters: False
 
 ### -LoadBasedConfigScalingRule
 The scaling rules.
-To construct, see NOTES section for LOADBASEDCONFIGSCALINGRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScalingRule[]
@@ -581,7 +575,6 @@ Accept wildcard characters: False
 
 ### -ScheduleBasedConfigSchedule
 This specifies the schedules where scheduled based Autoscale to be enabled, the user has a choice to set multiple rules within the schedule across days and times (start/end).
-To construct, see NOTES section for SCHEDULEBASEDCONFIGSCHEDULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISchedule[]

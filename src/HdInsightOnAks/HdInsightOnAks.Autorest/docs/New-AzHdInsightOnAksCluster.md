@@ -753,7 +753,6 @@ Accept wildcard characters: False
 
 ### -ClusterpoolInputObject
 Identity Parameter
-To construct, see NOTES section for CLUSTERPOOLINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
@@ -799,7 +798,6 @@ Accept wildcard characters: False
 
 ### -ComputeProfileNode
 The nodes definitions.
-To construct, see NOTES section for COMPUTEPROFILENODE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INodeProfile[]
@@ -982,7 +980,6 @@ Accept wildcard characters: False
 
 ### -HdInsightOnAksCluster
 The cluster.
-To construct, see NOTES section for HDINSIGHTONAKSCLUSTER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ICluster
@@ -1028,7 +1025,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
@@ -1210,7 +1206,6 @@ Accept wildcard characters: False
 
 ### -LoadBasedConfigScalingRule
 The scaling rules.
-To construct, see NOTES section for LOADBASEDCONFIGSCALINGRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScalingRule[]
@@ -1363,7 +1358,6 @@ Accept wildcard characters: False
 
 ### -ScheduleBasedConfigSchedule
 This specifies the schedules where scheduled based Autoscale to be enabled, the user has a choice to set multiple rules within the schedule across days and times (start/end).
-To construct, see NOTES section for SCHEDULEBASEDCONFIGSCHEDULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISchedule[]
@@ -1394,7 +1388,6 @@ Accept wildcard characters: False
 
 ### -ScriptActionProfile
 The script action profile list.
-To construct, see NOTES section for SCRIPTACTIONPROFILE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScriptActionProfile[]
@@ -1410,7 +1403,6 @@ Accept wildcard characters: False
 
 ### -SecretReference
 Properties of Key Vault secret.
-To construct, see NOTES section for SECRETREFERENCE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference[]
@@ -1426,7 +1418,6 @@ Accept wildcard characters: False
 
 ### -ServiceConfigsProfile
 The service configs profiles.
-To construct, see NOTES section for SERVICECONFIGSPROFILE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile[]
@@ -1698,7 +1689,6 @@ Accept wildcard characters: False
 
 ### -TrinoHiveCatalog
 hive catalog options.
-To construct, see NOTES section for TRINOHIVECATALOG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHiveCatalogOption[]
@@ -1714,7 +1704,6 @@ Accept wildcard characters: False
 
 ### -TrinoProfileUserPluginsSpecPlugin
 Trino user plugins.
-To construct, see NOTES section for TRINOPROFILEUSERPLUGINSSPECPLUGIN properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrinoUserPlugin[]

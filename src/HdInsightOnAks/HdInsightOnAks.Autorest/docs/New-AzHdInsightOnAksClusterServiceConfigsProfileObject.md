@@ -35,7 +35,6 @@ This cmdlet creates the service config profile of "yarn-service" with the compon
 
 ### -Config
 List of service configs.
-To construct, see NOTES section for CONFIG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfig[]

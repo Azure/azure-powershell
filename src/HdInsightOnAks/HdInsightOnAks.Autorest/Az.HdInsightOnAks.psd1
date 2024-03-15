@@ -1,7 +1,7 @@
 @{
   GUID = '5d9ea51e-3614-409d-b09a-9188a642e11c'
   RootModule = './Az.HdInsightOnAks.psm1'
-  ModuleVersion = '0.1.0'
+  ModuleVersion = '0.1.1'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'

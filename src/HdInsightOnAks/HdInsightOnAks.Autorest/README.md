@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the HdInsightOnAks service.
 
 ---
-## Status
-[![Az.HdInsightOnAks](https://img.shields.io/powershellgallery/v/Az.HdInsightOnAks.svg?style=flat-square&label=Az.HdInsightOnAks "Az.HdInsightOnAks")](https://www.powershellgallery.com/packages/Az.HdInsightOnAks/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -49,7 +46,7 @@ In this directory, run AutoRest:
 ### General settings
 > Values
 ``` yaml
-commit: f09aacf4c6b63be416212cb182f6b31e8bc6d545
+commit: a434a5a7ee851abc96218443e66a5ebb57911fee
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/hdinsight/resource-manager/Microsoft.HDInsight/HDInsightOnAks/readme.md
@@ -61,7 +58,7 @@ inlining-threshold: 100
 
 > Names
 ``` yaml
-module-version: 0.1.0
+module-version: 0.1.1
 title: HdInsightOnAks
 subject-prefix: "$(service-name)"
 ```

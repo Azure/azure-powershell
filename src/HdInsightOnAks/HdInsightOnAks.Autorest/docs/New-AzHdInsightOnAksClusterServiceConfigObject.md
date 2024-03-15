@@ -49,7 +49,6 @@ Accept wildcard characters: False
 
 ### -File
 List of Config Files.
-To construct, see NOTES section for FILE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterConfigFile[]

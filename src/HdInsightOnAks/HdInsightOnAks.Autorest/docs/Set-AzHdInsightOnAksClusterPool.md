@@ -116,7 +116,6 @@ Accept wildcard characters: False
 
 ### -ClusterPool
 Cluster pool.
-To construct, see NOTES section for CLUSTERPOOL properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool

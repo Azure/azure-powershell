@@ -91,7 +91,6 @@ Accept wildcard characters: False
 Additional properties used to configure Flink jobs.
 It allows users to set properties such as parallelism and jobSavePointDirectory.
 It accepts additional key-value pairs as properties, where the keys are strings and the values are strings as well.
-To construct, see NOTES section for FLINKCONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobPropertiesFlinkConfiguration
