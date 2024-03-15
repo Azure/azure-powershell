@@ -364,21 +364,6 @@ namespace Microsoft.Azure.Commands.Profile
                     }
                 }
             }
-            
-            if(isInteractiveAuthentication && string.IsNullOrEmpty(subscriptionId) && string.IsNullOrEmpty(subscriptionName))
-            {
-                try
-                {
-                    using (var profile = GetDefaultProfile())
-                    {
-                        subscriptionId = profile?.DefaultContext?.Subscription?.Id;
-                    }
-                }
-                catch
-                {
-                    // do nothing
-                }
-            }
 
             if (ClientAssertionParameterSet.Equals(ParameterSetName, StringComparison.OrdinalIgnoreCase))
             {
