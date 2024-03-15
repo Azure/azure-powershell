@@ -11,6 +11,7 @@ schema: 2.0.0
 Gets details for a specific support ticket.
 Support ticket data is available for 18 months after ticket creation.
 If a ticket was created more than 18 months ago, a request for data might cause an error.
+If no parameters are specified, then this command will retrieve all tickets created in the last week by default.
 
 ## SYNTAX
 
@@ -36,6 +37,7 @@ Get-AzSupportTicketsNoSubscription -InputObject <ISupportIdentity> [-DefaultProf
 Gets details for a specific support ticket.
 Support ticket data is available for 18 months after ticket creation.
 If a ticket was created more than 18 months ago, a request for data might cause an error.
+If no parameters are specified, then this command will retrieve all tickets created in the last week by default.
 
 ## EXAMPLES
 
@@ -55,6 +57,7 @@ test-0d8ee1f2-89d6-4078-8c1a-5845673966a1 test ticket - please ignore and close 
 ```
 
 Lists all the support tickets.
+If no parameters are specified, then this command will retrieve all tickets created in the last week by default.
 
 ### Example 2: Get support ticket at tenant level
 ```powershell
