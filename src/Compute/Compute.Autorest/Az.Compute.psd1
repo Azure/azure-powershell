@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Compute.private.dll'
   FormatsToProcess = './Az.Compute.format.ps1xml'
-  FunctionsToExport = 'Get-AzGalleryApplication', 'Get-AzGalleryApplicationVersion', 'New-AzGalleryApplication', 'New-AzGalleryApplicationVersion', 'Remove-AzGalleryApplication', 'Remove-AzGalleryApplicationVersion', 'Remove-AzVMRunCommand', 'Remove-AzVmssVMRunCommand', 'Set-AzVMRunCommand', 'Set-AzVmssVMRunCommand', 'Update-AzGalleryApplication', 'Update-AzGalleryApplicationVersion', '*'
+  FunctionsToExport = 'Get-AzSpotPlacementRecommender', 'Invoke-AzSpotPlacementRecommender', 'New-AzGalleryApplication', 'New-AzGalleryApplicationVersion', 'Set-AzVMRunCommand', 'Set-AzVmssVMRunCommand', 'Update-AzGalleryApplicationVersion', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{
