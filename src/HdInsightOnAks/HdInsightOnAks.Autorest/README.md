@@ -58,7 +58,7 @@ inlining-threshold: 100
 
 > Names
 ``` yaml
-module-version: 0.1.1
+module-version: 0.1.0
 title: HdInsightOnAks
 subject-prefix: "$(service-name)"
 ```
