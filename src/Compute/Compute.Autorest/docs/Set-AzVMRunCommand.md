@@ -618,20 +618,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PARAMETER <IRunCommandInputParameter[]>`: The parameters used by the script.
-  - `Name <String>`: The run command parameter name.
-  - `Value <String>`: The run command parameter value.
-
-`PROTECTEDPARAMETER <IRunCommandInputParameter[]>`: The parameters used by the script.
-  - `Name <String>`: The run command parameter name.
-  - `Value <String>`: The run command parameter value.
-
 ## RELATED LINKS
 

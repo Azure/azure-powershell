@@ -1,6 +1,6 @@
 {
   "resourceType": "virtualMachines/runCommands",
-  "apiVersion": "2021-07-01",
+  "apiVersion": "2023-07-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.compute"
   },
