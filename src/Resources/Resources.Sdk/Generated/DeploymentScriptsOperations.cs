@@ -128,10 +128,6 @@ namespace Microsoft.Azure.Management.Resources
                 {
                     throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
-                }
             }
             if (scriptName == null)
             {
@@ -352,10 +348,6 @@ namespace Microsoft.Azure.Management.Resources
                 {
                     throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
-                }
             }
             if (scriptName == null)
             {
@@ -566,10 +558,6 @@ namespace Microsoft.Azure.Management.Resources
                 if (resourceGroupName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
             if (scriptName == null)
@@ -939,10 +927,6 @@ namespace Microsoft.Azure.Management.Resources
                 {
                     throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
-                }
             }
             if (scriptName == null)
             {
@@ -1161,10 +1145,6 @@ namespace Microsoft.Azure.Management.Resources
                 {
                     throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
-                }
             }
             if (scriptName == null)
             {
@@ -1380,10 +1360,6 @@ namespace Microsoft.Azure.Management.Resources
                 {
                     throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
                 }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
-                }
             }
             if (Client.ApiVersion == null)
             {
@@ -1582,10 +1558,6 @@ namespace Microsoft.Azure.Management.Resources
                 if (resourceGroupName.Length < 1)
                 {
                     throw new ValidationException(ValidationRules.MinLength, "resourceGroupName", 1);
-                }
-                if (!System.Text.RegularExpressions.Regex.IsMatch(resourceGroupName, "^[-\\w\\._\\(\\)]+$"))
-                {
-                    throw new ValidationException(ValidationRules.Pattern, "resourceGroupName", "^[-\\w\\._\\(\\)]+$");
                 }
             }
             if (scriptName == null)

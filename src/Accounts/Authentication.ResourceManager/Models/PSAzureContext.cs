@@ -137,12 +137,19 @@ namespace Microsoft.Azure.Commands.Profile.Models.Core
         /// <summary>
         /// The name of the context. The context may be selected by name
         /// </summary>
-        [Ps1Xml(Label = "Name", Target = ViewControl.Table, Position = 0)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// The subscription targeted in Azure.
+        /// </summary>
+        [Ps1Xml(Label = "SubscriptionName", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.Name", Position = 0)]
+        [Ps1Xml(Label = "SubscriptionId", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.Id", Position = 1)]
+        public IAzureSubscription Subscription { get; set; }
+
         /// <summary>
         /// The account used to connect to Azure.
         /// </summary>
-        [Ps1Xml(Label = "Account", Target = ViewControl.Table, Position = 1)]
+        [Ps1Xml(Label = "Account", Target = ViewControl.Table, Position = 2)]
         public IAzureAccount Account { get; set; }
 
         /// <summary>
@@ -152,15 +159,9 @@ namespace Microsoft.Azure.Commands.Profile.Models.Core
         public IAzureEnvironment Environment { get; set; }
 
         /// <summary>
-        /// The subscription targeted in Azure.
-        /// </summary>
-        [Ps1Xml(Label = "SubscriptionName", Target = ViewControl.Table, ScriptBlock = "$_.Subscription.Name", Position = 2)]
-        public IAzureSubscription Subscription { get; set; }
-
-        /// <summary>
         /// The targeted tenant in Azure.
         /// </summary>
-        [Ps1Xml(Label = "TenantId", Target = ViewControl.Table, ScriptBlock = "$_.Tenant.ToString()", Position = 4)]
+        [Ps1Xml(Label = "Tenant", GroupByThis = true, Target = ViewControl.Table, ScriptBlock = "if([System.String]::IsNullOrEmpty($_.Tenant.Name)){$_.Tenant.Id}else{\"$($_.Tenant.Name) ($($_.Tenant.Id))\"}")]
         public IAzureTenant Tenant { get; set; }
 
         public IAzureTokenCache TokenCache { get; set; } = null;

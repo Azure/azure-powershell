@@ -1,6 +1,6 @@
 ### Example 1: Get all HealthBot
 ```powershell
-PS C:\> Get-AzHealthBot
+Get-AzHealthBot
 
 Location Name                 SystemDataCreatedAt SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy             SystemDataLastModifiedByType Type
 -------- ----                 ------------------- -------------------   ----------------------- ------------------------ ------------------------             ---------------------------- ----
@@ -12,7 +12,7 @@ Get all HealthBot
 
 ### Example 2: Get all HealthBot by ResourceGroupName
 ```powershell
-PS C:\> Get-AzHealthBot -ResourceGroupName youriTest
+Get-AzHealthBot -ResourceGroupName youriTest
 
 Location Name                 SystemDataCreatedAt SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy             SystemDataLastModifiedByType Type
 -------- ----                 ------------------- -------------------   ----------------------- ------------------------ ------------------------             ---------------------------- ----
@@ -24,7 +24,7 @@ Get all HealthBot by ResourceGroupName
 
 ### Example 3: Get HealthBot by ResourceGroupName and Name
 ```powershell
-PS C:\> Get-AzHealthBot -ResourceGroupName youriTest -name yourihealthbot
+Get-AzHealthBot -ResourceGroupName youriTest -name yourihealthbot
 
 Location Name                 SystemDataCreatedAt SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy             SystemDataLastModifiedByType Type
 -------- ----                 ------------------- -------------------   ----------------------- ------------------------ ------------------------             ---------------------------- ----
@@ -35,7 +35,7 @@ Get HealthBot by ResourceGroupName and Name
 
 ### Example 4: Get HealthBot by InputObject
 ```powershell
-PS C:\> $getAzHealthBot = Get-AzHealthBot -ResourceGroupName youriTest -name yourihealthbot
+$getAzHealthBot = Get-AzHealthBot -ResourceGroupName youriTest -name yourihealthbot
 Get-AzHealthBot -InputObject $getAzHealthBot
 
 Location Name                 SystemDataCreatedAt SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy             SystemDataLastModifiedByType Type

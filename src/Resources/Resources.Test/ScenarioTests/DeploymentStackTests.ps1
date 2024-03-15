@@ -94,8 +94,8 @@ function Test-NewResourceGroupDeploymentStack
 
 		# Test - Failure - template file not found
 		$missingFile = "missingFile142.json"
-		$exceptionMessage = "The provided file $missingFile doesn't exist"
-		Assert-Throws { New-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile $missingFile -DenySettingsMode None -Force } $exceptionMessage
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { New-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile $missingFile -DenySettingsMode None -Force } $exceptionMessage
 
 		# Test - Failure - RG does not exist
 		$badRGname = "badRG114172"
@@ -110,8 +110,8 @@ function Test-NewResourceGroupDeploymentStack
 
 		# Test - Failure - template parameter file not found
 		$missingFile = "missingFile145.json"
-		$exceptionMessage = "The provided file $missingFile doesn't exist"
-		Assert-Throws { New-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile $missingFile -DenySettingsMode None -Force } $exceptionMessage
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { New-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile $missingFile -DenySettingsMode None -Force } $exceptionMessage
 
 		# --- ParameterObjectTemplateFileParameterSetName ---
 
@@ -293,8 +293,8 @@ function Test-SetResourceGroupDeploymentStack
 
 		# Test - Failure - template file not found
 		$missingFile = "missingFile142.json"
-		$exceptionMessage = "The provided file $missingFile doesn't exist"
-		Assert-Throws { Set-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile $missingFile -DenySettingsMode None -Force } $exceptionMessage
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { Set-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile $missingFile -DenySettingsMode None -Force } $exceptionMessage
 
 		# Test - Failure - RG does not exist
 		$badRGname = "badRG114172"
@@ -309,8 +309,8 @@ function Test-SetResourceGroupDeploymentStack
 
 		# Test - Failure - template parameter file not found
 		$missingFile = "missingFile145.json"
-		$exceptionMessage = "The provided file $missingFile doesn't exist"
-		Assert-Throws { Set-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile $missingFile -DenySettingsMode None -Force } $exceptionMessage
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { Set-AzResourceGroupDeploymentStack -Name $rname -Description "A Stack" -ResourceGroup $rgname -TemplateFile StacksRGTemplate.json -TemplateParameterFile $missingFile -DenySettingsMode None -Force } $exceptionMessage
 
 		# --- ParameterObjectTemplateFileParameterSetName ---
 
@@ -702,8 +702,8 @@ function Test-NewSubscriptionDeploymentStack
 
 		# Test - Failure - template file not found
 		$missingFile = "missingFile142.json"
-		$exceptionMessage = "The provided file $missingFile doesn't exist"
-		Assert-Throws { New-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile $missingFile  -Location $location -DenySettingsMode None -Force } $exceptionMessage
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { New-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile $missingFile  -Location $location -DenySettingsMode None -Force } $exceptionMessage
 
 		# --- ParameterFileTemplateFileParameterSetName ---
 
@@ -714,8 +714,8 @@ function Test-NewSubscriptionDeploymentStack
 
 		# Test - Failure - template parameter file not found
 		$missingFile = "missingFile145.json"
-		$exceptionMessage = "The provided file $missingFile doesn't exist"
-		Assert-Throws { New-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile StacksSubTemplate.json -TemplateParameterFile $missingFile -Location $location -DenySettingsMode None -Force } $exceptionMessage
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { New-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile StacksSubTemplate.json -TemplateParameterFile $missingFile -Location $location -DenySettingsMode None -Force } $exceptionMessage
 
 		# --- ParameterObjectTemplateFileParameterSetName ---
 
@@ -877,8 +877,8 @@ function Test-SetSubscriptionDeploymentStack
 
 		# Test - Failure - template file not found
 		$missingFile = "missingFile142.json"
-		$exceptionMessage = "The provided file $missingFile doesn't exist"
-		Assert-Throws { Set-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile $missingFile -Location $location -DenySettingsMode None -Force } $exceptionMessage
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { Set-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile $missingFile -Location $location -DenySettingsMode None -Force } $exceptionMessage
 
 		# --- ParameterFileTemplateFileParameterSetName ---
 
@@ -888,8 +888,8 @@ function Test-SetSubscriptionDeploymentStack
 
 		# Test - Failure - template parameter file not found
 		$missingFile = "missingFile145.json"
-		$exceptionMessage = "The provided file $missingFile doesn't exist"
-		Assert-Throws { Set-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile StacksSubTemplate.json -TemplateParameterFile $missingFile -Location $location -DenySettingsMode None -Force } $exceptionMessage
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { Set-AzSubscriptionDeploymentStack -Name $rname -Description "A Stack" -TemplateFile StacksSubTemplate.json -TemplateParameterFile $missingFile -Location $location -DenySettingsMode None -Force } $exceptionMessage
 
 		# --- ParameterObjectTemplateFileParameterSetName ---
 
@@ -1262,8 +1262,8 @@ function Test-NewManagementGroupDeploymentStack
 
 		# Test - Failure - template file not found
 		$missingFile = "missingFile142.json"
-		$exceptionMessage = "The provided file $missingFile doesn't exist"
-		Assert-Throws { New-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid  -DeploymentSubscriptionId $subId -TemplateFile $missingFile -Location $location -DenySettingsMode None -Force } $exceptionMessage
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { New-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid  -DeploymentSubscriptionId $subId -TemplateFile $missingFile -Location $location -DenySettingsMode None -Force } $exceptionMessage
 
 		# --- ParameterFileTemplateFileParameterSetName ---
 
@@ -1273,8 +1273,8 @@ function Test-NewManagementGroupDeploymentStack
 
 		# Test - Failure - template parameter file not found
 		$missingFile = "missingFile145.json"
-		$exceptionMessage = "The provided file $missingFile doesn't exist"
-		Assert-Throws { New-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid  -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplate.json -TemplateParameterFile $missingFile -Location $location -DenySettingsMode None -Force } $exceptionMessage
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { New-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroupId $mgid  -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplate.json -TemplateParameterFile $missingFile -Location $location -DenySettingsMode None -Force } $exceptionMessage
 	}
 
 	finally
@@ -1449,8 +1449,8 @@ function Test-SetManagementGroupDeploymentStack
 
 		# Test - Failure - template file not found
 		$missingFile = "missingFile142.json"
-		$exceptionMessage = "The provided file $missingFile doesn't exist"
-		Assert-Throws { Set-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroup $mgid  -DeploymentSubscriptionId $subId -TemplateFile $missingFile -Location $location -DenySettingsMode None -Force } $exceptionMessage
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { Set-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroup $mgid  -DeploymentSubscriptionId $subId -TemplateFile $missingFile -Location $location -DenySettingsMode None -Force } $exceptionMessage
 
 		# --- ParameterFileTemplateFileParameterSetName ---
 
@@ -1460,8 +1460,8 @@ function Test-SetManagementGroupDeploymentStack
 
 		# Test - Failure - template parameter file not found
 		$missingFile = "missingFile145.json"
-		$exceptionMessage = "The provided file $missingFile doesn't exist"
-		Assert-Throws { Set-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroup $mgid  -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplate.json -TemplateParameterFile $missingFile -Location $location -DenySettingsMode None -Force } $exceptionMessage
+		$exceptionMessage = "$missingFile' because it does not exist."
+		Assert-ThrowsContains { Set-AzManagementGroupDeploymentStack -Name $rname -Description "A Stack" -ManagementGroup $mgid  -DeploymentSubscriptionId $subId -TemplateFile StacksMGTemplate.json -TemplateParameterFile $missingFile -Location $location -DenySettingsMode None -Force } $exceptionMessage
 	}
 
 	finally

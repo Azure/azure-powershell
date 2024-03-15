@@ -25,29 +25,33 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="storageModelType">Storage type.
-        /// Possible values include: 'Invalid', 'GeoRedundant', 'LocallyRedundant',
-        /// 'ZoneRedundant', 'ReadAccessGeoZoneRedundant'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;GeoRedundant&#39;, &#39;LocallyRedundant&#39;,
+        /// &#39;ZoneRedundant&#39;, &#39;ReadAccessGeoZoneRedundant&#39;</param>
 
         /// <param name="storageType">Storage type.
-        /// Possible values include: 'Invalid', 'GeoRedundant', 'LocallyRedundant',
-        /// 'ZoneRedundant', 'ReadAccessGeoZoneRedundant'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;GeoRedundant&#39;, &#39;LocallyRedundant&#39;,
+        /// &#39;ZoneRedundant&#39;, &#39;ReadAccessGeoZoneRedundant&#39;</param>
 
         /// <param name="storageTypeState">Locked or Unlocked. Once a machine is registered against a resource, the
         /// storageTypeState is always Locked.
-        /// Possible values include: 'Invalid', 'Locked', 'Unlocked'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Locked&#39;, &#39;Unlocked&#39;</param>
 
         /// <param name="enhancedSecurityState">Enabled or Disabled.
-        /// Possible values include: 'Invalid', 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="softDeleteFeatureState">Soft Delete feature state
-        /// Possible values include: 'Invalid', 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;AlwaysON&#39;</param>
+
+        /// <param name="softDeleteRetentionPeriodInDays">Soft delete retention period in days
+        /// </param>
 
         /// <param name="resourceGuardOperationRequests">ResourceGuard Operation Requests
         /// </param>
 
-        /// <param name="isSoftDeleteFeatureStateEditable">Is soft delete feature state editable
+        /// <param name="isSoftDeleteFeatureStateEditable">This flag is no longer in use. Please use &#39;softDeleteFeatureState&#39; to set
+        /// the soft delete state for the vault
         /// </param>
-        public BackupResourceVaultConfig(string storageModelType = default(string), string storageType = default(string), string storageTypeState = default(string), string enhancedSecurityState = default(string), string softDeleteFeatureState = default(string), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), bool? isSoftDeleteFeatureStateEditable = default(bool?))
+        public BackupResourceVaultConfig(string storageModelType = default(string), string storageType = default(string), string storageTypeState = default(string), string enhancedSecurityState = default(string), string softDeleteFeatureState = default(string), int? softDeleteRetentionPeriodInDays = default(int?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), bool? isSoftDeleteFeatureStateEditable = default(bool?))
 
         {
             this.StorageModelType = storageModelType;
@@ -55,6 +59,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             this.StorageTypeState = storageTypeState;
             this.EnhancedSecurityState = enhancedSecurityState;
             this.SoftDeleteFeatureState = softDeleteFeatureState;
+            this.SoftDeleteRetentionPeriodInDays = softDeleteRetentionPeriodInDays;
             this.ResourceGuardOperationRequests = resourceGuardOperationRequests;
             this.IsSoftDeleteFeatureStateEditable = isSoftDeleteFeatureStateEditable;
             CustomInit();
@@ -92,10 +97,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public string EnhancedSecurityState {get; set; }
 
         /// <summary>
-        /// Gets or sets soft Delete feature state Possible values include: &#39;Invalid&#39;, &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// Gets or sets soft Delete feature state Possible values include: &#39;Invalid&#39;, &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;AlwaysON&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "softDeleteFeatureState")]
         public string SoftDeleteFeatureState {get; set; }
+
+        /// <summary>
+        /// Gets or sets soft delete retention period in days
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "softDeleteRetentionPeriodInDays")]
+        public int? SoftDeleteRetentionPeriodInDays {get; set; }
 
         /// <summary>
         /// Gets or sets resourceGuard Operation Requests
@@ -104,7 +115,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public System.Collections.Generic.IList<string> ResourceGuardOperationRequests {get; set; }
 
         /// <summary>
-        /// Gets or sets is soft delete feature state editable
+        /// Gets or sets this flag is no longer in use. Please use
+        /// &#39;softDeleteFeatureState&#39; to set the soft delete state for the vault
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "isSoftDeleteFeatureStateEditable")]
         public bool? IsSoftDeleteFeatureStateEditable {get; set; }

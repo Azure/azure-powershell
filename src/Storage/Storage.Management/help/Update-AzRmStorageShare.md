@@ -50,9 +50,9 @@ The **New-AzRmStorageShare** cmdlet modifies a Storage file share.
 
 
 ```
-PS C:\>$share = Update-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -QuotaGiB 200 -Metadata @{tag0="value0";tag1="value1"}
+$share = Update-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -QuotaGiB 200 -Metadata @{tag0="value0";tag1="value1"}
 
-PS C:\>$share
+$share
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
@@ -60,7 +60,7 @@ Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
 ----     -------- ---------------- ---------- ------- ------- ---------------
 myshare  200
 
-PS C:\>$share.Metadata
+$share.Metadata
 
 Key  Value  
 ---  ----- 
@@ -114,9 +114,9 @@ This command modifies a Storage file share with accesstier as Cool.
 
 
 ```
-PS C:\>$share = Update-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -RootSquash NoRootSquash 
+$share = Update-AzRmStorageShare -ResourceGroupName "myresourcegroup" -StorageAccountName "mystorageaccount" -Name "myshare" -RootSquash NoRootSquash 
 
-PS C:\>$share
+$share
 
    ResourceGroupName: myresourcegroup, StorageAccountName: mystorageaccount
 
@@ -124,7 +124,7 @@ Name     QuotaGiB EnabledProtocols AccessTier Deleted Version ShareUsageBytes
 ----     -------- ---------------- ---------- ------- ------- ---------------
 myshare  
 
-PS C:\> $share.RootSquash
+$share.RootSquash
 NoRootSquash
 ```
 

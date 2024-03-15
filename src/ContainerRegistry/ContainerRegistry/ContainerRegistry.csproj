@@ -13,9 +13,9 @@
   <ItemGroup>
     <PackageReference Include="Azure.Containers.ContainerRegistry" Version="1.0.0" />
     <PackageReference Include="Microsoft.Azure.ContainerRegistry" Version="1.0.0-preview.1" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.7.0" />
   </ItemGroup>
-  
+
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

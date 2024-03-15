@@ -210,5 +210,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzLogProfile](./Get-AzLogProfile.md)
 
 [Remove-AzLogProfile](./Remove-AzLogProfile.md)
-
-

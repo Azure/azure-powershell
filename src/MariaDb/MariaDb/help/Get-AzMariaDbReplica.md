@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MariaDb-help.xml
 Module Name: Az.MariaDb
 online version: https://learn.microsoft.com/powershell/module/az.mariadb/get-azmariadbreplica
 schema: 2.0.0
@@ -113,4 +113,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

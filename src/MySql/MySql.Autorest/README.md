@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the MySql service.
 
 ---
-## Status
-[![Az.MySql](https://img.shields.io/powershellgallery/v/Az.MySql.svg?style=flat-square&label=Az.MySql "Az.MySql")](https://www.powershellgallery.com/packages/Az.MySql/)
 
 ## Info
 - Modifiable: yes

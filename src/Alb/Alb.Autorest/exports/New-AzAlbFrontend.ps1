@@ -23,12 +23,12 @@ Create a Frontend
 New-AzAlbFrontend -Name alb-frontend -AlbName test-alb -ResourceGroupName test-rg -Location NorthCentralUS
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend
+Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend
 .Link
 https://learn.microsoft.com/powershell/module/az.alb/new-azalbfrontend
 #>
 function New-AzAlbFrontend {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.IFrontend])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IFrontend])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -65,7 +65,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api30.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -159,11 +159,15 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.Alb.private\New-AzAlbFrontend_CreateExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Alb.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

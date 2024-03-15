@@ -1293,7 +1293,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
         /// <param name="actionGroupName">The name of the action group.</param>
         /// <param name="body">The receiver to re-enable.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onConflict">a delegate that is called when the remote service returns 409 (Conflict).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1302,7 +1301,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ActionGroupsEnableReceiver(string subscriptionId, string resourceGroupName, string actionGroupName, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEnableRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onConflict, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task ActionGroupsEnableReceiver(string subscriptionId, string resourceGroupName, string actionGroupName, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEnableRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-01-01";
             // Constant Parameters
@@ -1334,7 +1333,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ActionGroupsEnableReceiver_Call (request, onOk,onConflict,onDefault,eventListener,sender);
+                await this.ActionGroupsEnableReceiver_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -1345,7 +1344,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
         /// <param name="viaIdentity"></param>
         /// <param name="body">The receiver to re-enable.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onConflict">a delegate that is called when the remote service returns 409 (Conflict).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1354,7 +1352,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ActionGroupsEnableReceiverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEnableRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onConflict, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task ActionGroupsEnableReceiverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEnableRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-01-01";
             // Constant Parameters
@@ -1398,7 +1396,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ActionGroupsEnableReceiver_Call (request, onOk,onConflict,onDefault,eventListener,sender);
+                await this.ActionGroupsEnableReceiver_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -1411,7 +1409,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
         /// <param name="actionGroupName">The name of the action group.</param>
         /// <param name="jsonString">Json string supplied to the ActionGroupsEnableReceiver operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onConflict">a delegate that is called when the remote service returns 409 (Conflict).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1419,7 +1416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ActionGroupsEnableReceiverViaJsonString(string subscriptionId, string resourceGroupName, string actionGroupName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onConflict, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ActionGroupsEnableReceiverViaJsonString(string subscriptionId, string resourceGroupName, string actionGroupName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-01-01";
             // Constant Parameters
@@ -1451,14 +1448,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ActionGroupsEnableReceiver_Call (request, onOk,onConflict,onDefault,eventListener,sender);
+                await this.ActionGroupsEnableReceiver_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Actual wire call for <see cref= "ActionGroupsEnableReceiver" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onConflict">a delegate that is called when the remote service returns 409 (Conflict).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1466,7 +1462,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ActionGroupsEnableReceiver_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onConflict, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ActionGroupsEnableReceiver_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1486,12 +1482,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             await onOk(_response);
-                            break;
-                        }
-                        case global::System.Net.HttpStatusCode.Conflict:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onConflict(_response);
                             break;
                         }
                         default:

@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the StorageMover service.
 
 ---
-## Status
-[![Az.StorageMover](https://img.shields.io/powershellgallery/v/Az.StorageMover.svg?style=flat-square&label=Az.StorageMover "Az.StorageMover")](https://www.powershellgallery.com/packages/Az.StorageMover/)
 
 ## Info
 - Modifiable: yes
@@ -31,10 +29,10 @@ For information on how to develop for `Az.StorageMover`, see [how-to.md](how-to.
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-branch: 74948e5fb9b1e1f8b9d58fb65fc81d5cba6b6ced
+commit: 74948e5fb9b1e1f8b9d58fb65fc81d5cba6b6ced
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/storagemover/resource-manager/Microsoft.StorageMover/stable/2023-10-01/storagemover.json
 
@@ -45,6 +43,10 @@ title: StorageMover
 subject-prefix: $(service-name)
 nested-object-to-string: true
 identity-correction-for-post: true 
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

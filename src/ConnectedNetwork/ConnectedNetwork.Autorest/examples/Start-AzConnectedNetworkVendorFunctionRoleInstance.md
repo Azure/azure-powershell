@@ -1,6 +1,6 @@
 ### Example 1: Start-AzConnectedNetworkVendorFunctionRoleInstance via location, serviceKey, vendor name and role instance name
 ```powershell
-PS C:\> Start-AzConnectedNetworkVendorFunctionRoleInstance -LocationName centraluseuap -ServiceKey 1234-abcd-4321-dcba -SubscriptionId xxxx-3333-xxxx-3333 -VendorName myVendor -Name role1
+Start-AzConnectedNetworkVendorFunctionRoleInstance -LocationName centraluseuap -ServiceKey 1234-abcd-4321-dcba -SubscriptionId xxxx-3333-xxxx-3333 -VendorName myVendor -Name role1
 
 ```
 
@@ -8,8 +8,8 @@ Starting a role instance of a vendor network function with the specified service
 
 ### Example 2: Start-AzConnectedNetworkVendorFunctionRoleInstance via Identity
 ```powershell
-PS C:\> $role = @{ RoleInstanceName = "role1"; LocationName = "centraluseuap"; SubscriptionId = "xxxx-3333-xxxx-3333"; VendorName = "myVendor"; serviceKey = "1234-abcd-4321-dcba"}
-PS C:\> Start-AzConnectedNetworkVendorFunctionRoleInstance -InputObject $role
+$role = @{ RoleInstanceName = "role1"; LocationName = "centraluseuap"; SubscriptionId = "xxxx-3333-xxxx-3333"; VendorName = "myVendor"; serviceKey = "1234-abcd-4321-dcba"}
+Start-AzConnectedNetworkVendorFunctionRoleInstance -InputObject $role
 
 ```
 

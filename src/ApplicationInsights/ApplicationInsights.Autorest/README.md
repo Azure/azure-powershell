@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the ApplicationInsights service.
 
 ---
-## Status
-[![Az.ApplicationInsights](https://img.shields.io/powershellgallery/v/Az.ApplicationInsights.svg?style=flat-square&label=Az.ApplicationInsights "Az.ApplicationInsights")](https://www.powershellgallery.com/packages/Az.ApplicationInsights/)
 
 ## Info
 - Modifiable: yes
@@ -31,9 +29,9 @@ For information on how to develop for `Az.ApplicationInsights`, see [how-to.md](
 
 ``` yaml
 # lock the commit
-branch: 60be34ab72f1483aef8feede852bc9f2f1921897
+commit: 60be34ab72f1483aef8feede852bc9f2f1921897
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2022-06-15/webTests_API.json
   - $(repo)/specification/applicationinsights/resource-manager/Microsoft.Insights/stable/2020-02-02/components_API.json
@@ -52,6 +50,10 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document

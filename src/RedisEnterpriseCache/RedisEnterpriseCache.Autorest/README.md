@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the RedisEnterpriseCache service.
 
 ---
-## Status
-[![Az.RedisEnterpriseCache](https://img.shields.io/powershellgallery/v/Az.RedisEnterpriseCache.svg?style=flat-square&label=Az.RedisEnterpriseCache "Az.RedisEnterpriseCache")](https://www.powershellgallery.com/packages/Az.RedisEnterpriseCache/)
 
 ## Info
 - Modifiable: yes

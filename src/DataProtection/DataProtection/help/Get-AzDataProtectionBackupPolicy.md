@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionbackuppolicy
 schema: 2.0.0
@@ -14,14 +14,14 @@ Gets a backup policy belonging to a backup vault
 
 ### List (Default)
 ```
-Get-AzDataProtectionBackupPolicy -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String[]>]
+Get-AzDataProtectionBackupPolicy -ResourceGroupName <String> [-SubscriptionId <String[]>] -VaultName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDataProtectionBackupPolicy -Name <String> -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDataProtectionBackupPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -VaultName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -117,7 +117,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -133,7 +133,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -148,7 +148,7 @@ The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -194,4 +194,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[VaultName <String>]`: The name of the backup vault.
 
 ## RELATED LINKS
-

@@ -1,17 +1,17 @@
 {
-  "AzVMwareLocationQuotaAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/centralus/checkQuotaAvailability?api-version=2021-12-01+1": {
+  "AzVMwareLocationQuotaAvailability+[NoContext]+Check+$POST+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/checkQuotaAvailability?api-version=2023-03-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/centralus/checkQuotaAvailability?api-version=2021-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/providers/Microsoft.AVS/locations/westcentralus/checkQuotaAvailability?api-version=2023-03-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "61" ],
-        "x-ms-client-request-id": [ "53a0e0d7-e475-48d0-b750-582c054c4e42" ],
+        "x-ms-client-request-id": [ "a3613664-6224-4cbd-a144-192f660e69d7" ],
         "CommandName": [ "Test-AzVMwareLocationQuotaAvailability" ],
         "FullCommandName": [ "Test-AzVMwareLocationQuotaAvailability_Check" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.VMware/0.4.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.9", "Az.VMware/0.4.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -20,12 +20,12 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Date": [ "Thu, 22 Sep 2022 07:16:21 GMT" ],
-        "Server": [ "Rocket" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Fri, 12 Jan 2024 19:06:58 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "65" ],
-        "Content-Type": [ "application/json" ]
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "65" ]
       },
       "Content": "{\"hostsRemaining\":{\"AV20\":0,\"AV36\":999},\"quotaEnabled\":\"Enabled\"}",
       "isContentBase64": false

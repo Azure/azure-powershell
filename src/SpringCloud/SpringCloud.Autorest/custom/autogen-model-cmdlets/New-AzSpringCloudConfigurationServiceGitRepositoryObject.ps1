@@ -23,7 +23,7 @@ Create an in-memory object for ConfigurationServiceGitRepository.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ConfigurationServiceGitRepository
 .Link
-https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudConfigurationServiceGitRepositoryObject
+https://learn.microsoft.com/powershell/module/Az.SpringCloud/new-AzSpringCloudConfigurationServiceGitRepositoryObject
 #>
 function New-AzSpringCloudConfigurationServiceGitRepositoryObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ConfigurationServiceGitRepository')]

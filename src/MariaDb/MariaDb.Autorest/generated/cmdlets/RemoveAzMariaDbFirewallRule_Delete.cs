@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Extensions;
+    using System;
 
     /// <summary>Deletes a server firewall rule.</summary>
     /// <remarks>
@@ -15,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Description(@"Deletes a server firewall rule.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMariaDB/servers/{serverName}/firewallRules/{firewallRuleName}", ApiVersion = "2018-06-01-preview")]
     public partial class RemoveAzMariaDbFirewallRule_Delete : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener
     {
@@ -46,9 +48,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.MariaDb.MariaDb Client => Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MariaDb.ParameterCategory.Azure)]
@@ -70,11 +73,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -202,6 +205,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -237,7 +245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -370,7 +378,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)

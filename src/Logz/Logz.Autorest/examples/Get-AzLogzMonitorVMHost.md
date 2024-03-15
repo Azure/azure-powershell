@@ -1,6 +1,6 @@
 ### Example 1: List the compute resources currently being monitored by the monitor resource
 ```powershell
-PS C:\> Get-AzLogzMonitorVMHost -ResourceGroupName logz-rg-test -Name pwsh-logz04
+Get-AzLogzMonitorVMHost -ResourceGroupName logz-rg-test -Name pwsh-logz04
 
 AgentVersion Id
 ------------ --

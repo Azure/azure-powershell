@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="durationType">Retention duration type of retention policy.
-        /// Possible values include: 'Invalid', 'Days', 'Weeks', 'Months', 'Years'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Days&#39;, &#39;Weeks&#39;, &#39;Months&#39;, &#39;Years&#39;</param>
         public RetentionDuration(int? count = default(int?), string durationType = default(string))
 
         {

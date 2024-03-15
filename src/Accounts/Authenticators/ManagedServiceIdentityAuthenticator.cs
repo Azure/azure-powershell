@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var msiParameters = parameters as ManagedServiceIdentityParameters;
 
             var scopes = new[] { GetResourceId(msiParameters.ResourceId, msiParameters.Environment) };
-            var requestContext = new TokenRequestContext(scopes);
+            var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
             var userAccountId = SystemMsiNameRegex.IsMatch(msiParameters.Account.Id) ? null : msiParameters.Account.Id;
 
             AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);

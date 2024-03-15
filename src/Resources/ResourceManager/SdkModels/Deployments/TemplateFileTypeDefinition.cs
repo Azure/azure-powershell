@@ -22,6 +22,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
         [JsonProperty("type")]
         public string Type { get; set; }
 
+        [JsonProperty("nullable")]
+        public bool? Nullable { get; set; }
+
         [JsonProperty("allowedValues")]
         public List<object> AllowedValues { get; set; }
 

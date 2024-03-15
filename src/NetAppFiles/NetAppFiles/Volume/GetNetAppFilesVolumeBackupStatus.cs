@@ -19,10 +19,9 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
-using System.Linq;
-using System.Collections.Generic;
-using System;
+using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -66,6 +65,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             Mandatory = true,
             ParameterSetName = FieldsParameterSet,
             HelpMessage = "The name of the ANF volume")]
+        [Parameter(
+            Mandatory = true,
+            ParameterSetName = ParentObjectParameterSet,
+            HelpMessage = "The name of the ANF pool")]
         [ValidateNotNullOrEmpty]
         [Alias("VolumeName")]
         [ResourceNameCompleter(
@@ -141,8 +144,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             if (Name != null)
             {
-                var anfVolumeBackupStatus = AzureNetAppFilesManagementClient.Backups.GetStatus(ResourceGroupName, AccountName, PoolName, Name);
-                WriteObject(anfVolumeBackupStatus.ConvertToPs());
+                try
+                {
+                    var anfVolumeBackupStatus = AzureNetAppFilesManagementClient.Backups.GetStatus(ResourceGroupName, AccountName, PoolName, Name);
+                    WriteObject(anfVolumeBackupStatus.ConvertToPs());
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

@@ -13,9 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzWorkloadsSapDatabaseInstance_Get")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDatabaseInstance))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDatabaseInstance))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Description(@"Gets the SAP Database Instance resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}", ApiVersion = "2023-10-01-preview")]
     public partial class GetAzWorkloadsSapDatabaseInstance_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener
     {
@@ -174,12 +175,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDatabaseInstance">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDatabaseInstance</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDatabaseInstance">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDatabaseInstance</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDatabaseInstance> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDatabaseInstance> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -395,12 +396,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDatabaseInstance">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDatabaseInstance</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDatabaseInstance">Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDatabaseInstance</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDatabaseInstance> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDatabaseInstance> response)
         {
             using( NoSynchronizationContext )
             {
@@ -412,7 +413,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDatabaseInstance
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDatabaseInstance
                 WriteObject((await response));
             }
         }

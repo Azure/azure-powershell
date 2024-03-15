@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.VMware-help.xml
 Module Name: Az.VMware
 online version: https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwarevirtualmachine
 schema: 2.0.0
@@ -18,10 +18,22 @@ Get-AzVMwareVirtualMachine -ClusterName <String> -PrivateCloudName <String> -Res
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityPrivateCloud
+```
+Get-AzVMwareVirtualMachine -ClusterName <String> -Id <String> -PrivateCloudInputObject <IVMwareIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get
 ```
 Get-AzVMwareVirtualMachine -ClusterName <String> -Id <String> -PrivateCloudName <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityCluster
+```
+Get-AzVMwareVirtualMachine -Id <String> -ClusterInputObject <IVMwareIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -63,12 +75,28 @@ Get a virtual machine by id in a private cloud cluster
 
 ## PARAMETERS
 
+### -ClusterInputObject
+Identity Parameter
+To construct, see NOTES section for CLUSTERINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Parameter Sets: GetViaIdentityCluster
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ClusterName
 Name of the cluster in the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, GetViaIdentityPrivateCloud, Get
 Aliases:
 
 Required: True
@@ -98,7 +126,7 @@ Virtual Machine identifier
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityPrivateCloud, Get, GetViaIdentityCluster
 Aliases: VirtualMachineId
 
 Required: True
@@ -124,12 +152,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -PrivateCloudInputObject
+Identity Parameter
+To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+Parameter Sets: GetViaIdentityPrivateCloud
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PrivateCloudName
 Name of the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -145,7 +189,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -160,7 +204,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -218,4 +262,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[VirtualMachineId <String>]`: Virtual Machine identifier
 
 ## RELATED LINKS
-

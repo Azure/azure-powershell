@@ -16,14 +16,15 @@ Creates a new Azure NetApp Files (ANF) subvolume.
 ```
 New-AzNetAppFilesSubvolume -ResourceGroupName <String> -Location <String> -AccountName <String>
  -PoolName <String> -VolumeName <String> -Name <String> -Path <String> -Size <Int64> [-ParentPath <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 New-AzNetAppFilesSubvolume -Name <String> -Path <String> -Size <Int64> [-ParentPath <String>]
- -VolumeObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -VolumeObject <PSNetAppFilesVolume> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

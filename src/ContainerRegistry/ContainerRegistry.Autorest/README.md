@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the ContainerRegistry service.
 
 ---
-## Status
-[![Az.ContainerRegistry](https://img.shields.io/powershellgallery/v/Az.ContainerRegistry.svg?style=flat-square&label=Az.ContainerRegistry "Az.ContainerRegistry")](https://www.powershellgallery.com/packages/Az.ContainerRegistry/)
 
 ## Info
 - Modifiable: yes

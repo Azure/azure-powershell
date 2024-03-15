@@ -282,6 +282,8 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
                     Capacity = model.Capacity
                 },
                 LicenseType = model.LicenseType,
+                AutoPauseDelay = model.AutoPauseDelayInMinutes,
+                MinCapacity = model.MinimumCapacity,
                 RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
                 SecondaryType = model.SecondaryType,
                 HighAvailabilityReplicaCount = model.HighAvailabilityReplicaCount,

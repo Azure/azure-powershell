@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* General availability for module Az.ElasticSan
+
 ## Version 0.1.2
 * Added support for CMK and volume snapshots
 

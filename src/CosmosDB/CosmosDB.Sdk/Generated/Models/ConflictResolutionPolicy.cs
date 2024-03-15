@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
 
         /// <param name="mode">Indicates the conflict resolution mode.
-        /// Possible values include: 'LastWriterWins', 'Custom'</param>
+        /// Possible values include: &#39;LastWriterWins&#39;, &#39;Custom&#39;</param>
 
         /// <param name="conflictResolutionPath">The conflict resolution path in the case of LastWriterWins mode.
         /// </param>

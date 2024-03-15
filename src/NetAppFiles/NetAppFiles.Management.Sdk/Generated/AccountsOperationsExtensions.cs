@@ -226,7 +226,9 @@ namespace Microsoft.Azure.Management.NetApp
             }
         }
         /// <summary>
-        /// Renew identity credentials that are used to authenticate to key vault, for customer-managed key encryption. If encryption.identity.principalId does not match identity.principalId, running this operation will fix it.
+        /// Renew identity credentials that are used to authenticate to key vault, for
+        /// customer-managed key encryption. If encryption.identity.principalId does
+        /// not match identity.principalId, running this operation will fix it.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -243,7 +245,9 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Renew identity credentials that are used to authenticate to key vault, for customer-managed key encryption. If encryption.identity.principalId does not match identity.principalId, running this operation will fix it.
+        /// Renew identity credentials that are used to authenticate to key vault, for
+        /// customer-managed key encryption. If encryption.identity.principalId does
+        /// not match identity.principalId, running this operation will fix it.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -376,7 +380,9 @@ namespace Microsoft.Azure.Management.NetApp
             }
         }
         /// <summary>
-        /// Renew identity credentials that are used to authenticate to key vault, for customer-managed key encryption. If encryption.identity.principalId does not match identity.principalId, running this operation will fix it.
+        /// Renew identity credentials that are used to authenticate to key vault, for
+        /// customer-managed key encryption. If encryption.identity.principalId does
+        /// not match identity.principalId, running this operation will fix it.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -393,7 +399,9 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Renew identity credentials that are used to authenticate to key vault, for customer-managed key encryption. If encryption.identity.principalId does not match identity.principalId, running this operation will fix it.
+        /// Renew identity credentials that are used to authenticate to key vault, for
+        /// customer-managed key encryption. If encryption.identity.principalId does
+        /// not match identity.principalId, running this operation will fix it.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

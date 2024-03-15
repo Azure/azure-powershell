@@ -14,7 +14,8 @@ Create an in-memory object for EventHubReceiver.
 
 ```
 New-AzActionGroupEventHubReceiverObject -EventHubName <String> -EventHubNameSpace <String> -Name <String>
- -SubscriptionId <String> [-TenantId <String>] [-UseCommonAlertSchema <Boolean>] [<CommonParameters>]
+ -SubscriptionId <String> [-TenantId <String>] [-UseCommonAlertSchema <Boolean>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

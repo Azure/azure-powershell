@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedMachine-help.xml
 Module Name: Az.ConnectedMachine
 online version: https://learn.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedmachineextension
 schema: 2.0.0
@@ -17,22 +17,45 @@ The operation to create or update the extension.
 Update-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade] [-ForceRerun <String>]
  [-ProtectedSetting <Hashtable>] [-Publisher <String>] [-Setting <Hashtable>] [-Tag <Hashtable>]
- [-Type <String>] [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Type <String>] [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzConnectedMachineExtension -MachineName <String> -Name <String> -ResourceGroupName <String>
- -ExtensionParameter <IMachineExtensionUpdate> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -ExtensionParameter <IMachineExtensionUpdate> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### UpdateViaIdentity
+### UpdateViaIdentityMachineExpanded
 ```
-Update-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity>
- -ExtensionParameter <IMachineExtensionUpdate> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzConnectedMachineExtension -Name <String> -MachineInputObject <IConnectedMachineIdentity>
+ [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade] [-ForceRerun <String>] [-ProtectedSetting <Hashtable>]
+ [-Publisher <String>] [-Setting <Hashtable>] [-Tag <Hashtable>] [-Type <String>]
+ [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentityMachine
+```
+Update-AzConnectedMachineExtension -Name <String> -MachineInputObject <IConnectedMachineIdentity>
+ -ExtensionParameter <IMachineExtensionUpdate> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -40,7 +63,15 @@ Update-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity>
 Update-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity> [-AutoUpgradeMinorVersion]
  [-EnableAutomaticUpgrade] [-ForceRerun <String>] [-ProtectedSetting <Hashtable>] [-Publisher <String>]
  [-Setting <Hashtable>] [-Tag <Hashtable>] [-Type <String>] [-TypeHandlerVersion <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzConnectedMachineExtension -InputObject <IConnectedMachineIdentity>
+ -ExtensionParameter <IMachineExtensionUpdate> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -150,7 +181,7 @@ Once deployed, however, the extension will not upgrade minor versions unless red
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMachineExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -181,7 +212,7 @@ Indicates whether the extension should be automatically upgraded by the platform
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMachineExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -196,8 +227,8 @@ Describes a Machine Extension Update.
 To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtensionUpdate
-Parameter Sets: Update, UpdateViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpdate
+Parameter Sets: Update, UpdateViaIdentityMachine, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -212,7 +243,7 @@ How the extension handler should be forced to update even if the extension confi
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMachineExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -228,7 +259,53 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Update operation
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MachineInputObject
+Identity Parameter
+To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+Parameter Sets: UpdateViaIdentityMachineExpanded, UpdateViaIdentityMachine
 Aliases:
 
 Required: True
@@ -243,7 +320,7 @@ The name of the machine where the extension should be created or updated.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
 Aliases:
 
 Required: True
@@ -258,7 +335,7 @@ The name of the machine extension.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update, UpdateViaIdentityMachineExpanded, UpdateViaIdentityMachine
 Aliases:
 
 Required: True
@@ -288,7 +365,7 @@ The extension can contain either protectedSettings or protectedSettingsFromKeyVa
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMachineExpanded, UpdateViaIdentityExpanded
 Aliases: ProtectedSettings
 
 Required: False
@@ -303,7 +380,7 @@ The name of the extension handler publisher.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMachineExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -319,7 +396,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
 Aliases:
 
 Required: True
@@ -334,7 +411,7 @@ Json formatted public settings for the extension.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMachineExpanded, UpdateViaIdentityExpanded
 Aliases: Settings
 
 Required: False
@@ -349,7 +426,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Update
 Aliases:
 
 Required: False
@@ -364,7 +441,7 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMachineExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -379,7 +456,7 @@ Specifies the type of the extension; an example is "CustomScriptExtension".
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMachineExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -394,7 +471,7 @@ Specifies the version of the script handler.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: UpdateExpanded, UpdateViaIdentityMachineExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -451,4 +528,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

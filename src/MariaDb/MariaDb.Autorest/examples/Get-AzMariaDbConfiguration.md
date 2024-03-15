@@ -1,7 +1,9 @@
 ### Example 1: List all configuration under a MariaDB
 ```powershell
-PS C:\> Get-AzMariaDbConfiguration -ServerName mariadb-asd-01 -ResourceGroupName mariadb-test-qu5ov0
+Get-AzMariaDbConfiguration -ServerName mariadb-asd-01 -ResourceGroupName mariadb-test-qu5ov0
+```
 
+```output
 Name                                     Type
 ----                                     ----
 audit_log_enabled                        Microsoft.DBforMariaDB/servers/configurations
@@ -165,8 +167,10 @@ This command lists all configuration under a MariaDB.
 
 ### Example 2: Get a configuration of MariaDB
 ```powershell
-PS C:\> Get-AzMariaDbConfiguration -ServerName mariadb-asd-01 -ResourceGroupName mariadb-test-qu5ov0 -Name max_connections
+Get-AzMariaDbConfiguration -ServerName mariadb-asd-01 -ResourceGroupName mariadb-test-qu5ov0 -Name max_connections
+```
 
+```output
 Name            Type
 ----            ----
 max_connections Microsoft.DBforMariaDB/servers/configurations

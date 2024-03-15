@@ -100,7 +100,6 @@ namespace Microsoft.Azure.Commands.Common
         {
             // this will be called once when the module starts up 
             // the common module can prepend or append steps to the pipeline at this point.
-            prependStep(UniqueId.Instance.SendAsync);
         }
 
         /// <summary>

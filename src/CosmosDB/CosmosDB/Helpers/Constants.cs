@@ -16,6 +16,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
 {
     internal static class Constants
     {
+
+        public const string DeprecateByAzVersion12 = "12.0.0";
+        public const string DeprecateByVersion2 = "2.0.0";
+
         public const string ResourceGroupNameHelpMessage = "Name of resource group.";
         public const string ResourceIdHelpMessage = "ResourceId of the resource.";
 
@@ -66,6 +70,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string IsRestoreRequestHelpMessage = "Indicates that the new Cosmos DB account request is a restore request.";
         public const string RestoreSourceIdHelpMessage = "The restorable database account Id of the source account of the restore. Example: /subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/locations/{location}/restorabledatabaseaccounts/{instanceId}";
         public const string RestoreTimestampHelpMessage = "The timestamp to which the source account has to be restored to.";
+        public const string ResourceRestoreTimestampHelpMessage = "The timestamp to which the resource has to be restored to.";
         public const string DatabasesToRestoreHelpMessage = "The list of PSDatabaseToRestore objects which specify the subset of databases and collections to restore from the source account. (If not provided, all the databases will be restored)";
         public const string GremlinDatabasesToRestoreHelpMessage = "The list of PSGremlinDatabaseToRestore objects which specify the subset of databases and graphs to restore from the source account. (If not provided, all the databases will be restored)";
         public const string TablesToRestoreHelpMessage = "The list of PSTableToRestore objects which specify the subset of tables to restore from the source account. (If not provided, all the tables will be restored)";

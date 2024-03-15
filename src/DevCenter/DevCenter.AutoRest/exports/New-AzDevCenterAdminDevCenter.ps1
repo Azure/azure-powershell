@@ -34,7 +34,7 @@ New-AzDevCenterAdminDevCenter -InputObject $devCenter -Location eastus -Identity
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevCenter
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -45,6 +45,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [CatalogName <String>]: The name of the Catalog.
   [DevBoxDefinitionName <String>]: The name of the Dev Box definition.
   [DevCenterName <String>]: The name of the devcenter.
+  [EnvironmentDefinitionName <String>]: The name of the Environment Definition.
   [EnvironmentTypeName <String>]: The name of the environment type.
   [GalleryName <String>]: The name of the gallery.
   [Id <String>]: Resource identity path
@@ -57,12 +58,13 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ScheduleName <String>]: The name of the schedule that uniquely identifies it.
   [SubscriptionId <String>]: The ID of the target subscription.
+  [TaskName <String>]: The name of the Task.
   [VersionName <String>]: The version of the image.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradmindevcenter
 #>
 function New-AzDevCenterAdminDevCenter {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.IDevCenter])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.IDevCenter])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -98,6 +100,12 @@ param(
     [System.String]
     # The geo-location where the resource lives
     ${Location},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Category('Body')]
+    [System.String]
+    # The display name of the devcenter.
+    ${DisplayName},
 
     [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Support.ManagedServiceIdentityType])]
@@ -217,6 +225,10 @@ begin {
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

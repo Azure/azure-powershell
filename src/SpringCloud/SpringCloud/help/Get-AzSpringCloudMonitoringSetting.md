@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.springcloud/get-azspringcloudmonitoringsetting
 schema: 2.0.0
@@ -44,7 +44,7 @@ Get the Monitoring Setting and its properties.
 
 ### Example 2: Get the Monitoring Setting and its properties by pipeline
 ```powershell
- Update-AzSpringCloudMonitoringSetting -AppInsightsInstrumentationKey "InstrumentationKey=xxxxxxxxxxxxxxxxxxx;IngestionEndpoint=https://xxxxxx.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/" | Get-AzSpringCloudMonitoringSetting
+Update-AzSpringCloudMonitoringSetting -AppInsightsInstrumentationKey "InstrumentationKey=xxxxxxxxxxxxxxxxxxx;IngestionEndpoint=https://xxxxxx.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/" | Get-AzSpringCloudMonitoringSetting
 ```
 
 ```output
@@ -178,4 +178,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
-

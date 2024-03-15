@@ -67,6 +67,12 @@ steps:
     custom: msbuild
     arguments: 'tools\Az.Tools.Installer\build.proj /t:Package /p:Configuration=Release'
 
+- task: ManifestGeneratorTask@0
+  displayName: 'Generation Task'
+  inputs:
+    PackageName: 'Azure PowerShell - Az Tools Installer'
+    BuildDropPath: artifacts
+
 - task: PublishPipelineArtifact@0
   displayName: 'Save artifacts'
   inputs:

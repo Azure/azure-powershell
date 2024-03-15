@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
 online version: https://learn.microsoft.com/powershell/module/Az.SqlVirtualMachine/new-AzSqlVirtualMachineAgReplicaObject
 schema: 2.0.0
@@ -32,7 +32,7 @@ $AgReplica
 ```output
 Commit             Failover ReadableSecondary Role    SqlVirtualMachineInstanceId
 ------             -------- ----------------- ----    ---------------------------
-SYNCHRONOUS_COMMIT MANUAL   NO                PRIMARY 
+SYNCHRONOUS_COMMIT MANUAL   NO                PRIMARY
 ```
 
 *New-AzSqlVirtualMachineAgReplicaObject* creates an in-memory object of type *AgReplica*.
@@ -129,4 +129,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

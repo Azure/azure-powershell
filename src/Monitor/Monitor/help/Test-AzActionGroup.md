@@ -22,7 +22,8 @@ Test-AzActionGroup -ActionGroupName <String> -ResourceGroupName <String> [-Subsc
 ### CreateViaIdentityExpanded
 ```
 Test-AzActionGroup -InputObject <IActionGroupIdentity> -AlertType <String> -Receiver <IActionGroupReceiver[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

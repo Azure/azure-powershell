@@ -22,6 +22,9 @@ using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
+using System.Linq;
+using System;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Account
 {
@@ -71,6 +74,56 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
         public PSNetAppFilesActiveDirectory[] ActiveDirectory { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "A hashtable which represents the Encryption settings")]
+        [ValidateNotNullOrEmpty]
+        public PSNetAppFilesAccountEncryption Encryption { get; set; }
+
+        [Parameter(
+            ParameterSetName = FieldsParameterSet,
+            Mandatory = false,
+            HelpMessage = "The encryption keySource (provider). Possible values: Microsoft.NetApp, Microsoft.KeyVault")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("Microsoft.NetApp, Microsoft.KeyVault")]
+        public string EncryptionKeySource { get; set; }
+
+        [Parameter(
+            ParameterSetName = FieldsParameterSet,
+            Mandatory = false,
+            HelpMessage = "The name of KeyVault key")]
+        [ValidateNotNullOrEmpty]
+        public string KeyVaultKeyName { get; set; }
+
+        [Parameter(
+            ParameterSetName = FieldsParameterSet,
+            Mandatory = false,
+            HelpMessage = "The resource ID of KeyVault.")]
+        [ValidateNotNullOrEmpty]
+        public string KeyVaultResourceId { get; set; }
+
+        [Parameter(
+            ParameterSetName = FieldsParameterSet,
+            Mandatory = false,
+            HelpMessage = "The Uri of KeyVault.")]
+        [ValidateNotNullOrEmpty]
+        public string KeyVaultUri { get; set; }
+
+        [Parameter(
+            ParameterSetName = FieldsParameterSet,
+            Mandatory = false,
+            HelpMessage = "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("SystemAssigned", "UserAssigned", "None", "SystemAssigned,UserAssigned")]
+        public string IdentityType { get; set; }
+
+        [Parameter(
+            ParameterSetName = FieldsParameterSet,
+            Mandatory = false,
+            HelpMessage = "The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities")]
+        [ValidateNotNullOrEmpty]
+        public string UserAssignedIdentity { get; set; }
+
+        [Parameter(
             ParameterSetName = ObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
@@ -111,18 +164,47 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
                 Name = InputObject.Name;
             }
 
+            if ((new object[] { EncryptionKeySource, KeyVaultKeyName, KeyVaultResourceId, KeyVaultUri }).Any(v => v != null))
+            {
+                if (Encryption == null)
+                {
+                    Encryption = new PSNetAppFilesAccountEncryption()
+                    {
+                        KeySource = EncryptionKeySource,
+                        KeyVaultProperties = new PSNetAppFilesKeyVaultProperties() { KeyName = KeyVaultKeyName, KeyVaultResourceId = KeyVaultResourceId, KeyVaultUri = KeyVaultUri },
+                        Identity = new PSEncryptionIdentity() { UserAssignedIdentity = UserAssignedIdentity }
+                    };
+                }
+            }
+
             var netAppAccountBody = new NetAppAccountPatch()
             {
                 Location = Location,
                 ActiveDirectories = (ActiveDirectory != null) ? ActiveDirectory.ConvertFromPs() : null,
-                Tags =tagPairs,
-                                                    
+                Tags = tagPairs,
+                Encryption = Encryption?.ConvertFromPs()
             };
-
+            if (IdentityType != null)
+            {
+                var userAssingedIdentitiesDict = new Dictionary<string, UserAssignedIdentity>();
+                userAssingedIdentitiesDict.Add(UserAssignedIdentity, new Management.NetApp.Models.UserAssignedIdentity());
+                netAppAccountBody.Identity = new ManagedServiceIdentity()
+                {
+                    Type = IdentityType,
+                    UserAssignedIdentities = userAssingedIdentitiesDict
+                };
+            }
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
-                var anfAccount = AzureNetAppFilesManagementClient.Accounts.Update(ResourceGroupName, Name, netAppAccountBody);
-                WriteObject(anfAccount.ConvertToPs());
+                try 
+                { 
+                    var anfAccount = AzureNetAppFilesManagementClient.Accounts.Update(ResourceGroupName, Name, netAppAccountBody);
+                    WriteObject(anfAccount.ConvertToPs());
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

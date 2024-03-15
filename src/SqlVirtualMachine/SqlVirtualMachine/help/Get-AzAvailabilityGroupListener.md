@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
 online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/get-azavailabilitygrouplistener
 schema: 2.0.0
@@ -47,8 +47,6 @@ AgListener01    ResourceGroup01
 AgListener02    ResourceGroup01
 ```
 
-
-
 ### Example 2: Get one Availability Group Listener of a SQL Virtual Machine Group
 ```powershell
 Get-AzAvailabilityGroupListener -ResourceGroupName 'ResourceGroup01' -SqlVMGroupName 'SqlVmGroup01' -Name 'AgListener01'
@@ -59,8 +57,6 @@ Name            ResourceGroupName
 ----            -----------------
 AgListener01    ResourceGroup01
 ```
-
-
 
 ## PARAMETERS
 
@@ -132,7 +128,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -147,7 +143,7 @@ Name of the SQL virtual machine group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases: GroupName
 
 Required: True
@@ -162,7 +158,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -201,4 +197,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Subscription ID that identifies an Azure subscription.
 
 ## RELATED LINKS
-

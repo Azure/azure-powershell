@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.ApplicationInsights
+external help file: Az.ApplicationInsights-help.xml
+Module Name: Az.Applicationinsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/set-azapplicationinsightspricingplan
 schema: 2.0.0
 ---
@@ -13,9 +13,9 @@ Update current billing features for an Application Insights component.
 ## SYNTAX
 
 ```
-Set-AzApplicationInsightsPricingPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DailyCapGB <Double>] [-DisableNotificationWhenHitCap] [-PricingPlan <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzApplicationInsightsPricingPlan -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
+ [-PricingPlan <String>] [-DailyCapGB <Double>] [-DisableNotificationWhenHitCap] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -184,4 +184,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

@@ -103,6 +103,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// 2021-11-01.</param>
         /// <param name="constrainedMaximumCapacity">Optional property which
         /// must either be set to True or omitted.</param>
+        /// <param name="resiliencyPolicy">Policy for Resiliency</param>
         /// <param name="identity">The identity of the virtual machine scale
         /// set, if configured.</param>
         /// <param name="zones">The virtual machine scale set zones. NOTE:
@@ -110,7 +111,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// set</param>
         /// <param name="extendedLocation">The extended location of the Virtual
         /// Machine Scale Set.</param>
-        public VirtualMachineScaleSet(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), UpgradePolicy upgradePolicy = default(UpgradePolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetVMProfile virtualMachineProfile = default(VirtualMachineScaleSetVMProfile), string provisioningState = default(string), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMs = default(bool?), string uniqueId = default(string), bool? singlePlacementGroup = default(bool?), bool? zoneBalance = default(bool?), int? platformFaultDomainCount = default(int?), SubResource proximityPlacementGroup = default(SubResource), SubResource hostGroup = default(SubResource), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), string orchestrationMode = default(string), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), System.DateTime? timeCreated = default(System.DateTime?), bool? constrainedMaximumCapacity = default(bool?), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity), IList<string> zones = default(IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation))
+        /// <param name="etag">Etag is property returned in Create/Update/Get
+        /// response of the VMSS, so that customer can supply it in the header
+        /// to ensure optimistic updates</param>
+        public VirtualMachineScaleSet(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), Sku sku = default(Sku), Plan plan = default(Plan), UpgradePolicy upgradePolicy = default(UpgradePolicy), AutomaticRepairsPolicy automaticRepairsPolicy = default(AutomaticRepairsPolicy), VirtualMachineScaleSetVMProfile virtualMachineProfile = default(VirtualMachineScaleSetVMProfile), string provisioningState = default(string), bool? overprovision = default(bool?), bool? doNotRunExtensionsOnOverprovisionedVMs = default(bool?), string uniqueId = default(string), bool? singlePlacementGroup = default(bool?), bool? zoneBalance = default(bool?), int? platformFaultDomainCount = default(int?), SubResource proximityPlacementGroup = default(SubResource), SubResource hostGroup = default(SubResource), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), ScaleInPolicy scaleInPolicy = default(ScaleInPolicy), string orchestrationMode = default(string), SpotRestorePolicy spotRestorePolicy = default(SpotRestorePolicy), PriorityMixPolicy priorityMixPolicy = default(PriorityMixPolicy), System.DateTime? timeCreated = default(System.DateTime?), bool? constrainedMaximumCapacity = default(bool?), ResiliencyPolicy resiliencyPolicy = default(ResiliencyPolicy), VirtualMachineScaleSetIdentity identity = default(VirtualMachineScaleSetIdentity), IList<string> zones = default(IList<string>), ExtendedLocation extendedLocation = default(ExtendedLocation), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             Sku = sku;
@@ -134,9 +138,11 @@ namespace Microsoft.Azure.Management.Compute.Models
             PriorityMixPolicy = priorityMixPolicy;
             TimeCreated = timeCreated;
             ConstrainedMaximumCapacity = constrainedMaximumCapacity;
+            ResiliencyPolicy = resiliencyPolicy;
             Identity = identity;
             Zones = zones;
             ExtendedLocation = extendedLocation;
+            Etag = etag;
             CustomInit();
         }
 
@@ -305,6 +311,12 @@ namespace Microsoft.Azure.Management.Compute.Models
         public bool? ConstrainedMaximumCapacity { get; set; }
 
         /// <summary>
+        /// Gets or sets policy for Resiliency
+        /// </summary>
+        [JsonProperty(PropertyName = "properties.resiliencyPolicy")]
+        public ResiliencyPolicy ResiliencyPolicy { get; set; }
+
+        /// <summary>
         /// Gets or sets the identity of the virtual machine scale set, if
         /// configured.
         /// </summary>
@@ -324,6 +336,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "extendedLocation")]
         public ExtendedLocation ExtendedLocation { get; set; }
+
+        /// <summary>
+        /// Gets etag is property returned in Create/Update/Get response of the
+        /// VMSS, so that customer can supply it in the header to ensure
+        /// optimistic updates
+        /// </summary>
+        [JsonProperty(PropertyName = "etag")]
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.

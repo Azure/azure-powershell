@@ -1,6 +1,6 @@
 ### Example 1: Update an existing cluster by name
 ```powershell
-PS C:\> Update-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws -Name testnewkustopool -SkuName "Storage optimized" -SkuSize Medium
+Update-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws -Name testnewkustopool -SkuName "Storage optimized" -SkuSize Medium
 
 Location  Name                    Type                                    Etag
 --------  ----                    ----                                    ----

@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public DateTime? SnapshotTime { get; set; }
 
-        [Parameter(HelpMessage = "Force to remove the Share and all content in it")]
+        [Parameter(HelpMessage = "Force to remove the Share(snapshot) and all content in it")]
         public SwitchParameter Force { get; set; }
 
         [Parameter(
@@ -200,6 +200,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
                         this.ResourceGroupName = InputObject.ResourceGroupName;
                         this.StorageAccountName = InputObject.StorageAccountName;
                         this.Name = InputObject.Name;
+                        this.SnapshotTime = InputObject.SnapshotTime is null ? null : InputObject.SnapshotTime;
                         break;
                     case AccountObjectParameterSet:
                     case AccountObjectSnapshotParameterSet:
@@ -215,13 +216,24 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     default:
                         break;
                 }
-                if (Force.IsPresent || ShouldContinue(String.Format("Remove Share and all files in it: {0}", this.Name), ""))
+
+                String promptMessage;
+                if (this.SnapshotTime != null)
+                {
+                    promptMessage = String.Format("Remove share snapshot and all files in it: {0}, SnapshotTime: {1}", this.Name, this.SnapshotTime.Value.ToUniversalTime().ToString("o"));
+                } 
+                else
+                {
+                    promptMessage = String.Format("Remove Share and all files in it: {0}", this.Name);
+                }
+
+                if (Force.IsPresent || ShouldContinue(promptMessage, ""))
                 {
                     this.StorageClient.FileShares.Delete(
                        this.ResourceGroupName,
                        this.StorageAccountName,
                        this.Name,
-                       xMsSnapshot: this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o"),
+                       xMsSnapshot: this.SnapshotTime?.ToUniversalTime().ToString("o"),
                        include: include.ToLower());
 
                     if (PassThru.IsPresent)

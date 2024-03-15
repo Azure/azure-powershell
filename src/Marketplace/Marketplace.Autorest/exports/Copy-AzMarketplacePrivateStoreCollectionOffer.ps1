@@ -20,19 +20,15 @@ transferring offers (copy or move) from source collection to target collection(s
 .Description
 transferring offers (copy or move) from source collection to target collection(s)
 .Example
-PS C:\> $payload = @{OfferIdsList = "aumatics.azure_managedservices"; Operation = "Copy"; TargetCollection = "3ac32d8c-e888-4dc6-b4ff-be4d755af13a"}
-PS C:\>  Copy-AzMarketplacePrivateStoreCollectionOffer -PrivateStoreId 3ac32d8c-e888-4dc6-b4ff-be4d755af13a -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 -Payload $payload
+$payload = @{OfferIdsList = "aumatics.azure_managedservices"; Operation = "Copy"; TargetCollection = "3ac32d8c-e888-4dc6-b4ff-be4d755af13a"}
+Copy-AzMarketplacePrivateStoreCollectionOffer -PrivateStoreId 3ac32d8c-e888-4dc6-b4ff-be4d755af13a -CollectionId fdb889a1-cf3e-49f0-95b8-2bb012fa01f1 -Payload $payload
 
-Failed Succeeded
------- ---------
-{}     {DefaultCollection}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersProperties
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ITransferOffersProperties
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersResponse
+Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ITransferOffersResponse
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -47,18 +43,30 @@ INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
   [RequestApprovalId <String>]: The request approval ID to get create or update
 
 PAYLOAD <ITransferOffersProperties>: Transfer offers properties
-  [OfferIdsList <String[]>]: Offers ids list to transfer from source collection to target collection(s)
+  [OfferIdsList <List<String>>]: Offers ids list to transfer from source collection to target collection(s)
   [Operation <String>]: Operation to perform (For example: Copy or Move)
-  [TargetCollection <String[]>]: Target collections ids
+  [TargetCollection <List<String>>]: Target collections ids
+
+PRIVATESTOREINPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
+  [AdminRequestApprovalId <String>]: The admin request approval ID to get create or update
+  [CollectionId <String>]: The collection ID
+  [Id <String>]: Resource identity path
+  [OfferId <String>]: The offer ID to update or delete
+  [PrivateStoreId <String>]: The store ID - must use the tenant ID
+  [RequestApprovalId <String>]: The request approval ID to get create or update
 .Link
 https://learn.microsoft.com/powershell/module/az.marketplace/copy-azmarketplaceprivatestorecollectionoffer
 #>
 function Copy-AzMarketplacePrivateStoreCollectionOffer {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersResponse])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ITransferOffersResponse])]
 [CmdletBinding(DefaultParameterSetName='TransferExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Transfer', Mandatory)]
     [Parameter(ParameterSetName='TransferExpanded', Mandatory)]
+    [Parameter(ParameterSetName='TransferViaIdentityPrivateStore', Mandatory)]
+    [Parameter(ParameterSetName='TransferViaIdentityPrivateStoreExpanded', Mandatory)]
+    [Parameter(ParameterSetName='TransferViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='TransferViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
     [System.String]
     # The collection ID
@@ -66,6 +74,8 @@ param(
 
     [Parameter(ParameterSetName='Transfer', Mandatory)]
     [Parameter(ParameterSetName='TransferExpanded', Mandatory)]
+    [Parameter(ParameterSetName='TransferViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='TransferViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
     [System.String]
     # The store ID - must use the tenant ID
@@ -79,16 +89,26 @@ param(
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='TransferViaIdentityPrivateStore', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='TransferViaIdentityPrivateStoreExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity]
+    # Identity Parameter
+    # To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
+    ${PrivateStoreInputObject},
+
     [Parameter(ParameterSetName='Transfer', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='TransferViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='TransferViaIdentityPrivateStore', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersProperties]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ITransferOffersProperties]
     # Transfer offers properties
     # To construct, see NOTES section for PAYLOAD properties and create a hash table.
     ${Payload},
 
     [Parameter(ParameterSetName='TransferExpanded')]
     [Parameter(ParameterSetName='TransferViaIdentityExpanded')]
+    [Parameter(ParameterSetName='TransferViaIdentityPrivateStoreExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
     [System.String[]]
@@ -97,6 +117,7 @@ param(
 
     [Parameter(ParameterSetName='TransferExpanded')]
     [Parameter(ParameterSetName='TransferViaIdentityExpanded')]
+    [Parameter(ParameterSetName='TransferViaIdentityPrivateStoreExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
     [System.String]
     # Operation to perform (For example: Copy or Move)
@@ -104,18 +125,32 @@ param(
 
     [Parameter(ParameterSetName='TransferExpanded')]
     [Parameter(ParameterSetName='TransferViaIdentityExpanded')]
+    [Parameter(ParameterSetName='TransferViaIdentityPrivateStoreExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
     [System.String[]]
     # Target collections ids
     ${TargetCollection},
 
+    [Parameter(ParameterSetName='TransferViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Transfer operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='TransferViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
+    [System.String]
+    # Json string supplied to the Transfer operation
+    ${JsonString},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -165,19 +200,46 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Transfer = 'Az.Marketplace.private\Copy-AzMarketplacePrivateStoreCollectionOffer_Transfer';
             TransferExpanded = 'Az.Marketplace.private\Copy-AzMarketplacePrivateStoreCollectionOffer_TransferExpanded';
             TransferViaIdentity = 'Az.Marketplace.private\Copy-AzMarketplacePrivateStoreCollectionOffer_TransferViaIdentity';
             TransferViaIdentityExpanded = 'Az.Marketplace.private\Copy-AzMarketplacePrivateStoreCollectionOffer_TransferViaIdentityExpanded';
+            TransferViaIdentityPrivateStore = 'Az.Marketplace.private\Copy-AzMarketplacePrivateStoreCollectionOffer_TransferViaIdentityPrivateStore';
+            TransferViaIdentityPrivateStoreExpanded = 'Az.Marketplace.private\Copy-AzMarketplacePrivateStoreCollectionOffer_TransferViaIdentityPrivateStoreExpanded';
+            TransferViaJsonFilePath = 'Az.Marketplace.private\Copy-AzMarketplacePrivateStoreCollectionOffer_TransferViaJsonFilePath';
+            TransferViaJsonString = 'Az.Marketplace.private\Copy-AzMarketplacePrivateStoreCollectionOffer_TransferViaJsonString';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -186,15 +248,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

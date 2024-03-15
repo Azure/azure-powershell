@@ -240,8 +240,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
             //Verify
             Assert.Equal(2, OutputPipeline.Count);
-            var tenantA = ((PSAzureTenant)OutputPipeline.First());
-            var tenantB = ((PSAzureTenant)OutputPipeline.Last());
+            var tenantA = (PSAzureTenant)OutputPipeline.Where(tenant => ((PSAzureTenant)tenant).Name.Equals("Microsoft"))?.FirstOrDefault();
+            var tenantB = (PSAzureTenant)OutputPipeline.Where(tenant => ((PSAzureTenant)tenant).Name.Equals("Macrohard"))?.FirstOrDefault();
 
             Assert.Equal(tenantId, tenantA.Id.ToString());
             Assert.Equal("Home", tenantA.TenantCategory);

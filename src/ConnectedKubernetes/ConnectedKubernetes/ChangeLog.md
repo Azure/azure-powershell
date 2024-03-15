@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.10.1
+* Fixed custom location enable flag issue.
+
 ## Version 0.10.0
 * Added support for custom locations id and correlation Id.
 ## Version 0.9.0

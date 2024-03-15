@@ -136,6 +136,46 @@ namespace Microsoft.Azure.Management.Resources
             }
 
             /// <summary>
+            /// Compares a subscriptions logical zone mapping
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionId'>
+            /// The ID of the target subscription.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters for checking zone peers.
+            /// </param>
+            public static CheckZonePeersResult CheckZonePeers(this ISubscriptionsOperations operations, string subscriptionId, CheckZonePeersRequest parameters)
+            {
+                return operations.CheckZonePeersAsync(subscriptionId, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// Compares a subscriptions logical zone mapping
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='subscriptionId'>
+            /// The ID of the target subscription.
+            /// </param>
+            /// <param name='parameters'>
+            /// Parameters for checking zone peers.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<CheckZonePeersResult> CheckZonePeersAsync(this ISubscriptionsOperations operations, string subscriptionId, CheckZonePeersRequest parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.CheckZonePeersWithHttpMessagesAsync(subscriptionId, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Gets all subscriptions for a tenant.
             /// </summary>
             /// <param name='operations'>

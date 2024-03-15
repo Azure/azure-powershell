@@ -34,22 +34,24 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="tags">Resource tags.
         /// </param>
 
+        /// <param name="provisioningState">Provisioning state of managed instance.
+        /// Possible values include: &#39;Created&#39;, &#39;InProgress&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;,
+        /// &#39;Canceled&#39;</param>
+
         /// <param name="servicePrincipal">The managed instance&#39;s service principal.
         /// </param>
-
-        /// <param name="provisioningState">
-        /// Possible values include: 'Creating', 'Deleting', 'Updating', 'Unknown',
-        /// 'Succeeded', 'Failed', 'Accepted', 'Created', 'Deleted', 'Unrecognized',
-        /// 'Running', 'Canceled', 'NotSpecified', 'Registering', 'TimedOut'</param>
 
         /// <param name="managedInstanceCreateMode">Specifies the mode of database creation.
         /// Default: Regular instance creation.
         /// Restore: Creates an instance by restoring a set of backups to specific
         /// point in time. RestorePointInTime and SourceManagedInstanceId must be
         /// specified.
-        /// Possible values include: 'Default', 'PointInTimeRestore'</param>
+        /// Possible values include: &#39;Default&#39;, &#39;PointInTimeRestore&#39;</param>
 
         /// <param name="fullyQualifiedDomainName">The fully qualified domain name of the managed instance.
+        /// </param>
+
+        /// <param name="isGeneralPurposeV2">Whether or not this is a GPv2 variant of General Purpose edition.
         /// </param>
 
         /// <param name="administratorLogin">Administrator username for the managed instance. Can only be specified when
@@ -68,7 +70,17 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="licenseType">The license type. Possible values are &#39;LicenseIncluded&#39; (regular price
         /// inclusive of a new SQL license) and &#39;BasePrice&#39; (discounted AHB price for
         /// bringing your own SQL licenses).
-        /// Possible values include: 'LicenseIncluded', 'BasePrice'</param>
+        /// Possible values include: &#39;LicenseIncluded&#39;, &#39;BasePrice&#39;</param>
+
+        /// <param name="hybridSecondaryUsage">Hybrid secondary usage. Possible values are &#39;Active&#39; (default value) and
+        /// &#39;Passive&#39; (customer uses the secondary as Passive DR).
+        /// Possible values include: &#39;Active&#39;, &#39;Passive&#39;</param>
+
+        /// <param name="hybridSecondaryUsageDetected">Hybrid secondary usage detected. Possible values are &#39;Active&#39; (customer
+        /// does not meet the requirements to use the secondary as Passive DR) and
+        /// &#39;Passive&#39; (customer meets the requirements to use the secondary as Passive
+        /// DR).
+        /// Possible values include: &#39;Active&#39;, &#39;Passive&#39;</param>
 
         /// <param name="vCores">The number of vCores. Allowed values: 8, 16, 24, 32, 40, 64, 80.
         /// </param>
@@ -76,6 +88,16 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="storageSizeInGb">Storage size in GB. Minimum value: 32. Maximum value: 16384. Increments of
         /// 32 GB allowed only. Maximum value depends on the selected hardware family
         /// and number of vCores.
+        /// </param>
+
+        /// <param name="storageIOps">Storage IOps. Minimum value: 120. Maximum value: 120000. Increments of 1
+        /// IOps allowed only. Maximum value depends on the selected hardware family
+        /// and number of vCores.
+        /// </param>
+
+        /// <param name="storageThroughputMBps">Storage throughput in MBps. Minimum value: 25. Maximum value: 4000.
+        /// Increments of 1 MBps allowed only. Maximum value depends on the selected
+        /// hardware family and number of vCores.
         /// </param>
 
         /// <param name="collation">Collation of the managed instance.
@@ -100,7 +122,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="proxyOverride">Connection type used for connecting to the instance.
-        /// Possible values include: 'Proxy', 'Redirect', 'Default'</param>
+        /// Possible values include: &#39;Proxy&#39;, &#39;Redirect&#39;, &#39;Default&#39;</param>
 
         /// <param name="timezoneId">Id of the timezone. Allowed values are timezones supported by Windows.
         /// Windows keeps details on supported timezones, including the id, in registry
@@ -129,12 +151,12 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// <param name="currentBackupStorageRedundancy">The storage account type used to store backups for this instance. The
         /// options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage),
         /// Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
-        /// Possible values include: 'Geo', 'Local', 'Zone', 'GeoZone'</param>
+        /// Possible values include: &#39;Geo&#39;, &#39;Local&#39;, &#39;Zone&#39;, &#39;GeoZone&#39;</param>
 
         /// <param name="requestedBackupStorageRedundancy">The storage account type to be used to store backups for this instance. The
         /// options are Local (LocallyRedundantStorage), Zone (ZoneRedundantStorage),
         /// Geo (GeoRedundantStorage) and GeoZone(GeoZoneRedundantStorage)
-        /// Possible values include: 'Geo', 'Local', 'Zone', 'GeoZone'</param>
+        /// Possible values include: &#39;Geo&#39;, &#39;Local&#39;, &#39;Zone&#39;, &#39;GeoZone&#39;</param>
 
         /// <param name="zoneRedundant">Whether or not the multi-az is enabled.
         /// </param>
@@ -150,23 +172,48 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// ignored or it will result in an error. For updates individual APIs will
         /// need to be used.
         /// </param>
-        public ManagedInstanceUpdate(Sku sku = default(Sku), ResourceIdentity identity = default(ResourceIdentity), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), ServicePrincipal servicePrincipal = default(ServicePrincipal), string provisioningState = default(string), string managedInstanceCreateMode = default(string), string fullyQualifiedDomainName = default(string), string administratorLogin = default(string), string administratorLoginPassword = default(string), string subnetId = default(string), string state = default(string), string licenseType = default(string), int? vCores = default(int?), int? storageSizeInGb = default(int?), string collation = default(string), string dnsZone = default(string), string dnsZonePartner = default(string), bool? publicDataEndpointEnabled = default(bool?), string sourceManagedInstanceId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), string proxyOverride = default(string), string timezoneId = default(string), string instancePoolId = default(string), string maintenanceConfigurationId = default(string), System.Collections.Generic.IList<ManagedInstancePecProperty> privateEndpointConnections = default(System.Collections.Generic.IList<ManagedInstancePecProperty>), string minimalTlsVersion = default(string), string currentBackupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string), bool? zoneRedundant = default(bool?), string primaryUserAssignedIdentityId = default(string), string keyId = default(string), ManagedInstanceExternalAdministrator administrators = default(ManagedInstanceExternalAdministrator))
+
+        /// <param name="virtualClusterId">Virtual cluster resource id for the Managed Instance.
+        /// </param>
+
+        /// <param name="externalGovernanceStatus">Status of external governance.
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
+
+        /// <param name="pricingModel">Weather or not Managed Instance is freemium.
+        /// Possible values include: &#39;Regular&#39;, &#39;Freemium&#39;</param>
+
+        /// <param name="createTime">Specifies the point in time (ISO8601 format) of the Managed Instance
+        /// creation.
+        /// </param>
+
+        /// <param name="authenticationMetadata">The managed instance&#39;s authentication metadata lookup mode.
+        /// Possible values include: &#39;AzureAD&#39;, &#39;Paired&#39;, &#39;Windows&#39;</param>
+
+        /// <param name="databaseFormat">Specifies the internal format of instance databases specific to the SQL
+        /// engine version.
+        /// Possible values include: &#39;AlwaysUpToDate&#39;, &#39;SQLServer2022&#39;</param>
+        public ManagedInstanceUpdate(Sku sku = default(Sku), ResourceIdentity identity = default(ResourceIdentity), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), string provisioningState = default(string), ServicePrincipal servicePrincipal = default(ServicePrincipal), string managedInstanceCreateMode = default(string), string fullyQualifiedDomainName = default(string), bool? isGeneralPurposeV2 = default(bool?), string administratorLogin = default(string), string administratorLoginPassword = default(string), string subnetId = default(string), string state = default(string), string licenseType = default(string), string hybridSecondaryUsage = default(string), string hybridSecondaryUsageDetected = default(string), int? vCores = default(int?), int? storageSizeInGb = default(int?), int? storageIOps = default(int?), int? storageThroughputMBps = default(int?), string collation = default(string), string dnsZone = default(string), string dnsZonePartner = default(string), bool? publicDataEndpointEnabled = default(bool?), string sourceManagedInstanceId = default(string), System.DateTime? restorePointInTime = default(System.DateTime?), string proxyOverride = default(string), string timezoneId = default(string), string instancePoolId = default(string), string maintenanceConfigurationId = default(string), System.Collections.Generic.IList<ManagedInstancePecProperty> privateEndpointConnections = default(System.Collections.Generic.IList<ManagedInstancePecProperty>), string minimalTlsVersion = default(string), string currentBackupStorageRedundancy = default(string), string requestedBackupStorageRedundancy = default(string), bool? zoneRedundant = default(bool?), string primaryUserAssignedIdentityId = default(string), string keyId = default(string), ManagedInstanceExternalAdministrator administrators = default(ManagedInstanceExternalAdministrator), string virtualClusterId = default(string), string externalGovernanceStatus = default(string), string pricingModel = default(string), System.DateTime? createTime = default(System.DateTime?), string authenticationMetadata = default(string), string databaseFormat = default(string))
 
         {
             this.Sku = sku;
             this.Identity = identity;
             this.Tags = tags;
-            this.ServicePrincipal = servicePrincipal;
             this.ProvisioningState = provisioningState;
+            this.ServicePrincipal = servicePrincipal;
             this.ManagedInstanceCreateMode = managedInstanceCreateMode;
             this.FullyQualifiedDomainName = fullyQualifiedDomainName;
+            this.IsGeneralPurposeV2 = isGeneralPurposeV2;
             this.AdministratorLogin = administratorLogin;
             this.AdministratorLoginPassword = administratorLoginPassword;
             this.SubnetId = subnetId;
             this.State = state;
             this.LicenseType = licenseType;
+            this.HybridSecondaryUsage = hybridSecondaryUsage;
+            this.HybridSecondaryUsageDetected = hybridSecondaryUsageDetected;
             this.VCores = vCores;
             this.StorageSizeInGb = storageSizeInGb;
+            this.StorageIOps = storageIOps;
+            this.StorageThroughputMBps = storageThroughputMBps;
             this.Collation = collation;
             this.DnsZone = dnsZone;
             this.DnsZonePartner = dnsZonePartner;
@@ -185,6 +232,12 @@ namespace Microsoft.Azure.Management.Sql.Models
             this.PrimaryUserAssignedIdentityId = primaryUserAssignedIdentityId;
             this.KeyId = keyId;
             this.Administrators = administrators;
+            this.VirtualClusterId = virtualClusterId;
+            this.ExternalGovernanceStatus = externalGovernanceStatus;
+            this.PricingModel = pricingModel;
+            this.CreateTime = createTime;
+            this.AuthenticationMetadata = authenticationMetadata;
+            this.DatabaseFormat = databaseFormat;
             CustomInit();
         }
 
@@ -213,16 +266,16 @@ namespace Microsoft.Azure.Management.Sql.Models
         public System.Collections.Generic.IDictionary<string, string> Tags {get; set; }
 
         /// <summary>
+        /// Gets provisioning state of managed instance. Possible values include: &#39;Created&#39;, &#39;InProgress&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Canceled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
+        public string ProvisioningState {get; private set; }
+
+        /// <summary>
         /// Gets or sets the managed instance&#39;s service principal.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.servicePrincipal")]
         public ServicePrincipal ServicePrincipal {get; set; }
-
-        /// <summary>
-        /// Gets Possible values include: &#39;Creating&#39;, &#39;Deleting&#39;, &#39;Updating&#39;, &#39;Unknown&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;, &#39;Accepted&#39;, &#39;Created&#39;, &#39;Deleted&#39;, &#39;Unrecognized&#39;, &#39;Running&#39;, &#39;Canceled&#39;, &#39;NotSpecified&#39;, &#39;Registering&#39;, &#39;TimedOut&#39;
-        /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.provisioningState")]
-        public string ProvisioningState {get; private set; }
 
         /// <summary>
         /// Gets or sets specifies the mode of database creation.
@@ -239,6 +292,13 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.fullyQualifiedDomainName")]
         public string FullyQualifiedDomainName {get; private set; }
+
+        /// <summary>
+        /// Gets or sets whether or not this is a GPv2 variant of General Purpose
+        /// edition.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.isGeneralPurposeV2")]
+        public bool? IsGeneralPurposeV2 {get; set; }
 
         /// <summary>
         /// Gets or sets administrator username for the managed instance. Can only be
@@ -276,6 +336,22 @@ namespace Microsoft.Azure.Management.Sql.Models
         public string LicenseType {get; set; }
 
         /// <summary>
+        /// Gets or sets hybrid secondary usage. Possible values are &#39;Active&#39; (default
+        /// value) and &#39;Passive&#39; (customer uses the secondary as Passive DR). Possible values include: &#39;Active&#39;, &#39;Passive&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hybridSecondaryUsage")]
+        public string HybridSecondaryUsage {get; set; }
+
+        /// <summary>
+        /// Gets hybrid secondary usage detected. Possible values are &#39;Active&#39;
+        /// (customer does not meet the requirements to use the secondary as Passive
+        /// DR) and &#39;Passive&#39; (customer meets the requirements to use the secondary as
+        /// Passive DR). Possible values include: &#39;Active&#39;, &#39;Passive&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.hybridSecondaryUsageDetected")]
+        public string HybridSecondaryUsageDetected {get; private set; }
+
+        /// <summary>
         /// Gets or sets the number of vCores. Allowed values: 8, 16, 24, 32, 40, 64,
         /// 80.
         /// </summary>
@@ -289,6 +365,22 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.storageSizeInGB")]
         public int? StorageSizeInGb {get; set; }
+
+        /// <summary>
+        /// Gets or sets storage IOps. Minimum value: 120. Maximum value: 120000.
+        /// Increments of 1 IOps allowed only. Maximum value depends on the selected
+        /// hardware family and number of vCores.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.storageIOps")]
+        public int? StorageIOps {get; set; }
+
+        /// <summary>
+        /// Gets or sets storage throughput in MBps. Minimum value: 25. Maximum value:
+        /// 4000. Increments of 1 MBps allowed only. Maximum value depends on the
+        /// selected hardware family and number of vCores.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.storageThroughputMBps")]
+        public int? StorageThroughputMBps {get; set; }
 
         /// <summary>
         /// Gets or sets collation of the managed instance.
@@ -421,6 +513,44 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.administrators")]
         public ManagedInstanceExternalAdministrator Administrators {get; set; }
+
+        /// <summary>
+        /// Gets virtual cluster resource id for the Managed Instance.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.virtualClusterId")]
+        public string VirtualClusterId {get; private set; }
+
+        /// <summary>
+        /// Gets status of external governance. Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.externalGovernanceStatus")]
+        public string ExternalGovernanceStatus {get; private set; }
+
+        /// <summary>
+        /// Gets or sets weather or not Managed Instance is freemium. Possible values include: &#39;Regular&#39;, &#39;Freemium&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.pricingModel")]
+        public string PricingModel {get; set; }
+
+        /// <summary>
+        /// Gets specifies the point in time (ISO8601 format) of the Managed Instance
+        /// creation.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.createTime")]
+        public System.DateTime? CreateTime {get; private set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance&#39;s authentication metadata lookup mode. Possible values include: &#39;AzureAD&#39;, &#39;Paired&#39;, &#39;Windows&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.authenticationMetadata")]
+        public string AuthenticationMetadata {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the internal format of instance databases specific
+        /// to the SQL engine version. Possible values include: &#39;AlwaysUpToDate&#39;, &#39;SQLServer2022&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.databaseFormat")]
+        public string DatabaseFormat {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -452,6 +582,8 @@ namespace Microsoft.Azure.Management.Sql.Models
 
 
 
+
+
             if (this.PrivateEndpointConnections != null)
             {
                 foreach (var element in this.PrivateEndpointConnections)
@@ -462,6 +594,11 @@ namespace Microsoft.Azure.Management.Sql.Models
                     }
                 }
             }
+
+
+
+
+
 
 
 

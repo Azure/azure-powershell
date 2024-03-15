@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         public static CheckAvailabilityResponse CheckNameAvailability(this INetAppResourceOperations operations, string location, string name, string type, string resourceGroup)
         {
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         public static CheckAvailabilityResponse CheckFilePathAvailability(this INetAppResourceOperations operations, string location, string name, string subnetId)
         {
@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         public static CheckAvailabilityResponse CheckQuotaAvailability(this INetAppResourceOperations operations, string location, string name, string type, string resourceGroup)
         {
@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         public static RegionInfo QueryRegionInfo(this INetAppResourceOperations operations, string location)
         {
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Management.NetApp
         /// The operations group for this extension method.
         /// </param>
         /// <param name='location'>
-        /// The name of Azure region.
+        /// The name of the Azure region.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -140,6 +140,105 @@ namespace Microsoft.Azure.Management.NetApp
         public static async System.Threading.Tasks.Task<RegionInfo> QueryRegionInfoAsync(this INetAppResourceOperations operations, string location, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             using (var _result = await operations.QueryRegionInfoWithHttpMessagesAsync(location, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Get details of the specified network sibling set.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        public static NetworkSiblingSet QueryNetworkSiblingSet(this INetAppResourceOperations operations, string location, string networkSiblingSetId, string subnetId)
+        {
+                return ((INetAppResourceOperations)operations).QueryNetworkSiblingSetAsync(location, networkSiblingSetId, subnetId).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Get details of the specified network sibling set.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkSiblingSet> QueryNetworkSiblingSetAsync(this INetAppResourceOperations operations, string location, string networkSiblingSetId, string subnetId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.QueryNetworkSiblingSetWithHttpMessagesAsync(location, networkSiblingSetId, subnetId, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Update the network features of the specified network sibling set.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        public static NetworkSiblingSet UpdateNetworkSiblingSet(this INetAppResourceOperations operations, string location, string networkSiblingSetId, string subnetId, string networkSiblingSetStateId, string networkFeatures)
+        {
+                return ((INetAppResourceOperations)operations).UpdateNetworkSiblingSetAsync(location, networkSiblingSetId, subnetId, networkSiblingSetStateId, networkFeatures).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Update the network features of the specified network sibling set.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkSiblingSet> UpdateNetworkSiblingSetAsync(this INetAppResourceOperations operations, string location, string networkSiblingSetId, string subnetId, string networkSiblingSetStateId, string networkFeatures, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.UpdateNetworkSiblingSetWithHttpMessagesAsync(location, networkSiblingSetId, subnetId, networkSiblingSetStateId, networkFeatures, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Update the network features of the specified network sibling set.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        public static NetworkSiblingSet BeginUpdateNetworkSiblingSet(this INetAppResourceOperations operations, string location, string networkSiblingSetId, string subnetId, string networkSiblingSetStateId, string networkFeatures)
+        {
+                return ((INetAppResourceOperations)operations).BeginUpdateNetworkSiblingSetAsync(location, networkSiblingSetId, subnetId, networkSiblingSetStateId, networkFeatures).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Update the network features of the specified network sibling set.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='location'>
+        /// The name of the Azure region.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<NetworkSiblingSet> BeginUpdateNetworkSiblingSetAsync(this INetAppResourceOperations operations, string location, string networkSiblingSetId, string subnetId, string networkSiblingSetStateId, string networkFeatures, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginUpdateNetworkSiblingSetWithHttpMessagesAsync(location, networkSiblingSetId, subnetId, networkSiblingSetStateId, networkFeatures, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

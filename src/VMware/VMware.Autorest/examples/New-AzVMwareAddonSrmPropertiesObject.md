@@ -3,9 +3,9 @@
 New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
 ```
 ```output
-AddonType ProvisioningState LicenseKey
---------- ----------------- ----------
-SRM                         YourLicenseKeyValue
+AddonType LicenseKey          ProvisioningState
+--------- ----------          -----------------
+SRM       YourLicenseKeyValue
 ```
 
 Create a local SRM object for the Addon Property parameter

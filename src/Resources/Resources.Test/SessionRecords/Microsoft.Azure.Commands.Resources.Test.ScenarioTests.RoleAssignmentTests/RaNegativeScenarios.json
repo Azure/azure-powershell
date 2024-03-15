@@ -1,21 +1,21 @@
 {
   "Entries": [
     {
-      "RequestUri": "//subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/providers/Microsoft.Authorization/roleAssignments?$filter=principalId%20eq%20'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'&api-version=2020-08-01-preview",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzBiMWY2NDcxLTFiZjAtNGRkYS1hZWMzLWNiOTI3MmYwOTU5MC9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZUFzc2lnbm1lbnRzPyRmaWx0ZXI9cHJpbmNpcGFsSWQlMjBlcSUyMCdhYWFhYWFhYS1hYWFhLWFhYWEtYWFhYS1hYWFhYWFhYWFhYWEnJmFwaS12ZXJzaW9uPTIwMjAtMDgtMDEtcHJldmlldw==",
+      "RequestUri": "//subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/providers/Microsoft.Authorization/roleAssignments?$filter=principalId%20eq%20'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'&api-version=2020-08-01-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzQwMDRhOWZkLWQ1OGUtNDhkYy1hZWIyLTRhNGFlYzU4NjA2Zi9wcm92aWRlcnMvTWljcm9zb2Z0LkF1dGhvcml6YXRpb24vcm9sZUFzc2lnbm1lbnRzPyRmaWx0ZXI9cHJpbmNpcGFsSWQlMjBlcSUyMCdhYWFhYWFhYS1hYWFhLWFhYWEtYWFhYS1hYWFhYWFhYWFhYWEnJmFwaS12ZXJzaW9uPTIwMjAtMDgtMDEtcHJldmlldw==",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f353ef3e-3eb3-475c-bb69-970533a106ac"
+          "a1ab78fc-4ee4-4874-9df3-2492b455b06b"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2323.48002",
+          "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/2.13.0.0"
+          "OSVersion/Microsoft.Windows.10.0.23606",
+          "Microsoft.Azure.Management.Authorization.AuthorizationManagementClient/6.12.0"
         ]
       },
       "RequestBody": "",
@@ -27,7 +27,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "5f998f90-870b-417a-a42c-dd468fac1481"
+          "8eb41552-2106-455a-abf1-124180cbb34d"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -39,16 +39,16 @@
           "x-ms-gateway-slice=Production; path=/; secure; samesite=none; httponly"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11999"
         ],
         "x-ms-correlation-request-id": [
-          "506fbfca-1400-45f1-bcf8-9b884ade7504"
+          "ce31f172-3276-47a5-b72f-d784f72a8f62"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20231024T064016Z:506fbfca-1400-45f1-bcf8-9b884ade7504"
+          "WESTUS2:20231219T075917Z:ce31f172-3276-47a5-b72f-d784f72a8f62"
         ],
         "Date": [
-          "Tue, 24 Oct 2023 06:40:15 GMT"
+          "Tue, 19 Dec 2023 07:59:17 GMT"
         ],
         "Content-Length": [
           "12"
@@ -72,62 +72,59 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "296ff0fe-3f03-4786-a491-d118888f2bae"
+          "d8b9935d-77b5-4789-ae2f-94f67fd31ade"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2323.48002",
+          "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
+          "OSVersion/Microsoft.Windows.10.0.23606",
           "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
+        "Date": [
+          "Tue, 19 Dec 2023 07:59:18 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Connection": [
+          "keep-alive"
+        ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "d6f4861c-693a-4ae1-be68-e3d1b27f7338"
-        ],
-        "x-ms-correlation-request-id": [
-          "d6f4861c-693a-4ae1-be68-e3d1b27f7338"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20231024T064017Z:d6f4861c-693a-4ae1-be68-e3d1b27f7338"
-        ],
         "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "max-age=31536000"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "request-id": [
+          "05f7bf16-f978-41ab-a8fe-ace9731749f4"
         ],
-        "Date": [
-          "Tue, 24 Oct 2023 06:40:16 GMT"
+        "client-request-id": [
+          "05f7bf16-f978-41ab-a8fe-ace9731749f4"
+        ],
+        "x-ms-ags-diagnostic": [
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"004\",\"RoleInstance\":\"MW2PEPF0000E056\"}}"
+        ],
+        "x-ms-resource-unit": [
+          "1"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "137"
+          "application/json"
         ],
         "Retry-After": [
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingApiVersionParameter\",\r\n    \"message\": \"The api-version query parameter (?api-version=) is required for all requests.\"\r\n  }\r\n}",
-      "StatusCode": 400
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T07:59:18\",\r\n      \"request-id\": \"05f7bf16-f978-41ab-a8fe-ace9731749f4\",\r\n      \"client-request-id\": \"05f7bf16-f978-41ab-a8fe-ace9731749f4\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 404
     },
     {
       "RequestUri": "/v1.0/servicePrincipals/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
@@ -135,62 +132,59 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "296ff0fe-3f03-4786-a491-d118888f2bae"
+          "d8b9935d-77b5-4789-ae2f-94f67fd31ade"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2323.48002",
+          "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
+          "OSVersion/Microsoft.Windows.10.0.23606",
           "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
+        "Date": [
+          "Tue, 19 Dec 2023 07:59:18 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Connection": [
+          "keep-alive"
+        ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "1cee29a7-b074-45d2-b138-335b7a784077"
-        ],
-        "x-ms-correlation-request-id": [
-          "1cee29a7-b074-45d2-b138-335b7a784077"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20231024T064023Z:1cee29a7-b074-45d2-b138-335b7a784077"
-        ],
         "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "max-age=31536000"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "request-id": [
+          "1ec4389b-d7f0-4e56-8f4a-9a91f08ed10e"
         ],
-        "Date": [
-          "Tue, 24 Oct 2023 06:40:22 GMT"
+        "client-request-id": [
+          "1ec4389b-d7f0-4e56-8f4a-9a91f08ed10e"
+        ],
+        "x-ms-ags-diagnostic": [
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"004\",\"RoleInstance\":\"MW2PEPF0000E056\"}}"
+        ],
+        "x-ms-resource-unit": [
+          "1"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "137"
+          "application/json"
         ],
         "Retry-After": [
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingApiVersionParameter\",\r\n    \"message\": \"The api-version query parameter (?api-version=) is required for all requests.\"\r\n  }\r\n}",
-      "StatusCode": 400
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T07:59:18\",\r\n      \"request-id\": \"1ec4389b-d7f0-4e56-8f4a-9a91f08ed10e\",\r\n      \"client-request-id\": \"1ec4389b-d7f0-4e56-8f4a-9a91f08ed10e\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 404
     },
     {
       "RequestUri": "/v1.0/directoryObjects/aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
@@ -198,62 +192,59 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "296ff0fe-3f03-4786-a491-d118888f2bae"
+          "d8b9935d-77b5-4789-ae2f-94f67fd31ade"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2323.48002",
+          "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
+          "OSVersion/Microsoft.Windows.10.0.23606",
           "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
+        "Date": [
+          "Tue, 19 Dec 2023 07:59:18 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Connection": [
+          "keep-alive"
+        ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "0aa2fc05-da25-4e7d-a01b-424ff143055e"
-        ],
-        "x-ms-correlation-request-id": [
-          "0aa2fc05-da25-4e7d-a01b-424ff143055e"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20231024T064023Z:0aa2fc05-da25-4e7d-a01b-424ff143055e"
-        ],
         "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "max-age=31536000"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "request-id": [
+          "edfd30cc-2057-48a7-a6ec-3560e2f47d56"
         ],
-        "Date": [
-          "Tue, 24 Oct 2023 06:40:23 GMT"
+        "client-request-id": [
+          "edfd30cc-2057-48a7-a6ec-3560e2f47d56"
+        ],
+        "x-ms-ags-diagnostic": [
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"004\",\"RoleInstance\":\"MW2PEPF0000E056\"}}"
+        ],
+        "x-ms-resource-unit": [
+          "1"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "137"
+          "application/json"
         ],
         "Retry-After": [
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingApiVersionParameter\",\r\n    \"message\": \"The api-version query parameter (?api-version=) is required for all requests.\"\r\n  }\r\n}",
-      "StatusCode": 400
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"Request_ResourceNotFound\",\r\n    \"message\": \"Resource 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa' does not exist or one of its queried reference-property objects are not present.\",\r\n    \"innerError\": {\r\n      \"date\": \"2023-12-19T07:59:18\",\r\n      \"request-id\": \"edfd30cc-2057-48a7-a6ec-3560e2f47d56\",\r\n      \"client-request-id\": \"edfd30cc-2057-48a7-a6ec-3560e2f47d56\"\r\n    }\r\n  }\r\n}",
+      "StatusCode": 404
     },
     {
       "RequestUri": "/v1.0/users?$filter=userPrincipalName%20eq%20%27nonexistent%40provider.com%27",
@@ -261,7 +252,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f6ba0027-1d75-4192-8007-375f210826dc"
+          "550c27c3-5957-44a3-b7f2-c64ff980b260"
         ],
         "Accept-Language": [
           "en-US"
@@ -270,56 +261,56 @@
           "eventual"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2323.48002",
+          "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
+          "OSVersion/Microsoft.Windows.10.0.23606",
           "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
+        "Date": [
+          "Tue, 19 Dec 2023 07:59:18 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Connection": [
+          "keep-alive"
+        ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "f7743a32-f8d0-4d51-b0fa-169f5facf5d5"
-        ],
-        "x-ms-correlation-request-id": [
-          "f7743a32-f8d0-4d51-b0fa-169f5facf5d5"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20231024T064032Z:f7743a32-f8d0-4d51-b0fa-169f5facf5d5"
-        ],
         "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "max-age=31536000"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "request-id": [
+          "c5bd7086-606b-448d-836a-1252bfb24f0e"
         ],
-        "Date": [
-          "Tue, 24 Oct 2023 06:40:32 GMT"
+        "client-request-id": [
+          "c5bd7086-606b-448d-836a-1252bfb24f0e"
+        ],
+        "x-ms-ags-diagnostic": [
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"004\",\"RoleInstance\":\"MW2PEPF0000E056\"}}"
+        ],
+        "x-ms-resource-unit": [
+          "2"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "137"
+          "application/json; odata.metadata=minimal; odata.streaming=true; IEEE754Compatible=false; charset=utf-8"
         ],
         "Retry-After": [
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingApiVersionParameter\",\r\n    \"message\": \"The api-version query parameter (?api-version=) is required for all requests.\"\r\n  }\r\n}",
-      "StatusCode": 400
+      "ResponseBody": "{\r\n  \"@odata.context\": \"https://graph.microsoft.com/v1.0/$metadata#users\",\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
     },
     {
       "RequestUri": "/v1.0/servicePrincipals?$filter=servicePrincipalNames%2Fany%28c%3A%20c%20eq%20%27bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb%27%29",
@@ -327,66 +318,66 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a0d2a5a0-44bd-41a5-8a11-f39e6574106f"
+          "90d8f2f9-edbb-49fc-b397-9c21e72aaa63"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/6.0.2323.48002",
+          "FxVersion/6.0.2523.51912",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
+          "OSVersion/Microsoft.Windows.10.0.23606",
           "Microsoft.Azure.Commands.Common.MSGraph.Version1.0.MicrosoftGraphClient/1.3.86"
         ]
       },
       "RequestBody": "",
       "ResponseHeaders": {
+        "Date": [
+          "Tue, 19 Dec 2023 07:59:19 GMT"
+        ],
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Connection": [
+          "keep-alive"
+        ],
         "Cache-Control": [
           "no-cache"
         ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "2830e30f-956e-4bbe-8d63-d4a08d721c26"
-        ],
-        "x-ms-correlation-request-id": [
-          "2830e30f-956e-4bbe-8d63-d4a08d721c26"
-        ],
-        "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20231024T064035Z:2830e30f-956e-4bbe-8d63-d4a08d721c26"
-        ],
         "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "max-age=31536000"
         ],
-        "X-Content-Type-Options": [
-          "nosniff"
+        "request-id": [
+          "870b8bfd-1b26-4c76-b314-c20b41ccca77"
         ],
-        "Date": [
-          "Tue, 24 Oct 2023 06:40:35 GMT"
+        "client-request-id": [
+          "870b8bfd-1b26-4c76-b314-c20b41ccca77"
+        ],
+        "x-ms-ags-diagnostic": [
+          "{\"ServerInfo\":{\"DataCenter\":\"West US 2\",\"Slice\":\"E\",\"Ring\":\"1\",\"ScaleUnit\":\"004\",\"RoleInstance\":\"MW2PEPF0000E056\"}}"
+        ],
+        "x-ms-resource-unit": [
+          "1"
+        ],
+        "OData-Version": [
+          "4.0"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "137"
+          "application/json; odata.metadata=minimal; odata.streaming=true; IEEE754Compatible=false; charset=utf-8"
         ],
         "Retry-After": [
           "0"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"MissingApiVersionParameter\",\r\n    \"message\": \"The api-version query parameter (?api-version=) is required for all requests.\"\r\n  }\r\n}",
-      "StatusCode": 400
+      "ResponseBody": "{\r\n  \"@odata.context\": \"https://graph.microsoft.com/v1.0/$metadata#servicePrincipals\",\r\n  \"value\": []\r\n}",
+      "StatusCode": 200
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "0b1f6471-1bf0-4dda-aec3-cb9272f09590"
+    "SubscriptionId": "4004a9fd-d58e-48dc-aeb2-4a4aec58606f"
   }
 }

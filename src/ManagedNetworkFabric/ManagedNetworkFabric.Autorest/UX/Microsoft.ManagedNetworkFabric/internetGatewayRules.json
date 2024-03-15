@@ -1,0 +1,85 @@
+{
+  "resourceType": "internetGatewayRules",
+  "apiVersion": "2023-06-15",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric"
+  },
+  "commands": [
+    {
+      "name": "Get-AzNetworkFabricInternetGatewayRule",
+      "description": "Gets an Internet Gateway Rule resource.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/{internetGatewayRuleName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabricinternetgatewayrule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets an Internet Gateway Rule resource.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.internetGatewayRuleName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzNetworkFabricInternetGatewayRule",
+      "description": "Implements Internet Gateway Rules DELETE method.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGatewayRules/{internetGatewayRuleName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.managednetworkfabric/remove-aznetworkfabricinternetgatewayrule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Implements Internet Gateway Rules DELETE method.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.internetGatewayRuleName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

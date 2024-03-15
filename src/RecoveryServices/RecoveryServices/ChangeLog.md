@@ -18,6 +18,19 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added option to set snapshot consistency type in policy cmdlets for creating or updating enhanced AzureVM policies.
+* Fixed an issue while setting soft delete vault property. 
+
+## Version 6.7.1
+* Added CRR support for taiwannorth, taiwannorthwest region.
+* Added breaking change notification for cmdlets whose output type is `ASRVaultSettings`.
+* Added warning for Standard to Enhanced policy migration for AzureVMs.
+* Updated Unregister-AzRecoveryServicesBackupContainer cmdlet to ouptput Job object if PassThru not given.
+* Fixed issue with Get-AzRecoveryServicesVaultSettingsFile cmdlet to return private endpoint state for backup.
+
+## Version 6.7.0
+* Added support Edge zone VM restore
+* Added cross zonal restore for snapshot recovery point
 
 ## Version 6.6.2
 * Removed outdated upcoming breaking change warning

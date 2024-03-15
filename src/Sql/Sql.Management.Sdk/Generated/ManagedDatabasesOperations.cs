@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of managed databases.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -252,7 +253,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a managed database.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -472,7 +474,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates a new database or updates an existing database.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -500,7 +503,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a managed database.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -525,7 +529,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates an existing database.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -553,7 +558,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Cancels a managed database move operation.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -581,7 +587,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Completes a managed database move operation.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -609,7 +616,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Completes the restore operation on a managed database.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -637,7 +645,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Starts a managed database move operation.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -665,7 +674,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a list of inaccessible managed databases in a managed instance
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -875,7 +885,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Creates a new database or updates an existing database.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -1131,7 +1142,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Deletes a managed database.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -1330,7 +1342,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Updates an existing database.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -1564,7 +1577,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Cancels a managed database move operation.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -1781,7 +1795,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Completes a managed database move operation.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -1998,7 +2013,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Completes the restore operation on a managed database.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.
@@ -2215,7 +2231,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Starts a managed database move operation.
         /// </summary>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='managedInstanceName'>
         /// The name of the managed instance.

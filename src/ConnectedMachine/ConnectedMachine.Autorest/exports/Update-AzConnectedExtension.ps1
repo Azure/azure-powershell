@@ -24,9 +24,9 @@ $target = @{"Microsoft.Compute.CustomScriptExtension" = @{"targetVersion"="1.10.
 Update-AzConnectedExtension -ResourceGroupName $env.ResourceGroupName -MachineName $machineName -ExtensionTarget $target
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtensionUpgrade
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgrade
 .Outputs
 System.Boolean
 .Notes
@@ -43,13 +43,20 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
   [ExtensionType <String>]: The extensionType of the Extension being received.
   [GroupName <String>]: The name of the private link resource.
   [Id <String>]: Resource identity path
+  [LicenseName <String>]: The name of the license.
+  [LicenseProfileName <String>]: The name of the license profile.
   [Location <String>]: The location of the Extension being received.
   [MachineName <String>]: The name of the hybrid machine.
+  [MetadataName <String>]: Name of the HybridIdentityMetadata.
   [Name <String>]: The name of the hybrid machine.
+  [OSType <String>]: Defines the os type.
+  [PerimeterName <String>]: The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
   [PrivateEndpointConnectionName <String>]: The name of the private endpoint connection.
   [PrivateLinkScopeId <String>]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
   [Publisher <String>]: The publisher of the Extension being received.
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ResourceUri <String>]: The fully qualified Azure Resource manager identifier of the resource to be connected.
+  [RunCommandName <String>]: The name of the run command.
   [ScopeName <String>]: The name of the Azure Arc PrivateLinkScope resource.
   [SubscriptionId <String>]: The ID of the target subscription.
   [Version <String>]: The version of the Extension being received.
@@ -62,6 +69,8 @@ function Update-AzConnectedExtension {
 param(
     [Parameter(ParameterSetName='Upgrade', Mandatory)]
     [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [System.String]
     # The name of the hybrid machine.
@@ -69,6 +78,8 @@ param(
 
     [Parameter(ParameterSetName='Upgrade', Mandatory)]
     [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
     [ArgumentCompleter({Get-AzResourceGroup | Select-Object -ExpandProperty ResourceGroupName})]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [System.String]
@@ -78,6 +89,8 @@ param(
 
     [Parameter(ParameterSetName='Upgrade')]
     [Parameter(ParameterSetName='UpgradeExpanded')]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpgradeViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -89,24 +102,36 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+    # .
     ${InputObject},
 
     [Parameter(ParameterSetName='Upgrade', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IMachineExtensionUpgrade]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtensionUpgrade]
     # Describes the Machine Extension Upgrade Properties.
-    # To construct, see NOTES section for EXTENSIONUPGRADEPARAMETER properties and create a hash table.
+    # .
     ${ExtensionUpgradeParameter},
 
     [Parameter(ParameterSetName='UpgradeExpanded')]
     [Parameter(ParameterSetName='UpgradeViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20221227.IExtensionTarget]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IExtensionTarget]))]
     [System.Collections.Hashtable]
     # Describes the Extension Target Properties.
     ${ExtensionTarget},
+
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Path of Json file supplied to the Upgrade operation
+    ${JsonFilePath},
+
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
+    [System.String]
+    # Json string supplied to the Upgrade operation
+    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -126,7 +151,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
+    # Wait forNET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -205,8 +230,10 @@ begin {
             UpgradeExpanded = 'Az.ConnectedMachine.private\Update-AzConnectedExtension_UpgradeExpanded';
             UpgradeViaIdentity = 'Az.ConnectedMachine.private\Update-AzConnectedExtension_UpgradeViaIdentity';
             UpgradeViaIdentityExpanded = 'Az.ConnectedMachine.private\Update-AzConnectedExtension_UpgradeViaIdentityExpanded';
+            UpgradeViaJsonFilePath = 'Az.ConnectedMachine.private\Update-AzConnectedExtension_UpgradeViaJsonFilePath';
+            UpgradeViaJsonString = 'Az.ConnectedMachine.private\Update-AzConnectedExtension_UpgradeViaJsonString';
         }
-        if (('Upgrade', 'UpgradeExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Upgrade', 'UpgradeExpanded', 'UpgradeViaJsonFilePath', 'UpgradeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]

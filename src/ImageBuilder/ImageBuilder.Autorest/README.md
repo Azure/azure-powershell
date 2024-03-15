@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the ImageBuilder service.
 
 ---
-## Status
-[![Az.ImageBuilder](https://img.shields.io/powershellgallery/v/Az.ImageBuilder.svg?style=flat-square&label=Az.ImageBuilder "Az.ImageBuilder")](https://www.powershellgallery.com/packages/Az.ImageBuilder/)
 
 ## Info
 - Modifiable: yes

@@ -37,8 +37,8 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </param>
 
         /// <param name="provisioningState">Provisioning state of managed instance DTC.
-        /// Possible values include: 'Created', 'InProgress', 'Succeeded', 'Failed',
-        /// 'Canceled'</param>
+        /// Possible values include: &#39;Created&#39;, &#39;InProgress&#39;, &#39;Succeeded&#39;, &#39;Failed&#39;,
+        /// &#39;Canceled&#39;</param>
         public ManagedInstanceDtcProperties(bool? dtcEnabled = default(bool?), ManagedInstanceDtcSecuritySettings securitySettings = default(ManagedInstanceDtcSecuritySettings), System.Collections.Generic.IList<string> externalDnsSuffixSearchList = default(System.Collections.Generic.IList<string>), string dtcHostNameDnsSuffix = default(string), string provisioningState = default(string))
 
         {

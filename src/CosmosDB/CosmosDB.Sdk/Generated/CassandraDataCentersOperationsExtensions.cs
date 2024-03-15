@@ -139,7 +139,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, clusterName, dataCenterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Create or update a managed Cassandra data center. When updating, overwrite all properties. To update only some properties, use PATCH.
+        /// Create or update a managed Cassandra data center. When updating, overwrite
+        /// all properties. To update only some properties, use PATCH.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -159,7 +160,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Create or update a managed Cassandra data center. When updating, overwrite all properties. To update only some properties, use PATCH.
+        /// Create or update a managed Cassandra data center. When updating, overwrite
+        /// all properties. To update only some properties, use PATCH.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -271,7 +273,8 @@ namespace Microsoft.Azure.Management.CosmosDB
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, clusterName, dataCenterName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Create or update a managed Cassandra data center. When updating, overwrite all properties. To update only some properties, use PATCH.
+        /// Create or update a managed Cassandra data center. When updating, overwrite
+        /// all properties. To update only some properties, use PATCH.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -291,7 +294,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Create or update a managed Cassandra data center. When updating, overwrite all properties. To update only some properties, use PATCH.
+        /// Create or update a managed Cassandra data center. When updating, overwrite
+        /// all properties. To update only some properties, use PATCH.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

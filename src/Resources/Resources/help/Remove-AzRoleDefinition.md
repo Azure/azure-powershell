@@ -17,19 +17,19 @@ Delete will fail if there are existing role assignments made to the custom role.
 
 ### RoleDefinitionIdParameterSet (Default)
 ```
-Remove-AzRoleDefinition -Id <Guid> [-Scope <String>] [-Force] [-PassThru]
+Remove-AzRoleDefinition -Id <Guid> [-Scope <String>] [-SkipClientSideScopeValidation] [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RoleDefinitionNameParameterSet
 ```
-Remove-AzRoleDefinition [-Name] <String> [-Scope <String>] [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzRoleDefinition [-Name] <String> [-Scope <String>] [-SkipClientSideScopeValidation] [-Force]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Remove-AzRoleDefinition -InputObject <PSRoleDefinition> [-Force] [-PassThru]
+Remove-AzRoleDefinition -InputObject <PSRoleDefinition> [-SkipClientSideScopeValidation] [-Force] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -154,6 +154,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SkipClientSideScopeValidation
+If specified, skip client side scope validation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

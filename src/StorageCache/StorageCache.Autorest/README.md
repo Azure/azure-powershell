@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the StorageCache service.
 
 ---
-## Status
-[![Az.StorageCache](https://img.shields.io/powershellgallery/v/Az.StorageCache.svg?style=flat-square&label=Az.StorageCache "Az.StorageCache")](https://www.powershellgallery.com/packages/Az.StorageCache/)
 
 ## Info
 - Modifiable: yes

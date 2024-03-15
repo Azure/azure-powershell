@@ -17,6 +17,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Resources.Models.Authorization;
 using Microsoft.Azure.Management.ResourceManager.Models;
@@ -234,13 +235,13 @@ namespace Microsoft.Azure.Commands.Resources.Models
 
             if (properties.Outputs != null && !string.IsNullOrEmpty(properties.Outputs.ToString()))
             {
-                var outputs = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Outputs.ToString());
+                var outputs = properties.Outputs.ToString().FromJson<Dictionary<string, DeploymentVariable>>();
                 deploymentObject.Outputs = outputs;
             }
 
             if (properties.Parameters != null && !string.IsNullOrEmpty(properties.Parameters.ToString()))
             {
-                var parameters = JsonConvert.DeserializeObject<Dictionary<string, DeploymentVariable>>(properties.Parameters.ToString());
+                var parameters = properties.Parameters.ToString().FromJson<Dictionary<string, DeploymentVariable>>();
                 deploymentObject.Parameters = parameters;
             }
 

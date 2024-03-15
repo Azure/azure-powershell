@@ -19,12 +19,14 @@ Finally, use this command to create a custom role using role definition.
 
 ### InputFileParameterSet
 ```
-New-AzRoleDefinition [-InputFile] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzRoleDefinition [-InputFile] <String> [-SkipClientSideScopeValidation]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### RoleDefinitionParameterSet
 ```
-New-AzRoleDefinition [-Role] <PSRoleDefinition> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzRoleDefinition [-Role] <PSRoleDefinition> [-SkipClientSideScopeValidation]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,7 +103,7 @@ $role.Actions = @(
     "Microsoft.Support/*"
 )
 
-New-AzRoleDefinition -Role $role 
+New-AzRoleDefinition -Role $role
 ```
 
 ### Example 2: Create using JSON file
@@ -151,6 +153,21 @@ Aliases:
 
 Required: True
 Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipClientSideScopeValidation
+If specified, skip client side scope validation.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

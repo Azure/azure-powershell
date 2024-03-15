@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.dll-Help.xml
 Module Name: Az.Marketplace
-online version:https://learn.microsoft.com/powershell/module/az.marketplace/remove-azmarketplaceprivatestoreoffer
+online version: https://learn.microsoft.com/powershell/module/az.marketplace/remove-azmarketplaceprivatestoreoffer
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Remove an offer from private store.
 
 ```
 Remove-AzMarketplacePrivateStoreOffer -PrivateStoreId <String> -OfferId <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

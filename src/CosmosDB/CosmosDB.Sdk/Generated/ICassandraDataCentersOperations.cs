@@ -95,10 +95,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> DeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string dataCenterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update a managed Cassandra data center. When updating, overwrite all properties. To update only some properties, use PATCH.
+        /// Create or update a managed Cassandra data center. When updating, overwrite
+        /// all properties. To update only some properties, use PATCH.
         /// </summary>
         /// <remarks>
-        /// Create or update a managed Cassandra data center. When updating, overwrite all properties. To update only some properties, use PATCH.
+        /// Create or update a managed Cassandra data center. When updating, overwrite
+        /// all properties. To update only some properties, use PATCH.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -185,10 +187,12 @@ namespace Microsoft.Azure.Management.CosmosDB
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string clusterName, string dataCenterName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Create or update a managed Cassandra data center. When updating, overwrite all properties. To update only some properties, use PATCH.
+        /// Create or update a managed Cassandra data center. When updating, overwrite
+        /// all properties. To update only some properties, use PATCH.
         /// </summary>
         /// <remarks>
-        /// Create or update a managed Cassandra data center. When updating, overwrite all properties. To update only some properties, use PATCH.
+        /// Create or update a managed Cassandra data center. When updating, overwrite
+        /// all properties. To update only some properties, use PATCH.
         /// </remarks>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.

@@ -229,7 +229,8 @@ namespace Microsoft.Azure.Management.NetApp
         /// The name of the volume
         /// </param>
         /// <param name='forceDelete'>
-        /// An option to force delete the volume. Will cleanup resources connected to the particular volume
+        /// An option to force delete the volume. Will cleanup resources connected to
+        /// the particular volume
         /// </param>
         public static void Delete(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, bool? forceDelete = default(bool?))
         {
@@ -255,7 +256,8 @@ namespace Microsoft.Azure.Management.NetApp
         /// The name of the volume
         /// </param>
         /// <param name='forceDelete'>
-        /// An option to force delete the volume. Will cleanup resources connected to the particular volume
+        /// An option to force delete the volume. Will cleanup resources connected to
+        /// the particular volume
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -263,6 +265,57 @@ namespace Microsoft.Azure.Management.NetApp
         public static async System.Threading.Tasks.Task DeleteAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, bool? forceDelete = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, forceDelete, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// This operation will populate availability zone information for a volume
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        public static Volume PopulateAvailabilityZone(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
+        {
+                return ((IVolumesOperations)operations).PopulateAvailabilityZoneAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// This operation will populate availability zone information for a volume
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Volume> PopulateAvailabilityZoneAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.PopulateAvailabilityZoneWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Revert a volume to the snapshot specified in the body
@@ -330,9 +383,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='volumeName'>
         /// The name of the volume
         /// </param>
-        public static void ResetCifsPassword(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
+        public static VolumesResetCifsPasswordHeaders ResetCifsPassword(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
         {
-                ((IVolumesOperations)operations).ResetCifsPasswordAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
+                return ((IVolumesOperations)operations).ResetCifsPasswordAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -356,9 +409,12 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task ResetCifsPasswordAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VolumesResetCifsPasswordHeaders> ResetCifsPasswordAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.ResetCifsPasswordWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.ResetCifsPasswordWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Break all the file locks on a volume
@@ -511,7 +567,8 @@ namespace Microsoft.Azure.Management.NetApp
             (await operations.BreakReplicationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Re-establish a previously deleted replication between 2 volumes that have a common ad-hoc or policy-based snapshots
+        /// Re-establish a previously deleted replication between 2 volumes that have a
+        /// common ad-hoc or policy-based snapshots
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -534,7 +591,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Re-establish a previously deleted replication between 2 volumes that have a common ad-hoc or policy-based snapshots
+        /// Re-establish a previously deleted replication between 2 volumes that have a
+        /// common ad-hoc or policy-based snapshots
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -661,7 +719,9 @@ namespace Microsoft.Azure.Management.NetApp
             }
         }
         /// <summary>
-        /// Resync the connection on the destination volume. If the operation is ran on the source volume it will reverse-resync the connection and sync from destination to source.
+        /// Resync the connection on the destination volume. If the operation is ran on
+        /// the source volume it will reverse-resync the connection and sync from
+        /// destination to source.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -684,7 +744,9 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Resync the connection on the destination volume. If the operation is ran on the source volume it will reverse-resync the connection and sync from destination to source.
+        /// Resync the connection on the destination volume. If the operation is ran on
+        /// the source volume it will reverse-resync the connection and sync from
+        /// destination to source.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -709,7 +771,8 @@ namespace Microsoft.Azure.Management.NetApp
             (await operations.ResyncReplicationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Delete the replication connection on the destination volume, and send release to the source replication
+        /// Delete the replication connection on the destination volume, and send
+        /// release to the source replication
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -732,7 +795,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Delete the replication connection on the destination volume, and send release to the source replication
+        /// Delete the replication connection on the destination volume, and send
+        /// release to the source replication
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -997,7 +1061,8 @@ namespace Microsoft.Azure.Management.NetApp
             (await operations.FinalizeRelocationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Reverts the volume relocation process, cleans up the new volume and starts using the former-existing volume.
+        /// Reverts the volume relocation process, cleans up the new volume and starts
+        /// using the former-existing volume.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1020,7 +1085,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Reverts the volume relocation process, cleans up the new volume and starts using the former-existing volume.
+        /// Reverts the volume relocation process, cleans up the new volume and starts
+        /// using the former-existing volume.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1165,7 +1231,8 @@ namespace Microsoft.Azure.Management.NetApp
         /// The name of the volume
         /// </param>
         /// <param name='forceDelete'>
-        /// An option to force delete the volume. Will cleanup resources connected to the particular volume
+        /// An option to force delete the volume. Will cleanup resources connected to
+        /// the particular volume
         /// </param>
         public static void BeginDelete(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, bool? forceDelete = default(bool?))
         {
@@ -1191,7 +1258,8 @@ namespace Microsoft.Azure.Management.NetApp
         /// The name of the volume
         /// </param>
         /// <param name='forceDelete'>
-        /// An option to force delete the volume. Will cleanup resources connected to the particular volume
+        /// An option to force delete the volume. Will cleanup resources connected to
+        /// the particular volume
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -1199,6 +1267,57 @@ namespace Microsoft.Azure.Management.NetApp
         public static async System.Threading.Tasks.Task BeginDeleteAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, bool? forceDelete = default(bool?), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, forceDelete, null, cancellationToken).ConfigureAwait(false)).Dispose();
+        }
+        /// <summary>
+        /// This operation will populate availability zone information for a volume
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        public static Volume BeginPopulateAvailabilityZone(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
+        {
+                return ((IVolumesOperations)operations).BeginPopulateAvailabilityZoneAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// This operation will populate availability zone information for a volume
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='accountName'>
+        /// The name of the NetApp account
+        /// </param>
+        /// <param name='poolName'>
+        /// The name of the capacity pool
+        /// </param>
+        /// <param name='volumeName'>
+        /// The name of the volume
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<Volume> BeginPopulateAvailabilityZoneAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginPopulateAvailabilityZoneWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Body;
+            }
         }
         /// <summary>
         /// Revert a volume to the snapshot specified in the body
@@ -1266,9 +1385,9 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='volumeName'>
         /// The name of the volume
         /// </param>
-        public static void BeginResetCifsPassword(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
+        public static VolumesResetCifsPasswordHeaders BeginResetCifsPassword(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName)
         {
-                ((IVolumesOperations)operations).BeginResetCifsPasswordAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
+                return ((IVolumesOperations)operations).BeginResetCifsPasswordAsync(resourceGroupName, accountName, poolName, volumeName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -1292,9 +1411,12 @@ namespace Microsoft.Azure.Management.NetApp
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginResetCifsPasswordAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VolumesResetCifsPasswordHeaders> BeginResetCifsPasswordAsync(this IVolumesOperations operations, string resourceGroupName, string accountName, string poolName, string volumeName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginResetCifsPasswordWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginResetCifsPasswordWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Break all the file locks on a volume
@@ -1447,7 +1569,8 @@ namespace Microsoft.Azure.Management.NetApp
             (await operations.BeginBreakReplicationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Re-establish a previously deleted replication between 2 volumes that have a common ad-hoc or policy-based snapshots
+        /// Re-establish a previously deleted replication between 2 volumes that have a
+        /// common ad-hoc or policy-based snapshots
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1470,7 +1593,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Re-establish a previously deleted replication between 2 volumes that have a common ad-hoc or policy-based snapshots
+        /// Re-establish a previously deleted replication between 2 volumes that have a
+        /// common ad-hoc or policy-based snapshots
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1495,7 +1619,9 @@ namespace Microsoft.Azure.Management.NetApp
             (await operations.BeginReestablishReplicationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, body, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Resync the connection on the destination volume. If the operation is ran on the source volume it will reverse-resync the connection and sync from destination to source.
+        /// Resync the connection on the destination volume. If the operation is ran on
+        /// the source volume it will reverse-resync the connection and sync from
+        /// destination to source.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1518,7 +1644,9 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Resync the connection on the destination volume. If the operation is ran on the source volume it will reverse-resync the connection and sync from destination to source.
+        /// Resync the connection on the destination volume. If the operation is ran on
+        /// the source volume it will reverse-resync the connection and sync from
+        /// destination to source.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1543,7 +1671,8 @@ namespace Microsoft.Azure.Management.NetApp
             (await operations.BeginResyncReplicationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Delete the replication connection on the destination volume, and send release to the source replication
+        /// Delete the replication connection on the destination volume, and send
+        /// release to the source replication
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1566,7 +1695,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Delete the replication connection on the destination volume, and send release to the source replication
+        /// Delete the replication connection on the destination volume, and send
+        /// release to the source replication
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1831,7 +1961,8 @@ namespace Microsoft.Azure.Management.NetApp
             (await operations.BeginFinalizeRelocationWithHttpMessagesAsync(resourceGroupName, accountName, poolName, volumeName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Reverts the volume relocation process, cleans up the new volume and starts using the former-existing volume.
+        /// Reverts the volume relocation process, cleans up the new volume and starts
+        /// using the former-existing volume.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -1854,7 +1985,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Reverts the volume relocation process, cleans up the new volume and starts using the former-existing volume.
+        /// Reverts the volume relocation process, cleans up the new volume and starts
+        /// using the former-existing volume.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

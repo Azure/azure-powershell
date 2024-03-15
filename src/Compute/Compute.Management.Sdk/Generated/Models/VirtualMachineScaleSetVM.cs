@@ -115,7 +115,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <param name="zones">The virtual machine zones.</param>
         /// <param name="identity">The identity of the virtual machine, if
         /// configured.</param>
-        public VirtualMachineScaleSetVM(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string instanceId = default(string), Sku sku = default(Sku), bool? latestModelApplied = default(bool?), string vmId = default(string), VirtualMachineScaleSetVMInstanceView instanceView = default(VirtualMachineScaleSetVMInstanceView), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), SecurityProfile securityProfile = default(SecurityProfile), NetworkProfile networkProfile = default(NetworkProfile), VirtualMachineScaleSetVMNetworkProfileConfiguration networkProfileConfiguration = default(VirtualMachineScaleSetVMNetworkProfileConfiguration), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), string provisioningState = default(string), string licenseType = default(string), string modelDefinitionApplied = default(string), VirtualMachineScaleSetVMProtectionPolicy protectionPolicy = default(VirtualMachineScaleSetVMProtectionPolicy), string userData = default(string), System.DateTime? timeCreated = default(System.DateTime?), Plan plan = default(Plan), IList<VirtualMachineExtension> resources = default(IList<VirtualMachineExtension>), IList<string> zones = default(IList<string>), VirtualMachineIdentity identity = default(VirtualMachineIdentity))
+        /// <param name="etag">Etag is property returned in Update/Get response
+        /// of the VMSS VM, so that customer can supply it in the header to
+        /// ensure optimistic updates.</param>
+        public VirtualMachineScaleSetVM(string location, string id = default(string), string name = default(string), string type = default(string), IDictionary<string, string> tags = default(IDictionary<string, string>), string instanceId = default(string), Sku sku = default(Sku), bool? latestModelApplied = default(bool?), string vmId = default(string), VirtualMachineScaleSetVMInstanceView instanceView = default(VirtualMachineScaleSetVMInstanceView), HardwareProfile hardwareProfile = default(HardwareProfile), StorageProfile storageProfile = default(StorageProfile), AdditionalCapabilities additionalCapabilities = default(AdditionalCapabilities), OSProfile osProfile = default(OSProfile), SecurityProfile securityProfile = default(SecurityProfile), NetworkProfile networkProfile = default(NetworkProfile), VirtualMachineScaleSetVMNetworkProfileConfiguration networkProfileConfiguration = default(VirtualMachineScaleSetVMNetworkProfileConfiguration), DiagnosticsProfile diagnosticsProfile = default(DiagnosticsProfile), SubResource availabilitySet = default(SubResource), string provisioningState = default(string), string licenseType = default(string), string modelDefinitionApplied = default(string), VirtualMachineScaleSetVMProtectionPolicy protectionPolicy = default(VirtualMachineScaleSetVMProtectionPolicy), string userData = default(string), System.DateTime? timeCreated = default(System.DateTime?), Plan plan = default(Plan), IList<VirtualMachineExtension> resources = default(IList<VirtualMachineExtension>), IList<string> zones = default(IList<string>), VirtualMachineIdentity identity = default(VirtualMachineIdentity), string etag = default(string))
             : base(location, id, name, type, tags)
         {
             InstanceId = instanceId;
@@ -142,6 +145,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             Resources = resources;
             Zones = zones;
             Identity = identity;
+            Etag = etag;
             CustomInit();
         }
 
@@ -342,6 +346,14 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "identity")]
         public VirtualMachineIdentity Identity { get; set; }
+
+        /// <summary>
+        /// Gets etag is property returned in Update/Get response of the VMSS
+        /// VM, so that customer can supply it in the header to ensure
+        /// optimistic updates.
+        /// </summary>
+        [JsonProperty(PropertyName = "etag")]
+        public string Etag { get; private set; }
 
         /// <summary>
         /// Validate the object.

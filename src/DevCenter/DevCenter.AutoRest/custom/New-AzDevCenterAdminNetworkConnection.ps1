@@ -25,11 +25,11 @@ Creates or updates a Network Connections resource
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.INetworkConnection
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.INetworkConnection
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.IDevCenterIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.INetworkConnection
+Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.INetworkConnection
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -75,7 +75,7 @@ INPUTOBJECT <IDevCenterIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.devcenter/new-azdevcenteradminnetworkconnection
 #>
 function New-AzDevCenterAdminNetworkConnection {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20230401.INetworkConnection])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenter.Models.Api20231001Preview.INetworkConnection])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]

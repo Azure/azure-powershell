@@ -20,7 +20,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Lists the target executions of a job step execution.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -38,16 +39,20 @@ namespace Microsoft.Azure.Management.Sql
         /// The name of the step.
         /// </param>
         /// <param name='createTimeMin'>
-        /// If specified, only job executions created at or after the specified time are included.
+        /// If specified, only job executions created at or after the specified time
+        /// are included.
         /// </param>
         /// <param name='createTimeMax'>
-        /// If specified, only job executions created before the specified time are included.
+        /// If specified, only job executions created before the specified time are
+        /// included.
         /// </param>
         /// <param name='endTimeMin'>
-        /// If specified, only job executions completed at or after the specified time are included.
+        /// If specified, only job executions completed at or after the specified time
+        /// are included.
         /// </param>
         /// <param name='endTimeMax'>
-        /// If specified, only job executions completed before the specified time are included.
+        /// If specified, only job executions completed before the specified time are
+        /// included.
         /// </param>
         /// <param name='isActive'>
         /// If specified, only active or only completed job executions are included.
@@ -79,7 +84,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Gets a target execution.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -120,7 +126,8 @@ namespace Microsoft.Azure.Management.Sql
         /// Lists target executions for all steps of a job execution.
         /// </remarks>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
         /// </param>
         /// <param name='serverName'>
         /// The name of the server.
@@ -135,16 +142,20 @@ namespace Microsoft.Azure.Management.Sql
         /// The id of the job execution
         /// </param>
         /// <param name='createTimeMin'>
-        /// If specified, only job executions created at or after the specified time are included.
+        /// If specified, only job executions created at or after the specified time
+        /// are included.
         /// </param>
         /// <param name='createTimeMax'>
-        /// If specified, only job executions created before the specified time are included.
+        /// If specified, only job executions created before the specified time are
+        /// included.
         /// </param>
         /// <param name='endTimeMin'>
-        /// If specified, only job executions completed at or after the specified time are included.
+        /// If specified, only job executions completed at or after the specified time
+        /// are included.
         /// </param>
         /// <param name='endTimeMax'>
-        /// If specified, only job executions completed before the specified time are included.
+        /// If specified, only job executions completed before the specified time are
+        /// included.
         /// </param>
         /// <param name='isActive'>
         /// If specified, only active or only completed job executions are included.

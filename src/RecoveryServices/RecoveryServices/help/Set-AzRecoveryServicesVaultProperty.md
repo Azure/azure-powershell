@@ -24,8 +24,7 @@ Set-AzRecoveryServicesVaultProperty [-SoftDeleteFeatureState <String>]
 ```
 Set-AzRecoveryServicesVaultProperty [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
  -EncryptionKeyId <String> [-KeyVaultSubscriptionId <String>] [-InfrastructureEncryption]
- [-UseSystemAssignedIdentity <Boolean>] [-UserAssignedIdentity <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UseSystemAssignedIdentity <Boolean>] [-UserAssignedIdentity <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,7 +160,7 @@ SoftDeleteFeatureState of the Recovery Services Vault. Allowed values are Disabl
 Type: System.String
 Parameter Sets: AzureRSVaultSoftDelteParameterSet
 Aliases:
-Accepted values: Enable, Disable
+Accepted values: Enable, Disable, AlwaysON
 
 Required: False
 Position: Named

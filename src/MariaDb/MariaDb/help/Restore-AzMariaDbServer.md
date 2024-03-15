@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MariaDb-help.xml
 Module Name: Az.MariaDb
 online version: https://learn.microsoft.com/powershell/module/az.mariadb/restore-azmariadbserver
 schema: 2.0.0
@@ -13,9 +13,9 @@ Restore a MariaDB from a existing MariaDB.
 ## SYNTAX
 
 ```
-Restore-AzMariaDbServer -Name <String> -RestorePointInTime <DateTime> [-InputObject <IServer>]
- [-ResourceGroupName <String>] [-ServerName <String>] [-SubscriptionId <String>] [-Location <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restore-AzMariaDbServer -Name <String> [-ServerName <String>] [-InputObject <IServer>]
+ [-ResourceGroupName <String>] [-SubscriptionId <String>] -RestorePointInTime <DateTime> [-Location <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

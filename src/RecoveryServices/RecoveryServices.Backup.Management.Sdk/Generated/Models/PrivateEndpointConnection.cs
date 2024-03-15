@@ -25,19 +25,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="provisioningState">Gets or sets provisioning state of the private endpoint connection
-        /// Possible values include: 'Succeeded', 'Deleting', 'Failed', 'Pending'</param>
+        /// Possible values include: &#39;Succeeded&#39;, &#39;Deleting&#39;, &#39;Failed&#39;, &#39;Pending&#39;</param>
 
         /// <param name="privateEndpoint">Gets or sets private endpoint associated with the private endpoint
         /// connection
         /// </param>
 
+        /// <param name="groupIds">Group Ids for the Private Endpoint
+        /// </param>
+
         /// <param name="privateLinkServiceConnectionState">Gets or sets private link service connection state
         /// </param>
-        public PrivateEndpointConnection(string provisioningState = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
+        public PrivateEndpointConnection(string provisioningState = default(string), PrivateEndpoint privateEndpoint = default(PrivateEndpoint), System.Collections.Generic.IList<string> groupIds = default(System.Collections.Generic.IList<string>), PrivateLinkServiceConnectionState privateLinkServiceConnectionState = default(PrivateLinkServiceConnectionState))
 
         {
             this.ProvisioningState = provisioningState;
             this.PrivateEndpoint = privateEndpoint;
+            this.GroupIds = groupIds;
             this.PrivateLinkServiceConnectionState = privateLinkServiceConnectionState;
             CustomInit();
         }
@@ -61,6 +65,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "privateEndpoint")]
         public PrivateEndpoint PrivateEndpoint {get; set; }
+
+        /// <summary>
+        /// Gets or sets group Ids for the Private Endpoint
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "groupIds")]
+        public System.Collections.Generic.IList<string> GroupIds {get; set; }
 
         /// <summary>
         /// Gets or sets gets or sets private link service connection state

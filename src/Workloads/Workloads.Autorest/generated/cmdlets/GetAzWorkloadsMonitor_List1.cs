@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IMonitor))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Description(@"Gets a list of SAP monitors in the specified resource group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/monitors", ApiVersion = "2023-04-01")]
     public partial class GetAzWorkloadsMonitor_List1 : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener
     {

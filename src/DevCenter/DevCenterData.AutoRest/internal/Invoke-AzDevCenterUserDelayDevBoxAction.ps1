@@ -22,18 +22,18 @@ Delays the occurrence of an action.
 .Example
 Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -UserId "me" -ProjectName DevProject -DelayTime "01:30"
 .Example
-Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter Contoso -DevBoxName myDevBox -ProjectName DevProject -DelayTime "02:00"
+Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -ProjectName DevProject -DelayTime "02:00"
 .Example
-Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject -ActionName "schedule-default" -DelayTime "00:30"
+Invoke-AzDevCenterUserDelayDevBoxAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -DevBoxName myDevBox -ProjectName DevProject -Name "schedule-default" -DelayTime "00:30"
 .Example
-Invoke-AzDevCenterUserDelayDevBoxAction -DevCenter Contoso -DevBoxName myDevBox -UserId "me" -ProjectName DevProject -ActionName "schedule-default" -DelayTime "05:15"
+Invoke-AzDevCenterUserDelayDevBoxAction -DevCenterName Contoso -DevBoxName myDevBox -UserId "me" -ProjectName DevProject -Name "schedule-default" -DelayTime "05:15"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxAction
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxActionDelayResult
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxActionDelayResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -42,19 +42,23 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
   [ActionName <String>]: The name of an action that will take place on a Dev Box.
   [CatalogName <String>]: The name of the catalog
+  [CustomizationGroupName <String>]: A customization group name.
+  [CustomizationTaskId <String>]: A customization task ID.
   [DefinitionName <String>]: The name of the environment definition
   [DevBoxName <String>]: The name of a Dev Box.
   [EnvironmentName <String>]: The name of the environment.
   [Id <String>]: Resource identity path
+  [OperationId <String>]: The id of the operation on a Dev Box.
   [PoolName <String>]: The name of a pool of Dev Boxes.
   [ProjectName <String>]: The DevCenter Project upon which to execute operations.
   [ScheduleName <String>]: The name of a schedule.
+  [TaskName <String>]: A customization task name.
   [UserId <String>]: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 .Link
 https://learn.microsoft.com/powershell/module/az.devcenterdata/invoke-azdevcenteruserdelaydevboxaction
 #>
 function Invoke-AzDevCenterUserDelayDevBoxAction {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxAction], [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBoxActionDelayResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxAction], [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBoxActionDelayResult])]
 [CmdletBinding(DefaultParameterSetName='Delay1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -64,17 +68,18 @@ param(
     ${Endpoint},
 
     [Parameter(ParameterSetName='Delay', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
-    [System.String]
-    # The name of an action that will take place on a Dev Box.
-    ${ActionName},
-
-    [Parameter(ParameterSetName='Delay', Mandatory)]
     [Parameter(ParameterSetName='Delay1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
     [System.String]
     # The name of a Dev Box.
     ${DevBoxName},
+
+    [Parameter(ParameterSetName='Delay', Mandatory)]
+    [Alias('ActionName')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Path')]
+    [System.String]
+    # The name of an action that will take place on a Dev Box.
+    ${Name},
 
     [Parameter(ParameterSetName='Delay', Mandatory)]
     [Parameter(ParameterSetName='Delay1', Mandatory)]

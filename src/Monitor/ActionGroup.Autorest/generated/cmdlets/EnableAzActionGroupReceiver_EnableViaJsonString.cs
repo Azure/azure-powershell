@@ -189,16 +189,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
         /// <summary>
-        /// <c>overrideOnConflict</c> will be called before the regular onConflict has been processed, allowing customization of what
-        /// happens on that response. Implement this method in a partial class to enable this behavior
-        /// </summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="returnNow">/// Determines if the rest of the onConflict method should be processed, or if the method should
-        /// return immediately (set to true to skip further processing )</param>
-
-        partial void overrideOnConflict(global::System.Net.Http.HttpResponseMessage responseMessage, ref global::System.Threading.Tasks.Task<bool> returnNow);
-
-        /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
@@ -395,7 +385,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ActionGroupsEnableReceiverViaJsonString(SubscriptionId, ResourceGroupName, ActionGroupName, _jsonString, onOk, onConflict, onDefault, this, Pipeline);
+                    await this.Client.ActionGroupsEnableReceiverViaJsonString(SubscriptionId, ResourceGroupName, ActionGroupName, _jsonString, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.UndeclaredResponseException urexception)
@@ -417,30 +407,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
-        }
-
-        /// <summary>a delegate that is called when the remote service returns 409 (Conflict).</summary>
-        /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
-        /// </returns>
-        private async global::System.Threading.Tasks.Task onConflict(global::System.Net.Http.HttpResponseMessage responseMessage)
-        {
-            using( NoSynchronizationContext )
-            {
-                var _returnNow = global::System.Threading.Tasks.Task<bool>.FromResult(false);
-                overrideOnConflict(responseMessage, ref _returnNow);
-                // if overrideOnConflict has returned true, then return right away.
-                if ((null != _returnNow && await _returnNow))
-                {
-                    return ;
-                }
-                // onConflict - response for 409 /
-                if (true == MyInvocation?.BoundParameters?.ContainsKey("PassThru"))
-                {
-                    WriteObject(true);
-                }
-            }
         }
 
         /// <summary>

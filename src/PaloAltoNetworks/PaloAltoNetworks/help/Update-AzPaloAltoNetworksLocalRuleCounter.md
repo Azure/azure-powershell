@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PaloAltoNetworks-help.xml
 Module Name: Az.PaloAltoNetworks
 online version: https://learn.microsoft.com/powershell/module/az.paloaltonetworks/update-azpaloaltonetworkslocalrulecounter
 schema: 2.0.0
@@ -16,13 +16,20 @@ Refresh counters
 ```
 Update-AzPaloAltoNetworksLocalRuleCounter -LocalRulestackName <String> -Priority <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-FirewallName <String>] [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RefreshViaIdentityLocalRulestack
+```
+Update-AzPaloAltoNetworksLocalRuleCounter -Priority <String>
+ -LocalRulestackInputObject <IPaloAltoNetworksIdentity> [-FirewallName <String>] [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RefreshViaIdentity
 ```
 Update-AzPaloAltoNetworksLocalRuleCounter -InputObject <IPaloAltoNetworksIdentity> [-FirewallName <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,6 +97,22 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -LocalRulestackInputObject
+Identity Parameter
+To construct, see NOTES section for LOCALRULESTACKINPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPaloAltoNetworksIdentity
+Parameter Sets: RefreshViaIdentityLocalRulestack
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -LocalRulestackName
 LocalRulestack resource name
 
@@ -125,7 +148,7 @@ Local Rule priority
 
 ```yaml
 Type: System.String
-Parameter Sets: Refresh
+Parameter Sets: Refresh, RefreshViaIdentityLocalRulestack
 Aliases:
 
 Required: True
@@ -228,4 +251,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
-

@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.CosmosDB
     public static partial class CollectionPartitionRegionOperationsExtensions
     {
         /// <summary>
-        /// Retrieves the metrics determined by the given filter for the given collection and region, split by partition.
+        /// Retrieves the metrics determined by the given filter for the given
+        /// collection and region, split by partition.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -34,7 +35,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB collection rid.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
+        /// An OData filter expression that describes a subset of metrics to return.
+        /// The parameters that can be filtered are name.value (name of the metric, can
+        /// have an or of multiple names), startTime, endTime, and timeGrain. The
+        /// supported operator is eq.
         /// </param>
         public static System.Collections.Generic.IEnumerable<PartitionMetric> ListMetrics(this ICollectionPartitionRegionOperations operations, string resourceGroupName, string accountName, string region, string databaseRid, string collectionRid, string filter)
         {
@@ -42,7 +46,8 @@ namespace Microsoft.Azure.Management.CosmosDB
         }
 
         /// <summary>
-        /// Retrieves the metrics determined by the given filter for the given collection and region, split by partition.
+        /// Retrieves the metrics determined by the given filter for the given
+        /// collection and region, split by partition.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -63,7 +68,10 @@ namespace Microsoft.Azure.Management.CosmosDB
         /// Cosmos DB collection rid.
         /// </param>
         /// <param name='filter'>
-        /// An OData filter expression that describes a subset of metrics to return. The parameters that can be filtered are name.value (name of the metric, can have an or of multiple names), startTime, endTime, and timeGrain. The supported operator is eq.
+        /// An OData filter expression that describes a subset of metrics to return.
+        /// The parameters that can be filtered are name.value (name of the metric, can
+        /// have an or of multiple names), startTime, endTime, and timeGrain. The
+        /// supported operator is eq.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

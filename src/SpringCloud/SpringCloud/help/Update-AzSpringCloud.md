@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.springcloud/update-azspringcloud
 schema: 2.0.0
@@ -14,11 +14,11 @@ Operation to update an exiting Service.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzSpringCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Location <String>] [-NetworkProfileResourceGroup <String>] [-NetworkProfileServiceCidr <String>]
+Update-AzSpringCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Location <String>]
+ [-NetworkProfileResourceGroup <String>] [-NetworkProfileServiceCidr <String>]
  [-NetworkProfileServiceResourceGroup <String>] [-NetworkProfileServiceSubnetId <String>]
  [-NetworkProfileSubnetId <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-Tag <Hashtable>] [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ Update-AzSpringCloud -InputObject <ISpringCloudIdentity> [-Location <String>]
  [-NetworkProfileResourceGroup <String>] [-NetworkProfileServiceCidr <String>]
  [-NetworkProfileServiceResourceGroup <String>] [-NetworkProfileServiceSubnetId <String>]
  [-NetworkProfileSubnetId <String>] [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-Tag <Hashtable>] [-ZoneRedundant] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ Operation to update an exiting Service.
 
 ### Example 1: Update Spring Cloud Service by name
 ```powershell
-Update-AzSpringCloud -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service 
+Update-AzSpringCloud -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service
 ```
 
 ```output
@@ -492,4 +492,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
-

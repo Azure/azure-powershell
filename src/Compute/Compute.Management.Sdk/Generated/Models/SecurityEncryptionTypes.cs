@@ -18,5 +18,6 @@ namespace Microsoft.Azure.Management.Compute.Models
     {
         public const string VMGuestStateOnly = "VMGuestStateOnly";
         public const string DiskWithVMGuestState = "DiskWithVMGuestState";
+        public const string NonPersistedTPM = "NonPersistedTPM";
     }
 }

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Workloads-help.xml
 Module Name: Az.Workloads
 online version: https://learn.microsoft.com/powershell/module/az.workloads/stop-azworkloadssapapplicationinstance
 schema: 2.0.0
@@ -15,14 +15,15 @@ Stops the SAP Application Server Instance.
 ### StopExpanded (Default)
 ```
 Stop-AzWorkloadsSapApplicationInstance -Name <String> -ResourceGroupName <String>
- -SapVirtualInstanceName <String> [-SubscriptionId <String>] [-SoftStopTimeoutSecond <Int64>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SapVirtualInstanceName <String> [-SubscriptionId <String>] [-DeallocateVM] [-SoftStopTimeoutSecond <Int64>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StopViaIdentityExpanded
 ```
-Stop-AzWorkloadsSapApplicationInstance -InputObject <IWorkloadsIdentity> [-SoftStopTimeoutSecond <Int64>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzWorkloadsSapApplicationInstance -InputObject <IWorkloadsIdentity> [-DeallocateVM]
+ [-SoftStopTimeoutSecond <Int64>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,6 +96,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DeallocateVM
+The boolean value indicates whether to Stop and deallocate the virtual machines along with the SAP instances.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -288,4 +304,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
-

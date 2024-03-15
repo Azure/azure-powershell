@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
 
         /// <param name="provisioningState">The status of the resource at the time the operation was called.
-        /// Possible values include: 'Creating', 'Updating', 'Deleting', 'Succeeded',
-        /// 'Failed', 'Canceled'</param>
+        /// Possible values include: &#39;Creating&#39;, &#39;Updating&#39;, &#39;Deleting&#39;, &#39;Succeeded&#39;,
+        /// &#39;Failed&#39;, &#39;Canceled&#39;</param>
 
         /// <param name="dataCenterLocation">The region this data center should be created in.
         /// </param>

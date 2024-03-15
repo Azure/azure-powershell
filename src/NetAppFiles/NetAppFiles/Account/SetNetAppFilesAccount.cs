@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.Rest.Azure;
 
 // Note:
 // Both set and Update need to exist
@@ -111,8 +112,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
             {
-                var anfAccount = AzureNetAppFilesManagementClient.Accounts.CreateOrUpdate(ResourceGroupName, Name, netAppAccountBody);
-                WriteObject(anfAccount.ConvertToPs());
+                try
+                {
+                    var anfAccount = AzureNetAppFilesManagementClient.Accounts.CreateOrUpdate(ResourceGroupName, Name, netAppAccountBody);
+                    WriteObject(anfAccount.ConvertToPs());             
+                }
+                catch(ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);                
+                }
             }
         }
     }

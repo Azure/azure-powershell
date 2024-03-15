@@ -12,6 +12,16 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+# Note(antmarti): Commands to quickly re-record a test in this file:
+#
+# &az account set -n a1bfa635-f2bf-42f1-86b5-848c674fc321
+# $accessToken = &az account get-access-token --query accessToken --output tsv
+# $tenantId = "72f988bf-86f1-41af-91ab-2d7cd011db47"
+# $subscriptionId = "a1bfa635-f2bf-42f1-86b5-848c674fc321"
+# $env:TEST_CSM_ORGID_AUTHENTICATION="Environment=Prod;SubscriptionId=$subscriptionId;TenantId=$tenantId;RawToken=$accessToken;HttpRecorderMode=Record;"
+# $env:AZURE_TEST_MODE="Record"
+# dotnet test ./src/Resources/Resources.Test --filter <your_test_name>
+
 <#
 .SYNOPSIS
 Tests resource group level deployment what-if with blank template.
@@ -272,6 +282,70 @@ function Test-WhatIfExcludeChangeTypesAtResourceGroupScope
 		# Cleanup.
 		Clean-ResourceGroup $resourceGroupName
 	}
+}
+
+
+
+<#
+.SYNOPSIS
+Tests what-if with user-defined types (https://github.com/Azure/bicep/issues/13245).
+#>
+function Test-WhatIfWithUserDefinedTypes
+{
+    try
+    {
+        # Arrange.
+        $deploymentName = Get-ResourceName
+        $location = "westus"
+        $resourceGroupName = Get-ResourceGroupName
+
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        # Act.
+        $result = Get-AzResourceGroupDeploymentWhatIfResult `
+            -ResourceGroupName $resourceGroupName `
+            -Name $deploymentName `
+            -TemplateFile "Resources/DeploymentWhatIfTests/WhatIfWithUserDefinedTypes/main.bicep"
+
+        # Assert.
+        Assert-AreEqual "Succeeded" $result.Status
+    }
+    finally
+    {
+        # Cleanup.
+        Clean-ResourceGroup $resourceGroupName
+    }
+}
+
+<#
+.SYNOPSIS
+Tests what-if with nullable types (https://github.com/Azure/azure-powershell/issues/24286).
+#>
+function Test-WhatIfWithNullableType
+{
+    try
+    {
+        # Arrange.
+        $deploymentName = Get-ResourceName
+        $location = "westus"
+        $resourceGroupName = Get-ResourceGroupName
+
+        New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+        # Act.
+        $result = Get-AzResourceGroupDeploymentWhatIfResult `
+            -ResourceGroupName $resourceGroupName `
+            -Name $deploymentName `
+            -TemplateFile "Resources/DeploymentWhatIfTests/WhatIfWithNullableType/main.bicep"
+
+        # Assert.
+        Assert-AreEqual "Succeeded" $result.Status
+    }
+    finally
+    {
+        # Cleanup.
+        Clean-ResourceGroup $resourceGroupName
+    }
 }
 
 <#

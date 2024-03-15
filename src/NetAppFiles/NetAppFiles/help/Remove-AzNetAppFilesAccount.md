@@ -15,7 +15,8 @@ Deletes an Azure NetApp Files (ANF) account.
 ### ByFieldsParameterSet (Default)
 ```
 Remove-AzNetAppFilesAccount -ResourceGroupName <String> -Name <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -27,7 +28,8 @@ Remove-AzNetAppFilesAccount -ResourceId <String> [-PassThru] [-DefaultProfile <I
 ### ByObjectParameterSet
 ```
 Remove-AzNetAppFilesAccount -InputObject <PSNetAppFilesAccount> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

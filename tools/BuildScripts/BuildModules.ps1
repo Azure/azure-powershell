@@ -96,17 +96,21 @@ if ($PSCmdlet.ParameterSetName -eq 'AllSet') {
 }
 
 if ($PSCmdlet.ParameterSetName -eq 'ModifiedBuildSet' -or $PSCmdlet.ParameterSetName -eq 'TargetModuleSet') {
-    .$RepoRoot\tools\BuildScripts\CheckChangeLogs.ps1 -outputFile $RepoArtifacts/ModifiedModule.txt -rootPath $RepoRoot -TargetModuleList $TargetModule
+    .${RepoRoot}tools/BuildScripts/CheckChangeLogs.ps1 -outputFile $RepoArtifacts/ModifiedModule.txt -rootPath $RepoRoot -TargetModuleList $TargetModule
     $ModuleList = Get-Content $RepoArtifacts/ModifiedModule.txt
     foreach ($module in $ModuleList) {
         $csprojFiles += Add-Project -Path "$RepoRoot/src/$module" -Configuration $Configuration
     }
 }
 if ($PSCmdlet.ParameterSetName -eq 'PullRequestSet') {
-    $BuildCsprojList = (($BuildCsprojList -split ';' | ForEach-Object { Resolve-Path $_ }).Path) -join ';'
-    $TestCsprojList = (($TestCsprojList -split ';' | ForEach-Object { Resolve-Path $_ }).Path) -join ';'
-    $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Include $BuildCsprojList
-    $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Include $TestCsprojList
+    if ($PSBoundParameters.ContainsKey('BuildCsprojList') -and $BuildCsprojList) {
+        $BuildCsprojList = (($BuildCsprojList -split ';' | ForEach-Object { Resolve-Path $_ }).Path) -join ';'
+        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Include $BuildCsprojList
+    }
+    if ($PSBoundParameters.ContainsKey('TestCsprojList') -and $TestCsprojList) {
+        $TestCsprojList = (($TestCsprojList -split ';' | ForEach-Object { Resolve-Path $_ }).Path) -join ';'
+        $csprojFiles += Include-CsprojFiles -Path "$RepoRoot/src/" -Include $TestCsprojList
+    }
 }
 & dotnet --version
 & dotnet new sln -n Azure.PowerShell -o $RepoArtifacts --force
