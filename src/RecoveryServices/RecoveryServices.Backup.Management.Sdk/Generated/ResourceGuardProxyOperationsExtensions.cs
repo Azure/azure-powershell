@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class ResourceGuardProxyOperationsExtensions
     {
         /// <summary>
-        /// Returns ResourceGuardProxy under vault and with the name referenced in request
+        /// Returns ResourceGuardProxy under vault and with the name referenced in
+        /// request
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -22,7 +23,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -33,7 +35,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Returns ResourceGuardProxy under vault and with the name referenced in request
+        /// Returns ResourceGuardProxy under vault and with the name referenced in
+        /// request
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -42,7 +45,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -68,7 +72,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -89,7 +94,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -114,7 +120,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -134,7 +141,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -156,7 +164,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -176,7 +185,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 

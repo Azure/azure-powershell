@@ -1,0 +1,52 @@
+{
+  "Get-AzMarketplacePrivateStoreNewPlanNotification+[NoContext]+List+$POST+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/listNewPlansNotifications?api-version=2023-01-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/listNewPlansNotifications?api-version=2023-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "241fd7a2-d831-46fc-a727-78cce29f6120" ],
+        "CommandName": [ "Get-AzMarketplacePrivateStoreNewPlanNotification" ],
+        "FullCommandName": [ "Get-AzMarketplacePrivateStoreNewPlanNotification_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.11", "Az.Marketplace/1.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Accept-Ranges": [ "bytes" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=71c5ecfca949e38fa6d8b6899df69a8bc1065f71ea6211c776e43d3b7b216b7d;Path=/;HttpOnly;Secure;Domain=main.prod.marketplaceprivatestore.azure.com", "ARRAffinitySameSite=71c5ecfca949e38fa6d8b6899df69a8bc1065f71ea6211c776e43d3b7b216b7d;Path=/;HttpOnly;SameSite=None;Secure;Domain=main.prod.marketplaceprivatestore.azure.com" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1192" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.02586.90-5c77bed2" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-azure-ref": [ "20240206T121447Z-e9fr18rg4936d7qwr39u9d2ats00000002x0000000007sfh" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-request-id": [ "fe7667ba-6731-4122-9f1c-5fc797322039" ],
+        "x-ms-correlation-request-id": [ "fe7667ba-6731-4122-9f1c-5fc797322039" ],
+        "x-ms-routing-request-id": [ "ISRAELCENTRAL:20240206T121505Z:fe7667ba-6731-4122-9f1c-5fc797322039" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-MSEdge-Ref": [ "Ref A: C5732EA89109404DA4E0FBC4EA6EC2AB Ref B: MRS211050313051 Ref C: 2024-02-06T12:14:47Z" ],
+        "Date": [ "Tue, 06 Feb 2024 12:15:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3564" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"newPlansNotifications\":[{\"offerId\":\"ionqinc1582730893633.ionq-aq\",\"displayName\":\"IonQ Quantum Computer\",\"isFuturePlansEnabled\":false,\"plans\":[{\"planDisplayName\":\"Pay As You Go New (Credits)\",\"planId\":\"aqt-pay-as-you-go-cred\"},{\"planDisplayName\":\"Pay As You Go New\",\"planId\":\"aqt-pay-as-you-go\"}],\"messageCode\":10000,\"icon\":\"https://store-images.s-microsoft.com/image/apps.59976.c625a37e-4a6d-4c8f-94b7-722ec9e77b43.52f31f70-bc4e-4146-88ad-e6d26bd8afbe.6a75b316-f81f-4ed8-be80-abd527d74af7\"},{\"offerId\":\"episerver.optimizely_customer-centric_digital_experience\",\"displayName\":\"Optimizely Customer-Centric Digital Experience\",\"isFuturePlansEnabled\":false,\"plans\":[{\"planDisplayName\":\"Search \u0026 Navigation\",\"planId\":\"05\"}],\"messageCode\":10000,\"icon\":\"https://store-images.s-microsoft.com/image/apps.21006.1ef6fd87-2225-4a0d-ad85-e7c36a1dcbea.1dcac2ec-e9f5-4701-a792-12a50e946495.e45ff0b2-2e40-43cf-ab7b-9392372c898a\"},{\"offerId\":\"haivisionsystemsinc1580780591922.haivision-srt-gateway\",\"displayName\":\"Haivision SRT Gateway\",\"isFuturePlansEnabled\":false,\"plans\":[{\"planDisplayName\":\"Haivision SRT Gateway 3.8.1\",\"planId\":\"srt-gateway-3-8-1-mi\"}],\"messageCode\":10000,\"icon\":\"https://store-images.s-microsoft.com/image/apps.56129.c5d0ccc5-4bcc-48b8-8c6c-5de4db5102d5.cddb8763-605c-4030-a07f-f0fc548f390d.58c6518d-ded9-4bfe-a7e2-5ee09f96645f\"},{\"offerId\":\"haivisionsystemsinc1580780591922.haivision-kraken\",\"displayName\":\"Haivision Kraken Transcoder\",\"isFuturePlansEnabled\":false,\"plans\":[{\"planDisplayName\":\"Haivision Kraken 3.10.0b\",\"planId\":\"hai-kraken-3_10_0b-byol-vm\"},{\"planDisplayName\":\"Haivision Kraken 3.10.1\",\"planId\":\"hai-kraken-3_10_1-byol-vm\"}],\"messageCode\":10000,\"icon\":\"https://store-images.s-microsoft.com/image/apps.4466.475e9d4d-4cbc-4e8b-92e5-1f8a352f5993.f2b7a742-a4cd-4aa2-a654-2c792c40b780.a8bc4595-054d-4936-9e5b-d578fe3f5126\"},{\"offerId\":\"argoscloudsecurity1605618416175.argoscloudsecurity\",\"displayName\":\"ARGOS Cloud Security - modern cloud security diagrams\",\"isFuturePlansEnabled\":false,\"plans\":[{\"planDisplayName\":\"ARGOS for Teams\",\"planId\":\"argosforteams\"}],\"messageCode\":10000,\"icon\":\"https://store-images.s-microsoft.com/image/apps.30662.8f8a2d3c-0167-4dfd-bdc4-6ef8d833e694.66485f74-9342-4e6d-864c-853c10974805.b9e128f8-9efb-407c-809d-43ba2013326f\"},{\"offerId\":\"haivisionsystemsinc1580780591922.haivision-media-gateway\",\"displayName\":\"Haivision Media Gateway\",\"isFuturePlansEnabled\":false,\"plans\":[{\"planDisplayName\":\"Version 3.8.1\",\"planId\":\"hmg-azu-3-8-1-byol-vm\"}],\"messageCode\":10000,\"icon\":\"https://store-images.s-microsoft.com/image/apps.30282.bb1be070-06d5-430d-89d8-87336b5ac843.bca5a4ff-1dcb-4eb6-83a4-3691138691aa.f5e134eb-08eb-4f07-81bb-74c022a7ed8b\"},{\"offerId\":\"postgres-pro.postgres-pro-enterprise-12-vm\",\"displayName\":\"Postgres Pro Enterprise Database 12 (VM)\",\"isFuturePlansEnabled\":false,\"plans\":[{\"planDisplayName\":\"Postgres Pro Enterprise Database 12.17.1 ( AlmaLinux 8)\",\"planId\":\"pgpro-ent12-almalinux8-x64\"}],\"messageCode\":10000,\"icon\":\"https://store-images.s-microsoft.com/image/apps.57093.1b853248-014c-4f64-8f27-d5e47ccc561a.f26b9c44-1d89-41c9-b2e9-4eea8a9c3f03.5a10a1d7-c332-4e1a-8006-f2550884cc63\"},{\"offerId\":\"teradici.hp_anyware\",\"displayName\":\"HP Anyware, formerly Teradici\",\"isFuturePlansEnabled\":false,\"plans\":[{\"planDisplayName\":\"HP Anyware Agent + NVidia GPU + Win11Pro\",\"planId\":\"hp_awa_nvidia_gpu_win11\"}],\"messageCode\":10000,\"icon\":\"https://store-images.s-microsoft.com/image/apps.4755.7cf48e1e-0a26-4c95-bf3f-315bb62002c8.36623ead-5e98-4797-9a23-fcc9f64df455.bebe9396-8b25-4eeb-a6ec-1e4ca22c515a\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

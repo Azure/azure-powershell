@@ -14,7 +14,8 @@ Retrieve an scheduled query rule definition.
 
 ### List (Default)
 ```
-Get-AzScheduledQueryRule [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzScheduledQueryRule [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get

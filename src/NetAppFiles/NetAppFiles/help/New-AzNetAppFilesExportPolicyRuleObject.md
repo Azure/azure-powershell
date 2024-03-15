@@ -16,7 +16,8 @@ Creates export policy rule object.
 New-AzNetAppFilesExportPolicyRuleObject -RuleIndex <Int32> [-UnixReadOnly] [-UnixReadWrite]
  [-Kerberos5ReadOnly] [-Kerberos5ReadWrite] [-Kerberos5iReadOnly] [-Kerberos5iReadWrite] [-Kerberos5p]
  [-Kerberos5pReadWrite] [-Cifs] [-Nfsv3] [-Nfsv41] [-AllowedClient <String>] [-HasRootAccess]
- [-ChownMode <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ChownMode <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the CustomLocation service.
 
 ---
-## Status
-[![Az.CustomLocation](https://img.shields.io/powershellgallery/v/Az.CustomLocation.svg?style=flat-square&label=Az.CustomLocation "Az.CustomLocation")](https://www.powershellgallery.com/packages/Az.CustomLocation/)
 
 ## Info
 - Modifiable: yes

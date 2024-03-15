@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the EdgeOrder service.
 
 ---
-## Status
-[![Az.EdgeOrder](https://img.shields.io/powershellgallery/v/Az.EdgeOrder.svg?style=flat-square&label=Az.EdgeOrder "Az.EdgeOrder")](https://www.powershellgallery.com/packages/Az.EdgeOrder/)
 
 ## Info
 - Modifiable: yes

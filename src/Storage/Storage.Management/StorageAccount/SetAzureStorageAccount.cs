@@ -219,6 +219,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
             get; set;
         }
 
+        [CmdletParameterBreakingChangeWithVersion("UpgradeToStorageV2", "12.0.0", "7.0.0", ChangeDescription = "A prompt that needs users' confirmation will be added when upgrading a storage account from StorageV1 or BlobStorage to StorageV2. Suppress it with -Force.")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "Upgrade Storage Account Kind to StorageV2.")]

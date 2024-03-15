@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the MarketplaceOrdering service.
 
 ---
-## Status
-[![Az.MarketplaceOrdering](https://img.shields.io/powershellgallery/v/Az.MarketplaceOrdering.svg?style=flat-square&label=Az.MarketplaceOrdering "Az.MarketplaceOrdering")](https://www.powershellgallery.com/packages/Az.MarketplaceOrdering/)
 
 ## Info
 - Modifiable: yes

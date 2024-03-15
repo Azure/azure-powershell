@@ -18,6 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded Azure.Core to 1.37.0.
+
+## Version 5.2.1
+* Supported `HsmPlatform` in `KeyAttributes`.
+
+## Version 5.2.0
 * Supported authentication via User Managed Identity by adding parameter `UseUserManagedIdentity` and making `SasToken` optional.
 
 ## Version 5.1.0

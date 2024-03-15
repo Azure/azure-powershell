@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class BackupWorkloadItemsOperationsExtensions
     {
         /// <summary>
-        /// Provides a pageable list of workload item of a specific container according to the query filter and the pagination
+        /// Provides a pageable list of workload item of a specific container according
+        /// to the query filter and the pagination
         /// parameters.
         /// </summary>
         /// <param name='operations'>
@@ -26,7 +27,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the container.
@@ -43,7 +45,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Provides a pageable list of workload item of a specific container according to the query filter and the pagination
+        /// Provides a pageable list of workload item of a specific container according
+        /// to the query filter and the pagination
         /// parameters.
         /// </summary>
         /// <param name='operations'>
@@ -56,7 +59,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the container.
@@ -78,7 +82,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             }
         }
         /// <summary>
-        /// Provides a pageable list of workload item of a specific container according to the query filter and the pagination
+        /// Provides a pageable list of workload item of a specific container according
+        /// to the query filter and the pagination
         /// parameters.
         /// </summary>
         /// <param name='operations'>
@@ -93,7 +98,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Provides a pageable list of workload item of a specific container according to the query filter and the pagination
+        /// Provides a pageable list of workload item of a specific container according
+        /// to the query filter and the pagination
         /// parameters.
         /// </summary>
         /// <param name='operations'>

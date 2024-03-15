@@ -1,0 +1,52 @@
+{
+  "resourceType": "securityConnectors/gitHubOwners",
+  "apiVersion": "2023-09-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.security"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSecurityConnectorGitHubOwner",
+      "description": "Returns a monitored GitHub owner.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default/gitHubOwners/{ownerName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectorgithubowner"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-OwnerName <String>",
+              "-ResourceGroupName <String>",
+              "-SecurityConnectorName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns a monitored GitHub owner.",
+          "parameters": [
+            {
+              "name": "-OwnerName",
+              "value": "[Path.ownerName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SecurityConnectorName",
+              "value": "[Path.securityConnectorName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -16,21 +16,22 @@ Restore the specified files from the specified snapshot to the active filesystem
 ```
 Restore-AzNetAppFilesSnapshotFile -ResourceGroupName <String> -AccountName <String> -PoolName <String>
  -VolumeName <String> [-Name <String>] -FilePath <String[]> [-DestinationPath <String>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Restore-AzNetAppFilesSnapshotFile [-Name <String>] -FilePath <String[]> [-DestinationPath <String>]
- -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Restore-AzNetAppFilesSnapshotFile [-Name <String>] -FilePath <String[]> [-DestinationPath <String>]
- -VolumeObject <PSNetAppFilesVolume> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -VolumeObject <PSNetAppFilesVolume> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

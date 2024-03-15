@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the redis cache.
@@ -72,9 +72,9 @@ namespace Microsoft.Azure.Management.RedisCache
         /// <param name='linkedServerName'>
         /// The name of the linked server that is being added to the Redis cache.
         /// </param>
-        public static void Delete(this ILinkedServerOperations operations, string resourceGroupName, string name, string linkedServerName)
+        public static LinkedServerDeleteHeaders Delete(this ILinkedServerOperations operations, string resourceGroupName, string name, string linkedServerName)
         {
-                ((ILinkedServerOperations)operations).DeleteAsync(resourceGroupName, name, linkedServerName).GetAwaiter().GetResult();
+                return ((ILinkedServerOperations)operations).DeleteAsync(resourceGroupName, name, linkedServerName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the redis cache.
@@ -95,18 +95,22 @@ namespace Microsoft.Azure.Management.RedisCache
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this ILinkedServerOperations operations, string resourceGroupName, string name, string linkedServerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<LinkedServerDeleteHeaders> DeleteAsync(this ILinkedServerOperations operations, string resourceGroupName, string name, string linkedServerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, name, linkedServerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, name, linkedServerName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
-        /// Gets the detailed information about a linked server of a redis cache (requires Premium SKU).
+        /// Gets the detailed information about a linked server of a redis cache
+        /// (requires Premium SKU).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the redis cache.
@@ -120,13 +124,14 @@ namespace Microsoft.Azure.Management.RedisCache
         }
 
         /// <summary>
-        /// Gets the detailed information about a linked server of a redis cache (requires Premium SKU).
+        /// Gets the detailed information about a linked server of a redis cache
+        /// (requires Premium SKU).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the redis cache.
@@ -145,13 +150,14 @@ namespace Microsoft.Azure.Management.RedisCache
             }
         }
         /// <summary>
-        /// Gets the list of linked servers associated with this redis cache (requires Premium SKU).
+        /// Gets the list of linked servers associated with this redis cache (requires
+        /// Premium SKU).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the redis cache.
@@ -162,13 +168,14 @@ namespace Microsoft.Azure.Management.RedisCache
         }
 
         /// <summary>
-        /// Gets the list of linked servers associated with this redis cache (requires Premium SKU).
+        /// Gets the list of linked servers associated with this redis cache (requires
+        /// Premium SKU).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the redis cache.
@@ -190,7 +197,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -210,7 +217,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the Redis cache.
@@ -235,7 +242,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the redis cache.
@@ -243,9 +250,9 @@ namespace Microsoft.Azure.Management.RedisCache
         /// <param name='linkedServerName'>
         /// The name of the linked server that is being added to the Redis cache.
         /// </param>
-        public static void BeginDelete(this ILinkedServerOperations operations, string resourceGroupName, string name, string linkedServerName)
+        public static LinkedServerDeleteHeaders BeginDelete(this ILinkedServerOperations operations, string resourceGroupName, string name, string linkedServerName)
         {
-                ((ILinkedServerOperations)operations).BeginDeleteAsync(resourceGroupName, name, linkedServerName).GetAwaiter().GetResult();
+                return ((ILinkedServerOperations)operations).BeginDeleteAsync(resourceGroupName, name, linkedServerName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -255,7 +262,7 @@ namespace Microsoft.Azure.Management.RedisCache
         /// The operations group for this extension method.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group.
+        /// The name of the resource group. The name is case insensitive.
         /// </param>
         /// <param name='name'>
         /// The name of the redis cache.
@@ -266,12 +273,16 @@ namespace Microsoft.Azure.Management.RedisCache
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task BeginDeleteAsync(this ILinkedServerOperations operations, string resourceGroupName, string name, string linkedServerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<LinkedServerDeleteHeaders> BeginDeleteAsync(this ILinkedServerOperations operations, string resourceGroupName, string name, string linkedServerName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, name, linkedServerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, name, linkedServerName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
-        /// Gets the list of linked servers associated with this redis cache (requires Premium SKU).
+        /// Gets the list of linked servers associated with this redis cache (requires
+        /// Premium SKU).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -285,7 +296,8 @@ namespace Microsoft.Azure.Management.RedisCache
         }
 
         /// <summary>
-        /// Gets the list of linked servers associated with this redis cache (requires Premium SKU).
+        /// Gets the list of linked servers associated with this redis cache (requires
+        /// Premium SKU).
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

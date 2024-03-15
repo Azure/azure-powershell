@@ -24,7 +24,6 @@ using Microsoft.Azure.PowerShell.Cmdlets.CosmosDB.Exceptions;
 using Microsoft.Azure.Commands.CosmosDB.Exceptions;
 using Microsoft.Azure.Management.CosmosDB;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Collections;
 
 namespace Microsoft.Azure.Commands.CosmosDB
@@ -51,6 +50,91 @@ namespace Microsoft.Azure.Commands.CosmosDB
 
         [Parameter(Mandatory = false, HelpMessage = Constants.ResourceRestoreTimestampHelpMessage)]
         public DateTime RestoreTimestampInUtc { get; set; }
+
+        public (DateTime, DateTime, string) ProcessRestorableDatabases(IEnumerable restorableDatabases)
+        {
+            DateTime latestDatabaseDeleteTime = DateTime.MinValue;
+            DateTime latestDatabaseCreateOrRecreateTime = DateTime.MinValue;
+            string databaseRid = null;
+
+            foreach (RestorableGremlinDatabaseGetResult restorableDatabase in restorableDatabases)
+            {
+                RestorableGremlinDatabasePropertiesResource resource = restorableDatabase.Resource;
+
+                if (resource != null && resource.OwnerId.Equals(this.DatabaseName))
+                {
+                    databaseRid = resource.OwnerResourceId;
+                    var eventTimestamp = DateTime.Parse(resource.EventTimestamp);
+                    if (resource.OperationType == "Delete" && latestDatabaseDeleteTime < eventTimestamp)
+                    {
+                        latestDatabaseDeleteTime = eventTimestamp;
+                    }
+
+                    if ((resource.OperationType == "Create" || resource.OperationType == "Recreate") && latestDatabaseCreateOrRecreateTime < eventTimestamp)
+                    {
+                        latestDatabaseCreateOrRecreateTime = eventTimestamp;
+                    }
+                }
+            }
+
+            if (databaseRid == null)
+            {
+                this.WriteWarning($"No restorable database found with name: {this.DatabaseName}");
+                return (latestDatabaseDeleteTime, latestDatabaseCreateOrRecreateTime, databaseRid);
+            }
+
+            // Database never deleted then reset it to max time
+            if (latestDatabaseDeleteTime == DateTime.MinValue)
+            {
+                latestDatabaseDeleteTime = DateTime.MaxValue;
+            }
+
+            this.WriteDebug($"ProcessRestorableDatabases: latestDatabaseDeleteTime {latestDatabaseDeleteTime}," +
+                $" latestDatabaseCreateOrRecreateTime {latestDatabaseCreateOrRecreateTime}, databaseName {this.DatabaseName}, databaseRid {databaseRid}");
+
+            return (latestDatabaseDeleteTime, latestDatabaseCreateOrRecreateTime, databaseRid);
+        }
+
+        public (DateTime, DateTime, string) ProcessRestorableCollections(IEnumerable restorableCollections)
+        {
+            DateTime latestCollectionDeleteTime = DateTime.MinValue;
+            DateTime latestCollectionCreateOrRecreateTime = DateTime.MinValue;
+            string collectionRid = null;
+
+            foreach (RestorableGremlinGraphGetResult restorableCollection in restorableCollections)
+            {
+                RestorableGremlinGraphPropertiesResource resource = restorableCollection.Resource;
+
+                if (resource != null && resource.OwnerId.Equals(this.Name))
+                {
+                    collectionRid = resource.OwnerResourceId;
+                    var eventTimestamp = DateTime.Parse(resource.EventTimestamp);
+                    if (resource.OperationType == "Delete" && latestCollectionDeleteTime < eventTimestamp)
+                    {
+                        latestCollectionDeleteTime = eventTimestamp;
+                    }
+
+                    if ((resource.OperationType == "Create" || resource.OperationType == "Recreate") && latestCollectionCreateOrRecreateTime < eventTimestamp)
+                    {
+                        latestCollectionCreateOrRecreateTime = eventTimestamp;
+                    }
+                }
+            }
+
+            if (collectionRid == null)
+            {
+                this.WriteWarning($"No restorable collection found with name: {this.Name} in database with name: {this.DatabaseName}");
+                return (latestCollectionDeleteTime, latestCollectionCreateOrRecreateTime, collectionRid);
+            }
+
+            // Collection never deleted then reset it to max time
+            latestCollectionDeleteTime = latestCollectionDeleteTime == DateTime.MinValue ? DateTime.MaxValue : latestCollectionDeleteTime;
+
+            this.WriteDebug($"ProcessRestorableCollections: latestCollectionDeleteTime {latestCollectionDeleteTime}," +
+                $" latestCollectionCreateOrRecreateTime {latestCollectionCreateOrRecreateTime}, databaseName {this.DatabaseName}, collectionName {this.Name}");
+
+            return (latestCollectionDeleteTime, latestCollectionCreateOrRecreateTime, collectionRid);
+        }
 
         public override void ExecuteCmdlet()
         {
@@ -125,76 +209,47 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 }
 
                 string accountInstanceId = databaseAccount.Name;
-                DateTime latestDatabaseDeleteTime = DateTime.MinValue;
-                DateTime latestDatabaseCreateOrRecreateTime = DateTime.MinValue;
-                DateTime latestCollectionDeleteTime = DateTime.MinValue;
-                DateTime latestCollectionCreateOrRecreateTime = DateTime.MinValue;
-                string databaseRid = string.Empty;
-                string collectionRid = string.Empty;
-
                 IEnumerable restorableGremlinDatabases = CosmosDBManagementClient.RestorableGremlinDatabases.ListWithHttpMessagesAsync(databaseAccount.Location, accountInstanceId).GetAwaiter().GetResult().Body;
-                foreach (RestorableGremlinDatabaseGetResult restorableGremlinDatabase in restorableGremlinDatabases)
-                {
-                    if (restorableGremlinDatabase.Resource.OwnerId.Equals(DatabaseName))
-                    {
-                        databaseRid = restorableGremlinDatabase.Resource.OwnerResourceId;
-                        DateTime eventDateTime = DateTime.Parse(restorableGremlinDatabase.Resource.EventTimestamp);
-                        if (restorableGremlinDatabase.Resource.OperationType.Equals(OperationType.Delete) && latestDatabaseDeleteTime < eventDateTime)
-                        {
-                            latestDatabaseDeleteTime = eventDateTime;
-                        }
+                (DateTime latestDatabaseDeleteTime, DateTime latestDatabaseCreateOrRecreateTime, string databaseRid) = ProcessRestorableDatabases(restorableGremlinDatabases);
 
-                        if ((restorableGremlinDatabase.Resource.OperationType.Equals(OperationType.Create) || restorableGremlinDatabase.Resource.OperationType.Equals(OperationType.Recreate)) && latestDatabaseCreateOrRecreateTime < eventDateTime)
-                        {
-                            latestDatabaseCreateOrRecreateTime = eventDateTime;
-                        }
-                    }
+                if (databaseRid == null)
+                {
+                    return;
                 }
 
-                if (latestDatabaseDeleteTime == default(DateTime))
+                // Database is alive if create or recreate timestamp is later than latest delete timestamp
+                bool isDatabaseAlive = latestDatabaseCreateOrRecreateTime > latestDatabaseDeleteTime || latestDatabaseDeleteTime == DateTime.MaxValue;
+
+                if (!isDatabaseAlive)
                 {
-                    latestDatabaseDeleteTime = DateTime.MaxValue;
+                    this.WriteWarning($"No active database with name {this.DatabaseName} found that contains the collection {this.Name} in location {databaseAccount.Location}");
+                    return;
                 }
 
-                IEnumerable restorableGremlinGraphs = CosmosDBManagementClient.RestorableGremlinGraphs.ListWithHttpMessagesAsync(
+                IEnumerable restorableGremlinGraphContainers = CosmosDBManagementClient.RestorableGremlinGraphs.ListWithHttpMessagesAsync(
                     databaseAccount.Location,
                     accountInstanceId,
-                    databaseRid,
-                    latestDatabaseCreateOrRecreateTime.ToString(),
-                    (latestDatabaseCreateOrRecreateTime < latestDatabaseDeleteTime) ? latestDatabaseDeleteTime.ToString() : DateTime.MaxValue.ToString()).GetAwaiter().GetResult().Body;
+                    databaseRid).GetAwaiter().GetResult().Body;
 
-                foreach (RestorableGremlinGraphGetResult restorableGremlinGraph in restorableGremlinGraphs)
+                (DateTime latestCollectionDeleteTime, DateTime latestCollectionCreateOrRecreateTime, string collectionRid) = ProcessRestorableCollections(restorableGremlinGraphContainers);
+
+                if (collectionRid == null)
                 {
-                    if (restorableGremlinGraph.Resource.OwnerId.Equals(Name))
-                    {
-                        collectionRid = restorableGremlinGraph.Resource.Rid;
-                        DateTime eventDateTime = DateTime.Parse(restorableGremlinGraph.Resource.EventTimestamp);
-                        if (restorableGremlinGraph.Resource.OperationType.Equals(OperationType.Delete) && latestCollectionDeleteTime < eventDateTime && eventDateTime <= latestDatabaseDeleteTime)
-                        {
-                            latestCollectionDeleteTime = eventDateTime;
-                        }
+                    return;
+                }
 
-                        if ((restorableGremlinGraph.Resource.OperationType.Equals(OperationType.Create) || restorableGremlinGraph.Resource.OperationType.Equals(OperationType.Recreate)) && latestCollectionDeleteTime < eventDateTime)
-                        {
-                            latestCollectionCreateOrRecreateTime = eventDateTime;
-                        }
-                    }
+                // Collection is alive if create or recreate timestamp is later than latest delete timestamp
+                bool isCollectionAlive = latestCollectionCreateOrRecreateTime > latestCollectionDeleteTime || latestCollectionDeleteTime == DateTime.MaxValue;
+
+                if (isCollectionAlive)
+                {
+                    this.WriteWarning($"The collection {this.Name} in database {this.DatabaseName} is currently online. " +
+                        $"Please delete the collection and provide a restore timestamp for restoring different instance of the collection. in location {databaseAccount.Location}");
+                    return;
                 }
 
                 //Subtracting 1 second from delete timestamp to restore till end of logchain in no timestamp restore.
-                if (latestCollectionDeleteTime < latestCollectionCreateOrRecreateTime && latestCollectionCreateOrRecreateTime < latestDatabaseDeleteTime)
-                {
-                    utcRestoreDateTime = latestDatabaseDeleteTime.AddSeconds(-1);
-                }
-                else if (latestCollectionCreateOrRecreateTime < latestCollectionDeleteTime && latestCollectionDeleteTime <= latestDatabaseDeleteTime)
-                {
-                    utcRestoreDateTime = latestCollectionDeleteTime.AddSeconds(-1);
-                }
-                else
-                {
-                    this.WriteWarning($"No graph with name {Name} existed in the current version of database. Please provide a restore timestamp for restoring the graph from different instance of the database");
-                    return;
-                }
+                utcRestoreDateTime = latestCollectionDeleteTime.AddSeconds(-1);
             }
             
 

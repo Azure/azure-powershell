@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the DeviceUpdate service.
 
 ---
-## Status
-[![Az.DeviceUpdate](https://img.shields.io/powershellgallery/v/Az.DeviceUpdate.svg?style=flat-square&label=Az.DeviceUpdate "Az.DeviceUpdate")](https://www.powershellgallery.com/packages/Az.DeviceUpdate/)
 
 ## Info
 - Modifiable: yes

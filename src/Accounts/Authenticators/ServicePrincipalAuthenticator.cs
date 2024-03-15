@@ -42,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             var clientId = spParameters.ApplicationId;
             var authority = spParameters.Environment.ActiveDirectoryAuthority;
 
-            var requestContext = new TokenRequestContext(scopes);
+            var requestContext = new TokenRequestContext(scopes, isCaeEnabled: true);
             // var tokenCachePersistenceOptions = spParameters.TokenCacheProvider.GetTokenCachePersistenceOptions();
             AzureSession.Instance.TryGetComponent(nameof(AzureCredentialFactory), out AzureCredentialFactory azureCredentialFactory);
 

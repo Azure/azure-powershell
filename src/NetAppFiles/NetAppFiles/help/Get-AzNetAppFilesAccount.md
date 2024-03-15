@@ -20,7 +20,8 @@ Get-AzNetAppFilesAccount -ResourceGroupName <String> [-Name <String>]
 
 ### ByResourceIdParameterSet
 ```
-Get-AzNetAppFilesAccount -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzNetAppFilesAccount -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -25,7 +25,8 @@ Get-AzMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-StartTime <DateTim
 Get-AzMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-AggregationType <AggregationType>]
  [-StartTime <DateTime>] [-EndTime <DateTime>] [-Top <Int32>] [-OrderBy <String>] [-MetricNamespace <String>]
  [-ResultType <ResultType>] [-MetricFilter <String>] [-Dimension <String[]>] [-MetricName] <String[]>
- [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -469,5 +470,3 @@ https://learn.microsoft.com/azure/azure-monitor/platform/metrics-supported
 
 [Get-AzMetricDefinition](./Get-AzMetricDefinition.md)
 [New-AzMetricFilter](./New-AzMetricFilter.md)
-
-

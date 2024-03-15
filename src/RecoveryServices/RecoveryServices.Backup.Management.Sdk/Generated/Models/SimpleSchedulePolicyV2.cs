@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="scheduleRunFrequency">Frequency of the schedule operation of this policy.
-        /// Possible values include: 'Invalid', 'Daily', 'Weekly', 'Hourly'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Daily&#39;, &#39;Weekly&#39;, &#39;Hourly&#39;</param>
 
         /// <param name="hourlySchedule">hourly schedule of this policy
         /// </param>

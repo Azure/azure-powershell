@@ -32,6 +32,7 @@ using Microsoft.Azure.Management.Resources;
 using Microsoft.Azure.Management.Resources.Models;
 using ProjectResources = Microsoft.Azure.Commands.ResourceManager.Cmdlets.Properties.Resources;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels.Deployments;
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
 {
@@ -393,9 +394,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         public PSDeploymentStack ResourceGroupCreateOrUpdateDeploymentStack(
             string deploymentStackName,
             string resourceGroupName,
+            string templateFile,
             string templateUri,
             string templateSpec,
-            string templateJson,
+            Hashtable templateObject,
             string parameterUri,
             Hashtable parameters,
             string description,
@@ -409,64 +411,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             Hashtable tags
             )
         {
-            var actionOnUnmanage = new DeploymentStackPropertiesActionOnUnmanage
-            {
-                Resources = resourcesCleanupAction,
-                ResourceGroups = resourceGroupsCleanupAction,
-                ManagementGroups = managementGroupsCleanupAction
-            };
-
-            var denySettings = new DenySettings
-            {
-                Mode = denySettingsMode,
-                ExcludedPrincipals = denySettingsExcludedPrincipals,
-                ExcludedActions = denySettingsExcludedActions,
-                ApplyToChildScopes = denySettingsApplyToChildScopes
-            };
-
-            var deploymentStackModel = new DeploymentStack
-            {
-                Description = description,
-                ActionOnUnmanage = actionOnUnmanage,
-                DenySettings = denySettings,
-                Tags = TagsHelper.ConvertToTagsDictionary(tags)
-            };
-
-            DeploymentStacksTemplateLink templateLink = new DeploymentStacksTemplateLink();
-            if (templateSpec != null)
-            {
-                templateLink.Id = templateSpec;
-                deploymentStackModel.TemplateLink = templateLink;
-            }
-            else if (Uri.IsWellFormedUriString(templateUri, UriKind.Absolute))
-            {
-                templateLink.Uri = templateUri;
-                deploymentStackModel.TemplateLink = templateLink;
-            }
-            else
-            {
-                deploymentStackModel.Template = JObject.Parse(templateJson ?? FileUtilities.DataStore.ReadFileAsText(templateUri));
-            }
-
-            if (Uri.IsWellFormedUriString(parameterUri, UriKind.Absolute))
-            {
-                DeploymentStacksParametersLink parametersLink = new DeploymentStacksParametersLink();
-                parametersLink.Uri = parameterUri;
-                deploymentStackModel.ParametersLink = parametersLink;
-            }
-
-            else if (parameters != null)
-            {
-                Dictionary<string, object> parametersDictionary = parameters?.ToDictionary(false);
-                string parametersContent = parametersDictionary != null
-                    ? PSJsonSerializer.Serialize(parametersDictionary)
-                    : null;
-                deploymentStackModel.Parameters = !string.IsNullOrEmpty(parametersContent)
-                    ? JObject.Parse(parametersContent)
-                    : null;
-            }
-
-
+            // Create Deployment stack deployment model:
+            var deploymentStackModel = CreateDeploymentStackModel(
+                location: null,
+                templateFile,
+                templateUri,
+                templateSpec,
+                templateObject,
+                parameterUri,
+                parameters,
+                description,
+                resourcesCleanupAction,
+                resourceGroupsCleanupAction,
+                managementGroupsCleanupAction,
+                deploymentScope: null,
+                denySettingsMode,
+                denySettingsExcludedPrincipals,
+                denySettingsExcludedActions,
+                denySettingsApplyToChildScopes,
+                tags
+                );
 
             var deploymentStack = DeploymentStacksClient.DeploymentStacks.BeginCreateOrUpdateAtResourceGroup(resourceGroupName, deploymentStackName, deploymentStackModel);
             var getStackFunc = this.GetStackAction(deploymentStackName, "resourceGroup", rgName: resourceGroupName);
@@ -478,6 +442,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 "Failed",
                 "Canceled"
                 );
+
             errorValidation(finalStack);
             return new PSDeploymentStack(finalStack);
         }
@@ -518,9 +483,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
         public PSDeploymentStack SubscriptionCreateOrUpdateDeploymentStack(
             string deploymentStackName,
             string location,
+            string templateFile,
             string templateUri,
             string templateSpec,
-            string templateJson,
+            Hashtable templateObject,
             string parameterUri,
             Hashtable parameters,
             string description,
@@ -535,64 +501,26 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             Hashtable tags
         )
         {
-            var actionOnUnmanage = new DeploymentStackPropertiesActionOnUnmanage
-            {
-                Resources = resourcesCleanupAction,
-                ResourceGroups = resourceGroupsCleanupAction,
-                ManagementGroups = managementGroupsCleanupAction
-            };
-
-            var denySettings = new DenySettings
-            {
-                Mode = denySettingsMode,
-                ExcludedPrincipals = denySettingsExcludedPrincipals,
-                ExcludedActions = denySettingsExcludedActions,
-                ApplyToChildScopes = denySettingsApplyToChildScopes
-            };
-
-            var deploymentStackModel = new DeploymentStack
-            {
-                Description = description,
-                Location = location,
-                ActionOnUnmanage = actionOnUnmanage,
-                DeploymentScope = deploymentScope,
-                DenySettings = denySettings,
-                Tags = TagsHelper.ConvertToTagsDictionary(tags)
-            };
-
-            DeploymentStacksTemplateLink templateLink = new DeploymentStacksTemplateLink();
-            if (templateSpec != null)
-            {
-                templateLink.Id = templateSpec;
-                deploymentStackModel.TemplateLink = templateLink;
-            }
-            else if (Uri.IsWellFormedUriString(templateUri, UriKind.Absolute))
-            {
-                templateLink.Uri = templateUri;
-                deploymentStackModel.TemplateLink = templateLink;
-            }
-            else
-            {
-                deploymentStackModel.Template = JObject.Parse(templateJson ?? FileUtilities.DataStore.ReadFileAsText(templateUri));
-            }
-
-            if (Uri.IsWellFormedUriString(parameterUri, UriKind.Absolute))
-            {
-                DeploymentStacksParametersLink parametersLink = new DeploymentStacksParametersLink();
-                parametersLink.Uri = parameterUri;
-                deploymentStackModel.ParametersLink = parametersLink;
-            }
-
-            else if (parameters != null)
-            {
-                Dictionary<string, object> parametersDictionary = parameters?.ToDictionary(false);
-                string parametersContent = parametersDictionary != null
-                    ? PSJsonSerializer.Serialize(parametersDictionary)
-                    : null;
-                deploymentStackModel.Parameters = !string.IsNullOrEmpty(parametersContent)
-                    ? JObject.Parse(parametersContent)
-                    : null;
-            }
+            // Create Deployment stack deployment model:
+            var deploymentStackModel = CreateDeploymentStackModel(
+                location,
+                templateFile,
+                templateUri,
+                templateSpec,
+                templateObject,
+                parameterUri,
+                parameters,
+                description,
+                resourcesCleanupAction,
+                resourceGroupsCleanupAction,
+                managementGroupsCleanupAction,
+                deploymentScope,
+                denySettingsMode,
+                denySettingsExcludedPrincipals,
+                denySettingsExcludedActions,
+                denySettingsApplyToChildScopes,
+                tags
+                );
 
             var deploymentStack = DeploymentStacksClient.DeploymentStacks.BeginCreateOrUpdateAtSubscription(deploymentStackName, deploymentStackModel);
             var getStackFunc = this.GetStackAction(deploymentStackName, "subscription");
@@ -630,9 +558,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             string deploymentStackName,
             string managementGroupId,
             string location,
+            string templateFile,
             string templateUri,
             string templateSpec,
-            string templateJson,
+            Hashtable templateObject,
             string parameterUri,
             Hashtable parameters,
             string description,
@@ -646,6 +575,65 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
             bool denySettingsApplyToChildScopes,
             Hashtable tags
         )
+        {
+            // Create Deployment stack deployment model:
+            var deploymentStackModel = CreateDeploymentStackModel(
+                location,
+                templateFile,
+                templateUri,
+                templateSpec,
+                templateObject,
+                parameterUri,
+                parameters,
+                description,
+                resourcesCleanupAction,
+                resourceGroupsCleanupAction,
+                managementGroupsCleanupAction,
+                deploymentScope,
+                denySettingsMode,
+                denySettingsExcludedPrincipals,
+                denySettingsExcludedActions,
+                denySettingsApplyToChildScopes,
+                tags
+                );
+
+            var deploymentStack = DeploymentStacksClient.DeploymentStacks.BeginCreateOrUpdateAtManagementGroup(managementGroupId,
+                deploymentStackName, deploymentStackModel);
+
+            // TODO: This should not be a defaulted parameter
+            var getStackFunc = this.GetStackAction(deploymentStackName, "managementGroup", mgId: managementGroupId);
+
+            var finalStack = this.waitStackCompletion(
+                getStackFunc,
+                "Succeeded",
+                "SucceededWithFailures",
+                "Failed",
+                "Canceled"
+                );
+
+            errorValidation(finalStack);
+            return new PSDeploymentStack(finalStack);
+        }
+
+        public DeploymentStack CreateDeploymentStackModel(
+           string location,
+           string templateFile,
+           string templateUri,
+           string templateSpec,
+           Hashtable templateObject,
+           string parameterUri,
+           Hashtable parameters,
+           string description,
+           string resourcesCleanupAction,
+           string resourceGroupsCleanupAction,
+           string managementGroupsCleanupAction,
+           string deploymentScope,
+           string denySettingsMode,
+           string[] denySettingsExcludedPrincipals,
+           string[] denySettingsExcludedActions,
+           bool denySettingsApplyToChildScopes,
+           Hashtable tags
+       )
         {
             var actionOnUnmanage = new DeploymentStackPropertiesActionOnUnmanage
             {
@@ -671,29 +659,41 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                 Tags = TagsHelper.ConvertToTagsDictionary(tags)
             };
 
-            DeploymentStacksTemplateLink templateLink = new DeploymentStacksTemplateLink();
+            // Evaulate Template:
             if (templateSpec != null)
             {
-                templateLink.Id = templateSpec;
-                deploymentStackModel.TemplateLink = templateLink;
+                deploymentStackModel.TemplateLink = new DeploymentStacksTemplateLink
+                {
+                    Id = templateSpec,
+                };
             }
             else if (Uri.IsWellFormedUriString(templateUri, UriKind.Absolute))
             {
-                templateLink.Uri = templateUri;
-                deploymentStackModel.TemplateLink = templateLink;
+                deploymentStackModel.TemplateLink = new DeploymentStacksTemplateLink
+                {
+                    Uri = templateUri,
+                };
+            }
+            else if (!string.IsNullOrEmpty(templateFile))
+            {
+                // NOTE(jcotillo): JsonExtensions.FromJson<> extension uses a custom serialization settings
+                // that preserves DateTime values as string (DateParseHandling = DateParseHandling.None),
+                // plus other custom settings (see: JsonExtensions.JsonObjectTypeSerializer)
+                deploymentStackModel.Template =
+                    FileUtilities.DataStore.ReadFileAsStream(templateFile).FromJson<JObject>();
             }
             else
             {
-                deploymentStackModel.Template = JObject.Parse(templateJson ?? FileUtilities.DataStore.ReadFileAsText(templateUri));
+                deploymentStackModel.Template = templateObject.ToJToken();
             }
 
+            // Evaluate Template Parameters:
             if (Uri.IsWellFormedUriString(parameterUri, UriKind.Absolute))
             {
                 DeploymentStacksParametersLink parametersLink = new DeploymentStacksParametersLink();
                 parametersLink.Uri = parameterUri;
                 deploymentStackModel.ParametersLink = parametersLink;
             }
-
             else if (parameters != null)
             {
                 Dictionary<string, object> parametersDictionary = parameters?.ToDictionary(false);
@@ -705,23 +705,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     : null;
             }
 
-            var deploymentStack = DeploymentStacksClient.DeploymentStacks.BeginCreateOrUpdateAtManagementGroup(managementGroupId,
-                deploymentStackName, deploymentStackModel);
-
-            // TODO: This should not be a defaulted parameter
-            var getStackFunc = this.GetStackAction(deploymentStackName, "managementGroup", mgId: managementGroupId);
-
-            var finalStack = this.waitStackCompletion(
-                getStackFunc,
-                "Succeeded",
-                "SucceededWithFailures",
-                "Failed",
-                "Canceled"
-                );
-
-            errorValidation(finalStack);
-            return new PSDeploymentStack(finalStack);
+            return deploymentStackModel;
         }
+
 
         private void errorValidation(DeploymentStack deploymentStack)
         {

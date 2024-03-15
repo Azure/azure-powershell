@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Pool
 {
@@ -71,8 +72,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
         {
             if (ShouldProcess(NetworkSiblingSetId, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateNetworkSiblingSet, NetworkSiblingSetId)))
             {
-                var anfNetworkSiblingSet = AzureNetAppFilesManagementClient.NetAppResource.UpdateNetworkSiblingSet(Location, NetworkSiblingSetId, SubnetId, NetworkSiblingSetStateId, NetworkFeature).ConvertToPs();
-                WriteObject(anfNetworkSiblingSet);
+                try
+                {
+                    var anfNetworkSiblingSet = AzureNetAppFilesManagementClient.NetAppResource.UpdateNetworkSiblingSet(Location, NetworkSiblingSetId, SubnetId, NetworkSiblingSetStateId, NetworkFeature).ConvertToPs();
+                    WriteObject(anfNetworkSiblingSet);
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

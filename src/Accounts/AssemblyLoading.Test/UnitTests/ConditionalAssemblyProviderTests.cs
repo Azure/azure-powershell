@@ -25,7 +25,6 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
     {
         private const string NetFx = "netfx";
         private const string NetStandard20 = "netstandard2.0";
-        private const string NetCoreApp21 = "netcoreapp2.1";
         private const string RootPath = "root";
 
         [Fact]
@@ -43,7 +42,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
             var assemblies = ConditionalAssemblyProvider.GetAssemblies();
 
             Assert.True(assemblies.TryGetValue("Azure.Core", out var azureCore));
-            Assert.Equal(GetExpectedAssemblyPath(NetFx, "Azure.Core"), azureCore.Path);
+            Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "Azure.Core"), azureCore.Path);
             Assert.True(assemblies.TryGetValue("Newtonsoft.Json", out var newtonsoftJson));
             Assert.Equal(GetExpectedAssemblyPath(NetFx, "Newtonsoft.Json"), newtonsoftJson.Path);
 
@@ -66,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.AssemblyLoading.Test.UnitTests
             var assemblies = ConditionalAssemblyProvider.GetAssemblies();
 
             Assert.True(assemblies.TryGetValue("Azure.Core", out var azureCore));
-            Assert.Equal(GetExpectedAssemblyPath(NetCoreApp21, "Azure.Core"), azureCore.Path);
+            Assert.Equal(GetExpectedAssemblyPath(NetStandard20, "Azure.Core"), azureCore.Path);
 
             Assert.False(assemblies.TryGetValue("Newtonsoft.Json", out _));
 

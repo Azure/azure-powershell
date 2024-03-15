@@ -142,7 +142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         Description = @"Resource tags",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITagsResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITagsResourceTags Tag { get => _privateLinkScopeTagsBody.Tag ?? null /* object */; set => _privateLinkScopeTagsBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITagsResourceTags Tag { get => _privateLinkScopeTagsBody.Tags ?? null /* object */; set => _privateLinkScopeTagsBody.Tags = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what

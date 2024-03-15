@@ -27,6 +27,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation
     /// <summary>
     /// Gets the policy exemption.
     /// </summary>
+    [CmdletOutputBreakingChangeWithVersion(
+        typeof(PsPolicyExemption), deprecateByAzVersion: "12.0.0", deprecateByVersion: "7.1.0", DeprecatedOutputProperties = new[] { "Properties" },
+        NewOutputProperties = new[] { "Description", "DisplayName", "ExemptionCategory", "ExpiresOn", "Metadata", "PolicyAssignmentId", "PolicyDefinitionReferenceIds" })]
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "PolicyExemption", DefaultParameterSetName = PolicyCmdletBase.NameParameterSet), OutputType(typeof(PsPolicyExemption))]
     public class GetAzurePolicyExemptionCmdlet : PolicyCmdletBase
     {
