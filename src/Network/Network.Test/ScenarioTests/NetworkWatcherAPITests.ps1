@@ -1534,6 +1534,24 @@ function Test-ConnectionMonitor
         $result = $rmJob | Receive-Job
         Wait-Vm $vm
 
+        # Before converting, check connection monitor exists or not
+        #Convert connection monitor v2 to v2
+        $alreadyConverted = $true
+        $cm1 = Get-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw.Name -ResourceGroupName $nw.ResourceGroupName -Name $cmName1
+        Assert-NotNull $cm1
+        
+        $job1 = Convert-AzNetworkWatcherClassicConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cm1.Name -AsJob
+        $job1 | Wait-Job
+
+        if($cm1.ConnectionMonitorType -eq "SingleSourceDestination")
+        {
+            Assert-NotNull $job1
+        }
+        else
+        {
+            Assert-True { alreadyConverted }
+        }
+
         Assert-ThrowsLike { Set-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name "fakeName" -SourceResourceId $vm.Id -DestinationAddress test.com -DestinationPort 80 -MonitoringIntervalInSeconds 42 } "*not*found*"
 
         # TODO: check if really deleted
