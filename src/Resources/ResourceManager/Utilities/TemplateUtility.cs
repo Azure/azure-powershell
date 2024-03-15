@@ -289,7 +289,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
 
                     if (dynamicParameters.TryGetValue(dynamicParamName, out RuntimeDefinedParameter dynamicParameter))
                     {
-                        // Param exists in the template parameter object, so set it:
+                        // Param exists in the template parameter object, so set it not mandatory, so the user won't be prompted for it:
                         dynamicParameter.IsSet = true;
                         ((ParameterAttribute)dynamicParameter.Attributes[0]).Mandatory = false;
                     }
@@ -417,7 +417,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 // For duplicated template parameter names, add a suffix FromTemplate to distinguish them from the cmdlet parameter.
                 Name = staticParameters.Contains(name, StringComparer.OrdinalIgnoreCase) ? name + duplicatedParameterSuffix : name,
                 ParameterType = GetParameterType(paramType.Type),
-                Value = paramDefinition.DefaultValue
+                Value = paramDefinition.DefaultValue,
+                // A dynamic parameter is not auto-set:
+                IsSet = false
             };
             runtimeParameter.Attributes.Add(new ParameterAttribute()
             {
