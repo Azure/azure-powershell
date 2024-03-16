@@ -59,15 +59,55 @@ Add a new SenderUsername resource under the parent Domains resource or update an
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Updates custom domain sender username resource.
+```powershell
 Update-AzEmailServiceSenderUsername -SenderUsername test -Username test -DisplayName testdisplayname -DomainName testcustomdomain2.net -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 ```
 
-### EXAMPLE 2
+```output
+DataLocation                 :
+DisplayName                  : testdisplayname
+Id                           : /subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/ContosoResourceProvider1/providers/Microsoft.Communication/emailServices/
+                               ContosoAcsResource1/domains/testcustomdomain2.net/senderUsernames/test
+Name                         : test
+ProvisioningState            : Succeeded
+ResourceGroupName            : ContosoResourceProvider1
+SystemDataCreatedAt          : 21-02-2024 09:17:38
+SystemDataCreatedBy          : test@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 21-02-2024 09:17:38
+SystemDataLastModifiedBy     : test@microsoft.com
+SystemDataLastModifiedByType : User
+Type                         : microsoft.communication/emailservices/domains/senderusernames
+Username                     : test
 ```
+
+Updates custom sender username resource with provided parameters.
+
+### Example 2: Updates azure managed domain sender username resource.
+```powershell
 Update-AzEmailServiceSenderUsername -SenderUsername test -Username test -DisplayName testAzureDomaindisplayname -DomainName AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 ```
+
+```output
+DataLocation                 :
+DisplayName                  : testAzureDomaindisplayname
+Id                           : /subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/ContosoResourceProvider1/providers/Microsoft.Communication/emailServices/
+                               ContosoAcsResource1/domains/AzureManagedDomain/senderUsernames/test
+Name                         : test
+ProvisioningState            : Succeeded
+ResourceGroupName            : ContosoResourceProvider1
+SystemDataCreatedAt          : 21-02-2024 09:34:29
+SystemDataCreatedBy          : test@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 21-02-2024 09:34:29
+SystemDataLastModifiedBy     : test@microsoft.com
+SystemDataLastModifiedByType : User
+Type                         : microsoft.communication/emailservices/domains/senderusernames
+Username                     : test
+```
+
+Updates azure managed sender username resource with provided parameters.
 
 ## PARAMETERS
 
@@ -76,7 +116,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -91,7 +131,7 @@ Accept wildcard characters: False
 The display name for the senderUsername.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityEmailServiceExpanded, UpdateViaIdentityDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -106,7 +146,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: IEmailServiceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity
 Parameter Sets: UpdateViaIdentityDomainExpanded, UpdateViaIdentityDomain
 Aliases:
 
@@ -121,7 +161,7 @@ Accept wildcard characters: False
 The name of the Domains resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityEmailServiceExpanded, UpdateViaIdentityEmailService
 Aliases:
 
@@ -136,7 +176,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: IEmailServiceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity
 Parameter Sets: UpdateViaIdentityEmailServiceExpanded, UpdateViaIdentityEmailService
 Aliases:
 
@@ -151,7 +191,7 @@ Accept wildcard characters: False
 The name of the EmailService resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -166,7 +206,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: IEmailServiceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -181,7 +221,7 @@ Accept wildcard characters: False
 A class representing a SenderUsername resource.
 
 ```yaml
-Type: ISenderUsernameResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.ISenderUsernameResource
 Parameter Sets: UpdateViaIdentityEmailService, UpdateViaIdentityDomain
 Aliases:
 
@@ -196,7 +236,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -212,7 +252,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -227,7 +267,7 @@ Accept wildcard characters: False
 The valid sender Username.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityEmailServiceExpanded, UpdateViaIdentityEmailService, UpdateViaIdentityDomainExpanded, UpdateViaIdentityDomain
 Aliases:
 
@@ -243,13 +283,13 @@ The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -258,7 +298,7 @@ Accept wildcard characters: False
 A sender senderUsername to be used when sending emails.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityEmailServiceExpanded, UpdateViaIdentityDomainExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -273,7 +313,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -289,7 +329,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -306,51 +346,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity
+
 ### Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.ISenderUsernameResource
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.ISenderUsernameResource
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-DOMAININPUTOBJECT \<IEmailServiceIdentity\>: Identity Parameter
-  \[DomainName \<String\>\]: The name of the Domains resource.
-  \[EmailServiceName \<String\>\]: The name of the EmailService resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[SenderUsername \<String\>\]: The valid sender Username.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-The value must be an UUID.
-
-EMAILSERVICEINPUTOBJECT \<IEmailServiceIdentity\>: Identity Parameter
-  \[DomainName \<String\>\]: The name of the Domains resource.
-  \[EmailServiceName \<String\>\]: The name of the EmailService resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[SenderUsername \<String\>\]: The valid sender Username.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-The value must be an UUID.
-
-INPUTOBJECT \<IEmailServiceIdentity\>: Identity Parameter
-  \[DomainName \<String\>\]: The name of the Domains resource.
-  \[EmailServiceName \<String\>\]: The name of the EmailService resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[SenderUsername \<String\>\]: The valid sender Username.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-The value must be an UUID.
-
-PARAMETER \<ISenderUsernameResource\>: A class representing a SenderUsername resource.
-  \[DisplayName \<String\>\]: The display name for the senderUsername.
-  \[Username \<String\>\]: A sender senderUsername to be used when sending emails.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.communication/update-azemailservicesenderusername](https://learn.microsoft.com/powershell/module/az.communication/update-azemailservicesenderusername)
-
