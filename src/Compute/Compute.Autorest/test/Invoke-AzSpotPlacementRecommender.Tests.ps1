@@ -15,8 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzSpotPlacementRecomme
 }
 
 Describe 'Invoke-AzSpotPlacementRecommender' {
-    It 'PostExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    BeforeAll { 
+        $resourceSku1 = @{sku = "Standard_D2_v3"}
+        $resourceSku2 = @{sku = "Standard_D2_v2"}
+        $resourceSku3 = @{sku = "Standard_D32_v2"}
+        $desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
+        $desiredLocations = 'eastus','eastus2','westus'
+    }
+
+    It 'PostExpanded' {
+        {
+            $spotPlacementRecommenderInput = 
+            @{
+                desiredLocations = $desiredLocations;
+                desiredSizes = $desiredSizes;
+                desiredCount = 100;
+                availabilityZones = $true
+            }
+            Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput -verbose
+        }
     }
 
     It 'Post' -skip {

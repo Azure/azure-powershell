@@ -26,46 +26,85 @@ Invoke-AzSpotPlacementRecommender -Location <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### PostViaIdentity
-```
-Invoke-AzSpotPlacementRecommender -InputObject <IComputeIdentity>
- -SpotPlacementRecommenderInput <ISpotPlacementRecommenderInput> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### PostViaIdentityExpanded
-```
-Invoke-AzSpotPlacementRecommender -InputObject <IComputeIdentity> [-AvailabilityZone] [-DesiredCount <Int32>]
- [-DesiredLocation <String[]>] [-DesiredSize <IResourceSize[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Generates placement scores for Spot VM skus.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: {{ Regionally scoped Spot Placement Recommender scores }}
 ```powershell
-{{ Add code here }}
+$resourceSku1 = @{sku = "Standard_D2_v3"}
+$resourceSku2 = @{sku = "Standard_D2_v2"}
+$resourceSku3 = @{sku = "Standard_D4_v3"}
+$desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
+$desiredLocations = 'japaneast','southcentralus','centralus'
+
+$response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes
+$response.PlacementScore
 ```
 
 ```output
-{{ Add output here }}
+AvailabilityZone IsQuotaAvailable Region         Score                     Sku
+---------------- ---------------- ------         -----                     ---
+                 True             japaneast      RestrictedSkuNotAvailable Standard_D2_v3
+                 True             japaneast      RestrictedSkuNotAvailable Standard_D2_v2
+                 True             japaneast      RestrictedSkuNotAvailable Standard_D4_v3
+                 True             southcentralus High                      Standard_D2_v3
+                 True             southcentralus High                      Standard_D2_v2
+                 True             southcentralus High                      Standard_D4_v3
+                 True             centralus      RestrictedSkuNotAvailable Standard_D2_v3
+                 True             centralus      RestrictedSkuNotAvailable Standard_D2_v2
+                 True             centralus      RestrictedSkuNotAvailable Standard_D4_v3
 ```
 
-{{ Add description here }}
+Returns regionally scoped spot placement recommender scores for the input.
 
-### Example 2: {{ Add title here }}
+### Example 2: {{ Zonally scoped Spot Placement Recommender scores }}
 ```powershell
-{{ Add code here }}
+$resourceSku1 = @{sku = "Standard_D2_v3"}
+$resourceSku2 = @{sku = "Standard_D2_v2"}
+$resourceSku3 = @{sku = "Standard_D4_v3"}
+$desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
+$desiredLocations = 'japaneast','southcentralus','centralus'
+
+$response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes -AvailabilityZone
+$response.PlacementScore
 ```
 
 ```output
-{{ Add output here }}
+AvailabilityZone IsQuotaAvailable Region         Score               Sku
+---------------- ---------------- ------         -----               ---
+1                True             japaneast      High                Standard_D2_v3
+2                True             japaneast      High                Standard_D2_v3
+3                True             japaneast      High                Standard_D2_v3
+1                True             japaneast      High                Standard_D2_v2
+2                True             japaneast      High                Standard_D2_v2
+3                True             japaneast      High                Standard_D2_v2
+1                True             japaneast      High                Standard_D4_v3
+2                True             japaneast      High                Standard_D4_v3
+3                True             japaneast      High                Standard_D4_v3
+1                True             southcentralus High                Standard_D2_v3
+2                True             southcentralus High                Standard_D2_v3
+3                True             southcentralus High                Standard_D2_v3
+1                True             southcentralus High                Standard_D2_v2
+2                True             southcentralus High                Standard_D2_v2
+3                True             southcentralus High                Standard_D2_v2
+1                True             southcentralus High                Standard_D4_v3
+2                True             southcentralus High                Standard_D4_v3
+3                True             southcentralus High                Standard_D4_v3
+1                True             centralus      DataNotFoundOrStale Standard_D2_v3
+2                True             centralus      High                Standard_D2_v3
+3                True             centralus      High                Standard_D2_v3
+1                True             centralus      DataNotFoundOrStale Standard_D2_v2
+2                True             centralus      High                Standard_D2_v2
+3                True             centralus      High                Standard_D2_v2
+1                True             centralus      DataNotFoundOrStale Standard_D4_v3
+2                True             centralus      High                Standard_D4_v3
+3                True             centralus      High                Standard_D4_v3
 ```
 
-{{ Add description here }}
+{{ Returns zonally scoped spot placement recommender scores for the input.
+ }}
 
 ## PARAMETERS
 
