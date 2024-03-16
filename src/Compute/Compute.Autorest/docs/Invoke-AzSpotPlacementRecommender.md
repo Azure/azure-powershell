@@ -31,7 +31,7 @@ Generates placement scores for Spot VM skus.
 
 ## EXAMPLES
 
-### Example 1: {{ Regionally scoped Spot Placement Recommender scores }}
+### Example 1: Regionally scoped Spot Placement Recommender scores
 ```powershell
 $resourceSku1 = @{sku = "Standard_D2_v3"}
 $resourceSku2 = @{sku = "Standard_D2_v2"}
@@ -59,7 +59,7 @@ AvailabilityZone IsQuotaAvailable Region         Score                     Sku
 
 Returns regionally scoped spot placement recommender scores for the input.
 
-### Example 2: {{ Zonally scoped Spot Placement Recommender scores }}
+### Example 2: Zonally scoped Spot Placement Recommender scores
 ```powershell
 $resourceSku1 = @{sku = "Standard_D2_v3"}
 $resourceSku2 = @{sku = "Standard_D2_v2"}
@@ -103,8 +103,7 @@ AvailabilityZone IsQuotaAvailable Region         Score               Sku
 3                True             centralus      High                Standard_D4_v3
 ```
 
-{{ Returns zonally scoped spot placement recommender scores for the input.
- }}
+Returns zonally scoped spot placement recommender scores for the input.
 
 ## PARAMETERS
 
