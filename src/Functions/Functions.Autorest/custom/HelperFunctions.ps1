@@ -1898,7 +1898,7 @@ function ParseMinorVersion
     }
 
     # For DotNet function app, the version from the Stacks API is 6.0. 7.0, and 8.0. However, this is a breaking change which cannot be supported in the current release.
-    # We will convert the version to 8, 11, and 17. This change will be reverted for the May 2024 breaking release.
+    # We will convert the version to 6, 7, and 8. This change will be reverted for the May 2024 breaking release.
     if ($RuntimeName -like "DotNet*")
     {
         if ($runtimeVersion.EndsWith(".0"))
@@ -2175,44 +2175,60 @@ function SetLinuxandWindowsSupportedRuntimes
         }
     }
 }
-SetLinuxandWindowsSupportedRuntimes
 
-# New-AzFunction app ArgumentCompleter for the RuntimeVersion parameter
-# The values of RuntimeVersion depend on the selection of the Runtime parameter
-$GetRuntimeVersionCompleter = {
+# This method pulls down the Functions stack definitions from the ARM API and builds a list of supported runtimes and runtime versions.
+# This is used to build the tab completers for the New-AzFunctionApp cmdlet.
+function RegisterFunctionsTabCompleters
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param ()
 
-    param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
-
-    if ($fakeBoundParameters.ContainsKey('Runtime'))
+    if ($env:FunctionsTabCompletersRegistered)
     {
-        # RuntimeVersions is defined in SetLinuxandWindowsSupportedRuntimes
-        $AllRuntimeVersions[$fakeBoundParameters.Runtime] | Where-Object {
-            $_ -like "$wordToComplete*"
-        } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
+        return
     }
+
+    SetLinuxandWindowsSupportedRuntimes
+
+    # New-AzFunction app ArgumentCompleter for the RuntimeVersion parameter
+    # The values of RuntimeVersion depend on the selection of the Runtime parameter
+    $GetRuntimeVersionCompleter = {
+
+        param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+
+        if ($fakeBoundParameters.ContainsKey('Runtime'))
+        {
+            # RuntimeVersions is defined in SetLinuxandWindowsSupportedRuntimes
+            $AllRuntimeVersions[$fakeBoundParameters.Runtime] | Where-Object {
+                $_ -like "$wordToComplete*"
+            } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
+        }
+    }
+
+    # New-AzFunction app ArgumentCompleter for the Runtime parameter
+    $GetAllRuntimesCompleter = {
+
+        param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+
+        $runtimeValues = $AllRuntimeVersions.Keys | Sort-Object | ForEach-Object { $_ }
+
+        $runtimeValues | Where-Object { $_ -like "$wordToComplete*" }
+    }
+
+    # New-AzFunction app ArgumentCompleter for the Runtime parameter
+    $GetAllFunctionsVersionsCompleter = {
+
+        param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+
+        $functionsVersions = $AllFunctionsExtensionVersions | Sort-Object | ForEach-Object { $_ }
+
+        $functionsVersions | Where-Object { $_ -like "$wordToComplete*" }
+    }
+
+    # Register tab completers
+    Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName FunctionsVersion -ScriptBlock $GetAllFunctionsVersionsCompleter
+    Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName Runtime -ScriptBlock $GetAllRuntimesCompleter
+    Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName RuntimeVersion -ScriptBlock $GetRuntimeVersionCompleter
+
+    $env:FunctionsTabCompletersRegistered = $true
 }
-
-# New-AzFunction app ArgumentCompleter for the Runtime parameter
-$GetAllRuntimesCompleter = {
-
-    param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
-
-    $runtimeValues = $AllRuntimeVersions.Keys | Sort-Object | ForEach-Object { $_ }
-
-    $runtimeValues | Where-Object { $_ -like "$wordToComplete*" }
-}
-
-# New-AzFunction app ArgumentCompleter for the Runtime parameter
-$GetAllFunctionsVersionsCompleter = {
-
-    param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
-
-    $functionsVersions = $AllFunctionsExtensionVersions | Sort-Object | ForEach-Object { $_ }
-
-    $functionsVersions | Where-Object { $_ -like "$wordToComplete*" }
-}
-
-# Register tab completers
-Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName FunctionsVersion -ScriptBlock $GetAllFunctionsVersionsCompleter
-Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName Runtime -ScriptBlock $GetAllRuntimesCompleter
-Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName RuntimeVersion -ScriptBlock $GetRuntimeVersionCompleter
