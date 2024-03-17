@@ -16,7 +16,7 @@ Please note some properties can be set only during storage container creation.
 ```
 New-AzStackHCIVMStoragePath -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Location <String> -Path <String> [-CustomLocationId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,10 +25,18 @@ Please note some properties can be set only during storage container creation.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create a Storage Path
+```powershell
 New-AzStackHCIVMStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"-Location "eastus" -Path "C:\ClusterStorage\Volume1\testpath"
 ```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testStoragePath       test-rg
+```
+
+This command creates a storage path in the specified resource group.
 
 ## PARAMETERS
 
@@ -42,7 +50,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -117,7 +125,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -131,6 +139,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -163,7 +186,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -222,8 +245,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmstoragepath](https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmstoragepath)

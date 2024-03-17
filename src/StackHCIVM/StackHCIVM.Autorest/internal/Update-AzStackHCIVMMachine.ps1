@@ -90,7 +90,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -236,7 +235,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
