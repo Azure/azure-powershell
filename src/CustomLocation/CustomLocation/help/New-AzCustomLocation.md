@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCustomLocation
 
 ## SYNOPSIS
-Creates or updates a Custom Location in the specified Subscription and Resource Group
+Create a Custom Location in the specified Subscription and Resource Group
 
 ## SYNTAX
 
@@ -17,44 +17,48 @@ Creates or updates a Custom Location in the specified Subscription and Resource 
 New-AzCustomLocation -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  -ClusterExtensionId <String[]> -HostResourceId <String> -Namespace <String> [-AuthenticationType <String>]
  [-AuthenticationValue <String>] [-DisplayName <String>] [-IdentityType <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzCustomLocation -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzCustomLocation -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a Custom Location in the specified Subscription and Resource Group
+Create a Custom Location in the specified Subscription and Resource Group
 
 ## EXAMPLES
 
-### Example 1: Creates or updates a Custom Location in the specified Subscription and Resource Group
+### Example 1: Creates or updates a Custom Location in the specified Subscription and Resource Group.
 ```powershell
-New-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster -Location eastus -ClusterExtensionId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster/providers/Microsoft.KubernetesConfiguration/extensions/azps_test_extension" -HostResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster" -Namespace arc
+$HostResourceId = (Get-AzConnectedKubernetes -ClusterName azps-connect -ResourceGroupName azps_test_cluster).Id
+$ClusterExtensionId = (Get-AzKubernetesExtension -ClusterName azps-connect -ClusterType ConnectedClusters -ResourceGroupName azps_test_cluster -Name azps-extension).Id
+New-AzCustomLocation -ResourceGroupName azps_test_cluster -Name azps-customlocation -Location eastus -ClusterExtensionId $ClusterExtensionId -HostResourceId $HostResourceId -Namespace azps-namespace
 ```
 
 ```output
-Location Name              Namespace
--------- ----              ----
-eastus   azps_test_cluster arc
+Location Name                Namespace      ResourceGroupName
+-------- ----                ---------      -----------------
+eastus   azps-customlocation azps-namespace azps_test_cluster
 ```
 
-Creates or updates a Custom Location in the specified Subscription and Resource Group
+Creates or updates a Custom Location in the specified Subscription and Resource Group.
 
 ## PARAMETERS
 
 ### -AsJob
-Run the command as a job
+Runthecommandasajob
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -69,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthenticationType
-The type of the Custom Locations authentication
+ThetypeoftheCustomLocationsauthentication
 
 ```yaml
 Type: System.String
@@ -84,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthenticationValue
-The kubeconfig value.
+Thekubeconfigvalue.
 
 ```yaml
 Type: System.String
@@ -99,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterExtensionId
-Contains the reference to the add-on that contains charts to deploy CRDs and operators.
+Containsthereferencetotheadd-onthatcontainschartstodeployCRDsandoperators.
 
 ```yaml
 Type: System.String[]
@@ -114,7 +118,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -129,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-Display name for the Custom Locations location.
+DisplaynamefortheCustomLocationslocation.
 
 ```yaml
 Type: System.String
@@ -144,8 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -HostResourceId
-Connected Cluster or AKS Cluster.
-The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
+ConnectedClusterorAKSCluster.TheCustomLocationsRPwillperformacheckAccessAPIforlistAdminCredentialspermissions.
 
 ```yaml
 Type: System.String
@@ -160,7 +163,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The identity type.
+Theidentitytype.
 
 ```yaml
 Type: System.String
@@ -175,7 +178,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-Path of Json file supplied to the Create operation
+PathofJsonfilesuppliedtotheCreateoperation
 
 ```yaml
 Type: System.String
@@ -190,7 +193,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Create operation
+JsonstringsuppliedtotheCreateoperation
 
 ```yaml
 Type: System.String
@@ -205,7 +208,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The geo-location where the resource lives
+Thegeo-locationwheretheresourcelives
 
 ```yaml
 Type: System.String
@@ -220,7 +223,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Custom Locations name.
+CustomLocationsname.
 
 ```yaml
 Type: System.String
@@ -235,7 +238,7 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-Kubernetes namespace that will be created on the specified cluster.
+Kubernetesnamespacethatwillbecreatedonthespecifiedcluster.
 
 ```yaml
 Type: System.String
@@ -250,7 +253,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Run the command asynchronously
+Runthecommandasynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -264,9 +267,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Thenameoftheresourcegroup.Thenameiscaseinsensitive.
 
 ```yaml
 Type: System.String
@@ -281,7 +298,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+TheIDofthetargetsubscription.
 
 ```yaml
 Type: System.String
@@ -296,7 +313,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags.
+Resourcetags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -346,12 +363,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation
+### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocation
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

@@ -14,8 +14,8 @@ Create or update a addon in a private cloud
 
 ```
 New-AzVMwareAddon -PrivateCloudName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Property <IAddonProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Property <IAddonProperties>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ Create an addon in a private cloud
 ## PARAMETERS
 
 ### -AsJob
-Run the command as a job
+Runthecommandasajob
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -55,7 +55,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+Thecredentials,account,tenant,andsubscriptionusedforcommunicationwithAzure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -70,7 +70,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Run the command asynchronously
+Runthecommandasynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -85,7 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudName
-The name of the private cloud.
+Thenameoftheprivatecloud.
 
 ```yaml
 Type: System.String
@@ -99,9 +99,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Property
-The properties of an addon resource
-To construct, see NOTES section for PROPERTY properties and create a hash table.
+ThepropertiesofanaddonresourceToconstruct,seeNOTESsectionforPROPERTYpropertiesandcreateahashtable.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddonProperties
@@ -116,8 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Thenameoftheresourcegroup.Thenameiscaseinsensitive.
 
 ```yaml
 Type: System.String
@@ -132,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+TheIDofthetargetsubscription.
 
 ```yaml
 Type: System.String
@@ -184,18 +197,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PROPERTY <IAddonProperties>`: The properties of an addon resource
-  - `AddonType <AddonType>`: The type of private cloud addon
 
 ## RELATED LINKS

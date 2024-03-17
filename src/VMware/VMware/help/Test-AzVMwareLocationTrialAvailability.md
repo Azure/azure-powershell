@@ -14,7 +14,7 @@ Return trial status for subscription by region
 
 ```
 Test-AzVMwareLocationTrialAvailability -Location <String> [-SubscriptionId <String>] [-Name <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Return trial status for subscription by region
 
 ### Example 1: Check trial availability
 ```powershell
-Test-AzVMwareLocationTrialAvailability -Location westcentralus
+Test-AzVMwareLocationTrialAvailability -Location westcentralus -Name av36
 ```
 
 ```output
@@ -38,7 +38,7 @@ Check trial availability
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Azure region
+Azureregion
 
 ```yaml
 Type: System.String
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the SKU.
+ThenameoftheSKU.
 
 ```yaml
 Type: System.String
@@ -82,8 +82,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
-The ID of the target subscription.
+TheIDofthetargetsubscription.
 
 ```yaml
 Type: System.String
@@ -135,10 +150,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ITrial
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ITrial
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

@@ -14,7 +14,7 @@ Create a in-memory object for ScriptSecureStringExecutionParameter
 
 ```
 New-AzVMwareScriptSecureStringExecutionParameterObject -Name <String> [-SecureValue <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,9 +28,9 @@ New-AzVMwareScriptSecureStringExecutionParameterObject -Name azps_test_secureval
 ```
 
 ```output
-Name                  Type        SecureValue
-----                  ----        -----------
-azps_test_securevalue SecureValue passwordValue
+Name                  SecureValue   Type
+----                  -----------   ----
+azps_test_securevalue passwordValue SecureValue
 ```
 
 Create a local Script Secure String Execution object
@@ -38,7 +38,7 @@ Create a local Script Secure String Execution object
 ## PARAMETERS
 
 ### -Name
-The parameter name.
+Theparametername.
 
 ```yaml
 Type: System.String
@@ -52,8 +52,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SecureValue
-A secure value for the passed parameter, not to be stored in logs.
+Asecurevalueforthepassedparameter,nottobestoredinlogs.
 
 ```yaml
 Type: System.String
@@ -74,10 +89,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.ScriptSecureStringExecutionParameter
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.ScriptSecureStringExecutionParameter
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

@@ -15,28 +15,29 @@ Returns the target resource group associated with the resource sync rules of the
 ### FindExpanded (Default)
 ```
 Find-AzCustomLocationTargetResourceGroup -CustomLocationName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Label <Hashtable>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-Label <Hashtable>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FindViaJsonString
 ```
 Find-AzCustomLocationTargetResourceGroup -CustomLocationName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FindViaJsonFilePath
 ```
 Find-AzCustomLocationTargetResourceGroup -CustomLocationName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FindViaIdentityExpanded
 ```
 Find-AzCustomLocationTargetResourceGroup -InputObject <ICustomLocationIdentity> [-Label <Hashtable>]
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,24 +45,36 @@ Returns the target resource group associated with the resource sync rules of the
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Returns the target resource group associated with the resource sync rules of the Custom Location that match the rules passed in with the Find Target Resource Group Request.
+```powershell
 Find-AzCustomLocationTargetResourceGroup -ResourceGroupName azps_test_cluster -CustomLocationName azps-customlocation -Label @{"Key1"="Value1"} -PassThru
 ```
 
-### EXAMPLE 2
+```output
+True
 ```
+
+Returns the target resource group associated with the resource sync rules of the Custom Location that match the rules passed in with the Find Target Resource Group Request.
+
+### Example 2: Returns the target resource group associated with the resource sync rules of the Custom Location that match the rules passed in with the Find Target Resource Group Request.
+```powershell
 $obj = Get-AzCustomLocation -ResourceGroupName azps_test_cluster -Name azps-customlocation
 Find-AzCustomLocationTargetResourceGroup -InputObject $obj -Label @{"Key1"="Value1"} -PassThru
 ```
 
+```output
+True
+```
+
+Returns the target resource group associated with the resource sync rules of the Custom Location that match the rules passed in with the Find Target Resource Group Request.
+
 ## PARAMETERS
 
 ### -CustomLocationName
-Custom Locations name.
+CustomLocationsname.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FindExpanded, FindViaJsonString, FindViaJsonFilePath
 Aliases:
 
@@ -73,11 +86,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -89,11 +101,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+IdentityParameter
 
 ```yaml
-Type: ICustomLocationIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
 Parameter Sets: FindViaIdentityExpanded
 Aliases:
 
@@ -105,10 +116,10 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-Path of Json file supplied to the Find operation
+PathofJsonfilesuppliedtotheFindoperation
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FindViaJsonFilePath
 Aliases:
 
@@ -120,10 +131,10 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Find operation
+JsonstringsuppliedtotheFindoperation
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FindViaJsonString
 Aliases:
 
@@ -135,10 +146,10 @@ Accept wildcard characters: False
 ```
 
 ### -Label
-Labels of the custom resource, this is a map of {key,value} pairs.
+Labelsofthecustomresource,thisisamapof{key,value}pairs.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: FindExpanded, FindViaIdentityExpanded
 Aliases:
 
@@ -150,26 +161,40 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returns true when the command succeeds
+Returnstruewhenthecommandsucceeds
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Thenameoftheresourcegroup.Thenameiscaseinsensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FindExpanded, FindViaJsonString, FindViaJsonFilePath
 Aliases:
 
@@ -181,16 +206,16 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+TheIDofthetargetsubscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: FindExpanded, FindViaJsonString, FindViaJsonFilePath
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -199,7 +224,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -215,7 +240,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -232,24 +257,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationFindTargetResourceGroupResult
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<ICustomLocationIdentity\>: Identity Parameter
-  \[ChildResourceName \<String\>\]: Resource Sync Rule name.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[ResourceName \<String\>\]: Custom Locations name.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.customlocation/find-azcustomlocationtargetresourcegroup](https://learn.microsoft.com/powershell/module/az.customlocation/find-azcustomlocationtargetresourcegroup)
-

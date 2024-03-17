@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwareDatastore
 
 ## SYNOPSIS
-Create or update a datastore in a private cloud cluster
+Create a datastore in a private cloud cluster
 
 ## SYNTAX
 
@@ -17,33 +17,36 @@ Create or update a datastore in a private cloud cluster
 New-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DiskPoolVolumeLunName <String>]
  [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>] [-NetAppVolumeId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityPrivateCloudExpanded
 ```
 New-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
  [-DiskPoolVolumeLunName <String>] [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>]
- [-NetAppVolumeId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-NetAppVolumeId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityClusterExpanded
 ```
 New-AzVMwareDatastore -Name <String> -ClusterInputObject <IVMwareIdentity> [-DiskPoolVolumeLunName <String>]
  [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>] [-NetAppVolumeId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzVMwareDatastore -InputObject <IVMwareIdentity> [-DiskPoolVolumeLunName <String>]
  [-DiskPoolVolumeMountOption <String>] [-DiskPoolVolumeTargetId <String>] [-NetAppVolumeId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update a datastore in a private cloud cluster
+Create a datastore in a private cloud cluster
 
 ## EXAMPLES
 
@@ -63,7 +66,7 @@ Create or update a datastore in a private cloud cluster.
 ## PARAMETERS
 
 ### -AsJob
-Run the command as a job
+Runthecommandasajob
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -78,8 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterInputObject
-Identity Parameter
-To construct, see NOTES section for CLUSTERINPUTOBJECT properties and create a hash table.
+IdentityParameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -94,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-Name of the cluster in the private cloud
+Nameoftheclusterintheprivatecloud
 
 ```yaml
 Type: System.String
@@ -109,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -124,7 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskPoolVolumeLunName
-Name of the LUN to be used for datastore
+NameoftheLUNtobeusedfordatastore
 
 ```yaml
 Type: System.String
@@ -139,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskPoolVolumeMountOption
-Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+ModethatdescribeswhethertheLUNhastobemountedasadatastoreorattachedasaLUN
 
 ```yaml
 Type: System.String
@@ -154,7 +156,7 @@ Accept wildcard characters: False
 ```
 
 ### -DiskPoolVolumeTargetId
-Azure resource ID of the iSCSI target
+AzureresourceIDoftheiSCSItarget
 
 ```yaml
 Type: System.String
@@ -169,8 +171,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+IdentityParameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -185,7 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the datastore in the private cloud cluster
+Nameofthedatastoreintheprivatecloudcluster
 
 ```yaml
 Type: System.String
@@ -200,7 +201,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetAppVolumeId
-Azure resource ID of the NetApp volume
+AzureresourceIDoftheNetAppvolume
 
 ```yaml
 Type: System.String
@@ -215,7 +216,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Run the command asynchronously
+Runthecommandasynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -230,8 +231,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudInputObject
-Identity Parameter
-To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+IdentityParameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -246,7 +246,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudName
-Name of the private cloud
+Nameoftheprivatecloud
 
 ```yaml
 Type: System.String
@@ -260,9 +260,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Thenameoftheresourcegroup.Thenameiscaseinsensitive.
 
 ```yaml
 Type: System.String
@@ -277,7 +291,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+TheIDofthetargetsubscription.
 
 ```yaml
 Type: System.String
@@ -327,12 +341,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastore
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

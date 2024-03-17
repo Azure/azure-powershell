@@ -17,22 +17,22 @@ Create a Resource Sync Rule in the parent Custom Location, Subscription Id and R
 New-AzCustomLocationResourceSyncRule -CustomLocationName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Location <String> [-Priority <Int32>]
  [-SelectorMatchExpression <IMatchExpressionsProperties[]>] [-SelectorMatchLabel <Hashtable>]
- [-Tag <Hashtable>] [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-TargetResourceGroup <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzCustomLocationResourceSyncRule -CustomLocationName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzCustomLocationResourceSyncRule -CustomLocationName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityCustomlocationExpanded
@@ -40,7 +40,8 @@ New-AzCustomLocationResourceSyncRule -CustomLocationName <String> -Name <String>
 New-AzCustomLocationResourceSyncRule -Name <String> -CustomlocationInputObject <ICustomLocationIdentity>
  -Location <String> [-Priority <Int32>] [-SelectorMatchExpression <IMatchExpressionsProperties[]>]
  [-SelectorMatchLabel <Hashtable>] [-Tag <Hashtable>] [-TargetResourceGroup <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -48,7 +49,8 @@ New-AzCustomLocationResourceSyncRule -Name <String> -CustomlocationInputObject <
 New-AzCustomLocationResourceSyncRule -InputObject <ICustomLocationIdentity> -Location <String>
  [-Priority <Int32>] [-SelectorMatchExpression <IMatchExpressionsProperties[]>]
  [-SelectorMatchLabel <Hashtable>] [-Tag <Hashtable>] [-TargetResourceGroup <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,35 +58,42 @@ Create a Resource Sync Rule in the parent Custom Location, Subscription Id and R
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group.
+```powershell
 $MatchExpressions = New-AzCustomLocationMatchExpressionsObject -Key "key4" -Operator "In" -Value "value4"
 New-AzCustomLocationResourceSyncRule -Name azps-resourcesyncrule -ResourceGroupName azps_test_cluster -CustomLocationName azps-customlocation -Location eastus -Priority 999 -SelectorMatchExpression $MatchExpressions -SelectorMatchLabel @{"Key1"="Value1"} -TargetResourceGroup "/subscriptions/{subId}/resourceGroups/azps_test_cluster"
 ```
 
+```output
+Location Name                  ResourceGroupName
+-------- ----                  -----------------
+eastus   azps-resourcesyncrule azps_test_cluster
+```
+
+Create a Resource Sync Rule in the parent Custom Location, Subscription Id and Resource Group.
+
 ## PARAMETERS
 
 ### -AsJob
-Run the command as a job
+Runthecommandasajob
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -CustomlocationInputObject
-Identity Parameter
-To construct, see NOTES section for CUSTOMLOCATIONINPUTOBJECT properties and create a hash table.
+IdentityParameter
 
 ```yaml
-Type: ICustomLocationIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
 Parameter Sets: CreateViaIdentityCustomlocationExpanded
 Aliases:
 
@@ -96,10 +105,10 @@ Accept wildcard characters: False
 ```
 
 ### -CustomLocationName
-Custom Locations name.
+CustomLocationsname.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
@@ -111,11 +120,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -127,11 +135,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+IdentityParameter
 
 ```yaml
-Type: ICustomLocationIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
 Parameter Sets: CreateViaIdentityExpanded
 Aliases:
 
@@ -143,10 +150,10 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-Path of Json file supplied to the Create operation
+PathofJsonfilesuppliedtotheCreateoperation
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
@@ -158,10 +165,10 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-Json string supplied to the Create operation
+JsonstringsuppliedtotheCreateoperation
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateViaJsonString
 Aliases:
 
@@ -173,10 +180,10 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-The geo-location where the resource lives
+Thegeo-locationwheretheresourcelives
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityCustomlocationExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -188,10 +195,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Resource Sync Rule name.
+ResourceSyncRulename.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, CreateViaIdentityCustomlocationExpanded
 Aliases:
 
@@ -203,41 +210,55 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Run the command asynchronously
+Runthecommandasynchronously
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Priority
-Priority represents a priority of the Resource Sync Rule
+PriorityrepresentsapriorityoftheResourceSyncRule
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: CreateExpanded, CreateViaIdentityCustomlocationExpanded, CreateViaIdentityExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Thenameoftheresourcegroup.Thenameiscaseinsensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
@@ -249,14 +270,10 @@ Accept wildcard characters: False
 ```
 
 ### -SelectorMatchExpression
-MatchExpressions is a list of resource selector requirements.
-Valid operators include In, NotIn, Exists, and DoesNotExist.
-The values set must be non-empty in the case of In and NotIn.
-The values set must be empty in the case of Exists and DoesNotExist.
-To construct, see NOTES section for SELECTORMATCHEXPRESSION properties and create a hash table.
+MatchExpressionsisalistofresourceselectorrequirements.ValidoperatorsincludeIn,NotIn,Exists,andDoesNotExist.Thevaluessetmustbenon-emptyinthecaseofInandNotIn.ThevaluessetmustbeemptyinthecaseofExistsandDoesNotExist.
 
 ```yaml
-Type: IMatchExpressionsProperties[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IMatchExpressionsProperties[]
 Parameter Sets: CreateExpanded, CreateViaIdentityCustomlocationExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -268,11 +285,10 @@ Accept wildcard characters: False
 ```
 
 ### -SelectorMatchLabel
-MatchLabels is a map of {key,value} pairs.
-A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is 'key', the operator is 'In', and the values array contains only 'value'.
+MatchLabelsisamapof{key,value}pairs.Asingle{key,value}inthematchLabelsmapisequivalenttoanelementofmatchExpressions,whosekeyfieldis'key',theoperatoris'In',andthevaluesarraycontainsonly'value'.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityCustomlocationExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -284,25 +300,25 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+TheIDofthetargetsubscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Tag
-Resource tags.
+Resourcetags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityCustomlocationExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -314,12 +330,10 @@ Accept wildcard characters: False
 ```
 
 ### -TargetResourceGroup
-For an unmapped custom resource, its labels will be used to find matching resource sync rules.
-If this resource sync rule is one of the matching rules with highest priority, then the unmapped custom resource will be projected to the target resource group associated with this resource sync rule.
-The user creating this resource sync rule should have write permissions on the target resource group and this write permission will be validated when creating the resource sync rule.
+Foranunmappedcustomresource,itslabelswillbeusedtofindmatchingresourcesyncrules.Ifthisresourcesyncruleisoneofthematchingruleswithhighestpriority,thentheunmappedcustomresourcewillbeprojectedtothetargetresourcegroupassociatedwiththisresourcesyncrule.Theusercreatingthisresourcesyncruleshouldhavewritepermissionsonthetargetresourcegroupandthiswritepermissionwillbevalidatedwhencreatingtheresourcesyncrule.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityCustomlocationExpanded, CreateViaIdentityExpanded
 Aliases:
 
@@ -334,7 +348,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -350,7 +364,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -367,41 +381,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceSyncRule
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-CUSTOMLOCATIONINPUTOBJECT \<ICustomLocationIdentity\>: Identity Parameter
-  \[ChildResourceName \<String\>\]: Resource Sync Rule name.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[ResourceName \<String\>\]: Custom Locations name.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-
-INPUTOBJECT \<ICustomLocationIdentity\>: Identity Parameter
-  \[ChildResourceName \<String\>\]: Resource Sync Rule name.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[ResourceName \<String\>\]: Custom Locations name.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-
-SELECTORMATCHEXPRESSION \<IMatchExpressionsProperties\[\]\>: MatchExpressions is a list of resource selector requirements.
-Valid operators include In, NotIn, Exists, and DoesNotExist.
-The values set must be non-empty in the case of In and NotIn.
-The values set must be empty in the case of Exists and DoesNotExist.
-  \[Key \<String\>\]: Key is the label key that the selector applies to.
-  \[Operator \<String\>\]: The Operator field represents a key's relationship to a set of values.
-Valid operators are In, NotIn, Exists and DoesNotExist.
-  \[Value \<List\<String\>\>\]: The label value
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.customlocation/new-azcustomlocationresourcesyncrule](https://learn.microsoft.com/powershell/module/az.customlocation/new-azcustomlocationresourcesyncrule)
-

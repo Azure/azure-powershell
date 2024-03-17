@@ -14,7 +14,8 @@ Create an in-memory object for VmHostPlacementPolicyProperties.
 
 ```
 New-AzVMwareVmHostPlacementPolicyPropertiesObject -AffinityType <String> -HostMember <String[]>
- -VMMember <String[]> -Type <String> [-DisplayName <String>] [-State <String>] [<CommonParameters>]
+ -VMMember <String[]> -Type <String> [-DisplayName <String>] [-State <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,13 +25,19 @@ Create an in-memory object for VmHostPlacementPolicyProperties.
 
 ### Example 1: Create an in-memory object for VmHostPlacementPolicyProperties.
 ```powershell
-New-AzVMwareVmHostPlacementPolicyPropertiesObject -AffinityType 'AntiAffinity' -HostMember @{"abc"="123"}  -Type 'VmHost' -VMMember @{"abc"="123"}
+New-AzVMwareVmHostPlacementPolicyPropertiesObject -AffinityType 'AntiAffinity' -HostMember @{"test"="test"}  -Type 'VmHost' -VMMember @{"test"="test"}
 ```
 
 ```output
-DisplayName ProvisioningState State AffinityType HostMember                     VMMember
------------ ----------------- ----- ------------ ----------                     --------
-                                    AntiAffinity {System.Collections.Hashtable} {System.Collections.Hashtable}
+AffinityStrength       : 
+AffinityType           : AntiAffinity
+AzureHybridBenefitType : 
+DisplayName            : 
+HostMember             : {System.Collections.Hashtable}
+ProvisioningState      : 
+State                  : 
+Type                   : VmHost
+VMMember               : {System.Collections.Hashtable}
 ```
 
 Create an in-memory object for VmHostPlacementPolicyProperties.
@@ -38,7 +45,7 @@ Create an in-memory object for VmHostPlacementPolicyProperties.
 ## PARAMETERS
 
 ### -AffinityType
-placement policy affinity type.
+placementpolicyaffinitytype.
 
 ```yaml
 Type: System.String
@@ -53,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-Display name of the placement policy.
+Displaynameoftheplacementpolicy.
 
 ```yaml
 Type: System.String
@@ -68,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -HostMember
-Host members list.
+Hostmemberslist.
 
 ```yaml
 Type: System.String[]
@@ -82,8 +89,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -State
-Whether the placement policy is enabled or disabled.
+Whethertheplacementpolicyisenabledordisabled.
 
 ```yaml
 Type: System.String
@@ -98,7 +120,7 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-placement policy type.
+placementpolicytype.
 
 ```yaml
 Type: System.String
@@ -113,7 +135,7 @@ Accept wildcard characters: False
 ```
 
 ### -VMMember
-Virtual machine members list.
+Virtualmachinememberslist.
 
 ```yaml
 Type: System.String[]
@@ -134,10 +156,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VMHostPlacementPolicyProperties
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VMHostPlacementPolicyProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

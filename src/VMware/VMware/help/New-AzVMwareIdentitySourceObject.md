@@ -15,7 +15,7 @@ Create an in-memory object for IdentitySource.
 ```
 New-AzVMwareIdentitySourceObject [-Alias <String>] [-BaseGroupDn <String>] [-BaseUserDn <String>]
  [-Domain <String>] [-Name <String>] [-Password <String>] [-PrimaryServer <String>] [-SecondaryServer <String>]
- [-Ssl <String>] [-Username <String>] [<CommonParameters>]
+ [-Ssl <String>] [-Username <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,18 +23,33 @@ Create an in-memory object for IdentitySource.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create an in-memory object for IdentitySource
+```powershell
 New-AzVMwareIdentitySourceObject -Alias test
 ```
+
+```output
+Alias           : test
+BaseGroupDn     : 
+BaseUserDn      : 
+Domain          : 
+Name            : 
+Password        : 
+PrimaryServer   : 
+SecondaryServer : 
+Ssl             : 
+Username        :
+```
+
+Create an in-memory object for IdentitySource
 
 ## PARAMETERS
 
 ### -Alias
-The domain's NetBIOS name.
+Thedomain'sNetBIOSname.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -46,10 +61,10 @@ Accept wildcard characters: False
 ```
 
 ### -BaseGroupDn
-The base distinguished name for groups.
+Thebasedistinguishednameforgroups.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -61,10 +76,10 @@ Accept wildcard characters: False
 ```
 
 ### -BaseUserDn
-The base distinguished name for users.
+Thebasedistinguishednameforusers.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -76,10 +91,10 @@ Accept wildcard characters: False
 ```
 
 ### -Domain
-The domain's dns name.
+Thedomain'sdnsname.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -91,10 +106,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the identity source.
+Thenameoftheidentitysource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -106,10 +121,10 @@ Accept wildcard characters: False
 ```
 
 ### -Password
-The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
+ThepasswordoftheActiveDirectoryuserwithaminimumofread-onlyaccesstoBaseDNforusersandgroups.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -121,10 +136,10 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryServer
-Primary server URL.
+PrimaryserverURL.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -135,11 +150,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SecondaryServer
-Secondary server URL.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: String
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecondaryServer
+SecondaryserverURL.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -151,10 +181,10 @@ Accept wildcard characters: False
 ```
 
 ### -Ssl
-Protect LDAP communication using SSL certificate (LDAPS).
+ProtectLDAPcommunicationusingSSLcertificate(LDAPS).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -166,10 +196,10 @@ Accept wildcard characters: False
 ```
 
 ### -Username
-The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group.
+TheIDofanActiveDirectoryuserwithaminimumofread-onlyaccesstoBaseDNforusersandgroup.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -188,9 +218,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IdentitySource
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwareidentitysourceobject](https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwareidentitysourceobject)
-

@@ -15,25 +15,27 @@ Gets the details of the resourceSyncRule with a specified resource group, subscr
 ### List (Default)
 ```
 Get-AzCustomLocationResourceSyncRule -CustomLocationName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzCustomLocationResourceSyncRule -CustomLocationName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityCustomlocation
 ```
 Get-AzCustomLocationResourceSyncRule -Name <String> -CustomlocationInputObject <ICustomLocationIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzCustomLocationResourceSyncRule -InputObject <ICustomLocationIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,24 +43,39 @@ Gets the details of the resourceSyncRule with a specified resource group, subscr
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List Resource Sync Rule by Custom Location name.
+```powershell
 Get-AzCustomLocationResourceSyncRule -ResourceGroupName azps_test_cluster -CustomLocationName azps-customlocation
 ```
 
-### EXAMPLE 2
+```output
+Location Name                  ResourceGroupName
+-------- ----                  -----------------
+eastus   azps-resourcesyncrule azps_test_cluster
 ```
+
+List Resource Sync Rule by Custom Location name.
+
+### Example 2: Get the detail of the resourceSyncRule with a specified resource group, subscription id Custom Location resource name and Resource Sync Rule name.
+```powershell
 Get-AzCustomLocationResourceSyncRule -ResourceGroupName azps_test_cluster -CustomLocationName azps-customlocation -Name azps-resourcesyncrule
 ```
+
+```output
+Location Name                  ResourceGroupName
+-------- ----                  -----------------
+eastus   azps-resourcesyncrule azps_test_cluster
+```
+
+Get the detail of the resourceSyncRule with a specified resource group, subscription id Custom Location resource name and Resource Sync Rule name.
 
 ## PARAMETERS
 
 ### -CustomlocationInputObject
-Identity Parameter
-To construct, see NOTES section for CUSTOMLOCATIONINPUTOBJECT properties and create a hash table.
+IdentityParameter
 
 ```yaml
-Type: ICustomLocationIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
 Parameter Sets: GetViaIdentityCustomlocation
 Aliases:
 
@@ -70,10 +87,10 @@ Accept wildcard characters: False
 ```
 
 ### -CustomLocationName
-Custom Locations name.
+CustomLocationsname.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get
 Aliases:
 
@@ -85,11 +102,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -101,11 +117,10 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+IdentityParameter
 
 ```yaml
-Type: ICustomLocationIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -117,10 +132,10 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Resource Sync Rule name.
+ResourceSyncRulename.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get, GetViaIdentityCustomlocation
 Aliases:
 
@@ -131,12 +146,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: String
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+
+```yaml
+Type: System.String
 Parameter Sets: List, Get
 Aliases:
 
@@ -148,16 +177,16 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+TheIDofthetargetsubscription.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: List, Get
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -168,32 +197,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceSyncRule
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-CUSTOMLOCATIONINPUTOBJECT \<ICustomLocationIdentity\>: Identity Parameter
-  \[ChildResourceName \<String\>\]: Resource Sync Rule name.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[ResourceName \<String\>\]: Custom Locations name.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-
-INPUTOBJECT \<ICustomLocationIdentity\>: Identity Parameter
-  \[ChildResourceName \<String\>\]: Resource Sync Rule name.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[ResourceName \<String\>\]: Custom Locations name.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.customlocation/get-azcustomlocationresourcesyncrule](https://learn.microsoft.com/powershell/module/az.customlocation/get-azcustomlocationresourcesyncrule)
-

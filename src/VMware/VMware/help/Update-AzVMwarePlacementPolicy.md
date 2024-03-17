@@ -17,30 +17,32 @@ Update a placement policy in a private cloud cluster
 Update-AzVMwarePlacementPolicy -ClusterName <String> -Name <String> -PrivateCloudName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-AffinityStrength <String>]
  [-AzureHybridBenefitType <String>] [-HostMember <String[]>] [-State <String>] [-VMMember <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPrivateCloudExpanded
 ```
 Update-AzVMwarePlacementPolicy -ClusterName <String> -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
  [-AffinityStrength <String>] [-AzureHybridBenefitType <String>] [-HostMember <String[]>] [-State <String>]
- [-VMMember <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-VMMember <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityClusterExpanded
 ```
 Update-AzVMwarePlacementPolicy -Name <String> -ClusterInputObject <IVMwareIdentity>
  [-AffinityStrength <String>] [-AzureHybridBenefitType <String>] [-HostMember <String[]>] [-State <String>]
- [-VMMember <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-VMMember <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzVMwarePlacementPolicy -InputObject <IVMwareIdentity> [-AffinityStrength <String>]
  [-AzureHybridBenefitType <String>] [-HostMember <String[]>] [-State <String>] [-VMMember <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +79,7 @@ Update a placement policy in a private cloud cluster
 ## PARAMETERS
 
 ### -AffinityStrength
-vm-host placement policy affinity strength (should/must)
+vm-hostplacementpolicyaffinitystrength(should/must)
 
 ```yaml
 Type: System.String
@@ -92,7 +94,7 @@ Accept wildcard characters: False
 ```
 
 ### -AsJob
-Run the command as a job
+Runthecommandasajob
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -107,7 +109,7 @@ Accept wildcard characters: False
 ```
 
 ### -AzureHybridBenefitType
-placement policy azure hybrid benefit opt-in type
+placementpolicyazurehybridbenefitopt-intype
 
 ```yaml
 Type: System.String
@@ -122,8 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterInputObject
-Identity Parameter
-To construct, see NOTES section for CLUSTERINPUTOBJECT properties and create a hash table.
+IdentityParameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -138,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-Name of the cluster in the private cloud
+Nameoftheclusterintheprivatecloud
 
 ```yaml
 Type: System.String
@@ -153,7 +154,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -168,7 +169,7 @@ Accept wildcard characters: False
 ```
 
 ### -HostMember
-Host members list
+Hostmemberslist
 
 ```yaml
 Type: System.String[]
@@ -183,8 +184,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+IdentityParameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -199,7 +199,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+NameoftheVMwarevSphereDistributedResourceScheduler(DRS)placementpolicy
 
 ```yaml
 Type: System.String
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Run the command asynchronously
+Runthecommandasynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -229,8 +229,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudInputObject
-Identity Parameter
-To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
+IdentityParameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -245,7 +244,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudName
-Name of the private cloud
+Nameoftheprivatecloud
 
 ```yaml
 Type: System.String
@@ -259,9 +258,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Thenameoftheresourcegroup.Thenameiscaseinsensitive.
 
 ```yaml
 Type: System.String
@@ -276,7 +289,7 @@ Accept wildcard characters: False
 ```
 
 ### -State
-Whether the placement policy is enabled or disabled
+Whethertheplacementpolicyisenabledordisabled
 
 ```yaml
 Type: System.String
@@ -291,7 +304,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
+TheIDofthetargetsubscription.
 
 ```yaml
 Type: System.String
@@ -306,7 +319,7 @@ Accept wildcard characters: False
 ```
 
 ### -VMMember
-Virtual machine members list
+Virtualmachinememberslist
 
 ```yaml
 Type: System.String[]
@@ -360,42 +373,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPlacementPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicy
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IVMwareIdentity>`: Identity Parameter
-  - `[AddonName <String>]`: Name of the addon for the private cloud
-  - `[AuthorizationName <String>]`: Name of the ExpressRoute Circuit Authorization in the private cloud
-  - `[CloudLinkName <String>]`: Name of the cloud link resource
-  - `[ClusterName <String>]`: Name of the cluster in the private cloud
-  - `[DatastoreName <String>]`: Name of the datastore in the private cloud cluster
-  - `[DhcpId <String>]`: NSX DHCP identifier. Generally the same as the DHCP display name
-  - `[DnsServiceId <String>]`: NSX DNS Service identifier. Generally the same as the DNS Service's display name
-  - `[DnsZoneId <String>]`: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
-  - `[GatewayId <String>]`: NSX Gateway identifier. Generally the same as the Gateway's display name
-  - `[GlobalReachConnectionName <String>]`: Name of the global reach connection in the private cloud
-  - `[HcxEnterpriseSiteName <String>]`: Name of the HCX Enterprise Site in the private cloud
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: Azure region
-  - `[PlacementPolicyName <String>]`: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
-  - `[PortMirroringId <String>]`: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
-  - `[PrivateCloudName <String>]`: Name of the private cloud
-  - `[PublicIPId <String>]`: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScriptCmdletName <String>]`: Name of the script cmdlet resource in the script package in the private cloud
-  - `[ScriptExecutionName <String>]`: Name of the user-invoked script execution resource
-  - `[ScriptPackageName <String>]`: Name of the script package in the private cloud
-  - `[SegmentId <String>]`: NSX Segment identifier. Generally the same as the Segment's display name
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VMGroupId <String>]`: NSX VM Group identifier. Generally the same as the VM Group's display name
-  - `[VirtualMachineId <String>]`: Virtual Machine identifier
 
 ## RELATED LINKS

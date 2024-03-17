@@ -14,7 +14,7 @@ Create a in-memory object for PSCredentialExecutionParameter
 
 ```
 New-AzVMwarePSCredentialExecutionParameterObject -Name <String> [-Password <String>] [-Username <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,9 +28,9 @@ New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue
 ```
 
 ```output
-Name                      Type       Password      Username
-----                      ----       --------      --------
-azps_test_credentialvalue Credential passwordValue usernameValue
+Name                      Password      Type       Username
+----                      --------      ----       --------
+azps_test_credentialvalue passwordValue Credential usernameValue
 ```
 
 Create a local PS Credential Execution object
@@ -38,7 +38,7 @@ Create a local PS Credential Execution object
 ## PARAMETERS
 
 ### -Name
-The parameter name.
+Theparametername.
 
 ```yaml
 Type: System.String
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -Password
-password for login.
+passwordforlogin.
 
 ```yaml
 Type: System.String
@@ -67,8 +67,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Username
-username for login.
+usernameforlogin.
 
 ```yaml
 Type: System.String
@@ -89,10 +104,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.PsCredentialExecutionParameter
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PsCredentialExecutionParameter
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

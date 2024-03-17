@@ -13,7 +13,7 @@ Create an in-memory object for UpdateGroup.
 ## SYNTAX
 
 ```
-New-AzFleetUpdateGroupObject -Name <String> [<CommonParameters>]
+New-AzFleetUpdateGroupObject -Name <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -21,17 +21,23 @@ Create an in-memory object for UpdateGroup.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create a fleet update group
+```powershell
 New-AzFleetUpdateGroupObject -Name 'Group-a'
 ```
+
+```output
+Name
+----
+Group-a
+```
+
+This command create a fleet update group object.
 
 ## PARAMETERS
 
 ### -Name
-Name of the group.
-        It must match a group name of an existing fleet member.
-.
+Nameofthegroup.Itmustmatchagroupnameofanexistingfleetmember..
 
 ```yaml
 Type: System.String
@@ -39,6 +45,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -53,9 +74,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.UpdateGroup
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Fleet/new-azfleetupdategroupobject](https://learn.microsoft.com/powershell/module/Az.Fleet/new-azfleetupdategroupobject)
-
