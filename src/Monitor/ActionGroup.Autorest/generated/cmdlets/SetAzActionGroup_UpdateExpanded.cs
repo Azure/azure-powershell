@@ -556,7 +556,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.ActionGroupsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _actionGroupBody, onOk, onCreated, onDefault, this, Pipeline);
+                    await this.Client.ActionGroupsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _actionGroupBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.UndeclaredResponseException urexception)

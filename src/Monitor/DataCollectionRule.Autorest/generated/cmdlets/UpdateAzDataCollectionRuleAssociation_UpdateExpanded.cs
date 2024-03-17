@@ -389,7 +389,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     _body = await this.Client.DataCollectionRuleAssociationsGetWithResult(ResourceUri, AssociationName, this, Pipeline);
                     this.Update_body();
-                    await this.Client.DataCollectionRuleAssociationsCreate(ResourceUri, AssociationName, _body, onOk, onCreated, onDefault, this, Pipeline);
+                    await this.Client.DataCollectionRuleAssociationsCreate(ResourceUri, AssociationName, _body, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.UndeclaredResponseException urexception)

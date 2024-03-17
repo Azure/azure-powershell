@@ -69,7 +69,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]

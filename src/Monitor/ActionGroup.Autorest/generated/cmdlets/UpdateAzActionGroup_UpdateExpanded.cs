@@ -204,17 +204,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IItsmReceiver) })]
         public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IItsmReceiver[] ItsmReceiver { get => _actionGroupBody.ItsmReceiver?.ToArray() ?? null /* fixedArrayOf */; set => _actionGroupBody.ItsmReceiver = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IItsmReceiver>(value) : null); }
 
-        /// <summary>Resource location</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource location")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Resource location",
-        SerializedName = @"location",
-        PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => _actionGroupBody.Location ?? null; set => _actionGroupBody.Location = value; }
-
         /// <summary>The list of logic app receivers that are part of this action group.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of logic app receivers that are part of this action group.")]
@@ -557,7 +546,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     _actionGroupBody = await this.Client.ActionGroupsGetWithResult(SubscriptionId, ResourceGroupName, Name, this, Pipeline);
                     this.Update_actionGroupBody();
-                    await this.Client.ActionGroupsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _actionGroupBody, onOk, onCreated, onDefault, this, Pipeline);
+                    await this.Client.ActionGroupsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _actionGroupBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.UndeclaredResponseException urexception)
@@ -591,10 +580,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
 
         private void Update_actionGroupBody()
         {
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Location")))
-            {
-                this.Location = (string)(this.MyInvocation?.BoundParameters["Location"]);
-            }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
             {
                 this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);

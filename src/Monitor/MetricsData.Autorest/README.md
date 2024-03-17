@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Metric service.
 
 ---
-## Status
-[![Az.Metric](https://img.shields.io/powershellgallery/v/Az.Metric.svg?style=flat-square&label=Az.Metric "Az.Metric")](https://www.powershellgallery.com/packages/Az.Metric/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

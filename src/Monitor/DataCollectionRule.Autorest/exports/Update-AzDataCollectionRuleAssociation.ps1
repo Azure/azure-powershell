@@ -67,7 +67,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]

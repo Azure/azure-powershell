@@ -369,7 +369,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
                     {
                         _body = await this.Client.DataCollectionRuleAssociationsGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
                         this.Update_body();
-                        await this.Client.DataCollectionRuleAssociationsCreateViaIdentity(InputObject.Id, _body, onOk, onCreated, onDefault, this, Pipeline);
+                        await this.Client.DataCollectionRuleAssociationsCreateViaIdentity(InputObject.Id, _body, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -384,7 +384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
                         }
                         _body = await this.Client.DataCollectionRuleAssociationsGetWithResult(InputObject.ResourceUri ?? null, InputObject.AssociationName ?? null, this, Pipeline);
                         this.Update_body();
-                        await this.Client.DataCollectionRuleAssociationsCreate(InputObject.ResourceUri ?? null, InputObject.AssociationName ?? null, _body, onOk, onCreated, onDefault, this, Pipeline);
+                        await this.Client.DataCollectionRuleAssociationsCreate(InputObject.ResourceUri ?? null, InputObject.AssociationName ?? null, _body, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

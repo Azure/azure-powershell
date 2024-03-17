@@ -33,7 +33,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-INPUTOBJECT <IActionGroupIdentity>: Identity Parameter
+INPUTOBJECT <IActionGroupIdentity>: Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
   [ActionGroupName <String>]: The name of the action group.
   [Id <String>]: Resource identity path
   [NotificationId <String>]: The notification id

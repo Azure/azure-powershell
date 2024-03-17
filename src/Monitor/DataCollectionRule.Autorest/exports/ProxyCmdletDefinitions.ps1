@@ -79,7 +79,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -273,7 +272,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List1', Mandatory)]
@@ -507,7 +505,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -706,11 +703,10 @@ param(
     ${Description},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [System.String]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
@@ -741,12 +737,11 @@ param(
     ${Tag},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -1299,7 +1294,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataFlow[]]
     # The specification of data flows.
-    # To construct, see NOTES section for DATAFLOW properties and create a hash table.
     ${DataFlow},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1326,7 +1320,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IExtensionDataSource[]]
     # The list of Azure VM extension data source configurations.
-    # To construct, see NOTES section for DATASOURCEEXTENSION properties and create a hash table.
     ${DataSourceExtension},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1334,7 +1327,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IIisLogsDataSource[]]
     # The list of IIS logs source configurations.
-    # To construct, see NOTES section for DATASOURCEIISLOG properties and create a hash table.
     ${DataSourceIisLog},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1342,7 +1334,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFilesDataSource[]]
     # The list of Log files source configurations.
-    # To construct, see NOTES section for DATASOURCELOGFILE properties and create a hash table.
     ${DataSourceLogFile},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1350,7 +1341,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPerfCounterDataSource[]]
     # The list of performance counter data source configurations.
-    # To construct, see NOTES section for DATASOURCEPERFORMANCECOUNTER properties and create a hash table.
     ${DataSourcePerformanceCounter},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1358,7 +1348,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPlatformTelemetryDataSource[]]
     # The list of platform telemetry configurations
-    # To construct, see NOTES section for DATASOURCEPLATFORMTELEMETRY properties and create a hash table.
     ${DataSourcePlatformTelemetry},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1366,7 +1355,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPrometheusForwarderDataSource[]]
     # The list of Prometheus forwarder data source configurations.
-    # To construct, see NOTES section for DATASOURCEPROMETHEUSFORWARDER properties and create a hash table.
     ${DataSourcePrometheusForwarder},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1374,7 +1362,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ISyslogDataSource[]]
     # The list of Syslog data source configurations.
-    # To construct, see NOTES section for DATASOURCESYSLOG properties and create a hash table.
     ${DataSourceSyslog},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1382,7 +1369,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsEventLogDataSource[]]
     # The list of Windows Event Log data source configurations.
-    # To construct, see NOTES section for DATASOURCEWINDOWSEVENTLOG properties and create a hash table.
     ${DataSourceWindowsEventLog},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1390,7 +1376,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsFirewallLogsDataSource[]]
     # The list of Windows Firewall logs source configurations.
-    # To construct, see NOTES section for DATASOURCEWINDOWSFIREWALLLOG properties and create a hash table.
     ${DataSourceWindowsFirewallLog},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1411,7 +1396,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDestination[]]
     # List of Event Hubs destinations.
-    # To construct, see NOTES section for DESTINATIONEVENTHUB properties and create a hash table.
     ${DestinationEventHub},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1419,7 +1403,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDirectDestination[]]
     # List of Event Hubs Direct destinations.
-    # To construct, see NOTES section for DESTINATIONEVENTHUBSDIRECT properties and create a hash table.
     ${DestinationEventHubsDirect},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1427,7 +1410,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogAnalyticsDestination[]]
     # List of Log Analytics destinations.
-    # To construct, see NOTES section for DESTINATIONLOGANALYTIC properties and create a hash table.
     ${DestinationLogAnalytic},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1435,7 +1417,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMonitoringAccountDestination[]]
     # List of monitoring account destinations.
-    # To construct, see NOTES section for DESTINATIONMONITORINGACCOUNT properties and create a hash table.
     ${DestinationMonitoringAccount},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1443,7 +1424,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[]]
     # List of storage accounts destinations.
-    # To construct, see NOTES section for DESTINATIONSTORAGEACCOUNT properties and create a hash table.
     ${DestinationStorageAccount},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1452,7 +1432,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[]]
     # List of Storage Blob Direct destinations.
     # To be used only for sending data directly to store from the agent.
-    # To construct, see NOTES section for DESTINATIONSTORAGEBLOBSDIRECT properties and create a hash table.
     ${DestinationStorageBlobsDirect},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1460,15 +1439,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageTableDestination[]]
     # List of Storage Table Direct destinations.
-    # To construct, see NOTES section for DESTINATIONSTORAGETABLESDIRECT properties and create a hash table.
     ${DestinationStorageTablesDirect},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [System.String]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Linux", "Windows")]
@@ -1492,12 +1469,11 @@ param(
     ${Tag},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -1702,7 +1678,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1893,7 +1868,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -2088,7 +2062,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -2230,9 +2203,9 @@ end {
 
 <#
 .Synopsis
-Updates part of a data collection endpoint.
+Create a data collection endpoint.
 .Description
-Updates part of a data collection endpoint.
+Create a data collection endpoint.
 .Example
 Update-AzDataCollectionEndpoint -Name myCollectionEndpoint -ResourceGroupName AMCS-TEST -Tag @{"123"="abc"}
 
@@ -2286,30 +2259,54 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [System.String]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    # Description of the data collection endpoint.
+    ${Description},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IResourceForUpdateTags]))]
+    [System.Nullable[System.Boolean]]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [System.String]
+    # The immutable ID of this data collection endpoint resource.
+    # This property is READ-ONLY.
+    ${ImmutableId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Linux", "Windows")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [System.String]
+    # The kind of the resource.
+    ${Kind},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Enabled", "Disabled", "SecuredByPerimeter")]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [System.String]
+    # The configuration to set whether network access from public internet to the endpoints are allowed.
+    ${NetworkAclsPublicNetworkAccess},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
 
     [Parameter()]
@@ -2496,7 +2493,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -2793,7 +2789,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -2807,7 +2802,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataFlow[]]
     # The specification of data flows.
-    # To construct, see NOTES section for DATAFLOW properties and create a hash table.
     ${DataFlow},
 
     [Parameter()]
@@ -2834,7 +2828,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IExtensionDataSource[]]
     # The list of Azure VM extension data source configurations.
-    # To construct, see NOTES section for DATASOURCEEXTENSION properties and create a hash table.
     ${DataSourceExtension},
 
     [Parameter()]
@@ -2842,7 +2835,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IIisLogsDataSource[]]
     # The list of IIS logs source configurations.
-    # To construct, see NOTES section for DATASOURCEIISLOG properties and create a hash table.
     ${DataSourceIisLog},
 
     [Parameter()]
@@ -2850,7 +2842,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogFilesDataSource[]]
     # The list of Log files source configurations.
-    # To construct, see NOTES section for DATASOURCELOGFILE properties and create a hash table.
     ${DataSourceLogFile},
 
     [Parameter()]
@@ -2858,7 +2849,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPerfCounterDataSource[]]
     # The list of performance counter data source configurations.
-    # To construct, see NOTES section for DATASOURCEPERFORMANCECOUNTER properties and create a hash table.
     ${DataSourcePerformanceCounter},
 
     [Parameter()]
@@ -2866,7 +2856,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPlatformTelemetryDataSource[]]
     # The list of platform telemetry configurations
-    # To construct, see NOTES section for DATASOURCEPLATFORMTELEMETRY properties and create a hash table.
     ${DataSourcePlatformTelemetry},
 
     [Parameter()]
@@ -2874,7 +2863,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IPrometheusForwarderDataSource[]]
     # The list of Prometheus forwarder data source configurations.
-    # To construct, see NOTES section for DATASOURCEPROMETHEUSFORWARDER properties and create a hash table.
     ${DataSourcePrometheusForwarder},
 
     [Parameter()]
@@ -2882,7 +2870,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ISyslogDataSource[]]
     # The list of Syslog data source configurations.
-    # To construct, see NOTES section for DATASOURCESYSLOG properties and create a hash table.
     ${DataSourceSyslog},
 
     [Parameter()]
@@ -2890,7 +2877,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsEventLogDataSource[]]
     # The list of Windows Event Log data source configurations.
-    # To construct, see NOTES section for DATASOURCEWINDOWSEVENTLOG properties and create a hash table.
     ${DataSourceWindowsEventLog},
 
     [Parameter()]
@@ -2898,7 +2884,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IWindowsFirewallLogsDataSource[]]
     # The list of Windows Firewall logs source configurations.
-    # To construct, see NOTES section for DATASOURCEWINDOWSFIREWALLLOG properties and create a hash table.
     ${DataSourceWindowsFirewallLog},
 
     [Parameter()]
@@ -2919,7 +2904,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDestination[]]
     # List of Event Hubs destinations.
-    # To construct, see NOTES section for DESTINATIONEVENTHUB properties and create a hash table.
     ${DestinationEventHub},
 
     [Parameter()]
@@ -2927,7 +2911,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IEventHubDirectDestination[]]
     # List of Event Hubs Direct destinations.
-    # To construct, see NOTES section for DESTINATIONEVENTHUBSDIRECT properties and create a hash table.
     ${DestinationEventHubsDirect},
 
     [Parameter()]
@@ -2935,7 +2918,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.ILogAnalyticsDestination[]]
     # List of Log Analytics destinations.
-    # To construct, see NOTES section for DESTINATIONLOGANALYTIC properties and create a hash table.
     ${DestinationLogAnalytic},
 
     [Parameter()]
@@ -2943,7 +2925,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IMonitoringAccountDestination[]]
     # List of monitoring account destinations.
-    # To construct, see NOTES section for DESTINATIONMONITORINGACCOUNT properties and create a hash table.
     ${DestinationMonitoringAccount},
 
     [Parameter()]
@@ -2951,7 +2932,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[]]
     # List of storage accounts destinations.
-    # To construct, see NOTES section for DESTINATIONSTORAGEACCOUNT properties and create a hash table.
     ${DestinationStorageAccount},
 
     [Parameter()]
@@ -2960,7 +2940,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageBlobDestination[]]
     # List of Storage Blob Direct destinations.
     # To be used only for sending data directly to store from the agent.
-    # To construct, see NOTES section for DESTINATIONSTORAGEBLOBSDIRECT properties and create a hash table.
     ${DestinationStorageBlobsDirect},
 
     [Parameter()]
@@ -2968,15 +2947,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IStorageTableDestination[]]
     # List of Storage Table Direct destinations.
-    # To construct, see NOTES section for DESTINATIONSTORAGETABLESDIRECT properties and create a hash table.
     ${DestinationStorageTablesDirect},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [System.String]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    [System.Nullable[System.Boolean]]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("Linux", "Windows")]
@@ -2984,12 +2961,6 @@ param(
     [System.String]
     # The kind of the resource.
     ${Kind},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives.
-    ${Location},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
@@ -3006,12 +2977,11 @@ param(
     ${Tag},
 
     [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
 
     [Parameter()]

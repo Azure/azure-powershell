@@ -63,7 +63,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Metric.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(Mandatory)]
