@@ -15,13 +15,13 @@ Adds or removes schedule tag in an existing backup policy.
 ### RemoveTag (Default)
 ```
 Edit-AzDataProtectionPolicyTagClientObject -Policy <IBackupPolicy> -Name <TagName> [-RemoveRule]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### updateTag
 ```
 Edit-AzDataProtectionPolicyTagClientObject -Policy <IBackupPolicy> -Name <TagName>
- -Criteria <IScheduleBasedBackupCriteria[]> [<CommonParameters>]
+ -Criteria <IScheduleBasedBackupCriteria[]> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,6 +106,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RemoveRule
 Specify whether to remove the tag from the given policy object.
 
@@ -128,47 +143,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupPolicy
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`CRITERIA <IScheduleBasedBackupCriteria[]>`: Criterias to be associated with the schedule tag.
-  - `ObjectType <String>`: Type of the specific object - used for deserializing
-  - `[AbsoluteCriterion <AbsoluteMarker[]>]`: it contains absolute values like "AllBackup" / "FirstOfDay" / "FirstOfWeek" / "FirstOfMonth"         and should be part of AbsoluteMarker enum
-  - `[DaysOfMonth <IDay[]>]`: This is day of the month from 1 to 28 other wise last of month
-    - `[Date <Int32?>]`: Date of the month
-    - `[IsLast <Boolean?>]`: Whether Date is last date of month
-  - `[DaysOfTheWeek <DayOfWeek[]>]`: It should be Sunday/Monday/T..../Saturday
-  - `[MonthsOfYear <Month[]>]`: It should be January/February/....../December
-  - `[ScheduleTime <DateTime[]>]`: List of schedule times for backup
-  - `[WeeksOfTheMonth <WeekNumber[]>]`: It should be First/Second/Third/Fourth/Last
-
-`POLICY <IBackupPolicy>`: Backup Policy Object.
-  - `DatasourceType <String[]>`: Type of datasource for the backup management
-  - `ObjectType <String>`: 
-  - `PolicyRule <IBasePolicyRule[]>`: Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc
-    - `Name <String>`: 
-    - `ObjectType <String>`: 
-    - `DataStoreObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
-    - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
-    - `TriggerObjectType <String>`: Type of the specific object - used for deserializing
-    - `Lifecycle <ISourceLifeCycle[]>`: 
-      - `DeleteAfterDuration <String>`: Duration of deletion after given timespan
-      - `DeleteAfterObjectType <String>`: Type of the specific object - used for deserializing
-      - `SourceDataStoreObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
-      - `SourceDataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
-      - `[TargetDataStoreCopySetting <ITargetCopySetting[]>]`: 
-        - `CopyAfterObjectType <String>`: Type of the specific object - used for deserializing
-        - `DataStoreObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
-        - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
-    - `[BackupParameterObjectType <String>]`: Type of the specific object - used for deserializing
-    - `[IsDefault <Boolean?>]`: 
 
 ## RELATED LINKS
