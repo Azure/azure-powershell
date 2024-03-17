@@ -108,7 +108,6 @@ Accept wildcard characters: False
 
 ### -IPExtendedCommunityRule
 List of IP Extended Community Rules.
-To construct, see NOTES section for IPEXTENDEDCOMMUNITYRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityRule[]
