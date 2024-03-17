@@ -144,7 +144,6 @@ Accept wildcard characters: False
 
 ### -ExtensionParameter
 Describes a Machine Extension.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineExtension
