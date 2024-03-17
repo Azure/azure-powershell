@@ -15,37 +15,39 @@ Gets an environment action result.
 ### List (Default)
 ```
 Get-AzDevCenterUserEnvironmentOperation -Endpoint <String> -EnvironmentName <String> -ProjectName <String>
- [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDevCenterUserEnvironmentOperation -Endpoint <String> -EnvironmentName <String> -ProjectName <String>
- [-UserId <String>] -OperationId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UserId <String>] -OperationId <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDevCenterUserEnvironmentOperation -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityByDevCenter
 ```
 Get-AzDevCenterUserEnvironmentOperation -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
 Get-AzDevCenterUserEnvironmentOperation -DevCenterName <String> -EnvironmentName <String> -ProjectName <String>
- [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
 Get-AzDevCenterUserEnvironmentOperation -DevCenterName <String> -EnvironmentName <String> -ProjectName <String>
- [-UserId <String>] -OperationId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UserId <String>] -OperationId <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,37 +55,49 @@ Gets an environment action result.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List operations on the environment by endpoint
+```powershell
 Get-AzDevCenterUserEnvironmentOperation -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -EnvironmentName myEnvironment -ProjectName DevProject
 ```
 
-### EXAMPLE 2
-```
+This command lists the operations on the environment "myEnvironment".
+
+### Example 2: List operations on the environment by dev center
+```powershell
 Get-AzDevCenterUserEnvironmentOperation -DevCenterName Contoso -EnvironmentName myEnvironment -ProjectName DevProject
 ```
 
-### EXAMPLE 3
-```
+This command lists the operations on the environment "myEnvironment".
+
+### Example 3: Get an operation on the environment by endpoint
+```powershell
 Get-AzDevCenterUserEnvironmentOperation -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -EnvironmentName myEnvironment -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd"
 ```
 
-### EXAMPLE 4
-```
+This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the environment "myEnvironment".
+
+### Example 4: Get an operation on the environment by dev center
+```powershell
 Get-AzDevCenterUserEnvironmentOperation -DevCenterName Contoso -EnvironmentName myEnvironment -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd"
 ```
 
-### EXAMPLE 5
-```
+This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the environment "myEnvironment".
+
+### Example 5: Get an operation on the environment by endpoint and InputObject
+```powershell
 $environmentInput = @{"EnvironmentName" = "myEnvironment"; "UserId" = "me"; "ProjectName" = "DevProject"; "OperationId" = "d0954a94-3550-4919-bcbe-1c94ed79e0cd"}
 Get-AzDevCenterUserEnvironmentOperation -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $environmentInput
 ```
 
-### EXAMPLE 6
-```
+This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the environment "myEnvironment".
+
+### Example 6: Get an operation on the environment by dev center and InputObject
+```powershell
 $environmentInput = @{"EnvironmentName" = "myEnvironment"; "UserId" = "me"; "ProjectName" = "DevProject"; "OperationId" = "d0954a94-3550-4919-bcbe-1c94ed79e0cd"}
 Get-AzDevCenterUserEnvironmentOperation -DevCenterName Contoso -InputObject $environmentInput
 ```
+
+This command gets the operation "d0954a94-3550-4919-bcbe-1c94ed79e0cd" for the environment "myEnvironment".
 
 ## PARAMETERS
 
@@ -92,7 +106,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -107,7 +121,7 @@ Accept wildcard characters: False
 The DevCenter upon which to execute operations.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetViaIdentityByDevCenter, ListByDevCenter, GetByDevCenter
 Aliases: DevCenter
 
@@ -122,7 +136,7 @@ Accept wildcard characters: False
 The DevCenter-specific URI to operate on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get, GetViaIdentity
 Aliases:
 
@@ -137,7 +151,7 @@ Accept wildcard characters: False
 The name of the environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get, ListByDevCenter, GetByDevCenter
 Aliases:
 
@@ -153,7 +167,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IDevCenterdataIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 Parameter Sets: GetViaIdentity, GetViaIdentityByDevCenter
 Aliases:
 
@@ -168,7 +182,7 @@ Accept wildcard characters: False
 The id of the operation on an environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get, GetByDevCenter
 Aliases:
 
@@ -179,11 +193,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get, ListByDevCenter, GetByDevCenter
 Aliases:
 
@@ -199,13 +228,13 @@ The AAD object id of the user.
 If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get, ListByDevCenter, GetByDevCenter
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "me"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -216,33 +245,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentOperation
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IDevCenterdataIdentity\>: Identity Parameter
-  \[ActionName \<String\>\]: The name of an action that will take place on a Dev Box.
-  \[CatalogName \<String\>\]: The name of the catalog
-  \[CustomizationGroupName \<String\>\]: A customization group name.
-  \[CustomizationTaskId \<String\>\]: A customization task ID.
-  \[DefinitionName \<String\>\]: The name of the environment definition
-  \[DevBoxName \<String\>\]: The name of a Dev Box.
-  \[EnvironmentName \<String\>\]: The name of the environment.
-  \[Id \<String\>\]: Resource identity path
-  \[OperationId \<String\>\]: The id of the operation on a Dev Box.
-  \[PoolName \<String\>\]: The name of a pool of Dev Boxes.
-  \[ProjectName \<String\>\]: The DevCenter Project upon which to execute operations.
-  \[ScheduleName \<String\>\]: The name of a schedule.
-  \[TaskName \<String\>\]: A customization task name.
-  \[UserId \<String\>\]: The AAD object id of the user.
-If value is 'me', the identity is taken from the authentication context.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentoperation](https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentoperation)
-
