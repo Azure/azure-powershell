@@ -76,7 +76,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IRecipient[]]
     # Gets or sets list of notified recipients for new requests
-    # To construct, see NOTES section for NOTIFICATIONSETTINGRECIPIENT properties and create a hash table.
     ${NotificationSettingRecipient},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
