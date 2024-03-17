@@ -51,18 +51,6 @@ param(
     # The Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
-    [System.String]
-    # Gets or sets the FQDN/IPAddress of the vCenter.
-    ${Fqdn},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
-    [System.String]
-    # Gets or sets the location.
-    ${Location},
-
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [System.Security.SecureString]
@@ -90,10 +78,22 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [System.String]
+    # Gets or sets the FQDN/IPAddress of the vCenter.
+    ${Fqdn},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
+    [System.String]
     # Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g.
     # ApiApps are a kind of Microsoft.Web/sites type.
     # If supported, the resource provider must validate and persist this value.
     ${Kind},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
+    [System.String]
+    # Gets or sets the location.
+    ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]

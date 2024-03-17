@@ -144,10 +144,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Cmdlets
         public string Kind { get => _body.Kind ?? null; set => _body.Kind = value; }
 
         /// <summary>Gets or sets the location.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Gets or sets the location.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or sets the location.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Gets or sets the location.",
         SerializedName = @"location",

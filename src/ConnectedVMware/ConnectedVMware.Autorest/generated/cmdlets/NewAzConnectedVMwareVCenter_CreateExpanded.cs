@@ -126,10 +126,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Cmdlets
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
         /// <summary>Gets or sets the FQDN/IPAddress of the vCenter.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Gets or sets the FQDN/IPAddress of the vCenter.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or sets the FQDN/IPAddress of the vCenter.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Gets or sets the FQDN/IPAddress of the vCenter.",
         SerializedName = @"fqdn",
@@ -166,10 +166,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Cmdlets
         public string Kind { get => _body.Kind ?? null; set => _body.Kind = value; }
 
         /// <summary>Gets or sets the location.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Gets or sets the location.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Gets or sets the location.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.Info(
-        Required = true,
+        Required = false,
         ReadOnly = false,
         Description = @"Gets or sets the location.",
         SerializedName = @"location",

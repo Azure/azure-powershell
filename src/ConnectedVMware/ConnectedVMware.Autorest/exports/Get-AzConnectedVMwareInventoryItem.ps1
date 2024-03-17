@@ -101,14 +101,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityVcenter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for VCENTERINPUTOBJECT properties and create a hash table.
     ${VcenterInputObject},
 
     [Parameter()]
