@@ -86,17 +86,16 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
     [System.String]
     # Connected Cluster or AKS Cluster.
     # The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
     ${HostResourceId},
-
-    [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PSArgumentCompleterAttribute("SystemAssigned", "None")]
-    [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]
-    [System.String]
-    # The identity type.
-    ${IdentityType},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Body')]

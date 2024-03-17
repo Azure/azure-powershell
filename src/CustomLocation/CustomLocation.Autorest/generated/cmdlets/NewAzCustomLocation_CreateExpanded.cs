@@ -126,6 +126,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string DisplayName { get => _parametersBody.DisplayName ?? null; set => _parametersBody.DisplayName = value; }
 
+        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _parametersBody.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
+
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
@@ -171,18 +175,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
-
-        /// <summary>The identity type.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The identity type.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The identity type.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.PSArgumentCompleterAttribute("SystemAssigned", "None")]
-        public string IdentityType { get => _parametersBody.IdentityType ?? null; set => _parametersBody.IdentityType = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
