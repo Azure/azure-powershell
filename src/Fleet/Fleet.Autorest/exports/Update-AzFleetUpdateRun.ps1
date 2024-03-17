@@ -48,12 +48,6 @@ INPUTOBJECT <IFleetIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [UpdateRunName <String>]: The name of the UpdateRun resource.
   [UpdateStrategyName <String>]: The name of the UpdateStrategy resource.
-
-STRATEGYSTAGE <IUpdateStage[]>: The list of stages that compose this update run. Min size: 1.
-  Name <String>: The name of the stage. Must be unique within the UpdateRun.
-  [AfterStageWaitInSecond <Int32?>]: The time in seconds to wait at the end of this stage before starting the next one. Defaults to 0 seconds if unspecified.
-  [Group <List<IUpdateGroup>>]: Defines the groups to be executed in parallel in this stage. Duplicate groups are not allowed. Min size: 1.
-    Name <String>: Name of the group.         It must match a group name of an existing fleet member. 
 .Link
 https://learn.microsoft.com/powershell/module/az.fleet/update-azfleetupdaterun
 #>
@@ -93,14 +87,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityFleetExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -114,48 +106,6 @@ param(
     [System.String]
     # The request should only proceed if no entity matches this string.
     ${IfNoneMatch},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.PSArgumentCompleterAttribute("Latest", "Consistent")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
-    [System.String]
-    # The node image upgrade type.
-    ${NodeImageSelectionType},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[]]
-    # The list of stages that compose this update run.
-    # Min size: 1.
-    # To construct, see NOTES section for STRATEGYSTAGE properties and create a hash table.
-    ${StrategyStage},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
-    [System.String]
-    # The resource id of the FleetUpdateStrategy resource to reference.When creating a new run, there are three ways to define a strategy for the run:1.
-    # Define a new strategy in place: Set the "strategy" field.2.
-    # Use an existing strategy: Set the "updateStrategyId" field.
-    # (since 2023-08-15-preview)3.
-    # Use the default strategy to update all the members one by one: Leave both "updateStrategyId" and "strategy" unset.
-    # (since 2023-08-15-preview)Setting both "updateStrategyId" and "strategy" is invalid.UpdateRuns created by "updateStrategyId" snapshot the referenced UpdateStrategy at the time of creation and store it in the "strategy" field.
-    # Subsequent changes to the referenced FleetUpdateStrategy resource do not propagate.
-    # UpdateRunStrategy changes can be made directly on the "strategy" field before launching the UpdateRun.
-    ${UpdateStrategyId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
-    [System.String]
-    # The Kubernetes version to upgrade the member clusters to.
-    ${UpgradeKubernetesVersion},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.PSArgumentCompleterAttribute("Full", "NodeImageOnly")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
-    [System.String]
-    # The upgrade type.Full requires the KubernetesVersion property to be set.NodeImageOnly requires the KubernetesVersion property not to be set.
-    ${UpgradeType},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

@@ -169,18 +169,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
-        /// <summary>The node image upgrade type.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The node image upgrade type.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The node image upgrade type.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.PSArgumentCompleterAttribute("Latest", "Consistent")]
-        public string NodeImageSelectionType { get => _resourceBody.NodeImageSelectionType ?? null; set => _resourceBody.NodeImageSelectionType = value; }
-
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>
@@ -216,18 +204,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>The list of stages that compose this update run. Min size: 1.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of stages that compose this update run. Min size: 1.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of stages that compose this update run. Min size: 1.",
-        SerializedName = @"stages",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[] StrategyStage { get => _resourceBody.StrategyStage?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.StrategyStage = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage>(value) : null); }
-
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
@@ -246,51 +222,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
         SetCondition = @"")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ParameterCategory.Path)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
-
-        /// <summary>
-        /// The resource id of the FleetUpdateStrategy resource to reference.When creating a new run, there are three ways to define
-        /// a strategy for the run:1. Define a new strategy in place: Set the "strategy" field.2. Use an existing strategy: Set the
-        /// "updateStrategyId" field. (since 2023-08-15-preview)3. Use the default strategy to update all the members one by one:
-        /// Leave both "updateStrategyId" and "strategy" unset. (since 2023-08-15-preview)Setting both "updateStrategyId" and "strategy"
-        /// is invalid.UpdateRuns created by "updateStrategyId" snapshot the referenced UpdateStrategy at the time of creation and
-        /// store it in the "strategy" field. Subsequent changes to the referenced FleetUpdateStrategy resource do not propagate.
-        /// UpdateRunStrategy changes can be made directly on the "strategy" field before launching the UpdateRun.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The resource id of the FleetUpdateStrategy resource to reference.When creating a new run, there are three ways to define a strategy for the run:1. Define a new strategy in place: Set the \"strategy\" field.2. Use an existing strategy: Set the \"updateStrategyId\" field. (since 2023-08-15-preview)3. Use the default strategy to update all the members one by one: Leave both \"updateStrategyId\" and \"strategy\" unset. (since 2023-08-15-preview)Setting both \"updateStrategyId\" and \"strategy\" is invalid.UpdateRuns created by \"updateStrategyId\" snapshot the referenced UpdateStrategy at the time of creation and store it in the \"strategy\" field. Subsequent changes to the referenced FleetUpdateStrategy resource do not propagate. UpdateRunStrategy changes can be made directly on the \"strategy\" field before launching the UpdateRun.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The resource id of the FleetUpdateStrategy resource to reference.When creating a new run, there are three ways to define a strategy for the run:1. Define a new strategy in place: Set the ""strategy"" field.2. Use an existing strategy: Set the ""updateStrategyId"" field. (since 2023-08-15-preview)3. Use the default strategy to update all the members one by one: Leave both ""updateStrategyId"" and ""strategy"" unset. (since 2023-08-15-preview)Setting both ""updateStrategyId"" and ""strategy"" is invalid.UpdateRuns created by ""updateStrategyId"" snapshot the referenced UpdateStrategy at the time of creation and store it in the ""strategy"" field. Subsequent changes to the referenced FleetUpdateStrategy resource do not propagate. UpdateRunStrategy changes can be made directly on the ""strategy"" field before launching the UpdateRun.",
-        SerializedName = @"updateStrategyId",
-        PossibleTypes = new [] { typeof(string) })]
-        public string UpdateStrategyId { get => _resourceBody.UpdateStrategyId ?? null; set => _resourceBody.UpdateStrategyId = value; }
-
-        /// <summary>The Kubernetes version to upgrade the member clusters to.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Kubernetes version to upgrade the member clusters to.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The Kubernetes version to upgrade the member clusters to.",
-        SerializedName = @"kubernetesVersion",
-        PossibleTypes = new [] { typeof(string) })]
-        public string UpgradeKubernetesVersion { get => _resourceBody.UpgradeKubernetesVersion ?? null; set => _resourceBody.UpgradeKubernetesVersion = value; }
-
-        /// <summary>
-        /// The upgrade type.Full requires the KubernetesVersion property to be set.NodeImageOnly requires the KubernetesVersion property
-        /// not to be set.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The upgrade type.Full requires the KubernetesVersion property to be set.NodeImageOnly requires the KubernetesVersion property not to be set.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The upgrade type.Full requires the KubernetesVersion property to be set.NodeImageOnly requires the KubernetesVersion property not to be set.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.PSArgumentCompleterAttribute("Full", "NodeImageOnly")]
-        public string UpgradeType { get => _resourceBody.UpgradeType ?? null; set => _resourceBody.UpgradeType = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -558,7 +489,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     _resourceBody = await this.Client.UpdateRunsGetWithResult(SubscriptionId, ResourceGroupName, FleetName, Name, this, Pipeline);
                     this.Update_resourceBody();
-                    await this.Client.UpdateRunsCreateOrUpdate(SubscriptionId, ResourceGroupName, FleetName, Name, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _resourceBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.UpdateRunsCreateOrUpdate(SubscriptionId, ResourceGroupName, FleetName, Name, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.UndeclaredResponseException urexception)
@@ -592,26 +523,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
 
         private void Update_resourceBody()
         {
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("UpdateStrategyId")))
-            {
-                this.UpdateStrategyId = (string)(this.MyInvocation?.BoundParameters["UpdateStrategyId"]);
-            }
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("StrategyStage")))
-            {
-                this.StrategyStage = (Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[])(this.MyInvocation?.BoundParameters["StrategyStage"]);
-            }
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("UpgradeKubernetesVersion")))
-            {
-                this.UpgradeKubernetesVersion = (string)(this.MyInvocation?.BoundParameters["UpgradeKubernetesVersion"]);
-            }
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("NodeImageSelectionType")))
-            {
-                this.NodeImageSelectionType = (string)(this.MyInvocation?.BoundParameters["NodeImageSelectionType"]);
-            }
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("UpgradeType")))
-            {
-                this.UpgradeType = (string)(this.MyInvocation?.BoundParameters["UpgradeType"]);
-            }
+
         }
 
         /// <summary>

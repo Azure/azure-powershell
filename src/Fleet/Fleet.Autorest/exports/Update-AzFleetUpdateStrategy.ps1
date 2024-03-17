@@ -53,12 +53,6 @@ INPUTOBJECT <IFleetIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [UpdateRunName <String>]: The name of the UpdateRun resource.
   [UpdateStrategyName <String>]: The name of the UpdateStrategy resource.
-
-STRATEGYSTAGE <IUpdateStage[]>: The list of stages that compose this update run. Min size: 1.
-  Name <String>: The name of the stage. Must be unique within the UpdateRun.
-  [AfterStageWaitInSecond <Int32?>]: The time in seconds to wait at the end of this stage before starting the next one. Defaults to 0 seconds if unspecified.
-  [Group <List<IUpdateGroup>>]: Defines the groups to be executed in parallel in this stage. Duplicate groups are not allowed. Min size: 1.
-    Name <String>: Name of the group.         It must match a group name of an existing fleet member. 
 .Link
 https://learn.microsoft.com/powershell/module/az.fleet/update-azfleetupdatestrategy
 #>
@@ -97,14 +91,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityFleetExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -118,15 +110,6 @@ param(
     [System.String]
     # The request should only proceed if no entity matches this string.
     ${IfNoneMatch},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[]]
-    # The list of stages that compose this update run.
-    # Min size: 1.
-    # To construct, see NOTES section for STRATEGYSTAGE properties and create a hash table.
-    ${StrategyStage},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

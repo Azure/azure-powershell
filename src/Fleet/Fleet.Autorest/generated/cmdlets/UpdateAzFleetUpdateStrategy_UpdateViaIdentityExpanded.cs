@@ -171,18 +171,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>The list of stages that compose this update run. Min size: 1.</summary>
-        [global::System.Management.Automation.AllowEmptyCollection]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of stages that compose this update run. Min size: 1.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The list of stages that compose this update run. Min size: 1.",
-        SerializedName = @"stages",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[] StrategyStage { get => _resourceBody.StrategyStage?.ToArray() ?? null /* fixedArrayOf */; set => _resourceBody.StrategyStage = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage>(value) : null); }
-
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
@@ -447,7 +435,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
                     {
                         _resourceBody = await this.Client.FleetUpdateStrategiesGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
                         this.Update_resourceBody();
-                        await this.Client.FleetUpdateStrategiesCreateOrUpdateViaIdentity(InputObject.Id, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _resourceBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.FleetUpdateStrategiesCreateOrUpdateViaIdentity(InputObject.Id, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -470,7 +458,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
                         }
                         _resourceBody = await this.Client.FleetUpdateStrategiesGetWithResult(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.FleetName ?? null, InputObject.UpdateStrategyName ?? null, this, Pipeline);
                         this.Update_resourceBody();
-                        await this.Client.FleetUpdateStrategiesCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.FleetName ?? null, InputObject.UpdateStrategyName ?? null, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _resourceBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.FleetUpdateStrategiesCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.FleetName ?? null, InputObject.UpdateStrategyName ?? null, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -505,10 +493,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
 
         private void Update_resourceBody()
         {
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("StrategyStage")))
-            {
-                this.StrategyStage = (Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[])(this.MyInvocation?.BoundParameters["StrategyStage"]);
-            }
+
         }
 
         /// <summary>
