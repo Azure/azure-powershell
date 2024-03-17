@@ -14,7 +14,7 @@ Get Backup Vault storage setting object
 
 ```
 New-AzDataProtectionBackupVaultStorageSettingObject -Type <StorageSettingType> -DataStoreType <DataStoreType>
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +53,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Type
 Storage Type of the vault
 
@@ -79,7 +94,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Management.Automation.PSObject
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

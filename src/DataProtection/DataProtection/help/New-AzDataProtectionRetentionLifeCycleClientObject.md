@@ -15,7 +15,8 @@ Creates new Lifecycle object
 ```
 New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore <DataStoreType>
  -SourceRetentionDurationType <DurationType> -SourceRetentionDurationCount <Int32>
- [-TargetDataStore <DataStoreType>] [-CopyOption <CopyOption>] [<CommonParameters>]
+ [-TargetDataStore <DataStoreType>] [-CopyOption <CopyOption>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,6 +64,21 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.CopyOption
 Parameter Sets: (All)
 Aliases:
 Accepted values: CustomCopyOption, ImmediateCopyOption, CopyOnExpiryOption
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -141,10 +157,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.ISourceLifeCycle
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.ISourceLifeCycle
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
