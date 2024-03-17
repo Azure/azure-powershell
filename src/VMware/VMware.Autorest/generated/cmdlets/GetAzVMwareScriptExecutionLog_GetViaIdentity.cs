@@ -139,6 +139,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         SerializedName = @"scriptOutputStreamType",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Information", "Warning", "Output", "Error")]
         public System.Collections.Generic.List<string> ScriptOutputStreamType { get => this._scriptOutputStreamType; set => this._scriptOutputStreamType = value; }
 
         /// <summary>

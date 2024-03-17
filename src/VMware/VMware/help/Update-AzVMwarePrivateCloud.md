@@ -8,31 +8,34 @@ schema: 2.0.0
 # Update-AzVMwarePrivateCloud
 
 ## SYNOPSIS
-Update a private cloud
+Create a private cloud
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-EncryptionStatus <String>] [-ExtendedNetworkBlock <String[]>] [-IdentitySource <IIdentitySource[]>]
- [-IdentityType <String>] [-Internet <String>] [-KeyVaultPropertyKeyName <String>]
- [-KeyVaultPropertyKeyVaultUrl <String>] [-KeyVaultPropertyKeyVersion <String>]
- [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnableSystemAssignedIdentity <Boolean>] [-EncryptionStatus <String>] [-ExtendedNetworkBlock <String[]>]
+ [-IdentitySource <IIdentitySource[]>] [-Internet <String>] [-KeyVaultPropertyKeyName <String>]
+ [-KeyVaultPropertyKeyVaultUrl <String>] [-KeyVaultPropertyKeyVersion <String>] [-Location <String>]
+ [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>] [-NsxtPassword <String>]
+ [-SkuName <String>] [-Tag <Hashtable>] [-VcenterPassword <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-EncryptionStatus <String>]
- [-ExtendedNetworkBlock <String[]>] [-IdentitySource <IIdentitySource[]>] [-IdentityType <String>]
+Update-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-EnableSystemAssignedIdentity <Boolean>]
+ [-EncryptionStatus <String>] [-ExtendedNetworkBlock <String[]>] [-IdentitySource <IIdentitySource[]>]
  [-Internet <String>] [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUrl <String>]
- [-KeyVaultPropertyKeyVersion <String>] [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyVaultPropertyKeyVersion <String>] [-Location <String>] [-ManagementClusterHost <String[]>]
+ [-ManagementClusterSize <Int32>] [-NsxtPassword <String>] [-SkuName <String>] [-Tag <Hashtable>]
+ [-VcenterPassword <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update a private cloud
+Create a private cloud
 
 ## EXAMPLES
 
@@ -80,12 +83,28 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -128,7 +147,6 @@ Accept wildcard characters: False
 
 ### -IdentitySource
 vCenter Single Sign On Identity Sources
-To construct, see NOTES section for IDENTITYSOURCE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource[]
@@ -142,26 +160,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-The type of identity used for the private cloud.
-The type 'SystemAssigned' refers to an implicitly created identity.
-The type 'None' will remove any identities from the Private Cloud.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -235,6 +235,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Location
+Resource location
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ManagementClusterHost
 The hosts
 
@@ -295,6 +310,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NsxtPassword
+Optionally, set the NSX-T Manager password when the private cloud is created
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -305,6 +350,21 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkuName
+The name of the SKU.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -331,6 +391,21 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VcenterPassword
+Optionally, set the vCenter admin password when the private cloud is created
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -381,54 +456,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`IDENTITYSOURCE <IIdentitySource[]>`: vCenter Single Sign On Identity Sources
-  - `[Alias <String>]`: The domain's NetBIOS name
-  - `[BaseGroupDn <String>]`: The base distinguished name for groups
-  - `[BaseUserDn <String>]`: The base distinguished name for users
-  - `[Domain <String>]`: The domain's dns name
-  - `[Name <String>]`: The name of the identity source
-  - `[Password <String>]`: The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
-  - `[PrimaryServer <String>]`: Primary server URL
-  - `[SecondaryServer <String>]`: Secondary server URL
-  - `[Ssl <SslEnum?>]`: Protect LDAP communication using SSL certificate (LDAPS)
-  - `[Username <String>]`: The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group
-
-`INPUTOBJECT <IVMwareIdentity>`: Identity Parameter
-  - `[AddonName <String>]`: Name of the addon for the private cloud
-  - `[AuthorizationName <String>]`: Name of the ExpressRoute Circuit Authorization in the private cloud
-  - `[CloudLinkName <String>]`: Name of the cloud link resource
-  - `[ClusterName <String>]`: Name of the cluster in the private cloud
-  - `[DatastoreName <String>]`: Name of the datastore in the private cloud cluster
-  - `[DhcpId <String>]`: NSX DHCP identifier. Generally the same as the DHCP display name
-  - `[DnsServiceId <String>]`: NSX DNS Service identifier. Generally the same as the DNS Service's display name
-  - `[DnsZoneId <String>]`: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
-  - `[GatewayId <String>]`: NSX Gateway identifier. Generally the same as the Gateway's display name
-  - `[GlobalReachConnectionName <String>]`: Name of the global reach connection in the private cloud
-  - `[HcxEnterpriseSiteName <String>]`: Name of the HCX Enterprise Site in the private cloud
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: Azure region
-  - `[PlacementPolicyName <String>]`: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
-  - `[PortMirroringId <String>]`: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
-  - `[PrivateCloudName <String>]`: Name of the private cloud
-  - `[PublicIPId <String>]`: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ScriptCmdletName <String>]`: Name of the script cmdlet resource in the script package in the private cloud
-  - `[ScriptExecutionName <String>]`: Name of the user-invoked script execution resource
-  - `[ScriptPackageName <String>]`: Name of the script package in the private cloud
-  - `[SegmentId <String>]`: NSX Segment identifier. Generally the same as the Segment's display name
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VMGroupId <String>]`: NSX VM Group identifier. Generally the same as the VM Group's display name
-  - `[VirtualMachineId <String>]`: Virtual Machine identifier
 
 ## RELATED LINKS

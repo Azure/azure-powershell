@@ -461,7 +461,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                         this.PrivateCloudInputObject.Id += $"/globalReachConnections/{(global::System.Uri.EscapeDataString(this.Name.ToString()))}";
                         _globalReachConnectionBody = await this.Client.GlobalReachConnectionsGetViaIdentityWithResult(PrivateCloudInputObject.Id, this, Pipeline);
                         this.Update_globalReachConnectionBody();
-                        await this.Client.GlobalReachConnectionsCreateOrUpdateViaIdentity(PrivateCloudInputObject.Id, _globalReachConnectionBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.GlobalReachConnectionsCreateOrUpdateViaIdentity(PrivateCloudInputObject.Id, _globalReachConnectionBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -480,7 +480,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                         }
                         _globalReachConnectionBody = await this.Client.GlobalReachConnectionsGetWithResult(PrivateCloudInputObject.SubscriptionId ?? null, PrivateCloudInputObject.ResourceGroupName ?? null, PrivateCloudInputObject.PrivateCloudName ?? null, Name, this, Pipeline);
                         this.Update_globalReachConnectionBody();
-                        await this.Client.GlobalReachConnectionsCreateOrUpdate(PrivateCloudInputObject.SubscriptionId ?? null, PrivateCloudInputObject.ResourceGroupName ?? null, PrivateCloudInputObject.PrivateCloudName ?? null, Name, _globalReachConnectionBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.GlobalReachConnectionsCreateOrUpdate(PrivateCloudInputObject.SubscriptionId ?? null, PrivateCloudInputObject.ResourceGroupName ?? null, PrivateCloudInputObject.PrivateCloudName ?? null, Name, _globalReachConnectionBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

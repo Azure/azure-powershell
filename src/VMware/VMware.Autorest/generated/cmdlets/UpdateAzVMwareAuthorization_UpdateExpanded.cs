@@ -459,7 +459,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     _authorizationBody = await this.Client.AuthorizationsGetWithResult(SubscriptionId, ResourceGroupName, PrivateCloudName, Name, this, Pipeline);
                     this.Update_authorizationBody();
-                    await this.Client.AuthorizationsCreateOrUpdate(SubscriptionId, ResourceGroupName, PrivateCloudName, Name, _authorizationBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.AuthorizationsCreateOrUpdate(SubscriptionId, ResourceGroupName, PrivateCloudName, Name, _authorizationBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.UndeclaredResponseException urexception)

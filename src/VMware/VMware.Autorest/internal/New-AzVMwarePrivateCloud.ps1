@@ -94,6 +94,12 @@ param(
     ${AvailabilityZone},
 
     [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
     [System.String]
@@ -114,17 +120,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource[]]
     # vCenter Single Sign On Identity Sources
-    # To construct, see NOTES section for IDENTITYSOURCE properties and create a hash table.
     ${IdentitySource},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("SystemAssigned", "None")]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [System.String]
-    # The type of identity used for the private cloud.
-    # The type 'SystemAssigned' refers to an implicitly created identity.
-    # The type 'None' will remove any identities from the Private Cloud.
-    ${IdentityType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Enabled", "Disabled")]

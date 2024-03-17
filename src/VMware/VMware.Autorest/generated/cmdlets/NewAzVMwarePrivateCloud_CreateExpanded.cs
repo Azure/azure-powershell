@@ -113,6 +113,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _privateCloudBody.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
+
         /// <summary>Status of customer managed encryption key</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Status of customer managed encryption key")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
@@ -167,21 +171,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         SerializedName = @"identitySources",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource) })]
         public Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource[] IdentitySource { get => _privateCloudBody.IdentitySource?.ToArray() ?? null /* fixedArrayOf */; set => _privateCloudBody.IdentitySource = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource>(value) : null); }
-
-        /// <summary>
-        /// The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The
-        /// type 'None' will remove any identities from the Private Cloud.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Private Cloud.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Category(global::Microsoft.Azure.PowerShell.Cmdlets.VMware.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The type of identity used for the private cloud. The type 'SystemAssigned' refers to an implicitly created identity. The type 'None' will remove any identities from the Private Cloud.",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("SystemAssigned", "None")]
-        public string IdentityType { get => _privateCloudBody.IdentityType ?? null; set => _privateCloudBody.IdentityType = value; }
 
         /// <summary>Connectivity to internet is enabled or disabled</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Connectivity to internet is enabled or disabled")]

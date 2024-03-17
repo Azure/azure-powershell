@@ -469,7 +469,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                         this.ClusterInputObject.Id += $"/datastores/{(global::System.Uri.EscapeDataString(this.Name.ToString()))}";
                         _datastoreBody = await this.Client.DatastoresGetViaIdentityWithResult(ClusterInputObject.Id, this, Pipeline);
                         this.Update_datastoreBody();
-                        await this.Client.DatastoresCreateOrUpdateViaIdentity(ClusterInputObject.Id, _datastoreBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.DatastoresCreateOrUpdateViaIdentity(ClusterInputObject.Id, _datastoreBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -492,7 +492,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                         }
                         _datastoreBody = await this.Client.DatastoresGetWithResult(ClusterInputObject.SubscriptionId ?? null, ClusterInputObject.ResourceGroupName ?? null, ClusterInputObject.PrivateCloudName ?? null, ClusterInputObject.ClusterName ?? null, Name, this, Pipeline);
                         this.Update_datastoreBody();
-                        await this.Client.DatastoresCreateOrUpdate(ClusterInputObject.SubscriptionId ?? null, ClusterInputObject.ResourceGroupName ?? null, ClusterInputObject.PrivateCloudName ?? null, ClusterInputObject.ClusterName ?? null, Name, _datastoreBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.DatastoresCreateOrUpdate(ClusterInputObject.SubscriptionId ?? null, ClusterInputObject.ResourceGroupName ?? null, ClusterInputObject.PrivateCloudName ?? null, ClusterInputObject.ClusterName ?? null, Name, _datastoreBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

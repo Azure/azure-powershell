@@ -498,7 +498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     _globalReachConnectionBody = await this.Client.GlobalReachConnectionsGetWithResult(SubscriptionId, ResourceGroupName, PrivateCloudName, Name, this, Pipeline);
                     this.Update_globalReachConnectionBody();
-                    await this.Client.GlobalReachConnectionsCreateOrUpdate(SubscriptionId, ResourceGroupName, PrivateCloudName, Name, _globalReachConnectionBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.GlobalReachConnectionsCreateOrUpdate(SubscriptionId, ResourceGroupName, PrivateCloudName, Name, _globalReachConnectionBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.UndeclaredResponseException urexception)

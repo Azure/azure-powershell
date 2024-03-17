@@ -521,7 +521,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     _datastoreBody = await this.Client.DatastoresGetWithResult(SubscriptionId, ResourceGroupName, PrivateCloudName, ClusterName, Name, this, Pipeline);
                     this.Update_datastoreBody();
-                    await this.Client.DatastoresCreateOrUpdate(SubscriptionId, ResourceGroupName, PrivateCloudName, ClusterName, Name, _datastoreBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.DatastoresCreateOrUpdate(SubscriptionId, ResourceGroupName, PrivateCloudName, ClusterName, Name, _datastoreBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.UndeclaredResponseException urexception)

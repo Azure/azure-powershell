@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the VMware service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all

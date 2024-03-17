@@ -147,5 +147,5 @@ Create a global reach connection in a private cloud
 Update a placement policy in a private cloud cluster
 
 ### [Update-AzVMwarePrivateCloud](Update-AzVMwarePrivateCloud.md)
-Update a private cloud
+Create a private cloud
 
