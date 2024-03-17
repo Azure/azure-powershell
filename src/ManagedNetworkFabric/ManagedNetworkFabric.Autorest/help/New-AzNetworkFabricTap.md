@@ -111,7 +111,6 @@ Accept wildcard characters: False
 
 ### -Destination
 List of destinations to send the filter traffic.
-To construct, see NOTES section for DESTINATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapPropertiesDestinationsItem[]

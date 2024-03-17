@@ -87,7 +87,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityRule[]]
     # List of IP Community Rules.
-    # To construct, see NOTES section for IPCOMMUNITYRULE properties and create a hash table.
     ${IPCommunityRule},
 
     [Parameter(ParameterSetName='CreateExpanded')]
