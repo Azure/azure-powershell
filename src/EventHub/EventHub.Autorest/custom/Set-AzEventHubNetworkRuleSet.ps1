@@ -54,7 +54,7 @@ function Set-AzEventHubNetworkRuleSet{
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.PublicNetworkAccess]
         #This determines if traffic is allowed over public network. By default it is enabled. If value is SecuredByPerimeter then Inbound and Outbound communication is controlled by the network security perimeter and profile's access rules. 
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("PublicNetworkAccess","12.0.0", "7.0.0","2024-05-21" )]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("PublicNetworkAccess","12.0.0", "5.0.0","2024-05-21" )]
         ${PublicNetworkAccess},
 
         [Parameter(HelpMessage = "Value that indicates whether Trusted Service Access is Enabled or not.")]
@@ -67,7 +67,7 @@ function Set-AzEventHubNetworkRuleSet{
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.DefaultAction]
         #Default Action for Network Rule Set
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("DefaultAction","12.0.0", "7.0.0","2024-05-21" )]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("DefaultAction","12.0.0", "5.0.0","2024-05-21" )]
         ${DefaultAction},
 
         [Parameter(HelpMessage = "List of IpRules")]

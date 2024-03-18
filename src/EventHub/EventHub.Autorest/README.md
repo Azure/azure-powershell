@@ -464,7 +464,7 @@ directive:
       breaking-change:
         old-parameter-type: CaptureIdentityType
         new-parameter-type: String
-        deprecated-by-version: 7.0.0
+        deprecated-by-version: 5.0.0
         deprecated-by-azversion: 12.0.0
         change-effective-date: 2024/05/21
   
@@ -474,7 +474,7 @@ directive:
       breaking-change:
         old-parameter-type: CleanupPolicyRetentionDescription
         new-parameter-type: String
-        deprecated-by-version: 7.0.0
+        deprecated-by-version: 5.0.0
         deprecated-by-azversion: 12.0.0
         change-effective-date: 2024/05/21
   
@@ -484,7 +484,7 @@ directive:
       breaking-change:
         old-parameter-type: EntityStatus
         new-parameter-type: String
-        deprecated-by-version: 7.0.0
+        deprecated-by-version: 5.0.0
         deprecated-by-azversion: 12.0.0
         change-effective-date: 2024/05/21
   
@@ -494,7 +494,7 @@ directive:
       breaking-change:
         old-parameter-type: EncodingCaptureDescription
         new-parameter-type: String
-        deprecated-by-version: 7.0.0
+        deprecated-by-version: 5.0.0
         deprecated-by-azversion: 12.0.0
         change-effective-date: 2024/05/21
 
@@ -504,7 +504,7 @@ directive:
       breaking-change:
         old-parameter-type: SchemaCompatibility
         new-parameter-type: String
-        deprecated-by-version: 7.0.0
+        deprecated-by-version: 5.0.0
         deprecated-by-azversion: 12.0.0
         change-effective-date: 2024/05/21
 
@@ -514,7 +514,7 @@ directive:
       breaking-change:
         old-parameter-type: SchemaType
         new-parameter-type: String
-        deprecated-by-version: 7.0.0
+        deprecated-by-version: 5.0.0
         deprecated-by-azversion: 12.0.0
         change-effective-date: 2024/05/21
         
