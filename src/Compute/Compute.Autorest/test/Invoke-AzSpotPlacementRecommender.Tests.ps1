@@ -34,7 +34,7 @@ Describe 'Invoke-AzSpotPlacementRecommender' {
             $spotPlacementRecommenderInput = 
             @{
                 desiredSizes = $desiredSizes;
-                desiredCoun@t = 100;
+                desiredCount = 100;
                 desiredLocations = $desiredLocations;
                 availabilityZones = $true
             }

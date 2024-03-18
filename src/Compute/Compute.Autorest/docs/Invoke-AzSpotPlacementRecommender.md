@@ -19,13 +19,6 @@ Invoke-AzSpotPlacementRecommender -Location <String> [-SubscriptionId <String>] 
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Post
-```
-Invoke-AzSpotPlacementRecommender -Location <String>
- -SpotPlacementRecommenderInput <ISpotPlacementRecommenderInput> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Generates placement scores for Spot VM skus.
 
@@ -215,22 +208,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SpotPlacementRecommenderInput
-SpotPlacementRecommender API Input.
-To construct, see NOTES section for SPOTPLACEMENTRECOMMENDERINPUT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210601Preview.ISpotPlacementRecommenderInput
-Parameter Sets: Post, PostViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 Subscription credentials which uniquely identify Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -282,8 +259,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210601Preview.ISpotPlacementRecommenderInput
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
 
