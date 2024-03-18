@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Upcoming Breaking Change] Added breaking change warning message for parameter `EnableRbacAuthorization` of `New-AzKeyVault`.
+    - RBAC will be enabled by default during the process of key vault creation. To disable RBAC authorization, please use parameter 'DisableRbacAuthorization'.
+    - Parameter `EnableRbacAuthorization` is expected to be removed in Az.KeyVault 6.0.0 and Az 12.0.0.
+    - Parameter `EnableRbacAuthorization` is expected to be replaced by  `DisableRbacAuthorization`.
 * Upgraded Azure.Core to 1.37.0.
 
 ## Version 5.2.1
@@ -33,7 +37,6 @@
     - Parameter `Value` is expected to be removed in Az.KeyVault 6.0.0
     - `ByteArrayValue` is the alternative of parameter `Value` in byte array format
 * [Upcoming Breaking Change] Added breaking change warning message for the output type `PSKeyOperationResult` of `Invoke-AzKeyVaultKeyOperation`. 
-    - Property `Result` is expected to be removed in Az.KeyVault 6.0.0
     - Property `RawResult` is the alternative of parameter `Result` in byte array format
 
 ## Version 5.0.1
