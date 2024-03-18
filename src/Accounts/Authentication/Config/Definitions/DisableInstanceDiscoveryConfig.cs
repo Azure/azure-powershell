@@ -23,11 +23,11 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Common.Authentication.Config.Definitions
 {
     /// <summary>
-    /// Definition of the config to control whether login by WAM (web account manager) or not.
+    /// Definition of the config to control whether to disable both instance discovery and authority validation.
     /// </summary>
     internal class DisableInstanceDiscoveryConfig : TypedConfig<bool>
     {
-        public override object DefaultValue => false; // Opt-in. Will change to opt-out.
+        public override object DefaultValue => false;
 
         public override string Key => ConfigKeys.DisableInstanceDiscovery;
 
