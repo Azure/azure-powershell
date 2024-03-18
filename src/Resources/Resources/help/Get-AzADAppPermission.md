@@ -14,13 +14,13 @@ Lists API permissions the application has requested.
 
 ### ObjectIdParameterSet (Default)
 ```
-Get-AzADAppPermission -ObjectId <Guid> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+Get-AzADAppPermission -ObjectId <Guid> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### AppIdParameterSet
 ```
-Get-AzADAppPermission -ApplicationId <Guid> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+Get-AzADAppPermission -ApplicationId <Guid> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -84,21 +84,6 @@ Parameter Sets: ObjectIdParameterSet
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

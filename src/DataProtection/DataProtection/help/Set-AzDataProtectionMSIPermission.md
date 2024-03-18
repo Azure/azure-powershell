@@ -15,7 +15,7 @@ Grants required permissions to the backup vault and other resources for configur
 ### SetPermissionsForBackup (Default)
 ```
 Set-AzDataProtectionMSIPermission -VaultResourceGroup <String> -VaultName <String> -PermissionsScope <String>
- -BackupInstance <IBackupInstanceResource> [-KeyVaultId <String>] [-ProgressAction <ActionPreference>]
+ -BackupInstance <IBackupInstanceResource> [-KeyVaultId <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,7 +23,7 @@ Set-AzDataProtectionMSIPermission -VaultResourceGroup <String> -VaultName <Strin
 ```
 Set-AzDataProtectionMSIPermission -VaultResourceGroup <String> -VaultName <String> -PermissionsScope <String>
  -RestoreRequest <IAzureBackupRestoreRequest> -SnapshotResourceGroupId <String>
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,21 +140,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
