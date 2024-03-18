@@ -25,19 +25,21 @@ Describe 'Invoke-AzSpotPlacementRecommender' {
 
     It 'PostExpanded' {
         {
+            $response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes
+        }
+    }
+
+    It 'Post' {
+        {
             $spotPlacementRecommenderInput = 
             @{
-                desiredLocations = $desiredLocations;
                 desiredSizes = $desiredSizes;
-                desiredCount = 100;
+                desiredCoun@t = 100;
+                desiredLocations = $desiredLocations;
                 availabilityZones = $true
             }
             Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput -verbose
         }
-    }
-
-    It 'Post' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'PostViaIdentityExpanded' -skip {

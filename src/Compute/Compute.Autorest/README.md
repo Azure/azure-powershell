@@ -307,4 +307,8 @@ directive:
       verb: Test
       subject: DiskInspectionStorageConfiguration
     remove: true
+  - where:
+      verb: Get
+      subject: SpotPlacementRecommender
+    remove: true
 ```
