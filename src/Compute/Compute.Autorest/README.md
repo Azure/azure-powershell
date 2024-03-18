@@ -3,6 +3,9 @@
 This directory contains the PowerShell module for the Compute service.
 
 ---
+## Status
+[![Az.Compute](https://img.shields.io/powershellgallery/v/Az.Compute.svg?style=flat-square&label=Az.Compute "Az.Compute")](https://www.powershellgallery.com/packages/Az.Compute/)
+
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -244,38 +247,6 @@ directive:
       subject: DiskInspection
     remove: true
   - where:
-      verb: Get
-      subject: GalleryApplication
-    remove: true
-  - where:
-      verb: New
-      subject: GalleryApplication
-    remove: true
-  - where:
-      verb: Remove
-      subject: GalleryApplication
-    remove: true
-  - where:
-      verb: Update
-      subject: GalleryApplication
-    remove: true
-  - where:
-      verb: Get
-      subject: GalleryApplicationVersion
-    remove: true
-  - where:
-      verb: New
-      subject: GalleryApplicationVersion
-    remove: true
-  - where:
-      verb: Remove
-      subject: GalleryApplicationVersion
-    remove: true
-  - where:
-      verb: Update
-      subject: GalleryApplicationVersion
-    remove: true
-  - where:
       verb: New
       subject: DiskInspection
     remove: true
@@ -286,22 +257,6 @@ directive:
   - where:
       verb: Register
       subject: DiskInspectionStorageConfiguration
-    remove: true
-  - where:
-      verb: Remove
-      subject: VMRunCommand
-    remove: true
-  - where:
-      verb: Remove
-      subject: VmssVMRunCommand
-    remove: true
-  - where:
-      verb: Set
-      subject: VMRunCommand
-    remove: true
-  - where:
-      verb: Set
-      subject: VmssVMRunCommand
     remove: true
   - where:
       verb: Test
