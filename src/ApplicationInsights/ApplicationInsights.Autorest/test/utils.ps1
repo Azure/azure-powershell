@@ -66,15 +66,8 @@ function setupEnv() {
     # Create resource group for test.
     $resourceGroupName = 'appInsights-' + (RandomString -allChars $false -len 6) + '-test'
     $env.AddWithCache("resourceGroup", $resourceGroupName, $UsePreviousConfigForRecord)
-    Write-Host -ForegroundColor Green 'Start creating Resource Group for test...' $env.resourceGroup
-    
-    # the group has old work book, cannot be deleted 2024/03/12
-    try {
-        Get-AzResourceGroup -Name $env.resourceGroup -ErrorAction Stop
-    } catch {
-        New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
-    }
-
+    Write-Host -ForegroundColor Green 'Start creating Resource Group for test...'
+    New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
     Write-Host -ForegroundColor Green 'Resource Group created successfully.'
 
     # Create application insights for test
@@ -118,5 +111,5 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    # Remove-AzResourceGroup -Name $env.resourceGroup
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
