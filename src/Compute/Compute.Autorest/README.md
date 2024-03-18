@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Compute service.
 
 ---
-## Status
-[![Az.Compute](https://img.shields.io/powershellgallery/v/Az.Compute.svg?style=flat-square&label=Az.Compute "Az.Compute")](https://www.powershellgallery.com/packages/Az.Compute/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -29,7 +26,7 @@ For information on how to develop for `Az.Compute`, see [how-to.md](how-to.md).
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-commit: 1a925d1afe288a5f20d078bbc89214a36a0e4287
+commit: 77c47a7fba8d8b900595966b81d6bb92a0308370
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
