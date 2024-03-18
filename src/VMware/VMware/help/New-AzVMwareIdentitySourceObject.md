@@ -15,7 +15,7 @@ Create an in-memory object for IdentitySource.
 ```
 New-AzVMwareIdentitySourceObject [-Alias <String>] [-BaseGroupDn <String>] [-BaseUserDn <String>]
  [-Domain <String>] [-Name <String>] [-Password <String>] [-PrimaryServer <String>] [-SecondaryServer <String>]
- [-Ssl <String>] [-Username <String>] [<CommonParameters>]
+ [-Ssl <String>] [-Username <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,10 +23,25 @@ Create an in-memory object for IdentitySource.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create an in-memory object for IdentitySource
+```powershell
 New-AzVMwareIdentitySourceObject -Alias test
 ```
+
+```output
+Alias           : test
+BaseGroupDn     : 
+BaseUserDn      : 
+Domain          : 
+Name            : 
+Password        : 
+PrimaryServer   : 
+SecondaryServer : 
+Ssl             : 
+Username        :
+```
+
+Create an in-memory object for IdentitySource
 
 ## PARAMETERS
 
@@ -34,7 +49,7 @@ New-AzVMwareIdentitySourceObject -Alias test
 The domain's NetBIOS name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -49,7 +64,7 @@ Accept wildcard characters: False
 The base distinguished name for groups.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -64,7 +79,7 @@ Accept wildcard characters: False
 The base distinguished name for users.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -79,7 +94,7 @@ Accept wildcard characters: False
 The domain's dns name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -94,7 +109,7 @@ Accept wildcard characters: False
 The name of the identity source.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -109,7 +124,7 @@ Accept wildcard characters: False
 The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -124,9 +139,24 @@ Accept wildcard characters: False
 Primary server URL.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -139,7 +169,7 @@ Accept wildcard characters: False
 Secondary server URL.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -154,7 +184,7 @@ Accept wildcard characters: False
 Protect LDAP communication using SSL certificate (LDAPS).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -169,7 +199,7 @@ Accept wildcard characters: False
 The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -188,9 +218,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IdentitySource
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwareidentitysourceobject](https://learn.microsoft.com/powershell/module/Az.VMware/new-azvmwareidentitysourceobject)
-

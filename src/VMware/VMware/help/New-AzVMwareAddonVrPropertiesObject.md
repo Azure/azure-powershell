@@ -13,7 +13,7 @@ Create a in-memory object for AddonVrProperties
 ## SYNTAX
 
 ```
-New-AzVMwareAddonVrPropertiesObject -VrsCount <Int32> [<CommonParameters>]
+New-AzVMwareAddonVrPropertiesObject -VrsCount <Int32> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,12 +29,27 @@ New-AzVMwareAddonVrPropertiesObject -VrsCount 2
 ```output
 AddonType ProvisioningState VrsCount
 --------- ----------------- --------
-VR                          2
+VR                                 2
 ```
 
 Create a local VR object for the Addon Property parameter
 
 ## PARAMETERS
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -VrsCount
 The vSphere Replication Server (VRS) count.
@@ -58,10 +73,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonVrProperties
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AddonVrProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
