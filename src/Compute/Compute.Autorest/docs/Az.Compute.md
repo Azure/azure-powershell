@@ -11,9 +11,6 @@ Locale: en-US
 Microsoft Azure PowerShell: Compute cmdlets
 
 ## Az.Compute Cmdlets
-### [Get-AzSpotPlacementRecommender](Get-AzSpotPlacementRecommender.md)
-Gets Spot Placement Recommender diagnostic metadata.
-
 ### [Invoke-AzSpotPlacementRecommender](Invoke-AzSpotPlacementRecommender.md)
 Generates placement scores for Spot VM skus.
 
