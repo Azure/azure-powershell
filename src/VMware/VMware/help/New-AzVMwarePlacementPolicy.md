@@ -77,7 +77,7 @@ Create or update a placement policy in a private cloud cluster
 ## PARAMETERS
 
 ### -AsJob
-Runthecommandasajob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -92,7 +92,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterInputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-Nameoftheclusterintheprivatecloud
+Name of the cluster in the private cloud
 
 ```yaml
 Type: System.String
@@ -122,7 +122,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -137,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -152,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-NameoftheVMwarevSphereDistributedResourceScheduler(DRS)placementpolicy
+Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
 
 ```yaml
 Type: System.String
@@ -167,7 +168,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Runthecommandasynchronously
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -182,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudInputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -197,7 +198,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudName
-Nameoftheprivatecloud
+Name of the private cloud
 
 ```yaml
 Type: System.String
@@ -227,7 +228,7 @@ Accept wildcard characters: False
 ```
 
 ### -Property
-placementpolicyproperties
+placement policy properties
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicyProperties
@@ -242,7 +243,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -257,7 +259,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

@@ -51,7 +51,7 @@ This command stop of a VM named `test-vm` in a resource group named `test-rg`.
 ## PARAMETERS
 
 ### -AsJob
-Runthecommandasajob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -Body
-Definesthestopactionproperties.
+Defines the stop action properties.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IStopVirtualMachineOptions
@@ -81,7 +81,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -96,7 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-PathofJsonfilesuppliedtotheStopoperation
+Path of Json file supplied to the Stop operation
 
 ```yaml
 Type: System.String
@@ -111,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-JsonstringsuppliedtotheStopoperation
+Json string supplied to the Stop operation
 
 ```yaml
 Type: System.String
@@ -126,7 +127,7 @@ Accept wildcard characters: False
 ```
 
 ### -MachineId
-ThefullyqualifiedAzureResourcemanageridentifieroftheHybridComputemachineresourcetobeextended.
+The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
 
 ```yaml
 Type: System.String
@@ -141,7 +142,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Runthecommandasynchronously
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -171,7 +172,9 @@ Accept wildcard characters: False
 ```
 
 ### -SkipShutdown
-Getsorsetsavalueindicatingwhethertorequestnon-gracefulVMshutdown.Truevalueforthisflagindicatesnon-gracefulshutdownwhereasfalseindicatesotherwise.Defaultstofalse.
+Gets or sets a value indicating whether to request non-graceful VM shutdown.
+True value for this flag indicates non-graceful shutdown whereas false indicates otherwise.
+Defaults to false.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -141,7 +141,7 @@ This command update Memory Size of a VM Instances of machine named `test-machine
 ## PARAMETERS
 
 ### -AsJob
-Runthecommandasajob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -156,7 +156,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -171,7 +172,7 @@ Accept wildcard characters: False
 ```
 
 ### -HardwareProfileMemorySizeMb
-GetsorsetsmemorysizeinMBsforthevm.
+Gets or sets memory size in MBs for the vm.
 
 ```yaml
 Type: System.Int32
@@ -186,7 +187,8 @@ Accept wildcard characters: False
 ```
 
 ### -HardwareProfileNumCoresPerSocket
-Getsorsetsthenumberofcorespersocketforthevm.Defaultsto1ifunspecified.
+Gets or sets the number of cores per socket for the vm.
+Defaults to 1 if unspecified.
 
 ```yaml
 Type: System.Int32
@@ -201,7 +203,7 @@ Accept wildcard characters: False
 ```
 
 ### -HardwareProfileNumCpus
-GetsorsetsthenumberofvCPUsforthevm.
+Gets or sets the number of vCPUs for the vm.
 
 ```yaml
 Type: System.Int32
@@ -216,7 +218,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-PathofJsonfilesuppliedtotheUpdateoperation
+Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
@@ -231,7 +233,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-JsonstringsuppliedtotheUpdateoperation
+Json string supplied to the Update operation
 
 ```yaml
 Type: System.String
@@ -246,7 +248,7 @@ Accept wildcard characters: False
 ```
 
 ### -MachineId
-ThefullyqualifiedAzureResourcemanageridentifieroftheHybridComputemachineresourcetobeextended.
+The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
 
 ```yaml
 Type: System.String
@@ -261,7 +263,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkProfileNetworkInterface
-Getsorsetsthelistofnetworkinterfacesassociatedwiththevirtualmachine.
+Gets or sets the list of network interfaces associated with the virtual machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INetworkInterfaceUpdate[]
@@ -276,7 +278,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Runthecommandasynchronously
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -306,7 +308,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageProfileDisk
-Getsorsetsthelistofvirtualdisksassociatedwiththevirtualmachine.
+Gets or sets the list of virtual disks associated with the virtual machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualDiskUpdate[]

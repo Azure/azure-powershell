@@ -46,7 +46,7 @@ Create an in-memory object for IdentitySource
 ## PARAMETERS
 
 ### -Alias
-Thedomain'sNetBIOSname.
+The domain's NetBIOS name.
 
 ```yaml
 Type: System.String
@@ -61,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -BaseGroupDn
-Thebasedistinguishednameforgroups.
+The base distinguished name for groups.
 
 ```yaml
 Type: System.String
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -BaseUserDn
-Thebasedistinguishednameforusers.
+The base distinguished name for users.
 
 ```yaml
 Type: System.String
@@ -91,7 +91,7 @@ Accept wildcard characters: False
 ```
 
 ### -Domain
-Thedomain'sdnsname.
+The domain's dns name.
 
 ```yaml
 Type: System.String
@@ -106,7 +106,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Thenameoftheidentitysource.
+The name of the identity source.
 
 ```yaml
 Type: System.String
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -Password
-ThepasswordoftheActiveDirectoryuserwithaminimumofread-onlyaccesstoBaseDNforusersandgroups.
+The password of the Active Directory user with a minimum of read-only access to Base DN for users and groups.
 
 ```yaml
 Type: System.String
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryServer
-PrimaryserverURL.
+Primary server URL.
 
 ```yaml
 Type: System.String
@@ -166,7 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecondaryServer
-SecondaryserverURL.
+Secondary server URL.
 
 ```yaml
 Type: System.String
@@ -181,7 +181,7 @@ Accept wildcard characters: False
 ```
 
 ### -Ssl
-ProtectLDAPcommunicationusingSSLcertificate(LDAPS).
+Protect LDAP communication using SSL certificate (LDAPS).
 
 ```yaml
 Type: System.String
@@ -196,7 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -Username
-TheIDofanActiveDirectoryuserwithaminimumofread-onlyaccesstoBaseDNforusersandgroup.
+The ID of an Active Directory user with a minimum of read-only access to Base DN for users and group.
 
 ```yaml
 Type: System.String

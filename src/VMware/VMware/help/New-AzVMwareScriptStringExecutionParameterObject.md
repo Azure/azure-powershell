@@ -38,7 +38,7 @@ Create a local Script String Execution object
 ## PARAMETERS
 
 ### -Name
-Theparametername.
+The parameter name.
 
 ```yaml
 Type: System.String
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -Value
-Thevalueforthepassedparameter.
+The value for the passed parameter.
 
 ```yaml
 Type: System.String

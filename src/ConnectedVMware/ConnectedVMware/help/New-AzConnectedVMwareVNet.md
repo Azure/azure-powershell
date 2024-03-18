@@ -84,7 +84,7 @@ This command create a Virtual Network named `test-vnet` in a resource group name
 ## PARAMETERS
 
 ### -AsJob
-Runthecommandasajob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -99,7 +99,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -114,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExtendedLocationName
-Theextendedlocationname.
+The extended location name.
 
 ```yaml
 Type: System.String
@@ -129,7 +130,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExtendedLocationType
-Theextendedlocationtype.
+The extended location type.
 
 ```yaml
 Type: System.String
@@ -144,7 +145,7 @@ Accept wildcard characters: False
 ```
 
 ### -InventoryItemId
-GetsorsetstheinventoryItemIDforthevirtualnetwork.
+Gets or sets the inventory Item ID for the virtual network.
 
 ```yaml
 Type: System.String
@@ -159,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-PathofJsonfilesuppliedtotheCreateoperation
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -174,7 +175,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-JsonstringsuppliedtotheCreateoperation
+Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -189,7 +190,9 @@ Accept wildcard characters: False
 ```
 
 ### -Kind
-Metadatausedbyportal/tooling/etctorenderdifferentUXexperiencesforresourcesofthesametype;e.g.ApiAppsareakindofMicrosoft.Web/sitestype.Ifsupported,theresourceprovidermustvalidateandpersistthisvalue.
+Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g.
+ApiApps are a kind of Microsoft.Web/sites type.
+If supported, the resource provider must validate and persist this value.
 
 ```yaml
 Type: System.String
@@ -204,7 +207,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Getsorsetsthelocation.
+Gets or sets the location.
 
 ```yaml
 Type: System.String
@@ -219,7 +222,7 @@ Accept wildcard characters: False
 ```
 
 ### -MoRefId
-GetsorsetsthevCenterMoRef(ManagedObjectReference)IDforthevirtualnetwork.
+Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual network.
 
 ```yaml
 Type: System.String
@@ -234,7 +237,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Nameofthevirtualnetworkresource.
+Name of the virtual network resource.
 
 ```yaml
 Type: System.String
@@ -249,7 +252,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Runthecommandasynchronously
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -279,7 +282,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-TheResourceGroupName.
+The Resource Group Name.
 
 ```yaml
 Type: System.String
@@ -294,7 +297,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheSubscriptionID.
+The Subscription ID.
 
 ```yaml
 Type: System.String
@@ -309,7 +312,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-GetsorsetstheResourcetags.
+Gets or sets the Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -324,7 +327,7 @@ Accept wildcard characters: False
 ```
 
 ### -VCenterId
-GetsorsetstheARMIdofthevCenterresourceinwhichthistemplateresides.
+Gets or sets the ARM Id of the vCenter resource in which this template resides.
 
 ```yaml
 Type: System.String

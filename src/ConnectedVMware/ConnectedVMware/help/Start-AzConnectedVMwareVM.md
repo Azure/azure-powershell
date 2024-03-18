@@ -32,7 +32,7 @@ This command start of a VM named `test-vm` in a resource group named `test-rg`.
 ## PARAMETERS
 
 ### -AsJob
-Runthecommandasajob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -47,7 +47,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -62,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -MachineId
-ThefullyqualifiedAzureResourcemanageridentifieroftheHybridComputemachineresourcetobeextended.
+The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
 
 ```yaml
 Type: System.String
@@ -77,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Runthecommandasynchronously
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

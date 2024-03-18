@@ -125,7 +125,8 @@ This command gets a VM Instances of machine names `test-machine`
 ## PARAMETERS
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -140,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -MachineId
-ThefullyqualifiedAzureResourcemanageridentifieroftheHybridComputemachineresourcetobeextended.
+The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
 
 ```yaml
 Type: System.String

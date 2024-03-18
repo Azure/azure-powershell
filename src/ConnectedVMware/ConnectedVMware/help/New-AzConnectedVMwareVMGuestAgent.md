@@ -78,7 +78,7 @@ This command Enable Guest Agent of a VM Instances of machine named `test-machine
 ## PARAMETERS
 
 ### -AsJob
-Runthecommandasajob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -93,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -CredentialsPassword
-Getsorsetsthepasswordtoconnectwiththeguest.
+Gets or sets the password to connect with the guest.
 
 ```yaml
 Type: System.Security.SecureString
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -CredentialsUsername
-Getsorsetsusernametoconnectwiththeguest.
+Gets or sets username to connect with the guest.
 
 ```yaml
 Type: System.String
@@ -123,7 +123,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -138,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -HttpProxyConfigHttpsProxy
-GetsorsetshttpsProxyurl.
+Gets or sets httpsProxy url.
 
 ```yaml
 Type: System.String
@@ -153,7 +154,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-PathofJsonfilesuppliedtotheCreateoperation
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -168,7 +169,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-JsonstringsuppliedtotheCreateoperation
+Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -183,7 +184,7 @@ Accept wildcard characters: False
 ```
 
 ### -MachineId
-ThefullyqualifiedAzureResourcemanageridentifieroftheHybridComputemachineresourcetobeextended.
+The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
 
 ```yaml
 Type: System.String
@@ -198,7 +199,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Runthecommandasynchronously
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -213,7 +214,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateLinkScopeResourceId
-Theresourceidoftheprivatelinkscopethismachineisassignedto,ifany.
+The resource id of the private link scope this machine is assigned to, if any.
 
 ```yaml
 Type: System.String
@@ -243,7 +244,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProvisioningAction
-Getsorsetstheguestagentprovisioningaction.
+Gets or sets the guest agent provisioning action.
 
 ```yaml
 Type: System.String

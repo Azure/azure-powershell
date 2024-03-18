@@ -41,7 +41,7 @@ Create an in-memory object for VMPlacementPolicyProperties.
 ## PARAMETERS
 
 ### -AffinityType
-placementpolicyaffinitytype.
+placement policy affinity type.
 
 ```yaml
 Type: System.String
@@ -56,7 +56,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-Displaynameoftheplacementpolicy.
+Display name of the placement policy.
 
 ```yaml
 Type: System.String
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -State
-Whethertheplacementpolicyisenabledordisabled.
+Whether the placement policy is enabled or disabled.
 
 ```yaml
 Type: System.String
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-placementpolicytype.
+placement policy type.
 
 ```yaml
 Type: System.String
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -VMMember
-Virtualmachinememberslist.
+Virtual machine members list.
 
 ```yaml
 Type: System.String[]

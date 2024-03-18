@@ -32,7 +32,7 @@ This command will delete of a VM Instances of machine named `test-machine`.
 ## PARAMETERS
 
 ### -AsJob
-Runthecommandasajob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -47,7 +47,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -62,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeleteFromHost
-WhethertodeletetheVMfromthevCenter.
+Whether to delete the VM from the vCenter.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -77,7 +78,7 @@ Accept wildcard characters: False
 ```
 
 ### -ForceDeletion
-Whetherforcedeletewasspecified.
+Whether force delete was specified.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -92,7 +93,7 @@ Accept wildcard characters: False
 ```
 
 ### -MachineId
-ThefullyqualifiedAzureResourcemanageridentifieroftheHybridComputemachineresourcetobeextended.
+The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
 
 ```yaml
 Type: System.String
@@ -107,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Runthecommandasynchronously
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -122,7 +123,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returnstruewhenthecommandsucceeds
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

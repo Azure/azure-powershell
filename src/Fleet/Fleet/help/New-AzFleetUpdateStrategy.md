@@ -126,7 +126,7 @@ The third command uses fleet resource to create a fleet update strategy.
 ## PARAMETERS
 
 ### -AsJob
-Runthecommandasajob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -141,7 +141,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -156,7 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### -FleetInputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -171,7 +172,7 @@ Accept wildcard characters: False
 ```
 
 ### -FleetName
-ThenameoftheFleetresource.
+The name of the Fleet resource.
 
 ```yaml
 Type: System.String
@@ -186,7 +187,7 @@ Accept wildcard characters: False
 ```
 
 ### -IfMatch
-Therequestshouldonlyproceedifanentitymatchesthisstring.
+The request should only proceed if an entity matches this string.
 
 ```yaml
 Type: System.String
@@ -201,7 +202,7 @@ Accept wildcard characters: False
 ```
 
 ### -IfNoneMatch
-Therequestshouldonlyproceedifnoentitymatchesthisstring.
+The request should only proceed if no entity matches this string.
 
 ```yaml
 Type: System.String
@@ -216,7 +217,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -231,7 +232,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-PathofJsonfilesuppliedtotheCreateoperation
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -246,7 +247,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-JsonstringsuppliedtotheCreateoperation
+Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -261,7 +262,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-ThenameoftheUpdateStrategyresource.
+The name of the UpdateStrategy resource.
 
 ```yaml
 Type: System.String
@@ -276,7 +277,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Runthecommandasynchronously
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -306,7 +307,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -321,7 +323,8 @@ Accept wildcard characters: False
 ```
 
 ### -StrategyStage
-Thelistofstagesthatcomposethisupdaterun.Minsize:1.
+The list of stages that compose this update run.
+Min size: 1.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[]
@@ -336,7 +339,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

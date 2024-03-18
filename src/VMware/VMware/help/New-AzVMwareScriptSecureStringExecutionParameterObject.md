@@ -38,7 +38,7 @@ Create a local Script Secure String Execution object
 ## PARAMETERS
 
 ### -Name
-Theparametername.
+The parameter name.
 
 ```yaml
 Type: System.String
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecureValue
-Asecurevalueforthepassedparameter,nottobestoredinlogs.
+A secure value for the passed parameter, not to be stored in logs.
 
 ```yaml
 Type: System.String

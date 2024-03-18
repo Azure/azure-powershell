@@ -37,7 +37,9 @@ This command create a fleet update group object.
 ## PARAMETERS
 
 ### -Name
-Nameofthegroup.Itmustmatchagroupnameofanexistingfleetmember..
+Name of the group.
+        It must match a group name of an existing fleet member.
+.
 
 ```yaml
 Type: System.String

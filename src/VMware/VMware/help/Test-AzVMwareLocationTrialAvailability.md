@@ -38,7 +38,8 @@ Check trial availability
 ## PARAMETERS
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -53,7 +54,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Azureregion
+Azure region
 
 ```yaml
 Type: System.String
@@ -68,7 +69,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-ThenameoftheSKU.
+The name of the SKU.
 
 ```yaml
 Type: System.String
@@ -98,7 +99,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

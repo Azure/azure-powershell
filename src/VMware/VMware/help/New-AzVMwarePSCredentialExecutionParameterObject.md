@@ -38,7 +38,7 @@ Create a local PS Credential Execution object
 ## PARAMETERS
 
 ### -Name
-Theparametername.
+The parameter name.
 
 ```yaml
 Type: System.String
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -Password
-passwordforlogin.
+password for login.
 
 ```yaml
 Type: System.String
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -Username
-usernameforlogin.
+username for login.
 
 ```yaml
 Type: System.String

@@ -52,7 +52,7 @@ Accept wildcard characters: False
 ```
 
 ### -VrsCount
-ThevSphereReplicationServer(VRS)count.
+The vSphere Replication Server (VRS) count.
 
 ```yaml
 Type: System.Int32

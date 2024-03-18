@@ -461,7 +461,7 @@ This command enable a VM Instances of machine named `test-machine` from a inveto
 ## PARAMETERS
 
 ### -AsJob
-Runthecommandasajob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -476,7 +476,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -491,7 +492,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExtendedLocationName
-Theextendedlocationname.
+The extended location name.
 
 ```yaml
 Type: System.String
@@ -506,7 +507,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExtendedLocationType
-Theextendedlocationtype.
+The extended location type.
 
 ```yaml
 Type: System.String
@@ -521,7 +522,7 @@ Accept wildcard characters: False
 ```
 
 ### -HardwareProfileMemorySizeMb
-GetsorsetsmemorysizeinMBsforthevm.
+Gets or sets memory size in MBs for the vm.
 
 ```yaml
 Type: System.Int32
@@ -536,7 +537,8 @@ Accept wildcard characters: False
 ```
 
 ### -HardwareProfileNumCoresPerSocket
-Getsorsetsthenumberofcorespersocketforthevm.Defaultsto1ifunspecified.
+Gets or sets the number of cores per socket for the vm.
+Defaults to 1 if unspecified.
 
 ```yaml
 Type: System.Int32
@@ -551,7 +553,7 @@ Accept wildcard characters: False
 ```
 
 ### -HardwareProfileNumCpus
-GetsorsetsthenumberofvCPUsforthevm.
+Gets or sets the number of vCPUs for the vm.
 
 ```yaml
 Type: System.Int32
@@ -566,7 +568,7 @@ Accept wildcard characters: False
 ```
 
 ### -InfrastructureProfileFirmwareType
-Firmwaretype
+Firmware type
 
 ```yaml
 Type: System.String
@@ -581,7 +583,7 @@ Accept wildcard characters: False
 ```
 
 ### -InfrastructureProfileInventoryItemId
-GetsorsetstheinventoryItemIDforthevirtualmachine.
+Gets or sets the inventory Item ID for the virtual machine.
 
 ```yaml
 Type: System.String
@@ -596,7 +598,7 @@ Accept wildcard characters: False
 ```
 
 ### -InfrastructureProfileSmbiosUuid
-GetsorsetstheSMBIOSUUIDofthevm.
+Gets or sets the SMBIOS UUID of the vm.
 
 ```yaml
 Type: System.String
@@ -611,7 +613,7 @@ Accept wildcard characters: False
 ```
 
 ### -InfrastructureProfileTemplateId
-GetsorsetstheARMIdofthetemplateresourcetodeploythevirtualmachine.
+Gets or sets the ARM Id of the template resource to deploy the virtual machine.
 
 ```yaml
 Type: System.String
@@ -626,7 +628,7 @@ Accept wildcard characters: False
 ```
 
 ### -InfrastructureProfileVCenterId
-GetsorsetstheARMIdofthevCenterresourceinwhichthisresourcepoolresides.
+Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
 
 ```yaml
 Type: System.String
@@ -641,7 +643,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-PathofJsonfilesuppliedtotheCreateoperation
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -656,7 +658,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-JsonstringsuppliedtotheCreateoperation
+Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -671,7 +673,7 @@ Accept wildcard characters: False
 ```
 
 ### -MachineId
-ThefullyqualifiedAzureResourcemanageridentifieroftheHybridComputemachineresourcetobeextended.
+The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
 
 ```yaml
 Type: System.String
@@ -686,7 +688,7 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkProfileNetworkInterface
-Getsorsetsthelistofnetworkinterfacesassociatedwiththevirtualmachine.
+Gets or sets the list of network interfaces associated with the virtual machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INetworkInterface[]
@@ -701,7 +703,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Runthecommandasynchronously
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -716,7 +718,7 @@ Accept wildcard characters: False
 ```
 
 ### -OSProfileAdminPassword
-Setsadministratorpassword.
+Sets administrator password.
 
 ```yaml
 Type: System.String
@@ -731,7 +733,7 @@ Accept wildcard characters: False
 ```
 
 ### -OSProfileAdminUsername
-Getsorsetsadministratorusername.
+Gets or sets administrator username.
 
 ```yaml
 Type: System.String
@@ -746,7 +748,7 @@ Accept wildcard characters: False
 ```
 
 ### -OSProfileComputerName
-Getsorsetscomputername.
+Gets or sets computer name.
 
 ```yaml
 Type: System.String
@@ -761,7 +763,7 @@ Accept wildcard characters: False
 ```
 
 ### -OSProfileGuestId
-GetsorsetstheguestId.
+Gets or sets the guestId.
 
 ```yaml
 Type: System.String
@@ -776,7 +778,7 @@ Accept wildcard characters: False
 ```
 
 ### -OSProfileOstype
-Getsorsetsthetypeoftheos.
+Gets or sets the type of the os.
 
 ```yaml
 Type: System.String
@@ -791,7 +793,7 @@ Accept wildcard characters: False
 ```
 
 ### -PlacementProfileClusterId
-GetsorsetstheARMIdoftheclusterresourceonwhichthisvirtualmachinewilldeploy.
+Gets or sets the ARM Id of the cluster resource on which this virtual machine will deploy.
 
 ```yaml
 Type: System.String
@@ -806,7 +808,7 @@ Accept wildcard characters: False
 ```
 
 ### -PlacementProfileDatastoreId
-GetsorsetstheARMIdofthedatastoreresourceonwhichthedataforthevirtualmachinewillbekept.
+Gets or sets the ARM Id of the datastore resource on which the data for the virtual machine will be kept.
 
 ```yaml
 Type: System.String
@@ -821,7 +823,7 @@ Accept wildcard characters: False
 ```
 
 ### -PlacementProfileHostId
-GetsorsetstheARMIdofthehostresourceonwhichthisvirtualmachinewilldeploy.
+Gets or sets the ARM Id of the host resource on which this virtual machine will deploy.
 
 ```yaml
 Type: System.String
@@ -836,7 +838,7 @@ Accept wildcard characters: False
 ```
 
 ### -PlacementProfileResourcePoolId
-GetsorsetstheARMIdoftheresourcePoolresourceonwhichthisvirtualmachinewilldeploy.
+Gets or sets the ARM Id of the resourcePool resource on which this virtual machine will deploy.
 
 ```yaml
 Type: System.String
@@ -866,7 +868,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageProfileDisk
-Getsorsetsthelistofvirtualdisksassociatedwiththevirtualmachine.
+Gets or sets the list of virtual disks associated with the virtual machine.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualDisk[]
@@ -881,7 +883,7 @@ Accept wildcard characters: False
 ```
 
 ### -UefiSettingSecureBootEnabled
-Specifieswhethersecurebootshouldbeenabledonthevirtualmachine.
+Specifies whether secure boot should be enabled on the virtual machine.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -122,7 +122,8 @@ This command gets a Datastore named `test-datastore` in a resource group named `
 ## PARAMETERS
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -137,7 +138,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
@@ -152,7 +153,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Nameofthedatastore.
+Name of the datastore.
 
 ```yaml
 Type: System.String
@@ -182,7 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-TheResourceGroupName.
+The Resource Group Name.
 
 ```yaml
 Type: System.String
@@ -197,7 +198,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheSubscriptionID.
+The Subscription ID.
 
 ```yaml
 Type: System.String[]

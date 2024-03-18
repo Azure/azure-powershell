@@ -62,7 +62,8 @@ This command create a fleet update stage object and shows as list.
 ## PARAMETERS
 
 ### -AfterStageWaitInSecond
-Thetimeinsecondstowaitattheendofthisstagebeforestartingthenextone.Defaultsto0secondsifunspecified.
+The time in seconds to wait at the end of this stage before starting the next one.
+Defaults to 0 seconds if unspecified.
 
 ```yaml
 Type: System.Int32
@@ -77,7 +78,9 @@ Accept wildcard characters: False
 ```
 
 ### -Group
-Definesthegroupstobeexecutedinparallelinthisstage.Duplicategroupsarenotallowed.Minsize:1.
+Defines the groups to be executed in parallel in this stage.
+Duplicate groups are not allowed.
+Min size: 1.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateGroup[]
@@ -92,7 +95,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Thenameofthestage.MustbeuniquewithintheUpdateRun.
+The name of the stage.
+Must be unique within the UpdateRun.
 
 ```yaml
 Type: System.String

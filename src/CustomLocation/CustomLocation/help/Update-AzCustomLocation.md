@@ -80,7 +80,7 @@ Updates a Custom Location.
 ## PARAMETERS
 
 ### -AuthenticationType
-ThetypeoftheCustomLocationsauthentication
+The type of the Custom Locations authentication
 
 ```yaml
 Type: System.String
@@ -95,7 +95,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthenticationValue
-Thekubeconfigvalue.
+The kubeconfig value.
 
 ```yaml
 Type: System.String
@@ -110,7 +110,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterExtensionId
-Containsthereferencetotheadd-onthatcontainschartstodeployCRDsandoperators.
+Contains the reference to the add-on that contains charts to deploy CRDs and operators.
 
 ```yaml
 Type: System.String[]
@@ -125,7 +125,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -140,7 +141,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-DisplaynamefortheCustomLocationslocation.
+Display name for the Custom Locations location.
 
 ```yaml
 Type: System.String
@@ -155,7 +156,8 @@ Accept wildcard characters: False
 ```
 
 ### -HostResourceId
-ConnectedClusterorAKSCluster.TheCustomLocationsRPwillperformacheckAccessAPIforlistAdminCredentialspermissions.
+Connected Cluster or AKS Cluster.
+The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
 
 ```yaml
 Type: System.String
@@ -170,7 +172,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Theidentitytype.
+The identity type.
 
 ```yaml
 Type: System.String
@@ -185,7 +187,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-IdentityParameterToconstruct,seeNOTESsectionforINPUTOBJECTpropertiesandcreateahashtable.
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
@@ -200,7 +203,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-PathofJsonfilesuppliedtotheUpdateoperation
+Path of Json file supplied to the Update operation
 
 ```yaml
 Type: System.String
@@ -215,7 +218,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-JsonstringsuppliedtotheUpdateoperation
+Json string supplied to the Update operation
 
 ```yaml
 Type: System.String
@@ -230,7 +233,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-CustomLocationsname.
+Custom Locations name.
 
 ```yaml
 Type: System.String
@@ -245,7 +248,7 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-Kubernetesnamespacethatwillbecreatedonthespecifiedcluster.
+Kubernetes namespace that will be created on the specified cluster.
 
 ```yaml
 Type: System.String
@@ -275,7 +278,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -290,7 +294,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -305,7 +309,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resourcetags
+Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable

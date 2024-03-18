@@ -45,7 +45,7 @@ Create a private cloud
 ## PARAMETERS
 
 ### -AcceptEULA
-AcceptEULAofAVS,legaltermwillpopupwithoutthisparameterprovided
+Accept EULA of AVS, legal term will pop up without this parameter provided
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -60,7 +60,7 @@ Accept wildcard characters: False
 ```
 
 ### -AsJob
-Runthecommandasajob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -75,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -AvailabilitySecondaryZone
-Thesecondaryavailabilityzonefortheprivatecloud
+The secondary availability zone for the private cloud
 
 ```yaml
 Type: System.Int32
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -AvailabilityStrategy
-Theavailabilitystrategyfortheprivatecloud
+The availability strategy for the private cloud
 
 ```yaml
 Type: System.String
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -AvailabilityZone
-Theprimaryavailabilityzonefortheprivatecloud
+The primary availability zone for the private cloud
 
 ```yaml
 Type: System.Int32
@@ -120,7 +120,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -135,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptionStatus
-Statusofcustomermanagedencryptionkey
+Status of customer managed encryption key
 
 ```yaml
 Type: System.String
@@ -150,7 +151,9 @@ Accept wildcard characters: False
 ```
 
 ### -ExtendedNetworkBlock
-ArrayofadditionalnetworksnoncontiguouswithnetworkBlock.Networksmustbeuniqueandnon-overlappingacrossVNetinyoursubscription,on-premise,andthisprivateCloudnetworkBlockattribute.MakesuretheCIDRformatconformsto(A.B.C.D/X).
+Array of additional networks noncontiguous with networkBlock.
+Networks must be unique and non-overlapping across VNet in your subscription, on-premise, and this privateCloud networkBlock attribute.
+Make sure the CIDR format conforms to (A.B.C.D/X).
 
 ```yaml
 Type: System.String[]
@@ -165,7 +168,8 @@ Accept wildcard characters: False
 ```
 
 ### -IdentitySource
-vCenterSingleSignOnIdentitySourcesToconstruct,seeNOTESsectionforIDENTITYSOURCEpropertiesandcreateahashtable.
+vCenter Single Sign On Identity Sources
+To construct, see NOTES section for IDENTITYSOURCE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource[]
@@ -180,7 +184,9 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Thetypeofidentityusedfortheprivatecloud.Thetype'SystemAssigned'referstoanimplicitlycreatedidentity.Thetype'None'willremoveanyidentitiesfromthePrivateCloud.
+The type of identity used for the private cloud.
+The type 'SystemAssigned' refers to an implicitly created identity.
+The type 'None' will remove any identities from the Private Cloud.
 
 ```yaml
 Type: System.String
@@ -195,7 +201,7 @@ Accept wildcard characters: False
 ```
 
 ### -Internet
-Connectivitytointernetisenabledordisabled
+Connectivity to internet is enabled or disabled
 
 ```yaml
 Type: System.String
@@ -210,7 +216,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultPropertyKeyName
-Thenameofthekey.
+The name of the key.
 
 ```yaml
 Type: System.String
@@ -225,7 +231,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultPropertyKeyVaultUrl
-TheURLofthevault.
+The URL of the vault.
 
 ```yaml
 Type: System.String
@@ -240,7 +246,7 @@ Accept wildcard characters: False
 ```
 
 ### -KeyVaultPropertyKeyVersion
-Theversionofthekey.
+The version of the key.
 
 ```yaml
 Type: System.String
@@ -255,7 +261,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Resourcelocation
+Resource location
 
 ```yaml
 Type: System.String
@@ -270,7 +276,7 @@ Accept wildcard characters: False
 ```
 
 ### -ManagementClusterHost
-Thehosts
+The hosts
 
 ```yaml
 Type: System.String[]
@@ -285,7 +291,7 @@ Accept wildcard characters: False
 ```
 
 ### -ManagementClusterSize
-Theclustersize
+The cluster size
 
 ```yaml
 Type: System.Int32
@@ -300,7 +306,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Nameoftheprivatecloud
+Name of the private cloud
 
 ```yaml
 Type: System.String
@@ -315,7 +321,8 @@ Accept wildcard characters: False
 ```
 
 ### -NetworkBlock
-TheblockofaddressesshouldbeuniqueacrossVNetinyoursubscriptionaswellason-premise.MakesuretheCIDRformatisconformedto(A.B.C.D/X)whereA,B,C,Darebetween0and255,andXisbetween0and22
+The block of addresses should be unique across VNet in your subscription as well as on-premise.
+Make sure the CIDR format is conformed to (A.B.C.D/X) where A,B,C,D are between 0 and 255, and X is between 0 and 22
 
 ```yaml
 Type: System.String
@@ -330,7 +337,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Runthecommandasynchronously
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -345,7 +352,7 @@ Accept wildcard characters: False
 ```
 
 ### -NsxtPassword
-Optionally,settheNSX-TManagerpasswordwhentheprivatecloudiscreated
+Optionally, set the NSX-T Manager password when the private cloud is created
 
 ```yaml
 Type: System.String
@@ -375,7 +382,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -390,7 +398,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-ThenameoftheSKU.
+The name of the SKU.
 
 ```yaml
 Type: System.String
@@ -405,7 +413,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -420,7 +428,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resourcetags
+Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -435,7 +443,7 @@ Accept wildcard characters: False
 ```
 
 ### -VcenterPassword
-Optionally,setthevCenteradminpasswordwhentheprivatecloudiscreated
+Optionally, set the vCenter admin password when the private cloud is created
 
 ```yaml
 Type: System.String

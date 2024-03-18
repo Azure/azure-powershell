@@ -65,7 +65,7 @@ Get an addon by name in a private cloud
 ## PARAMETERS
 
 ### -AddonType
-Nameoftheaddonfortheprivatecloud
+Name of the addon for the private cloud
 
 ```yaml
 Type: System.String
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-Thecredentials,account,tenant,andsubscriptionusedforcommunicationwithAzure.
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -95,7 +95,8 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-IdentityParameterToconstruct,seeNOTESsectionforINPUTOBJECTpropertiesandcreateahashtable.
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -110,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudName
-Nameoftheprivatecloud
+Name of the private cloud
 
 ```yaml
 Type: System.String
@@ -140,7 +141,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -155,7 +157,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]

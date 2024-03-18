@@ -88,7 +88,8 @@ This command gets specific fleet with specified name.
 ## PARAMETERS
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -103,7 +104,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -118,7 +119,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-ThenameoftheFleetresource.
+The name of the Fleet resource.
 
 ```yaml
 Type: System.String
@@ -148,7 +149,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -163,7 +165,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String[]

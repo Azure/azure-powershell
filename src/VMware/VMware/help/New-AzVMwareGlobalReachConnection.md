@@ -56,7 +56,7 @@ Create a global reach connection in a private cloud
 ## PARAMETERS
 
 ### -AsJob
-Runthecommandasajob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthorizationKey
-Authorizationkeyfromthepeerexpressrouteusedfortheglobalreachconnection
+Authorization key from the peer express route used for the global reach connection
 
 ```yaml
 Type: System.String
@@ -86,7 +86,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -101,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExpressRouteId
-TheIDofthePrivateCloud'sExpressRouteCircuitthatisparticipatingintheglobalreachconnection
+The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
 
 ```yaml
 Type: System.String
@@ -116,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -131,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Nameoftheglobalreachconnectionintheprivatecloud
+Name of the global reach connection in the private cloud
 
 ```yaml
 Type: System.String
@@ -146,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Runthecommandasynchronously
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -161,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -PeerExpressRouteResourceId
-IdentifieroftheExpressRouteCircuittopeerwithintheglobalreachconnection
+Identifier of the ExpressRoute Circuit to peer with in the global reach connection
 
 ```yaml
 Type: System.String
@@ -176,7 +177,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudInputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -191,7 +192,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateCloudName
-Thenameoftheprivatecloud.
+The name of the private cloud.
 
 ```yaml
 Type: System.String
@@ -221,7 +222,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -236,7 +238,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

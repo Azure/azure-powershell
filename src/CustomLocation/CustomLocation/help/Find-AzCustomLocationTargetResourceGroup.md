@@ -71,7 +71,7 @@ Returns the target resource group associated with the resource sync rules of the
 ## PARAMETERS
 
 ### -CustomLocationName
-CustomLocationsname.
+Custom Locations name.
 
 ```yaml
 Type: System.String
@@ -86,7 +86,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -101,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
@@ -116,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-PathofJsonfilesuppliedtotheFindoperation
+Path of Json file supplied to the Find operation
 
 ```yaml
 Type: System.String
@@ -131,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-JsonstringsuppliedtotheFindoperation
+Json string supplied to the Find operation
 
 ```yaml
 Type: System.String
@@ -146,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -Label
-Labelsofthecustomresource,thisisamapof{key,value}pairs.
+Labels of the custom resource, this is a map of {key,value} pairs.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -161,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returnstruewhenthecommandsucceeds
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -191,7 +192,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -206,7 +208,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

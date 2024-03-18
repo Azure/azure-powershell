@@ -38,7 +38,7 @@ Create an in-memory object for MatchExpressionsProperties.
 ## PARAMETERS
 
 ### -Key
-Keyisthelabelkeythattheselectorappliesto.
+Key is the label key that the selector applies to.
 
 ```yaml
 Type: System.String
@@ -53,7 +53,8 @@ Accept wildcard characters: False
 ```
 
 ### -Operator
-TheOperatorfieldrepresentsakey'srelationshiptoasetofvalues.ValidoperatorsareIn,NotIn,ExistsandDoesNotExist.
+The Operator field represents a key's relationship to a set of values.
+Valid operators are In, NotIn, Exists and DoesNotExist.
 
 ```yaml
 Type: System.String
@@ -83,7 +84,7 @@ Accept wildcard characters: False
 ```
 
 ### -Value
-Thelabelvalue.
+The label value.
 
 ```yaml
 Type: System.String[]

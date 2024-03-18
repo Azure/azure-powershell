@@ -38,7 +38,7 @@ Create a local SRM object for the Addon Property parameter
 ## PARAMETERS
 
 ### -LicenseKey
-TheSiteRecoveryManager(SRM)license.
+The Site Recovery Manager (SRM) license.
 
 ```yaml
 Type: System.String

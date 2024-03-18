@@ -55,7 +55,7 @@ This command deletes a Fleet member asynchronously with resource object.
 ## PARAMETERS
 
 ### -AsJob
-Runthecommandasajob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -70,7 +70,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -85,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -FleetInputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -100,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -FleetName
-ThenameoftheFleetresource.
+The name of the Fleet resource.
 
 ```yaml
 Type: System.String
@@ -115,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -IfMatch
-Therequestshouldonlyproceedifanentitymatchesthisstring.
+The request should only proceed if an entity matches this string.
 
 ```yaml
 Type: System.String
@@ -130,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -145,7 +146,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-ThenameoftheFleetmemberresource.
+The name of the Fleet member resource.
 
 ```yaml
 Type: System.String
@@ -160,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Runthecommandasynchronously
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -175,7 +176,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Returnstruewhenthecommandsucceeds
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -205,7 +206,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -220,7 +222,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String

@@ -67,7 +67,7 @@ This command updates tag of a fleet.
 ## PARAMETERS
 
 ### -AsJob
-Runthecommandasajob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -82,7 +82,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -97,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableSystemAssignedIdentity
-Decidesifenableasystemassignedidentityfortheresource.
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
 Type: System.Nullable`1[System.Boolean]
@@ -112,7 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -IfMatch
-Therequestshouldonlyproceedifanentitymatchesthisstring.
+The request should only proceed if an entity matches this string.
 
 ```yaml
 Type: System.String
@@ -127,7 +128,7 @@ Accept wildcard characters: False
 ```
 
 ### -IfNoneMatch
-Therequestshouldonlyproceedifnoentitymatchesthisstring.
+The request should only proceed if no entity matches this string.
 
 ```yaml
 Type: System.String
@@ -142,7 +143,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -157,7 +158,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-ThenameoftheFleetresource.
+The name of the Fleet resource.
 
 ```yaml
 Type: System.String
@@ -172,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Runthecommandasynchronously
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -202,7 +203,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -217,7 +219,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -232,7 +234,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resourcetags.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -247,7 +249,8 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-Thearrayofuserassignedidentitiesassociatedwiththeresource.TheelementsinarraywillbeARMresourceidsintheform:'/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
 Type: System.String[]

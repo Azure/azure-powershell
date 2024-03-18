@@ -58,7 +58,7 @@ Creates or updates a Custom Location in the specified Subscription and Resource 
 ## PARAMETERS
 
 ### -AsJob
-Runthecommandasajob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthenticationType
-ThetypeoftheCustomLocationsauthentication
+The type of the Custom Locations authentication
 
 ```yaml
 Type: System.String
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 ```
 
 ### -AuthenticationValue
-Thekubeconfigvalue.
+The kubeconfig value.
 
 ```yaml
 Type: System.String
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterExtensionId
-Containsthereferencetotheadd-onthatcontainschartstodeployCRDsandoperators.
+Contains the reference to the add-on that contains charts to deploy CRDs and operators.
 
 ```yaml
 Type: System.String[]
@@ -118,7 +118,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -133,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-DisplaynamefortheCustomLocationslocation.
+Display name for the Custom Locations location.
 
 ```yaml
 Type: System.String
@@ -148,7 +149,8 @@ Accept wildcard characters: False
 ```
 
 ### -HostResourceId
-ConnectedClusterorAKSCluster.TheCustomLocationsRPwillperformacheckAccessAPIforlistAdminCredentialspermissions.
+Connected Cluster or AKS Cluster.
+The Custom Locations RP will perform a checkAccess API for listAdminCredentials permissions.
 
 ```yaml
 Type: System.String
@@ -163,7 +165,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-Theidentitytype.
+The identity type.
 
 ```yaml
 Type: System.String
@@ -178,7 +180,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-PathofJsonfilesuppliedtotheCreateoperation
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -193,7 +195,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-JsonstringsuppliedtotheCreateoperation
+Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -208,7 +210,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Thegeo-locationwheretheresourcelives
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
@@ -223,7 +225,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-CustomLocationsname.
+Custom Locations name.
 
 ```yaml
 Type: System.String
@@ -238,7 +240,7 @@ Accept wildcard characters: False
 ```
 
 ### -Namespace
-Kubernetesnamespacethatwillbecreatedonthespecifiedcluster.
+Kubernetes namespace that will be created on the specified cluster.
 
 ```yaml
 Type: System.String
@@ -253,7 +255,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Runthecommandasynchronously
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -283,7 +285,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -298,7 +301,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -313,7 +316,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resourcetags.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable

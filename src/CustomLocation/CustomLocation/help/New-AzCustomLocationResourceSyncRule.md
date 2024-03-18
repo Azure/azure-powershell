@@ -75,7 +75,7 @@ Create a Resource Sync Rule in the parent Custom Location, Subscription Id and R
 ## PARAMETERS
 
 ### -AsJob
-Runthecommandasajob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -CustomlocationInputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
@@ -105,7 +105,7 @@ Accept wildcard characters: False
 ```
 
 ### -CustomLocationName
-CustomLocationsname.
+Custom Locations name.
 
 ```yaml
 Type: System.String
@@ -120,7 +120,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -135,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
@@ -150,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-PathofJsonfilesuppliedtotheCreateoperation
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -165,7 +166,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-JsonstringsuppliedtotheCreateoperation
+Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -180,7 +181,7 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-Thegeo-locationwheretheresourcelives
+The geo-location where the resource lives
 
 ```yaml
 Type: System.String
@@ -195,7 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-ResourceSyncRulename.
+Resource Sync Rule name.
 
 ```yaml
 Type: System.String
@@ -210,7 +211,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Runthecommandasynchronously
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -225,7 +226,7 @@ Accept wildcard characters: False
 ```
 
 ### -Priority
-PriorityrepresentsapriorityoftheResourceSyncRule
+Priority represents a priority of the Resource Sync Rule
 
 ```yaml
 Type: System.Int32
@@ -255,7 +256,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -270,7 +272,10 @@ Accept wildcard characters: False
 ```
 
 ### -SelectorMatchExpression
-MatchExpressionsisalistofresourceselectorrequirements.ValidoperatorsincludeIn,NotIn,Exists,andDoesNotExist.Thevaluessetmustbenon-emptyinthecaseofInandNotIn.ThevaluessetmustbeemptyinthecaseofExistsandDoesNotExist.
+MatchExpressions is a list of resource selector requirements.
+Valid operators include In, NotIn, Exists, and DoesNotExist.
+The values set must be non-empty in the case of In and NotIn.
+The values set must be empty in the case of Exists and DoesNotExist.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IMatchExpressionsProperties[]
@@ -285,7 +290,8 @@ Accept wildcard characters: False
 ```
 
 ### -SelectorMatchLabel
-MatchLabelsisamapof{key,value}pairs.Asingle{key,value}inthematchLabelsmapisequivalenttoanelementofmatchExpressions,whosekeyfieldis'key',theoperatoris'In',andthevaluesarraycontainsonly'value'.
+MatchLabels is a map of {key,value} pairs.
+A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is 'key', the operator is 'In', and the values array contains only 'value'.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -300,7 +306,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -315,7 +321,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Resourcetags.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -330,7 +336,9 @@ Accept wildcard characters: False
 ```
 
 ### -TargetResourceGroup
-Foranunmappedcustomresource,itslabelswillbeusedtofindmatchingresourcesyncrules.Ifthisresourcesyncruleisoneofthematchingruleswithhighestpriority,thentheunmappedcustomresourcewillbeprojectedtothetargetresourcegroupassociatedwiththisresourcesyncrule.Theusercreatingthisresourcesyncruleshouldhavewritepermissionsonthetargetresourcegroupandthiswritepermissionwillbevalidatedwhencreatingtheresourcesyncrule.
+For an unmapped custom resource, its labels will be used to find matching resource sync rules.
+If this resource sync rule is one of the matching rules with highest priority, then the unmapped custom resource will be projected to the target resource group associated with this resource sync rule.
+The user creating this resource sync rule should have write permissions on the target resource group and this write permission will be validated when creating the resource sync rule.
 
 ```yaml
 Type: System.String

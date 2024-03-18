@@ -128,7 +128,7 @@ This command create a fleet update run.
 ## PARAMETERS
 
 ### -AsJob
-Runthecommandasajob
+Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -143,7 +143,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-TheDefaultProfileparameterisnotfunctional.UsetheSubscriptionIdparameterwhenavailableifexecutingthecmdletagainstadifferentsubscription.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -158,7 +159,7 @@ Accept wildcard characters: False
 ```
 
 ### -FleetInputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -173,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -FleetName
-ThenameoftheFleetresource.
+The name of the Fleet resource.
 
 ```yaml
 Type: System.String
@@ -188,7 +189,7 @@ Accept wildcard characters: False
 ```
 
 ### -IfMatch
-Therequestshouldonlyproceedifanentitymatchesthisstring.
+The request should only proceed if an entity matches this string.
 
 ```yaml
 Type: System.String
@@ -203,7 +204,7 @@ Accept wildcard characters: False
 ```
 
 ### -IfNoneMatch
-Therequestshouldonlyproceedifnoentitymatchesthisstring.
+The request should only proceed if no entity matches this string.
 
 ```yaml
 Type: System.String
@@ -218,7 +219,7 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-IdentityParameter
+Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -233,7 +234,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonFilePath
-PathofJsonfilesuppliedtotheCreateoperation
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -248,7 +249,7 @@ Accept wildcard characters: False
 ```
 
 ### -JsonString
-JsonstringsuppliedtotheCreateoperation
+Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
@@ -263,7 +264,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-ThenameoftheUpdateRunresource.
+The name of the UpdateRun resource.
 
 ```yaml
 Type: System.String
@@ -278,7 +279,7 @@ Accept wildcard characters: False
 ```
 
 ### -NodeImageSelectionType
-Thenodeimageupgradetype.
+The node image upgrade type.
 
 ```yaml
 Type: System.String
@@ -293,7 +294,7 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-Runthecommandasynchronously
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -323,7 +324,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Thenameoftheresourcegroup.Thenameiscaseinsensitive.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
@@ -338,7 +340,8 @@ Accept wildcard characters: False
 ```
 
 ### -StrategyStage
-Thelistofstagesthatcomposethisupdaterun.Minsize:1.
+The list of stages that compose this update run.
+Min size: 1.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[]
@@ -353,7 +356,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-TheIDofthetargetsubscription.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
@@ -368,7 +371,14 @@ Accept wildcard characters: False
 ```
 
 ### -UpdateStrategyId
-TheresourceidoftheFleetUpdateStrategyresourcetoreference.Whencreatinganewrun,therearethreewaystodefineastrategyfortherun:1.Defineanewstrategyinplace:Setthe"strategy"field.2.Useanexistingstrategy:Setthe"updateStrategyId"field.(since2023-08-15-preview)3.Usethedefaultstrategytoupdateallthemembersonebyone:Leaveboth"updateStrategyId"and"strategy"unset.(since2023-08-15-preview)Settingboth"updateStrategyId"and"strategy"isinvalid.UpdateRunscreatedby"updateStrategyId"snapshotthereferencedUpdateStrategyatthetimeofcreationandstoreitinthe"strategy"field.SubsequentchangestothereferencedFleetUpdateStrategyresourcedonotpropagate.UpdateRunStrategychangescanbemadedirectlyonthe"strategy"fieldbeforelaunchingtheUpdateRun.
+The resource id of the FleetUpdateStrategy resource to reference.When creating a new run, there are three ways to define a strategy for the run:1.
+Define a new strategy in place: Set the "strategy" field.2.
+Use an existing strategy: Set the "updateStrategyId" field.
+(since 2023-08-15-preview)3.
+Use the default strategy to update all the members one by one: Leave both "updateStrategyId" and "strategy" unset.
+(since 2023-08-15-preview)Setting both "updateStrategyId" and "strategy" is invalid.UpdateRuns created by "updateStrategyId" snapshot the referenced UpdateStrategy at the time of creation and store it in the "strategy" field.
+Subsequent changes to the referenced FleetUpdateStrategy resource do not propagate.
+UpdateRunStrategy changes can be made directly on the "strategy" field before launching the UpdateRun.
 
 ```yaml
 Type: System.String
@@ -383,7 +393,7 @@ Accept wildcard characters: False
 ```
 
 ### -UpgradeKubernetesVersion
-TheKubernetesversiontoupgradethememberclustersto.
+The Kubernetes version to upgrade the member clusters to.
 
 ```yaml
 Type: System.String
@@ -398,7 +408,7 @@ Accept wildcard characters: False
 ```
 
 ### -UpgradeType
-Theupgradetype.FullrequirestheKubernetesVersionpropertytobeset.NodeImageOnlyrequirestheKubernetesVersionpropertynottobeset.
+The upgrade type.Full requires the KubernetesVersion property to be set.NodeImageOnly requires the KubernetesVersion property not to be set.
 
 ```yaml
 Type: System.String
