@@ -31,4 +31,25 @@ Describe 'ApplicationInsightsComponent' {
         $component.PublicNetworkAccessForQuery | Should -Be "Enabled"
         Remove-AzApplicationInsights -ResourceGroupName $env.resourceGroup -Name $env.component1
     }
+    
+    It 'UpdateComponment' {
+        $kind = "web";
+        $key = "key"
+        $val = "val"
+        $tag = @{$key=$val}
+
+        New-AzApplicationInsights -ResourceGroupName $env.resourceGroup -Name $env.component2 -Location $env.location -Kind $kind -Tag $tag
+
+        Update-AzApplicationInsights -ResourceGroupName $env.resourceGroup -Name $env.component2 -PublicNetworkAccessForIngestion 'Disabled' -PublicNetworkAccessForQuery 'Disabled'
+        $update = Get-AzApplicationInsights -ResourceGroupName $env.resourceGroup -Name $env.component2
+        $update.Name | Should -Be $env.component2
+        $update.Kind | Should -Be $kind
+        $update.InstrumentationKey | Should -Not -BeNullOrEmpty
+        $update.PublicNetworkAccessForIngestion | Should -Be "Disabled"
+        $update.PublicNetworkAccessForQuery | Should -Be "Disabled"
+        $update.Tag.ContainsKey($key) | Should -BeTrue
+        $update.Tag["$key"] | Should -Be $val
+
+        Remove-AzApplicationInsights -InputObject $update
+    }
 }
