@@ -21,32 +21,44 @@ Describe 'Invoke-AzSpotPlacementRecommender' {
         $resourceSku3 = @{sku = "Standard_D32_v2"}
         $desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
         $desiredLocations = 'eastus','eastus2','westus'
+        $desiredCount = 1
     }
 
     It 'PostExpanded' {
         {
-            $response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount 1 -DesiredLocation $desiredLocations -DesiredSize $desiredSizes
+            # Zonal
+            $response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount $desiredCount -DesiredLocation $desiredLocations -DesiredSize $desiredSizes
+            $response.PlacementScore
+
+            # Regional
+            $response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount $desiredCount -DesiredLocation $desiredLocations -DesiredSize $desiredSizes -AvailabilityZone
+            $response.PlacementScore
         }
     }
 
     It 'Post' {
         {
+            # Zonal
             $spotPlacementRecommenderInput = 
             @{
-                desiredSizes = $desiredSizes;
-                desiredCount = 100;
-                desiredLocations = $desiredLocations;
-                availabilityZones = $true
+                desiredSize = $desiredSizes;
+                desiredCount = $desiredCount;
+                desiredLocation = $desiredLocations;
+                availabilityZone = $true
             }
-            Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput -verbose
+            $response = Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput
+            $response.PlacementScore
+
+            # Regional
+            $spotPlacementRecommenderInput = 
+            @{
+                desiredSize = $desiredSizes;
+                desiredCount = $desiredCount;
+                desiredLocation = $desiredLocations;
+                availabilityZone = $false
+            }
+            $response = Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput
+            $response.PlacementScore
         }
-    }
-
-    It 'PostViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'PostViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
