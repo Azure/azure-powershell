@@ -91,7 +91,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -137,7 +136,6 @@ Accept wildcard characters: False
 
 ### -PrivateLinkScopeTag
 A container holding only the Tags for a resource, allowing the user to update the tags on a PrivateLinkScope instance.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.ITagsResource

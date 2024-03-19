@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Support.Models;
 using Microsoft.Azure.Management.Support;
 using Microsoft.Azure.Management.Support.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,11 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Support.Communications
 {
+    [GenericBreakingChangeWithVersion("The cmdlet Get-AzSupportTicketCommunication will be renamed to Get-AzSupportCommunication", "12.0.0", "2.0.0")]
+    [GenericBreakingChangeWithVersion("Input parameter 'Skip' will be removed", "12.0.0", "2.0.0")]
+    [GenericBreakingChangeWithVersion("Input parameter 'IncludeTotalCount' will be removed", "12.0.0", "2.0.0")]
+    [GenericBreakingChangeWithVersion("Parameter 'First' will be renamed to 'Top'", "12.0.0", "2.0.0")]
+    [GenericBreakingChangeWithVersion("Piping of Get-AzSupportTicketCommunication with a support ticket object will no longer be supported for list. Get via piping will still be supported.", "12.0.0", "2.0.0")]
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "SupportTicketCommunication", DefaultParameterSetName = GetByNameParameterSet, SupportsPaging = true), OutputType(typeof(PSSupportTicketCommunication))]
     public class GetAzSupportTicketCommunication : AzSupportCmdletBase
     {

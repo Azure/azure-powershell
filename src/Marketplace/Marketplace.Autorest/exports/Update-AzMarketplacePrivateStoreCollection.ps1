@@ -80,7 +80,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityPrivateStore', Mandatory, ValueFromPipeline)]
@@ -88,7 +87,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
     ${PrivateStoreInputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -138,7 +136,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollection]
     # The Collection data structure.
-    # To construct, see NOTES section for PAYLOAD properties and create a hash table.
     ${Payload},
 
     [Parameter()]

@@ -22,7 +22,7 @@ New-AzMigrateServerReplication -LicenseType <String> -TargetResourceGroupId <Str
  [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
  [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-Tag <Hashtable>]
  [-TargetBootDiagnosticsStorageAccount <String>] [-DiskEncryptionSetID <String>] [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByIdPowerUser
@@ -34,7 +34,8 @@ New-AzMigrateServerReplication -LicenseType <String> -TargetResourceGroupId <Str
  [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
  [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-Tag <Hashtable>]
  [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>]
- -DiskToInclude <IVMwareCbtDiskInput[]> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -DiskToInclude <IVMwareCbtDiskInput[]> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### ByInputObjectDefaultUser
@@ -47,7 +48,8 @@ New-AzMigrateServerReplication -LicenseType <String> -TargetResourceGroupId <Str
  [-VMTag <IVMwareCbtEnableMigrationInputTargetVmtags>] [-NicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
  [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-Tag <Hashtable>]
  [-TargetBootDiagnosticsStorageAccount <String>] [-DiskEncryptionSetID <String>] [-SubscriptionId <String>]
- -InputObject <IVMwareMachine> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -InputObject <IVMwareMachine> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### ByInputObjectPowerUser
@@ -60,7 +62,7 @@ New-AzMigrateServerReplication -LicenseType <String> -TargetResourceGroupId <Str
  [-DiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-Tag <Hashtable>]
  [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>]
  -DiskToInclude <IVMwareCbtDiskInput[]> -InputObject <IVMwareMachine> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -296,6 +298,21 @@ Specifies if replication be auto-repaired in case change tracking is lost for th
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -540,32 +557,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`DISKTAG <IVMwareCbtEnableMigrationInputTargetDiskTags>`: Specifies the tag to be used for disk creation.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-`DISKTOINCLUDE <IVMwareCbtDiskInput[]>`: Specifies the disks on the source server to be included for replication.
-  - `DiskId <String>`: The disk Id.
-  - `IsOSDisk <String>`: A value indicating whether the disk is the OS disk.
-  - `LogStorageAccountId <String>`: The log storage account ARM Id.
-  - `LogStorageAccountSasSecretName <String>`: The key vault secret name of the log storage account.
-  - `[DiskEncryptionSetId <String>]`: The DiskEncryptionSet ARM Id.
-  - `[DiskType <DiskAccountType?>]`: The disk type.
-
-`INPUTOBJECT <IVMwareMachine>`: Specifies the discovered server to be migrated. The server object can be retrieved using the Get-AzMigrateServer cmdlet.
-  - `[GuestOSDetailOstype <String>]`: Type of the operating system.
-
-`NICTAG <IVMwareCbtEnableMigrationInputTargetNicTags>`: Specifies the tag to be used for NIC creation.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-`VMTAG <IVMwareCbtEnableMigrationInputTargetVmtags>`: Specifies the tag to be used for VM creation.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS

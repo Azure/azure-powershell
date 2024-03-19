@@ -14,7 +14,8 @@ Creates new Schedule object
 
 ```
 New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays <DateTime[]>
- -IntervalType <BackupFrequency> -IntervalCount <Int32> [<CommonParameters>]
+ -IntervalType <BackupFrequency> -IntervalCount <Int32> [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,6 +80,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ScheduleDays
 Days with which backup will be scheduled.
 
@@ -104,7 +120,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String[]
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

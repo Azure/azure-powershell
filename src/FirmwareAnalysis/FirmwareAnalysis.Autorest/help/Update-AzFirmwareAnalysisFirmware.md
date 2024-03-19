@@ -150,7 +150,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
@@ -212,7 +211,6 @@ Accept wildcard characters: False
 
 ### -StatusMessage
 A list of errors or other messages generated during firmware analysis
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IStatusMessage[]
@@ -274,7 +272,6 @@ Accept wildcard characters: False
 
 ### -WorkspaceInputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity

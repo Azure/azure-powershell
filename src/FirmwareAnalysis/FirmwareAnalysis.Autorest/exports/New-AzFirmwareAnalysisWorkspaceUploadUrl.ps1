@@ -85,7 +85,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter(ParameterSetName='Generate', Mandatory, ValueFromPipeline)]
@@ -93,7 +92,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IGenerateUploadUrlRequest]
     # Properties for generating an upload URL
-    # .
     ${GenerateUploadUrl},
 
     [Parameter(ParameterSetName='GenerateExpanded')]
@@ -127,7 +125,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]

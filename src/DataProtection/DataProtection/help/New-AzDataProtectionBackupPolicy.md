@@ -14,8 +14,8 @@ Creates a new backup policy in a given backup vault
 
 ```
 New-AzDataProtectionBackupPolicy -ResourceGroupName <String> -VaultName <String> -Name <String>
- -Policy <IBackupPolicy> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Policy <IBackupPolicy> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -240,6 +240,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource Group Name
 
@@ -323,36 +338,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBaseBackupPolicyResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBaseBackupPolicyResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`POLICY <IBackupPolicy>`: Policy Request Object
-  - `DatasourceType <String[]>`: Type of datasource for the backup management
-  - `ObjectType <String>`: 
-  - `PolicyRule <IBasePolicyRule[]>`: Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc
-    - `Name <String>`: 
-    - `ObjectType <String>`: 
-    - `DataStoreObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
-    - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
-    - `TriggerObjectType <String>`: Type of the specific object - used for deserializing
-    - `Lifecycle <ISourceLifeCycle[]>`: 
-      - `DeleteAfterDuration <String>`: Duration of deletion after given timespan
-      - `DeleteAfterObjectType <String>`: Type of the specific object - used for deserializing
-      - `SourceDataStoreObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
-      - `SourceDataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
-      - `[TargetDataStoreCopySetting <ITargetCopySetting[]>]`: 
-        - `CopyAfterObjectType <String>`: Type of the specific object - used for deserializing
-        - `DataStoreObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
-        - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
-    - `[BackupParameterObjectType <String>]`: Type of the specific object - used for deserializing
-    - `[IsDefault <Boolean?>]`: 
 
 ## RELATED LINKS
