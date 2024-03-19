@@ -13,9 +13,9 @@ Create an in-memory object for WebhookResource.
 ## SYNTAX
 
 ```
-New-AzAcatWebhookResourceObject [-ContentType <String>] [-Disable]
- [-EnableSslVerification <EnableSslVerification>] [-Event <NotificationEvent[]>] [-PayloadUrl <String>]
- [-Secret <SecureString>] [-TriggerMode <SendAllEvents>] [<CommonParameters>]
+New-AzAcatWebhookResourceObject [-ContentType <String>] [-Disable] [-EnableSslVerification <String>]
+ [-Event <String[]>] [-PayloadUrl <String>] [-Secret <SecureString>] [-TriggerMode <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -87,7 +87,7 @@ Accept wildcard characters: False
 whether to enable ssl verification
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.EnableSslVerification
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -102,7 +102,7 @@ Accept wildcard characters: False
 under which event notification should be sent.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.NotificationEvent[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 whether to send notification under any event.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.SendAllEvents
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -166,11 +166,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IWebhookResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

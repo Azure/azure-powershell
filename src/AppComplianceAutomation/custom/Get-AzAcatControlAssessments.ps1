@@ -22,7 +22,7 @@ Get the AppComplianceAutomation report's control assessments.
 https://learn.microsoft.com/powershell/module/az.appComplianceAutomation/get-azacatcontrolassessments
 #>
 function Get-AzAcatControlAssessments {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.ICategory[]])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ICategory[]])]
     [CmdletBinding(PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]

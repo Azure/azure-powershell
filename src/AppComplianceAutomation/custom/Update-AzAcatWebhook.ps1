@@ -19,12 +19,12 @@ Update an exiting AppComplianceAutomation webhook.
 Update an exiting AppComplianceAutomation webhook.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IWebhookResource
+Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResource
 .Link
 https://learn.microsoft.com/powershell/module/az.appComplianceAutomation/update-azacatwebhook
 #>
 function Update-AzAcatWebhook {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IWebhookResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResource])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'Update', Mandatory)]
@@ -41,14 +41,14 @@ function Update-AzAcatWebhook {
         ${ReportName},
 
         [Parameter(ParameterSetName = 'Update', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IWebhookResource]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResource]
         # A class represent a AppComplianceAutomation webhook resource update properties.
         # To construct, see NOTES section for PARAMETER properties and create a hash table.
         ${Parameter},
 
         [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.EnableSslVerification])]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.EnableSslVerification]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PSArgumentCompleterAttribute("true", "false")]
+        [System.String]
         # whether to enable ssl verification
         ${EnableSslVerification},
 
@@ -58,15 +58,15 @@ function Update-AzAcatWebhook {
         ${Disable},
 
         [Parameter(ParameterSetName = 'UpdateExpanded')]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.SendAllEvents])]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.SendAllEvents]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PSArgumentCompleterAttribute("true", "false")]
+        [System.String]
         # whether to send notification under any event.
         ${TriggerMode},
 
         [Parameter(ParameterSetName = 'UpdateExpanded')]
         [AllowEmptyCollection()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.NotificationEvent])]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.NotificationEvent[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PSArgumentCompleterAttribute("generate_snapshot_success", "generate_snapshot_failed", "assessment_failure", "report_configuration_changes", "report_deletion")]
+        [System.String[]]
         # under which event notification should be sent.
         ${Event},
 

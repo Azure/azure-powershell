@@ -67,10 +67,9 @@ Accept wildcard characters: False
 
 ### -Resource
 List of resource data.
-To construct, see NOTES section for RESOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IResourceMetadata[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceMetadata[]
 Parameter Sets: (All)
 Aliases:
 
@@ -118,23 +117,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IReportResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-RESOURCE <IResourceMetadata[]>: List of resource data.
-  - `ResourceId <String>`: Resource Id - e.g. "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1".
-  - `[AccountId <String>]`: Account Id. For example - the AWS account id.
-  - `[ResourceKind <String>]`: Resource kind.
-  - `[ResourceOrigin <ResourceOrigin?>]`: Resource Origin.
-  - `[ResourceType <String>]`: Resource type. e.g. "Microsoft.Compute/virtualMachines"
 
 ## RELATED LINKS
 

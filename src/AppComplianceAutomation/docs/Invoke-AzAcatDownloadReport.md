@@ -13,7 +13,7 @@ Download compliance needs, like: Compliance Report, Resource List.
 ## SYNTAX
 
 ```
-Invoke-AzAcatDownloadReport -DownloadType <DownloadType> -Name <String> -Path <String> -ReportName <String>
+Invoke-AzAcatDownloadReport -DownloadType <String> -Name <String> -Path <String> -ReportName <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 Indicates the download type.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.DownloadType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -230,8 +230,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

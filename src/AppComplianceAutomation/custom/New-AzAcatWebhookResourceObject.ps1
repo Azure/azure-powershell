@@ -19,17 +19,17 @@ Create an in-memory object for WebhookResource.
 Create an in-memory object for WebhookResource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IWebhookResource
+Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResource
 .Link
 https://learn.microsoft.com/powershell/module/az.appComplianceAutomation/new-azacatwebhookresourceobject
 #>
 function New-AzAcatWebhookResourceObject {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IWebhookResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResource])]
     [CmdletBinding(PositionalBinding = $false)]
     param(
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.EnableSslVerification])]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.EnableSslVerification]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PSArgumentCompleterAttribute("true", "false")]
+        [System.String]
         # whether to enable ssl verification
         ${EnableSslVerification},
 
@@ -39,15 +39,15 @@ function New-AzAcatWebhookResourceObject {
         ${Disable},
 
         [Parameter()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.SendAllEvents])]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.SendAllEvents]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PSArgumentCompleterAttribute("true", "false")]
+        [System.String]
         # whether to send notification under any event.
         ${TriggerMode},
 
         [Parameter()]
         [AllowEmptyCollection()]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.NotificationEvent])]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.NotificationEvent[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PSArgumentCompleterAttribute("generate_snapshot_success", "generate_snapshot_failed", "assessment_failure", "report_configuration_changes", "report_deletion")]
+        [System.String[]]
         # under which event notification should be sent.
         ${Event},
 
@@ -112,6 +112,6 @@ function New-AzAcatWebhookResourceObject {
         else {
             $Object.UpdateWebhookKey = "false"
         }
-        return [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.WebhookResource]::DeserializeFromDictionary($Object)
+        return [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.WebhookResource]::DeserializeFromDictionary($Object)
     }
 }

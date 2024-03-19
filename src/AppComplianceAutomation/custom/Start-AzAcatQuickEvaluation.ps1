@@ -22,7 +22,7 @@ Trigger evaluation for given resourceIds to get quick compliance result.
 https://learn.microsoft.com/powershell/module/az.appComplianceAutomation/start-azacatquickevaluation
 #>
 function Start-AzAcatQuickEvaluation {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.ITriggerEvaluationResponse])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ITriggerEvaluationResponse])]
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]

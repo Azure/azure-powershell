@@ -152,10 +152,9 @@ Accept wildcard characters: False
 
 ### -Parameter
 A class represent an AppComplianceAutomation report resource.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IReportResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResource
 Parameter Sets: Create
 Aliases:
 
@@ -168,10 +167,9 @@ Accept wildcard characters: False
 
 ### -Resource
 List of resource data.
-To construct, see NOTES section for RESOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IResourceMetadata[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceMetadata[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -248,53 +246,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IReportResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResource
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IReportResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-PARAMETER <IReportResource>: A class represent an AppComplianceAutomation report resource.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[M365FailedCount <Int32?>]`: The count of all failed control.
-  - `[M365ManualCount <Int32?>]`: The count of all manual control.
-  - `[M365NotApplicableCount <Int32?>]`: The count of all not applicable control.
-  - `[M365PassedCount <Int32?>]`: The count of all passed control.
-  - `[M365PendingCount <Int32?>]`: The count of all pending for approval control.
-  - `[OfferGuid <String>]`: A list of comma-separated offerGuids indicates a series of offerGuids that map to the report. For example, "00000000-0000-0000-0000-000000000001,00000000-0000-0000-0000-000000000002" and "00000000-0000-0000-0000-000000000003".
-  - `[Resource <IResourceMetadata[]>]`: List of resource data.
-    - `ResourceId <String>`: Resource Id - e.g. "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1".
-    - `[AccountId <String>]`: Account Id. For example - the AWS account id.
-    - `[ResourceKind <String>]`: Resource kind.
-    - `[ResourceOrigin <ResourceOrigin?>]`: Resource Origin.
-    - `[ResourceType <String>]`: Resource type. e.g. "Microsoft.Compute/virtualMachines"
-  - `[StorageInfoAccountName <String>]`: 'bring your own storage' account name
-  - `[StorageInfoLocation <String>]`: The region of 'bring your own storage' account
-  - `[StorageInfoResourceGroup <String>]`: The resourceGroup which 'bring your own storage' account belongs to
-  - `[StorageInfoSubscriptionId <String>]`: The subscription id which 'bring your own storage' account belongs to
-  - `[TimeZone <String>]`: Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.         An example of valid timezone id is "Pacific Standard Time".
-  - `[TriggerTime <DateTime?>]`: Report collection trigger time.
-
-RESOURCE <IResourceMetadata[]>: List of resource data.
-  - `ResourceId <String>`: Resource Id - e.g. "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.Compute/virtualMachines/vm1".
-  - `[AccountId <String>]`: Account Id. For example - the AWS account id.
-  - `[ResourceKind <String>]`: Resource kind.
-  - `[ResourceOrigin <ResourceOrigin?>]`: Resource Origin.
-  - `[ResourceType <String>]`: Resource type. e.g. "Microsoft.Compute/virtualMachines"
 
 ## RELATED LINKS
 

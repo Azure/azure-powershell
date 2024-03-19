@@ -174,11 +174,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IReportResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

@@ -19,16 +19,16 @@ Create an in-memory object for ReportResource.
 Create an in-memory object for ReportResource.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IReportResource
+Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResource
 .Link
 https://learn.microsoft.com/powershell/module/az.appComplianceAutomation/new-azacatreportresourceobject
 #>
 function New-AzAcatReportResourceObject {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IReportResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResource])]
     [CmdletBinding(PositionalBinding = $false)]
     param(
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IResourceMetadata[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceMetadata[]]
         # List of resource data.
         ${Resource},
 
@@ -74,6 +74,6 @@ function New-AzAcatReportResourceObject {
         if ($PSBoundParameters.ContainsKey("OfferGuid")) {
             $Object.OfferGuid = $OfferGuid
         }
-        return [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.ReportResource]::DeserializeFromDictionary($Object)
+        return [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ReportResource]::DeserializeFromDictionary($Object)
     }
 }

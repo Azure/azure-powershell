@@ -33,8 +33,8 @@ function Invoke-AzAcatDownloadReport {
         ${ReportName},
 
         [Parameter(Mandatory)]
-        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.DownloadType])]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.DownloadType]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PSArgumentCompleterAttribute("ComplianceReport", "CompliancePdfReport", "ComplianceDetailedPdfReport", "ResourceList")]
+        [System.String]
         # Indicates the download type.
         ${DownloadType},
 

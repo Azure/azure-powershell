@@ -19,12 +19,12 @@ Create a new AppComplianceAutomation report or update an exiting AppComplianceAu
 Create a new AppComplianceAutomation report or update an exiting AppComplianceAutomation report.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IReportResource
+Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResource
 .Link
 https://learn.microsoft.com/powershell/module/az.appComplianceAutomation/new-azacatreport
 #>
 function New-AzAcatReport {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IReportResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResource])]
     [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'Create', Mandatory)]
@@ -35,12 +35,12 @@ function New-AzAcatReport {
         ${Name},
 
         [Parameter(ParameterSetName = 'Create', Mandatory, ValueFromPipeline)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IReportResource]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResource]
         # A class represent an AppComplianceAutomation report resource.
         ${Parameter},
 
         [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IResourceMetadata[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceMetadata[]]
         # List of resource data.
         ${Resource},
 

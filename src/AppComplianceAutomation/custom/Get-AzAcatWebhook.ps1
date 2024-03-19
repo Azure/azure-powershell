@@ -19,12 +19,12 @@ Get the AppComplianceAutomation webhook and its properties.
 Get the AppComplianceAutomation webhook and its properties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IWebhookResource
+Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResource
 .Link
 https://learn.microsoft.com/powershell/module/az.appComplianceAutomation/get-azacatwebhook
 #>
 function Get-AzAcatWebhook {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IWebhookResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResource])]
     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Get', Mandatory)]

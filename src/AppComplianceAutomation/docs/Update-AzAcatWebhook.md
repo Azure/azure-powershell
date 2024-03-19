@@ -15,9 +15,8 @@ Update an exiting AppComplianceAutomation webhook.
 ### UpdateExpanded (Default)
 ```
 Update-AzAcatWebhook -Name <String> -ReportName <String> [-ContentType <String>] [-Disable]
- [-EnableSslVerification <EnableSslVerification>] [-Event <NotificationEvent[]>] [-PayloadUrl <String>]
- [-Secret <SecureString>] [-TriggerMode <SendAllEvents>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-EnableSslVerification <String>] [-Event <String[]>] [-PayloadUrl <String>] [-Secret <SecureString>]
+ [-TriggerMode <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Update
@@ -128,7 +127,7 @@ Accept wildcard characters: False
 whether to enable ssl verification
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.EnableSslVerification
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -143,7 +142,7 @@ Accept wildcard characters: False
 under which event notification should be sent.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.NotificationEvent[]
+Type: System.String[]
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -174,7 +173,7 @@ A class represent a AppComplianceAutomation webhook resource update properties.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IWebhookResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResource
 Parameter Sets: Update
 Aliases:
 
@@ -235,7 +234,7 @@ Accept wildcard characters: False
 whether to send notification under any event.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Support.SendAllEvents
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -282,36 +281,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IWebhookResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResource
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IWebhookResource
+### Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IWebhookResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-PARAMETER <IWebhookResource>: A class represent a AppComplianceAutomation webhook resource update properties.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[ContentType <ContentType?>]`: content type
-  - `[EnableSslVerification <EnableSslVerification?>]`: whether to enable ssl verification
-  - `[Event <NotificationEvent[]>]`: under which event notification should be sent.
-  - `[PayloadUrl <String>]`: webhook payload url
-  - `[SendAllEvent <SendAllEvents?>]`: whether to send notification under any event.
-  - `[Status <WebhookStatus?>]`: Webhook status.
-  - `[UpdateWebhookKey <UpdateWebhookKey?>]`: whether to update webhookKey.
-  - `[WebhookKey <String>]`: webhook secret token. If not set, this field value is null; otherwise, please set a string value.
 
 ## RELATED LINKS
 

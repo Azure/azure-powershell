@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.AppComplianceAutomation.private.dll'
   FormatsToProcess = './Az.AppComplianceAutomation.format.ps1xml'
-  FunctionsToExport = 'Get-AzAcatControlAssessments', 'Get-AzAcatReport', 'Get-AzAcatWebhook', 'Invoke-AzAcatDownloadReport', 'New-AzAcatReport', 'New-AzAcatReportResourceObject', 'New-AzAcatWebhook', 'New-AzAcatWebhookResourceObject', 'Remove-AzAcatReport', 'Remove-AzAcatWebhook', 'Start-AzAcatQuickEvaluation', 'Update-AzAcatReport', 'Update-AzAcatWebhook', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzAcatControlAssessments', 'Get-AzAcatReport', 'Get-AzAcatWebhook', 'Invoke-AzAcatDownloadReport', 'New-AzAcatReport', 'New-AzAcatReportResourceObject', 'New-AzAcatWebhook', 'New-AzAcatWebhookResourceObject', 'Remove-AzAcatReport', 'Remove-AzAcatWebhook', 'Start-AzAcatQuickEvaluation', 'Update-AzAcatReport', 'Update-AzAcatWebhook'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'AppComplianceAutomation'

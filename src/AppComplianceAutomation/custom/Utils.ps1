@@ -2,7 +2,7 @@ function Get-ResourceId-Array {
     [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IResourceMetadata[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IResourceMetadata[]]
         $Resources
     )
     $Result = [System.Collections.Generic.List[object]]::new()
@@ -94,7 +94,7 @@ function Get-FilteredControlAssessments {
     [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.DoNotExportAttribute()]
     param(
         [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.ICategory[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.ICategory[]]
         $Categories,
 
         [Parameter(Mandatory)]
@@ -133,7 +133,7 @@ function Get-FilteredControlAssessments {
         }
         $NewCategory.ControlFamily = $FilteredFamilies.ToArray()
         if ($FilteredFamilies.Count) {
-            $DeserializedCategory = [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.Category]::DeserializeFromDictionary($NewCategory)
+            $DeserializedCategory = [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Category]::DeserializeFromDictionary($NewCategory)
             $Results.Add($DeserializedCategory)
         }
     }

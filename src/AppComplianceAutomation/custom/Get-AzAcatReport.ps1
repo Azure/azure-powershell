@@ -19,12 +19,12 @@ Get the AppComplianceAutomation report and its properties.
 Get the AppComplianceAutomation report and its properties.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IReportResource
+Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResource
 .Link
 https://learn.microsoft.com/powershell/module/az.appComplianceAutomation/get-azacatreport
 #>
 function Get-AzAcatReport {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.Api20230215Preview.IReportResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.Models.IReportResource])]
     [CmdletBinding(DefaultParameterSetName = 'List', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'Get', Mandatory)]
