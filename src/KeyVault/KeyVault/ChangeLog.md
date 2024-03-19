@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Upgraded Azure.Core to 1.37.0.
 * Formatted the output of Azure Key Vault certificate in removed state. [#24333]
+* Upgraded Azure.Core to 1.37.0.
 
 ## Version 5.2.1
 * Supported `HsmPlatform` in `KeyAttributes`.
