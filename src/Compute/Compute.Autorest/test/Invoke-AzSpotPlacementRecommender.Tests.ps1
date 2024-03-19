@@ -28,11 +28,11 @@ Describe 'Invoke-AzSpotPlacementRecommender' {
         {
             # Zonal
             $response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount $desiredCount -DesiredLocation $desiredLocations -DesiredSize $desiredSizes
-            $response.PlacementScore
+            $response.PlacementScore | Should -Not -BeNullOrEmpty -ErrorAction Stop
 
             # Regional
             $response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount $desiredCount -DesiredLocation $desiredLocations -DesiredSize $desiredSizes -AvailabilityZone
-            $response.PlacementScore
+            $response.PlacementScore | Should -Not -BeNullOrEmpty -ErrorAction Stop
         }
     }
 
@@ -47,7 +47,7 @@ Describe 'Invoke-AzSpotPlacementRecommender' {
                 availabilityZone = $true
             }
             $response = Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput
-            $response.PlacementScore
+            $response.PlacementScore | Should -Not -BeNullOrEmpty -ErrorAction Stop
 
             # Regional
             $spotPlacementRecommenderInput = 
@@ -58,7 +58,7 @@ Describe 'Invoke-AzSpotPlacementRecommender' {
                 availabilityZone = $false
             }
             $response = Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput
-            $response.PlacementScore
+            $response.PlacementScore | Should -Not -BeNullOrEmpty -ErrorAction Stop
         }
     }
 }
