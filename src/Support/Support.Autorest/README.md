@@ -31,7 +31,7 @@ For information on how to develop for `Az.Support`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 99b27b136352e2f16c3f868857fa33157ace895f
+commit: 138bfbe2562a56cc9c84e003229b9440beaf419c
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -191,6 +191,13 @@ directive:
   - from: swagger-document
     where: $.definitions.SupportTicketDetails
     transform: $.required = ['properties']
+  - from: swagger-document 
+    where: $.definitions.SupportTicketDetailsProperties.properties.enrollmentId
+    transform: >-
+      return {
+          "description": "Enrollment Id associated with the support ticket.",
+          "type": "string",
+        }
   # only needed for 2022 preview version, should be able to remove for GA
   - from: swagger-document
     where: $.definitions.SupportTicketDetailsProperties
