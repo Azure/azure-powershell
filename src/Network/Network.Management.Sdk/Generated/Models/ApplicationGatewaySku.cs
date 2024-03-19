@@ -36,10 +36,8 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="capacity">Capacity (instance count) of an application gateway.
         /// </param>
 
-        /// <param name="family">Family of an application gateway.
-        /// Possible values include: &#39;Generation_1&#39;, &#39;Generation_2&#39;
-        /// </param>
-
+        /// <param name="family">Family of an application gateway SKU.
+        /// Possible values include: &#39;Generation_1&#39;, &#39;Generation_2&#39;</param>
         public ApplicationGatewaySku(string name = default(string), string tier = default(string), int? capacity = default(int?), string family = default(string))
 
         {
@@ -54,6 +52,7 @@ namespace Microsoft.Azure.Management.Network.Models
         /// An initialization method that performs custom operations like setting defaults
         /// </summary>
         partial void CustomInit();
+
 
         /// <summary>
         /// Gets or sets name of an application gateway SKU. Possible values include: &#39;Standard_Small&#39;, &#39;Standard_Medium&#39;, &#39;Standard_Large&#39;, &#39;WAF_Medium&#39;, &#39;WAF_Large&#39;, &#39;Standard_v2&#39;, &#39;WAF_v2&#39;, &#39;Basic&#39;
@@ -74,9 +73,9 @@ namespace Microsoft.Azure.Management.Network.Models
         public int? Capacity {get; set; }
 
         /// <summary>
-        /// Gets or sets family of an application gateway. Possible values include: &#39;Generation_1&#39;, &#39;Generation_2&#39;
+        /// Gets or sets family of an application gateway SKU. Possible values include: &#39;Generation_1&#39;, &#39;Generation_2&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "family")]
-        public string Family { get; set; }
+        public string Family {get; set; }
     }
 }
