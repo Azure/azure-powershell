@@ -68,6 +68,7 @@ function New-AzServiceBusAuthorizationRule{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights[]]
         # The rights associated with the rule.
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ParameterBreakingChangeAttribute("Rights","12.0.0", "4.0.0","2024-05-21" )]
         ${Rights},
 		
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
