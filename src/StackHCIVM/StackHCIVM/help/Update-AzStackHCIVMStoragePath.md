@@ -15,34 +15,34 @@ The operation to update a storage container.
 ### ByResourceId (Default)
 ```
 Update-AzStackHCIVMStoragePath [-ResourceId <String>] [-Tag <Hashtable>] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzStackHCIVMStoragePath -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzStackHCIVMStoragePath -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpanded
 ```
 Update-AzStackHCIVMStoragePath -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStackHCIVMStoragePath -InputObject <IStackHcivmIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -51,10 +51,18 @@ The operation to update a storage container.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Update a Storage Path.
+```powershell
 Update-AzStackHCIVMStoragePath  -Name "testVhd" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
 ```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testStoragePath       test-rg
+```
+
+This command updates an exisiting storage path in the specified resource group.
 
 ## PARAMETERS
 
@@ -68,7 +76,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -91,7 +99,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
@@ -160,7 +167,22 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -206,7 +228,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -263,36 +285,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IStackHcivmIdentity\>: Identity Parameter
-  \[ExtensionName \<String\>\]: The name of the machine extension.
-  \[ExtensionType \<String\>\]: The extensionType of the Extension being received.
-  \[GalleryImageName \<String\>\]: Name of the gallery image
-  \[Id \<String\>\]: Resource identity path
-  \[Location \<String\>\]: The location of the Extension being received.
-  \[LogicalNetworkName \<String\>\]: Name of the logical network
-  \[MachineName \<String\>\]: The name of the hybrid machine.
-  \[MarketplaceGalleryImageName \<String\>\]: Name of the marketplace gallery image
-  \[MetadataName \<String\>\]: Name of the HybridIdentityMetadata.
-  \[NetworkInterfaceName \<String\>\]: Name of the network interface
-  \[OSType \<String\>\]: Defines the os type.
-  \[Publisher \<String\>\]: The publisher of the Extension being received.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[ResourceUri \<String\>\]: The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-  \[StorageContainerName \<String\>\]: Name of the storage container
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[Version \<String\>\]: The version of the Extension being received.
-  \[VirtualHardDiskName \<String\>\]: Name of the virtual hard disk
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmstoragepath](https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmstoragepath)

@@ -105,21 +105,18 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityFirmware', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity]
     # Identity Parameter
-    # .
     ${FirmwareInputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityWorkspace', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity]
     # Identity Parameter
-    # .
     ${WorkspaceInputObject},
 
     [Parameter()]
@@ -134,7 +131,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]

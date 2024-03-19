@@ -199,7 +199,6 @@ Accept wildcard characters: False
 
 ### -RuleProperty
 Rules for the InternetGateways
-To construct, see NOTES section for RULEPROPERTY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRuleProperties

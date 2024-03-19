@@ -134,7 +134,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementProperties[]]
     # Route Policy statements.
-    # To construct, see NOTES section for STATEMENT properties and create a hash table.
     ${Statement},
 
     [Parameter(ParameterSetName='CreateExpanded')]

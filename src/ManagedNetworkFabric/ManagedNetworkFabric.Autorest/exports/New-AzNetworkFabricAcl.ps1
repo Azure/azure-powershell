@@ -171,7 +171,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration[]]
     # List of dynamic match configurations.
-    # To construct, see NOTES section for DYNAMICMATCHCONFIGURATION properties and create a hash table.
     ${DynamicMatchConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -179,7 +178,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAccessControlListMatchConfiguration[]]
     # List of match configurations.
-    # To construct, see NOTES section for MATCHCONFIGURATION properties and create a hash table.
     ${MatchConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]

@@ -14,7 +14,8 @@ List hosts by zone in a cluster
 
 ```
 Get-AzVMwareClusterZone -ClusterName <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,10 +23,18 @@ List hosts by zone in a cluster
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List hosts by zone in a cluster
+```powershell
 Get-AzVMwareClusterZone -PrivateCloudName SDDC2 -ResourceGroupName TestSddc-rg -ClusterName Cluster-1
 ```
+
+```output
+Host                                                                                                                              Zone
+----                                                                                                                              ----
+{esx09-r09.p01.canadacentral.avs.azure.com, esx02-r06.p01.canadacentral.avs.azure.com, esx20-r08.p01.canadacentral.avs.azure.com} 3
+```
+
+List hosts by zone in a cluster
 
 ## PARAMETERS
 
@@ -33,7 +42,7 @@ Get-AzVMwareClusterZone -PrivateCloudName SDDC2 -ResourceGroupName TestSddc-rg -
 Name of the cluster in the private cloud
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -49,7 +58,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -64,11 +73,26 @@ Accept wildcard characters: False
 Name of the private cloud
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -80,7 +104,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -95,13 +119,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -110,7 +134,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -126,7 +150,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -145,9 +169,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IClusterZoneList
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareclusterzone](https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareclusterzone)
-

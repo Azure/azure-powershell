@@ -15,13 +15,14 @@ Adds or removes Retention Rule to existing Policy
 ### RemoveRetention (Default)
 ```
 Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy <IBackupPolicy> -Name <RetentionRuleName>
- [-RemoveRule] [<CommonParameters>]
+ [-RemoveRule] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### AddRetention
 ```
 Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy <IBackupPolicy> -Name <RetentionRuleName>
- -IsDefault <Boolean> -LifeCycles <ISourceLifeCycle[]> [-OverwriteLifeCycle <Boolean>] [<CommonParameters>]
+ -IsDefault <Boolean> -LifeCycles <ISourceLifeCycle[]> [-OverwriteLifeCycle <Boolean>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,6 +140,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RemoveRule
 Specifies whether to remove the retention rule.
 
@@ -161,46 +177,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupPolicy
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`LIFECYCLES <ISourceLifeCycle[]>`: Life cycles associated with the retention rule.
-  - `DeleteAfterDuration <String>`: Duration of deletion after given timespan
-  - `DeleteAfterObjectType <String>`: Type of the specific object - used for deserializing
-  - `SourceDataStoreObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
-  - `SourceDataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
-  - `[TargetDataStoreCopySetting <ITargetCopySetting[]>]`: 
-    - `CopyAfterObjectType <String>`: Type of the specific object - used for deserializing
-    - `DataStoreObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
-    - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
-
-`POLICY <IBackupPolicy>`: Backup Policy Object
-  - `DatasourceType <String[]>`: Type of datasource for the backup management
-  - `ObjectType <String>`: 
-  - `PolicyRule <IBasePolicyRule[]>`: Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc
-    - `Name <String>`: 
-    - `ObjectType <String>`: 
-    - `DataStoreObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
-    - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
-    - `TriggerObjectType <String>`: Type of the specific object - used for deserializing
-    - `Lifecycle <ISourceLifeCycle[]>`: 
-      - `DeleteAfterDuration <String>`: Duration of deletion after given timespan
-      - `DeleteAfterObjectType <String>`: Type of the specific object - used for deserializing
-      - `SourceDataStoreObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
-      - `SourceDataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
-      - `[TargetDataStoreCopySetting <ITargetCopySetting[]>]`: 
-        - `CopyAfterObjectType <String>`: Type of the specific object - used for deserializing
-        - `DataStoreObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
-        - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
-    - `[BackupParameterObjectType <String>]`: Type of the specific object - used for deserializing
-    - `[IsDefault <Boolean?>]`: 
 
 ## RELATED LINKS
