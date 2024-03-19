@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Formatted the output of Azure Key Vault certificate in removed state. [#24333]
 * [Upcoming Breaking Change] Added breaking change warning message for parameter `EnableRbacAuthorization` of `New-AzKeyVault`.
     - RBAC will be enabled by default during the process of key vault creation. To disable RBAC authorization, please use parameter 'DisableRbacAuthorization'.
     - Parameter `EnableRbacAuthorization` is expected to be removed in Az.KeyVault 6.0.0 and Az 12.0.0.
