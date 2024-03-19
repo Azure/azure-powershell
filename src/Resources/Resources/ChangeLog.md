@@ -19,9 +19,9 @@
 -->
 
 ## Upcoming Release
+* Added null check to the permissions object in the toPSRoledefinition method.
 * Added dynamic parameters to stack New/Set cmdlets.
 * Used correct JSON serializer settings for all templates-related deserialization.
-* Added null check to the permissions object in the toPSRoledefinition method.
 
 ## Version 6.16.0
 * Added breaking change warnings for Azure Policy cmdlets.
