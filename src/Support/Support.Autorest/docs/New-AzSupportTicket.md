@@ -25,8 +25,9 @@ New-AzSupportTicket -Name <String> -AdvancedDiagnosticConsent <String> -ContactD
  -ContactDetailPreferredTimeZone <String> -ContactDetailPrimaryEmailAddress <String> -Description <String>
  -ProblemClassificationId <String> -ServiceId <String> -Severity <String> -Title <String>
  [-SubscriptionId <String>] [-ContactDetailAdditionalEmailAddress <String[]>]
- [-ContactDetailPhoneNumber <String>] [-FileWorkspaceName <String>] [-ProblemScopingQuestion <String>]
- [-ProblemStartTime <DateTime>] [-QuotaTicketDetailQuotaChangeRequest <IQuotaChangeRequest[]>]
+ [-ContactDetailPhoneNumber <String>] [-EnrollmentId <String>] [-FileWorkspaceName <String>]
+ [-ProblemScopingQuestion <String>] [-ProblemStartTime <DateTime>]
+ [-QuotaTicketDetailQuotaChangeRequest <IQuotaChangeRequest[]>]
  [-QuotaTicketDetailQuotaChangeRequestSubType <String>] [-QuotaTicketDetailQuotaChangeRequestVersion <String>]
  [-Require24X7Response] [-SecondaryConsent <ISecondaryConsent[]>] [-SupportPlanId <String>]
  [-SupportTicketId <String>] [-TechnicalTicketDetailResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob]
@@ -413,6 +414,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnrollmentId
+Enrollment Id associated with the support ticket.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
