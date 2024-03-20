@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         public string Permission { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
-        [ValidateSet("HttpsOnly", "HttpsOrHttp")]
+        [ValidateSet("HttpsOnly", "HttpsOrHttp", IgnoreCase = true),]
         public string Protocol { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "IP, or IP range ACL (access control list) that the request would be accepted from by Azure Storage.")]

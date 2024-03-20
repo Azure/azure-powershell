@@ -35,7 +35,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
 
     internal class SasTokenHelper
     {
-        private const string HttpsOrHttp = "HttpsOrHttp";
+        private const string HttpsOrHttp = "httpsorhttp";
 
         /// <summary>
         /// Validate the container access policy
@@ -409,7 +409,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             if (protocol != null)
             {
-                if (protocol == HttpsOrHttp)
+                if (protocol.ToLower() == HttpsOrHttp)
                 {
                     sasBuilder.Protocol = SasProtocol.HttpsAndHttp;
                 }
