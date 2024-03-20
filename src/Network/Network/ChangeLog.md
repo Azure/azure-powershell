@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added support for ApplicationGatewaySkuFamily
 * Fixed a few minor issues
 * Updated `New-AzApplicationGateway` to include `EnableRequestBuffering` and `EnableResponseBuffering` parameters
 * Changed the Default Rule Set from CRS3.0 to DRS2.1 in `NewAzureApplicationGatewayFirewallPolicy`
@@ -28,7 +29,6 @@
 * Added the new cmdlet for supporting `InternetIngressIp` Property with Network Virtual Appliances -`New-AzVirtualApplianceInternetIngressIpsProperty`
 * Added a new AuxiliaryMode value `AuxiliaryMode.Floating`
 * Added support for AzureFirewallPacketCapture
-* Added support for ApplicationGatewaySkuFamily
 
 ## Version 7.3.0
 * Fixed a few minor issues
