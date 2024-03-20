@@ -147,7 +147,7 @@ function Invoke-AzAcatDownloadReport {
 
         if ($DownloadType -eq "ComplianceDetailedPdfReport") {
             $SavePath += ".pdf"
-            $Url = $Content.CompliancePdfReportSasUri
+            $Url = $Content.ComplianceDetailedPdfReportSasUri
             Invoke-WebRequest $Url -OutFile $SavePath
         }
 

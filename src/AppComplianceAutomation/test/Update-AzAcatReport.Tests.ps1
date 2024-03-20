@@ -22,13 +22,17 @@ Describe 'Update-AzAcatReport' {
             -Resource $oldReport.Resource `
             -TimeZone $env.TimeZone `
             -TriggerTime $oldReport.TriggerTime
-        $report.TimeZone | Should -Be $env.TimeZone
+        
+        $newReport = Get-AzAcatReport -Name $env.GeneratedReportName
+        $newReport.TimeZone | Should -Be $env.TimeZone
     }
 
     It 'Update' {
         $oldReport = Get-AzAcatReport -Name $env.GeneratedReportName
         $oldReport.TimeZone = $env.TimeZone
         $report = $oldReport | Update-AzAcatReport -Name $env.GeneratedReportName
-        $report.TimeZone | Should -Be $env.TimeZone
+        
+        $newReport = Get-AzAcatReport -Name $env.GeneratedReportName
+        $newReport.TimeZone | Should -Be $env.TimeZone
     }
 }

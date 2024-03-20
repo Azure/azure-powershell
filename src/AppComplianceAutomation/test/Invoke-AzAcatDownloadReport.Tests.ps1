@@ -15,13 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzAcatDownloadReport')
 }
 
 Describe 'Invoke-AzAcatDownloadReport' {
-    It 'Download' -skip {
-        # $fullFileName = $env.FileName + ".pdf"
-        # $filePath = Join-Path "." -ChildPath $fullFileName
+    It 'Download' {
+        $fileName = "test-download-report"
+        $fullFileName = $fileName + ".csv"
+        $filePath = Join-Path "." -ChildPath $fullFileName
 
-        # Invoke-AzAcatDownloadReport -ReportName $env.GeneratedReportName -DownloadType "CompliancePdfReport" -Path "." -Name $env.FileName
-        # Test-Path -Path $filePath | Should -BeTrue
-        # Remove-Item -Path $filePath
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        Invoke-AzAcatDownloadReport -ReportName $env.GeneratedReportName -DownloadType "ComplianceReport" -Path "." -Name $fileName
+        Test-Path -Path $filePath | Should -BeTrue
+        Remove-Item -Path $filePath
     }
 }

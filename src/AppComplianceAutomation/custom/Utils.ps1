@@ -47,7 +47,11 @@ function Get-Nearest-Time {
 function Get-Token {
     [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.DoNotExportAttribute()]
     param()
-    return "Bearer " + (Get-AzAccessToken).Token
+    try {
+        return "Bearer " + (Get-AzAccessToken).Token
+    }
+    catch {}
+    return ""
 }
 
 function Add-Custom-Header {

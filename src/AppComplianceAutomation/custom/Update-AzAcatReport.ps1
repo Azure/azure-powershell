@@ -134,7 +134,7 @@ function Update-AzAcatReport {
                 $ResourceIds = Get-ResourceId-Array -Resources $Resource
             }
             $Subscriptions = Get-Resource-Subscriptions -Resources $ResourceIds
-            Az.AppComplianceAutomation.internal\Invoke-AzAppComplianceAutomationOnboard -SubscriptionId $Subscriptions `
+            Az.AppComplianceAutomation.internal\Invoke-AzAppComplianceAutomationOnboardProviderAction -SubscriptionId $Subscriptions `
                 -XmsAadUserToken $PSBoundParameters.XmsAadUserToken `
                 @RuntimeParams
         }

@@ -32,11 +32,11 @@ branch: 0aa9b6503fee76a80890ca769c6dd9e317bfa878
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
-  - https://github.com/qinzhouxu/azure-rest-api-specs-pr/blob/a6b1b77816147f1a36ac786970d6aa35e4a9f48d/specification/appcomplianceautomation/resource-manager/readme.md
+  - https://github.com/qinzhouxu/azure-rest-api-specs-pr/blob/847f3f6f4ec2d876241a5d4df6721d8cd872bbf3/specification/appcomplianceautomation/resource-manager/readme.md
 try-require: 
-  - https://github.com/qinzhouxu/azure-rest-api-specs-pr/blob/a6b1b77816147f1a36ac786970d6aa35e4a9f48d/specification/appcomplianceautomation/resource-manager/readme.powershell.md
+  - https://github.com/qinzhouxu/azure-rest-api-specs-pr/blob/847f3f6f4ec2d876241a5d4df6721d8cd872bbf3/specification/appcomplianceautomation/resource-manager/readme.powershell.md
 input-file:
-  - https://github.com/qinzhouxu/azure-rest-api-specs-pr/blob/a6b1b77816147f1a36ac786970d6aa35e4a9f48d/specification/appcomplianceautomation/resource-manager/Microsoft.AppComplianceAutomation/stable/2024-05-14/appcomplianceautomation.json
+  - https://github.com/qinzhouxu/azure-rest-api-specs-pr/blob/847f3f6f4ec2d876241a5d4df6721d8cd872bbf3/specification/appcomplianceautomation/resource-manager/Microsoft.AppComplianceAutomation/preview/2023-02-15-preview/appcomplianceautomation.json
 
 module-version: 0.1.0
 title: AppComplianceAutomation

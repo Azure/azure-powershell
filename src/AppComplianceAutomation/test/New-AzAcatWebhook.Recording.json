@@ -4,6 +4,7 @@
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook-fordelete?api-version=2023-02-15-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"sendAllEvents\": \"true\",\r\n    \"events\": [ ],\r\n    \"payloadUrl\": \"https://a.b.c.com\",\r\n    \"contentType\": \"application/json\",\r\n    \"webhookKey\": \"testSecret\",\r\n    \"updateWebhookKey\": \"true\",\r\n    \"enableSslVerification\": \"true\"\r\n  }\r\n}",
+      "isContentBase64": false,
       "Headers": {
         "x-ms-aad-user-token": [ "[Filtered]" ]
       },
@@ -17,26 +18,29 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1197" ],
+        "Set-Cookie": [ "ASLBSA=00032a3a487bec8bb078db3d72d31662bbcdefdaa2746f6d34f700f695e763a204f0; Path=/; Secure; HttpOnly;", "ASLBSACORS=00032a3a487bec8bb078db3d72d31662bbcdefdaa2746f6d34f700f695e763a204f0; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "Request-Context": [ "appId=cid-v1:7ecf4129-cb5b-4aab-a086-b332c76641c8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "mise-correlation-id": [ "aaab44bc-d658-4001-935a-59a6327e1c60" ],
-        "x-ms-request-id": [ "3f041f24-8c38-465b-82be-f383387fca48" ],
-        "X-ms-Operation-Id": [ "583916a8836610f07b6a4b9add961452" ],
+        "Request-Context": [ "appId=cid-v1:7ecf4129-cb5b-4aab-a086-b332c76641c8" ],
+        "mise-correlation-id": [ "2b32891d-ae51-4ac4-9744-63aad4487c75" ],
+        "x-ms-request-id": [ "0e335401-c00d-4036-9f82-2a6a76451e64" ],
+        "X-ms-Operation-Id": [ "f3ce1f7a5e0a9c203404e612d5028cb5" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-Azure-Ref": [ "0SvUGZAAAAACtHkoR8RS2Q6FiP/f7tydMQk9NMDJFREdFMDgxNAAwYjg5MzVkOC1iNjY0LTQxNjUtYTkwZi1jM2NiYWJkZTdkYmI=" ],
-        "x-ms-correlation-request-id": [ "2a07b883-bf6a-497b-b853-bd77238a11b1" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T082650Z:2a07b883-bf6a-497b-b853-bd77238a11b1" ],
-        "Date": [ "Tue, 07 Mar 2023 08:26:49 GMT" ]
+        "x-azure-ref": [ "20240320T051325Z-hwnqnztex14qd1u0xrctfag09400000000eg000000011d3d" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-correlation-request-id": [ "46592d2d-4397-4f47-8de9-0e8ef166500b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240320T051325Z:46592d2d-4397-4f47-8de9-0e8ef166500b" ],
+        "X-MSEdge-Ref": [ "Ref A: 26D118010DBC4C87A916CAF34B7A5E35 Ref B: MAA201060513019 Ref C: 2024-03-20T05:13:24Z" ],
+        "Date": [ "Wed, 20 Mar 2024 05:13:24 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "841" ],
         "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook-fordelete\",\"name\":\"test-webhook-fordelete\",\"type\":\"microsoft.appcomplianceautomation/reports/webhooks\",\"systemData\":{\"createdBy\":\"qinzhouxu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-07T08:26:49.9528962Z\",\"lastModifiedBy\":\"qinzhouxu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-07T08:26:49.9528962Z\"},\"properties\":{\"webhookId\":\"ce613cfc-9c66-49fe-b8bc-43a451281918\",\"webhookName\":\"test-webhook-fordelete\",\"status\":\"Enabled\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"sendAllEvents\":\"true\",\"events\":[],\"payloadUrl\":\"https://a.b.c.com\",\"contentType\":\"application/json\",\"webhookKeyEnabled\":\"true\",\"enableSslVerification\":\"true\",\"deliveryStatus\":\"NotStarted\",\"provisioningState\":\"Succeeded\"}}"
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook-fordelete\",\"name\":\"test-webhook-fordelete\",\"type\":\"microsoft.appcomplianceautomation/reports/webhooks\",\"systemData\":{\"createdBy\":\"qinzhouxu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-03-20T05:13:24.7742103Z\",\"lastModifiedBy\":\"qinzhouxu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-03-20T05:13:24.7742103Z\"},\"properties\":{\"webhookId\":\"d9ee34cc-8870-4003-b521-b641d61778d9\",\"webhookName\":\"test-webhook-fordelete\",\"status\":\"Enabled\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"sendAllEvents\":\"true\",\"events\":[],\"payloadUrl\":\"https://a.b.c.com\",\"contentType\":\"application/json\",\"webhookKeyEnabled\":\"true\",\"enableSslVerification\":\"true\",\"deliveryStatus\":\"NotStarted\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
     }
   },
   "New-AzAcatWebhook+[NoContext]+Create+$PUT+https://management.azure.com/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook-fordelete?api-version=2023-02-15-preview+1": {
@@ -44,6 +48,7 @@
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook-fordelete?api-version=2023-02-15-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"status\": \"Enabled\",\r\n    \"sendAllEvents\": \"true\",\r\n    \"events\": [ ],\r\n    \"payloadUrl\": \"https://a.b.c.com\",\r\n    \"contentType\": \"application/json\",\r\n    \"webhookKey\": \"testSecret\",\r\n    \"updateWebhookKey\": \"true\",\r\n    \"enableSslVerification\": \"true\"\r\n  }\r\n}",
+      "isContentBase64": false,
       "Headers": {
         "x-ms-aad-user-token": [ "[Filtered]" ]
       },
@@ -57,26 +62,29 @@
       "Headers": {
         "Cache-Control": [ "no-store, no-cache" ],
         "Vary": [ "Accept-Encoding" ],
-        "x-ms-ratelimit-remaining-tenant-writes": [ "1196" ],
+        "Set-Cookie": [ "ASLBSA=00032a3a487bec8bb078db3d72d31662bbcdefdaa2746f6d34f700f695e763a204f0; Path=/; Secure; HttpOnly;", "ASLBSACORS=00032a3a487bec8bb078db3d72d31662bbcdefdaa2746f6d34f700f695e763a204f0; SameSite=none; Path=/; Secure; HttpOnly;" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "Request-Context": [ "appId=cid-v1:7ecf4129-cb5b-4aab-a086-b332c76641c8" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "mise-correlation-id": [ "5e9429f5-fc18-4c01-91da-c7e1f4a36a78" ],
-        "x-ms-request-id": [ "9ea4dc3c-ea00-49a1-b43f-d53316037e1f" ],
-        "X-ms-Operation-Id": [ "8681d8a7c06851bfa36a281abdc9b1c0" ],
+        "Request-Context": [ "appId=cid-v1:7ecf4129-cb5b-4aab-a086-b332c76641c8" ],
+        "mise-correlation-id": [ "9fe05608-4f91-4d52-9b4c-24339eb5f7f8" ],
+        "x-ms-request-id": [ "dcf1e44e-bb0b-46bc-955e-923924cce086" ],
+        "X-ms-Operation-Id": [ "f82c727deab1844534d22f19bfdce257" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-Azure-Ref": [ "0S/UGZAAAAADjNlvSJHVeRLiK5S+hGDeJQk9NMDJFREdFMDgxNAAwYjg5MzVkOC1iNjY0LTQxNjUtYTkwZi1jM2NiYWJkZTdkYmI=" ],
-        "x-ms-correlation-request-id": [ "1568183c-6634-41b8-a8d3-d89171ec60cf" ],
         "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230307T082651Z:1568183c-6634-41b8-a8d3-d89171ec60cf" ],
-        "Date": [ "Tue, 07 Mar 2023 08:26:50 GMT" ]
+        "x-azure-ref": [ "20240320T051326Z-k2x6320zuh4ym0sksypchfeb7w00000000c000000000ykr3" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "x-ms-correlation-request-id": [ "4fb472b6-b53e-4280-a97b-16e442eeb795" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240320T051327Z:4fb472b6-b53e-4280-a97b-16e442eeb795" ],
+        "X-MSEdge-Ref": [ "Ref A: 0F0B68E7FA384575A2667146B8A59EE1 Ref B: MAA201060513019 Ref C: 2024-03-20T05:13:25Z" ],
+        "Date": [ "Wed, 20 Mar 2024 05:13:26 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "841" ],
         "Content-Type": [ "application/json; charset=utf-8" ]
       },
-      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook-fordelete\",\"name\":\"test-webhook-fordelete\",\"type\":\"microsoft.appcomplianceautomation/reports/webhooks\",\"systemData\":{\"createdBy\":\"qinzhouxu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-03-07T08:26:51.0153905Z\",\"lastModifiedBy\":\"qinzhouxu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-03-07T08:26:51.0153905Z\"},\"properties\":{\"webhookId\":\"ce613cfc-9c66-49fe-b8bc-43a451281918\",\"webhookName\":\"test-webhook-fordelete\",\"status\":\"Enabled\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"sendAllEvents\":\"true\",\"events\":[],\"payloadUrl\":\"https://a.b.c.com\",\"contentType\":\"application/json\",\"webhookKeyEnabled\":\"true\",\"enableSslVerification\":\"true\",\"deliveryStatus\":\"NotStarted\",\"provisioningState\":\"Succeeded\"}}"
+      "Content": "{\"id\":\"/providers/Microsoft.AppComplianceAutomation/reports/powershell-test-report/webhooks/test-webhook-fordelete\",\"name\":\"test-webhook-fordelete\",\"type\":\"microsoft.appcomplianceautomation/reports/webhooks\",\"systemData\":{\"createdBy\":\"qinzhouxu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-03-20T05:13:25.8065028Z\",\"lastModifiedBy\":\"qinzhouxu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-03-20T05:13:25.8065028Z\"},\"properties\":{\"webhookId\":\"d9ee34cc-8870-4003-b521-b641d61778d9\",\"webhookName\":\"test-webhook-fordelete\",\"status\":\"Enabled\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"sendAllEvents\":\"true\",\"events\":[],\"payloadUrl\":\"https://a.b.c.com\",\"contentType\":\"application/json\",\"webhookKeyEnabled\":\"true\",\"enableSslVerification\":\"true\",\"deliveryStatus\":\"NotStarted\",\"provisioningState\":\"Succeeded\"}}",
+      "isContentBase64": false
     }
   }
 }
