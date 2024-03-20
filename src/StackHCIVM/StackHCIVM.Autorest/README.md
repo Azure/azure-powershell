@@ -56,7 +56,7 @@ In this directory, run AutoRest:
 ```yaml
 commit: 812f964651d5f1f7148b54ed2cc35cb97be12523
 require:
-  - ../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 repo: azure-rest-api-specs
 
 input-file:
