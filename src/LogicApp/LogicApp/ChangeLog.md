@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.5.1
 * Removed the *.deps.json file that caused false positive security alerts. [#23603]
 
 ## Version 1.5.0

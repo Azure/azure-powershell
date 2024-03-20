@@ -16,25 +16,29 @@ The Dev Box may restart during this operation.
 ### Repair (Default)
 ```
 Repair-AzDevCenterUserDevBox -Endpoint <String> -Name <String> -ProjectName <String> [-UserId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RepairViaIdentity
 ```
 Repair-AzDevCenterUserDevBox -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RepairViaIdentityByDevCenter
 ```
 Repair-AzDevCenterUserDevBox -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RepairByDevCenter
 ```
 Repair-AzDevCenterUserDevBox -DevCenterName <String> -Name <String> -ProjectName <String> [-UserId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,27 +47,35 @@ The Dev Box may restart during this operation.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Reapir dev box by endpoint
+```powershell
 Repair-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -Name myDevBox -ProjectName DevProject
 ```
 
-### EXAMPLE 2
-```
+This command repairs the dev box "myDevBox".
+
+### Example 2: Repair dev box by dev center
+```powershell
 Repair-AzDevCenterUserDevBox -DevCenterName Contoso -Name myDevBox -ProjectName DevProject
 ```
 
-### EXAMPLE 3
-```
+This command repairs the dev box "myDevBox".
+
+### Example 3: Repair dev box by endpoint and InputObject
+```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject";}
 Repair-AzDevCenterUserDevBox -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $devBoxInput
 ```
 
-### EXAMPLE 4
-```
+This command repairs the dev box "myDevBox".
+
+### Example 4: Reapir dev box by dev center and InputObject
+```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "me"; "ProjectName" = "DevProject";}
 Repair-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput
 ```
+
+This command repairs the dev box "myDevBox".
 
 ## PARAMETERS
 
@@ -71,13 +83,13 @@ Repair-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput
 Run the command as a job
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -87,7 +99,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -102,7 +114,7 @@ Accept wildcard characters: False
 The DevCenter upon which to execute operations.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: RepairViaIdentityByDevCenter, RepairByDevCenter
 Aliases: DevCenter
 
@@ -117,7 +129,7 @@ Accept wildcard characters: False
 The DevCenter-specific URI to operate on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Repair, RepairViaIdentity
 Aliases:
 
@@ -133,7 +145,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IDevCenterdataIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 Parameter Sets: RepairViaIdentity, RepairViaIdentityByDevCenter
 Aliases:
 
@@ -148,7 +160,7 @@ Accept wildcard characters: False
 The name of a Dev Box.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Repair, RepairByDevCenter
 Aliases: DevBoxName
 
@@ -163,13 +175,28 @@ Accept wildcard characters: False
 Run the command asynchronously
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -178,7 +205,7 @@ Accept wildcard characters: False
 The DevCenter Project upon which to execute operations.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Repair, RepairByDevCenter
 Aliases:
 
@@ -194,13 +221,13 @@ The AAD object id of the user.
 If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Repair, RepairByDevCenter
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "me"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -209,7 +236,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -225,7 +252,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -242,33 +269,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+
 ## OUTPUTS
 
 ### System.Boolean
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IDevCenterdataIdentity\>: Identity Parameter
-  \[ActionName \<String\>\]: The name of an action that will take place on a Dev Box.
-  \[CatalogName \<String\>\]: The name of the catalog
-  \[CustomizationGroupName \<String\>\]: A customization group name.
-  \[CustomizationTaskId \<String\>\]: A customization task ID.
-  \[DefinitionName \<String\>\]: The name of the environment definition
-  \[DevBoxName \<String\>\]: The name of a Dev Box.
-  \[EnvironmentName \<String\>\]: The name of the environment.
-  \[Id \<String\>\]: Resource identity path
-  \[OperationId \<String\>\]: The id of the operation on a Dev Box.
-  \[PoolName \<String\>\]: The name of a pool of Dev Boxes.
-  \[ProjectName \<String\>\]: The DevCenter Project upon which to execute operations.
-  \[ScheduleName \<String\>\]: The name of a schedule.
-  \[TaskName \<String\>\]: A customization task name.
-  \[UserId \<String\>\]: The AAD object id of the user.
-If value is 'me', the identity is taken from the authentication context.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.devcenter/repair-azdevcenteruserdevbox](https://learn.microsoft.com/powershell/module/az.devcenter/repair-azdevcenteruserdevbox)
-

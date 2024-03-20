@@ -107,10 +107,55 @@ The operation to Create a run command.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create a run-command for a machine
+```powershell
 New-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -Location "eastus2euap" -SourceScript "Write-Host Hello World!" -RunCommandName "myRunCommand3" -MachineName "testmachine" -SubscriptionId "e6fe6705-4c9c-4b54-81d2-e455780e20b8"
 ```
+
+```output
+AsyncExecution                    : False
+ErrorBlobManagedIdentityClientId  :
+ErrorBlobManagedIdentityObjectId  :
+ErrorBlobUri                      :
+Id                                : /subscriptions/e6fe6705-4c9c-4b54-81d2-e455780e20b8/resourceGroups/az-sdk-test/prov
+                                    iders/Microsoft.HybridCompute/machines/testmachine/runcommands/myRunCommand3
+InstanceViewEndTime               : 12/5/2023 7:27:26 PM
+InstanceViewError                 :
+InstanceViewExecutionMessage      : RunCommand script execution completed
+InstanceViewExecutionState        : Succeeded
+InstanceViewExitCode              : 0
+InstanceViewOutput                : Hello World!
+InstanceViewStartTime             : 12/5/2023 7:27:24 PM
+InstanceViewStatuses              :
+Location                          : eastus2euap
+Name                              : myRunCommand3
+OutputBlobManagedIdentityClientId :
+OutputBlobManagedIdentityObjectId :
+OutputBlobUri                     :
+Parameter                         :
+ProtectedParameter                :
+ProvisioningState                 : Succeeded
+ResourceGroupName                 : az-sdk-test
+RunAsPassword                     :
+RunAsUser                         :
+ScriptUriManagedIdentityClientId  :
+ScriptUriManagedIdentityObjectId  :
+SourceCommandId                   :
+SourceScript                      : Write-Host Hello World!
+SourceScriptUri                   :
+SystemDataCreatedAt               :
+SystemDataCreatedBy               :
+SystemDataCreatedByType           :
+SystemDataLastModifiedAt          :
+SystemDataLastModifiedBy          :
+SystemDataLastModifiedByType      :
+Tag                               : {
+                                    }
+TimeoutInSecond                   : 0
+Type                              : Microsoft.HybridCompute/machines/runcommands
+```
+
+Create a run-command for a machine
 
 ## PARAMETERS
 
@@ -124,7 +169,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -140,7 +185,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -212,7 +257,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -273,7 +317,6 @@ Accept wildcard characters: False
 
 ### -MachineInputObject
 Identity Parameter
-To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -312,7 +355,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -368,7 +411,6 @@ Accept wildcard characters: False
 
 ### -Parameter
 The parameters used by the script.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandInputParameter[]
@@ -399,7 +441,6 @@ Accept wildcard characters: False
 
 ### -ProtectedParameter
 The parameters used by the script.
-To construct, see NOTES section for PROTECTEDPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandInputParameter[]
@@ -476,7 +517,6 @@ Accept wildcard characters: False
 
 ### -RunCommandProperty
 Describes a Run Command
-To construct, see NOTES section for RUNCOMMANDPROPERTY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommand
@@ -491,7 +531,6 @@ Accept wildcard characters: False
 ```
 
 ### -ScriptLocalPath
-{{ Fill ScriptLocalPath Description }}
 
 ```yaml
 Type: System.String
@@ -593,7 +632,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -623,7 +662,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -665,109 +704,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommand
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommand
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IConnectedMachineIdentity\>: Identity Parameter
-  \[ExtensionName \<String\>\]: The name of the machine extension.
-  \[ExtensionType \<String\>\]: The extensionType of the Extension being received.
-  \[GroupName \<String\>\]: The name of the private link resource.
-  \[Id \<String\>\]: Resource identity path
-  \[LicenseName \<String\>\]: The name of the license.
-  \[LicenseProfileName \<String\>\]: The name of the license profile.
-  \[Location \<String\>\]: The location of the Extension being received.
-  \[MachineName \<String\>\]: The name of the hybrid machine.
-  \[MetadataName \<String\>\]: Name of the HybridIdentityMetadata.
-  \[Name \<String\>\]: The name of the hybrid machine.
-  \[OSType \<String\>\]: Defines the os type.
-  \[PerimeterName \<String\>\]: The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
-  \[PrivateEndpointConnectionName \<String\>\]: The name of the private endpoint connection.
-  \[PrivateLinkScopeId \<String\>\]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
-  \[Publisher \<String\>\]: The publisher of the Extension being received.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[ResourceUri \<String\>\]: The fully qualified Azure Resource manager identifier of the resource to be connected.
-  \[RunCommandName \<String\>\]: The name of the run command.
-  \[ScopeName \<String\>\]: The name of the Azure Arc PrivateLinkScope resource.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[Version \<String\>\]: The version of the Extension being received.
-
-MACHINEINPUTOBJECT \<IConnectedMachineIdentity\>: Identity Parameter
-  \[ExtensionName \<String\>\]: The name of the machine extension.
-  \[ExtensionType \<String\>\]: The extensionType of the Extension being received.
-  \[GroupName \<String\>\]: The name of the private link resource.
-  \[Id \<String\>\]: Resource identity path
-  \[LicenseName \<String\>\]: The name of the license.
-  \[LicenseProfileName \<String\>\]: The name of the license profile.
-  \[Location \<String\>\]: The location of the Extension being received.
-  \[MachineName \<String\>\]: The name of the hybrid machine.
-  \[MetadataName \<String\>\]: Name of the HybridIdentityMetadata.
-  \[Name \<String\>\]: The name of the hybrid machine.
-  \[OSType \<String\>\]: Defines the os type.
-  \[PerimeterName \<String\>\]: The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
-  \[PrivateEndpointConnectionName \<String\>\]: The name of the private endpoint connection.
-  \[PrivateLinkScopeId \<String\>\]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
-  \[Publisher \<String\>\]: The publisher of the Extension being received.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[ResourceUri \<String\>\]: The fully qualified Azure Resource manager identifier of the resource to be connected.
-  \[RunCommandName \<String\>\]: The name of the run command.
-  \[ScopeName \<String\>\]: The name of the Azure Arc PrivateLinkScope resource.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[Version \<String\>\]: The version of the Extension being received.
-
-PARAMETER \<IRunCommandInputParameter\[\]\>: The parameters used by the script.
-  Name \<String\>: The run command parameter name.
-  Value \<String\>: The run command parameter value.
-
-PROTECTEDPARAMETER \<IRunCommandInputParameter\[\]\>: The parameters used by the script.
-  Name \<String\>: The run command parameter name.
-  Value \<String\>: The run command parameter value.
-
-RUNCOMMANDPROPERTY \<IMachineRunCommand\>: Describes a Run Command
-  Location \<String\>: The geo-location where the resource lives
-  \[Tag \<ITrackedResourceTags\>\]: Resource tags.
-    \[(Any) \<String\>\]: This indicates any property can be added to this object.
-  \[AsyncExecution \<Boolean?\>\]: Optional.
-If set to true, provisioning will complete as soon as script starts and will not wait for script to complete.
-  \[ErrorBlobManagedIdentityClientId \<String\>\]: Client Id (GUID value) of the user-assigned managed identity.
-ObjectId should not be used if this is provided.
-  \[ErrorBlobManagedIdentityObjectId \<String\>\]: Object Id (GUID value) of the user-assigned managed identity.
-ClientId should not be used if this is provided.
-  \[ErrorBlobUri \<String\>\]: Specifies the Azure storage blob where script error stream will be uploaded.
-Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob.
-Refer errorBlobManagedIdentity parameter.
-  \[OutputBlobManagedIdentityClientId \<String\>\]: Client Id (GUID value) of the user-assigned managed identity.
-ObjectId should not be used if this is provided.
-  \[OutputBlobManagedIdentityObjectId \<String\>\]: Object Id (GUID value) of the user-assigned managed identity.
-ClientId should not be used if this is provided.
-  \[OutputBlobUri \<String\>\]: Specifies the Azure storage blob where script output stream will be uploaded.
-Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob.
-Refer outputBlobManagedIdentity parameter. 
-  \[Parameter \<List\<IRunCommandInputParameter\>\>\]: The parameters used by the script.
-    Name \<String\>: The run command parameter name.
-    Value \<String\>: The run command parameter value.
-  \[ProtectedParameter \<List\<IRunCommandInputParameter\>\>\]: The parameters used by the script.
-  \[RunAsPassword \<String\>\]: Specifies the user account password on the machine when executing the run command.
-  \[RunAsUser \<String\>\]: Specifies the user account on the machine when executing the run command.
-  \[ScriptUriManagedIdentityClientId \<String\>\]: Client Id (GUID value) of the user-assigned managed identity.
-ObjectId should not be used if this is provided.
-  \[ScriptUriManagedIdentityObjectId \<String\>\]: Object Id (GUID value) of the user-assigned managed identity.
-ClientId should not be used if this is provided.
-  \[SourceCommandId \<String\>\]: Specifies the commandId of predefined built-in script.
-  \[SourceScript \<String\>\]: Specifies the script content to be executed on the machine.
-  \[SourceScriptUri \<String\>\]: Specifies the script download location.
-It can be either SAS URI of an Azure storage blob with read access or public URI.
-  \[TimeoutInSecond \<Int32?\>\]: The timeout in seconds to execute the run command.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.connectedmachine/new-azconnectedmachineruncommand](https://learn.microsoft.com/powershell/module/az.connectedmachine/new-azconnectedmachineruncommand)
-

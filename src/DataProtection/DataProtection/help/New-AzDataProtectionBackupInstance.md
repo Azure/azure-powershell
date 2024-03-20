@@ -15,7 +15,8 @@ Configures Backup for supported azure resources
 ```
 New-AzDataProtectionBackupInstance -ResourceGroupName <String> -VaultName <String>
  -BackupInstance <IBackupInstanceResource> [-SubscriptionId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -185,6 +186,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource Group of the backup vault
 
@@ -284,49 +300,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BACKUPINSTANCE <IBackupInstanceResource>`: Backup instance request object which will be used to configure backup
-  - `[Tag <IDppProxyResourceTags>]`: Proxy Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Property <IBackupInstance>]`: BackupInstanceResource properties
-    - `DataSourceInfo <IDatasource>`: Gets or sets the data source information.
-      - `ResourceId <String>`: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
-      - `[ObjectType <String>]`: Type of Datasource object, used to initialize the right inherited type
-      - `[ResourceLocation <String>]`: Location of datasource.
-      - `[ResourceName <String>]`: Unique identifier of the resource in the context of parent.
-      - `[ResourceType <String>]`: Resource Type of Datasource.
-      - `[ResourceUri <String>]`: Uri of the resource.
-      - `[Type <String>]`: DatasourceType of the resource.
-    - `ObjectType <String>`: 
-    - `PolicyInfo <IPolicyInfo>`: Gets or sets the policy information.
-      - `PolicyId <String>`: 
-      - `[PolicyParameter <IPolicyParameters>]`: Policy parameters for the backup instance
-        - `[BackupDatasourceParametersList <IBackupDatasourceParameters[]>]`: Gets or sets the Backup Data Source Parameters
-          - `ObjectType <String>`: Type of the specific object - used for deserializing
-        - `[DataStoreParametersList <IDataStoreParameters[]>]`: Gets or sets the DataStore Parameters
-          - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
-          - `ObjectType <String>`: Type of the specific object - used for deserializing
-    - `[DataSourceSetInfo <IDatasourceSet>]`: Gets or sets the data source set information.
-      - `ResourceId <String>`: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
-      - `[DatasourceType <String>]`: DatasourceType of the resource.
-      - `[ObjectType <String>]`: Type of Datasource object, used to initialize the right inherited type
-      - `[ResourceLocation <String>]`: Location of datasource.
-      - `[ResourceName <String>]`: Unique identifier of the resource in the context of parent.
-      - `[ResourceType <String>]`: Resource Type of Datasource.
-      - `[ResourceUri <String>]`: Uri of the resource.
-    - `[DatasourceAuthCredentials <IAuthCredentials>]`: Credentials to use to authenticate with data source provider.
-      - `ObjectType <String>`: Type of the specific object - used for deserializing
-    - `[FriendlyName <String>]`: Gets or sets the Backup Instance friendly name.
-    - `[IdentityDetail <IIdentityDetails>]`: Contains information of the Identity Details for the BI.         If it is null, default will be considered as System Assigned.
-      - `[UseSystemAssignedIdentity <Boolean?>]`: Specifies if the BI is protected by System Identity.
-      - `[UserAssignedIdentityArmUrl <String>]`: ARM URL for User Assigned Identity.
-    - `[ValidationType <ValidationType?>]`: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
 
 ## RELATED LINKS

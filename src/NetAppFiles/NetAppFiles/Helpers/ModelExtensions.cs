@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
                 AllowLocalNfsUsersWithLdap = activeDirectory.AllowLocalNfsUsersWithLdap,
                 Administrators = activeDirectory.Administrators,
                 EncryptDCConnections = activeDirectory.EncryptDcConnections,
-                LdapSearchScope = activeDirectory.LdapSearchScope.ConvertToPs(),
+                LdapSearchScope = activeDirectory.LdapSearchScope?.ConvertToPs(),
                 PreferredServersForLdapClient = activeDirectory.PreferredServersForLdapClient?.Split(',').ToList<string>()
             };
             return psActiveDirectory;

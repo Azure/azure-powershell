@@ -105,7 +105,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionInstanceView[]]
     # Machine Extensions information (deprecated field)
-    # To construct, see NOTES section for EXTENSION properties and create a hash table.
     ${Extension},
 
     [Parameter(ParameterSetName='UpdateExpanded')]

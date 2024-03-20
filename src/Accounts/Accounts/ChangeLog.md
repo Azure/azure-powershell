@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Implemented secrets detection feature for autorest modules.
+* Added `AsSecureString` to `Get-AzAccessToken` to convert the returned token to SecureString [#24190].
+* Upgraded Azure.Core to 1.37.0.
+
+## Version 2.16.0
+* Added a preview feature to detect secrets and sensitive information from the output of Azure PowerShell cmdlets to prevent leakage. Enable it by `Set-AzConfig -DisplaySecretsWarning $true`. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844
 * Fixed `CacheDirectory` and `CacheFile` out-of-sync issue in AzureRmContextSettings.json and the customers are not allowed to change these 2 properties.
 * Redirected device code login messages from warning stream to information stream if use device authentication in `Connect-AzAccount`.
 

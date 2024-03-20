@@ -12307,7 +12307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != metrics  && metrics.Length > 0 ? "metrics=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(metrics, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != metrics  && metrics.Length > 0 ? "metrics=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(metrics, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + "dateTimeBegin=" + dateTimeBegin.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)
                         + "&"
@@ -12315,15 +12315,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         + "&"
                         + "granularity=" + global::System.Uri.EscapeDataString(granularity)
                         + "&"
-                        + (null != groupBy  && groupBy.Length > 0 ? "groupBy=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(groupBy, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != groupBy  && groupBy.Length > 0 ? "groupBy=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(groupBy, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != continents  && continents.Length > 0 ? "continents=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(continents, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != continents  && continents.Length > 0 ? "continents=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(continents, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != countryOrRegions  && countryOrRegions.Length > 0 ? "countryOrRegions=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(countryOrRegions, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != countryOrRegions  && countryOrRegions.Length > 0 ? "countryOrRegions=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(countryOrRegions, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != customDomains  && customDomains.Length > 0 ? "customDomains=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(customDomains, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != customDomains  && customDomains.Length > 0 ? "customDomains=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(customDomains, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != protocols  && protocols.Length > 0 ? "protocols=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(protocols, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != protocols  && protocols.Length > 0 ? "protocols=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(protocols, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -12388,7 +12388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != metrics  && metrics.Length > 0 ? "metrics=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(metrics, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != metrics  && metrics.Length > 0 ? "metrics=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(metrics, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + "dateTimeBegin=" + dateTimeBegin.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)
                         + "&"
@@ -12396,15 +12396,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         + "&"
                         + "granularity=" + global::System.Uri.EscapeDataString(granularity)
                         + "&"
-                        + (null != groupBy  && groupBy.Length > 0 ? "groupBy=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(groupBy, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != groupBy  && groupBy.Length > 0 ? "groupBy=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(groupBy, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != continents  && continents.Length > 0 ? "continents=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(continents, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != continents  && continents.Length > 0 ? "continents=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(continents, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != countryOrRegions  && countryOrRegions.Length > 0 ? "countryOrRegions=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(countryOrRegions, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != countryOrRegions  && countryOrRegions.Length > 0 ? "countryOrRegions=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(countryOrRegions, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != customDomains  && customDomains.Length > 0 ? "customDomains=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(customDomains, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != customDomains  && customDomains.Length > 0 ? "customDomains=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(customDomains, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != protocols  && protocols.Length > 0 ? "protocols=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(protocols, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != protocols  && protocols.Length > 0 ? "protocols=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(protocols, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -12555,9 +12555,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != rankings  && rankings.Length > 0 ? "rankings=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(rankings, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != rankings  && rankings.Length > 0 ? "rankings=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(rankings, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != metrics  && metrics.Length > 0 ? "metrics=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(metrics, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != metrics  && metrics.Length > 0 ? "metrics=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(metrics, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + "maxRanking=" + global::System.Uri.EscapeDataString(maxRanking.ToString())
                         + "&"
@@ -12565,7 +12565,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         + "&"
                         + "dateTimeEnd=" + dateTimeEnd.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)
                         + "&"
-                        + (null != customDomains  && customDomains.Length > 0 ? "customDomains=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(customDomains, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != customDomains  && customDomains.Length > 0 ? "customDomains=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(customDomains, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -12627,9 +12627,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != rankings  && rankings.Length > 0 ? "rankings=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(rankings, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != rankings  && rankings.Length > 0 ? "rankings=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(rankings, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != metrics  && metrics.Length > 0 ? "metrics=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(metrics, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != metrics  && metrics.Length > 0 ? "metrics=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(metrics, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + "maxRanking=" + global::System.Uri.EscapeDataString(maxRanking.ToString())
                         + "&"
@@ -12637,7 +12637,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         + "&"
                         + "dateTimeEnd=" + dateTimeEnd.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)
                         + "&"
-                        + (null != customDomains  && customDomains.Length > 0 ? "customDomains=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(customDomains, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != customDomains  && customDomains.Length > 0 ? "customDomains=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(customDomains, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -12958,7 +12958,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != metrics  && metrics.Length > 0 ? "metrics=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(metrics, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != metrics  && metrics.Length > 0 ? "metrics=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(metrics, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + "dateTimeBegin=" + dateTimeBegin.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)
                         + "&"
@@ -12966,11 +12966,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         + "&"
                         + "granularity=" + global::System.Uri.EscapeDataString(granularity)
                         + "&"
-                        + (null != actions  && actions.Length > 0 ? "actions=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(actions, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != actions  && actions.Length > 0 ? "actions=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(actions, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != groupBy  && groupBy.Length > 0 ? "groupBy=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(groupBy, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != groupBy  && groupBy.Length > 0 ? "groupBy=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(groupBy, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != ruleTypes  && ruleTypes.Length > 0 ? "ruleTypes=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(ruleTypes, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != ruleTypes  && ruleTypes.Length > 0 ? "ruleTypes=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(ruleTypes, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -13033,7 +13033,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != metrics  && metrics.Length > 0 ? "metrics=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(metrics, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != metrics  && metrics.Length > 0 ? "metrics=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(metrics, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + "dateTimeBegin=" + dateTimeBegin.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)
                         + "&"
@@ -13041,11 +13041,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         + "&"
                         + "granularity=" + global::System.Uri.EscapeDataString(granularity)
                         + "&"
-                        + (null != actions  && actions.Length > 0 ? "actions=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(actions, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != actions  && actions.Length > 0 ? "actions=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(actions, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != groupBy  && groupBy.Length > 0 ? "groupBy=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(groupBy, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != groupBy  && groupBy.Length > 0 ? "groupBy=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(groupBy, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != ruleTypes  && ruleTypes.Length > 0 ? "ruleTypes=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(ruleTypes, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != ruleTypes  && ruleTypes.Length > 0 ? "ruleTypes=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(ruleTypes, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -13205,7 +13205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != metrics  && metrics.Length > 0 ? "metrics=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(metrics, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != metrics  && metrics.Length > 0 ? "metrics=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(metrics, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + "dateTimeBegin=" + dateTimeBegin.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)
                         + "&"
@@ -13213,11 +13213,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         + "&"
                         + "maxRanking=" + global::System.Uri.EscapeDataString(maxRanking.ToString())
                         + "&"
-                        + (null != rankings  && rankings.Length > 0 ? "rankings=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(rankings, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != rankings  && rankings.Length > 0 ? "rankings=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(rankings, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != actions  && actions.Length > 0 ? "actions=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(actions, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != actions  && actions.Length > 0 ? "actions=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(actions, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != ruleTypes  && ruleTypes.Length > 0 ? "ruleTypes=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(ruleTypes, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != ruleTypes  && ruleTypes.Length > 0 ? "ruleTypes=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(ruleTypes, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -13280,7 +13280,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != metrics  && metrics.Length > 0 ? "metrics=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(metrics, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != metrics  && metrics.Length > 0 ? "metrics=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(metrics, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + "dateTimeBegin=" + dateTimeBegin.ToString(@"yyyy'-'MM'-'dd'T'HH':'mm':'ss.fffffffK",global::System.Globalization.CultureInfo.InvariantCulture)
                         + "&"
@@ -13288,11 +13288,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         + "&"
                         + "maxRanking=" + global::System.Uri.EscapeDataString(maxRanking.ToString())
                         + "&"
-                        + (null != rankings  && rankings.Length > 0 ? "rankings=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(rankings, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != rankings  && rankings.Length > 0 ? "rankings=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(rankings, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != actions  && actions.Length > 0 ? "actions=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(actions, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != actions  && actions.Length > 0 ? "actions=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(actions, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
-                        + (null != ruleTypes  && ruleTypes.Length > 0 ? "ruleTypes=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(ruleTypes, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != ruleTypes  && ruleTypes.Length > 0 ? "ruleTypes=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(ruleTypes, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }

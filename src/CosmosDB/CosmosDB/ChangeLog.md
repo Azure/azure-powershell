@@ -19,6 +19,9 @@
 -->
 
 ## Upcoming Release
+* Upgraded Azure.Core to 1.37.0.
+
+## Version 1.14.1
 * Fixed validation issues in same-account collection/container/graph and database/table/Gremlin restores, affecting the following cmdlets:
 - Restore-AzCosmosDBSqlDatabase
 - Restore-AzCosmosDBSqlContainer

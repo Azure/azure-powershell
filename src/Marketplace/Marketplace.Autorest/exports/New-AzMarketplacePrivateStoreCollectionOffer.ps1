@@ -97,7 +97,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for COLLECTIONINPUTOBJECT properties and create a hash table.
     ${CollectionInputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityPrivateStore', Mandatory, ValueFromPipeline)]
@@ -105,7 +104,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for PRIVATESTOREINPUTOBJECT properties and create a hash table.
     ${PrivateStoreInputObject},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -132,7 +130,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IPlan[]]
     # Offer plans
-    # To construct, see NOTES section for PLAN properties and create a hash table.
     ${Plan},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -158,7 +155,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer]
     # The privateStore offer data structure.
-    # To construct, see NOTES section for PAYLOAD properties and create a hash table.
     ${Payload},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]

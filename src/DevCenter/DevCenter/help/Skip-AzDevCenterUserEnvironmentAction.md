@@ -15,27 +15,29 @@ Skips an occurrence of an action.
 ### Skip (Default)
 ```
 Skip-AzDevCenterUserEnvironmentAction -Endpoint <String> -Name <String> -EnvironmentName <String>
- -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SkipViaIdentity
 ```
 Skip-AzDevCenterUserEnvironmentAction -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SkipViaIdentityByDevCenter
 ```
 Skip-AzDevCenterUserEnvironmentAction -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SkipByDevCenter
 ```
 Skip-AzDevCenterUserEnvironmentAction -DevCenterName <String> -Name <String> -EnvironmentName <String>
- -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ProjectName <String> [-UserId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,27 +45,35 @@ Skips an occurrence of an action.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Skip an action on the environment by endpoint
+```powershell
 Skip-AzDevCenterUserEnvironmentAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -EnvironmentName myEnvironment -ProjectName DevProject -Name "myEnvironment-Delete"
 ```
 
-### EXAMPLE 2
-```
+This command skips the action "myEnvironment-Delete" for the environment "myEnvironment".
+
+### Example 2: Skip an action on the environment by dev center
+```powershell
 Skip-AzDevCenterUserEnvironmentAction -DevCenterName Contoso -EnvironmentName myEnvironment -ProjectName DevProject -Name "myEnvironment-Delete"
 ```
 
-### EXAMPLE 3
-```
+This command skips the action "myEnvironment-Delete" for the environment "myEnvironment".
+
+### Example 3: Skip an action on the environment by endpoint and InputObject
+```powershell
 $environmentInput = @{"EnvironmentName" = "myEnvironment"; "UserId" = "me"; "ProjectName" = "DevProject"; "ActionName" = "myEnvironment-Delete"}
 Skip-AzDevCenterUserEnvironmentAction -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -InputObject $environmentInput
 ```
 
-### EXAMPLE 4
-```
+This command skips the action "myEnvironment-Delete" for the environment "myEnvironment".
+
+### Example 4: Skip an action on the environment by dev center and InputObject
+```powershell
 $environmentInput = @{"EnvironmentName" = "myEnvironment"; "UserId" = "me"; "ProjectName" = "DevProject"; "ActionName" = "myEnvironment-Delete"}
 Skip-AzDevCenterUserEnvironmentAction -DevCenterName Contoso -InputObject $environmentInput
 ```
+
+This command skips the action "myEnvironment-Delete" for the environment "myEnvironment".
 
 ## PARAMETERS
 
@@ -72,7 +82,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -87,7 +97,7 @@ Accept wildcard characters: False
 The DevCenter upon which to execute operations.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SkipViaIdentityByDevCenter, SkipByDevCenter
 Aliases: DevCenter
 
@@ -102,7 +112,7 @@ Accept wildcard characters: False
 The DevCenter-specific URI to operate on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Skip, SkipViaIdentity
 Aliases:
 
@@ -117,7 +127,7 @@ Accept wildcard characters: False
 The name of the environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Skip, SkipByDevCenter
 Aliases:
 
@@ -133,7 +143,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IDevCenterdataIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 Parameter Sets: SkipViaIdentity, SkipViaIdentityByDevCenter
 Aliases:
 
@@ -148,7 +158,7 @@ Accept wildcard characters: False
 The name of an action that will take place on an Environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Skip, SkipByDevCenter
 Aliases: ActionName
 
@@ -163,13 +173,28 @@ Accept wildcard characters: False
 Returns true when the command succeeds
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -178,7 +203,7 @@ Accept wildcard characters: False
 The DevCenter Project upon which to execute operations.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Skip, SkipByDevCenter
 Aliases:
 
@@ -194,13 +219,13 @@ The AAD object id of the user.
 If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Skip, SkipByDevCenter
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "me"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -209,7 +234,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -225,7 +250,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -242,33 +267,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+
 ## OUTPUTS
 
 ### System.Boolean
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IDevCenterdataIdentity\>: Identity Parameter
-  \[ActionName \<String\>\]: The name of an action that will take place on a Dev Box.
-  \[CatalogName \<String\>\]: The name of the catalog
-  \[CustomizationGroupName \<String\>\]: A customization group name.
-  \[CustomizationTaskId \<String\>\]: A customization task ID.
-  \[DefinitionName \<String\>\]: The name of the environment definition
-  \[DevBoxName \<String\>\]: The name of a Dev Box.
-  \[EnvironmentName \<String\>\]: The name of the environment.
-  \[Id \<String\>\]: Resource identity path
-  \[OperationId \<String\>\]: The id of the operation on a Dev Box.
-  \[PoolName \<String\>\]: The name of a pool of Dev Boxes.
-  \[ProjectName \<String\>\]: The DevCenter Project upon which to execute operations.
-  \[ScheduleName \<String\>\]: The name of a schedule.
-  \[TaskName \<String\>\]: A customization task name.
-  \[UserId \<String\>\]: The AAD object id of the user.
-If value is 'me', the identity is taken from the authentication context.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.devcenter/skip-azdevcenteruserenvironmentaction](https://learn.microsoft.com/powershell/module/az.devcenter/skip-azdevcenteruserenvironmentaction)
-

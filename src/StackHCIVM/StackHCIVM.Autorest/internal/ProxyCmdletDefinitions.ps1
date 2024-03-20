@@ -80,7 +80,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for OSTYPEINPUTOBJECT properties and create a hash table.
     ${OSTypeInputObject},
 
     [Parameter()]
@@ -306,21 +305,18 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for EXTENSIONTYPEINPUTOBJECT properties and create a hash table.
     ${ExtensionTypeInputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityLocation', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for LOCATIONINPUTOBJECT properties and create a hash table.
     ${LocationInputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityPublisher', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for PUBLISHERINPUTOBJECT properties and create a hash table.
     ${PublisherInputObject},
 
     [Parameter()]
@@ -763,7 +759,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
     ${MachineInputObject},
 
     [Parameter()]
@@ -943,7 +938,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
     ${MachineInputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -2180,7 +2174,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISubnet[]]
     # Subnet - list of subnets under the logical network
-    # To construct, see NOTES section for SUBNET properties and create a hash table.
     ${Subnet},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -2426,7 +2419,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
     ${MachineInputObject},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -2564,7 +2556,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtension]
     # Describes a Machine Extension.
-    # To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
     ${ExtensionParameter},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -2780,7 +2771,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionInstanceView[]]
     # Machine Extensions information (deprecated field)
-    # To construct, see NOTES section for EXTENSION properties and create a hash table.
     ${Extension},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -3326,7 +3316,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfiguration[]]
     # IPConfigurations - A list of IPConfigurations of the network interface.
-    # To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
     ${IPConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -4047,7 +4036,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey[]]
     # The list of SSH public keys used to authenticate with linux based VMs.
-    # To construct, see NOTES section for LINUXCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
     ${LinuxConfigurationSshPublicKey},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -4055,7 +4043,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem[]]
     # NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
-    # To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
     ${NetworkProfileNetworkInterface},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -4103,7 +4090,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileDataDisksItem[]]
     # adds data disks to the virtual machine instance
-    # To construct, see NOTES section for STORAGEPROFILEDATADISK properties and create a hash table.
     ${StorageProfileDataDisk},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -4148,7 +4134,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey[]]
     # The list of SSH public keys used to authenticate with linux based VMs.
-    # To construct, see NOTES section for WINDOWSCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
     ${WindowsConfigurationSshPublicKey},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -4341,7 +4326,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -4659,7 +4643,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -4871,14 +4854,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityMachine', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
     ${MachineInputObject},
 
     [Parameter()]
@@ -5065,7 +5046,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -5239,7 +5219,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -5423,7 +5402,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -5608,7 +5586,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -5793,7 +5770,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -6509,7 +6485,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISubnet[]]
     # Subnet - list of subnets under the logical network
-    # To construct, see NOTES section for SUBNET properties and create a hash table.
     ${Subnet},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -7014,7 +6989,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionInstanceView[]]
     # Machine Extensions information (deprecated field)
-    # To construct, see NOTES section for EXTENSION properties and create a hash table.
     ${Extension},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -7573,7 +7547,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IIPConfiguration[]]
     # IPConfigurations - A list of IPConfigurations of the network interface.
-    # To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
     ${IPConfiguration},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -8299,7 +8272,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey[]]
     # The list of SSH public keys used to authenticate with linux based VMs.
-    # To construct, see NOTES section for LINUXCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
     ${LinuxConfigurationSshPublicKey},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -8307,7 +8279,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem[]]
     # NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
-    # To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
     ${NetworkProfileNetworkInterface},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -8367,7 +8338,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileDataDisksItem[]]
     # adds data disks to the virtual machine instance
-    # To construct, see NOTES section for STORAGEPROFILEDATADISK properties and create a hash table.
     ${StorageProfileDataDisk},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -8411,7 +8381,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey[]]
     # The list of SSH public keys used to authenticate with linux based VMs.
-    # To construct, see NOTES section for WINDOWSCONFIGURATIONSSHPUBLICKEY properties and create a hash table.
     ${WindowsConfigurationSshPublicKey},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
@@ -8870,7 +8839,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Upgrade', Mandatory, ValueFromPipeline)]
@@ -8878,7 +8846,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionUpgrade]
     # Describes the Machine Extension Upgrade Properties.
-    # To construct, see NOTES section for EXTENSIONUPGRADEPARAMETER properties and create a hash table.
     ${ExtensionUpgradeParameter},
 
     [Parameter(ParameterSetName='UpgradeExpanded')]
@@ -9094,7 +9061,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -9494,7 +9460,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityMachine', Mandatory, ValueFromPipeline)]
@@ -9502,7 +9467,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
     ${MachineInputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -9585,7 +9549,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMachineExtensionUpdate]
     # Describes a Machine Extension Update.
-    # To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
     ${ExtensionParameter},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
@@ -9787,7 +9750,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -10094,7 +10056,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -10228,9 +10189,11 @@ end {
 
 <#
 .Synopsis
-The operation to update a virtual machine instance.
+The operation to Create a virtual machine instance.
+Please note some properties can be set only during virtual machine instance creation.
 .Description
-The operation to update a virtual machine instance.
+The operation to Create a virtual machine instance.
+Please note some properties can be set only during virtual machine instance creation.
 .Example
 Update-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg" -VmMemoryInMB "4"
 
@@ -10241,11 +10204,19 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-NETWORKPROFILENETWORKINTERFACE <INetworkProfileUpdateNetworkInterfacesItem[]>: NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
-  [Id <String>]: ID - Resource ID of the network interface
+LINUXCONFIGURATIONSSHPUBLICKEY <ISshPublicKey[]>: The list of SSH public keys used to authenticate with linux based VMs.
+  [KeyData <String>]: SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format.    For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+  [Path <String>]: Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
 
-STORAGEPROFILEDATADISK <IStorageProfileUpdateDataDisksItem[]>: adds data disks to the virtual machine instance for the update call
-  [Id <String>]: 
+NETWORKPROFILENETWORKINTERFACE <IVirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem[]>: NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
+  [Id <String>]: ID - Resource Id of the network interface
+
+STORAGEPROFILEDATADISK <IVirtualMachineInstancePropertiesStorageProfileDataDisksItem[]>: adds data disks to the virtual machine instance
+  [Id <String>]: Resource ID of the data disk
+
+WINDOWSCONFIGURATIONSSHPUBLICKEY <ISshPublicKey[]>: The list of SSH public keys used to authenticate with linux based VMs.
+  [KeyData <String>]: SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format.    For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure]https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed).
+  [Path <String>]: Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmvirtualmachine
 #>
@@ -10259,89 +10230,217 @@ param(
     # The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
     ${ResourceUri},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.Int32]
+    # Defines the amount of extra memory that should be reserved for a virtual machine instance at runtime, as a percentage of the total memory that the virtual machine instance is thought to need.
+    # This only applies to virtual systems with dynamic memory enabled.
+    # This property can be in the range of 5 to 2000.
+    ${DynamicMemoryConfigTargetMemoryBuffer},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.Int64]
+    # .
+    ${DynamicMemoryMaximumMemoryInMb},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.Int64]
+    # .
+    ${DynamicMemoryMinimumMemoryInMb},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # The name of the extended location.
+    ${ExtendedLocationName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("CustomLocation")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # The type of the extended location.
+    ${ExtendedLocationType},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.Int64]
     # RAM in MB for the virtual machine instance
     ${HardwareProfileMemoryMb},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.Int32]
     # number of processors for the virtual machine instance
     ${HardwareProfileProcessor},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("Default", "Standard_A2_v2", "Standard_A4_v2", "Standard_D2s_v3", "Standard_D4s_v3", "Standard_D8s_v3", "Standard_D16s_v3", "Standard_D32s_v3", "Standard_DS2_v2", "Standard_DS3_v2", "Standard_DS4_v2", "Standard_DS5_v2", "Standard_DS13_v2", "Standard_K8S_v1", "Standard_K8S2_v1", "Standard_K8S3_v1", "Standard_K8S4_v1", "Standard_NK6", "Standard_NK12", "Standard_NV6", "Standard_NV12", "Standard_K8S5_v1", "Custom")]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.String]
     # .
     ${HardwareProfileVMSize},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # The HTTP proxy server endpoint to use.
+    ${HttpProxyConfigHttpProxy},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # The HTTPS proxy server endpoint to use.
+    ${HttpProxyConfigHttpsProxy},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String[]]
+    # The endpoints that should not go through proxy.
+    ${HttpProxyConfigNoProxy},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # Alternative CA cert to use for connecting to proxy servers.
+    ${HttpProxyConfigTrustedCa},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("SystemAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.String]
     # The identity type.
     ${IdentityType},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # DisablePasswordAuthentication - whether password authentication should be disabled
+    ${LinuxConfigurationDisablePasswordAuthentication},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
     ${LinuxConfigurationProvisionVMAgent},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
     ${LinuxConfigurationProvisionVMConfigAgent},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkProfileUpdateNetworkInterfacesItem[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey[]]
+    # The list of SSH public keys used to authenticate with linux based VMs.
+    ${LinuxConfigurationSshPublicKey},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem[]]
     # NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
-    # To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
     ${NetworkProfileNetworkInterface},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.String]
-    # ComputerName - name of the computer
+    # Resource ID of the OS disk
+    ${OSDiskId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("Windows", "Linux")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD.
+    # Possible values are: **Windows,** **Linux.**
+    ${OSDiskOstype},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # AdminUsername - admin username
+    ${OSProfileAdminUsername},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # ComputerName - name of the compute
     ${OSProfileComputerName},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # Unique identifier defined by ARC to identify the guest of the VM.
+    ${ResourceUid},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # .
+    ${SecurityProfileEnableTpm},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PSArgumentCompleterAttribute("TrustedLaunch", "ConfidentialVM")]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # Specifies the SecurityType of the virtual machine.
+    # EnableTPM and SecureBootEnabled must be set to true for SecurityType to function.
+    ${SecurityProfileSecurityType},
+
+    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageProfileUpdateDataDisksItem[]]
-    # adds data disks to the virtual machine instance for the update call
-    # To construct, see NOTES section for STORAGEPROFILEDATADISK properties and create a hash table.
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileDataDisksItem[]]
+    # adds data disks to the virtual machine instance
     ${StorageProfileDataDisk},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.String]
+    # Id of the storage container that hosts the VM configuration file
+    ${StorageProfileVMConfigStoragePathId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Specifies whether secure boot should be enabled on the virtual machine instance.
+    ${UefiSettingSecureBootEnabled},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Whether to EnableAutomaticUpdates on the machine
+    ${WindowConfigurationEnableAutomaticUpdate},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
     ${WindowConfigurationProvisionVMAgent},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
     ${WindowConfigurationProvisionVMConfigAgent},
 
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.String]
-    # Path of Json file supplied to the Update operation
-    ${JsonFilePath},
+    # TimeZone for the virtual machine instance
+    ${WindowConfigurationTimeZone},
 
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
-    [System.String]
-    # Json string supplied to the Update operation
-    ${JsonString},
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey[]]
+    # The list of SSH public keys used to authenticate with linux based VMs.
+    ${WindowsConfigurationSshPublicKey},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -10414,8 +10513,6 @@ begin {
 
         $mapping = @{
             UpdateExpanded = 'Az.StackHCIVM.private\Update-AzStackHCIVMVirtualMachine_UpdateExpanded';
-            UpdateViaJsonFilePath = 'Az.StackHCIVM.private\Update-AzStackHCIVMVirtualMachine_UpdateViaJsonFilePath';
-            UpdateViaJsonString = 'Az.StackHCIVM.private\Update-AzStackHCIVMVirtualMachine_UpdateViaJsonString';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

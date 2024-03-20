@@ -19,5 +19,6 @@ namespace Microsoft.Azure.Management.Compute.Models
         public const string EncryptedVMGuestStateOnlyWithPmk = "EncryptedVMGuestStateOnlyWithPmk";
         public const string EncryptedWithPmk = "EncryptedWithPmk";
         public const string EncryptedWithCmk = "EncryptedWithCmk";
+        public const string NonPersistedTPM = "NonPersistedTPM";
     }
 }

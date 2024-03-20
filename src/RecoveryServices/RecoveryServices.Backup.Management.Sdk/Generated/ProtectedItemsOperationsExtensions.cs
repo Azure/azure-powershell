@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class ProtectedItemsOperationsExtensions
     {
         /// <summary>
-        /// Provides the details of the backed up item. This is an asynchronous operation. To know the status of the operation,
+        /// Provides the details of the backed up item. This is an asynchronous
+        /// operation. To know the status of the operation,
         /// call the GetItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
@@ -26,7 +27,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up item.
@@ -43,7 +45,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Provides the details of the backed up item. This is an asynchronous operation. To know the status of the operation,
+        /// Provides the details of the backed up item. This is an asynchronous
+        /// operation. To know the status of the operation,
         /// call the GetItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
@@ -56,7 +59,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up item.
@@ -78,8 +82,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             }
         }
         /// <summary>
-        /// Enables backup of an item or to modifies the backup policy information of an already backed up item. This is an
-        /// asynchronous operation. To know the status of the operation, call the GetItemOperationResult API.
+        /// Enables backup of an item or to modifies the backup policy information of
+        /// an already backed up item. This is an
+        /// asynchronous operation. To know the status of the operation, call the
+        /// GetItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -88,7 +94,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backup item.
@@ -105,8 +112,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Enables backup of an item or to modifies the backup policy information of an already backed up item. This is an
-        /// asynchronous operation. To know the status of the operation, call the GetItemOperationResult API.
+        /// Enables backup of an item or to modifies the backup policy information of
+        /// an already backed up item. This is an
+        /// asynchronous operation. To know the status of the operation, call the
+        /// GetItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -115,7 +124,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backup item.
@@ -137,7 +147,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             }
         }
         /// <summary>
-        /// Used to disable backup of an item within a container. This is an asynchronous operation. To know the status of the
+        /// Used to disable backup of an item within a container. This is an
+        /// asynchronous operation. To know the status of the
         /// request, call the GetItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
@@ -147,7 +158,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up item.
@@ -164,7 +176,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Used to disable backup of an item within a container. This is an asynchronous operation. To know the status of the
+        /// Used to disable backup of an item within a container. This is an
+        /// asynchronous operation. To know the status of the
         /// request, call the GetItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
@@ -174,7 +187,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up item.

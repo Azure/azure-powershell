@@ -14,7 +14,7 @@ Create an in-memory object for VMPlacementPolicyProperties.
 
 ```
 New-AzVMwareVMPlacementPolicyPropertiesObject -AffinityType <String> -VMMember <String[]> -Type <String>
- [-DisplayName <String>] [-State <String>] [<CommonParameters>]
+ [-DisplayName <String>] [-State <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,13 +24,16 @@ Create an in-memory object for VMPlacementPolicyProperties.
 
 ### Example 1: Create an in-memory object for VMPlacementPolicyProperties.
 ```powershell
-New-AzVMwareVMPlacementPolicyPropertiesObject -AffinityType 'Affinity' -Type 'VmVm' -VMMember @{"abc"="123"}
+New-AzVMwareVMPlacementPolicyPropertiesObject -AffinityType 'Affinity' -Type 'VmVm' -VMMember @{"test"="test"}
 ```
 
 ```output
-DisplayName ProvisioningState State AffinityType VMMember
------------ ----------------- ----- ------------ --------
-                                    Affinity     {System.Collections.Hashtable}
+AffinityType      : Affinity
+DisplayName       : 
+ProvisioningState : 
+State             : 
+Type              : VmVm
+VMMember          : {System.Collections.Hashtable}
 ```
 
 Create an in-memory object for VMPlacementPolicyProperties.
@@ -59,6 +62,21 @@ Display name of the placement policy.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -119,10 +137,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VMPlacementPolicyProperties
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VMPlacementPolicyProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

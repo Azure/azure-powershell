@@ -45,7 +45,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// 
@@ -84,11 +85,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// A response object containing the response body and response headers.
         /// </return>
         public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecoveryPointResource>>> ListWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string objectType = default(string), System.Collections.Generic.IList<string> excludedRpList = default(System.Collections.Generic.IList<string>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
-        {
-
-
-
- 
+        { 
             if (this.Client.ApiVersion == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "this.Client.ApiVersion");
@@ -125,7 +122,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             }
 
             ListRecoveryPointsRecommendedForMoveRequest parameters = new ListRecoveryPointsRecommendedForMoveRequest();
-            if(objectType != null||excludedRpList != null)
+            if (objectType != null || excludedRpList != null)
             {
                 parameters.ObjectType = objectType;
                 parameters.ExcludedRpList = excludedRpList;

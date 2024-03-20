@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             HelpMessage = "If specified, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well. Enabling 'purge protection' on a key vault is an irreversible action. Once enabled, it cannot be changed or removed.")]
         public SwitchParameter EnablePurgeProtection { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion(nameof(EnableRbacAuthorization), "12.0.0", "6.0.0", ReplaceMentCmdletParameterName = "DisableRbacAuthorization", ChangeDescription = "RBAC will be enabled by default during the process of key vault creation. To disable RBAC authorization, please use parameter 'DisableRbacAuthorization'.")]
         [Parameter(Mandatory = false,
             HelpMessage = "If specified, enables to authorize data actions by Role Based Access Control (RBAC), and then the access policies specified in vault properties will be ignored. Note that management actions are always authorized with RBAC.")]
         public SwitchParameter EnableRbacAuthorization { get; set; }

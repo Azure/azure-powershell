@@ -14,59 +14,62 @@ Gets a Dev Box
 
 ### List (Default)
 ```
-Get-AzDevCenterUserDevBox -Endpoint <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserDevBox -Endpoint <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDevCenterUserDevBox -Endpoint <String> -ProjectName <String> -UserId <String> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDevCenterUserDevBox -Endpoint <String> -InputObject <IDevCenterdataIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzDevCenterUserDevBox -Endpoint <String> -UserId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserDevBox -Endpoint <String> -UserId <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List2
 ```
 Get-AzDevCenterUserDevBox -Endpoint <String> -ProjectName <String> -UserId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityByDevCenter
 ```
 Get-AzDevCenterUserDevBox -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
-Get-AzDevCenterUserDevBox -DevCenterName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDevCenterUserDevBox -DevCenterName <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List2ByDevCenter
 ```
 Get-AzDevCenterUserDevBox -DevCenterName <String> -ProjectName <String> -UserId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1ByDevCenter
 ```
 Get-AzDevCenterUserDevBox -DevCenterName <String> -UserId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
 Get-AzDevCenterUserDevBox -DevCenterName <String> -ProjectName <String> -UserId <String> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,21 +100,21 @@ This command lists dev boxes under the project "DevProject" assigned to the curr
 
 ### Example 4: List dev boxes by dev center name
 ```powershell
-Get-AzDevCenterUserDevBox -DevCenter Contoso
+Get-AzDevCenterUserDevBox -DevCenterName Contoso
 ```
 
 This command lists dev boxes under the dev center "Contoso".
 
 ### Example 5: List dev boxes by dev center and user id
 ```powershell
-Get-AzDevCenterUserDevBox -DevCenter Contoso -UserId "me"
+Get-AzDevCenterUserDevBox -DevCenterName Contoso -UserId "me"
 ```
 
 This command lists dev boxes under the dev center "Contoso" assigned to the currently signed-in user.
 
 ### Example 6: List dev boxes by dev center, user id, and project
 ```powershell
-Get-AzDevCenterUserDevBox -DevCenter Contoso -ProjectName DevProject -UserId 786a823c-8037-48ab-89b8-8599901e67d0
+Get-AzDevCenterUserDevBox -DevCenterName Contoso -ProjectName DevProject -UserId 786a823c-8037-48ab-89b8-8599901e67d0
 ```
 
 This command lists dev boxes under the project "DevProject" assigned to user "786a823c-8037-48ab-89b8-8599901e67d0".
@@ -125,7 +128,7 @@ This command gets the dev box "myDevBox" assigned to user "786a823c-8037-48ab-89
 
 ### Example 8: Get a dev box by dev center
 ```powershell
-Get-AzDevCenterUserDevBox -DevCenter Contoso -ProjectName DevProject -UserId "me" -Name myDevBox
+Get-AzDevCenterUserDevBox -DevCenterName Contoso -ProjectName DevProject -UserId "me" -Name myDevBox
 ```
 
 This command gets the dev box "myDevBox" assigned to the currently signed-in user.
@@ -141,7 +144,7 @@ This command gets the dev box "myDevBox" assigned to the currently signed-in use
 ### Example 10: Get a dev box by dev center and InputObject
 ```powershell
 $devBoxInput = @{"DevBoxName" = "myDevBox"; "UserId" = "786a823c-8037-48ab-89b8-8599901e67d0"; "ProjectName" = "DevProject" }
-Get-AzDevCenterUserDevBox -DevCenter Contoso -InputObject $devBoxInput
+Get-AzDevCenterUserDevBox -DevCenterName Contoso -InputObject $devBoxInput
 ```
 
 This command gets the dev box "myDevBox" assigned to user "786a823c-8037-48ab-89b8-8599901e67d0".
@@ -225,6 +228,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The DevCenter Project upon which to execute operations.
 
@@ -265,27 +283,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IDevBox
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IDevBox
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDevCenterdataIdentity>`: Identity Parameter
-  - `[ActionName <String>]`: The name of an action that will take place on a Dev Box.
-  - `[CatalogName <String>]`: The name of the catalog
-  - `[DefinitionName <String>]`: The name of the environment definition
-  - `[DevBoxName <String>]`: The name of a Dev Box.
-  - `[EnvironmentName <String>]`: The name of the environment.
-  - `[Id <String>]`: Resource identity path
-  - `[PoolName <String>]`: The name of a pool of Dev Boxes.
-  - `[ProjectName <String>]`: The DevCenter Project upon which to execute operations.
-  - `[ScheduleName <String>]`: The name of a schedule.
-  - `[UserId <String>]`: The AAD object id of the user. If value is 'me', the identity is taken from the authentication context.
 
 ## RELATED LINKS
