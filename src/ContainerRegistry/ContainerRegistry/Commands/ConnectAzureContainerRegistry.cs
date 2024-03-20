@@ -63,16 +63,18 @@ namespace Microsoft.Azure.Commands.ContainerRegistry
             }
 
             string LoginScript = string.Format("'{2}' | docker login {0} -u {1} --password-stdin", this.RegistryDataPlaneClient.GetEndPoint(), this.UserName, this.Password);
-            WriteObject(this.ExecuteScript<object>(LoginScript));
             if (ExposeToken) {
-                WriteWarning("You can perform manual login using the provided access token below, for example: 'docker login <loginServer> -u 00000000-0000-0000-0000-000000000000 -p <accessToken>'");
+                WriteWarning("You can perform manual login using the provided access token, for example: 'docker login <loginServer> -u 00000000-0000-0000-0000-000000000000 -p <accessToken>'");
                 var cred = new
                 {
+                    status = this.ExecuteScript<object>(LoginScript),
                     loginServer = Name + ".azurecr.io",
                     accessToken = this.RegistryDataPlaneClient.Authenticate()
-
                 };
-                WriteObject(JsonConvert.SerializeObject(cred, Formatting.Indented));
+                WriteObject(cred);
+            } else
+            {
+                WriteObject(this.ExecuteScript<object>(LoginScript));
             }
         }
     }
