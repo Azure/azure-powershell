@@ -547,9 +547,11 @@ function New-AzStackHCIVMVirtualMachine {
     $PSBoundParameters.Add("WindowConfigurationProvisionVMConfigAgent", $true)
     if(-not $ProvisionVMAgent){
       $null = $PSBoundParameters.Remove("WindowConfigurationProvisionVMAgent")
+      $PSBoundParameters.Add("WindowConfigurationProvisionVMAgent", $false)
     }
     if (-not $ProvisionVMConfigAgent){
       $null = $PSBoundParameters.Remove("WindowConfigurationProvisionVMConfigAgent")
+      $PSBoundParameters.Add("WindowConfigurationProvisionVMConfigAgent", $true)
     }
     $null = $PSBoundParameters.Remove("ProvisionVMAgent")
     $null = $PSBoundParameters.Remove("ProvisionVMConfigAgent")
@@ -580,9 +582,11 @@ function New-AzStackHCIVMVirtualMachine {
       $PSBoundParameters.Add("LinuxConfigurationProvisionVMConfigAgent", $true)
       if(-not $ProvisionVMAgent){
         $null = $PSBoundParameters.Remove("LinuxConfigurationProvisionVMAgent")
+        $PSBoundParameters.Add("LinuxConfigurationProvisionVMAgent", $false)
       }
       if (-not $ProvisionVMConfigAgent){
         $null = $PSBoundParameters.Remove("LinuxConfigurationProvisionVMConfigAgent")
+        $PSBoundParameters.Add("LinuxConfigurationProvisionVMConfigAgent", $false)
       }
       $null = $PSBoundParameters.Remove("ProvisionVMAgent")
       $null = $PSBoundParameters.Remove("ProvisionVMConfigAgent")
