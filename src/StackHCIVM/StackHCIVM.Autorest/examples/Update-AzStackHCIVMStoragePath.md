@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a Storage Path.
 ```powershell
-{{ Add code here }}
+Update-AzStackHCIVMStoragePath  -Name "testVhd" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name            ResourceGroupName
+----            -----------------
+testStoragePath       test-rg
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+This command updates an exisiting storage path in the specified resource group.
