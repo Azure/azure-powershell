@@ -59,15 +59,115 @@ Operation to update an existing Domains resource.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Updates email service custom domain.
+```powershell
 Update-AzEmailServiceDomain -Name testcustomdomain2.net -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleUpdatedValue"} -UserEngagementTracking 1
 ```
 
-### EXAMPLE 2
+```output
+DataLocation                 : unitedstates
+Dkim2ErrorCode               :
+Dkim2Status                  : NotStarted
+DkimErrorCode                :
+DkimStatus                   : NotStarted
+DmarcErrorCode               :
+DmarcStatus                  : NotStarted
+DomainErrorCode              :
+DomainManagement             : CustomerManaged
+DomainStatus                 : NotStarted
+FromSenderDomain             : testcustomdomain2.net
+Id                           : /subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/ContosoResourceProvider1/providers/Microsoft.Communication/emailServices/
+                               ContosoAcsResource1/domains/testcustomdomain2.net
+Location                     : global
+MailFromSenderDomain         : testcustomdomain2.net
+Name                         : testcustomdomain2.net
+ProvisioningState            : Succeeded
+ResourceGroupName            : ContosoResourceProvider1
+SpfErrorCode                 :
+SpfStatus                    : NotStarted
+SystemDataCreatedAt          : 21-02-2024 07:30:12
+SystemDataCreatedBy          : test@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 21-02-2024 09:06:45
+SystemDataLastModifiedBy     : test@microsoft.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                                 "ExampleKey1": "ExampleUpdatedValue"
+                               }
+Type                         : microsoft.communication/emailservices/domains
+UserEngagementTracking       : Enabled
+VerificationRecord           : {
+                                 "Domain": {
+                                   "type": "TXT",
+                                   "name": "testcustomdomain2.net",
+                                   "value": "ms-domain-verification=1ff18540-e0c0-422b-b956-5b4cfa13613b",
+                                   "ttl": 3600
+                                 },
+                                 "SPF": {
+                                   "type": "TXT",
+                                   "name": "testcustomdomain2.net",
+                                   "value": "v=spf1 include:spf.protection.outlook.com -all",
+                                   "ttl": 3600
+                                 },
+                                 "DKIM": {
+                                   "type": "CNAME",
+                                   "name": "selector1-azurecomm-prod-net._domainkey",
+                                   "value": "selector1-azurecomm-prod-net._domainkey.azurecomm.net",
+                                   "ttl": 3600
+                                 },
+                                 "DKIM2": {
+                                   "type": "CNAME",
+                                   "name": "selector2-azurecomm-prod-net._domainkey",
+                                   "value": "selector2-azurecomm-prod-net._domainkey.azurecomm.net",
+                                   "ttl": 3600
+                                 }
+                               }
 ```
+
+Updates email service custom domain with the provided parameters.
+
+### Example 2: Updates email service azure managed domain.
+```powershell
 Update-AzEmailServiceDomain -Name AzureManagedDomain -EmailServiceName ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -Tag @{ExampleKey1="ExampleValue1updated"} -UserEngagementTracking 1
 ```
+
+```output
+DataLocation                 : unitedstates
+Dkim2ErrorCode               :
+Dkim2Status                  : Verified
+DkimErrorCode                :
+DkimStatus                   : Verified
+DmarcErrorCode               :
+DmarcStatus                  : Verified
+DomainErrorCode              :
+DomainManagement             : AzureManaged
+DomainStatus                 : Verified
+FromSenderDomain             : fb0053ef-c684-4028-81eb-a582c1330d87.azurecomm.net
+Id                           : /subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/ContosoResourceProvider1/providers/Microsoft.Communication/emailServices/
+                               ContosoAcsResource1/domains/AzureManagedDomain
+Location                     : global
+MailFromSenderDomain         : fb0053ef-c684-4028-81eb-a582c1330d87.azurecomm.net
+Name                         : AzureManagedDomain
+ProvisioningState            : Succeeded
+ResourceGroupName            : ContosoResourceProvider1
+SpfErrorCode                 :
+SpfStatus                    : Verified
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     : 21-02-2024 09:07:35
+SystemDataLastModifiedBy     : test@microsoft.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                                 "ExampleKey1": "ExampleValue1updated"
+                               }
+Type                         : microsoft.communication/emailservices/domains
+UserEngagementTracking       : Enabled
+VerificationRecord           : {
+                               }
+```
+
+Updates email service azure managed domain with the provided parameters.
 
 ## PARAMETERS
 
@@ -75,13 +175,13 @@ Update-AzEmailServiceDomain -Name AzureManagedDomain -EmailServiceName ContosoAc
 Run the command as a job
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -91,7 +191,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -106,7 +206,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: IEmailServiceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity
 Parameter Sets: UpdateViaIdentityEmailServiceExpanded, UpdateViaIdentityEmailService
 Aliases:
 
@@ -121,7 +221,7 @@ Accept wildcard characters: False
 The name of the EmailService resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
@@ -136,7 +236,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: IEmailServiceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -151,7 +251,7 @@ Accept wildcard characters: False
 Path of Json file supplied to the Update operation
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateViaJsonFilePath
 Aliases:
 
@@ -166,7 +266,7 @@ Accept wildcard characters: False
 Json string supplied to the Update operation
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateViaJsonString
 Aliases:
 
@@ -181,7 +281,7 @@ Accept wildcard characters: False
 The name of the Domains resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, UpdateViaIdentityEmailServiceExpanded, UpdateViaIdentityEmailService
 Aliases: DomainName
 
@@ -196,13 +296,13 @@ Accept wildcard characters: False
 Run the command asynchronously
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -211,7 +311,7 @@ Accept wildcard characters: False
 A class that describes the PATCH request parameters of a Domains resource.
 
 ```yaml
-Type: IUpdateDomainRequestParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IUpdateDomainRequestParameters
 Parameter Sets: UpdateViaIdentityEmailService
 Aliases:
 
@@ -226,7 +326,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -242,7 +342,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
@@ -258,13 +358,13 @@ The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -273,7 +373,7 @@ Accept wildcard characters: False
 Tags of the service which is a list of key value pairs that describe the resource.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: UpdateExpanded, UpdateViaIdentityEmailServiceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -288,7 +388,7 @@ Accept wildcard characters: False
 Describes whether user engagement tracking is enabled or disabled.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityEmailServiceExpanded, UpdateViaIdentityExpanded
 Aliases:
 
@@ -303,7 +403,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -319,7 +419,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -336,42 +436,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity
+
 ### Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IUpdateDomainRequestParameters
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IDomainResource
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-EMAILSERVICEINPUTOBJECT \<IEmailServiceIdentity\>: Identity Parameter
-  \[DomainName \<String\>\]: The name of the Domains resource.
-  \[EmailServiceName \<String\>\]: The name of the EmailService resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[SenderUsername \<String\>\]: The valid sender Username.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-The value must be an UUID.
-
-INPUTOBJECT \<IEmailServiceIdentity\>: Identity Parameter
-  \[DomainName \<String\>\]: The name of the Domains resource.
-  \[EmailServiceName \<String\>\]: The name of the EmailService resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[SenderUsername \<String\>\]: The valid sender Username.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-The value must be an UUID.
-
-PARAMETER \<IUpdateDomainRequestParameters\>: A class that describes the PATCH request parameters of a Domains resource.
-  \[Tag \<ITaggedResourceTags\>\]: Tags of the service which is a list of key value pairs that describe the resource.
-    \[(Any) \<String\>\]: This indicates any property can be added to this object.
-  \[UserEngagementTracking \<String\>\]: Describes whether user engagement tracking is enabled or disabled.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.communication/update-azemailservicedomain](https://learn.microsoft.com/powershell/module/az.communication/update-azemailservicedomain)
-

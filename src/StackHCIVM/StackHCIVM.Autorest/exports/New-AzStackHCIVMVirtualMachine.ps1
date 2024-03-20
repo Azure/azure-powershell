@@ -184,7 +184,7 @@ param(
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.String[]]
-    # Data Disks - List of data disks to be attached to the virtual machine in name format
+    # Data Disks - List of data disks to be attached to the virtual machine in name format .
     ${DataDiskName},
 
     [Parameter()]
@@ -308,7 +308,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]

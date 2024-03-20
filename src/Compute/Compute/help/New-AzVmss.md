@@ -16,14 +16,14 @@ Creates a virtual machine scale set.
 ### DefaultParameter (Default)
 ```
 New-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob]
- [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-EdgeZone <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SimpleParameterSet
 ```
 New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [-UserData <String>]
- [-ImageName <String>] -Credential <PSCredential> [-InstanceCount <Int32>]
+ [-EnableAutomaticOSUpgrade] [-ImageName <String>] -Credential <PSCredential> [-InstanceCount <Int32>]
  [-VirtualNetworkName <String>] [-SubnetName <String>] [-PublicIpAddressName <String>]
  [-DomainNameLabel <String>] [-SecurityGroupName <String>] [-LoadBalancerName <String>]
  [-BackendPort <Int32[]>] [-Location <String>] [-EdgeZone <String>] [-VmSize <String>]
@@ -237,9 +237,10 @@ $vmssConfig = New-AzVmssConfig -Location EastUs2 -UpgradePolicyMode Manual -Sing
 # VMSS Creation 
 New-AzVmss -ResourceGroupName TestRg -VMScaleSetName myVMSS -VirtualMachineScaleSet $vmssConfig
 ```
+
 This example Creates a new VMSS and it will default to OrchestrationMode Flexible. 
 
-### Example 6: Create a new VMSS with TrustedLaunch turned on by default. 
+### Example 6: Create a new VMSS with TrustedLaunch turned on by default.
 ```powershell
 $rgname = "<Resource Group>";
 $loc = "<Azure Region>";
@@ -277,6 +278,7 @@ $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
 # Verify $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled is True.
 # Verify $vmssGet.VirtualMachineProfile.StorageProfile.ImageReference.Sku is 2022-Datacenter-Azure-Edition.
 ```
+
 The virtual machine scale set above has Trusted Launch enabled by default. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
 ## PARAMETERS
@@ -454,6 +456,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -EnableAutomaticOSUpgrade
+Whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the image becomes available.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

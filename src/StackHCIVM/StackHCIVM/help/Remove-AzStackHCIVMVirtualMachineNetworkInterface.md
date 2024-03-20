@@ -15,7 +15,7 @@ The operation to delete a network interface from a virtual machine.
 ### ByResourceId (Default)
 ```
 Remove-AzStackHCIVMVirtualMachineNetworkInterface -ResourceId <String> [-NicId <String[]>]
- [-NicName <String[]>] [-NicResourceGroup <String>] [-NoWait] [-WhatIf]
+ [-NicName <String[]>] [-NicResourceGroup <String>] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,7 +23,7 @@ Remove-AzStackHCIVMVirtualMachineNetworkInterface -ResourceId <String> [-NicId <
 ```
 Remove-AzStackHCIVMVirtualMachineNetworkInterface -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-NicId <String[]>] [-NicName <String[]>] [-NicResourceGroup <String>] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,10 +31,18 @@ The operation to delete a network interface from a  virtual machine.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Removes a Network Interface from a  Virtual Machine
+```powershell
 Remove-AzStackHCIVMVirtualMachineNetworkInterface  -Name "testVm" -ResourceGroupName "test-rg"  -NicName 'testNic'
 ```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testVm          test-rg
+```
+
+This command removes a network interface from the virtual machine in the specified resource group.
 
 ## PARAMETERS
 
@@ -108,7 +116,22 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -154,7 +177,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -198,8 +221,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachinenetworkinterface](https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmvirtualmachinenetworkinterface)

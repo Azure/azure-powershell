@@ -16,14 +16,14 @@ Gets the logs for an operation on an environment.
 ```
 Get-AzDevCenterUserEnvironmentLog -Endpoint <String> -EnvironmentName <String> -OperationId <String>
  -ProjectName <String> [-UserId <String>] -OutFile <String> [-DefaultProfile <PSObject>] [-PassThru]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
 Get-AzDevCenterUserEnvironmentLog -DevCenterName <String> -EnvironmentName <String> -OperationId <String>
  -ProjectName <String> [-UserId <String>] -OutFile <String> [-DefaultProfile <PSObject>] [-PassThru]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,15 +31,19 @@ Gets the logs for an operation on an environment.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Get environment logs by endpoint
+```powershell
 Get-AzDevCenterUserEnvironmentLog -Endpoint "https://8a40af38-3b4c-4672-a6a4-5e964b1870ed-contosodevcenter.centralus.devcenter.azure.com/" -EnvironmentName myEnvironment -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd" -Outfile "../output_logs.txt"
 ```
 
-### EXAMPLE 2
-```
+This command gets the logs on the environment "myEnvironment" for the operation id "d0954a94-3550-4919-bcbe-1c94ed79e0cd" and outputs the logs to the file "output_logs.txt".
+
+### Example 2: Get environment logs by dev center
+```powershell
 Get-AzDevCenterUserEnvironmentLog -DevCenterName Contoso -EnvironmentName myEnvironment -ProjectName DevProject -OperationId "d0954a94-3550-4919-bcbe-1c94ed79e0cd" -Outfile "../output_logs.txt"
 ```
+
+This command gets the logs on the environment "myEnvironment"  for the operation id "d0954a94-3550-4919-bcbe-1c94ed79e0cd" and outputs the logs to the file "output_logs.txt".
 
 ## PARAMETERS
 
@@ -48,7 +52,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -63,7 +67,7 @@ Accept wildcard characters: False
 The DevCenter upon which to execute operations.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: GetByDevCenter
 Aliases: DevCenter
 
@@ -78,7 +82,7 @@ Accept wildcard characters: False
 The DevCenter-specific URI to operate on.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get
 Aliases:
 
@@ -93,7 +97,7 @@ Accept wildcard characters: False
 The name of the environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -108,7 +112,7 @@ Accept wildcard characters: False
 The id of the operation on an environment.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -123,7 +127,7 @@ Accept wildcard characters: False
 Path to write output file to
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -138,13 +142,28 @@ Accept wildcard characters: False
 Returns true when the command succeeds
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -153,7 +172,7 @@ Accept wildcard characters: False
 The DevCenter Project upon which to execute operations.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -169,13 +188,13 @@ The AAD object id of the user.
 If value is 'me', the identity is taken from the authentication context.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "me"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -186,12 +205,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
+
 ## OUTPUTS
 
 ### System.Boolean
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentlog](https://learn.microsoft.com/powershell/module/az.devcenter/get-azdevcenteruserenvironmentlog)
-

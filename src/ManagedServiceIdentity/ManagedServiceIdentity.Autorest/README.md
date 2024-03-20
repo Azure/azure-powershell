@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the ManagedServiceIdentity service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all

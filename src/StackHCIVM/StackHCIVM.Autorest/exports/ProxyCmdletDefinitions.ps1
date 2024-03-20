@@ -75,7 +75,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -263,7 +263,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -451,7 +451,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -639,7 +639,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -840,7 +840,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter(ParameterSetName='ByResourceId')]
@@ -894,7 +893,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -1096,7 +1095,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter(ParameterSetName='ByResourceId')]
@@ -1150,7 +1148,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -1352,7 +1350,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter(ParameterSetName='ByResourceId')]
@@ -1406,7 +1403,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -1608,13 +1605,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter(ParameterSetName='ByResourceId')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [System.String]
-    # The ARM Resource ID of the virtual hard disk
+    # The ARM Resource ID of the virtual hard disk .
     ${ResourceId},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -1662,7 +1658,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -1859,7 +1855,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -2053,7 +2049,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -2237,7 +2233,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -2426,7 +2422,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -2710,7 +2706,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -2988,7 +2984,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -3231,7 +3227,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -3437,7 +3433,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -3703,7 +3699,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -3997,7 +3993,7 @@ param(
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [System.String[]]
-    # Data Disks - List of data disks to be attached to the virtual machine in name format
+    # Data Disks - List of data disks to be attached to the virtual machine in name format .
     ${DataDiskName},
 
     [Parameter()]
@@ -4121,7 +4117,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -4300,7 +4296,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -4478,7 +4474,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -4658,7 +4654,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -4853,7 +4849,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    # .
     ${InputObject},
 
     [Parameter(ParameterSetName='ByResourceId', Mandatory)]
@@ -4885,7 +4880,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -5070,7 +5065,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -5265,7 +5260,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    # .
     ${InputObject},
 
     [Parameter(ParameterSetName='ByResourceId', Mandatory)]
@@ -5297,7 +5291,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -5491,7 +5485,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -5685,7 +5679,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -5872,7 +5866,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -6059,7 +6053,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -6248,7 +6242,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -6431,7 +6425,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -6649,7 +6643,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]

@@ -13,7 +13,8 @@ Create a in-memory object for AddonSrmProperties
 ## SYNTAX
 
 ```
-New-AzVMwareAddonSrmPropertiesObject -LicenseKey <String> [<CommonParameters>]
+New-AzVMwareAddonSrmPropertiesObject -LicenseKey <String> [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,9 +28,9 @@ New-AzVMwareAddonSrmPropertiesObject -LicenseKey "YourLicenseKeyValue"
 ```
 
 ```output
-AddonType ProvisioningState LicenseKey
---------- ----------------- ----------
-SRM                         YourLicenseKeyValue
+AddonType LicenseKey          ProvisioningState
+--------- ----------          -----------------
+SRM       YourLicenseKeyValue
 ```
 
 Create a local SRM object for the Addon Property parameter
@@ -51,6 +52,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -58,10 +74,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonSrmProperties
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AddonSrmProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

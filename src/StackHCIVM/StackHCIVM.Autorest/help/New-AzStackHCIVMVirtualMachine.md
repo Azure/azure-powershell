@@ -194,7 +194,7 @@ Accept wildcard characters: False
 ```
 
 ### -DataDiskName
-Data Disks - List of data disks to be attached to the virtual machine in name format
+Data Disks - List of data disks to be attached to the virtual machine in name format .
 
 ```yaml
 Type: System.String[]

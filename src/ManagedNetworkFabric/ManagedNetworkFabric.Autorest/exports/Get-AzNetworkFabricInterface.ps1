@@ -131,14 +131,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityNetworkDevice', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKDEVICEINPUTOBJECT properties and create a hash table.
     ${NetworkDeviceInputObject},
 
     [Parameter()]

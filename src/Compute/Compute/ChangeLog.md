@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+* Added new parameter `-EnableAutomaticOSUpgrade` to `New-AzVmss` cmdlet.
+* Renamed parameter `-AutoOSUpgrade` to `-EnableAutomaticOSUpgrade` in `New-AzVmssConfig` cmdlet for consistency. Using `-AutoOSUpgrade` as parameter name will continue to work as it is added as an alias.
 * Upgraded Azure.Core to 1.37.0.
 * Az.Compute is updated to use the 2023-07-03 GalleryRP REST API calls.
 

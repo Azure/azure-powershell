@@ -30,10 +30,12 @@ Operation to delete a EmailService.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Removes Email service resource.
+```powershell
 Remove-AzEmailService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1
 ```
+
+Removes Email service resource.
 
 ## PARAMETERS
 
@@ -41,13 +43,13 @@ Remove-AzEmailService -Name ContosoAcsResource1 -ResourceGroupName ContosoResour
 Run the command as a job
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -57,7 +59,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -72,7 +74,7 @@ Accept wildcard characters: False
 Identity Parameter
 
 ```yaml
-Type: IEmailServiceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -87,7 +89,7 @@ Accept wildcard characters: False
 The name of the EmailService resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases: EmailServiceName
 
@@ -102,13 +104,13 @@ Accept wildcard characters: False
 Run the command asynchronously
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -117,13 +119,13 @@ Accept wildcard characters: False
 Returns true when the command succeeds
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -132,7 +134,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -148,7 +150,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases:
 
@@ -164,13 +166,13 @@ The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -179,7 +181,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -195,7 +197,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -212,26 +214,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceIdentity
+
 ## OUTPUTS
 
 ### System.Boolean
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IEmailServiceIdentity\>: Identity Parameter
-  \[DomainName \<String\>\]: The name of the Domains resource.
-  \[EmailServiceName \<String\>\]: The name of the EmailService resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[SenderUsername \<String\>\]: The valid sender Username.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-The value must be an UUID.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.communication/remove-azemailservice](https://learn.microsoft.com/powershell/module/az.communication/remove-azemailservice)
-
