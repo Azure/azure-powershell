@@ -1017,6 +1017,20 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
                 }
+                else if (this.VM.StorageProfile?.ImageReference?.SharedGalleryImageId != null) {
+                    // do nothing, send message to use TrustedLaunch.
+                    if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
+                    {
+                        WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
+                    }
+                }
+                else if (this.VM.StorageProfile?.ImageReference?.CommunityGalleryImageId != null) {
+                    // do nothing, send message to use TrustedLaunch.
+                    if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
+                    {
+                        WriteInformation(HelpMessages.TrustedLaunchUpgradeMessage, new string[] { "PSHOST" });
+                    }
+                }
                 else
                 {
                     // handle each field in image reference itself to then call it.
