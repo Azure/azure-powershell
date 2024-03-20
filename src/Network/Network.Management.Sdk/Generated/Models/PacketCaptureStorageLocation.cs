@@ -25,23 +25,31 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
 
         /// <param name="storageId">The ID of the storage account to save the packet capture session. Required
-        /// if no local file path is provided.
+        /// if no localPath or filePath is provided.
         /// </param>
 
         /// <param name="storagePath">The URI of the storage path to save the packet capture. Must be a
         /// well-formed URI describing the location to save the packet capture.
         /// </param>
 
-        /// <param name="filePath">A valid local path on the targeting VM. Must include the name of the
-        /// capture file (*.cap). For linux virtual machine it must start with
+        /// <param name="filePath">This path is invalid if &#39;Continuous Capture&#39; is provided with &#39;true&#39; or
+        /// &#39;false&#39;. A valid local path on the targeting VM. Must include the name of
+        /// the capture file (*.cap). For linux virtual machine it must start with
         /// /var/captures. Required if no storage ID is provided, otherwise optional.
         /// </param>
-        public PacketCaptureStorageLocation(string storageId = default(string), string storagePath = default(string), string filePath = default(string))
+
+        /// <param name="localPath">This path is valid if &#39;Continuous Capture&#39; is provided with &#39;true&#39; or
+        /// &#39;false&#39; and required if no storage ID is provided, otherwise optional. Must
+        /// include the name of the capture file (*.cap). For linux virtual machine it
+        /// must start with /var/captures.
+        /// </param>
+        public PacketCaptureStorageLocation(string storageId = default(string), string storagePath = default(string), string filePath = default(string), string localPath = default(string))
 
         {
             this.StorageId = storageId;
             this.StoragePath = storagePath;
             this.FilePath = filePath;
+            this.LocalPath = localPath;
             CustomInit();
         }
 
@@ -53,7 +61,7 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <summary>
         /// Gets or sets the ID of the storage account to save the packet capture
-        /// session. Required if no local file path is provided.
+        /// session. Required if no localPath or filePath is provided.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "storageId")]
         public string StorageId {get; set; }
@@ -66,11 +74,22 @@ namespace Microsoft.Azure.Management.Network.Models
         public string StoragePath {get; set; }
 
         /// <summary>
-        /// Gets or sets a valid local path on the targeting VM. Must include the name
-        /// of the capture file (*.cap). For linux virtual machine it must start with
-        /// /var/captures. Required if no storage ID is provided, otherwise optional.
+        /// Gets or sets this path is invalid if &#39;Continuous Capture&#39; is provided with
+        /// &#39;true&#39; or &#39;false&#39;. A valid local path on the targeting VM. Must include the
+        /// name of the capture file (*.cap). For linux virtual machine it must start
+        /// with /var/captures. Required if no storage ID is provided, otherwise
+        /// optional.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "filePath")]
         public string FilePath {get; set; }
+
+        /// <summary>
+        /// Gets or sets this path is valid if &#39;Continuous Capture&#39; is provided with
+        /// &#39;true&#39; or &#39;false&#39; and required if no storage ID is provided, otherwise
+        /// optional. Must include the name of the capture file (*.cap). For linux
+        /// virtual machine it must start with /var/captures.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "localPath")]
+        public string LocalPath {get; set; }
     }
 }

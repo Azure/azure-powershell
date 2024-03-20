@@ -33,6 +33,9 @@ namespace Microsoft.Azure.Management.Network.Models
         /// <param name="flowAnalyticsConfiguration">Parameters that define the configuration of traffic analytics.
         /// </param>
 
+        /// <param name="identity">FlowLog resource Managed Identity
+        /// </param>
+
         /// <param name="storageId">ID of the storage account which is used to store the flow log.
         /// </param>
 
@@ -44,11 +47,12 @@ namespace Microsoft.Azure.Management.Network.Models
 
         /// <param name="format">Parameters that define the flow log format.
         /// </param>
-        public FlowLogInformation(string targetResourceId, string storageId, bool enabled, TrafficAnalyticsProperties flowAnalyticsConfiguration = default(TrafficAnalyticsProperties), RetentionPolicyParameters retentionPolicy = default(RetentionPolicyParameters), FlowLogFormatParameters format = default(FlowLogFormatParameters))
+        public FlowLogInformation(string targetResourceId, string storageId, bool enabled, TrafficAnalyticsProperties flowAnalyticsConfiguration = default(TrafficAnalyticsProperties), ManagedServiceIdentity identity = default(ManagedServiceIdentity), RetentionPolicyParameters retentionPolicy = default(RetentionPolicyParameters), FlowLogFormatParameters format = default(FlowLogFormatParameters))
 
         {
             this.TargetResourceId = targetResourceId;
             this.FlowAnalyticsConfiguration = flowAnalyticsConfiguration;
+            this.Identity = identity;
             this.StorageId = storageId;
             this.Enabled = enabled;
             this.RetentionPolicy = retentionPolicy;
@@ -74,6 +78,12 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "flowAnalyticsConfiguration")]
         public TrafficAnalyticsProperties FlowAnalyticsConfiguration {get; set; }
+
+        /// <summary>
+        /// Gets or sets flowLog resource Managed Identity
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "identity")]
+        public ManagedServiceIdentity Identity {get; set; }
 
         /// <summary>
         /// Gets or sets iD of the storage account which is used to store the flow log.
@@ -114,6 +124,7 @@ namespace Microsoft.Azure.Management.Network.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "StorageId");
             }
+
 
 
 
