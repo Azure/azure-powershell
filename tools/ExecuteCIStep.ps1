@@ -157,18 +157,6 @@ $ErrorActionPreference = 'Stop'
 
 If ($Build)
 {
-    $LogFile = "$RepoArtifacts/Build.Log"
-    $buildCmdResult = "dotnet $BuildAction $RepoArtifacts/Azure.PowerShell.sln -c $Configuration -fl '/flp1:logFile=$LogFile;verbosity=quiet'"
-    If ($GenerateDocumentationFile -eq "false")
-    {
-        $buildCmdResult += " -p:GenerateDocumentationFile=false"
-    }
-    if ($EnableTestCoverage -eq "true")
-    {
-        $buildCmdResult += " -p:TestCoverage=TESTCOVERAGE"
-    }
-    Invoke-Expression -Command $buildCmdResult
-
     If (Test-Path -Path "$RepoArtifacts/PipelineResult")
     {
         $LogContent = Get-Content $LogFile

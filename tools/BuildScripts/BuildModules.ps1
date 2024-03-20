@@ -23,7 +23,10 @@ param (
     [Parameter(ParameterSetName="ModifiedBuildSet", Mandatory=$true)]
     [switch]$ModifiedModuleBuild,
 	[Parameter(ParameterSetName="TargetModuleSet")]
-    [string[]]$TargetModule
+    [string[]]$TargetModule,
+    [switch]$GenerateDocumentationFile,
+    [switch]$EnableTestCoverage
+
 )
 function Get-CsprojFromModule {
     param (
@@ -34,11 +37,11 @@ function Get-CsprojFromModule {
 
     $modulePath = @()
     foreach ($moduleName in $BuildModuleList) {
-        if ($SourceDirectory -And '' -ne $SourceDirectory) {
-            $modulePath += (Resolve-Path "$SourceDirectory/$moduleName")
+        if ($SourceDirectory) {
+            $modulePath += Join-Path $SourceDirectory $moduleName
         }
-        if ($SourceDirectory -And '' -ne $GeneratedDirectory) {
-            $modulePath += (Resolve-Path "$GeneratedDirectory/$moduleName")
+        if ($GeneratedDirectory) {
+            $modulePath += Join-Path $GeneratedDirectory $moduleName
         }
     }
     return Get-ChildItem -Path $modulePath -Filter "*.csproj" -Recurse | foreach-object { $_.FullName }
@@ -53,12 +56,13 @@ $renamedModules = @{
     'Storage' = @('Storage.Management');
     'DataFactory' = @('DataFactoryV1', 'DataFactoryV2')
 }
-$RepoArtifacts = (Resolve-Path "$RepoRoot/Artifacts")
+$RepoArtifacts = Join-Path $RepoRoot "Artifacts"
 
 $csprojFiles = @()
 $testModules = @()
-$sourceDirectory = Resolve-Path "$RepoRoot/src"
-$generatedDirectory = Resolve-Path "$RepoRoot/generated"
+$toolDirectory = Join-Path $RepoRoot "tools"
+$sourceDirectory = Join-Path $RepoRoot "src"
+$generatedDirectory = Join-Path $RepoRoot "generated"
 if (-not (Test-Path $sourceDirectory)) {
     Write-Warning "Cannot find source directory: $sourceDirectory"
 } elseif (-not (Test-Path $generatedDirectory)) {
@@ -77,7 +81,7 @@ switch ($PSCmdlet.ParameterSetName) {
         }
     }
     'CIPlanSet' {
-        $CIPlanPath = Resolve-Path "$RepoArtifacts/PipelineResult/CIPlan.json"
+        $CIPlanPath = Join-Path $RepoArtifacts "PipelineResult" "CIPlan.json"
         If (Test-Path $CIPlanPath) {
             $CIPlan = Get-Content $CIPlanPath | ConvertFrom-Json
             $TargetModule = $CIPlan.build
@@ -85,7 +89,7 @@ switch ($PSCmdlet.ParameterSetName) {
         }
     }
     'ModifiedBuildSet' {
-        $changelogPath = Resolve-Path "$RepoRoot/tools/Azpreview/changelog.md"
+        $changelogPath = Join-Path $RepoRoot "tools" "Azpreview" "changelog.md"
         if (Test-Path $changelogPath) {
             $content = Get-Content -Path $changelogPath
             $continueReading = $false
@@ -124,21 +128,39 @@ $testCsproj = $csprojFiles | Where-Object { $_ -match $testCsprojPattern }
 # can be simplified by more complex regex maybe
 $csprojFiles | Where-Object { ($_ -notmatch '^*.test.csproj$') -or $_ -in $testCsproj }
 if ($testModule -and $testModule.Length -ne 0) {
-    $csprojFiles += (Resolve-Path "$RepoRoot/tools/TestFx/TestFx.csproj")
+    $csprojFiles += Join-Path $RepoRoot "tools" "TestFx" "TestFx.csproj"
 }
 if ('Release' -eq $Configuration) {
     $csprojFiles | Where-Object { $_ -notmatch '^*.test.csproj$' }
 }
 $csprojFiles | Select-Object -Unique
 
-<#
-    insert generation
-#>
+$TargetModule | Foreach-Object {
+    . "$toolDirectory/PrepareAutorestModule.ps1" -ModuleRootName $_ -RepoRoot $RepoRoot
+}
 
 & dotnet --version
 & dotnet new sln -n Azure.PowerShell -o $RepoArtifacts --force
-$sln = (Resolve-Path "$RepoArtifacts/Azure.PowerShell.sln")
+$sln = Join-Path $RepoArtifacts "Azure.PowerShell.sln"
 foreach ($file in $csprojFiles) {
     & dotnet sln $sln add "$file"
 }
 Write-Output "Modules are added to sln file"
+
+$LogFile = Join-Path $RepoArtifacts 'Build.log'
+if ('Release' -eq $Configuration) {
+    $BuildAction = 'publish'
+} else {
+    $BuildAction = 'build'
+}
+
+$buildCmdResult = "dotnet $BuildAction $sln -c $Configuration -fl '/flp1:logFile=$LogFile;verbosity=quiet'"
+If ($GenerateDocumentationFile -eq "false")
+{
+    $buildCmdResult += " -p:GenerateDocumentationFile=false"
+}
+if ($EnableTestCoverage -eq "true")
+{
+    $buildCmdResult += " -p:TestCoverage=TESTCOVERAGE"
+}
+Invoke-Expression -Command $buildCmdResult

@@ -14,134 +14,245 @@
 
 #This script will pack build artifacts under temporary folder "artifacts/tmp" and output Az.*.nupkg to "artifacts"
 
-
-param(
+[CmdletBinding(DefaultParameterSetName="ModuleNameSet")]
+param (
+    [Parameter(Mandatory=$true)]
+    [string]$RepoRoot,
+    [Parameter(ParameterSetName="ModuleNameSet", Mandatory=$true)]
+    [string]$ModuleRootName
 )
-$ChangedFiles = Get-Content -Path "$PSScriptRoot\..\artifacts\FilesChanged.txt"
 
-$ALL_MODULE = "ALL_MODULE"
+<#
+    for:
+        src/Storage/Storage.Management
+        src/Storage/Storage.Autorest
+    ModuleRootName = Storage
+    ParentModuleName = Storage.Management
+    SubModuleName = Storage.Autorest
+#>
 
-$SKIP_MODULES = @("lib", "shared", "Accounts") # lib and shared are special folders in src that should not trigger autorest. Do not remove them.
-
-#Region Detect which module should be processed
-$ModuleSet = New-Object System.Collections.Generic.HashSet[string]
-foreach ($file in $ChangedFiles)
-{
-    $ParentFolder = Split-Path -Path $file -Parent
-    if ($ParentFolder.StartsWith("src"))
-    {
-        if ($ParentFolder -eq "src")
-        {
-            $NUll = $ModuleSet.Add($ALL_MODULE)
+function Get-OutdatedSubModule {
+    param (
+        [string]$SourceDirectory,
+        [string]$GeneratedDirectory
+    )
+    $outdatedSubModule = @()
+    $subModuleSource = Get-ChildItem -Path $SourceDirectory -Directory | Foreach-Object { $_.Name } | Where-Object { $_ -match "^*.Autorest$" }
+    foreach ($subModule in $subModuleSource) {
+        $generateInfoSource = Join-Path $SourceDirectory $subModule "generate-info.json"
+        $generateInfoGenerated = Join-Path $GeneratedDirectory $subModule "generate-info.json"
+        if (Test-Path $generateInfoGenerated) {
+            continue
+        } 
+        $generateIdSource = (Get-Content -Path $generateInfoSource | ConvertFrom-Json).generate_Id
+        $generateIdGenerated = (Get-Content -Path $generateInfoGenerated | ConvertFrom-Json).generate_Id
+        if ($generateIdSource -eq $generateIdGenerated) {
+            continue
         }
-        else
-        {
-            $NUll = $ModuleSet.Add($ParentFolder.Replace("/", "\").Split('\')[1])
+        $outDatedSubModule += $subModule
+    }
+    return $outDatedSubModule
+}
+
+function Invoke-SubModuleGeneration {
+    param (
+        [string]$GeneratedDirectory,
+        [string]$GenerateLog
+    )
+    Set-Location -Path $GenerateDirectory
+    npx autorest --max-memory-size=8192 >> $GenerateLog
+    if ($lastexitcode -ne 0) {
+        return $false
+    } else {
+        ./build-module.ps1
+        return $true
+    }
+}
+
+function Update-GeneratedSubModule {
+    param (
+        [string]$ModuleRootName,
+        [string]$SubModuleName,
+        [string]$SourceDirectory,
+        [string]$GeneratedDirectory
+    )
+    $SourceDirectory = Join-Path $SourceDirectory $ModuleRootName $SubModuleName
+    $GeneratedDirectory = Join-Path $GeneratedDirectory $ModuleRootName $SubModuleName
+    #clean generated directory before update
+    Get-ChildItem $GeneratedDirectory | Foreach-Object { Remove-Item -Path $_.FullName -Recurse -Force }
+    # remove $sourceDirectory/generated/modules
+    $localModulesPath = Join-Path $SourceDirectory 'generated' 'modules'
+    if (Test-Path $localModulesPath) {
+        Remove-Item -Path $localModulesPath -Recurse -Force
+    }
+    $fileToUpdate = @('generated', 'generate-info.json', "Az.$SubModuleName.psm1", "Az.$SubModuleName.format.ps1xml", 'exports', 'internal')
+    # Copy from src/ to generated/ 
+    $fileToUpdate | Foreach-Object {
+        $moveFrom = Join-Path $SourceDirectory $_
+        $moveTo = Join-Path $GeneratedDirectory $_
+        Copy-Item -Path $moveFrom -Destination $moveTo -Recurse -Force
+    }
+    # regenerate csproj
+    New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName "Az.$SubModuleName.csproj" -GeneratedDirectory $GeneratedDirectory -ModuleRootName $ModuleRootName -SubModuleName $SubModuleName
+}
+
+function New-GeneratedFileFromTemplate {
+    Param(
+        [string]
+        $TemplateName,
+        [string]
+        $GeneratedFileName,
+        [string]
+        $GeneratedDirectory,
+        [string]
+        $ModuleRootName,
+        [string]
+        $SubModuleName
+    )
+    # TODO: replace this with actual template directory
+    $TemplatePath = ""
+    $templateFile = Join-Path $TemplatePath $TemplateName
+    $GeneratedFile = Join-Path $GeneratedDirectory $GeneratedFileName
+
+    $templateFile = Get-Content -Path $templateFile
+    If ($templateFile -Match "{GUID}") {
+        $templateFile = $templateFile -replace '{GUID}', (New-Guid).Guid
+    }
+    $templateFile = $templateFile -replace '{ModuleNamePlaceHolder}', $SubModuleName
+    $templateFile = $templateFile -replace '{LowCaseModuleNamePlaceHolder}', $SubModuleName.ToLower()
+    $templateFile = $templateFile -replace '{ModuleFolderPlaceHolder}', $SubModuleName
+    $templateFile -replace '{RootModuleNamePlaceHolder}', $ModuleRootName
+    Write-Host "Copying template: $TemplateName." -ForegroundColor Yellow
+    $templateFile | Set-Content $GeneratedFile -force
+}
+
+function Add-SubModuleToParentModule {
+    param (
+        [string]$ModuleRootName,
+        [string]$SubModuleName,
+        [string]$SourceDirectory,
+        [string]$GeneratedDirectory
+    )
+    # TODO: replace this with actual template directory
+    $TemplatePath = ""
+    $rootToParentMap = @{
+        'Storage' = @('Storage.Management')
+    }
+    $parentModuleName = $ModuleRootName
+    if ($ModuleRootName -in $rootToParentMap.keys) {
+        $parentModuleName = $rootToParentMap[$ModuleRootName]
+    }
+    $moduleRootPath = Join-Path $SourceDirectory $ModuleRootName
+    $parentModulePath = Join-Path $moduleRootPath $parentModuleName
+    if (-not (Test-Path $parentModulePath)) {
+        New-Item -ItemType Directory -Force -Path $parentModulePath
+        <#
+            create csproj for parent module if not existed
+        #>
+        New-GeneratedFileFromTemplate -TemplateName 'HandcraftedModule.csproj' -GeneratedFileName "Az.$parentModuleName.csproj" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
+        <#
+            create AsemblyInfo.cs for parent module if not existed
+        #>
+        $propertiesPath = Join-Path $parentModulePath 'Properties'
+        New-Item -ItemType Directory -Force -Path $propertiesPath
+        New-GeneratedFileFromTemplate -TemplateName 'AssemblyInfo.cs' -GeneratedFileName "AssemblyInfo.cs" -GeneratedDirectory $propertiesPath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
+        <#
+            create psd1 for parent module if not existed
+        #>
+        New-GeneratedFileFromTemplate -TemplateName 'Module.psd1' -GeneratedFileName "Az.$ModuleRootName.psd1" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
+        <#
+            create ChangeLog.md for parent module if not existed
+        #>
+        New-GeneratedFileFromTemplate -TemplateName 'ChangeLog.md' -GeneratedFileName "ChangeLog.md" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
+    }
+    <#
+        merge sub module to parent module psd1
+    #>
+    $parentModulePsd1Path = Join-Path $ParentModulePath "Az.$ModuleRootName.psd1"
+    if (Test-Path $parentModulePsd1Path) {
+        $parentModuleMetadata = Import-LocalizedData -BaseDirectory $ParentModulePath -FileName "Az.$ModuleRootName.psd1"
+    } else {
+        $parentModuleMetadata = Import-LocalizedData -BaseDirectory $TemplatePath -FileName 'Module.psd1'
+    }
+    $parentModuleMetadata.RequiredAssemblies = ($parentModuleMetadata.RequiredAssemblies + "$SubModuleName/bin/Az.$SubModuleName.private.dll") | Select-Object -Unique
+    $parentModuleMetadata.FormatsToProcess = ($parentModuleMetadata.FormatsToProcess + "$SubModuleName/Az.$SubModuleName.format.ps1xml") | Select-Object -Unique
+    $parentModuleMetadata.NestedModules = ($parentModuleMetadata.NestedModules + "$SubModuleName/Az.$SubModuleName.psm1") | Select-Object -Unique
+    # these below properties will be set in PrivateData.PSData during New-ModuleManifest
+    if ($parentModuleMetadata.PrivateData -and $parentModuleMetadata.PSData) {
+        $parentModuleMetadata.PrivateData.PSData.keys | ForEach-Object {
+            $parentModuleMetadata.$_ = $parentModuleMetadata.PrivateData.PSData.$_
+        }
+        $null = $parentModuleMetadata.Remove('PrivateData')
+    }
+ 
+    $subModulePath = Join-Path $SourceDirectory $ModuleRootName $SubModuleName
+    $subMoudleMetadata = Import-LocalizedData -BaseDirectory $subModulePath -FileName "Az.$SubModuleName.psd1"
+
+    $subMoudleMetadata.FunctionsToExport | Where-Object { '*' -ne $_ } | ForEach-Object { $parentModuleMetadata.FunctionsToExport += $_ }
+    $parentModuleMetadata.FunctionsToExport = $parentModuleMetadata.FunctionsToExport | Select-Object -Unique
+
+    $subMoudleMetadata.AliasesToExport | Where-Object { '*' -ne $_ } | ForEach-Object { $parentModuleMetadata.AliasesToExport += $_ }
+    $parentModuleMetadata.AliasesToExport = $parentModuleMetadata.AliasesToExport | Select-Object -Unique
+
+    New-ModuleManifest -Path $parentModulePsd1Path @parentModuleMetadata
+
+    <#
+        merge sub module csproj to parent module sln
+    #>
+    $slnPath = Join-Path $moduleRootPath "$ModuleRootName.sln"
+    if (-not (Test-Path $slnPath)) {
+        dotnet new sln -n $ModuleRootName -o $moduleRootPath
+        Join-Path $SourceDirectory 'Accounts' | Get-ChildItem -Filter "*.csproj" -File -Recurse | Where-Object { $_.FullName -notmatch '^*.test.csproj$' } | Foreach-Object {
+            dotnet sln $slnPath add $_.FullName --solution-folder 'Accounts'
         }
     }
-    else
-    {
-        $NUll = $ModuleSet.Add($ALL_MODULE)
-    }
+    dotnet sln $slnPath add (JoinPath $GeneratedDirectory $ModuleRootName $SubModuleName "Az.$SubModuleName.csproj")
+    <#
+        generate help markdown by platyPS
+    #>
 }
-if ($ModuleSet.Contains($ALL_MODULE))
-{
-    $Null = $ModuleSet.Remove($ALL_MODULE)
-    $CIConfig = Get-Content "$PSScriptRoot\..\.ci-config.json" | ConvertFrom-Json
-    $SelectedModuleList = (Get-ChildItem "$PSScriptRoot\..\src\").Name | Where-Object { $CIConfig.selectModuleList -contains $_ }
-    $SelectedModuleList | ForEach-Object { $Null = $ModuleSet.Add($_) }
-    $ModuleList = $ModuleSet | Where-Object { $SKIP_MODULES -notcontains $_ }
+
+<#
+    TODO: add comment, add log
+#>
+$hadFailed = $false
+$sourceDirectory = Join-Path $RepoRoot "src"
+$generatedDirectory = Join-Path $RepoRoot "generated"
+if (-not (Test-Path $sourceDirectory)) {
+    Write-Warning "Cannot find source directory: $sourceDirectory"
+} elseif (-not (Test-Path $generatedDirectory)) {
+    Write-Warning "Cannot find generated directory: $generatedDirectory"
 }
-else
-{
-    $ModuleList = $ModuleSet | Where-Object { $SKIP_MODULES -notcontains $_ }
-}
-#EndRegion
 
-Install-Module -Name platyPS -RequiredVersion 0.14.2 -Force
-
-Import-Module "$PSScriptRoot\..\tools\Gen2Master\MoveFromGeneration2Master.ps1" -Force
-$TmpFolder = "$PSScriptRoot\..\tmp"
-New-Item -ItemType Directory -Force -Path $TmpFolder
-Remove-Item -Path "$TmpFolder\*" -Recurse -Force
-
-#Region Clone latest Az.Accounts code
-Set-Location -Path $TmpFolder
-git init
-git remote add -f origin https://github.com/Azure/azure-powershell.git
-git config core.sparseCheckout true
-Add-Content -Path .git/info/sparse-checkout -Value "src/"
-Add-Content -Path .git/info/sparse-checkout -Value "tools/"
-Add-Content -Path .git/info/sparse-checkout -Value "Repo.props"
-Add-Content -Path .git/info/sparse-checkout -Value "build.proj"
-git pull origin main --depth=1
-Copy-Item -Path "$TmpFolder\src\Accounts" -Destination "$TmpFolder\Accounts" -Force -Recurse
-Copy-Item "$TmpFolder\Accounts" "$PSScriptRoot\..\src" -Recurse -Force
-Copy-Item -Path "$TmpFolder\tools\Common*.targets" -Destination "$PSScriptRoot\..\tools" -Force
-Install-Module Az.Accounts -Repository PSGallery -Force
-Import-Module Az.Accounts
-Copy-Item "$PSScriptRoot\..\src\*.props" $TmpFolder
-
-If ($ModuleSet.Contains("Compute"))
-{
-    Copy-Item -Path "$TmpFolder\src\Resources\Resources.Test" -Destination "$PSScriptRoot\..\src\Resources\Resources.Test" -Force -Recurse
-}
-#EndRegion
-
-#Region generate the code and make the struture same with main branch.
-$AutorestOutputDir = "$PSScriptRoot\..\artifacts\autorest"
+$AutorestOutputDir = Join-Path $RepoRoot "artifacts" "autorest"
 New-Item -ItemType Directory -Force -Path $AutorestOutputDir
-$FailedModuleList = @()
-foreach ($Module in $ModuleList)
-{
-    $RootModuleFolder = "$PSScriptRoot\..\src\$Module\"
-    $SubModuleFolders = (Get-ChildItem -path $RootModuleFolder -filter Az.*.psd1 -Recurse).Directory
-    if ($Null -eq $SubModuleFolders)
-    {
-        # Module is not found maybe it's deleted in this PR
-        Write-Warning "Cannot find any psd1 files in $RootModuleFolder."
-        continue
-    }
-    $FailedSubModuleList = @()
-    # Go through the module including nested modules.
-    foreach ($SubModuleFolder in $SubModuleFolders) {
-        Set-Location -Path $SubModuleFolder
-        # Msbuild will regard autorest's output stream who contains "xx error xx:" as an fault by mistake.
-        # We need to redirect output stream to file to avoid the mistake.
-        npx autorest --max-memory-size=8192 >> "$AutorestOutputDir\$Module-SubModuleFolder.log"
-        # Exit if generation fails
-        if ($lastexitcode -ne 0)
-        {
-            $FailedSubModuleList += "$Module-SubModuleFolder"
+$outdatedModuleMap = @{}
+$moduleRootSource = Join-Path $sourceDirectory $ModuleRootName
+$moduleRootGenerated = Join-Path $generatedDirectory $ModuleRootName
+$outdatedSubModule = Get-OutdatedSubModule -SourceDirectory $moduleRootSource -GeneratedDirectory $moduleRootGenerated
+# TODO: make this asynchronous
+foreach ($subModuleName in $outdatedSubModule) {
+    $outdatedModuleMap[$ModuleRootName] += $subModuleName
+    $subModuleSourceDirectory = Join-Path $sourceDirectory $ModuleRootName $subModuleName
+    $generatedLog = Join-Path $AutorestOutputDir $ModuleRootName $subModuleName
+    $generated = Invoke-SubModuleGeneration -GenerateDirectory $subModuleSourceDirectory -GeneratedLog $generatedLog
+    if (-not $generated) {
+        $hadFailed = $true
+        Write-Error "Failed to generate code for module: $ModuleRootName, $subModuleName"
+        Write-Error "========= Start of error log for $ModuleRootName, $subModuleName ========="
+        Write-Error "log can be found at $generatedLog"
+        $generateLogDirectory | Get-Content | Foreach-Object { Write-Error $_ }
+        Write-Error "========= End of error log for $ModuleRootName, $subModuleName"
+    } else {
+        $subModuleGeneratedDirectory = Join-Path $generatedDirectory $ModuleRootName $subModuleName
+        if (-not (Test-Path $subModuleGeneratedDirectory)) {
+            New-Item -ItemType Directory -Force -Path $subModuleGeneratedDirectory
         }
-        else
-        {
-            ./build-module.ps1
-        }
+        Update-GeneratedSubModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory
+        Add-SubModuleToParentModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory
     }
-    if ($FailedSubModuleList.Length -ne 0)
-    {
-        $FailedModuleList += $FailedSubModuleList
-        continue
-    }
-    #New-Item -ItemType Directory -Path $TmpFolder\$Module -Force
-    Move-Generation2Master -SourcePath "$PSScriptRoot\..\src\$Module\" -DestPath $TmpFolder\src\$Module
-    Set-Location -Path $TmpFolder
-    Remove-Item "$RootModuleFolder\*" -Recurse -Force
-    Copy-Item -Path "$TmpFolder\src\$Module" "$TmpFolder\src\.."  -Recurse -Force
 }
-#EndRegion
-Remove-Item -Path "$TmpFolder\src" -Recurse -Force
-Remove-Item -Path "$TmpFolder\artifacts" -Recurse -Force
-Remove-Item -Path "$TmpFolder\tools" -Recurse -Force
-Copy-Item "$TmpFolder\*" "$PSScriptRoot\..\src" -Exclude src,.git,tools,build.proj -Recurse -Force
-if ($FailedModuleList.Length -ne 0)
-{
-    Write-Error "Failed to generate code for module(s): $FailedModuleList"
-    foreach ($failedModule in $FailedModuleList)
-    {
-        Write-Error "========= Error log for $failedModule ========="
-        Write-Host (Get-Content "$AutorestOutputDir\$failedModule.log")
-    }
+
+if ($hadFailed) {
     exit 1
 }
