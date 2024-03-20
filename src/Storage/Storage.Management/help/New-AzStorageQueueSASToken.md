@@ -15,14 +15,14 @@ Generates a shared access signature token for an Azure storage queue.
 
 ### SasPolicy
 ```
-New-AzStorageQueueSASToken [-Name] <String> -Policy <String> [-Protocol <SharedAccessProtocol>]
+New-AzStorageQueueSASToken [-Name] <String> -Policy <String> [-Protocol <String>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SasPermission
 ```
-New-AzStorageQueueSASToken [-Name] <String> [-Permission <String>] [-Protocol <SharedAccessProtocol>]
+New-AzStorageQueueSASToken [-Name] <String> [-Permission <String>] [-Protocol <String>]
  [-IPAddressOrRange <String>] [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-FullUri]
  [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
@@ -172,7 +172,7 @@ The acceptable values for this parameter are:
 The default value is HttpsOrHttp.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Storage.SharedAccessProtocol]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: HttpsOnly, HttpsOrHttp
