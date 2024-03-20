@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a Logical Network 
 ```powershell
-{{ Add code here }}
+New-AzStackHCIVMLogicalNetwork  -Name "testLnet" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -VmSwitchName "testswitch"
 ```
-
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name            ResourceGroupName
+----            -----------------
+testLnet       test-rg
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command creates a logical network in the specified resource group. 
 
