@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added a new parameter `-SharingProfile` to `New-AzCapacityReservationGroup` and `Update-AzCapacityReservationGroup`.
 
 ## Version 7.1.1
 * Fixed `New-AzVmss` to correctly work when using `-EdgeZone` by creating the Load Balancer in the correct edge zone.
