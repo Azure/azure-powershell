@@ -9,3 +9,4 @@ testVm          test-rg
 ```
 
 This command updates an existing virtual machine in the specified resource group. 
+
