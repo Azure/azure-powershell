@@ -24,6 +24,7 @@
 * Renamed parameter `-AutoOSUpgrade` to `-EnableAutomaticOSUpgrade` in `New-AzVmssConfig` cmdlet for consistency. Using `-AutoOSUpgrade` as parameter name will continue to work as it is added as an alias.
 * Upgraded Azure.Core to 1.37.0.
 * Az.Compute is updated to use the 2023-07-03 GalleryRP REST API calls.
+* Add support to `New-AzVMConfig` for `-CommunityGalleryImageId` and `-SharedGalleryImageId` parameters.
 
 ## Version 7.1.2
 * Fixed `New-AzVM` when a source image is specified to avoid an error on the `Version` value.
