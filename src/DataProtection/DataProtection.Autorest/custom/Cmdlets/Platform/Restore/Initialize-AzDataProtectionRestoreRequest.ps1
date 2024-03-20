@@ -89,7 +89,7 @@
         [System.String]
         ${TargetContainerURI},
 
-        [Parameter(ParameterSetName="RestoreAsFiles", Mandatory, HelpMessage='File name to be prefixed to the restored backup data.')]
+        [Parameter(ParameterSetName="RestoreAsFiles", Mandatory=$false, HelpMessage='File name to be prefixed to the restored backup data.')]
         [System.String]
         ${FileNamePrefix},
 
@@ -192,12 +192,26 @@
            $restoreRequest.RestoreTargetInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.RestoreFilesTargetInfo]::new()
            $restoreRequest.RestoreTargetInfo.ObjectType = "RestoreFilesTargetInfo"
 
-           if(!($PSBoundParameters.ContainsKey("FileNamePrefix")) -or !($PSBoundParameters.ContainsKey("TargetContainerURI")) ){
-                $errormsg = "FileNamePrefix and TargetContainerURI parameters are required for RestoreAsFiles "
-    			    throw $errormsg
+           if($manifest.fileNamePrefixDisabled -and $PSBoundParameters.ContainsKey("FileNamePrefix")){
+               $errormsg = "FileNamePrefix can't be set for given DatasourceType. Please try again after removing FileNamePrefix parameter"
+    		   throw $errormsg
+           }
+           elseif($manifest.fileNamePrefixDisabled -and !($PSBoundParameters.ContainsKey("TargetContainerURI"))){
+               $errormsg = "TargetContainerURI parameter is required for RestoreAsFiles for given DatasourceType"
+    		   throw $errormsg
+           }
+           elseif( !$manifest.fileNamePrefixDisabled -and (!($PSBoundParameters.ContainsKey("FileNamePrefix")) -or !($PSBoundParameters.ContainsKey("TargetContainerURI"))) ){
+                $errormsg = "FileNamePrefix and TargetContainerURI parameters are required for RestoreAsFiles for given DatasourceType"
+    		    throw $errormsg
            }
 
-           $restoreRequest.RestoreTargetInfo.TargetDetail.FilePrefix = $FileNamePrefix
+           if($manifest.fileNamePrefixDisabled){
+               $restoreRequest.RestoreTargetInfo.TargetDetail.FilePrefix = "dummyprefix"
+           }
+           else{
+               $restoreRequest.RestoreTargetInfo.TargetDetail.FilePrefix = $FileNamePrefix
+           }
+           
            $restoreRequest.RestoreTargetInfo.TargetDetail.RestoreTargetLocationType = "AzureBlobs"
            $restoreRequest.RestoreTargetInfo.TargetDetail.Url = $TargetContainerURI
 

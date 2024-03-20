@@ -15,6 +15,7 @@
   "allowedRestoreModes": [ "RecoveryPointBased" ],
   "allowedRestoreTargetTypes": [ "RestoreAsFiles" ],
   "itemLevelRecoveyEnabled": false,
+  "fileNamePrefixDisabled":  true,
   "addBackupDatasourceParametersList": false,
   "backupConfigurationRequired": false,
   "addDataStoreParametersList": false,
@@ -28,7 +29,7 @@
     "disableAddRetentionRule": false,
     "disableCustomRetentionTag": false,
     "backupScheduleSupported": true,
-    "supportedBackupFrequency": [ "Weekly", "Monthly" ],
+    "supportedBackupFrequency": [ "Daily", "Weekly" ],
     "defaultPolicy": {
       "name": "PGFlexPolicy1",
       "datasourceTypes": [ "Microsoft.DBforPostgreSQL/flexibleServers" ],

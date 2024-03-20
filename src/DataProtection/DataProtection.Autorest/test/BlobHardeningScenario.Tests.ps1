@@ -72,7 +72,7 @@ Describe 'BlobHardeningScenario' {
         $jobid -ne $null | Should be $true
 
         $jobstatus = "InProgress"
-        while($jobstatus -ne "Completed")
+        while($jobstatus -eq "InProgress")
         {
             Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName

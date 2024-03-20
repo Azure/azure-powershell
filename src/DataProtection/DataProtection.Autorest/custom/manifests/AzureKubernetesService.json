@@ -15,6 +15,7 @@
   "allowedRestoreModes": [ "RecoveryPointBased" ],
   "allowedRestoreTargetTypes": [ "AlternateLocation", "OriginalLocation" ],
   "itemLevelRecoveyEnabled": true,
+  "fileNamePrefixDisabled": false,
   "addBackupDatasourceParametersList": true,
   "backupConfigurationRequired": true,
   "addDataStoreParametersList": true,

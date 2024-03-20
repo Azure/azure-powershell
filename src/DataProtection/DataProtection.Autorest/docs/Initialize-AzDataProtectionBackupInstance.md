@@ -68,6 +68,26 @@ The fourth command backup configuration object needed for AzureKubernetesService
 The fifth command initializes the client object for backup instance.
 This object can now be used to configure backup using New-AzDataProtectionBackupInstance after all necessary permissions are assigned with Set-AzDataProtectionMSIPermission command.
 
+### Example 3: Configure protection for AzureDatabaseForPGFlexServer
+```powershell
+$vault = Get-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
+$pol = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" -Name "policyName"
+$datasourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rgName/providers/Microsoft.DBforPostgreSQL/flexibleServers/test-pgflex"
+$backupInstanceClientObject = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDatabaseForPGFlexServer -DatasourceLocation $vault.Location -PolicyId $pol[0].Id -DatasourceId $datasourceId
+```
+
+```output
+Name BackupInstanceName
+---- ------------------
+     test-pgflex-test-pgflex-ed68435e-069t-4b4a-9d84-d0c194800fc2
+```
+
+The first command gets the backup vault.
+The second command get the AzureDatabaseForPGFlexServer policy.
+The third command datasource ARM Id.
+The fourth command initializes the backup instance.
+Similarly use datasourcetype AzureDatabaseForMySQL to initialize backup instance for AzureDatabaseForMySQL.
+
 ## PARAMETERS
 
 ### -BackupConfiguration

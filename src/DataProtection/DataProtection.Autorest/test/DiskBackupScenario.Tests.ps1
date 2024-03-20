@@ -49,12 +49,13 @@ Describe 'DiskBackupScenario' {
 
         $jobid = $job.JobId.Split("/")[-1]
         $jobstatus = "InProgress"
-        while($jobstatus -ne "Completed")
+        while($jobstatus -eq "InProgress")
         {
             Start-TestSleep -Seconds 5
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
             $jobstatus = $currentjob.Status
         }
+        $jobstatus | Should be "Completed"
 
         $rp = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $backupInstanceName -ResourceGroupName $rgName -SubscriptionId $sub -VaultName $vaultName
         $restoreRequestObject = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDisk -SourceDataStore OperationalStore -RestoreLocation centraluseuap -RestoreType AlternateLocation -RecoveryPoint $rp[0].Name -TargetResourceId $restoreDiskId
@@ -62,11 +63,12 @@ Describe 'DiskBackupScenario' {
 
         $jobid = $job.JobId.Split("/")[-1]
         $jobstatus = "InProgress"
-        while($jobstatus -ne "Completed")
+        while($jobstatus -eq "InProgress")
         {
             Start-TestSleep -Seconds 5
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
             $jobstatus = $currentjob.Status
         }
+        $jobstatus | Should be "Completed"
      }
 }

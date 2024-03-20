@@ -125,6 +125,37 @@ This command runs in async way using parameter -NoWait.
 Next we fetch the operation in a while loop until it succeeds.
 The last command is used to configure protection for the backup instance.
 
+### Example 5: Configure protection for AzureDatabaseForMySQL
+```powershell
+$vault = Get-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
+$pol = Get-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -ResourceGroupName "resourceGroupName" | Where-Object { $_.DatasourceType  -match "mysql" }
+$datasourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rgName/providers/Microsoft.DBforMySQL/flexibleServers/test-mysql"
+$backupInstanceClientObject = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDatabaseForMySQL -DatasourceLocation $vault.Location -PolicyId $pol[0].Id -DatasourceId $datasourceId
+Set-AzDataProtectionMSIPermission -VaultResourceGroup "resourceGroupName" -VaultName "vaultName" -BackupInstance $backupInstanceClientObject -PermissionsScope ResourceGroup
+$operationResponse = Test-AzDataProtectionBackupInstanceReadiness -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -BackupInstance $backupInstanceClientObject.Property -NoWait
+$operationId = $operationResponse.Target.Split("/")[-1].Split("?")[0]
+While((Get-AzDataProtectionOperationStatus -OperationId $operationId -Location $vault.Location -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Status -eq "Inprogress"){
+    Start-Sleep -Seconds 10
+}
+$backupnstanceCreate = New-AzDataProtectionBackupInstance -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -BackupInstance $backupInstanceClientObject
+```
+
+```output
+Name                                                                 BackupInstanceName
+----                                                                 ------------------
+test-mysql-test-mysql-64f7399a-b024-4d61-8f16-c424c5fd2564 test-mysql-test-mysql-64f7399a-b024-4d61-8f16-c424c5fd2564
+```
+
+The first command gets the backup vault.
+The second command get the AzureDatabaseForMySQL policy.
+The third command datasource ARM Id.
+The fourth command initializes the backup instance.
+The fifth command assigns the necessary permissions for configure backup.
+The sixth command validates if the backup instance object is valid for configure protection (validate backup).
+This command runs in async way using parameter -NoWait.
+Next we fetch the operation in a while loop until it succeeds.
+The last command is used to configure protection for the backup instance.
+
 ## PARAMETERS
 
 ### -AsJob

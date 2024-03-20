@@ -213,30 +213,17 @@
                       $storageAccountSubId = ($targetResourceArmId -split "/resourceGroups/")[0]
                   }
                   else{
-                      if($StorageAccountARMId -eq ""){#$StorageAccountResourceGroupName -eq $null){
+                      if($StorageAccountARMId -eq ""){
                           $err = "Permissions can't be assigned to target storage account. Please input parameter StorageAccountARMId"
                           throw $err
                       }
 
                       # storage Account subscription and resource group
-                      $storageAccountSubId = ($StorageAccountARMId -split "/resourceGroups/")[0] # "/subscriptions/" + $subscriptionIdInternal
-                      $storageAccResourceGroupId = ($StorageAccountARMId -split "/providers/")[0] #$storageAccountSubId + "/resourceGroups/" + $StorageAccountResourceGroupName
-                      
-                      # $url = $restoreRequest.RestoreTargetInfo.TargetDetail.Url
-                      # 
-                      # if(-not ($url -match "^https://.+blob.core.windows.net/.+")){
-                      #     $err = "Parameter restoreRequest.RestoreTargetInfo.TargetDetail.Url is not in correct format"
-                      #     throw $err
-                      # }
-                      # $storageAccName = (($url -split "//")[1] -split "\.")[0]
-                      # 
-                      # CheckStorageModuleDependency
-                      # $contextSub = (Get-AzContext).Subscription.Id
-                      # Set-AzContext -SubscriptionId $subscriptionIdInternal | Out-Null
+                      $storageAccountSubId = ($StorageAccountARMId -split "/resourceGroups/")[0]
+                      $storageAccResourceGroupId = ($StorageAccountARMId -split "/providers/")[0]
 
                       # storage Account ID
-                      $storageAccId = $StorageAccountARMId #(Get-AzStorageAccount -ResourceGroupName $StorageAccountResourceGroupName -Name $storageAccName).Id
-                      # Set-AzContext -SubscriptionId $contextSub | Out-Null
+                      $storageAccId = $StorageAccountARMId                      
                   }
                                     
                   $CheckPermission = $AllRoles | Where-Object { ($_.Scope -eq $storageAccId -or $_.Scope -eq $storageAccResourceGroupId -or  $_.Scope -eq $storageAccountSubId) -and $_.RoleDefinitionName -eq $Permission}
