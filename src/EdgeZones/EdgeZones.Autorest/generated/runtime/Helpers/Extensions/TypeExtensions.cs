@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 ﻿using System;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.Json
 {
     internal static class TypeExtensions
     {

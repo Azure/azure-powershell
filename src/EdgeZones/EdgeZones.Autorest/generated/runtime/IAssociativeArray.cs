@@ -2,8 +2,8 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-#define NO_DICT_PROPERTIES
-namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime
+#define DICT_PROPERTIES
+namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime
 {
     /// <summary>A subset of IDictionary that doesn't implement IEnumerable or IDictionary to work around PowerShell's aggressive formatter</summary>
     public interface IAssociativeArray<T>

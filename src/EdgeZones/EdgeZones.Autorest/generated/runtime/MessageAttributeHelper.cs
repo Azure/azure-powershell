@@ -11,9 +11,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
-namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime
+namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime
 {
-    using Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.generated.runtime.Properties;
+    using Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.generated.runtime.Properties;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime
     using System.Threading.Tasks;
     public class MessageAttributeHelper
     {
-        private static readonly bool IsAzure = Convert.ToBoolean(@"false");
+        private static readonly bool IsAzure = Convert.ToBoolean(@"true");
         public const string BREAKING_CHANGE_ATTRIBUTE_INFORMATION_LINK = "https://aka.ms/azps-changewarnings";
         public const string SUPPRESS_ERROR_OR_WARNING_MESSAGE_ENV_VARIABLE_NAME = "SuppressAzurePowerShellBreakingChangeWarnings";
 

@@ -5,7 +5,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.Json
 {
     public sealed class HashSetConverter<T> : JsonConverter<HashSet<T>>
     {

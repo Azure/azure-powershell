@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.generated.runtime.Properties
+namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.generated.runtime.Properties
 {
     using System;
 
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.generated.runtime
             {
                 if (object.ReferenceEquals(resourceMan, null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Sample.API.generated.runtime.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.generated.runtime.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -4576,7 +4576,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.generated.runtime
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to &quot;An exception occurred when calling the ServiceManagement Cmdlets. HTTP Status Code: {0}. Service Management Error Code: {1}. Message: {2}. Operation Tracking ID: {3}.&quot;.
+        ///   Looks up a localized string similar to &quot;An exception occurred when calling the ServiceManagement API. HTTP Status Code: {0}. Service Management Error Code: {1}. Message: {2}. Operation Tracking ID: {3}.&quot;.
         /// </summary>
         public static string ServiceManagementClientExceptionStringFormat
         {

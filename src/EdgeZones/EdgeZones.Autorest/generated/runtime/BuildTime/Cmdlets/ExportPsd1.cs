@@ -8,9 +8,9 @@ using System.Linq;
 using System.Management.Automation;
 using System.Text;
 using System.Text.RegularExpressions;
-using static Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.PowerShell.PsHelpers;
+using static Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.PowerShell.PsHelpers;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.PowerShell
+namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.PowerShell
 {
     [Cmdlet(VerbsData.Export, "Psd1")]
     [DoNotExport]
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.PowerShel
         [Parameter(Mandatory = true)]
         public Guid ModuleGuid { get; set; }
 
-        private static readonly bool IsAzure = Convert.ToBoolean(@"false");
+        private static readonly bool IsAzure = Convert.ToBoolean(@"true");
         private const string CustomFolderRelative = "./custom";
         private const string Indent = Psd1Indent;
         private const string Undefined = "undefined";
@@ -71,13 +71,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.PowerShel
                 var sb = new StringBuilder();
                 sb.AppendLine("@{");
                 sb.AppendLine($@"{GuidStart} = '{ModuleGuid}'");
-                sb.AppendLine($@"{Indent}RootModule = '{"./EdgeZones.psm1"}'");
+                sb.AppendLine($@"{Indent}RootModule = '{"./Az.EdgeZones.psm1"}'");
                 sb.AppendLine($@"{Indent}ModuleVersion = '{version}'");
                 sb.AppendLine($@"{Indent}CompatiblePSEditions = 'Core', 'Desktop'");
-                sb.AppendLine($@"{Indent}Author = '{""}'");
-                sb.AppendLine($@"{Indent}CompanyName = '{""}'");
-                sb.AppendLine($@"{Indent}Copyright = '{""}'");
-                sb.AppendLine($@"{Indent}Description = '{""}'");
+                sb.AppendLine($@"{Indent}Author = '{"Microsoft Corporation"}'");
+                sb.AppendLine($@"{Indent}CompanyName = '{"Microsoft Corporation"}'");
+                sb.AppendLine($@"{Indent}Copyright = '{"Microsoft Corporation. All rights reserved."}'");
+                sb.AppendLine($@"{Indent}Description = '{"Microsoft Azure PowerShell: EdgeZones cmdlets"}'");
                 sb.AppendLine($@"{Indent}PowerShellVersion = '5.1'");
                 sb.AppendLine($@"{Indent}DotNetFrameworkVersion = '4.7.2'");
 
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.PowerShel
                 }
                 else
                 {
-                    sb.AppendLine($@"{Indent}RequiredAssemblies = '{"./bin/EdgeZones.private.dll"}'");
+                    sb.AppendLine($@"{Indent}RequiredAssemblies = '{"./bin/Az.EdgeZones.private.dll"}'");
                 }
 
                 // NestedModules
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.PowerShel
                     var customFormatPs1xmlFiles = Directory.GetFiles(CustomFolder)
                         .Where(f => f.EndsWith(".format.ps1xml"))
                         .Select(f => $"{CustomFolderRelative}/{Path.GetFileName(f)}");
-                    var formatList = customFormatPs1xmlFiles.Prepend("./EdgeZones.format.ps1xml").ToPsList();
+                    var formatList = customFormatPs1xmlFiles.Prepend("./Az.EdgeZones.format.ps1xml").ToPsList();
                     sb.AppendLine($@"{Indent}FormatsToProcess = {formatList}");
                 }
 
@@ -167,9 +167,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.PowerShel
                 {
                     sb.AppendLine($@"{Indent}{Indent}{Indent}Prerelease = '{previewVersion}'");
                 }
-                sb.AppendLine($@"{Indent}{Indent}{Indent}Tags = {"".Split(' ').ToPsList().NullIfEmpty() ?? "''"}");
-                sb.AppendLine($@"{Indent}{Indent}{Indent}LicenseUri = '{""}'");
-                sb.AppendLine($@"{Indent}{Indent}{Indent}ProjectUri = '{""}'");
+                sb.AppendLine($@"{Indent}{Indent}{Indent}Tags = {"Azure ResourceManager ARM PSModule EdgeZones".Split(' ').ToPsList().NullIfEmpty() ?? "''"}");
+                sb.AppendLine($@"{Indent}{Indent}{Indent}LicenseUri = '{"https://aka.ms/azps-license"}'");
+                sb.AppendLine($@"{Indent}{Indent}{Indent}ProjectUri = '{"https://github.com/Azure/azure-powershell"}'");
                 sb.AppendLine($@"{Indent}{Indent}{Indent}ReleaseNotes = ''");
                 var profilesList = "";
                 if (IsAzure && !String.IsNullOrEmpty(profilesList))

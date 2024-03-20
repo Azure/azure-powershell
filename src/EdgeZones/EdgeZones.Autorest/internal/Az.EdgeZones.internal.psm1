@@ -3,7 +3,7 @@
   $null = Import-Module -PassThru -Name (Join-Path $PSScriptRoot '..\bin\Az.EdgeZones.private.dll')
 
   # Get the private module's instance
-  $instance = [Sample.API.Module]::Instance
+  $instance = [Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Module]::Instance
 
   # Export nothing to clear implicit exports
   Export-ModuleMember

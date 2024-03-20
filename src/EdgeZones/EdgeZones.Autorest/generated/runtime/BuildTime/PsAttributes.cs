@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 using System;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone
+namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeZones
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class DescriptionAttribute : Attribute

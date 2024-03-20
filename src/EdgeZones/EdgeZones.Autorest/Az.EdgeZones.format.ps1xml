@@ -2,9 +2,99 @@
 <Configuration>
   <ViewDefinitions>
     <View>
-      <Name>Sample.API.Models.AzureExtendedZone</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.EdgeZonesIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Sample.API.Models.AzureExtendedZone#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.EdgeZonesIdentity#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ExtendedZoneName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Id</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>SubscriptionId</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>ExtendedZoneName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Id</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>SubscriptionId</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.ErrorAdditionalInfo</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.ErrorAdditionalInfo#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Type</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Type</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.ErrorDetail</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.ErrorDetail#Multiple</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>Code</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Message</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Target</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Code</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Message</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Target</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.ExtendedZone</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.ExtendedZone#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -34,6 +124,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>Type</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
@@ -66,15 +159,18 @@
               <TableColumnItem>
                 <PropertyName>Type</PropertyName>
               </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
         </TableRowEntries>
       </TableControl>
     </View>
     <View>
-      <Name>Sample.API.Models.AzureExtendedZoneListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.ExtendedZoneListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Sample.API.Models.AzureExtendedZoneListResult#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.ExtendedZoneListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -94,9 +190,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Sample.API.Models.AzureExtendedZoneProperties</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.ExtendedZoneProperties</Name>
       <ViewSelectedBy>
-        <TypeName>Sample.API.Models.AzureExtendedZoneProperties#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.ExtendedZoneProperties#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -176,93 +272,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Sample.API.Models.EdgeZonesIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.Operation</Name>
       <ViewSelectedBy>
-        <TypeName>Sample.API.Models.EdgeZonesIdentity#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>AzureExtendedZoneName</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>SubscriptionId</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>AzureExtendedZoneName</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>SubscriptionId</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Sample.API.Models.ErrorAdditionalInfo</Name>
-      <ViewSelectedBy>
-        <TypeName>Sample.API.Models.ErrorAdditionalInfo#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Sample.API.Models.ErrorDetail</Name>
-      <ViewSelectedBy>
-        <TypeName>Sample.API.Models.ErrorDetail#Multiple</TypeName>
-      </ViewSelectedBy>
-      <TableControl>
-        <TableHeaders>
-          <TableColumnHeader>
-            <Label>Code</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Message</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Target</Label>
-          </TableColumnHeader>
-        </TableHeaders>
-        <TableRowEntries>
-          <TableRowEntry>
-            <TableColumnItems>
-              <TableColumnItem>
-                <PropertyName>Code</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Message</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Target</PropertyName>
-              </TableColumnItem>
-            </TableColumnItems>
-          </TableRowEntry>
-        </TableRowEntries>
-      </TableControl>
-    </View>
-    <View>
-      <Name>Sample.API.Models.Operation</Name>
-      <ViewSelectedBy>
-        <TypeName>Sample.API.Models.Operation#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.Operation#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -300,9 +312,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Sample.API.Models.OperationDisplay</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.OperationDisplay</Name>
       <ViewSelectedBy>
-        <TypeName>Sample.API.Models.OperationDisplay#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.OperationDisplay#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -340,9 +352,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Sample.API.Models.OperationListResult</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.OperationListResult</Name>
       <ViewSelectedBy>
-        <TypeName>Sample.API.Models.OperationListResult#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.OperationListResult#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -362,9 +374,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Sample.API.Models.ProxyResource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.ProxyResource</Name>
       <ViewSelectedBy>
-        <TypeName>Sample.API.Models.ProxyResource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.ProxyResource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -432,9 +444,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Sample.API.Models.Resource</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.Resource</Name>
       <ViewSelectedBy>
-        <TypeName>Sample.API.Models.Resource#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.Resource#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -466,9 +478,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Sample.API.Models.SystemData</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.SystemData</Name>
       <ViewSelectedBy>
-        <TypeName>Sample.API.Models.SystemData#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.SystemData#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

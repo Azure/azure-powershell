@@ -5,7 +5,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.Json
 {
     internal class SerializationOptions
     {

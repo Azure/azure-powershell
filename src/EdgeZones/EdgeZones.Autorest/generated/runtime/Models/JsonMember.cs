@@ -6,7 +6,7 @@
 using System.Reflection;
 using System.Runtime.Serialization;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.Json
 {
     
 

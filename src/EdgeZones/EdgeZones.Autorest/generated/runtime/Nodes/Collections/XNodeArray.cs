@@ -5,7 +5,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.PowerShell.Cmdlets.AzureExtendedZone.Runtime.Json
+namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Runtime.Json
 {
     public sealed partial class XNodeArray : JsonArray, ICollection<JsonNode>
     {
