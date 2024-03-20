@@ -18,7 +18,8 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
  [-RecoveryPoint <String>] [-RestoreConfiguration <KubernetesClusterRestoreCriteria>]
  [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreURI <String>]
- [-SecretStoreType <SecretStoreTypes>] [-PointInTime <DateTime>] [<CommonParameters>]
+ [-SecretStoreType <SecretStoreTypes>] [-PointInTime <DateTime>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### AlternateLocationILR
@@ -26,7 +27,8 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String> [-ItemLevelRecovery]
  [-RecoveryPoint <String>] [-ContainersList <String[]>]
- [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [<CommonParameters>]
+ [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### OriginalLocationILR
@@ -36,7 +38,8 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  [-ContainersList <String[]>] [-RestoreConfiguration <KubernetesClusterRestoreCriteria>]
  [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreURI <String>]
  [-SecretStoreType <SecretStoreTypes>] -BackupInstance <BackupInstanceResource> [-PointInTime <DateTime>]
- [-FromPrefixPattern <String[]>] [-ToPrefixPattern <String[]>] [<CommonParameters>]
+ [-FromPrefixPattern <String[]>] [-ToPrefixPattern <String[]>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### OriginalLocationFullRecovery
@@ -45,7 +48,8 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>]
  [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-RehydrationDuration <String>]
  [-RehydrationPriority <String>] [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>]
- -BackupInstance <BackupInstanceResource> [-PointInTime <DateTime>] [<CommonParameters>]
+ -BackupInstance <BackupInstanceResource> [-PointInTime <DateTime>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### RestoreAsFiles
@@ -54,7 +58,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>]
  -TargetContainerURI <String> -FileNamePrefix <String> [-RehydrationDuration <String>]
  [-RehydrationPriority <String>] [-TargetResourceIdForRestoreAsFile <String>] [-SecretStoreURI <String>]
- [-SecretStoreType <SecretStoreTypes>] [<CommonParameters>]
+ [-SecretStoreType <SecretStoreTypes>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,6 +143,50 @@ FromPrefix           ToPrefix
                     
 Note: The ranges shouldn't overlap with each other.
 Reference: https://learn.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata
+
+### Example 5: Get cross region restore request object for restore as database for datasource type AzureDatabaseForPostgreSQL
+```powershell
+$vault = Search-AzDataProtectionBackupVaultInAzGraph -ResourceGroup $ResourceGroupName -Subscription $SubscriptionId -Vault $VaultName
+$instance = Search-AzDataProtectionBackupInstanceInAzGraph -Subscription $subscriptionId  -ResourceGroup  $resourceGroupName  -Vault $vaultName -DatasourceType AzureDatabaseForPostgreSQL
+$recoveryPointsCrr = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -UseSecondaryRegion
+$targetResourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/{targetResourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{targetServerName}/databases/{targetDatabaseName}"
+$secretURI = "https://{crr-key-vault}.vault.azure.net/secrets/{secret-for-crr}"
+$OssRestoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPostgreSQL -SourceDataStore VaultStore -RestoreLocation $vault.ReplicatedRegion[0] -RestoreType AlternateLocation -RecoveryPoint $recoveryPointsCrr[0].Property.RecoveryPointId -TargetResourceId $targetResourceId -SecretStoreURI $secretURI -SecretStoreType AzureKeyVault
+```
+
+```output
+ObjectType                                  SourceDataStoreType SourceResourceId RecoveryPointId
+----------                                  ------------------- ---------------- ---------------
+AzureBackupRecoveryPointBasedRestoreRequest VaultStore                           d49aeb83264456ccab92a105cade9afe
+```
+
+First and second commands fetch the vault and backup instance from Azure resource graph.
+Third command is used to fetch recovery points from secondary region for cross region restore.
+Last command constructs the cross region restore request object for restore to alternate location as database for datasourcetype AzureDatabaseForPostgreSQL.
+Please note that we set RestoreLocation parameter to $vault.ReplicatedRegion[0] (paired region) instead of $vault.Location for normal restore.
+Use Test-AzDataProtectionBackupInstanceRestore, Start-AzDataProtectionBackupInstanceRestore commands to validate and trigger restore.
+
+### Example 6: Get cross region restore request object for restore as database for datasource type AzureDatabaseForPostgreSQL
+```powershell
+$vault = Search-AzDataProtectionBackupVaultInAzGraph -ResourceGroup $ResourceGroupName -Subscription $SubscriptionId -Vault $VaultName
+$instance = Search-AzDataProtectionBackupInstanceInAzGraph -Subscription $subscriptionId  -ResourceGroup  $resourceGroupName  -Vault $vaultName -DatasourceType AzureDatabaseForPostgreSQL
+$recoveryPointsCrr = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subscriptionId -UseSecondaryRegion
+$targetContainerURI = "https://{targetStorageAccountName}.blob.core.windows.net/{targetContainerName}"
+$fileNamePrefix = "oss-pstest-crrasfiles"
+$OssRestoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPostgreSQL -SourceDataStore VaultStore -RestoreLocation $vault.ReplicatedRegion[0] -RestoreType RestoreAsFiles -RecoveryPoint $recoveryPointsCrr[0].Property.RecoveryPointId -TargetContainerURI $targetContainerURI -FileNamePrefix $fileNamePrefix
+```
+
+```output
+ObjectType                                  SourceDataStoreType SourceResourceId RecoveryPointId
+----------                                  ------------------- ---------------- ---------------
+AzureBackupRecoveryPointBasedRestoreRequest VaultStore                           d49aeb83264456ccab92a105cade9afe
+```
+
+First and second commands fetch the vault and backup instance from Azure resource graph.
+Third command is used to fetch recovery points from secondary region for cross region restore.
+Last command constructs the cross region restore request object for restore as files for datasourcetype AzureDatabaseForPostgreSQL.
+Please note that we set RestoreLocation parameter to $vault.ReplicatedRegion[0] (paired region) instead of $vault.Location for normal restore.
+Use Test-AzDataProtectionBackupInstanceRestore, Start-AzDataProtectionBackupInstanceRestore commands to validate and trigger restore.
 
 ## PARAMETERS
 
@@ -241,6 +289,21 @@ Point In Time for restore.
 Type: System.DateTime
 Parameter Sets: AlternateLocationFullRecovery, OriginalLocationILR, OriginalLocationFullRecovery
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -461,68 +524,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IAzureBackupRestoreRequest
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BACKUPINSTANCE <BackupInstanceResource>`: Backup Instance object to trigger original localtion restore.
-  - `[Property <IBackupInstance>]`: BackupInstanceResource properties
-    - `DataSourceInfo <IDatasource>`: Gets or sets the data source information.
-      - `ResourceId <String>`: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
-      - `[ObjectType <String>]`: Type of Datasource object, used to initialize the right inherited type
-      - `[ResourceLocation <String>]`: Location of datasource.
-      - `[ResourceName <String>]`: Unique identifier of the resource in the context of parent.
-      - `[ResourceType <String>]`: Resource Type of Datasource.
-      - `[ResourceUri <String>]`: Uri of the resource.
-      - `[Type <String>]`: DatasourceType of the resource.
-    - `ObjectType <String>`: 
-    - `PolicyInfo <IPolicyInfo>`: Gets or sets the policy information.
-      - `PolicyId <String>`: 
-      - `[PolicyParameter <IPolicyParameters>]`: Policy parameters for the backup instance
-        - `[BackupDatasourceParametersList <IBackupDatasourceParameters[]>]`: Gets or sets the Backup Data Source Parameters
-          - `ObjectType <String>`: Type of the specific object - used for deserializing
-        - `[DataStoreParametersList <IDataStoreParameters[]>]`: Gets or sets the DataStore Parameters
-          - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
-          - `ObjectType <String>`: Type of the specific object - used for deserializing
-    - `[DataSourceSetInfo <IDatasourceSet>]`: Gets or sets the data source set information.
-      - `ResourceId <String>`: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
-      - `[DatasourceType <String>]`: DatasourceType of the resource.
-      - `[ObjectType <String>]`: Type of Datasource object, used to initialize the right inherited type
-      - `[ResourceLocation <String>]`: Location of datasource.
-      - `[ResourceName <String>]`: Unique identifier of the resource in the context of parent.
-      - `[ResourceType <String>]`: Resource Type of Datasource.
-      - `[ResourceUri <String>]`: Uri of the resource.
-    - `[DatasourceAuthCredentials <IAuthCredentials>]`: Credentials to use to authenticate with data source provider.
-      - `ObjectType <String>`: Type of the specific object - used for deserializing
-    - `[FriendlyName <String>]`: Gets or sets the Backup Instance friendly name.
-    - `[IdentityDetail <IIdentityDetails>]`: Contains information of the Identity Details for the BI.         If it is null, default will be considered as System Assigned.
-      - `[UseSystemAssignedIdentity <Boolean?>]`: Specifies if the BI is protected by System Identity.
-      - `[UserAssignedIdentityArmUrl <String>]`: ARM URL for User Assigned Identity.
-    - `[ValidationType <ValidationType?>]`: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
-  - `[Tag <IDppProxyResourceTags>]`: Proxy Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-`RESTORECONFIGURATION <KubernetesClusterRestoreCriteria>`: Restore configuration for restore. Use this parameter to restore with AzureKubernetesService.
-  - `IncludeClusterScopeResource <Boolean>`: Gets or sets the include cluster resources property. This property if enabled will include cluster scope resources during restore.
-  - `ObjectType <String>`: Type of the specific object - used for deserializing
-  - `[ConflictPolicy <ExistingResourcePolicy?>]`: Gets or sets the Conflict Policy property. This property sets policy during conflict of resources during restore.
-  - `[ExcludedNamespace <String[]>]`: Gets or sets the exclude namespaces property. This property sets the namespaces to be excluded during restore.
-  - `[ExcludedResourceType <String[]>]`: Gets or sets the exclude resource types property. This property sets the resource types to be excluded during restore.
-  - `[IncludedNamespace <String[]>]`: Gets or sets the include namespaces property. This property sets the namespaces to be included during restore.
-  - `[IncludedResourceType <String[]>]`: Gets or sets the include resource types property. This property sets the resource types to be included during restore.
-  - `[LabelSelector <String[]>]`: Gets or sets the LabelSelectors property. This property sets the resource with such label selectors to be included during restore.
-  - `[NamespaceMapping <IKubernetesClusterRestoreCriteriaNamespaceMappings>]`: Gets or sets the Namespace Mappings property. This property sets if namespace needs to be change during restore.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[PersistentVolumeRestoreMode <PersistentVolumeRestoreMode?>]`: Gets or sets the PV (Persistent Volume) Restore Mode property. This property sets whether volumes needs to be restored.
-  - `[RestoreHookReference <INamespacedNameResource[]>]`: Gets or sets the restore hook references. This property sets the hook reference to be executed during restore.
-    - `[Name <String>]`: Name of the resource
-    - `[Namespace <String>]`: Namespace in which the resource exists
 
 ## RELATED LINKS

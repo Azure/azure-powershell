@@ -15,27 +15,27 @@ Gets a virtual machine
 ### BySubscription (Default)
 ```
 Get-AzStackHCIVMVirtualMachine [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Get-AzStackHCIVMVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByResourceGroup
 ```
 Get-AzStackHCIVMVirtualMachine -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
 Get-AzStackHCIVMVirtualMachine -ResourceId <String> [-DefaultProfile <PSObject>] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,15 +43,31 @@ Gets a virtual machine
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 2: Get a Virtual Machine.
+```powershell
 Get-AzStackHCIVMVirtualMachine -Name "testVm" -ResourceGroupName "test-rg"
 ```
 
-### EXAMPLE 2
+```output
+Name            ResourceGroupName
+----            -----------------
+testVm          test-rg
 ```
+
+This commnad gets a virtual machine in a specified resource group.
+
+### Example 2: List Virtual Machines in a Resource Group
+```powershell
 Get-AzStackHCIVMVirtualMachine -ResourceGroupName "test-rg"
 ```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testVm          test-rg
+```
+
+This command lists all virtual machines in a resource group.
 
 ## PARAMETERS
 
@@ -95,7 +111,22 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -141,7 +172,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -185,9 +216,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance
+
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Machine
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualmachine](https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmvirtualmachine)

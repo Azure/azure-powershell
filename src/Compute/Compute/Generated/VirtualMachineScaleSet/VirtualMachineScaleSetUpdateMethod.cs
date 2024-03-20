@@ -116,7 +116,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         [Parameter(
-            Mandatory = false)]
+            Mandatory = false,
+            HelpMessage = "Whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the image becomes available.")]
         public bool AutomaticOSUpgrade { get; set; }
 
         [Parameter(

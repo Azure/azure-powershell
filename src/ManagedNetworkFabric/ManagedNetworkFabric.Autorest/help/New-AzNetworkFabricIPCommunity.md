@@ -108,7 +108,6 @@ Accept wildcard characters: False
 
 ### -IPCommunityRule
 List of IP Community Rules.
-To construct, see NOTES section for IPCOMMUNITYRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPCommunityRule[]

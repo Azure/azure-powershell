@@ -38,10 +38,30 @@ Create a new EmailService or update an existing EmailService.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create a Email service resource
+```powershell
 New-AzEmailService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -DataLocation "United States"
 ```
+
+```output
+DataLocation                 : United States
+Id                           : /subscriptions/653983b8-683a-427c-8c27-9e9624ce9176/resourceGroups/ContosoResourceProvider1/providers/Microsoft.Communication/emailServices/ContosoAcsResource1
+Location                     : global
+Name                         : ContosoAcsResource1
+ProvisioningState            : Succeeded
+ResourceGroupName            : ContosoResourceProvider1
+SystemDataCreatedAt          : 19-02-2024 07:54:44
+SystemDataCreatedBy          : test@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 19-02-2024 07:54:44
+SystemDataLastModifiedBy     : test@microsoft.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                               }
+Type                         : microsoft.communication/emailservices
+```
+
+Creates a Email service resource using the specified parameters.
 
 ## PARAMETERS
 
@@ -49,13 +69,13 @@ New-AzEmailService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceP
 Run the command as a job
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -64,7 +84,7 @@ Accept wildcard characters: False
 The location where the email service stores its data at rest.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -80,7 +100,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -95,7 +115,7 @@ Accept wildcard characters: False
 Path of Json file supplied to the Create operation
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
@@ -110,7 +130,7 @@ Accept wildcard characters: False
 Json string supplied to the Create operation
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateViaJsonString
 Aliases:
 
@@ -125,13 +145,13 @@ Accept wildcard characters: False
 The geo-location where the resource lives
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: "global"
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -140,7 +160,7 @@ Accept wildcard characters: False
 The name of the EmailService resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: EmailServiceName
 
@@ -155,13 +175,13 @@ Accept wildcard characters: False
 Run the command asynchronously
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -170,7 +190,7 @@ Accept wildcard characters: False
 {{ Fill ProgressAction Description }}
 
 ```yaml
-Type: ActionPreference
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
 
@@ -186,7 +206,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -202,13 +222,13 @@ The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -217,7 +237,7 @@ Accept wildcard characters: False
 Resource tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -232,7 +252,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -248,7 +268,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -267,9 +287,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.IEmailServiceResource
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.communication/new-azemailservice](https://learn.microsoft.com/powershell/module/az.communication/new-azemailservice)
-

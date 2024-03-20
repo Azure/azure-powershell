@@ -78,7 +78,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRuleProperties]
     # Rules for the InternetGateways
-    # To construct, see NOTES section for RULEPROPERTY properties and create a hash table.
     ${RuleProperty},
 
     [Parameter(ParameterSetName='CreateExpanded')]

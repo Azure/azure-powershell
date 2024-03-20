@@ -14,7 +14,7 @@ Gets the list of the Enabled Resource Types.
 
 ```
 Get-AzCustomLocationEnabledResourceType -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,9 +28,9 @@ Get-AzCustomLocationEnabledResourceType -ResourceGroupName azps_test_group -Name
 ```
 
 ```output
-Name                                                             Type
-----                                                             ----
-017e563408cfcbaad0604875fef1f0e5a36d5fefa5e81a4c1c212c5a77fbcbde Microsoft.ExtendedLocation/customLocations/enabledResourceTypes
+Name                                                             ExtensionType
+----                                                             -------------
+435b5e8926f937f7a473d48f25731707c20916dfb52a47e0401a40181cb28217 microsoft.arcdataservices
 ```
 
 Gets the list of the Enabled Resource Types.
@@ -38,7 +38,8 @@ Gets the list of the Enabled Resource Types.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -61,6 +62,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -105,10 +121,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.IEnabledResourceType
+### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IEnabledResourceType
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

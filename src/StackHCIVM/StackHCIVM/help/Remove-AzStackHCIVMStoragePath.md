@@ -16,14 +16,14 @@ The operation to delete a storage container.
 ```
 Remove-AzStackHCIVMStoragePath [-SubscriptionId <String>] [-InputObject <IStackHcivmIdentity>]
  -ResourceId <String> [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByName
 ```
 Remove-AzStackHCIVMStoragePath -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-InputObject <IStackHcivmIdentity>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,10 +31,12 @@ The operation to delete a storage container.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Remove a Storage Path
+```powershell
 Remove-AzStackHCIVMStoragePath  -Name "testStoragePath" -ResourceGroupName "test-rg"
 ```
+
+This command removes the storage path from the specified resource group.
 
 ## PARAMETERS
 
@@ -48,7 +50,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -78,7 +80,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -124,7 +126,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -139,7 +141,22 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -185,7 +202,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -227,36 +244,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHCIVMIdentity
+
 ## OUTPUTS
 
 ### System.Boolean
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IStackHcivmIdentity\>: Identity Parameter
-  \[ExtensionName \<String\>\]: The name of the machine extension.
-  \[ExtensionType \<String\>\]: The extensionType of the Extension being received.
-  \[GalleryImageName \<String\>\]: Name of the gallery image
-  \[Id \<String\>\]: Resource identity path
-  \[Location \<String\>\]: The location of the Extension being received.
-  \[LogicalNetworkName \<String\>\]: Name of the logical network
-  \[MachineName \<String\>\]: The name of the hybrid machine.
-  \[MarketplaceGalleryImageName \<String\>\]: Name of the marketplace gallery image
-  \[MetadataName \<String\>\]: Name of the HybridIdentityMetadata.
-  \[NetworkInterfaceName \<String\>\]: Name of the network interface
-  \[OSType \<String\>\]: Defines the os type.
-  \[Publisher \<String\>\]: The publisher of the Extension being received.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[ResourceUri \<String\>\]: The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-  \[StorageContainerName \<String\>\]: Name of the storage container
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[Version \<String\>\]: The version of the Extension being received.
-  \[VirtualHardDiskName \<String\>\]: Name of the virtual hard disk
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmstoragepath](https://learn.microsoft.com/powershell/module/az.stackhcivm/remove-azstackhcivmstoragepath)

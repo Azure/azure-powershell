@@ -18,7 +18,7 @@ New-AzDataProtectionBackupConfigurationClientObject -DatasourceType <DatasourceT
  [-IncludedNamespace <String[]>] [-LabelSelector <String[]>] [-SnapshotVolume <Boolean>]
  [-IncludeClusterScopeResource <Boolean>] [-BackupHookReference <NamespacedNameResource[]>]
  [-VaultedBackupContainer <String[]>] [-IncludeAllContainer] [-StorageAccountName <String>]
- [-StorageAccountResourceGroupName <String>] [<CommonParameters>]
+ [-StorageAccountResourceGroupName <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -196,6 +196,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SnapshotVolume
 Boolean parameter to decide whether snapshot volumes are included for backup.
 By default this is taken as true.
@@ -270,16 +285,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Management.Automation.PSObject
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BACKUPHOOKREFERENCE <NamespacedNameResource[]>`: Hook reference to be executed during backup.
-  - `[Name <String>]`: Name of the resource
-  - `[Namespace <String>]`: Namespace in which the resource exists
 
 ## RELATED LINKS

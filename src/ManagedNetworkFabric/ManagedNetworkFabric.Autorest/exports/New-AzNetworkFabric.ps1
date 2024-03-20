@@ -175,7 +175,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationProperties]
     # Configuration to be used to setup the management network.
-    # To construct, see NOTES section for MANAGEMENTNETWORKCONFIGURATION properties and create a hash table.
     ${ManagementNetworkConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -202,7 +201,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfiguration]
     # Network and credentials configuration currently applied to terminal server.
-    # To construct, see NOTES section for TERMINALSERVERCONFIGURATION properties and create a hash table.
     ${TerminalServerConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]

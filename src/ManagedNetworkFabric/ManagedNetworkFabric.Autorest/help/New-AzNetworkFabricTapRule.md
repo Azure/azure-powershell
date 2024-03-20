@@ -146,7 +146,6 @@ Accept wildcard characters: False
 
 ### -DynamicMatchConfiguration
 List of dynamic match configurations.
-To construct, see NOTES section for DYNAMICMATCHCONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ICommonDynamicMatchConfiguration[]
@@ -207,7 +206,6 @@ Accept wildcard characters: False
 
 ### -MatchConfiguration
 List of match configurations.
-To construct, see NOTES section for MATCHCONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapRuleMatchConfiguration[]
