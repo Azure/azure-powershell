@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Description(@"Deletes the specified data network.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/dataNetworks/{dataNetworkName}", ApiVersion = "2022-11-01")]
     public partial class RemoveAzMobileNetworkDataNetwork_Delete : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener
     {

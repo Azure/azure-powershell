@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MobileNetwork-help.xml
 Module Name: Az.MobileNetwork
 online version: https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkServiceDataFlowTemplateObject
 schema: 2.0.0
@@ -14,7 +14,8 @@ Create an in-memory object for ServiceDataFlowTemplate.
 
 ```
 New-AzMobileNetworkServiceDataFlowTemplateObject -Direction <SdfDirection> -Protocol <String[]>
- -RemoteIPList <String[]> -TemplateName <String> [-Port <String[]>] [<CommonParameters>]
+ -RemoteIPList <String[]> -TemplateName <String> [-Port <String[]>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -65,6 +66,21 @@ For example: [8080, 8082-8085].
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -138,7 +154,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

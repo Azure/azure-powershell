@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MobileNetwork-help.xml
 Module Name: Az.MobileNetwork
 online version: https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworksimgroup
 schema: 2.0.0
@@ -13,10 +13,10 @@ Updates SIM group.
 ## SYNTAX
 
 ```
-Update-AzMobileNetworkSimGroup -ResourceGroupName <String> -SimGroupName <String> [-SubscriptionId <String>]
+Update-AzMobileNetworkSimGroup -SimGroupName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-EncryptionKeyUrl <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-MobileNetworkId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,6 +110,21 @@ Mobile network resource ID.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -223,7 +238,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
