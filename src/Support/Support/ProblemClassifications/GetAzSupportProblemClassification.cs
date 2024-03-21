@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Support.Models;
 using Microsoft.Azure.Management.Support;
 using Microsoft.Azure.Management.Support.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.Support.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Management.Automation;
@@ -26,15 +27,18 @@ using static Microsoft.Azure.Commands.Support.Helpers.ResourceIdentifierHelper;
 
 namespace Microsoft.Azure.Commands.Support.ProblemClassifications
 {
+    [GenericBreakingChangeWithVersion("Piping of Get-AzSupportProblemClassification with a service object will no longer be supported for list. Get via piping will still be supported.", "12.0.0", "2.0.0")]
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "SupportProblemClassification", DefaultParameterSetName = GetByNameParameterSet), OutputType(typeof(PSSupportProblemClassification))]
     public class GetAzSupportProblemClassification : AzSupportCmdletBase
     {
+        [CmdletParameterBreakingChangeWithVersion("ServiceId", "12.0.0", "2.0.0", ChangeDescription = "Parameter name 'ServiceId' will be changed to 'ServiceName'.")]
         [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, HelpMessage = "Service id for which all problem classifications are retrieved.")]
         [Alias("ServiceName")]
         [ServiceIdCompleter()]
         [ValidateNotNullOrEmpty]
         public string ServiceId { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Id", "12.0.0", "2.0.0", ChangeDescription = "Parameter name 'Id' will be changed to 'Name'.")]
         [Parameter(Mandatory = false, ParameterSetName = GetByNameParameterSet, HelpMessage = "Problem classification id.")]
         [Parameter(Mandatory = false, ParameterSetName = GetByParentObjectParameterSet, HelpMessage = "Problem classification id.")]
         [Alias("Name")]

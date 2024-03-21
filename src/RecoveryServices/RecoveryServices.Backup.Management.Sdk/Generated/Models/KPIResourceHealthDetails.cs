@@ -25,9 +25,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="resourceHealthStatus">Resource Health Status
-        /// Possible values include: 'Healthy', 'TransientDegraded',
-        /// 'PersistentDegraded', 'TransientUnhealthy', 'PersistentUnhealthy',
-        /// 'Invalid'</param>
+        /// Possible values include: &#39;Healthy&#39;, &#39;TransientDegraded&#39;,
+        /// &#39;PersistentDegraded&#39;, &#39;TransientUnhealthy&#39;, &#39;PersistentUnhealthy&#39;,
+        /// &#39;Invalid&#39;</param>
 
         /// <param name="resourceHealthDetails">Resource Health Status
         /// </param>

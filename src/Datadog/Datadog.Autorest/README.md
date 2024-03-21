@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Datadog service.
 
 ---
-## Status
-[![Az.Datadog](https://img.shields.io/powershellgallery/v/Az.Datadog.svg?style=flat-square&label=Az.Datadog "Az.Datadog")](https://www.powershellgallery.com/packages/Az.Datadog/)
 
 ## Info
 - Modifiable: yes

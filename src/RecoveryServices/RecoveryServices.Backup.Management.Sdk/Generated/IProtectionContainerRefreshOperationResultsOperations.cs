@@ -14,22 +14,26 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public partial interface IProtectionContainerRefreshOperationResultsOperations
     {
         /// <summary>
-        /// Provides the result of the refresh operation triggered by the BeginRefresh operation.
+        /// Provides the result of the refresh operation triggered by the BeginRefresh
+        /// operation.
         /// </summary>
         /// <remarks>
-        /// Provides the result of the refresh operation triggered by the BeginRefresh operation.
+        /// Provides the result of the refresh operation triggered by the BeginRefresh
+        /// operation.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the container.
         /// </param>
         /// <param name='operationId'>
-        /// Operation ID associated with the operation whose result needs to be fetched.
+        /// Operation ID associated with the operation whose result needs to be
+        /// fetched.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.

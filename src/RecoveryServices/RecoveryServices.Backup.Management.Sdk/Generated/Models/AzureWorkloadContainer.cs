@@ -30,9 +30,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="backupManagementType">Type of backup management for the container.
-        /// Possible values include: 'Invalid', 'AzureIaasVM', 'MAB', 'DPM',
-        /// 'AzureBackupServer', 'AzureSql', 'AzureStorage', 'AzureWorkload',
-        /// 'DefaultBackup'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;AzureIaasVM&#39;, &#39;MAB&#39;, &#39;DPM&#39;,
+        /// &#39;AzureBackupServer&#39;, &#39;AzureSql&#39;, &#39;AzureStorage&#39;, &#39;AzureWorkload&#39;,
+        /// &#39;DefaultBackup&#39;</param>
 
         /// <param name="registrationStatus">Status of registration of the container with the Recovery Services Vault.
         /// </param>
@@ -53,13 +53,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="workloadType">Workload type for which registration was sent.
-        /// Possible values include: 'Invalid', 'VM', 'FileFolder', 'AzureSqlDb',
-        /// 'SQLDB', 'Exchange', 'Sharepoint', 'VMwareVM', 'SystemState', 'Client',
-        /// 'GenericDataSource', 'SQLDataBase', 'AzureFileShare', 'SAPHanaDatabase',
-        /// 'SAPAseDatabase', 'SAPHanaDBInstance'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;VM&#39;, &#39;FileFolder&#39;, &#39;AzureSqlDb&#39;,
+        /// &#39;SQLDB&#39;, &#39;Exchange&#39;, &#39;Sharepoint&#39;, &#39;VMwareVM&#39;, &#39;SystemState&#39;, &#39;Client&#39;,
+        /// &#39;GenericDataSource&#39;, &#39;SQLDataBase&#39;, &#39;AzureFileShare&#39;, &#39;SAPHanaDatabase&#39;,
+        /// &#39;SAPAseDatabase&#39;, &#39;SAPHanaDBInstance&#39;</param>
 
         /// <param name="operationType">Re-Do Operation
-        /// Possible values include: 'Invalid', 'Register', 'Reregister'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Register&#39;, &#39;Reregister&#39;</param>
         public AzureWorkloadContainer(string friendlyName = default(string), string backupManagementType = default(string), string registrationStatus = default(string), string healthStatus = default(string), string protectableObjectType = default(string), string sourceResourceId = default(string), System.DateTime? lastUpdatedTime = default(System.DateTime?), AzureWorkloadContainerExtendedInfo extendedInfo = default(AzureWorkloadContainerExtendedInfo), string workloadType = default(string), string operationType = default(string))
 
         : base(friendlyName, backupManagementType, registrationStatus, healthStatus, protectableObjectType)

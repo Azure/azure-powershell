@@ -15,7 +15,8 @@ Deletes an association.
 ### Delete (Default)
 ```
 Remove-AzDataCollectionRuleAssociation -AssociationName <String> -ResourceUri <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity

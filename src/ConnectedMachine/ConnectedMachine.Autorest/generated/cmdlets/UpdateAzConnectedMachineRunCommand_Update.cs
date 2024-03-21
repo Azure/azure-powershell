@@ -473,7 +473,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     RunCommandProperty = await this.Client.MachineRunCommandsGetWithResult(SubscriptionId, ResourceGroupName, MachineName, RunCommandName, this, Pipeline);
                     this.UpdateRunCommandProperty();
-                    await this.Client.MachineRunCommandsCreateOrUpdate(SubscriptionId, ResourceGroupName, MachineName, RunCommandName, RunCommandProperty, onOk, onDefault, this, Pipeline);
+                    await this.Client.MachineRunCommandsCreateOrUpdate(SubscriptionId, ResourceGroupName, MachineName, RunCommandName, RunCommandProperty, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.UndeclaredResponseException urexception)

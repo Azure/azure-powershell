@@ -432,7 +432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                         this.MachineInputObject.Id += $"/runCommands/{(global::System.Uri.EscapeDataString(this.RunCommandName.ToString()))}";
                         RunCommandProperty = await this.Client.MachineRunCommandsGetViaIdentityWithResult(MachineInputObject.Id, this, Pipeline);
                         this.UpdateRunCommandProperty();
-                        await this.Client.MachineRunCommandsCreateOrUpdateViaIdentity(MachineInputObject.Id, RunCommandProperty, onOk, onDefault, this, Pipeline);
+                        await this.Client.MachineRunCommandsCreateOrUpdateViaIdentity(MachineInputObject.Id, RunCommandProperty, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                         }
                         RunCommandProperty = await this.Client.MachineRunCommandsGetWithResult(MachineInputObject.SubscriptionId ?? null, MachineInputObject.ResourceGroupName ?? null, MachineInputObject.MachineName ?? null, RunCommandName, this, Pipeline);
                         this.UpdateRunCommandProperty();
-                        await this.Client.MachineRunCommandsCreateOrUpdate(MachineInputObject.SubscriptionId ?? null, MachineInputObject.ResourceGroupName ?? null, MachineInputObject.MachineName ?? null, RunCommandName, RunCommandProperty, onOk, onDefault, this, Pipeline);
+                        await this.Client.MachineRunCommandsCreateOrUpdate(MachineInputObject.SubscriptionId ?? null, MachineInputObject.ResourceGroupName ?? null, MachineInputObject.MachineName ?? null, RunCommandName, RunCommandProperty, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

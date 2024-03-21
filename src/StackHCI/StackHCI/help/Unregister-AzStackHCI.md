@@ -17,8 +17,8 @@ The registered information available on the cluster is used to unregister the cl
 Unregister-AzStackHCI [[-SubscriptionId] <String>] [[-ResourceName] <String>] [[-TenantId] <String>]
  [[-ResourceGroupName] <String>] [[-ArmAccessToken] <String>] [[-AccountId] <String>]
  [[-EnvironmentName] <String>] [[-Region] <String>] [[-ComputerName] <String>] [-UseDeviceAuthentication]
- [-DisableOnlyAzureArcServer] [-IsWAC] [[-Credential] <PSCredential>] [-Force] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DisableOnlyAzureArcServer] [-IsWAC] [[-Credential] <PSCredential>] [-Force]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

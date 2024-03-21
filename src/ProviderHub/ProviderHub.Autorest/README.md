@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the ProviderHub service.
 
 ---
-## Status
-[![Az.ProviderHub](https://img.shields.io/powershellgallery/v/Az.ProviderHub.svg?style=flat-square&label=Az.ProviderHub "Az.ProviderHub")](https://www.powershellgallery.com/packages/Az.ProviderHub/)
 
 ## Info
 - Modifiable: yes

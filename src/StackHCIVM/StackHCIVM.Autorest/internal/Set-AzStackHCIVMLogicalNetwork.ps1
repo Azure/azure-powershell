@@ -109,7 +109,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISubnet[]]
     # Subnet - list of subnets under the logical network
-    # To construct, see NOTES section for SUBNET properties and create a hash table.
     ${Subnet},
 
     [Parameter(ParameterSetName='UpdateExpanded')]

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.3.1
+* Updated `Set-AzStackHCI` to use HTTP PATCH for updating cluster resource instead of HTTP PUT and to only send updated properties.
+
 ## Version 2.3.0
 * Fixed issue for WAC.
 * Restricted registration for 23H2 devices exclusively to cloud deployment.

@@ -11,4 +11,4 @@ pull_request:
         - "Platform"
       template_path: "templates/PRComment.handlebars"
       comment_title: "PRComment"
-      init_comment: "Validation for PowerShell Core and Windows PowerShell Starts. Thanks for your contribution!"
+      init_comment: "Thanks for your contribution! The pull request validation has started. Please revisit this comment for updated status."

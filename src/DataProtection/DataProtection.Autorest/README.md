@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DataProtection service.
 
 ---
-## Status
-[![Az.DataProtection](https://img.shields.io/powershellgallery/v/Az.DataProtection.svg?style=flat-square&label=Az.DataProtection "Az.DataProtection")](https://www.powershellgallery.com/packages/Az.DataProtection/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

@@ -35,8 +35,8 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="headers">Represents the headers that will be sent to the request. For example, to
         /// set the language and type on a request: &#34;headers&#34; : { &#34;Accept-Language&#34;:
-        /// &#34;en-us&#34;, &#34;Content-Type&#34;: &#34;application/json&#34; }. Type: dictionary (or
-        /// Expression with resultType dictionary).
+        /// &#34;en-us&#34;, &#34;Content-Type&#34;: &#34;application/json&#34; }. Type: string (or Expression
+        /// with resultType string).
         /// </param>
 
         /// <param name="body">Represents the payload that will be sent to the endpoint. Required for
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// setting statusCode &gt;= 400 in callback request. Default is false. Type:
         /// boolean (or Expression with resultType boolean).
         /// </param>
-        public WebHookActivityTypeProperties(object url, string timeout = default(string), object headers = default(object), object body = default(object), WebActivityAuthentication authentication = default(WebActivityAuthentication), object reportStatusOnCallBack = default(object))
+        public WebHookActivityTypeProperties(object url, string timeout = default(string), System.Collections.Generic.IDictionary<string, object> headers = default(System.Collections.Generic.IDictionary<string, object>), object body = default(object), WebActivityAuthentication authentication = default(WebActivityAuthentication), object reportStatusOnCallBack = default(object))
 
         {
             this.Url = url;
@@ -96,10 +96,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Gets or sets represents the headers that will be sent to the request. For
         /// example, to set the language and type on a request: &#34;headers&#34; : {
         /// &#34;Accept-Language&#34;: &#34;en-us&#34;, &#34;Content-Type&#34;: &#34;application/json&#34; }. Type:
-        /// dictionary (or Expression with resultType dictionary).
+        /// string (or Expression with resultType string).
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "headers")]
-        public object Headers {get; set; }
+        public System.Collections.Generic.IDictionary<string, object> Headers {get; set; }
 
         /// <summary>
         /// Gets or sets represents the payload that will be sent to the endpoint.

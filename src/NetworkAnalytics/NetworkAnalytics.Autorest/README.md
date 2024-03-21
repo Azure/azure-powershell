@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the NetworkAnalytics service.
 
 ---
-## Status
-[![Az.NetworkAnalytics](https://img.shields.io/powershellgallery/v/Az.NetworkAnalytics.svg?style=flat-square&label=Az.NetworkAnalytics "Az.NetworkAnalytics")](https://www.powershellgallery.com/packages/Az.NetworkAnalytics/)
 
 ## Info
 - Modifiable: yes

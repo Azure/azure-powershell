@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the CustomProviders service.
 
 ---
-## Status
-[![Az.CustomProviders](https://img.shields.io/powershellgallery/v/Az.CustomProviders.svg?style=flat-square&label=Az.CustomProviders "Az.CustomProviders")](https://www.powershellgallery.com/packages/Az.CustomProviders/)
 
 ## Info
 - Modifiable: yes

@@ -18,7 +18,8 @@ Register-AzStackHCI [-SubscriptionId] <String> [-Region] <String> [[-ResourceNam
  [[-AccountId] <String>] [[-EnvironmentName] <String>] [[-ComputerName] <String>]
  [[-CertificateThumbprint] <String>] [-RepairRegistration] [-UseDeviceAuthentication]
  [[-Credential] <PSCredential>] [-IsWAC] [[-ArcServerResourceGroupName] <String>]
- [[-ArcSpnCredential] <PSCredential>] [[-LogsDirectory] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-ArcSpnCredential] <PSCredential>] [[-LogsDirectory] <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

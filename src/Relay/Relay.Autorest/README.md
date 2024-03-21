@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Relay service.
 
 ---
-## Status
-[![Az.Relay](https://img.shields.io/powershellgallery/v/Az.Relay.svg?style=flat-square&label=Az.Relay "Az.Relay")](https://www.powershellgallery.com/packages/Az.Relay/)
 
 ## Info
 - Modifiable: yes

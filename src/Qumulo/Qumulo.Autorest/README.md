@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Qumulo service.
 
 ---
-## Status
-[![Az.Qumulo](https://img.shields.io/powershellgallery/v/Az.Qumulo.svg?style=flat-square&label=Az.Qumulo "Az.Qumulo")](https://www.powershellgallery.com/packages/Az.Qumulo/)
 
 ## Info
 - Modifiable: yes

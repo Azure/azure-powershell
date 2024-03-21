@@ -14,8 +14,8 @@ Creates or updates a security assessment type.
 
 ```
 Set-AzSecurityAssessmentMetadata -Name <String> -DisplayName <String> -Description <String>
- [-RemediationDescription <String>] -Severity <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-RemediationDescription <String>] -Severity <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

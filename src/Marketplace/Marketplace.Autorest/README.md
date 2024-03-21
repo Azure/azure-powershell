@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Marketplace service.
 
 ---
-## Status
-[![Az.Marketplace](https://img.shields.io/powershellgallery/v/Az.Marketplace.svg?style=flat-square&label=Az.Marketplace "Az.Marketplace")](https://www.powershellgallery.com/packages/Az.Marketplace/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

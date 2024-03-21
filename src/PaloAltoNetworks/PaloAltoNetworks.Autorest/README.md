@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the PaloAltoNetworks service.
 
 ---
-## Status
-[![Az.PaloAltoNetworks](https://img.shields.io/powershellgallery/v/Az.PaloAltoNetworks.svg?style=flat-square&label=Az.PaloAltoNetworks "Az.PaloAltoNetworks")](https://www.powershellgallery.com/packages/Az.PaloAltoNetworks/)
 
 ## Info
 - Modifiable: yes

@@ -14,10 +14,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public partial interface IBackupEnginesOperations
     {
         /// <summary>
-        /// Backup management servers registered to Recovery Services Vault. Returns a pageable list of servers.
+        /// Backup management servers registered to Recovery Services Vault. Returns a
+        /// pageable list of servers.
         /// </summary>
         /// <remarks>
-        /// Backup management servers registered to Recovery Services Vault. Returns a pageable list of servers.
+        /// Backup management servers registered to Recovery Services Vault. Returns a
+        /// pageable list of servers.
         /// </remarks>
         /// <param name='odataQuery'>
         /// 
@@ -26,7 +28,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
@@ -58,7 +61,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='backupEngineName'>
         /// Name of the backup management server.
@@ -81,10 +85,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<BackupEngineBaseResource>> GetWithHttpMessagesAsync(string vaultName, string resourceGroupName, string backupEngineName, Microsoft.Rest.Azure.OData.ODataQuery<BMSBackupEngineQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BMSBackupEngineQueryObject>), string skipToken = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Backup management servers registered to Recovery Services Vault. Returns a pageable list of servers.
+        /// Backup management servers registered to Recovery Services Vault. Returns a
+        /// pageable list of servers.
         /// </summary>
         /// <remarks>
-        /// Backup management servers registered to Recovery Services Vault. Returns a pageable list of servers.
+        /// Backup management servers registered to Recovery Services Vault. Returns a
+        /// pageable list of servers.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

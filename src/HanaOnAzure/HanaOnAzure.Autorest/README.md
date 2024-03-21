@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the HanaOn service.
 
 ---
-## Status
-[![Az.HanaOnAzure](https://img.shields.io/powershellgallery/v/Az.HanaOnAzure.svg?style=flat-square&label=Az.HanaOnAzure "Az.HanaOnAzure")](https://www.powershellgallery.com/packages/Az.HanaOnAzure/)
 
 ## Info
 - Modifiable: yes

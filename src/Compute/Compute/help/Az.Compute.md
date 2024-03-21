@@ -128,6 +128,9 @@ Get or list hosts.
 ### [Get-AzHostGroup](Get-AzHostGroup.md)
 Get or list hosts.
 
+### [Get-AzHostSize](Get-AzHostSize.md)
+Get List of possible Host Sizes.
+
 ### [Get-AzImage](Get-AzImage.md)
 Gets the properties of an image.
 
@@ -360,7 +363,7 @@ Creates a configuration object for automatic patching on a virtual machine.
 Creates a configuration object for SQL server key vault credential on a virtual machine.
 
 ### [New-AzVmss](New-AzVmss.md)
-Creates a VMSS.
+Creates a virtual machine scale set.
 
 ### [New-AzVmssConfig](New-AzVmssConfig.md)
 Creates a VMSS configuration object.
@@ -727,6 +730,9 @@ Update a gallery image definition.
 
 ### [Update-AzGalleryImageVersion](Update-AzGalleryImageVersion.md)
 Update a gallery image version.
+
+### [Update-AzHost](Update-AzHost.md)
+Updates the Dedicated Host.
 
 ### [Update-AzImage](Update-AzImage.md)
 Updates an image.
