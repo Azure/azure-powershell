@@ -15,15 +15,35 @@ Creates a new instance link.
 ### CreateByNameParameterSet (Default)
 ```
 New-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [-Name] <String>
- -PrimaryAvailabilityGroupName <String> -SecondaryAvailabilityGroupName <String> -TargetDatabase <String>
- -SourceEndpoint <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Databases <System.Collections.Generic.List`1[System.String]> -FailoverMode <String>
+ -InstanceAvailabilityGroupName <String> -InstanceLinkRole <String> -PartnerAvailabilityGroupName <String>
+ -PartnerEndpoint <String> -ReplicationMode <String> [-SeedingMode <String>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateByNameParameterSetWithTargetDatabase
+```
+New-AzSqlInstanceLink [-ResourceGroupName] <String> [-InstanceName] <String> [-Name] <String>
+ -TargetDatabase <String> -FailoverMode <String> -InstanceAvailabilityGroupName <String>
+ -InstanceLinkRole <String> -PartnerAvailabilityGroupName <String> -PartnerEndpoint <String>
+ -ReplicationMode <String> [-SeedingMode <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectParameterSet
 ```
-New-AzSqlInstanceLink [-Name] <String> -PrimaryAvailabilityGroupName <String>
- -SecondaryAvailabilityGroupName <String> -TargetDatabase <String> -SourceEndpoint <String>
+New-AzSqlInstanceLink [-Name] <String> -Databases <System.Collections.Generic.List`1[System.String]>
+ -FailoverMode <String> -InstanceAvailabilityGroupName <String> -InstanceLinkRole <String>
+ -PartnerAvailabilityGroupName <String> -PartnerEndpoint <String> -ReplicationMode <String>
+ [-SeedingMode <String>] [-InstanceObject] <AzureSqlManagedInstanceModel> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateByParentObjectParameterSetWithTargetDatabase
+```
+New-AzSqlInstanceLink [-Name] <String> -TargetDatabase <String> -FailoverMode <String>
+ -InstanceAvailabilityGroupName <String> -InstanceLinkRole <String> -PartnerAvailabilityGroupName <String>
+ -PartnerEndpoint <String> -ReplicationMode <String> [-SeedingMode <String>]
  [-InstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -38,7 +58,7 @@ The **New-AzSqlInstanceLink** cmdlet creates an Azure SQL Managed Instance link 
 New-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Database01" -SourceEndpoint "TCP://SERVER01:5022"
 ```
 
-```output		
+```output
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
@@ -64,7 +84,7 @@ $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "Manage
 New-AzSqlInstanceLink -InstanceObject $instance -Name "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Database01" -SourceEndpoint "TCP://SERVER01:5022"
 ```
 
-```output		
+```output
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
@@ -90,7 +110,7 @@ $instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "Manage
 $instance | New-AzSqlInstanceLink -Name "Link01" -PrimaryAvailabilityGroupName "Link01PrimaryAG" -SecondaryAvailabilityGroupName "Link01SecondaryAG" -TargetDatabase "Database01" -SourceEndpoint "TCP://SERVER01:5022"
 ```
 
-```output		
+```output
 ResourceGroupName              : ResourceGroup01
 InstanceName                   : ManagedInstance01
 Type                           : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
@@ -127,6 +147,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Databases
+Name of the primary availability group.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
+Parameter Sets: CreateByNameParameterSet, CreateByParentObjectParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -142,12 +177,57 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FailoverMode
+Name of the secondary availability group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceAvailabilityGroupName
+Name of the target database.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: SecondaryAvailabilityGroupName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InstanceLinkRole
+IP adress of the source endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InstanceName
 Name of Azure SQL Managed Instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateByNameParameterSet
+Parameter Sets: CreateByNameParameterSet, CreateByNameParameterSetWithTargetDatabase
 Aliases:
 
 Required: True
@@ -162,7 +242,7 @@ Instance input object.
 
 ```yaml
 Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
-Parameter Sets: CreateByParentObjectParameterSet
+Parameter Sets: CreateByParentObjectParameterSet, CreateByParentObjectParameterSetWithTargetDatabase
 Aliases:
 
 Required: True
@@ -187,8 +267,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrimaryAvailabilityGroupName
-Name of the primary availability group.
+### -PartnerAvailabilityGroupName
+IP adress of the source endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: PrimaryAvailabilityGroupName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerEndpoint
+IP adress of the source endpoint.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: SourceEndpoint
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReplicationMode
+IP adress of the source endpoint.
 
 ```yaml
 Type: System.String
@@ -207,7 +317,7 @@ Name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateByNameParameterSet
+Parameter Sets: CreateByNameParameterSet, CreateByNameParameterSetWithTargetDatabase
 Aliases:
 
 Required: True
@@ -217,22 +327,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SecondaryAvailabilityGroupName
-Name of the secondary availability group.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SourceEndpoint
+### -SeedingMode
 IP adress of the source endpoint.
 
 ```yaml
@@ -240,7 +335,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -252,7 +347,7 @@ Name of the target database.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateByNameParameterSetWithTargetDatabase, CreateByParentObjectParameterSetWithTargetDatabase
 Aliases:
 
 Required: True

@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         }
 
         /// <summary>
-        /// Creates or updates a Managed instance
+        /// Creates or updates a managed instance link
         /// </summary>
         public Management.Sql.Models.DistributedAvailabilityGroup CreateOrUpdate(string resourceGroupName, string instanceName, string distributedAvailabilityGroupName, Management.Sql.Models.DistributedAvailabilityGroup parameters)
         {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         }
 
         /// <summary>
-        /// Creates or updates a Managed instance
+        /// Creates or updates a managed instance link
         /// </summary>
         public Management.Sql.Models.DistributedAvailabilityGroup Update(string resourceGroupName, string instanceName, string distributedAvailabilityGroupName, Management.Sql.Models.DistributedAvailabilityGroup parameters)
         {
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         }
 
         /// <summary>
-        /// Gets the Managed instance
+        /// Gets the managed instance link
         /// </summary>
         public Management.Sql.Models.DistributedAvailabilityGroup Get(string resourceGroupName, string instanceName, string distributedAvailabilityGroupName)
         {
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         }
 
         /// <summary>
-        /// Lists Managed instances
+        /// Lists managed instance links
         /// </summary>
         public IList<Management.Sql.Models.DistributedAvailabilityGroup> List(string resourceGroupName, string instanceName)
         {
@@ -87,11 +87,19 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         }
 
         /// <summary>
-        /// Deletes a user certificate from MI
+        /// Deletes managed instance link
         /// </summary>
         public void Remove(string resourceGroupName, string instanceName, string distributedAvailabilityGroupName)
         {
             GetCurrentSqlClient().DistributedAvailabilityGroups.Delete(resourceGroupName, instanceName, distributedAvailabilityGroupName);
+        }
+
+        /// <summary>
+        /// Failovers managed instance link
+        /// </summary>
+        public Management.Sql.Models.DistributedAvailabilityGroup Failover(string resourceGroupName, string instanceName, string distributedAvailabilityGroupName, Management.Sql.Models.DistributedAvailabilityGroupsFailoverRequest parameters)
+        {
+            return GetCurrentSqlClient().DistributedAvailabilityGroups.Failover(resourceGroupName, instanceName, distributedAvailabilityGroupName, parameters);
         }
 
         /// <summary>

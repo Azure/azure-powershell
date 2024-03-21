@@ -25,25 +25,39 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 		{
 		}
 
-		[Fact]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]
-		public void TestManagedInstanceLink()
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedInstanceLinkMIPrimaryPlannedFailover()
+        {
+            TestRunner.RunTestScript("Test-ManagedInstanceLinkMIFirstPlannedFailover");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedInstanceLinkMIPrimaryForcedFailover()
+        {
+            TestRunner.RunTestScript("Test-ManagedInstanceLinkMIFirstForcedFailover");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+		public void TestManagedInstanceLinkTargetDatabaseParameter()
 		{
-			TestRunner.RunTestScript("Test-ManagedInstanceLink");
+			TestRunner.RunTestScript("Test-ManagedInstanceLinkTargetDatabaseParameter");
 		}
 
-		[Fact]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestManagedInstanceLinkBOXFirstForcedFailover()
+        {
+            TestRunner.RunTestScript("Test-ManagedInstanceLinkBOXFirstForcedFailover");
+        }
+
+        [Fact]
 		[Trait(Category.AcceptanceType, Category.CheckIn)]
 		public void TestManagedInstanceLinkErrHandling()
 		{
 			TestRunner.RunTestScript("Test-ManagedInstanceLinkErrHandling");
 		}
-
-		[Fact]
-		[Trait(Category.AcceptanceType, Category.CheckIn)]
-		public void TestManagedInstanceLinkPiping()
-		{
-			TestRunner.RunTestScript("Test-ManagedInstanceLinkPiping");
-		}
-	}
+    }
 }
