@@ -173,21 +173,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 WriteObject(sasToken);
             }
         }
-
-        /// <summary>
-        /// Update the access policy
-        /// </summary>
-        /// <param name="policy">Access policy object</param>
-        /// <param name="shouldSetExpiryTime">Should set the default expiry time</param>
-        private void SetupAccessPolicy(SharedAccessBlobPolicy policy, bool shouldSetExpiryTime)
-        {
-            DateTimeOffset? accessStartTime;
-            DateTimeOffset? accessEndTime;
-            SasTokenHelper.SetupAccessPolicyLifeTime(StartTime, ExpiryTime,
-                out accessStartTime, out accessEndTime, shouldSetExpiryTime);
-            policy.SharedAccessStartTime = accessStartTime;
-            policy.SharedAccessExpiryTime = accessEndTime;
-            AccessPolicyHelper.SetupAccessPolicyPermission(policy, Permission);
-        }
     }
 }

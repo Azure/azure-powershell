@@ -260,22 +260,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         }
 
         /// <summary>
-        /// Update the access policy
-        /// </summary>
-        /// <param name="accessPolicy">Access policy object</param>
-        /// <param name="shouldSetExpiryTime">Should set the default expiry time</param>
-        private void SetupAccessPolicy(SharedAccessBlobPolicy accessPolicy, bool shouldSetExpiryTime)
-        {
-            AccessPolicyHelper.SetupAccessPolicyPermission(accessPolicy, Permission);
-            DateTimeOffset? accessStartTime;
-            DateTimeOffset? accessEndTime;
-            SasTokenHelper.SetupAccessPolicyLifeTime(StartTime, ExpiryTime,
-                out accessStartTime, out accessEndTime, shouldSetExpiryTime);
-            accessPolicy.SharedAccessStartTime = accessStartTime;
-            accessPolicy.SharedAccessExpiryTime = accessEndTime;
-        }
-
-        /// <summary>
         /// Get CloudBlob object by name
         /// </summary>
         /// <param name="ContainerName">Container name</param>
