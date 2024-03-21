@@ -1,7 +1,7 @@
 @{
   GUID = '7389f67c-ec9d-4c13-9c9a-308834413af6'
   RootModule = './Az.StackHCIVM.psm1'
-  ModuleVersion = '2.0.0'
+  ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'
   Author = 'Microsoft Corporation'
   CompanyName = 'Microsoft Corporation'
