@@ -110,7 +110,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
 
                     var result = CapacityReservationGroupClient.CreateOrUpdate(this.ResourceGroupName, this.Name, capacityReservationGroup);
-                    WriteObject(result);
+                    var psObject = new PSCapacityReservationGroup();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<CapacityReservationGroup, PSCapacityReservationGroup>(result, psObject);
+                    WriteObject(psObject);
+
+
                 }
             });
         }
