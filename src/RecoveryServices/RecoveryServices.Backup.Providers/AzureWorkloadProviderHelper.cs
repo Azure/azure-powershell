@@ -634,7 +634,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
                 ServiceClientModel.LongTermRetentionPolicy oldRetentionSchedule = (ServiceClientModel.LongTermRetentionPolicy)(((ServiceClientModel.AzureIaaSVMProtectionPolicy)oldPolicy.Properties).RetentionPolicy);
                 ServiceClientModel.LongTermRetentionPolicy newRetentionSchedule = (ServiceClientModel.LongTermRetentionPolicy)(((ServiceClientModel.AzureIaaSVMProtectionPolicy)newPolicy.Properties).RetentionPolicy);
-
+                
                 return checkMUAForLongTermRetentionPolicy(oldRetentionSchedule, newRetentionSchedule);
             }
 
@@ -642,7 +642,29 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 ServiceClientModel.LongTermRetentionPolicy oldRetentionSchedule = (ServiceClientModel.LongTermRetentionPolicy)(((ServiceClientModel.AzureFileShareProtectionPolicy)oldPolicy.Properties).RetentionPolicy);
                 ServiceClientModel.LongTermRetentionPolicy newRetentionSchedule = (ServiceClientModel.LongTermRetentionPolicy)(((ServiceClientModel.AzureFileShareProtectionPolicy)newPolicy.Properties).RetentionPolicy);
+                                
+                if(oldRetentionSchedule == null || newRetentionSchedule == null)
+                {
+                    if(oldRetentionSchedule == null && newRetentionSchedule == null)
+                    {
+                        oldRetentionSchedule = (ServiceClientModel.LongTermRetentionPolicy)(((ServiceClientModel.AzureFileShareProtectionPolicy)oldPolicy.Properties).VaultRetentionPolicy.VaultRetention);
+                        newRetentionSchedule = (ServiceClientModel.LongTermRetentionPolicy)(((ServiceClientModel.AzureFileShareProtectionPolicy)newPolicy.Properties).VaultRetentionPolicy.VaultRetention);
 
+                        int oldSnapshotRetention = ((ServiceClientModel.AzureFileShareProtectionPolicy)oldPolicy.Properties).VaultRetentionPolicy.SnapshotRetentionInDays;
+                        int newSnapshotRetention = ((ServiceClientModel.AzureFileShareProtectionPolicy)newPolicy.Properties).VaultRetentionPolicy.SnapshotRetentionInDays;
+
+                        if (newSnapshotRetention < oldSnapshotRetention)
+                        {
+                            return true;
+                        }
+
+                        return checkMUAForLongTermRetentionPolicy(oldRetentionSchedule, newRetentionSchedule);
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
                 return checkMUAForLongTermRetentionPolicy(oldRetentionSchedule, newRetentionSchedule);
             }
 

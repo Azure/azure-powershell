@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded Azure.Core to 1.37.0.
+* Fixed upload file with OAuth authentication issue [#24289] 
+    - `Set-AzStorageFileContent`
+
+## Version 6.1.2
 * Fixed parser logic when downloading blob from managed disk account with Sas Uri and bearer token on Linux and MacOS
     - `Get-AzStorageBlobContent`
 * Added warning messages for upcoming breaking changes in Queue cmdlets for removing references to "Microsoft.Azure.Storage.Queue"

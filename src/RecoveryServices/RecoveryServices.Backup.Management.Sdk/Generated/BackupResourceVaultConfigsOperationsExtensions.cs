@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         public static BackupResourceVaultConfigResource Get(this IBackupResourceVaultConfigsOperations operations, string vaultName, string resourceGroupName)
         {
@@ -39,7 +40,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -61,7 +63,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         public static BackupResourceVaultConfigResource Update(this IBackupResourceVaultConfigsOperations operations, string vaultName, string resourceGroupName, BackupResourceVaultConfigResource parameters)
         {
@@ -78,7 +81,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -91,7 +95,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             }
         }
         /// <summary>
-        /// Updates vault security config. 
+        /// Updates vault security config.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -100,7 +104,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         public static BackupResourceVaultConfigResource Put(this IBackupResourceVaultConfigsOperations operations, string vaultName, string resourceGroupName, BackupResourceVaultConfigResource parameters)
         {
@@ -108,7 +113,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Updates vault security config. 
+        /// Updates vault security config.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -117,7 +122,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

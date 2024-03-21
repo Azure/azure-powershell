@@ -106,6 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         Description = @"The update classifications to select when installing patches for Linux.",
         SerializedName = @"classificationsToInclude",
         PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Critical", "Security", "Other")]
         public string[] LinuxParameterClassificationsToInclude { get => _installPatchesInputBody.LinuxParameterClassificationsToInclude?.ToArray() ?? null /* fixedArrayOf */; set => _installPatchesInputBody.LinuxParameterClassificationsToInclude = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>packages to exclude in the patch operation. Format: packageName_packageVersion</summary>
@@ -258,6 +259,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
         Description = @"The update classifications to select when installing patches for Windows.",
         SerializedName = @"classificationsToInclude",
         PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.PSArgumentCompleterAttribute("Critical", "Security", "UpdateRollUp", "FeaturePack", "ServicePack", "Definition", "Tools", "Updates")]
         public string[] WindowParameterClassificationsToInclude { get => _installPatchesInputBody.WindowParameterClassificationsToInclude?.ToArray() ?? null /* fixedArrayOf */; set => _installPatchesInputBody.WindowParameterClassificationsToInclude = (value != null ? new System.Collections.Generic.List<string>(value) : null); }
 
         /// <summary>

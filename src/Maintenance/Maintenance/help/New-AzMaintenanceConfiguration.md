@@ -76,12 +76,13 @@ Duration                               : 03:00
 Timezone                               : UTC
 Visibility                             : Custom
 RecurEvery                             : Day
-LinuxParameterClassificationToInclude  : System.Collections.Generic.HashSet`1[System.String]
-LinuxParameterPackageNameMaskToExclude : System.Collections.Generic.HashSet`1[System.String]
-LinuxParameterPackageNameMaskToInclude : System.Collections.Generic.HashSet`1[System.String]
-WindowParameterKbNumberToInclude       : System.Collections.Generic.HashSet`1[System.String]
-WindowParameterKbNumberToExclude       : System.Collections.Generic.HashSet`1[System.String]
-WindowParameterClassificationToInclude : System.Collections.Generic.HashSet`1[System.String]
+LinuxParameterClassificationToInclude  : 
+LinuxParameterPackageNameMaskToExclude : 
+LinuxParameterPackageNameMaskToInclude : apt
+                                         httpd
+WindowParameterKbNumberToInclude       : 
+WindowParameterKbNumberToExclude       : 
+WindowParameterClassificationToInclude : 
 InstallPatchRebootSetting              : IfRequired
 ```
 

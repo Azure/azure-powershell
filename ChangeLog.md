@@ -1,3 +1,74 @@
+## 11.4.0 - March 2024
+#### Az.Accounts 2.16.0
+* Added a preview feature to detect secrets and sensitive information from the output of Azure PowerShell cmdlets to prevent leakage. Enable it by 'Set-AzConfig -DisplaySecretsWarning True'. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844
+* Fixed 'CacheDirectory' and 'CacheFile' out-of-sync issue in AzureRmContextSettings.json and the customers are not allowed to change these 2 properties.
+* Redirected device code login messages from warning stream to information stream if use device authentication in 'Connect-AzAccount'.
+
+#### Az.Cdn 3.1.2
+* Fixed the case sensitive issue when do preparing migration steps for 'Start-AzFrontDoorCdnProfilePrepareMigration'
+
+#### Az.Compute 7.1.2
+* Fixed 'New-AzVM' when a source image is specified to avoid an error on the 'Version' value.
+
+#### Az.CosmosDB 1.14.1
+* Fixed validation issues in same-account collection/container/graph and database/table/Gremlin restores, affecting the following cmdlets:
+- Restore-AzCosmosDBSqlDatabase
+- Restore-AzCosmosDBSqlContainer
+- Restore-AzCosmosDBMongoDBDatabase
+- Restore-AzCosmosDBMongoDBCollection
+- Restore-AzCosmosDBGremlinDatabase
+- Restore-AzCosmosDBGremlinGraph
+- Restore-AzCosmosDBTable
+* Upgraded SDK 'Azure.Security.KeyVault.Keys' TO 4.6.0-beta.1.
+* Added breaking change message for ListConnectionStrings changes
+
+#### Az.DataFactory 1.18.2
+* Supported Snowflake V2 in ADF
+
+#### Az.KeyVault 5.2.1
+* Supported 'HsmPlatform' in 'KeyAttributes'.
+
+#### Az.LogicApp 1.5.1
+* Removed the *.deps.json file that caused false positive security alerts. [#23603]
+
+#### Az.Monitor 5.1.0
+* Added support for the Metric Data Plane
+
+#### Az.RedisCache 1.9.0
+* Upgraded API version to 2023-08-01
+* Added support for flush operation
+* Added support for update channels
+* Added support for Microsoft Entra Authentication
+
+#### Az.Resources 6.16.0
+* Added breaking change warnings for Azure Policy cmdlets.
+* Added 'AuxTenant' parameter in 'New-AzResourceGroupDeployment'to support cross-tenant deployment.
+* Fixed bug with custom types and deployments whatif. [#13245]
+* Fixed bug with nullable array parameters & outputs.
+* Fixed bug with TemplateParameterUri not downloading parameters correctly.
+
+#### Az.Security 1.6.0
+* Added new cmdlets for Security Connectors
+* Added new cmdlets for ApiCollections Security
+
+#### Az.StackHCI 2.3.1
+* Updated 'Set-AzStackHCI' to use HTTP PATCH for updating cluster resource instead of HTTP PUT and to only send updated properties.
+
+#### Az.StackHCIVM 1.0.1
+* Reported image download progress
+
+#### Az.Storage 6.1.2
+* Fixed parser logic when downloading blob from managed disk account with Sas Uri and bearer token on Linux and MacOS
+    - 'Get-AzStorageBlobContent'
+* Added warning messages for upcoming breaking changes in Queue cmdlets for removing references to 'Microsoft.Azure.Storage.Queue'
+    - 'New-AzStorageQueue'
+    - 'Get-AzStorageQueue'
+    - 'New-AzStorageQueueSASToken'
+* Added warning messages for an upcoming breaking change when uploading a file using SAS token without read permission 
+    - 'Set-AzStorageFileContent'
+* Added warning messages for an upcoming breaking change when upgrading a Storage account to StorageV2
+    - 'Set-AzStorageAccount'
+
 ## 11.3.1 - February 2024
 #### Az.Resources 6.15.1
 * Fixed deadlock in Bicep CLI execution. [#24133]

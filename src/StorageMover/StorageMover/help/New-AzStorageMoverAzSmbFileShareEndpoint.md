@@ -15,7 +15,7 @@ Creates a Smb file share endpoint resource, which represents a data transfer sou
 ```
 New-AzStorageMoverAzSmbFileShareEndpoint -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
  [-SubscriptionId <String>] -StorageAccountResourceId <String> -FileShareName <String> [-Description <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,10 +23,31 @@ Creates a Smb file share endpoint resource, which represents a data transfer sou
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create an Smb file share endpoint
+```powershell
 New-AzStorageMoverAzSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "myresourcegroup" -StorageMoverName "mystoragemover" -StorageAccountResourceId $accountresourceid -FileShareName testfs -Description "New smb file share endpoint"
 ```
+
+```output
+Id                           : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.StorageMover/storageMovers/mystoragemover/endpoints/myendpoint
+Name                         : myendpoint
+Property                     : {
+                                 "endpointType": "AzureStorageSmbFileShare",
+                                 "description": "New smb file share endpoint",
+                                 "provisioningState": "Succeeded",
+                                 "storageAccountResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myaccount",
+                                 "fileShareName": "testfs"
+                               }
+SystemDataCreatedAt          : 6/27/2023 4:30:13 AM
+SystemDataCreatedBy          :00000000-0000-0000-0000-000000000000
+SystemDataCreatedByType      : Application
+SystemDataLastModifiedAt     : 7/13/2023 7:21:21 AM
+SystemDataLastModifiedBy     : 00000000-0000-0000-0000-000000000000
+SystemDataLastModifiedByType : Application
+Type                         : microsoft.storagemover/storagemovers/endpoints
+```
+
+This command creats an Azure Storage SMB file share endpoint.
 
 ## PARAMETERS
 
@@ -34,7 +55,7 @@ New-AzStorageMoverAzSmbFileShareEndpoint -Name "myendpoint" -ResourceGroupName "
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -49,7 +70,7 @@ Accept wildcard characters: False
 A description for the endpoint.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -64,7 +85,7 @@ Accept wildcard characters: False
 The name of the Azure Storage file share.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -79,11 +100,26 @@ Accept wildcard characters: False
 The name of the endpoint resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: EndpointName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -95,7 +131,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -110,7 +146,7 @@ Accept wildcard characters: False
 The Azure Resource ID of the storage account that is the target destination.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -125,7 +161,7 @@ Accept wildcard characters: False
 The name of the Storage Mover resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -140,13 +176,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -155,7 +191,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -171,7 +207,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -188,13 +224,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint
+
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.IStorageMoverIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20231001.IEndpoint
+
 ## NOTES
 
+ALIASES
+
+New-AzStorageMoverSmbFileShareEndpoint
+
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazsmbfileshareendpoint](https://learn.microsoft.com/powershell/module/az.storagemover/new-azstoragemoverazsmbfileshareendpoint)
-
