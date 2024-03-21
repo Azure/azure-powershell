@@ -20,6 +20,9 @@ Returns a list of available cluster versions.
 ### [Get-AzHdInsightOnAksCluster](Get-AzHdInsightOnAksCluster.md)
 Gets a HDInsight cluster.
 
+### [Get-AzHdInsightOnAksClusterAvailableUpgrade](Get-AzHdInsightOnAksClusterAvailableUpgrade.md)
+List a cluster available upgrade.
+
 ### [Get-AzHdInsightOnAksClusterInstanceView](Get-AzHdInsightOnAksClusterInstanceView.md)
 Gets the status of a cluster instance.
 
@@ -29,6 +32,9 @@ Get jobs of HDInsight on AKS cluster.
 ### [Get-AzHdInsightOnAksClusterPool](Get-AzHdInsightOnAksClusterPool.md)
 Gets a cluster pool.
 
+### [Get-AzHdInsightOnAksClusterPoolAvailableUpgrade](Get-AzHdInsightOnAksClusterPoolAvailableUpgrade.md)
+List a cluster pool available upgrade.
+
 ### [Get-AzHdInsightOnAksClusterServiceConfig](Get-AzHdInsightOnAksClusterServiceConfig.md)
 Lists the config dump of all services running in cluster.
 
@@ -37,6 +43,9 @@ Creates a cluster.
 
 ### [New-AzHdInsightOnAksClusterConfigFileObject](New-AzHdInsightOnAksClusterConfigFileObject.md)
 Create cluster config file.
+
+### [New-AzHdInsightOnAksClusterHotfixUpgradeObject](New-AzHdInsightOnAksClusterHotfixUpgradeObject.md)
+
 
 ### [New-AzHdInsightOnAksClusterPool](New-AzHdInsightOnAksClusterPool.md)
 Create a cluster pool.
@@ -79,6 +88,9 @@ Check the availability of the resource name.
 
 ### [Update-AzHdInsightOnAksCluster](Update-AzHdInsightOnAksCluster.md)
 Updates an existing Cluster.
+
+### [Update-AzHdInsightOnAksClusterPool](Update-AzHdInsightOnAksClusterPool.md)
+Upgrade a cluster pool.
 
 ### [Update-AzHdInsightOnAksClusterPoolTag](Update-AzHdInsightOnAksClusterPoolTag.md)
 Updates an existing Cluster Pool Tags.
