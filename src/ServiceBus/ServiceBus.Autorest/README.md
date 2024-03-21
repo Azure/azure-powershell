@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ServiceBus service.
 
 ---
-## Status
-[![Az.ServiceBus](https://img.shields.io/powershellgallery/v/Az.ServiceBus.svg?style=flat-square&label=Az.ServiceBus "Az.ServiceBus")](https://www.powershellgallery.com/packages/Az.ServiceBus/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -528,3 +525,13 @@ directive:
 
   - model-cmdlet:
     - KeyVaultProperties
+
+  - where:
+      parameter-name: Status
+    set:
+      breaking-change:
+        old-parameter-type: EntityStatus
+        new-parameter-type: String
+        deprecated-by-version: 4.0.0
+        deprecated-by-azversion: 12.0.0
+        change-effective-date: 2024/05/21
