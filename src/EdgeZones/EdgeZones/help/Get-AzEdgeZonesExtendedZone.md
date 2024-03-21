@@ -1,55 +1,52 @@
 ---
 external help file:
 Module Name: Az.EdgeZones
-online version: https://learn.microsoft.com/powershell/module/az.edgezones/register-azedgezonesextendedzone
+online version: https://learn.microsoft.com/powershell/module/az.edgezones/get-azedgezonesextendedzone
 schema: 2.0.0
 ---
 
-# Register-AzEdgeZonesExtendedZone
+# Get-AzEdgeZonesExtendedZone
 
 ## SYNOPSIS
-Registers a subscription for an Extended Zone
+Gets an Azure Extended Zone for a subscription
 
 ## SYNTAX
 
-### Register (Default)
+### List (Default)
 ```
-Register-AzEdgeZonesExtendedZone -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzEdgeZonesExtendedZone [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### RegisterViaIdentity
+### Get
 ```
-Register-AzEdgeZonesExtendedZone -InputObject <IEdgeZonesIdentity> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzEdgeZonesExtendedZone -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzEdgeZonesExtendedZone -InputObject <IEdgeZonesIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Registers a subscription for an Extended Zone
+Gets an Azure Extended Zone for a subscription
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### -------------------------- EXAMPLE 1 --------------------------
 ```powershell
 {{ Add code here }}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
+### -------------------------- EXAMPLE 2 --------------------------
 ```powershell
 {{ Add code here }}
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
 
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -74,7 +71,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeZones.Models.IEdgeZonesIdentity
-Parameter Sets: RegisterViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -89,7 +86,7 @@ The name of the ExtendedZone
 
 ```yaml
 Type: System.String
-Parameter Sets: Register
+Parameter Sets: Get
 Aliases: ExtendedZoneName
 
 Required: True
@@ -104,44 +101,13 @@ The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
-Type: System.String
-Parameter Sets: Register
+Type: System.String[]
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
