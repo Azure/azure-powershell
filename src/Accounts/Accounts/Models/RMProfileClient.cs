@@ -355,7 +355,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                 defaultSubscription = lastUsedSubscription;
                             }
                             defaultTenant = GetDetailedTenantFromQueryHistory(queriedTenants, defaultSubscription.GetProperty(AzureSubscription.Property.Tenants));
-                            var defaultContext = new AzureContext(defaultSubscription, account, environment);
+                            var defaultContext = new AzureContext(defaultSubscription, account, environment, defaultTenant);
+                            WriteSelectedSubscriptionTable(defaultContext);
                             _profile.TrySetDefaultContext(defaultContext);
                             _profile.TryRemoveContext("Default");
                         }
@@ -441,7 +442,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         }
 
         int ColumnNoWidth = 4, ColumnSubNameWidth = 36, ColumnSubIdWidth = 40, ColumnTenantWidth = 26, ColumnIdentsWidth = 4;
-        string defaultSubscriptionMark = $"{Foreground.White}(*){PSStyle.Reset}";
+        string defaultSubscriptionMark = $"{Foreground.White} * {PSStyle.Reset}";
 
         private void WriteSubscriptionSelectionTable(IEnumerable<IAzureSubscription> subscriptions, IEnumerable<IAzureTenant> tenants, string defaultSubscriptionId, bool markDefaultSubscription = false)
         {
@@ -480,7 +481,23 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 subNameRowValue = String.Format($"{{0,-{ColumnSubNameWidth + ColumnIdentsWidth}}}", truncatedSubName),
                 subIdRowValue = String.Format($"{{0,-{ColumnSubIdWidth + ColumnIdentsWidth}}}", subscription.Id),
                 tenantDomainNameRowValue = String.Format($"{{0,-{ColumnTenantWidth}}}", truncatedDomainName);
-            WriteInformationMessage($"{subIndexRowValue}{subNameRowValue}{subIdRowValue}{tenantDomainNameRowValue}");
+            WriteInformationMessage($"{(isDefaultSubscription && markDefaultSubscription ? Foreground.Bold : "")}{subIndexRowValue}{(isDefaultSubscription && markDefaultSubscription ? PSStyle.Reset : "")}{(isDefaultSubscription && markDefaultSubscription ? Foreground.BrightCyan : "")}{subNameRowValue}{subIdRowValue}{tenantDomainNameRowValue}{(isDefaultSubscription && markDefaultSubscription ? PSStyle.Reset : "")}");
+        }
+
+        private void WriteSelectedSubscriptionTable(IAzureContext context)
+        {
+            string ColumnSubNameTab = "Subscription name", ColumnTenantTab = "Tenant domain name";
+            string ColumSubNameSeparator = "------------------------------------", ColumTenantSeparator = "--------------------------";
+            WriteInformationMessage("");
+            WriteInformationMessage($"{String.Format($"{{0,-{ColumnSubNameWidth + ColumnIdentsWidth}}}", ColumnSubNameTab)}" +
+                $"{String.Format($"{{0,-{ColumnTenantWidth + ColumnIdentsWidth}}}", ColumnTenantTab)}");
+            WriteInformationMessage($"{String.Format($"{{0,-{ColumnSubNameWidth + ColumnIdentsWidth}}}", ColumSubNameSeparator)}" +
+                $"{String.Format($"{{0,-{ColumnTenantWidth}}}", ColumTenantSeparator)}");
+            string truncatedSubName = context.Subscription.Name?.Length > ColumnSubNameWidth ? $"{context.Subscription.Name.Substring(0, ColumnSubNameWidth - 3)}..." : context.Subscription.Name;
+            string truncatedDomainName = context.Tenant.GetProperty("DefaultDomain")?.Length > ColumnTenantWidth ? $"{context.Tenant.GetProperty("DefaultDomain").Substring(0, ColumnTenantWidth - 3)}..." : context.Tenant.GetProperty("DefaultDomain");
+            string subNameRowValue = String.Format($"{{0,-{ColumnSubNameWidth + ColumnIdentsWidth}}}", truncatedSubName),
+                tenantDomainNameRowValue = String.Format($"{{0,-{ColumnTenantWidth}}}", truncatedDomainName);
+            WriteInformationMessage($"{subNameRowValue}{tenantDomainNameRowValue}");
         }
 
         public IAzureContext SetCurrentContext(string subscriptionNameOrId, string tenantId, string name = null)

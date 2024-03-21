@@ -12,6 +12,32 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Identity;
+
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
+using Microsoft.Azure.Commands.Common.Authentication.Factories;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Common;
+using Microsoft.Azure.Commands.Common.Authentication.Sanitizer;
+using Microsoft.Azure.Commands.Profile.Common;
+using Microsoft.Azure.Commands.Profile.Models.Core;
+using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.Profile.Utilities;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Commands.Shared.Config;
+using Microsoft.Azure.PowerShell.Authenticators;
+using Microsoft.Azure.PowerShell.Authenticators.Factories;
+using Microsoft.Azure.PowerShell.Common.Config;
+using Microsoft.Azure.PowerShell.Common.Share.Survey;
+using Microsoft.Identity.Client;
+using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
+using Microsoft.WindowsAzure.Commands.Common.Utilities;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+
 using System;
 using System.Collections.Concurrent;
 using System.Linq;
@@ -21,39 +47,6 @@ using System.Security;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
-using Azure.Identity;
-
-using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Common.Authentication.ResourceManager.Common;
-using Microsoft.Azure.Commands.Profile.Common;
-using Microsoft.Azure.Commands.Profile.Models.Core;
-using Microsoft.Azure.Commands.Profile.Properties;
-using Microsoft.Azure.Commands.ResourceManager.Common;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using Microsoft.Azure.Commands.Shared.Config;
-using Microsoft.Azure.PowerShell.Authenticators;
-using Microsoft.Azure.PowerShell.Authenticators.Factories;
-using Microsoft.Azure.PowerShell.Common.Config;
-using Microsoft.Identity.Client;
-using Microsoft.WindowsAzure.Commands.Common;
-using Microsoft.WindowsAzure.Commands.Common.Utilities;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.PowerShell.Common.Share.Survey;
-using Microsoft.Azure.Commands.Profile.Utilities;
-using System.Management.Automation.Runspaces;
-using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
-using Microsoft.Azure.Commands.Common.Authentication.Sanitizer;
-using System.Management.Automation.Host;
-using System.Collections.ObjectModel;
-using System.Collections.Generic;
-using System.IO;
-using Newtonsoft.Json;
-using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -590,6 +583,9 @@ namespace Microsoft.Azure.Commands.Profile
                         }
                     }
                 });
+
+                WriteInformation($"[Announcements]{System.Environment.NewLine}Share your feedback regarding your experience with `Connect-AzAccount` at: https://aka.ms/azloginfeedback{System.Environment.NewLine}");
+                WriteInformation($"If you encounter any problem, please open an issue at: https://aka.ms/azpsissue{System.Environment.NewLine}");
             }
         }
 

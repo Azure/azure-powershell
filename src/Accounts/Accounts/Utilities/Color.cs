@@ -9,7 +9,7 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
         public static string BrightYellow { get; } = "\x1b[93m";
         public static string BrightBlack { get; } = "\x1b[90m";
         public static string White { get; } = "\x1b[37m";
-        public static string Cyan { get; } = "\x1b[36m";
+        public static string BrightCyan { get; } = "\x1b[96m";
 
         public static string BoldOff { get; } = "\x1b[22m";
 
