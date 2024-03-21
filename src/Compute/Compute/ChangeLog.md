@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added parameters `-scriptUriManagedIdentity`, `-outputBlobManagedIdentity`, `-errorBlobMangedIdentity`, and `-TreatFailureAsDeploymentFailure` to cmdlets `Set-AzVmRunCommand` and `Set-AzVmssRunCommand`. 
 * Added new parameter `-EnableAutomaticOSUpgrade` to `New-AzVmss` cmdlet.
 * Renamed parameter `-AutoOSUpgrade` to `-EnableAutomaticOSUpgrade` in `New-AzVmssConfig` cmdlet for consistency. Using `-AutoOSUpgrade` as parameter name will continue to work as it is added as an alias.
 * Upgraded Azure.Core to 1.37.0.
