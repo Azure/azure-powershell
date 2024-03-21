@@ -12,14 +12,11 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
 
     /// <summary>
-    /// Defines values for DiskCreateOptionTypes.
+    /// Defines values for ProvisionedBandwidthCopyOption.
     /// </summary>
-    public static class DiskCreateOptionTypes
+    public static class ProvisionedBandwidthCopyOption
     {
-        public const string FromImage = "FromImage";
-        public const string Empty = "Empty";
-        public const string Attach = "Attach";
-        public const string Copy = "Copy";
-        public const string Restore = "Restore";
+        public const string None = "None";
+        public const string Enhanced = "Enhanced";
     }
 }

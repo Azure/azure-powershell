@@ -12,14 +12,12 @@ namespace Microsoft.Azure.Management.Compute.Models
 {
 
     /// <summary>
-    /// Defines values for DiskCreateOptionTypes.
+    /// Defines values for ResourceIdOptionsForGetCapacityReservationGroups.
     /// </summary>
-    public static class DiskCreateOptionTypes
+    public static class ResourceIdOptionsForGetCapacityReservationGroups
     {
-        public const string FromImage = "FromImage";
-        public const string Empty = "Empty";
-        public const string Attach = "Attach";
-        public const string Copy = "Copy";
-        public const string Restore = "Restore";
+        public const string CreatedInSubscription = "CreatedInSubscription";
+        public const string SharedWithSubscription = "SharedWithSubscription";
+        public const string All = "All";
     }
 }

@@ -33,15 +33,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the OSDisk class.
         /// </summary>
-        /// <param name="createOption">Specifies how the virtual machine should
-        /// be created. Possible values are: **Attach.** This value is used
-        /// when you are using a specialized disk to create the virtual
-        /// machine. **FromImage.** This value is used when you are using an
+        /// <param name="createOption">Specifies how the virtual machine disk
+        /// should be created. Possible values are **Attach:** This value is
+        /// used when you are using a specialized disk to create the virtual
+        /// machine. **FromImage:** This value is used when you are using an
         /// image to create the virtual machine. If you are using a platform
         /// image, you should also use the imageReference element described
         /// above. If you are using a marketplace image, you should also use
         /// the plan element previously described. Possible values include:
-        /// 'FromImage', 'Empty', 'Attach'</param>
+        /// 'FromImage', 'Empty', 'Attach', 'Copy', 'Restore'</param>
         /// <param name="osType">This property allows you to specify the type
         /// of the OS that is included in the disk if creating a VM from
         /// user-image or a specialized VHD. Possible values are: **Windows,**
@@ -162,15 +162,15 @@ namespace Microsoft.Azure.Management.Compute.Models
         public DiffDiskSettings DiffDiskSettings { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies how the virtual machine should be created.
-        /// Possible values are: **Attach.** This value is used when you are
-        /// using a specialized disk to create the virtual machine.
-        /// **FromImage.** This value is used when you are using an image to
+        /// Gets or sets specifies how the virtual machine disk should be
+        /// created. Possible values are **Attach:** This value is used when
+        /// you are using a specialized disk to create the virtual machine.
+        /// **FromImage:** This value is used when you are using an image to
         /// create the virtual machine. If you are using a platform image, you
         /// should also use the imageReference element described above. If you
         /// are using a marketplace image, you should also use the plan element
         /// previously described. Possible values include: 'FromImage',
-        /// 'Empty', 'Attach'
+        /// 'Empty', 'Attach', 'Copy', 'Restore'
         /// </summary>
         [JsonProperty(PropertyName = "createOption")]
         public string CreateOption { get; set; }
