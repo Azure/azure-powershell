@@ -26,6 +26,7 @@
 * Added a new cmdlet for Azure SQL Managed Instance refresh external governance status
   - 'Invoke-AzSqlInstanceExternalGovernanceStatusRefresh'
 * Updated `Get-AzSqlInstance` to support returning the `ExternalGovernanceStatus` property
+* Made 1.2 as default for MinimalTlsVersion when creating new Sql Server from Powershell
 
 ## Version 4.13.0
 * Fixed `Set-AzSqlDatabaseFailoverGroup` when going from multi-secondary to single secondary
