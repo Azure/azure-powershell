@@ -46,14 +46,15 @@ In this directory, run AutoRest:
 ### General settings
 > Values
 ``` yaml
-commit: a434a5a7ee851abc96218443e66a5ebb57911fee
+tag: package-preview-2023-11
+commit: 754d31188c080f20b8155acdf8b8fbd77dace467
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/hdinsight/resource-manager/Microsoft.HDInsight/HDInsightOnAks/readme.md
 
 # input-file:
-#  - D:\source\azure-rest-api-specs\specification\hdinsight\resource-manager\Microsoft.HDInsight\HDInsightOnAks\preview\2023-06-01-preview\hdinsight.json
-inlining-threshold: 100
+#  - D:\HDI-Repo\azure-rest-api-specs\specification\hdinsight\resource-manager\Microsoft.HDInsight\HDInsightOnAks\preview\2023-11-01-preview\hdinsight.json
+inlining-threshold: 200
 ```
 
 > Names
