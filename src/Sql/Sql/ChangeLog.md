@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+*Added "1.3" as an option for -MinimalTlsVersion for the cmdlet 'Set-AzSqlServer' and 'New-AzSqlServer'
 
 ## Version 4.14.0
 * Added `DatabaseFormat` and `PricingModel` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance`

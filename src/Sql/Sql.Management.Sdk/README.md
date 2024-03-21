@@ -26,7 +26,7 @@ use-extension:
 
 ###
 ``` yaml
-commit: b7b77b11ba1f6defc86d309d4ca0d51b2a2646a7
+commit: fff3638b78951d40b9ef695a8a3eeebe624a1a69
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01/metrics.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/stable/2014-04-01-legacy/sql.core_legacy.json
@@ -108,7 +108,7 @@ input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/RecoverableDatabases.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/RestorableDroppedDatabases.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-05-01-preview/InstanceFailoverGroups.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2023-02-01-preview/Servers.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2023-05-01-preview/Servers.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ServerConfigurationOptions.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ManagedLedgerDigestUploads.json
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/sql/resource-manager/Microsoft.Sql/preview/2022-08-01-preview/ManagedDatabases.json
