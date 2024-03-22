@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the EventHub service.
 
 ---
-## Status
-[![Az.EventHub](https://img.shields.io/powershellgallery/v/Az.EventHub.svg?style=flat-square&label=Az.EventHub "Az.EventHub")](https://www.powershellgallery.com/packages/Az.EventHub/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -460,3 +457,64 @@ directive:
 
   - model-cmdlet:
     - KeyVaultProperties
+
+  - where:
+      parameter-name: IdentityType
+    set:
+      breaking-change:
+        old-parameter-type: CaptureIdentityType
+        new-parameter-type: String
+        deprecated-by-version: 5.0.0
+        deprecated-by-azversion: 12.0.0
+        change-effective-date: 2024/05/21
+  
+  - where:
+      parameter-name: CleanupPolicy
+    set:
+      breaking-change:
+        old-parameter-type: CleanupPolicyRetentionDescription
+        new-parameter-type: String
+        deprecated-by-version: 5.0.0
+        deprecated-by-azversion: 12.0.0
+        change-effective-date: 2024/05/21
+  
+  - where:
+      parameter-name: Status
+    set:
+      breaking-change:
+        old-parameter-type: EntityStatus
+        new-parameter-type: String
+        deprecated-by-version: 5.0.0
+        deprecated-by-azversion: 12.0.0
+        change-effective-date: 2024/05/21
+  
+  - where:
+      parameter-name: Encoding
+    set:
+      breaking-change:
+        old-parameter-type: EncodingCaptureDescription
+        new-parameter-type: String
+        deprecated-by-version: 5.0.0
+        deprecated-by-azversion: 12.0.0
+        change-effective-date: 2024/05/21
+
+  - where:
+      parameter-name: SchemaCompatibility
+    set:
+      breaking-change:
+        old-parameter-type: SchemaCompatibility
+        new-parameter-type: String
+        deprecated-by-version: 5.0.0
+        deprecated-by-azversion: 12.0.0
+        change-effective-date: 2024/05/21
+
+  - where:
+      parameter-name: SchemaType
+    set:
+      breaking-change:
+        old-parameter-type: SchemaType
+        new-parameter-type: String
+        deprecated-by-version: 5.0.0
+        deprecated-by-azversion: 12.0.0
+        change-effective-date: 2024/05/21
+        

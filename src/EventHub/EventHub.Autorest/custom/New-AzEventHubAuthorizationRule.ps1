@@ -64,6 +64,7 @@ function New-AzEventHubAuthorizationRule{
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.AccessRights[]]
         # The rights associated with the rule.
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("Rights","12.0.0", "5.0.0","2024-05-21" )]
         ${Rights},
 		
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
