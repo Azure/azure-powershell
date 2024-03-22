@@ -28,7 +28,7 @@ $nw = Get-AzResource | Where-Object {$_.ResourceType -eq "Microsoft.Network/netw
 Convert-AzNetworkWatcherClassicConnectionMonitor -NetworkWatcherName $nw.Name -ResourceGroupName $nw.ResourceGroupName -Name "classicCm1"
 ```
 
-```
+```output
 Migration is successful.
 ```
 
@@ -40,7 +40,7 @@ $nw = Get-AzResource | Where-Object {$_.ResourceType -eq "Microsoft.Network/netw
 Convert-AzNetworkWatcherClassicConnectionMonitor -NetworkWatcherName $nw.Name -ResourceGroupName $nw.ResourceGroupName -Name "testCmv2"
 ```
 
-```
+```output
 This Connection Monitor is already V2
 ```
 
