@@ -59,17 +59,17 @@ Create a maintenance configuration with scope Host
 
 ### Example 2
 ```powershell
-New-AzMaintenanceConfiguration -ResourceGroupName sethurams-test2  -Name workervmscentralus -MaintenanceScope "InGuestPatch" -Location eastus2euap -Timezone "UTC" -StartDateTime "2025-10-09 12:30" -Duration "3:00" -RecurEvery "Day" -LinuxParameterPackageNameMaskToInclude "apt","httpd" -ExtensionProperty @{inGuestPatchMode="User"} -InstallPatchRebootSetting "IfRequired"  -Debug
+New-AzMaintenanceConfiguration -ResourceGroupName sample-rg  -Name PatchSchedule -MaintenanceScope "InGuestPatch" -Location westeurope -Timezone "UTC" -StartDateTime "2025-10-09 12:30" -Duration "3:00" -RecurEvery "Day" -LinuxParameterClassificationToInclude @('Other') -LinuxParameterPackageNameMaskToInclude @('lib', 'kernel') -LinuxParameterPackageNameMaskToExclude @('curl', 'vim') -WindowParameterClassificationToInclude @('Critical', 'Security') -WindowParameterKbNumberToInclude @('5035849', '5035857') -WindowParameterKbNumberToExclude @('5034439')  -ExtensionProperty @{inGuestPatchMode="User"} -InstallPatchRebootSetting "IfRequired"  -Debug
 ```
 
 ```output
-Location                               : eastus2euap
-Tags                                   : {}
+Location                               : westeurope
+Tags                                   : {"resource":"test"}
 ExtensionProperties                    : {"inGuestPatchMode":"User"}
 MaintenanceScope                       : InGuestPatch
-Id                                     : /subscriptions/eee2cef4-bc47-4278-b4f8-cfc65f25dfd8/resourcegroups/sethurams-test2/provider
-s/Microsoft.Maintenance/maintenanceConfigurations/workervmscentralus
-Name                                   : workervmscentralus
+Id                                     : 
+/subscriptions/783fd652-64f3-4680-81e9-0b978c542005/resourcegroups/sample-rg/providers/Microsoft.Maintenance/maintenanceConfigurations/PatchSchedule
+Name                                   : PatchSchedule
 Type                                   : Microsoft.Maintenance/maintenanceConfigurations
 StartDateTime                          : 2025-10-09 12:30
 Duration                               : 03:00
