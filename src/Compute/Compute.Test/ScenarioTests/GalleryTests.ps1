@@ -818,7 +818,7 @@ function Test-GalleryVersionWithSourceImageVMId
         $vmname2 = "2" + $vmname;
 
 
-        # Gallery
+        # Gallery variables
         $resourceGroup = $rgname
         $galleryName = 'gl' + $rgname
         $definitionName = 'def' + $rgname
