@@ -39,14 +39,14 @@ function New-AzHdInsightOnAksClusterHotfixUpgradeObject {
     process {
         try {
             $hotfixProperty = New-Object Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterHotfixUpgradeProperties -Property `
-            @{ComponentName                           = $ComponentName;
-                TargetBuildNumber            = $TargetBuildNumber;
-                TargetClusterVersion       = $TargetClusterVersion;
-                TargetOssVersion = $TargetOssVersion;
+            @{ComponentName          = $ComponentName;
+                TargetBuildNumber    = $TargetBuildNumber;
+                TargetClusterVersion = $TargetClusterVersion;
+                TargetOssVersion     = $TargetOssVersion;
             }
 
             $hotfixObject = New-Object Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterUpgrade -Property `
-            @{Property = $hotfixProperty}
+            @{Property = $hotfixProperty }
 
             return $hotfixObject
         }

@@ -50,6 +50,9 @@ Create cluster config file.
 ### [New-AzHdInsightOnAksClusterPool](New-AzHdInsightOnAksClusterPool.md)
 Create a cluster pool.
 
+### [New-AzHdInsightOnAksClusterPoolAKSUpgradeObject](New-AzHdInsightOnAksClusterPoolAKSUpgradeObject.md)
+
+
 ### [New-AzHdInsightOnAksClusterServiceConfigObject](New-AzHdInsightOnAksClusterServiceConfigObject.md)
 Create a component config.
 
