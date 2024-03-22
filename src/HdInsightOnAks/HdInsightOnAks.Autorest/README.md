@@ -51,9 +51,6 @@ commit: 754d31188c080f20b8155acdf8b8fbd77dace467
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/hdinsight/resource-manager/Microsoft.HDInsight/HDInsightOnAks/readme.md
-
-# input-file:
-#  - D:\HDI-Repo\azure-rest-api-specs\specification\hdinsight\resource-manager\Microsoft.HDInsight\HDInsightOnAks\preview\2023-11-01-preview\hdinsight.json
 inlining-threshold: 200
 ```
 
