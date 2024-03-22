@@ -783,6 +783,7 @@ function Test-GalleryVersionWithSourceImageVMId
 
     try
     {
+    
         $location = $loc;
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
         # create credential 
@@ -802,6 +803,7 @@ function Test-GalleryVersionWithSourceImageVMId
         $disable = $false;
         $enable = $true;
         $galleryName = "g" + $rgname;
+        $VMSize = "Standard_DS2_v2";
         $vnetname = "vn" + $rgname;
         $vnetAddress = "10.0.0.0/16";
         $subnetname = "slb" + $rgname;
@@ -814,6 +816,7 @@ function Test-GalleryVersionWithSourceImageVMId
         $OSDiskSizeinGB = 128;
         $VMSize = "Standard_DS2_v2";
         $vmname2 = "2" + $vmname;
+
 
         # Gallery
         $resourceGroup = $rgname
@@ -832,23 +835,23 @@ function Test-GalleryVersionWithSourceImageVMId
 
         # create new VM
         $paramNewAzVm = @{
-            ResourceGroupName = $resourceGroup
-            Name = $vmName
+            ResourceGroupName = $rgname
+            Name = $vmname
             Credential = $cred
-            Location = $location
+            Location = $loc
             ErrorAction = 'Stop'
         }
         if ($trustedLaunch -eq $false) {
             $paramNewAzVm.Add('SecurityType', 'Standard')
         }
-        $vm = New-AzVM @paramNewAzVm
+        $vm = New-AzVM @paramNewAzVm;
 
         # Setup Image Gallery
-        New-AzGallery -ResourceGroupName $resourceGroup -Name $galleryName -location $location -ErrorAction 'Stop' | Out-Null
+        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -location $location -ErrorAction 'Stop' | Out-Null
 
         # Setup Image Definition
         $paramNewAzImageDef = @{
-            ResourceGroupName = $resourceGroup
+            ResourceGroupName = $rgname
             GalleryName       = $galleryName
             Name              = $definitionName
             Publisher         = $skuDetails.Publisher
@@ -866,7 +869,7 @@ function Test-GalleryVersionWithSourceImageVMId
         # Setup Image Version
         $imageVersionName = "1.0.0";
         $paramNewAzImageVer = @{
-            ResourceGroupName   = $resourceGroup
+            ResourceGroupName   = $rgname
             GalleryName         = $galleryName
             GalleryImageDefinitionName  = $definitionName
             Name                = $imageVersionName
@@ -874,16 +877,11 @@ function Test-GalleryVersionWithSourceImageVMId
             SourceImageVMId       = $vm.Id
             ErrorAction         = 'Stop'
             StorageAccountType  = $storageAccountSku
-            AsJob               = $true
         }
-        New-AzGalleryImageVersion @paramNewAzImageVer | Out-Null;
+        $galversion = New-AzGalleryImageVersion @paramNewAzImageVer;
         
-        $imageDefinition = Get-AzGalleryImageDefinition -ResourceGroupName $rgname -GalleryName $galleryName -Name $definitionName;
-        
-        $galversion = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName -GalleryImageDefinitionName $definitionName -Name $imageVersionName;
-
         # Assert VMId in version was set to the vm.Id value and was created. 
-        Assert-AreEqual $galversion.SourceImageVMId $vm.Id;
+        Assert-AreEqual $galversion.StorageProfile.Source.VirtualMachineId $vm.Id;
     }
     finally 
     {
