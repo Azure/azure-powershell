@@ -13,8 +13,8 @@ schema: 2.0.0
 ## SYNTAX
 
 ```
-New-AzHdInsightOnAksClusterHotfixUpgradeObject -ComponentName <String> -TargetBuildNumber <String>
- -TargetClusterVersion <String> -TargetOssVersion <String> [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzHdInsightOnAksClusterHotfixUpgradeObject [-ComponentName <String>] [-TargetBuildNumber <String>]
+ [-TargetClusterVersion <String>] [-TargetOssVersion <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +45,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -60,7 +60,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -75,7 +75,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -90,7 +90,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

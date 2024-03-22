@@ -16,22 +16,22 @@ function New-AzHdInsightOnAksClusterHotfixUpgradeObject {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade])]
     [CmdletBinding(DefaultParameterSetName = 'Create', PositionalBinding = $false, SupportsShouldProcess)]
     param(
-        [Parameter(ParameterSetName = 'Create', Mandatory)]
+        [Parameter(ParameterSetName = 'Create')]
         [System.String]
         # Name of component to be upgraded.
         ${ComponentName},
 
-        [Parameter(ParameterSetName = 'Create', Mandatory)]
+        [Parameter(ParameterSetName = 'Create')]
         [System.String]
         # Target build number of component to be upgraded.
         ${TargetBuildNumber},
         
-        [Parameter(ParameterSetName = 'Create', Mandatory)]
+        [Parameter(ParameterSetName = 'Create')]
         [System.String]
         # Target cluster version of component to be upgraded.
         ${TargetClusterVersion},
 
-        [Parameter(ParameterSetName = 'Create', Mandatory)]
+        [Parameter(ParameterSetName = 'Create')]
         [System.String]
         # Target OSS version of component to be upgraded.
         ${TargetOssVersion}
