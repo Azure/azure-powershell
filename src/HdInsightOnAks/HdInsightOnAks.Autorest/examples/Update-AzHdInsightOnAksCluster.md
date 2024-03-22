@@ -33,7 +33,7 @@ Add a key-value `"testvalue1"="111"` to the cluster config file `core-site.xml`.
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "ps-test-pool"
 $clusterName = "flinkcluster"
-$hotfixObj = New-AzHdInsightOnAksHotfixUpgradeObject -ComponentName Webssh -TargetBuildNumber 7 -TargetClusterVersion "1.1.1" -TargetOssVersion "0.4.2"
+$hotfixObj = New-AzHdInsightOnAksClusterHotfixUpgradeObject -ComponentName Webssh -TargetBuildNumber 7 -TargetClusterVersion "1.1.1" -TargetOssVersion "0.4.2"
 Update-AzHdInsightOnAksCluster -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName -ClusterUpgradeRequest $hotfixObj
 ```
 
