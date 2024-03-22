@@ -20,7 +20,7 @@
 ## Upcoming Release
 * Added breaking change message.
 
-## Version 2.0.0
+## Version 1.6.0
 * Added fix for DeliveryAttributeMapping
 * Added validation for StorageQueueTtl
 
