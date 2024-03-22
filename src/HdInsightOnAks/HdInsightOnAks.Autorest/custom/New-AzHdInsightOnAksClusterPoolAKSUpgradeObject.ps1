@@ -24,7 +24,7 @@ Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolUpgrade
 https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterPoolAKSUpgradeObject
 #>
 function New-AzHdInsightOnAksClusterPoolAKSUpgradeObject {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolUpgrade])]
     [CmdletBinding(DefaultParameterSetName = 'Create', PositionalBinding = $false, SupportsShouldProcess)]
     param(
         [Parameter(ParameterSetName = 'Create')]
