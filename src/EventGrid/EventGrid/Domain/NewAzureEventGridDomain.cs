@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using EventGridModels = Microsoft.Azure.Management.EventGrid.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateSet(EventGridModels.InputSchema.EventGridSchema, EventGridModels.InputSchema.CustomEventSchema, EventGridModels.InputSchema.CloudEventSchemaV10, IgnoreCase = true)]
         public string InputSchema { get; set; } = EventGridModels.InputSchema.EventGridSchema;
 
-        [CmdletParameterBreakingChangeWithVersion("InputMappingField", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
+        [CmdletParameterBreakingChangeWithVersion("InputMappingField", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -92,7 +93,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = DomainNameParameterSet)]
         public Hashtable InputMappingField { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("InputMappingDefaultValue", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
+        [CmdletParameterBreakingChangeWithVersion("InputMappingDefaultValue", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -103,7 +104,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         /// <summary>
         /// Hashtable which represents the Inbound IP Rules.
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("InboundIpRule", "12.0.0", "7.0.0", OldParameterType = typeof(Hashtable), NewParameterTypeName="IInboundIPRule[]")]
+        [CmdletParameterBreakingChangeWithVersion("InboundIpRule", "12.0.0", "7.0.0", OldParamaterType = typeof(Hashtable), NewParameterTypeName="IInboundIPRule[]")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -159,7 +160,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         /// <summary>
         /// string which represents the IdentityType.
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("IdentityType", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
+        [CmdletParameterBreakingChangeWithVersion("IdentityType", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

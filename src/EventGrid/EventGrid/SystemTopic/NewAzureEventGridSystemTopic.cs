@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using EventGridModels = Microsoft.Azure.Management.EventGrid.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -89,7 +90,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         /// string which represents the IdentityType.
         /// </summary>
 
-        [CmdletParameterBreakingChangeWithVersion("IdentityType", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
+        [CmdletParameterBreakingChangeWithVersion("IdentityType", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

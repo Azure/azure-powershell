@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Alias("ChannelName")]
         public string Name { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("ODataQuery", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
+        [CmdletParameterBreakingChangeWithVersion("ODataQuery", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -93,7 +94,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateRange(1, 100)]
         public int? Top { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("NextLink", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
+        [CmdletParameterBreakingChangeWithVersion("NextLink", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,

@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using EventGridModels = Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ResourceNameCompleter("Microsoft.EventGrid/partnerTopics", nameof(ResourceGroupName))]
         public string PartnerTopicName { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("ResourceId", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
+        [CmdletParameterBreakingChangeWithVersion("ResourceId", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,

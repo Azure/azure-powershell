@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using EventGridModels = Microsoft.Azure.Management.EventGrid.Models;
 using System;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -76,7 +77,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = PartnerNamespaceNameParameterSet)]
         public Hashtable Tag { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("PrivateEndpointConnection", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
+        [CmdletParameterBreakingChangeWithVersion("PrivateEndpointConnection", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -84,7 +85,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = PartnerNamespaceNameParameterSet)]
         public PSPrivateEndpointConnection[] PrivateEndpointConnection { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("InboundIpRule", "12.0.0", "7.0.0", OldParameterType = typeof(PSInboundIpRule[]), NewParameterTypeName="IInboundIPRule[]")]
+        [CmdletParameterBreakingChangeWithVersion("InboundIpRule", "12.0.0", "7.0.0", OldParamaterType = typeof(PSInboundIpRule[]), NewParameterTypeName="IInboundIPRule[]")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -99,7 +100,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = PartnerNamespaceNameParameterSet)]
         public string PartnerRegistrationFullyQualifiedId { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("Endpoint", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
+        [CmdletParameterBreakingChangeWithVersion("Endpoint", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

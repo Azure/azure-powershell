@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using EventGridModels = Microsoft.Azure.Management.EventGrid.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = ResourceGroupNameParameterSet)]
         public int? MaxExpirationTimeInDays { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("AuthorizedPartner", "12.0.0", "7.0.0", OldParameterType = typeof(Hashtable[]), NewParameterTypeName="IPartner[]")]
+        [CmdletParameterBreakingChangeWithVersion("AuthorizedPartner", "12.0.0", "7.0.0", OldParamaterType = typeof(Hashtable[]), NewParameterTypeName="IPartner[]")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
