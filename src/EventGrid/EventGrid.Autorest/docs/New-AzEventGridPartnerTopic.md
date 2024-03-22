@@ -121,7 +121,7 @@ The inline event type keys are of type string which represents the name of the e
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: InlineEvent
 
 Required: False
 Position: Named
@@ -136,7 +136,7 @@ The kind of event type used.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: EventTypeKind
 
 Required: False
 Position: Named
@@ -333,7 +333,7 @@ The name of the resource group within the user's subscription.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases:
+Aliases: ResourceGroup
 
 Required: True
 Position: Named

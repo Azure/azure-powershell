@@ -237,7 +237,7 @@ The name of the resource group within the user's subscription.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
-Aliases:
+Aliases: ResourceGroup
 
 Required: True
 Position: Named

@@ -67,7 +67,7 @@ If specified, the allowed values are between 1 to the value of defaultMaximumExp
 ```yaml
 Type: System.DateTime
 Parameter Sets: PartnerExpanded
-Aliases:
+Aliases: AuthorizationExpirationTime
 
 Required: False
 Position: Named
@@ -188,7 +188,7 @@ The name of the resource group within the user's subscription.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ResourceGroup
 
 Required: True
 Position: Named
@@ -256,6 +256,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartnerConfiguration
 
 ## NOTES
+
+ALIASES
+
+Revoke-AzEventGridPartnerConfiguration
 
 ## RELATED LINKS
 

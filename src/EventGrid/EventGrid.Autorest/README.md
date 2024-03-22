@@ -492,4 +492,319 @@ directive:
       verb: Update
       subject: CaCertificate
     remove: true
+
+# start: Modifications for disruptive changes
+  - where:
+      parameter-name: ResourceGroupName
+    set:
+      alias: ResourceGroup
+
+  - where:
+      subject: DomainTopic
+      parameter-name: DomainName
+    set:
+      alias: Domain
+
+  - where:
+      parameter-name: UserAssignedIdentity
+    set:
+      alias: IdentityId
+
+  - where:
+      subject: PartnerTopic
+      parameter-name: EventTypeInfoKind
+    set:
+      alias: EventTypeKind
+  - where:
+      subject: PartnerTopic
+      parameter-name: EventTypeInfoInlineEventType
+    set:
+      alias: InlineEvent
+
+  - where:
+      subject: Channel
+      parameter-name: PartnerTopicInfoSource
+    set:
+      alias: PartnerTopicSource
+  - where:
+      subject: Channel
+      parameter-name: PartnerTopicInfoName
+    set:
+      alias: PartnerTopicName
+  - where:
+      subject: Channel
+      parameter-name: EventTypeInfoKind
+    set:
+      alias: EventTypeKind
+  - where:
+      subject: Channel
+      parameter-name: EventTypeInfoInlineEventType
+    set:
+      alias: InlineEvent
+
+  - where:
+      verb: Enable
+      subject: PartnerConfiguration
+    set:
+      alias: Grant-AzEventGridPartnerConfiguration
+  - where:
+      verb: Disable
+      subject: PartnerConfiguration
+    set:
+      alias: Revoke-AzEventGridPartnerConfiguration
+  - where:
+      subject: PartnerConfiguration
+      parameter-name: AuthorizationExpirationTimeInUtc
+    set:
+      alias: AuthorizationExpirationTime
+  - where:
+      subject: PartnerConfiguration
+      parameter-name: PartnerAuthorizationDefaultMaximumExpirationTimeInDay
+    set:
+      alias: MaxExpirationTimeInDays
+  - where:
+      subject: PartnerConfiguration
+      parameter-name: PartnerAuthorizationAuthorizedPartnersList
+    set:
+      alias: AuthorizedPartner
+
+  - where:
+      verb: Get
+      subject: DomainSharedAccessKey
+    set:
+      alias: Get-AzEventGridDomainKey
+  - where:
+      verb: Get
+      subject: DomainSharedAccessKey
+      parameter-name: DomainName
+    set:
+      alias: Name
+
+  - where:
+      subject: PartnerTopicEventSubscription
+      parameter-name: EventDeliverySchema
+    set:
+      alias: DeliverySchema
+  - where:
+      subject: PartnerTopicEventSubscription
+      parameter-name: RetryPolicyEventTimeToLiveInMinute
+    set:
+      alias: EventTtl
+  - where:
+      subject: PartnerTopicEventSubscription
+      parameter-name: ExpirationTimeUtc
+    set:
+      alias: ExpirationDate
+  - where:
+      subject: PartnerTopicEventSubscription
+      parameter-name: FilterAdvancedFilter 
+    set:
+      alias: AdvancedFilter
+  - where:
+      subject: PartnerTopicEventSubscription
+      parameter-name: FilterEnableAdvancedFilteringOnArray 
+    set:
+      alias: AdvancedFilteringOnArray
+  - where:
+      subject: PartnerTopicEventSubscription
+      parameter-name: FilterIncludedEventType
+    set:
+      alias: IncludedEventType
+  - where:
+      subject: PartnerTopicEventSubscription
+      parameter-name: FilterSubjectBeginsWith
+    set:
+      alias: SubjectBeginsWith
+  - where:
+      subject: PartnerTopicEventSubscription
+      parameter-name: FilterSubjectEndsWith
+    set:
+      alias: SubjectEndsWith
+  - where:
+      subject: PartnerTopicEventSubscription
+      parameter-name: FilterIsSubjectCaseSensitive
+    set:
+      alias: SubjectCaseSensitive
+
+  - where:
+      subject: PartnerTopicEventSubscription
+      parameter-name: EventSubscriptionName
+    set:
+      alias: Name
+
+  - where:
+      verb: Get
+      subject: PartnerTopicEventSubscriptionDeliveryAttribute
+      parameter-name: EventSubscriptionName
+    set:
+      alias: Name
+
+  - where:
+      verb: Get
+      subject: PartnerTopicEventSubscriptionFullUrl
+      parameter-name: EventSubscriptionName
+    set:
+      alias: Name
+
+  - where:
+      verb: Get
+      subject: PartnerTopicEventSubscriptionFullUrl
+    set:
+      alias: Get-AzEventGridFullUrlForPartnerTopicEventSubscription
+
+  - where:
+      verb: Get
+      subject: SystemTopicEventSubscriptionFullUrl
+    set:
+      alias: Get-AzEventGridFullUrlForSystemTopicEventSubscription
+
+  - where:
+      subject: SystemTopicEventSubscription
+      parameter-name: EventDeliverySchema
+    set:
+      alias: DeliverySchema
+  - where:
+      subject: SystemTopicEventSubscription
+      parameter-name: RetryPolicyEventTimeToLiveInMinute
+    set:
+      alias: EventTtl
+  - where:
+      subject: SystemTopicEventSubscription
+      parameter-name: ExpirationTimeUtc
+    set:
+      alias: ExpirationDate
+  - where:
+      subject: SystemTopicEventSubscription
+      parameter-name: RetryPolicyMaxDeliveryAttempt
+    set:
+      alias: MaxDeliveryAttempt
+  - where:
+      subject: SystemTopicEventSubscription
+      parameter-name: FilterAdvancedFilter
+    set:
+      alias: AdvancedFilter
+  - where:
+      subject: SystemTopicEventSubscription
+      parameter-name: FilterEnableAdvancedFilteringOnArray
+    set:
+      alias: AdvancedFilteringOnArray
+  - where:
+      subject: SystemTopicEventSubscription
+      parameter-name: FilterIncludedEventType
+    set:
+      alias: IncludedEventType
+  - where:
+      subject: SystemTopicEventSubscription
+      parameter-name: FilterSubjectBeginsWith
+    set:
+      alias: SubjectBeginsWith
+  - where:
+      subject: SystemTopicEventSubscription
+      parameter-name: FilterSubjectEndsWith
+    set:
+      alias: SubjectEndsWith
+  - where:
+      subject: SystemTopicEventSubscription
+      parameter-name: FilterIsSubjectCaseSensitive
+    set:
+      alias: SubjectCaseSensitive
+
+  - where:
+      verb: Get
+      subject: PartnerNamespaceSharedAccessKey
+    set:
+      alias: Get-AzEventGridPartnerNamespaceKey
+
+  - where:
+      verb: Get
+      subject: EventSubscription
+    set:
+      alias: Get-AzEventGridSubscription
+  - where:
+      verb: Get
+      subject: EventSubscription
+      parameter-name: TopicName
+    set:
+      alias: DomainTopicName
+  - where:
+      subject: EventSubscription
+      parameter-name: FilterSubjectBeginsWith
+    set:
+      alias: SubjectBeginsWith
+  - where:
+      subject: EventSubscription
+      parameter-name: FilterSubjectEndsWith
+    set:
+      alias: SubjectEndsWith
+  - where:
+      subject: EventSubscription
+      parameter-name: FilterIsSubjectCaseSensitive
+    set:
+      alias: SubjectCaseSensitive
+  - where:
+      subject: EventSubscription
+      parameter-name: FilterIncludedEventType
+    set:
+      alias: IncludedEventType
+  - where:
+      subject: EventSubscription
+      parameter-name: RetryPolicyEventTimeToLiveInMinute
+    set:
+      alias: EventTtl
+  - where:
+      subject: EventSubscription
+      parameter-name: RetryPolicyMaxDeliveryAttempt
+    set:
+      alias: MaxDeliveryAttempt
+  - where:
+      subject: EventSubscription
+      parameter-name: EventDeliverySchema
+    set:
+      alias: DeliverySchema
+  - where:
+      subject: EventSubscription
+      parameter-name: ExpirationTimeUtc
+    set:
+      alias: ExpirationDate
+  - where:
+      subject: EventSubscription
+      parameter-name: FilterAdvancedFilter
+    set:
+      alias: AdvancedFilter
+  - where:
+      subject: EventSubscription
+      parameter-name: FilterEnableAdvancedFilteringOnArray
+    set:
+      alias: AdvancedFilteringOnArray
+
+  - where:
+      verb: Get
+      subject: TopicSharedAccessKey
+    set:
+      alias: Get-AzEventGridTopicKey
+  - where:
+      verb: Get
+      subject: TopicSharedAccessKey
+      parameter-name: TopicName
+    set:
+      alias: Name
+
+  - where:
+      verb: New
+      subject: EventSubscription
+    set:
+      alias: New-AzEventGridSubscription
+
+  - where:
+      verb: Remove
+      subject: EventSubscription
+    set:
+      alias: Remove-AzEventGridSubscription
+
+  - where:
+      verb: Update
+      subject: EventSubscription
+    set:
+      alias: Update-AzEventGridSubscription
+# end: Modifications for disruptive changes
 ```

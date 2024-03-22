@@ -190,5 +190,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
+ALIASES
+
+Remove-AzEventGridSubscription
+
 ## RELATED LINKS
 

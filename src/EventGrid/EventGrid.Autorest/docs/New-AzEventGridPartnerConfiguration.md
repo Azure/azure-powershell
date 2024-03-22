@@ -168,7 +168,7 @@ The list of authorized partners.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IPartner[]
 Parameter Sets: CreateExpanded
-Aliases:
+Aliases: AuthorizedPartner
 
 Required: False
 Position: Named
@@ -185,7 +185,7 @@ Otherwise, allowed values are between 1 and 365 days.
 ```yaml
 Type: System.Int32
 Parameter Sets: CreateExpanded
-Aliases:
+Aliases: MaxExpirationTimeInDays
 
 Required: False
 Position: Named
@@ -230,7 +230,7 @@ The name of the resource group within the user's subscription.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ResourceGroup
 
 Required: True
 Position: Named

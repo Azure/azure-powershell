@@ -255,7 +255,7 @@ The name of the resource group within the user's subscription.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases:
+Aliases: ResourceGroup
 
 Required: True
 Position: Named

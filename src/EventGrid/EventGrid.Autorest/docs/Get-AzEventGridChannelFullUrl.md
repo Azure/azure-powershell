@@ -162,7 +162,7 @@ The name of the resource group within the partners subscription.
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: ResourceGroup
 
 Required: True
 Position: Named

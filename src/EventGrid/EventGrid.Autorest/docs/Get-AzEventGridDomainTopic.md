@@ -120,7 +120,7 @@ Name of the domain.
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases:
+Aliases: Domain
 
 Required: True
 Position: Named
@@ -200,7 +200,7 @@ The name of the resource group within the user's subscription.
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases:
+Aliases: ResourceGroup
 
 Required: True
 Position: Named

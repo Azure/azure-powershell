@@ -222,7 +222,7 @@ The event delivery schema for the event subscription.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityPartnerTopicExpanded
-Aliases:
+Aliases: DeliverySchema
 
 Required: False
 Position: Named
@@ -238,7 +238,7 @@ Event subscription names must be between 3 and 100 characters in length and use 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityPartnerTopicExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named
@@ -253,7 +253,7 @@ Information about the expiration time for the event subscription.
 ```yaml
 Type: System.DateTime
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityPartnerTopicExpanded
-Aliases:
+Aliases: ExpirationDate
 
 Required: False
 Position: Named
@@ -268,7 +268,7 @@ An array of advanced filters that are used for filtering event subscriptions.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.IAdvancedFilter[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityPartnerTopicExpanded
-Aliases:
+Aliases: AdvancedFilter
 
 Required: False
 Position: Named
@@ -283,7 +283,7 @@ Allows advanced filters to be evaluated against an array of values instead of ex
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityPartnerTopicExpanded
-Aliases:
+Aliases: AdvancedFilteringOnArray
 
 Required: False
 Position: Named
@@ -299,7 +299,7 @@ If it is desired to subscribe to all default event types, set the IncludedEventT
 ```yaml
 Type: System.String[]
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityPartnerTopicExpanded
-Aliases:
+Aliases: IncludedEventType
 
 Required: False
 Position: Named
@@ -314,7 +314,7 @@ Specifies if the SubjectBeginsWith and SubjectEndsWith properties of the filters
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityPartnerTopicExpanded
-Aliases:
+Aliases: SubjectCaseSensitive
 
 Required: False
 Position: Named
@@ -329,7 +329,7 @@ An optional string to filter events for an event subscription based on a resourc
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityPartnerTopicExpanded
-Aliases:
+Aliases: SubjectBeginsWith
 
 Required: False
 Position: Named
@@ -344,7 +344,7 @@ An optional string to filter events for an event subscription based on a resourc
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityPartnerTopicExpanded
-Aliases:
+Aliases: SubjectEndsWith
 
 Required: False
 Position: Named
@@ -479,7 +479,7 @@ The name of the resource group within the user's subscription.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
-Aliases:
+Aliases: ResourceGroup
 
 Required: True
 Position: Named
@@ -494,7 +494,7 @@ Time To Live (in minutes) for events.
 ```yaml
 Type: System.Int32
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityPartnerTopicExpanded
-Aliases:
+Aliases: EventTtl
 
 Required: False
 Position: Named

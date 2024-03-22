@@ -108,7 +108,7 @@ Event subscription names must be between 3 and 100 characters in length and use 
 ```yaml
 Type: System.String
 Parameter Sets: Get, GetViaIdentityPartnerTopic
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named
@@ -203,7 +203,7 @@ The name of the resource group within the user's subscription.
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases:
+Aliases: ResourceGroup
 
 Required: True
 Position: Named

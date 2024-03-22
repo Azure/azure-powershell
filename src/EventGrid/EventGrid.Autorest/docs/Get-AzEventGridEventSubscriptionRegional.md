@@ -146,7 +146,7 @@ The name of the resource group within the user's subscription.
 ```yaml
 Type: System.String
 Parameter Sets: List1, List3
-Aliases:
+Aliases: ResourceGroup
 
 Required: True
 Position: Named

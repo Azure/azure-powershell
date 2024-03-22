@@ -75,7 +75,7 @@ The name of the resource group within the user's subscription.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ResourceGroup
 
 Required: True
 Position: Named
@@ -106,7 +106,7 @@ Name of the topic.
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named
@@ -156,6 +156,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.EventGrid.Models.ITopicSharedAccessKeys
 
 ## NOTES
+
+ALIASES
+
+Get-AzEventGridTopicKey
 
 ## RELATED LINKS
 

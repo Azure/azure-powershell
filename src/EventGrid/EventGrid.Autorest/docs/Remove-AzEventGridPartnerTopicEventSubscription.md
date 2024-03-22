@@ -84,7 +84,7 @@ Event subscription names must be between 3 and 100 characters in length and use 
 ```yaml
 Type: System.String
 Parameter Sets: Delete, DeleteViaIdentityPartnerTopic
-Aliases:
+Aliases: Name
 
 Required: True
 Position: Named
@@ -174,7 +174,7 @@ The name of the resource group within the user's subscription.
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: ResourceGroup
 
 Required: True
 Position: Named
