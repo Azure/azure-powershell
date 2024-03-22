@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
+    [GenericBreakingChangeWithVersion("The old syntax is discarded and a new syntax is used.", "12.0.0", "2.0.0")]
     [Cmdlet(
         "Remove",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSubscription",

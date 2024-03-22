@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = PartnerNamespaceNameParameterSet)]
         public Hashtable Tag { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("PrivateEndpointConnection", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -83,6 +84,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = PartnerNamespaceNameParameterSet)]
         public PSPrivateEndpointConnection[] PrivateEndpointConnection { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("InboundIpRule", "12.0.0", "7.0.0", OldParameterType = typeof(PSInboundIpRule[]), NewParameterTypeName="IInboundIPRule[]")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -97,6 +99,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = PartnerNamespaceNameParameterSet)]
         public string PartnerRegistrationFullyQualifiedId { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Endpoint", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

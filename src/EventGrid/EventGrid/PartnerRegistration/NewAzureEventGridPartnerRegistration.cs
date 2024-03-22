@@ -25,6 +25,7 @@ using System;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
+    [GenericBreakingChangeWithVersion("Added new required parameter: Location <String>", "12.0.0", "2.0.0")]
     [Cmdlet(
         VerbsCommon.New,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerRegistration",

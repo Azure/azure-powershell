@@ -85,6 +85,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateSet(EventGridModels.InputSchema.EventGridSchema, EventGridModels.InputSchema.CustomEventSchema, EventGridModels.InputSchema.CloudEventSchemaV10, IgnoreCase = true)]
         public string InputSchema { get; set; } = EventGridModels.InputSchema.EventGridSchema;
 
+        [CmdletParameterBreakingChangeWithVersion("InputMappingField", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -92,6 +93,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = TopicNameParameterSet)]
         public Hashtable InputMappingField { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("InputMappingDefaultValue", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -102,6 +104,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         /// <summary>
         /// Hashtable which represents the Inbound IP Rules.
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("InboundIpRule", "12.0.0", "7.0.0", OldParameterType = typeof(Hashtable), NewParameterTypeName="IInboundIPRule[]")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -112,6 +115,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         /// <summary>
         /// string which represents the IdentityType.
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("IdentityType", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

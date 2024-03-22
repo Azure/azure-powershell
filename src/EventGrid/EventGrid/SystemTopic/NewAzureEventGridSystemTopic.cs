@@ -88,6 +88,8 @@ namespace Microsoft.Azure.Commands.EventGrid
         /// <summary>
         /// string which represents the IdentityType.
         /// </summary>
+
+        [CmdletParameterBreakingChangeWithVersion("IdentityType", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

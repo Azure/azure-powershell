@@ -67,6 +67,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("ResourceId", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -100,6 +101,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ResourceNameCompleter("Microsoft.EventGrid/domains/topics", nameof(ResourceGroupName), nameof(DomainName))]
         public string DomainTopicName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("TopicTypeName", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -108,6 +110,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string TopicTypeName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Location", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -144,6 +147,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public PSDomainTopic DomainTopicInputObject { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("IncludeFullEndpointUrl", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             HelpMessage = EventGridConstants.EventSubscriptionFullUrlHelp,
@@ -162,6 +166,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
         public SwitchParameter IncludeFullEndpointUrl { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("ODataQuery", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -238,6 +243,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateRange(1, 100)]
         public int? Top { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("NextLink", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

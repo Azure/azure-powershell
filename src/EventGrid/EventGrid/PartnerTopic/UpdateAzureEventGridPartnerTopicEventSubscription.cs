@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("DeadLetterEndpoint", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -87,6 +88,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string DeadLetterEndpoint { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("DeliveryAttributeMapping", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -101,6 +103,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public Hashtable[] DeliveryAttributeMapping { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Endpoint", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -115,6 +118,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string Endpoint { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("EndpointType", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -143,6 +147,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string[] Label { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("StorageQueueMessageTtl", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = "EventGrid Topic Type Name.")]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("IncludeEventTypeData", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             HelpMessage = "If specified, the response will include the event types supported by a topic type.")]

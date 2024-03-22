@@ -26,6 +26,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
+    [GenericBreakingChangeWithVersion("The old syntax is discarded and a new syntax is used.", "12.0.0", "2.0.0")]
     [Cmdlet(
         "New",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerTopicEventSubscription",

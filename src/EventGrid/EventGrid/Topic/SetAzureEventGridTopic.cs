@@ -24,6 +24,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
+    [CmdletDeprecationWithVersion("12.0.0", "2.0.0")]
     [Cmdlet(
         "Set",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridTopic",

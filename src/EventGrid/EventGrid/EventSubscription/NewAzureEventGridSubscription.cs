@@ -611,6 +611,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string DeliverySchema { get; set; } = EventDeliverySchema.EventGridSchema;
 
+        [CmdletParameterBreakingChangeWithVersion("DeadLetterEndpoint", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -740,6 +741,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public Hashtable[] AdvancedFilter { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("MaxEventsPerBatch", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -783,6 +785,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateRange(1, 5000)]
         public int MaxEventsPerBatch { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("PreferredBatchSizeInKiloByte", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -826,6 +829,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateRange(1, 1024)]
         public int PreferredBatchSizeInKiloByte { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("AzureActiveDirectoryTenantId", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -869,6 +873,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Alias(AliasAadTenantId)]
         public string AzureActiveDirectoryTenantId { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("AzureActiveDirectoryApplicationIdOrUri", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -912,6 +917,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Alias(AliasAadAppIdUri)]
         public string AzureActiveDirectoryApplicationIdOrUri { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("AdvancedFilteringOnArray", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -954,6 +960,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = EventSubscriptionDomainTopicInputObjectParameterSet)]
         public SwitchParameter AdvancedFilteringOnArray { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("DeliveryAttributeMapping", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -996,6 +1003,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = EventSubscriptionDomainTopicInputObjectParameterSet)]
         public Hashtable[] DeliveryAttributeMapping { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("StorageQueueMessageTtl", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

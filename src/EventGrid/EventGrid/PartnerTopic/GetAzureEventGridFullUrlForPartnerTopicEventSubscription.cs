@@ -63,6 +63,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ResourceNameCompleter("Microsoft.EventGrid/partnerTopics", nameof(ResourceGroupName))]
         public string PartnerTopicName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("ResourceId", "12.0.0", "2.0.0", ChangeDescription = ChangeDesc)]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
