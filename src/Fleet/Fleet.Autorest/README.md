@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Fleet service.
 
 ---
-## Status
-[![Az.Fleet](https://img.shields.io/powershellgallery/v/Az.Fleet.svg?style=flat-square&label=Az.Fleet "Az.Fleet")](https://www.powershellgallery.com/packages/Az.Fleet/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -40,6 +37,8 @@ require:
 title: Fleet
 module-version: 0.1.0
 subject-prefix: $(service-name)
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 directive:
 # #   # Following is two common directive which are normally required in all the RPs
@@ -58,6 +57,23 @@ directive:
   - from: swagger-document
     where: $.definitions.UpdateRun
     transform: $['required'] = ['properties']
+  - from: swagger-document
+    where: $.definitions.FleetUpdateStrategy.properties.properties.x-ms-mutability
+    transform: >-
+      return [
+        "read",
+        "update",
+        "create"
+      ]
+  - from: swagger-document
+    where: $.definitions.UpdateRun.properties.properties
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.ManagedClusterUpdate.properties.nodeImageSelection
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
+  - from: swagger-document
+    where: $.definitions.NodeImageSelection.properties.type
+    transform: $['x-ms-mutability'] = ["read", "update", "create"]
   # Hide set cmdlet
   - where:
       verb: Set
