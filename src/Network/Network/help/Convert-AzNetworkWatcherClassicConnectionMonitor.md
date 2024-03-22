@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://learn.microsoft.com/powershell/module/az.network/convert-aznetworkwatcherclassicconnectionmonitor
 schema: 2.0.0
 ---
 
@@ -24,23 +24,25 @@ The Convert-AzNetworkWatcherClassicConnectionMonitor cmdlet returns the connecti
 
 ### Example 1
 ```powershell
-PS C:\> $nw = Get-AzResource | Where-Object {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "centraluseuap" }
-PS C:\> Convert-AzNetworkWatcherClassicConnectionMonitor -NetworkWatcherName $nw.Name -ResourceGroupName $nw.ResourceGroupName -Name "classicCm1"
+$nw = Get-AzResource | Where-Object {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "centraluseuap" }
+Convert-AzNetworkWatcherClassicConnectionMonitor -NetworkWatcherName $nw.Name -ResourceGroupName $nw.ResourceGroupName -Name "classicCm1"
 ```
 
-Output would be: 
-PS C:\> `Migration is successful.`
+```output
+Migration is successful.
+```
 
 Passing the classic connection monitor name and corresponding network watcher name and its resource group name.
 
 ### Example 2
 ```powershell
-PS C:\> $nw = Get-AzResource | Where-Object {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "centraluseuap" }
-PS C:\> Convert-AzNetworkWatcherClassicConnectionMonitor -NetworkWatcherName $nw.Name -ResourceGroupName $nw.ResourceGroupName -Name "testCmv2"
+$nw = Get-AzResource | Where-Object {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "centraluseuap" }
+Convert-AzNetworkWatcherClassicConnectionMonitor -NetworkWatcherName $nw.Name -ResourceGroupName $nw.ResourceGroupName -Name "testCmv2"
 ```
 
-Output would be: 
-PS C:\> `This Connection Monitor is already V2`
+```output
+This Connection Monitor is already V2
+```
 
 Passing the V2 connection monitor name and corresponding network watcher name and its resource group name.
 
