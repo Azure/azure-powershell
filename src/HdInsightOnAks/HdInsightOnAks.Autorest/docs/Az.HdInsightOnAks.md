@@ -45,13 +45,13 @@ Creates a cluster.
 Create cluster config file.
 
 ### [New-AzHdInsightOnAksClusterHotfixUpgradeObject](New-AzHdInsightOnAksClusterHotfixUpgradeObject.md)
-
+Create an object to hold the cluster upgrade parameters.
 
 ### [New-AzHdInsightOnAksClusterPool](New-AzHdInsightOnAksClusterPool.md)
 Create a cluster pool.
 
 ### [New-AzHdInsightOnAksClusterPoolAKSUpgradeObject](New-AzHdInsightOnAksClusterPoolAKSUpgradeObject.md)
-
+Create an object to hold the cluster pool upgrade parameters.
 
 ### [New-AzHdInsightOnAksClusterServiceConfigObject](New-AzHdInsightOnAksClusterServiceConfigObject.md)
 Create a component config.

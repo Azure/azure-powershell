@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.HdInsightOnAks
-online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/new-azhdinsightonaksclusterpoolaksupgradeobject
+online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterPoolAKSUpgradeObject
 schema: 2.0.0
 ---
 
 # New-AzHdInsightOnAksClusterPoolAKSUpgradeObject
 
 ## SYNOPSIS
-
+Create an object to hold the cluster pool upgrade parameters.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzHdInsightOnAksClusterPoolAKSUpgradeObject [-TargetAksVersion <String>] [-U
 ```
 
 ## DESCRIPTION
-
+Create an object to hold the cluster pool upgrade parameters.
 
 ## EXAMPLES
 
@@ -38,7 +38,10 @@ Create an object to hold the flink cluster AKSPatchUpgrade parameters.
 ## PARAMETERS
 
 ### -TargetAksVersion
-
+Target AKS version.
+When it's not set, latest version will be used.
+When upgradeClusterPool is true and upgradeAllClusterNodes is false, target version should be greater or equal to current version.
+When upgradeClusterPool is false and upgradeAllClusterNodes is true, target version should be equal to AKS version of cluster pool.
 
 ```yaml
 Type: System.String
@@ -53,7 +56,8 @@ Accept wildcard characters: False
 ```
 
 ### -UpgradeAllClusterNode
-
+whether upgrade all clusters' nodes.
+If it's true, upgradeClusterPool should be false.
 
 ```yaml
 Type: System.String
@@ -68,7 +72,8 @@ Accept wildcard characters: False
 ```
 
 ### -UpgradeClusterPool
-
+whether upgrade cluster pool or not.
+If it's true, upgradeAllClusterNodes should be false.
 
 ```yaml
 Type: System.String

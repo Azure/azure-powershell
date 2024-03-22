@@ -12,6 +12,17 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Create an object to hold the cluster pool upgrade parameters.
+.Description
+Create an object to hold the cluster pool upgrade parameters.
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPoolUpgrade
+.Link
+https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterPoolAKSUpgradeObject
+#>
 function New-AzHdInsightOnAksClusterPoolAKSUpgradeObject {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade])]
     [CmdletBinding(DefaultParameterSetName = 'Create', PositionalBinding = $false, SupportsShouldProcess)]

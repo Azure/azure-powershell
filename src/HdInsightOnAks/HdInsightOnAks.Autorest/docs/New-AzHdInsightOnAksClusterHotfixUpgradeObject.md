@@ -1,14 +1,14 @@
 ---
 external help file:
 Module Name: Az.HdInsightOnAks
-online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/new-azhdinsightonaksclusterhotfixupgradeobject
+online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterHotfixUpgradeObject
 schema: 2.0.0
 ---
 
 # New-AzHdInsightOnAksClusterHotfixUpgradeObject
 
 ## SYNOPSIS
-
+Create an object to hold the cluster upgrade parameters.
 
 ## SYNTAX
 
@@ -18,7 +18,7 @@ New-AzHdInsightOnAksClusterHotfixUpgradeObject [-ComponentName <String>] [-Targe
 ```
 
 ## DESCRIPTION
-
+Create an object to hold the cluster upgrade parameters.
 
 ## EXAMPLES
 
@@ -38,7 +38,7 @@ Create an object to hold the flink cluster HotfixUpgrade parameters.
 ## PARAMETERS
 
 ### -ComponentName
-
+Name of component to be upgraded.
 
 ```yaml
 Type: System.String
@@ -53,7 +53,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetBuildNumber
-
+Target build number of component to be upgraded.
 
 ```yaml
 Type: System.String
@@ -68,7 +68,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetClusterVersion
-
+Target cluster version of component to be upgraded.
 
 ```yaml
 Type: System.String
@@ -83,7 +83,7 @@ Accept wildcard characters: False
 ```
 
 ### -TargetOssVersion
-
+Target OSS version of component to be upgraded.
 
 ```yaml
 Type: System.String

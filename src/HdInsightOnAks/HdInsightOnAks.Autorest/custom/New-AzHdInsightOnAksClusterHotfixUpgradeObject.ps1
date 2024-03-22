@@ -12,6 +12,17 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+<#
+.Synopsis
+Create an object to hold the cluster upgrade parameters.
+.Description
+Create an object to hold the cluster upgrade parameters.
+
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterUpgrade
+.Link
+https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksClusterHotfixUpgradeObject
+#>
 function New-AzHdInsightOnAksClusterHotfixUpgradeObject {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade])]
     [CmdletBinding(DefaultParameterSetName = 'Create', PositionalBinding = $false, SupportsShouldProcess)]
