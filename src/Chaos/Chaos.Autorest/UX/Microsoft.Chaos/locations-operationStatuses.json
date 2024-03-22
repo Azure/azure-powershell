@@ -1,0 +1,47 @@
+{
+  "resourceType": "locations/operationStatuses",
+  "apiVersion": "2024-01-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.chaos"
+  },
+  "commands": [
+    {
+      "name": "Get-AzChaosOperationStatuses",
+      "description": "Get the status of a long running azure asynchronous operation.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Chaos/locations/{location}/operationStatuses/{asyncOperationId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.chaos/get-azchaosoperationstatuses"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AsyncOperationId <String>",
+              "-Location <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the status of a long running azure asynchronous operation.",
+          "parameters": [
+            {
+              "name": "-AsyncOperationId",
+              "value": "[Path.asyncOperationId]"
+            },
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
