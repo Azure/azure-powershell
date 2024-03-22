@@ -21,7 +21,7 @@ param(
 )
 
 # Read the content of changelog.md into a variable
-$content = Get-Content -Path "$rootPath/tools/Azpreview/changelog.md" 
+$content = Get-Content -Path "$rootPath/tools/AzPreview/ChangeLog.md" 
 
 $continueReading = $false
 $modules = @()
