@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Implemented secrets detection
 
 ## Version 0.1.0
 * First preview release for module Az.FirmwareAnalysis
