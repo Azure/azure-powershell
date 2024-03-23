@@ -356,7 +356,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                             }
                             defaultTenant = GetDetailedTenantFromQueryHistory(queriedTenants, defaultSubscription.GetProperty(AzureSubscription.Property.Tenants));
                             var defaultContext = new AzureContext(defaultSubscription, account, environment, defaultTenant);
-                            WriteSelectedSubscriptionTable(defaultContext);
+                            WriteSelectedSubscriptionTable(defaultContext?.Subscription?.Name ?? defaultContext?.Subscription?.Id, defaultContext?.Tenant?.GetProperty(AzureTenant.Property.DefaultDomain) ?? tenantIdOrName ?? defaultContext?.Tenant?.Id);
                             _profile.TrySetDefaultContext(defaultContext);
                             _profile.TryRemoveContext("Default");
                         }
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             foreach (var subscription in subscriptions)
             {
                 WriteSubscriptionSelectionTableRow(++subCount, subscription,
-                    tenants?.Where(t => t.Id.Equals(subscription.GetTenant()))?.FirstOrDefault()?.GetProperty(AzureTenant.Property.DefaultDomain),
+                    tenants?.Where(t => t.Id.Equals(subscription?.GetTenant()))?.FirstOrDefault()?.GetProperty(AzureTenant.Property.DefaultDomain) ?? "",
                     subscription.Id.Equals(defaultSubscriptionId), markDefaultSubscription);
             }
         }
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             WriteInformationMessage($"{(isDefaultSubscription && markDefaultSubscription ? Foreground.Bold : "")}{subIndexRowValue}{(isDefaultSubscription && markDefaultSubscription ? PSStyle.Reset : "")}{(isDefaultSubscription && markDefaultSubscription ? Foreground.BrightCyan : "")}{subNameRowValue}{subIdRowValue}{tenantDomainNameRowValue}{(isDefaultSubscription && markDefaultSubscription ? PSStyle.Reset : "")}");
         }
 
-        private void WriteSelectedSubscriptionTable(IAzureContext context)
+        private void WriteSelectedSubscriptionTable(string subscription, string tenant)
         {
             string ColumnSubNameTab = "Subscription name", ColumnTenantTab = "Tenant domain name";
             string ColumSubNameSeparator = "------------------------------------", ColumTenantSeparator = "--------------------------";
@@ -493,8 +493,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 $"{String.Format($"{{0,-{ColumnTenantWidth + ColumnIdentsWidth}}}", ColumnTenantTab)}");
             WriteInformationMessage($"{String.Format($"{{0,-{ColumnSubNameWidth + ColumnIdentsWidth}}}", ColumSubNameSeparator)}" +
                 $"{String.Format($"{{0,-{ColumnTenantWidth}}}", ColumTenantSeparator)}");
-            string truncatedSubName = context.Subscription.Name?.Length > ColumnSubNameWidth ? $"{context.Subscription.Name.Substring(0, ColumnSubNameWidth - 3)}..." : context.Subscription.Name;
-            string truncatedDomainName = context.Tenant.GetProperty("DefaultDomain")?.Length > ColumnTenantWidth ? $"{context.Tenant.GetProperty("DefaultDomain").Substring(0, ColumnTenantWidth - 3)}..." : context.Tenant.GetProperty("DefaultDomain");
+            string truncatedSubName = subscription?.Length > ColumnSubNameWidth ? $"{subscription.Substring(0, ColumnSubNameWidth - 3)}..." : subscription;
+            string truncatedDomainName = tenant?.Length > ColumnTenantWidth ? $"{tenant.Substring(0, ColumnTenantWidth - 3)}..." : tenant;
             string subNameRowValue = String.Format($"{{0,-{ColumnSubNameWidth + ColumnIdentsWidth}}}", truncatedSubName),
                 tenantDomainNameRowValue = String.Format($"{{0,-{ColumnTenantWidth}}}", truncatedDomainName);
             WriteInformationMessage($"{subNameRowValue}{tenantDomainNameRowValue}");

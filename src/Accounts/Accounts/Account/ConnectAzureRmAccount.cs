@@ -676,10 +676,8 @@ namespace Microsoft.Azure.Commands.Profile
         }
         private string Prompt(string message)
         {
-            var input = new StringBuilder();
             _tasks.Enqueue(new Task(() => this.WriteInformation(message, true)));
-            input.Append(this.Host.UI.ReadLine());
-            return input.ToString();
+            return this.Host.UI.ReadLine();
         }
 
         private static bool CheckForExistingContext(AzureRmProfile profile, string name)
