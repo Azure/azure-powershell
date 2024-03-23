@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Implemented secrets detection
 
 ## Version 0.1.1
 * Upgraded API version to 2023-11-01
