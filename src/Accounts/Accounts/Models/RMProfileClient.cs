@@ -11,20 +11,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.Profile.Utilities;
+using Microsoft.Azure.Management.Profiles.Storage.Version2019_06_01.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common;
 
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using System.Runtime.InteropServices;
 using System.Security;
+using System.Security.Authentication.ExtendedProtection;
+using System.Text;
 
 using AuthenticationMessages = Microsoft.Azure.Commands.Common.Authentication.Properties.Resources;
 using ProfileMessages = Microsoft.Azure.Commands.Profile.Properties.Resources;
@@ -38,6 +45,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         private IAzureTokenCache _cache;
         public Action<string> WarningLog;
         public Action<string> DebugLog;
+        public Action<string> InformationLog;
 
         private IAzureContext DefaultContext
         {
@@ -116,6 +124,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return tenants?.Where(t => t.Id.Equals(tenantId))?.FirstOrDefault(); ;
         }
 
+        public delegate string Prompt(string message);
+
         public AzureRmProfile Login(
             IAzureAccount account,
             IAzureEnvironment environment,
@@ -129,11 +139,20 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             string name = null,
             bool shouldPopulateContextList = true,
             int maxContextPopulation = Profile.ConnectAzureRmAccountCommand.DefaultMaxContextPopulation,
-            string authScope = null)
+            string authScope = null,
+            Prompt prompt = null,
+            bool isInteractiveAuthentication = false)
         {
+            if(isInteractiveAuthentication) WriteInformationMessage($"{Foreground.BrightYellow}{Resources.PleaseSelectAccount}{PSStyle.Reset}{System.Environment.NewLine}");
+
             IAzureSubscription defaultSubscription = null;
             IAzureTenant defaultTenant = null;
-            List<AzureTenant> tenants = null;
+            List<AzureTenant> queriedTenants = null;
+            List<AzureSubscription> subscriptions = new List<AzureSubscription>();
+            List<AzureSubscription> tempSubscriptions = null;
+            string tenantDomainName = null;
+            var lastUsedSubscription = isInteractiveAuthentication && string.IsNullOrEmpty(subscriptionId) && string.IsNullOrEmpty(subscriptionName) ? _profile?.DefaultContext?.Subscription : null;
+            
             string promptBehavior =
                 (password == null &&
                  account.Type != AzureAccount.AccountType.AccessToken &&
@@ -202,6 +221,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                 };
 
                                 WriteDebugMessage(string.Format(ProfileMessages.TenantDomainToTenantIdMessage, tenantIdOrName, token.TenantId));
+                                tenantDomainName = tenantIdOrName;
                                 tenantIdOrName = token.TenantId;
                             }
                             finally
@@ -224,6 +244,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         throw new ArgumentNullException(string.Format($"{e.Message}{Environment.NewLine}{baseMessage} {typeMessage}"), e);
                     }
 
+                    tempSubscriptions = null;
                     if (TryGetTenantSubscription(
                         token,
                         account,
@@ -232,21 +253,79 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         subscriptionName,
                         true,
                         out defaultSubscription,
-                        out defaultTenant))
+                        out defaultTenant,
+                        out tempSubscriptions,
+                        isInteractiveAuthentication))
                     {
                         account.SetOrAppendProperty(AzureAccount.Property.Tenants, new[] { defaultTenant.Id.ToString() });
+                        if (tempSubscriptions?.Any() == true)
+                        {
+                            subscriptions.AddRange(tempSubscriptions);
+                        }
+                        var shouldWriteSubscriptionSelectionTable = isInteractiveAuthentication && subscriptions?.Count > 1;
+                        var markDefaultSubscription = isInteractiveAuthentication && lastUsedSubscription != null;
+                        subscriptions = subscriptions?.OrderBy(s => GetDetailedTenantFromQueryHistory(queriedTenants, s.GetProperty(AzureSubscription.Property.Tenants))?.GetProperty(AzureTenant.Property.DefaultDomain))?.ThenBy(s => s.Name)?.ToList();
+
+                        if (shouldWriteSubscriptionSelectionTable) WriteSubscriptionSelectionTable(subscriptions, queriedTenants, lastUsedSubscription?.Id, markDefaultSubscription, tenantDomainName);
+
+                        if (shouldWriteSubscriptionSelectionTable && markDefaultSubscription)
+                        {
+                            WriteInformationMessage($"{Environment.NewLine}The default is marked with an {Foreground.White}*{PSStyle.Reset}; " +
+                                $"the default tenant is '{GetDetailedTenantFromQueryHistory(queriedTenants, lastUsedSubscription?.GetProperty(AzureSubscription.Property.Tenants))?.GetProperty(AzureTenant.Property.DefaultDomain)}' " +
+                                $"and subscription is '{lastUsedSubscription?.Name} ({lastUsedSubscription?.Id})'.");
+                        }
+
+                        if (shouldWriteSubscriptionSelectionTable && null != prompt)
+                        {
+                            string input = markDefaultSubscription ? prompt($"{Environment.NewLine}Select a tenant and subscription (type a number or Enter to accept default): ") : prompt($"{Environment.NewLine}Select a tenant and subscription: ");
+                            int selectedSubIndex = -1;
+                            try
+                            {
+                                if (!string.IsNullOrEmpty(input))
+                                {
+                                    selectedSubIndex = Convert.ToInt32(input);
+                                }
+                                if (selectedSubIndex != -1)
+                                {
+                                    defaultSubscription = subscriptions.ElementAt(selectedSubIndex - 1);
+                                }
+                                else if (selectedSubIndex == -1 && lastUsedSubscription != null)
+                                {
+                                    defaultSubscription = lastUsedSubscription;
+                                }
+                                defaultTenant = GetDetailedTenantFromQueryHistory(queriedTenants, defaultSubscription.GetProperty(AzureSubscription.Property.Tenants)) ?? new AzureTenant { Id = tenantIdOrName };
+                                if (!string.IsNullOrEmpty(tenantDomainName))
+                                {
+                                    defaultTenant.ExtendedProperties.Add(AzureTenant.Property.DefaultDomain, tenantDomainName);
+                                }
+                                var defaultContext = new AzureContext(defaultSubscription, account, environment, defaultTenant);
+                                WriteSelectedSubscriptionTable(defaultContext?.Subscription?.Name ?? defaultContext?.Subscription?.Id, defaultContext?.Tenant?.GetProperty(AzureTenant.Property.DefaultDomain) ?? tenantDomainName ?? defaultContext?.Tenant?.Id);
+                                _profile.TrySetDefaultContext(defaultContext);
+                                _profile.TryRemoveContext("Default");
+                            }
+                            catch (ArgumentOutOfRangeException)
+                            {
+                                throw new AzPSException("Selected subscription and tenant is out of range, please type a correct number.", ErrorKind.UserError);
+                            }
+                            catch (FormatException)
+                            {
+                                throw new AzPSException("Typed subscription and tenant is not a number.", ErrorKind.UserError);
+                            }
+                        }
                     }
                 }
                 // (tenant is not provided and subscription is present) OR
                 // (tenant is not provided and subscription is not provided)
                 else
                 {
-                    tenants = ListAccountTenants(account, environment, password, promptBehavior, promptAction).ToList();
+                    queriedTenants = ListAccountTenants(account, environment, password, promptBehavior, promptAction).ToList();
                     account.SetProperty(AzureAccount.Property.Tenants, null);
                     string accountId = null;
                     IAzureTenant tempTenant = null;
                     IAzureSubscription tempSubscription = null;
-                    foreach (var tenant in tenants)
+                    tempSubscriptions = null;
+
+                    foreach (var tenant in queriedTenants)
                     {
                         tempTenant = null;
                         tempSubscription = null;
@@ -284,7 +363,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                         if (token != null &&
                             defaultTenant == null &&
-                            TryGetTenantSubscription(token, account, environment, subscriptionId, subscriptionName, false, out tempSubscription, out tempTenant))
+                            TryGetTenantSubscription(token, account, environment, subscriptionId, subscriptionName, false, out tempSubscription, out tempTenant, out tempSubscriptions, isInteractiveAuthentication))
                         {
                             // If no subscription found for the given token/tenant，discard tempTenant value.
                             // Continue to look for matched subscripitons until one subscription retrived by its home tenant is found.
@@ -296,11 +375,59 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                     defaultTenant = tempTenant;
                                 }
                             }
+                            if(tempSubscription != null)
+                            {
+                                subscriptions.AddRange(tempSubscriptions);
+                            }
                         }
                     }
                     defaultSubscription = defaultSubscription ?? tempSubscription;
                     defaultTenant = defaultTenant ??
                         (defaultSubscription != null ? new AzureTenant() { Id = defaultSubscription.GetTenant() } : tempTenant);
+                    var shouldWriteSubscriptionSelectionTable = isInteractiveAuthentication && subscriptions?.Count > 1;
+                    var markDefaultSubscription = isInteractiveAuthentication && lastUsedSubscription != null;
+                    subscriptions = subscriptions?.OrderBy(s => GetDetailedTenantFromQueryHistory(queriedTenants, s.GetProperty(AzureSubscription.Property.Tenants))?.GetProperty(AzureTenant.Property.DefaultDomain))?.ThenBy(s => s.Name)?.ToList();
+                    if (shouldWriteSubscriptionSelectionTable) WriteSubscriptionSelectionTable(subscriptions, queriedTenants, lastUsedSubscription?.Id, markDefaultSubscription, tenantDomainName);
+
+                    if (shouldWriteSubscriptionSelectionTable && markDefaultSubscription)
+                    {
+                        WriteInformationMessage($"{Environment.NewLine}The default is marked with an {Foreground.White}*{PSStyle.Reset}; " +
+                            $"the default tenant is '{GetDetailedTenantFromQueryHistory(queriedTenants, lastUsedSubscription?.GetProperty(AzureSubscription.Property.Tenants))?.GetProperty(AzureTenant.Property.DefaultDomain)}' " +
+                            $"and subscription is '{lastUsedSubscription?.Name} ({lastUsedSubscription?.Id})'.");
+                    }
+
+                    if (shouldWriteSubscriptionSelectionTable && null != prompt)
+                    {
+                        string input = markDefaultSubscription ? prompt($"{Environment.NewLine}Select a tenant and subscription (type a number or Enter to accept default): ") : prompt($"{Environment.NewLine}Select a tenant and subscription: ");
+                        int selectedSubIndex = -1;
+                        try
+                        {
+                            if (!string.IsNullOrEmpty(input))
+                            {
+                                selectedSubIndex = Convert.ToInt32(input);
+                            }
+                            if (selectedSubIndex != -1)
+                            {
+                                defaultSubscription = subscriptions.ElementAt(selectedSubIndex - 1);
+                            }else if (selectedSubIndex == -1 && lastUsedSubscription!= null)
+                            {
+                                defaultSubscription = lastUsedSubscription;
+                            }
+                            defaultTenant = GetDetailedTenantFromQueryHistory(queriedTenants, defaultSubscription.GetProperty(AzureSubscription.Property.Tenants));
+                            var defaultContext = new AzureContext(defaultSubscription, account, environment, defaultTenant);
+                            WriteSelectedSubscriptionTable(defaultContext?.Subscription?.Name ?? defaultContext?.Subscription?.Id, defaultContext?.Tenant?.GetProperty(AzureTenant.Property.DefaultDomain) ?? tenantIdOrName ?? defaultContext?.Tenant?.Id);
+                            _profile.TrySetDefaultContext(defaultContext);
+                            _profile.TryRemoveContext("Default");
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            throw new AzPSException("Selected subscription and tenant is out of range, please type a correct number.", ErrorKind.UserError);
+                        }
+                        catch (FormatException)
+                        {
+                            throw new AzPSException("Typed subscription and tenant is not a number.", ErrorKind.UserError);
+                        }
+                    }
                 }
             }
 
@@ -316,7 +443,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     throw new PSInvalidOperationException(String.Format(ResourceMessages.SubscriptionNameNotFound, account.Id, subscriptionName) + " " + ProfileMessages.SubscriptionNotFouldPleaseCheckConfig);
                 }
 
-                defaultTenant = GetDetailedTenantFromQueryHistory(tenants, defaultTenant.Id) ?? defaultTenant;
+                defaultTenant = GetDetailedTenantFromQueryHistory(queriedTenants, defaultTenant?.Id) ?? defaultTenant;
                 var defaultContext = new AzureContext(account, environment, defaultTenant);
                 if (!_profile.TrySetDefaultContext(name, defaultContext))
                 {
@@ -325,7 +452,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             }
             else
             {
-                defaultTenant = GetDetailedTenantFromQueryHistory(tenants, defaultTenant.Id) ?? defaultTenant; ;
+                defaultTenant = GetDetailedTenantFromQueryHistory(queriedTenants, defaultTenant?.Id) ?? defaultTenant; ;
                 var defaultContext = new AzureContext(defaultSubscription, account, environment, defaultTenant);
                 if (!_profile.TrySetDefaultContext(name, defaultContext))
                 {
@@ -344,15 +471,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             if (shouldPopulateContextList && maxContextPopulation != 0)
             {
                 var defaultContext = _profile.DefaultContext;
-                var subscriptions = maxContextPopulation > 0 ? ListSubscriptions(tenantIdOrName).Take(maxContextPopulation) : ListSubscriptions(tenantIdOrName);
-
-                foreach (var subscription in subscriptions)
+                var populatedSubscriptions = maxContextPopulation > 0 && !isInteractiveAuthentication ? ListSubscriptions(tenantIdOrName).Take(maxContextPopulation) : ListSubscriptions(tenantIdOrName);
+                
+                foreach (var subscription in populatedSubscriptions)
                 {
-                    IAzureTenant tempTenant = GetDetailedTenantFromQueryHistory(tenants, subscription.GetProperty(AzureSubscription.Property.Tenants)) ?? new AzureTenant()
+                    IAzureTenant tempTenant = GetDetailedTenantFromQueryHistory(queriedTenants, subscription.GetProperty(AzureSubscription.Property.Tenants)) ?? new AzureTenant()
                     {
                         Id = subscription.GetProperty(AzureSubscription.Property.Tenants)
                     };
-
                     var tempContext = new AzureContext(subscription, account, environment, tempTenant);
                     tempContext.TokenCache = _cache;
                     string tempName = null;
@@ -367,12 +493,70 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         WriteWarningMessage(string.Format(Resources.CannotCreateContext, subscription.Id));
                     }
                 }
-
                 _profile.TrySetDefaultContext(defaultContext);
                 _profile.TryRemoveContext("Default");
             }
 
             return _profile.ToProfile();
+        }
+
+        int ColumnNoWidth = 4, ColumnSubNameWidth = 36, ColumnSubIdWidth = 40, ColumnTenantWidth = 26, ColumnIdentsWidth = 4;
+        string defaultSubscriptionMark = $"{Foreground.White} * {PSStyle.Reset}";
+
+        private void WriteSubscriptionSelectionTable(IEnumerable<IAzureSubscription> subscriptions, IEnumerable<IAzureTenant> tenants, string defaultSubscriptionId, bool markDefaultSubscription = false, string tenantIdOrName = "")
+        {
+            WriteSubscriptionSelectionTableHeader();
+            int subCount = 0;
+            foreach (var subscription in subscriptions)
+            {
+                WriteSubscriptionSelectionTableRow(++subCount, subscription,
+                    tenants?.Where(t => t.Id.Equals(subscription?.GetTenant()))?.FirstOrDefault()?.GetProperty(AzureTenant.Property.DefaultDomain) ?? tenantIdOrName,
+                    subscription.Id.Equals(defaultSubscriptionId), markDefaultSubscription);
+            }
+        }
+
+        private void WriteSubscriptionSelectionTableHeader()
+        {
+            string ColumnNoTab = "No", ColumnSubNameTab = "Subscription name", ColumnSubIdTab = "Subscription ID", ColumnTenantTab = "Tenant domain name";
+            string ColumNoSeparator = "----", ColumSubNameSeparator = "------------------------------------", ColumSubIdSeparator = "----------------------------------------", ColumTenantSeparator = "--------------------------";
+            WriteInformationMessage($"[Tenant and subscription selection]{Environment.NewLine}");
+            WriteInformationMessage($"{String.Format($"{{0,-{ColumnNoWidth + ColumnIdentsWidth}}}", ColumnNoTab)}" +
+                $"{String.Format($"{{0,-{ColumnSubNameWidth + ColumnIdentsWidth}}}", ColumnSubNameTab)}" +
+                $"{String.Format($"{{0,-{ColumnSubIdWidth + ColumnIdentsWidth}}}", ColumnSubIdTab)}" +
+                $"{String.Format($"{{0,-{ColumnTenantWidth + ColumnIdentsWidth}}}", ColumnTenantTab)}");
+            WriteInformationMessage($"{String.Format($"{{0,-{ColumnNoWidth + ColumnIdentsWidth}}}", ColumNoSeparator)}" +
+                $"{String.Format($"{{0,-{ColumnSubNameWidth + ColumnIdentsWidth}}}", ColumSubNameSeparator)}" +
+                $"{String.Format($"{{0,-{ColumnSubIdWidth + ColumnIdentsWidth}}}", ColumSubIdSeparator)}" +
+                $"{String.Format($"{{0,-{ColumnTenantWidth}}}", ColumTenantSeparator)}");
+        }
+
+        private void WriteSubscriptionSelectionTableRow(int subIndex, IAzureSubscription subscription, string tenantDomainName, bool isDefaultSubscription, bool markDefaultSubscription = false)
+        {
+            int markedIndexLength = isDefaultSubscription && markDefaultSubscription ? ColumnNoWidth + ColumnIdentsWidth -3 + defaultSubscriptionMark.Length : ColumnNoWidth + ColumnIdentsWidth;
+            string markedSubIndex = $"[{subIndex}]{(isDefaultSubscription && markDefaultSubscription ? defaultSubscriptionMark : "")}";
+            string truncatedSubName = subscription.Name?.Length > ColumnSubNameWidth ? $"{subscription.Name.Substring(0, ColumnSubNameWidth - 3)}..." : subscription.Name;
+            string truncatedDomainName = tenantDomainName?.Length > ColumnTenantWidth ? $"{tenantDomainName.Substring(0, ColumnTenantWidth - 3)}..." : tenantDomainName;
+            string subIndexRowValue = String.Format($"{{0,-{markedIndexLength}}}", markedSubIndex),
+                subNameRowValue = String.Format($"{{0,-{ColumnSubNameWidth + ColumnIdentsWidth}}}", truncatedSubName),
+                subIdRowValue = String.Format($"{{0,-{ColumnSubIdWidth + ColumnIdentsWidth}}}", subscription.Id),
+                tenantDomainNameRowValue = String.Format($"{{0,-{ColumnTenantWidth}}}", truncatedDomainName);
+            WriteInformationMessage($"{(isDefaultSubscription && markDefaultSubscription ? Foreground.Bold : "")}{subIndexRowValue}{(isDefaultSubscription && markDefaultSubscription ? PSStyle.Reset : "")}{(isDefaultSubscription && markDefaultSubscription ? Foreground.BrightCyan : "")}{subNameRowValue}{subIdRowValue}{tenantDomainNameRowValue}{(isDefaultSubscription && markDefaultSubscription ? PSStyle.Reset : "")}");
+        }
+
+        private void WriteSelectedSubscriptionTable(string subscription, string tenant)
+        {
+            string ColumnSubNameTab = "Subscription name", ColumnTenantTab = "Tenant domain name";
+            string ColumSubNameSeparator = "------------------------------------", ColumTenantSeparator = "--------------------------";
+            WriteInformationMessage("");
+            WriteInformationMessage($"{String.Format($"{{0,-{ColumnSubNameWidth + ColumnIdentsWidth}}}", ColumnSubNameTab)}" +
+                $"{String.Format($"{{0,-{ColumnTenantWidth + ColumnIdentsWidth}}}", ColumnTenantTab)}");
+            WriteInformationMessage($"{String.Format($"{{0,-{ColumnSubNameWidth + ColumnIdentsWidth}}}", ColumSubNameSeparator)}" +
+                $"{String.Format($"{{0,-{ColumnTenantWidth}}}", ColumTenantSeparator)}");
+            string truncatedSubName = subscription?.Length > ColumnSubNameWidth ? $"{subscription.Substring(0, ColumnSubNameWidth - 3)}..." : subscription;
+            string truncatedDomainName = tenant?.Length > ColumnTenantWidth ? $"{tenant.Substring(0, ColumnTenantWidth - 3)}..." : tenant;
+            string subNameRowValue = String.Format($"{{0,-{ColumnSubNameWidth + ColumnIdentsWidth}}}", truncatedSubName),
+                tenantDomainNameRowValue = String.Format($"{{0,-{ColumnTenantWidth}}}", truncatedDomainName);
+            WriteInformationMessage($"{subNameRowValue}{tenantDomainNameRowValue}");
         }
 
         public IAzureContext SetCurrentContext(string subscriptionNameOrId, string tenantId, string name = null)
@@ -582,7 +766,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         public IEnumerable<IAzureSubscription> ListSubscriptions(string tenantIdOrDomain = "")
         {
             List<AzureTenant> tenants = string.IsNullOrEmpty(tenantIdOrDomain) ? ListTenants(tenantIdOrDomain) :
-    new List<AzureTenant>() { CreateTenant(tenantIdOrDomain) };
+                new List<AzureTenant>() { CreateTenant(tenantIdOrDomain) };
 
             List<IAzureSubscription> subscriptions = new List<IAzureSubscription>();
 
@@ -604,7 +788,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 }
 
             }
-
             return subscriptions;
         }
 
@@ -656,8 +839,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             string subscriptionName,
             bool isTenantPresent,
             out IAzureSubscription subscription,
-            out IAzureTenant tenant)
+            out IAzureTenant tenant,
+            out List<AzureSubscription> subscriptions,
+            bool isInteractiveAuthentication)
         {
+            subscriptions = new List<AzureSubscription>();
             subscription = null;
             if (accessToken != null)
             {
@@ -669,8 +855,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     }
                     else
                     {
-                        var subscriptions = SubscriptionAndTenantClient?.ListAllSubscriptionsForTenant(accessToken, new AzureAccount { Id = accessToken.UserId }, environment)?.ToList()
-                            .Where(s => "enabled".Equals(s.State.ToString(), StringComparison.OrdinalIgnoreCase) || "warned".Equals(s.State.ToString(), StringComparison.OrdinalIgnoreCase));
+                        subscriptions = SubscriptionAndTenantClient?.ListAllSubscriptionsForTenant(accessToken, new AzureAccount { Id = accessToken.UserId }, environment)?.ToList()
+                            .Where(s => "enabled".Equals(s.State.ToString(), StringComparison.OrdinalIgnoreCase) || "warned".Equals(s.State.ToString(), StringComparison.OrdinalIgnoreCase))?.ToList();
 
                         account.SetProperty(AzureAccount.Property.Subscriptions, subscriptions.Select(i => i.GetId().ToString()).ToArray());
 
@@ -685,14 +871,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                             {
                                 if (subscriptions.Count() > 1)
                                 {
-                                    WriteWarningMessage(string.Format(
-                                        "TenantId '{0}' contains more than one active subscription. First one will be selected for further use. " +
-                                        "To select another subscription, use Set-AzContext. " +
-                                        Environment.NewLine +
+                                    if (!isInteractiveAuthentication)
+                                        WriteWarningMessage(string.Format(
+                                            "TenantId '{0}' contains more than one active subscription. First one will be selected for further use. " +
+                                            "To select another subscription, use Set-AzContext.", accessToken.TenantId));
+                                    WriteWarningMessage(
                                         "To override which subscription Connect-AzAccount selects by default, " +
                                         "use `Update-AzConfig -DefaultSubscriptionForLogin 00000000-0000-0000-0000-000000000000`. " +
-                                        "Go to https://go.microsoft.com/fwlink/?linkid=2200610 for more information.",
-                                        accessToken.TenantId));
+                                        "Go to https://go.microsoft.com/fwlink/?linkid=2200610 for more information.");
                                 }
                                 subscription = subscription ?? subscriptions.First();
                             }
@@ -826,6 +1012,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             if(DebugLog != null)
             {
                 DebugLog(message);
+            }
+        }
+        private void WriteInformationMessage(string message)
+        {
+            if (InformationLog != null)
+            {
+                InformationLog(message);
             }
         }
 

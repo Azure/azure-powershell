@@ -598,4 +598,7 @@
   <data name="DoNotIgnoreInformationIfUserDeviceAuth" xml:space="preserve">
     <value>Please do not set InformationAction or $InformationPreference to Ignore if you want to use device code authentication.</value>
   </data>
+  <data name="PleaseSelectAccount" xml:space="preserve">
+    <value>Please select the account you want to login with.</value>
+  </data>
 </root>
