@@ -17,10 +17,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubGeoDRConfigurat
 Describe 'Set-AzEventHubGeoDRConfigurationBreakPair' {
     It 'Break' {
         Set-AzEventHubGeoDRConfigurationBreakPair -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -Name $env.alias
-
+        
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
-            Start-TestSleep 10
+            if ($TestMode -ne 'playback') {
+                Start-Sleep 10
+            }
         }
 
         $drConfig.Name | Should -Be $env.alias
@@ -29,10 +31,12 @@ Describe 'Set-AzEventHubGeoDRConfigurationBreakPair' {
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
 
         $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
-
+        
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
-            Start-TestSleep 10
+            if ($TestMode -ne 'playback') {
+                Start-Sleep 10
+            }
         }
     }
 
@@ -40,10 +44,12 @@ Describe 'Set-AzEventHubGeoDRConfigurationBreakPair' {
         $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
 
         Set-AzEventHubGeoDRConfigurationBreakPair -InputObject $drConfig
-
+        
         do{
             $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
-            Start-TestSleep 10
+            if ($TestMode -ne 'playback') {
+                Start-Sleep 10
+            }
         } while($drConfig.ProvisioningState -ne "Succeeded")
 
         $drConfig.Name | Should -Be $env.alias
@@ -52,10 +58,12 @@ Describe 'Set-AzEventHubGeoDRConfigurationBreakPair' {
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
 
         $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
-
+        
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
-            Start-TestSleep 10
+            if ($TestMode -ne 'playback') {
+                Start-Sleep 10
+            }
         }
     }
 }
