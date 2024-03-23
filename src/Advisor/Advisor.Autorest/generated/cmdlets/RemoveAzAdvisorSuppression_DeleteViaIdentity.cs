@@ -20,6 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Advisor.Description(@"Enables the activation of a snoozed or dismissed recommendation. The snoozed or dismissed attribute of a recommendation is referred to as a suppression.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Advisor.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Advisor.HttpPath(Path = "/{resourceUri}/providers/Microsoft.Advisor/recommendations/{recommendationId}/suppressions/{name}", ApiVersion = "2020-01-01")]
     public partial class RemoveAzAdvisorSuppression_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.IEventListener
     {
@@ -46,9 +47,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Advisor.Advisor Client => Microsoft.Azure.PowerShell.Cmdlets.Advisor.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Advisor.ParameterCategory.Azure)]
