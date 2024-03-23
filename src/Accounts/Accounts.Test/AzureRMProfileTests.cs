@@ -1299,7 +1299,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void CanRenewTokenLogin()
         {
             var tenants = new List<string> { DefaultTenant.ToString() };
