@@ -139,7 +139,6 @@ Accept wildcard characters: False
 
 ### -FleetInputObject
 Identity Parameter
-To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -185,7 +184,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
