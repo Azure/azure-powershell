@@ -89,14 +89,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityTrafficController', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for TRAFFICCONTROLLERINPUTOBJECT properties and create a hash table.
     ${TrafficControllerInputObject},
 
     [Parameter()]
@@ -307,14 +305,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityTrafficController', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for TRAFFICCONTROLLERINPUTOBJECT properties and create a hash table.
     ${TrafficControllerInputObject},
 
     [Parameter()]
@@ -512,7 +508,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1312,14 +1307,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityTrafficController', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for TRAFFICCONTROLLERINPUTOBJECT properties and create a hash table.
     ${TrafficControllerInputObject},
 
     [Parameter()]
@@ -1542,14 +1535,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityTrafficController', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for TRAFFICCONTROLLERINPUTOBJECT properties and create a hash table.
     ${TrafficControllerInputObject},
 
     [Parameter()]
@@ -1757,7 +1748,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1979,14 +1969,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityTrafficControllerExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for TRAFFICCONTROLLERINPUTOBJECT properties and create a hash table.
     ${TrafficControllerInputObject},
 
     [Parameter()]
@@ -2211,14 +2199,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityTrafficControllerExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for TRAFFICCONTROLLERINPUTOBJECT properties and create a hash table.
     ${TrafficControllerInputObject},
 
     [Parameter()]
@@ -2415,7 +2401,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.IAlbIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
