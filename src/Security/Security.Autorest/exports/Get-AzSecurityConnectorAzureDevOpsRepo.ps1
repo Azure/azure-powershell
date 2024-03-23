@@ -100,7 +100,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
@@ -115,7 +114,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]

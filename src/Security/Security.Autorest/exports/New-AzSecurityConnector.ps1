@@ -132,7 +132,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityConnectorEnvironment]
     # The security connector environment data.
-    # .
     ${EnvironmentData},
 
     [Parameter()]
@@ -171,7 +170,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOffering[]]
     # A collection of offerings for the security connector.
-    # .
     ${Offering},
 
     [Parameter()]
@@ -193,7 +191,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
