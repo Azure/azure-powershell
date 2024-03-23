@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Approve-AzEventHubPrivateEndp
 
 Describe 'Approve-AzEventHubPrivateEndpointConnection' {
     $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
-    
+
     It 'SetExpanded' {
         $privateEndpoint[0].ConnectionState | Should -Be "Pending"
         $privateEndpoint[0].Description | Should -Be "Hello"
