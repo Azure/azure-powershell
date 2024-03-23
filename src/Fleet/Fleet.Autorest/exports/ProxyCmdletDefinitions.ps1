@@ -259,14 +259,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityFleet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -480,14 +478,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityFleet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -700,14 +696,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityFleet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -905,7 +899,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1122,14 +1115,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityFleetExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -1407,14 +1398,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityFleetExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -1455,7 +1444,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[]]
     # The list of stages that compose this update run.
     # Min size: 1.
-    # To construct, see NOTES section for STRATEGYSTAGE properties and create a hash table.
     ${StrategyStage},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1730,14 +1718,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityFleetExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -1760,7 +1746,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[]]
     # The list of stages that compose this update run.
     # Min size: 1.
-    # To construct, see NOTES section for STRATEGYSTAGE properties and create a hash table.
     ${StrategyStage},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -1984,7 +1969,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -2265,14 +2249,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityFleet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -2504,14 +2486,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityFleet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -2745,14 +2725,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityFleet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -2971,7 +2949,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -3202,14 +3179,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='StartViaIdentityFleet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -3435,14 +3410,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='StopViaIdentityFleet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -3679,14 +3652,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityFleetExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -3940,14 +3911,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityFleetExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -3975,7 +3944,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[]]
     # The list of stages that compose this update run.
     # Min size: 1.
-    # To construct, see NOTES section for STRATEGYSTAGE properties and create a hash table.
     ${StrategyStage},
 
     [Parameter()]
@@ -4231,14 +4199,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityFleetExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -4259,7 +4225,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[]]
     # The list of stages that compose this update run.
     # Min size: 1.
-    # To construct, see NOTES section for STRATEGYSTAGE properties and create a hash table.
     ${StrategyStage},
 
     [Parameter()]
@@ -4469,7 +4434,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -4814,7 +4778,6 @@ param(
     # Defines the groups to be executed in parallel in this stage.
     # Duplicate groups are not allowed.
     # Min size: 1.
-    # To construct, see NOTES section for GROUP properties and create a hash table.
     ${Group}
 )
 
