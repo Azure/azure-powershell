@@ -52,7 +52,7 @@ Describe 'Set-AzEventHubGeoDRConfigurationBreakPair' {
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
 
         $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
-        
+
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
             Start-TestSleep 10
