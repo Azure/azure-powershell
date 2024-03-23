@@ -15,14 +15,14 @@ Deletes a security connector.
 ### Delete (Default)
 ```
 Remove-AzSecurityConnector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzSecurityConnector -InputObject <ISecurityIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ Deletes a security connector.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove security connector
 ```powershell
 Remove-AzSecurityConnector -ResourceGroupName "securityconnectors-pwsh-tmp" -Name "ado-sdk-pwsh-test03"
 ```
@@ -42,7 +42,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -55,10 +55,9 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-.
 
 ```yaml
-Type: ISecurityIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -73,7 +72,7 @@ Accept wildcard characters: False
 The security connector name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases: SecurityConnectorName
 
@@ -88,13 +87,28 @@ Accept wildcard characters: False
 Returns true when the command succeeds
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -104,7 +118,7 @@ The name of the resource group within the user's subscription.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases:
 
@@ -119,13 +133,13 @@ Accept wildcard characters: False
 Azure subscription ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -134,7 +148,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -150,7 +164,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -167,32 +181,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity
+
 ## OUTPUTS
 
 ### System.Boolean
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<ISecurityIdentity\>: Identity Parameter
-  \[ApiId \<String\>\]: API revision identifier.
-Must be unique in the API Management service instance.
-Non-current revision has ;rev=n as a suffix where n is the revision number.
-  \[GroupFqName \<String\>\]: The GitLab group fully-qualified name.
-  \[Id \<String\>\]: Resource identity path
-  \[OperationResultId \<String\>\]: The operation result Id.
-  \[OrgName \<String\>\]: The Azure DevOps organization name.
-  \[OwnerName \<String\>\]: The GitHub owner name.
-  \[ProjectName \<String\>\]: The project name.
-  \[RepoName \<String\>\]: The repository name.
-  \[ResourceGroupName \<String\>\]: The name of the resource group within the user's subscription.
-The name is case insensitive.
-  \[SecurityConnectorName \<String\>\]: The security connector name.
-  \[ServiceName \<String\>\]: The name of the API Management service.
-  \[SubscriptionId \<String\>\]: Azure subscription ID
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.security/remove-azsecurityconnector](https://learn.microsoft.com/powershell/module/az.security/remove-azsecurityconnector)

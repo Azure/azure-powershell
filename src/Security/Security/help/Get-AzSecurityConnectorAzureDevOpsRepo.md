@@ -16,20 +16,20 @@ Returns a monitored Azure DevOps repository resource.
 ```
 Get-AzSecurityConnectorAzureDevOpsRepo -OrgName <String> -ProjectName <String> -ResourceGroupName <String>
  -SecurityConnectorName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzSecurityConnectorAzureDevOpsRepo -OrgName <String> -ProjectName <String> -RepoName <String>
  -ResourceGroupName <String> -SecurityConnectorName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzSecurityConnectorAzureDevOpsRepo -InputObject <ISecurityIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,14 +37,59 @@ Returns a monitored Azure DevOps repository resource.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get discovered AzureDevOps repository by organization, project and repo name
 ```powershell
 Get-AzSecurityConnectorAzureDevOpsRepo -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-azdo-01 -OrgName dfdsdktests -ProjectName ContosoSDKDfd -RepoName TestApp0
 ```
 
-### Example 2
+```output
+ActionableRemediation           : {
+                                    "state": "Enabled",
+                                    "categoryConfigurations": [
+                                      {
+                                        "minimumSeverityLevel": "High",
+                                        "category": "IaC"
+                                      }
+                                    ],
+                                    "branchConfiguration": {
+                                      "branchNames": [ ],
+                                      "annotateDefaultBranch": "Enabled"
+                                    },
+                                    "inheritFromParentState": "Enabled"
+                                  }
+Id                              : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests/projects/Co 
+                                  ntosoSDKDfd/repos/TestApp0
+Name                            : TestApp0
+OnboardingState                 : Onboarded
+ParentOrgName                   : dfdsdktests
+ParentProjectName               : ContosoSDKDfd
+ProvisioningState               : Succeeded
+ProvisioningStatusMessage       : OK
+ProvisioningStatusUpdateTimeUtc : 2/23/2024 6:52:44 PM
+RepoId                          : 35cd4811-63c7-4043-8587-f0a9cf37709e
+RepoUrl                         : https://dev.azure.com/dfdsdktests/ContosoSDKDfd/_git/TestApp0
+ResourceGroupName               : dfdtest-sdk
+SystemDataCreatedAt             : 
+SystemDataCreatedBy             : 
+SystemDataCreatedByType         : 
+SystemDataLastModifiedAt        : 
+SystemDataLastModifiedBy        : 
+SystemDataLastModifiedByType    : 
+Type                            : Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs/projects/repos
+Visibility                      :
+```
+
+### Example 2: List discovered AzureDevOps repositories
 ```powershell
 Get-AzSecurityConnectorAzureDevOpsRepo -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-azdo-01 -OrgName dfdsdktests -ProjectName ContosoSDKDfd
+```
+
+```output
+Name          ResourceGroupName
+----          -----------------
+ContosoSDKDfd dfdtest-sdk
+TestApp0      dfdtest-sdk
+TestApp2      dfdtest-sdk
 ```
 
 ## PARAMETERS
@@ -54,7 +99,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -67,10 +112,9 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-.
 
 ```yaml
-Type: ISecurityIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -85,7 +129,7 @@ Accept wildcard characters: False
 The Azure DevOps organization name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get
 Aliases:
 
@@ -96,11 +140,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProjectName
 The project name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get
 Aliases:
 
@@ -115,7 +174,7 @@ Accept wildcard characters: False
 The repository name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get
 Aliases:
 
@@ -131,7 +190,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get
 Aliases:
 
@@ -146,7 +205,7 @@ Accept wildcard characters: False
 The security connector name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get
 Aliases:
 
@@ -161,13 +220,13 @@ Accept wildcard characters: False
 Azure subscription ID
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: List, Get
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -178,32 +237,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsRepository
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<ISecurityIdentity\>: Identity Parameter
-  \[ApiId \<String\>\]: API revision identifier.
-Must be unique in the API Management service instance.
-Non-current revision has ;rev=n as a suffix where n is the revision number.
-  \[GroupFqName \<String\>\]: The GitLab group fully-qualified name.
-  \[Id \<String\>\]: Resource identity path
-  \[OperationResultId \<String\>\]: The operation result Id.
-  \[OrgName \<String\>\]: The Azure DevOps organization name.
-  \[OwnerName \<String\>\]: The GitHub owner name.
-  \[ProjectName \<String\>\]: The project name.
-  \[RepoName \<String\>\]: The repository name.
-  \[ResourceGroupName \<String\>\]: The name of the resource group within the user's subscription.
-The name is case insensitive.
-  \[SecurityConnectorName \<String\>\]: The security connector name.
-  \[ServiceName \<String\>\]: The name of the API Management service.
-  \[SubscriptionId \<String\>\]: Azure subscription ID
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectorazuredevopsrepo](https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectorazuredevopsrepo)

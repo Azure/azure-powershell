@@ -95,7 +95,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
@@ -110,7 +109,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -281,7 +280,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -471,7 +470,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
@@ -486,7 +484,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -685,7 +683,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
@@ -700,7 +697,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -906,7 +903,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
@@ -921,7 +917,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -1107,7 +1103,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
@@ -1122,7 +1117,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -1291,7 +1286,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -1481,7 +1476,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
@@ -1496,7 +1490,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -1695,7 +1689,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
@@ -1710,7 +1703,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -1879,7 +1872,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -2069,7 +2062,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
@@ -2084,7 +2076,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -2283,7 +2275,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
@@ -2298,7 +2289,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -2473,7 +2464,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -2658,7 +2649,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
@@ -2673,7 +2663,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -2865,7 +2855,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
@@ -2880,7 +2869,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -3076,7 +3065,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
@@ -3097,7 +3085,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -3298,7 +3286,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -3540,7 +3528,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityConnectorEnvironment]
     # The security connector environment data.
-    # .
     ${EnvironmentData},
 
     [Parameter()]
@@ -3579,7 +3566,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOffering[]]
     # A collection of offerings for the security connector.
-    # .
     ${Offering},
 
     [Parameter()]
@@ -3601,7 +3587,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -3780,7 +3766,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
@@ -3801,7 +3786,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -3994,7 +3979,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
@@ -4009,7 +3993,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -4212,14 +4196,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IActionableRemediation]
     # Configuration payload for PR Annotations.
-    # .
     ${ActionableRemediation},
 
     [Parameter()]
@@ -4240,7 +4222,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -4449,14 +4431,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IActionableRemediation]
     # Configuration payload for PR Annotations.
-    # .
     ${ActionableRemediation},
 
     [Parameter()]
@@ -4483,7 +4463,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -4698,14 +4678,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IActionableRemediation]
     # Configuration payload for PR Annotations.
-    # .
     ${ActionableRemediation},
 
     [Parameter()]
@@ -4738,7 +4716,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -4924,7 +4902,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
@@ -4966,7 +4943,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -5159,14 +5136,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity]
     # Identity Parameter
-    # .
     ${InputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityConnectorEnvironment]
     # The security connector environment data.
-    # .
     ${EnvironmentData},
 
     [Parameter()]
@@ -5205,7 +5180,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOffering[]]
     # A collection of offerings for the security connector.
-    # .
     ${Offering},
 
     [Parameter()]
@@ -5227,7 +5201,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]
@@ -5378,7 +5352,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAwsOrganizationalData]
     # The AWS account's organizational data.
-    # .
     ${OrganizationalData},
 
     [Parameter()]
@@ -5812,14 +5785,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ITargetBranchConfiguration]
     # Repository branch configuration for PR Annotations.
-    # .
     ${BranchConfiguration},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICategoryConfiguration[]]
     # Gets or sets list of categories and severity levels.
-    # .
     ${CategoryConfiguration},
 
     [Parameter()]
@@ -6478,7 +6449,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingVMScannersConfigurationExclusionTags]
     # VM tags that indicates that VM should not be scanned.
-    # .
     ${ConfigurationExclusionTag},
 
     [Parameter()]
@@ -6673,7 +6643,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmGcpOfferingVMScannersConfigurationExclusionTags]
     # VM tags that indicates that VM should not be scanned.
-    # .
     ${ConfigurationExclusionTag},
 
     [Parameter()]
@@ -7520,7 +7489,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderForServersAwsOfferingVMScannersConfigurationExclusionTags]
     # VM tags that indicates that VM should not be scanned.
-    # .
     ${ConfigurationExclusionTag},
 
     [Parameter()]
@@ -7705,7 +7673,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderForServersGcpOfferingVMScannersConfigurationExclusionTags]
     # VM tags that indicate that VM should not be scanned.
-    # .
     ${ConfigurationExclusionTag},
 
     [Parameter()]
@@ -8108,7 +8075,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpOrganizationalData]
     # The Gcp project's organizational data.
-    # .
     ${OrganizationalData},
 
     [Parameter()]

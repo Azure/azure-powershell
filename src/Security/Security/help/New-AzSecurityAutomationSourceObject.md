@@ -15,13 +15,13 @@ Creates security automation source object
 ### SecurityAutomationSource (Default)
 ```
 New-AzSecurityAutomationSourceObject [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SecurityAutomationActionLogicApp
 ```
 New-AzSecurityAutomationSourceObject -EventSource <String> -RuleSet <PSSecurityAutomationRuleSet[]>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,6 +63,21 @@ Parameter Sets: SecurityAutomationActionLogicApp
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
