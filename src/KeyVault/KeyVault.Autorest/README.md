@@ -41,15 +41,17 @@ input-file:
   - $(repo)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2023-02-01/keyvault.json
   - $(repo)/specification/keyvault/resource-manager/Microsoft.KeyVault/stable/2023-02-01/managedHsm.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
-# - (this-folder)/relative-path-to-your-swagger 
+# - (this-folder)/relative-path-to-your-swagger
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
 # Normally, title is the service name
 title: KeyVault
 subject-prefix: $(service-name)
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
-# If there are post APIs for some kinds of actions in the RP, you may need to 
+# If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
 
@@ -64,7 +66,7 @@ directive:
   - where:
       verb: Set
     remove: true
-  # Combine Test-AzKeyVaultNameAvailability and Test-AzKeyVaultManagedHsmNameAvailability  
+  # Combine Test-AzKeyVaultNameAvailability and Test-AzKeyVaultManagedHsmNameAvailability
   - from: swagger-document
     where: $.paths..operationId
     transform: return $.replace(/^ManagedHsms_CheckMhsmNameAvailability$/g, "ManagedHsms_CheckNameAvailability")
