@@ -88,14 +88,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityCustomlocation', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CUSTOMLOCATIONINPUTOBJECT properties and create a hash table.
     ${CustomlocationInputObject},
 
     [Parameter()]

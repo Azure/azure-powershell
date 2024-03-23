@@ -77,7 +77,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='FindExpanded')]
