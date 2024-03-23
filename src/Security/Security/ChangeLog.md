@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added new feature secrets detection
 
 ## Version 1.6.0
 * Added new cmdlets for Security Connectors
