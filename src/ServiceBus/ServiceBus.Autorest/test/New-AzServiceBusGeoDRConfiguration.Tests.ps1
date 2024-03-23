@@ -24,7 +24,7 @@ Describe 'New-AzServiceBusGeoDRConfiguration' {
 
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
-            Start-TestSleep 10
+            Start-Sleep 10
         }
 
         $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
