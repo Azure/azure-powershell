@@ -50,7 +50,7 @@ This command creates an hourly scheudle for Azure Backup Rule.
 ## PARAMETERS
 
 ### -IntervalCount
-Frequency of the backup.
+The frequency of the backups at the specified interval type (cadence).
 
 ```yaml
 Type: System.Int32
@@ -65,7 +65,7 @@ Accept wildcard characters: False
 ```
 
 ### -IntervalType
-Freuquency of the backup.
+The type of interval to use when taking backups.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.BackupFrequency
