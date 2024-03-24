@@ -162,21 +162,18 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CLUSTERINPUTOBJECT properties and create a hash table.
     ${ClusterInputObject},
 
     [Parameter(ParameterSetName='RestrictViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='RestrictViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
     ${PrivateCloudInputObject},
 
     [Parameter()]
