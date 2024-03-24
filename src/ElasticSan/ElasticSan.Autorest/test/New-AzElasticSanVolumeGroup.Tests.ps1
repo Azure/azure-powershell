@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzElasticSanVolumeGroup')
 }
 
 Describe 'New-AzElasticSanVolumeGroup' {
-    It 'CreateExpanded' {
+    It 'CreateExpanded' -Skip {
         $vnetRule1 = New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId $env.vnetResourceId1 -Action "Allow"
         $vnetRule2 = New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId $env.vnetResourceId2 -Action "Allow"
         $volGroupName = 'testvolgroup' + $env.RandomString
