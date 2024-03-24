@@ -15,13 +15,13 @@ Create a LocalRulestackResource
 ```
 New-AzPaloAltoNetworksLocalRulestack -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-AssociatedSubscription <String[]>] [-DefaultMode <String>]
- [-Description <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-MinAppIdVersion <String>] [-PanEtag <String>] [-PanLocation <String>] [-Scope <String>]
- [-SecurityServiceAntiSpywareProfile <String>] [-SecurityServiceAntiVirusProfile <String>]
- [-SecurityServiceDnsSubscription <String>] [-SecurityServiceFileBlockingProfile <String>]
- [-SecurityServiceOutboundTrustCertificate <String>] [-SecurityServiceOutboundUnTrustCertificate <String>]
- [-SecurityServiceUrlFilteringProfile <String>] [-SecurityServiceVulnerabilityProfile <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Description <String>] [-IdentityType <String>] [-MinAppIdVersion <String>] [-PanEtag <String>]
+ [-PanLocation <String>] [-Scope <String>] [-SecurityServiceAntiSpywareProfile <String>]
+ [-SecurityServiceAntiVirusProfile <String>] [-SecurityServiceDnsSubscription <String>]
+ [-SecurityServiceFileBlockingProfile <String>] [-SecurityServiceOutboundTrustCertificate <String>]
+ [-SecurityServiceOutboundUnTrustCertificate <String>] [-SecurityServiceUrlFilteringProfile <String>]
+ [-SecurityServiceVulnerabilityProfile <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,21 +125,6 @@ The type of managed identity assigned to this resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The identities assigned to this resource by the user.
-
-```yaml
-Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -408,6 +393,21 @@ Accept wildcard characters: False
 
 ### -Tag
 Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The identities assigned to this resource by the user.
 
 ```yaml
 Type: System.Collections.Hashtable

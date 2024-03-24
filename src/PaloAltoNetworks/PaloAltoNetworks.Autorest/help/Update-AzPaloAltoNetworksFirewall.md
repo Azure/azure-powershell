@@ -18,11 +18,11 @@ Update-AzPaloAltoNetworksFirewall -Name <String> -ResourceGroupName <String> [-S
  [-AssociatedRulestackId <String>] [-AssociatedRulestackLocation <String>]
  [-AssociatedRulestackResourceId <String>] [-DnsSettingDnsServer <IIPAddress[]>]
  [-DnsSettingEnabledDnsType <String>] [-DnsSettingEnableDnsProxy <String>]
- [-FrontEndSetting <IFrontendSetting[]>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-IsPanoramaManaged <String>] [-MarketplaceDetailMarketplaceSubscriptionStatus <String>]
- [-MarketplaceDetailOfferId <String>] [-MarketplaceDetailPublisherId <String>]
- [-NetworkProfile <INetworkProfile>] [-PanEtag <String>] [-PanoramaConfigString <String>]
- [-PlanDataBillingCycle <String>] [-PlanDataPlanId <String>] [-PlanDataUsageType <String>] [-Tag <Hashtable>]
+ [-FrontEndSetting <IFrontendSetting[]>] [-IdentityType <String>] [-IsPanoramaManaged <String>]
+ [-MarketplaceDetailMarketplaceSubscriptionStatus <String>] [-MarketplaceDetailOfferId <String>]
+ [-MarketplaceDetailPublisherId <String>] [-NetworkProfile <INetworkProfile>] [-PanEtag <String>]
+ [-PanoramaConfigString <String>] [-PlanDataBillingCycle <String>] [-PlanDataPlanId <String>]
+ [-PlanDataUsageType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -32,12 +32,11 @@ Update-AzPaloAltoNetworksFirewall -InputObject <IPaloAltoNetworksIdentity> [-Ass
  [-AssociatedRulestackLocation <String>] [-AssociatedRulestackResourceId <String>]
  [-DnsSettingDnsServer <IIPAddress[]>] [-DnsSettingEnabledDnsType <String>]
  [-DnsSettingEnableDnsProxy <String>] [-FrontEndSetting <IFrontendSetting[]>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-IsPanoramaManaged <String>]
- [-MarketplaceDetailMarketplaceSubscriptionStatus <String>] [-MarketplaceDetailOfferId <String>]
- [-MarketplaceDetailPublisherId <String>] [-NetworkProfile <INetworkProfile>] [-PanEtag <String>]
- [-PanoramaConfigString <String>] [-PlanDataBillingCycle <String>] [-PlanDataPlanId <String>]
- [-PlanDataUsageType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-IsPanoramaManaged <String>] [-MarketplaceDetailMarketplaceSubscriptionStatus <String>]
+ [-MarketplaceDetailOfferId <String>] [-MarketplaceDetailPublisherId <String>]
+ [-NetworkProfile <INetworkProfile>] [-PanEtag <String>] [-PanoramaConfigString <String>]
+ [-PlanDataBillingCycle <String>] [-PlanDataPlanId <String>] [-PlanDataUsageType <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,7 +122,6 @@ Accept wildcard characters: False
 
 ### -DnsSettingDnsServer
 List of IPs associated with the Firewall
-To construct, see NOTES section for DNSSETTINGDNSSERVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress[]
@@ -169,7 +167,6 @@ Accept wildcard characters: False
 
 ### -FrontEndSetting
 Frontend settings for Firewall
-To construct, see NOTES section for FRONTENDSETTING properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFrontendSetting[]
@@ -198,24 +195,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityUserAssignedIdentity
-The identities assigned to this resource by the user.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPaloAltoNetworksIdentity
@@ -307,7 +288,6 @@ Accept wildcard characters: False
 
 ### -NetworkProfile
 Network settings
-To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfile
@@ -430,6 +410,21 @@ Accept wildcard characters: False
 
 ### -Tag
 Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The identities assigned to this resource by the user.
 
 ```yaml
 Type: System.Collections.Hashtable
