@@ -625,7 +625,11 @@ directive:
       parameter-name: FilterIsSubjectCaseSensitive
     set:
       alias: SubjectCaseSensitive
-
+  - where:
+      subject: PartnerTopicEventSubscription
+      parameter-name: RetryPolicyMaxDeliveryAttempt
+    set:
+      alias: MaxDeliveryAttempt
   - where:
       subject: PartnerTopicEventSubscription
       parameter-name: EventSubscriptionName

@@ -509,7 +509,7 @@ Maximum number of delivery retry attempts for events.
 ```yaml
 Type: System.Int32
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityPartnerTopicExpanded
-Aliases:
+Aliases: MaxDeliveryAttempt
 
 Required: False
 Position: Named
