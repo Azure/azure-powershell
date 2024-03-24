@@ -76,7 +76,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List')]
