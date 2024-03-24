@@ -77,10 +77,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return;
             }
-            {_provider = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("provider"), out var __jsonProvider) ? (string)__jsonProvider : (string)Provider;}
-            {_resource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("resource"), out var __jsonResource) ? (string)__jsonResource : (string)Resource;}
-            {_operation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("operation"), out var __jsonOperation) ? (string)__jsonOperation : (string)Operation;}
-            {_description = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("description"), out var __jsonDescription) ? (string)__jsonDescription : (string)Description;}
+            {_provider = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("provider"), out var __jsonProvider) ? (string)__jsonProvider : (string)_provider;}
+            {_resource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("resource"), out var __jsonResource) ? (string)__jsonResource : (string)_resource;}
+            {_operation = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("operation"), out var __jsonOperation) ? (string)__jsonOperation : (string)_operation;}
+            {_description = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("description"), out var __jsonDescription) ? (string)__jsonDescription : (string)_description;}
             AfterFromJson(json);
         }
 

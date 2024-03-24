@@ -107,21 +107,18 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityElasticSan', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create a hash table.
     ${ElasticSanInputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityVolumegroup', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for VOLUMEGROUPINPUTOBJECT properties and create a hash table.
     ${VolumegroupInputObject},
 
     [Parameter()]

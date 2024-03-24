@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ElasticSan-help.xml
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/remove-azelasticsanvolume
 schema: 2.0.0
@@ -15,29 +15,30 @@ Delete an Volume.
 ### Delete (Default)
 ```
 Remove-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- -VolumeGroupName <String> [-SubscriptionId <String>] [-DeleteSnapshot <String>] [-ForceDelete <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DeleteSnapshot <String>]
- [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DeleteViaIdentityElasticSan
-```
-Remove-AzElasticSanVolume -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
- -VolumeGroupName <String> [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -VolumeGroupName <String> [-DeleteSnapshot <String>] [-ForceDelete <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityVolumegroup
 ```
 Remove-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
- [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentityElasticSan
+```
+Remove-AzElasticSanVolume -Name <String> -VolumeGroupName <String> -ElasticSanInputObject <IElasticSanIdentity>
+ [-DeleteSnapshot <String>] [-ForceDelete <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### DeleteViaIdentity
+```
+Remove-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DeleteSnapshot <String>] [-ForceDelete <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +46,7 @@ Delete an Volume.
 
 ## EXAMPLES
 
-### Example 1: Remove a volume 
+### Example 1: Remove a volume
 ```powershell
 Remove-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume
 ```
@@ -104,7 +105,6 @@ Accept wildcard characters: False
 
 ### -ElasticSanInputObject
 Identity Parameter
-To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -152,7 +152,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -171,7 +170,7 @@ The name of the Volume.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityElasticSan, DeleteViaIdentityVolumegroup
+Parameter Sets: Delete, DeleteViaIdentityVolumegroup, DeleteViaIdentityElasticSan
 Aliases: VolumeName
 
 Required: True
@@ -203,6 +202,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -244,7 +258,6 @@ Accept wildcard characters: False
 
 ### -VolumegroupInputObject
 Identity Parameter
-To construct, see NOTES section for VOLUMEGROUPINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -318,4 +331,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

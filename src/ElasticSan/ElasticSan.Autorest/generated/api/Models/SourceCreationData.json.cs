@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return;
             }
-            {_createSource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("createSource"), out var __jsonCreateSource) ? (string)__jsonCreateSource : (string)CreateSource;}
-            {_sourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("sourceId"), out var __jsonSourceId) ? (string)__jsonSourceId : (string)SourceId;}
+            {_createSource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("createSource"), out var __jsonCreateSource) ? (string)__jsonCreateSource : (string)_createSource;}
+            {_sourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("sourceId"), out var __jsonSourceId) ? (string)__jsonSourceId : (string)_sourceId;}
             AfterFromJson(json);
         }
 

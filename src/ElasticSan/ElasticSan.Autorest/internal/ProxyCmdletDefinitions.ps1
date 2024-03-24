@@ -219,14 +219,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create a hash table.
     ${ElasticSanInputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -251,14 +249,6 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group.
-    # The key is the ARM resource identifier of the identity.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # The name of KeyVault key.
     ${KeyName},
@@ -280,7 +270,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVirtualNetworkRule[]]
     # The list of virtual network rules.
-    # To construct, see NOTES section for NETWORKACLSVIRTUALNETWORKRULE properties and create a hash table.
     ${NetworkAclsVirtualNetworkRule},
 
     [Parameter()]
@@ -289,6 +278,14 @@ param(
     [System.String]
     # Type of storage target
     ${ProtocolType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIdentityUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group.
+    # The key is the ARM resource identifier of the identity.
+    ${UserAssignedIdentity},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -493,14 +490,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create a hash table.
     ${ElasticSanInputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -525,14 +520,6 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group.
-    # The key is the ARM resource identifier of the identity.
-    ${IdentityUserAssignedIdentity},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [System.String]
     # The name of KeyVault key.
     ${KeyName},
@@ -554,7 +541,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVirtualNetworkRule[]]
     # The list of virtual network rules.
-    # To construct, see NOTES section for NETWORKACLSVIRTUALNETWORKRULE properties and create a hash table.
     ${NetworkAclsVirtualNetworkRule},
 
     [Parameter()]
@@ -563,6 +549,14 @@ param(
     [System.String]
     # Type of storage target
     ${ProtocolType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IIdentityUserAssignedIdentities]))]
+    [System.Collections.Hashtable]
+    # Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group.
+    # The key is the ARM resource identifier of the identity.
+    ${UserAssignedIdentity},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

@@ -72,7 +72,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]

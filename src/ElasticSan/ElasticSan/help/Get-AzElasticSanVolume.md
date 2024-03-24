@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ElasticSan-help.xml
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanvolume
 schema: 2.0.0
@@ -14,31 +14,34 @@ Get either a list of all volumes from a volume group or get a single volume from
 
 ### List (Default)
 ```
-Get-AzElasticSanVolume -ElasticSanName <String> -ResourceGroupName <String> -VolumeGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzElasticSanVolume -ElasticSanName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -VolumeGroupName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzElasticSanVolume -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- -VolumeGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentityElasticSan
-```
-Get-AzElasticSanVolume -ElasticSanInputObject <IElasticSanIdentity> -Name <String> -VolumeGroupName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] -VolumeGroupName <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityVolumegroup
 ```
 Get-AzElasticSanVolume -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentityElasticSan
+```
+Get-AzElasticSanVolume -Name <String> -VolumeGroupName <String> -ElasticSanInputObject <IElasticSanIdentity>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzElasticSanVolume -InputObject <IElasticSanIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,7 +98,7 @@ VolumeId                       : cdcdcdcd-cdcd-cdcd-cdcd-cdcdcdcdcdcd
 
 This command gets all the volumes in a volume group.
 
-### Example 2: Get a specific volume 
+### Example 2: Get a specific volume
 ```powershell
 Get-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume
 ```
@@ -144,7 +147,6 @@ Accept wildcard characters: False
 
 ### -ElasticSanInputObject
 Identity Parameter
-To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -163,7 +165,7 @@ The name of the ElasticSan.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -175,7 +177,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -194,10 +195,25 @@ The name of the Volume.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityElasticSan, GetViaIdentityVolumegroup
+Parameter Sets: Get, GetViaIdentityVolumegroup, GetViaIdentityElasticSan
 Aliases: VolumeName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -210,7 +226,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -225,7 +241,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -237,7 +253,6 @@ Accept wildcard characters: False
 
 ### -VolumegroupInputObject
 Identity Parameter
-To construct, see NOTES section for VOLUMEGROUPINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -256,7 +271,7 @@ The name of the VolumeGroup.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, GetViaIdentityElasticSan, List
+Parameter Sets: List, Get, GetViaIdentityElasticSan
 Aliases:
 
 Required: True
@@ -280,4 +295,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

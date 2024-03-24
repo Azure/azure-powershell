@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ElasticSan-help.xml
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/get-azelasticsanskulist
 schema: 2.0.0
@@ -14,7 +14,7 @@ List all the available Skus in the region and information related to them
 
 ```
 Get-AzElasticSanSkuList [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +22,7 @@ List all the available Skus in the region and information related to them
 
 ## EXAMPLES
 
-### Example 1: Get all the available Skus 
+### Example 1: Get all the available Skus
 ```powershell
 Get-AzElasticSanSkuList
 ```
@@ -69,6 +69,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -96,4 +111,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
