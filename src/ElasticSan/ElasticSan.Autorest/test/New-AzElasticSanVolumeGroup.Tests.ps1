@@ -31,7 +31,7 @@ Describe 'New-AzElasticSanVolumeGroup' {
         $volGroup.ProtocolType | Should -Be "Iscsi"
         $volGroup.IdentityType | Should -Be "SystemAssigned"
 
-        #$volGroupName3 = 'testvolgroup3' + $env.RandomString
+        $volGroupName3 = 'testvolgroup3' + $env.RandomString
         #$volGroup = New-AzElasticSanVolumeGroup -ResourceGroupName $env.ResourceGroupName -ElasticSanName $env.ElasticSanName1 -Name $volGroupName3 -IdentityType 'UserAssigned'-IdentityUserAssignedIdentity $env.Useridentity.Id -Encryption EncryptionAtRestWithCustomerManagedKey -KeyName $env.Keyname -KeyVaultUri $env.KeyvaultUri -EncryptionUserAssignedIdentity $env.Useridentity.Id -ProtocolType Iscsi
         #$volGroup.Name | Should -Be $volGroupName3
         #$volGroup.Encryption | Should -Be "EncryptionAtRestWithCustomerManagedKey"
