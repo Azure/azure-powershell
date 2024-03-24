@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         /// <summary>
         /// string which represents the IdentityType.
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("IdentityType", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
+        [CmdletParameterBreakingChangeWithVersion("IdentityType", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

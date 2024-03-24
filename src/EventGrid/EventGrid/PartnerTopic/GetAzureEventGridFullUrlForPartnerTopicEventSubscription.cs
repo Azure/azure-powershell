@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ResourceNameCompleter("Microsoft.EventGrid/partnerTopics", nameof(ResourceGroupName))]
         public string PartnerTopicName { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("ResourceId", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
+        [CmdletParameterBreakingChangeWithVersion("ResourceId", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,

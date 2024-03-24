@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateSet(EventGridModels.InputSchema.EventGridSchema, EventGridModels.InputSchema.CustomEventSchema, EventGridModels.InputSchema.CloudEventSchemaV10, IgnoreCase = true)]
         public string InputSchema { get; set; } = EventGridModels.InputSchema.EventGridSchema;
 
-        [CmdletParameterBreakingChangeWithVersion("InputMappingField", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
+        [CmdletParameterBreakingChangeWithVersion("InputMappingField", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = DomainNameParameterSet)]
         public Hashtable InputMappingField { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("InputMappingDefaultValue", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
+        [CmdletParameterBreakingChangeWithVersion("InputMappingDefaultValue", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -160,7 +160,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         /// <summary>
         /// string which represents the IdentityType.
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("IdentityType", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
+        [CmdletParameterBreakingChangeWithVersion("IdentityType", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

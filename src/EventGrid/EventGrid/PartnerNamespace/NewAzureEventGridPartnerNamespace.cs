@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = PartnerNamespaceNameParameterSet)]
         public Hashtable Tag { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("PrivateEndpointConnection", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
+        [CmdletParameterBreakingChangeWithVersion("PrivateEndpointConnection", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = PartnerNamespaceNameParameterSet)]
         public string PartnerRegistrationFullyQualifiedId { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("Endpoint", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
+        [CmdletParameterBreakingChangeWithVersion("Endpoint", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

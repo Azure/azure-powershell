@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = "EventGrid Topic Type Name.")]
         public string Name { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("IncludeEventTypeData", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
+        [CmdletParameterBreakingChangeWithVersion("IncludeEventTypeData", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "If specified, the response will include the event types supported by a topic type.")]

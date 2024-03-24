@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Alias("PartnerTopicName")]
         public string Name { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("ODataQuery", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
+        [CmdletParameterBreakingChangeWithVersion("ODataQuery", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -80,7 +80,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateRange(1, 100)]
         public int? Top { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("NextLink", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
+        [CmdletParameterBreakingChangeWithVersion("NextLink", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
