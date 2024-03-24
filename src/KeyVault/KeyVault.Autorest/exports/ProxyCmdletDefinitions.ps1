@@ -576,6 +576,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Body')]
     [System.String[]]
     # List of regions to be added associated with the managed hsm pool.
+    # To construct, see NOTES section for REGION properties and create a hash table.
     ${Region},
 
     [Parameter()]

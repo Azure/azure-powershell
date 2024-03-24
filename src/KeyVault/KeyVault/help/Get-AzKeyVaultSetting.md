@@ -15,19 +15,19 @@ Retrieves a specified key vault account setting or all available key vault accou
 ### GetSettingViaFlattenParameters (Default)
 ```
 Get-AzKeyVaultSetting [-DefaultProfile <IAzureContextContainer>] [-HsmName] <String> [[-Name] <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetSettingViaHsmObject
 ```
 Get-AzKeyVaultSetting [-DefaultProfile <IAzureContextContainer>] [-HsmObject] <PSManagedHsm> [[-Name] <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetSettingViaHsmId
 ```
 Get-AzKeyVaultSetting [-DefaultProfile <IAzureContextContainer>] [-HsmId] <String> [[-Name] <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -187,6 +187,21 @@ Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

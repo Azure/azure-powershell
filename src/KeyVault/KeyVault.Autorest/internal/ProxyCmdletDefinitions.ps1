@@ -76,7 +76,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='List')]
@@ -247,7 +246,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm]
     # Resource information with extended details.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter()]
@@ -402,7 +400,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IKeyVaultIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
@@ -410,7 +407,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IManagedHsm]
     # Resource information with extended details.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -471,7 +467,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmipRule[]]
     # The list of IP address rules.
-    # To construct, see NOTES section for NETWORKACLSIPRULE properties and create a hash table.
     ${NetworkAclsIPRule},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -480,7 +475,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmVirtualNetworkRule[]]
     # The list of virtual network rules.
-    # To construct, see NOTES section for NETWORKACLSVIRTUALNETWORKRULE properties and create a hash table.
     ${NetworkAclsVirtualNetworkRule},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -497,7 +491,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Models.IMhsmGeoReplicatedRegion[]]
     # List of all regions associated with the managed hsm pool.
-    # To construct, see NOTES section for REGION properties and create a hash table.
     ${Region},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
