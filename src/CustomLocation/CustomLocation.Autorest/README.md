@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the CustomLocation service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -37,10 +36,10 @@ input-file:
 module-version: 0.1.0
 title: CustomLocation
 subject-prefix: $(service-name)
-
-identity-correction-for-post: true
 disable-transform-identity-type: true
 flatten-userassignedidentity: false
+
+identity-correction-for-post: true
 
 directive:
   - from: swagger-document
