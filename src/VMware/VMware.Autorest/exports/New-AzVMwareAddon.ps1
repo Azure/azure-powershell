@@ -30,7 +30,7 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-PROPERTY <IAddonProperties>: The properties of an addon resource
+PROPERTY <IAddonProperties>: The properties of an addon resource To construct, see NOTES section for PROPERTY properties and create a hash table.
   AddonType <String>: The type of private cloud addon
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwareaddon
