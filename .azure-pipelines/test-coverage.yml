@@ -23,6 +23,7 @@ parameters:
 variables:
   EnableTestCoverage: true
   TestCoverageLocation: $(Pipeline.Workspace)/artifacts
+  AZURE_CLIENTS_SHOW_SECRETS_WARNING: true
 
 pr: none
 trigger: none
