@@ -105,14 +105,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityFleetExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -135,7 +133,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[]]
     # The list of stages that compose this update run.
     # Min size: 1.
-    # To construct, see NOTES section for STRATEGYSTAGE properties and create a hash table.
     ${StrategyStage},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
