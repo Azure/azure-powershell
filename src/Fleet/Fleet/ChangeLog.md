@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added new feature for secrets detection
+* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 0.1.0
 * First preview release for module Az.Fleet
