@@ -19,7 +19,8 @@ Set-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-Subscriptio
  [-RequireInfrastructureEncryption] [-IdentityType <ManagedServiceIdentityType>]
  [-UserAssignedIdentityId <String[]>] [-EnableAutoInflate] [-MaximumThroughputUnit <Int32>]
  [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-SkuCapacity <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
@@ -28,8 +29,8 @@ Set-AzEventHubNamespace -InputObject <IEventHubIdentity> [-AlternateName <String
  [-KeyVaultProperty <IKeyVaultProperties[]>] [-RequireInfrastructureEncryption]
  [-IdentityType <ManagedServiceIdentityType>] [-UserAssignedIdentityId <String[]>] [-EnableAutoInflate]
  [-MaximumThroughputUnit <Int32>] [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -537,6 +538,21 @@ Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

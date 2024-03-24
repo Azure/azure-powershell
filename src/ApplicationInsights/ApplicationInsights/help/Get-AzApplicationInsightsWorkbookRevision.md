@@ -1,6 +1,6 @@
 ---
 external help file: Az.ApplicationInsights-help.xml
-Module Name: Az.Applicationinsights
+Module Name: Az.ApplicationInsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightsworkbookrevision
 schema: 2.0.0
 ---
@@ -15,19 +15,21 @@ Get a single workbook revision defined by its revisionId.
 ### List (Default)
 ```
 Get-AzApplicationInsightsWorkbookRevision -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzApplicationInsightsWorkbookRevision -Name <String> -ResourceGroupName <String> -RevisionId <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzApplicationInsightsWorkbookRevision -InputObject <IApplicationInsightsIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,12 +74,13 @@ ResourceGroupName       Name                                 DisplayName        
 appinsights-hkrs2v-test f7d7151e-7907-4f46-8a5e-6bf4a4cfedec f7d7151e-7907-4f46-8a5e-6bf4a4cfedec-display westus2  shared workbook
 ```
 
-This command gets a single workbook revision defined by resource id.
+This commmand gets a single workbook revision defined by resource id.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -116,6 +119,21 @@ Parameter Sets: List, Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -180,26 +198,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220401.IWorkbook
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IApplicationInsightsIdentity>`: Identity Parameter
-  - `[AnnotationId <String>]`: The unique annotation ID. This is unique within a Application Insights component.
-  - `[ComponentName <String>]`: The name of the Application Insights component resource.
-  - `[ExportId <String>]`: The Continuous Export configuration ID. This is unique within a Application Insights component.
-  - `[Id <String>]`: Resource identity path
-  - `[KeyId <String>]`: The API Key ID. This is unique within a Application Insights component.
-  - `[PurgeId <String>]`: In a purge status request, this is the Id of the operation the status of which is returned.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceName <String>]`: The name of the Application Insights component resource.
-  - `[RevisionId <String>]`: The id of the workbook's revision.
-  - `[StorageType <StorageType?>]`: The type of the Application Insights component data source for the linked storage account.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WebTestName <String>]`: The name of the Application Insights WebTest resource.
 
 ## RELATED LINKS

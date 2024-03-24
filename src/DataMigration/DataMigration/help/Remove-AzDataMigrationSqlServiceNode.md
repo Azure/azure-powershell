@@ -16,13 +16,15 @@ Delete the integration runtime node.
 ```
 Remove-AzDataMigrationSqlServiceNode -ResourceGroupName <String> -SqlMigrationServiceName <String>
  [-SubscriptionId <String>] [-IntegrationRuntimeName <String>] [-NodeName <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityExpanded
 ```
 Remove-AzDataMigrationSqlServiceNode -InputObject <IDataMigrationIdentity> [-IntegrationRuntimeName <String>]
- [-NodeName <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NodeName <String>] [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,6 +116,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

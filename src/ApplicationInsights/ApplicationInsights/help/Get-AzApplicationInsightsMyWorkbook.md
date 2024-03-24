@@ -1,6 +1,6 @@
 ---
 external help file: Az.ApplicationInsights-help.xml
-Module Name: Az.Applicationinsights
+Module Name: Az.ApplicationInsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/get-azapplicationinsightsmyworkbook
 schema: 2.0.0
 ---
@@ -15,20 +15,20 @@ Get a single private workbook by its resourceName.
 ### List1 (Default)
 ```
 Get-AzApplicationInsightsMyWorkbook [-SubscriptionId <String[]>] -Category <CategoryType> [-CanFetchContent]
- [-Tag <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Tag <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzApplicationInsightsMyWorkbook -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzApplicationInsightsMyWorkbook -ResourceGroupName <String> [-SubscriptionId <String[]>]
  -Category <CategoryType> [-CanFetchContent] [-LinkedSourceId <String>] [-Tag <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,7 +121,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -159,6 +160,21 @@ Parameter Sets: Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -221,7 +237,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20210308.IMyWorkbook
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

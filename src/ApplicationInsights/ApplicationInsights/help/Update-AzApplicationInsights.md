@@ -1,6 +1,6 @@
 ---
 external help file: Az.ApplicationInsights-help.xml
-Module Name: Az.Applicationinsights
+Module Name: Az.ApplicationInsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/update-azapplicationinsights
 schema: 2.0.0
 ---
@@ -20,7 +20,7 @@ Update-AzApplicationInsights -ResourceGroupName <String> -Name <String> [-Subscr
  [-IngestionMode <IngestionMode>] [-PublicNetworkAccessForIngestion <PublicNetworkAccessType>]
  [-PublicNetworkAccessForQuery <PublicNetworkAccessType>] [-RequestSource <RequestSource>]
  [-RetentionInDays <Int32>] [-SamplingPercentage <Double>] [-Tag <Hashtable>] [-WorkspaceResourceId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -198,6 +198,21 @@ Parameter Sets: (All)
 Aliases: ApplicationInsightsComponentName, ComponentName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -384,7 +399,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api202002.IApplicationInsightsComponent
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

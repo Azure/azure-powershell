@@ -15,8 +15,8 @@ Gets the configs of Azure PowerShell.
 ```
 Get-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzureContextContainer>]
  [-CheckForUpgrade] [-DefaultSubscriptionForLogin] [-DisableErrorRecordsPersistence]
- [-DisplayBreakingChangeWarning] [-DisplayRegionIdentified] [-DisplaySecretsWarning]
- [-DisplaySurveyMessage] [-EnableDataCollection] [-EnableLoginByWam] [<CommonParameters>]
+ [-DisableInstanceDiscovery] [-DisplayBreakingChangeWarning] [-DisplayRegionIdentified] [-DisplaySurveyMessage]
+ [-EnableDataCollection] [-EnableLoginByWam] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,6 +129,21 @@ Accept wildcard characters: False
 
 ### -DisableErrorRecordsPersistence
 When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by "EnableErrorRecordsPersistence" as opt-in in the next major release of Az around November 2023.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableInstanceDiscovery
+Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. The process of instance discovery entails retrieving authority metadata from https://login.microsoft.com/ to validate the authority. By setting this to true, the validation of the authority is disabled. As a result, it is crucial to ensure that the configured authority host is valid and trustworthy.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
