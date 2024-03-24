@@ -77,7 +77,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]

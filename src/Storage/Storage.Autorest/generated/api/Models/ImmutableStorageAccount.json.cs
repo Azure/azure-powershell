@@ -79,8 +79,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_immutabilityPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("immutabilityPolicy"), out var __jsonImmutabilityPolicy) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccountImmutabilityPolicyProperties.FromJson(__jsonImmutabilityPolicy) : ImmutabilityPolicy;}
-            {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool?)__jsonEnabled : Enabled;}
+            {_immutabilityPolicy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("immutabilityPolicy"), out var __jsonImmutabilityPolicy) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.AccountImmutabilityPolicyProperties.FromJson(__jsonImmutabilityPolicy) : _immutabilityPolicy;}
+            {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool?)__jsonEnabled : _enabled;}
             AfterFromJson(json);
         }
 
