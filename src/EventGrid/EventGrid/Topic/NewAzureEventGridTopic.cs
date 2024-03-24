@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         /// <summary>
         /// Hashtable which represents the Inbound IP Rules.
         /// </summary>
-        [CmdletParameterBreakingChangeWithVersion("InboundIpRule", "12.0.0", "7.0.0", OldParamaterType = typeof(Hashtable), NewParameterTypeName="IInboundIPRule[]")]
+        [CmdletParameterBreakingChangeWithVersion("InboundIpRule", "12.0.0", "2.0.0", OldParamaterType = typeof(Hashtable), NewParameterTypeName="IInboundIPRule[]")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

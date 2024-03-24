@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = ResourceGroupNameParameterSet)]
         public int? MaxExpirationTimeInDays { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("AuthorizedPartner", "12.0.0", "7.0.0", OldParamaterType = typeof(Hashtable[]), NewParameterTypeName="IPartner[]")]
+        [CmdletParameterBreakingChangeWithVersion("AuthorizedPartner", "12.0.0", "2.0.0", OldParamaterType = typeof(Hashtable[]), NewParameterTypeName="IPartner[]")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

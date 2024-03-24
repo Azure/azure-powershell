@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = PartnerNamespaceNameParameterSet)]
         public PSPrivateEndpointConnection[] PrivateEndpointConnection { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("InboundIpRule", "12.0.0", "7.0.0", OldParamaterType = typeof(PSInboundIpRule[]), NewParameterTypeName="IInboundIPRule[]")]
+        [CmdletParameterBreakingChangeWithVersion("InboundIpRule", "12.0.0", "2.0.0", OldParamaterType = typeof(PSInboundIpRule[]), NewParameterTypeName="IInboundIPRule[]")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

@@ -918,7 +918,6 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Alias(AliasAadAppIdUri)]
         public string AzureActiveDirectoryApplicationIdOrUri { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion("AdvancedFilteringOnArray", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

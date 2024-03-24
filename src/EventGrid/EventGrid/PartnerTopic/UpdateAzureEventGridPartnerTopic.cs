@@ -25,7 +25,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
-    [GenericBreakingChangeWithVersion("The old syntax is discarded and a new syntax is used.", "12.0.0", "2.0.0")]
+    [GenericBreakingChangeWithVersion("The existing syntax will be extended. The new syntax will support updating more properties.", "12.0.0", "2.0.0")]
     [Cmdlet(
         "Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerTopic",
@@ -83,6 +83,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         /// <summary>
         /// string which represents the IdentityType.
         /// </summary>
+        [CmdletParameterBreakingChangeWithVersion("IdentityType", "12.0.0", "2.0.0", ChangeDescription = "This parameter is being deprecated")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

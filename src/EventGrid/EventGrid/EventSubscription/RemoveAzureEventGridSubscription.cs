@@ -20,7 +20,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
-    [GenericBreakingChangeWithVersion("The old syntax is discarded and a new syntax is used.", "12.0.0", "2.0.0")]
+    [GenericBreakingChangeWithVersion("Existing syntax will be removed. The newly supported syntax removes the corresponding resource via the parameters [-Name <String>] and [-Scope <String>].", "12.0.0", "2.0.0")]
     [Cmdlet(
         "Remove",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSubscription",
