@@ -18,12 +18,12 @@ Update-AzPaloAltoNetworksFirewall -Name <String> -ResourceGroupName <String> [-S
  [-AssociatedRulestackId <String>] [-AssociatedRulestackLocation <String>]
  [-AssociatedRulestackResourceId <String>] [-DnsSettingDnsServer <IIPAddress[]>]
  [-DnsSettingEnableDnsProxy <String>] [-DnsSettingEnabledDnsType <String>]
- [-FrontEndSetting <IFrontendSetting[]>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-IsPanoramaManaged <String>] [-MarketplaceDetailMarketplaceSubscriptionStatus <String>]
- [-MarketplaceDetailOfferId <String>] [-MarketplaceDetailPublisherId <String>]
- [-NetworkProfile <INetworkProfile>] [-PanEtag <String>] [-PanoramaConfigString <String>]
- [-PlanDataBillingCycle <String>] [-PlanDataPlanId <String>] [-PlanDataUsageType <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-FrontEndSetting <IFrontendSetting[]>] [-IdentityType <String>] [-IsPanoramaManaged <String>]
+ [-MarketplaceDetailMarketplaceSubscriptionStatus <String>] [-MarketplaceDetailOfferId <String>]
+ [-MarketplaceDetailPublisherId <String>] [-NetworkProfile <INetworkProfile>] [-PanEtag <String>]
+ [-PanoramaConfigString <String>] [-PlanDataBillingCycle <String>] [-PlanDataPlanId <String>]
+ [-PlanDataUsageType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -32,12 +32,12 @@ Update-AzPaloAltoNetworksFirewall -InputObject <IPaloAltoNetworksIdentity> [-Ass
  [-AssociatedRulestackLocation <String>] [-AssociatedRulestackResourceId <String>]
  [-DnsSettingDnsServer <IIPAddress[]>] [-DnsSettingEnableDnsProxy <String>]
  [-DnsSettingEnabledDnsType <String>] [-FrontEndSetting <IFrontendSetting[]>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-IsPanoramaManaged <String>]
- [-MarketplaceDetailMarketplaceSubscriptionStatus <String>] [-MarketplaceDetailOfferId <String>]
- [-MarketplaceDetailPublisherId <String>] [-NetworkProfile <INetworkProfile>] [-PanEtag <String>]
- [-PanoramaConfigString <String>] [-PlanDataBillingCycle <String>] [-PlanDataPlanId <String>]
- [-PlanDataUsageType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IsPanoramaManaged <String>] [-MarketplaceDetailMarketplaceSubscriptionStatus <String>]
+ [-MarketplaceDetailOfferId <String>] [-MarketplaceDetailPublisherId <String>]
+ [-NetworkProfile <INetworkProfile>] [-PanEtag <String>] [-PanoramaConfigString <String>]
+ [-PlanDataBillingCycle <String>] [-PlanDataPlanId <String>] [-PlanDataUsageType <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,7 +123,6 @@ Accept wildcard characters: False
 
 ### -DnsSettingDnsServer
 List of IPs associated with the Firewall
-To construct, see NOTES section for DNSSETTINGDNSSERVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress[]
@@ -169,7 +168,6 @@ Accept wildcard characters: False
 
 ### -FrontEndSetting
 Frontend settings for Firewall
-To construct, see NOTES section for FRONTENDSETTING properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFrontendSetting[]
@@ -198,24 +196,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityUserAssignedIdentity
-The identities assigned to this resource by the user.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPaloAltoNetworksIdentity
@@ -307,7 +289,6 @@ Accept wildcard characters: False
 
 ### -NetworkProfile
 Network settings
-To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfile
@@ -397,6 +378,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -430,6 +426,21 @@ Accept wildcard characters: False
 
 ### -Tag
 Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The identities assigned to this resource by the user.
 
 ```yaml
 Type: System.Collections.Hashtable
@@ -483,64 +494,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IFirewallResource
+### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFirewallResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`DNSSETTINGDNSSERVER <IIPAddress[]>`: List of IPs associated with the Firewall
-  - `[Address <String>]`: Address value
-  - `[ResourceId <String>]`: Resource Id
-
-`FRONTENDSETTING <IFrontendSetting[]>`: Frontend settings for Firewall
-  - `BackendConfigurationPort <String>`: port ID
-  - `FrontendConfigurationPort <String>`: port ID
-  - `Name <String>`: Settings name
-  - `Protocol <ProtocolType>`: Protocol Type
-  - `[Address <String>]`: Address value
-  - `[BackendConfigurationAddress1 <String>]`: Address value
-  - `[BackendConfigurationAddressResourceId <String>]`: Resource Id
-  - `[FrontendConfigurationAddressResourceId <String>]`: Resource Id
-
-`INPUTOBJECT <IPaloAltoNetworksIdentity>`: Identity Parameter
-  - `[FirewallName <String>]`: Firewall resource name
-  - `[GlobalRulestackName <String>]`: GlobalRulestack resource name
-  - `[Id <String>]`: Resource identity path
-  - `[LocalRulestackName <String>]`: LocalRulestack resource name
-  - `[Name <String>]`: certificate name
-  - `[Priority <String>]`: Post Rule priority
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-`NETWORKPROFILE <INetworkProfile>`: Network settings
-  - `EnableEgressNat <EgressNat>`: Enable egress NAT, enabled by default
-  - `NetworkType <NetworkType>`: vnet or vwan, cannot be updated
-  - `PublicIP <IIPAddress[]>`: List of IPs associated with the Firewall
-  - `[EgressNatIP <IIPAddress[]>]`: Egress nat IP to use
-    - `[Address <String>]`: Address value
-    - `[ResourceId <String>]`: Resource Id
-  - `[VHubAddressSpace <String>]`: Address Space
-  - `[VHubResourceId <String>]`: Resource Id
-  - `[VnetAddressSpace <String>]`: Address Space
-  - `[VnetConfigurationIPOfTrustSubnetForUdrAddress <String>]`: Address value
-  - `[VnetConfigurationIPOfTrustSubnetForUdrResourceId <String>]`: Resource Id
-  - `[VnetConfigurationTrustSubnetAddressSpace <String>]`: Address Space
-  - `[VnetConfigurationTrustSubnetResourceId <String>]`: Resource Id
-  - `[VnetConfigurationUnTrustSubnetAddressSpace <String>]`: Address Space
-  - `[VnetConfigurationUnTrustSubnetResourceId <String>]`: Resource Id
-  - `[VnetResourceId <String>]`: Resource Id
-  - `[VwanConfigurationIPOfTrustSubnetForUdrAddress <String>]`: Address value
-  - `[VwanConfigurationIPOfTrustSubnetForUdrResourceId <String>]`: Resource Id
-  - `[VwanConfigurationNetworkVirtualApplianceId <String>]`: Network Virtual Appliance resource ID 
-  - `[VwanConfigurationTrustSubnetAddressSpace <String>]`: Address Space
-  - `[VwanConfigurationTrustSubnetResourceId <String>]`: Resource Id
-  - `[VwanConfigurationUnTrustSubnetAddressSpace <String>]`: Address Space
-  - `[VwanConfigurationUnTrustSubnetResourceId <String>]`: Resource Id
 
 ## RELATED LINKS

@@ -13,7 +13,8 @@ Create an in-memory object for IPAddress.
 ## SYNTAX
 
 ```
-New-AzPaloAltoNetworksIPAddressObject [-Address <String>] [-ResourceId <String>] [<CommonParameters>]
+New-AzPaloAltoNetworksIPAddressObject [-Address <String>] [-ResourceId <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,6 +52,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 Resource Id.
 
@@ -73,10 +89,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IPAddress
+### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IPAddress
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
