@@ -188,6 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PowerShell
         public VariantGroup VariantGroup { get; }
 
         protected static readonly bool IsAzure = Convert.ToBoolean(@"true");
+
         public BaseOutput(VariantGroup variantGroup)
         {
             VariantGroup = variantGroup;
@@ -206,12 +207,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PowerShell
 
         public string GetProcessCustomAttributesAtRuntime()
         {
-            return VariantGroup.IsInternal ? "" : $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]
+            return VariantGroup.IsInternal ? "" : IsAzure ? $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]
 {Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
 {Indent}{Indent}if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){{
 {Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
 {Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
-{Indent}{Indent}}}";
+{Indent}{Indent}}}" : $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]{Environment.NewLine}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)";
         }
 
         private string GetTelemetry()
@@ -294,6 +296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PowerShell
             }
             return sb.ToString();
         }
+
     }
 
     internal class ProcessOutput : BaseOutput
