@@ -15,26 +15,29 @@ Update specific setting associated with the managed HSM.
 ### UpdateSettingViaFlattenValues (Default)
 ```
 Update-AzKeyVaultSetting [-HsmName] <String> [-Name] <String> [-Value] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateSettingViaInputObject
 ```
 Update-AzKeyVaultSetting [[-HsmName] <String>] [[-Value] <String>] [-InputObject] <PSKeyVaultSetting>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateSettingViaHsmObject
 ```
 Update-AzKeyVaultSetting [-Name] <String> [-Value] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-HsmObject] <PSManagedHsm> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-HsmObject] <PSManagedHsm> [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateSettingViaHsmId
 ```
 Update-AzKeyVaultSetting [-Name] <String> [-Value] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-HsmId] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-HsmId] <String> [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -211,6 +214,21 @@ Cmdlet does not return object by default. If this switch is specified, return Se
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

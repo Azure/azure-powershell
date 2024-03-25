@@ -77,10 +77,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_filter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("filters"), out var __jsonFilters) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyFilter.FromJson(__jsonFilters) : Filter;}
-            {_ruleId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("ruleId"), out var __jsonRuleId) ? (string)__jsonRuleId : (string)RuleId;}
-            {_sourceContainer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("sourceContainer"), out var __jsonSourceContainer) ? (string)__jsonSourceContainer : (string)SourceContainer;}
-            {_destinationContainer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("destinationContainer"), out var __jsonDestinationContainer) ? (string)__jsonDestinationContainer : (string)DestinationContainer;}
+            {_filter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("filters"), out var __jsonFilters) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ObjectReplicationPolicyFilter.FromJson(__jsonFilters) : _filter;}
+            {_ruleId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("ruleId"), out var __jsonRuleId) ? (string)__jsonRuleId : (string)_ruleId;}
+            {_sourceContainer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("sourceContainer"), out var __jsonSourceContainer) ? (string)__jsonSourceContainer : (string)_sourceContainer;}
+            {_destinationContainer = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("destinationContainer"), out var __jsonDestinationContainer) ? (string)__jsonDestinationContainer : (string)_destinationContainer;}
             AfterFromJson(json);
         }
 

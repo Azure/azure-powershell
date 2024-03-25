@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IPrivateEndpointConnection))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"Gets the available PrivateEndpointConnections within a namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/privateEndpointConnections", ApiVersion = "2022-10-01-preview")]
     public partial class GetAzServiceBusPrivateEndpointConnection_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener
     {

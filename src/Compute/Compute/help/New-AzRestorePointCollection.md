@@ -15,14 +15,15 @@ Creates a New Restore Point Collection
 ### DefaultParameter (Default)
 ```
 New-AzRestorePointCollection [-ResourceGroupName] <String> [-Name] <String> [-VmId] <String>
- [-Location <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Location <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### RestorePointCollectionId
 ```
 New-AzRestorePointCollection [-ResourceGroupName] <String> [-Name] <String> [[-VmId] <String>]
- [-RestorePointCollectionId] <String> -Location <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-RestorePointCollectionId] <String> -Location <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

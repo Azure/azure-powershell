@@ -103,9 +103,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_enable = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("enable"), out var __jsonEnable) ? (bool?)__jsonEnable : Enable;}
-            {_port = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("port"), out var __jsonPort) ? (int?)__jsonPort : Port;}
-            {_suspend = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("suspend"), out var __jsonSuspend) ? (bool?)__jsonSuspend : Suspend;}
+            {_enable = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("enable"), out var __jsonEnable) ? (bool?)__jsonEnable : _enable;}
+            {_port = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("port"), out var __jsonPort) ? (int?)__jsonPort : _port;}
+            {_suspend = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("suspend"), out var __jsonSuspend) ? (bool?)__jsonSuspend : _suspend;}
             AfterFromJson(json);
         }
     }

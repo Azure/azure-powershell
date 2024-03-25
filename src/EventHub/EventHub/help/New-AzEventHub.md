@@ -19,7 +19,8 @@ New-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String
  [-Encoding <EncodingCaptureDescription>] [-IdentityType <CaptureIdentityType>] [-IntervalInSeconds <Int32>]
  [-PartitionCount <Int64>] [-RetentionTimeInHour <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive]
  [-Status <EntityStatus>] [-StorageAccountResourceId <String>] [-TombstoneRetentionTimeInHour <Int32>]
- [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UserAssignedIdentityId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

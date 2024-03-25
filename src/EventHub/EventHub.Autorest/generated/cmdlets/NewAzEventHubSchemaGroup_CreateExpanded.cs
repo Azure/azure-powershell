@@ -163,6 +163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         Description = @".",
         SerializedName = @"schemaCompatibility",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaCompatibility) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChange("SchemaCompatibility", "12.0.0", "5.0.0", "2024/05/21", OldParamaterType="SchemaCompatibility", NewParameterType="String")]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaCompatibility))]
         public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaCompatibility SchemaCompatibility { get => _parametersBody.SchemaCompatibility ?? ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaCompatibility)""); set => _parametersBody.SchemaCompatibility = value; }
 
@@ -175,6 +176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         Description = @".",
         SerializedName = @"schemaType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaType) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChange("SchemaType", "12.0.0", "5.0.0", "2024/05/21", OldParamaterType="SchemaType", NewParameterType="String")]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaType))]
         public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaType SchemaType { get => _parametersBody.SchemaType ?? ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaType)""); set => _parametersBody.SchemaType = value; }
 

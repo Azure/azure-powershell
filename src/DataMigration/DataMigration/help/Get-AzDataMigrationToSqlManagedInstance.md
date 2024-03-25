@@ -22,7 +22,8 @@ Get-AzDataMigrationToSqlManagedInstance -ManagedInstanceName <String> -ResourceG
 ### GetViaIdentity
 ```
 Get-AzDataMigrationToSqlManagedInstance -InputObject <IDataMigrationIdentity> [-Expand <String>]
- [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

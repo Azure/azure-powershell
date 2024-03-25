@@ -2,7 +2,7 @@
 
 
 function Initialize-AzDataProtectionBackupInstance {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupInstanceResource')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBackupInstanceResource')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Initializes Backup instance Request object for configuring backup')]
 
@@ -44,14 +44,14 @@ function Initialize-AzDataProtectionBackupInstance {
         ${FriendlyName},
                 
         [Parameter(Mandatory=$false, HelpMessage='Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupDatasourceParameters]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBackupDatasourceParameters]
         ${BackupConfiguration}
     )
 
     process {
 
         $manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
-        $backupInstance = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.BackupInstance]::new()
+        $backupInstance = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.BackupInstance]::new()
         $backupInstance.ObjectType = "BackupInstance"
 
         if($manifest.snapshotRGPermissions.Length -eq 0 -and $SnapshotResourceGroupId -ne "")
@@ -70,12 +70,15 @@ function Initialize-AzDataProtectionBackupInstance {
                 $backupInstance.DataSourceSetInfo = GetDatasourceSetInfo -DatasourceInfo $backupInstance.DataSourceInfo -DatasourceType $DatasourceType
             }
 
-            if(-not($manifest.friendlyNameRequired) -and $FriendlyName -ne ""){
+            if(-not($manifest.friendlyNameRequired) -and -not($manifest.customFriendlyNameAllowed) -and $FriendlyName -ne ""){
                 $errormsg = "FriendlyName parameter is not expected for the given DatasourceType"
                 throw $errormsg
             }
-            
-            if($backupInstance.DataSourceSetInfo.ResourceId -eq $null){
+
+            if($manifest.customFriendlyNameAllowed -and $FriendlyName -ne ""){
+                $backupInstance.FriendlyName = $FriendlyName
+            }
+            elseif($backupInstance.DataSourceSetInfo.ResourceId -eq $null -or $manifest.customFriendlyNameAllowed){
                 $backupInstance.FriendlyName = $backupInstance.DataSourceInfo.ResourceName
             }
             elseif($manifest.friendlyNameRequired){
@@ -106,9 +109,9 @@ function Initialize-AzDataProtectionBackupInstance {
                     $errormsg = "Please input SecretStoreType"
         		    throw $errormsg                    
                 }
-                $backupInstance.DatasourceAuthCredentials = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.SecretStoreBasedAuthCredentials]::new()
+                $backupInstance.DatasourceAuthCredentials = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.SecretStoreBasedAuthCredentials]::new()
                 $backupInstance.DatasourceAuthCredentials.ObjectType = "SecretStoreBasedAuthCredentials"
-                $backupInstance.DatasourceAuthCredentials.SecretStoreResource =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.SecretStoreResource]::new()
+                $backupInstance.DatasourceAuthCredentials.SecretStoreResource =  [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.SecretStoreResource]::new()
                 $backupInstance.DatasourceAuthCredentials.SecretStoreResource.SecretStoreType = $SecretStoreType
                 $backupInstance.DatasourceAuthCredentials.SecretStoreResource.Uri = $SecretStoreURI
             }
@@ -118,7 +121,7 @@ function Initialize-AzDataProtectionBackupInstance {
             }            
         }
 
-        $backupInstanceResource = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.BackupInstanceResource]::new()
+        $backupInstanceResource = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.BackupInstanceResource]::new()
         $backupInstanceResource.Property = $backupInstance
 
         if($PSBoundParameters.ContainsKey("DatasourceId"))
@@ -136,7 +139,7 @@ function Initialize-AzDataProtectionBackupInstance {
 
         if($manifest.addDataStoreParametersList -eq $true)
         {
-            $operationalParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.AzureOperationalStoreParameters]::new()
+            $operationalParam = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.AzureOperationalStoreParameters]::new()
             $operationalParam.DataStoreType = "OperationalStore"
             $operationalParam.ObjectType = "AzureOperationalStoreParameters"
             $operationalParam.ResourceGroupId = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"

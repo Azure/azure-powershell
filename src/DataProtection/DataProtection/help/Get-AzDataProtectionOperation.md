@@ -126,7 +126,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IClientDiscoveryValueForSingleApi
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IClientDiscoveryValueForSingleApi
 
 ## NOTES
 

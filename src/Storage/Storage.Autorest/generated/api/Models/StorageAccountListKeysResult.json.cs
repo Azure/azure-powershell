@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_key = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("keys"), out var __jsonKeys) ? If( __jsonKeys as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountKey>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountKey) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountKey.FromJson(__u) )) ))() : null : Key;}
+            {_key = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("keys"), out var __jsonKeys) ? If( __jsonKeys as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountKey>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageAccountKey) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.StorageAccountKey.FromJson(__u) )) ))() : null : _key;}
             AfterFromJson(json);
         }
 

@@ -23,7 +23,7 @@ Set-AzMigrateServerReplication -TargetObjectID <String> [-TargetVMName <String>]
  [-UpdateVMTagOperation <String>] [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>]
  [-UpdateNicTagOperation <String>] [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>]
  [-UpdateDiskTagOperation <String>] [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
@@ -37,7 +37,7 @@ Set-AzMigrateServerReplication [-TargetVMName <String>] [-TargetDiskName <String
  [-UpdateNicTag <IVMwareCbtEnableMigrationInputTargetNicTags>] [-UpdateNicTagOperation <String>]
  [-UpdateDiskTag <IVMwareCbtEnableMigrationInputTargetDiskTags>] [-UpdateDiskTagOperation <String>]
  [-TargetBootDiagnosticsStorageAccount <String>] [-SubscriptionId <String>] -InputObject <IMigrationItem>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -168,21 +168,6 @@ To construct, see NOTES section for NICTOUPDATE properties and create a hash tab
 Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IVMwareCbtNicInput[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

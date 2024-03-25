@@ -65,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_storageUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("storageUri"), out var __jsonStorageUri) ? (string)__jsonStorageUri : (string)StorageUri;}
-            {_storagekey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("storagekey"), out var __jsonStoragekey) ? (string)__jsonStoragekey : (string)Storagekey;}
+            {_storageUri = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("storageUri"), out var __jsonStorageUri) ? (string)__jsonStorageUri : (string)_storageUri;}
+            {_storagekey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("storagekey"), out var __jsonStoragekey) ? (string)__jsonStoragekey : (string)_storagekey;}
             AfterFromJson(json);
         }
 
