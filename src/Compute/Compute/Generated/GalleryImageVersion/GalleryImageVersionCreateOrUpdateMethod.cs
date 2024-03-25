@@ -264,7 +264,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         if (!this.SourceImageVMId.ToLower().Contains("/virtualmachines/"))
                         {
-                            throw new Exception("The `SourceImageVMId` parameter must be a virtual machine id, which contains /virtualMachine/. The currently provided `SourceImageVMId` value does not have this requirement.");
+                            throw new Exception("The `SourceImageVMId` parameter must be a valid virtual machine reference id such as /subscriptions/<sub>/resourceGroups/<rg>/providers/Microsoft.Compute/virtualMachines/<vm>");
                         }
 
                         if (this.IsParameterBound(c => c.SourceImageId))
