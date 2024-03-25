@@ -12,6 +12,106 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Start-AzDataProtectionBackupInstanceRestore' {
+    It 'PGFlexRestore' {
+        $subId = $env.TestPGFlex.SubscriptionId
+        $resourceGroupName = $env.TestPGFlex.ResourceGroupName
+        $vaultName = $env.TestPGFlex.VaultName
+        $policyName = $env.TestPGFlex.PolicyName
+        $targetContainerURI = $env.TestPGFlex.TargetContainerURI
+
+        $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
+        
+        $instance  =  Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match "archive-test" }
+        
+        ($instance -ne $null) | Should be $true
+
+        # Trigger Backup         
+        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $subId -VaultName $vaultName -ResourceGroupName $resourceGroupName -Name $policyName
+
+        $backupJob = Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -BackupRuleOptionRuleName $policy.Property.PolicyRule[1].Name -TriggerOptionRetentionTagOverride $policy.Property.PolicyRule[1].Trigger.TaggingCriterion[0].TagInfoTagName
+
+        $jobid = $backupJob.JobId.Split("/")[-1]
+        $jobstatus = "InProgress"
+        while($jobstatus -eq "InProgress")
+        {
+            Start-Sleep -Seconds 10
+            $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
+            $jobstatus = $currentjob.Status
+        }
+        $jobstatus | Should be "Completed"
+
+        Start-Sleep -Seconds 5
+
+        # Database restore 
+        $rps = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $instance.BackupInstanceName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
+
+        $pgFlexRestoreReqFiles = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPGFlexServer -SourceDataStore VaultStore -RestoreLocation $vault.Location -RestoreType RestoreAsFiles -RecoveryPoint $rps[0].Property.RecoveryPointId -TargetContainerURI $targetContainerURI
+
+        $restoreFilesJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName  -VaultName $VaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $pgFlexRestoreReqFiles        
+
+        $jobid = $restoreFilesJob.JobId.Split("/")[-1]
+        ($jobid -ne $null) | Should be $true
+
+        $jobstatus = "InProgress"
+        while($jobstatus -eq "InProgress")
+        {
+            Start-Sleep -Seconds 10
+            $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
+            $jobstatus = $currentjob.Status
+        }
+        $jobstatus | Should be "Completed"
+    }
+
+    It 'MySQLRestore' {
+        $subId = $env.TestMySQL.SubscriptionId
+        $resourceGroupName = $env.TestMySQL.ResourceGroupName
+        $vaultName = $env.TestMySQL.VaultName
+        $policyName = $env.TestMySQL.PolicyName
+        $targetContainerURI = $env.TestMySQL.TargetContainerURI
+
+        $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
+        
+        $instance  =  Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match "arhive-test" }
+        
+        ($instance -ne $null) | Should be $true
+
+        # Trigger Backup         
+        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $subId -VaultName $vaultName -ResourceGroupName $resourceGroupName -Name $policyName
+
+        $backupJob = Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $instance.Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -BackupRuleOptionRuleName $policy.Property.PolicyRule[1].Name -TriggerOptionRetentionTagOverride $policy.Property.PolicyRule[1].Trigger.TaggingCriterion[0].TagInfoTagName
+
+        $jobid = $backupJob.JobId.Split("/")[-1]
+        $jobstatus = "InProgress"
+        while($jobstatus -eq "InProgress")
+        {
+            Start-Sleep -Seconds 10
+            $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
+            $jobstatus = $currentjob.Status
+        }
+        $jobstatus | Should be "Completed"
+
+        Start-Sleep -Seconds 5
+
+        # Database restore 
+        $rps = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $instance.BackupInstanceName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
+
+        $mySQLRestoreReqFiles = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForMySQL -SourceDataStore VaultStore -RestoreLocation $vault.Location -RestoreType RestoreAsFiles -RecoveryPoint $rps[0].Property.RecoveryPointId -TargetContainerURI $targetContainerURI
+
+        $restoreFilesJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName  -VaultName $VaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $mySQLRestoreReqFiles        
+
+        $jobid = $restoreFilesJob.JobId.Split("/")[-1]
+        ($jobid -ne $null) | Should be $true
+
+        $jobstatus = "InProgress"
+        while($jobstatus -eq "InProgress")
+        {
+            Start-Sleep -Seconds 10
+            $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
+            $jobstatus = $currentjob.Status
+        }
+        $jobstatus | Should be "Completed"
+    }
+
     It 'CrossRegionRestoreAsDatabase' -skip {
         $resourceGroupName  = $env.TestCrossRegionRestoreScenario.ResourceGroupName
         $vaultName = $env.TestCrossRegionRestoreScenario.VaultName
@@ -38,7 +138,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         ($jobid -ne $null) | Should be $true
 
         $jobstatus = "InProgress"
-        while($jobstatus -ne "Completed")
+        while($jobstatus -eq "InProgress")
         {
             Start-TestSleep -Seconds 10
 
@@ -48,6 +148,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
 
             $jobstatus = $currentjob.Status
         }
+        $jobstatus | Should be "Completed"
     }
 
     It 'CrossRegionRestoreAsFiles' -skip {
@@ -115,12 +216,13 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         ($jobid -ne $null) | Should be $true
 
         $jobstatus = "InProgress"
-        while($jobstatus -ne "Completed")
+        while($jobstatus -eq "InProgress")
         {
             Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName
             $jobstatus = $currentjob.Status
         }
+        $jobstatus | Should be "Completed"
     }
 
     It 'OssRestore' {
@@ -151,12 +253,13 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
 
         $jobid = $backupJob.JobId.Split("/")[-1]
         $jobstatus = "InProgress"
-        while($jobstatus -ne "Completed")
+        while($jobstatus -eq "InProgress")
         {
             Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
             $jobstatus = $currentjob.Status
         }
+        $jobstatus | Should be "Completed"
 
         Start-TestSleep -Seconds 5
 
@@ -173,12 +276,13 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         ($jobid -ne $null) | Should be $true
 
         $jobstatus = "InProgress"
-        while($jobstatus -ne "Completed")
+        while($jobstatus -eq "InProgress")
         {
             Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
             $jobstatus = $currentjob.Status
         }
+        $jobstatus | Should be "Completed"
 
         Start-TestSleep -Seconds 5
 
@@ -193,13 +297,14 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         ($jobid -ne $null) | Should be $true
 
         $jobstatus = "InProgress"
-        while($jobstatus -ne "Completed")
+        while($jobstatus -eq "InProgress")
         {
             Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
             $jobstatus = $currentjob.Status
         }
-    }
+        $jobstatus | Should be "Completed"
+    }    
 
     It 'TriggerExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw

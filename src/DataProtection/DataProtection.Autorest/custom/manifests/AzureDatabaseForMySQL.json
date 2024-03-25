@@ -1,49 +1,67 @@
 ﻿{
-  "datasourcePermissions": [ "Reader" ],
-  "datasourceRGPermissions": [],
+  "datasourcePermissions": [ "MySQL Backup And Export Operator" ],
+  "datasourceRGPermissions": [ "Reader" ],
   "snapshotRGPermissions": [],
-  "keyVaultPermissions": [ "Key Vault Secrets User" ],
+  "keyVaultPermissions": [],
   "dataSourceOverSnapshotRGPermissions": [],
-  "supportRestoreGrantPermission": false,
+  "supportRestoreGrantPermission": true,
   "datasourcePermissionsForRestore": [],
-  "storageAccountPermissionsForRestore": [],
+  "storageAccountPermissionsForRestore": [ "Storage Blob Data Contributor" ],
   "isProxyResource": true,
-  "enableDataSourceSetInfo": false,
-  "resourceType": "Microsoft.DBforPostgreSQL/servers/databases",
-  "parentResourceType": "Microsoft.DBforPostgreSQL/servers",
-  "datasourceType": "Microsoft.DBforPostgreSQL/servers/databases",
+  "enableDataSourceSetInfo": true,
+  "resourceType": "Microsoft.DBforMySQL/flexibleServers",
+  "parentResourceType": "Microsoft.DBforMySQL/flexibleServers",
+  "datasourceType": "Microsoft.DBforMySQL/flexibleServers",
   "allowedRestoreModes": [ "RecoveryPointBased" ],
-  "allowedRestoreTargetTypes": [ "AlternateLocation", "RestoreAsFiles" ],
+  "allowedRestoreTargetTypes": [ "RestoreAsFiles" ],
   "itemLevelRecoveyEnabled": false,
-  "fileNamePrefixDisabled": false,
+  "fileNamePrefixDisabled": true,
   "addBackupDatasourceParametersList": false,
   "backupConfigurationRequired": false,
   "addDataStoreParametersList": false,
   "friendlyNameRequired": false,
-  "customFriendlyNameAllowed": false,
-  "supportSecretStoreAuthentication": true,
+  "customFriendlyNameAllowed": true,
+  "supportSecretStoreAuthentication": false,
   "supportCrossRegionRestore": true,
   "policySettings": {
     "supportedRetentionTags": [ "Weekly", "Monthly", "Yearly" ],
-    "supportedDatastoreTypes": [ "VaultStore", "ArchiveStore" ],
+    "supportedDatastoreTypes": [ "VaultStore" ],
     "disableAddRetentionRule": false,
     "disableCustomRetentionTag": false,
     "backupScheduleSupported": true,
     "supportedBackupFrequency": [ "Weekly" ],
     "defaultPolicy": {
-      "name": "OssPolicy1",
-      "datasourceTypes": [ "Microsoft.DBforPostgreSQL/servers/databases" ],
+      "name": "MySQLPolicy1",
+      "datasourceTypes": [ "Microsoft.DBforMySQL/flexibleServers" ],
       "objectType": "BackupPolicy",
       "policyRules": [
         {
+          "lifecycles": [
+            {
+              "deleteAfter": {
+                "objectType": "AbsoluteDeleteOption",
+                "duration": "P10Y"
+              },
+              "targetDataStoreCopySettings": [],
+              "sourceDataStore": {
+                "dataStoreType": "VaultStore",
+                "objectType": "DataStoreInfoBase"
+              }
+            }
+          ],
+          "isDefault": true,
+          "name": "Default",
+          "objectType": "AzureRetentionRule"
+        },
+        {
           "backupParameters": {
-            "backupType": "Full",
+            "backupType": "full",
             "objectType": "AzureBackupParams"
           },
           "trigger": {
             "schedule": {
               "repeatingTimeIntervals": [
-                "R/2021-08-22T02:00:00+00:00/P1W"
+                "R/2024-01-07T23:00:00+00:00/P1W"
               ],
               "timeZone": "UTC"
             },
@@ -65,24 +83,6 @@
           },
           "name": "BackupWeekly",
           "objectType": "AzureBackupRule"
-        },
-        {
-          "lifecycles": [
-            {
-              "deleteAfter": {
-                "objectType": "AbsoluteDeleteOption",
-                "duration": "P3M"
-              },
-              "targetDataStoreCopySettings": [],
-              "sourceDataStore": {
-                "dataStoreType": "VaultStore",
-                "objectType": "DataStoreInfoBase"
-              }
-            }
-          ],
-          "isDefault": true,
-          "name": "Default",
-          "objectType": "AzureRetentionRule"
         }
       ]
     }

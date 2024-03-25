@@ -125,12 +125,13 @@ Describe 'New-AzDataProtectionBackupInstance' {
             ($jobid -ne $null) | Should be $true
 
             $jobstatus = "InProgress"
-            while($jobstatus -ne "Completed")
+            while($jobstatus -eq "InProgress")
             {
                 Start-TestSleep -Seconds 10
                 $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
                 $jobstatus = $currentjob.Status
             }
+            $jobstatus | Should be "Completed"
         }
     }
 }
