@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_keyVaultResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("keyVaultResourceId"), out var __jsonKeyVaultResourceId) ? (string)__jsonKeyVaultResourceId : (string)KeyVaultResourceId;}
-            {_secret = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("secrets"), out var __jsonSecrets) ? If( __jsonSecrets as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference) (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SecretReference.FromJson(__u) )) ))() : null : Secret;}
+            {_keyVaultResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("keyVaultResourceId"), out var __jsonKeyVaultResourceId) ? (string)__jsonKeyVaultResourceId : (string)_keyVaultResourceId;}
+            {_secret = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("secrets"), out var __jsonSecrets) ? If( __jsonSecrets as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISecretReference) (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SecretReference.FromJson(__u) )) ))() : null : _secret;}
             AfterFromJson(json);
         }
 

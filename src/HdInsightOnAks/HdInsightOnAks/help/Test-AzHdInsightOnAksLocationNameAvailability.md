@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HdInsightOnAks-help.xml
 Module Name: Az.HdInsightOnAks
 online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/test-azhdinsightonakslocationnameavailability
 schema: 2.0.0
@@ -15,39 +15,43 @@ Check the availability of the resource name.
 ### CheckExpanded (Default)
 ```
 Test-AzHdInsightOnAksLocationNameAvailability -Location <String> [-SubscriptionId <String>] [-Name <String>]
- [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Type <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CheckViaJsonString
+```
+Test-AzHdInsightOnAksLocationNameAvailability -Location <String> [-SubscriptionId <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CheckViaJsonFilePath
+```
+Test-AzHdInsightOnAksLocationNameAvailability -Location <String> [-SubscriptionId <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Check
 ```
-Test-AzHdInsightOnAksLocationNameAvailability -Location <String>
- -NameAvailabilityParameter <INameAvailabilityParameters> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaIdentity
-```
-Test-AzHdInsightOnAksLocationNameAvailability -InputObject <IHdInsightOnAksIdentity>
- -NameAvailabilityParameter <INameAvailabilityParameters> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Test-AzHdInsightOnAksLocationNameAvailability -Location <String> [-SubscriptionId <String>]
+ -NameAvailabilityParameter <INameAvailabilityParameters> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded
 ```
 Test-AzHdInsightOnAksLocationNameAvailability -InputObject <IHdInsightOnAksIdentity> [-Name <String>]
- [-Type <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Type <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
-### CheckViaJsonFilePath
+### CheckViaIdentity
 ```
-Test-AzHdInsightOnAksLocationNameAvailability -Location <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaJsonString
-```
-Test-AzHdInsightOnAksLocationNameAvailability -Location <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzHdInsightOnAksLocationNameAvailability -InputObject <IHdInsightOnAksIdentity>
+ -NameAvailabilityParameter <INameAvailabilityParameters> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,11 +94,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
-Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
+Parameter Sets: CheckViaIdentityExpanded, CheckViaIdentity
 Aliases:
 
 Required: True
@@ -139,7 +142,7 @@ The name of the Azure region.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded, CheckViaJsonFilePath, CheckViaJsonString
+Parameter Sets: CheckExpanded, CheckViaJsonString, CheckViaJsonFilePath, Check
 Aliases:
 
 Required: True
@@ -166,7 +169,6 @@ Accept wildcard characters: False
 
 ### -NameAvailabilityParameter
 Details of check name availability request body.
-To construct, see NOTES section for NAMEAVAILABILITYPARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.INameAvailabilityParameters
@@ -180,13 +182,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded, CheckViaJsonFilePath, CheckViaJsonString
+Parameter Sets: CheckExpanded, CheckViaJsonString, CheckViaJsonFilePath, Check
 Aliases:
 
 Required: False
@@ -258,4 +275,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

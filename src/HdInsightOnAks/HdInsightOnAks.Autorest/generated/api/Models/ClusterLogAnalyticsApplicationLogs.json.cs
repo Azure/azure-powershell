@@ -65,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_stdOutEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("stdOutEnabled"), out var __jsonStdOutEnabled) ? (bool?)__jsonStdOutEnabled : StdOutEnabled;}
-            {_stdErrorEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("stdErrorEnabled"), out var __jsonStdErrorEnabled) ? (bool?)__jsonStdErrorEnabled : StdErrorEnabled;}
+            {_stdOutEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("stdOutEnabled"), out var __jsonStdOutEnabled) ? (bool?)__jsonStdOutEnabled : _stdOutEnabled;}
+            {_stdErrorEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("stdErrorEnabled"), out var __jsonStdErrorEnabled) ? (bool?)__jsonStdErrorEnabled : _stdErrorEnabled;}
             AfterFromJson(json);
         }
 

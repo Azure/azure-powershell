@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HdInsightOnAks-help.xml
 Module Name: Az.HdInsightOnAks
 online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightOnAksTrinoHiveCatalogObject
 schema: 2.0.0
@@ -13,9 +13,9 @@ Create a hive catalog configured as a Trino cluster.
 ## SYNTAX
 
 ```
-New-AzHdInsightOnAksTrinoHiveCatalogObject -CatalogName <String> -MetastoreDbConnectionPasswordSecret <String>
- -MetastoreDbConnectionUrl <String> -MetastoreDbConnectionUserName <String> [-MetastoreWarehouseDir <String>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzHdInsightOnAksTrinoHiveCatalogObject -CatalogName <String> -MetastoreDbConnectionUrl <String>
+ -MetastoreDbConnectionUserName <String> -MetastoreDbConnectionPasswordSecret <String>
+ [-MetastoreWarehouseDir <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -119,29 +119,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
+Aliases: proga
 
 Required: False
 Position: Named
@@ -162,4 +146,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
