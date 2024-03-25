@@ -25,5 +25,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string Tier { get; set; }
         [Ps1Xml(Target = ViewControl.Table)]
         public int? Capacity { get; set; }
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string Family { get; set; }
     }
 }
