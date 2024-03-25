@@ -14,7 +14,7 @@ Sets the SecurityType enum for Virtual Machines.
 
 ```
 Set-AzVMSecurityProfile [-VM] <PSVirtualMachine> [-SecurityType <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,6 +88,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SecurityType
 Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. By default, UefiSettings will not be enabled unless this property is set.
 
@@ -95,7 +110,6 @@ Specifies the SecurityType of the virtual machine. It has to be set to any speci
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: TrustedLaunch, ConfidentialVM, Standard
 
 Required: False
 Position: Named

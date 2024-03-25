@@ -14,7 +14,7 @@ This cmdlet allows users to set the SecurityType enum for Virtual Machines scale
 
 ```
 Set-AzVmssSecurityProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-SecurityType] <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -404,6 +404,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SecurityType
 Parameter to set the SecurityType on the VMs of the scale set.
 
@@ -411,7 +426,6 @@ Parameter to set the SecurityType on the VMs of the scale set.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: TrustedLaunch, ConfidentialVM, Standard
 
 Required: False
 Position: 1
