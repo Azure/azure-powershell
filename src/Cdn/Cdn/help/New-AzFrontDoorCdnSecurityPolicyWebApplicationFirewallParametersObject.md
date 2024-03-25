@@ -98,16 +98,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ASSOCIATION <ISecurityPolicyWebApplicationFirewallAssociation[]>`: Waf associations.
-  - `[Domain <IActivatedResourceReference[]>]`: List of domains.
-    - `[Id <String>]`: Resource ID.
-  - `[PatternsToMatch <String[]>]`: List of paths
-
 ## RELATED LINKS

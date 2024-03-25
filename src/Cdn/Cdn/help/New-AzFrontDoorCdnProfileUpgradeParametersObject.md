@@ -102,15 +102,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`WAFMAPPINGLIST <IProfileChangeSkuWafMapping[]>`: Web Application Firewall (WAF) and security policy mapping for the profile upgrade.
-  - `SecurityPolicyName <String>`: The security policy name.
-  - `[ChangeToWafPolicyId <String>]`: Resource ID.
-
 ## RELATED LINKS
