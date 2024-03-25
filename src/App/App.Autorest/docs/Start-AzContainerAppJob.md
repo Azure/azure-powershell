@@ -91,7 +91,6 @@ Accept wildcard characters: False
 
 ### -Container
 List of container definitions for the Container Apps Job.
-To construct, see NOTES section for CONTAINER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJobExecutionContainer[]
@@ -123,7 +122,6 @@ Accept wildcard characters: False
 
 ### -InitContainer
 List of specialized containers that run before job containers.
-To construct, see NOTES section for INITCONTAINER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJobExecutionContainer[]
@@ -139,7 +137,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -246,7 +243,6 @@ Accept wildcard characters: False
 
 ### -Template
 Job's execution template, containing container configuration for a job's execution
-To construct, see NOTES section for TEMPLATE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IJobExecutionTemplate

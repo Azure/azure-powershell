@@ -105,7 +105,6 @@ Create the AuthConfig for a Container App.
 
 ### -ContainerAppInputObject
 Identity Parameter
-To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -287,7 +286,6 @@ Accept wildcard characters: False
 
 ### -IdentityProvider
 The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
-To construct, see NOTES section for IDENTITYPROVIDER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IIdentityProviders
@@ -303,7 +301,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
