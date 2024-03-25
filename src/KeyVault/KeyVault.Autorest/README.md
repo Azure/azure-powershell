@@ -48,8 +48,6 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: KeyVault
 subject-prefix: $(service-name)
-disable-transform-identity-type: true
-flatten-userassignedidentity: false
 
 # If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
