@@ -23,7 +23,7 @@ Describe 'BlobHardeningScenario' {
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
         $pol = Get-AzDataProtectionBackupPolicy -SubscriptionId $subId -VaultName $vaultName -ResourceGroupName $resourceGroupName | Where { $_.Name -match $policyName }
-        
+
         $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where { $_.Name -match $storageAcountName }
 
         # Remove-BI
@@ -31,26 +31,26 @@ Describe 'BlobHardeningScenario' {
             Remove-AzDataProtectionBackupInstance -Name $instance[0].Name -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
         }
 
-        Start-Sleep -Seconds 8
+        Start-TestSleep -Seconds 8
 
         # new backup config and initialize BI
-                        
-        $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName 
+
+        $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
         $containers=Get-AzStorageContainer -Context $storageAccount.Context
-        
-        $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -VaultedBackupContainer $containers.Name        
+
+        $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -VaultedBackupContainer $containers.Name
         $backupConfig.ContainersList = $backupConfig.ContainersList[1,3,4]
 
         $backupInstanceClientObject = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureBlob -DatasourceLocation $vault.Location -PolicyId $pol[0].Id -DatasourceId $storageAccId -BackupConfiguration $backupConfig
 
-        # assign permissions and validate 
+        # assign permissions and validate
         Set-AzDataProtectionMSIPermission -VaultResourceGroup $resourceGroupName -VaultName $vaultName -BackupInstance $backupInstanceClientObject -PermissionsScope ResourceGroup
 
         $operationResponse = Test-AzDataProtectionBackupInstanceReadiness -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId -BackupInstance $backupInstanceClientObject.Property -NoWait
         $operationId = $operationResponse.Target.Split("/")[-1].Split("?")[0]
-        
+
         While((Get-AzDataProtectionOperationStatus -OperationId $operationId -Location $vault.Location -SubscriptionId $subId).Status -eq "Inprogress"){
-	        Start-Sleep -Seconds 10
+	        Start-TestSleep -Seconds 10
         }
 
         # backup
@@ -59,7 +59,7 @@ Describe 'BlobHardeningScenario' {
         $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where { $_.Name -match $storageAcountName }
 
         while($instance.Property.CurrentProtectionState -ne "ProtectionConfigured"){
-            Start-Sleep -Seconds 10
+            Start-TestSleep -Seconds 10
             $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where { $_.Name -match $storageAcountName }
         }
 
@@ -74,15 +74,15 @@ Describe 'BlobHardeningScenario' {
         $jobstatus = "InProgress"
         while($jobstatus -ne "Completed")
         {
-            Start-Sleep -Seconds 10
+            Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
             $jobstatus = $currentjob.Status
         }
-        $jobstatus | Should be "Completed"        
+        $jobstatus | Should be "Completed"
     }
 
     It 'TriggerRestore' -skip {
-        # TODO: OLR should throw an error in case of vaulted backups 
+        # TODO: OLR should throw an error in case of vaulted backups
 
         $subId = $env.TestBlobHardeningScenario.SubscriptionId
         $crossSubscriptionId = $env.TestBlobHardeningScenario.CrossSubscriptionId
@@ -112,7 +112,7 @@ Describe 'BlobHardeningScenario' {
         foreach($crossSubContainerName in $targetCrossSubContainers.Name){
             Remove-AzStorageContainer -Context $targetCrossSubStorageAccount.Context -Name $crossSubContainerName -Confirm:$false -Force
         }
-        
+
         # remove containers in target storage account
         Set-AzContext -SubscriptionId $subId
         $targetStorageAccount = Get-AzStorageAccount -ResourceGroupName $targetStorageAccountRGName -Name $targetStorageAccountName
@@ -128,7 +128,7 @@ Describe 'BlobHardeningScenario' {
         $validateRestore.ObjectType | Should be "OperationJobExtendedInfo"
 
         $restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $restoreReq
-        
+
         $restoreReqCSR = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore VaultStore -RestoreLocation $vault.Location -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetCrossSubStorageAccId -ContainersList $backedUpContainers[0,1]
 
         $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instance[0].Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -RestoreRequest $restoreReqCSR
