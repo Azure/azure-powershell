@@ -58,7 +58,7 @@ Resource Group of Vault
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: ResourceGroupName
 
 Required: False
 Position: Named
@@ -73,7 +73,7 @@ Subscription of Vault
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: SubscriptionId
 
 Required: True
 Position: Named
@@ -88,7 +88,7 @@ Name of the vault
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: VaultName
 
 Required: False
 Position: Named

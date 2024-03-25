@@ -15,19 +15,19 @@ Returns the ResourceGuardProxy object associated with the vault, and that matche
 ### Get (Default)
 ```
 Get-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -VaultName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -VaultName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -VaultName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -VaultName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDataProtectionResourceGuardMapping -InputObject <IDataProtectionIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,8 +49,8 @@ LastUpdatedTime              : 2023-08-29T07:23:05.1111730Z
 Name                         : DppResourceGuardProxy
 ResourceGuardId              : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/hiaga-rg/providers/Microsoft.DataProtection/resourceGuard
                                s/mua-pstest-resguard
-ResourceGuardOperationDetail : {Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.ResourceGuardOperationDetail,
-                               Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.ResourceGuardOperationDetail}
+ResourceGuardOperationDetail : {Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.ResourceGuardOperationDetail,
+                               Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.ResourceGuardOperationDetail}
 SystemData                   : Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.SystemData
 Type                         : Microsoft.DataProtection/vaults/backupResourceGuardProxies
 ```
@@ -89,6 +89,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -148,7 +163,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IResourceGuardProxyBaseResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IResourceGuardProxyBaseResource
 
 ## NOTES
 

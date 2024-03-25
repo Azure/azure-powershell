@@ -15,7 +15,7 @@ Creates or Updates a ResourceGuardProxy
 ```
 Set-AzDataProtectionResourceGuardMapping -ResourceGroupName <String> -VaultName <String>
  [-SubscriptionId <String>] [-ResourceGuardId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,8 +37,8 @@ LastUpdatedTime              : 2023-08-29T07:23:05.1111730Z
 Name                         : DppResourceGuardProxy
 ResourceGuardId              : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/hiaga-rg/providers/Microsoft.DataProtection/resourceGuard
                                s/mua-pstest-resguard
-ResourceGuardOperationDetail : {Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.ResourceGuardOperationDetail,
-                               Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.ResourceGuardOperationDetail}
+ResourceGuardOperationDetail : {Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.ResourceGuardOperationDetail,
+                               Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.ResourceGuardOperationDetail}
 SystemData                   : Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.SystemData
 Type                         : Microsoft.DataProtection/vaults/backupResourceGuardProxies
 ```
@@ -56,6 +56,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -164,7 +179,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IResourceGuardProxyBaseResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IResourceGuardProxyBaseResource
 
 ## NOTES
 

@@ -15,7 +15,7 @@ Unlocks the critical operation which is protected by the resource guard
 ```
 Unlock-AzDataProtectionResourceGuardOperation -ResourceGroupName <String> -VaultName <String>
  [-SubscriptionId <String>] [-ResourceGuardOperationRequest <String[]>] [-ResourceToBeDeleted <String>]
- [-Token <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-Token <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -112,6 +112,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource Group name of the backup vault
 
@@ -175,8 +190,7 @@ Accept wildcard characters: False
 
 ### -Token
 Parameter to authorize operations protected by cross tenant resource guard.
-Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").
-Token to fetch authorization token for different tenant.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
 
 ```yaml
 Type: System.String

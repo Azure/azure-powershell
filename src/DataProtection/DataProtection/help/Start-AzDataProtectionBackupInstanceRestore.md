@@ -17,7 +17,7 @@ Triggers restore for a BackupInstance
 Start-AzDataProtectionBackupInstanceRestore -ResourceGroupName <String> -BackupInstanceName <String>
  -VaultName <String> -Parameter <IAzureBackupRestoreRequest> [-SubscriptionId <String>]
  [-RestoreToSecondaryRegion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TriggerExpanded
@@ -26,7 +26,7 @@ Start-AzDataProtectionBackupInstanceRestore -ResourceGroupName <String> -BackupI
  -VaultName <String> [-SubscriptionId <String>] [-RestoreToSecondaryRegion] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] -ObjectType <String> -RestoreTargetInfo <IRestoreTargetInfoBase>
  -SourceDataStoreType <SourceDataStoreType> [-IdentityDetailUserAssignedIdentityArmUrl <String>]
- [-IdentityDetailUseSystemAssignedIdentity] [-SourceResourceId <String>]
+ [-IdentityDetailUseSystemAssignedIdentity] [-SourceResourceId <String>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -167,7 +167,7 @@ while($jobstatus -ne "Completed")
 
 The first, second commands fetch the backup instance and recovery point for the backup instance.
 The third command initializes the ARM Id for target container.
-This parameter is needed for cross sub restore for AzureDatabaseForPostgreSQL and not needed for same susbscription restore.
+This parameter is needed for vaults where cross subscription restore is disabled and optional for  CSR enabled vaults.
 The fourth, fifth command initializes targetContainerURI and fileNamePrefix for restore.
 The sixth command initializes the restore request object for AzureDatabaseForPostgreSQL restore.
 The seventh command triggers validate before restore.
@@ -188,6 +188,25 @@ while($jobstatus -ne "Completed")
 
 This command command triggers the cross region restore for AzureDatabaseForPostgreSQL.
 For triggering cross region restore to secondary region, use RestoreToSecondaryRegion switch.
+
+### Example 9: Trigger restore as Files for datasource type AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL.
+```powershell
+$instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"  | Where { $_.Name -match "test-pgflex" }
+$rps = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.Name
+$targetContainerURI = "https://teststorageaccount.blob.core.windows.net/powershellpgflexrestore"
+$storageAccId = (Get-AzStorageAccount -ResourceGroupName "teststorageaccountRG" -Name "teststorageaccount").Id
+$pgFlexRestoreAsFilesRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPGFlexServer -SourceDataStore VaultStore -RestoreLocation $vault.Location -RestoreType RestoreAsFiles -RecoveryPoint $rps[0].Property.RecoveryPointId -TargetContainerURI $targetContainerURI
+Set-AzDataProtectionMSIPermission -VaultResourceGroup "resourceGroupName" -VaultName "vaultName" -PermissionsScope "ResourceGroup" -RestoreRequest $pgFlexRestoreAsFilesRequest -DatasourceType AzureDatabaseForPGFlexServer -SubscriptionId $SubscriptionId -StorageAccountARMId $storageAccId
+$validateRestore = Test-AzDataProtectionBackupInstanceRestore -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -RestoreRequest $pgFlexRestoreAsFilesRequest -Name $instance.BackupInstanceName
+$restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.BackupInstanceName -Parameter $pgFlexRestoreAsFilesRequest
+```
+
+The first, second commands fetch the instance and recovery point for the instance.
+The third and fourthcommand initializes the target container id and target storage account ARM id.
+The fifth command initializes the restore request object for AzureDatabaseForPGFlexServer restore.
+This example also works for datasource type AzureDatabaseForMySQL.
+The sixth command assigns the permissions to the backup vault and other permissions necessary for triggering the restore for AzureDatabaseForPGFlexServer.
+The last command triggers the restore for AzureDatabaseForPGFlexServer.
 
 ## PARAMETERS
 
@@ -300,7 +319,7 @@ Restore request object to be initialized using Initialize-AzDataProtectionRestor
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IAzureBackupRestoreRequest
 Parameter Sets: Trigger
 Aliases:
 
@@ -308,6 +327,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -331,7 +365,7 @@ Gets or sets the restore target information
 To construct, see NOTES section for RESTORETARGETINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IRestoreTargetInfoBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IRestoreTargetInfoBase
 Parameter Sets: TriggerExpanded
 Aliases:
 
@@ -453,11 +487,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IAzureBackupRestoreRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IOperationJobExtendedInfo
 
 ## NOTES
 

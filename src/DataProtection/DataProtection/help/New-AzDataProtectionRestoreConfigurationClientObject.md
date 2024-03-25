@@ -18,7 +18,7 @@ New-AzDataProtectionRestoreConfigurationClientObject -DatasourceType <Datasource
  [-IncludedNamespace <String[]>] [-LabelSelector <String[]>] [-IncludeClusterScopeResource <Boolean>]
  [-ConflictPolicy <String>] [-NamespaceMapping <KubernetesClusterRestoreCriteriaNamespaceMappings>]
  [-PersistentVolumeRestoreMode <String>] [-RestoreHookReference <NamespacedNameResource[]>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +66,7 @@ Datasource Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureKubernetesService
+Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL
 
 Required: True
 Position: Named
@@ -171,7 +171,7 @@ Namespaces mapping from source namespaces to target namespaces to resolve namesp
 To construct, see NOTES section for NAMESPACEMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.KubernetesClusterRestoreCriteriaNamespaceMappings
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.KubernetesClusterRestoreCriteriaNamespaceMappings
 Parameter Sets: (All)
 Aliases:
 
@@ -199,12 +199,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RestoreHookReference
 Hook reference to be executed during restore.
 To construct, see NOTES section for RESTOREHOOKREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.NamespacedNameResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.NamespacedNameResource[]
 Parameter Sets: (All)
 Aliases:
 
