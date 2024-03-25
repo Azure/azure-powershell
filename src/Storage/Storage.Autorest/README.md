@@ -45,8 +45,6 @@ title: Storage
 subject-prefix: $(service-name)
 nested-object-to-string: true
 identity-correction-for-post: true
-disable-transform-identity-type: true
-flatten-userassignedidentity: false
 
 directive:
   - where:
