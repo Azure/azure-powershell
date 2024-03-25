@@ -12,16 +12,7 @@ Initializes Restore Request object for triggering restore on a protected backup 
 
 ## SYNTAX
 
-### RestoreAsFiles (Default)
-```
-Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -RestoreLocation <String>
- -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType> -TargetContainerURI <String>
- [-FileNamePrefix <String>] [-RecoveryPoint <String>] [-RehydrationDuration <String>]
- [-RehydrationPriority <String>] [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>]
- [-TargetResourceIdForRestoreAsFile <String>] [<CommonParameters>]
-```
-
-### AlternateLocationFullRecovery
+### AlternateLocationFullRecovery (Default)
 ```
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -RestoreLocation <String>
  -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType> -TargetResourceId <String>
@@ -57,6 +48,15 @@ Initialize-AzDataProtectionRestoreRequest -BackupInstance <BackupInstanceResourc
  [-RehydrationDuration <String>] [-RehydrationPriority <String>]
  [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-SecretStoreType <SecretStoreTypes>]
  [-SecretStoreURI <String>] [-ToPrefixPattern <String[]>] [<CommonParameters>]
+```
+
+### RestoreAsFiles
+```
+Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -RestoreLocation <String>
+ -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType> -TargetContainerURI <String>
+ [-FileNamePrefix <String>] [-RecoveryPoint <String>] [-RehydrationDuration <String>]
+ [-RehydrationPriority <String>] [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>]
+ [-TargetResourceIdForRestoreAsFile <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
