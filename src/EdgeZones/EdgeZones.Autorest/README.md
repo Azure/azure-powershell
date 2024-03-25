@@ -70,4 +70,11 @@ directive:
   - where:
       verb: Set
     remove: true
+
+  # Add preview announcement
+  - where:
+      subject: EdgeZones
+    set:
+      preview-announcement:
+        preview-message: This is a preview version of Azure Extended Zones.
 ```
