@@ -14,9 +14,9 @@ Creates a Capacity Reservation Group
 
 ```
 New-AzCapacityReservationGroup -ResourceGroupName <String> -Name <String> -Location <String> [-AsJob]
-
  [-Tag <Hashtable>] [-Zone <String[]>] [-SharingProfile <String[]>] [-DefaultProfile <IAzureContextContainer>]
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
 
 ## DESCRIPTION
 The **New-AzCapacityReservationGroup** cmdlet creates a Capacity Reservation Group
