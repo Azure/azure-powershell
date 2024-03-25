@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed the `*.deps.json` file that caused false alerts about vulnerabilities.
 
 ## Version 1.10.0
 * Fixed New-AzFrontDoorWafPolicy cmdlet to support adding Tags for the Azure Frontdoor waf policy
