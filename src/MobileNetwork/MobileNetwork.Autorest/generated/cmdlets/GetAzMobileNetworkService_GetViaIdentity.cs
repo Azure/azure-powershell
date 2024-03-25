@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IService))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Description(@"Gets information about the specified service.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/services/{serviceName}", ApiVersion = "2022-11-01")]
     public partial class GetAzMobileNetworkService_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener
     {

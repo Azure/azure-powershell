@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MobileNetwork-help.xml
 Module Name: Az.MobileNetwork
 online version: https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkslice
 schema: 2.0.0
@@ -13,9 +13,9 @@ Updates slice.
 ## SYNTAX
 
 ```
-Update-AzMobileNetworkSlice -MobileNetworkName <String> -ResourceGroupName <String> -SliceName <String>
- -SnssaiSst <Int32> [-SubscriptionId <String>] [-Description <String>] [-SnssaiSd <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMobileNetworkSlice -MobileNetworkName <String> -SliceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -SnssaiSst <Int32> [-Description <String>] [-SnssaiSd <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,6 +78,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -219,7 +234,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

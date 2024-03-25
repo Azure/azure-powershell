@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MobileNetwork-help.xml
 Module Name: Az.MobileNetwork
 online version: https://learn.microsoft.com/powershell/module/az.MobileNetwork/new-AzMobileNetworkDataNetworkConfigurationObject
 schema: 2.0.0
@@ -18,7 +18,7 @@ New-AzMobileNetworkDataNetworkConfigurationObject -AllowedService <IServiceResou
  [-AdditionalAllowedSessionType <PduSessionType[]>] [-AllocationAndRetentionPriorityLevel <Int32>]
  [-DefaultSessionType <PduSessionType>] [-FiveQi <Int32>] [-MaximumNumberOfBufferedPacket <Int32>]
  [-PreemptionCapability <PreemptionCapability>] [-PreemptionVulnerability <PreemptionVulnerability>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -196,6 +196,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SessionAmbrDownlink
 Downlink bit rate.
 
@@ -237,15 +252,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ALLOWEDSERVICE <IServiceResourceId[]>`: List of services that can be used as part of this SIM policy. The list must not contain duplicate items and must contain at least one item. The services must be in the same location as the SIM policy.
-  - `Id <String>`: Service resource ID.
-
 ## RELATED LINKS
-

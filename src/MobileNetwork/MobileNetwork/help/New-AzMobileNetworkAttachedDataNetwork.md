@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MobileNetwork-help.xml
 Module Name: Az.MobileNetwork
 online version: https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworkattacheddatanetwork
 schema: 2.0.0
@@ -15,14 +15,15 @@ Must be created in the same location as its parent packet core data plane.
 
 ```
 New-AzMobileNetworkAttachedDataNetwork -Name <String> -PacketCoreControlPlaneName <String>
- -PacketCoreDataPlaneName <String> -ResourceGroupName <String> -DnsAddress <String[]> -Location <String>
- [-SubscriptionId <String>] [-NaptConfigurationEnabled <NaptEnabled>] [-NaptConfigurationPinholeLimit <Int32>]
- [-PinholeTimeoutIcmp <Int32>] [-PinholeTimeoutTcp <Int32>] [-PinholeTimeoutUdp <Int32>]
- [-PortRangeMaxPort <Int32>] [-PortRangeMinPort <Int32>] [-PortReuseHoldTimeTcp <Int32>]
- [-PortReuseHoldTimeUdp <Int32>] [-Tag <Hashtable>] [-UserEquipmentAddressPoolPrefix <String[]>]
- [-UserEquipmentStaticAddressPoolPrefix <String[]>] [-UserPlaneDataInterfaceIpv4Address <String>]
- [-UserPlaneDataInterfaceIpv4Gateway <String>] [-UserPlaneDataInterfaceIpv4Subnet <String>]
- [-UserPlaneDataInterfaceName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -PacketCoreDataPlaneName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -DnsAddress <String[]> -Location <String> [-NaptConfigurationEnabled <NaptEnabled>]
+ [-NaptConfigurationPinholeLimit <Int32>] [-PinholeTimeoutIcmp <Int32>] [-PinholeTimeoutTcp <Int32>]
+ [-PinholeTimeoutUdp <Int32>] [-PortRangeMaxPort <Int32>] [-PortRangeMinPort <Int32>]
+ [-PortReuseHoldTimeTcp <Int32>] [-PortReuseHoldTimeUdp <Int32>] [-Tag <Hashtable>]
+ [-UserEquipmentAddressPoolPrefix <String[]>] [-UserEquipmentStaticAddressPoolPrefix <String[]>]
+ [-UserPlaneDataInterfaceIpv4Address <String>] [-UserPlaneDataInterfaceIpv4Gateway <String>]
+ [-UserPlaneDataInterfaceIpv4Subnet <String>] [-UserPlaneDataInterfaceName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -314,6 +315,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -497,7 +513,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
