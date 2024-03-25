@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ElasticSan service.
 
 ---
-## Status
-[![Az.ElasticSan](https://img.shields.io/powershellgallery/v/Az.ElasticSan.svg?style=flat-square&label=Az.ElasticSan "Az.ElasticSan")](https://www.powershellgallery.com/packages/Az.ElasticSan/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -44,6 +41,8 @@ module-version: 0.3.0
 subject-prefix: $(service-name)
 
 enable-parent-pipeline-input: true
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -151,4 +150,21 @@ directive:
   - from: IdentityUserAssignedIdentities.dictionary.cs
     where: $
     transform: $ = $.replace('null != property.Key && null != property.Value', 'null != property.Key');
+##### announce upcoming MI-related breaking changes
+  - where:
+      parameter-name: IdentityType
+    set:
+      breaking-change:
+        change-description: IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 12.0.0
+        change-effective-date: 2024/05/21
+  - where:
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      breaking-change:
+        change-description: IdentityUserAssignedIdentity will be renamed to UserAssignedIdentity.
+        deprecated-by-version: 2.0.0
+        deprecated-by-azversion: 12.0.0
+        change-effective-date: 2024/05/21
 ```
