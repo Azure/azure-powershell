@@ -13,7 +13,7 @@ Create an in-memory object for CspmMonitorGitLabOffering.
 ## SYNTAX
 
 ```
-New-AzSecurityCspmMonitorGitLabOfferingObject [<CommonParameters>]
+New-AzSecurityCspmMonitorGitLabOfferingObject [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -21,12 +21,33 @@ Create an in-memory object for CspmMonitorGitLabOffering.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new CspmMonitorGitLabOffering object
 ```powershell
 New-AzSecurityCspmMonitorGitLabOfferingObject
 ```
 
+```output
+Description OfferingType
+----------- ------------
+            CspmMonitorGitLab
+```
+
 ## PARAMETERS
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
@@ -36,8 +57,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.CspmMonitorGitLabOffering
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritycspmmonitorgitlabofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritycspmmonitorgitlabofferingobject)

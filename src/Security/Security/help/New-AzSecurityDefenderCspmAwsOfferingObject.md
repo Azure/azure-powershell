@@ -22,7 +22,7 @@ New-AzSecurityDefenderCspmAwsOfferingObject [-CiemDiscoveryCloudRoleArn <String>
  [-DatabaseDspmEnabled <Boolean>] [-MdcContainerAgentlessDiscoveryK8SCloudRoleArn <String>]
  [-MdcContainerAgentlessDiscoveryK8SEnabled <Boolean>] [-MdcContainerImageAssessmentCloudRoleArn <String>]
  [-MdcContainerImageAssessmentEnabled <Boolean>] [-VMScannerEnabled <Boolean>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +30,7 @@ Create an in-memory object for DefenderCspmAwsOffering.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new DefenderCspmAwsOffering object
 ```powershell
 $arnPrefix = "arn:aws:iam::123456789012:role"
 New-AzSecurityDefenderCspmAwsOfferingObject `
@@ -42,13 +42,35 @@ New-AzSecurityDefenderCspmAwsOfferingObject `
     -MdcContainerAgentlessDiscoveryK8SEnabled $true -MdcContainerAgentlessDiscoveryK8SCloudRoleArn "$arnPrefix/MDCContainersAgentlessDiscoveryK8sRole"
 ```
 
+```output
+CiemDiscoveryCloudRoleArn                     : arn:aws:iam::123456789012:role/DefenderForCloud-Ciem
+CiemOidcAzureActiveDirectoryAppName           : mciem-aws-oidc-connector
+CiemOidcCloudRoleArn                          : arn:aws:iam::123456789012:role/DefenderForCloud-OidcCiem
+ConfigurationCloudRoleArn                     : arn:aws:iam::123456789012:role/DefenderForCloud-AgentlessScanner
+ConfigurationExclusionTag                     : {
+                                                  "key": "value"
+                                                }
+ConfigurationScanningMode                     : Default
+DataSensitivityDiscoveryCloudRoleArn          : arn:aws:iam::123456789012:role/SensitiveDataDiscovery
+DataSensitivityDiscoveryEnabled               : True
+DatabaseDspmCloudRoleArn                      : arn:aws:iam::123456789012:role/DefenderForCloud-DataSecurityPostureDB
+DatabaseDspmEnabled                           : True
+Description                                   : 
+MdcContainerAgentlessDiscoveryK8SCloudRoleArn : arn:aws:iam::123456789012:role/MDCContainersAgentlessDiscoveryK8sRole
+MdcContainerAgentlessDiscoveryK8SEnabled      : True
+MdcContainerImageAssessmentCloudRoleArn       : arn:aws:iam::123456789012:role/MDCContainersImageAssessmentRole
+MdcContainerImageAssessmentEnabled            : True
+OfferingType                                  : DefenderCspmAws
+VMScannerEnabled                              : True
+```
+
 ## PARAMETERS
 
 ### -CiemDiscoveryCloudRoleArn
 The cloud role ARN in AWS for CIEM discovery.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -63,7 +85,7 @@ Accept wildcard characters: False
 the azure active directory app name used of authenticating against AWS.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -78,7 +100,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS for CIEM oidc connection.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -93,7 +115,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -106,10 +128,9 @@ Accept wildcard characters: False
 
 ### -ConfigurationExclusionTag
 VM tags that indicates that VM should not be scanned.
-.
 
 ```yaml
-Type: IDefenderCspmAwsOfferingVMScannersConfigurationExclusionTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingVMScannersConfigurationExclusionTags
 Parameter Sets: (All)
 Aliases:
 
@@ -124,7 +145,7 @@ Accept wildcard characters: False
 The scanning mode for the VM scan.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -139,7 +160,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -154,13 +175,13 @@ Accept wildcard characters: False
 Is databases DSPM protection enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -169,7 +190,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -184,13 +205,13 @@ Accept wildcard characters: False
 Is Microsoft Defender Data Sensitivity discovery enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -199,7 +220,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -214,13 +235,13 @@ Accept wildcard characters: False
 Is Microsoft Defender container agentless discovery K8s enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -229,7 +250,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -244,13 +265,28 @@ Accept wildcard characters: False
 Is Microsoft Defender container image assessment enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -259,13 +295,13 @@ Accept wildcard characters: False
 Is Microsoft Defender for Server VM scanning enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -278,15 +314,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderCspmAwsOffering
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-CONFIGURATIONEXCLUSIONTAG \<IDefenderCspmAwsOfferingVMScannersConfigurationExclusionTags\>: VM tags that indicates that VM should not be scanned.
-  \[(Any) \<String\>\]: This indicates any property can be added to this object.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefendercspmawsofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefendercspmawsofferingobject)
