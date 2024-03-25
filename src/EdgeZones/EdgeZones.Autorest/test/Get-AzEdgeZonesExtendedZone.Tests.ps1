@@ -15,15 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEdgeZonesExtendedZone')
 }
 
 Describe 'Get-AzEdgeZonesExtendedZone' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { 
+            $config = Get-AzEdgeZonesExtendedZone
+            $config.Count | Should -BeGreaterThan 0
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { 
+            $config = Get-AzEdgeZonesExtendedZone -Name $env.extendedZoneName1
+            $config.Name | Should -Be $env.extendedZoneName1
+        } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        { 
+            $config = Get-AzEdgeZonesExtendedZone -Name $env.extendedZoneName1
+            $config = Get-AzEdgeZonesExtendedZone -InputObject $config
+            $config.Name | Should -Be $env.extendedZoneName1
+        } | Should -Not -Throw
     }
 }

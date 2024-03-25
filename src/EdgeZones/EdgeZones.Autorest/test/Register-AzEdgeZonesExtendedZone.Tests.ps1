@@ -15,11 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Register-AzEdgeZonesExtendedZ
 }
 
 Describe 'Register-AzEdgeZonesExtendedZone' {
-    It 'Register' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Register'
+    {
+        { 
+            $config = Register-AzEdgeZonesExtendedZone -Name $env.extendedZoneName1
+            $config.Name | Should -Be $env.extendedZoneName1
+        } | Should -Not -Throw
     }
 
-    It 'RegisterViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RegisterViaIdentity' {
+        { 
+            $config = Get-AzEdgeZonesExtendedZone -Name $env.extendedZoneName1
+            $config = Register-AzEdgeZonesExtendedZone -InputObject $config
+            $config.Name | Should -Be $env.extendedZoneName1
+        } | Should -Not -Throw
     }
 }

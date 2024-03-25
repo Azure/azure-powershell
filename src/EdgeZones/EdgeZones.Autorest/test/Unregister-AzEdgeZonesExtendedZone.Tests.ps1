@@ -15,11 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Unregister-AzEdgeZonesExtende
 }
 
 Describe 'Unregister-AzEdgeZonesExtendedZone' {
-    It 'Unregister' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Unregister' {
+        { 
+            $config = Unregister-AzEdgeZonesExtendedZone -Name $env.extendedZoneName2
+            $config.Name | Should -Be $env.extendedZoneName2
+        } | Should -Not -Throw
     }
 
-    It 'UnregisterViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UnregisterViaIdentity' {
+        { 
+            $config = Get-AzEdgeZonesExtendedZone -Name $env.extendedZoneName2
+            $config = Unregister-AzEdgeZonesExtendedZone -InputObject $config
+            $config.Name | Should -Be $env.extendedZoneName2
+        } | Should -Not -Throw
     }
 }
