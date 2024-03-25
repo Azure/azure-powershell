@@ -19,7 +19,7 @@ New-AzMobileNetworkPccRuleConfigurationObject -RuleName <String> -RulePrecedence
  [-RuleQoPolicyFiveQi <Int32>] [-RuleQoPolicyMaximumBitRateDownlink <String>]
  [-RuleQoPolicyMaximumBitRateUplink <String>] [-RuleQoPolicyPreemptionCapability <PreemptionCapability>]
  [-RuleQoPolicyPreemptionVulnerability <PreemptionVulnerability>] [-TrafficControl <TrafficControlPermission>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,21 +66,6 @@ Uplink bit rate.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
