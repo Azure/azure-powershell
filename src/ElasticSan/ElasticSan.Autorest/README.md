@@ -42,10 +42,12 @@ title: ElasticSan
 # For new RP, the version is 0.1.0
 module-version: 0.3.0
 subject-prefix: $(service-name)
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 enable-parent-pipeline-input: true
 
-# If there are post APIs for some kinds of actions in the RP, you may need to 
+# If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
 
@@ -68,12 +70,12 @@ directive:
       alias: ElasticSanName
   - where:
       subject: VolumeGroup
-      parameter-name: Name 
+      parameter-name: Name
     set:
       alias: VolumeGroupName
   - where:
       subject: Volume
-      parameter-name: Name 
+      parameter-name: Name
     set:
       alias: VolumeName
   - where:
@@ -85,7 +87,7 @@ directive:
     set:
       parameter-name: ForceDelete
   - where:
-      parameter-name: SnapshotName 
+      parameter-name: SnapshotName
     set:
       parameter-name: Name
   - where:
@@ -106,7 +108,7 @@ directive:
       parameter-name: GroupName
     set:
       parameter-name: VolumeGroupName
-  - where: 
+  - where:
       subject: VolumeSnapshot
       verb: Update
     remove: true
@@ -139,14 +141,14 @@ directive:
   - where:
       subject: ^PrivateEndpointConnection$|^PrivateLinkResource$
     hide: true
-  - where: 
+  - where:
       verb: ^New$|^Update$
       subject: ^VolumeGroup$
     hide: true
-  - where: 
+  - where:
       verb: New
-      subject: Volume 
-      parameter-name: ManagedByResourceId 
+      subject: Volume
+      parameter-name: ManagedByResourceId
     hide: true
   - from: IdentityUserAssignedIdentities.dictionary.cs
     where: $
