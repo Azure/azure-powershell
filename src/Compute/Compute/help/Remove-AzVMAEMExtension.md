@@ -15,7 +15,7 @@ Removes the AEM extension from a virtual machine.
 
 ```
 Remove-AzVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>]
- [[-OSType] <String>] [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [[-OSType] <String>] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -95,21 +95,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies the name of the resource group of a virtual machine.
 This cmdlet removes the AEM extension from that virtual machine.
@@ -162,5 +147,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzVMAEMExtension](./Set-AzVMAEMExtension.md)
 
 [Test-AzVMAEMExtension](./Test-AzVMAEMExtension.md)
-
-

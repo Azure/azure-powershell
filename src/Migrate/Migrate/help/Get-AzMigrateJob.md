@@ -15,31 +15,31 @@ Retrieves the status of an Azure Migrate job.
 ### ListByName (Default)
 ```
 Get-AzMigrateJob -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- [-Filter <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetByName
 ```
 Get-AzMigrateJob -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>] -JobName <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetById
 ```
 Get-AzMigrateJob [-SubscriptionId <String>] -JobID <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetByInputObject
 ```
 Get-AzMigrateJob [-SubscriptionId <String>] -InputObject <IJob> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ListById
 ```
 Get-AzMigrateJob [-SubscriptionId <String>] -ResourceGroupID <String> -ProjectID <String> [-Filter <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -209,21 +209,6 @@ Parameter Sets: GetByName
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -15,7 +15,7 @@ Gets VMImage SKUs.
 
 ```
 Get-AzVMImageSku -Location <String> [-EdgeZone <String>] -PublisherName <String> -Offer <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,21 +92,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PublisherName
 Specifies the publisher of a VMImage.
 
@@ -144,5 +129,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMImagePublisher](./Get-AzVMImagePublisher.md)
 
 [Save-AzVMImage](./Save-AzVMImage.md)
-
-

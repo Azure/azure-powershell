@@ -17,13 +17,13 @@ Gets all the versions of a VMImage.
 ```
 Get-AzVMImage -Location <String> [-EdgeZone <String>] -PublisherName <String> -Offer <String> -Skus <String>
  [-Top <Int32>] [-OrderBy <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetVMImageDetail
 ```
 Get-AzVMImage -Location <String> [-EdgeZone <String>] -PublisherName <String> -Offer <String> -Skus <String>
- -Version <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ -Version <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -174,21 +174,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PublisherName
 Specifies the publisher of a VMImage.
 To obtain an image publisher, use the Get-AzVMImagePublisher cmdlet.
@@ -275,5 +260,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMImageSku](./Get-AzVMImageSku.md)
 
 [Save-AzVMImage](./Save-AzVMImage.md)
-
-

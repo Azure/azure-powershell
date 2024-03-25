@@ -18,7 +18,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
  [-RecoveryPoint <String>] [-RestoreConfiguration <KubernetesClusterRestoreCriteria>]
  [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreURI <String>]
- [-SecretStoreType <SecretStoreTypes>] [-PointInTime <DateTime>] [-ProgressAction <ActionPreference>]
+ [-SecretStoreType <SecretStoreTypes>] [-PointInTime <DateTime>]
  [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String> [-ItemLevelRecovery]
  [-RecoveryPoint <String>] [-ContainersList <String[]>]
- [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-ProgressAction <ActionPreference>]
+ [-RestoreConfiguration <KubernetesClusterRestoreCriteria>]
  [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  [-ContainersList <String[]>] [-RestoreConfiguration <KubernetesClusterRestoreCriteria>]
  [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreURI <String>]
  [-SecretStoreType <SecretStoreTypes>] -BackupInstance <BackupInstanceResource> [-PointInTime <DateTime>]
- [-FromPrefixPattern <String[]>] [-ToPrefixPattern <String[]>] [-ProgressAction <ActionPreference>]
+ [-FromPrefixPattern <String[]>] [-ToPrefixPattern <String[]>]
  [<CommonParameters>]
 ```
 
@@ -48,7 +48,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>]
  [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-RehydrationDuration <String>]
  [-RehydrationPriority <String>] [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>]
- -BackupInstance <BackupInstanceResource> [-PointInTime <DateTime>] [-ProgressAction <ActionPreference>]
+ -BackupInstance <BackupInstanceResource> [-PointInTime <DateTime>]
  [<CommonParameters>]
 ```
 
@@ -58,7 +58,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>]
  -TargetContainerURI <String> -FileNamePrefix <String> [-RehydrationDuration <String>]
  [-RehydrationPriority <String>] [-TargetResourceIdForRestoreAsFile <String>] [-SecretStoreURI <String>]
- [-SecretStoreType <SecretStoreTypes>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-SecretStoreType <SecretStoreTypes>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -289,21 +289,6 @@ Point In Time for restore.
 Type: System.DateTime
 Parameter Sets: AlternateLocationFullRecovery, OriginalLocationILR, OriginalLocationFullRecovery
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

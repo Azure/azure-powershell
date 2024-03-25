@@ -20,7 +20,7 @@ Set-AzVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>] 
  [-StorageAccountType <String>] [-DiskEncryptionSetId <String>] [-WriteAccelerator] [-DiffDiskSetting <String>]
  [-DiffDiskPlacement <String>] [-DeleteOption <String>] [-SecurityEncryptionType <String>]
  [-SecureVMDiskEncryptionSet <String>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### WindowsParamSet
@@ -30,7 +30,7 @@ Set-AzVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>] 
  [-ManagedDiskId <String>] [-StorageAccountType <String>] [-DiskEncryptionSetId <String>] [-WriteAccelerator]
  [-DiffDiskSetting <String>] [-DiffDiskPlacement <String>] [-DeleteOption <String>]
  [-SecurityEncryptionType <String>] [-SecureVMDiskEncryptionSet <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### WindowsDiskEncryptionParameterSet
@@ -41,7 +41,7 @@ Set-AzVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>] 
  [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <String>]
  [-DiskEncryptionSetId <String>] [-WriteAccelerator] [-DiffDiskSetting <String>] [-DiffDiskPlacement <String>]
  [-DeleteOption <String>] [-SecurityEncryptionType <String>] [-SecureVMDiskEncryptionSet <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### LinuxParamSet
@@ -51,7 +51,7 @@ Set-AzVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>] 
  [-ManagedDiskId <String>] [-StorageAccountType <String>] [-DiskEncryptionSetId <String>] [-WriteAccelerator]
  [-DiffDiskSetting <String>] [-DiffDiskPlacement <String>] [-DeleteOption <String>]
  [-SecurityEncryptionType <String>] [-SecureVMDiskEncryptionSet <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### LinuxDiskEncryptionParameterSet
@@ -62,7 +62,7 @@ Set-AzVMOSDisk [-VM] <PSVirtualMachine> [[-Name] <String>] [[-VhdUri] <String>] 
  [-DiskSizeInGB <Int32>] [-ManagedDiskId <String>] [-StorageAccountType <String>]
  [-DiskEncryptionSetId <String>] [-WriteAccelerator] [-DiffDiskSetting <String>] [-DiffDiskPlacement <String>]
  [-DeleteOption <String>] [-SecurityEncryptionType <String>] [-SecureVMDiskEncryptionSet <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -442,21 +442,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SecureVMDiskEncryptionSet
 ARM Resource ID for Disk Encryption Set. Allows customer to provide ARM ID for Disk Encryption Set created with ConfidentialVmEncryptedWithCustomerKey encryption type. This will allow customer to use Customer Managed Key (CMK) encryption with Confidential VM. Parameter SecurityEncryptionType value should be DiskwithVMGuestState.
 
@@ -603,5 +588,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzAvailabilitySet](./Get-AzAvailabilitySet.md)
 
 [New-AzVMConfig](./New-AzVMConfig.md)
-
-

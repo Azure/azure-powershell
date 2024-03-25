@@ -15,7 +15,7 @@ Gets Azure availability sets in a resource group.
 
 ```
 Get-AzAvailabilitySet [[-ResourceGroupName] <String>] [[-Name] <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -223,21 +223,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Specifies the name of a resource group.
 
@@ -271,5 +256,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzAvailabilitySet](./New-AzAvailabilitySet.md)
 
 [Remove-AzAvailabilitySet](./Remove-AzAvailabilitySet.md)
-
-

@@ -17,7 +17,7 @@ Creates an Azure availability set.
 New-AzAvailabilitySet [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-PlatformUpdateDomainCount] <Int32>] [[-PlatformFaultDomainCount] <Int32>] [[-Sku] <String>]
  [-ProximityPlacementGroupId <String>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -124,21 +124,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ProximityPlacementGroupId
 The resource id of the Proximity Placement Group to use with this availability set.
 
@@ -222,5 +207,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzAvailabilitySet](./Get-AzAvailabilitySet.md)
 
 [Remove-AzAvailabilitySet](./Remove-AzAvailabilitySet.md)
-
-

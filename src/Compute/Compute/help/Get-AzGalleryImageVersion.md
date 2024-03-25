@@ -16,33 +16,33 @@ Get or list gallery image versions.
 ```
 Get-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
  [-GalleryImageDefinitionName] <String> [[-Name] <String>] [-ExpandReplicationStatus]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SharedGalleryParameterSet
 ```
 Get-AzGalleryImageVersion [-GalleryImageDefinitionName] <String> [[-Name] <String>] [-ExpandReplicationStatus]
  -GalleryUniqueName <String> [-Scope <String>] -Location <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### CommunityGalleryParameterSet
 ```
 Get-AzGalleryImageVersion [-GalleryImageDefinitionName] <String> [[-Name] <String>] [-ExpandReplicationStatus]
  -GalleryPublicName <String> -Location <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
 Get-AzGalleryImageVersion [-ResourceId] <String> [-ExpandReplicationStatus]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ListCommunityGalleryParameterSet
 ```
 Get-AzGalleryImageVersion [-ExpandReplicationStatus] [-Location <String>] [-Community]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -379,21 +379,6 @@ Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName

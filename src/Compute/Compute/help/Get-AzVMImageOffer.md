@@ -15,7 +15,7 @@ Gets VMImage offer types.
 
 ```
 Get-AzVMImageOffer -Location <String> [-EdgeZone <String>] -PublisherName <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,21 +77,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PublisherName
 Specifies the name of a publisher of a VMImage.
 To obtain a publisher, use the Get-AzVMImagePublisher cmdlet.
@@ -130,5 +115,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMImageSku](./Get-AzVMImageSku.md)
 
 [Save-AzVMImage](./Save-AzVMImage.md)
-
-

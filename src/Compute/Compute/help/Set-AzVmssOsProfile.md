@@ -22,7 +22,7 @@ Set-AzVmssOsProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-Comp
  [[-LinuxConfigurationDisablePasswordAuthentication] <Boolean>] [[-PublicKey] <SshPublicKey[]>]
  [[-Secret] <VaultSecretGroup[]>] [-WindowsConfigurationPatchMode <String>]
  [-LinuxConfigurationPatchMode <String>] [-EnableHotpatching] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -371,21 +371,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PublicKey
 Specifies the Secure Shell (SSH) public key object.
 You can use the Add-AzVMSshPublicKey cmdlet to create the object.
@@ -562,5 +547,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Add-AzVmssSecret](./Add-AzVmssSecret.md)
 
 [New-AzVmssConfig](./New-AzVmssConfig.md)
-
-
