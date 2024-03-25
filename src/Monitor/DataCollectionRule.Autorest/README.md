@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DataCollectionRule service.
 
 ---
-## Status
-[![Az.DataCollectionRule](https://img.shields.io/powershellgallery/v/Az.DataCollectionRule.svg?style=flat-square&label=Az.DataCollectionRule "Az.DataCollectionRule")](https://www.powershellgallery.com/packages/Az.DataCollectionRule/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -46,6 +43,8 @@ title: DataCollectionRule
 module-version: 0.1.0
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
 subject-prefix: ''
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 directive:
   # custom required body
@@ -192,4 +191,22 @@ directive:
     - model-name: StorageBlobDestination
     # string Name, string StorageAccountResourceId, string TableName
     - model-name: StorageTableDestination
+##### announce upcoming MI-related breaking changes
+  - where:
+      parameter-name: IdentityType
+    set:
+      breaking-change:
+        change-description: IdentityType will be removed. EnableSystemAssignedIdentity will be used to enable/disable system assigned identity and UserAssignedIdentity will be used to specify user assigned identities.
+        deprecated-by-version: 6.0.0
+        deprecated-by-azversion: 12.0.0
+        change-effective-date: 2024/05/21
+  - where:
+      parameter-name: UserAssignedIdentity
+    set:
+      breaking-change:      
+        old-parameter-type: Hashtable
+        new-parameter-type: string[]
+        deprecated-by-version: 6.0.0
+        deprecated-by-azversion: 12.0.0
+        change-effective-date: 2024/05/21
 ```
