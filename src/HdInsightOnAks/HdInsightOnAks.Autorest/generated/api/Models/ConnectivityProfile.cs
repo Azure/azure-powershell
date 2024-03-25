@@ -34,6 +34,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public string WebFqdn { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IWebConnectivityEndpointInternal)Web).Fqdn; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IWebConnectivityEndpointInternal)Web).Fqdn = value ; }
 
+        /// <summary>
+        /// Private web connectivity endpoint. This property will only be returned when enableInternalIngress is true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string WebPrivateFqdn { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IWebConnectivityEndpointInternal)Web).PrivateFqdn; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IWebConnectivityEndpointInternal)Web).PrivateFqdn = value ?? null; }
+
         /// <summary>Creates an new <see cref="ConnectivityProfile" /> instance.</summary>
         public ConnectivityProfile()
         {
@@ -66,6 +72,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"fqdn",
         PossibleTypes = new [] { typeof(string) })]
         string WebFqdn { get; set; }
+        /// <summary>
+        /// Private web connectivity endpoint. This property will only be returned when enableInternalIngress is true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Private web connectivity endpoint. This property will only be returned when enableInternalIngress is true.",
+        SerializedName = @"privateFqdn",
+        PossibleTypes = new [] { typeof(string) })]
+        string WebPrivateFqdn { get; set; }
 
     }
     /// Cluster connectivity profile.
@@ -78,6 +97,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IConnectivityProfileWeb Web { get; set; }
         /// <summary>Web connectivity endpoint.</summary>
         string WebFqdn { get; set; }
+        /// <summary>
+        /// Private web connectivity endpoint. This property will only be returned when enableInternalIngress is true.
+        /// </summary>
+        string WebPrivateFqdn { get; set; }
 
     }
 }

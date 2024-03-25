@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_hive = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("hive"), out var __jsonHive) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkHiveCatalogOption.FromJson(__jsonHive) : Hive;}
+            {_hive = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("hive"), out var __jsonHive) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkHiveCatalogOption.FromJson(__jsonHive) : _hive;}
             AfterFromJson(json);
         }
 

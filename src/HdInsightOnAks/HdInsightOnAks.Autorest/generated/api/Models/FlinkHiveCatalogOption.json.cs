@@ -65,9 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_metastoreDbConnectionPasswordSecret = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("metastoreDbConnectionPasswordSecret"), out var __jsonMetastoreDbConnectionPasswordSecret) ? (string)__jsonMetastoreDbConnectionPasswordSecret : (string)MetastoreDbConnectionPasswordSecret;}
-            {_metastoreDbConnectionUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("metastoreDbConnectionURL"), out var __jsonMetastoreDbConnectionUrl) ? (string)__jsonMetastoreDbConnectionUrl : (string)MetastoreDbConnectionUrl;}
-            {_metastoreDbConnectionUserName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("metastoreDbConnectionUserName"), out var __jsonMetastoreDbConnectionUserName) ? (string)__jsonMetastoreDbConnectionUserName : (string)MetastoreDbConnectionUserName;}
+            {_metastoreDbConnectionAuthenticationMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("metastoreDbConnectionAuthenticationMode"), out var __jsonMetastoreDbConnectionAuthenticationMode) ? (string)__jsonMetastoreDbConnectionAuthenticationMode : (string)_metastoreDbConnectionAuthenticationMode;}
+            {_metastoreDbConnectionPasswordSecret = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("metastoreDbConnectionPasswordSecret"), out var __jsonMetastoreDbConnectionPasswordSecret) ? (string)__jsonMetastoreDbConnectionPasswordSecret : (string)_metastoreDbConnectionPasswordSecret;}
+            {_metastoreDbConnectionUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("metastoreDbConnectionURL"), out var __jsonMetastoreDbConnectionUrl) ? (string)__jsonMetastoreDbConnectionUrl : (string)_metastoreDbConnectionUrl;}
+            {_metastoreDbConnectionUserName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("metastoreDbConnectionUserName"), out var __jsonMetastoreDbConnectionUserName) ? (string)__jsonMetastoreDbConnectionUserName : (string)_metastoreDbConnectionUserName;}
             AfterFromJson(json);
         }
 
@@ -102,6 +103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return container;
             }
+            AddIf( null != (((object)this._metastoreDbConnectionAuthenticationMode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._metastoreDbConnectionAuthenticationMode.ToString()) : null, "metastoreDbConnectionAuthenticationMode" ,container.Add );
             AddIf( null != (((object)this._metastoreDbConnectionPasswordSecret)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._metastoreDbConnectionPasswordSecret.ToString()) : null, "metastoreDbConnectionPasswordSecret" ,container.Add );
             AddIf( null != (((object)this._metastoreDbConnectionUrl)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._metastoreDbConnectionUrl.ToString()) : null, "metastoreDbConnectionURL" ,container.Add );
             AddIf( null != (((object)this._metastoreDbConnectionUserName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._metastoreDbConnectionUserName.ToString()) : null, "metastoreDbConnectionUserName" ,container.Add );
