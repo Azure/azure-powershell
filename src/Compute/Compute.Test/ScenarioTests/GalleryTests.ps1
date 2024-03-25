@@ -834,20 +834,11 @@ function Test-GalleryVersionWithSourceImageVMId
         $hyperVGeneration = 'v1'
 
         # create new VM
-        $paramNewAzVm = @{
-            ResourceGroupName = $rgname
-            Name = $vmname
-            Credential = $cred
-            Location = $loc
-            ErrorAction = 'Stop'
-        }
-        if ($trustedLaunch -eq $false) {
-            $paramNewAzVm.Add('SecurityType', 'Standard')
-        }
-        $vm = New-AzVM @paramNewAzVm;
-
+        $vm = New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname -Credential $cred -SecurityType "Standard" -DomainNameLabel $domainNameLabel;
+        start-sleep -seconds 300
+        
         # Setup Image Gallery
-        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -location $location -ErrorAction 'Stop' | Out-Null
+        New-AzGallery -ResourceGroupName $rgname -Name $galleryName -location $location -ErrorAction 'Stop' | Out-Null;
 
         # Setup Image Definition
         $paramNewAzImageDef = @{
