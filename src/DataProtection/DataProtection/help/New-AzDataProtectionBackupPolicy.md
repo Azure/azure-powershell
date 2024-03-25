@@ -15,7 +15,7 @@ Creates a new backup policy in a given backup vault
 ```
 New-AzDataProtectionBackupPolicy -ResourceGroupName <String> -VaultName <String> -Name <String>
  -Policy <IBackupPolicy> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -193,6 +193,39 @@ The second to fifteenth command defines and updates the Operational, vaulted wee
 Next we define a trigger object with schedule time and timzone, set it to 2:30 AM West Europe standard time.
 The last command creates the hybrid AzureBlob policy.
 
+### Example 6: Create policy for AzureDatabaseForPGFlexServer/AzureDatabaseForMySQL
+```powershell
+$defaultPol = Get-AzDataProtectionPolicyTemplate -DatasourceType AzureDatabaseForPGFlexServer
+$lifeCycleVault = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Days -SourceRetentionDurationCount 10
+Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Default -LifeCycles $lifeCycleVault -IsDefault $true
+$lifeCycleVault = New-AzDataProtectionRetentionLifeCycleClientObject -SourceDataStore VaultStore -SourceRetentionDurationType Months -SourceRetentionDurationCount 6 
+Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy $defaultPol -Name Monthly -LifeCycles $lifeCycleVault -IsDefault $false
+$schDates = @(
+(
+    (Get-Date -Year 2024 -Month 03 -Day 04 -Hour 09 -Minute 0 -Second 0)
+),
+(
+    (Get-Date -Year 2024 -Month 03 -Day 05 -Hour 09 -Minute 0 -Second 0)
+))
+$trigger =  New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays $schDates -IntervalType Weekly -IntervalCount 1
+Edit-AzDataProtectionPolicyTriggerClientObject -Schedule $trigger -Policy $defaultPol
+$tagCriteria = New-AzDataProtectionPolicyTagCriteriaClientObject -MonthsOfYear January -DaysOfMonth 1,5,Last
+Edit-AzDataProtectionPolicyTagClientObject -Policy $defaultPol -Name Monthly -Criteria $tagCriteria
+$pgflexPolicy = New-AzDataProtectionBackupPolicy -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Name "pgflex-policy" -Policy $defaultPol
+```
+
+```output
+Name                               Type
+----                               ----
+pgflex-policy       Microsoft.DataProtection/backupVaults/backupPolicies
+```
+
+The first command gets the default policy template for AzureDatabaseForPGFlexServer.
+These steps can also be used for AzureDatabaseForMySQL as is.
+The second to tenth command defines and updates the vaulted daily, monthly lifecycle and tagcriteria.
+Next we define a trigger object with schedule, set it to every Weekly Monday, Tuesday schedule.
+The last command creates the AzureDatabaseForPGFlexServer policy.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -229,11 +262,26 @@ Policy Request Object
 To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBackupPolicy
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -323,7 +371,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBaseBackupPolicyResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBaseBackupPolicyResource
 
 ## NOTES
 

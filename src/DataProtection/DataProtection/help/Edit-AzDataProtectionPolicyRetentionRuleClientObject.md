@@ -15,14 +15,14 @@ Adds or removes Retention Rule to existing Policy
 ### RemoveRetention (Default)
 ```
 Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy <IBackupPolicy> -Name <RetentionRuleName>
- [-RemoveRule] [<CommonParameters>]
+ [-RemoveRule] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### AddRetention
 ```
 Edit-AzDataProtectionPolicyRetentionRuleClientObject -Policy <IBackupPolicy> -Name <RetentionRuleName>
  -IsDefault <Boolean> -LifeCycles <ISourceLifeCycle[]> [-OverwriteLifeCycle <Boolean>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,7 +82,7 @@ Life cycles associated with the retention rule.
 To construct, see NOTES section for LIFECYCLES properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.ISourceLifeCycle[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.ISourceLifeCycle[]
 Parameter Sets: AddRetention
 Aliases:
 
@@ -129,11 +129,26 @@ Backup Policy Object
 To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBackupPolicy
 Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -162,7 +177,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBackupPolicy
 
 ## NOTES
 
