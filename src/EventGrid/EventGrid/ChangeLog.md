@@ -18,9 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* In the next version, the structure of the framework will be changed, resulting in breaking change due to structure update:
+* Added breaking change messages due to structure update:
   - The cmdlet `Set-AzEventGridTopic` will be removed.
-  - The cmdlet `Remove-AzEventGridSubscription` newly supported syntax removes the corresponding resource via the parameters `-Name <String>` and `-Scope <String>`.
+  - In the `Remove-AzEventGridSubscription` parameters will be deprecated.
   - In the `Get-AzEventGrid*` the parameter `ODataQuery`, `NextLink`, `ResourceId` will be removed.
   - In the `New/Update-AzEventGrid*` parameters will be deprecated.
 
