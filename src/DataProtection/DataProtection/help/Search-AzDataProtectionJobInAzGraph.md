@@ -16,7 +16,7 @@ Searches for Backup Jobs in Azure Resource Graph and retrieves the expected entr
 Search-AzDataProtectionJobInAzGraph -Subscription <String[]> -DatasourceType <DatasourceTypes>
  [-ResourceGroup <String[]>] [-Vault <String[]>] [-StartTime <DateTime>] [-EndTime <DateTime>]
  [-Operation <JobOperation[]>] [-Status <JobStatus[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,21 +111,6 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.JobOperation[]
 Parameter Sets: (All)
 Aliases:
 Accepted values: OnDemandBackup, ScheduledBackup, Restore
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

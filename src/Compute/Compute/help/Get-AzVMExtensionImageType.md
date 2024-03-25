@@ -15,7 +15,7 @@ Gets the type of an Azure extension.
 
 ```
 Get-AzVMExtensionImageType -Location <String> -PublisherName <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,21 +63,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PublisherName
 Specifies the name of a publisher of an extension.
 To obtain an extension publisher, use the Get-AzVMImagePublisher cmdlet.
@@ -113,5 +98,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMExtensionImage](./Get-AzVMExtensionImage.md)
 
 [Get-AzVMImagePublisher](./Get-AzVMImagePublisher.md)
-
-

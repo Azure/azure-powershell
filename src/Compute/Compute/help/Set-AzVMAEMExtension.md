@@ -18,7 +18,7 @@ Set-AzVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [-EnableWA
  [[-WADStorageAccountName] <String>] [[-OSType] <String>] [-SkipStorage] [-NoWait]
  [-SetAccessToIndividualResources] [-InstallNewExtension] [[-ProxyURI] <String>] [-DebugExtension]
  [-PathUserIdentity <String>] [-SkipIdentity] [-IsTest] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -162,21 +162,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ProxyURI
 Configures the proxy URI that should be used by the VM Extension for SAP.
 
@@ -304,5 +289,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzVMAEMExtension](./Remove-AzVMAEMExtension.md)
 
 [Test-AzVMAEMExtension](./Test-AzVMAEMExtension.md)
-
-
