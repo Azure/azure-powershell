@@ -14,7 +14,7 @@ Create an in-memory object for CspmMonitorGcpOffering.
 
 ```
 New-AzSecurityCspmMonitorGcpOfferingObject [-NativeCloudConnectionServiceAccountEmailAddress <String>]
- [-NativeCloudConnectionWorkloadIdentityProviderId <String>]
+ [-NativeCloudConnectionWorkloadIdentityProviderId <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -23,9 +23,15 @@ Create an in-memory object for CspmMonitorGcpOffering.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new CspmMonitorGcpOffering object
 ```powershell
 New-AzSecurityCspmMonitorGcpOfferingObject -NativeCloudConnectionServiceAccountEmailAddress "microsoft-defender-cspm@asc-sdk-samples.iam.gserviceaccount.com" -NativeCloudConnectionWorkloadIdentityProviderId "cspm"
+```
+
+```output
+Description NativeCloudConnectionServiceAccountEmailAddress                 NativeCloudConnectionWorkloadIdentityProviderId OfferingType
+----------- -----------------------------------------------                 ----------------------------------------------- ------------
+            microsoft-defender-cspm@asc-sdk-samples.iam.gserviceaccount.com cspm                                            CspmMonitorGcp
 ```
 
 ## PARAMETERS
@@ -34,7 +40,7 @@ New-AzSecurityCspmMonitorGcpOfferingObject -NativeCloudConnectionServiceAccountE
 The service account email address in GCP for this offering.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -49,9 +55,24 @@ Accept wildcard characters: False
 The GCP workload identity provider id for the offering.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -68,8 +89,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.CspmMonitorGcpOffering
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritycspmmonitorgcpofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritycspmmonitorgcpofferingobject)
