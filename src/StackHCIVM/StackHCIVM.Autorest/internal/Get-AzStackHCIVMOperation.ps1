@@ -16,23 +16,21 @@
 
 <#
 .Synopsis
-List all the supported operations.
+Gets a list of hybrid compute operations.
 .Description
-List all the supported operations.
+Gets a list of hybrid compute operations.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperation
-.Outputs
 Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue
 .Link
 https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmoperation
 #>
 function Get-AzStackHCIVMOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperation], [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
@@ -94,7 +92,6 @@ begin {
 
         $mapping = @{
             List = 'Az.StackHCIVM.private\Get-AzStackHCIVMOperation_List';
-            List1 = 'Az.StackHCIVM.private\Get-AzStackHCIVMOperation_List1';
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
