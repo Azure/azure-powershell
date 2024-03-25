@@ -28,9 +28,9 @@ New-AzVMwarePSCredentialExecutionParameterObject -Name azps_test_credentialvalue
 ```
 
 ```output
-Name                      Type       Password      Username
-----                      ----       --------      --------
-azps_test_credentialvalue Credential passwordValue usernameValue
+Name                      Password      Type       Username
+----                      --------      ----       --------
+azps_test_credentialvalue passwordValue Credential usernameValue
 ```
 
 Create a local PS Credential Execution object
@@ -89,11 +89,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.PsCredentialExecutionParameter
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.PsCredentialExecutionParameter
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
