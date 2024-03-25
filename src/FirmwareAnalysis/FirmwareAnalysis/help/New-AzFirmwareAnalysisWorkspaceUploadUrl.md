@@ -16,13 +16,13 @@ The operation to get a url for file upload.
 ```
 New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> [-SubscriptionId <String>]
  -WorkspaceName <String> [-FirmwareId <String>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GenerateViaJsonString
 ```
 New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> [-SubscriptionId <String>]
- -WorkspaceName <String> -JsonString <String> [-DefaultProfile <PSObject>]
+ -WorkspaceName <String> -JsonString <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,27 +30,27 @@ New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> [-Subscript
 ```
 New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> [-SubscriptionId <String>]
  -WorkspaceName <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Generate
 ```
 New-AzFirmwareAnalysisWorkspaceUploadUrl -ResourceGroupName <String> [-SubscriptionId <String>]
  -WorkspaceName <String> -GenerateUploadUrl <IGenerateUploadUrlRequest> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GenerateViaIdentityExpanded
 ```
 New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity> [-FirmwareId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GenerateViaIdentity
 ```
 New-AzFirmwareAnalysisWorkspaceUploadUrl -InputObject <IFirmwareAnalysisIdentity>
  -GenerateUploadUrl <IGenerateUploadUrlRequest> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -158,6 +158,21 @@ Parameter Sets: GenerateViaJsonString
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
