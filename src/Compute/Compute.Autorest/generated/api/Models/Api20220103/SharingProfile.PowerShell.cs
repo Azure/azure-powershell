@@ -101,6 +101,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
                 return;
             }
             // actually deserialize
+            if (content.Contains("CommunityGalleryInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfo = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ICommunityGalleryInfo) content.GetValueForProperty("CommunityGalleryInfo",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfo, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.CommunityGalleryInfoTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Permission"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).Permission = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.GallerySharingPermissionTypes?) content.GetValueForProperty("Permission",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).Permission, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.GallerySharingPermissionTypes.CreateFrom);
@@ -109,9 +113,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).Group = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileGroup[]) content.GetValueForProperty("Group",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).Group, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileGroup>(__y, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.SharingProfileGroupTypeConverter.ConvertFrom));
             }
-            if (content.Contains("CommunityGalleryInfo"))
+            if (content.Contains("CommunityGalleryInfoPublisherUri"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfo = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IAny) content.GetValueForProperty("CommunityGalleryInfo",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfo, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.AnyTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoPublisherUri = (string) content.GetValueForProperty("CommunityGalleryInfoPublisherUri",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoPublisherUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("CommunityGalleryInfoPublisherContact"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoPublisherContact = (string) content.GetValueForProperty("CommunityGalleryInfoPublisherContact",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoPublisherContact, global::System.Convert.ToString);
+            }
+            if (content.Contains("CommunityGalleryInfoEula"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoEula = (string) content.GetValueForProperty("CommunityGalleryInfoEula",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoEula, global::System.Convert.ToString);
+            }
+            if (content.Contains("CommunityGalleryInfoPublicName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoPublicName = (string[]) content.GetValueForProperty("CommunityGalleryInfoPublicName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoPublicName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("CommunityGalleryInfoPublicNamePrefix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoPublicNamePrefix = (string) content.GetValueForProperty("CommunityGalleryInfoPublicNamePrefix",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoPublicNamePrefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("CommunityGalleryInfoCommunityGalleryEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoCommunityGalleryEnabled = (bool?) content.GetValueForProperty("CommunityGalleryInfoCommunityGalleryEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoCommunityGalleryEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializeDictionary(content);
         }
@@ -130,6 +154,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
                 return;
             }
             // actually deserialize
+            if (content.Contains("CommunityGalleryInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfo = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ICommunityGalleryInfo) content.GetValueForProperty("CommunityGalleryInfo",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfo, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.CommunityGalleryInfoTypeConverter.ConvertFrom);
+            }
             if (content.Contains("Permission"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).Permission = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.GallerySharingPermissionTypes?) content.GetValueForProperty("Permission",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).Permission, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.GallerySharingPermissionTypes.CreateFrom);
@@ -138,9 +166,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).Group = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileGroup[]) content.GetValueForProperty("Group",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).Group, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileGroup>(__y, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.SharingProfileGroupTypeConverter.ConvertFrom));
             }
-            if (content.Contains("CommunityGalleryInfo"))
+            if (content.Contains("CommunityGalleryInfoPublisherUri"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfo = (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IAny) content.GetValueForProperty("CommunityGalleryInfo",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfo, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.AnyTypeConverter.ConvertFrom);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoPublisherUri = (string) content.GetValueForProperty("CommunityGalleryInfoPublisherUri",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoPublisherUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("CommunityGalleryInfoPublisherContact"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoPublisherContact = (string) content.GetValueForProperty("CommunityGalleryInfoPublisherContact",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoPublisherContact, global::System.Convert.ToString);
+            }
+            if (content.Contains("CommunityGalleryInfoEula"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoEula = (string) content.GetValueForProperty("CommunityGalleryInfoEula",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoEula, global::System.Convert.ToString);
+            }
+            if (content.Contains("CommunityGalleryInfoPublicName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoPublicName = (string[]) content.GetValueForProperty("CommunityGalleryInfoPublicName",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoPublicName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("CommunityGalleryInfoPublicNamePrefix"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoPublicNamePrefix = (string) content.GetValueForProperty("CommunityGalleryInfoPublicNamePrefix",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoPublicNamePrefix, global::System.Convert.ToString);
+            }
+            if (content.Contains("CommunityGalleryInfoCommunityGalleryEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoCommunityGalleryEnabled = (bool?) content.GetValueForProperty("CommunityGalleryInfoCommunityGalleryEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileInternal)this).CommunityGalleryInfoCommunityGalleryEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
             AfterDeserializePSObject(content);
         }

@@ -88,7 +88,6 @@ Accept wildcard characters: False
 
 ### -EnvironmentData
 The security connector environment data.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityConnectorEnvironment
@@ -149,7 +148,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity
@@ -210,7 +208,6 @@ Accept wildcard characters: False
 
 ### -Offering
 A collection of offerings for the security connector.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOffering[]

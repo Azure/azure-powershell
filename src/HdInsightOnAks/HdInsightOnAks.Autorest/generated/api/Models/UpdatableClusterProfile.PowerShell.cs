@@ -146,6 +146,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).PrometheusProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPrometheusProfile) content.GetValueForProperty("PrometheusProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).PrometheusProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPrometheusProfileTypeConverter.ConvertFrom);
             }
+            if (content.Contains("RangerPluginProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerPluginProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterRangerPluginProfile) content.GetValueForProperty("RangerPluginProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerPluginProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterRangerPluginProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfile) content.GetValueForProperty("RangerProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerProfileTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ServiceConfigsProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).ServiceConfigsProfile = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile>) content.GetValueForProperty("ServiceConfigsProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).ServiceConfigsProfile, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile>(__y, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterServiceConfigsProfileTypeConverter.ConvertFrom));
@@ -238,6 +246,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).PrometheuProfileEnabled = (bool) content.GetValueForProperty("PrometheuProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).PrometheuProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("RangerPluginProfileEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerPluginProfileEnabled = (bool) content.GetValueForProperty("RangerPluginProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerPluginProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RangerProfileRangerAdmin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerProfileRangerAdmin = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpec) content.GetValueForProperty("RangerProfileRangerAdmin",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerProfileRangerAdmin, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAdminSpecTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerProfileRangerAudit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerProfileRangerAudit = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAuditSpec) content.GetValueForProperty("RangerProfileRangerAudit",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerProfileRangerAudit, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAuditSpecTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerProfileRangerUsersync"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerProfileRangerUsersync = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerUsersyncSpec) content.GetValueForProperty("RangerProfileRangerUsersync",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerProfileRangerUsersync, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerUsersyncSpecTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerUsersyncMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncMode = (string) content.GetValueForProperty("RangerUsersyncMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncMode, global::System.Convert.ToString);
+            }
             if (content.Contains("ApplicationLogStdOutEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).ApplicationLogStdOutEnabled = (bool?) content.GetValueForProperty("ApplicationLogStdOutEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).ApplicationLogStdOutEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -245,6 +273,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("ApplicationLogStdErrorEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).ApplicationLogStdErrorEnabled = (bool?) content.GetValueForProperty("ApplicationLogStdErrorEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).ApplicationLogStdErrorEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RangerAdminDatabase"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerAdminDatabase = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpecDatabase) content.GetValueForProperty("RangerAdminDatabase",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerAdminDatabase, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAdminSpecDatabaseTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerAdmin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerAdmin = (System.Collections.Generic.List<string>) content.GetValueForProperty("RangerAdmin",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerAdmin, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("RangerAuditStorageAccount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerAuditStorageAccount = (string) content.GetValueForProperty("RangerAuditStorageAccount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerAuditStorageAccount, global::System.Convert.ToString);
+            }
+            if (content.Contains("RangerUsersyncEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncEnabled = (bool?) content.GetValueForProperty("RangerUsersyncEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RangerUsersyncGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncGroup = (System.Collections.Generic.List<string>) content.GetValueForProperty("RangerUsersyncGroup",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncGroup, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("RangerUsersyncUserMappingLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncUserMappingLocation = (string) content.GetValueForProperty("RangerUsersyncUserMappingLocation",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncUserMappingLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("RangerUsersyncUser"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncUser = (System.Collections.Generic.List<string>) content.GetValueForProperty("RangerUsersyncUser",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncUser, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("DatabaseHost"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).DatabaseHost = (string) content.GetValueForProperty("DatabaseHost",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).DatabaseHost, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).DatabaseName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabasePasswordSecretRef"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).DatabasePasswordSecretRef = (string) content.GetValueForProperty("DatabasePasswordSecretRef",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).DatabasePasswordSecretRef, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseUsername"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).DatabaseUsername = (string) content.GetValueForProperty("DatabaseUsername",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).DatabaseUsername, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
@@ -283,6 +355,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).PrometheusProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPrometheusProfile) content.GetValueForProperty("PrometheusProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).PrometheusProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPrometheusProfileTypeConverter.ConvertFrom);
             }
+            if (content.Contains("RangerPluginProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerPluginProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterRangerPluginProfile) content.GetValueForProperty("RangerPluginProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerPluginProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterRangerPluginProfileTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerProfile"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerProfile = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfile) content.GetValueForProperty("RangerProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerProfile, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerProfileTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ServiceConfigsProfile"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).ServiceConfigsProfile = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile>) content.GetValueForProperty("ServiceConfigsProfile",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).ServiceConfigsProfile, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile>(__y, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterServiceConfigsProfileTypeConverter.ConvertFrom));
@@ -375,6 +455,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).PrometheuProfileEnabled = (bool) content.GetValueForProperty("PrometheuProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).PrometheuProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
             }
+            if (content.Contains("RangerPluginProfileEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerPluginProfileEnabled = (bool) content.GetValueForProperty("RangerPluginProfileEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerPluginProfileEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RangerProfileRangerAdmin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerProfileRangerAdmin = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpec) content.GetValueForProperty("RangerProfileRangerAdmin",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerProfileRangerAdmin, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAdminSpecTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerProfileRangerAudit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerProfileRangerAudit = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAuditSpec) content.GetValueForProperty("RangerProfileRangerAudit",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerProfileRangerAudit, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAuditSpecTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerProfileRangerUsersync"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerProfileRangerUsersync = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerUsersyncSpec) content.GetValueForProperty("RangerProfileRangerUsersync",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerProfileRangerUsersync, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerUsersyncSpecTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerUsersyncMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncMode = (string) content.GetValueForProperty("RangerUsersyncMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncMode, global::System.Convert.ToString);
+            }
             if (content.Contains("ApplicationLogStdOutEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).ApplicationLogStdOutEnabled = (bool?) content.GetValueForProperty("ApplicationLogStdOutEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).ApplicationLogStdOutEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
@@ -382,6 +482,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("ApplicationLogStdErrorEnabled"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).ApplicationLogStdErrorEnabled = (bool?) content.GetValueForProperty("ApplicationLogStdErrorEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).ApplicationLogStdErrorEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RangerAdminDatabase"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerAdminDatabase = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpecDatabase) content.GetValueForProperty("RangerAdminDatabase",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerAdminDatabase, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerAdminSpecDatabaseTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RangerAdmin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerAdmin = (System.Collections.Generic.List<string>) content.GetValueForProperty("RangerAdmin",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerAdmin, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("RangerAuditStorageAccount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerAuditStorageAccount = (string) content.GetValueForProperty("RangerAuditStorageAccount",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerAuditStorageAccount, global::System.Convert.ToString);
+            }
+            if (content.Contains("RangerUsersyncEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncEnabled = (bool?) content.GetValueForProperty("RangerUsersyncEnabled",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RangerUsersyncGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncGroup = (System.Collections.Generic.List<string>) content.GetValueForProperty("RangerUsersyncGroup",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncGroup, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("RangerUsersyncUserMappingLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncUserMappingLocation = (string) content.GetValueForProperty("RangerUsersyncUserMappingLocation",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncUserMappingLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("RangerUsersyncUser"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncUser = (System.Collections.Generic.List<string>) content.GetValueForProperty("RangerUsersyncUser",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).RangerUsersyncUser, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("DatabaseHost"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).DatabaseHost = (string) content.GetValueForProperty("DatabaseHost",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).DatabaseHost, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).DatabaseName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabasePasswordSecretRef"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).DatabasePasswordSecretRef = (string) content.GetValueForProperty("DatabasePasswordSecretRef",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).DatabasePasswordSecretRef, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseUsername"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).DatabaseUsername = (string) content.GetValueForProperty("DatabaseUsername",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal)this).DatabaseUsername, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

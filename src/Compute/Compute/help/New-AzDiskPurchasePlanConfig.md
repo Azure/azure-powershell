@@ -14,7 +14,8 @@ Creates a PurchasePlan Object
 
 ```
 New-AzDiskPurchasePlanConfig -Publisher <String> -Name <String> -Product <String> [-PromotionCode <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

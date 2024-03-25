@@ -65,10 +65,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_parameter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("parameters"), out var __jsonParameters) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobRestoreParameters.FromJson(__jsonParameters) : Parameter;}
-            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)Status;}
-            {_failureReason = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("failureReason"), out var __jsonFailureReason) ? (string)__jsonFailureReason : (string)FailureReason;}
-            {_restoreId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("restoreId"), out var __jsonRestoreId) ? (string)__jsonRestoreId : (string)RestoreId;}
+            {_parameter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("parameters"), out var __jsonParameters) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.BlobRestoreParameters.FromJson(__jsonParameters) : _parameter;}
+            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)_status;}
+            {_failureReason = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("failureReason"), out var __jsonFailureReason) ? (string)__jsonFailureReason : (string)_failureReason;}
+            {_restoreId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("restoreId"), out var __jsonRestoreId) ? (string)__jsonRestoreId : (string)_restoreId;}
             AfterFromJson(json);
         }
 

@@ -15,7 +15,8 @@ Removes the AEM extension from a virtual machine.
 
 ```
 Remove-AzVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>]
- [[-OSType] <String>] [-NoWait] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-OSType] <String>] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -146,5 +147,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzVMAEMExtension](./Set-AzVMAEMExtension.md)
 
 [Test-AzVMAEMExtension](./Test-AzVMAEMExtension.md)
-
-

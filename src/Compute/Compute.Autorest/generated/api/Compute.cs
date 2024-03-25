@@ -29,7 +29,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -132,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleriesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleriesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -255,7 +255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -310,7 +310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesDelete(string subscriptionId, string resourceGroupName, string galleryName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesDelete(string subscriptionId, string resourceGroupName, string galleryName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -352,7 +352,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -406,7 +406,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleriesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleriesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -536,7 +536,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -588,7 +588,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesGet(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.SelectPermissions? Select, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.GalleryExpandParams? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesGet(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.SelectPermissions? Select, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.GalleryExpandParams? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -635,7 +635,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.SelectPermissions? Select, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.GalleryExpandParams? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.SelectPermissions? Select, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.GalleryExpandParams? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -692,7 +692,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleriesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleriesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -716,7 +716,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -770,7 +770,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -810,7 +810,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesListByResourceGroup(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -850,7 +850,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -901,7 +901,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleriesListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleriesListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -925,7 +925,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -970,7 +970,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -1018,7 +1018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleriesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleriesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1042,7 +1042,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1090,7 +1090,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesUpdate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesUpdate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -1136,7 +1136,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleriesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleriesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -1193,7 +1193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleriesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleriesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGallery>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1316,7 +1316,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1376,7 +1376,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -1426,7 +1426,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -1491,7 +1491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1614,7 +1614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1677,7 +1677,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsDelete(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsDelete(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -1723,7 +1723,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -1783,7 +1783,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1913,7 +1913,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1970,7 +1970,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsGet(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsGet(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -2018,7 +2018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -2079,7 +2079,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2103,7 +2103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2162,7 +2162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsListByGalleryApplication(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsListByGalleryApplication(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -2206,7 +2206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsListByGalleryApplicationViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsListByGalleryApplicationViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -2265,7 +2265,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsListByGalleryApplication_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsListByGalleryApplication_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2289,7 +2289,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2348,7 +2348,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, string galleryApplicationVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -2398,7 +2398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationVersionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -2461,7 +2461,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationVersionsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2584,7 +2584,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2647,7 +2647,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -2695,7 +2695,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -2755,7 +2755,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2878,7 +2878,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2936,7 +2936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsDelete(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsDelete(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -2980,7 +2980,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -3037,7 +3037,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3167,7 +3167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3221,7 +3221,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsGet(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsGet(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -3264,7 +3264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -3320,7 +3320,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3344,7 +3344,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3397,7 +3397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsListByGallery(string subscriptionId, string resourceGroupName, string galleryName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsListByGallery(string subscriptionId, string resourceGroupName, string galleryName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -3439,7 +3439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsListByGalleryViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsListByGalleryViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -3493,7 +3493,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationsListByGallery_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationsListByGallery_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3517,7 +3517,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3570,7 +3570,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryApplicationName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -3618,7 +3618,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryApplicationsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryApplicationsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -3678,7 +3678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryApplicationsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryApplicationsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplication>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3801,7 +3801,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3862,7 +3862,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -3912,7 +3912,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -3975,7 +3975,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImageVersionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImageVersionsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4098,7 +4098,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4160,7 +4160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsDelete(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsDelete(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -4206,7 +4206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -4266,7 +4266,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImageVersionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImageVersionsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4396,7 +4396,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4453,7 +4453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsGet(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsGet(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -4501,7 +4501,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsGetViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.ReplicationStatusTypes? Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -4562,7 +4562,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImageVersionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImageVersionsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4586,7 +4586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4645,7 +4645,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsListByGalleryImage(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsListByGalleryImage(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -4689,7 +4689,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsListByGalleryImageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsListByGalleryImageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -4748,7 +4748,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImageVersionsListByGalleryImage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImageVersionsListByGalleryImage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4772,7 +4772,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4830,7 +4830,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, string galleryImageVersionName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -4880,7 +4880,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImageVersionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImageVersionsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -4943,7 +4943,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImageVersionsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImageVersionsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersion>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5066,7 +5066,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5128,7 +5128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -5176,7 +5176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -5236,7 +5236,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImagesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImagesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5359,7 +5359,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5417,7 +5417,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesDelete(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesDelete(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -5461,7 +5461,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -5518,7 +5518,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImagesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImagesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5648,7 +5648,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5701,7 +5701,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesGet(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesGet(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -5744,7 +5744,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -5800,7 +5800,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImagesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImagesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5824,7 +5824,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5876,7 +5876,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesListByGallery(string subscriptionId, string resourceGroupName, string galleryName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesListByGallery(string subscriptionId, string resourceGroupName, string galleryName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -5918,7 +5918,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesListByGalleryViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesListByGalleryViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -5972,7 +5972,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImagesListByGallery_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImagesListByGallery_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5996,7 +5996,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6049,7 +6049,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesUpdate(string subscriptionId, string resourceGroupName, string galleryName, string galleryImageName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -6097,7 +6097,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GalleryImagesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GalleryImagesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -6157,7 +6157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GalleryImagesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GalleryImagesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImage>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6280,7 +6280,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6337,7 +6337,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GallerySharingProfileUpdate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingUpdate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GallerySharingProfileUpdate(string subscriptionId, string resourceGroupName, string galleryName, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingUpdate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -6384,7 +6384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task GallerySharingProfileUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingUpdate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task GallerySharingProfileUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingUpdate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2022-01-03";
             // Constant Parameters
@@ -6442,7 +6442,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task GallerySharingProfileUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingUpdate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task GallerySharingProfileUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingUpdate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6566,7 +6566,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6621,9 +6621,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsCreateOrUpdate(string resourceGroupName, string vmName, string runCommandName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsCreateOrUpdate(string resourceGroupName, string vmName, string runCommandName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6669,9 +6669,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6731,7 +6731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6848,13 +6848,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.VirtualMachineRunCommand.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommand.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6883,7 +6883,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsCreateOrUpdate_Validate(string resourceGroupName, string vmName, string runCommandName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsCreateOrUpdate_Validate(string resourceGroupName, string vmName, string runCommandName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -6911,9 +6911,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsDelete(string resourceGroupName, string vmName, string runCommandName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsDelete(string resourceGroupName, string vmName, string runCommandName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6955,9 +6955,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7012,7 +7012,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7142,7 +7142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7192,9 +7192,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsGet(string location, string commandId, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandDocument>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsGet(string location, string commandId, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandDocument>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7238,9 +7238,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsGetByVirtualMachine(string resourceGroupName, string vmName, string runCommandName, string Expand, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsGetByVirtualMachine(string resourceGroupName, string vmName, string runCommandName, string Expand, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7284,9 +7284,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsGetByVirtualMachineViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsGetByVirtualMachineViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7344,7 +7344,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsGetByVirtualMachine_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsGetByVirtualMachine_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7362,13 +7362,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.VirtualMachineRunCommand.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommand.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7417,9 +7417,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandDocument>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandDocument>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7468,7 +7468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandDocument>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandDocument>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7486,7 +7486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.RunCommandDocument.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandDocument.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -7538,9 +7538,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsList(string location, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsList(string location, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7582,9 +7582,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsListByVirtualMachine(string resourceGroupName, string vmName, string Expand, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsListByVirtualMachine(string resourceGroupName, string vmName, string Expand, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommandsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7627,9 +7627,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsListByVirtualMachineViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsListByVirtualMachineViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommandsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7685,7 +7685,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsListByVirtualMachine_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsListByVirtualMachine_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommandsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7703,13 +7703,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.VirtualMachineRunCommandsListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommandsListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7756,9 +7756,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7805,7 +7805,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandListResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7823,7 +7823,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.RunCommandListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -7878,9 +7878,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsUpdate(string resourceGroupName, string vmName, string runCommandName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsUpdate(string resourceGroupName, string vmName, string runCommandName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommandUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7926,9 +7926,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineRunCommandsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommandUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7986,7 +7986,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8103,13 +8103,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.VirtualMachineRunCommand.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommand.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -8138,7 +8138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsUpdate_Validate(string resourceGroupName, string vmName, string runCommandName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task VirtualMachineRunCommandsUpdate_Validate(string resourceGroupName, string vmName, string runCommandName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommandUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -8167,9 +8167,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsCreateOrUpdate(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsCreateOrUpdate(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8217,9 +8217,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8282,7 +8282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8399,13 +8399,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.VirtualMachineRunCommand.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommand.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -8435,7 +8435,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsCreateOrUpdate_Validate(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsCreateOrUpdate_Validate(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -8465,9 +8465,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsDelete(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsDelete(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8511,9 +8511,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8573,7 +8573,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8703,7 +8703,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -8760,9 +8760,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsGet(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string Expand, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsGet(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string Expand, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8808,9 +8808,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsGetViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsGetViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8871,7 +8871,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8889,13 +8889,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.VirtualMachineRunCommand.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommand.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -8955,9 +8955,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsList(string resourceGroupName, string vmScaleSetName, string instanceId, string Expand, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsList(string resourceGroupName, string vmScaleSetName, string instanceId, string Expand, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommandsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9004,9 +9004,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsListViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsListViaIdentity(global::System.String viaIdentity, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommandsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9065,7 +9065,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommandsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9083,13 +9083,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.VirtualMachineRunCommandsListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommandsListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -9146,9 +9146,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsUpdate(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsUpdate(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommandUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9196,9 +9196,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommandUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9261,7 +9261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9378,13 +9378,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.VirtualMachineRunCommand.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.VirtualMachineRunCommand.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -9414,7 +9414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsUpdate_Validate(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommandUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMRunCommandsUpdate_Validate(string resourceGroupName, string vmScaleSetName, string instanceId, string runCommandName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommandUpdate body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -9441,9 +9441,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMSRunCommand(string resourceGroupName, string vmScaleSetName, string instanceId, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMSRunCommand(string resourceGroupName, string vmScaleSetName, string instanceId, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9488,9 +9488,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMSRunCommandViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMSRunCommandViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9547,7 +9547,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMSRunCommand_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMSRunCommand_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9662,7 +9662,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.RunCommandResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -9695,7 +9695,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMSRunCommand_Validate(string resourceGroupName, string vmScaleSetName, string instanceId, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInput body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task VirtualMachineScaleSetVMSRunCommand_Validate(string resourceGroupName, string vmScaleSetName, string instanceId, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInput body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -9720,9 +9720,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachinesRunCommand(string resourceGroupName, string vmName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachinesRunCommand(string resourceGroupName, string vmName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9765,9 +9765,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualMachinesRunCommandViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualMachinesRunCommandViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-07-01";
+            var apiVersion = @"2023-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9821,7 +9821,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachinesRunCommand_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualMachinesRunCommand_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandResult>, global::System.Threading.Tasks.Task> onOk, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9936,7 +9936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.RunCommandResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.RunCommandResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -9968,7 +9968,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualMachinesRunCommand_Validate(string resourceGroupName, string vmName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInput body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task VirtualMachinesRunCommand_Validate(string resourceGroupName, string vmName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInput body, Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {

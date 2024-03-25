@@ -15,7 +15,8 @@ Creates a configuration object for automatic patching on a virtual machine.
 
 ```
 New-AzVMSqlServerAutoPatchingConfig [-Enable] [-DayOfWeek <String>] [-MaintenanceWindowStartingHour <Int32>]
- [-MaintenanceWindowDuration <Int32>] [-PatchCategory <String>] [<CommonParameters>]
+ [-MaintenanceWindowDuration <Int32>] [-PatchCategory <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,5 +154,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzVMSqlServerAutoBackupConfig](./New-AzVMSqlServerAutoBackupConfig.md)
 
 [Set-AzVMSqlServerExtension](./Set-AzVMSqlServerExtension.md)
-
-

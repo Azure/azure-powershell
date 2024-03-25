@@ -155,6 +155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         Description = @"Type of managed service identity.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChange("IdentityType", "12.0.0", "5.0.0", "2024/05/21", OldParamaterType="CaptureIdentityType", NewParameterType="String")]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType))]
         public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType IdentityType { get => _parametersBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType)""); set => _parametersBody.IdentityType = value; }
 

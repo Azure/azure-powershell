@@ -19,7 +19,8 @@ New-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-Subscriptio
  [-IdentityType <ManagedServiceIdentityType>] [-UserAssignedIdentityId <String[]>] [-EnableAutoInflate]
  [-MaximumThroughputUnit <Int64>] [-MinimumTlsVersion <String>] [-SkuName <SkuName>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-SkuCapacity <Int64>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

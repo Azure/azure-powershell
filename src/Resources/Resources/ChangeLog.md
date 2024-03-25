@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added null check to the permissions object in the ToPSRoleDefinition method.
 * Added dynamic parameters to stack New/Set cmdlets.
 * Used correct JSON serializer settings for all templates-related deserialization.
 

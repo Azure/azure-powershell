@@ -16,49 +16,49 @@ Initializes Restore Request object for triggering restore on a protected backup 
 ```
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
- [-RecoveryPoint <String>] [-RestoreConfiguration <KubernetesClusterRestoreCriteria>]
- [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreURI <String>]
- [-SecretStoreType <SecretStoreTypes>] [-PointInTime <DateTime>] [-ProgressAction <ActionPreference>]
+ [-RecoveryPoint <String>] [-PointInTime <DateTime>] [-RehydrationDuration <String>]
+ [-RehydrationPriority <String>] [-RestoreConfiguration <KubernetesClusterRestoreCriteria>]
+ [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### AlternateLocationILR
 ```
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
- -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String> [-ItemLevelRecovery]
- [-RecoveryPoint <String>] [-ContainersList <String[]>]
- [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
-```
-
-### OriginalLocationILR
-```
-Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
- -RestoreLocation <String> -RestoreType <RestoreTargetType> [-ItemLevelRecovery] [-RecoveryPoint <String>]
- [-ContainersList <String[]>] [-RestoreConfiguration <KubernetesClusterRestoreCriteria>]
- [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreURI <String>]
- [-SecretStoreType <SecretStoreTypes>] -BackupInstance <BackupInstanceResource> [-PointInTime <DateTime>]
- [-FromPrefixPattern <String[]>] [-ToPrefixPattern <String[]>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
+ [-RecoveryPoint <String>] [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-ItemLevelRecovery]
+ [-ContainersList <String[]>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### OriginalLocationFullRecovery
 ```
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
- -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>]
- [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-RehydrationDuration <String>]
- [-RehydrationPriority <String>] [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>]
- -BackupInstance <BackupInstanceResource> [-PointInTime <DateTime>] [-ProgressAction <ActionPreference>]
- [<CommonParameters>]
+ -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>] [-PointInTime <DateTime>]
+ [-RehydrationDuration <String>] [-RehydrationPriority <String>]
+ [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-SecretStoreURI <String>]
+ [-SecretStoreType <SecretStoreTypes>] -BackupInstance <BackupInstanceResource>
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### OriginalLocationILR
+```
+Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
+ -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>] [-PointInTime <DateTime>]
+ [-RehydrationDuration <String>] [-RehydrationPriority <String>]
+ [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-SecretStoreURI <String>]
+ [-SecretStoreType <SecretStoreTypes>] [-ItemLevelRecovery] [-ContainersList <String[]>]
+ -BackupInstance <BackupInstanceResource> [-FromPrefixPattern <String[]>] [-ToPrefixPattern <String[]>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### RestoreAsFiles
 ```
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>]
- -TargetContainerURI <String> -FileNamePrefix <String> [-RehydrationDuration <String>]
- [-RehydrationPriority <String>] [-TargetResourceIdForRestoreAsFile <String>] [-SecretStoreURI <String>]
- [-SecretStoreType <SecretStoreTypes>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreURI <String>]
+ [-SecretStoreType <SecretStoreTypes>] -TargetContainerURI <String>
+ [-TargetResourceIdForRestoreAsFile <String>] [-FileNamePrefix <String>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -195,8 +195,8 @@ Backup Instance object to trigger original localtion restore.
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.BackupInstanceResource
-Parameter Sets: OriginalLocationILR, OriginalLocationFullRecovery
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.BackupInstanceResource
+Parameter Sets: OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
 Required: True
@@ -228,7 +228,7 @@ Datasource Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
-Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureKubernetesService
+Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL
 
 Required: True
 Position: Named
@@ -245,7 +245,7 @@ Type: System.String
 Parameter Sets: RestoreAsFiles
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -287,7 +287,7 @@ Point In Time for restore.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: AlternateLocationFullRecovery, OriginalLocationILR, OriginalLocationFullRecovery
+Parameter Sets: AlternateLocationFullRecovery, OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
 Required: False
@@ -332,7 +332,7 @@ Rehydration duration for the archived recovery point to stay rehydrated, default
 
 ```yaml
 Type: System.String
-Parameter Sets: AlternateLocationFullRecovery, OriginalLocationILR, OriginalLocationFullRecovery, RestoreAsFiles
+Parameter Sets: AlternateLocationFullRecovery, OriginalLocationFullRecovery, OriginalLocationILR, RestoreAsFiles
 Aliases:
 
 Required: False
@@ -348,7 +348,7 @@ This parameter is mandatory for rehydrate restore of archived points.
 
 ```yaml
 Type: System.String
-Parameter Sets: AlternateLocationFullRecovery, OriginalLocationILR, OriginalLocationFullRecovery, RestoreAsFiles
+Parameter Sets: AlternateLocationFullRecovery, OriginalLocationFullRecovery, OriginalLocationILR, RestoreAsFiles
 Aliases:
 
 Required: False
@@ -364,8 +364,8 @@ Use this parameter to restore with AzureKubernetesService.
 To construct, see NOTES section for RESTORECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.KubernetesClusterRestoreCriteria
-Parameter Sets: AlternateLocationFullRecovery, AlternateLocationILR, OriginalLocationILR, OriginalLocationFullRecovery
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.KubernetesClusterRestoreCriteria
+Parameter Sets: AlternateLocationFullRecovery, AlternateLocationILR, OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
 Required: False
@@ -412,7 +412,7 @@ This parameter is only supported for AzureDatabaseForPostgreSQL currently.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreTypes
-Parameter Sets: AlternateLocationFullRecovery, OriginalLocationILR, OriginalLocationFullRecovery, RestoreAsFiles
+Parameter Sets: AlternateLocationFullRecovery, OriginalLocationFullRecovery, OriginalLocationILR, RestoreAsFiles
 Aliases:
 Accepted values: AzureKeyVault
 
@@ -429,7 +429,7 @@ This parameter is only supported for AzureDatabaseForPostgreSQL currently.
 
 ```yaml
 Type: System.String
-Parameter Sets: AlternateLocationFullRecovery, OriginalLocationILR, OriginalLocationFullRecovery, RestoreAsFiles
+Parameter Sets: AlternateLocationFullRecovery, OriginalLocationFullRecovery, OriginalLocationILR, RestoreAsFiles
 Aliases:
 
 Required: False
@@ -488,7 +488,7 @@ Accept wildcard characters: False
 
 ### -TargetResourceIdForRestoreAsFile
 Target storage account container ARM Id to which backup data will be restored as files.
-This parameter is required for restoring as files to another subscription.
+This parameter is required for restoring as files when cross subscription restore is disabled on the backup vault.
 
 ```yaml
 Type: System.String
@@ -524,7 +524,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IAzureBackupRestoreRequest
 
 ## NOTES
 
