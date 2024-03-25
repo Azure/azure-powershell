@@ -15,27 +15,29 @@ Fully backup a managed HSM.
 ### InteractiveStorageName (Default)
 ```
 Backup-AzKeyVault [-HsmName] <String> -StorageAccountName <String> -StorageContainerName <String>
- [-SasToken <SecureString>] [-UseUserManagedIdentity] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SasToken <SecureString>] [-UseUserManagedIdentity] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InteractiveStorageUri
 ```
 Backup-AzKeyVault [-HsmName] <String> -StorageContainerUri <Uri> [-SasToken <SecureString>]
- [-UseUserManagedIdentity] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UseUserManagedIdentity] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectStorageUri
 ```
 Backup-AzKeyVault -StorageContainerUri <Uri> [-SasToken <SecureString>] [-UseUserManagedIdentity]
- -HsmObject <PSManagedHsm> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -HsmObject <PSManagedHsm> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectStorageName
 ```
 Backup-AzKeyVault -StorageAccountName <String> -StorageContainerName <String> [-SasToken <SecureString>]
- [-UseUserManagedIdentity] -HsmObject <PSManagedHsm> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-UseUserManagedIdentity] -HsmObject <PSManagedHsm> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,7 +83,6 @@ https://{accountName}.blob.core.windows.net/{containerName}/{backupFolder}
 
 The cmdlet will create a folder (typically named `mhsm-{name}-{timestamp}`) in the storage container, store the backup in that folder and output the folder URI.
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -126,6 +127,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
