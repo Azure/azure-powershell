@@ -11,6 +11,12 @@ Locale: en-US
 Microsoft Azure PowerShell: ScVmm cmdlets
 
 ## Az.ScVmm Cmdlets
+### [Add-AzScVmmNetworkInterface](Add-AzScVmmNetworkInterface.md)
+The operation to Create a virtual machine network interface.
+
+### [Add-AzScVmmVirtualDisk](Add-AzScVmmVirtualDisk.md)
+The operation to Create a virtual machine virtual disk.
+
 ### [Get-AzScVmmAvailabilitySet](Get-AzScVmmAvailabilitySet.md)
 Implements AvailabilitySet GET method.
 
@@ -93,8 +99,14 @@ Deregisters the ScVmm fabric cloud from Azure.
 ### [Remove-AzScVmmInventoryItem](Remove-AzScVmmInventoryItem.md)
 Deletes an inventoryItem.
 
+### [Remove-AzScVmmNetworkInterface](Remove-AzScVmmNetworkInterface.md)
+The operation to Delete a virtual machine network interface.
+
 ### [Remove-AzScVmmServer](Remove-AzScVmmServer.md)
 Removes the SCVMM fabric from Azure.
+
+### [Remove-AzScVmmVirtualDisk](Remove-AzScVmmVirtualDisk.md)
+The operation to Delete a virtual machine virtual disk.
 
 ### [Remove-AzScVmmVirtualNetwork](Remove-AzScVmmVirtualNetwork.md)
 Deregisters the ScVmm virtual network from Azure.

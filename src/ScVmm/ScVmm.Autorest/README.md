@@ -379,7 +379,7 @@ directive:
     set:
       subject: VM
   - where:
-      verb: New|Update
+      verb: New
       subject: VM
     hide: true
   - where:
