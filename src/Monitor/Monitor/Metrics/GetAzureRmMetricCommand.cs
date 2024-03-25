@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Metric", DefaultParameterSetName = GetAzureRmAMetricParamGroup), OutputType(typeof(PSMetric))]
     [Microsoft.WindowsAzure.Commands.Common.CustomAttributes.GenericBreakingChangeWithVersion("Parameter set GetWithDefaultParameters will be removed", "12.0.0", "6.0.0", "2024/05/21")]
     [Microsoft.WindowsAzure.Commands.Common.CustomAttributes.GenericBreakingChangeWithVersion("Parameter set GetWithFullParameters will be changed to List2 and be 'Default' set", "12.0.0", "6.0.0", "2024/05/21")]
-    [Microsoft.WindowsAzure.Commands.Common.CustomAttributes.CmdletOutputBreakingChangeWithVersion(typeof(PSMetric), "12.0.0", "6.0.0", "2024/05/21", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IResponse")]
+    [Microsoft.WindowsAzure.Commands.Common.CustomAttributes.CmdletOutputBreakingChangeWithVersion(typeof(PSMetric), "12.0.0", "6.0.0", "2024/05/21", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IResponse", DeprecatedOutputProperties = new[] { "Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric" } , NewOutputProperties = new[] { "Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.ISubscriptionScopeMetricDefinition"})]
     public class GetAzureRmMetricCommand : ManagementCmdletBase
     {
         internal const string GetAzureRmAMetricParamGroup = "GetWithDefaultParameters";
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// <summary>
         /// Gets or sets the timegrain parameter of the cmdlet
         /// </summary>
-        [Microsoft.WindowsAzure.Commands.Common.CustomAttributes.CmdletParameterBreakingChangeWithVersion("The interval (i.e.timegrain) of the query in ISO 8601 duration format", "12.0.0", "4.0.0", "2024/05/21")]
+        [Microsoft.WindowsAzure.Commands.Common.CustomAttributes.CmdletParameterBreakingChangeWithVersion("The interval (i.e.timegrain) of the query in ISO 8601 duration format", "12.0.0", "6.0.0", "2024/05/21")]
         [Parameter(ParameterSetName = GetAzureRmAMetricParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The time grain of the query.")]
         [Parameter(ParameterSetName = GetAzureRmAMetricFullParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The time grain of the query.")]
         [ValidateNotNullOrEmpty]

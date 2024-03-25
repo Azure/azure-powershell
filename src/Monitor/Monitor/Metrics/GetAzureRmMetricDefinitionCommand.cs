@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
     /// Get the list of metric definitions for a resource.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricDefinition"), OutputType(typeof(PSMetricDefinition))]
-    [Microsoft.WindowsAzure.Commands.Common.CustomAttributes.CmdletOutputBreakingChangeWithVersion(typeof(PSMetricDefinition), "12.0.0", "6.0.0", "2024/05/21")]
+    [Microsoft.WindowsAzure.Commands.Common.CustomAttributes.CmdletOutputBreakingChangeWithVersion(typeof(PSMetricDefinition), "12.0.0", "6.0.0", "2024/05/21", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricDefinition")]
     public class GetAzureRmMetricDefinitionCommand : ManagementCmdletBase
     {
         /// <summary>

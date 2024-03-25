@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Added breaking change warning messages for Metric Manage Plane
+* Added breaking change warning messages for Metric Management Plane
     * Get-AzMetric
     * Get-AzMetricDefinition
     * New-AzMetricFilter
