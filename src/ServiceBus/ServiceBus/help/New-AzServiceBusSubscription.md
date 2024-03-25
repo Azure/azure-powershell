@@ -19,7 +19,8 @@ New-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGro
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
  [-EnableBatchedOperations] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine]
  [-IsDurable] [-IsShared] [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-RequiresSession]
- [-Status <EntityStatus>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Status <EntityStatus>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -328,6 +329,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RequiresSession
 Value indicating if a subscription supports the concept of sessions.
 
@@ -445,7 +461,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

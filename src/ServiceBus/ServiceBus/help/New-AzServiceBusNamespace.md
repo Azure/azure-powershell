@@ -18,8 +18,8 @@ New-AzServiceBusNamespace -Name <String> -ResourceGroupName <String> [-Subscript
  [-PremiumMessagingPartition <Int32>] [-RequireInfrastructureEncryption]
  [-IdentityType <ManagedServiceIdentityType>] [-ZoneRedundant] [-UserAssignedIdentityId <String[]>]
  [-MinimumTlsVersion <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-SkuName <SkuName>]
- [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -368,6 +368,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 This determines if traffic is allowed over public network.
 By default it is enabled.
@@ -550,16 +565,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 New-AzServiceBusNamespaceV2
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`KEYVAULTPROPERTY <IKeyVaultProperties[]>`: Properties of KeyVault
-  - `[KeyName <String>]`: Name of the Key from KeyVault
-  - `[KeyVaultUri <String>]`: Uri of KeyVault
-  - `[KeyVersion <String>]`: Version of KeyVault
-  - `[UserAssignedIdentity <String>]`: ARM ID of user Identity selected for encryption
 
 ## RELATED LINKS
