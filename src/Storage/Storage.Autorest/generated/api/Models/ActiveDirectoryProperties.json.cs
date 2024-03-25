@@ -65,14 +65,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_domainName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("domainName"), out var __jsonDomainName) ? (string)__jsonDomainName : (string)DomainName;}
-            {_netBiosDomainName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("netBiosDomainName"), out var __jsonNetBiosDomainName) ? (string)__jsonNetBiosDomainName : (string)NetBiosDomainName;}
-            {_forestName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("forestName"), out var __jsonForestName) ? (string)__jsonForestName : (string)ForestName;}
-            {_domainGuid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("domainGuid"), out var __jsonDomainGuid) ? (string)__jsonDomainGuid : (string)DomainGuid;}
-            {_domainSid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("domainSid"), out var __jsonDomainSid) ? (string)__jsonDomainSid : (string)DomainSid;}
-            {_azureStorageSid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("azureStorageSid"), out var __jsonAzureStorageSid) ? (string)__jsonAzureStorageSid : (string)AzureStorageSid;}
-            {_samAccountName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("samAccountName"), out var __jsonSamAccountName) ? (string)__jsonSamAccountName : (string)SamAccountName;}
-            {_accountType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("accountType"), out var __jsonAccountType) ? (string)__jsonAccountType : (string)AccountType;}
+            {_domainName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("domainName"), out var __jsonDomainName) ? (string)__jsonDomainName : (string)_domainName;}
+            {_netBiosDomainName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("netBiosDomainName"), out var __jsonNetBiosDomainName) ? (string)__jsonNetBiosDomainName : (string)_netBiosDomainName;}
+            {_forestName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("forestName"), out var __jsonForestName) ? (string)__jsonForestName : (string)_forestName;}
+            {_domainGuid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("domainGuid"), out var __jsonDomainGuid) ? (string)__jsonDomainGuid : (string)_domainGuid;}
+            {_domainSid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("domainSid"), out var __jsonDomainSid) ? (string)__jsonDomainSid : (string)_domainSid;}
+            {_azureStorageSid = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("azureStorageSid"), out var __jsonAzureStorageSid) ? (string)__jsonAzureStorageSid : (string)_azureStorageSid;}
+            {_samAccountName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("samAccountName"), out var __jsonSamAccountName) ? (string)__jsonSamAccountName : (string)_samAccountName;}
+            {_accountType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("accountType"), out var __jsonAccountType) ? (string)__jsonAccountType : (string)_accountType;}
             AfterFromJson(json);
         }
 
