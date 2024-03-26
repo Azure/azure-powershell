@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Sql.Server.Cmdlet
         [Parameter(Mandatory = false,
             HelpMessage = "The Minimal Tls Version for the Sql Azure Managed Instance. Options are: 1.0, 1.1 and 1.2 ")]
         [ValidateSet("None", "1.0", "1.1", "1.2", "1.3")]
-        [PSArgumentCompleter("None", "1.0", "1.1", "1.2")]
+        [PSArgumentCompleter("None", "1.0", "1.1", "1.2", "1.3")]
         public string MinimalTlsVersion { get; set; }
 
         /// <summary>
