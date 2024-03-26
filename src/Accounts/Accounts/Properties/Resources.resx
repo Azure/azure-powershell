@@ -601,4 +601,7 @@
   <data name="PleaseSelectAccount" xml:space="preserve">
     <value>Please select the account you want to login with.</value>
   </data>
+  <data name="RetrievingSubscription" xml:space="preserve">
+    <value>Retrieving subscriptions for the selection...</value>
+  </data>
 </root>

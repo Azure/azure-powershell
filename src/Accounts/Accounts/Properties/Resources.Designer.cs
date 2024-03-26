@@ -1033,6 +1033,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Retrieving subscriptions for the selection....
+        /// </summary>
+        internal static string RetrievingSubscription {
+            get {
+                return ResourceManager.GetString("RetrievingSubscription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Resource Manager context was not properly initialized.  Please load the module again..
         /// </summary>
         internal static string RmProfileNull {

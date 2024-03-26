@@ -250,6 +250,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         throw new ArgumentNullException(string.Format($"{e.Message}{Environment.NewLine}{baseMessage} {typeMessage}"), e);
                     }
 
+                    WriteInformationMessage(Resources.RetrievingSubscription);
                     tempSubscriptions = null;
                     if (TryGetTenantSubscription(
                         token,
@@ -289,6 +290,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     IAzureTenant tempTenant = null;
                     IAzureSubscription tempSubscription = null;
                     tempSubscriptions = null;
+
+                    WriteInformationMessage(Resources.RetrievingSubscription);
 
                     foreach (var tenant in _queriedTenants)
                     {
@@ -463,6 +466,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 else if (selectedSubIndex == -1 && lastUsedSubscription != null)
                 {
                     defaultSubscription = lastUsedSubscription;
+                }else if(selectedSubIndex == -1 && lastUsedSubscription == null)
+                {
+                    throw new AzPSException("Please type a number to select a subscription.", ErrorKind.UserError);
                 }
                 defaultTenant = GetDetailedTenantFromQueryHistory(defaultSubscription?.GetProperty(AzureSubscription.Property.Tenants)) ?? new AzureTenant { Id = tenantId };
                 if (!string.IsNullOrEmpty(tenantDomainName))
