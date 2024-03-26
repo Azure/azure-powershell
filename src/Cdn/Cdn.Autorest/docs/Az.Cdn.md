@@ -187,6 +187,12 @@ Create an in-memory object for OriginGroupOverrideAction.
 ### [New-AzCdnProfile](New-AzCdnProfile.md)
 Creates an CDN profile with the specified profile name under the specified subscription and resource group.
 
+### [New-AzCdnProfileLogScrubbingObject](New-AzCdnProfileLogScrubbingObject.md)
+Create an in-memory object for ProfileLogScrubbing.
+
+### [New-AzCdnProfileScrubbingRulesObject](New-AzCdnProfileScrubbingRulesObject.md)
+Create an in-memory object for ProfileScrubbingRules.
+
 ### [New-AzCdnPurgeParametersObject](New-AzCdnPurgeParametersObject.md)
 Create an in-memory object for PurgeParameters.
 

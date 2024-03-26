@@ -109,7 +109,7 @@ directive:
     - LoadParameters
     # AFDX profile LogScrubbing
     - ProfileLogScrubbing
-    -
+    - ProfileScrubbingRules
 
     # Migration to AFDx
     # - MigrationParameters
