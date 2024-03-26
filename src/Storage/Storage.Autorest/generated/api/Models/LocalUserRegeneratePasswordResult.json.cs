@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_sshPassword = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("sshPassword"), out var __jsonSshPassword) ? (string)__jsonSshPassword : (string)SshPassword;}
+            {_sshPassword = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("sshPassword"), out var __jsonSshPassword) ? (string)__jsonSshPassword : (string)_sshPassword;}
             AfterFromJson(json);
         }
 

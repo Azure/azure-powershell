@@ -21,7 +21,8 @@ Get-AzGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <Strin
 ### SharedGalleryParameterSet
 ```
 Get-AzGalleryImageDefinition [[-Name] <String>] -GalleryUniqueName <String> [-Scope <String>]
- -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -Location <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### CommunityGalleryParameterSet

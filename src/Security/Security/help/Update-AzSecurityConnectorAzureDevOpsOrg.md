@@ -16,7 +16,7 @@ Updates monitored Azure DevOps organization details.
 ```
 Update-AzSecurityConnectorAzureDevOpsOrg -OrgName <String> -ResourceGroupName <String>
  -SecurityConnectorName <String> [-SubscriptionId <String>] [-ActionableRemediation <IActionableRemediation>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Update-AzSecurityConnectorAzureDevOpsOrg -OrgName <String> -ResourceGroupName <S
 ```
 Update-AzSecurityConnectorAzureDevOpsOrg -InputObject <ISecurityIdentity>
  [-ActionableRemediation <IActionableRemediation>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,20 +32,50 @@ Updates monitored Azure DevOps organization details.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Update discovered AzureDevOps organization configuration
 ```powershell
 $config = New-AzSecurityConnectorActionableRemediationObject -State Enabled -InheritFromParentState Disabled -CategoryConfiguration @( @{category="IaC"; minimumSeverityLevel="High"})
 Update-AzSecurityConnectorAzureDevOpsOrg -ResourceGroupName "securityConnectors-pwsh-tmp" -SecurityConnectorName "ado-sdk-pwsh-test03" -OrgName "org1" -ActionableRemediation $config
+```
+
+```output
+ActionableRemediation           : {
+                                    "state": "Enabled",
+                                    "categoryConfigurations": [
+                                      {
+                                        "minimumSeverityLevel": "High",
+                                        "category": "IaC"
+                                      }
+                                    ],
+                                    "branchConfiguration": {
+                                      "branchNames": [ ],
+                                      "annotateDefaultBranch": "Enabled"
+                                    },
+                                    "inheritFromParentState": "Disabled"
+                                  }
+Id                              : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityConnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/ado-sdk-pwsh-test03/devops/default/azureDevOpsOrgs/org1   
+Name                            : org1
+OnboardingState                 : Onboarded
+ProvisioningState               : Succeeded
+ProvisioningStatusMessage       : OK
+ProvisioningStatusUpdateTimeUtc : 2/24/2024 12:28:16 AM
+ResourceGroupName               : securityConnectors-pwsh-tmp
+SystemDataCreatedAt             : 
+SystemDataCreatedBy             : 
+SystemDataCreatedByType         : 
+SystemDataLastModifiedAt        : 
+SystemDataLastModifiedBy        : 
+SystemDataLastModifiedByType    : 
+Type                            : Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs
 ```
 
 ## PARAMETERS
 
 ### -ActionableRemediation
 Configuration payload for PR Annotations.
-.
 
 ```yaml
-Type: IActionableRemediation
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IActionableRemediation
 Parameter Sets: (All)
 Aliases:
 
@@ -60,13 +90,13 @@ Accept wildcard characters: False
 Run the command as a job
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -76,7 +106,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -89,10 +119,9 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-.
 
 ```yaml
-Type: ISecurityIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -107,13 +136,13 @@ Accept wildcard characters: False
 Run the command asynchronously
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -122,11 +151,26 @@ Accept wildcard characters: False
 The Azure DevOps organization name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -138,7 +182,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -153,7 +197,7 @@ Accept wildcard characters: False
 The security connector name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -168,13 +212,13 @@ Accept wildcard characters: False
 Azure subscription ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -183,7 +227,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -199,7 +243,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -216,55 +260,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsOrg
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-ACTIONABLEREMEDIATION \<IActionableRemediation\>: Configuration payload for PR Annotations.
-  \[BranchConfiguration \<ITargetBranchConfiguration\>\]: Repository branch configuration for PR Annotations.
-    \[AnnotateDefaultBranch \<String\>\]: Configuration of PR Annotations on default branch. 
-Enabled - PR Annotations are enabled on the resource's default branch. 
-Disabled - PR Annotations are disabled on the resource's default branch.
-    \[BranchName \<List\<String\>\>\]: Gets or sets branches that should have annotations.
-  \[CategoryConfiguration \<List\<ICategoryConfiguration\>\>\]: Gets or sets list of categories and severity levels.
-    \[Category \<String\>\]: Rule categories. 
-Code - code scanning results. 
-Artifact scanning results. 
-Dependencies scanning results. 
-IaC results. 
-Secrets scanning results. 
-Container scanning results.
-    \[MinimumSeverityLevel \<String\>\]: Gets or sets minimum severity level for a given category.
-  \[InheritFromParentState \<String\>\]: Update Settings. 
-Enabled - Resource should inherit configurations from parent. 
-Disabled - Resource should not inherit configurations from parent.
-  \[State \<String\>\]: ActionableRemediation Setting. 
-None - the setting was never set. 
-Enabled - ActionableRemediation is enabled. 
-Disabled - ActionableRemediation is disabled.
-
-INPUTOBJECT \<ISecurityIdentity\>: Identity Parameter
-  \[ApiId \<String\>\]: API revision identifier.
-Must be unique in the API Management service instance.
-Non-current revision has ;rev=n as a suffix where n is the revision number.
-  \[GroupFqName \<String\>\]: The GitLab group fully-qualified name.
-  \[Id \<String\>\]: Resource identity path
-  \[OperationResultId \<String\>\]: The operation result Id.
-  \[OrgName \<String\>\]: The Azure DevOps organization name.
-  \[OwnerName \<String\>\]: The GitHub owner name.
-  \[ProjectName \<String\>\]: The project name.
-  \[RepoName \<String\>\]: The repository name.
-  \[ResourceGroupName \<String\>\]: The name of the resource group within the user's subscription.
-The name is case insensitive.
-  \[SecurityConnectorName \<String\>\]: The security connector name.
-  \[ServiceName \<String\>\]: The name of the API Management service.
-  \[SubscriptionId \<String\>\]: Azure subscription ID
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.security/update-azsecurityconnectorazuredevopsorg](https://learn.microsoft.com/powershell/module/az.security/update-azsecurityconnectorazuredevopsorg)

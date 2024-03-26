@@ -14,8 +14,8 @@ Creates a Capacity Reservation Group
 
 ```
 New-AzCapacityReservationGroup -ResourceGroupName <String> -Name <String> -Location <String> [-AsJob]
- [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

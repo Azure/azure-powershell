@@ -65,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_startRange = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("startRange"), out var __jsonStartRange) ? (string)__jsonStartRange : (string)StartRange;}
-            {_endRange = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("endRange"), out var __jsonEndRange) ? (string)__jsonEndRange : (string)EndRange;}
+            {_startRange = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("startRange"), out var __jsonStartRange) ? (string)__jsonStartRange : (string)_startRange;}
+            {_endRange = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("endRange"), out var __jsonEndRange) ? (string)__jsonEndRange : (string)_endRange;}
             AfterFromJson(json);
         }
 

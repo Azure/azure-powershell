@@ -16,32 +16,35 @@ Sets the key rotation policy for the specified key in Key Vault.
 ```
 Set-AzKeyVaultKeyRotationPolicy [-VaultName] <String> [-Name] <String> [-ExpiresIn <String>]
  [-KeyRotationLifetimeAction <PSKeyRotationLifetimeAction[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByRotationPolicyFileViaVaultName
 ```
 Set-AzKeyVaultKeyRotationPolicy [-VaultName] <String> [-Name] <String> -PolicyPath <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByKeyInputObject
 ```
 Set-AzKeyVaultKeyRotationPolicy [-InputObject] <PSKeyVaultKeyIdentityItem> [-ExpiresIn <String>]
  [-KeyRotationLifetimeAction <PSKeyRotationLifetimeAction[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByRotationPolicyFileViaKeyInputObject
 ```
 Set-AzKeyVaultKeyRotationPolicy [-InputObject] <PSKeyVaultKeyIdentityItem> -PolicyPath <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByKeyRotationPolicyInputObject
 ```
 Set-AzKeyVaultKeyRotationPolicy [-KeyRotationPolicy] <PSKeyRotationPolicy>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -249,6 +252,21 @@ Parameter Sets: SetByRotationPolicyFileViaVaultName, SetByRotationPolicyFileViaK
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

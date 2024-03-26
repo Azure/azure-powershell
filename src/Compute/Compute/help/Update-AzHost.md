@@ -12,17 +12,19 @@ Updates the Dedicated Host.
 
 ## SYNTAX
 
-### DefaultParameter
+### DefaultParameter (Default)
 ```
 Update-AzHost [-ResourceGroupName] <String> [-HostGroupName] <String> [-Name] <String> [-Sku <String>]
  [-AutoReplaceOnFailure <Boolean>] [-LicenseType <DedicatedHostLicenseTypes>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
 Update-AzHost [-Sku <String>] [-AutoReplaceOnFailure <Boolean>] [-LicenseType <DedicatedHostLicenseTypes>]
- [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +60,7 @@ This command updates the given Sku of a host.
 Specifies whether the host should be replaced automatically in case of a failure. 
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
@@ -73,7 +75,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -88,7 +90,7 @@ Accept wildcard characters: False
 Name of the Host Group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases:
 
@@ -103,7 +105,7 @@ Accept wildcard characters: False
 Specifies the software license type that will be applied to the VMs deployed on the host. Possible values are: None, Windows_Server_Hybrid, and Windows_Server_Perpetual.  Default value is None.
 
 ```yaml
-Type: DedicatedHostLicenseTypes
+Type: Microsoft.Azure.Management.Compute.Models.DedicatedHostLicenseTypes
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, WindowsServerHybrid, WindowsServerPerpetual
@@ -119,7 +121,7 @@ Accept wildcard characters: False
 Specifies the name of the Host to be updated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases: HostName
 
@@ -134,7 +136,7 @@ Accept wildcard characters: False
 The name of the resource group.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: DefaultParameter
 Aliases:
 
@@ -149,7 +151,7 @@ Accept wildcard characters: False
 Resource Id of the Host to be updated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ResourceIdParameter
 Aliases:
 
@@ -164,7 +166,7 @@ Accept wildcard characters: False
 The Sku Name that needs to be updated.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -179,7 +181,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -195,7 +197,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

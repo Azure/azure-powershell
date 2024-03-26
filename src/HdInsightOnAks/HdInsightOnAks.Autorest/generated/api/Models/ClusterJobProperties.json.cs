@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_jobType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("jobType"), out var __jsonJobType) ? (string)__jsonJobType : (string)JobType;}
+            {_jobType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("jobType"), out var __jsonJobType) ? (string)__jsonJobType : (string)_jobType;}
             AfterFromJson(json);
         }
 
