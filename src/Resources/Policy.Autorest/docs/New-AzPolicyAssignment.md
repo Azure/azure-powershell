@@ -8,9 +8,7 @@ schema: 2.0.0
 # New-AzPolicyAssignment
 
 ## SYNOPSIS
-This operation Create a policy assignment with the given scope and name.
-Policy assignments apply to all resources contained within their scope.
-For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
+Creates or updates a policy assignment.
 
 ## SYNTAX
 
@@ -19,62 +17,45 @@ For example, when you assign a policy at resource group scope, that policy appli
 New-AzPolicyAssignment -Name <String> [-Scope <String>] [-BackwardCompatible] [-Description <String>]
  [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>]
  [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
- [-PolicyDefinition <PSObject>] [-PolicySetDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzPolicyAssignment [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
- [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded1
-```
-New-AzPolicyAssignment [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
- [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ParameterObject
 ```
-New-AzPolicyAssignment -Name <String> -PolicyDefinition <PSObject> -PolicyParameterObject <Hashtable>
- [-Scope <String>] [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
- [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>] [-Location <String>]
- [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
+New-AzPolicyAssignment -Name <String> -PolicyParameterObject <Hashtable> [-Scope <String>]
+ [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
+ [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
+ [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-PolicyDefinition <PSObject>]
  [-PolicySetDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ParameterString
 ```
-New-AzPolicyAssignment -Name <String> -PolicyDefinition <PSObject> -PolicyParameter <String> [-Scope <String>]
- [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
- [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
- [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-PolicySetDefinition <PSObject>]
+New-AzPolicyAssignment -Name <String> -PolicyParameter <String> [-Scope <String>] [-BackwardCompatible]
+ [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>]
+ [-IdentityType <String>] [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>]
+ [-NotScope <String[]>] [-PolicyDefinition <PSObject>] [-PolicySetDefinition <PSObject>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### SetParameterObject
+### PolicyDefinition
 ```
-New-AzPolicyAssignment -Name <String> -PolicyParameterObject <Hashtable> -PolicySetDefinition <PSObject>
- [-Scope <String>] [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
- [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>] [-Location <String>]
- [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
- [-PolicyDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPolicyAssignment -Name <String> -PolicyDefinition <PSObject> [-Scope <String>] [-BackwardCompatible]
+ [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>]
+ [-IdentityType <String>] [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>]
+ [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### SetParameterString
+### PolicySetDefinition
 ```
-New-AzPolicyAssignment -Name <String> -PolicyParameter <String> -PolicySetDefinition <PSObject>
- [-Scope <String>] [-BackwardCompatible] [-Description <String>] [-DisplayName <String>]
- [-EnforcementMode <String>] [-IdentityId <String>] [-IdentityType <String>] [-Location <String>]
- [-Metadata <String>] [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>]
- [-PolicyDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPolicyAssignment -Name <String> -PolicySetDefinition <PSObject> [-Scope <String>] [-BackwardCompatible]
+ [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>]
+ [-IdentityType <String>] [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>]
+ [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This operation Create a policy assignment with the given scope and name.
+The **New-AzPolicyAssignment** cmdlet creates or updates a policy assignment with the given scope and name.
 Policy assignments apply to all resources contained within their scope.
 For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
 
@@ -239,7 +220,7 @@ Causes cmdlet to return artifacts using legacy format placing policy-specific pr
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Default, ParameterObject, ParameterString, SetParameterObject, SetParameterString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -317,7 +298,7 @@ The user identity dictionary key references will be ARM resource ids in the form
 
 ```yaml
 Type: System.String
-Parameter Sets: Default, ParameterObject, ParameterString, SetParameterObject, SetParameterString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -334,22 +315,6 @@ This is the only required field when adding a system or user assigned identity t
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The user identity associated with the policy.
-The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateExpanded1
 Aliases:
 
 Required: False
@@ -381,7 +346,7 @@ Metadata is an open ended object and is typically a collection of key value pair
 
 ```yaml
 Type: System.String
-Parameter Sets: Default, ParameterObject, ParameterString, SetParameterObject, SetParameterString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -396,7 +361,7 @@ The name of the policy assignment.
 
 ```yaml
 Type: System.String
-Parameter Sets: Default, ParameterObject, ParameterString, SetParameterObject, SetParameterString
+Parameter Sets: (All)
 Aliases: PolicyAssignmentName
 
 Required: True
@@ -411,7 +376,7 @@ The messages that describe why a resource is non-compliant with the policy.
 
 ```yaml
 Type: System.Management.Automation.PSObject[]
-Parameter Sets: Default, ParameterObject, ParameterString, SetParameterObject, SetParameterString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -437,12 +402,12 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyDefinition
-The ID of the policy definition or policy set definition being assigned.
+The ID of the policy definition being assigned.
 To construct, see NOTES section for POLICYDEFINITION properties and create a hash table.
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: Default, ParameterObject, ParameterString, SetParameterObject, SetParameterString
+Parameter Sets: ParameterObject, ParameterString, PolicyDefinition
 Aliases:
 
 Required: True
@@ -458,13 +423,13 @@ The keys are the parameter names.
 
 ```yaml
 Type: System.String
-Parameter Sets: ParameterString, SetParameterString
+Parameter Sets: ParameterString
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -474,7 +439,7 @@ The keys are the parameter names.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: ParameterObject, SetParameterObject
+Parameter Sets: ParameterObject
 Aliases:
 
 Required: True
@@ -485,18 +450,18 @@ Accept wildcard characters: False
 ```
 
 ### -PolicySetDefinition
-The ID of the policy definition or policy set definition being assigned.
+The ID of the policy set definition being assigned.
 To construct, see NOTES section for POLICYSETDEFINITION properties and create a hash table.
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: Default, ParameterObject, ParameterString, SetParameterObject, SetParameterString
+Parameter Sets: ParameterObject, ParameterString, PolicySetDefinition
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue, ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -506,7 +471,7 @@ Valid scopes are: management group (format: '/providers/Microsoft.Management/man
 
 ```yaml
 Type: System.String
-Parameter Sets: Default, ParameterObject, ParameterString, SetParameterObject, SetParameterString
+Parameter Sets: (All)
 Aliases:
 
 Required: False

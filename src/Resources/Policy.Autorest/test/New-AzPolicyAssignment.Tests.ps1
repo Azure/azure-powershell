@@ -37,7 +37,7 @@ Describe 'NewPolicyAssignment' {
     It 'New-AzPolicyAssignment -Name -Scope -PolicyDefinition -PolicySetDefinition' {
         {
             New-AzPolicyAssignment -Name $someName -Scope $someScope -PolicyDefinition $goodPolicyDefinition -PolicySetDefinition $goodPolicySetDefinition
-        } | Should -Throw $onlyDefinitionOrSetDefinition
+        } | Should -Throw $parameterSetError
     }
 
     It 'New-AzPolicyAssignment -Name -Scope -PolicyDefinition -PolicyParameterObject' {
@@ -73,13 +73,13 @@ Describe 'NewPolicyAssignment' {
     It 'New-AzPolicyAssignment -Name -Scope -PolicyParameterObject' {
         {
             New-AzPolicyAssignment -Name $someName -Scope $someScope -PolicyParameterObject $someParameterObject
-        } | Should -Throw $parameterSetError
+        } | Should -Throw $policyDefinitionParameter
     }
 
     It 'New-AzPolicyAssignment -Name -Scope -PolicyParameter' {
         {
             New-AzPolicyAssignment -Name $someName -Scope $someScope -PolicyParameter $somePolicyParameter
-        } | Should -Throw $parameterSetError
+        } | Should -Throw $policyDefinitionParameter
     }
 
     It 'New-AzPolicyAssignment -Scope' {

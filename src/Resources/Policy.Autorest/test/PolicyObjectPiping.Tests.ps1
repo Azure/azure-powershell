@@ -21,9 +21,8 @@ Describe 'PolicyObjectPiping' {
         $rg = New-ResourceGroup -Name $rgname -Location "west us"
     }
 
-    It 'Make policy assignment from piped definition' -Skip {
+    It 'Make policy assignment from piped definition' {
         # assign the policy definition to the resource group, get the assignment back and validate
-        # $$$ this test is currently blocked by what appears to be an autorest generation bug in the proxy cmdlet
         $actual = Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId | New-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -PolicyParameterObject @{'listOfAllowedLocations'=@('westus', 'eastus'); 'effectParam'='Deny'} -Description $description
         $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
         $expected.Name | Should -Be $actual.Name
@@ -44,10 +43,7 @@ Describe 'PolicyObjectPiping' {
 
     It 'Update assignment from piped object' {
         # get assignment by name/scope
-        # $$$ the next check is currently blocked because it depends on the assignment create in the previous test running and working
-        # $$$ temporarily create the assignment here to enable the test instead of just getting it as before
-        $actual = New-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -PolicyDefinition $policyDefinition -PolicyParameterObject @{'listOfAllowedLocations'=@('westus', 'eastus'); 'effectParam'='Deny'} -Description $description
-        # $$$ $actual = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
+        $actual = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
 
         # get assignment by Id, update some properties, including parameters
         $assignment = Get-AzPolicyAssignment -Id $actual.Id
