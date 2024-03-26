@@ -24,7 +24,8 @@
 * Added new parameter `-EnableAutomaticOSUpgrade` to `New-AzVmss` cmdlet.
 * Renamed parameter `-AutoOSUpgrade` to `-EnableAutomaticOSUpgrade` in `New-AzVmssConfig` cmdlet for consistency. Using `-AutoOSUpgrade` as parameter name will continue to work as it is added as an alias.
 * Upgraded Azure.Core to 1.37.0.
-* Az.Compute is updated to use the 2023-07-03 GalleryRP REST API calls.
+* Az.Compute is updated to use the 2023-07-03 GalleryRP, 2024-03-01 ComputeRP and 2023-10-02 DiskRP API.
+* Added new parameter `-TierOption` to `New-AzSnapshotConfig`.
 * Added breaking change warnings for the May 2024 release. The warnings are for:
   `New-AzGalleryImageVersion` defaulting to turn on TrustedLaunchSupported and HyperVGeneration to V2.
   `New-AzVM` and `New-AzVmss` will default to the image `Windows Server 2022 Azure Edition` instead of `Windows 2016 Datacenter` by default.

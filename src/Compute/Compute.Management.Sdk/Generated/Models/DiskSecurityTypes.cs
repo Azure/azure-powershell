@@ -35,5 +35,10 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// encrypted with a customer managed key
         /// </summary>
         public const string ConfidentialVMDiskEncryptedWithCustomerKey = "ConfidentialVM_DiskEncryptedWithCustomerKey";
+        /// <summary>
+        /// Indicates Confidential VM disk with a ephemeral vTPM. vTPM state is
+        /// not persisted across VM reboots.
+        /// </summary>
+        public const string ConfidentialVMNonPersistedTPM = "ConfidentialVM_NonPersistedTPM";
     }
 }
