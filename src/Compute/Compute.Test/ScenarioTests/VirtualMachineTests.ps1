@@ -7441,3 +7441,51 @@ function Test-VMTLWithGallerySourceImage
         Clean-ResourceGroup $rgname;
     }
 }
+
+
+<#
+.SYNOPSIS
+Testing Capacity Reservation Sharing profile parameter
+Setting Sharing profile with multiple subs
+Then unsharing using empty string as value 
+#>
+function Test-CapacityReservationSharingProfile
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = 'WestEurope';
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # create a CRG
+        $CRGName = 'CRG' + $rgname
+        New-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -Location $loc -SharingProfile "/subscriptions/88fd8cb2-8248-499e-9a2d-4929a4b0133c"
+        
+        # try Get-CRG with InstanceView
+        $CRG = Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -InstanceView
+        Assert-AreEqual "/subscriptions/88fd8cb2-8248-499e-9a2d-4929a4b0133c" $crg.SharingProfile.SubscriptionIds.Id
+
+        # Update CRG with new subscription
+        Update-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -SharingProfile "/subscriptions/88fd8cb2-8248-499e-9a2d-4929a4b0133c", "/subscriptions/24fb23e3-6ba3-41f0-9b6e-e41131d5d61e"
+        $CRG = Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -InstanceView
+        Assert-AreEqual 2 $crg.SharingProfile.SubscriptionIds.Count
+        
+        # Clear Sharing Profile for CapacityReservationGroup
+        Update-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -SharingProfile ""
+        $CRG = Get-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName -InstanceView
+        Assert-AreEqual $null $crg.SharingProfile
+        
+         # remove CRG
+        Remove-AzCapacityReservationGroup -ResourceGroupName $rgname -Name $CRGName 
+        $CRG = Get-AzCapacityReservationGroup -ResourceGroupName $rgname
+        Assert-AreEqual $null $CRG.count
+
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+} 

@@ -29,6 +29,7 @@
   `New-AzGalleryImageVersion` defaulting to turn on TrustedLaunchSupported and HyperVGeneration to V2.
   `New-AzVM` and `New-AzVmss` will default to the image `Windows Server 2022 Azure Edition` instead of `Windows 2016 Datacenter` by default.
   `Get-AzVmss` will no longer allow empty values to `ResourceGroupName` and `VMScaleSetName` to avoid a bug where it will just return nothing.
+* Added a new parameter `-SharingProfile` to `New-AzCapacityReservationGroup` and `Update-AzCapacityReservationGroup`.
 
 ## Version 7.1.2
 * Fixed `New-AzVM` when a source image is specified to avoid an error on the `Version` value.
