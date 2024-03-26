@@ -86,6 +86,15 @@ try {
     Write-Host "Preparing Autorest..."
     npx autorest --reset
     foreach ($_ in $ChangedSdks) {
+        # If it is Resources.Management.Sdk, flag and will use tag for sdk generation
+        $IsResources = $false;
+        Write-Host "111" $IsResources
+        if ($_ -match "Resources.Management.Sdk")
+        {
+            $IsResources = $true;
+        }
+        Write-Host "111222" $IsResources
+
         # Extract Module Name
         $ModuleName = "Az." + ($_ -split "\/|\\")[1]
 
@@ -107,7 +116,23 @@ try {
             if ([regex]::Matches($readMeContent, '\s*powershell\s*:\s*true\s*') -and [regex]::Matches($readMeContent, '\s*isSdkGenerator\s*:\s*true\s*'))
             {
                 Write-Host "Using autorest powershell v4:`nRe-generating SDK under Generated folder for $ModuleName..."
-                npx autorest
+                if ($IsResources)
+                {
+                    Write-Host "Specific generation for Resources.Management.Sdk"
+                    rm -r Generated/*
+                    autorest --reset
+                    autorest --use:@autorest/powershell@4.x --tag=package-privatelinks-2020-05
+                    autorest --use:@autorest/powershell@4.x --tag=package-subscriptions-2021-01
+                    autorest --use:@autorest/powershell@4.x --tag=package-features-2021-07
+                    autorest --use:@autorest/powershell@4.x --tag=package-deploymentscripts-2020-10
+                    autorest --use:@autorest/powershell@4.x --tag=package-resources-2021-04
+                    autorest --use:@autorest/powershell@4.x --tag=package-deploymentstacks-2022-08-preview
+                    autorest --use:@autorest/powershell@4.x --tag=package-templatespecs-2021-05
+                }
+                else
+                {
+                    npx autorest
+                }
             }
             elseif ([regex]::Matches($readMeContent, '\s*csharp\s*:\s*true\s*'))
             {
