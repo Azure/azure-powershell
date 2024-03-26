@@ -16,7 +16,7 @@ Removes CORS for a Storage service.
 ```
 Remove-AzStorageCORSRule [-ServiceType] <StorageServiceType> [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
@@ -103,21 +103,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ServerTimeoutPerRequest
 Specifies the length of the time-out period for the server part of a request.
 
@@ -172,5 +157,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzStorageCORSRule](./Get-AzStorageCORSRule.md)
 
 [Set-AzStorageCORSRule](./Set-AzStorageCORSRule.md)
-
-

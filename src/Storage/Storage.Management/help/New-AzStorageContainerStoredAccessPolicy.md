@@ -17,7 +17,7 @@ Creates a stored access policy for an Azure storage container.
 New-AzStorageContainerStoredAccessPolicy [-Container] <String> [-Policy] <String> [-Permission <String>]
  [-StartTime <DateTime>] [-ExpiryTime <DateTime>] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-ProgressAction <ActionPreference>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
  [<CommonParameters>]
 ```
 
@@ -163,21 +163,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ServerTimeoutPerRequest
 Specifies the client-side time-out interval, in seconds, for one service request.
 If the previous call fails in the specified interval, this cmdlet retries the request.
@@ -234,5 +219,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzStorageContainerStoredAccessPolicy](./Remove-AzStorageContainerStoredAccessPolicy.md)
 
 [Set-AzStorageContainerStoredAccessPolicy](./Set-AzStorageContainerStoredAccessPolicy.md)
-
-

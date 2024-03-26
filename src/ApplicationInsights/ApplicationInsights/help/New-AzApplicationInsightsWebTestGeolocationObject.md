@@ -13,7 +13,7 @@ Create an in-memory object for WebTestGeolocation.
 ## SYNTAX
 
 ```
-New-AzApplicationInsightsWebTestGeolocationObject [-Location <String>] [-ProgressAction <ActionPreference>]
+New-AzApplicationInsightsWebTestGeolocationObject [-Location <String>]
  [<CommonParameters>]
 ```
 
@@ -45,21 +45,6 @@ Location ID for the WebTest to run from.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

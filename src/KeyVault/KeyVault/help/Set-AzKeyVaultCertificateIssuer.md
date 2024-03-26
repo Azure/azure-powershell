@@ -18,7 +18,7 @@ Sets a certificate issuer in a key vault.
 Set-AzKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> -IssuerProvider <String>
  [-AccountId <String>] [-ApiKey <SecureString>]
  [-OrganizationDetails <PSKeyVaultCertificateOrganizationDetails>] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Set-AzKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String> -IssuerPr
 ```
 Set-AzKeyVaultCertificateIssuer [-VaultName] <String> [-Name] <String>
  -InputObject <PSKeyVaultCertificateIssuerIdentityItem> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -176,21 +176,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -VaultName
 Specifies the name of the key vault.
 
@@ -257,4 +242,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzKeyVaultCertificateIssuer](./Get-AzKeyVaultCertificateIssuer.md)
 
 [Remove-AzKeyVaultCertificateIssuer](./Remove-AzKeyVaultCertificateIssuer.md)
-
