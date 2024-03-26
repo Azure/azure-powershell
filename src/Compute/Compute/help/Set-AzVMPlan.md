@@ -15,7 +15,8 @@ Sets the Marketplace plan information on a virtual machine.
 
 ```
 Set-AzVMPlan [-VM] <PSVirtualMachine> [-Name] <String> [[-Product] <String>] [[-PromotionCode] <String>]
- [[-Publisher] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-Publisher] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

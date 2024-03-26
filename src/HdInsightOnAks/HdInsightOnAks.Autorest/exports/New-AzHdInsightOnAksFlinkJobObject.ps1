@@ -39,7 +39,7 @@ https://learn.microsoft.com/powershell/module/az.hdinsightonaks/New-AzHdInsightO
 #>
 function New-AzHdInsightOnAksFlinkJobObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJob])]
-[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
@@ -90,7 +90,6 @@ param(
     # Additional properties used to configure Flink jobs.
     # It allows users to set properties such as parallelism and jobSavePointDirectory.
     # It accepts additional key-value pairs as properties, where the keys are strings and the values are strings as well.
-    # To construct, see NOTES section for FLINKCONFIGURATION properties and create a hash table.
     ${FlinkConfiguration}
 )
 

@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the ElasticSan service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -29,9 +28,9 @@ For information on how to develop for `Az.ElasticSan`, see [how-to.md](how-to.md
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-branch: 9770615578c920dad8cb6fce33d79c7e112824c0
+commit: 9770615578c920dad8cb6fce33d79c7e112824c0
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/stable/2023-01-01/elasticsan.json
 
@@ -40,12 +39,12 @@ title: ElasticSan
 # For new RP, the version is 0.1.0
 module-version: 0.3.0
 subject-prefix: $(service-name)
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
-use-extension: 
-  "@autorest/powershell": "4.x"
 enable-parent-pipeline-input: true
 
-# If there are post APIs for some kinds of actions in the RP, you may need to 
+# If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
 
@@ -68,12 +67,12 @@ directive:
       alias: ElasticSanName
   - where:
       subject: VolumeGroup
-      parameter-name: Name 
+      parameter-name: Name
     set:
       alias: VolumeGroupName
   - where:
       subject: Volume
-      parameter-name: Name 
+      parameter-name: Name
     set:
       alias: VolumeName
   - where:
@@ -85,7 +84,7 @@ directive:
     set:
       parameter-name: ForceDelete
   - where:
-      parameter-name: SnapshotName 
+      parameter-name: SnapshotName
     set:
       parameter-name: Name
   - where:
@@ -106,7 +105,7 @@ directive:
       parameter-name: GroupName
     set:
       parameter-name: VolumeGroupName
-  - where: 
+  - where:
       subject: VolumeSnapshot
       verb: Update
     remove: true
@@ -139,14 +138,14 @@ directive:
   - where:
       subject: ^PrivateEndpointConnection$|^PrivateLinkResource$
     hide: true
-  - where: 
+  - where:
       verb: ^New$|^Update$
       subject: ^VolumeGroup$
     hide: true
-  - where: 
+  - where:
       verb: New
-      subject: Volume 
-      parameter-name: ManagedByResourceId 
+      subject: Volume
+      parameter-name: ManagedByResourceId
     hide: true
   - from: IdentityUserAssignedIdentities.dictionary.cs
     where: $

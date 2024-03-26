@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Description(@"Gets a list of the operations.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.HttpPath(Path = "/providers/Microsoft.MobileNetwork/operations", ApiVersion = "2022-11-01")]
     public partial class GetAzMobileNetworkOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener
     {

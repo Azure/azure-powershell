@@ -15,7 +15,8 @@ Gets the SASKey of a ServiceBus namespace, queue or topic.
 ### GetExpandedNamespace (Default)
 ```
 Get-AzServiceBusKey -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [<CommonParameters>]
 ```
 
 ### GetExpandedAlias
@@ -258,7 +259,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

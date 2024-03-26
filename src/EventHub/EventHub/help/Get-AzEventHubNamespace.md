@@ -14,7 +14,8 @@ Gets the description of the specified namespace.
 
 ### List (Default)
 ```
-Get-AzEventHubNamespace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzEventHubNamespace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -31,7 +32,8 @@ Get-AzEventHubNamespace -ResourceGroupName <String> [-SubscriptionId <String[]>]
 
 ### GetViaIdentity
 ```
-Get-AzEventHubNamespace -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzEventHubNamespace -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

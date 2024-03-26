@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the 'Non-static method requires a target' error when updating the image version of the node pool. [#24337]
 
 ## Version 6.0.1
 * Fixed the resolve path issue in `Install-AzAksCliTool`.

@@ -105,11 +105,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_catalogOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("catalogOptions"), out var __jsonCatalogOptions) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.CatalogOptions.FromJson(__jsonCatalogOptions) : CatalogOption;}
-            {_coordinator = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("coordinator"), out var __jsonCoordinator) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoCoordinator.FromJson(__jsonCoordinator) : Coordinator;}
-            {_userPluginsSpec = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("userPluginsSpec"), out var __jsonUserPluginsSpec) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoUserPlugins.FromJson(__jsonUserPluginsSpec) : UserPluginsSpec;}
-            {_userTelemetrySpec = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("userTelemetrySpec"), out var __jsonUserTelemetrySpec) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoUserTelemetry.FromJson(__jsonUserTelemetrySpec) : UserTelemetrySpec;}
-            {_worker = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("worker"), out var __jsonWorker) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoWorker.FromJson(__jsonWorker) : Worker;}
+            {_catalogOption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("catalogOptions"), out var __jsonCatalogOptions) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.CatalogOptions.FromJson(__jsonCatalogOptions) : _catalogOption;}
+            {_coordinator = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("coordinator"), out var __jsonCoordinator) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoCoordinator.FromJson(__jsonCoordinator) : _coordinator;}
+            {_userPluginsSpec = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("userPluginsSpec"), out var __jsonUserPluginsSpec) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoUserPlugins.FromJson(__jsonUserPluginsSpec) : _userPluginsSpec;}
+            {_userTelemetrySpec = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("userTelemetrySpec"), out var __jsonUserTelemetrySpec) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoUserTelemetry.FromJson(__jsonUserTelemetrySpec) : _userTelemetrySpec;}
+            {_worker = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("worker"), out var __jsonWorker) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoWorker.FromJson(__jsonWorker) : _worker;}
             AfterFromJson(json);
         }
     }

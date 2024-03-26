@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Three cmdlets were added: `Remove-AzMobileNetworkBulkSimDelete`, `Update-AzMobileNetworkBulkSimUpload`, `Update-AzMobileNetworkBulkSimUploadEncrypted`.
 
 ## Version 0.3.0
 * Three cmdlets were added: `Deploy-AzMobileNetworkReinstallPacketCoreControlPlane`, `Deploy-AzMobileNetworkRollbackPacketCoreControlPlane`, `Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage`.

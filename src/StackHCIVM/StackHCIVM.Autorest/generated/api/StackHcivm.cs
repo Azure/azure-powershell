@@ -1326,7 +1326,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImagesCreateOrUpdate(string subscriptionId, string resourceGroupName, string galleryImageName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1375,7 +1375,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImagesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1434,7 +1434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages> GalleryImagesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1496,7 +1496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImagesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string galleryImageName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1544,7 +1544,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages> GalleryImagesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string galleryImageName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1593,7 +1593,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages> GalleryImagesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string galleryImageName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1959,7 +1959,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImagesDelete(string subscriptionId, string resourceGroupName, string galleryImageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2001,7 +2001,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImagesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2229,7 +2229,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImagesGet(string subscriptionId, string resourceGroupName, string galleryImageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2270,7 +2270,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImagesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2321,7 +2321,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages> GalleryImagesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2374,7 +2374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages> GalleryImagesGetWithResult(string subscriptionId, string resourceGroupName, string galleryImageName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2556,7 +2556,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImagesList(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2599,7 +2599,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImagesListAll(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2640,7 +2640,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImagesListAllViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2689,7 +2689,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesListResult> GalleryImagesListAllViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2738,7 +2738,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesListResult> GalleryImagesListAllWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2907,7 +2907,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImagesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2959,7 +2959,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesListResult> GalleryImagesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3012,7 +3012,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesListResult> GalleryImagesListWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3188,7 +3188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImagesUpdate(string subscriptionId, string resourceGroupName, string galleryImageName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesUpdateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3235,7 +3235,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImagesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesUpdateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3292,7 +3292,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages> GalleryImagesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesUpdateRequest body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3352,7 +3352,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GalleryImagesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string galleryImageName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3398,7 +3398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages> GalleryImagesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string galleryImageName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3445,7 +3445,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages> GalleryImagesUpdateWithResult(string subscriptionId, string resourceGroupName, string galleryImageName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImagesUpdateRequest body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3809,7 +3809,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GuestAgentCreate(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgent body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3853,7 +3853,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GuestAgentCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgent body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3905,7 +3905,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgent> GuestAgentCreateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgent body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3959,7 +3959,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GuestAgentCreateViaJsonString(string resourceUri, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4001,7 +4001,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgent> GuestAgentCreateViaJsonStringWithResult(string resourceUri, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4044,7 +4044,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgent> GuestAgentCreateWithResult(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgent body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4394,7 +4394,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GuestAgentDelete(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4432,7 +4432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GuestAgentDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4641,7 +4641,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GuestAgentGet(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4679,7 +4679,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GuestAgentGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgent>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4725,7 +4725,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgent> GuestAgentGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4772,7 +4772,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgent> GuestAgentGetWithResult(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4939,7 +4939,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GuestAgentsList(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4977,7 +4977,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task GuestAgentsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5023,7 +5023,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentList> GuestAgentsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5070,7 +5070,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGuestAgentList> GuestAgentsListWithResult(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5237,7 +5237,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task HybridIdentityMetadataGet(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IHybridIdentityMetadata>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5617,7 +5617,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task HybridIdentityMetadataGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IHybridIdentityMetadata>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5663,7 +5663,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IHybridIdentityMetadata> HybridIdentityMetadataGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5710,7 +5710,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IHybridIdentityMetadata> HybridIdentityMetadataGetWithResult(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5879,7 +5879,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task HybridIdentityMetadataList(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IHybridIdentityMetadataList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6250,7 +6250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task HybridIdentityMetadataListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IHybridIdentityMetadataList>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6296,7 +6296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IHybridIdentityMetadataList> HybridIdentityMetadataListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6343,7 +6343,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IHybridIdentityMetadataList> HybridIdentityMetadataListWithResult(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6517,7 +6517,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task LogicalNetworksCreateOrUpdate(string subscriptionId, string resourceGroupName, string logicalNetworkName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6566,7 +6566,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task LogicalNetworksCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6625,7 +6625,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks> LogicalNetworksCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6687,7 +6687,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task LogicalNetworksCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string logicalNetworkName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6735,7 +6735,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks> LogicalNetworksCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string logicalNetworkName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6784,7 +6784,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks> LogicalNetworksCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string logicalNetworkName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7150,7 +7150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task LogicalNetworksDelete(string subscriptionId, string resourceGroupName, string logicalNetworkName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7192,7 +7192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task LogicalNetworksDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7420,7 +7420,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task LogicalNetworksGet(string subscriptionId, string resourceGroupName, string logicalNetworkName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7461,7 +7461,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task LogicalNetworksGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7512,7 +7512,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks> LogicalNetworksGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7565,7 +7565,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks> LogicalNetworksGetWithResult(string subscriptionId, string resourceGroupName, string logicalNetworkName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7747,7 +7747,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task LogicalNetworksList(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworksListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7790,7 +7790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task LogicalNetworksListAll(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworksListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7831,7 +7831,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task LogicalNetworksListAllViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworksListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7880,7 +7880,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworksListResult> LogicalNetworksListAllViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7929,7 +7929,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworksListResult> LogicalNetworksListAllWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8098,7 +8098,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task LogicalNetworksListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworksListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8150,7 +8150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworksListResult> LogicalNetworksListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8203,7 +8203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworksListResult> LogicalNetworksListWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8379,7 +8379,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task LogicalNetworksUpdate(string subscriptionId, string resourceGroupName, string logicalNetworkName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworksUpdateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8426,7 +8426,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task LogicalNetworksUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworksUpdateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8483,7 +8483,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks> LogicalNetworksUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworksUpdateRequest body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8543,7 +8543,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task LogicalNetworksUpdateViaJsonString(string subscriptionId, string resourceGroupName, string logicalNetworkName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8589,7 +8589,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks> LogicalNetworksUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string logicalNetworkName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8636,7 +8636,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks> LogicalNetworksUpdateWithResult(string subscriptionId, string resourceGroupName, string logicalNetworkName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworksUpdateRequest body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13335,7 +13335,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task MarketplaceGalleryImagesCreateOrUpdate(string subscriptionId, string resourceGroupName, string marketplaceGalleryImageName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13385,7 +13385,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task MarketplaceGalleryImagesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13445,7 +13445,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages> MarketplaceGalleryImagesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13508,7 +13508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task MarketplaceGalleryImagesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string marketplaceGalleryImageName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13557,7 +13557,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages> MarketplaceGalleryImagesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string marketplaceGalleryImageName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13607,7 +13607,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages> MarketplaceGalleryImagesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string marketplaceGalleryImageName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13975,7 +13975,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task MarketplaceGalleryImagesDelete(string subscriptionId, string resourceGroupName, string marketplaceGalleryImageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14017,7 +14017,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task MarketplaceGalleryImagesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14245,7 +14245,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task MarketplaceGalleryImagesGet(string subscriptionId, string resourceGroupName, string marketplaceGalleryImageName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14286,7 +14286,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task MarketplaceGalleryImagesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14337,7 +14337,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages> MarketplaceGalleryImagesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14390,7 +14390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages> MarketplaceGalleryImagesGetWithResult(string subscriptionId, string resourceGroupName, string marketplaceGalleryImageName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14574,7 +14574,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task MarketplaceGalleryImagesList(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14617,7 +14617,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task MarketplaceGalleryImagesListAll(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14658,7 +14658,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task MarketplaceGalleryImagesListAllViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14707,7 +14707,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagesListResult> MarketplaceGalleryImagesListAllViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14756,7 +14756,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagesListResult> MarketplaceGalleryImagesListAllWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14927,7 +14927,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task MarketplaceGalleryImagesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14979,7 +14979,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagesListResult> MarketplaceGalleryImagesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15032,7 +15032,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagesListResult> MarketplaceGalleryImagesListWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15210,7 +15210,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task MarketplaceGalleryImagesUpdate(string subscriptionId, string resourceGroupName, string marketplaceGalleryImageName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagesUpdateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15257,7 +15257,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task MarketplaceGalleryImagesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagesUpdateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15314,7 +15314,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages> MarketplaceGalleryImagesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagesUpdateRequest body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15374,7 +15374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task MarketplaceGalleryImagesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string marketplaceGalleryImageName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15420,7 +15420,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages> MarketplaceGalleryImagesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string marketplaceGalleryImageName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15467,7 +15467,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages> MarketplaceGalleryImagesUpdateWithResult(string subscriptionId, string resourceGroupName, string marketplaceGalleryImageName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImagesUpdateRequest body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15836,7 +15836,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkInterfacesCreateOrUpdate(string subscriptionId, string resourceGroupName, string networkInterfaceName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15885,7 +15885,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkInterfacesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15944,7 +15944,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces> NetworkInterfacesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16006,7 +16006,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkInterfacesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string networkInterfaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16054,7 +16054,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces> NetworkInterfacesCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string networkInterfaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16103,7 +16103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces> NetworkInterfacesCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string networkInterfaceName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16469,7 +16469,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkInterfacesDelete(string subscriptionId, string resourceGroupName, string networkInterfaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16511,7 +16511,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkInterfacesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16739,7 +16739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkInterfacesGet(string subscriptionId, string resourceGroupName, string networkInterfaceName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16780,7 +16780,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkInterfacesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16831,7 +16831,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces> NetworkInterfacesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16884,7 +16884,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces> NetworkInterfacesGetWithResult(string subscriptionId, string resourceGroupName, string networkInterfaceName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17066,7 +17066,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkInterfacesList(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfacesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17109,7 +17109,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkInterfacesListAll(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfacesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17150,7 +17150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkInterfacesListAllViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfacesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17199,7 +17199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfacesListResult> NetworkInterfacesListAllViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17248,7 +17248,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfacesListResult> NetworkInterfacesListAllWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17417,7 +17417,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkInterfacesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfacesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17469,7 +17469,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfacesListResult> NetworkInterfacesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17522,7 +17522,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfacesListResult> NetworkInterfacesListWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17698,7 +17698,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkInterfacesUpdate(string subscriptionId, string resourceGroupName, string networkInterfaceName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfacesUpdateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17745,7 +17745,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkInterfacesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfacesUpdateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17802,7 +17802,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces> NetworkInterfacesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfacesUpdateRequest body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17862,7 +17862,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task NetworkInterfacesUpdateViaJsonString(string subscriptionId, string resourceGroupName, string networkInterfaceName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17908,7 +17908,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces> NetworkInterfacesUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string networkInterfaceName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17955,7 +17955,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfaces> NetworkInterfacesUpdateWithResult(string subscriptionId, string resourceGroupName, string networkInterfaceName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.INetworkInterfacesUpdateRequest body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18633,7 +18633,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>List all the supported operations.</summary>
+        /// <summary>Gets a list of hybrid compute operations.</summary>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -18644,13 +18644,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2023-03-15-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/providers/Microsoft.AzureStackHCI/operations"
+                        "/providers/Microsoft.HybridCompute/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -18669,288 +18669,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         }
 
         /// <summary>Gets a list of hybrid compute operations.</summary>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList1(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2023-03-15-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/providers/Microsoft.HybridCompute/operations"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.OperationsList1_Call (request, onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Gets a list of hybrid compute operations.</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList1ViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2023-03-15-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.HybridCompute/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.HybridCompute/operations'");
-                }
-
-                // replace URI parameters with values from identity
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/providers/Microsoft.HybridCompute/operations"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
-                // make the call
-                await this.OperationsList1_Call (request, onOk,onDefault,eventListener,sender);
-            }
-        }
-
-        /// <summary>Gets a list of hybrid compute operations.</summary>
-        /// <param name="viaIdentity"></param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultAutoGenerated>"
-        /// /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultAutoGenerated> OperationsList1ViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2023-03-15-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // verify that Identity format is an exact match for uri
-
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.HybridCompute/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
-                if (!_match.Success)
-                {
-                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.HybridCompute/operations'");
-                }
-
-                // replace URI parameters with values from identity
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/providers/Microsoft.HybridCompute/operations"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                // make the call
-                return await this.OperationsList1WithResult_Call (request, eventListener,sender);
-            }
-        }
-
-        /// <summary>Gets a list of hybrid compute operations.</summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultAutoGenerated>"
-        /// /> that will be complete when handling of the response is completed.
-        /// </returns>
-        public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultAutoGenerated> OperationsList1WithResult(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
-        {
-            var apiVersion = @"2023-03-15-preview";
-            // Constant Parameters
-            using( NoSynchronizationContext )
-            {
-                // construct URL
-                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/providers/Microsoft.HybridCompute/operations"
-                        + "?"
-                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
-                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                // generate request object
-                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
-                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Method.Get, _url);
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return null; }
-
-                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                // make the call
-                return await this.OperationsList1WithResult_Call (request, eventListener,sender);
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref= "OperationsList1WithResult" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultAutoGenerated>"
-        /// /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultAutoGenerated> OperationsList1WithResult_Call(global::System.Net.Http.HttpRequestMessage request, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.OperationListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonNode.Parse(body.Result)) );
-                            return await _result;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonNode.Parse(body.Result)) );
-                            // Error Response : default
-                            var code = (await _result)?.Code;
-                            var message = (await _result)?.Message;
-                            if ((null == code || null == message))
-                            {
-                                // Unrecognized Response. Create an error record based on what we have.
-                                var ex = new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>(_response, await _result);
-                                throw ex;
-                            }
-                            else
-                            {
-                                throw new global::System.Exception($"[{code}] : {message}");
-                            }
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>Actual wire call for <see cref= "OperationsList1" /> method.</summary>
-        /// <param name="request">the prepared HttpRequestMessage to send.</param>
-        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
-        /// elsewhere).</param>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync pipeline to use to make the request.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsList1_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultAutoGenerated>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
-        {
-            using( NoSynchronizationContext )
-            {
-                global::System.Net.Http.HttpResponseMessage _response = null;
-                try
-                {
-                    var sendTask = sender.SendAsync(request, eventListener);
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    _response = await sendTask;
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.Progress, "intentional placeholder", 100); if( eventListener.Token.IsCancellationRequested ) { return; }
-                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
-
-                    switch ( _response.StatusCode )
-                    {
-                        case global::System.Net.HttpStatusCode.OK:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.OperationListResultAutoGenerated.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        default:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                    }
-                }
-                finally
-                {
-                    // finally statements
-                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.Finally, request, _response);
-                    _response?.Dispose();
-                    request?.Dispose();
-                }
-            }
-        }
-
-        /// <summary>
-        /// Validation method for <see cref="OperationsList1" /> method. Call this like the actual call, but you will get validation
-        /// events back.
-        /// </summary>
-        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener" /> instance that will receive events.</param>
-        /// <returns>
-        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
-        /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsList1_Validate(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener)
-        {
-            using( NoSynchronizationContext )
-            {
-
-            }
-        }
-
-        /// <summary>List all the supported operations.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -18962,22 +18680,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2023-03-15-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.AzureStackHCI/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.HybridCompute/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.AzureStackHCI/operations'");
+                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.HybridCompute/operations'");
                 }
 
                 // replace URI parameters with values from identity
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/providers/Microsoft.AzureStackHCI/operations"
+                        "/providers/Microsoft.HybridCompute/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -18995,7 +18713,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>List all the supported operations.</summary>
+        /// <summary>Gets a list of hybrid compute operations.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -19005,22 +18723,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResult> OperationsListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2023-03-15-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.AzureStackHCI/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.HybridCompute/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
-                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.AzureStackHCI/operations'");
+                    throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.HybridCompute/operations'");
                 }
 
                 // replace URI parameters with values from identity
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/providers/Microsoft.AzureStackHCI/operations"
+                        "/providers/Microsoft.HybridCompute/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -19038,7 +18756,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
             }
         }
 
-        /// <summary>List all the supported operations.</summary>
+        /// <summary>Gets a list of hybrid compute operations.</summary>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync pipeline to use to make the request.</param>
         /// <returns>
@@ -19047,13 +18765,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResult> OperationsListWithResult(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2023-03-15-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
                 // construct URL
                 var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
-                        "/providers/Microsoft.AzureStackHCI/operations"
+                        "/providers/Microsoft.HybridCompute/operations"
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
@@ -19215,7 +18933,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageContainersCreateOrUpdate(string subscriptionId, string resourceGroupName, string storageContainerName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19264,7 +18982,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageContainersCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19323,7 +19041,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers> StorageContainersCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19385,7 +19103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageContainersCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string storageContainerName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19433,7 +19151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers> StorageContainersCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string storageContainerName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19482,7 +19200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers> StorageContainersCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string storageContainerName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19848,7 +19566,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageContainersDelete(string subscriptionId, string resourceGroupName, string storageContainerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19890,7 +19608,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageContainersDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20118,7 +19836,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageContainersGet(string subscriptionId, string resourceGroupName, string storageContainerName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20159,7 +19877,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageContainersGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20210,7 +19928,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers> StorageContainersGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20263,7 +19981,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers> StorageContainersGetWithResult(string subscriptionId, string resourceGroupName, string storageContainerName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20445,7 +20163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageContainersList(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainersListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20488,7 +20206,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageContainersListAll(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainersListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20529,7 +20247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageContainersListAllViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainersListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20578,7 +20296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainersListResult> StorageContainersListAllViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20627,7 +20345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainersListResult> StorageContainersListAllWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20796,7 +20514,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageContainersListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainersListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20848,7 +20566,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainersListResult> StorageContainersListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20901,7 +20619,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainersListResult> StorageContainersListWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21077,7 +20795,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageContainersUpdate(string subscriptionId, string resourceGroupName, string storageContainerName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainersUpdateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21124,7 +20842,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageContainersUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainersUpdateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21181,7 +20899,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers> StorageContainersUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainersUpdateRequest body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21241,7 +20959,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task StorageContainersUpdateViaJsonString(string subscriptionId, string resourceGroupName, string storageContainerName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21287,7 +21005,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers> StorageContainersUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string storageContainerName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21334,7 +21052,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainers> StorageContainersUpdateWithResult(string subscriptionId, string resourceGroupName, string storageContainerName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStorageContainersUpdateRequest body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22032,7 +21750,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualHardDisksCreateOrUpdate(string subscriptionId, string resourceGroupName, string virtualHardDiskName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22081,7 +21799,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualHardDisksCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22140,7 +21858,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks> VirtualHardDisksCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22202,7 +21920,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualHardDisksCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string virtualHardDiskName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22250,7 +21968,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks> VirtualHardDisksCreateOrUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string virtualHardDiskName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22299,7 +22017,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks> VirtualHardDisksCreateOrUpdateWithResult(string subscriptionId, string resourceGroupName, string virtualHardDiskName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22665,7 +22383,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualHardDisksDelete(string subscriptionId, string resourceGroupName, string virtualHardDiskName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22707,7 +22425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualHardDisksDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22935,7 +22653,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualHardDisksGet(string subscriptionId, string resourceGroupName, string virtualHardDiskName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22976,7 +22694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualHardDisksGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23027,7 +22745,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks> VirtualHardDisksGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23080,7 +22798,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks> VirtualHardDisksGetWithResult(string subscriptionId, string resourceGroupName, string virtualHardDiskName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23262,7 +22980,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualHardDisksList(string subscriptionId, string resourceGroupName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisksListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23305,7 +23023,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualHardDisksListAll(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisksListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23346,7 +23064,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualHardDisksListAllViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisksListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23395,7 +23113,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisksListResult> VirtualHardDisksListAllViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23444,7 +23162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisksListResult> VirtualHardDisksListAllWithResult(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23613,7 +23331,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualHardDisksListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisksListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23665,7 +23383,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisksListResult> VirtualHardDisksListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23718,7 +23436,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisksListResult> VirtualHardDisksListWithResult(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23894,7 +23612,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualHardDisksUpdate(string subscriptionId, string resourceGroupName, string virtualHardDiskName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisksUpdateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23941,7 +23659,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualHardDisksUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisksUpdateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23998,7 +23716,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks> VirtualHardDisksUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisksUpdateRequest body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24058,7 +23776,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualHardDisksUpdateViaJsonString(string subscriptionId, string resourceGroupName, string virtualHardDiskName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24104,7 +23822,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks> VirtualHardDisksUpdateViaJsonStringWithResult(string subscriptionId, string resourceGroupName, string virtualHardDiskName, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24151,7 +23869,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisks> VirtualHardDisksUpdateWithResult(string subscriptionId, string resourceGroupName, string virtualHardDiskName, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualHardDisksUpdateRequest body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24518,7 +24236,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesCreateOrUpdate(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24565,7 +24283,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24620,7 +24338,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance> VirtualMachineInstancesCreateOrUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24677,7 +24395,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesCreateOrUpdateViaJsonString(string resourceUri, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24722,7 +24440,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance> VirtualMachineInstancesCreateOrUpdateViaJsonStringWithResult(string resourceUri, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24768,7 +24486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance> VirtualMachineInstancesCreateOrUpdateWithResult(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25123,7 +24841,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesDelete(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25162,7 +24880,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25375,7 +25093,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesGet(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25413,7 +25131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25459,7 +25177,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance> VirtualMachineInstancesGetViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25506,7 +25224,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance> VirtualMachineInstancesGetWithResult(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25677,7 +25395,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesList(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25717,7 +25435,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25765,7 +25483,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceListResult> VirtualMachineInstancesListViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25814,7 +25532,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceListResult> VirtualMachineInstancesListWithResult(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -25983,7 +25701,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesRestart(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26021,7 +25739,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesRestartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26067,7 +25785,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance> VirtualMachineInstancesRestartViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26114,7 +25832,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance> VirtualMachineInstancesRestartWithResult(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26461,7 +26179,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesStart(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26499,7 +26217,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesStartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26545,7 +26263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance> VirtualMachineInstancesStartViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26592,7 +26310,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance> VirtualMachineInstancesStartWithResult(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26939,7 +26657,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesStop(string resourceUri, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -26977,7 +26695,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesStopViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27023,7 +26741,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance> VirtualMachineInstancesStopViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27070,7 +26788,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance> VirtualMachineInstancesStopWithResult(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27419,7 +27137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesUpdate(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceUpdateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27463,7 +27181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceUpdateRequest body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27515,7 +27233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance> VirtualMachineInstancesUpdateViaIdentityWithResult(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceUpdateRequest body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27569,7 +27287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task VirtualMachineInstancesUpdateViaJsonString(string resourceUri, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27611,7 +27329,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance> VirtualMachineInstancesUpdateViaJsonStringWithResult(string resourceUri, global::System.String jsonString, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -27654,7 +27372,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// </returns>
         public async global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstance> VirtualMachineInstancesUpdateWithResult(string resourceUri, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstanceUpdateRequest body, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeUpdate)
         {
-            var apiVersion = @"2023-09-01-preview";
+            var apiVersion = @"2024-01-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
