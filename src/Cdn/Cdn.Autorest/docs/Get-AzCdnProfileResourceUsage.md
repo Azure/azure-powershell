@@ -136,11 +136,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsage
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceUsage
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

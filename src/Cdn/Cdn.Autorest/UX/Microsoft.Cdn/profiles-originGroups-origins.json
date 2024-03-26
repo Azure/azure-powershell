@@ -1,0 +1,105 @@
+{
+  "resourceType": "profiles/originGroups/origins",
+  "apiVersion": "2024-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.cdn"
+  },
+  "commands": [
+    {
+      "name": "Get-AzFrontDoorCdnOrigin",
+      "description": "Gets an existing origin within an origin group.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnorigin"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-OriginGroupName <String>",
+              "-OriginName <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets an existing origin within an origin group.",
+          "parameters": [
+            {
+              "name": "-OriginGroupName",
+              "value": "[Path.originGroupName]"
+            },
+            {
+              "name": "-OriginName",
+              "value": "[Path.originName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzFrontDoorCdnOrigin",
+      "description": "Deletes an existing origin within an origin group.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/originGroups/{originGroupName}/origins/{originName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdnorigin"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-OriginGroupName <String>",
+              "-OriginName <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes an existing origin within an origin group.",
+          "parameters": [
+            {
+              "name": "-OriginGroupName",
+              "value": "[Path.originGroupName]"
+            },
+            {
+              "name": "-OriginName",
+              "value": "[Path.originName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
