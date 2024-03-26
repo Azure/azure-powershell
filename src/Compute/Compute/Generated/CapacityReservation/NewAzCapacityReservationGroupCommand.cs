@@ -1,4 +1,4 @@
-﻿//
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -70,6 +70,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false)]
         public string[] Zone { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Allows a Capacity Reservation Group to be shared across subscriptions. Pass \"\" to unshare all subscriptions.  It is an array of strings; Contains an array of Arm resource ids of subscriptions\r\neg : \"/subscriptions/{subscriptionId1}\", \"/subscriptions/{subscriptionId2}\"\r\n")]
+        public string[] SharingProfile { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -88,11 +93,29 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         capacityReservationGroup.Zones = this.Zone;
                     }
+                    if (this.IsParameterBound(c => c.SharingProfile))
+                    {
+                        ResourceSharingProfile resourceSharingProfile = new ResourceSharingProfile();
+                        foreach (var item in this.SharingProfile)
+                        {
+                            if (item.Equals("", StringComparison.OrdinalIgnoreCase))
+                                continue;
+                            SubResource subResource = new SubResource(item);
+                            if (resourceSharingProfile.SubscriptionIds == null)
+                            {
+                                resourceSharingProfile.SubscriptionIds = new List<SubResource>();
+                            }
+                            resourceSharingProfile.SubscriptionIds.Add(subResource);
+                        }
+                        capacityReservationGroup.SharingProfile = resourceSharingProfile;
+                    }
 
                     var result = CapacityReservationGroupClient.CreateOrUpdate(this.ResourceGroupName, this.Name, capacityReservationGroup);
                     var psObject = new PSCapacityReservationGroup();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<CapacityReservationGroup, PSCapacityReservationGroup>(result, psObject);
                     WriteObject(psObject);
+
+
                 }
             });
         }
