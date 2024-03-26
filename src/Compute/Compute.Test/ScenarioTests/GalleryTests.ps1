@@ -771,9 +771,7 @@ function Test-GalleryDirectSharing
 
 <#
 .SYNOPSIS
-Tests that a VM that is created from a Gallery Image source
-does not error out due to TL defaulting code that looks for the image  version 
-assuming it has a different format. 
+Tests the New-AzGalleryImageVersion new parameter SourceImageVMId.
 #>
 function Test-GalleryVersionWithSourceImageVMId
 {

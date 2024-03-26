@@ -394,7 +394,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
            Mandatory = false,
-           ValueFromPipelineByPropertyName = true)]
+           ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource Id of the source virtual machine.  Only required when capturing a virtual machine to source this Gallery Image Version.")]
         public string SourceImageVMId { get; set; }
 
         [Parameter(
