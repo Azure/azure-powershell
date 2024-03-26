@@ -80,7 +80,6 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         $missingParameters = $env.missingParameters
         $missingAnArgument = $env.missingAnArgument
         $onlyManagementGroupOrSubscription = $env.onlyManagementGroupOrSubscription
-        $onlyDefinitionOrSetDefinition = $env.onlyDefinitionOrSetDefinition
         $policyAssignmentNotFound = $env.policyAssignmentNotFound
         $policySetDefinitionNotFound = $env.policySetDefinitionNotFound
         $policyDefinitionNotFound = $env.policyDefinitionNotFound

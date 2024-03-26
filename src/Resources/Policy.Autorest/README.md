@@ -351,7 +351,7 @@ directive:
 
   # Remove or hide cmdlets that are customized or not supported at all
   - where:
-      verb: Get|Remove|Update
+      verb: New|Get|Remove|Update
     hide: true
   - where:
       verb: New|Remove|Update

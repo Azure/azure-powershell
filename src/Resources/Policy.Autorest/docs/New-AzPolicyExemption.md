@@ -8,13 +8,10 @@ schema: 2.0.0
 # New-AzPolicyExemption
 
 ## SYNOPSIS
-This operation Create a policy exemption with the given scope and name.
-Policy exemptions apply to all resources contained within their scope.
-For example, when you create a policy exemption at resource group scope for a policy assignment at the same or above level, the exemption exempts to all applicable resources in the resource group.
+Creates or updates a policy exemption.
 
 ## SYNTAX
 
-### Default (Default)
 ```
 New-AzPolicyExemption [-Name] <String> [-ExemptionCategory] <String> [-PolicyAssignment] <PSObject>
  [[-Scope] <String>] [[-AssignmentScopeValidation] <String>] [[-DisplayName] <String>]
@@ -23,17 +20,8 @@ New-AzPolicyExemption [-Name] <String> [-ExemptionCategory] <String> [-PolicyAss
  [<CommonParameters>]
 ```
 
-### CreateExpanded
-```
-New-AzPolicyExemption -ExemptionCategory <String> [-PolicyDefinitionReferenceId <String[]>]
- [-AssignmentScopeValidation <String>] [-Description <String>] [-DisplayName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-This operation Create a policy exemption with the given scope and name.
-Policy exemptions apply to all resources contained within their scope.
-For example, when you create a policy exemption at resource group scope for a policy assignment at the same or above level, the exemption exempts to all applicable resources in the resource group.
+The **New-AzPolicyExemption** cmdlet creates a policy exemption with the given scope and name.
 
 ## EXAMPLES
 
@@ -62,7 +50,7 @@ The final command exempts the policy assignment in $Assignment at the level of t
 ## PARAMETERS
 
 ### -AssignmentScopeValidation
-The option whether validate the exemption is at or under the assignment scope.
+Whether to validate the exemption is at or under the assignment scope.
 
 ```yaml
 Type: System.String
@@ -81,7 +69,7 @@ Causes cmdlet to return artifacts using legacy format placing policy-specific pr
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -108,7 +96,7 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-The description of the policy exemption.
+This message will be part of response in case of policy violation.
 
 ```yaml
 Type: System.String
@@ -123,7 +111,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-The display name of the policy exemption.
+The display name of the policy assignment.
 
 ```yaml
 Type: System.String
@@ -138,8 +126,7 @@ Accept wildcard characters: False
 ```
 
 ### -ExemptionCategory
-The policy exemption category.
-Possible values are Waiver and Mitigated.
+The policy exemption category
 
 ```yaml
 Type: System.String
@@ -158,7 +145,7 @@ The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of th
 
 ```yaml
 Type: System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -174,7 +161,7 @@ Metadata is an open ended object and is typically a collection of key value pair
 
 ```yaml
 Type: System.String
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -189,7 +176,7 @@ The name of the policy exemption.
 
 ```yaml
 Type: System.String
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases: PolicyExemptionName
 
 Required: True
@@ -205,7 +192,7 @@ To construct, see NOTES section for POLICYASSIGNMENT properties and create a has
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -216,7 +203,7 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyDefinitionReferenceId
-The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
+The policy definition reference ID list when the associated policy assignment is for a policy set (initiative).
 
 ```yaml
 Type: System.String[]
@@ -236,7 +223,7 @@ Valid scopes are: management group (format: '/providers/Microsoft.Management/man
 
 ```yaml
 Type: System.String
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: False

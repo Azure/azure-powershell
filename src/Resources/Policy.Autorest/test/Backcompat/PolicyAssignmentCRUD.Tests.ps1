@@ -149,12 +149,6 @@ Describe 'Backcompat-PolicyAssignmentCRUD' {
         } | Should -Not -Throw
     }
 
-    It 'update policy assignment' -Skip {
-        {
-            throw 'Need better test of set/update response'
-        } | Should -Not -Throw
-    }
-
     AfterAll {
         # clean up
         $remove = Remove-AzPolicyAssignment -Name $test1 -Scope $rg.ResourceId -BackwardCompatible

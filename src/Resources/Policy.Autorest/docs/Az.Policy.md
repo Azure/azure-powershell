@@ -27,20 +27,16 @@ Gets policy set definitions.
 
 
 ### [New-AzPolicyAssignment](New-AzPolicyAssignment.md)
-This operation Create a policy assignment with the given scope and name.
-Policy assignments apply to all resources contained within their scope.
-For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
+Creates or updates a policy assignment.
 
 ### [New-AzPolicyDefinition](New-AzPolicyDefinition.md)
-This operation Create a policy definition in the given subscription with the given name.
+Creates or updates a policy definition.
 
 ### [New-AzPolicyExemption](New-AzPolicyExemption.md)
-This operation Create a policy exemption with the given scope and name.
-Policy exemptions apply to all resources contained within their scope.
-For example, when you create a policy exemption at resource group scope for a policy assignment at the same or above level, the exemption exempts to all applicable resources in the resource group.
+Creates or updates a policy exemption.
 
 ### [New-AzPolicySetDefinition](New-AzPolicySetDefinition.md)
-This operation Create a policy set definition in the given subscription with the given name.
+Creates or updates a policy set definition.
 
 ### [Remove-AzPolicyAssignment](Remove-AzPolicyAssignment.md)
 This operation deletes a policy assignment, given its name and the scope it was created in.

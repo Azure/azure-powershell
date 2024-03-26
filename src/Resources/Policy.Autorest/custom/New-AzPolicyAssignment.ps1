@@ -69,28 +69,25 @@ param(
     # This message will be part of response in case of policy violation.
     ${Description},
 
-    [Parameter(ValueFromPipeline, ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Default', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='ParameterObject', Mandatory, ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='ParameterString', Mandatory, ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ParameterObject', ValueFromPipeline)]
+    [Parameter(ParameterSetName='ParameterString', ValueFromPipeline)]
+    [Parameter(ParameterSetName='PolicyDefinition', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition]))]
     [PSCustomObject]
-    # The ID of the policy definition or policy set definition being assigned.
+    # The ID of the policy definition being assigned.
     ${PolicyDefinition},
 
-    [Parameter(ValueFromPipeline, ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='Default', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='SetParameterObject', Mandatory, ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='SetParameterString', Mandatory, ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ParameterObject', ValueFromPipeline)]
+    [Parameter(ParameterSetName='ParameterString', ValueFromPipeline)]
+    [Parameter(ParameterSetName='PolicySetDefinition', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition]))]
     [PSCustomObject]
-    # The ID of the policy definition or policy set definition being assigned.
+    # The ID of the policy set definition being assigned.
     ${PolicySetDefinition},
 
     [Parameter(ParameterSetName='ParameterObject', Mandatory)]
-    [Parameter(ParameterSetName='SetParameterObject', Mandatory)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [hashtable]
@@ -98,8 +95,7 @@ param(
     # The keys are the parameter names.
     ${PolicyParameterObject},
 
-    [Parameter(ParameterSetName='ParameterString', Mandatory, ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='SetParameterString', Mandatory, ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='ParameterString', Mandatory)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
     [System.String]
@@ -327,15 +323,8 @@ process {
     $calledParameters.ScopeInternal = $Scope
     $null = $calledParameters.Remove('Scope')
 
-    # client-side parameter validation
+    # route the input policy id to the correct place
     if ($PolicyDefinition) {
-        if ($PolicySetDefinition) {
-            # Single piped input object gets bound to both parameters. This is only OK if they are the same resource
-            if ($PolicyDefinition.Id -ne $PolicySetDefinition.Id) {
-                throw 'Only one of -PolicyDefinition or -PolicySetDefinition can be specified, not both.'
-            }
-        }
-
         $calledParameters.PolicyDefinitionId = $PolicyDefinition.Id
         $null = $calledParameters.Remove('PolicyDefinition')
     }

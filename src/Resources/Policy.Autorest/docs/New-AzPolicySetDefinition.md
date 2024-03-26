@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzPolicySetDefinition
 
 ## SYNOPSIS
-This operation Create a policy set definition in the given subscription with the given name.
+Creates or updates a policy set definition.
 
 ## SYNTAX
 
@@ -17,19 +17,6 @@ This operation Create a policy set definition in the given subscription with the
 New-AzPolicySetDefinition -Name <String> -PolicyDefinition <String> [-BackwardCompatible]
  [-Description <String>] [-DisplayName <String>] [-Metadata <String>] [-Parameter <String>]
  [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzPolicySetDefinition -Name <String> [-SubscriptionId <String>] [-Description <String>]
- [-DisplayName <String>] [-PolicyType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateExpanded1
-```
-New-AzPolicySetDefinition -Name <String> [-Description <String>] [-DisplayName <String>]
- [-PolicyType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ManagementGroupName
@@ -42,14 +29,14 @@ New-AzPolicySetDefinition -ManagementGroupName <String> -Name <String> -PolicyDe
 
 ### SubscriptionId
 ```
-New-AzPolicySetDefinition -Name <String> -PolicyDefinition <String> [-SubscriptionId <String>]
+New-AzPolicySetDefinition -Name <String> -SubscriptionId <String> -PolicyDefinition <String>
  [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-Metadata <String>]
  [-Parameter <String>] [-PolicyDefinitionGroup <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This operation Create a policy set definition in the given subscription with the given name.
+The **New-AzPolicySetDefinition** cmdlet creates or updates a policy set definition in the given subscription or management group with the given name.
 
 ## EXAMPLES
 
@@ -130,7 +117,7 @@ Causes cmdlet to return artifacts using legacy format placing policy-specific pr
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ManagementGroupName, Name, SubscriptionId
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -207,7 +194,7 @@ Metadata is an open ended object and is typically a collection of key value pair
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName, Name, SubscriptionId
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -238,7 +225,7 @@ The keys are the parameter names.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName, Name, SubscriptionId
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -253,7 +240,7 @@ The policy definition array in JSON string form.
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName, Name, SubscriptionId
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -268,24 +255,8 @@ The metadata describing groups of policy definition references within the policy
 
 ```yaml
 Type: System.String
-Parameter Sets: ManagementGroupName, Name, SubscriptionId
+Parameter Sets: (All)
 Aliases: GroupDefinition
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PolicyType
-The type of policy set definition.
-Possible values are NotSpecified, BuiltIn, Custom, and Static.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateExpanded1
-Aliases:
 
 Required: False
 Position: Named
@@ -296,16 +267,15 @@ Accept wildcard characters: False
 
 ### -SubscriptionId
 The ID of the target subscription.
-The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, SubscriptionId
+Parameter Sets: SubscriptionId
 Aliases:
 
 Required: True
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```

@@ -23,14 +23,14 @@ Describe 'Backcompat-NewPolicyAssignmentParameters' {
             Assert-ThrowsContains { New-AzPolicyAssignment -Name $someName } $policyDefinitionParameter
             Assert-ThrowsContains { New-AzPolicyAssignment -Name $someName -Scope $goodScope } $policyDefinitionParameter
             Assert-ThrowsContains { New-AzPolicyAssignment -Name $someName -Scope $someScope -PolicyDefinition $goodPolicyDefinition } $missingSubscription
-            Assert-ThrowsContains { New-AzPolicyAssignment -Name $someName -Scope $someScope -PolicyDefinition $goodPolicyDefinition -PolicySetDefinition $goodPolicySetDefinition } $onlyDefinitionOrSetDefinition
+            Assert-ThrowsContains { New-AzPolicyAssignment -Name $someName -Scope $someScope -PolicyDefinition $goodPolicyDefinition -PolicySetDefinition $goodPolicySetDefinition } $parameterSetError
             Assert-ThrowsContains { New-AzPolicyAssignment -Name $someName -Scope $goodScope -PolicyDefinition $goodPolicyDefinition -PolicyParameterObject $someParameterObject } $undefinedPolicyParameter
             Assert-ThrowsContains { New-AzPolicyAssignment -Name $someName -Scope $goodScope -PolicyDefinition $goodPolicyDefinition -PolicyParameter $wrongParameters } $undefinedPolicyParameter
             Assert-ThrowsContains { New-AzPolicyAssignment -Name $someName -Scope $someScope -PolicyDefinition $goodPolicyDefinition -PolicyParameterObject $someParameterObject -PolicyParameter $somePolicyParameter } $parameterSetError
             Assert-ThrowsContains { New-AzPolicyAssignment -Name $someName -Scope $someScope -PolicySetDefinition $goodPolicySetDefinition -PolicyParameterObject $someParameterObject } $missingSubscription
             Assert-ThrowsContains { New-AzPolicyAssignment -Name $someName -Scope $someScope -PolicySetDefinition $goodPolicySetDefinition -PolicyParameterObject $someParameterObject -PolicyParameter $somePolicyParameter } $parameterSetError
-            Assert-ThrowsContains { New-AzPolicyAssignment -Name $someName -Scope $someScope -PolicyParameterObject $someParameterObject } $parameterSetError
-            Assert-ThrowsContains { New-AzPolicyAssignment -Name $someName -Scope $someScope -PolicyParameter $somePolicyParameter } $parameterSetError
+            Assert-ThrowsContains { New-AzPolicyAssignment -Name $someName -Scope $someScope -PolicyParameterObject $someParameterObject } $policyDefinitionParameter
+            Assert-ThrowsContains { New-AzPolicyAssignment -Name $someName -Scope $someScope -PolicyParameter $somePolicyParameter } $policyDefinitionParameter
         } | Should -Not -Throw
     }
 
