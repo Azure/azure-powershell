@@ -187,12 +187,6 @@ Create an in-memory object for OriginGroupOverrideAction.
 ### [New-AzCdnProfile](New-AzCdnProfile.md)
 Creates an CDN profile with the specified profile name under the specified subscription and resource group.
 
-### [New-AzCdnProfileLogScrubbingObject](New-AzCdnProfileLogScrubbingObject.md)
-Create an in-memory object for ProfileLogScrubbing.
-
-### [New-AzCdnProfileScrubbingRulesObject](New-AzCdnProfileScrubbingRulesObject.md)
-Create an in-memory object for ProfileScrubbingRules.
-
 ### [New-AzCdnPurgeParametersObject](New-AzCdnPurgeParametersObject.md)
 Create an in-memory object for PurgeParameters.
 
@@ -246,6 +240,12 @@ Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profi
 
 ### [New-AzFrontDoorCdnProfileChangeSkuWafMappingObject](New-AzFrontDoorCdnProfileChangeSkuWafMappingObject.md)
 Create an in-memory object for ProfileChangeSkuWafMapping.
+
+### [New-AzFrontDoorCdnProfileLogScrubbingObject](New-AzFrontDoorCdnProfileLogScrubbingObject.md)
+Create an in-memory object for ProfileLogScrubbing.
+
+### [New-AzFrontDoorCdnProfileScrubbingRulesObject](New-AzFrontDoorCdnProfileScrubbingRulesObject.md)
+Create an in-memory object for ProfileScrubbingRules.
 
 ### [New-AzFrontDoorCdnProfileUpgradeParametersObject](New-AzFrontDoorCdnProfileUpgradeParametersObject.md)
 Create an in-memory object for ProfileUpgradeParameters.

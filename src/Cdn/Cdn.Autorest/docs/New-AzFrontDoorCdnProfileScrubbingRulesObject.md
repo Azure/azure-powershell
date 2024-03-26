@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnProfileLogScrubbingObject
+online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileScrubbingRulesObject
 schema: 2.0.0
 ---
 
-# New-AzCdnProfileLogScrubbingObject
+# New-AzFrontDoorCdnProfileScrubbingRulesObject
 
 ## SYNOPSIS
-Create an in-memory object for ProfileLogScrubbing.
+Create an in-memory object for ProfileScrubbingRules.
 
 ## SYNTAX
 
 ```
-New-AzCdnProfileLogScrubbingObject [-ScrubbingRule <IProfileScrubbingRules[]>]
- [-State <ProfileScrubbingState>] [<CommonParameters>]
+New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable <ScrubbingRuleEntryMatchVariable>
+ [-Selector <String>] [-State <ScrubbingRuleEntryState>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for ProfileLogScrubbing.
+Create an in-memory object for ProfileScrubbingRules.
 
 ## EXAMPLES
 
@@ -46,12 +46,26 @@ Create an in-memory object for ProfileLogScrubbing.
 
 ## PARAMETERS
 
-### -ScrubbingRule
-List of log scrubbing rules applied to the Azure Front Door profile logs.
-To construct, see NOTES section for SCRUBBINGRULE properties and create a hash table.
+### -MatchVariable
+The variable to be scrubbed from the logs.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileScrubbingRules[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ScrubbingRuleEntryMatchVariable
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Selector
+When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -63,11 +77,11 @@ Accept wildcard characters: False
 ```
 
 ### -State
-State of the log scrubbing config.
-Default value is Enabled.
+Defines the state of a log scrubbing rule.
+Default value is enabled.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileScrubbingState
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ScrubbingRuleEntryState
 Parameter Sets: (All)
 Aliases:
 
@@ -85,7 +99,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileLogScrubbing
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileScrubbingRules
 
 ## NOTES
 

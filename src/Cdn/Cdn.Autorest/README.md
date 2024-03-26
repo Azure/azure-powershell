@@ -107,10 +107,10 @@ directive:
     # CDN content
     - PurgeParameters
     - LoadParameters
-    # AFDX profile LogScrubbing
-    - ProfileLogScrubbing
-    - ProfileScrubbingRules
-
+    
+    # AFDX profile LogScrubbing, need to rename the memory ojects, not sure how to rename a memory object currently.
+    # - ProfileLogScrubbing
+    # - ProfileScrubbingRules
     # Migration to AFDx
     # - MigrationParameters
     # - MigrationWebApplicationFirewallMapping
