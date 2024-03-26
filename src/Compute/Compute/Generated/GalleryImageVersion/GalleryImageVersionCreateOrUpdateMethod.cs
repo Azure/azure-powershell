@@ -125,6 +125,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 Name = (string)t["Name"],
                                 RegionalReplicaCount = (int?)t["ReplicaCount"],
                                 StorageAccountType = (string)t["StorageAccountType"],
+                                ExcludeFromLatest = (bool?)t["ExcludeFromLatest"],
                             };
                             if (t["Encryption"] != null)
                             {
@@ -472,6 +473,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 Name = (string)t["Name"],
                                 RegionalReplicaCount = (int?)t["ReplicaCount"],
                                 StorageAccountType = (string)t["StorageAccountType"],
+                                ExcludeFromLatest = (bool?)t["ExcludeFromLatest"],
                             };
                             if (t["Encryption"] != null)
                             {
