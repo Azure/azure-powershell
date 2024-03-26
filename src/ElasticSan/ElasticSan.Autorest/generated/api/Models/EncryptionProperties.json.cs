@@ -65,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return;
             }
-            {_keyVaultProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("keyVaultProperties"), out var __jsonKeyVaultProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.KeyVaultProperties.FromJson(__jsonKeyVaultProperties) : KeyVaultProperty;}
-            {_encryptionIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.EncryptionIdentity.FromJson(__jsonIdentity) : EncryptionIdentity;}
+            {_keyVaultProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("keyVaultProperties"), out var __jsonKeyVaultProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.KeyVaultProperties.FromJson(__jsonKeyVaultProperties) : _keyVaultProperty;}
+            {_encryptionIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.EncryptionIdentity.FromJson(__jsonIdentity) : _encryptionIdentity;}
             AfterFromJson(json);
         }
 
