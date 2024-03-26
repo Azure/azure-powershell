@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ElasticSan-help.xml
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsanvolumegroup
 schema: 2.0.0
@@ -18,26 +18,26 @@ New-AzElasticSanVolumeGroup -ElasticSanName <String> -Name <String> -ResourceGro
  [-SubscriptionId <String>] [-Encryption <String>] [-EncryptionUserAssignedIdentity <String>]
  [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>]
  [-KeyVaultUri <String>] [-KeyVersion <String>] [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>]
- [-ProtocolType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ProtocolType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityElasticSanExpanded
 ```
-New-AzElasticSanVolumeGroup -ElasticSanInputObject <IElasticSanIdentity> -Name <String> [-Encryption <String>]
- [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzElasticSanVolumeGroup -Name <String> -ElasticSanInputObject <IElasticSanIdentity> [-Encryption <String>]
+ [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>]
+ [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
+ [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzElasticSanVolumeGroup -InputObject <IElasticSanIdentity> [-Encryption <String>]
- [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentityId <String>] [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
- [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EncryptionUserAssignedIdentity <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentityId <String>]
+ [-KeyName <String>] [-KeyVaultUri <String>] [-KeyVersion <String>]
+ [-NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>] [-ProtocolType <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +45,7 @@ Create a Volume Group.
 
 ## EXAMPLES
 
-### Example 1: Create a volume group with network rule objects 
+### Example 1: Create a volume group with network rule objects
 ```powershell
 $virtualNetworkRule1 =  New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId  "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet1" -Action Allow
 $virtualNetworkRule2 =  New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId  "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet2" -Action Allow
@@ -71,7 +71,7 @@ Type                          : Microsoft.ElasticSan/ElasticSans
 
 This example creates two VirtualNetworkRule objects and then input the objects and other variables to create a volume group.
 
-### Example 2: Create a volume group with network rule JSON input 
+### Example 2: Create a volume group with network rule JSON input
 ```powershell
 New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -ProtocolType 'Iscsi' `
             -NetworkAclsVirtualNetworkRule (
@@ -99,7 +99,7 @@ Type                          : Microsoft.ElasticSan/ElasticSans
 
 This command creates a volume group with the NetworkAclsVirtualNetworkRule input in json format.
 
-### Example 3: Create a volume group with platform-managed key and SystemAssigned identity type 
+### Example 3: Create a volume group with platform-managed key and SystemAssigned identity type
 ```powershell
 New-AzElasticSanVolumeGroup -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -Name myvolumegroup -IdentityType SystemAssigned -ProtocolType Iscsi -Encryption EncryptionAtRestWithPlatformKey
 ```
@@ -136,7 +136,7 @@ Type                                                   : Microsoft.ElasticSan/el
 
 This command creates a volume group with identity type "SystemAssigned" and encryption type "platform-managed key".
 
-### Example 4: Create a volume group with platform-managed key and SystemAssigned identity type 
+### Example 4: Create a volume group with platform-managed key and SystemAssigned identity type
 ```powershell
 $useridentity = Get-AzUserAssignedIdentity -ResourceGroupName myresoucegroup -Name myuai
 
@@ -409,6 +409,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProtocolType
 Type of storage target
 
@@ -500,4 +515,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

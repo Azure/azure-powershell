@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ElasticSan-help.xml
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/az.elasticsan/new-azelasticsanvolumesnapshot
 schema: 2.0.0
@@ -15,27 +15,29 @@ Create a Volume Snapshot.
 ### CreateExpanded (Default)
 ```
 New-AzElasticSanVolumeSnapshot -ElasticSanName <String> -Name <String> -ResourceGroupName <String>
- -VolumeGroupName <String> -CreationDataSourceId <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityElasticSanExpanded
-```
-New-AzElasticSanVolumeSnapshot -ElasticSanInputObject <IElasticSanIdentity> -Name <String>
- -VolumeGroupName <String> -CreationDataSourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzElasticSanVolumeSnapshot -InputObject <IElasticSanIdentity> -CreationDataSourceId <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -VolumeGroupName <String> -CreationDataSourceId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaIdentityVolumegroupExpanded
 ```
 New-AzElasticSanVolumeSnapshot -Name <String> -VolumegroupInputObject <IElasticSanIdentity>
- -CreationDataSourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ -CreationDataSourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityElasticSanExpanded
+```
+New-AzElasticSanVolumeSnapshot -Name <String> -VolumeGroupName <String>
+ -ElasticSanInputObject <IElasticSanIdentity> -CreationDataSourceId <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzElasticSanVolumeSnapshot -InputObject <IElasticSanIdentity> -CreationDataSourceId <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -44,9 +46,9 @@ Create a Volume Snapshot.
 
 ## EXAMPLES
 
-### Example 1: Create a volume snapshot 
+### Example 1: Create a volume snapshot
 ```powershell
- $volume = New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -SizeGiB 1
+$volume = New-AzElasticSanVolume -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -Name myvolume -SizeGiB 1
  New-AzElasticSanVolumeSnapshot -ResourceGroupName myresourcegroup -ElasticSanName myelasticsan -VolumeGroupName myvolumegroup -CreationDataSourceId $volume.Id -Name mysnapshot
 ```
 
@@ -121,7 +123,6 @@ Accept wildcard characters: False
 
 ### -ElasticSanInputObject
 Identity Parameter
-To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -152,7 +153,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -171,7 +171,7 @@ The name of the volume snapshot within the given volume group.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityElasticSanExpanded, CreateViaIdentityVolumegroupExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityVolumegroupExpanded, CreateViaIdentityElasticSanExpanded
 Aliases:
 
 Required: True
@@ -188,6 +188,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -229,7 +244,6 @@ Accept wildcard characters: False
 
 ### -VolumegroupInputObject
 Identity Parameter
-To construct, see NOTES section for VOLUMEGROUPINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity
@@ -303,4 +317,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
