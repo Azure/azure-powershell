@@ -18,7 +18,7 @@ New-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
  [-GalleryImageDefinitionName] <String> [-Name] <String> [-AsJob] -Location <String>
  [-DataDiskImage <GalleryDataDiskImage[]>] [-OSDiskImage <GalleryOSDiskImage>]
  [-PublishingProfileEndOfLifeDate <DateTime>] [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>]
- [-SourceImageId <String>] [-StorageAccountType <String>] [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>]
+ [-SourceImageId <String>] [-StorageAccountType <String>] [-SourceImageVMId <String>] [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>]
  [-TargetExtendedLocation <Hashtable[]>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
