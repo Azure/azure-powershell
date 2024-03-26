@@ -7445,8 +7445,9 @@ function Test-VMTLWithGallerySourceImage
 
 <#
 .SYNOPSIS
-Windows machine test ensuring the EnableAutoUpdate value on the 
-provided VM is not overwritten. 
+Testing Capacity Reservation Sharing profile parameter
+Setting Sharing profile with multiple subs
+Then unsharing using empty string as value 
 #>
 function Test-CapacityReservationSharingProfile
 {
