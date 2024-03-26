@@ -71,7 +71,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string[] Zone { get; set; }
 
         [Parameter(
-            Mandatory = false)]
+            Mandatory = false,
+            HelpMessage = "Allows a Capacity Reservation Group to be shared across subscriptions. Pass \"\" to unshare all subscriptions.  It is an array of strings; Contains an array of Arm resource ids of subscriptions\r\neg : \"/subscriptions/{subscriptionId1}\", \"/subscriptions/{subscriptionId2}\"\r\n")]
         public string[] SharingProfile { get; set; }
 
         public override void ExecuteCmdlet()
