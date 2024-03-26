@@ -88,12 +88,10 @@ try {
     foreach ($_ in $ChangedSdks) {
         # If it is Resources.Management.Sdk, flag and will use tag for sdk generation
         $IsResources = $false;
-        Write-Host "111" $IsResources
         if ($_ -match "Resources.Management.Sdk")
         {
             $IsResources = $true;
         }
-        Write-Host "111222" $IsResources
 
         # Extract Module Name
         $ModuleName = "Az." + ($_ -split "\/|\\")[1]
