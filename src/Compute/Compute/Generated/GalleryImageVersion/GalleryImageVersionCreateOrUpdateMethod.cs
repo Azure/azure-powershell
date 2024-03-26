@@ -262,16 +262,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                     if (this.IsParameterBound(c => c.SourceImageVMId))
                     {
-                        if (!this.SourceImageVMId.ToLower().Contains("/virtualmachines/"))
-                        {
-                            throw new Exception("The `SourceImageVMId` parameter must be a valid virtual machine reference id such as /subscriptions/<sub>/resourceGroups/<rg>/providers/Microsoft.Compute/virtualMachines/<vm>");
-                        }
-
-                        if (this.IsParameterBound(c => c.SourceImageId))
-                        {
-                            throw new Exception("The `SourceImageId` parameter cannot be used with the `SourceImageVMId` at the same time. Please use the one that best fits your scenario.");
-                        }
-
                         if (galleryImageVersion.StorageProfile == null)
                         {
                             galleryImageVersion.StorageProfile = new GalleryImageVersionStorageProfile();
