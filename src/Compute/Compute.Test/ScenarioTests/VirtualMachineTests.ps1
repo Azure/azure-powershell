@@ -7442,7 +7442,6 @@ function Test-VMTLWithGallerySourceImage
     }
 }
 
-
 <#
 .SYNOPSIS
 Testing Capacity Reservation Sharing profile parameter
@@ -7488,4 +7487,4 @@ function Test-CapacityReservationSharingProfile
         # Cleanup
         Clean-ResourceGroup $rgname;
     }
-} 
+}
