@@ -15,20 +15,20 @@ Gets a deleted backup instance with name in a backup vault
 ### List (Default)
 ```
 Get-AzDataProtectionSoftDeletedBackupInstance -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -VaultName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ -VaultName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDataProtectionSoftDeletedBackupInstance -BackupInstanceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -VaultName <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDataProtectionSoftDeletedBackupInstance -InputObject <IDataProtectionIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,21 +95,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
