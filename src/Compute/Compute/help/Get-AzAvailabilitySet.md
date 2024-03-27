@@ -256,5 +256,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzAvailabilitySet](./New-AzAvailabilitySet.md)
 
 [Remove-AzAvailabilitySet](./Remove-AzAvailabilitySet.md)
-
-

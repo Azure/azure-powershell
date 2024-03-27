@@ -20,7 +20,8 @@ Get-AzDataMigrationAssessment -ConnectionString <String[]> [-OutputFolder <Strin
 
 ### ConfigFile
 ```
-Get-AzDataMigrationAssessment -ConfigFilePath <String> [-PassThru] [<CommonParameters>]
+Get-AzDataMigrationAssessment -ConfigFilePath <String> [-PassThru]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

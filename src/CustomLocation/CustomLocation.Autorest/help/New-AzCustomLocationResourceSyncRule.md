@@ -89,7 +89,6 @@ Accept wildcard characters: False
 
 ### -CustomlocationInputObject
 Identity Parameter
-To construct, see NOTES section for CUSTOMLOCATIONINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
@@ -136,7 +135,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
@@ -261,7 +259,6 @@ MatchExpressions is a list of resource selector requirements.
 Valid operators include In, NotIn, Exists, and DoesNotExist.
 The values set must be non-empty in the case of In and NotIn.
 The values set must be empty in the case of Exists and DoesNotExist.
-To construct, see NOTES section for SELECTORMATCHEXPRESSION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IMatchExpressionsProperties[]

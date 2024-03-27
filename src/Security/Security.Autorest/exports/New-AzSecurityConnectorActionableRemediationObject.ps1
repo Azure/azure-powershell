@@ -48,14 +48,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ITargetBranchConfiguration]
     # Repository branch configuration for PR Annotations.
-    # .
     ${BranchConfiguration},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICategoryConfiguration[]]
     # Gets or sets list of categories and severity levels.
-    # .
     ${CategoryConfiguration},
 
     [Parameter()]

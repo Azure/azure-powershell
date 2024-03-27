@@ -15,26 +15,29 @@ Update specific setting associated with the managed HSM.
 ### UpdateSettingViaFlattenValues (Default)
 ```
 Update-AzKeyVaultSetting [-HsmName] <String> [-Name] <String> [-Value] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateSettingViaInputObject
 ```
 Update-AzKeyVaultSetting [[-HsmName] <String>] [[-Value] <String>] [-InputObject] <PSKeyVaultSetting>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateSettingViaHsmObject
 ```
 Update-AzKeyVaultSetting [-Name] <String> [-Value] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-HsmObject] <PSManagedHsm> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-HsmObject] <PSManagedHsm>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateSettingViaHsmId
 ```
 Update-AzKeyVaultSetting [-Name] <String> [-Value] <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-HsmId] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-HsmId] <String> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

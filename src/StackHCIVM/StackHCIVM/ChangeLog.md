@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated API to 2024-01-01 version.
+* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 1.0.1
 * Reported image download progress

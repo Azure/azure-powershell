@@ -21,7 +21,8 @@ Test-AzServiceBusName -NamespaceName <String> [-SubscriptionId <String>] [-Defau
 ### AliasAvailability
 ```
 Test-AzServiceBusName -NamespaceName <String> [-SubscriptionId <String>] -AliasName <String>
- -ResourceGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
+ -ResourceGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -172,7 +173,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ICheckNameAvailabilityResult
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

@@ -22,9 +22,15 @@ Create an in-memory object for AwsOrganizationalDataMember.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new AwsOrganizationalDataMember object
 ```powershell
 New-AzSecurityAwsOrganizationalDataMemberObject -ParentHierarchyId "123"
+```
+
+```output
+OrganizationMembershipType ParentHierarchyId
+-------------------------- -----------------
+Member                     123
 ```
 
 ## PARAMETERS
@@ -33,7 +39,7 @@ New-AzSecurityAwsOrganizationalDataMemberObject -ParentHierarchyId "123"
 If the multi cloud account is not of membership type organization, this will be the ID of the account's parent.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -52,8 +58,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.AwsOrganizationalDataMember
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityawsorganizationaldatamemberobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityawsorganizationaldatamemberobject)

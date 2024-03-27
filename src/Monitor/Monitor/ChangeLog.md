@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Added breaking change warning messages for Metric Management Plane
+    * Get-AzMetric
+    * Get-AzMetricDefinition
+    * New-AzMetricFilter
 
 ## Version 5.1.0
 * Added support for the Metric Data Plane

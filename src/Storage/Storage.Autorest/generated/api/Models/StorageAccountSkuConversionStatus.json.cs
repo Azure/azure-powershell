@@ -77,10 +77,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_skuConversionStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("skuConversionStatus"), out var __jsonSkuConversionStatus) ? (string)__jsonSkuConversionStatus : (string)SkuConversionStatus;}
-            {_targetSkuName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("targetSkuName"), out var __jsonTargetSkuName) ? (string)__jsonTargetSkuName : (string)TargetSkuName;}
-            {_startTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("startTime"), out var __jsonStartTime) ? (string)__jsonStartTime : (string)StartTime;}
-            {_endTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("endTime"), out var __jsonEndTime) ? (string)__jsonEndTime : (string)EndTime;}
+            {_skuConversionStatus = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("skuConversionStatus"), out var __jsonSkuConversionStatus) ? (string)__jsonSkuConversionStatus : (string)_skuConversionStatus;}
+            {_targetSkuName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("targetSkuName"), out var __jsonTargetSkuName) ? (string)__jsonTargetSkuName : (string)_targetSkuName;}
+            {_startTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("startTime"), out var __jsonStartTime) ? (string)__jsonStartTime : (string)_startTime;}
+            {_endTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("endTime"), out var __jsonEndTime) ? (string)__jsonEndTime : (string)_endTime;}
             AfterFromJson(json);
         }
 

@@ -5855,7 +5855,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights
                         + "?"
                         + "category=" + global::System.Uri.EscapeDataString(category)
                         + "&"
-                        + (null != tags  && tags.Length > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != tags  && tags.Length > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + (string.IsNullOrEmpty(sourceId) ? global::System.String.Empty : "sourceId=" + global::System.Uri.EscapeDataString(sourceId))
                         + "&"
@@ -5921,7 +5921,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights
                         + "?"
                         + "category=" + global::System.Uri.EscapeDataString(category)
                         + "&"
-                        + (null != tags  && tags.Length > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != tags  && tags.Length > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + (string.IsNullOrEmpty(sourceId) ? global::System.String.Empty : "sourceId=" + global::System.Uri.EscapeDataString(sourceId))
                         + "&"
@@ -6050,7 +6050,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights
                         + "?"
                         + "category=" + global::System.Uri.EscapeDataString(category)
                         + "&"
-                        + (null != tags  && tags.Length > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != tags  && tags.Length > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + (null == canFetchContent ? global::System.String.Empty : "canFetchContent=" + global::System.Uri.EscapeDataString(canFetchContent.ToString()))
                         + "&"
@@ -6108,7 +6108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights
                         + "?"
                         + "category=" + global::System.Uri.EscapeDataString(category)
                         + "&"
-                        + (null != tags  && tags.Length > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != tags  && tags.Length > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + (null == canFetchContent ? global::System.String.Empty : "canFetchContent=" + global::System.Uri.EscapeDataString(canFetchContent.ToString()))
                         + "&"
@@ -9168,7 +9168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights
                         + "?"
                         + "category=" + global::System.Uri.EscapeDataString(category)
                         + "&"
-                        + (null != tags  && tags.Length > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != tags  && tags.Length > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + (string.IsNullOrEmpty(sourceId) ? global::System.String.Empty : "sourceId=" + global::System.Uri.EscapeDataString(sourceId))
                         + "&"
@@ -9232,7 +9232,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights
                         + "?"
                         + "category=" + global::System.Uri.EscapeDataString(category)
                         + "&"
-                        + (null != tags  && tags.Length > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != tags  && tags.Length > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + (string.IsNullOrEmpty(sourceId) ? global::System.String.Empty : "sourceId=" + global::System.Uri.EscapeDataString(sourceId))
                         + "&"
@@ -9361,7 +9361,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights
                         + "?"
                         + "category=" + global::System.Uri.EscapeDataString(category)
                         + "&"
-                        + (null != tags  && tags.Length > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != tags  && tags.Length > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + (null == canFetchContent ? global::System.String.Empty : "canFetchContent=" + global::System.Uri.EscapeDataString(canFetchContent.ToString()))
                         + "&"
@@ -9419,7 +9419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights
                         + "?"
                         + "category=" + global::System.Uri.EscapeDataString(category)
                         + "&"
-                        + (null != tags  && tags.Length > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != tags  && tags.Length > 0 ? "tags=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(tags, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + (null == canFetchContent ? global::System.String.Empty : "canFetchContent=" + global::System.Uri.EscapeDataString(canFetchContent.ToString()))
                         + "&"
