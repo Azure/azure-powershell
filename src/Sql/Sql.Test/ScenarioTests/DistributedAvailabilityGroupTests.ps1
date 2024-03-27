@@ -60,7 +60,7 @@ function Test-ManagedInstanceLinkMIFirstPlannedFailover
         Assert-AreEqual $linkToFailover.PartnerLinkRole $secondaryRoleConst
 
         # Perform planned failover
-        Invoke-AzSqlInstanceLinkFailover -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -FailoverType $failoverType
+        Start-AzSqlInstanceLinkFailover -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -FailoverType $failoverType
 
         # Assert that box is primary
         $linkToFailover = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName
@@ -100,7 +100,7 @@ function Test-ManagedInstanceLinkMIFirstForcedFailover
         Assert-AreEqual $linkToFailover.PartnerLinkRole $secondaryRoleConst
 
         # Perform planned failover
-        $instance | Invoke-AzSqlInstanceLinkFailover -Name $linkName -FailoverType $failoverType
+        $instance | Start-AzSqlInstanceLinkFailover -Name $linkName -FailoverType $failoverType
 
         # Assert that box is primary
         $linkToFailover = $instance | Get-AzSqlInstanceLink -Name $linkName
@@ -257,7 +257,7 @@ function Test-ManagedInstanceLinkBOXFirstForcedFailover
         Assert-AreEqual $linkToFailover.PartnerLinkRole $primaryRoleConst
 
         # Perform forced failover and succeed
-        $instance | Invoke-AzSqlInstanceLinkFailover -Name $linkName -FailoverType $failoverType
+        $instance | Start-AzSqlInstanceLinkFailover -Name $linkName -FailoverType $failoverType
 
         # Assert that box is secondary
         $linkToFailover = $instance | Get-AzSqlInstanceLink -Name $linkName
@@ -326,9 +326,9 @@ function Test-ManagedInstanceLinkErrHandling
         $msgExcCreatingLink = "Choose a different database name"
         Assert-ThrowsContains { New-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -LinkName $linkName1 -TargetDatabase $databaseName -FailoverMode $failoverMode -InstanceAvailabilityGroupName $instanceAgName -InstanceLinkRole $instanceLinkRole -PartnerAvailabilityGroupName $boxAgName -PartnerEndpoint $partnerEndpoint -ReplicationMode $replicationMode -SeedingMode $seedingMode } $msgExcCreatingLink
 
-        # Invoke failover and assert that the planned failover can't be invoked when MI is secondary
+        # Start failover and assert that the planned failover can't be invoked when MI is secondary
         $msgExcCantFailover = "Planned failover can be executed on a link in the primary role only. Current state of the specified link is secondary."
-        Assert-ThrowsContains { Invoke-AzSqlInstanceLinkFailover -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -FailoverType $failoverType } $msgExcCantFailover
+        Assert-ThrowsContains { Start-AzSqlInstanceLinkFailover -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -FailoverType $failoverType } $msgExcCantFailover
 
         # Confirm that ShouldContinue message is triggered on Remove (tests don't support user interaction so we'll validate the exception)
         $msgExcDataLoss = "may cause data loss"

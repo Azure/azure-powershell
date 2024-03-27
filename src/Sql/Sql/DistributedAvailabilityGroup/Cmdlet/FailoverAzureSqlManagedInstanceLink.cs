@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Sql.DistributedAvailabilityGroup.Cmdlet
     /// <summary>
     /// Cmdlet to failover Managed Instance Link
     /// </summary>
-    [Cmdlet("Invoke", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLinkFailover",
+    [Cmdlet("Start", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceLinkFailover",
         DefaultParameterSetName = FailoverByNameParameterSet, SupportsShouldProcess = true),
         OutputType(typeof(AzureSqlManagedInstanceLinkModel))]
     public class FailoverAzureSqlManagedInstanceLink : AzureSqlManagedInstanceLinkCmdletBase
