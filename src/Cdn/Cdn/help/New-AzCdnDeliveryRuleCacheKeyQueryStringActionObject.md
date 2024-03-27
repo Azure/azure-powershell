@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleCacheKeyQueryStringActionObject
 schema: 2.0.0
@@ -13,8 +13,9 @@ Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject -Name <DeliveryRuleAction>
- -ParameterQueryStringBehavior <QueryStringBehavior> [-ParameterQueryParameter <String>] [<CommonParameters>]
+New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject -ParameterQueryStringBehavior <QueryStringBehavior>
+ -Name <DeliveryRuleAction> [-ParameterQueryParameter <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,7 +94,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

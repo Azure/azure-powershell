@@ -15,8 +15,8 @@ Deletes a consumer group from the specified Event Hub and resource group.
 ### Delete (Default)
 ```
 Remove-AzEventHubConsumerGroup -EventHubName <String> -Name <String> -NamespaceName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity

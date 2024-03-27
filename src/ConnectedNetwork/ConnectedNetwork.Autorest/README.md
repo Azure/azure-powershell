@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the ConnectedNetwork service.
 
 ---
-## Status
-[![Az.ConnectedNetwork](https://img.shields.io/powershellgallery/v/Az.ConnectedNetwork.svg?style=flat-square&label=Az.ConnectedNetwork "Az.ConnectedNetwork")](https://www.powershellgallery.com/packages/Az.ConnectedNetwork/)
 
 ## Info
 - Modifiable: yes

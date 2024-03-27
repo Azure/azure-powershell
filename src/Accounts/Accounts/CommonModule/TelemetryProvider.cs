@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 using Microsoft.Azure.Commands.Profile.CommonModule;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.WindowsAzure.Commands.Common.Sanitizer;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
@@ -155,6 +156,7 @@ namespace Microsoft.Azure.Commands.Common
                 PSVersion = AzurePSCmdlet.PowerShellVersion,
                 HostVersion = AzurePSCmdlet.PSHostVersion,
                 PSHostName = AzurePSCmdlet.PSHostName,
+                SanitizerInfo = new SanitizerTelemetry()
             };
 
             if (invocationInfo != null)

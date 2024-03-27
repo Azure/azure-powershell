@@ -132,4 +132,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Add-AzKeyVaultCertificateContact](./Add-AzKeyVaultCertificateContact.md)
 
 [Remove-AzKeyVaultCertificateContact](./Remove-AzKeyVaultCertificateContact.md)
-

@@ -18,8 +18,8 @@ Set-AzVmssDiskEncryptionExtension [-ResourceGroupName] <String> [-VMScaleSetName
  [-KeyEncryptionKeyVaultId <String>] [-KeyEncryptionAlgorithm <String>] [-VolumeType <String>] [-ForceUpdate]
  [-TypeHandlerVersion <String>] [-ExtensionPublisherName <String>] [-ExtensionName <String>]
  [-ExtensionType <String>] [-EncryptFormatAll] [-Passphrase <String>] [-Force]
- [-DisableAutoUpgradeMinorVersion] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DisableAutoUpgradeMinorVersion] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

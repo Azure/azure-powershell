@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the StorageMover service.
 
 ---
-## Status
-[![Az.StorageMover](https://img.shields.io/powershellgallery/v/Az.StorageMover.svg?style=flat-square&label=Az.StorageMover "Az.StorageMover")](https://www.powershellgallery.com/packages/Az.StorageMover/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

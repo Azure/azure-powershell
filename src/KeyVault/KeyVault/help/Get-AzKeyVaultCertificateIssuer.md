@@ -174,5 +174,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzKeyVaultCertificateIssuer](./Remove-AzKeyVaultCertificateIssuer.md)
 
 [Set-AzKeyVaultCertificateIssuer](./Set-AzKeyVaultCertificateIssuer.md)
-
-

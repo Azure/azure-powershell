@@ -201,5 +201,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-GetAzureFirewallLearnedIpPrefixes");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestInvokeAzureFirewallPacketCapture()
+        {
+            TestRunner.RunTestScript("Test-InvokeAzureFirewallPacketCapture");
+        }
     }
 }

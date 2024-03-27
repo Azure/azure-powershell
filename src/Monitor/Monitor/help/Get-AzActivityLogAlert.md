@@ -14,7 +14,8 @@ Get an Activity Log Alert rule.
 
 ### List (Default)
 ```
-Get-AzActivityLogAlert [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzActivityLogAlert [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get

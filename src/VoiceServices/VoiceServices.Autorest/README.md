@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the VoiceServices service.
 
 ---
-## Status
-[![Az.VoiceServices](https://img.shields.io/powershellgallery/v/Az.VoiceServices.svg?style=flat-square&label=Az.VoiceServices "Az.VoiceServices")](https://www.powershellgallery.com/packages/Az.VoiceServices/)
 
 ## Info
 - Modifiable: yes

@@ -15,13 +15,15 @@ Delete a specific azure private link association.
 ### DeletePLAOperation (Default)
 ```
 Remove-AzPrivateLinkAssociation [-ManagementGroupId] <String> [-Name] <String> [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### PrivateLinkAssociationObject
 ```
 Remove-AzPrivateLinkAssociation [-PassThru] [-Force] -InputObject <PSResourceManagementPrivateLinkAssociation>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

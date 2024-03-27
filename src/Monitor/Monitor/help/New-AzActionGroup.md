@@ -20,7 +20,8 @@ New-AzActionGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <S
  [-EmailReceiver <IEmailReceiver[]>] [-Enabled] [-EventHubReceiver <IEventHubReceiver[]>]
  [-GroupShortName <String>] [-ItsmReceiver <IItsmReceiver[]>] [-LogicAppReceiver <ILogicAppReceiver[]>]
  [-SmsReceiver <ISmsReceiver[]>] [-Tag <Hashtable>] [-VoiceReceiver <IVoiceReceiver[]>]
- [-WebhookReceiver <IWebhookReceiver[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WebhookReceiver <IWebhookReceiver[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
@@ -43,7 +44,8 @@ New-AzActionGroup -InputObject <IActionGroupIdentity> -Location <String>
  [-EmailReceiver <IEmailReceiver[]>] [-Enabled] [-EventHubReceiver <IEventHubReceiver[]>]
  [-GroupShortName <String>] [-ItsmReceiver <IItsmReceiver[]>] [-LogicAppReceiver <ILogicAppReceiver[]>]
  [-SmsReceiver <ISmsReceiver[]>] [-Tag <Hashtable>] [-VoiceReceiver <IVoiceReceiver[]>]
- [-WebhookReceiver <IWebhookReceiver[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WebhookReceiver <IWebhookReceiver[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

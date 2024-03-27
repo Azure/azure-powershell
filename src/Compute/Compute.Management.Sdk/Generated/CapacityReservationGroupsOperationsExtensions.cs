@@ -291,9 +291,20 @@ namespace Microsoft.Azure.Management.Compute
             /// response. Possible values include: 'virtualMachineScaleSetVMs/$ref',
             /// 'virtualMachines/$ref'
             /// </param>
-            public static IPage<CapacityReservationGroup> ListBySubscription(this ICapacityReservationGroupsOperations operations, string expand = default(string))
+            /// <param name='resourceIdsOnly'>
+            /// The query option to fetch Capacity Reservation Group Resource Ids.
+            /// &lt;br&gt; 'CreatedInSubscription' enables fetching Resource Ids for all
+            /// capacity reservation group resources created in the subscription.
+            /// &lt;br&gt; 'SharedWithSubscription' enables fetching Resource Ids for all
+            /// capacity reservation group resources shared with the subscription.
+            /// &lt;br&gt; 'All' enables fetching Resource Ids for all capacity reservation
+            /// group resources shared with the subscription and created in the
+            /// subscription. Possible values include: 'CreatedInSubscription',
+            /// 'SharedWithSubscription', 'All'
+            /// </param>
+            public static IPage<CapacityReservationGroup> ListBySubscription(this ICapacityReservationGroupsOperations operations, string expand = default(string), string resourceIdsOnly = default(string))
             {
-                return operations.ListBySubscriptionAsync(expand).GetAwaiter().GetResult();
+                return operations.ListBySubscriptionAsync(expand, resourceIdsOnly).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -311,12 +322,23 @@ namespace Microsoft.Azure.Management.Compute
             /// response. Possible values include: 'virtualMachineScaleSetVMs/$ref',
             /// 'virtualMachines/$ref'
             /// </param>
+            /// <param name='resourceIdsOnly'>
+            /// The query option to fetch Capacity Reservation Group Resource Ids.
+            /// &lt;br&gt; 'CreatedInSubscription' enables fetching Resource Ids for all
+            /// capacity reservation group resources created in the subscription.
+            /// &lt;br&gt; 'SharedWithSubscription' enables fetching Resource Ids for all
+            /// capacity reservation group resources shared with the subscription.
+            /// &lt;br&gt; 'All' enables fetching Resource Ids for all capacity reservation
+            /// group resources shared with the subscription and created in the
+            /// subscription. Possible values include: 'CreatedInSubscription',
+            /// 'SharedWithSubscription', 'All'
+            /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<IPage<CapacityReservationGroup>> ListBySubscriptionAsync(this ICapacityReservationGroupsOperations operations, string expand = default(string), CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<IPage<CapacityReservationGroup>> ListBySubscriptionAsync(this ICapacityReservationGroupsOperations operations, string expand = default(string), string resourceIdsOnly = default(string), CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(expand, null, cancellationToken).ConfigureAwait(false))
+                using (var _result = await operations.ListBySubscriptionWithHttpMessagesAsync(expand, resourceIdsOnly, null, cancellationToken).ConfigureAwait(false))
                 {
                     return _result.Body;
                 }

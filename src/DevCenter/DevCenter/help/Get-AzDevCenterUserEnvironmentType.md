@@ -38,7 +38,7 @@ This command lists environment types under the project "DevProject".
 
 ### Example 2: List environment types by dev center and project
 ```powershell
-Get-AzDevCenterUserEnvironmentType -DevCenter Contoso -ProjectName DevProject
+Get-AzDevCenterUserEnvironmentType -DevCenterName Contoso -ProjectName DevProject
 ```
 
 This command lists environment types under the project "DevProject".
@@ -113,10 +113,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentType
+### Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentType
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

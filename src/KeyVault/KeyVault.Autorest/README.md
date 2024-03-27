@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the KeyVault service.
 
 ---
-## Status
-[![Az.KeyVault](https://img.shields.io/powershellgallery/v/Az.KeyVault.svg?style=flat-square&label=Az.KeyVault "Az.KeyVault")](https://www.powershellgallery.com/packages/Az.KeyVault/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -31,7 +28,7 @@ For information on how to develop for `Az.KeyVault`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-branch: 8fa9b5051129dd4808c9be1f5b753af226b044db
+commit: 8fa9b5051129dd4808c9be1f5b753af226b044db
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -48,8 +45,6 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: KeyVault
 subject-prefix: $(service-name)
-use-extension:
-  "@autorest/powershell": "4.x"
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs

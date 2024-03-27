@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleRequestHeaderConditionObject
 schema: 2.0.0
@@ -13,9 +13,9 @@ Create an in-memory object for DeliveryRuleRequestHeaderCondition.
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleRequestHeaderConditionObject -Name <MatchVariable>
- -ParameterOperator <RequestHeaderOperator> [-ParameterMatchValue <String[]>]
- [-ParameterNegateCondition <Boolean>] [-ParameterSelector <String>] [-ParameterTransform <Transform[]>]
+New-AzCdnDeliveryRuleRequestHeaderConditionObject -ParameterOperator <RequestHeaderOperator>
+ -Name <MatchVariable> [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>]
+ [-ParameterSelector <String>] [-ParameterTransform <Transform[]>]
  [<CommonParameters>]
 ```
 
@@ -140,7 +140,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

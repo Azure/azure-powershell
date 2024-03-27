@@ -60,13 +60,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         }
         private string ContainerName = String.Empty;
 
-     
-
-        protected override bool UseTrack2Sdk()
-        {
-            return true;
-        }
-
         /// <summary>
         /// Initializes a new instance of the RemoveStorageAzureBlobCommand class.
         /// </summary>

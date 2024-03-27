@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdnprofilesku
 schema: 2.0.0
@@ -13,9 +13,9 @@ Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 ## SYNTAX
 
 ```
-Update-AzFrontDoorCdnProfileSku -ProfileName <String> -ResourceGroupName <String>
- -ProfileUpgradeParameter <IProfileUpgradeParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzFrontDoorCdnProfileSku -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -ProfileUpgradeParameter <IProfileUpgradeParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -241,17 +241,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PROFILEUPGRADEPARAMETER <IProfileUpgradeParameters>`: Parameters required for profile upgrade.
-  - `WafMappingList <IProfileChangeSkuWafMapping[]>`: Web Application Firewall (WAF) and security policy mapping for the profile upgrade
-    - `SecurityPolicyName <String>`: The security policy name.
-    - `[ChangeToWafPolicyId <String>]`: Resource ID.
-
 ## RELATED LINKS
-

@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class BackupEnginesOperationsExtensions
     {
         /// <summary>
-        /// Backup management servers registered to Recovery Services Vault. Returns a pageable list of servers.
+        /// Backup management servers registered to Recovery Services Vault. Returns a
+        /// pageable list of servers.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -25,7 +26,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
@@ -36,7 +38,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Backup management servers registered to Recovery Services Vault. Returns a pageable list of servers.
+        /// Backup management servers registered to Recovery Services Vault. Returns a
+        /// pageable list of servers.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -48,7 +51,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
@@ -76,7 +80,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='backupEngineName'>
         /// Name of the backup management server.
@@ -102,7 +107,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='backupEngineName'>
         /// Name of the backup management server.
@@ -121,7 +127,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             }
         }
         /// <summary>
-        /// Backup management servers registered to Recovery Services Vault. Returns a pageable list of servers.
+        /// Backup management servers registered to Recovery Services Vault. Returns a
+        /// pageable list of servers.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -135,7 +142,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Backup management servers registered to Recovery Services Vault. Returns a pageable list of servers.
+        /// Backup management servers registered to Recovery Services Vault. Returns a
+        /// pageable list of servers.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

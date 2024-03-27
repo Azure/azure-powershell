@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180901Preview.ISolution))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Description(@"Gets a solution in the migrate project.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}", ApiVersion = "2018-09-01-preview")]
     public partial class GetAzMigrateSolution_Get : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.IEventListener
     {

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleSocketAddrConditionObject
 schema: 2.0.0
@@ -13,7 +13,7 @@ Create an in-memory object for DeliveryRuleSocketAddrCondition.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRuleSocketAddrConditionObject -Name <MatchVariable> -ParameterOperator <SocketAddrOperator>
+New-AzFrontDoorCdnRuleSocketAddrConditionObject -ParameterOperator <SocketAddrOperator> -Name <MatchVariable>
  [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>]
  [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Create an in-memory object for DeliveryRuleSocketAddrCondition.
 
 ### Example 1: Create an in-memory object for DeliveryRuleSocketAddrCondition
 ```powershell
- New-AzFrontDoorCdnRuleSocketAddrConditionObject -Name SocketAddr -ParameterOperator IPMatch -ParameterMatchValue 222.10.0.1
+New-AzFrontDoorCdnRuleSocketAddrConditionObject -Name SocketAddr -ParameterOperator IPMatch -ParameterMatchValue 222.10.0.1
 ```
 
 ```output
@@ -124,7 +124,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

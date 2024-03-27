@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUserManagedHttpsParametersObject
 schema: 2.0.0
@@ -13,9 +13,9 @@ Create an in-memory object for UserManagedHttpsParameters.
 ## SYNTAX
 
 ```
-New-AzCdnUserManagedHttpsParametersObject -CertificateSource <CertificateSource>
- -CertificateSourceParameterResourceGroupName <String> -CertificateSourceParameterSecretName <String>
- -CertificateSourceParameterSubscriptionId <String> -CertificateSourceParameterVaultName <String>
+New-AzCdnUserManagedHttpsParametersObject -CertificateSourceParameterResourceGroupName <String>
+ -CertificateSourceParameterSecretName <String> -CertificateSourceParameterSubscriptionId <String>
+ -CertificateSourceParameterVaultName <String> -CertificateSource <CertificateSource>
  -ProtocolType <ProtocolType> [-CertificateSourceParameterSecretVersion <String>]
  [-MinimumTlsVersion <MinimumTlsVersion>] [<CommonParameters>]
 ```
@@ -171,7 +171,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

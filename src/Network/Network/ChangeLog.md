@@ -19,6 +19,18 @@
 --->
 
 ## Upcoming Release
+* Fixed a bug caused by the introduction of the new property `GlobalConfiguration` in `PSApplicationGateway`
+
+## Version 7.4.0
+* Fixed a few minor issues
+* Updated `New-AzApplicationGateway` to include `EnableRequestBuffering` and `EnableResponseBuffering` parameters
+* Changed the Default Rule Set from CRS3.0 to DRS2.1 in `NewAzureApplicationGatewayFirewallPolicy`
+* Added optional property 'Profile' to `New-AzFirewallPolicyIntrusionDetection` 
+* Added new cmdlet to update Connection child resource of Network Virtual Appliance. - `Update-AzNetworkVirtualApplianceConnection`
+* Added support of `InternetIngressIp` Property in New-AzNetworkVirtualAppliance
+* Added the new cmdlet for supporting `InternetIngressIp` Property with Network Virtual Appliances -`New-AzVirtualApplianceInternetIngressIpsProperty`
+* Added a new AuxiliaryMode value `AuxiliaryMode.Floating`
+* Added support for AzureFirewallPacketCapture
 
 ## Version 7.3.0
 * Fixed a few minor issues

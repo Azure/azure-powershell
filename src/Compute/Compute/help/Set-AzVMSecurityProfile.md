@@ -95,7 +95,6 @@ Specifies the SecurityType of the virtual machine. It has to be set to any speci
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: TrustedLaunch, ConfidentialVM, Standard
 
 Required: False
 Position: Named

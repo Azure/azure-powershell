@@ -13,7 +13,8 @@ Create an in-memory object for AzureAppPushReceiver.
 ## SYNTAX
 
 ```
-New-AzActionGroupAzureAppPushReceiverObject -EmailAddress <String> -Name <String> [<CommonParameters>]
+New-AzActionGroupAzureAppPushReceiverObject -EmailAddress <String> -Name <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

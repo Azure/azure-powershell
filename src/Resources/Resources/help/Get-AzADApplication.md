@@ -28,7 +28,8 @@ Get-AzADApplication -ObjectId <String> [-Select <String[]>] [-First <UInt64>] [-
 ### OwnedApplicationParameterSet
 ```
 Get-AzADApplication [-OwnedApplication] [-Select <String[]>] [-Orderby <String[]>] [-First <UInt64>]
- [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### SearchStringParameterSet

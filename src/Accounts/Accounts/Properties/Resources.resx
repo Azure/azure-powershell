@@ -595,4 +595,7 @@
   <data name="ProfileCredentialsWriteWarning" xml:space="preserve">
     <value>Personally identifiable information and confidential data may be written to the file located at '{0}'. Please ensure that appropriate access controls are assigned to the saved file.</value>
   </data>
+  <data name="DoNotIgnoreInformationIfUserDeviceAuth" xml:space="preserve">
+    <value>Please do not set InformationAction or $InformationPreference to Ignore if you want to use device code authentication.</value>
+  </data>
 </root>

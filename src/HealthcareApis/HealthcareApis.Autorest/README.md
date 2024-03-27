@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the HealthcareApis service.
 
 ---
-## Status
-[![Az.HealthcareApis](https://img.shields.io/powershellgallery/v/Az.HealthcareApis.svg?style=flat-square&label=Az.HealthcareApis "Az.HealthcareApis")](https://www.powershellgallery.com/packages/Az.HealthcareApis/)
 
 ## Info
 - Modifiable: yes

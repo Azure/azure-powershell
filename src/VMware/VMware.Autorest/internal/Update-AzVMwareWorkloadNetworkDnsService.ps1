@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create or update a DNS service by id in a private cloud workload network.
+Update a DNS service by id in a private cloud workload network.
 .Description
-Create or update a DNS service by id in a private cloud workload network.
+Update a DNS service by id in a private cloud workload network.
 .Example
 {{ Add code here }}
 .Example
@@ -27,7 +27,7 @@ Create or update a DNS service by id in a private cloud workload network.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsService
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -59,14 +59,44 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
   [SubscriptionId <String>]: The ID of the target subscription.
   [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
   [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/update-azvmwareworkloadnetworkdnsservice
 #>
 function Update-AzVMwareWorkloadNetworkDnsService {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IWorkloadNetworkDnsService])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IWorkloadNetworkDnsService])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # NSX DNS Service identifier.
@@ -97,8 +127,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
+
+    [Parameter(ParameterSetName='UpdateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${PrivateCloudInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
@@ -126,9 +161,9 @@ param(
     ${FqdnZone},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.DnsServiceLogLevelEnum])]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("DEBUG", "INFO", "WARNING", "ERROR", "FATAL")]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.DnsServiceLogLevelEnum]
+    [System.String]
     # DNS Service log level.
     ${LogLevel},
 
@@ -143,7 +178,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -209,9 +245,16 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkDnsService_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkDnsService_UpdateViaIdentityExpanded';
+            UpdateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\Update-AzVMwareWorkloadNetworkDnsService_UpdateViaIdentityPrivateCloudExpanded';
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

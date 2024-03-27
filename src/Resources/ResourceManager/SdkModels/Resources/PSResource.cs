@@ -149,8 +149,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels
             TagsHelper.GetTagsDictionary(TagsHelper.GetTagsHashtable(resource.Tags))
         )
         {
-            if ( resource.Properties["creationTime"] == null) { this.CreatedTime = null;} else {this.CreatedTime = Convert.ToDateTime(resource.Properties["creationTime"]);}
-            if ( resource.Properties["lastModifiedTime"] == null) { this.ChangedTime = null;} else {this.ChangedTime = Convert.ToDateTime(resource.Properties["lastModifiedTime"]);}
+            if (resource.Properties != null)
+            {
+                if ( resource.Properties["creationTime"] == null) { this.CreatedTime = null;} else {this.CreatedTime = Convert.ToDateTime(resource.Properties["creationTime"]);}
+                if ( resource.Properties["lastModifiedTime"] == null) { this.ChangedTime = null;} else {this.ChangedTime = Convert.ToDateTime(resource.Properties["lastModifiedTime"]);}
+            }
             this.SubscriptionId = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetSubscriptionId(resource.Id);
             this.ResourceGroupName = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetResourceGroupName(resource.Id);
             this.ExtensionResourceName = string.IsNullOrEmpty(resource.Id) ? null : ResourceIdUtility.GetExtensionResourceName(resource.Id);

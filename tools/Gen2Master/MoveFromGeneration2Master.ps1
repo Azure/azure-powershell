@@ -24,7 +24,12 @@ Function Move-Generation2Master {
 
     process {
         #Region Handle the module whoes folder is a subfolder of the module folder.
-        $ModuleName = $SourcePath.Replace('/', '\').Split('\src\')[1].Split('\')[0]
+        if (-not (Test-Path -Path $SourcePath)) {
+            Write-Error "The source path $SourcePath does not exist." -ForegroundColor Red
+            return
+        }
+        $SourceFolder = Get-Item -Path $SourcePath
+        $ModuleName = $SourceFolder.Name
 
         $DestParentPath = $DestPath
         While ("" -ne $DestParentPath) {
@@ -41,7 +46,9 @@ Function Move-Generation2Master {
             New-Item -Type Directory -Path $DestPath -Force
             New-Item "$DestPath\$ModuleName\Properties" -ItemType Directory
             New-Item "$DestPath\$ModuleName\help" -ItemType Directory
+            Update-MappingJson $ModuleName
         }
+        $DestPath = (Get-Item -Path $DestPath).FullName
         $Dir2Copy = @{
             'custom' = 'custom'
             'examples' = 'examples'
@@ -67,7 +74,7 @@ Function Move-Generation2Master {
             $Psd1Metadata = Import-LocalizedData -BaseDirectory "$PSScriptRoot/Templates" -FileName "Module.psd1"
         }
         foreach ($submoduleDir in $submoduleDirs) {
-            $psd1File = Get-ChildItem -Filter *.psd1 -File -Path $submoduleDir
+            $psd1File = Get-ChildItem -Filter *.psd1 -File -Path $submoduleDir.FullName
             write-host ("psd1 file name {0}" -f $psd1File.Name)
             $submoduleName = $psd1File.Name.Split('.')[-2]
             Foreach ($Dir in $Dir2Copy.GetEnumerator()) {
@@ -81,6 +88,10 @@ Function Move-Generation2Master {
                     Copy-Item -Recurse -Path $SourceItem -Destination $DestItem
                 }
             }
+            $sourceHelpFolder = Join-Path -Path (Join-Path -Path $SourcePath -ChildPath $submoduleDir.Name) -ChildPath "docs"
+            $destHelpHolder = Join-Path -Path (Join-Path -Path $DestPath -ChildPath $ModuleName) -ChildPath "help"
+            Write-Host "Copying help files from $sourceHelpFolder to $destHelpHolder" -ForegroundColor Yellow
+            Get-ChildItem -Path $sourceHelpFolder -Filter *-*.md | Copy-Item -Destination $destHelpHolder
             #Region Clean Local Modules
             $LocalModulesPath = Join-Path -Path (Join-Path -Path (Join-Path -Path $DestPath -ChildPath $submoduleDir.Name) -ChildPath 'generated') -ChildPath 'modules'
             If (Test-Path $LocalModulesPath) {
@@ -123,6 +134,7 @@ Function Move-Generation2Master {
                 }
                 $Psd1Metadata.Remove("PrivateData")
             }
+            
             # Generate csproj file and add the dependency in the solution file
             Copy-Template -SourceName Az.ModuleName.csproj -DestPath (Join-Path $DestPath $submoduleDir.Name) -DestName "Az.$submoduleName.csproj" -RootModuleName $ModuleName -ModuleName $submoduleName -ModuleFolder $submoduleDir.Name
         }
@@ -152,13 +164,6 @@ Function Move-Generation2Master {
         $Psd1Metadata.NestedModules = Unique-PathList $Psd1Metadata.NestedModules
         
         New-ModuleManifest -Path $DestPsd1Path @Psd1Metadata
-        
-        if (-not (Test-Path "$DestPath\$ModuleName\Properties")) {
-            New-Item "$DestPath\$ModuleName\Properties" -ItemType Directory
-            # Copy the assemblyinfo file
-            Copy-Template -SourceName AssemblyInfo.cs -DestPath "$DestPath\$ModuleName\Properties" -DestName AssemblyInfo.cs -ModuleName $submoduleName
-            Update-MappingJson $ModuleName
-        }
         # update module page
         dotnet build $slnFilePath
         # start a job to update markdown help module, since we can not uninstall a module in the same process.
@@ -176,6 +181,7 @@ Function Move-Generation2Master {
                 $psd1Data.RequiredAssemblies = $psd1Data.RequiredAssemblies | Where-Object { $_ -ne $assemblyToRemove }
                 Update-ModuleManifest -Path $psd1Path -RequiredAssemblies $psd1Data.RequiredAssemblies
             }
+
             Import-Module $psd1Path
             Import-Module platyPS
             $HelpFolder = "$DestPath\$ModuleName$Psd1FolderPostfix\help"
@@ -195,7 +201,6 @@ Function Move-Generation2Master {
                         Remove-Item $ExposedHelpFile.FullName
                     }
                 }
-                Write-Host "$ScriptRoot/../ResolveTools/Resolve-Psd1.ps1"
                 & "$ScriptRoot/../ResolveTools/Resolve-Psd1.ps1" -ModuleName $ModuleName -ArtifactFolder "$DestPath\..\..\artifacts" -Psd1Folder "$DestPath/$ModuleName$Psd1FolderPostfix"
             }
             else

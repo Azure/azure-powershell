@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Migrate-help.xml
 Module Name: Az.Migrate
 online version: https://learn.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationpolicy
 schema: 2.0.0
@@ -15,7 +15,8 @@ The operation to create a replication policy.
 ```
 New-AzMigrateReplicationPolicy -PolicyName <String> -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String>] [-ProviderSpecificInput <IPolicyProviderSpecificInput>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +38,6 @@ New-AzMigrateReplicationPolicy -PolicyName TestPolicy -ResourceGroupName Resourc
 Location Name       Type
 -------- ----       ----
          TestPolicy Microsoft.RecoveryServices/vaults/replicationPolicies
-         
 ```
 
 Creates a policy for VmWare Cbt
@@ -208,15 +208,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PROVIDERSPECIFICINPUT <IPolicyProviderSpecificInput>`: The ReplicationProviderSettings.
-  - `InstanceType <String>`: The class type.
-
 ## RELATED LINKS
-

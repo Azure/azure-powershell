@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="recoveryType">Type of this recovery.
-        /// Possible values include: 'Invalid', 'OriginalLocation',
-        /// 'AlternateLocation', 'RestoreDisks', 'Offline'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;OriginalLocation&#39;,
+        /// &#39;AlternateLocation&#39;, &#39;RestoreDisks&#39;, &#39;Offline&#39;</param>
 
         /// <param name="sourceResourceId">Fully qualified ARM ID of the VM which is being recovered.
         /// </param>

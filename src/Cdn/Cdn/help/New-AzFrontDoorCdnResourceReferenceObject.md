@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnResourceReferenceObject
 schema: 2.0.0
@@ -13,7 +13,8 @@ Create an in-memory object for ResourceReference.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnResourceReferenceObject [-Id <String>] [<CommonParameters>]
+New-AzFrontDoorCdnResourceReferenceObject [-Id <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +64,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

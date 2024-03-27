@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleRequestBodyConditionObject
 schema: 2.0.0
@@ -13,7 +13,7 @@ Create an in-memory object for DeliveryRuleRequestBodyCondition.
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleRequestBodyConditionObject -Name <MatchVariable> -ParameterOperator <RequestBodyOperator>
+New-AzCdnDeliveryRuleRequestBodyConditionObject -ParameterOperator <RequestBodyOperator> -Name <MatchVariable>
  [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>]
  [<CommonParameters>]
 ```
@@ -124,7 +124,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

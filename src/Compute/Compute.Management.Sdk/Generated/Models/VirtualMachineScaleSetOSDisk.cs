@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// also use the imageReference element described above. If you are
         /// using a marketplace image, you  also use the plan element
         /// previously described. Possible values include: 'FromImage',
-        /// 'Empty', 'Attach'</param>
+        /// 'Empty', 'Attach', 'Copy', 'Restore'</param>
         /// <param name="name">The disk name.</param>
         /// <param name="caching">Specifies the caching requirements. Possible
         /// values are: **None,** **ReadOnly,** **ReadWrite.** The default
@@ -128,7 +128,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// machine. If you are using a platform image, you also use the
         /// imageReference element described above. If you are using a
         /// marketplace image, you  also use the plan element previously
-        /// described. Possible values include: 'FromImage', 'Empty', 'Attach'
+        /// described. Possible values include: 'FromImage', 'Empty', 'Attach',
+        /// 'Copy', 'Restore'
         /// </summary>
         [JsonProperty(PropertyName = "createOption")]
         public string CreateOption { get; set; }

@@ -27,7 +27,6 @@ using Microsoft.Azure.Internal.Subscriptions.Models;
 using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.Identity.Client;
 using Microsoft.Identity.Client.Broker;
-using Microsoft.Rest;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -174,7 +173,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             if (AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var config)
                 && config.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam))
             {
-                builder = builder.WithBrokerPreview();
+                builder = builder.WithBroker(new BrokerOptions(BrokerOptions.OperatingSystems.Windows));
             }
             if (!string.IsNullOrEmpty(authority))
             {

@@ -17,7 +17,8 @@ Creates a new Azure Database Migration Service (classic) project.
 New-AzDataMigrationProject -ResourceGroupName <String> -ServiceName <String> -Location <String> -Name <String>
  -SourceType <String> -TargetType <String> [-SourceConnection <ConnectionInfo>]
  [-TargetConnection <ConnectionInfo>] [-DatabaseInfo <DatabaseInfo[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ComponentObjectParameterSet
@@ -25,15 +26,16 @@ New-AzDataMigrationProject -ResourceGroupName <String> -ServiceName <String> -Lo
 New-AzDataMigrationProject [-InputObject] <PSDataMigrationService> -Location <String> -Name <String>
  -SourceType <String> -TargetType <String> [-SourceConnection <ConnectionInfo>]
  [-TargetConnection <ConnectionInfo>] [-DatabaseInfo <DatabaseInfo[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIdParameterSet
 ```
 New-AzDataMigrationProject [-ResourceId] <String> -Location <String> -Name <String> -SourceType <String>
  -TargetType <String> [-SourceConnection <ConnectionInfo>] [-TargetConnection <ConnectionInfo>]
- [-DatabaseInfo <DatabaseInfo[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DatabaseInfo <DatabaseInfo[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

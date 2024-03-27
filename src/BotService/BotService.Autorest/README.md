@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the BotService service.
 
 ---
-## Status
-[![Az.BotService](https://img.shields.io/powershellgallery/v/Az.BotService.svg?style=flat-square&label=Az.BotService "Az.BotService")](https://www.powershellgallery.com/packages/Az.BotService/)
 
 ## Info
 - Modifiable: yes
@@ -31,8 +29,6 @@ region Generated
 This directory contains the PowerShell module for the BotService service.
 
 ---
-## Status
-[![Az.BotService](https://img.shields.io/powershellgallery/v/Az.BotService.svg?style=flat-square&label=Az.BotService "Az.BotService")](https://www.powershellgallery.com/packages/Az.BotService/)
 
 ## Info
 - Modifiable: yes

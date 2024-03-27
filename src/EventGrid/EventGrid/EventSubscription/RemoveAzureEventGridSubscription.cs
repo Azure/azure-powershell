@@ -16,6 +16,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -28,6 +29,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
     public class RemoveAzureRmEventGridSubscription : AzureEventGridCmdletBase
     {
+        [CmdletParameterBreakingChangeWithVersion("ResourceId", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -46,6 +48,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public PSTopic InputObject { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("DomainInputObject", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
@@ -55,6 +58,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public PSDomain DomainInputObject { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("DomainTopicInputObject", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
@@ -122,6 +126,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string EventSubscriptionName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("ResourceGroupName", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -145,6 +150,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("TopicName", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -154,6 +160,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string TopicName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("DomainName", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
@@ -163,6 +170,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string DomainName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("DomainTopicName", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

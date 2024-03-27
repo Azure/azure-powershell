@@ -16,16 +16,18 @@
 
 <#
 .Synopsis
-Create or update a script execution in a private cloud
+Create a script execution in a private cloud
 .Description
-Create or update a script execution in a private cloud
+Create a script execution in a private cloud
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -33,44 +35,113 @@ To create the parameters described below, construct a hash table containing the 
 
 HIDDENPARAMETER <IScriptExecutionParameter[]>: Parameters that will be hidden/not visible to ARM, such as passwords and credentials
   Name <String>: The parameter name
-  Type <ScriptExecutionParameterType>: The type of execution parameter
+  Type <String>: The type of execution parameter
+
+INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 
 PARAMETER <IScriptExecutionParameter[]>: Parameters the script will accept
   Name <String>: The parameter name
-  Type <ScriptExecutionParameterType>: The type of execution parameter
+  Type <String>: The type of execution parameter
+
+PRIVATECLOUDINPUTOBJECT <IVMwareIdentity>: Identity Parameter
+  [AddonName <String>]: Name of the addon for the private cloud
+  [AuthorizationName <String>]: Name of the ExpressRoute Circuit Authorization in the private cloud
+  [CloudLinkName <String>]: Name of the cloud link resource
+  [ClusterName <String>]: Name of the cluster in the private cloud
+  [DatastoreName <String>]: Name of the datastore in the private cloud cluster
+  [DhcpId <String>]: NSX DHCP identifier. Generally the same as the DHCP display name
+  [DnsServiceId <String>]: NSX DNS Service identifier. Generally the same as the DNS Service's display name
+  [DnsZoneId <String>]: NSX DNS Zone identifier. Generally the same as the DNS Zone's display name
+  [GatewayId <String>]: NSX Gateway identifier. Generally the same as the Gateway's display name
+  [GlobalReachConnectionName <String>]: Name of the global reach connection in the private cloud
+  [HcxEnterpriseSiteName <String>]: Name of the HCX Enterprise Site in the private cloud
+  [Id <String>]: Resource identity path
+  [Location <String>]: Azure region
+  [PlacementPolicyName <String>]: Name of the VMware vSphere Distributed Resource Scheduler (DRS) placement policy
+  [PortMirroringId <String>]: NSX Port Mirroring identifier. Generally the same as the Port Mirroring display name
+  [PrivateCloudName <String>]: Name of the private cloud
+  [PublicIPId <String>]: NSX Public IP Block identifier. Generally the same as the Public IP Block's display name
+  [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
+  [ScriptCmdletName <String>]: Name of the script cmdlet resource in the script package in the private cloud
+  [ScriptExecutionName <String>]: Name of the user-invoked script execution resource
+  [ScriptPackageName <String>]: Name of the script package in the private cloud
+  [SegmentId <String>]: NSX Segment identifier. Generally the same as the Segment's display name
+  [SubscriptionId <String>]: The ID of the target subscription.
+  [VMGroupId <String>]: NSX VM Group identifier. Generally the same as the VM Group's display name
+  [VirtualMachineId <String>]: Virtual Machine identifier
+  [WorkloadNetworkName <String>]: Name for the workload network in the private cloud
 .Link
 https://learn.microsoft.com/powershell/module/az.vmware/new-azvmwarescriptexecution
 #>
 function New-AzVMwareScriptExecution {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecution])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory)]
     [Alias('ScriptExecutionName')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # Name of the user-invoked script execution resource
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # The name of the private cloud.
     ${PrivateCloudName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [System.String]
     # The name of the resource group.
     # The name is case insensitive.
     ${ResourceGroupName},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
     ${SubscriptionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${InputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityPrivateCloudExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
+    # Identity Parameter
+    ${PrivateCloudInputObject},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
@@ -81,14 +152,13 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecutionParameter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameter[]]
     # Parameters that will be hidden/not visible to ARM, such as passwords and credentials
-    # To construct, see NOTES section for HIDDENPARAMETER properties and create a hash table.
     ${HiddenParameter},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecutionPropertiesNamedOutputs]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionPropertiesNamedOutputs]))]
     [System.Collections.Hashtable]
     # User-defined dictionary.
     ${NamedOutput},
@@ -103,9 +173,8 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IScriptExecutionParameter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecutionParameter[]]
     # Parameters the script will accept
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter()]
@@ -132,7 +201,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter()]
@@ -197,9 +267,17 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.VMware.private\New-AzVMwareScriptExecution_CreateExpanded';
+            CreateViaIdentityExpanded = 'Az.VMware.private\New-AzVMwareScriptExecution_CreateViaIdentityExpanded';
+            CreateViaIdentityPrivateCloudExpanded = 'Az.VMware.private\New-AzVMwareScriptExecution_CreateViaIdentityPrivateCloudExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

@@ -26,7 +26,8 @@ Get-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String
 
 ### GetViaIdentity
 ```
-Get-AzEventHub -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzEventHub -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

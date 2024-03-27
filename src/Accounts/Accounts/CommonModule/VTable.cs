@@ -33,6 +33,8 @@ namespace Microsoft.Azure.Commands.Common
                                         global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>,
                                         global::System.Func<string, string, string, string, global::System.Uri, string>,
                                         System.Collections.Generic.IDictionary<string, object>>;
+    using SanitizerDelegate = Action<object, string>;
+    using GetTelemetryInfoDelegate = Func<string, System.Collections.Generic.Dictionary<string, string>>;
 
     /// <summary>
     /// The Virtual Call table of the functions to be exported to the generated module
@@ -57,7 +59,6 @@ namespace Microsoft.Azure.Commands.Common
         public GetTelemetryIdDelegate GetTelemetryId;
 
         public TelemetryDelegate Telemetry;
-
 
         /// <summary>
         /// The cmdlet will call this for every event during the pipeline. 
@@ -103,6 +104,10 @@ namespace Microsoft.Azure.Commands.Common
         public NewRequestPipelineDelegate AddPatchRequestUriHandler;
 
         public AuthorizeRequestDelegate AddAuthorizeRequestHandler;
+
+        public SanitizerDelegate SanitizerHandler;
+
+        public GetTelemetryInfoDelegate GetTelemetryInfo;
 
         /// <summary>
         /// Called for well-known parameters that require argument completers, it

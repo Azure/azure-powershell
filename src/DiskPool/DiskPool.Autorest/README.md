@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the DiskPool service.
 
 ---
-## Status
-[![Az.DiskPool](https://img.shields.io/powershellgallery/v/Az.DiskPool.svg?style=flat-square&label=Az.DiskPool "Az.DiskPool")](https://www.powershellgallery.com/packages/Az.DiskPool/)
 
 ## Info
 - Modifiable: yes

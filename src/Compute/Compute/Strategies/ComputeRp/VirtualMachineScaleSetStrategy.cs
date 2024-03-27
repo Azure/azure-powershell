@@ -75,7 +75,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string sharedImageGalleryId,
             string securityType = null,
             bool? enableVtpm = null,
-            bool? enableSecureBoot = null
+            bool? enableSecureBoot = null,
+            bool? enableAutomaticOSUpgradePolicy = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -87,7 +88,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                         ExtendedLocation = edgeZone == null ? null : new CM.ExtendedLocation(edgeZone, CM.ExtendedLocationTypes.EdgeZone),
                         UpgradePolicy = new UpgradePolicy
                         {
-                            Mode = upgradeMode ?? UpgradeMode.Manual
+                            Mode = upgradeMode ?? UpgradeMode.Manual,
+                            AutomaticOSUpgradePolicy = enableAutomaticOSUpgradePolicy == true ? new AutomaticOSUpgradePolicy { EnableAutomaticOSUpgrade = true } : null
                         },
                         Sku = new Azure.Management.Compute.Models.Sku()
                         {
@@ -220,13 +222,21 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string capacityReservationId,
             bool? enableVtpm = null,
             bool? enableSecureBoot = null,
-            string securityType = null
+            string securityType = null,
+            bool? enableAutomaticOSUpgradePolicy = null
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
                 name: name,
                 createModel: engine => new VirtualMachineScaleSet()
                 {
+                    UpgradePolicy = enableAutomaticOSUpgradePolicy != true ? null : new UpgradePolicy
+                    {
+                        AutomaticOSUpgradePolicy = new AutomaticOSUpgradePolicy
+                        {
+                            EnableAutomaticOSUpgrade = true
+                        }
+                    },
                     Zones = zones,
                     ExtendedLocation = edgeZone == null ? null : new CM.ExtendedLocation(edgeZone, CM.ExtendedLocationTypes.EdgeZone),
                     Sku = new Azure.Management.Compute.Models.Sku()
@@ -240,7 +250,7 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                     PlatformFaultDomainCount = platformFaultDomainCount,
                     VirtualMachineProfile = new VirtualMachineScaleSetVMProfile
                     {
-                        SecurityProfile = ((encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType)) 
+                        SecurityProfile = ((encryptionAtHost == true || enableVtpm != null || enableSecureBoot != null || securityType != null) && (securityType?.ToLower() != ConstantValues.StandardSecurityType))
                         ? new SecurityProfile
                         {
                             EncryptionAtHost = encryptionAtHost,

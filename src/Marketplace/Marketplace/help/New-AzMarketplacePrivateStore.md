@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Marketplace-help.xml
 Module Name: Az.Marketplace
 online version: https://learn.microsoft.com/powershell/module/az.marketplace/new-azmarketplaceprivatestore
 schema: 2.0.0
@@ -12,11 +12,24 @@ Changes private store properties
 
 ## SYNTAX
 
+### CreateExpanded (Default)
 ```
-New-AzMarketplacePrivateStore -Id <String> [-Availability <Availability>] [-Branding <Hashtable>]
- [-ETag <String>] [-IsGov] [-NotificationSettingRecipient <IRecipient[]>]
- [-NotificationSettingSendToAllMarketplaceAdmin] [-PrivateStoreName <String>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMarketplacePrivateStore -Id <String> [-Availability <String>] [-Branding <Hashtable>] [-ETag <String>]
+ [-IsGov] [-NotificationSettingRecipient <IRecipient[]>] [-NotificationSettingSendToAllMarketplaceAdmin]
+ [-PrivateStoreName <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzMarketplacePrivateStore -Id <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzMarketplacePrivateStore -Id <String> -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,8 +50,8 @@ This command changes private store properties.
 Indicates private store availability
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Support.Availability
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -53,7 +66,7 @@ Gets or sets list of branding characteristics
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -64,7 +77,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -83,7 +97,7 @@ Identifier for purposes of race condition
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -113,7 +127,7 @@ Is government
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -123,13 +137,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NotificationSettingRecipient
-Gets or sets list of notified recipients for new requests
-To construct, see NOTES section for NOTIFICATIONSETTINGRECIPIENT properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.IRecipient[]
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NotificationSettingRecipient
+Gets or sets list of notified recipients for new requests
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IRecipient[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -144,7 +187,7 @@ Gets or sets whether to send email to all marketplace admins for new requests
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -174,7 +217,7 @@ Private Store Name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -189,7 +232,7 @@ Tenant id
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -241,15 +284,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-NOTIFICATIONSETTINGRECIPIENT <IRecipient[]>: Gets or sets list of notified recipients for new requests
-  - `[PrincipalId <String>]`: Principal ID
-
 ## RELATED LINKS
-

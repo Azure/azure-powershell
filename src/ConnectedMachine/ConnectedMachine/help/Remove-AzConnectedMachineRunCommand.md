@@ -15,14 +15,15 @@ The operation to delete a run command.
 ### Delete (Default)
 ```
 Remove-AzConnectedMachineRunCommand -MachineName <String> -ResourceGroupName <String> -RunCommandName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityMachine
 ```
 Remove-AzConnectedMachineRunCommand -RunCommandName <String> -MachineInputObject <IConnectedMachineIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -36,10 +37,12 @@ The operation to delete a run command.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Remove a run-command for a machine
+```powershell
 Remove-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -RunCommandName "myRunCommand3" -MachineName "testmachine"
 ```
+
+Remove a run-command for a machine
 
 ## PARAMETERS
 
@@ -47,13 +50,13 @@ Remove-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -RunCommand
 Run the command as a job
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -63,7 +66,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -76,10 +79,9 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IConnectedMachineIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -92,10 +94,9 @@ Accept wildcard characters: False
 
 ### -MachineInputObject
 Identity Parameter
-To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IConnectedMachineIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 Parameter Sets: DeleteViaIdentityMachine
 Aliases:
 
@@ -110,7 +111,7 @@ Accept wildcard characters: False
 The name of the hybrid machine.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases:
 
@@ -125,13 +126,13 @@ Accept wildcard characters: False
 Run the command asynchronously
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -140,13 +141,13 @@ Accept wildcard characters: False
 Returns true when the command succeeds
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -156,7 +157,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases:
 
@@ -171,7 +172,7 @@ Accept wildcard characters: False
 The name of the run command.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete, DeleteViaIdentityMachine
 Aliases:
 
@@ -186,13 +187,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -201,7 +202,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -217,7 +218,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -234,64 +235,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
+
 ## OUTPUTS
 
 ### System.Boolean
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IConnectedMachineIdentity\>: Identity Parameter
-  \[ExtensionName \<String\>\]: The name of the machine extension.
-  \[ExtensionType \<String\>\]: The extensionType of the Extension being received.
-  \[GroupName \<String\>\]: The name of the private link resource.
-  \[Id \<String\>\]: Resource identity path
-  \[LicenseName \<String\>\]: The name of the license.
-  \[LicenseProfileName \<String\>\]: The name of the license profile.
-  \[Location \<String\>\]: The location of the Extension being received.
-  \[MachineName \<String\>\]: The name of the hybrid machine.
-  \[MetadataName \<String\>\]: Name of the HybridIdentityMetadata.
-  \[Name \<String\>\]: The name of the hybrid machine.
-  \[OSType \<String\>\]: Defines the os type.
-  \[PerimeterName \<String\>\]: The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
-  \[PrivateEndpointConnectionName \<String\>\]: The name of the private endpoint connection.
-  \[PrivateLinkScopeId \<String\>\]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
-  \[Publisher \<String\>\]: The publisher of the Extension being received.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[ResourceUri \<String\>\]: The fully qualified Azure Resource manager identifier of the resource to be connected.
-  \[RunCommandName \<String\>\]: The name of the run command.
-  \[ScopeName \<String\>\]: The name of the Azure Arc PrivateLinkScope resource.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[Version \<String\>\]: The version of the Extension being received.
-
-MACHINEINPUTOBJECT \<IConnectedMachineIdentity\>: Identity Parameter
-  \[ExtensionName \<String\>\]: The name of the machine extension.
-  \[ExtensionType \<String\>\]: The extensionType of the Extension being received.
-  \[GroupName \<String\>\]: The name of the private link resource.
-  \[Id \<String\>\]: Resource identity path
-  \[LicenseName \<String\>\]: The name of the license.
-  \[LicenseProfileName \<String\>\]: The name of the license profile.
-  \[Location \<String\>\]: The location of the Extension being received.
-  \[MachineName \<String\>\]: The name of the hybrid machine.
-  \[MetadataName \<String\>\]: Name of the HybridIdentityMetadata.
-  \[Name \<String\>\]: The name of the hybrid machine.
-  \[OSType \<String\>\]: Defines the os type.
-  \[PerimeterName \<String\>\]: The name, in the format {perimeterGuid}.{associationName}, of the Network Security Perimeter resource.
-  \[PrivateEndpointConnectionName \<String\>\]: The name of the private endpoint connection.
-  \[PrivateLinkScopeId \<String\>\]: The id (Guid) of the Azure Arc PrivateLinkScope resource.
-  \[Publisher \<String\>\]: The publisher of the Extension being received.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[ResourceUri \<String\>\]: The fully qualified Azure Resource manager identifier of the resource to be connected.
-  \[RunCommandName \<String\>\]: The name of the run command.
-  \[ScopeName \<String\>\]: The name of the Azure Arc PrivateLinkScope resource.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[Version \<String\>\]: The version of the Extension being received.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedmachineruncommand](https://learn.microsoft.com/powershell/module/az.connectedmachine/remove-azconnectedmachineruncommand)
-

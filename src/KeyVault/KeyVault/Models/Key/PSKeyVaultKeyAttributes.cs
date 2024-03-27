@@ -61,6 +61,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             ReleasePolicy = key.Properties.ReleasePolicy?.ToPSKeyReleasePolicy();
             RecoverableDays = key.Properties.RecoverableDays;
             Managed = key.Properties.Managed;
+            HsmPlatform = key.Properties.HsmPlatform;
         }
 
         internal PSKeyVaultKeyAttributes(bool? enabled, DateTime? expires, DateTime? notBefore, string keyType, string[] keyOps, Hashtable tags) {
@@ -111,6 +112,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         //     Gets a value indicating whether the key's lifetime is managed by Key Vault. If
         //     this key is backing a Key Vault certificate, the value will be true.
         public bool? Managed { get; internal set; }
+        
+        /// <summary>
+        /// Gets the underlying HSM platform.
+        /// </summary>
+        public string HsmPlatform { get; internal set; }
 
         public bool? Exportable { get; internal set; }
 

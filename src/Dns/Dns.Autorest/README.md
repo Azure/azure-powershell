@@ -3,8 +3,6 @@
 This directory contains the PowerShell module for the Dns service.
 
 ---
-## Status
-[![Az.Dns](https://img.shields.io/powershellgallery/v/Az.Dns.svg?style=flat-square&label=Az.Dns "Az.Dns")](https://www.powershellgallery.com/packages/Az.Dns/)
 
 ## Info
 - Modifiable: yes

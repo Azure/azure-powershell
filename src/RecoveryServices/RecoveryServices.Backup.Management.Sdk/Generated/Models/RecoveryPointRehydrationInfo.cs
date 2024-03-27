@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="rehydrationPriority">Rehydration Priority
-        /// Possible values include: 'Standard', 'High'</param>
+        /// Possible values include: &#39;Standard&#39;, &#39;High&#39;</param>
         public RecoveryPointRehydrationInfo(string rehydrationRetentionDuration = default(string), string rehydrationPriority = default(string))
 
         {
