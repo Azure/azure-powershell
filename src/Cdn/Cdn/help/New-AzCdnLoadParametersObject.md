@@ -13,7 +13,7 @@ Create an in-memory object for LoadParameters.
 ## SYNTAX
 
 ```
-New-AzCdnLoadParametersObject -ContentPath <String[]> [-ProgressAction <ActionPreference>] [<CommonParameters>]
+New-AzCdnLoadParametersObject -ContentPath <String[]> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,21 +47,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

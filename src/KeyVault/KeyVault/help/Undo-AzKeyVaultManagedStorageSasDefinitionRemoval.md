@@ -15,7 +15,7 @@ Recovers a previously deleted KeyVault-managed storage SAS definition.
 ### Default (Default)
 ```
 Undo-AzKeyVaultManagedStorageSasDefinitionRemoval [-VaultName] <String> [-AccountName] <String>
- [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,7 +23,7 @@ Undo-AzKeyVaultManagedStorageSasDefinitionRemoval [-VaultName] <String> [-Accoun
 ```
 Undo-AzKeyVaultManagedStorageSasDefinitionRemoval [-AccountName] <String>
  [-InputObject] <PSDeletedKeyVaultManagedStorageSasDefinitionIdentityItem>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -112,21 +112,6 @@ Aliases: SasDefinitionName
 
 Required: True
 Position: 2
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
