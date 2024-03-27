@@ -3,17 +3,24 @@
 
 Describe 'LocationCompleter' {
 
-    It 'ValidateLocations' {
-        {
-            # Get the current set of locations
-            $response = Invoke-AzRestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/locations?api-version=2022-12-01" -Method GET
-            $currentLocations = ($response.Content | ConvertFrom-Json -Depth 100).value | Sort-Object -Property name | Select-Object -ExpandProperty name | Sort-Object
+    BeforeAll {
+        # Get the current set of locations
+        $response = Invoke-AzRestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/locations?api-version=2022-12-01" -Method GET
+        $currentLocations = ($response.Content | ConvertFrom-Json -Depth 100).value | Sort-Object -Property name | Select-Object -ExpandProperty name | Sort-Object
 
-            # Get the locations the cmdlet knows about
-            $cmdlet = Get-Command New-AzPolicyAssignment
-            $cmdletAST = [System.Management.Automation.Language.Parser]::ParseInput($cmdlet.Definition, [ref]$null, [ref]$null)
-            $cmdletLocations = LocationCompleter -CommandName New-AzPolicyAssignment -ParameterName Location -WordToComplete '*' -CommandAst $cmdletAST -fakeBoundParameter @{}
-            $cmdletLocations | Should -Be $currentLocations
-        } | Should -Not -Throw
+        $cmdlet = Get-Command New-AzPolicyAssignment
+        $cmdletAST = [System.Management.Automation.Language.Parser]::ParseInput($cmdlet.Definition, [ref]$null, [ref]$null)
+    }
+
+    It 'ValidateLocations' {
+        # Get the locations the cmdlet knows about
+        $cmdletLocations = LocationCompleter -CommandName New-AzPolicyAssignment -ParameterName Location -WordToComplete '*' -CommandAst $cmdletAST -fakeBoundParameter @{}
+
+        $cmdletLocations | Should -Be $currentLocations
+    }
+
+    It 'Location filter' {
+        $cmdletLocations = LocationCompleter -CommandName New-AzPolicyAssignment -ParameterName Location -WordToComplete 'a' -CommandAst $cmdletAST -fakeBoundParameter @{}
+        $cmdletLocations | Should -Be ($currentLocations | ?{ $_ -like 'a*' })
     }
 }
