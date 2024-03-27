@@ -506,20 +506,14 @@ function ResolvePolicyExemption {
     resolvePolicyArtifact $null $null $null $resourceId 'policyExemptions'
 }
 
-function LocationCompleter {
-    param (
-        [Parameter(Mandatory=$true)]
-        $commandName,
-        [Parameter(Mandatory=$true)]
-        $parameterName,
-        [Parameter(Mandatory=$true)]
-        $wordToComplete,
-        [Parameter(Mandatory=$true)]
-        $commandAst,
-        [Parameter(Mandatory=$true)]
-        $fakeBoundParameter
-    )
-
+function LocationCompleter(
+    $commandName,
+    $parameterName,
+    $wordToComplete,
+    $commandAst,
+    $fakeBoundParameter
+)
+{
     $currentLocations | Where-Object { $_ -like "$wordToComplete*" }
 }
 
