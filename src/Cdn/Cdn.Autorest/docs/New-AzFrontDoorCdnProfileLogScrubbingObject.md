@@ -22,27 +22,20 @@ Create an in-memory object for ProfileLogScrubbing.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for ProfileUpgradeParameters, for two LogScrubbingRules
 ```powershell
-{{ Add code here }}
+$scrubbingRule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled
+$scrubbingRule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestUri -State Enabled
+New-AzFrontDoorCdnProfileLogScrubbingObject -ScrubbingRule @($scrubbingRule1, $scrubbingRule2) -State Enabled
 ```
 
 ```output
-{{ Add output here }}
+State
+-----
+Enabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for ProfileUpgradeParameters, for two LogScrubbingRules
 
 ## PARAMETERS
 
