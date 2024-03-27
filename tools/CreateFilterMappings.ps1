@@ -281,7 +281,7 @@ function Add-CsprojMappings
         [string]$ServiceFolderPath
     )
 
-    $Key = Create-Key -FilePath $ServiceFolderPath
+    $Key = (Get-Item $ServiceFolderPath).Name
 
     $CsprojFiles = Get-ChildItem -Path $ServiceFolderPath -Filter "*.csproj" -Recurse
     if ($null -ne $CsprojFiles)
@@ -310,13 +310,14 @@ function Add-CsprojMappings
             }
         }
 
-        $Script:CsprojMappings[$Key] = $Values
+        $Script:CsprojMappings[$Key] += $Values
     }
 }
 
 $Script:RootPath = (Get-Item -Path $PSScriptRoot).Parent.FullName
 $Script:SrcPath = Join-Path -Path $Script:RootPath -ChildPath "src"
-$Script:ServiceFolders = Get-ChildItem -Path $Script:SrcPath -Directory
+$Script:GeneratedPath = Join-Path $Script:RootPath "generated"
+$Script:ServiceFolders = Get-ChildItem -Path $Script:SrcPath, $Script:GeneratedPath -Directory
 $Script:ProjectToFullPathMappings = Create-ProjectToFullPathMappings
 $Script:SolutionToProjectMappings = Create-SolutionToProjectMappings
 $Script:ProjectToSolutionMappings = Create-ProjectToSolutionMappings
