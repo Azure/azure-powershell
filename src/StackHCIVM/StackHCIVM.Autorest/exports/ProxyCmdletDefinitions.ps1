@@ -151,7 +151,7 @@ begin {
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -345,7 +345,7 @@ begin {
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -539,7 +539,7 @@ begin {
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -733,7 +733,7 @@ begin {
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -994,7 +994,7 @@ begin {
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1255,7 +1255,7 @@ begin {
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1516,7 +1516,7 @@ begin {
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1777,7 +1777,7 @@ begin {
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -1977,7 +1977,7 @@ begin {
         }
         if (('ByName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2177,7 +2177,7 @@ begin {
         }
         if (('ByName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2369,7 +2369,7 @@ begin {
         }
         if (('BySubscription', 'ByName', 'ByResourceGroup', 'ByResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2564,7 +2564,7 @@ begin {
         }
         if (('ByName', 'ByResourceGroup', 'BySubscription') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -2853,7 +2853,7 @@ begin {
         }
         if (('MarketplaceURN', 'GalleryImage', 'Marketplace') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3135,7 +3135,7 @@ begin {
         }
         if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3384,7 +3384,7 @@ begin {
         }
         if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3596,7 +3596,7 @@ begin {
         }
         if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -3868,7 +3868,7 @@ begin {
         }
         if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4295,7 +4295,7 @@ begin {
         }
         if (('ByImageId', 'ByImageName', 'ByOsDiskId', 'ByOsDiskName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4478,7 +4478,7 @@ begin {
         }
         if (('ByName', 'ByResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4662,7 +4662,7 @@ begin {
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -4848,7 +4848,7 @@ begin {
         }
         if (('ByResourceId', 'ByName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5086,7 +5086,7 @@ begin {
         }
         if (('ByName', 'ByResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5271,7 +5271,7 @@ begin {
         }
         if (('ByName', 'ByResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5503,7 +5503,7 @@ begin {
         }
         if (('ByName', 'ByResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5703,7 +5703,7 @@ begin {
         }
         if (('ByName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -5903,7 +5903,7 @@ begin {
         }
         if (('ByName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6096,7 +6096,7 @@ begin {
         }
         if (('ByName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6289,7 +6289,7 @@ begin {
         }
         if (('ByName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6484,7 +6484,7 @@ begin {
         }
         if (('ByName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6674,7 +6674,7 @@ begin {
         }
         if (('ByName', 'ByResourceId') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
@@ -6897,7 +6897,7 @@ begin {
         }
         if (('ByName') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {
