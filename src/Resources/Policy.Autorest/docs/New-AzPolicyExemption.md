@@ -188,7 +188,6 @@ Accept wildcard characters: False
 
 ### -PolicyAssignment
 The policy assignment id filter.
-To construct, see NOTES section for POLICYASSIGNMENT properties and create a hash table.
 
 ```yaml
 Type: System.Management.Automation.PSObject

@@ -192,11 +192,10 @@ process {
     # remove the exemption if inputs resolve and user confirms
     if ($resolved.Scope -and $PSCmdlet.ShouldProcess($target)) {
 
-        $PSBoundParameters.NameInternal = $resolved.Name
+        $PSBoundParameters.Name = $resolved.Name
         $PSBoundParameters.ScopeInternal = $resolved.FullScope
         $calledParameterSet = 'Delete'
 
-        $null = $PSBoundParameters.Remove('Name')
         $null = $PSBoundParameters.Remove('Scope')
         $null = $PSBoundParameters.Remove('Id')
 

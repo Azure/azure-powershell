@@ -89,7 +89,7 @@ function New-ResourceGroup
     )
 
     begin {
-        $subscriptionId = (Get-AzContext).Subscription.Id
+        $subscriptionId = (Utils\Get-SubscriptionIdTestSafe)
         $uri = "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups"
 
         if ($Name) {
@@ -131,7 +131,7 @@ function Get-ResourceGroup
     )
 
     begin {
-        $subscriptionId = (Get-AzContext).Subscription.Id
+        $subscriptionId = (Utils\Get-SubscriptionIdTestSafe)
         $uri = "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups"
 
         if ($Name) {
@@ -188,7 +188,7 @@ function Remove-ResourceGroup
     )
 
     begin {
-        $subscriptionId = (Get-AzContext).Subscription.Id
+        $subscriptionId = (Utils\Get-SubscriptionIdTestSafe)
         $base = "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups"
         $names = @()
     }
@@ -247,7 +247,7 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
-    $env.SubscriptionId = (Get-AzContext).Subscription.Id
+    $env.SubscriptionId = (Utils\Get-SubscriptionIdTestSafe)
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
 

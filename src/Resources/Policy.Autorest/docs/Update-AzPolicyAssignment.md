@@ -348,6 +348,7 @@ Accept wildcard characters: False
 
 ### -NonComplianceMessage
 The messages that describe why a resource is non-compliant with the policy.
+To construct, see NOTES section for NONCOMPLIANCEMESSAGE properties and create a hash table.
 
 ```yaml
 Type: System.Management.Automation.PSObject[]

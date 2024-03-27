@@ -243,6 +243,7 @@ Accept wildcard characters: False
 
 ### -PolicyDefinitionGroup
 The metadata describing groups of policy definition references within the policy set definition.
+To construct, see NOTES section for POLICYDEFINITIONGROUP properties and create a hash table.
 
 ```yaml
 Type: System.String

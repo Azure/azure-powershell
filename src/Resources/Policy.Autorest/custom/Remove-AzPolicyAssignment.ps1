@@ -195,9 +195,8 @@ process {
     # remove the assignment if inputs resolve and user confirms
     if ($resolved.Scope -and $PSCmdlet.ShouldProcess($target)) {
         if ($Name) {
-            $PSBoundParameters['NameInternal'] = $Name
+            $PSBoundParameters['Name'] = $Name
             $PSBoundParameters['ScopeInternal'] = $resolved.FullScope
-            $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Remove('Scope')
             $calledParameterSet = 'Delete'
         }

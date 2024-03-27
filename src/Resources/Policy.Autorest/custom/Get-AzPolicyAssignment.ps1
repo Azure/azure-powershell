@@ -177,10 +177,10 @@ process {
 
     if ($Name) {
         $calledParameterSet = 'Get'
-        $calledParameters.NameInternal = $Name
+        $calledParameters.Name = $Name
 
         if (!$Scope) {
-            $Scope = "/subscriptions/$($(Get-AzContext).Subscription.Id)"
+            $Scope = "/subscriptions/$($(Get-SubscriptionId))"
         }
 
         $calledParameters.ScopeInternal = $Scope
@@ -239,11 +239,10 @@ process {
             }
         }
         else {
-            $calledParameters.SubscriptionId = @((Get-AzContext).Subscription.Id)
+            $calledParameters.SubscriptionId = @(Get-SubscriptionId)
         }
     }
 
-    $null = $calledParameters.Remove('Name')
     $null = $calledParameters.Remove('Scope')
     $null = $calledParameters.Remove('Id')
     $null = $calledParameters.Remove('PolicyDefinitionId')

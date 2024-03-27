@@ -182,7 +182,7 @@ process {
 
     # convert input parameter to generated parameter and remove
     if ($Name) {
-        $calledParameters.NameInternal = $Name
+        $calledParameters.Name = $Name
     }
 
     if ($Scope) {
@@ -192,7 +192,7 @@ process {
         $calledParameters.ScopeInternal = $calledParameters.Scope
     }
     else {
-        $calledParameters.ScopeInternal = "/subscriptions/$($(Get-AzContext).Subscription.Id)"
+        $calledParameters.ScopeInternal = "/subscriptions/$($(Get-SubscriptionId))"
     }
 
     # resolve policyassignment
@@ -213,7 +213,6 @@ process {
         $calledParameters.ExpiresOnInternal = $ExpiresOn
     }
 
-    $null = $calledParameters.Remove('Name')
     $null = $calledParameters.Remove('Scope')
     $null = $calledParameters.Remove('PolicyAssignment')
     $null = $calledParameters.Remove('Metadata')

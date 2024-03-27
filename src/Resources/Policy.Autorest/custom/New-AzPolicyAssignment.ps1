@@ -312,12 +312,11 @@ process {
 
     # convert input parameter to generated parameter and remove
     if ($Name) {
-        $calledParameters.NameInternal = $Name
-        $null = $calledParameters.Remove('Name')
+        $calledParameters.Name = $Name
     }
 
     if (!$Scope) {
-        $Scope = "/subscriptions/$($(Get-AzContext).Subscription.Id)"
+        $Scope = "/subscriptions/$($(Get-SubscriptionId))"
     }
 
     $calledParameters.ScopeInternal = $Scope
@@ -340,18 +339,17 @@ process {
         throw 'One of -PolicyDefinition or -PolicySetDefinition must be provided.'
     }
 
-    if ($IdentityType) {
-        if (!$Location) {
-            throw 'Location needs to be specified if a managed identity is to be assigned to the policy assignment.'
-        }
+    # client side parameter validation
+    if (!$Location -and $IdentityType -and ($IdentityType -ne 'None')) {
+        throw 'Location needs to be specified if a managed identity is to be assigned to the policy assignment.'
+    }
 
-        if ($IdentityType -eq 'SystemAssigned' -and $IdentityId) {
-            throw "Cannot specify an identity ID if identity type is 'SystemAssigned'."
-        }
+    if ($IdentityType -eq 'SystemAssigned' -and $IdentityId) {
+        throw "Cannot specify an identity ID if identity type is 'SystemAssigned'."
+    }
 
-        if ($IdentityType -eq 'UserAssigned' -and !$IdentityId) {
-            throw "A user assigned identity id needs to be specified if the identity type is 'UserAssigned'."
-        }
+    if ($IdentityType -eq 'UserAssigned' -and !$IdentityId) {
+        throw "A user assigned identity id needs to be specified if the identity type is 'UserAssigned'."
     }
 
     # resolve [string] 'metadata' input parameter to [hashtable]
@@ -382,9 +380,21 @@ process {
         $null = $calledParameters.Remove('NonComplianceMessage')
     }
 
+    # resolve IdentityType
+    switch ($IdentityType) {
+        'SystemAssigned' {
+            $calledParameters.EnableSystemAssignedIdentity = $true
+        }
+        default {
+            $calledParameters.EnableSystemAssignedIdentity = $false
+        }
+    }
+
+    $null = $calledParameters.Remove('IdentityType')
+
     # resolve IdentityId parameter
     if ($IdentityId) {
-        $calledParameters.IdentityUserAssignedIdentity = @{ $IdentityId = @{} }
+        $calledParameters.UserAssignedIdentity = @($IdentityId)
         $null = $calledParameters.Remove('IdentityId')
     }
 
