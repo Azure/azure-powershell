@@ -15,7 +15,7 @@ Exports the security domain data of a managed HSM.
 ### ByName (Default)
 ```
 Export-AzKeyVaultSecurityDomain -Name <String> -Certificates <String[]> -OutputPath <String> [-Force]
- [-PassThru] -Quorum <Int32> [-DefaultProfile <IAzureContextContainer>]
+ [-PassThru] -Quorum <Int32> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
@@ -23,7 +23,7 @@ Export-AzKeyVaultSecurityDomain -Name <String> -Certificates <String[]> -OutputP
 ```
 Export-AzKeyVaultSecurityDomain -InputObject <PSKeyVaultIdentityItem> -Certificates <String[]>
  -OutputPath <String> [-Force] [-PassThru] -Quorum <Int32> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -137,6 +137,21 @@ When specified, a boolean will be returned when cmdlet succeeds.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

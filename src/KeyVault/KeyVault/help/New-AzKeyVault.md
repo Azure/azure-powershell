@@ -18,7 +18,7 @@ New-AzKeyVault [-Name] <String> [-ResourceGroupName] <String> [-Location] <Strin
  [-EnabledForTemplateDeployment] [-EnabledForDiskEncryption] [-EnablePurgeProtection]
  [-EnableRbacAuthorization] [-SoftDeleteRetentionInDays <Int32>] [-PublicNetworkAccess <String>]
  [-Sku <String>] [-Tag <Hashtable>] [-NetworkRuleSet <PSKeyVaultNetworkRuleSet>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
@@ -297,6 +297,21 @@ Specifies the network rule set of the vault. It governs the accessibility of the
 Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultNetworkRuleSet
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
