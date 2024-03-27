@@ -17,7 +17,7 @@ Updates a security connector
 Update-AzSecurityConnector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-EnvironmentData <ISecurityConnectorEnvironment>] [-EnvironmentName <String>] [-Etag <String>]
  [-HierarchyIdentifier <String>] [-Kind <String>] [-Location <String>] [-Offering <ICloudOffering[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update-AzSecurityConnector -Name <String> -ResourceGroupName <String> [-Subscrip
 Update-AzSecurityConnector -InputObject <ISecurityIdentity> [-EnvironmentData <ISecurityConnectorEnvironment>]
  [-EnvironmentName <String>] [-Etag <String>] [-HierarchyIdentifier <String>] [-Kind <String>]
  [-Location <String>] [-Offering <ICloudOffering[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -212,6 +212,21 @@ A collection of offerings for the security connector.
 Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOffering[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
