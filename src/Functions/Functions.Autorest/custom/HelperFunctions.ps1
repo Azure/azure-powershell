@@ -41,6 +41,8 @@ $constants["ReservedFunctionAppSettingNames"] = @(
 $constants["SetDefaultValueParameterWarningMessage"] = "This default value is subject to change over time. Please set this value explicitly to ensure the behavior is not accidentally impacted by future changes."
 $constants["DEBUG_PREFIX"] = '[Stacks API] - '
 
+$constants["DefaultCentauriImage"] = 'mcr.microsoft.com/azure-functions/dotnet7-quickstart-demo:1.0'
+
 foreach ($variableName in $constants.Keys)
 {
     if (-not (Get-Variable $variableName -ErrorAction SilentlyContinue))
@@ -429,7 +431,10 @@ function GetRuntime
         [Parameter(Mandatory=$true)]
         [ValidateNotNullOrEmpty()]
         [Object]
-        $Settings
+        $Settings,
+
+        [Parameter(Mandatory=$false)]
+        $AppKind
     )
 
     $appSettings = ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $Settings -ShowAllAppSettings
@@ -442,7 +447,14 @@ function GetRuntime
     }
     elseif ($appSettings.ContainsKey("DOCKER_CUSTOM_IMAGE_NAME"))
     {
-        $runtime = "Custom Image"
+        if ($AppKind -match "azurecontainerapps")
+        {
+            $runtime = "Container App"
+        }
+        else
+        {
+            $runtime = "Custom Image"
+        }
     }
 
     return $runtime
@@ -468,7 +480,18 @@ function AddFunctionAppSettings
         $PSBoundParameters.Remove("App") | Out-Null
     }
 
-    $App.AppServicePlan = ($App.ServerFarmId -split "/")[-1]
+    if ($App.kind.ToLower() -match "azurecontainerapps")
+    {
+        if ($App.ManagedEnvironmentId)
+        {
+            $App.AppServicePlan = ($App.ManagedEnvironmentId -split "/")[-1]
+        }
+    }
+    else
+    {
+        $App.AppServicePlan = ($App.ServerFarmId -split "/")[-1]
+    }
+
     $App.OSType = if ($App.kind.ToLower().Contains("linux")){ "Linux" } else { "Windows" }
 
     if ($App.Type -eq "Microsoft.Web/sites/slots")
@@ -517,7 +540,7 @@ function AddFunctionAppSettings
 
     # Add application settings and runtime
     $App.ApplicationSettings = ConvertWebAppApplicationSettingToHashtable -ApplicationSetting $settings -RedactAppSettings
-    $App.Runtime = GetRuntime -Settings $settings
+    $App.Runtime = GetRuntime -Settings $settings -AppKind $App.kind.ToLower()
 
     # Get the app site config
     $config = GetAzWebAppConfig -Name $App.Name -ResourceGroupName $App.ResourceGroup @PSBoundParameters
@@ -2231,4 +2254,150 @@ function RegisterFunctionsTabCompleters
     Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName RuntimeVersion -ScriptBlock $GetRuntimeVersionCompleter
 
     $env:FunctionsTabCompletersRegistered = $true
+}
+
+function ValidateCpuAndMemory
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory=$false)]
+        [Double]
+        $ResourceCpu,
+
+        [Parameter(Mandatory=$false)]
+        [System.String]
+        $ResourceMemory
+    )
+
+    if (-not $ResourceCpu -and -not $ResourceMemory)
+    {
+        return
+    }
+
+    if ($ResourceCpu -and -not $ResourceMemory)
+    {
+        $errorMessage = "ResourceMemory must be specified when ResourceCpu is specified."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "MemoryNotSpecified" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    if ($ResourceMemory -and -not $ResourceCpu)
+    {
+        $errorMessage = "ResourceCpu must be specified when ResourceMemory is specified."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "CpuNotSpecified" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    try
+    {
+        if (-not $ResourceMemory.ToLower().EndsWith("gi"))
+        {
+            throw
+        }
+
+        # Attempt to parse the numerical part of ResourceMemory to ensure it's a valid format.
+        [double]::Parse($ResourceMemory.Substring(0, $ResourceMemory.Length - 2)) | Out-Null
+    }
+    catch
+    {
+        $errorMessage = "ResourceMemory must be specified in Gi. Please provide a correct value. e.g., 4.0Gi."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "InvalidResourceMemory" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+}
+
+function FormatFxVersion
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [System.String]
+        $Image
+    )
+
+    $fxVersion = $Image
+
+    # Normalize case and remove HTTP(s) prefixes if present.
+    $normalizedImage = $Image -replace '^(https?://)', '' -replace ' ', ''
+
+    # Prepend "DOCKER|" if not already prefixed with "docker|" (case-insensitive).
+    if (-not $normalizedImage.StartsWith('docker|', [StringComparison]::OrdinalIgnoreCase))
+    {
+        $fxVersion = "DOCKER|$Image"
+    }
+
+    return $fxVersion
+}
+
+function GetManagedEnvironment
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param
+    (
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $Environment,
+
+        [Parameter(Mandatory=$true)]
+        [ValidateNotNullOrEmpty()]
+        [String]
+        $ResourceGroupName,
+
+        $SubscriptionId,
+        $HttpPipelineAppend,
+        $HttpPipelinePrepend
+    )
+
+    $paramsToRemove = @(
+        "Environment",
+        "ResourceGroupName"
+    )
+
+    foreach ($paramName in $paramsToRemove)
+    {
+        if ($PSBoundParameters.ContainsKey($paramName))
+        {
+            $PSBoundParameters.Remove($paramName)  | Out-Null
+        }
+    }
+
+    $azAppModuleName = "Az.App"
+    if (-not (Get-Module -ListAvailable -Name $azAppModuleName))
+    {
+        Write-Warning "Starting the install $azAppModuleName module."
+        Install-Module -Name $azAppModuleName -ErrorAction Stop
+    }
+
+    Import-Module -Name $azAppModuleName -Force -ErrorAction Stop
+
+    $managedEnv = Get-AzContainerAppManagedEnv -Name $Environment `
+                                               -ResourceGroupName $ResourceGroupName `
+                                               -ErrorAction SilentlyContinue `
+                                               @PSBoundParameters
+
+    if (-not $managedEnv)
+    {
+        $errorMessage = "Failed to get the managed environment '$Environment' in resource group name '$ResourceGroupName'."
+        $errorMessage += [System.Environment]::NewLine + " Please make sure the managed environment is valid."
+        $exception = [System.InvalidOperationException]::New($errorMessage)
+        ThrowTerminatingError -ErrorId "FailedToGetEnvironment" `
+                              -ErrorMessage $errorMessage `
+                              -ErrorCategory ([System.Management.Automation.ErrorCategory]::InvalidOperation) `
+                              -Exception $exception
+    }
+
+    return $managedEnv
 }
