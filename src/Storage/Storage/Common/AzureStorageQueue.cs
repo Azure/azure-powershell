@@ -26,6 +26,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
     public class AzureStorageQueue : AzureStorageBase
     {
         /// <summary>
+        /// XSCL Track2 Queue Client, used to run Queue APIs
+        /// </summary>
+        [Ps1Xml(Label = "Queue End Point", Target = ViewControl.Table, GroupByThis = true, ScriptBlock = "$_.QueueClient.Uri")]
+        [Ps1Xml(Label = "Name", Target = ViewControl.Table, ScriptBlock = "$_.Name", Position = 0)]
+        public QueueClient QueueClient { get; private set; }
+
+        /// <summary>
         /// Queue uri
         /// </summary>
         [Ps1Xml(Label = "Uri", Target = ViewControl.Table, ScriptBlock = "$_.Uri", Position = 1)]
@@ -36,11 +43,6 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// </summary>
         [Ps1Xml(Label = "ApproximateMessageCount", Target = ViewControl.Table, ScriptBlock = "$_.ApproximateMessageCount", Position = 2)]
         public int? ApproximateMessageCount { get; private set; }
-
-        /// <summary>
-        /// XSCL Track2 Queue Client, used to run Queue APIs
-        /// </summary>
-        public QueueClient QueueClient { get; private set; }
 
         /// <summary>
         /// XSCL Track2 Queue properties, will retrieve the properties on server and return to user
@@ -63,6 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             Name = queueClient.Name;
             QueueClient = queueClient;
             Uri = queueClient.Uri;
+            this.Context = storageContext;
             if (queueProperties != null)
             {
                 privateQueueProperties = queueProperties;
