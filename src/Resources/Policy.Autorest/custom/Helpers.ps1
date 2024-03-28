@@ -412,7 +412,7 @@ function resolvePolicyArtifact {
             } else {
                 if (!$subscriptionId) {
                     $type = 'name'
-                    $subscriptionId = (Get-AzContext).Subscription.Id
+                    $subscriptionId = (Get-SubscriptionId)
                 } else {
                     $type = 'subId'
                 }
@@ -479,7 +479,7 @@ function ResolvePolicyAssignment {
         $resourceId = "$($Scope)/providers/Microsoft.Authorization/policyAssignments/$($Name)"
     }
     else {
-        $resourceId = "/subscriptions/$($(Get-AzContext).Subscription.Id)/providers/Microsoft.Authorization/policyAssignments/$($Name)"
+        $resourceId = "/subscriptions/$($(Get-SubscriptionId))/providers/Microsoft.Authorization/policyAssignments/$($Name)"
     }
 
     resolvePolicyArtifact $null $null $null $resourceId 'policyAssignments'
@@ -500,34 +500,32 @@ function ResolvePolicyExemption {
         $resourceId = "$($Scope)/providers/Microsoft.Authorization/policyExemptions/$($Name)"
     }
     else {
-        $resourceId = "/subscriptions/$($(Get-AzContext).Subscription.Id)/providers/Microsoft.Authorization/policyExemptions/$($Name)"
+        $resourceId = "/subscriptions/$($(Get-SubscriptionId))/providers/Microsoft.Authorization/policyExemptions/$($Name)"
     }
 
     resolvePolicyArtifact $null $null $null $resourceId 'policyExemptions'
 }
 
-function LocationCompleter {
-    param (
-        [Parameter(Mandatory=$true)]
-        $commandName,
-        [Parameter(Mandatory=$true)]
-        $parameterName,
-        [Parameter(Mandatory=$true)]
-        $wordToComplete,
-        [Parameter(Mandatory=$true)]
-        $commandAst,
-        [Parameter(Mandatory=$true)]
-        $fakeBoundParameter
-    )
-
+function LocationCompleter(
+    $commandName,
+    $parameterName,
+    $wordToComplete,
+    $commandAst,
+    $fakeBoundParameter
+)
+{
     $currentLocations | Where-Object { $_ -like "$wordToComplete*" }
+}
+
+function Get-SubscriptionId {
+    (Utils\Get-SubscriptionIdTestSafe)
 }
 
 # register the location completer for New-AzPolicyAssignment
 Register-ArgumentCompleter -CommandName New-AzPolicyAssignment -ParameterName Location -ScriptBlock ${function:LocationCompleter}
 
 # cache Azure locations to be used by the location completer (Get-AzLocation is not available in this context, need to use REST)
-$subscriptionId = (Get-AzContext).Subscription.Id
+$subscriptionId = (Get-SubscriptionId)
 
 $response = Invoke-AzRestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/locations?api-version=2022-12-01" -Method GET
 $currentLocations = ($response.Content | ConvertFrom-Json -Depth 100).value | Sort-Object -Property name | Select-Object -ExpandProperty name

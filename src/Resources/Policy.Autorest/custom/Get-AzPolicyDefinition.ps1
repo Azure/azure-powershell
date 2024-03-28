@@ -240,10 +240,6 @@ process {
             else {
                 $calledParameterSet = 'List';
             }
-
-            # rename subscription parameter to internal version
-            $PSBoundParameters['SubscriptionIdInternal'] = $PSBoundParameters['SubscriptionId']
-
         }
         elseif ($PSBoundParameters['ManagementGroupName']) {
             $PSBoundParameters['ManagementGroupId'] = $PSBoundParameters['ManagementGroupName']
@@ -255,7 +251,7 @@ process {
             }
         }
         elseif ($parameterSet -ne 'Id') {
-            $PSBoundParameters['SubscriptionIdInternal'] = (Get-AzContext).Subscription.Id
+            $PSBoundParameters['SubscriptionId'] = (Get-SubscriptionId)
             if ($PSBoundParameters['Name']) {
                 $calledParameterSet = 'Get'
             }
@@ -264,7 +260,6 @@ process {
 
     # remove parameters not used by generated cmdlets
     $null = $PSBoundParameters.Remove('BackwardCompatible')
-    $null = $PSBoundParameters.Remove('SubscriptionId')
     $null = $PSBoundParameters.Remove('ManagementGroupName')
     $null = $PSBoundParameters.Remove('Id')
     $null = $PSBoundParameters.Remove('BuiltIn')
@@ -285,12 +280,12 @@ process {
         $output = Invoke-Command -ScriptBlock $scriptCmd
     }
     catch {
-        if (($_.Exception.Message -like '*PolicyDefinitionNotFound*') -and $PSBoundParameters.Name -and $PSBoundParameters.SubscriptionIdInternal) {
+        if (($_.Exception.Message -like '*PolicyDefinitionNotFound*') -and $PSBoundParameters.Name -and $PSBoundParameters.SubscriptionId) {
 
             # failed by name at subscription level, try builtins
             $PSBoundParameters.PolicyDefinitionName = $PSBoundParameters.Name
             $null = $PSBoundParameters.Remove('Name')
-            $null = $PSBoundParameters.Remove('SubscriptionIdInternal')
+            $null = $PSBoundParameters.Remove('SubscriptionId')
             $cmdInfo = Get-Command -Name $mapping['BuiltInGet']
             [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $calledParameterSet, $PSCmdlet)
             $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping['BuiltInGet']), [System.Management.Automation.CommandTypes]::Cmdlet)

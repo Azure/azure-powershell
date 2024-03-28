@@ -244,7 +244,7 @@ process {
         } else {
             $calledParameterSet = 'CreateExpanded'
             if (!$SubscriptionId) {
-                $calledParameters.SubscriptionId = (Get-AzContext).Subscription.Id
+                $calledParameters.SubscriptionId = (Get-SubscriptionId)
             }
         }
 #    }

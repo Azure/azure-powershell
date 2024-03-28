@@ -230,11 +230,15 @@ process {
     }
 
     # client side parameter validation
-    if (!$Location -and ($IdentityType -or $IdentityId)) {
+    if (!$Location -and $IdentityType -and ($IdentityType -ne 'None')) {
         throw 'Location needs to be specified if a managed identity is to be assigned to the policy assignment.'
     }
 
-    if (($IdentityType -eq 'UserAssigned') -and !$IdentityId) {
+    if ($IdentityType -eq 'SystemAssigned' -and $IdentityId) {
+        throw "Cannot specify an identity ID if identity type is 'SystemAssigned'."
+    }
+
+    if ($IdentityType -eq 'UserAssigned' -and !$IdentityId) {
         throw "A user assigned identity id needs to be specified if the identity type is 'UserAssigned'."
     }
 

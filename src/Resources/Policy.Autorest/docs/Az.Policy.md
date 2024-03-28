@@ -23,9 +23,6 @@ Gets policy exemptions.
 ### [Get-AzPolicySetDefinition](Get-AzPolicySetDefinition.md)
 Gets policy set definitions.
 
-### [LocationCompleter](LocationCompleter.md)
-
-
 ### [New-AzPolicyAssignment](New-AzPolicyAssignment.md)
 Creates or updates a policy assignment.
 

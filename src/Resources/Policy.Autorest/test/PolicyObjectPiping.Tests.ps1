@@ -9,7 +9,6 @@ Describe 'PolicyObjectPiping' {
         $policySetDefName = Get-ResourceName
         $policyDefName = Get-ResourceName
         $policyAssName = Get-ResourceName
-        $subscriptionId = (Get-AzContext).Subscription.Id
         $array = @("westus", "eastus")
 
         # make a policy definition and policy set definition that references it

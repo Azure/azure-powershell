@@ -98,10 +98,6 @@ Describe 'Backcompat-PolicyExemptionCRUDOnPolicySet' {
         $remove = (Remove-AzPolicyAssignment -Name $testPA -BackwardCompatible) -and $remove
         $remove = (Remove-AzPolicySetDefinition -Name $testPSD -Force -BackwardCompatible) -and $remove
 
-        if ($remove) {
-            Write-Host -ForegroundColor Magenta "Cleanup complete."
-        }
-
         Assert-AreEqual True $remove
 
         Write-Host -ForegroundColor Magenta "Cleanup complete."
