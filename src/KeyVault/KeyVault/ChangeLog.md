@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.2.2
 * Introduced secrets detection feature to safeguard sensitive data.
 * Formatted the output of Azure Key Vault certificate in removed state. [#24333]
 * [Upcoming Breaking Change] Added breaking change warning message for parameter `EnableRbacAuthorization` of `New-AzKeyVault` and `Update-AzKeyVault`.

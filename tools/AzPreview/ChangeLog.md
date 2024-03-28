@@ -1,3 +1,191 @@
+## 11.5.0 - April 2024
+#### Az.Accounts 2.17.0
+* Enabled globally disabling instance discovery before token acquisition [#22535].
+* Implemented secrets detection feature for autorest modules.
+* Added 'AsSecureString' to 'Get-AzAccessToken' to convert the returned token to SecureString [#24190].
+* Upgraded Azure.Core to 1.37.0.
+
+#### Az.Aks 6.0.2
+* Fixed the 'Non-static method requires a target' error when updating the image version of the node pool. [#24337]
+
+#### Az.Alb 0.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ApplicationInsights 2.2.4
+* Fixed the issue that Update-AzApplicationInsights would incorrectly remove existing tags.
+
+#### Az.Attestation 2.0.1
+* Fixed vulnerability https://github.com/advisories/GHSA-8g9c-28fc-mcx2
+
+#### Az.CodeSigning 0.1.1
+* Upgraded Azure.Core to 1.37.0.
+
+#### Az.Communication 0.3.0
+* First preview release for module Az.EmailService
+
+#### Az.Compute 7.2.0
+* Added parameters '-scriptUriManagedIdentity', '-outputBlobManagedIdentity', '-errorBlobMangedIdentity', and '-TreatFailureAsDeploymentFailure' to cmdlets 'Set-AzVmRunCommand' and 'Set-AzVmssRunCommand'. 
+* Added new parameter '-EnableAutomaticOSUpgrade' to 'New-AzVmss' cmdlet.
+* Renamed parameter '-AutoOSUpgrade' to '-EnableAutomaticOSUpgrade' in 'New-AzVmssConfig' cmdlet for consistency. Using '-AutoOSUpgrade' as parameter name will continue to work as it is added as an alias.
+* Upgraded Azure.Core to 1.37.0.
+* Az.Compute is updated to use the 2023-07-03 GalleryRP, 2024-03-01 ComputeRP and 2023-10-02 DiskRP API.
+* Added new parameter '-TierOption' to 'New-AzSnapshotConfig'.
+* Added breaking change warnings for the May 2024 release. The warnings are for:
+  'New-AzGalleryImageVersion' defaulting to turn on TrustedLaunchSupported and HyperVGeneration to V2.
+  'New-AzVM' and 'New-AzVmss' will default to the image 'Windows Server 2022 Azure Edition' instead of 'Windows 2016 Datacenter' by default.
+  'Get-AzVmss' will no longer allow empty values to 'ResourceGroupName' and 'VMScaleSetName' to avoid a bug where it will just return nothing.
+* Added a new parameter '-SharingProfile' to 'New-AzCapacityReservationGroup' and 'Update-AzCapacityReservationGroup'.
+* Added the new parameter 'SourceImageVMId' to the 'New-AzGalleryImageVersion' cmdlet. Also added some error messages for this new parameter and the existing parameter 'SourceImageId'. 
+
+#### Az.ConnectedMachine 0.7.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ContainerRegistry 4.2.0
+* Upgraded Azure.Core to 1.37.0.
+* Fixed vulnerability https://github.com/advisories/GHSA-8g9c-28fc-mcx2
+* Added exposeToken parameter for Connect-AzContainerRegistry to get token
+
+#### Az.CosmosDB 1.14.2
+* Upgraded Azure.Core to 1.37.0.
+
+#### Az.CustomLocation 0.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.DataFactory 1.18.3
+* Added ServiceNowV2, PostgreSqlV2, GoogleBigQuery in ADF
+* Fixed headers property schema deserialize issue
+* Fixed vulnerability https://github.com/advisories/GHSA-98g6-xh36-x2p7
+
+#### Az.DataMigration 0.14.5
+* Changed the Login Migration Console App source to NuGet.org and added versioning support for updating the console app.
+
+#### Az.DataProtection 2.3.0
+* Onboarded new workloads AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL for data protection.
+
+#### Az.ElasticSan 1.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.EventGrid 1.6.1
+* Added breaking change messages due to structure update:
+  - The cmdlet 'Set-AzEventGridTopic' will be removed.
+  - In the 'Remove-AzEventGridSubscription' parameters will be deprecated.
+  - In the 'Get-AzEventGrid*' the parameter 'ODataQuery', 'NextLink', 'ResourceId' will be removed.
+  - In the 'New/Update-AzEventGrid*' parameters will be deprecated.
+
+#### Az.EventHub 4.2.1
+* Added Breaking Change Warning for parameter datatype change.
+
+#### Az.FirmwareAnalysis 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Fleet 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.HdInsightOnAks 0.1.1
+* Changes in the Cluster Pool
+  - Enable create cluster pool with user network profile.
+  - Enable get cluster pool available upgrade versions.
+  - Enable upgrade cluster pool.
+* Changes in the Cluster
+  - Enable create Ranger cluster.
+  - Enable get cluster available upgrade versions.
+  - Enable set internal ingress.
+  - Enable upgrade cluster.
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.KeyVault 5.2.2
+* Introduced secrets detection feature to safeguard sensitive data.
+* Formatted the output of Azure Key Vault certificate in removed state. [#24333]
+* [Upcoming Breaking Change] Added breaking change warning message for parameter 'EnableRbacAuthorization' of 'New-AzKeyVault' and 'Update-AzKeyVault'.
+    - RBAC will be enabled by default during the process of key vault creation. To disable RBAC authorization, please use parameter 'DisableRbacAuthorization'.
+    - Parameter 'EnableRbacAuthorization' is expected to be removed in Az.KeyVault 6.0.0 and Az 12.0.0.
+    - Parameter 'EnableRbacAuthorization' is expected to be replaced by  'DisableRbacAuthorization'.
+* Upgraded Azure.Core to 1.37.0.
+
+#### Az.MobileNetwork 0.4.0
+* Three cmdlets were added: 'Remove-AzMobileNetworkBulkSimDelete', 'Update-AzMobileNetworkBulkSimUpload', 'Update-AzMobileNetworkBulkSimUploadEncrypted'.
+
+#### Az.Monitor 5.1.1
+* Added breaking change warning messages for Metric Management Plane
+    * Get-AzMetric
+    * Get-AzMetricDefinition
+    * New-AzMetricFilter
+
+#### Az.NetAppFiles 0.15.2
+* Upgraded Azure.Core to 1.37.0.
+
+#### Az.Network 7.4.1
+* Fixed a bug caused by the introduction of the new property 'GlobalConfiguration' in 'PSApplicationGateway'
+
+#### Az.PaloAltoNetworks 0.2.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.PolicyInsights 1.6.5
+* Upgraded Azure.Core to 1.37.0.
+
+#### Az.RecoveryServices 6.8.0
+* Added option to set snapshot consistency type in policy cmdlets for creating or updating enhanced AzureVM policies.
+* Fixed an issue while setting soft delete vault property. 
+
+#### Az.Resources 6.16.1
+* Added null check to the permissions object in the ToPSRoleDefinition method.
+* Added dynamic parameters to stack New/Set cmdlets.
+* Used correct JSON serializer settings for all templates-related deserialization.
+
+#### Az.Security 1.6.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ServiceBus 3.1.0
+* Added Breaking Change Warning for parameter datatype change.
+
+#### Az.StackHCIVM 1.0.2
+* Updated API to 2024-01-01 version.
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Storage 6.1.3
+* Introduced secrets detection feature to safeguard sensitive data.
+* Upgraded Azure.Core to 1.37.0.
+* Fixed upload file with OAuth authentication issue [#24289] 
+    - 'Set-AzStorageFileContent'
+
+#### Az.Support 1.0.1
+* Added breaking change warning messages for cmdlet deprecation
+    - New-AzSupportContactProfileObject
+* Added breaking change warning messages for cmdlet rename
+    - Get-AzSupportTicketCommunication
+    - New-AzSupportTicketCommunication
+* Added breaking change warning messages for parameter name and/or structure changes
+    - Get-AzSupportService
+    - Get-AzSupportProblemClassification
+    - Get-AzSupportTicketCommunication
+    - Get-AzSupportTicket
+    - New-AzSupportTicket
+    - Update-AzSupportTicket
+* Added breaking change warning messages for output property name and/or structure changes
+    - Get-AzSupportService
+    - Get-AzSupportTicket
+    - New-AzSupportTicket
+    - Update-AzSupportTicket
+* Added breaking change warning messages for new required parameters
+    - New-AzSupportTicket
+* Added breaking change warning messages for removed parameters
+    - Get-AzSupportTicket
+    - Get-AzSupportTicketCommunication
+    - New-AzSupportTicket
+* Added breaking change warning message for removal of pipe parameter set for list/new
+    - New-AzSupportTicketCommunication
+    - Get-AzSupportProblemClassification
+    - Get-AzSupportTicketCommunication
+* Added breaking change warning message for Get-AzSupportTicket retrieving tickets from the past week if no other parameters are specified
+    - Get-AzSupportTicket
+
+#### Az.Synapse 3.0.6
+* Upgraded Azure.Core to 1.37.0.
+* Fixed vulnerability https://github.com/advisories/GHSA-98g6-xh36-x2p7
+
+#### Az.VMware 0.6.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## 11.4.0 - March 2024
 #### Az.Accounts 2.16.0
 * Added a preview feature to detect secrets and sensitive information from the output of Azure PowerShell cmdlets to prevent leakage. Enable it by 'Set-AzConfig -DisplaySecretsWarning True'. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844

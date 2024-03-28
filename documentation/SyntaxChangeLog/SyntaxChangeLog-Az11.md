@@ -1,3 +1,51 @@
+## 11.5.0 - April 2024
+#### Az.Accounts 2.17.0 
+* Modified cmdlet `Clear-AzConfig`
+   - Added parameter `-DisableInstanceDiscovery`
+* Modified cmdlet `Get-AzAccessToken`
+   - Added parameter `-AsSecureString`
+* Modified cmdlet `Get-AzConfig`
+   - Added parameter `-DisableInstanceDiscovery`
+* Modified cmdlet `Update-AzConfig`
+   - Added parameter `-DisableInstanceDiscovery`
+#### Az.Compute 7.2.0 
+* Modified cmdlet `New-AzCapacityReservationGroup`
+   - Added parameter `-SharingProfile`
+* Modified cmdlet `New-AzGalleryImageVersion`
+   - Added parameter `-SourceImageVMId`
+* Modified cmdlet `New-AzSnapshotConfig`
+   - Added parameter `-TierOption`
+* Modified cmdlet `New-AzVmss`
+   - Added parameter `-EnableAutomaticOSUpgrade`
+* Modified cmdlet `New-AzVmssConfig`
+   - Removed parameter `-AutoOSUpgrade`
+   - Added parameter `-EnableAutomaticOSUpgrade`
+* Modified cmdlet `Update-AzCapacityReservationGroup`
+   - Added parameter `-SharingProfile`
+* Modified cmdlet `Set-AzVMRunCommand`
+   - Added parameters `-ErrorBlobManagedIdentityClientId`, `-ErrorBlobManagedIdentityObjectId`, `-OutputBlobManagedIdentityClientId`, `-OutputBlobManagedIdentityObjectId`, `-ScriptUriManagedIdentityClientId`, `-ScriptUriManagedIdentityObjectId`, `-TreatFailureAsDeploymentFailure`
+* Modified cmdlet `Set-AzVmssVMRunCommand`
+   - Added parameters `-ErrorBlobManagedIdentityClientId`, `-ErrorBlobManagedIdentityObjectId`, `-OutputBlobManagedIdentityClientId`, `-OutputBlobManagedIdentityObjectId`, `-ScriptUriManagedIdentityClientId`, `-ScriptUriManagedIdentityObjectId`, `-TreatFailureAsDeploymentFailure`
+#### Az.ContainerRegistry 4.2.0 
+* Modified cmdlet `Connect-AzContainerRegistry`
+   - Added parameter `-ExposeToken`
+#### Az.DataProtection 2.3.0 
+* Modified cmdlet `Search-AzDataProtectionBackupVaultInAzGraph`
+   - Added parameter alias `SubscriptionId` to parameter `-Subscription`
+   - Added parameter alias `ResourceGroupName` to parameter `-ResourceGroup`
+   - Added parameter alias `VaultName` to parameter `-Vault`
+* Modified cmdlet `Set-AzDataProtectionMSIPermission`
+   - Added parameters `-SubscriptionId`, `-DatasourceType`, `-StorageAccountARMId`
+   - Added parameter alias `ResourceGroupName` to parameter `-VaultResourceGroup`
+#### Az.RecoveryServices 6.8.0 
+* Modified cmdlet `New-AzRecoveryServicesBackupProtectionPolicy`
+   - Added parameter `-SnapshotConsistencyType`
+* Modified cmdlet `Set-AzRecoveryServicesBackupProtectionPolicy`
+   - Added parameter `-SnapshotConsistencyType`
+#### Az.ServiceBus 3.1.0 
+* Modified cmdlet `New-AzServiceBusGeoDRConfiguration`
+   - Added parameter `-PassThru`
+
 ## 11.4.0 - March 2024
 #### Az.Accounts 2.16.0 
 * Modified cmdlet `Clear-AzConfig`
@@ -69,6 +117,7 @@
 #### Az.StackHCI 2.3.0 
 * Modified cmdlet `Unregister-AzStackHCI`
    - Added parameter `-IsWAC`
+
 
 
 
