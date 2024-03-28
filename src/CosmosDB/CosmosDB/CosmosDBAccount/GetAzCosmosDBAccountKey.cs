@@ -14,6 +14,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.CosmosDB.Helpers;
 using Microsoft.Azure.Commands.CosmosDB.Models;
@@ -24,8 +25,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [GenericBreakingChangeWithVersionAttribute("Output type for -Type ConnectionStrings will be changed to List<DatabaseAccountConnectionString> in next major version.", Constants.DeprecateByAzVersion12, Constants.DeprecateByVersion2)]
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccountKey", DefaultParameterSetName = NameParameterSet), OutputType(typeof(Hashtable))]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBAccountKey", DefaultParameterSetName = NameParameterSet), OutputType(typeof(Hashtable), typeof(List<DatabaseAccountConnectionString>))]
     public class GetAzCosmosDBAccountKey : AzureCosmosDBCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NameParameterSet, HelpMessage = Constants.ResourceGroupNameHelpMessage)]
@@ -55,11 +55,11 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 ResourceIdentifier resourceIdentifier = null;
                 if (ParameterSetName.Equals(ResourceIdParameterSet))
                 {
-                   resourceIdentifier = new ResourceIdentifier(ResourceId);
+                    resourceIdentifier = new ResourceIdentifier(ResourceId);
                 }
                 else if (ParameterSetName.Equals(ObjectParameterSet))
                 {
-                   resourceIdentifier = new ResourceIdentifier(InputObject.Id);
+                    resourceIdentifier = new ResourceIdentifier(InputObject.Id);
                 }
                 ResourceGroupName = resourceIdentifier.ResourceGroupName;
                 Name = resourceIdentifier.ResourceName;
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
             if (Type.Equals("ConnectionStrings", StringComparison.OrdinalIgnoreCase))
             {
                 DatabaseAccountListConnectionStringsResult response = CosmosDBManagementClient.DatabaseAccounts.ListConnectionStringsWithHttpMessagesAsync(ResourceGroupName, Name).GetAwaiter().GetResult().Body;
-                WriteObject(new PSDatabaseAccountListKeys(response).Keys);
+                WriteObject(new PSDatabaseAccountListKeys(response).ConnectionStrings);
             }
             else if (Type.Equals("ReadOnlyKeys", StringComparison.OrdinalIgnoreCase))
             {
