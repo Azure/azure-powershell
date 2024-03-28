@@ -186,13 +186,10 @@ process {
     }
 
     if ($Scope) {
-        $calledParameters.ScopeInternal = $Scope
-    }
-    elseif ($calledParameters.Scope) {
-        $calledParameters.ScopeInternal = $calledParameters.Scope
+        $calledParameters.Scope = $Scope
     }
     else {
-        $calledParameters.ScopeInternal = "/subscriptions/$($(Get-SubscriptionId))"
+        $calledParameters.Scope = "/subscriptions/$($(Get-SubscriptionId))"
     }
 
     # resolve policyassignment
@@ -213,7 +210,6 @@ process {
         $calledParameters.ExpiresOnInternal = $ExpiresOn
     }
 
-    $null = $calledParameters.Remove('Scope')
     $null = $calledParameters.Remove('PolicyAssignment')
     $null = $calledParameters.Remove('Metadata')
     $null = $calledParameters.Remove('ExpiresOn')

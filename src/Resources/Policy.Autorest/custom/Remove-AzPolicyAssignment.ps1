@@ -196,13 +196,11 @@ process {
     if ($resolved.Scope -and $PSCmdlet.ShouldProcess($target)) {
         if ($Name) {
             $PSBoundParameters['Name'] = $Name
-            $PSBoundParameters['ScopeInternal'] = $resolved.FullScope
-            $null = $PSBoundParameters.Remove('Scope')
+            $PSBoundParameters['Scope'] = $resolved.FullScope
             $calledParameterSet = 'Delete'
         }
         elseif ($Id) {
-            $PSBoundParameters['IdInternal'] = $Id
-            $null = $PSBoundParameters.Remove('Id')
+            $PSBoundParameters['Id'] = $Id
             $calledParameterSet = 'Delete1'
         }
 

@@ -183,11 +183,11 @@ process {
             $Scope = "/subscriptions/$($(Get-SubscriptionId))"
         }
 
-        $calledParameters.ScopeInternal = $Scope
+        $calledParameters.Scope = $Scope
     }
     elseif ($Id) {
         $calledParameterSet = 'Get1'
-        $calledParameters.IdInternal = $Id
+        $calledParameters.Id = $Id
     }
     else {
         # set up filter values for list case
@@ -234,17 +234,17 @@ process {
                 'none' {
                     # This will fail, but return a helpful message
                     $calledParameterSet = 'Get1'
-                    $calledParameters = @{ IdInternal = $resolved.Scope }
+                    $calledParameters = @{ Id = $resolved.Scope }
                 }
             }
         }
         else {
             $calledParameters.SubscriptionId = @(Get-SubscriptionId)
         }
+
+        $null = $calledParameters.Remove('Scope')
     }
 
-    $null = $calledParameters.Remove('Scope')
-    $null = $calledParameters.Remove('Id')
     $null = $calledParameters.Remove('PolicyDefinitionId')
     $null = $calledParameters.Remove('IncludeDescendent')
     $null = $calledParameters.Remove('BackwardCompatible')

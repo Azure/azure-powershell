@@ -319,8 +319,7 @@ process {
         $Scope = "/subscriptions/$($(Get-SubscriptionId))"
     }
 
-    $calledParameters.ScopeInternal = $Scope
-    $null = $calledParameters.Remove('Scope')
+    $calledParameters.Scope = $Scope
 
     # route the input policy id to the correct place
     if ($PolicyDefinition) {

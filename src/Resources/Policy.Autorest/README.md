@@ -129,53 +129,6 @@ directive:
         description: Need a placeholder to keep autorest happy
         script: '{ "" }'
     hide: true
-  - where:
-      subject: PolicyAssignment
-      parameter-name: Scope
-    set:
-      parameter-name: ScopeInternal
-      default:
-        name: DefaultScope
-        description: Need a placeholder to keep autorest happy
-        script: "/subscriptions/((Get-AzContext).Subscription.Id)"
-    hide: true
-  - where:
-      subject: PolicyAssignment
-      parameter-name: Id
-    set:
-      parameter-name: IdInternal
-      default:
-        name: DefaultId
-        description: Need a placeholder to keep autorest happy
-        script: '"PlaceholderId"'
-    hide: true
-    clear-alias: true
-
-  # Rename and hide scope parameter on *-AzPolicyExemption. This is required
-  # because autorest generation handles these paramters specially and applies their
-  # own parameter set bindings. We need to customize control over parameter bindings
-  # to match the behavior of the current SDK cmdlets.
-  - where:
-      subject: PolicyExemption
-      parameter-name: Scope
-    set:
-      parameter-name: ScopeInternal
-      default:
-        name: DefaultScope
-        description: Need a placeholder to keep autorest happy
-        script: "/subscriptions/((Get-AzContext).Subscription.Id)"
-    hide: true
-  - where:
-      subject: PolicyExemption
-      parameter-name: Id
-    set:
-      parameter-name: IdInternal
-      default:
-        name: DefaultId
-        description: Need a placeholder to keep autorest happy
-        script: '"PlaceholderId"'
-    hide: true
-    clear-alias: true
 
   # Need to change ExpiresOn to a nullable DateTime (not supported by autorest)
   - where:

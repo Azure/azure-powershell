@@ -84,45 +84,6 @@ param(
     ${InputObject},
 
     [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String[]]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The name of the resource group containing the resource.
-    ${ResourceGroupName},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The parent resource path.
-    # Use empty string if there is none.
-    ${ParentResourcePath},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The name of the resource.
-    ${ResourceName},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The namespace of the resource provider.
-    # For example, the namespace of a virtual machine is Microsoft.Compute (from Microsoft.Compute/virtualMachines)
-    ${ResourceProviderNamespace},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
-    [System.String]
-    # The resource type name.
-    # For example the type name of a web app is 'sites' (from Microsoft.Web/sites).
-    ${ResourceType},
-
-    [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.String]
     # The filter to apply on the operation.
@@ -211,10 +172,6 @@ process {
 
     $calledParameters = $PSBoundParameters
 
-    # SubscriptionId is autorest-generated and mandatory so gets populated with default value.
-    # This customized cmdlet doesn't allow/use it, so we must remove it, otherwise the parameter set is broken.
-    $null = $calledParameters.Remove('SubscriptionId')
-
     if ($Id) {
         $parsed = ParsePolicyExemptionId $Id
 
@@ -234,7 +191,7 @@ process {
     if ($Name) {
         $calledParameterSet = 'Get'
         $calledParameters.Name = $Name
-        $calledParameters.ScopeInternal = $Scope
+        $calledParameters.Scope = $Scope
     }
     else {
         # set up filter values for list case
@@ -282,11 +239,11 @@ process {
                 }
             }
         }
+
+        $null = $calledParameters.Remove('Scope')
     }
 
-    $null = $calledParameters.Remove('Scope')
     $null = $calledParameters.Remove('Id')
-
     $null = $calledParameters.Remove('PolicyAssignmentIdFilter')
     $null = $calledParameters.Remove('IncludeDescendent')
     $null = $calledParameters.Remove('BackwardCompatible')
