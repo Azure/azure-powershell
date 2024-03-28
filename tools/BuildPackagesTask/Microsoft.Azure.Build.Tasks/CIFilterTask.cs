@@ -60,9 +60,9 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         public string BuildCsprojListFile { get; set; }
 
-        public string TestCsprojListFile { get; set;}
+        public string TestCsprojListFile { get; set; }
 
-        public string SubTasksFile { get; set;}
+        public string SubTasksFile { get; set; }
 
         private const string TaskMappingConfigName = ".ci-config.json";
 
@@ -108,7 +108,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             }
             else
             {
-                string expectKey = string.Format("src/{0}/", moduleName);
+                string expectKey = moduleName;
                 foreach (string key in csprojMap.Keys)
                 {
                     if (key.ToLower().Equals(expectKey.ToLower()))
@@ -154,7 +154,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 }
                 if (isDependent)
                 {
-                    moduleList.Add(key.Split('/')[1]);
+                    moduleList.Add(key);
                 }
             }
 
@@ -360,7 +360,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private bool ProcessFileChanged(Dictionary<string, string[]> csprojMap)
         {
-
             CIPhaseFilterConfig config = GetCIPhaseFilterConfig();
             List<(Regex, List<string>)> ruleList = config.Rules.Select(rule => (new Regex(string.Join("|", rule.Patterns.Select(ProcessSinglePattern).ToList())), rule.Phases)).ToList();
 
@@ -405,20 +404,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
             return true;
         }
 
-        private string GetModuleNameFromPath(string path)
-        {
-            if (path.IndexOf(".csproj") == -1)
-            {
-                return path;
-            }
-            if (path.IndexOf("src") == -1)
-            {
-                return null;
-            }
-            return path.Replace("\\", "/").Split("src/")[1].Split('/')[0];
-        }
-
-        // This method will record the changed files into a text file at `OutputFile` for other task to consum.
+        // This method will record the changed files into a text file at `OutputFile` for other task to consume.
         private void SerializeChangedFilesToFile(string[] FilesChanged, string OutputFile)
         {
             File.WriteAllLines(OutputFile, FilesChanged);
@@ -429,7 +415,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         /// based on file changes from a specified Pull Request.
         /// The output it produces is said list.
         /// </summary>
-        /// <returns> Returns a value indicating wheter the success status of the task. </returns>
+        /// <returns> Returns a value indicating whether the success status of the task. </returns>
         public override bool Execute()
         {
             BuildCsprojList = new string[0];
