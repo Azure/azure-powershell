@@ -201,16 +201,16 @@ namespace Microsoft.Azure.Commands.KeyVault
                 switch (ParameterSetName)
                 {
                     case ImportCertificateFromFileParameterSet:
-                        // Pem file can't be handled by X509Certificate2Collection in dotnet standard
-                        // Just read it as raw data and pass it to service side
+                        byte[] base64Bytes = File.ReadAllBytes(FilePath);
+                        bool doImport = false;
+
                         if (IsPemFile(FilePath))
                         {
-                            byte[] pemBytes = File.ReadAllBytes(FilePath);
-                            certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, pemBytes, Password, Tag?.ConvertToDictionary(), Constants.PemContentType, certPolicy: PolicyObject);
+                            doImport = true;
                         }
                         else
                         {
-                            bool doImport = false;
+
                             X509Certificate2Collection userProvidedCertColl = InitializeCertificateCollection();
 
                             // look for at least one certificate which contains a private key
@@ -220,22 +220,23 @@ namespace Microsoft.Azure.Commands.KeyVault
                                 if (doImport)
                                     break;
                             }
+                        }               
 
-                            if (doImport)
-                            {
-                                
-                                byte[] base64Bytes = userProvidedCertColl.Export(X509ContentType.Pfx, Password?.ConvertToString());
-                                certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, base64Bytes, Password, Tag?.ConvertToDictionary(), certPolicy: PolicyObject);
-                            }
-                            else
-                            {
-                                certBundle = this.Track2DataClient.MergeCertificate(
+                        certBundle = doImport ?
+                                this.Track2DataClient.ImportCertificate(
                                     VaultName,
                                     Name,
-                                    userProvidedCertColl,
-                                    Tag == null ? null : Tag.ConvertToDictionary());
-                            }
-                        }
+                                    base64Bytes,
+                                    Password,
+                                    Tag?.ConvertToDictionary(),
+                                    IsPemFile(FilePath) ? Constants.PemContentType : Constants.Pkcs12ContentType,
+                                    PolicyObject) :
+                                this.Track2DataClient.MergeCertificate(
+                                VaultName,
+                                Name,
+                                new List<byte[]> { base64Bytes },
+                                Tag == null ? null : Tag.ConvertToDictionary());
+
                         break;
 
                     case ImportWithPrivateKeyFromCollectionParameterSet:

@@ -247,7 +247,6 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         public PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, IEnumerable<byte[]> certificates, IDictionary<string, string> tags)
         {
-            var certList = Convert.ToBase64String(certificates.ToList()[0]);
             var certClient = CreateCertificateClient(vaultName);
             var options = new MergeCertificateOptions(certName, certificates);
             tags?.ForEach((entry) => { options.Tags.Add(entry.Key.ToString(), entry.Value.ToString()); });
