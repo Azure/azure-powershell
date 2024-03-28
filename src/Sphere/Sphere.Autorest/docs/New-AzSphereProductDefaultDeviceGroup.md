@@ -1,72 +1,72 @@
 ---
 external help file:
 Module Name: Az.Sphere
-online version: https://learn.microsoft.com/powershell/module/az.sphere/remove-azsphereimage
+online version: https://learn.microsoft.com/powershell/module/az.sphere/new-azsphereproductdefaultdevicegroup
 schema: 2.0.0
 ---
 
-# Remove-AzSphereImage
+# New-AzSphereProductDefaultDeviceGroup
 
 ## SYNOPSIS
-Delete a Image
+Generates default device groups for the product.
+'.default' and '.unassigned' are system defined values and cannot be used for product name.
 
 ## SYNTAX
 
-### Delete (Default)
+### Generate (Default)
 ```
-Remove-AzSphereImage -CatalogName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### DeleteViaIdentity
-```
-Remove-AzSphereImage -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSphereProductDefaultDeviceGroup -CatalogName <String> -ProductName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentityCatalog
+### GenerateViaIdentity
 ```
-Remove-AzSphereImage -CatalogInputObject <ISphereIdentity> -Name <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSphereProductDefaultDeviceGroup -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### GenerateViaIdentityCatalog
+```
+New-AzSphereProductDefaultDeviceGroup -CatalogInputObject <ISphereIdentity> -ProductName <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete a Image
+Generates default device groups for the product.
+'.default' and '.unassigned' are system defined values and cannot be used for product name.
 
 ## EXAMPLES
 
-### Example 1: Delete a image
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzSphereImage -CatalogName anotherCatalog -Name 14a6729e-5819-4737-8713-37b4798533f8 -ResourceGroupName Sphere-test
+{{ Add code here }}
 ```
 
-This command delete a image.
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -CatalogInputObject
 Identity Parameter
-To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: DeleteViaIdentityCatalog
+Parameter Sets: GenerateViaIdentityCatalog
 Aliases:
 
 Required: True
@@ -81,7 +81,7 @@ Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Generate
 Aliases:
 
 Required: True
@@ -109,11 +109,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: GenerateViaIdentity
 Aliases:
 
 Required: True
@@ -123,46 +122,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-Image name.
-Use an image GUID for GA versions of the API.
+### -ProductName
+Name of product.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete, DeleteViaIdentityCatalog
-Aliases: ImageName
+Parameter Sets: Generate, GenerateViaIdentityCatalog
+Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -175,7 +143,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Generate
 Aliases:
 
 Required: True
@@ -190,7 +158,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Generate
 Aliases:
 
 Required: False
@@ -240,7 +208,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.IDeviceGroup
 
 ## NOTES
 

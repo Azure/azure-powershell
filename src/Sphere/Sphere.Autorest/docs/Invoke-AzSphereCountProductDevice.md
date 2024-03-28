@@ -37,33 +37,23 @@ Counts devices in product.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get device number
 ```powershell
-{{ Add code here }}
+Invoke-AzSphereCountProductDevice -CatalogName test2024 -ResourceGroupName joyer-test -ProductName product2024
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Value
+-----
+    3
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command returns device number for the product.
 
 ## PARAMETERS
 
 ### -CatalogInputObject
 Identity Parameter
-To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -110,7 +100,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

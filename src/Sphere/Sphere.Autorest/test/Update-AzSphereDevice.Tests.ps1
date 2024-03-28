@@ -19,6 +19,14 @@ Describe 'Update-AzSphereDevice' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
+    It 'UpdateViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
     It 'UpdateViaIdentityProductExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

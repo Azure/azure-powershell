@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Sphere service.
 
 ---
-## Status
-[![Az.Sphere](https://img.shields.io/powershellgallery/v/Az.Sphere.svg?style=flat-square&label=Az.Sphere "Az.Sphere")](https://www.powershellgallery.com/packages/Az.Sphere/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -50,29 +47,59 @@ title: Sphere
 subject-prefix: $(service-name)
 
 directive:
-  - from: swagger-document
-    where: $.definitions.ImageProperties.properties.image
-    transform: >-
-      return {
-          "type": "string",
-          "format": "byte",
-          "description": "Image as a UTF-8 encoded base 64 string on image create. This field contains the image URI on image reads.",
-          "x-ms-mutability": [
-            "read",
-            "create"
-          ]
-      }
+  # Following are common directives which are normally required in all the RPs
+  # 1. Remove the unexpanded parameter set
+  # 2. For New-* cmdlets, ViaIdentity is not required
   - where:
-      variant: ^(Create|Update|Generate|Claim)(?!.*?Expanded)
+      variant: ^(Create|Update)(?!.*?Expanded|ViaJsonString|ViaJsonFilePath)
     remove: true
   - where:
-      variant: List
+      variant: ^CreateViaIdentity.*$
+    remove: true
+  # Remove unavailable feature
+  - where:
+      verb: Remove
+      subject: ^Device$|Image|Deployment
+    remove: true
+  - where:
+      verb: Update
+      subject: Image|Deployment
+    remove: true
+  # The server responded with an unrecognized response
+  - where:
+      verb: Invoke
+      subject: UploadCatalogImage
+    remove: true
+  #- where:
+  #    verb: Invoke
+  #    subject: ClaimDeviceGroupDevice
+  #  remove: true
+  - where:
+      verb: Get
+      subject: CatalogDeployment
+    remove: true
+  # Remove unexpanded include json parameter set
+  - where:
+      variant: ^List(?!.*?Expanded)
       subject: CatalogDeviceGroup
-    hide: true
+    remove: true
   - where:
       variant: ^(Retrieve)(?!.*?Expanded)
       subject: CertificateProof
+    remove: true
+  - where:
+      variant: ^Claim(?!.*?Expanded)
+      subject: ClaimDeviceGroupDevice
     hide: true
+  # New-AzSphereDeviceCapabilityImage
+  - where:
+      variant: ^(Generate)(?!.*?(Expanded|JsonString|JsonFilePath))
+      subject: DeviceCapabilityImage
+    remove: true
+  - where:
+      variant: GenerateViaIdentityExpanded
+      subject: DeviceCapabilityImage
+    remove: true
   # Remove the set-* cmdlet
   - where:
       verb: Set

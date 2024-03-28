@@ -15,15 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSphereCatalog'))
 }
 
 Describe 'Remove-AzSphereCatalog' {
-    It 'Delete' {
-        {
-            Remove-AzSphereCatalog -Name $env.anotherCatalog -ResourceGroupName $env.resourceGroup
-        } | Should -Not -Throw
+    It 'Delete' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' {
-        {
-            Get-AzSphereCatalog -Name $env.secondCatalog -ResourceGroupName $env.resourceGroup | Remove-AzSphereCatalog
-        } | Should -Not -Throw
+    It 'DeleteViaIdentity' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

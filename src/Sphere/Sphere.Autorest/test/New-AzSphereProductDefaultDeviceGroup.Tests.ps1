@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSphereImage'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzSphereProductDefaultDeviceGroup'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Remove-AzSphereImage.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzSphereProductDefaultDeviceGroup.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,16 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSphereImage'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Remove-AzSphereImage' {
-    It 'Delete' -skip {
+Describe 'New-AzSphereProductDefaultDeviceGroup' {
+    It 'Generate' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentityCatalog' -skip {
+    It 'GenerateViaIdentityCatalog' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'GenerateViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

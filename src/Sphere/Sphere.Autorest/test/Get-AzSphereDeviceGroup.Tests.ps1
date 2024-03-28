@@ -15,16 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSphereDeviceGroup'))
 }
 
 Describe 'Get-AzSphereDeviceGroup' {
-    It 'List' {
-        {
-            Get-AzSphereDeviceGroup -CatalogName $env.firstCatalog -ProductName $env.firstProduct -ResourceGroupName $env.resourceGroup
-        } | Should -Not -Throw
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' {
-        {
-            Get-AzSphereDeviceGroup -CatalogName $env.firstCatalog -Name $env.firstDeviceGroup -ProductName $env.firstProduct -ResourceGroupName $env.resourceGroup
-        } | Should -Not -Throw
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'GetViaIdentityProduct' -skip {

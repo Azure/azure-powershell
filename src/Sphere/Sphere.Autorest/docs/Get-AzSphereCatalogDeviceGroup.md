@@ -12,24 +12,9 @@ List the device groups for the catalog.
 
 ## SYNTAX
 
-### ListExpanded (Default)
 ```
 Get-AzSphereCatalogDeviceGroup -CatalogName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Filter <String>] [-Maxpagesize <Int32>] [-Skip <Int32>] [-Top <Int32>] [-DeviceGroupName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ListViaJsonFilePath
-```
-Get-AzSphereCatalogDeviceGroup -CatalogName <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String[]>] [-Filter <String>] [-Maxpagesize <Int32>] [-Skip <Int32>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ListViaJsonString
-```
-Get-AzSphereCatalogDeviceGroup -CatalogName <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String[]>] [-Filter <String>] [-Maxpagesize <Int32>] [-Skip <Int32>] [-Top <Int32>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -38,27 +23,19 @@ List the device groups for the catalog.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List for the specified catalog with resource group
 ```powershell
-{{ Add code here }}
+Get-AzSphereCatalogDeviceGroup -CatalogName test2024 -ResourceGroupName joyer-test
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName      
+----             ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------      
+testdevicegroup                                                                                                                                                 joyer-test
+testdevicegroup2                                                                                                                                                joyer-test
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command gets list of device groups for the specified catalog with resource group.
 
 ## PARAMETERS
 
@@ -98,7 +75,7 @@ Device Group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ListExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -117,36 +94,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonFilePath
-Path of Json file supplied to the List operation
-
-```yaml
-Type: System.String
-Parameter Sets: ListViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the List operation
-
-```yaml
-Type: System.String
-Parameter Sets: ListViaJsonString
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

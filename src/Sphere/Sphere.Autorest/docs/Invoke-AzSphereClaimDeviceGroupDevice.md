@@ -46,27 +46,12 @@ Use '.unassigned' or '.default' for the device group and product names when bulk
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Bulk claims the devices
 ```powershell
-{{ Add code here }}
+Invoke-AzsphereclaimDeviceGroupDevice -CatalogName test2024 -DeviceGroupName testdevicegroup -ProductName product2024 -ResourceGroupName joyer-test -DeviceIdentifier B15332603BA55FB52B00FEC8549FDAA46B7FB6BA35694BC8943131CCB4B302846D224580A27880A2996B9FD4F1B2699400B1627059B6A90D67DD29E2984EE147,5D257FBCF76A5853832122D9B0E2410DAA1438E3C1CDE005162A837A7535C08973CC819A50CF8EB724FFC88DADA06B40BEE6010E82A8F84D2FEF0FC263061D67
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command bulk claims the devices.
 
 ## PARAMETERS
 
@@ -87,7 +72,6 @@ Accept wildcard characters: False
 
 ### -CatalogInputObject
 Identity Parameter
-To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -164,7 +148,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -195,7 +178,6 @@ Accept wildcard characters: False
 
 ### -ProductInputObject
 Identity Parameter
-To construct, see NOTES section for PRODUCTINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

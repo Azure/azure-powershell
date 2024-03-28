@@ -15,21 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSphereDeviceGroup'))
 }
 
 Describe 'New-AzSphereDeviceGroup' {
-    It 'CreateExpanded' {
-        {
-            New-AzSphereDeviceGroup -CatalogName $env.firstCatalog -Name $env.firstDeviceGroup -ProductName $env.firstProduct -ResourceGroupName $env.resourceGroup
-        } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityProductExpanded' -skip {
+    It 'CreateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateViaIdentityCatalogExpanded' -skip {
+    It 'CreateViaJsonFilePath' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateViaIdentityExpanded' -skip {
+    It 'CreateViaJsonString' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -22,5 +22,5 @@ TenantId                     :
 Type                         : microsoft.azuresphere/catalogs
 ```
 
-This command update tag for specified catalog.
+This command updates tag for specified catalog.
 

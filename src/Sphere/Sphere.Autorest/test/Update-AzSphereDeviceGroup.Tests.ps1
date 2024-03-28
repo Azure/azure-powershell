@@ -15,10 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSphereDeviceGroup'))
 }
 
 Describe 'Update-AzSphereDeviceGroup' {
-    It 'UpdateExpanded' {
-        {
-            
-        } | Should -Not -Throw
+    It 'UpdateExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityProductExpanded' -skip {

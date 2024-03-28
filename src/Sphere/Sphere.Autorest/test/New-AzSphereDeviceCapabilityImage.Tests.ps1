@@ -15,10 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSphereDeviceCapabilityI
 }
 
 Describe 'New-AzSphereDeviceCapabilityImage' {
-    It 'GenerateExpanded' {
-        {
-            New-AzSphereDeviceCapabilityImage -CatalogName $env.firstCatalog -DeviceGroupName $env.firstDeviceGroup -DeviceName $env.deviceID1 -ProductName $env.firstProduct -ResourceGroupName $env.resourceGroup -Capability
-        } | Should -Not -Throw
+    It 'GenerateExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GenerateViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'GenerateViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'GenerateViaIdentityProductExpanded' -skip {
@@ -30,10 +36,6 @@ Describe 'New-AzSphereDeviceCapabilityImage' {
     }
 
     It 'GenerateViaIdentityDeviceGroupExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GenerateViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

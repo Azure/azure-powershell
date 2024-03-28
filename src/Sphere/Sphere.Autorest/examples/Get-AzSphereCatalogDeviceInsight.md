@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: List device insight
 ```powershell
-{{ Add code here }}
+Get-AzSphereCatalogDeviceInsight -CatalogName test2024 -ResourceGroupName joyer-test
 ```
 
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command gets a list of device insights for specified catalog.
 

@@ -15,21 +15,21 @@ Create a Image
 ### CreateExpanded (Default)
 ```
 New-AzSphereImage -CatalogName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ImageId <String>] [-ImageInputFile <String>] [-RegionalDataBoundary <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Image <String>] [-ImageId <String>] [-RegionalDataBoundary <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentityCatalogExpanded
+### CreateViaJsonFilePath
 ```
-New-AzSphereImage -CatalogInputObject <ISphereIdentity> -Name <String> [-ImageId <String>]
- [-ImageInputFile <String>] [-RegionalDataBoundary <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSphereImage -CatalogName <String> -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### CreateViaIdentityExpanded
+### CreateViaJsonString
 ```
-New-AzSphereImage -InputObject <ISphereIdentity> [-ImageId <String>] [-ImageInputFile <String>]
- [-RegionalDataBoundary <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzSphereImage -CatalogName <String> -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -38,27 +38,39 @@ Create a Image
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a image for device group
 ```powershell
-{{ Add code here }}
+$imagefile1 = 'D:\GitHub\azure-powershell\src\Sphere\Sphere.Autorest\test\imagefile\AzureSphereBlink1.imagepackage'
+$encf1 = [system.io.file]::ReadAllBytes($imagefile1)
+$base64str = [system.convert]::ToBase64String($encf1)
+New-AzSphereImage -CatalogName test2024 -ResourceGroupName joyer-test -Name 14a6729e-5819-4737-8713-37b4798533f8 -Image $base64str
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ComponentId                  : 42257ad6-382d-405f-b7cc-e110fbda2d0b
+Description                  : 
+Id                           : /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/joyer-test/providers/Microsoft.AzureSphere/catalogs/test2024/images/14a6729e-5819-4737-8713-37b4798533f8
+ImageId                      : 14a6729e-5819-4737-8713-37b4798533f8
+ImageName                    : 
+ImageType                    : Applications
+Name                         : 14a6729e-5819-4737-8713-37b4798533f8
+PropertiesImage              : AzureSphereBlink1
+ProvisioningState            : Succeeded
+RegionalDataBoundary         : None
+ResourceGroupName            : joyer-test
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Type                         : Microsoft.AzureSphere/catalogs/images
+Uri                          : https://as3imgptint003.blob.core.windows.net/7de8a199-bb33-4eda-9600-583103317243/imagesaks/14a6729e-5819-4737-8713-37b4798533f8?skoid=cc6e3fcf-ab4d-4b0d-b3f9-9769 
+                               604c1e52&sktid=72f988bf-86f1-41af-91ab-2d7cd011db47&skt=2024-02-23T02%3A31%3A35Z&ske=2024-02-23T03%3A36%3A35Z&sks=b&skv=2021-12-02&sv=2021-12-02&spr=https,http&se= 
+                               2024-02-23T10%3A36%3A35Z&sr=b&sp=r&sig=7ZNckgqdazn9Af8fHUfsEEA2JrZO0SjDZpUgbh0jEZI%3D
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command creates a image for the device group.
 
 ## PARAMETERS
 
@@ -77,28 +89,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CatalogInputObject
-Identity Parameter
-To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CreateViaIdentityCatalogExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -CatalogName
 Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -124,12 +120,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Image
+Image as a UTF-8 encoded base 64 string on image create.
+This field contains the image URI on image reads.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ImageId
 Image ID
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -139,35 +151,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ImageInputFile
-Input File for Image (Image as a UTF-8 encoded base 64 string on image create.
-This field contains the image URI on image reads.)
+### -JsonFilePath
+Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CreateViaIdentityExpanded
+Parameter Sets: CreateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -177,7 +187,7 @@ Use an image GUID for GA versions of the API.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityCatalogExpanded
+Parameter Sets: (All)
 Aliases: ImageName
 
 Required: True
@@ -207,7 +217,7 @@ Regional data boundary for an image
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -223,7 +233,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -238,7 +248,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -283,8 +293,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
 
 ## OUTPUTS
 

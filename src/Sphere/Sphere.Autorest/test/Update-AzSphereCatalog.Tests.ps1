@@ -16,9 +16,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSphereCatalog'))
 
 Describe 'Update-AzSphereCatalog' {
     It 'UpdateExpanded' -skip {
-        {
-            Update-AzSphereCatalog -Name $env.firstCatalog -ResourceGroupName $env.resourceGroup -Tag @{"123"="abc"}
-        } | Should -Not -Throw
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaJsonString' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'UpdateViaJsonFilePath' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'UpdateViaIdentityExpanded' -skip {

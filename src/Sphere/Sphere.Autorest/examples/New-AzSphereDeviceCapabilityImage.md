@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Generates the capability image for the device.
 ```powershell
-{{ Add code here }}
+New-AzSphereDeviceCapabilityImage -ResourceGroupName joyer-test -CatalogName test2024 -DeviceGroupName testdevicegroup2 -ProductName product2024 -DeviceName DBB0E0CB8BD961A6129096E1E8A1375AC1FA274F030C08161B37AE3BC5A94F443BDB628CF257BC5BC810D8768C03B6F5CA301A35CD0169F56A49624255964560 -Capability 'ApplicationDevelopment' | Format-List
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Image : /Vz9XAEAAADMAAAA27Dgy4vZYaYSkJbh6KE3WsH6J08DDAgWGzeuO8WpT0Q722KM8le8W8gQ2HaMA7b1yjAaNc0BafVqSWJCVZZFYAsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANFg0TQMAAABJRCQADQAAANi1KEHCq1VBmjOKHzHtZ+yYQTwYazyNRbRvoHzwyZefU0cYAJZKiVhXTEtr0FMmMLhe+JiQpbh/AQAA 
+        AERCKAAAAAAAAAAAAGZ3X2NvbmZpZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfAAAAMyzku8X6GdcOC1Sd9Cfozpmsiny2TzmjyXK7IvOhfA1B8nwdf1GoPa6PPVNMnn15TPIFK/P5/S2TD/mQrNh0Nk=
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command generates the capability image for specified device.
 

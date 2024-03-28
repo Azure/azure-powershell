@@ -1,22 +1,17 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a proof Of Possession Nonce
 ```powershell
-{{ Add code here }}
+Get-AzSphereCertificateProof -CatalogName test2024 -ResourceGroupName joyer-test -SerialNumber 'serial number' -ProofOfPossessionNonce proofOfPossessionNonce
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Certificate       : 'information'
+ExpiryUtc         : 
+NotBeforeUtc      : 
+ProvisioningState : 
+Status            : 
+Subject           : 
+Thumbprint        : 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command gets a proof Of Possession Nonce for specified catalog and serial number.
 

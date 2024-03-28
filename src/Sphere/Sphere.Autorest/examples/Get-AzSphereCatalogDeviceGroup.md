@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: List for the specified catalog with resource group
 ```powershell
-{{ Add code here }}
+Get-AzSphereCatalogDeviceGroup -CatalogName test2024 -ResourceGroupName joyer-test
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name             SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName      
+----             ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------      
+testdevicegroup                                                                                                                                                 joyer-test
+testdevicegroup2                                                                                                                                                joyer-test
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command gets list of device groups for the specified catalog with resource group.
 

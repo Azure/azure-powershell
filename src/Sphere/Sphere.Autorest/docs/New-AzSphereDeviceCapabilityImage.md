@@ -34,17 +34,25 @@ New-AzSphereDeviceCapabilityImage -DeviceGroupInputObject <ISphereIdentity> -Dev
  [<CommonParameters>]
 ```
 
-### GenerateViaIdentityExpanded
-```
-New-AzSphereDeviceCapabilityImage -InputObject <ISphereIdentity> -Capability <String[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### GenerateViaIdentityProductExpanded
 ```
 New-AzSphereDeviceCapabilityImage -DeviceGroupName <String> -DeviceName <String>
  -ProductInputObject <ISphereIdentity> -Capability <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GenerateViaJsonFilePath
+```
+New-AzSphereDeviceCapabilityImage -CatalogName <String> -DeviceGroupName <String> -DeviceName <String>
+ -ProductName <String> -ResourceGroupName <String> -JsonFilePath <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### GenerateViaJsonString
+```
+New-AzSphereDeviceCapabilityImage -CatalogName <String> -DeviceGroupName <String> -DeviceName <String>
+ -ProductName <String> -ResourceGroupName <String> -JsonString <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,27 +61,18 @@ Use '.unassigned' or '.default' for the device group and product names to genera
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Generates the capability image for the device.
 ```powershell
-{{ Add code here }}
+New-AzSphereDeviceCapabilityImage -ResourceGroupName joyer-test -CatalogName test2024 -DeviceGroupName testdevicegroup2 -ProductName product2024 -DeviceName DBB0E0CB8BD961A6129096E1E8A1375AC1FA274F030C08161B37AE3BC5A94F443BDB628CF257BC5BC810D8768C03B6F5CA301A35CD0169F56A49624255964560 -Capability 'ApplicationDevelopment' | Format-List
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Image : /Vz9XAEAAADMAAAA27Dgy4vZYaYSkJbh6KE3WsH6J08DDAgWGzeuO8WpT0Q722KM8le8W8gQ2HaMA7b1yjAaNc0BafVqSWJCVZZFYAsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANFg0TQMAAABJRCQADQAAANi1KEHCq1VBmjOKHzHtZ+yYQTwYazyNRbRvoHzwyZefU0cYAJZKiVhXTEtr0FMmMLhe+JiQpbh/AQAA 
+        AERCKAAAAAAAAAAAAGZ3X2NvbmZpZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAfAAAAMyzku8X6GdcOC1Sd9Cfozpmsiny2TzmjyXK7IvOhfA1B8nwdf1GoPa6PPVNMnn15TPIFK/P5/S2TD/mQrNh0Nk=
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command generates the capability image for specified device.
 
 ## PARAMETERS
 
@@ -97,7 +96,7 @@ List of capabilities to create
 
 ```yaml
 Type: System.String[]
-Parameter Sets: (All)
+Parameter Sets: GenerateExpanded, GenerateViaIdentityCatalogExpanded, GenerateViaIdentityDeviceGroupExpanded, GenerateViaIdentityProductExpanded
 Aliases:
 
 Required: True
@@ -109,7 +108,6 @@ Accept wildcard characters: False
 
 ### -CatalogInputObject
 Identity Parameter
-To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -128,7 +126,7 @@ Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: GenerateExpanded
+Parameter Sets: GenerateExpanded, GenerateViaJsonFilePath, GenerateViaJsonString
 Aliases:
 
 Required: True
@@ -156,7 +154,6 @@ Accept wildcard characters: False
 
 ### -DeviceGroupInputObject
 Identity Parameter
-To construct, see NOTES section for DEVICEGROUPINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -175,7 +172,7 @@ Name of device group.
 
 ```yaml
 Type: System.String
-Parameter Sets: GenerateExpanded, GenerateViaIdentityCatalogExpanded, GenerateViaIdentityProductExpanded
+Parameter Sets: GenerateExpanded, GenerateViaIdentityCatalogExpanded, GenerateViaIdentityProductExpanded, GenerateViaJsonFilePath, GenerateViaJsonString
 Aliases:
 
 Required: True
@@ -190,7 +187,7 @@ Device name
 
 ```yaml
 Type: System.String
-Parameter Sets: GenerateExpanded, GenerateViaIdentityCatalogExpanded, GenerateViaIdentityDeviceGroupExpanded, GenerateViaIdentityProductExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -200,19 +197,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -JsonFilePath
+Path of Json file supplied to the Generate operation
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: GenerateViaIdentityExpanded
+Type: System.String
+Parameter Sets: GenerateViaJsonFilePath
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Generate operation
+
+```yaml
+Type: System.String
+Parameter Sets: GenerateViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -233,7 +244,6 @@ Accept wildcard characters: False
 
 ### -ProductInputObject
 Identity Parameter
-To construct, see NOTES section for PRODUCTINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -252,7 +262,7 @@ Name of product.
 
 ```yaml
 Type: System.String
-Parameter Sets: GenerateExpanded, GenerateViaIdentityCatalogExpanded
+Parameter Sets: GenerateExpanded, GenerateViaIdentityCatalogExpanded, GenerateViaJsonFilePath, GenerateViaJsonString
 Aliases:
 
 Required: True
@@ -268,7 +278,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: GenerateExpanded
+Parameter Sets: GenerateExpanded, GenerateViaJsonFilePath, GenerateViaJsonString
 Aliases:
 
 Required: True
@@ -283,7 +293,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: GenerateExpanded
+Parameter Sets: GenerateExpanded, GenerateViaJsonFilePath, GenerateViaJsonString
 Aliases:
 
 Required: False

@@ -35,33 +35,23 @@ Retrieves cert chain.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a certificate cert chain
 ```powershell
-{{ Add code here }}
+Get-AzSphereCertificateCertChain -CatalogName test2024 -ResourceGroupName joyer-test -SerialNumber 'serial number'
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+CertificateChain
+----------------
+'information'
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command gets a certificate cert chain.
 
 ## PARAMETERS
 
 ### -CatalogInputObject
 Identity Parameter
-To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -108,7 +98,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

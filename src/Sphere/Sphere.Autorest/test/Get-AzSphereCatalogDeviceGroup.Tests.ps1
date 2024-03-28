@@ -18,12 +18,4 @@ Describe 'Get-AzSphereCatalogDeviceGroup' {
     It 'ListExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
-    It 'ListViaJsonFilePath' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'ListViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
 }

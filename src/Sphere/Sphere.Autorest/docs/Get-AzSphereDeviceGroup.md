@@ -58,8 +58,7 @@ Get-AzSphereDeviceGroup -CatalogName NewCatalog -ProductName MyProd815 -Resource
 AllowCrashDumpsCollection    : Disabled
 Description                  : test device group
 HasDeployment                : False
-Id                           : /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/ps1-test/providers/Microsoft.AzureSphere/catalogs/NewCatalog/products/MyProd815/deviceGroup 
-                               s/Marketing
+Id                           : /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/ps1-test/providers/Microsoft.AzureSphere/catalogs/NewCatalog/products/MyProd815/deviceGroups/Marketing
 Name                         : Marketing
 OSFeedType                   : Retail
 ProvisioningState            : Succeeded
@@ -87,8 +86,7 @@ Get-AzSphereDeviceGroup -CatalogName NewCatalog -Name Marketing -ProductName MyP
 AllowCrashDumpsCollection    : Disabled
 Description                  : test device group
 HasDeployment                : 
-Id                           : /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/ps1-test/providers/Microsoft.AzureSphere/catalogs/NewCatalog/products/MyProd815/deviceGroup 
-                               s/Marketing
+Id                           : /subscriptions/d1cd48f9-b94b-4645-9632-634b440db393/resourceGroups/ps1-test/providers/Microsoft.AzureSphere/catalogs/NewCatalog/products/MyProd815/deviceGroups/Marketing
 Name                         : Marketing
 OSFeedType                   : Retail
 ProvisioningState            : Succeeded
@@ -111,7 +109,6 @@ This command gets specific device group.
 
 ### -CatalogInputObject
 Identity Parameter
-To construct, see NOTES section for CATALOGINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -173,7 +170,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
@@ -219,7 +215,6 @@ Accept wildcard characters: False
 
 ### -ProductInputObject
 Identity Parameter
-To construct, see NOTES section for PRODUCTINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity

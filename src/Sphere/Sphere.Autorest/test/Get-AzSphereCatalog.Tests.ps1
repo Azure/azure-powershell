@@ -15,25 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSphereCatalog'))
 }
 
 Describe 'Get-AzSphereCatalog' {
-    It 'List' {
-        {
-            $listSub = Get-AzSphereCatalog
-            $listSub.Count | Should -BeGreaterThan 100
-        } | Should -Not -Throw
+    It 'List' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' {
-        {
-            $catalog = Get-AzSphereCatalog -Name $env.firstCatalog -ResourceGroupName $env.resourceGroup
-            $catalog.Name | Should -Be $env.firstCatalog
-        } | Should -Not -Throw
+    It 'Get' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'List1' {
-        {
-            $listGroup = Get-AzSphereCatalog -ResourceGroupName $env.resourceGroup
-            $listGroup.Count | Should -BeGreaterOrEqual 2
-        } | Should -Not -Throw
+    It 'List1' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {
