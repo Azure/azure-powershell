@@ -229,7 +229,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                             }
                             else
                             {
-                                certBundle = this.DataServiceClient.MergeCertificate(
+                                certBundle = this.Track2DataClient.MergeCertificate(
                                     VaultName,
                                     Name,
                                     userProvidedCertColl,
@@ -256,6 +256,12 @@ namespace Microsoft.Azure.Commands.KeyVault
         {
             return ".pem".Equals(Path.GetExtension(filePath), StringComparison.OrdinalIgnoreCase);
         }
+
+        /// <summary>
+        /// Initialize certificate collection from FilePath
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="FileNotFoundException"></exception>
 
         internal X509Certificate2Collection InitializeCertificateCollection()
         {

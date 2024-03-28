@@ -11,6 +11,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Security;
 
 namespace Microsoft.Azure.Commands.KeyVault.Track2Models
@@ -244,10 +245,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
             return new PSKeyVaultCertificate(certClient.ImportCertificate(options));
         }
 
-        public PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, byte[] certificate, IDictionary<string, string> tags)
+        public PSKeyVaultCertificate MergeCertificate(string vaultName, string certName, IEnumerable<byte[]> certificates, IDictionary<string, string> tags)
         {
+            var certList = Convert.ToBase64String(certificates.ToList()[0]);
             var certClient = CreateCertificateClient(vaultName);
-            var options = new MergeCertificateOptions(certName, new List<byte[]> { certificate });
+            var options = new MergeCertificateOptions(certName, certificates);
             tags?.ForEach((entry) => { options.Tags.Add(entry.Key.ToString(), entry.Value.ToString()); });
             var cert = certClient.MergeCertificate(options);
             return new PSKeyVaultCertificate(cert);
