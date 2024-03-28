@@ -25,11 +25,12 @@ Update-AzSqlVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <Stri
  [-AutoBackupSettingStorageAccountUrl <String>] [-AutoBackupSettingStorageContainerName <String>]
  [-AutoPatchingSettingDayOfWeek <DayOfWeek>] [-AutoPatchingSettingEnable]
  [-AutoPatchingSettingMaintenanceWindowDuration <Int32>]
- [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-EnableAutomaticUpgrade]
- [-LicenseType <SqlServerLicenseType>] [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>]
- [-ScheduleEnable] [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>]
- [-ScheduleWeeklyInterval <Int32>] [-Sku <SqlImageSku>] [-SqlManagementType <SqlManagementMode>]
- [-SqlVirtualMachineGroupResourceId <String>] [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
+ [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-AzureAdAuthenticationSettingClientId <String>]
+ [-AzureAdAuthenticationSettingEnable] [-EnableAutomaticUpgrade] [-LicenseType <SqlServerLicenseType>]
+ [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>] [-ScheduleEnable]
+ [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>] [-ScheduleWeeklyInterval <Int32>]
+ [-Sku <SqlImageSku>] [-SqlManagementType <SqlManagementMode>] [-SqlVirtualMachineGroupResourceId <String>]
+ [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
  [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
@@ -49,11 +50,12 @@ Update-AzSqlVM -InputObject <ISqlVirtualMachineIdentity> [-AssessmentSettingEnab
  [-AutoBackupSettingStorageAccountUrl <String>] [-AutoBackupSettingStorageContainerName <String>]
  [-AutoPatchingSettingDayOfWeek <DayOfWeek>] [-AutoPatchingSettingEnable]
  [-AutoPatchingSettingMaintenanceWindowDuration <Int32>]
- [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-EnableAutomaticUpgrade]
- [-LicenseType <SqlServerLicenseType>] [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>]
- [-ScheduleEnable] [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>]
- [-ScheduleWeeklyInterval <Int32>] [-Sku <SqlImageSku>] [-SqlManagementType <SqlManagementMode>]
- [-SqlVirtualMachineGroupResourceId <String>] [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
+ [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-AzureAdAuthenticationSettingClientId <String>]
+ [-AzureAdAuthenticationSettingEnable] [-EnableAutomaticUpgrade] [-LicenseType <SqlServerLicenseType>]
+ [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>] [-ScheduleEnable]
+ [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>] [-ScheduleWeeklyInterval <Int32>]
+ [-Sku <SqlImageSku>] [-SqlManagementType <SqlManagementMode>] [-SqlVirtualMachineGroupResourceId <String>]
+ [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
  [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
@@ -207,6 +209,32 @@ eastus		sqlvm1		ResourceGroup01
 ```
 
 Update a SQL virtual machine's tag as a background job.
+
+### Example 11
+```powershell
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingEnable -AzureAdAuthenticationSettingClientId ''
+```
+
+```output
+Location	Name		ResourceGroupName
+--------	----		-----------------
+eastus		sqlvm1		ResourceGroup01	
+```
+
+Update a SQL virtual machine to enable "authentication with Microsoft Entra ID" using "System-assigned managed identity"
+
+### Example 12
+```powershell
+Update-AzSqlVM -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingEnable -AzureAdAuthenticationSettingClientId '11111111-2222-3333-4444-555555555555'
+```
+
+```output
+Location	Name		ResourceGroupName
+--------	----		-----------------
+eastus		sqlvm1		ResourceGroup01	
+```
+
+Update a SQL virtual machine to enable "authentication with Microsoft Entra ID" using "User-assigned managed identity"
 
 ## PARAMETERS
 
@@ -520,6 +548,37 @@ Local VM time.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureAdAuthenticationSettingClientId
+The client Id of the Managed Identity to query Microsoft Graph API.
+An empty string must be used for the system assigned Managed Identity
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureAdAuthenticationSettingEnable
+Enable Azure Ad Authentication on SQL virtual machine.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -926,21 +985,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISqlVirtualMachineIdentity>`: Identity Parameter
-  - `[AvailabilityGroupListenerName <String>]`: Name of the availability group listener.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[SqlVirtualMachineGroupName <String>]`: Name of the SQL virtual machine group.
-  - `[SqlVirtualMachineName <String>]`: Name of the SQL virtual machine.
-  - `[SubscriptionId <String>]`: Subscription ID that identifies an Azure subscription.
 
 ## RELATED LINKS
 

@@ -179,6 +179,9 @@ process {
 <#
     .SYNOPSIS
     Given a VM, check if it's eligible for Azure AD authentication
+	
+	.Description
+	Given a VM, check if it's eligible for Azure AD authentication
 
     .PARAMETER VmName
     Name of the VM
@@ -206,6 +209,20 @@ function Validate-All(
 			Validate-MsiWithEnoughPermission -PrincipalId $PrincipalId
             Write-Host "Sql virtual machine $($sqlvm.Name) is valid for Azure AD authentication."
 }
+
+<#
+    .SYNOPSIS
+    Check if SQL VM version is minimum SQL2022
+	
+	.Description
+	Check if SQL VM version is minimum SQL2022
+
+    .PARAMETER SqlVirtualMachineName
+    Name of the VM
+
+    .PARAMETER ResourceGroupName
+    Name of the resource group
+#>
 function Validate-AzureADAuthenticationSupportedOnSqlVM {
     [CmdletBinding()]
     param (
@@ -256,6 +273,22 @@ function Validate-AzureADAuthenticationSupportedOnSqlVM {
 	
 }
 
+<#
+    .SYNOPSIS
+    Validate the provided MSI is associated with SQL VM or not
+	
+	.Description
+	Validate the provided MSI is associated with SQL VM or not
+
+    .PARAMETER SqlVirtualMachineName
+    Name of the VM
+
+    .PARAMETER ResourceGroupName
+    Name of the resource group
+	
+	.PARAMETER MsiClientId
+    Msi Client Id
+#>
 function Validate-MsiValidOnVm {
     [CmdletBinding()]
     param (
@@ -316,6 +349,16 @@ function Validate-MsiValidOnVm {
 
 }
 
+<#
+    .SYNOPSIS
+    Validate the provided MSI has required permissions or not
+	
+	.Description
+	Validate the provided MSI has required permissions or not
+	
+	.PARAMETER PrincipalId
+    Msi Principal Id
+#>
 function Validate-MsiWithEnoughPermission {
     [CmdletBinding()]
     param (
