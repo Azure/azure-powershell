@@ -14,7 +14,8 @@ Create a TrafficController
 
 ```
 New-AzAlb -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -197,10 +198,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.Api20230501Preview.ITrafficController
+### Microsoft.Azure.PowerShell.Cmdlets.Alb.Models.ITrafficController
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

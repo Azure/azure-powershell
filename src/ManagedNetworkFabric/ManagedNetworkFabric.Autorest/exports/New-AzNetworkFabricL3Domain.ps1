@@ -99,7 +99,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRouteConfiguration]
     # Aggregate route configurations.
-    # To construct, see NOTES section for AGGREGATEROUTECONFIGURATION properties and create a hash table.
     ${AggregateRouteConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -112,7 +111,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetRoutePolicy]
     # Connected Subnet RoutePolicy
-    # To construct, see NOTES section for CONNECTEDSUBNETROUTEPOLICY properties and create a hash table.
     ${ConnectedSubnetRoutePolicy},
 
     [Parameter(ParameterSetName='CreateExpanded')]

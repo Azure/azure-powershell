@@ -15,14 +15,16 @@ Recovers a previously deleted KeyVault-managed storage SAS definition.
 ### Default (Default)
 ```
 Undo-AzKeyVaultManagedStorageSasDefinitionRemoval [-VaultName] <String> [-AccountName] <String>
- [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Undo-AzKeyVaultManagedStorageSasDefinitionRemoval [-AccountName] <String>
  [-InputObject] <PSDeletedKeyVaultManagedStorageSasDefinitionIdentityItem>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

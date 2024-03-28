@@ -18,11 +18,14 @@ using Microsoft.Azure.Commands.Support.Helpers;
 using Microsoft.Azure.Commands.Support.Models;
 using Microsoft.Azure.Management.Support;
 using Microsoft.Azure.Management.Support.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Support.Communications
 {
+    [GenericBreakingChangeWithVersion("The cmdlet New-AzSupportTicketCommunication will be renamed to New-AzSupportCommunication", "12.0.0", "2.0.0")]
+    [GenericBreakingChangeWithVersion("Piping of New-AzSupportTicketCommunication with a support ticket object will no longer be supported.", "12.0.0", "2.0.0")]
     [Cmdlet(VerbsCommon.New, AzureRMConstants.AzureRMPrefix + "SupportTicketCommunication", DefaultParameterSetName = CreateByNameParameterSet, SupportsShouldProcess = true),
      OutputType(typeof(PSSupportTicketCommunication))]
     public class NewAzSupportTicketCommunication : AzSupportCmdletBase

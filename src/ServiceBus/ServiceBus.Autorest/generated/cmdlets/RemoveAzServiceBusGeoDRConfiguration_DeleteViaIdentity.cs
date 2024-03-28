@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"Deletes an Alias(Disaster Recovery configuration)")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}", ApiVersion = "2022-10-01-preview")]
     public partial class RemoveAzServiceBusGeoDRConfiguration_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener
     {

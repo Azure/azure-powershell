@@ -101,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_storage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("storage"), out var __jsonStorage) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoTelemetryConfig.FromJson(__jsonStorage) : Storage;}
+            {_storage = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("storage"), out var __jsonStorage) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoTelemetryConfig.FromJson(__jsonStorage) : _storage;}
             AfterFromJson(json);
         }
     }

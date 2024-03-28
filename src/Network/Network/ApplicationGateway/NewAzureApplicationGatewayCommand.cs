@@ -437,24 +437,27 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.EnableFips = true;
             }
 
-            applicationGateway.GlobalConfiguration = new PSApplicationGatewayGlobalConfiguration();
+            if (!string.Equals(applicationGateway.Sku.Tier, "Standard", StringComparison.OrdinalIgnoreCase) && !string.Equals(applicationGateway.Sku.Tier, "WAF", StringComparison.OrdinalIgnoreCase))
+            {
+                applicationGateway.GlobalConfiguration = new PSApplicationGatewayGlobalConfiguration();
 
-            if (this.EnableRequestBuffering.HasValue)
-            {
-                applicationGateway.GlobalConfiguration.EnableRequestBuffering = this.EnableRequestBuffering.Value;
-            }
-            else
-            {
-                applicationGateway.GlobalConfiguration.EnableRequestBuffering = true;
-            }
+                if (this.EnableRequestBuffering.HasValue)
+                {
+                    applicationGateway.GlobalConfiguration.EnableRequestBuffering = this.EnableRequestBuffering.Value;
+                }
+                else
+                {
+                    applicationGateway.GlobalConfiguration.EnableRequestBuffering = true;
+                }
 
-            if (this.EnableResponseBuffering.HasValue)
-            {
-                applicationGateway.GlobalConfiguration.EnableResponseBuffering = this.EnableResponseBuffering.Value;
-            }
-            else
-            {
-                applicationGateway.GlobalConfiguration.EnableResponseBuffering = true;
+                if (this.EnableResponseBuffering.HasValue)
+                {
+                    applicationGateway.GlobalConfiguration.EnableResponseBuffering = this.EnableResponseBuffering.Value;
+                }
+                else
+                {
+                    applicationGateway.GlobalConfiguration.EnableResponseBuffering = true;
+                }
             }
 
             if (this.ForceFirewallPolicyAssociation.IsPresent)

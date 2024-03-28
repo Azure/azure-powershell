@@ -19,15 +19,18 @@ using Microsoft.Azure.Commands.Support.Models;
 using Microsoft.Azure.Management.Support;
 using Microsoft.Azure.Management.Support.Models;
 using Microsoft.Azure.PowerShell.Cmdlets.Support.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Linq;
 using System.Management.Automation;
 using static Microsoft.Azure.Commands.Support.Helpers.ResourceIdentifierHelper;
 
 namespace Microsoft.Azure.Commands.Support.Services
 {
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSSupportService), "12.0.0", "2.0.0", ChangeDescription = "Output property name 'ResourceTypes' will be changed to 'ResourceType'.")]
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "SupportService", DefaultParameterSetName = ListParameterSet), OutputType(typeof(PSSupportService))]
     public class GetAzSupportService : AzSupportCmdletBase
     {
+        [CmdletParameterBreakingChangeWithVersion("Id", "12.0.0", "2.0.0", ChangeDescription = "Parameter name 'Id' will be changed to 'Name'.")]
         [Parameter(Mandatory = true, ParameterSetName = GetByNameParameterSet, HelpMessage = "Service id.")]
         [Alias("Name")]
         [ServiceIdCompleter()]

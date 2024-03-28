@@ -17,7 +17,8 @@ Sets an EventHub Namespace Network Rule Set
 Set-AzEventHubNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-TrustedServiceAccessEnabled] [-DefaultAction <DefaultAction>]
  [-IPRule <INwRuleSetIPRules[]>] [-VirtualNetworkRule <INwRuleSetVirtualNetworkRules[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded

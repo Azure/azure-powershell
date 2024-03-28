@@ -13,8 +13,8 @@ Delete ref of navigation property owners for groups
 ## SYNTAX
 
 ```
-Remove-AzADGroupOwner -GroupId <String> -OwnerId <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzADGroupOwner -GroupId <String> -OwnerId <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

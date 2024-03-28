@@ -230,6 +230,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                 // Flush buffer
                 WriteObject(_firstResponse);
             }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (!string.IsNullOrEmpty(sanitizedProperties))
+                {
+                    WriteWarning($"The output of cmdlet {invocationName ?? "Unknown"} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -422,7 +432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                         this.PrivateCloudInputObject.Id += $"/authorizations/{(global::System.Uri.EscapeDataString(this.Name.ToString()))}";
                         _authorizationBody = await this.Client.AuthorizationsGetViaIdentityWithResult(PrivateCloudInputObject.Id, this, Pipeline);
                         this.Update_authorizationBody();
-                        await this.Client.AuthorizationsCreateOrUpdateViaIdentity(PrivateCloudInputObject.Id, _authorizationBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.AuthorizationsCreateOrUpdateViaIdentity(PrivateCloudInputObject.Id, _authorizationBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -441,7 +451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                         }
                         _authorizationBody = await this.Client.AuthorizationsGetWithResult(PrivateCloudInputObject.SubscriptionId ?? null, PrivateCloudInputObject.ResourceGroupName ?? null, PrivateCloudInputObject.PrivateCloudName ?? null, Name, this, Pipeline);
                         this.Update_authorizationBody();
-                        await this.Client.AuthorizationsCreateOrUpdate(PrivateCloudInputObject.SubscriptionId ?? null, PrivateCloudInputObject.ResourceGroupName ?? null, PrivateCloudInputObject.PrivateCloudName ?? null, Name, _authorizationBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.AuthorizationsCreateOrUpdate(PrivateCloudInputObject.SubscriptionId ?? null, PrivateCloudInputObject.ResourceGroupName ?? null, PrivateCloudInputObject.PrivateCloudName ?? null, Name, _authorizationBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -478,6 +488,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
         private void Update_authorizationBody()
         {
 
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

@@ -26,8 +26,8 @@ Set-AzStorageFileContent [-ShareName] <String> [-Source] <String> [[-Path] <Stri
 Set-AzStorageFileContent [-Share] <CloudFileShare> [-ShareClient <ShareClient>] [-Source] <String>
  [[-Path] <String>] [-PassThru] [-Force] [-AsJob] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [-PreserveSMBAttribute] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ### Directory
@@ -35,8 +35,8 @@ Set-AzStorageFileContent [-Share] <CloudFileShare> [-ShareClient <ShareClient>] 
 Set-AzStorageFileContent [-Directory] <CloudFileDirectory> [-ShareDirectoryClient <ShareDirectoryClient>]
  [-Source] <String> [[-Path] <String>] [-PassThru] [-Force] [-AsJob] [-Context <IStorageContext>]
  [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [-PreserveSMBAttribute] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [-PreserveSMBAttribute] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -21,9 +21,15 @@ Create an in-memory object for CspmMonitorGithubOffering.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new CspmMonitorGithubOffering object
 ```powershell
 New-AzSecurityCspmMonitorGithubOfferingObject
+```
+
+```output
+Description OfferingType
+----------- ------------
+            CspmMonitorGithub
 ```
 
 ## PARAMETERS
@@ -36,8 +42,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.CspmMonitorGithubOffering
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritycspmmonitorgithubofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritycspmmonitorgithubofferingobject)

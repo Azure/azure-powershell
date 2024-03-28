@@ -14,7 +14,8 @@ Restores a previously deleted Azure storage blob container.
 
 ```
 Restore-AzStorageContainer [-Name] <String> [-VersionId] <String> [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

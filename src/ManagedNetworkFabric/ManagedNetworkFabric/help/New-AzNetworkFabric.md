@@ -19,25 +19,22 @@ New-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId 
  -ManagementNetworkConfiguration <IManagementNetworkConfigurationProperties>
  -NetworkFabricControllerId <String> -NetworkFabricSku <String> -ServerCountPerRack <Int32>
  -TerminalServerConfiguration <ITerminalServerConfiguration> [-Annotation <String>] [-Ipv6Prefix <String>]
- [-RackCount <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-RackCount <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,8 +42,8 @@ Create Network Fabric resource.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create the Network Fabric Resource
+```powershell
 $managementNetworkConfiguration = @{
     InfrastructureVpnConfigurationPeeringOption = "OptionB"
     WorkloadVpnConfigurationPeeringOption = "OptionB"
@@ -59,7 +56,6 @@ $managementNetworkConfiguration = @{
     WorkloadVpnConfigurationOptionBPropertiesRouteTargetsImportIpv4RouteTarget = @("65046:10039")
     WorkloadVpnConfigurationOptionBPropertiesRouteTargetsImportIpv6RouteTarget = @("65046:10039")
 }
-```
 
 $terminalServerConfiguration = @{
     UserName = "username"
@@ -70,9 +66,18 @@ $terminalServerConfiguration = @{
 }
 
 New-AzNetworkFabric -Name $name -ResourceGroupName $resourceGroupName -Location $location -ManagementNetworkConfiguration $managementNetworkConfiguration -NetworkFabricControllerId $nfcId -NetworkFabricSku "fab1" -ServerCountPerRack 5 -RackCount 2 -FabricAsn 30 -Ipv4Prefix "20.1.0.0/19" -TerminalServerConfiguration $terminalServerConfiguration
-
-### EXAMPLE 2
 ```
+
+```output
+AdministrativeState Annotation ConfigurationState ControllerId
+------------------- ---------- ------------------ ------------
+                                                  /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg0921…
+```
+
+This command creates the Network Fabric resource with Option B Properties.
+
+### Example 2: Create the Network Fabric Resource
+```powershell
 $managementNetworkConfiguration = @{
     InfrastructureVpnConfigurationPeeringOption = "OptionA"
     WorkloadVpnConfigurationPeeringOption = "OptionA"
@@ -91,7 +96,6 @@ $managementNetworkConfiguration = @{
     WorkloadVpnConfigurationOptionAPropertiesPrimaryIpv4Prefix = "10.0.0.14/30"
     WorkloadVpnConfigurationOptionAPropertiesSecondaryIpv4Prefix = "10.0.0.14/30"
 }
-```
 
 $terminalServerConfiguration = @{
     UserName = "username"
@@ -102,6 +106,15 @@ $terminalServerConfiguration = @{
 }
 
 New-AzNetworkFabric -Name $name -ResourceGroupName $resourceGroupName -Location $location -ManagementNetworkConfiguration $managementNetworkConfiguration -NetworkFabricControllerId $nfcId -NetworkFabricSku "fab1" -ServerCountPerRack 5 -RackCount 2 -FabricAsn 30 -Ipv4Prefix "20.1.0.0/19" -TerminalServerConfiguration $terminalServerConfiguration
+```
+
+```output
+AdministrativeState Annotation ConfigurationState ControllerId
+------------------- ---------- ------------------ ------------
+                                                  /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg0921…
+```
+
+This command creates the Network Fabric resource with Option A Properties.
 
 ## PARAMETERS
 
@@ -130,22 +143,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -175,36 +173,6 @@ Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: 0
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -290,7 +258,6 @@ Accept wildcard characters: False
 
 ### -ManagementNetworkConfiguration
 Configuration to be used to setup the management network.
-To construct, see NOTES section for MANAGEMENTNETWORKCONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagementNetworkConfigurationProperties
@@ -361,52 +328,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -421,7 +343,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -452,7 +374,7 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -468,7 +390,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -490,7 +412,6 @@ Accept wildcard characters: False
 
 ### -TerminalServerConfiguration
 Network and credentials configuration currently applied to terminal server.
-To construct, see NOTES section for TERMINALSERVERCONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.ITerminalServerConfiguration
@@ -543,66 +464,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabric
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-MANAGEMENTNETWORKCONFIGURATION \<IManagementNetworkConfigurationProperties\>: Configuration to be used to setup the management network.
-  InfrastructureVpnConfigurationPeeringOption \<String\>: Peering option list.
-  WorkloadVpnConfigurationPeeringOption \<String\>: Peering option list.
-  \[InfrastructureVpnConfigurationNetworkToNetworkInterconnectId \<String\>\]: ARM Resource ID of the Network To Network Interconnect.
-  \[InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationIntervalInMilliSecond \<Int32?\>\]: Interval in milliseconds.
-Example: 300.
-  \[InfrastructureVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier \<Int32?\>\]: Multiplier for the Bfd Configuration.
-Example: 5.
-  \[InfrastructureVpnConfigurationOptionAPropertiesMtu \<Int32?\>\]: MTU to use for option A peering.
-  \[InfrastructureVpnConfigurationOptionAPropertiesPeerAsn \<Int64?\>\]: Peer ASN number.Example : 28
-  \[InfrastructureVpnConfigurationOptionAPropertiesPrimaryIpv4Prefix \<String\>\]: IPv4 Address Prefix.
-  \[InfrastructureVpnConfigurationOptionAPropertiesPrimaryIpv6Prefix \<String\>\]: IPv6 Address Prefix.
-  \[InfrastructureVpnConfigurationOptionAPropertiesSecondaryIpv4Prefix \<String\>\]: Secondary IPv4 Address Prefix.
-  \[InfrastructureVpnConfigurationOptionAPropertiesSecondaryIpv6Prefix \<String\>\]: Secondary IPv6 Address Prefix.
-  \[InfrastructureVpnConfigurationOptionAPropertiesVlanId \<Int32?\>\]: Vlan Id.Example : 501
-  \[InfrastructureVpnConfigurationOptionBPropertiesExportRouteTarget \<List\<String\>\>\]: Route Targets to be applied for outgoing routes from CE.
-This is for backward compatibility.
-  \[InfrastructureVpnConfigurationOptionBPropertiesImportRouteTarget \<List\<String\>\>\]: Route Targets to be applied for incoming routes into CE.
-This is for backward compatibility.
-  \[InfrastructureVpnConfigurationOptionBPropertiesRouteTargetsExportIpv4RouteTarget \<List\<String\>\>\]: Route Targets to be applied for outgoing routes into CE.
-  \[InfrastructureVpnConfigurationOptionBPropertiesRouteTargetsExportIpv6RouteTarget \<List\<String\>\>\]: Route Targets to be applied for outgoing routes from CE.
-  \[InfrastructureVpnConfigurationOptionBPropertiesRouteTargetsImportIpv4RouteTarget \<List\<String\>\>\]: Route Targets to be applied for incoming routes into CE.
-  \[InfrastructureVpnConfigurationOptionBPropertiesRouteTargetsImportIpv6RouteTarget \<List\<String\>\>\]: Route Targets to be applied for incoming routes from CE.
-  \[WorkloadVpnConfigurationNetworkToNetworkInterconnectId \<String\>\]: ARM Resource ID of the Network To Network Interconnect.
-  \[WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationIntervalInMilliSecond \<Int32?\>\]: Interval in milliseconds.
-Example: 300.
-  \[WorkloadVpnConfigurationOptionAPropertiesBfdConfigurationMultiplier \<Int32?\>\]: Multiplier for the Bfd Configuration.
-Example: 5.
-  \[WorkloadVpnConfigurationOptionAPropertiesMtu \<Int32?\>\]: MTU to use for option A peering.
-  \[WorkloadVpnConfigurationOptionAPropertiesPeerAsn \<Int64?\>\]: Peer ASN number.Example : 28
-  \[WorkloadVpnConfigurationOptionAPropertiesPrimaryIpv4Prefix \<String\>\]: IPv4 Address Prefix.
-  \[WorkloadVpnConfigurationOptionAPropertiesPrimaryIpv6Prefix \<String\>\]: IPv6 Address Prefix.
-  \[WorkloadVpnConfigurationOptionAPropertiesSecondaryIpv4Prefix \<String\>\]: Secondary IPv4 Address Prefix.
-  \[WorkloadVpnConfigurationOptionAPropertiesSecondaryIpv6Prefix \<String\>\]: Secondary IPv6 Address Prefix.
-  \[WorkloadVpnConfigurationOptionAPropertiesVlanId \<Int32?\>\]: Vlan Id.Example : 501
-  \[WorkloadVpnConfigurationOptionBPropertiesExportRouteTarget \<List\<String\>\>\]: Route Targets to be applied for outgoing routes from CE.
-This is for backward compatibility.
-  \[WorkloadVpnConfigurationOptionBPropertiesImportRouteTarget \<List\<String\>\>\]: Route Targets to be applied for incoming routes into CE.
-This is for backward compatibility.
-  \[WorkloadVpnConfigurationOptionBPropertiesRouteTargetsExportIpv4RouteTarget \<List\<String\>\>\]: Route Targets to be applied for outgoing routes into CE.
-  \[WorkloadVpnConfigurationOptionBPropertiesRouteTargetsExportIpv6RouteTarget \<List\<String\>\>\]: Route Targets to be applied for outgoing routes from CE.
-  \[WorkloadVpnConfigurationOptionBPropertiesRouteTargetsImportIpv4RouteTarget \<List\<String\>\>\]: Route Targets to be applied for incoming routes into CE.
-  \[WorkloadVpnConfigurationOptionBPropertiesRouteTargetsImportIpv6RouteTarget \<List\<String\>\>\]: Route Targets to be applied for incoming routes from CE.
-
-TERMINALSERVERCONFIGURATION \<ITerminalServerConfiguration\>: Network and credentials configuration currently applied to terminal server.
-  \[Password \<String\>\]: Password for the terminal server connection.
-  \[SerialNumber \<String\>\]: Serial Number of Terminal server.
-  \[Username \<String\>\]: Username for the terminal server connection.
-  \[PrimaryIpv4Prefix \<String\>\]: IPv4 Address Prefix.
-  \[PrimaryIpv6Prefix \<String\>\]: IPv6 Address Prefix.
-  \[SecondaryIpv4Prefix \<String\>\]: Secondary IPv4 Address Prefix.
-  \[SecondaryIpv6Prefix \<String\>\]: Secondary IPv6 Address Prefix.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabric](https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabric)
-

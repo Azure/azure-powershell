@@ -20,7 +20,8 @@ New-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [
  [-PolicySetDefinition <PsPolicySetDefinition>] [-Metadata <String>]
  [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-AssignIdentity] [-IdentityType <ManagedIdentityType>]
  [-IdentityId <String>] [-Location <String>] [-NonComplianceMessage <PsNonComplianceMessage[]>]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### PolicyParameterObjectParameterSet
@@ -551,5 +552,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzPolicyAssignment](./Remove-AzPolicyAssignment.md)
 
 [Set-AzPolicyAssignment](./Set-AzPolicyAssignment.md)
-
-

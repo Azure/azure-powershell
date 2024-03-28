@@ -14,7 +14,8 @@ Publishes a Bicep file to a registry.
 
 ```
 Publish-AzBicepModule -FilePath <String> -Target <String> [-DocumentationUri <String>] [-WithSource] [-Force]
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

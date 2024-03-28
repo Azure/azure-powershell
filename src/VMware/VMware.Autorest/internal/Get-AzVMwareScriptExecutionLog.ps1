@@ -27,7 +27,7 @@ Return the logs for a script execution resource
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Inputs
-System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptExecution
 .Notes
@@ -128,18 +128,17 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityPrivateCloud', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
     ${PrivateCloudInputObject},
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.VMware.PSArgumentCompleterAttribute("Information", "Warning", "Output", "Error")]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Info(Required, PossibleTypes=([System.String]))]
     [System.Collections.Generic.List[System.String]]
@@ -209,7 +208,13 @@ begin {
             GetViaIdentityPrivateCloud = 'Az.VMware.private\Get-AzVMwareScriptExecutionLog_GetViaIdentityPrivateCloud';
         }
         if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

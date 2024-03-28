@@ -104,5 +104,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzStorageContext](./New-AzStorageContext.md)
 
 [Set-AzStorageServiceLoggingProperty](./Set-AzStorageServiceLoggingProperty.md)
-
-

@@ -45,6 +45,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
                 AuthorityHost = new Uri(authority),
                 TokenCachePersistenceOptions = spParameters.TokenCacheProvider.GetTokenCachePersistenceOptions()
             };
+            options.DisableInstanceDiscovery = spParameters.DisableInstanceDiscovery ?? options.DisableInstanceDiscovery;
             options.Diagnostics.IsTelemetryEnabled = false; // disable telemetry to avoid error thrown from Azure.Core that AssemblyInformationalVersion is null
             TokenCredential tokenCredential = new ClientAssertionCredential(tenantId, spParameters.ClientId, () => GetClientAssertion(spParameters), options);
             string parametersLog = $"- ClientId:'{spParameters.ClientId}', TenantId:'{tenantId}', ClientAssertion:'***' Scopes:'{string.Join(",", scopes)}'";

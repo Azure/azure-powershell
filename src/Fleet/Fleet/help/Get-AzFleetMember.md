@@ -15,31 +15,25 @@ Get a FleetMember
 ### List (Default)
 ```
 Get-AzFleetMember -FleetName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzFleetMember -FleetName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityFleet
 ```
-Get-AzFleetMember -Name <String> -FleetInputObject <IFleetIdentity> [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+Get-AzFleetMember -Name <String> -FleetInputObject <IFleetIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzFleetMember -InputObject <IFleetIdentity> [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+Get-AzFleetMember -InputObject <IFleetIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,32 +41,47 @@ Get a FleetMember
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Get specific fleet member with specified name
+```powershell
 Get-AzFleetMember -FleetName testfleet01 -ResourceGroupName K8sFleet-Test -Name testmember
 ```
 
-### EXAMPLE 2
+```output
+ClusterResourceId            : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/K8sFleet-Test/providers/microsoft.containerservice/managedClusters/TestCluster01
+ETag                         : "6205a537-0000-0100-0000-655430760000"
+Group                        : 
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/K8sFleet-Test/providers/Microsoft.ContainerService/fleets/testfleet01/members/testmember
+Name                         : testmember
+ProvisioningState            : Succeeded
+ResourceGroupName            : K8sFleet-Test
+SystemDataCreatedAt          : 11/15/2023 2:43:32 AM
+SystemDataCreatedBy          : user1@example.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 11/15/2023 2:43:32 AM
+SystemDataLastModifiedBy     : user1@example.com
+SystemDataLastModifiedByType : User
+Type                         : Microsoft.ContainerService/fleets/members
 ```
+
+This command gets specific fleet member with specified name.
+
+### Example 2: Get a list of fleet member with specified fleet
+```powershell
 Get-AzFleetMember -FleetName testfleet01 -ResourceGroupName K8sFleet-Test
 ```
 
-## PARAMETERS
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+```output
+Name        SystemDataCreatedAt   SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ETag                                   Resource 
+                                                                                                                                                                                                      GroupNam 
+                                                                                                                                                                                                      e        
+----        -------------------   -------------------   ----------------------- ------------------------ ------------------------ ---------------------------- ----                                   -------- 
+testmember  11/21/2023 3:13:50 AM user1@example.com     User                    11/21/2023 3:13:50 AM    user1@example.com        User                         "bc061fb4-0000-0100-0000-655c208e0000" K8sFlee… 
+testmember2 11/21/2023 4:11:24 AM user1@example.com     User                    11/21/2023 4:11:24 AM    user1@example.com        User                         "be067cf2-0000-0100-0000-655c2e280000" K8sFlee…
 ```
+
+This command gets a list of fleet member with specified fleet.
+
+## PARAMETERS
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -92,7 +101,6 @@ Accept wildcard characters: False
 
 ### -FleetInputObject
 Identity Parameter
-To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -121,39 +129,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -178,51 +155,6 @@ Aliases: FleetMemberName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -253,7 +185,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -264,36 +196,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetMember
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-FLEETINPUTOBJECT \<IFleetIdentity\>: Identity Parameter
-  \[FleetMemberName \<String\>\]: The name of the Fleet member resource.
-  \[FleetName \<String\>\]: The name of the Fleet resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[UpdateRunName \<String\>\]: The name of the UpdateRun resource.
-  \[UpdateStrategyName \<String\>\]: The name of the UpdateStrategy resource.
-
-INPUTOBJECT \<IFleetIdentity\>: Identity Parameter
-  \[FleetMemberName \<String\>\]: The name of the Fleet member resource.
-  \[FleetName \<String\>\]: The name of the Fleet resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[UpdateRunName \<String\>\]: The name of the UpdateRun resource.
-  \[UpdateStrategyName \<String\>\]: The name of the UpdateStrategy resource.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.fleet/get-azfleetmember](https://learn.microsoft.com/powershell/module/az.fleet/get-azfleetmember)
-

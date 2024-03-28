@@ -89,7 +89,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixRule[]]
     # The list of IP Prefix Rules.
-    # To construct, see NOTES section for IPPREFIXRULE properties and create a hash table.
     ${IPPrefixRule},
 
     [Parameter(ParameterSetName='CreateExpanded')]

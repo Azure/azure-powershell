@@ -20,6 +20,7 @@
 
 ## Upcoming Release
 * [Breaking Change] Output type for -Type ConnectionStrings is changed to List<DatabaseAccountConnectionString> to expose keyKind and type fields
+* Upgraded Azure.Core to 1.37.0.
 
 ## Version 1.14.1
 * Fixed validation issues in same-account collection/container/graph and database/table/Gremlin restores, affecting the following cmdlets:

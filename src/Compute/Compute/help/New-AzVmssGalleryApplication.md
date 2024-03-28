@@ -14,7 +14,8 @@ Create a local PSVMGalleryApplication object.
 
 ```
 New-AzVmssGalleryApplication -PackageReferenceId <String> [-ConfigReferenceId <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
