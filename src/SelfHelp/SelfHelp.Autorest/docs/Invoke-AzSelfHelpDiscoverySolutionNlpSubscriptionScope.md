@@ -1,83 +1,85 @@
 ---
 external help file:
 Module Name: Az.SelfHelp
-online version: https://learn.microsoft.com/powershell/module/az.selfhelp/invoke-azselfhelpchecknameavailability
+online version: https://learn.microsoft.com/powershell/module/az.selfhelp/invoke-azselfhelpdiscoverysolutionnlpsubscriptionscope
 schema: 2.0.0
 ---
 
-# Invoke-AzSelfHelpCheckNameAvailability
+# Invoke-AzSelfHelpDiscoverySolutionNlpSubscriptionScope
 
 ## SYNOPSIS
-This API is used to check the uniqueness of a resource name used for a diagnostic, troubleshooter or solutions
+Solution discovery using natural language processing.
 
 ## SYNTAX
 
 ### PostExpanded (Default)
 ```
-Invoke-AzSelfHelpCheckNameAvailability -Scope <String> [-Name <String>] [-Type <String>]
+Invoke-AzSelfHelpDiscoverySolutionNlpSubscriptionScope [-SubscriptionId <String>]
+ [-AdditionalContext <String>] [-IssueSummary <String>] [-ResourceId <String>] [-ServiceId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Post
 ```
-Invoke-AzSelfHelpCheckNameAvailability -Scope <String>
- -CheckNameAvailabilityRequest <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-AzSelfHelpDiscoverySolutionNlpSubscriptionScope -DiscoverSolutionRequest <IDiscoveryNlpRequest>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### PostViaIdentity
 ```
-Invoke-AzSelfHelpCheckNameAvailability -InputObject <ISelfHelpIdentity>
- -CheckNameAvailabilityRequest <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-AzSelfHelpDiscoverySolutionNlpSubscriptionScope -InputObject <ISelfHelpIdentity>
+ -DiscoverSolutionRequest <IDiscoveryNlpRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### PostViaIdentityExpanded
 ```
-Invoke-AzSelfHelpCheckNameAvailability -InputObject <ISelfHelpIdentity> [-Name <String>] [-Type <String>]
+Invoke-AzSelfHelpDiscoverySolutionNlpSubscriptionScope -InputObject <ISelfHelpIdentity>
+ [-AdditionalContext <String>] [-IssueSummary <String>] [-ResourceId <String>] [-ServiceId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This API is used to check the uniqueness of a resource name used for a diagnostic, troubleshooter or solutions
+Solution discovery using natural language processing.
 
 ## EXAMPLES
 
-### Example 1: Invoke-AzSelfHelpCheckNameAvailability
+### Example 1: {{ Add title here }}
 ```powershell
-$CHECKNAMEAVAILABILITYREQUEST = [ordered]@{ 
-    "name" ="helloworld" 
-    “type” = “solutions” 
-
-} 
- Invoke-AzSelfHelpCheckNameAvailability -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba" -CheckNameAvailabilityRequest $CHECKNAMEAVAILABILITYREQUEST 
+{{ Add code here }}
 ```
 
 ```output
-Message NameAvailable Reason 
-
-------- ------------- ------ 
-
-        True 
+{{ Add output here }}
 ```
 
-Checks if resource name is avilabale/unique for the scope or not
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -CheckNameAvailabilityRequest
-The check availability request body.
-To construct, see NOTES section for CHECKNAMEAVAILABILITYREQUEST properties and create a hash table.
+### -AdditionalContext
+Additional information in the form of a string.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ICheckNameAvailabilityRequest
-Parameter Sets: Post, PostViaIdentity
+Type: System.String
+Parameter Sets: PostExpanded, PostViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -97,6 +99,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DiscoverSolutionRequest
+Discover NLP request.
+To construct, see NOTES section for DISCOVERSOLUTIONREQUEST properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryNlpRequest
+Parameter Sets: Post, PostViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -113,8 +131,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the resource for which availability needs to be checked.
+### -IssueSummary
+Describe the issue with the affected resource.
 
 ```yaml
 Type: System.String
@@ -128,32 +146,49 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Scope
-scope = resourceUri of affected resource.\<br/\> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
+### -ResourceId
+Provide resourceId of affected resource
+
+```yaml
+Type: System.String
+Parameter Sets: PostExpanded, PostViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ServiceId
+Service Classification id for the resource.
+You can find required serviceId from Services API: https://learn.microsoft.com/rest/api/support/services/listtabs=HTTP Service Id is the GUID which can be found under name field in Services List response
+
+```yaml
+Type: System.String
+Parameter Sets: PostExpanded, PostViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+The value must be an UUID.
 
 ```yaml
 Type: System.String
 Parameter Sets: Post, PostExpanded
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Type
-The resource type.
-
-```yaml
-Type: System.String
-Parameter Sets: PostExpanded, PostViaIdentityExpanded
-Aliases:
-
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -194,13 +229,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.ICheckNameAvailabilityRequest
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryNlpRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ICheckNameAvailabilityResponse
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionNlpMetadataResource
 
 ## NOTES
 

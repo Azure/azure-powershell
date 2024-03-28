@@ -1,45 +1,55 @@
 ---
 external help file:
 Module Name: Az.SelfHelp
-online version: https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpsolution
+online version: https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpsimplifiedsolution
 schema: 2.0.0
 ---
 
-# Get-AzSelfHelpSolution
+# Get-AzSelfHelpSimplifiedSolution
 
 ## SYNOPSIS
-Get the solution using the applicable solutionResourceName while creating the solution.
+Get the simplified Solutions using the applicable solutionResourceName while creating the simplified Solutions.
 
 ## SYNTAX
 
 ### Get (Default)
 ```
-Get-AzSelfHelpSolution -ResourceName <String> -Scope <String> [-DefaultProfile <PSObject>]
+Get-AzSelfHelpSimplifiedSolution -Scope <String> -SResourceName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzSelfHelpSolution -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSelfHelpSimplifiedSolution -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the solution using the applicable solutionResourceName while creating the solution.
+Get the simplified Solutions using the applicable solutionResourceName while creating the simplified Solutions.
 
 ## EXAMPLES
 
-### Example 1: Get-AzSelfHelpSolution by resource id
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSelfHelpSolution -ResourceName test-resource -Scope  /subscriptions/<subid>/resourceGroups/testRG/providers/Microsoft.KeyVault/testkv/testDB
+{{ Add code here }}
 ```
 
 ```output
-Location Name         ResourceGroupName
--------- ----         -----------------
-         test-resource testRG
+{{ Add output here }}
 ```
 
-Get SelfHelp Solution by resource id
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -75,13 +85,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-Solution resource Name.
+### -Scope
+scope = resourceUri of affected resource.\<br/\> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: SolutionResourceName
+Aliases:
 
 Required: True
 Position: Named
@@ -90,13 +100,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Scope
-scope = resourceUri of affected resource.\<br/\> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
+### -SResourceName
+Simplified Solutions Resource Name.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: SimplifiedSolutionsResourceName
 
 Required: True
 Position: Named
@@ -114,7 +124,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISimplifiedSolutionsResource
 
 ## NOTES
 

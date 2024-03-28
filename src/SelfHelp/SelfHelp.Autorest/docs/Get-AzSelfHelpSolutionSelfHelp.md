@@ -1,45 +1,56 @@
 ---
 external help file:
 Module Name: Az.SelfHelp
-online version: https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpsolution
+online version: https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpsolutionselfhelp
 schema: 2.0.0
 ---
 
-# Get-AzSelfHelpSolution
+# Get-AzSelfHelpSolutionSelfHelp
 
 ## SYNOPSIS
-Get the solution using the applicable solutionResourceName while creating the solution.
+Finds and Executes a Self Help Solution based on the Solution Id.
+These are static self help content to help users troubleshoot their issues.
 
 ## SYNTAX
 
 ### Get (Default)
 ```
-Get-AzSelfHelpSolution -ResourceName <String> -Scope <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzSelfHelpSolutionSelfHelp -SolutionId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzSelfHelpSolution -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSelfHelpSolutionSelfHelp -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the solution using the applicable solutionResourceName while creating the solution.
+Finds and Executes a Self Help Solution based on the Solution Id.
+These are static self help content to help users troubleshoot their issues.
 
 ## EXAMPLES
 
-### Example 1: Get-AzSelfHelpSolution by resource id
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzSelfHelpSolution -ResourceName test-resource -Scope  /subscriptions/<subid>/resourceGroups/testRG/providers/Microsoft.KeyVault/testkv/testDB
+{{ Add code here }}
 ```
 
 ```output
-Location Name         ResourceGroupName
--------- ----         -----------------
-         test-resource testRG
+{{ Add output here }}
 ```
 
-Get SelfHelp Solution by resource id
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -75,23 +86,9 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceName
-Solution resource Name.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: SolutionResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Scope
-scope = resourceUri of affected resource.\<br/\> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
+### -SolutionId
+SolutionId is a unique id to identify a solution.
+You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
 
 ```yaml
 Type: System.String
@@ -114,7 +111,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResourceSelfHelp
 
 ## NOTES
 
