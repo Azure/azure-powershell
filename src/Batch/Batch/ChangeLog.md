@@ -18,8 +18,6 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
-## Version 3.6.0
 * Added new properties `ResourceTags`  and `UpgradePolicy` to `PSCloudPool` and `PSPoolSpecification`.
 * Added new property `UpgradingOS` to `PSNodeCounts`.
 * Added new properties `Caching`, `DiskSizeGB`, `ManagedDisk` and `WriteAcceleratorEnabled` to `PSOSDisk`.
@@ -108,7 +106,7 @@
 * Removed `TargetOSVersion` from `PSCloudServiceConfiguration`.
 * Renamed `CurrentOSVersion` to `OSVersion` on `PSCloudServiceConfiguration`.
 * Removed `DataEgressGiB` and `DataIngressGiB` from `PSPoolUsageMetrics`.
-* Removed **Get-AzBatchNodeAgentSku** and replaced it with  **Get-AzBatchSupportedImage**. 
+* Removed **Get-AzBatchNodeAgentSku** and replaced it with  **Get-AzBatchSupportedImage**.
   - **Get-AzBatchSupportedImage** returns the same data as **Get-AzBatchNodeAgentSku** but in a more friendly format.
   - New non-verified images are also now returned. Additional information about `Capabilities` and `BatchSupportEndOfLife` for each image is also included.
 * Added ability to mount remote file-systems on each node of a pool via the new `MountConfiguration` parameter of **New-AzBatchPool**.
