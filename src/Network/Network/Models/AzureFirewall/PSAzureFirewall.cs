@@ -390,9 +390,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         {
             this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
 
-            if (publicIpAddresses != null && publicIpAddresses.Count() > 0)
+            if (publicIpAddresses != null && publicIpAddresses.Length > 0)
             {
-                for (var i = 0; i < publicIpAddresses.Count(); i++)
+                for (var i = 0; i < publicIpAddresses.Length; i++)
                 {
                     this.IpConfigurations.Add(
                         new PSAzureFirewallIpConfiguration

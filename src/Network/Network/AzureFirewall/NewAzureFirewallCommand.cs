@@ -319,7 +319,7 @@ namespace Microsoft.Azure.Commands.Network
                     Sku = sku,
                     VirtualHub = VirtualHubId != null ? new MNM.SubResource(VirtualHubId) : null,
                     FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
-                    HubIPAddresses = this.HubIPAddress == null ? null : this.HubIPAddress,
+                    HubIPAddresses = this.HubIPAddress,
                     Zones = this.Zone == null ? null : this.Zone.ToList(),
                     EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
                     EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null)
