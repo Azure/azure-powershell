@@ -16,21 +16,24 @@ Performs operation like "Encrypt", "Decrypt", "Wrap" or "Unwrap" using a specifi
 ```
 Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String>
  [-Value <SecureString>] [-ByteArrayValue <Byte[]>] [-Name] <String> [-VaultName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByHsmName
 ```
 Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String>
  [-Value <SecureString>] [-ByteArrayValue <Byte[]>] [-HsmName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByKeyInputObject
 ```
 Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String>
  [-Value <SecureString>] [-ByteArrayValue <Byte[]>] [-InputObject] <PSKeyVaultKeyIdentityItem>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,6 +44,7 @@ Invoke-AzKeyVaultKeyOperation cmdlet supports
 4. Unwrapping a symmetric key using the specified key that was initially used for wrapping that key.
 
 ## EXAMPLES
+
 ### Example 1: Encrypts byte array using an encryption key
 ```powershell
 $byteArray = [Byte[]]@(58, 219)
@@ -132,7 +136,7 @@ Unwraps a symmetric key using a specified key test-key stored in test-kv. The `R
 Algorithm identifier
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: EncryptionAlgorithm, WrapAlgorithm
 
@@ -147,24 +151,9 @@ Accept wildcard characters: False
 The value to be operated in byte array format.
 
 ```yaml
-Type: Byte[]
+Type: System.Byte[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -177,7 +166,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -192,7 +181,7 @@ Accept wildcard characters: False
 HSM name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByHsmName
 Aliases:
 
@@ -207,7 +196,7 @@ Accept wildcard characters: False
 Key object
 
 ```yaml
-Type: PSKeyVaultKeyIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem
 Parameter Sets: ByKeyInputObject
 Aliases: Key
 
@@ -222,7 +211,7 @@ Accept wildcard characters: False
 Key name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultName, ByHsmName
 Aliases: KeyName
 
@@ -237,7 +226,7 @@ Accept wildcard characters: False
 Algorithm identifier
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -252,7 +241,7 @@ Accept wildcard characters: False
 The value to be operated. This parameter will be converted to byte array in UTF-8 encoding way. If your value can't be encoded by UTF-8, please use parameter ByteArrayValue as its alternative.
 
 ```yaml
-Type: SecureString
+Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
 
@@ -267,7 +256,7 @@ Accept wildcard characters: False
 Vault name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultName
 Aliases:
 
@@ -282,9 +271,24 @@ Accept wildcard characters: False
 Key version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: KeyVersion
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -298,7 +302,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

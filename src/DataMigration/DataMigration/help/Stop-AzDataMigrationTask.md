@@ -15,7 +15,8 @@ Stops an  Azure Database Migration Service (classic) task that is in a running s
 ### ComponentNameParameterSet (Default)
 ```
 Stop-AzDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String> -Name <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ComponentObjectParameterSet

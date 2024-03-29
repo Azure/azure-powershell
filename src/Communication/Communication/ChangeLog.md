@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.3.0
 * First preview release for module Az.EmailService
 
 ## Version 0.2.0

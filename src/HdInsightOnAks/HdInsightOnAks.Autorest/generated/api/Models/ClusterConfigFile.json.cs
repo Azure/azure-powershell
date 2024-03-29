@@ -65,11 +65,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_fileName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("fileName"), out var __jsonFileName) ? (string)__jsonFileName : (string)FileName;}
-            {_content = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("content"), out var __jsonContent) ? (string)__jsonContent : (string)Content;}
-            {_encoding = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("encoding"), out var __jsonEncoding) ? (string)__jsonEncoding : (string)Encoding;}
-            {_path = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("path"), out var __jsonPath) ? (string)__jsonPath : (string)Path;}
-            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("values"), out var __jsonValues) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterConfigFileValues.FromJson(__jsonValues) : Value;}
+            {_fileName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("fileName"), out var __jsonFileName) ? (string)__jsonFileName : (string)_fileName;}
+            {_content = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("content"), out var __jsonContent) ? (string)__jsonContent : (string)_content;}
+            {_encoding = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("encoding"), out var __jsonEncoding) ? (string)__jsonEncoding : (string)_encoding;}
+            {_path = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("path"), out var __jsonPath) ? (string)__jsonPath : (string)_path;}
+            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("values"), out var __jsonValues) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterConfigFileValues.FromJson(__jsonValues) : _value;}
             AfterFromJson(json);
         }
 

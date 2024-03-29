@@ -21,10 +21,18 @@ Create an in-memory object for UpdateGroup.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create a fleet update group
+```powershell
 New-AzFleetUpdateGroupObject -Name 'Group-a'
 ```
+
+```output
+Name
+----
+Group-a
+```
+
+This command create a fleet update group object.
 
 ## PARAMETERS
 
@@ -53,9 +61,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.UpdateGroup
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Fleet/new-azfleetupdategroupobject](https://learn.microsoft.com/powershell/module/Az.Fleet/new-azfleetupdategroupobject)
-

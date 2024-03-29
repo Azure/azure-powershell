@@ -138,11 +138,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         public override int? ConcurrentTaskCount { get; set; }
         public override string TagCondition { get; set; }
 
-        protected override bool UseTrack2Sdk()
-        {
-            return true;
-        }
-
         /// <summary>
         /// Initializes a new instance of the NewAzureStorageBlobSasCommand class.
         /// </summary>
@@ -257,22 +252,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
             {
                 return blob.GetSharedAccessSignature(accessPolicy, null, policyIdentifier, protocol, iPAddressOrRange);
             }
-        }
-
-        /// <summary>
-        /// Update the access policy
-        /// </summary>
-        /// <param name="accessPolicy">Access policy object</param>
-        /// <param name="shouldSetExpiryTime">Should set the default expiry time</param>
-        private void SetupAccessPolicy(SharedAccessBlobPolicy accessPolicy, bool shouldSetExpiryTime)
-        {
-            AccessPolicyHelper.SetupAccessPolicyPermission(accessPolicy, Permission);
-            DateTimeOffset? accessStartTime;
-            DateTimeOffset? accessEndTime;
-            SasTokenHelper.SetupAccessPolicyLifeTime(StartTime, ExpiryTime,
-                out accessStartTime, out accessEndTime, shouldSetExpiryTime);
-            accessPolicy.SharedAccessStartTime = accessStartTime;
-            accessPolicy.SharedAccessExpiryTime = accessEndTime;
         }
 
         /// <summary>

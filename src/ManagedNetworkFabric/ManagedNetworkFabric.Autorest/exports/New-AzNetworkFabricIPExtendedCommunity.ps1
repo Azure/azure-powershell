@@ -73,7 +73,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPExtendedCommunityRule[]]
     # List of IP Extended Community Rules.
-    # To construct, see NOTES section for IPEXTENDEDCOMMUNITYRULE properties and create a hash table.
     ${IPExtendedCommunityRule},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]

@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_serviceSpecification = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("serviceSpecification"), out var __jsonServiceSpecification) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ServiceSpecification.FromJson(__jsonServiceSpecification) : ServiceSpecification;}
+            {_serviceSpecification = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("serviceSpecification"), out var __jsonServiceSpecification) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ServiceSpecification.FromJson(__jsonServiceSpecification) : _serviceSpecification;}
             AfterFromJson(json);
         }
 

@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"Creates a topic subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics/{topicName}/subscriptions/{subscriptionName}", ApiVersion = "2022-10-01-preview")]
     public partial class NewAzServiceBusSubscription_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener
     {
@@ -335,6 +336,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
         Description = @"Enumerates the possible values for the status of a messaging entity.",
         SerializedName = @"status",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ParameterBreakingChange("Status", "12.0.0", "4.0.0", "2024/05/21", OldParamaterType="EntityStatus", NewParameterType="String")]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus))]
         public Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus Status { get => _parametersBody.Status ?? ((Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus)""); set => _parametersBody.Status = value; }
 

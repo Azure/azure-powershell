@@ -15,7 +15,8 @@ Retrieves the PSProjectTask object associated with an Azure Database Migration S
 ### ListByComponent (Default)
 ```
 Get-AzDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String>
- [-TaskType <TaskTypeEnum>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-TaskType <TaskTypeEnum>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ListByInputObject
@@ -57,13 +58,15 @@ Get-AzDataMigrationTask [-ResourceId] <String> -Name <String> [-Expand] -ResultT
 ### GetByComponent
 ```
 Get-AzDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String>
- [-Name <String>] [-Expand] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Name <String>] [-Expand] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByComponentResultType
 ```
 Get-AzDataMigrationTask -ResourceGroupName <String> -ServiceName <String> -ProjectName <String> -Name <String>
- [-Expand] -ResultType <ResultTypeEnum> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Expand] -ResultType <ResultTypeEnum> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

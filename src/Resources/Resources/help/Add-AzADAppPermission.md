@@ -102,7 +102,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-The unique identifier in Microsoft Entra ID.
+The unique identifier in Azure AD.
 
 ```yaml
 Type: System.Guid

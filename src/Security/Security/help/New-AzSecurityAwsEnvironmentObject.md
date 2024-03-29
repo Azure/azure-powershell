@@ -22,26 +22,48 @@ Create an in-memory object for AwsEnvironment.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new AwsEnvironment object as member
 ```powershell
 $member = New-AzSecurityAwsOrganizationalDataMemberObject -ParentHierarchyId "123"
 New-AzSecurityAwsEnvironmentObject -Region "Central US" -ScanInterval 24 -OrganizationalData $member
 ```
 
-### Example 2
+```output
+AccountName        : 
+EnvironmentType    : AwsAccount
+OrganizationalData : {
+                       "organizationMembershipType": "Member",
+                       "parentHierarchyId": "123"
+                     }
+Region             : {Central US}
+ScanInterval       : 24
+```
+
+### Example 2: Create new AwsEnvironment object as organization
 ```powershell
 $organization = New-AzSecurityAwsOrganizationalDataMasterObject -StacksetName "myAwsStackSet" -ExcludedAccountId "123456789012"
 New-AzSecurityAwsEnvironmentObject -Region "Central US" -ScanInterval 24 -OrganizationalData $organization
+```
+
+```output
+AccountName        : 
+EnvironmentType    : AwsAccount
+OrganizationalData : {
+                       "organizationMembershipType": "Organization",
+                       "stacksetName": "myAwsStackSet",
+                       "excludedAccountIds": [ "123456789012" ]
+                     }
+Region             : {Central US}
+ScanInterval       : 24
 ```
 
 ## PARAMETERS
 
 ### -OrganizationalData
 The AWS account's organizational data.
-.
 
 ```yaml
-Type: IAwsOrganizationalData
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAwsOrganizationalData
 Parameter Sets: (All)
 Aliases:
 
@@ -56,7 +78,7 @@ Accept wildcard characters: False
 list of regions to scan.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -71,13 +93,13 @@ Accept wildcard characters: False
 Scan interval in hours (value should be between 1-hour to 24-hours).
 
 ```yaml
-Type: Int64
+Type: System.Int64
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -90,15 +112,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.AwsEnvironment
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-ORGANIZATIONALDATA \<IAwsOrganizationalData\>: The AWS account's organizational data.
-  OrganizationMembershipType \<String\>: The multi cloud account's membership type in the organization
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityawsenvironmentobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityawsenvironmentobject)

@@ -13,6 +13,9 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.Shared.Config;
+using Microsoft.Azure.PowerShell.Common.Config;
 
 namespace Microsoft.Azure.Commands.Common.Authentication
 {
@@ -28,6 +31,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
 
         public string ResourceId { get; set; }
 
+        public bool? DisableInstanceDiscovery { get; set; } = null;
+
         public AuthenticationParameters(
             PowerShellTokenCacheProvider tokenCacheProvider,
             IAzureEnvironment environment,
@@ -41,6 +46,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             TokenCache = tokenCache;
             TenantId = tenantId;
             ResourceId = resourceId;
+            try
+            {
+                if (AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var config))
+                {
+                    DisableInstanceDiscovery = config.GetConfigValue<bool>(ConfigKeys.DisableInstanceDiscovery);
+                }
+            }
+            catch(AzPSArgumentException)
+            {
+                DisableInstanceDiscovery = null;
+            }
         }
     }
 }

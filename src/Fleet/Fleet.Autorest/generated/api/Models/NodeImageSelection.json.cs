@@ -100,10 +100,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
             {
                 return container;
             }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeCreate))
-            {
-                AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
-            }
+            AddIf( null != (((object)this._type)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Json.JsonString(this._type.ToString()) : null, "type" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -20,7 +20,8 @@ Get-AzStorageAccountMigration -AccountName <String> -ResourceGroupName <String> 
 
 ### GetViaIdentity
 ```
-Get-AzStorageAccountMigration -InputObject <IStorageIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStorageAccountMigration -InputObject <IStorageIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

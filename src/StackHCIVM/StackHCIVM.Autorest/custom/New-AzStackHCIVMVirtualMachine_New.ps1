@@ -547,9 +547,11 @@ function New-AzStackHCIVMVirtualMachine {
     $PSBoundParameters.Add("WindowConfigurationProvisionVMConfigAgent", $true)
     if(-not $ProvisionVMAgent){
       $null = $PSBoundParameters.Remove("WindowConfigurationProvisionVMAgent")
+      $PSBoundParameters.Add("WindowConfigurationProvisionVMAgent", $false)
     }
     if (-not $ProvisionVMConfigAgent){
       $null = $PSBoundParameters.Remove("WindowConfigurationProvisionVMConfigAgent")
+      $PSBoundParameters.Add("WindowConfigurationProvisionVMConfigAgent", $true)
     }
     $null = $PSBoundParameters.Remove("ProvisionVMAgent")
     $null = $PSBoundParameters.Remove("ProvisionVMConfigAgent")
@@ -580,9 +582,11 @@ function New-AzStackHCIVMVirtualMachine {
       $PSBoundParameters.Add("LinuxConfigurationProvisionVMConfigAgent", $true)
       if(-not $ProvisionVMAgent){
         $null = $PSBoundParameters.Remove("LinuxConfigurationProvisionVMAgent")
+        $PSBoundParameters.Add("LinuxConfigurationProvisionVMAgent", $false)
       }
       if (-not $ProvisionVMConfigAgent){
         $null = $PSBoundParameters.Remove("LinuxConfigurationProvisionVMConfigAgent")
+        $PSBoundParameters.Add("LinuxConfigurationProvisionVMConfigAgent", $false)
       }
       $null = $PSBoundParameters.Remove("ProvisionVMAgent")
       $null = $PSBoundParameters.Remove("ProvisionVMConfigAgent")
@@ -671,7 +675,7 @@ function New-AzStackHCIVMVirtualMachine {
   if ($EnableTpm.IsPresent){
     $PSBoundParameters.Add('EnableTpm', $EnableTpm)
   }
-  IF($SecureBootEnabled.IsPresent){
+  if($SecureBootEnabled.IsPresent){
     $PSBoundParameters.Add('SecureBootEnabled', $SecureBootEnabled)
   }
   $null = $PSBoundParameters.Remove("Name")
@@ -684,6 +688,16 @@ function New-AzStackHCIVMVirtualMachine {
   $null = $PSBoundParameters.Remove("Location") 
   $null = $PSBoundParameters.Remove("OSType")
   $null = $PSBoundParameters.Remove("IdentityType")
-  return Az.StackHCIVM.internal\New-AzStackHCIVMVirtualMachine @PSBoundParameters
+ 
+  try{
+    Az.StackHCIVM.internal\New-AzStackHCIVMVirtualMachine -ErrorAction Stop @PSBoundParameters 
+  } catch {
+    $e = $_
+    if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
+        Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please downgrade the Az.StackHCIVm version to 1.0.1 to proceed." -ErrorAction Stop
+    } else {
+        Write-Error $e.Exception.Message -ErrorAction Stop
+    }
+  }
 }
 
