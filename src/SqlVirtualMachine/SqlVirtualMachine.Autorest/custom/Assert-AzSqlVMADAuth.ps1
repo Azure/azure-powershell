@@ -168,7 +168,7 @@ process {
         }
 		
 		if ($PSCmdlet.ShouldProcess("SQL virtual machine $($sqlvm.Name)", "Assert")) {
-			Validate-All -VmName $sqlvm.Name -ResourceGroup $sqlvm.ResourceGroupName -MsiClientId $AzureAdAuthenticationSettingClientId
+			Assert-All -VmName $sqlvm.Name -ResourceGroup $sqlvm.ResourceGroupName -MsiClientId $AzureAdAuthenticationSettingClientId
         }
 	} catch {
 		throw
@@ -192,21 +192,22 @@ process {
     .OUTPUTS
     bool if the validation passed or not
 #>
-function Validate-All(
-    [Parameter(Mandatory = $true)]
+function Assert-All {
+	[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
+    ([Parameter(Mandatory = $true)]
     $VmName,
     [Parameter(Mandatory = $true)]
     $ResourceGroup,
     [Parameter(Mandatory = $false)]
-    [string] $MsiClientId){
+    [string] $MsiClientId)
 		
 		    # All validations go here
 			# validate the SQL VM supports Azure AD authentication, i.e. it is on Windows platform and is SQL 2022 or later
-			Validate-AzureADAuthenticationSupportedOnSqlVM -ResourceGroupName $ResourceGroup -SqlVirtualMachineName $VmName
+			Assert-AzureADAuthenticationSupportedOnSqlVM -ResourceGroupName $ResourceGroup -SqlVirtualMachineName $VmName
 	        # validate the MSI is valid on the Azure virtual machine
-			$PrincipalId = Validate-MsiValidOnVm -ResourceGroupName $ResourceGroup -SqlVirtualMachineName $VmName -MsiClientId $MsiClientId
+			$PrincipalId = Assert-MsiValidOnVm -ResourceGroupName $ResourceGroup -SqlVirtualMachineName $VmName -MsiClientId $MsiClientId
 			# validate the MSI has appropriate permission to query Microsoft Graph API
-			Validate-MsiWithEnoughPermission -PrincipalId $PrincipalId
+			Assert-MsiWithEnoughPermission -PrincipalId $PrincipalId
             Write-Host "Sql virtual machine $($sqlvm.Name) is valid for Azure AD authentication."
 }
 
@@ -223,10 +224,9 @@ function Validate-All(
     .PARAMETER ResourceGroupName
     Name of the resource group
 #>
-function Validate-AzureADAuthenticationSupportedOnSqlVM {
-    [CmdletBinding()]
-    param (
-        [Parameter(Mandatory = $true)]
+function Assert-AzureADAuthenticationSupportedOnSqlVM {
+	[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
+    ([Parameter(Mandatory = $true)]
         [string] $ResourceGroupName,
 
         [Parameter(Mandatory = $true)]
@@ -289,10 +289,9 @@ function Validate-AzureADAuthenticationSupportedOnSqlVM {
 	.PARAMETER MsiClientId
     Msi Client Id
 #>
-function Validate-MsiValidOnVm {
-    [CmdletBinding()]
-    param (
-        [Parameter(Mandatory = $true)]
+function Assert-MsiValidOnVm {
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
+	([Parameter(Mandatory = $true)]
         [string] $ResourceGroupName,
 
         [Parameter(Mandatory = $true)]
@@ -359,9 +358,9 @@ function Validate-MsiValidOnVm {
 	.PARAMETER PrincipalId
     Msi Principal Id
 #>
-function Validate-MsiWithEnoughPermission {
-    [CmdletBinding()]
-    param (
+function Assert-MsiWithEnoughPermission {    
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
+	(
         [Parameter(Mandatory = $true)]
         [string] $PrincipalId
     )
@@ -421,9 +420,8 @@ function Connect-MgGraphViaCred {
       $cred = Get-Credential
       Connect-MgGraphViaCred -credential $cred
       #>
-
-      [CmdletBinding()]
-      param (
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
+      (
           [Parameter(Mandatory = $true)]
           [System.Management.Automation.PSCredential] $credential,
 
@@ -489,7 +487,9 @@ function Find-RoleId {
 }
 
 function Get-DirectoryRoleList {
-		param (
+	    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
+		(
+			[Parameter(Mandatory = $true)]
 			[string] $PrincipalId
 		)
 	
