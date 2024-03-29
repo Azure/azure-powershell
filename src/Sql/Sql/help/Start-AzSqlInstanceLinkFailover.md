@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzSqlInstanceLinkFailover
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Failovers an instance link.
 
 ## SYNTAX
 
@@ -39,16 +39,62 @@ Start-AzSqlInstanceLinkFailover [-Name] <String> -FailoverType <String> [-Resour
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+**Start-AzSqlInstanceLinkFailover** cmdlet failovers an instance link.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Start-AzSqlInstanceLinkFailover -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01" -FailoverType "ForcedAllowDataLoss"
 ```
 
-{{ Add example description here }}
+```output
+ResourceGroupName                : ResourceGroup01
+InstanceName                     : ManagedInstance01
+Type                             : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01
+Name                             : Link01
+DistributedAvailabilityGroupName : Link01
+DistributedAvailabilityGroupId   :
+ReplicationMode                  :
+PartnerLinkRole                  :
+PartnerAvailabilityGroupName     :
+PartnerEndpoint                  :
+InstanceLinkRole                 : Primary
+InstanceAvailabilityGroupName    :
+FailoverMode                     : None
+SeedingMode                      : Automatic
+Databases                        :
+```
+
+This command failovers an instance link with name "Link01".
+
+### Example 2
+```powershell
+$instance = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01"
+$instance | Start-AzSqlInstanceLinkFailover -Name "Link01" -FailoverType "ForcedAllowDataLoss"
+```
+
+```output
+ResourceGroupName                : ResourceGroup01
+InstanceName                     : ManagedInstance01
+Type                             : Microsoft.Sql/managedInstances/distributedAvailabilityGroups
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01
+Name                             : Link01
+DistributedAvailabilityGroupName : Link01
+DistributedAvailabilityGroupId   :
+ReplicationMode                  :
+PartnerLinkRole                  :
+PartnerAvailabilityGroupName     :
+PartnerEndpoint                  :
+InstanceLinkRole                 : Primary
+InstanceAvailabilityGroupName    :
+FailoverMode                     : None
+SeedingMode                      : Automatic
+Databases                        :
+```
+
+This command failovers an instance link by piping an instance object.
 
 ## PARAMETERS
 
@@ -221,3 +267,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzSqlInstanceLink](./New-AzSqlInstanceLink.md)
+
+[Get-AzSqlInstanceLink](./Get-AzSqlInstanceLink.md)
+
+[Update-AzSqlInstanceLink](./Update-AzSqlInstanceLink.md)
+
+[Remove-AzSqlInstanceLink](./Remove-AzSqlInstanceLink.md)

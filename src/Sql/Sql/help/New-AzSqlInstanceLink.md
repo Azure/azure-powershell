@@ -408,3 +408,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Update-AzSqlInstanceLink](./Update-AzSqlInstanceLink.md)
 
 [Remove-AzSqlInstanceLink](./Remove-AzSqlInstanceLink.md)
+
+[Start-AzSqlInstanceLinkFailover](./Start-AzSqlInstanceLinkFailover.md)

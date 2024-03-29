@@ -49,7 +49,6 @@ namespace Microsoft.Azure.Commands.Sql.DistributedAvailabilityGroup.Cmdlet
         [Parameter(Mandatory = true, ParameterSetName = FailoverByNameParameterSet, Position = 2, HelpMessage = "Name of the instance link.")]
         [Parameter(Mandatory = true, ParameterSetName = FailoverByParentObjectParameterSet, Position = 1, HelpMessage = "Name of the instance link.")]
         [Parameter(Mandatory = true, ParameterSetName = FailoverByInputObjectParameterSet, Position = 1, HelpMessage = "Name of the instance link.")]
-        [Parameter(Mandatory = true, ParameterSetName = FailoverByResourceIdParameterSet, Position = 1, HelpMessage = "Name of the instance link.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/distributedAvailabilityGroups", nameof(ResourceGroupName), nameof(InstanceName))]
         [ValidateNotNullOrEmpty]
         [Alias("LinkName")]
