@@ -516,7 +516,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void LoginUsingSkipValidation()
         {
             var cmdlt = new ConnectAzureRmAccountCommand();
