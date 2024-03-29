@@ -14,7 +14,8 @@ The List operation gets information about the regions associated with the manage
 
 ```
 Add-AzKeyVaultManagedHsmRegion -HsmName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Region <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Region <String[]> [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -86,6 +87,7 @@ Accept wildcard characters: False
 
 ### -Region
 List of regions to be added associated with the managed hsm pool.
+To construct, see NOTES section for REGION properties and create a hash table.
 
 ```yaml
 Type: System.String[]

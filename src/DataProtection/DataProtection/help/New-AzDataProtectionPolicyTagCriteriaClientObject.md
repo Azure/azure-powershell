@@ -15,20 +15,20 @@ Creates a new criteria object
 ### ScheduleCriteria (Default)
 ```
 New-AzDataProtectionPolicyTagCriteriaClientObject [-DaysOfWeek <DaysOfWeek[]>] [-WeeksOfMonth <WeeksOfMonth[]>]
- [-MonthsOfYear <MonthsOfYear[]>] [-ScheduleTimes <DateTime[]>] [-ProgressAction <ActionPreference>]
+ [-MonthsOfYear <MonthsOfYear[]>] [-ScheduleTimes <DateTime[]>]
  [<CommonParameters>]
 ```
 
 ### AbsoluteCriteria
 ```
 New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria <AbsoluteTagCriteria>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### MonthlyCriteria
 ```
 New-AzDataProtectionPolicyTagCriteriaClientObject [-MonthsOfYear <MonthsOfYear[]>]
- [-ScheduleTimes <DateTime[]>] -DaysOfMonth <String[]> [-ProgressAction <ActionPreference>]
+ [-ScheduleTimes <DateTime[]>] -DaysOfMonth <String[]>
  [<CommonParameters>]
 ```
 
@@ -129,21 +129,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ScheduleTimes
 Schedule times.
 
@@ -182,7 +167,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IScheduleBasedBackupCriteria
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IScheduleBasedBackupCriteria
 
 ## NOTES
 

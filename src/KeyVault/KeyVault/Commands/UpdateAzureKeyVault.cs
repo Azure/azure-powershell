@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections;
@@ -51,6 +52,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false, HelpMessage = "Enable the purge protection functionality for this key vault. Once enabled it cannot be disabled. It requires soft-delete to be turned on.")]
         public SwitchParameter EnablePurgeProtection { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion(nameof(EnableRbacAuthorization), "12.0.0", "6.0.0", ReplaceMentCmdletParameterName = "DisableRbacAuthorization", ChangeDescription = "RBAC will be enabled by default during the process of key vault creation. To disable RBAC authorization, please use parameter 'DisableRbacAuthorization'.")]
         [Parameter(Mandatory = false, HelpMessage = "Enable or disable this key vault to authorize data actions by Role Based Access Control (RBAC).")]
         public bool? EnableRbacAuthorization { get; set; }
 

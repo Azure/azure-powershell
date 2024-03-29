@@ -50,7 +50,6 @@ Create an in-memory object for NetworkProfile.
 
 ### -EgressNatIP
 Egress nat IP to use.
-To construct, see NOTES section for EGRESSNATIP properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress[]
@@ -96,7 +95,6 @@ Accept wildcard characters: False
 
 ### -PublicIP
 List of IPs associated with the Firewall.
-To construct, see NOTES section for PUBLICIP properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress[]

@@ -27,6 +27,8 @@ function Test-ComputeNodeUserEndToEnd
     $computeNodes = Get-AzBatchComputeNode -PoolId $poolId -BatchContext $context
     $computeNodeId = $computeNodes[0].Id
 
+    WaitForIdleComputeNode $context $poolId $computeNodeId
+
     # Create a user
     New-AzBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -Password $password1 -BatchContext $context
 
@@ -42,4 +44,24 @@ function Test-ComputeNodeUserEndToEnd
     # Verify the user was deleted
     # There is currently no Get/List user API, so try to delete the user again and verify that it fails.
     Assert-Throws { Remove-AzBatchComputeNodeUser -PoolId $poolId -ComputeNodeId $computeNodeId -Name $userName -BatchContext $context }
+}
+
+function WaitForIdleComputeNode
+{
+    param([Microsoft.Azure.Commands.Batch.Test.ScenarioTests.ScenarioTestContext]$context, [string]$poolId, [string]$computeNodeId)
+
+    $start = [DateTime]::Now
+    $timeout = Compute-TestTimeout 600
+    $end = $start.AddSeconds($timeout)
+
+    $computeNode = Get-AzBatchComputeNode -Id $computeNodeId -PoolId $poolId -BatchContext $context -Select "id,state"
+    while ($computeNode.State -ne 'idle')
+    {
+        if ([DateTime]::Now -gt $end)
+        {
+            throw [System.TimeoutException] "Timed out waiting for idle compute node"
+        }
+        Start-TestSleep -Seconds 5
+        $computeNode = Get-AzBatchComputeNode -Id $computeNodeId -PoolId $poolId -BatchContext $context -Select "id,state"
+    }
 }

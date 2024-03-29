@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PowerShell;
 
-    /// <summary>
-    /// A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of
-    /// results.
-    /// </summary>
+    /// <summary>The List Compute Operation operation response.</summary>
     [System.ComponentModel.TypeConverter(typeof(OperationListResultTypeConverter))]
     public partial class OperationListResult
     {
@@ -114,11 +111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
             // actually deserialize
             if (content.Contains("Value"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperation>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.OperationTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("NextLink"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultInternal)this).NextLink, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue>(__y, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.OperationValueTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -139,11 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
             // actually deserialize
             if (content.Contains("Value"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperation>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.OperationTypeConverter.ConvertFrom));
-            }
-            if (content.Contains("NextLink"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultInternal)this).NextLink = (string) content.GetValueForProperty("NextLink",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultInternal)this).NextLink, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultInternal)this).Value = (System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue>) content.GetValueForProperty("Value",((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultInternal)this).Value, __y => TypeConverterExtensions.SelectToList<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue>(__y, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.OperationValueTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }
@@ -165,8 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
             return ToJsonString();
         }
     }
-    /// A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of
-    /// results.
+    /// The List Compute Operation operation response.
     [System.ComponentModel.TypeConverter(typeof(OperationListResultTypeConverter))]
     public partial interface IOperationListResult
 

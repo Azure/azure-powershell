@@ -23,9 +23,40 @@ Returns a list of all Azure DevOps organizations accessible by the user token co
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: List available AzureDevOps organizations for onboarding
 ```powershell
 Get-AzSecurityConnectorAzureDevOpsOrgAvailable -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-azdo-01
+```
+
+```output
+ActionableRemediation           : {
+                                    "state": "Enabled",
+                                    "categoryConfigurations": [
+                                      {
+                                        "minimumSeverityLevel": "High",
+                                        "category": "IaC"
+                                      }
+                                    ],
+                                    "branchConfiguration": {
+                                      "branchNames": [ ],
+                                      "annotateDefaultBranch": "Enabled"
+                                    },
+                                    "inheritFromParentState": "Disabled"
+                                  }
+Id                              : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-azdo-01/devops/default/azureDevOpsOrgs/dfdsdktests
+Name                            : dfdsdktests
+OnboardingState                 : Onboarded
+ProvisioningState               : Succeeded
+ProvisioningStatusMessage       : OK
+ProvisioningStatusUpdateTimeUtc : 2/23/2024 6:49:40 PM
+ResourceGroupName               : dfdtest-sdk
+SystemDataCreatedAt             : 
+SystemDataCreatedBy             : 
+SystemDataCreatedByType         : 
+SystemDataLastModifiedAt        : 
+SystemDataLastModifiedBy        : 
+SystemDataLastModifiedByType    : 
+Type                            : Microsoft.Security/securityConnectors/devops/azureDevOpsOrgs
 ```
 
 ## PARAMETERS
@@ -35,7 +66,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -51,7 +82,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +97,7 @@ Accept wildcard characters: False
 The security connector name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,13 +112,13 @@ Accept wildcard characters: False
 Azure subscription ID
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -96,7 +127,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -112,7 +143,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -131,8 +162,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IAzureDevOpsOrgListResponse
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectorazuredevopsorgavailable](https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectorazuredevopsorgavailable)

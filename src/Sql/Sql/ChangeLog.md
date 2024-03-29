@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-*Added "1.3" as an option for -MinimalTlsVersion for the cmdlet 'Set-AzSqlServer' and 'New-AzSqlServer'
+* Made 1.2 as default for MinimalTlsVersion when creating new Sql Server from Powershell
 
 ## Version 4.14.0
 * Added `DatabaseFormat` and `PricingModel` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance`

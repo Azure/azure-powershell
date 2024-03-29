@@ -91,6 +91,7 @@ function Set-AzDataProtectionMSIPermission {
 [CmdletBinding(DefaultParameterSetName='SetPermissionsForBackup', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
+    [Alias('ResourceGroupName')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
     # Resource group of the backup vault
@@ -110,7 +111,7 @@ param(
 
     [Parameter(ParameterSetName='SetPermissionsForBackup', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupInstanceResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBackupInstanceResource]
     # Backup instance request object which will be used to configure backup
     # To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
     ${BackupInstance},
@@ -123,16 +124,35 @@ param(
 
     [Parameter(ParameterSetName='SetPermissionsForRestore', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IAzureBackupRestoreRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IAzureBackupRestoreRequest]
     # Restore request object which will be used for restore
     # To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
     ${RestoreRequest},
 
-    [Parameter(ParameterSetName='SetPermissionsForRestore', Mandatory)]
+    [Parameter(ParameterSetName='SetPermissionsForRestore')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Subscription Id of the backup vault
+    ${SubscriptionId},
+
+    [Parameter(ParameterSetName='SetPermissionsForRestore')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes]
+    # Datasource Type
+    ${DatasourceType},
+
+    [Parameter(ParameterSetName='SetPermissionsForRestore')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
     # Sanpshot Resource Group
-    ${SnapshotResourceGroupId}
+    ${SnapshotResourceGroupId},
+
+    [Parameter(ParameterSetName='SetPermissionsForRestore')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Target storage account ARM Id.
+    # Use this parameter for DatasourceType AzureDatabaseForMySQL, AzureDatabaseForPGFlexServer.
+    ${StorageAccountARMId}
 )
 
 begin {

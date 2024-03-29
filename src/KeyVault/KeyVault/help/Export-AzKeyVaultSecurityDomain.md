@@ -15,15 +15,15 @@ Exports the security domain data of a managed HSM.
 ### ByName (Default)
 ```
 Export-AzKeyVaultSecurityDomain -Name <String> -Certificates <String[]> -OutputPath <String> [-Force]
- [-PassThru] -Quorum <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-PassThru] -Quorum <Int32> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Export-AzKeyVaultSecurityDomain -InputObject <PSKeyVaultIdentityItem> -Certificates <String[]>
- -OutputPath <String> [-Force] [-PassThru] -Quorum <Int32> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ -OutputPath <String> [-Force] [-PassThru] -Quorum <Int32> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

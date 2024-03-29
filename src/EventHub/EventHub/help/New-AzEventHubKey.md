@@ -15,8 +15,8 @@ Regenerates an EventHub SAS key
 ### NewExpandedNamespace (Default)
 ```
 New-AzEventHubKey -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-KeyType <KeyType>] [-KeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-KeyType <KeyType>] [-KeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewExpandedEntity

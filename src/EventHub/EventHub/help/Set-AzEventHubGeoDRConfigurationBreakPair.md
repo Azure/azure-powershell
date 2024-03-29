@@ -15,8 +15,8 @@ This operation disables the Disaster Recovery and stops replicating changes from
 ### Break (Default)
 ```
 Set-AzEventHubGeoDRConfigurationBreakPair -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BreakViaIdentity

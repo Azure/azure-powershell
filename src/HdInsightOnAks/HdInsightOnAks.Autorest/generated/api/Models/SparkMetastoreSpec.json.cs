@@ -77,12 +77,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_dbServerHost = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("dbServerHost"), out var __jsonDbServerHost) ? (string)__jsonDbServerHost : (string)DbServerHost;}
-            {_dbName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("dbName"), out var __jsonDbName) ? (string)__jsonDbName : (string)DbName;}
-            {_dbUserName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("dbUserName"), out var __jsonDbUserName) ? (string)__jsonDbUserName : (string)DbUserName;}
-            {_dbPasswordSecretName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("dbPasswordSecretName"), out var __jsonDbPasswordSecretName) ? (string)__jsonDbPasswordSecretName : (string)DbPasswordSecretName;}
-            {_keyVaultId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("keyVaultId"), out var __jsonKeyVaultId) ? (string)__jsonKeyVaultId : (string)KeyVaultId;}
-            {_thriftUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("thriftUrl"), out var __jsonThriftUrl) ? (string)__jsonThriftUrl : (string)ThriftUrl;}
+            {_dbServerHost = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("dbServerHost"), out var __jsonDbServerHost) ? (string)__jsonDbServerHost : (string)_dbServerHost;}
+            {_dbName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("dbName"), out var __jsonDbName) ? (string)__jsonDbName : (string)_dbName;}
+            {_dbConnectionAuthenticationMode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("dbConnectionAuthenticationMode"), out var __jsonDbConnectionAuthenticationMode) ? (string)__jsonDbConnectionAuthenticationMode : (string)_dbConnectionAuthenticationMode;}
+            {_dbUserName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("dbUserName"), out var __jsonDbUserName) ? (string)__jsonDbUserName : (string)_dbUserName;}
+            {_dbPasswordSecretName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("dbPasswordSecretName"), out var __jsonDbPasswordSecretName) ? (string)__jsonDbPasswordSecretName : (string)_dbPasswordSecretName;}
+            {_keyVaultId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("keyVaultId"), out var __jsonKeyVaultId) ? (string)__jsonKeyVaultId : (string)_keyVaultId;}
+            {_thriftUrl = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("thriftUrl"), out var __jsonThriftUrl) ? (string)__jsonThriftUrl : (string)_thriftUrl;}
             AfterFromJson(json);
         }
 
@@ -107,6 +108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             }
             AddIf( null != (((object)this._dbServerHost)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._dbServerHost.ToString()) : null, "dbServerHost" ,container.Add );
             AddIf( null != (((object)this._dbName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._dbName.ToString()) : null, "dbName" ,container.Add );
+            AddIf( null != (((object)this._dbConnectionAuthenticationMode)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._dbConnectionAuthenticationMode.ToString()) : null, "dbConnectionAuthenticationMode" ,container.Add );
             AddIf( null != (((object)this._dbUserName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._dbUserName.ToString()) : null, "dbUserName" ,container.Add );
             AddIf( null != (((object)this._dbPasswordSecretName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._dbPasswordSecretName.ToString()) : null, "dbPasswordSecretName" ,container.Add );
             AddIf( null != (((object)this._keyVaultId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._keyVaultId.ToString()) : null, "keyVaultId" ,container.Add );

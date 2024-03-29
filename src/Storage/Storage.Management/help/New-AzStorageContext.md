@@ -16,7 +16,8 @@ Creates an Azure Storage context.
 ### OAuthAccount (Default)
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Protocol <String>]
- [-Endpoint <String>] [-EnableFileBackupRequestIntent] [<CommonParameters>]
+ [-Endpoint <String>] [-EnableFileBackupRequestIntent]
+ [<CommonParameters>]
 ```
 
 ### AccountNameAndKey
@@ -58,13 +59,15 @@ New-AzStorageContext [-StorageAccountName] <String> -SasToken <String> -Environm
 ### OAuthAccountEnvironment
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-UseConnectedAccount] [-Protocol <String>]
- -Environment <String> [-EnableFileBackupRequestIntent] [<CommonParameters>]
+ -Environment <String> [-EnableFileBackupRequestIntent]
+ [<CommonParameters>]
 ```
 
 ### AccountNameAndKeyServiceEndpoint
 ```
 New-AzStorageContext [-StorageAccountName] <String> [-StorageAccountKey] <String> -BlobEndpoint <String>
- [-FileEndpoint <String>] [-QueueEndpoint <String>] [-TableEndpoint <String>] [<CommonParameters>]
+ [-FileEndpoint <String>] [-QueueEndpoint <String>] [-TableEndpoint <String>]
+ [<CommonParameters>]
 ```
 
 ### SasTokenServiceEndpoint
@@ -92,7 +95,8 @@ New-AzStorageContext [-Anonymous] [-BlobEndpoint <String>] [-FileEndpoint <Strin
 ### OAuthAccountServiceEndpoint
 ```
 New-AzStorageContext [-UseConnectedAccount] [-BlobEndpoint <String>] [-FileEndpoint <String>]
- [-QueueEndpoint <String>] [-TableEndpoint <String>] [-EnableFileBackupRequestIntent] [<CommonParameters>]
+ [-QueueEndpoint <String>] [-TableEndpoint <String>] [-EnableFileBackupRequestIntent]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -16,7 +16,8 @@ Create a CertificateObjectLocalRulestackResource
 New-AzPaloAltoNetworksCertificateObjectLocalRulestack -LocalRulestackName <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -CertificateSelfSigned <String>
  [-AuditComment <String>] [-CertificateSignerResourceId <String>] [-Description <String>] [-Etag <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -259,10 +260,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.ICertificateObjectLocalRulestackResource
+### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.ICertificateObjectLocalRulestackResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

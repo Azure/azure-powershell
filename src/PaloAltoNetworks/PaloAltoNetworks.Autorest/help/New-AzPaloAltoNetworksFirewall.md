@@ -127,7 +127,6 @@ Accept wildcard characters: False
 
 ### -DnsSettingDnsServer
 List of IPs associated with the Firewall
-To construct, see NOTES section for DNSSETTINGDNSSERVER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IIPAddress[]
@@ -173,7 +172,6 @@ Accept wildcard characters: False
 
 ### -FrontEndSetting
 Frontend settings for Firewall
-To construct, see NOTES section for FRONTENDSETTING properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.IFrontendSetting[]
@@ -310,7 +308,6 @@ Accept wildcard characters: False
 
 ### -NetworkProfile
 Network settings
-To construct, see NOTES section for NETWORKPROFILE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.INetworkProfile

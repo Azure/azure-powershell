@@ -102,10 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
                 return container;
             }
             AddIf( null != this._upgrade ? (Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Json.JsonNode) this._upgrade.ToJson(null,serializationMode) : null, "upgrade" ,container.Add );
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeRead)||serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeCreate))
-            {
-                AddIf( null != this._nodeImageSelection ? (Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Json.JsonNode) this._nodeImageSelection.ToJson(null,serializationMode) : null, "nodeImageSelection" ,container.Add );
-            }
+            AddIf( null != this._nodeImageSelection ? (Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Json.JsonNode) this._nodeImageSelection.ToJson(null,serializationMode) : null, "nodeImageSelection" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

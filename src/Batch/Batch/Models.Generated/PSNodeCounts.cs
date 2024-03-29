@@ -147,6 +147,14 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public int UpgradingOS
+        {
+            get
+            {
+                return this.omObject.UpgradingOS;
+            }
+        }
+        
         public int WaitingForStartTask
         {
             get

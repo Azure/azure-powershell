@@ -33,7 +33,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// 'TrustedLaunch',
         /// 'ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey',
         /// 'ConfidentialVM_DiskEncryptedWithPlatformKey',
-        /// 'ConfidentialVM_DiskEncryptedWithCustomerKey'</param>
+        /// 'ConfidentialVM_DiskEncryptedWithCustomerKey',
+        /// 'ConfidentialVM_NonPersistedTPM'</param>
         /// <param name="secureVMDiskEncryptionSetId">ResourceId of the disk
         /// encryption set associated to Confidential VM supported disk
         /// encrypted with customer managed key</param>
@@ -53,7 +54,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Gets or sets possible values include: 'TrustedLaunch',
         /// 'ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey',
         /// 'ConfidentialVM_DiskEncryptedWithPlatformKey',
-        /// 'ConfidentialVM_DiskEncryptedWithCustomerKey'
+        /// 'ConfidentialVM_DiskEncryptedWithCustomerKey',
+        /// 'ConfidentialVM_NonPersistedTPM'
         /// </summary>
         [JsonProperty(PropertyName = "securityType")]
         public string SecurityType { get; set; }

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MobileNetwork-help.xml
 Module Name: Az.MobileNetwork
 online version: https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkbulksimuploadencrypted
 schema: 2.0.0
@@ -17,17 +17,17 @@ The SIM credentials must be encrypted.
 ```
 Update-AzMobileNetworkBulkSimUploadEncrypted -InputObject <IMobileNetworkIdentity> -AzureKeyIdentifier <Int32>
  -EncryptedTransportKey <String> -SignedTransportKey <String> -Sim <ISimNameAndEncryptedProperties[]>
- -VendorKeyFingerprint <String> -Version <Int32> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -VendorKeyFingerprint <String> -Version <Int32> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BulkExpanded
 ```
 Update-AzMobileNetworkBulkSimUploadEncrypted -ResourceGroupName <String> -SimGroupName <String>
- -AzureKeyIdentifier <Int32> -EncryptedTransportKey <String> -SignedTransportKey <String>
- -Sim <ISimNameAndEncryptedProperties[]> -VendorKeyFingerprint <String> -Version <Int32>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -AzureKeyIdentifier <Int32> -EncryptedTransportKey <String>
+ -SignedTransportKey <String> -Sim <ISimNameAndEncryptedProperties[]> -VendorKeyFingerprint <String>
+ -Version <Int32> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -292,41 +292,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMobileNetworkIdentity>`: Identity Parameter
-  - `[AttachedDataNetworkName <String>]`: The name of the attached data network.
-  - `[DataNetworkName <String>]`: The name of the data network.
-  - `[Id <String>]`: Resource identity path
-  - `[MobileNetworkName <String>]`: The name of the mobile network.
-  - `[PacketCoreControlPlaneName <String>]`: The name of the packet core control plane.
-  - `[PacketCoreDataPlaneName <String>]`: The name of the packet core data plane.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ServiceName <String>]`: The name of the service. You must not use any of the following reserved strings - 'default', 'requested' or 'service'
-  - `[SimGroupName <String>]`: The name of the SIM Group.
-  - `[SimName <String>]`: The name of the SIM.
-  - `[SimPolicyName <String>]`: The name of the SIM policy.
-  - `[SiteName <String>]`: The name of the mobile network site.
-  - `[SliceName <String>]`: The name of the network slice.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VersionName <String>]`: The name of the packet core control plane version.
-
-`SIM <ISimNameAndEncryptedProperties[]>`: A list of SIMs to upload, with encrypted properties.
-  - `InternationalMobileSubscriberIdentity <String>`: The international mobile subscriber identity (IMSI) for the SIM.
-  - `Name <String>`: The name of the SIM.
-  - `[DeviceType <String>]`: An optional free-form text field that can be used to record the device type this SIM is associated with, for example 'Video camera'. The Azure portal allows SIMs to be grouped and filtered based on this value.
-  - `[EncryptedCredentials <String>]`: The encrypted SIM credentials.
-  - `[IntegratedCircuitCardIdentifier <String>]`: The integrated circuit card ID (ICCID) for the SIM.
-  - `[SimPolicyId <String>]`: SIM policy resource ID.
-  - `[StaticIPConfiguration <ISimStaticIPProperties[]>]`: A list of static IP addresses assigned to this SIM. Each address is assigned at a defined network scope, made up of {attached data network, slice}.
-    - `[AttachedDataNetworkId <String>]`: Attached data network resource ID.
-    - `[SlouseId <String>]`: Slice resource ID.
-    - `[StaticIPIpv4Address <String>]`: The IPv4 address assigned to the SIM at this network scope. This address must be in the userEquipmentStaticAddressPoolPrefix defined in the attached data network.
-
 ## RELATED LINKS
-
