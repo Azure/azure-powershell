@@ -11,8 +11,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Identity.Client.Extensions.Msal;
 using Microsoft.IdentityModel.Abstractions;
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -101,8 +103,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                 try
                 {
-                    storageHelper = GetProtectedStorageHelper(fileName, directory, storage);
-                    storageHelper.VerifyPersistence();
+                    throw new AzPSArgumentException($"Force to use plain text storage for AzKeyStore", "ForceToUseFallbackAzKeyStore");
+                    //storageHelper = GetProtectedStorageHelper(fileName, directory, storage);
+                    //storageHelper.VerifyPersistence();
                 }
                 catch (Exception)
                 {
