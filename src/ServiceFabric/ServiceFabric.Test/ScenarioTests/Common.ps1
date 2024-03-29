@@ -47,7 +47,7 @@ function Get-ResourceGroupName
 
 function Get-ClusterName
 {
-    return "azurermsfclustertest2";
+    return "azurermsfclustertest";
 }
 
 function Get-NodeTypeName
