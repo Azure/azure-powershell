@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.ApplicationInsights",
-  "ModuleVersion": "2.2.3",
+  "ModuleVersion": "2.2.4",
   "Cmdlets": [
     {
       "VerbName": "Get",

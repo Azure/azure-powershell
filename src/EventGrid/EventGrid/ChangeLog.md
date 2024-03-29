@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.6.1
 * Added breaking change messages due to structure update:
   - The cmdlet `Set-AzEventGridTopic` will be removed.
   - In the `Remove-AzEventGridSubscription` parameters will be deprecated.
