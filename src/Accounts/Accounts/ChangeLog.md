@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Supported interactive subscription selection for user login flow.
 
 ## Version 2.17.0
 * Enabled globally disabling instance discovery before token acquisition [#22535].

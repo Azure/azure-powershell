@@ -817,6 +817,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please select the account you want to login with..
+        /// </summary>
+        internal static string PleaseSelectAccount {
+            get {
+                return ResourceManager.GetString("PleaseSelectAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This function is in preview. It may not be available in the selected subscription..
         /// </summary>
         internal static string PreviewFunctionMessage {
@@ -1020,6 +1029,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string ReplaceContextQuery {
             get {
                 return ResourceManager.GetString("ReplaceContextQuery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retrieving subscriptions for the selection....
+        /// </summary>
+        internal static string RetrievingSubscription {
+            get {
+                return ResourceManager.GetString("RetrievingSubscription", resourceCulture);
             }
         }
         
