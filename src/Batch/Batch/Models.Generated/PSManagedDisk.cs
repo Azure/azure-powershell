@@ -29,19 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSVirtualMachineInfo
+    public partial class PSManagedDisk
     {
         
-        internal Microsoft.Azure.Batch.VirtualMachineInfo omObject;
+        internal Microsoft.Azure.Batch.ManagedDisk omObject;
         
-        private PSImageReference imageReference;
-        
-        public PSVirtualMachineInfo()
+        public PSManagedDisk(System.Nullable<Microsoft.Azure.Batch.Common.StorageAccountType> storageAccountType = null)
         {
-            this.omObject = new Microsoft.Azure.Batch.VirtualMachineInfo();
+            this.omObject = new Microsoft.Azure.Batch.ManagedDisk(storageAccountType);
         }
         
-        internal PSVirtualMachineInfo(Microsoft.Azure.Batch.VirtualMachineInfo omObject)
+        internal PSManagedDisk(Microsoft.Azure.Batch.ManagedDisk omObject)
         {
             if ((omObject == null))
             {
@@ -50,40 +48,15 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public PSImageReference ImageReference
+        public Microsoft.Azure.Batch.Common.StorageAccountType? StorageAccountType
         {
             get
             {
-                if (((this.imageReference == null) 
-                            && (this.omObject.ImageReference != null)))
-                {
-                    this.imageReference = new PSImageReference(this.omObject.ImageReference);
-                }
-                return this.imageReference;
+                return this.omObject.StorageAccountType;
             }
             set
             {
-                if ((value == null))
-                {
-                    this.omObject.ImageReference = null;
-                }
-                else
-                {
-                    this.omObject.ImageReference = value.omObject;
-                }
-                this.imageReference = value;
-            }
-        }
-        
-        public string ScaleSetVmResourceId
-        {
-            get
-            {
-                return this.omObject.ScaleSetVmResourceId;
-            }
-            set
-            {
-                this.omObject.ScaleSetVmResourceId = value;
+                this.omObject.StorageAccountType = value;
             }
         }
     }

@@ -29,19 +29,19 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSVirtualMachineInfo
+    public partial class PSSecurityProfile
     {
         
-        internal Microsoft.Azure.Batch.VirtualMachineInfo omObject;
+        internal Microsoft.Azure.Batch.SecurityProfile omObject;
         
-        private PSImageReference imageReference;
+        private PSUefiSettings uefiSettings;
         
-        public PSVirtualMachineInfo()
+        public PSSecurityProfile()
         {
-            this.omObject = new Microsoft.Azure.Batch.VirtualMachineInfo();
+            this.omObject = new Microsoft.Azure.Batch.SecurityProfile();
         }
         
-        internal PSVirtualMachineInfo(Microsoft.Azure.Batch.VirtualMachineInfo omObject)
+        internal PSSecurityProfile(Microsoft.Azure.Batch.SecurityProfile omObject)
         {
             if ((omObject == null))
             {
@@ -50,40 +50,52 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public PSImageReference ImageReference
+        public System.Boolean? EncryptionAtHost
         {
             get
             {
-                if (((this.imageReference == null) 
-                            && (this.omObject.ImageReference != null)))
+                return this.omObject.EncryptionAtHost;
+            }
+            set
+            {
+                this.omObject.EncryptionAtHost = value;
+            }
+        }
+        
+        public Microsoft.Azure.Batch.Common.SecurityTypes? SecurityType
+        {
+            get
+            {
+                return this.omObject.SecurityType;
+            }
+            set
+            {
+                this.omObject.SecurityType = value;
+            }
+        }
+        
+        public PSUefiSettings UefiSettings
+        {
+            get
+            {
+                if (((this.uefiSettings == null) 
+                            && (this.omObject.UefiSettings != null)))
                 {
-                    this.imageReference = new PSImageReference(this.omObject.ImageReference);
+                    this.uefiSettings = new PSUefiSettings(this.omObject.UefiSettings);
                 }
-                return this.imageReference;
+                return this.uefiSettings;
             }
             set
             {
                 if ((value == null))
                 {
-                    this.omObject.ImageReference = null;
+                    this.omObject.UefiSettings = null;
                 }
                 else
                 {
-                    this.omObject.ImageReference = value.omObject;
+                    this.omObject.UefiSettings = value.omObject;
                 }
-                this.imageReference = value;
-            }
-        }
-        
-        public string ScaleSetVmResourceId
-        {
-            get
-            {
-                return this.omObject.ScaleSetVmResourceId;
-            }
-            set
-            {
-                this.omObject.ScaleSetVmResourceId = value;
+                this.uefiSettings = value;
             }
         }
     }

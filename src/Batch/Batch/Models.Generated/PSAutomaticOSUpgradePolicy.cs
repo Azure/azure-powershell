@@ -29,19 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSVirtualMachineInfo
+    public partial class PSAutomaticOSUpgradePolicy
     {
         
-        internal Microsoft.Azure.Batch.VirtualMachineInfo omObject;
+        internal Microsoft.Azure.Batch.AutomaticOSUpgradePolicy omObject;
         
-        private PSImageReference imageReference;
-        
-        public PSVirtualMachineInfo()
+        public PSAutomaticOSUpgradePolicy()
         {
-            this.omObject = new Microsoft.Azure.Batch.VirtualMachineInfo();
+            this.omObject = new Microsoft.Azure.Batch.AutomaticOSUpgradePolicy();
         }
         
-        internal PSVirtualMachineInfo(Microsoft.Azure.Batch.VirtualMachineInfo omObject)
+        internal PSAutomaticOSUpgradePolicy(Microsoft.Azure.Batch.AutomaticOSUpgradePolicy omObject)
         {
             if ((omObject == null))
             {
@@ -50,40 +48,51 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public PSImageReference ImageReference
+        public System.Boolean? DisableAutomaticRollback
         {
             get
             {
-                if (((this.imageReference == null) 
-                            && (this.omObject.ImageReference != null)))
-                {
-                    this.imageReference = new PSImageReference(this.omObject.ImageReference);
-                }
-                return this.imageReference;
+                return this.omObject.DisableAutomaticRollback;
             }
             set
             {
-                if ((value == null))
-                {
-                    this.omObject.ImageReference = null;
-                }
-                else
-                {
-                    this.omObject.ImageReference = value.omObject;
-                }
-                this.imageReference = value;
+                this.omObject.DisableAutomaticRollback = value;
             }
         }
         
-        public string ScaleSetVmResourceId
+        public System.Boolean? EnableAutomaticOSUpgrade
         {
             get
             {
-                return this.omObject.ScaleSetVmResourceId;
+                return this.omObject.EnableAutomaticOSUpgrade;
             }
             set
             {
-                this.omObject.ScaleSetVmResourceId = value;
+                this.omObject.EnableAutomaticOSUpgrade = value;
+            }
+        }
+        
+        public System.Boolean? OsRollingUpgradeDeferral
+        {
+            get
+            {
+                return this.omObject.OsRollingUpgradeDeferral;
+            }
+            set
+            {
+                this.omObject.OsRollingUpgradeDeferral = value;
+            }
+        }
+        
+        public System.Boolean? UseRollingUpgradePolicy
+        {
+            get
+            {
+                return this.omObject.UseRollingUpgradePolicy;
+            }
+            set
+            {
+                this.omObject.UseRollingUpgradePolicy = value;
             }
         }
     }

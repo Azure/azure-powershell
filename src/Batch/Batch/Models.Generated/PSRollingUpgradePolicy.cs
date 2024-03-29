@@ -29,12 +29,17 @@ namespace Microsoft.Azure.Commands.Batch.Models
     using Microsoft.Azure.Batch;
     
     
-    public partial class PSNodeCounts
+    public partial class PSRollingUpgradePolicy
     {
         
-        internal Microsoft.Azure.Batch.NodeCounts omObject;
+        internal Microsoft.Azure.Batch.RollingUpgradePolicy omObject;
         
-        internal PSNodeCounts(Microsoft.Azure.Batch.NodeCounts omObject)
+        public PSRollingUpgradePolicy()
+        {
+            this.omObject = new Microsoft.Azure.Batch.RollingUpgradePolicy();
+        }
+        
+        internal PSRollingUpgradePolicy(Microsoft.Azure.Batch.RollingUpgradePolicy omObject)
         {
             if ((omObject == null))
             {
@@ -43,123 +48,87 @@ namespace Microsoft.Azure.Commands.Batch.Models
             this.omObject = omObject;
         }
         
-        public int Creating
+        public System.Boolean? EnableCrossZoneUpgrade
         {
             get
             {
-                return this.omObject.Creating;
+                return this.omObject.EnableCrossZoneUpgrade;
+            }
+            set
+            {
+                this.omObject.EnableCrossZoneUpgrade = value;
             }
         }
         
-        public int Idle
+        public System.Int32? MaxBatchInstancePercent
         {
             get
             {
-                return this.omObject.Idle;
+                return this.omObject.MaxBatchInstancePercent;
+            }
+            set
+            {
+                this.omObject.MaxBatchInstancePercent = value;
             }
         }
         
-        public int LeavingPool
+        public System.Int32? MaxUnhealthyInstancePercent
         {
             get
             {
-                return this.omObject.LeavingPool;
+                return this.omObject.MaxUnhealthyInstancePercent;
+            }
+            set
+            {
+                this.omObject.MaxUnhealthyInstancePercent = value;
             }
         }
         
-        public int Offline
+        public System.Int32? MaxUnhealthyUpgradedInstancePercent
         {
             get
             {
-                return this.omObject.Offline;
+                return this.omObject.MaxUnhealthyUpgradedInstancePercent;
+            }
+            set
+            {
+                this.omObject.MaxUnhealthyUpgradedInstancePercent = value;
             }
         }
         
-        public int Preempted
+        public System.TimeSpan? PauseTimeBetweenBatches
         {
             get
             {
-                return this.omObject.Preempted;
+                return this.omObject.PauseTimeBetweenBatches;
+            }
+            set
+            {
+                this.omObject.PauseTimeBetweenBatches = value;
             }
         }
         
-        public int Rebooting
+        public System.Boolean? PrioritizeUnhealthyInstances
         {
             get
             {
-                return this.omObject.Rebooting;
+                return this.omObject.PrioritizeUnhealthyInstances;
+            }
+            set
+            {
+                this.omObject.PrioritizeUnhealthyInstances = value;
             }
         }
         
-        public int Reimaging
+        public System.Boolean? RollbackFailedInstancesOnPolicyBreach
         {
             get
             {
-                return this.omObject.Reimaging;
+                return this.omObject.RollbackFailedInstancesOnPolicyBreach;
             }
-        }
-        
-        public int Running
-        {
-            get
+            set
             {
-                return this.omObject.Running;
-            }
-        }
-        
-        public int Starting
-        {
-            get
-            {
-                return this.omObject.Starting;
-            }
-        }
-        
-        public int StartTaskFailed
-        {
-            get
-            {
-                return this.omObject.StartTaskFailed;
-            }
-        }
-        
-        public int Total
-        {
-            get
-            {
-                return this.omObject.Total;
-            }
-        }
-        
-        public int Unknown
-        {
-            get
-            {
-                return this.omObject.Unknown;
-            }
-        }
-        
-        public int Unusable
-        {
-            get
-            {
-                return this.omObject.Unusable;
-            }
-        }
-        
-        public int UpgradingOS
-        {
-            get
-            {
-                return this.omObject.UpgradingOS;
-            }
-        }
-        
-        public int WaitingForStartTask
-        {
-            get
-            {
-                return this.omObject.WaitingForStartTask;
+                this.omObject.RollbackFailedInstancesOnPolicyBreach = value;
             }
         }
     }
