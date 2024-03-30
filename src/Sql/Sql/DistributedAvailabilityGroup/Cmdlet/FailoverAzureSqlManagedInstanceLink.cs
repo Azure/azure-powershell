@@ -89,6 +89,12 @@ namespace Microsoft.Azure.Commands.Sql.DistributedAvailabilityGroup.Cmdlet
         public AzureSqlManagedInstanceLinkModel InputObject { get; set; }
 
         /// <summary>
+        /// Defines whether it is ok to skip the requesting of failover managed instance link confirmation
+        /// </summary>
+        [Parameter(HelpMessage = "Skip confirmation message for performing the action")]
+        public SwitchParameter Force { get; set; }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -133,7 +139,12 @@ namespace Microsoft.Azure.Commands.Sql.DistributedAvailabilityGroup.Cmdlet
                 string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetAzureSqlInstanceLinkWarning, ResourceGroupName, InstanceName, Name),
                 Properties.Resources.ShouldProcessCaption))
             {
-                base.ExecuteCmdlet();
+                // message prompt requiring the customer to explicitly confirm the delete operation
+                if (Force || ShouldContinue(string.Format(Properties.Resources.SetAzureSqlInstanceLinkWarning, this.ResourceGroupName, this.InstanceName, this.Name),
+                    Properties.Resources.ShouldProcessCaption))
+                {
+                    base.ExecuteCmdlet();
+                }
             }
         }
 

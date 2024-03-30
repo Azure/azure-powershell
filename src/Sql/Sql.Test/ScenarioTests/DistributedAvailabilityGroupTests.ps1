@@ -60,7 +60,7 @@ function Test-ManagedInstanceLinkMIFirstPlannedFailover
         Assert-AreEqual $linkToFailover.PartnerLinkRole $secondaryRoleConst
 
         # Perform planned failover
-        Start-AzSqlInstanceLinkFailover -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -FailoverType $failoverType
+        Start-AzSqlInstanceLinkFailover -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -FailoverType $failoverType -Force
 
         # Assert that box is primary
         $linkToFailover = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName
@@ -100,7 +100,7 @@ function Test-ManagedInstanceLinkMIFirstForcedFailover
         Assert-AreEqual $linkToFailover.PartnerLinkRole $secondaryRoleConst
 
         # Perform planned failover
-        $instance | Start-AzSqlInstanceLinkFailover -Name $linkName -FailoverType $failoverType
+        $instance | Start-AzSqlInstanceLinkFailover -Name $linkName -FailoverType $failoverType -Force
 
         # Assert that box is primary
         $linkToFailover = $instance | Get-AzSqlInstanceLink -Name $linkName
@@ -257,7 +257,7 @@ function Test-ManagedInstanceLinkBOXFirstForcedFailover
         Assert-AreEqual $linkToFailover.PartnerLinkRole $primaryRoleConst
 
         # Perform forced failover and succeed
-        $instance | Start-AzSqlInstanceLinkFailover -Name $linkName -FailoverType $failoverType
+        $instance | Start-AzSqlInstanceLinkFailover -Name $linkName -FailoverType $failoverType -Force
 
         # Assert that box is secondary
         $linkToFailover = $instance | Get-AzSqlInstanceLink -Name $linkName
@@ -328,7 +328,7 @@ function Test-ManagedInstanceLinkErrHandling
 
         # Start failover and assert that the planned failover can't be invoked when MI is secondary
         $msgExcCantFailover = "Planned failover can be executed on a link in the primary role only. Current state of the specified link is secondary."
-        Assert-ThrowsContains { Start-AzSqlInstanceLinkFailover -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -FailoverType $failoverType } $msgExcCantFailover
+        Assert-ThrowsContains { Start-AzSqlInstanceLinkFailover -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -FailoverType $failoverType -Force } $msgExcCantFailover
 
         # Confirm that ShouldContinue message is triggered on Remove (tests don't support user interaction so we'll validate the exception)
         $msgExcDataLoss = "may cause data loss"
