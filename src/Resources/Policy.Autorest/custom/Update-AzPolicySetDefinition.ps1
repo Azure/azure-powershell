@@ -189,7 +189,9 @@ process {
 
     # construct id for definition to update
     $resolved = ResolvePolicySetDefinition $Name $SubscriptionId $ManagementGroupName $thisId
-    $getParameters = @{ Id = $resolved.ResourceId }
+
+    $getParameters = Get-ExtraParameters @PSBoundParameters
+    $getParameters['Id'] = $resolved.ResourceId
 
     if ($writeln) {
         Write-Host -ForegroundColor Blue -> Get-AzPolicySetDefinition'(' $getParameters ')'

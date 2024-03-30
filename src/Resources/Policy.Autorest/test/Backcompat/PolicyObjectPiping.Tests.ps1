@@ -1,7 +1,7 @@
 # setup the Pester environment for policy backcompat tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-PolicyObjectPiping'
 
-Describe 'Backcompat-PolicyObjectPiping' {
+Describe 'Backcompat-PolicyObjectPiping' -Tag 'LiveOnly' {
 
     BeforeAll {
         # setup

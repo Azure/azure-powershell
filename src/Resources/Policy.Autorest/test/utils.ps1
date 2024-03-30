@@ -313,7 +313,6 @@ function setupEnv() {
     $env['invalidParameterValue'] = 'Cannot validate argument on parameter'
     $env['invalidPolicyDefinitionReference'] = 'InvalidPolicyDefinitionReference'
     $env['invalidPolicySetDefinitionRequest'] = "[InvalidCreatePolicySetDefinitionRequest] : The policy set definition 'someName' create request is invalid. At least one policy definition must be referenced."
-    $env['testFilesFolder'] = (Join-Path $PSScriptRoot 'ScenarioTests')
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

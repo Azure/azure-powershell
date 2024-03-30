@@ -1,7 +1,7 @@
 # setup the Pester environment for policy backcompat tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-PolicyAssignmentCRUD'
 
-Describe 'Backcompat-PolicyAssignmentCRUD' {
+Describe 'Backcompat-PolicyAssignmentCRUD' -Tag 'LiveOnly' {
 
     BeforeAll {
         # setup

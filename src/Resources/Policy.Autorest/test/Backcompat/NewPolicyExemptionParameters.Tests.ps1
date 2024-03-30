@@ -1,7 +1,7 @@
 # setup the Pester environment for policy backcompat tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-NewPolicyExemptionParameters'
 
-Describe 'Backcompat-NewPolicyExemptionParameters' {
+Describe 'Backcompat-NewPolicyExemptionParameters' -Tag 'LiveOnly' {
 
     BeforeAll {
         # make a new resource group and policy assignment of some built-in definition
