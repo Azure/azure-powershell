@@ -50,19 +50,52 @@ If an Azure API Management API is onboarded to Microsoft Defender for APIs, the 
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get a specific onboarded api collection resource
 ```powershell
 Get-AzSecurityApiCollection -ResourceGroupName apicollectionstests -ServiceName "demoapimservice2" -ApiId "echo-api"
 ```
 
-### Example 2
+```output
+BaseUrl                                      : https://demoapimservice2.azure-api.net/echo
+DiscoveredVia                                : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapim
+                                               service2
+DisplayName                                  : Echo API
+Id                                           : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/apicollectionstests/providers/Microsoft.ApiManagement/service/demoapim
+                                               service2/providers/Microsoft.Security/apiCollections/echo-api
+Name                                         : echo-api
+NumberOfApiEndpoint                          : 6
+NumberOfApiEndpointsWithSensitiveDataExposed : 0
+NumberOfExternalApiEndpoint                  : 0
+NumberOfInactiveApiEndpoint                  : 6
+NumberOfUnauthenticatedApiEndpoint           : 0
+ProvisioningState                            : Succeeded
+ResourceGroupName                            : apicollectionstests
+SensitivityLabel                             :
+Type                                         : microsoft.security/apicollections
+```
+
+### Example 2: List onboarded api collections by service name
 ```powershell
 Get-AzSecurityApiCollection -ResourceGroupName "apicollectionstests" -ServiceName "demoapimservice2"
 ```
 
-### Example 3
+```output
+Name       ResourceGroupName
+----       -----------------
+echo-api   apicollectionstests
+echo-api-2 apicollectionstests
+```
+
+### Example 3: List onboarded api collections by subscription
 ```powershell
 Get-AzSecurityApiCollection
+```
+
+```output
+Name       ResourceGroupName
+----       -----------------
+echo-api   apicollectionstests
+echo-api-2 apicollectionstests
 ```
 
 ## PARAMETERS
@@ -73,7 +106,7 @@ Must be unique in the API Management service instance.
 Non-current revision has ;rev=n as a suffix where n is the revision number.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get
 Aliases:
 
@@ -89,7 +122,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -102,10 +135,9 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-.
 
 ```yaml
-Type: ISecurityIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -121,7 +153,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get, List2, List1
 Aliases:
 
@@ -136,7 +168,7 @@ Accept wildcard characters: False
 The name of the API Management service.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get, List2
 Aliases:
 
@@ -151,13 +183,13 @@ Accept wildcard characters: False
 Azure subscription ID
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: List, Get, List2, List1
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -168,32 +200,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IApiCollection
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<ISecurityIdentity\>: Identity Parameter
-  \[ApiId \<String\>\]: API revision identifier.
-Must be unique in the API Management service instance.
-Non-current revision has ;rev=n as a suffix where n is the revision number.
-  \[GroupFqName \<String\>\]: The GitLab group fully-qualified name.
-  \[Id \<String\>\]: Resource identity path
-  \[OperationResultId \<String\>\]: The operation result Id.
-  \[OrgName \<String\>\]: The Azure DevOps organization name.
-  \[OwnerName \<String\>\]: The GitHub owner name.
-  \[ProjectName \<String\>\]: The project name.
-  \[RepoName \<String\>\]: The repository name.
-  \[ResourceGroupName \<String\>\]: The name of the resource group within the user's subscription.
-The name is case insensitive.
-  \[SecurityConnectorName \<String\>\]: The security connector name.
-  \[ServiceName \<String\>\]: The name of the API Management service.
-  \[SubscriptionId \<String\>\]: Azure subscription ID
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.security/get-azsecurityapicollection](https://learn.microsoft.com/powershell/module/az.security/get-azsecurityapicollection)

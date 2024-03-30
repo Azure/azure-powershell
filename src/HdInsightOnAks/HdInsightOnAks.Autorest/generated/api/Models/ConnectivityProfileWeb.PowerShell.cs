@@ -80,6 +80,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IWebConnectivityEndpointInternal)this).Fqdn = (string) content.GetValueForProperty("Fqdn",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IWebConnectivityEndpointInternal)this).Fqdn, global::System.Convert.ToString);
             }
+            if (content.Contains("PrivateFqdn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IWebConnectivityEndpointInternal)this).PrivateFqdn = (string) content.GetValueForProperty("PrivateFqdn",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IWebConnectivityEndpointInternal)this).PrivateFqdn, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -100,6 +104,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("Fqdn"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IWebConnectivityEndpointInternal)this).Fqdn = (string) content.GetValueForProperty("Fqdn",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IWebConnectivityEndpointInternal)this).Fqdn, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrivateFqdn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IWebConnectivityEndpointInternal)this).PrivateFqdn = (string) content.GetValueForProperty("PrivateFqdn",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IWebConnectivityEndpointInternal)this).PrivateFqdn, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }

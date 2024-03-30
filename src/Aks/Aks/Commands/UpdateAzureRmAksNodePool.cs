@@ -163,8 +163,7 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                             return;
                         }
 
-                        var upgradedPool = Client.AgentPools.UpgradeNodeImageVersion(ResourceGroupName, ClusterName, Name);
-                        WriteObject(AdapterHelper<AgentPool, PSNodePool>.Adapt(upgradedPool));
+                        Client.AgentPools.UpgradeNodeImageVersion(ResourceGroupName, ClusterName, Name);
                         return;
                     }
                     if (this.IsParameterBound(c => c.NodeLabel))

@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_error = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("error"), out var __jsonError) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ErrorResponseBody.FromJson(__jsonError) : Error;}
+            {_error = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("error"), out var __jsonError) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ErrorResponseBody.FromJson(__jsonError) : _error;}
             AfterFromJson(json);
         }
 

@@ -103,9 +103,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_virtualNetworkResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)VirtualNetworkResourceId;}
-            {_action = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("action"), out var __jsonAction) ? (string)__jsonAction : (string)Action;}
-            {_state = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("state"), out var __jsonState) ? (string)__jsonState : (string)State;}
+            {_virtualNetworkResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_virtualNetworkResourceId;}
+            {_action = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("action"), out var __jsonAction) ? (string)__jsonAction : (string)_action;}
+            {_state = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("state"), out var __jsonState) ? (string)__jsonState : (string)_state;}
             AfterFromJson(json);
         }
     }

@@ -38,6 +38,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// 'None', 'ReadOnly', 'ReadWrite'</param>
         /// <param name="writeAcceleratorEnabled">Specifies whether
         /// writeAccelerator should be enabled or disabled on the disk.</param>
+        /// <param name="diffDiskSettings">Specifies the ephemeral disk
+        /// Settings for the operating system disk used by the virtual machine
+        /// scale set.</param>
         /// <param name="diskSizeGB">Specifies the size of an empty data disk
         /// in gigabytes. This element can be used to overwrite the size of the
         /// disk in a virtual machine image. &lt;br&gt;&lt;br&gt; diskSizeGB is
@@ -61,10 +64,11 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// Ephemeral OS Disk, the default value is set to **Delete**. User
         /// cannot change the delete option for Ephemeral OS Disk. Possible
         /// values include: 'Delete', 'Detach'</param>
-        public VirtualMachineScaleSetUpdateOSDisk(CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), int? diskSizeGB = default(int?), VirtualHardDisk image = default(VirtualHardDisk), IList<string> vhdContainers = default(IList<string>), VirtualMachineScaleSetManagedDiskParameters managedDisk = default(VirtualMachineScaleSetManagedDiskParameters), string deleteOption = default(string))
+        public VirtualMachineScaleSetUpdateOSDisk(CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), DiffDiskSettings diffDiskSettings = default(DiffDiskSettings), int? diskSizeGB = default(int?), VirtualHardDisk image = default(VirtualHardDisk), IList<string> vhdContainers = default(IList<string>), VirtualMachineScaleSetManagedDiskParameters managedDisk = default(VirtualMachineScaleSetManagedDiskParameters), string deleteOption = default(string))
         {
             Caching = caching;
             WriteAcceleratorEnabled = writeAcceleratorEnabled;
+            DiffDiskSettings = diffDiskSettings;
             DiskSizeGB = diskSizeGB;
             Image = image;
             VhdContainers = vhdContainers;
@@ -91,6 +95,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "writeAcceleratorEnabled")]
         public bool? WriteAcceleratorEnabled { get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the ephemeral disk Settings for the
+        /// operating system disk used by the virtual machine scale set.
+        /// </summary>
+        [JsonProperty(PropertyName = "diffDiskSettings")]
+        public DiffDiskSettings DiffDiskSettings { get; set; }
 
         /// <summary>
         /// Gets or sets specifies the size of an empty data disk in gigabytes.

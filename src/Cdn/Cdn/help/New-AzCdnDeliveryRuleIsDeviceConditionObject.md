@@ -14,7 +14,7 @@ Create an in-memory object for DeliveryRuleIsDeviceCondition.
 
 ```
 New-AzCdnDeliveryRuleIsDeviceConditionObject -Name <MatchVariable> [-ParameterMatchValue <String[]>]
- [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>] [-ProgressAction <ActionPreference>]
+ [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>]
  [<CommonParameters>]
 ```
 
@@ -98,21 +98,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -123,7 +108,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleIsDeviceCondition
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

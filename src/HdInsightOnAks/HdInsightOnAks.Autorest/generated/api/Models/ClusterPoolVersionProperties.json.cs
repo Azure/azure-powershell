@@ -65,9 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_clusterPoolVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("clusterPoolVersion"), out var __jsonClusterPoolVersion) ? (string)__jsonClusterPoolVersion : (string)ClusterPoolVersion;}
-            {_aksVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("aksVersion"), out var __jsonAksVersion) ? (string)__jsonAksVersion : (string)AksVersion;}
-            {_isPreview = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("isPreview"), out var __jsonIsPreview) ? (bool?)__jsonIsPreview : IsPreview;}
+            {_clusterPoolVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("clusterPoolVersion"), out var __jsonClusterPoolVersion) ? (string)__jsonClusterPoolVersion : (string)_clusterPoolVersion;}
+            {_aksVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("aksVersion"), out var __jsonAksVersion) ? (string)__jsonAksVersion : (string)_aksVersion;}
+            {_isPreview = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("isPreview"), out var __jsonIsPreview) ? (bool?)__jsonIsPreview : _isPreview;}
             AfterFromJson(json);
         }
 

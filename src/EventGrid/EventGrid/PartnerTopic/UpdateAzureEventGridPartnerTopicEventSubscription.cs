@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using EventGridModels = Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -73,6 +74,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("DeadLetterEndpoint", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -87,6 +89,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string DeadLetterEndpoint { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("DeliveryAttributeMapping", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -101,6 +104,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public Hashtable[] DeliveryAttributeMapping { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Endpoint", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -115,6 +119,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string Endpoint { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("EndpointType", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -143,6 +148,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string[] Label { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("StorageQueueMessageTtl", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,

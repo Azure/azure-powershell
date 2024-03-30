@@ -22,9 +22,15 @@ Create an in-memory object for AwsOrganizationalDataMaster.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new AwsOrganizationalDataMaster object
 ```powershell
 New-AzSecurityAwsOrganizationalDataMasterObject -StacksetName "myAwsStackSet" -ExcludedAccountId "123456789012"
+```
+
+```output
+ExcludedAccountId OrganizationMembershipType StacksetName
+----------------- -------------------------- ------------
+{123456789012}    Organization               myAwsStackSet
 ```
 
 ## PARAMETERS
@@ -33,7 +39,7 @@ New-AzSecurityAwsOrganizationalDataMasterObject -StacksetName "myAwsStackSet" -E
 If the multi cloud account is of membership type organization, list of accounts excluded from offering.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -48,7 +54,7 @@ Accept wildcard characters: False
 If the multi cloud account is of membership type organization, this will be the name of the onboarding stackset.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -67,8 +73,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.AwsOrganizationalDataMaster
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityawsorganizationaldatamasterobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityawsorganizationaldatamasterobject)

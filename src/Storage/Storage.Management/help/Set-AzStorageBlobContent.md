@@ -39,8 +39,8 @@ Set-AzStorageBlobContent [-File] <String> -CloudBlob <CloudBlob> [-BlobType <Str
  [-Metadata <Hashtable>] [-Tag <Hashtable>] [-PremiumPageBlobTier <PremiumPageBlobTier>]
  [-StandardBlobTier <String>] [-EncryptionScope <String>] [-Force] [-AsJob] [-TagCondition <String>]
  [-Context <IStorageContext>] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

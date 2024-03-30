@@ -24,16 +24,16 @@ Update-AzDiskEncryptionSet [-ResourceGroupName] <String> [-Name] <String> [-KeyU
 ```
 Update-AzDiskEncryptionSet [-ResourceId] <String> [-KeyUrl <String>] [-SourceVaultId <String>]
  [-RotationToLatestKeyVersionEnabled <Boolean>] [[-Tag] <Hashtable>] [-AsJob] [-FederatedClientId <String>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameter
 ```
 Update-AzDiskEncryptionSet [-InputObject] <PSDiskEncryptionSet> [-KeyUrl <String>] [-SourceVaultId <String>]
  [-RotationToLatestKeyVersionEnabled <Boolean>] [[-Tag] <Hashtable>] [-AsJob] [-FederatedClientId <String>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

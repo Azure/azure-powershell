@@ -14,7 +14,8 @@ The List operation gets information about the regions associated with the manage
 
 ```
 Remove-AzKeyVaultManagedHsmRegion -HsmName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Region <String[]> [-DefaultProfile <PSObject>] [-PassThru] [-AsJob] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -Region <String[]> [-DefaultProfile <PSObject>] [-PassThru] [-AsJob]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

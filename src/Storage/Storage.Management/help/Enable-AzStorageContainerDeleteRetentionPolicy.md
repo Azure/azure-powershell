@@ -15,20 +15,22 @@ Enable delete retention policy for Azure Storage blob containers.
 ### AccountName (Default)
 ```
 Enable-AzStorageContainerDeleteRetentionPolicy [-ResourceGroupName] <String> [-StorageAccountName] <String>
- -RetentionDays <Int32> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -RetentionDays <Int32> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Enable-AzStorageContainerDeleteRetentionPolicy -StorageAccount <PSStorageAccount> -RetentionDays <Int32>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### BlobServicePropertiesResourceId
 ```
 Enable-AzStorageContainerDeleteRetentionPolicy [-ResourceId] <String> -RetentionDays <Int32> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

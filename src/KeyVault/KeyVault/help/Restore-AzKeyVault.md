@@ -16,28 +16,32 @@ Fully restores a managed HSM from backup.
 ```
 Restore-AzKeyVault -BackupFolder <String> [-KeyName <String>] [-PassThru] [-HsmName] <String>
  -StorageAccountName <String> -StorageContainerName <String> [-SasToken <SecureString>]
- [-UseUserManagedIdentity] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UseUserManagedIdentity] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InteractiveStorageUri
 ```
 Restore-AzKeyVault -BackupFolder <String> [-KeyName <String>] [-PassThru] [-HsmName] <String>
  -StorageContainerUri <Uri> [-SasToken <SecureString>] [-UseUserManagedIdentity]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectStorageUri
 ```
 Restore-AzKeyVault -BackupFolder <String> [-KeyName <String>] [-PassThru] -StorageContainerUri <Uri>
  [-SasToken <SecureString>] [-UseUserManagedIdentity] -HsmObject <PSManagedHsm>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectStorageName
 ```
 Restore-AzKeyVault -BackupFolder <String> [-KeyName <String>] [-PassThru] -StorageAccountName <String>
  -StorageContainerName <String> [-SasToken <SecureString>] [-UseUserManagedIdentity] -HsmObject <PSManagedHsm>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +66,6 @@ Restore-AzKeyVault -HsmName myHsm -StorageContainerUri "https://{accountName}.bl
 ```
 
 The example restores an HSM via User Assigned Managed Identity Authentication.
-
 
 ## PARAMETERS
 

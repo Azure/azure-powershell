@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlaneVersion))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Description(@"Lists all supported packet core control planes versions.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.HttpPath(Path = "/providers/Microsoft.MobileNetwork/packetCoreControlPlaneVersions", ApiVersion = "2022-11-01")]
     public partial class GetAzMobileNetworkPacketCoreControlPlaneVersion_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener
     {

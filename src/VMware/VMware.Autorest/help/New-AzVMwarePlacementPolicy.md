@@ -91,7 +91,6 @@ Accept wildcard characters: False
 
 ### -ClusterInputObject
 Identity Parameter
-To construct, see NOTES section for CLUSTERINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -138,7 +137,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -184,7 +182,6 @@ Accept wildcard characters: False
 
 ### -PrivateCloudInputObject
 Identity Parameter
-To construct, see NOTES section for PRIVATECLOUDINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
@@ -215,7 +212,6 @@ Accept wildcard characters: False
 
 ### -Property
 placement policy properties
-To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPlacementPolicyProperties

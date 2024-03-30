@@ -15,7 +15,7 @@ Registers a resource provider.
 
 ```
 Register-AzResourceProvider -ProviderNamespace <String> [-ConsentToPermissions <Boolean>] [-AsJob]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -109,21 +109,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ProviderNamespace
 Specifies the namespace of the resource provider.
 
@@ -188,5 +173,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzResourceProvider](./Get-AzResourceProvider.md)
 
 [Unregister-AzResourceProvider](./Unregister-AzResourceProvider.md)
-
-

@@ -77,10 +77,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return;
             }
-            {_creationData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("creationData"), out var __jsonCreationData) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.SnapshotCreationData.FromJson(__jsonCreationData) : CreationData;}
-            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)ProvisioningState;}
-            {_sourceVolumeSizeGiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("sourceVolumeSizeGiB"), out var __jsonSourceVolumeSizeGiB) ? (long?)__jsonSourceVolumeSizeGiB : SourceVolumeSizeGiB;}
-            {_volumeName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("volumeName"), out var __jsonVolumeName) ? (string)__jsonVolumeName : (string)VolumeName;}
+            {_creationData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("creationData"), out var __jsonCreationData) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.SnapshotCreationData.FromJson(__jsonCreationData) : _creationData;}
+            {_provisioningState = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("provisioningState"), out var __jsonProvisioningState) ? (string)__jsonProvisioningState : (string)_provisioningState;}
+            {_sourceVolumeSizeGiB = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonNumber>("sourceVolumeSizeGiB"), out var __jsonSourceVolumeSizeGiB) ? (long?)__jsonSourceVolumeSizeGiB : _sourceVolumeSizeGiB;}
+            {_volumeName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("volumeName"), out var __jsonVolumeName) ? (string)__jsonVolumeName : (string)_volumeName;}
             AfterFromJson(json);
         }
 

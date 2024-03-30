@@ -16,13 +16,13 @@ Retrieve the specified database migration for a given SQL Managed Instance.
 ```
 Get-AzDataMigrationToSqlManagedInstance -ManagedInstanceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -TargetDbName <String> [-Expand <String>] [-MigrationOperationId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDataMigrationToSqlManagedInstance -InputObject <IDataMigrationIdentity> [-Expand <String>]
- [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>]
+ [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-PassThru]
  [<CommonParameters>]
 ```
 
@@ -146,21 +146,6 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

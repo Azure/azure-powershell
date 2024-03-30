@@ -20,6 +20,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
         public string Fqdn { get => this._fqdn; set => this._fqdn = value; }
 
+        /// <summary>Backing field for <see cref="PrivateFqdn" /> property.</summary>
+        private string _privateFqdn;
+
+        /// <summary>
+        /// Private web connectivity endpoint. This property will only be returned when enableInternalIngress is true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        public string PrivateFqdn { get => this._privateFqdn; set => this._privateFqdn = value; }
+
         /// <summary>Creates an new <see cref="WebConnectivityEndpoint" /> instance.</summary>
         public WebConnectivityEndpoint()
         {
@@ -41,6 +50,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"fqdn",
         PossibleTypes = new [] { typeof(string) })]
         string Fqdn { get; set; }
+        /// <summary>
+        /// Private web connectivity endpoint. This property will only be returned when enableInternalIngress is true.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Private web connectivity endpoint. This property will only be returned when enableInternalIngress is true.",
+        SerializedName = @"privateFqdn",
+        PossibleTypes = new [] { typeof(string) })]
+        string PrivateFqdn { get; set; }
 
     }
     /// Web connectivity endpoint details.
@@ -49,6 +71,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
     {
         /// <summary>Web connectivity endpoint.</summary>
         string Fqdn { get; set; }
+        /// <summary>
+        /// Private web connectivity endpoint. This property will only be returned when enableInternalIngress is true.
+        /// </summary>
+        string PrivateFqdn { get; set; }
 
     }
 }

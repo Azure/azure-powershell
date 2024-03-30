@@ -21,9 +21,15 @@ Create an in-memory object for CspmMonitorAzureDevOpsOffering.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new CspmMonitorAzureDevOpsOffering object
 ```powershell
 New-AzSecurityCspmMonitorAzureDevOpsOfferingObject
+```
+
+```output
+Description OfferingType
+----------- ------------
+            CspmMonitorAzureDevOps
 ```
 
 ## PARAMETERS
@@ -36,8 +42,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.CspmMonitorAzureDevOpsOffering
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritycspmmonitorazuredevopsofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritycspmmonitorazuredevopsofferingobject)

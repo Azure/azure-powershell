@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"Regenerates the primary or secondary connection strings for the namespace.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules/{authorizationRuleName}/regenerateKeys", ApiVersion = "2022-10-01-preview")]
     public partial class NewAzServiceBusNamespaceKey_Regenerate : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener
     {

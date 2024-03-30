@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_clusterProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("clusterProfile"), out var __jsonClusterProfile) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.UpdatableClusterProfile.FromJson(__jsonClusterProfile) : ClusterProfile;}
+            {_clusterProfile = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("clusterProfile"), out var __jsonClusterProfile) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.UpdatableClusterProfile.FromJson(__jsonClusterProfile) : _clusterProfile;}
             AfterFromJson(json);
         }
 

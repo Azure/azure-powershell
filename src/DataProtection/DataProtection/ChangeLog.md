@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.3.0
+* Onboarded new workloads AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL for data protection.
+
 ## Version 2.2.0
 * Added support for Cross region restore for Backup vaults
 
