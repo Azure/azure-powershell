@@ -17,6 +17,7 @@ param(
     $subscriptionId
 )
 
+Get-AzContextAutosaveSetting
 Write-Host "Connecting Az.Account..."
 $secret = ConvertTo-SecureString -String $pwd -AsPlainText -Force
 $credential = New-Object -TypeName System.Management.Automation.PSCredential($servicePrincipal, $secret)
