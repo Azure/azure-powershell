@@ -16,9 +16,10 @@ Create a cluster pool.
 ```
 New-AzHdInsightOnAksClusterPool -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ClusterPoolVersion <String>] [-EnableLogAnalytics]
- [-LogAnalyticWorkspaceResourceId <String>] [-ManagedResourceGroupName <String>] [-SubnetId <String>]
- [-Tag <Hashtable>] [-VmSize <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-LogAnalyticWorkspaceResourceId <String>] [-ManagedResourceGroupName <String>]
+ [-NetworkProfileApiServerAuthorizedIPRange <String[]>] [-NetworkProfileEnablePrivateApiServer]
+ [-NetworkProfileOutboundType <String>] [-SubnetId <String>] [-Tag <Hashtable>] [-VmSize <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -38,8 +39,10 @@ New-AzHdInsightOnAksClusterPool -InputObject <IHdInsightOnAksIdentity> -ClusterP
 ```
 New-AzHdInsightOnAksClusterPool -InputObject <IHdInsightOnAksIdentity> -Location <String>
  [-ClusterPoolVersion <String>] [-EnableLogAnalytics] [-LogAnalyticWorkspaceResourceId <String>]
- [-ManagedResourceGroupName <String>] [-SubnetId <String>] [-Tag <Hashtable>] [-VmSize <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ManagedResourceGroupName <String>] [-NetworkProfileApiServerAuthorizedIPRange <String[]>]
+ [-NetworkProfileEnablePrivateApiServer] [-NetworkProfileOutboundType <String>] [-SubnetId <String>]
+ [-Tag <Hashtable>] [-VmSize <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -171,7 +174,6 @@ Accept wildcard characters: False
 
 ### -ClusterPool
 Cluster pool.
-To construct, see NOTES section for CLUSTERPOOL properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPool
@@ -233,7 +235,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
@@ -333,6 +334,56 @@ Parameter Sets: Create, CreateExpanded, CreateViaJsonFilePath, CreateViaJsonStri
 Aliases: ClusterPoolName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkProfileApiServerAuthorizedIPRange
+IP ranges are specified in CIDR format, e.g.
+137.117.106.88/29.
+This feature is not compatible with private AKS clusters.
+So you cannot set enablePrivateApiServer to true and apiServerAuthorizedIpRanges at the same time.
+
+```yaml
+Type: System.String[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkProfileEnablePrivateApiServer
+ClusterPool is based on AKS cluster.
+AKS cluster exposes the API server to public internet by default.
+If you set this property to true, a private AKS cluster will be created, and it will use private apiserver, which is not exposed to public internet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkProfileOutboundType
+This can only be set at cluster pool creation time and cannot be changed later.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

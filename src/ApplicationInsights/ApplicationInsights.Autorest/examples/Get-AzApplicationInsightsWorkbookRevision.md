@@ -35,4 +35,4 @@ ResourceGroupName       Name                                 DisplayName        
 appinsights-hkrs2v-test f7d7151e-7907-4f46-8a5e-6bf4a4cfedec f7d7151e-7907-4f46-8a5e-6bf4a4cfedec-display westus2  shared workbook
 ```
 
-This commmand gets a single workbook revision defined by resource id.
+This command gets a single workbook revision defined by resource id.
