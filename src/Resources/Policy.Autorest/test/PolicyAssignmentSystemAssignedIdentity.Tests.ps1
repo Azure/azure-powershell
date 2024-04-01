@@ -5,29 +5,28 @@ Describe 'PolicyAssignmentSystemAssignedIdentity' -Tag 'LiveOnly' {
 
     BeforeAll {
         # setup
-        $rgname = Get-ResourceGroupName
+        $rgname = $env.rgname
         $policyName = Get-ResourceName
         $testPA = Get-ResourceName
         $test2 = Get-ResourceName
         $location = "westus"
 
         # make a new resource group and policy definition
-        $rg = New-ResourceGroup -Name $rgname -Location $location
         $policy = New-AzPolicyDefinition -Name $policyName -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description
         # assign the policy definition with system MSI to the resource group
-        $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description -IdentityType SystemAssigned -Location $location
+        $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $env.scope -Description $description -IdentityType SystemAssigned -Location $location
     }
 
     It 'Make a policy assignment at RG scope with MSI' {
         # get the assignment back
-        $expected = Get-AzPolicyAssignment -Name $testPA -Scope $rg.ResourceId
+        $expected = Get-AzPolicyAssignment -Name $testPA -Scope $env.scope
 
         # validate the results
         $expected.Name | Should -Be $actual.Name
         $actual.Type | Should -Be Microsoft.Authorization/policyAssignments
         $expected.Id | Should -Be $actual.Id
         $expected.PolicyDefinitionId | Should -Be $policy.Id
-        $expected.Scope | Should -Be $rg.ResourceId
+        $expected.Scope | Should -Be $env.scope
         $expected.IdentityType | Should -Be 'SystemAssigned'
         $expected.IdentityPrincipalId | Should -Not -BeNullOrEmpty
         $expected.IdentityTenantId | Should -Not -BeNullOrEmpty
@@ -61,7 +60,7 @@ Describe 'PolicyAssignmentSystemAssignedIdentity' -Tag 'LiveOnly' {
 
     It 'Make another policy assignment without MSI' {
         # make another policy assignment without an identity
-        $withoutIdentityResult = New-AzPolicyAssignment -Name $test2 -Scope $rg.ResourceId -PolicyDefinition $policy -Description $description
+        $withoutIdentityResult = New-AzPolicyAssignment -Name $test2 -Scope $env.scope -PolicyDefinition $policy -Description $description
 
         # validate it does not have an identity
         $withoutIdentityResult.Identity | Should -BeNull
@@ -78,7 +77,7 @@ Describe 'PolicyAssignmentSystemAssignedIdentity' -Tag 'LiveOnly' {
 
     It 'List policy assignment with MSI' {
         # verify identity is returned in collection GET
-        $list = Get-AzPolicyAssignment -Scope $rg.ResourceId | ?{ $_.Name -in @($testPA, $test2) }
+        $list = Get-AzPolicyAssignment -Scope $env.scope | ?{ $_.Name -in @($testPA, $test2) }
         ($list.IdentityType | Select -Unique) | Should -Be 'SystemAssigned'
         @($list.IdentityPrincipalId | Select -Unique).Count | Should -Be 2
         @($list.IdentityTenantId | Select -Unique).Count | Should -Be 1
@@ -88,10 +87,9 @@ Describe 'PolicyAssignmentSystemAssignedIdentity' -Tag 'LiveOnly' {
 
     AfterAll {
         # clean up
-        $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $rg.ResourceId -PassThru
-        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $rg.ResourceId -PassThru) -and $remove
+        $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $env.scope -PassThru
+        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $env.scope -PassThru) -and $remove
         $remove = (Remove-AzPolicyDefinition -Name $policyName -Force -PassThru) -and $remove
-        $remove = (Remove-ResourceGroup -Name $rgname) -and $remove
         $remove | Should -Be $true
 
         Write-Host -ForegroundColor Magenta "Cleanup complete."

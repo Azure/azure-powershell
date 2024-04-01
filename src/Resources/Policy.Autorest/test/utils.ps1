@@ -254,6 +254,10 @@ function setupEnv() {
     # ----------------------------------------------------+
     # set up common variables used in policy legacy tests |
     # ----------------------------------------------------+
+    $env['rgname'] = Get-ResourceGroupName
+    $rg = New-ResourceGroup -Name $env.rgname -Location "west us"
+    $env['scope'] = $rg.ResourceId
+
     $env['managementGroup'] = 'AzGovPerfTest'
     $env['managementGroupScope'] = '/providers/Microsoft.Management/managementGroups/AzGovPerfTest'
     $env['description'] = 'Unit test junk: sorry for littering. Please delete me!'
@@ -324,4 +328,5 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    $null = Remove-ResourceGroup -Name $env.rgname
 }

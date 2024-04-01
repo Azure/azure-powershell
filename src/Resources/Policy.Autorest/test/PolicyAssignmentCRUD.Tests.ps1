@@ -5,7 +5,7 @@ Describe 'PolicyAssignmentCRUD' -Tag 'LiveOnly' {
 
     BeforeAll {
         # setup
-        $rgname = Get-ResourceGroupName
+        $rgname = $env.rgname
         $policyName = Get-ResourceName
         $policySetDefName = Get-ResourceName
         $policyDefName1 = Get-ResourceName
@@ -14,7 +14,6 @@ Describe 'PolicyAssignmentCRUD' -Tag 'LiveOnly' {
         $test2 = Get-ResourceName
 
         # make a new resource group and policy definition
-        $rg = New-ResourceGroup -Name $rgname -Location 'west us'
         $policyDefinition1 = New-AzPolicyDefinition -Name $policyDefName1 -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description
         $policyDefinition2 = New-AzPolicyDefinition -Name $policyDefName2 -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description
         $policySetString = "[{""policyDefinitionId"":""" + $policyDefinition1.Id + """}, {""policyDefinitionId"":""" + $policyDefinition2.Id + """}]"
@@ -27,24 +26,24 @@ Describe 'PolicyAssignmentCRUD' -Tag 'LiveOnly' {
 
     It 'Make and validate a policy assignment at RG scope' {
         # assign the policy definition to the resource group, get the assignment back
-        $actual = New-AzPolicyAssignment -Name $testPA -PolicySetDefinition $policySet -Scope $rg.ResourceId -Description $description -NonComplianceMessage $nonComplianceMessage
+        $actual = New-AzPolicyAssignment -Name $testPA -PolicySetDefinition $policySet -Scope $env.scope -Description $description -NonComplianceMessage $nonComplianceMessage
 
         # get it back by name and scope
-        $expected = Get-AzPolicyAssignment -Name $testPA -Scope $rg.ResourceId
+        $expected = Get-AzPolicyAssignment -Name $testPA -Scope $env.scope
 
         # validate the results
         $actual.Type | Should -Be Microsoft.Authorization/policyAssignments 
         $expected.Name | Should -Be $actual.Name
         $expected.Id | Should -Be $actual.Id
         $expected.PolicyDefinitionId | Should -Be $policySet.Id
-        $expected.Scope | Should -Be $rg.ResourceId
+        $expected.Scope | Should -Be $env.scope
         $expected.NonComplianceMessage.Length | Should -Be 1
         $expected.NonComplianceMessage[0].Message | Should -Be 'General message'
     }
 
     It 'Get policy assignment by Id' {
         # get original assignment back by name and scope
-        $actual = Get-AzPolicyAssignment -Name $testPA -Scope $rg.ResourceId
+        $actual = Get-AzPolicyAssignment -Name $testPA -Scope $env.scope
 
         # get it again by id
         $actualId = Get-AzPolicyAssignment -Id $actual.Id
@@ -57,7 +56,7 @@ Describe 'PolicyAssignmentCRUD' -Tag 'LiveOnly' {
 
     It 'Make and validate a policy assignment with multiple non-compliance messages' {
         # get original assignment back by name and scope
-        $get = Get-AzPolicyAssignment -Name $testPA -Scope $rg.ResourceId
+        $get = Get-AzPolicyAssignment -Name $testPA -Scope $env.scope
 
         # make a new non-compliance message
         $nonComplianceMessage = $nonComplianceMessage + @(@{
@@ -69,7 +68,7 @@ Describe 'PolicyAssignmentCRUD' -Tag 'LiveOnly' {
         $nonComplianceMessage.Length | Should -Be 2
 
         # create it again with two non-compliance messages
-        $new = New-AzPolicyAssignment -Name $testPA -PolicySetDefinition $policySet -Scope $rg.ResourceId -Description $description -NonComplianceMessage $nonComplianceMessage
+        $new = New-AzPolicyAssignment -Name $testPA -PolicySetDefinition $policySet -Scope $env.scope -Description $description -NonComplianceMessage $nonComplianceMessage
         $new.Id | Should -Be $get.Id
 
         # get it again by id and validate non-compliance messages
@@ -95,7 +94,7 @@ Describe 'PolicyAssignmentCRUD' -Tag 'LiveOnly' {
 
     It 'Update the policy assignment to have a single non-compliance message' {
         # get original assignment back again
-        $actual = Get-AzPolicyAssignment -Name $testPA -Scope $rg.ResourceId
+        $actual = Get-AzPolicyAssignment -Name $testPA -Scope $env.scope
 
         # make a singleton non-compliance message
         $nonComplianceMessage = @(@{ Message = "General non-compliance message" })
@@ -111,7 +110,7 @@ Describe 'PolicyAssignmentCRUD' -Tag 'LiveOnly' {
 
     It 'Update the policy assignment back to a multiple non-compliance message' {
         # get original assignment back again
-        $actual = Get-AzPolicyAssignment -Name $testPA -Scope $rg.ResourceId
+        $actual = Get-AzPolicyAssignment -Name $testPA -Scope $env.scope
 
         # make a multi non-compliance message array
         $nonComplianceMessage = @(
@@ -153,10 +152,10 @@ Describe 'PolicyAssignmentCRUD' -Tag 'LiveOnly' {
 
     It 'List policy assignments and validate results' {
         # make another policy assignment
-        $expected = New-AzPolicyAssignment -Name $test2 -Scope $rg.ResourceId -PolicyDefinition $policyDefinition1 -Description $description
+        $expected = New-AzPolicyAssignment -Name $test2 -Scope $env.scope -PolicyDefinition $policyDefinition1 -Description $description
 
         # ensure both are present in resource group scope listing
-        $list1 = Get-AzPolicyAssignment -Scope $rg.ResourceId | ?{ $_.Name -in @($testPA, $test2) }
+        $list1 = Get-AzPolicyAssignment -Scope $env.scope | ?{ $_.Name -in @($testPA, $test2) }
         $list1.Count | Should -Be 2
 
         # ensure both are present in full listing
@@ -170,12 +169,11 @@ Describe 'PolicyAssignmentCRUD' -Tag 'LiveOnly' {
 
     AfterAll {
         # clean up
-        $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $rg.ResourceId -PassThru
-        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $rg.ResourceId -PassThru) -and $remove
+        $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $env.scope -PassThru
+        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $env.scope -PassThru) -and $remove
         $remove = (Remove-AzPolicySetDefinition -Name $policySetDefName -Force -PassThru) -and $remove
         $remove = (Remove-AzPolicyDefinition -Name $policyDefName1 -Force -PassThru) -and $remove
         $remove = (Remove-AzPolicyDefinition -Name $policyDefName2 -Force -PassThru) -and $remove
-        $remove = (Remove-ResourceGroup -Name $rgname) -and $remove
 
         $remove | Should -Be $true
 

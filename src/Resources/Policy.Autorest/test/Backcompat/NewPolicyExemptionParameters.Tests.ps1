@@ -5,13 +5,12 @@ Describe 'Backcompat-NewPolicyExemptionParameters' -Tag 'LiveOnly' {
 
     BeforeAll {
         # make a new resource group and policy assignment of some built-in definition
-        $rgname = Get-ResourceGroupName
+        $rgname = $env.rgname
         $goodScope = "/subscriptions/$subscriptionId/resourceGroups/$rgname"
 
-        $rg = New-ResourceGroup -Name $rgname -Location "west us"
         $assignmentName = 'testPA1'
         $policy = Get-AzPolicyDefinition -Builtin | ?{ $_.Name -eq '0a914e76-4921-4c19-b460-a2d36003525a' }
-        $goodPolicyAssignment = New-AzPolicyAssignment -Name $assignmentName -Scope $rg.ResourceId -PolicyDefinition $policy -Description $description -BackwardCompatible
+        $goodPolicyAssignment = New-AzPolicyAssignment -Name $assignmentName -Scope $env.scope -PolicyDefinition $policy -Description $description -BackwardCompatible
     }
 
     It 'no parameters' {
@@ -46,7 +45,6 @@ Describe 'Backcompat-NewPolicyExemptionParameters' -Tag 'LiveOnly' {
     AfterAll {
         $remove = Remove-AzPolicyAssignment -Name $assignmentName -BackwardCompatible
 
-        $remove = (Remove-ResourceGroup -Name $rgname) -and $remove
         Assert-AreEqual True $remove
 
         Write-Host -ForegroundColor Magenta "Cleanup complete."

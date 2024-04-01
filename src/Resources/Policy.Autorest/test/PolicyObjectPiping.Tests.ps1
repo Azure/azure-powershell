@@ -5,7 +5,7 @@ Describe 'PolicyObjectPiping' -Tag 'LiveOnly' {
 
     BeforeAll {
         # setup
-        $rgname = Get-ResourceGroupName
+        $rgname = $env.rgname
         $policySetDefName = Get-ResourceName
         $policyDefName = Get-ResourceName
         $policyAssName = Get-ResourceName
@@ -15,22 +15,19 @@ Describe 'PolicyObjectPiping' -Tag 'LiveOnly' {
         $policyDefinition = New-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -Policy "$testFilesFolder\SamplePolicyDefinitionObject.json" -Description $description
         $policySet = "[{""policyDefinitionId"":""" + $policyDefinition.Id + """}]"
         $expected = New-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -PolicyDefinition $policySet -Description $description
-
-        # make a policy assignment by piping the policy definition to New-AzPolicyAssignment
-        $rg = New-ResourceGroup -Name $rgname -Location "west us"
     }
 
     It 'Make policy assignment from piped definition' {
         # assign the policy definition to the resource group, get the assignment back and validate
-        $actual = Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId | New-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -PolicyParameterObject @{'listOfAllowedLocations'=@('westus', 'eastus'); 'effectParam'='Deny'} -Description $description
-        $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
+        $actual = Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId | New-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -PolicyParameterObject @{'listOfAllowedLocations'=@('westus', 'eastus'); 'effectParam'='Deny'} -Description $description
+        $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope
         $expected.Name | Should -Be $actual.Name
         $actual.Type | Should -Be 'Microsoft.Authorization/policyAssignments'
         $actual.PolicyDefinitionId | Should -Not -BeNullOrEmpty
         $expected.PolicyDefinitionId | Should -Not -BeNullOrEmpty
         $expected.Id | Should -Be $actual.Id
         $expected.PolicyDefinitionId | Should -Be $actual.PolicyDefinitionId
-        $expected.Scope | Should -Be $rg.ResourceId
+        $expected.Scope | Should -Be $env.scope
         $expected.Parameter.listOfAllowedLocations | Should -Not -BeNullOrEmpty
         $expected.Parameter.listOfAllowedLocations.value | Should -Not -BeNullOrEmpty
         $expected.Parameter.effectParam | Should -Not -BeNullOrEmpty
@@ -42,7 +39,7 @@ Describe 'PolicyObjectPiping' -Tag 'LiveOnly' {
 
     It 'Update assignment from piped object' {
         # get assignment by name/scope
-        $actual = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
+        $actual = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope
 
         # get assignment by Id, update some properties, including parameters
         $assignment = Get-AzPolicyAssignment -Id $actual.Id
@@ -63,21 +60,21 @@ Describe 'PolicyObjectPiping' -Tag 'LiveOnly' {
         $assignment.Description | Should -Be $updatedDescription
 
         # delete the policy assignment
-        $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Remove-AzPolicyAssignment -PassThru
+        $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope | Remove-AzPolicyAssignment -PassThru
         $remove | Should -Be $true
     }
 
     It 'Make policy assignment from piped set definition' {
         # assign the policy set definition to the resource group, get the assignment back and validate
-        $actual = Get-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId | New-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -Description $description
-        $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
+        $actual = Get-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId | New-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -Description $description
+        $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope
         $expected.Name | Should -Be $actual.Name
         $actual.Type | Should -Be 'Microsoft.Authorization/policyAssignments'
         $actual.PolicyDefinitionId | Should -Not -BeNullOrEmpty
         $expected.PolicyDefinitionId | Should -Not -BeNullOrEmpty
         $expected.Id | Should -Be $actual.Id
         $expected.PolicyDefinitionId | Should -Be $actual.PolicyDefinitionId
-        $expected.Scope | Should -Be $rg.ResourceId
+        $expected.Scope | Should -Be $env.scope
     }
 
     It 'Update policy definition from piped object' {
@@ -112,8 +109,8 @@ Describe 'PolicyObjectPiping' -Tag 'LiveOnly' {
 
     It 'Update policy assignment from pipline and command line' {
         # update the policy assignment
-        $actual = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Update-AzPolicyAssignment -Description $updatedDescription
-        $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId
+        $actual = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope | Update-AzPolicyAssignment -Description $updatedDescription
+        $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope
         $expected.Name | Should -Be $actual.Name
         $actual.Type | Should -Be 'Microsoft.Authorization/policyAssignments'
         $expected.Type | Should -Be $actual.Type
@@ -121,15 +118,14 @@ Describe 'PolicyObjectPiping' -Tag 'LiveOnly' {
         $expected.PolicyDefinitionId | Should -Not -BeNullOrEmpty
         $expected.Id | Should -Be $actual.Id
         $expected.PolicyDefinitionId | Should -Be $actual.PolicyDefinitionId
-        $expected.Scope | Should -Be $rg.ResourceId
+        $expected.Scope | Should -Be $env.scope
         $updatedDescription | Should -Be $actual.Description
         $updatedDescription | Should -Be $expected.Description
     }
 
     AfterAll {
         # clean up
-        $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId | Remove-AzPolicyAssignment -PassThru
-        $remove = (Remove-ResourceGroup -Name $rgname) -and $remove
+        $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope | Remove-AzPolicyAssignment -PassThru
         $remove = (Get-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId | Remove-AzPolicySetDefinition -Force -PassThru) -and $remove
         $remove = (Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId | Remove-AzPolicyDefinition -Force -PassThru) -and $remove
         $remove | Should -Be $true
