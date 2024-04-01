@@ -1,11 +1,11 @@
 # setup the Pester environment for policy backcompat tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-PolicyObjectPiping'
 
-Describe 'Backcompat-PolicyObjectPiping' -Tag 'LiveOnly' {
+Describe 'Backcompat-PolicyObjectPiping' {
 
     BeforeAll {
         # setup
-        $rgname = Get-ResourceGroupName
+        $rgname = $env.rgname
         $policySetDefName = Get-ResourceName
         $policyDefName = Get-ResourceName
         $policyAssName = Get-ResourceName
@@ -15,23 +15,20 @@ Describe 'Backcompat-PolicyObjectPiping' -Tag 'LiveOnly' {
         $policyDefinition = New-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -Policy "$testFilesFolder\SamplePolicyDefinitionObject.json" -Description $description -BackwardCompatible
         $policySet = "[{""policyDefinitionId"":""" + $policyDefinition.PolicyDefinitionId + """}]"
         $expected = New-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -PolicyDefinition $policySet -Description $description -BackwardCompatible
-
-        # make a policy assignment by piping the policy definition to New-AzPolicyAssignment
-        $rg = New-ResourceGroup -Name $rgname -Location "west us"
     }
 
     It 'make policy assignment from piped definition' {
         {
             # assign the policy definition to the resource group, get the assignment back and validate
-            $actual = Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -BackwardCompatible | New-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -PolicyParameterObject @{'listOfAllowedLocations'=@('westus', 'eastus'); 'effectParam'='Deny'} -Description $description -BackwardCompatible
-            $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -BackwardCompatible
+            $actual = Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -BackwardCompatible | New-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -PolicyParameterObject @{'listOfAllowedLocations'=@('westus', 'eastus'); 'effectParam'='Deny'} -Description $description -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-NotNull $actual.Properties.PolicyDefinitionId
             Assert-NotNull $expected.Properties.PolicyDefinitionId
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
             Assert-AreEqual $expected.Properties.PolicyDefinitionId $actual.Properties.PolicyDefinitionId
-            Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+            Assert-AreEqual $expected.Properties.Scope $env.scope
             Assert-NotNull $expected.Properties.Parameters.listOfAllowedLocations
             Assert-NotNull $expected.Properties.Parameters.listOfAllowedLocations.value
             Assert-NotNull $expected.Properties.Parameters.effectParam
@@ -45,7 +42,7 @@ Describe 'Backcompat-PolicyObjectPiping' -Tag 'LiveOnly' {
     It 'update assignment from piped object' {
         {
             # get assignment by name/scope
-            $actual = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -BackwardCompatible
+            $actual = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -BackwardCompatible
 
             # get assignment by Id, update some properties, including parameters
             $assignment = Get-AzPolicyAssignment -Id $actual.ResourceId -BackwardCompatible
@@ -69,7 +66,7 @@ Describe 'Backcompat-PolicyObjectPiping' -Tag 'LiveOnly' {
             Assert-AreEqual $updatedDescription $assignment.Properties.Description
 
             # delete the policy assignment
-            $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -BackwardCompatible | Remove-AzPolicyAssignment -BackwardCompatible
+            $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -BackwardCompatible | Remove-AzPolicyAssignment -BackwardCompatible
             Assert-AreEqual True $remove
         } | Should -Not -Throw
     }
@@ -77,15 +74,15 @@ Describe 'Backcompat-PolicyObjectPiping' -Tag 'LiveOnly' {
     It 'make policy assignment from piped set definition' {
         {
             # assign the policy set definition to the resource group, get the assignment back and validate
-            $actual = Get-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -BackwardCompatible | New-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -Description $description -BackwardCompatible
-            $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -BackwardCompatible
+            $actual = Get-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -BackwardCompatible | New-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -Description $description -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-NotNull $actual.Properties.PolicyDefinitionId
             Assert-NotNull $expected.Properties.PolicyDefinitionId
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
             Assert-AreEqual $expected.Properties.PolicyDefinitionId $actual.Properties.PolicyDefinitionId
-            Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+            Assert-AreEqual $expected.Properties.Scope $env.scope
         } | Should -Not -Throw
     }
 
@@ -126,8 +123,8 @@ Describe 'Backcompat-PolicyObjectPiping' -Tag 'LiveOnly' {
     It 'update policy assignment from pipline and command line' {
         {
             # update the policy assignment
-            $actual = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -BackwardCompatible | Set-AzPolicyAssignment -Description $updatedDescription -BackwardCompatible
-            $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -BackwardCompatible
+            $actual = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -BackwardCompatible | Set-AzPolicyAssignment -Description $updatedDescription -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-AreEqual $expected.ResourceType $actual.ResourceType
@@ -135,7 +132,7 @@ Describe 'Backcompat-PolicyObjectPiping' -Tag 'LiveOnly' {
             Assert-NotNull $expected.Properties.PolicyDefinitionId
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
             Assert-AreEqual $expected.Properties.PolicyDefinitionId $actual.Properties.PolicyDefinitionId
-            Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+            Assert-AreEqual $expected.Properties.Scope $env.scope
             Assert-AreEqual $updatedDescription $actual.Properties.Description
             Assert-AreEqual $updatedDescription $expected.Properties.Description
         } | Should -Not -Throw
@@ -143,8 +140,7 @@ Describe 'Backcompat-PolicyObjectPiping' -Tag 'LiveOnly' {
 
     AfterAll {
         # clean up
-        $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $rg.ResourceId -BackwardCompatible | Remove-AzPolicyAssignment -BackwardCompatible
-        $remove = (Remove-ResourceGroup -Name $rgname) -and $remove
+        $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -BackwardCompatible | Remove-AzPolicyAssignment -BackwardCompatible
         $remove = (Get-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -BackwardCompatible | Remove-AzPolicySetDefinition -Force -BackwardCompatible) -and $remove
         $remove = (Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -BackwardCompatible | Remove-AzPolicyDefinition -Force -BackwardCompatible) -and $remove
         Assert-AreEqual True $remove

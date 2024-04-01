@@ -1,22 +1,21 @@
 # setup the Pester environment for policy tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyAssignmentEnforcementMode'
 
-Describe 'PolicyAssignmentEnforcementMode' -Tag 'LiveOnly' {
+Describe 'PolicyAssignmentEnforcementMode' {
 
     BeforeAll {
         # setup
-        $rgname = Get-ResourceGroupName
+        $rgname = $env.rgname
         $policyName = Get-ResourceName
         $testPA = Get-ResourceName
         $test2 = Get-ResourceName
         $location = "westus"
 
         # make a new resource group and policy definition
-        $rg = New-ResourceGroup -Name $rgname -Location $location
         $policy = New-AzPolicyDefinition -Name $policyName -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description
 
         # assign the policy definition to the resource group
-        $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description -Location $location -EnforcementMode DoNotEnforce
+        $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $env.scope -Description $description -Location $location -EnforcementMode DoNotEnforce
     }
 
     It 'Make a policy assignment' {
@@ -25,14 +24,14 @@ Describe 'PolicyAssignmentEnforcementMode' -Tag 'LiveOnly' {
         $actual.Location | Should -Be $location
 
         # get the assignment
-        $expected = Get-AzPolicyAssignment -Name $testPA -Scope $rg.ResourceId
+        $expected = Get-AzPolicyAssignment -Name $testPA -Scope $env.scope
 
         # validate results
         $expected.Name | Should -Be $actual.Name
         $expected.Type | Should -Be $actual.Type
         $expected.Id | Should -Be $actual.Id
         $expected.PolicyDefinitionId | Should -Be $policy.Id
-        $expected.Scope | Should -Be $rg.ResourceId
+        $expected.Scope | Should -Be $env.scope
         $expected.EnforcementMode | Should -Be $actual.EnforcementMode
         $expected.EnforcementMode | Should -Be $enforcementModeDoNotEnforce
         $expected.Location | Should -Be $actual.Location
@@ -60,7 +59,7 @@ Describe 'PolicyAssignmentEnforcementMode' -Tag 'LiveOnly' {
 
     It 'Make another policy assignment without enforcement mode' {
         # make another policy assignment without an enforcementMode, validate default mode is set
-        $withoutEnforcementMode = New-AzPolicyAssignment -Name $test2 -Scope $rg.ResourceId -PolicyDefinition $policy -Description $description
+        $withoutEnforcementMode = New-AzPolicyAssignment -Name $test2 -Scope $env.scope -PolicyDefinition $policy -Description $description
         $withoutEnforcementMode.EnforcementMode | Should -Be $enforcementModeDefault
 
         # set an enforcement mode to the new assignment using the Update- cmdlet
@@ -74,16 +73,15 @@ Describe 'PolicyAssignmentEnforcementMode' -Tag 'LiveOnly' {
 
     It 'Enforcement mode in policy assignment list' {
         # verify enforcement mode is returned in collection GET
-        $list = Get-AzPolicyAssignment -Scope $rg.ResourceId | ?{ $_.Name -in @($testPA, $test2) }
+        $list = Get-AzPolicyAssignment -Scope $env.scope | ?{ $_.Name -in @($testPA, $test2) }
         @($list.EnforcementMode).Count | Should -Be 2
     }
 
     AfterAll {
         # clean up
-        $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $rg.ResourceId -PassThru
-        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $rg.ResourceId -PassThru) -and $remove
+        $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $env.scope -PassThru
+        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $env.scope -PassThru) -and $remove
         $remove = (Remove-AzPolicyDefinition -Name $policyName -Force -PassThru) -and $remove
-        $remove = (Remove-ResourceGroup -Name $rgname) -and $remove
         $remove | Should -Be $true
 
         Write-Host -ForegroundColor Magenta "Cleanup complete."

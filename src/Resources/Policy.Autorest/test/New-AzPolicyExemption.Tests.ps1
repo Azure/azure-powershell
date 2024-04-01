@@ -1,17 +1,16 @@
 # setup the Pester environment for policy cmdlet tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'NewPolicyExemption'
 
-Describe 'NewPolicyExemption' -Tag 'LiveOnly' {
+Describe 'NewPolicyExemption' {
 
     BeforeAll {
         # make a new resource group and policy assignment of some built-in definition
-        $rgname = Get-ResourceGroupName
+        $rgname = $env.rgname
         $goodScope = "/subscriptions/$subscriptionId/resourceGroups/$rgname"
 
-        $rg = New-ResourceGroup -Name $rgname -Location "west us"
         $assignmentName = 'testPA1'
         $policy = Get-AzPolicyDefinition -Builtin | ?{ $_.Name -eq '0a914e76-4921-4c19-b460-a2d36003525a' }
-        $goodPolicyAssignment = New-AzPolicyAssignment -Name $assignmentName -Scope $rg.ResourceId -PolicyDefinition $policy -Description $description
+        $goodPolicyAssignment = New-AzPolicyAssignment -Name $assignmentName -Scope $env.scope -PolicyDefinition $policy -Description $description
     }
 
     It 'New-AzPolicyExemption' {
@@ -82,8 +81,6 @@ Describe 'NewPolicyExemption' -Tag 'LiveOnly' {
 
     AfterAll {
         $remove = Remove-AzPolicyAssignment -Name $assignmentName -PassThru
-
-        $remove = (Remove-ResourceGroup -Name $rgname) -and $remove
         $remove | Should -Be $true
 
         Write-Host -ForegroundColor Magenta "Cleanup complete."

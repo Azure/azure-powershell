@@ -1,11 +1,11 @@
 # setup the Pester environment for policy tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyAssignmentUserAssignedIdentity'
 
-Describe 'PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
+Describe 'PolicyAssignmentUserAssignedIdentity' {
 
     BeforeAll {
         # setup
-        $rgname = Get-ResourceGroupName
+        $rgname = $env.rgname
         $policyName = Get-ResourceName
         $testPA = Get-ResourceName
         $test2 = Get-ResourceName
@@ -13,24 +13,23 @@ Describe 'PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
         $userassignedidentityname = "test-user-msi"
     
         # make a new resource group and policy definition
-        $rg = New-ResourceGroup -Name $rgname -Location $location
         $policy = New-AzPolicyDefinition -Name $policyName -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description
         $userassignedidentity = New-AzUserAssignedIdentity -ResourceGroupName $rgname -Name $userassignedidentityname -Location $location
         $userassignedidentityid = $userassignedidentity.Id
         # assign the policy definition with user MSI to the resource group
-        $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $rg.ResourceId -Description $description -IdentityType "UserAssigned" -IdentityId $userassignedidentityid -Location $location
+        $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $env.scope -Description $description -IdentityType "UserAssigned" -IdentityId $userassignedidentityid -Location $location
     }
 
     It 'Make a policy assignment at RG scope with user assigned MSI' {
         # get the assignment back
-        $expected = Get-AzPolicyAssignment -Name $testPA -Scope $rg.ResourceId
+        $expected = Get-AzPolicyAssignment -Name $testPA -Scope $env.scope
 
         # validate the result
         $expected.Name | Should -Be $actual.Name
         $actual.Type | Should -Be 'Microsoft.Authorization/policyAssignments'
         $expected.Id | Should -Be $actual.Id
         $expected.PolicyDefinitionId | Should -Be $policy.Id
-        $expected.Scope | Should -Be $rg.ResourceId
+        $expected.Scope | Should -Be $env.scope
         $expected.IdentityType | Should -Be 'UserAssigned'
         $expected.IdentityType | Should -Be $actual.IdentityType
 
@@ -73,7 +72,7 @@ Describe 'PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
 
     It 'Make another policy assignment without MSI then add MSI' {
         # make another policy assignment without an identity
-        $withoutIdentityResult = New-AzPolicyAssignment -Name $test2 -Scope $rg.ResourceId -PolicyDefinition $policy -Description $description
+        $withoutIdentityResult = New-AzPolicyAssignment -Name $test2 -Scope $env.scope -PolicyDefinition $policy -Description $description
         $withoutIdentityResult.Identity | Should -BeNull
         $withoutIdentityResult.Location | Should -BeNull
 
@@ -88,7 +87,7 @@ Describe 'PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
 
     It 'List policy assignments with user assigned MSI' {
         # verify identity is returned in collection GET
-        $list = Get-AzPolicyAssignment -Scope $rg.ResourceId | Where-Object{ $_.Name -in @($testPA, $test2) }
+        $list = Get-AzPolicyAssignment -Scope $env.scope | Where-Object{ $_.Name -in @($testPA, $test2) }
         $list.IdentityType | Select -Unique | Should -Be 'UserAssigned'
         $userassignedidentityobject = ($list.IdentityUserAssignedIdentity | Select -Unique)    
         @(($($userassignedidentityobject.AdditionalProperties.values)[0]).PrincipalId | Select -Unique).Count | Should -Be 1
@@ -98,13 +97,12 @@ Describe 'PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
 
     AfterAll {
         # clean up
-        $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $rg.ResourceId -PassThru
-        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $rg.ResourceId -PassThru) -and $remove
+        $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $env.scope -PassThru
+        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $env.scope -PassThru) -and $remove
 
         Remove-AzUserAssignedIdentity -ResourceGroupName $rgName -Name $userassignedidentityname
 
         $remove = (Remove-AzPolicyDefinition -Name $policyName -Force -PassThru) -and $remove
-        $remove = (Remove-ResourceGroup -Name $rgname) -and $remove
         $remove | Should -Be $true
 
         Write-Host -ForegroundColor Magenta "Cleanup complete."

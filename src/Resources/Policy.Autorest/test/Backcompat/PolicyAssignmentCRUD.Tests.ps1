@@ -1,11 +1,11 @@
 # setup the Pester environment for policy backcompat tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-PolicyAssignmentCRUD'
 
-Describe 'Backcompat-PolicyAssignmentCRUD' -Tag 'LiveOnly' {
+Describe 'Backcompat-PolicyAssignmentCRUD' {
 
     BeforeAll {
         # setup
-        $rgname = Get-ResourceGroupName
+        $rgname = $env.rgname
         $policyName = Get-ResourceName
 
         $policySetDefName = Get-ResourceName
@@ -13,7 +13,6 @@ Describe 'Backcompat-PolicyAssignmentCRUD' -Tag 'LiveOnly' {
         $policyDefName2 = Get-ResourceName
 
         # make a new resource group and policy definition
-        $rg = New-ResourceGroup -Name $rgname -Location "west us"
         $policyDefinition1 = New-AzPolicyDefinition -Name $policyDefName1 -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description -BackwardCompatible
         $policyDefinition2 = New-AzPolicyDefinition -Name $policyDefName2 -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description -BackwardCompatible
         $policySetString = "[{""policyDefinitionId"":""" + $policyDefinition1.PolicyDefinitionId + """}, {""policyDefinitionId"":""" + $policyDefinition2.PolicyDefinitionId + """}]"
@@ -29,13 +28,13 @@ Describe 'Backcompat-PolicyAssignmentCRUD' -Tag 'LiveOnly' {
     It 'make a policy assignment at RG scope' {
         {
             # assign the policy definition to the resource group, get the assignment back and validate
-            $actual = New-AzPolicyAssignment -Name $test1 -PolicySetDefinition $policySet -Scope $rg.ResourceId -Description $description -NonComplianceMessage $nonComplianceMessages -BackwardCompatible
-            $expected = Get-AzPolicyAssignment -Name $test1 -Scope $rg.ResourceId -BackwardCompatible
+            $actual = New-AzPolicyAssignment -Name $test1 -PolicySetDefinition $policySet -Scope $env.scope -Description $description -NonComplianceMessage $nonComplianceMessages -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $test1 -Scope $env.scope -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
             Assert-AreEqual $expected.Properties.PolicyDefinitionId $policySet.ResourceId
-            Assert-AreEqual $expected.Properties.Scope $rg.ResourceId
+            Assert-AreEqual $expected.Properties.Scope $env.scope
             Assert-AreEqual 1 $expected.Properties.NonComplianceMessages.Length
             Assert-AreEqual "General message" $expected.Properties.NonComplianceMessages[0].Message
         } | Should -Not -Throw
@@ -44,7 +43,7 @@ Describe 'Backcompat-PolicyAssignmentCRUD' -Tag 'LiveOnly' {
     It 'get policy assignment by Id' {
         {
             # get first assignment back by name
-            $actual = Get-AzPolicyAssignment -Name $test1 -Scope $rg.ResourceId -BackwardCompatible
+            $actual = Get-AzPolicyAssignment -Name $test1 -Scope $env.scope -BackwardCompatible
 
             # get it again by id and validate
             $actualId = Get-AzPolicyAssignment -Id $actual.ResourceId -BackwardCompatible
@@ -57,7 +56,7 @@ Describe 'Backcompat-PolicyAssignmentCRUD' -Tag 'LiveOnly' {
     It 'make a policy assignment with multiple noncompliance messages' {
         {
             # get first assignment back by name
-            $get = Get-AzPolicyAssignment -Name $test1 -Scope $rg.ResourceId -BackwardCompatible
+            $get = Get-AzPolicyAssignment -Name $test1 -Scope $env.scope -BackwardCompatible
 
             $nonComplianceMessages = $nonComplianceMessages + @(@{
                 Message = "Specific message 1"
@@ -68,7 +67,7 @@ Describe 'Backcompat-PolicyAssignmentCRUD' -Tag 'LiveOnly' {
             Assert-AreEqual 2 $nonComplianceMessages.Length
 
             # create it again with two non-compliance messages
-            $new = New-AzPolicyAssignment -Name $test1 -PolicySetDefinition $policySet -Scope $rg.ResourceId -Description $description -NonComplianceMessage $nonComplianceMessages -BackwardCompatible
+            $new = New-AzPolicyAssignment -Name $test1 -PolicySetDefinition $policySet -Scope $env.scope -Description $description -NonComplianceMessage $nonComplianceMessages -BackwardCompatible
             Assert-AreEqual $get.ResourceId $new.ResourceId
 
             # get it again by id and validate non-compliance messages
@@ -96,7 +95,7 @@ Describe 'Backcompat-PolicyAssignmentCRUD' -Tag 'LiveOnly' {
     It 'update policy assignment to a single noncompliance message' {
         {
             # get first assignment back again
-            $actual = Get-AzPolicyAssignment -Name $test1 -Scope $rg.ResourceId -BackwardCompatible
+            $actual = Get-AzPolicyAssignment -Name $test1 -Scope $env.scope -BackwardCompatible
 
             $nonComplianceMessages = @(@{ Message = "General non-compliance message" })
 
@@ -111,7 +110,7 @@ Describe 'Backcompat-PolicyAssignmentCRUD' -Tag 'LiveOnly' {
     It 'update policy assignment back to a multiple noncompliance message' {
         {
             # get first assignment back again
-            $actual = Get-AzPolicyAssignment -Name $test1 -Scope $rg.ResourceId -BackwardCompatible
+            $actual = Get-AzPolicyAssignment -Name $test1 -Scope $env.scope -BackwardCompatible
 
             $nonComplianceMessages = @(
             @{
@@ -135,8 +134,8 @@ Describe 'Backcompat-PolicyAssignmentCRUD' -Tag 'LiveOnly' {
     It 'list policy assignments' {
         {
             # make another policy assignment, ensure both are present in resource group scope listing
-            $expected = New-AzPolicyAssignment -Name $test2 -Scope $rg.ResourceId -PolicyDefinition $policyDefinition1 -Description $description -BackwardCompatible
-            $list1 = Get-AzPolicyAssignment -Scope $rg.ResourceId -BackwardCompatible | ?{ $_.Name -in @($test1, $test2) }
+            $expected = New-AzPolicyAssignment -Name $test2 -Scope $env.scope -PolicyDefinition $policyDefinition1 -Description $description -BackwardCompatible
+            $list1 = Get-AzPolicyAssignment -Scope $env.scope -BackwardCompatible | ?{ $_.Name -in @($test1, $test2) }
             Assert-AreEqual 2 $list1.Count
 
             # ensure both are present in full listing
@@ -151,12 +150,11 @@ Describe 'Backcompat-PolicyAssignmentCRUD' -Tag 'LiveOnly' {
 
     AfterAll {
         # clean up
-        $remove = Remove-AzPolicyAssignment -Name $test1 -Scope $rg.ResourceId -BackwardCompatible
-        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $rg.ResourceId -BackwardCompatible) -and $remove
+        $remove = Remove-AzPolicyAssignment -Name $test1 -Scope $env.scope -BackwardCompatible
+        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $env.scope -BackwardCompatible) -and $remove
         $remove = (Remove-AzPolicySetDefinition -Name $policySetDefName -Force -BackwardCompatible) -and $remove
         $remove = (Remove-AzPolicyDefinition -Name $policyDefName1 -Force -BackwardCompatible) -and $remove
         $remove = (Remove-AzPolicyDefinition -Name $policyDefName2 -Force -BackwardCompatible) -and $remove
-        $remove = (Remove-ResourceGroup -Name $rgname) -and $remove
 
         Assert-AreEqual True $remove
 
