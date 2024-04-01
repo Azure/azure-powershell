@@ -1,7 +1,7 @@
 # setup the Pester environment for policy tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyExemptionCRUD'
 
-Describe 'PolicyExemptionCRUD' {
+Describe 'PolicyExemptionCRUD' -Tag 'LiveOnly' {
 
     BeforeAll {
         # Get built-in Audit resource location matches resource group location

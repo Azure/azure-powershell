@@ -187,7 +187,9 @@ process {
 
     # construct id for exemption to update
     $resolved = ResolvePolicyExemption $Name $Scope $thisId
-    $getParameters = @{ Id = $resolved.ResourceId }
+
+    $getParameters = Get-ExtraParameters @PSBoundParameters
+    $getParameters['Id'] = $resolved.ResourceId
 
     if ($writeln) {
         Write-Host -ForegroundColor Blue -> Get-AzPolicyExemption'(' $getParameters ')'

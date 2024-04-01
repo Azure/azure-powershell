@@ -1,7 +1,7 @@
 # setup the Pester environment for policy tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyAssignmentEnforcementMode'
 
-Describe 'PolicyAssignmentEnforcementMode' {
+Describe 'PolicyAssignmentEnforcementMode' -Tag 'LiveOnly' {
 
     BeforeAll {
         # setup

@@ -514,20 +514,66 @@ function LocationCompleter(
     $fakeBoundParameter
 )
 {
-    $currentLocations | Where-Object { $_ -like "$wordToComplete*" }
+    if ($global:currentLocations.Count -le 0) {
+        $response = Invoke-AzRestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/locations?api-version=2022-12-01" -Method GET
+        $global:currentLocations = ($response.Content | ConvertFrom-Json -Depth 100).value | Sort-Object -Property name | Select-Object -ExpandProperty name
+    }
+
+    # If you see the following error, it means your context access has expired
+    #   The given key 'AzureAttestationServiceEndpointSuffix' was not present in the dictionary.
+    $global:currentLocations | Where-Object { $_ -like "$wordToComplete*" }
 }
 
 function Get-SubscriptionId {
     (Utils\Get-SubscriptionIdTestSafe)
 }
 
+function Get-ExtraParameters
+(
+    $DefaultProfile,
+    $Break,
+    $HttpPipelineAppend,
+    $HttpPipelinePrepend,
+    $Proxy,
+    $ProxyCredential,
+    $ProxyUseDefaultCredentials
+) {
+    $parms = @{}
+    if ($PSBoundParameters['DefaultProfile']) {
+        $parms['DefaultProfile'] = $PSBoundParameters['DefaultProfile']
+    }
+
+    if ($PSBoundParameters['Break']) {
+        $parms['Break'] = $PSBoundParameters['Break']
+    }
+
+    if ($PSBoundParameters['HttpPipelineAppend']) {
+        $parms['HttpPipelineAppend'] = $PSBoundParameters['HttpPipelineAppend']
+    }
+
+    if ($PSBoundParameters['HttpPipelinePrepend']) {
+        $parms['HttpPipelinePrepend'] = $PSBoundParameters['HttpPipelinePrepend']
+    }
+
+    if ($PSBoundParameters['Proxy']) {
+        $parms['Proxy'] = $PSBoundParameters['Proxy']
+    }
+
+    if ($PSBoundParameters['ProxyCredential']) {
+        $parms['ProxyCredential'] = $PSBoundParameters['ProxyCredential']
+    }
+
+    if ($PSBoundParameters['ProxyUseDefaultCredentials']) {
+        $parms['ProxyUseDefaultCredentials'] = $PSBoundParameters['ProxyUseDefaultCredentials']
+    }
+
+    return $parms
+}
+
 # register the location completer for New-AzPolicyAssignment
 Register-ArgumentCompleter -CommandName New-AzPolicyAssignment -ParameterName Location -ScriptBlock ${function:LocationCompleter}
 
 # cache Azure locations to be used by the location completer (Get-AzLocation is not available in this context, need to use REST)
-$subscriptionId = (Get-SubscriptionId)
+$global:currentLocations = @()
 
-$response = Invoke-AzRestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/locations?api-version=2022-12-01" -Method GET
-$currentLocations = ($response.Content | ConvertFrom-Json -Depth 100).value | Sort-Object -Property name | Select-Object -ExpandProperty name
-# If you see the following error, it means your context access has expired
-# The given key 'AzureAttestationServiceEndpointSuffix' was not present in the dictionary.
+$subscriptionId = (Get-SubscriptionId)

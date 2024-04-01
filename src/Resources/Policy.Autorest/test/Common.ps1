@@ -25,6 +25,11 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         # load tenant and subscription the test will run under
         . ($loadEnvPath)
 
+        # set up test data file folder path
+        if (!$testFilesFolder) {
+            $testFilesFolder = (Join-Path $PSScriptRoot 'ScenarioTests')
+        }
+
         # set up the recording file path
         if (!$TestRecordingFile) {
             $TestRecordingFile = Join-Path $currentDir "$($TargetTestName).Recording.json"
@@ -99,7 +104,6 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         $invalidParameterValue = $env.invalidParameterValue
         $invalidPolicyDefinitionReference = $env.invalidPolicyDefinitionReference
         $invalidPolicySetDefinitionRequest = $env.invalidPolicySetDefinitionRequest
-        $testFilesFolder = $env.testFilesFolder
         $subscriptionId = $env.SubscriptionId
     }
     catch {

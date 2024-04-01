@@ -244,7 +244,9 @@ process {
 
     # construct id for assignment to update
     $resolved = ResolvePolicyAssignment $Name $Scope $thisId
-    $getParameters = @{ Id = $resolved.ResourceId }
+
+    $getParameters = Get-ExtraParameters @PSBoundParameters
+    $getParameters['Id'] = $resolved.ResourceId
 
     if ($writeln) {
         Write-Host -ForegroundColor Blue -> Get-AzPolicyAssignment'(' $getParameters ')'
