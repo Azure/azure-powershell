@@ -41,7 +41,7 @@ pac39,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-relea
 pac40,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Dashboard.0.1.1.nupkg;sourceType=sa]Az.Dashboard,0.1.1
 pac41,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataBox.0.3.0.nupkg;sourceType=sa]Az.DataBox,0.3.0
 pac42,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataBoxEdge.1.1.0.nupkg;sourceType=sa]Az.DataBoxEdge,1.1.0
-pac43,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Databricks.1.7.1.nupkg;sourceType=sa]Az.Databricks,1.7.1
+pac43,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Databricks.1.7.2.nupkg;sourceType=sa]Az.Databricks,1.7.2
 pac44,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.Datadog.0.1.0.nupkg;sourceType=sa]Az.Datadog,0.1.0
 pac45,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataFactory.1.18.3.nupkg;sourceType=sa]Az.DataFactory,1.18.3
 pac46,[ps=true;customSource=https://azpspackage.blob.core.windows.net/docs-release/Az.DataLakeAnalytics.1.0.3.nupkg;sourceType=sa]Az.DataLakeAnalytics,1.0.3
