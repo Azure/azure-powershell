@@ -1,39 +1,22 @@
-### Example 1: Lists all the Firewall Rules in specified MySql server
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzMySqlFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+{{ Add code here }}
 ```
 
 ```output
-Name Type
----- ----
-rule Microsoft.DBforMySQL/servers/firewallRules
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This cmdlet lists all the Firewall Rule in specified MySql server.
+{{ Add description here }}
 
-### Example 2: Get Firewall Rule by name
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+{{ Add code here }}
 ```
 
 ```output
-Name Type
----- ----
-rule Microsoft.DBforMySQL/servers/firewallRules
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This cmdlet gets Firewall Rule by name.
+{{ Add description here }}
 
-### Example 3: Get Firewall Rule by identity
-```powershell
-$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
-Get-AzMySqlFirewallRule -InputObject $ID
-```
-
-```output
-Name Type
----- ----
-rule Microsoft.DBforMySQL/servers/firewallRules
-```
-
-This cmdlet gets Firewall Rule by identity.

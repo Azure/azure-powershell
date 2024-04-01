@@ -14,23 +14,36 @@ Creates a new firewall rule or updates an existing firewall rule.
 
 ### CreateExpanded (Default)
 ```
-New-AzMySqlFirewallRule -ResourceGroupName <String> -ServerName <String> -EndIPAddress <String>
- -StartIPAddress <String> [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String> -EndIPAddress <String>
+ -StartIPAddress <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### AllowAll
+### CreateViaIdentityExpanded
 ```
-New-AzMySqlFirewallRule -ResourceGroupName <String> -ServerName <String> -AllowAll [-Name <String>]
+New-AzMySqlFirewallRule -InputObject <IMySqlIdentity> -EndIPAddress <String> -StartIPAddress <String>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaIdentityFlexibleServerExpanded
+```
+New-AzMySqlFirewallRule -FlexibleServerInputObject <IMySqlIdentity> -Name <String> -EndIPAddress <String>
+ -StartIPAddress <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### ClientIPAddress
+### CreateViaJsonString
 ```
-New-AzMySqlFirewallRule -ResourceGroupName <String> -ServerName <String> -ClientIPAddress <String>
- [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,61 +51,29 @@ Creates a new firewall rule or updates an existing firewall rule.
 
 ## EXAMPLES
 
-### Example 1: Create a new MySql server Firewall Rule
+### Example 1: {{ Add title here }}
 ```powershell
-New-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -EndIPAddress 0.0.0.1 -StartIPAddress 0.0.0.0
+{{ Add code here }}
 ```
 
 ```output
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.0        0.0.0.1
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This cmdlets create a MySql server Firewall Rule.
+{{ Add description here }}
 
-### Example 2: Create a new MySql Firewall Rule using -ClientIPAddress.
+### Example 2: {{ Add title here }}
 ```powershell
-New-AzMySqlFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -ClientIPAddress 0.0.0.1
+{{ Add code here }}
 ```
 
 ```output
-Name                                StartIPAddress EndIPAddress
-----                                -------------- ------------
-ClientIPAddress_2020-08-11_18-19-27 0.0.0.1        0.0.0.1
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This cmdlets create a MySql Firewall Rule using -ClientIPAddress.
-
-### Example 3: Create a new MySql Firewall Rule to allow all IPs
-```powershell
-New-AzMySqlFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -AllowAll
-```
-
-```output
-Name                         StartIPAddress EndIPAddress
-----                         -------------- ------------
-AllowAll_2020-08-11_18-19-27 0.0.0.0        255.255.255.255
-```
-
-This cmdlets create a new MySql Firewall Rule to allow all IPs.
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -AllowAll
-Present to allow all range IPs, from 0.0.0.0 to 255.255.255.255.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AllowAll
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job
@@ -109,24 +90,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClientIPAddress
-Client specified single IP of the server firewall rule.
-Must be IPv4 format.
-
-```yaml
-Type: System.String
-Parameter Sets: ClientIPAddress
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -146,7 +112,67 @@ Must be IPv4 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityFlexibleServerExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FlexibleServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+Parameter Sets: CreateViaIdentityFlexibleServerExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Create operation
+
+```yaml
+Type: System.String
+Parameter Sets: CreateViaJsonString
 Aliases:
 
 Required: True
@@ -158,15 +184,13 @@ Accept wildcard characters: False
 
 ### -Name
 The name of the server firewall rule.
-If not specified, the default is undefined.
-If AllowAll is present, the default name is AllowAll_yyyy-MM-dd_HH-mm-ss.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaIdentityFlexibleServerExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases: FirewallRuleName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -194,7 +218,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -209,7 +233,7 @@ The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -225,7 +249,7 @@ Must be IPv4 format.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityFlexibleServerExpanded
 Aliases:
 
 Required: True
@@ -240,7 +264,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
 Aliases:
 
 Required: False
@@ -286,13 +310,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IFirewallRule
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

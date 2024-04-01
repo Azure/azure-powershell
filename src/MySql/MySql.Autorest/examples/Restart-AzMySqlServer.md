@@ -1,14 +1,22 @@
-### Example 1: Restart MySql server by resource group and server name
+### Example 1: {{ Add title here }}
 ```powershell
-Restart-AzMySqlServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
+{{ Add code here }}
 ```
 
-This cmdlet restarts MySql server by resource group and server name.
-
-### Example 2: Restart MySql server by identity
-```powershell
-$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/restart"
-Restart-AzMySqlServer -InputObject $ID
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-These cmdlets restart MySql server by identity.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

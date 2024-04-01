@@ -1,53 +1,22 @@
-### Example 1: Get MySql server with default context
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzMySqlServer
+{{ Add code here }}
 ```
 
 ```output
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   -------        --------------
-mysql-test-11 eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Enabled
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This cmdlet gets MySql server with default context.
+{{ Add description here }}
 
-### Example 2: Get MySql server by resource group and server name
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
+{{ Add code here }}
 ```
 
 ```output
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   -------        --------------
-mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Enabled
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This cmdlet gets MySql server by resource group and server name.
-
-### Example 3: Lists all the MySql servers in specified resource group
-```powershell
-Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest
-```
-
-```output
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   -------        ------------
-mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Enabled
-```
-
-This cmdlet lists all the MySql servers in specified resource group.
-
-### Example 4: Get MySql server by identity
-```powershell
-$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test"
-Get-AzMySqlServer -InputObject $ID
-```
-
-```output
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----          -------- ------------------ ------- ----------------------- -------   -------        ------------
-mysql-test    eastus   mysql_test         5.7     5120                    GP_Gen5_4 GeneralPurpose Enabled
-```
-
-This cmdlet lists gets MySql server by identity.
+{{ Add description here }}
 

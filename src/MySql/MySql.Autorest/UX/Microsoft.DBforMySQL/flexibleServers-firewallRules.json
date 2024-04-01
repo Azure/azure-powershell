@@ -1,17 +1,17 @@
 {
   "resourceType": "flexibleServers/firewallRules",
-  "apiVersion": "2021-05-01",
+  "apiVersion": "2023-06-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.mysql"
   },
   "commands": [
     {
-      "name": "Get-AzMySqlFlexibleServerFirewallRule",
+      "name": "Get-AzMySqlFirewallRule",
       "description": "Gets information about a server firewall rule.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleserverfirewallrule"
+          "url": "https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlfirewallrule"
         },
         "parameterSets": [
           {
@@ -49,12 +49,12 @@
       ]
     },
     {
-      "name": "Remove-AzMySqlFlexibleServerFirewallRule",
+      "name": "Remove-AzMySqlFirewallRule",
       "description": "Deletes a firewall rule.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/firewallRules/{firewallRuleName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.mysql/remove-azmysqlflexibleserverfirewallrule"
+          "url": "https://learn.microsoft.com/powershell/module/az.mysql/remove-azmysqlfirewallrule"
         },
         "parameterSets": [
           {

@@ -1,14 +1,22 @@
-### Example 1: Remove MySql Firewall Rule by name
+### Example 1: {{ Add title here }}
 ```powershell
-Remove-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+{{ Add code here }}
 ```
 
-This cmdlet removes MySql Firewall Rule by name.
-
-### Example 2: Remove MySql Firewall Rule by identity
-```powershell
-$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
-Remove-AzMySqlFirewallRule -InputObject $ID
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-These cmdlets remove MySql Firewall Rule by identity.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
+

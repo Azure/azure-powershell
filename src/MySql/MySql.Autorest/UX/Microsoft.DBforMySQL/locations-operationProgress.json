@@ -1,0 +1,47 @@
+{
+  "resourceType": "locations/operationProgress",
+  "apiVersion": "2023-12-30",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mysql"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMySqlOperationProgress",
+      "description": "Get the operation result for a long running operation.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/locations/{locationName}/operationProgress/{operationId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqloperationprogress"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-LocationName <String>",
+              "-OperationId <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the operation result for a long running operation.",
+          "parameters": [
+            {
+              "name": "-LocationName",
+              "value": "[Path.locationName]"
+            },
+            {
+              "name": "-OperationId",
+              "value": "[Path.operationId]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

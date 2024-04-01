@@ -22,23 +22,33 @@ List all the replicas for a given server.
 
 ## EXAMPLES
 
-### Example 1: Get MySql server replica by resource group and server name
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzMySqlReplica -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+{{ Add code here }}
 ```
 
 ```output
-Name               Location AdministratorLogin Version StorageProfileStorageMb SkuName   SkuTier        SslEnforcement
-----               -------- ------------------ ------- ----------------------- -------   -------        --------------
-mysql-test-replica eastus   mysql_test         5.7     10240                   GP_Gen5_4 GeneralPurpose Disabled
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This cmdlet gets MySql server replica by resource group and server name.
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here (remove the output block if the example doesn't have an output) }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -105,11 +115,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IServer
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IServer
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

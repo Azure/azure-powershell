@@ -1,17 +1,17 @@
 {
   "resourceType": "flexibleServers",
-  "apiVersion": "2021-05-01",
+  "apiVersion": "2023-12-30",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.mysql"
   },
   "commands": [
     {
-      "name": "Get-AzMySqlFlexibleServer",
+      "name": "Get-AzMySqlServer",
       "description": "Gets information about a server.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleserver"
+          "url": "https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlserver"
         },
         "parameterSets": [
           {
@@ -44,12 +44,50 @@
       ]
     },
     {
-      "name": "Remove-AzMySqlFlexibleServer",
+      "name": "Invoke-AzMySqlCutoverServersMigration",
+      "description": "Cutover migration for MySQL import, it will switch source elastic server DNS to flexible server.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/cutoverMigration",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mysql/invoke-azmysqlcutoverserversmigration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-ServerName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Cutover migration for MySQL import, it will switch source elastic server DNS to flexible server.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServerName",
+              "value": "[Path.serverName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzMySqlServer",
       "description": "Deletes a server.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.mysql/remove-azmysqlflexibleserver"
+          "url": "https://learn.microsoft.com/powershell/module/az.mysql/remove-azmysqlserver"
         },
         "parameterSets": [
           {
@@ -82,50 +120,12 @@
       ]
     },
     {
-      "name": "Restart-AzMySqlFlexibleServer",
-      "description": "Restarts a server.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/restart",
-      "help": {
-        "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.mysql/restart-azmysqlflexibleserver"
-        },
-        "parameterSets": [
-          {
-            "parameters": [
-              "-Name <String>",
-              "-ResourceGroupName <String>",
-              "[-SubscriptionId <String>]"
-            ]
-          }
-        ]
-      },
-      "examples": [
-        {
-          "description": "Restarts a server.",
-          "parameters": [
-            {
-              "name": "-Name",
-              "value": "[Path.serverName]"
-            },
-            {
-              "name": "-ResourceGroupName",
-              "value": "[Path.resourceGroupName]"
-            },
-            {
-              "name": "-SubscriptionId",
-              "value": "[Path.subscriptionId]"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Start-AzMySqlFlexibleServer",
+      "name": "Start-AzMySqlServer",
       "description": "Starts a server.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/start",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.mysql/start-azmysqlflexibleserver"
+          "url": "https://learn.microsoft.com/powershell/module/az.mysql/start-azmysqlserver"
         },
         "parameterSets": [
           {
@@ -158,12 +158,12 @@
       ]
     },
     {
-      "name": "Stop-AzMySqlFlexibleServer",
+      "name": "Stop-AzMySqlServer",
       "description": "Stops a server.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/stop",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.mysql/stop-azmysqlflexibleserver"
+          "url": "https://learn.microsoft.com/powershell/module/az.mysql/stop-azmysqlserver"
         },
         "parameterSets": [
           {
@@ -186,6 +186,44 @@
             {
               "name": "-ResourceGroupName",
               "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Test-AzMySqlBackupAndExportBackup",
+      "description": "Validates if backup can be performed for given server.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/validateBackup",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mysql/test-azmysqlbackupandexportbackup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ResourceGroupName <String>",
+              "-ServerName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Validates if backup can be performed for given server.",
+          "parameters": [
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-ServerName",
+              "value": "[Path.serverName]"
             },
             {
               "name": "-SubscriptionId",

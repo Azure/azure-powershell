@@ -1,17 +1,17 @@
 {
   "resourceType": "flexibleServers/configurations",
-  "apiVersion": "2021-05-01",
+  "apiVersion": "2023-06-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.mysql"
   },
   "commands": [
     {
-      "name": "Get-AzMySqlFlexibleServerConfiguration",
+      "name": "Get-AzMySqlConfiguration",
       "description": "Gets information about a configuration of server.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/configurations/{configurationName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleserverconfiguration"
+          "url": "https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlconfiguration"
         },
         "parameterSets": [
           {

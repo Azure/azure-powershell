@@ -29,55 +29,44 @@ Get-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <
 Get-AzMySqlFirewallRule -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetViaIdentityFlexibleServer
+```
+Get-AzMySqlFirewallRule -FlexibleServerInputObject <IMySqlIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Gets information about a server firewall rule.
 
 ## EXAMPLES
 
-### Example 1: Lists all the Firewall Rules in specified MySql server
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzMySqlFirewallRule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+{{ Add code here }}
 ```
 
 ```output
-Name Type
----- ----
-rule Microsoft.DBforMySQL/servers/firewallRules
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This cmdlet lists all the Firewall Rule in specified MySql server.
+{{ Add description here }}
 
-### Example 2: Get Firewall Rule by name
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzMySqlFirewallRule -Name rule -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+{{ Add code here }}
 ```
 
 ```output
-Name Type
----- ----
-rule Microsoft.DBforMySQL/servers/firewallRules
+{{ Add output here (remove the output block if the example doesn't have an output) }}
 ```
 
-This cmdlet gets Firewall Rule by name.
-
-### Example 3: Get Firewall Rule by identity
-```powershell
-$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
-Get-AzMySqlFirewallRule -InputObject $ID
-```
-
-```output
-Name Type
----- ----
-rule Microsoft.DBforMySQL/servers/firewallRules
-```
-
-This cmdlet gets Firewall Rule by identity.
+{{ Add description here }}
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -91,9 +80,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -FlexibleServerInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
+Parameter Sets: GetViaIdentityFlexibleServer
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
@@ -112,7 +115,7 @@ The name of the server firewall rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityFlexibleServer
 Aliases: FirewallRuleName
 
 Required: True
@@ -177,29 +180,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IFirewallRule
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IFirewallRule
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMySqlIdentity>`: Identity Parameter
-  - `[BackupName <String>]`: The name of the backup.
-  - `[ConfigurationName <String>]`: The name of the server configuration.
-  - `[DatabaseName <String>]`: The name of the database.
-  - `[FirewallRuleName <String>]`: The name of the server firewall rule.
-  - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: The name of the location.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
-  - `[ServerName <String>]`: The name of the server.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
 
 ## RELATED LINKS
 

@@ -1,0 +1,47 @@
+{
+  "resourceType": "locations/capabilitySets",
+  "apiVersion": "2023-12-30",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.mysql"
+  },
+  "commands": [
+    {
+      "name": "Get-AzMySqlLocationBasedCapabilitySet",
+      "description": "Get capabilities at specified location in a given subscription.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.DBforMySQL/locations/{locationName}/capabilitySets/{capabilitySetName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqllocationbasedcapabilityset"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CapabilitySetName <String>",
+              "-LocationName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get capabilities at specified location in a given subscription.",
+          "parameters": [
+            {
+              "name": "-CapabilitySetName",
+              "value": "[Path.capabilitySetName]"
+            },
+            {
+              "name": "-LocationName",
+              "value": "[Path.locationName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -11,35 +11,44 @@ Locale: en-US
 Microsoft Azure PowerShell: MySql cmdlets
 
 ## Az.MySql Cmdlets
+### [Get-AzMySqlAdvancedThreatProtectionSetting](Get-AzMySqlAdvancedThreatProtectionSetting.md)
+Get a server's Advanced Threat Protection state
+
+### [Get-AzMySqlAzureAdAdministrator](Get-AzMySqlAzureAdAdministrator.md)
+Gets information about an azure ad administrator.
+
+### [Get-AzMySqlBackup](Get-AzMySqlBackup.md)
+List all the backups for a given server.
+
 ### [Get-AzMySqlConfiguration](Get-AzMySqlConfiguration.md)
 Gets information about a configuration of server.
 
-### [Get-AzMySqlConnectionString](Get-AzMySqlConnectionString.md)
-Get the connection string according to client connection provider.
+### [Get-AzMySqlDatabase](Get-AzMySqlDatabase.md)
+Gets information about a database.
 
 ### [Get-AzMySqlFirewallRule](Get-AzMySqlFirewallRule.md)
 Gets information about a server firewall rule.
 
-### [Get-AzMySqlFlexibleServer](Get-AzMySqlFlexibleServer.md)
-Gets information about a server.
+### [Get-AzMySqlLocationBasedCapability](Get-AzMySqlLocationBasedCapability.md)
+Get capabilities at specified location in a given subscription.
 
-### [Get-AzMySqlFlexibleServerConfiguration](Get-AzMySqlFlexibleServerConfiguration.md)
-Gets information about a configuration of server.
+### [Get-AzMySqlLocationBasedCapabilitySet](Get-AzMySqlLocationBasedCapabilitySet.md)
+Get capabilities at specified location in a given subscription.
 
-### [Get-AzMySqlFlexibleServerConnectionString](Get-AzMySqlFlexibleServerConnectionString.md)
-Get the connection string according to client connection provider.
+### [Get-AzMySqlLogFile](Get-AzMySqlLogFile.md)
+List all the server log files in a given server.
 
-### [Get-AzMySqlFlexibleServerDatabase](Get-AzMySqlFlexibleServerDatabase.md)
-Gets information about a database.
+### [Get-AzMySqlLongRunningBackup](Get-AzMySqlLongRunningBackup.md)
+Get backup for a given server.
 
-### [Get-AzMySqlFlexibleServerFirewallRule](Get-AzMySqlFlexibleServerFirewallRule.md)
-Gets information about a server firewall rule.
+### [Get-AzMySqlMaintenance](Get-AzMySqlMaintenance.md)
+List maintenances.
 
-### [Get-AzMySqlFlexibleServerLocationBasedCapability](Get-AzMySqlFlexibleServerLocationBasedCapability.md)
-Get the available SKU information for the location
+### [Get-AzMySqlOperationProgress](Get-AzMySqlOperationProgress.md)
+Get the operation result for a long running operation.
 
-### [Get-AzMySqlFlexibleServerReplica](Get-AzMySqlFlexibleServerReplica.md)
-List all the replicas for a given server.
+### [Get-AzMySqlOperationResult](Get-AzMySqlOperationResult.md)
+Get the operation result for a long running operation.
 
 ### [Get-AzMySqlReplica](Get-AzMySqlReplica.md)
 List all the replicas for a given server.
@@ -47,98 +56,131 @@ List all the replicas for a given server.
 ### [Get-AzMySqlServer](Get-AzMySqlServer.md)
 Gets information about a server.
 
-### [Get-AzMySqlVirtualNetworkRule](Get-AzMySqlVirtualNetworkRule.md)
-Gets a virtual network rule.
+### [Get-AzMySqlServerSecurityAlertPolicy](Get-AzMySqlServerSecurityAlertPolicy.md)
+Get a server's security alert policy.
+
+### [Invoke-AzMySqlBatchConfigurationUpdate](Invoke-AzMySqlBatchConfigurationUpdate.md)
+Update a list of configurations in a given server.
+
+### [Invoke-AzMySqlCutoverServersMigration](Invoke-AzMySqlCutoverServersMigration.md)
+Cutover migration for MySQL import, it will switch source elastic server DNS to flexible server.
+
+### [Invoke-AzMySqlExecuteCheckNameAvailability](Invoke-AzMySqlExecuteCheckNameAvailability.md)
+Check the availability of name for server
+
+### [Invoke-AzMySqlExecuteCheckNameAvailabilityWithoutLocation](Invoke-AzMySqlExecuteCheckNameAvailabilityWithoutLocation.md)
+Check the availability of name for server
+
+### [Invoke-AzMySqlExecuteCheckVirtualNetworkSubnetUsage](Invoke-AzMySqlExecuteCheckVirtualNetworkSubnetUsage.md)
+Get virtual network subnet usage for a given vNet resource id.
+
+### [Invoke-AzMySqlExecuteGetPrivateDnsZoneSuffix](Invoke-AzMySqlExecuteGetPrivateDnsZoneSuffix.md)
+Get private DNS zone suffix in the cloud.
+
+### [New-AzMySqlAzureAdAdministrator](New-AzMySqlAzureAdAdministrator.md)
+Create an existing Azure Active Directory administrator.
+
+### [New-AzMySqlBackupAndExport](New-AzMySqlBackupAndExport.md)
+Exports the backup of the given server by creating a backup if not existing.
+
+### [New-AzMySqlConfiguration](New-AzMySqlConfiguration.md)
+Updates a configuration of a server.
+
+### [New-AzMySqlDatabase](New-AzMySqlDatabase.md)
+Creates a new database or updates an existing database.
 
 ### [New-AzMySqlFirewallRule](New-AzMySqlFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.
 
-### [New-AzMySqlFlexibleServer](New-AzMySqlFlexibleServer.md)
-Creates a new MySQL flexible server.
-
-### [New-AzMySqlFlexibleServerDatabase](New-AzMySqlFlexibleServerDatabase.md)
-Creates a new database or updates an existing database.
-
-### [New-AzMySqlFlexibleServerFirewallRule](New-AzMySqlFlexibleServerFirewallRule.md)
-Creates a new firewall rule for MySQL flexible server
-
-### [New-AzMySqlFlexibleServerReplica](New-AzMySqlFlexibleServerReplica.md)
-Creates a replica server for a MySQL flexible server
-
-### [New-AzMySqlReplica](New-AzMySqlReplica.md)
-Creates a new replica from an existing database.
+### [New-AzMySqlLongRunningBackup](New-AzMySqlLongRunningBackup.md)
+Create backup for a given server with specified backup name.
 
 ### [New-AzMySqlServer](New-AzMySqlServer.md)
-Creates a new server.
+Creates a new server or updates an existing server.
+The update action will overwrite the existing server.
 
-### [New-AzMySqlVirtualNetworkRule](New-AzMySqlVirtualNetworkRule.md)
-Creates or updates an existing virtual network rule.
+### [New-AzMySqlServerSecurityAlertPolicy](New-AzMySqlServerSecurityAlertPolicy.md)
+Create a threat detection policy.
 
-### [Remove-AzMySqlFirewallRule](Remove-AzMySqlFirewallRule.md)
-Deletes a server firewall rule.
+### [Read-AzMySqlMaintenance](Read-AzMySqlMaintenance.md)
+Read maintenance.
 
-### [Remove-AzMySqlFlexibleServer](Remove-AzMySqlFlexibleServer.md)
-Deletes a server.
+### [Remove-AzMySqlAzureAdAdministrator](Remove-AzMySqlAzureAdAdministrator.md)
+Deletes an Azure AD Administrator.
 
-### [Remove-AzMySqlFlexibleServerDatabase](Remove-AzMySqlFlexibleServerDatabase.md)
+### [Remove-AzMySqlDatabase](Remove-AzMySqlDatabase.md)
 Deletes a database.
 
-### [Remove-AzMySqlFlexibleServerFirewallRule](Remove-AzMySqlFlexibleServerFirewallRule.md)
+### [Remove-AzMySqlFirewallRule](Remove-AzMySqlFirewallRule.md)
 Deletes a firewall rule.
 
 ### [Remove-AzMySqlServer](Remove-AzMySqlServer.md)
 Deletes a server.
 
-### [Remove-AzMySqlVirtualNetworkRule](Remove-AzMySqlVirtualNetworkRule.md)
-Deletes the virtual network rule with the given name.
-
-### [Restart-AzMySqlFlexibleServer](Restart-AzMySqlFlexibleServer.md)
-Restarts a server.
+### [Reset-AzMySqlServerGtid](Reset-AzMySqlServerGtid.md)
+Resets GTID on a server.
 
 ### [Restart-AzMySqlServer](Restart-AzMySqlServer.md)
 Restarts a server.
 
-### [Restore-AzMySqlFlexibleServer](Restore-AzMySqlFlexibleServer.md)
-Restore a server from an existing backup
+### [Set-AzMySqlAdvancedThreatProtectionSettingPut](Set-AzMySqlAdvancedThreatProtectionSettingPut.md)
+Updates a server's Advanced Threat Protection state.
 
-### [Restore-AzMySqlServer](Restore-AzMySqlServer.md)
-Restore a server from an existing backup
+### [Set-AzMySqlAzureAdAdministrator](Set-AzMySqlAzureAdAdministrator.md)
+Create an existing Azure Active Directory administrator.
 
-### [Start-AzMySqlFlexibleServer](Start-AzMySqlFlexibleServer.md)
+### [Set-AzMySqlBackup](Set-AzMySqlBackup.md)
+Create backup for a given server with specified backup name.
+
+### [Set-AzMySqlConfiguration](Set-AzMySqlConfiguration.md)
+Updates a configuration of a server.
+
+### [Set-AzMySqlDatabase](Set-AzMySqlDatabase.md)
+Creates a new database or updates an existing database.
+
+### [Set-AzMySqlFirewallRule](Set-AzMySqlFirewallRule.md)
+Creates a new firewall rule or updates an existing firewall rule.
+
+### [Set-AzMySqlServer](Set-AzMySqlServer.md)
+Manual failover a server.
+
+### [Set-AzMySqlServerSecurityAlertPolicy](Set-AzMySqlServerSecurityAlertPolicy.md)
+Create a threat detection policy.
+
+### [Start-AzMySqlServer](Start-AzMySqlServer.md)
 Starts a server.
 
-### [Stop-AzMySqlFlexibleServer](Stop-AzMySqlFlexibleServer.md)
+### [Stop-AzMySqlServer](Stop-AzMySqlServer.md)
 Stops a server.
 
-### [Test-AzMySqlFlexibleServerConnect](Test-AzMySqlFlexibleServerConnect.md)
-Test out the connection to the database server
+### [Test-AzMySqlBackupAndExportBackup](Test-AzMySqlBackupAndExportBackup.md)
+Validates if backup can be performed for given server.
+
+### [Test-AzMySqlServerEstimateHighAvailability](Test-AzMySqlServerEstimateHighAvailability.md)
+Validate a deployment of high availability.
+
+### [Update-AzMySqlAdvancedThreatProtectionSetting](Update-AzMySqlAdvancedThreatProtectionSetting.md)
+Updates a server's Advanced Threat Protection state.
+
+### [Update-AzMySqlAzureAdAdministrator](Update-AzMySqlAzureAdAdministrator.md)
+Create an existing Azure Active Directory administrator.
 
 ### [Update-AzMySqlConfiguration](Update-AzMySqlConfiguration.md)
 Updates a configuration of a server.
-Use Update-AzMySqlServer instead if you want update AdministratorLoginPassword, sku, etc.
+
+### [Update-AzMySqlDatabase](Update-AzMySqlDatabase.md)
+Creates a new database or updates an existing database.
 
 ### [Update-AzMySqlFirewallRule](Update-AzMySqlFirewallRule.md)
 Creates a new firewall rule or updates an existing firewall rule.
 
-### [Update-AzMySqlFlexibleServer](Update-AzMySqlFlexibleServer.md)
-Updates an existing MySQL flexible server.
-The request body can contain one to many of the properties present in the normal server definition.
-Use Update-AzMySqlFlexibleServerConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
-
-### [Update-AzMySqlFlexibleServerConfiguration](Update-AzMySqlFlexibleServerConfiguration.md)
-Updates information about a configuration of a MySQL flexible server.
-
-### [Update-AzMySqlFlexibleServerFirewallRule](Update-AzMySqlFlexibleServerFirewallRule.md)
-Updates an existing firewall rule.
+### [Update-AzMySqlMaintenance](Update-AzMySqlMaintenance.md)
+Update maintenances.
 
 ### [Update-AzMySqlServer](Update-AzMySqlServer.md)
-Updates an existing server.
-The request body can contain one to many of the properties present in the normal server definition.
-Use Update-AzMySqlConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
+Creates a new server or updates an existing server.
+The update action will overwrite the existing server.
 
-### [Update-AzMySqlServerConfigurationsList](Update-AzMySqlServerConfigurationsList.md)
-Update a list of configurations in a given server.
-
-### [Update-AzMySqlVirtualNetworkRule](Update-AzMySqlVirtualNetworkRule.md)
-Creates or updates an existing virtual network rule.
+### [Update-AzMySqlServerSecurityAlertPolicy](Update-AzMySqlServerSecurityAlertPolicy.md)
+Create a threat detection policy.
 

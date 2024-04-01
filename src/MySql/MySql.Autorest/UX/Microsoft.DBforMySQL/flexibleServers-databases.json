@@ -1,17 +1,17 @@
 {
   "resourceType": "flexibleServers/databases",
-  "apiVersion": "2021-05-01",
+  "apiVersion": "2023-06-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.mysql"
   },
   "commands": [
     {
-      "name": "Get-AzMySqlFlexibleServerDatabase",
+      "name": "Get-AzMySqlDatabase",
       "description": "Gets information about a database.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/databases/{databaseName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleserverdatabase"
+          "url": "https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqldatabase"
         },
         "parameterSets": [
           {
@@ -49,12 +49,12 @@
       ]
     },
     {
-      "name": "Remove-AzMySqlFlexibleServerDatabase",
+      "name": "Remove-AzMySqlDatabase",
       "description": "Deletes a database.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforMySQL/flexibleServers/{serverName}/databases/{databaseName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.mysql/remove-azmysqlflexibleserverdatabase"
+          "url": "https://learn.microsoft.com/powershell/module/az.mysql/remove-azmysqldatabase"
         },
         "parameterSets": [
           {
