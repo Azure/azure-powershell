@@ -37,27 +37,22 @@ Generates default device groups for the product.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Generate default device groups for the product
 ```powershell
-{{ Add code here }}
+New-AzSphereProductDefaultDeviceGroup -CatalogName test2024 -ProductName product0207 -ResourceGroupName joyer-test
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Name                     SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
+----                     ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
+Development                                                                                                                                                             joyer-test
+Field Test                                                                                                                                                              joyer-test
+Production                                                                                                                                                              joyer-test
+Production OS Evaluation                                                                                                                                                joyer-test
+Field Test OS Evaluation                                                                                                                                                joyer-test
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+This command generates default device groups for the product.
 
 ## PARAMETERS
 

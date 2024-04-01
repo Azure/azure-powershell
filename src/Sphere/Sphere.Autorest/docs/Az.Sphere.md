@@ -51,10 +51,6 @@ Get a Image
 Get a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 
-### [Invoke-AzSphereClaimDeviceGroupDevice](Invoke-AzSphereClaimDeviceGroupDevice.md)
-Bulk claims the devices.
-Use '.unassigned' or '.default' for the device group and product names when bulk claiming devices to a catalog only.
-
 ### [Invoke-AzSphereCountCatalogDevice](Invoke-AzSphereCountCatalogDevice.md)
 Counts devices in catalog.
 

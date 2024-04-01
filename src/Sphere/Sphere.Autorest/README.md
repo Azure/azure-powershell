@@ -65,15 +65,15 @@ directive:
       verb: Update
       subject: Image|Deployment
     remove: true
-  # The server responded with an unrecognized response
+  # error 'The server responded with an unrecognized response', error message missing in default error response
   - where:
       verb: Invoke
       subject: UploadCatalogImage
     remove: true
-  #- where:
-  #    verb: Invoke
-  #    subject: ClaimDeviceGroupDevice
-  #  remove: true
+  - where:
+      verb: Invoke
+      subject: ClaimDeviceGroupDevice
+    remove: true
   - where:
       verb: Get
       subject: CatalogDeployment

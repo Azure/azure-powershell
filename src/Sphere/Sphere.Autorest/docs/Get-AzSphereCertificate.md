@@ -43,7 +43,7 @@ Get a Certificate
 
 ### Example 1: List for the specified catalog with resource group
 ```powershell
-Get-AzSphereCertificate -CatalogName test2024 -ResourceGroupName joyer-tes
+Get-AzSphereCertificate -CatalogName test2024 -ResourceGroupName joyer-test
 ```
 
 ```output
