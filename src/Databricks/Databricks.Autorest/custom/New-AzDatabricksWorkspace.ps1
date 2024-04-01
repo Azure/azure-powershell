@@ -352,6 +352,7 @@ function New-AzDatabricksWorkspace {
 
     process {
         try {
+            Write-Host "This is for test only!"
             if (-not $PSBoundParameters.ContainsKey('ManagedResourceGroupName')) {
                 $randomStr = -join ((48..57) + (97..122) | Get-Random -Count 13 | % { [char]$_ })
                 $manageResourceGroupName = "databricks-rg-{0}-{1}" -f $PSBoundParameters["Name"], $randomStr
