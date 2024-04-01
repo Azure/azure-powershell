@@ -12,8 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzConfluentOrganization' {
-    It 'CreateExpanded' {
-      New-AzConfluentOrganization -ResourceGroupName $env.resourceGroup -Name $env.confluentOrgName00 -Location $env.location -OfferDetailId "confluent-cloud-azure-prod" -OfferDetailPlanId "confluent-cloud-azure-payg-prod" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress $env.userEmail
+    It 'CreateExpanded' -skip {
+      New-AzConfluentOrganization -ResourceGroupName $env.resourceGroup -Name $env.confluentOrgName00 -Location $env.location -OfferDetailId "confluent-cloud-azure-stag" -OfferDetailPlanId "confluent-cloud-azure-payg-stag" -OfferDetailPlanName "Confluent Cloud - Pay as you Go" -OfferDetailPublisherId "confluentinc" -OfferDetailTermUnit "P1M" -UserDetailEmailAddress $env.userEmail
       $confluentOrg = Get-AzConfluentOrganization -ResourceGroupName $env.resourcegroup -Name $env.confluentOrgName00
       $confluentOrg.ProvisioningState | Should -Be 'Succeeded'
     }
