@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.18.0
 * Supported interactive subscription selection for user login flow.
 
 ## Version 2.17.0
