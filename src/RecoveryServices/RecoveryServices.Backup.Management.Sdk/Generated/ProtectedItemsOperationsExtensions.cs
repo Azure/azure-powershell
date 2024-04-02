@@ -106,9 +106,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='protectedItemName'>
         /// Item name to be backed up.
         /// </param>
-        public static ProtectedItemResource CreateOrUpdate(this IProtectedItemsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, ProtectedItemResource parameters)
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
+        public static ProtectedItemResource CreateOrUpdate(this IProtectedItemsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, ProtectedItemResource parameters, string xMsAuthorizationAuxiliary = default(string))
         {
-                return ((IProtectedItemsOperations)operations).CreateOrUpdateAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, parameters).GetAwaiter().GetResult();
+                return ((IProtectedItemsOperations)operations).CreateOrUpdateAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, parameters, xMsAuthorizationAuxiliary).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -136,12 +139,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='protectedItemName'>
         /// Item name to be backed up.
         /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ProtectedItemResource> CreateOrUpdateAsync(this IProtectedItemsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, ProtectedItemResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ProtectedItemResource> CreateOrUpdateAsync(this IProtectedItemsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, ProtectedItemResource parameters, string xMsAuthorizationAuxiliary = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, protectedItemName, parameters, xMsAuthorizationAuxiliary, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

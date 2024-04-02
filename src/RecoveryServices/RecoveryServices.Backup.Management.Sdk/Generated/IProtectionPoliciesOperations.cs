@@ -69,6 +69,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='policyName'>
         /// Backup policy to be created.
         /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
         /// <param name='parameters'>
         /// resource backup policy
         /// </param>
@@ -84,7 +87,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource>> CreateOrUpdateWithHttpMessagesAsync(string vaultName, string resourceGroupName, string policyName, ProtectionPolicyResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource>> CreateOrUpdateWithHttpMessagesAsync(string vaultName, string resourceGroupName, string policyName, ProtectionPolicyResource parameters, string xMsAuthorizationAuxiliary = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes specified backup policy from your Recovery Services Vault. This is

@@ -280,6 +280,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='policyName'>
         /// Backup policy to be created.
         /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
         /// <param name='parameters'>
         /// resource backup policy
         /// </param>
@@ -304,7 +307,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource>> CreateOrUpdateWithHttpMessagesAsync(string vaultName, string resourceGroupName, string policyName, ProtectionPolicyResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource>> CreateOrUpdateWithHttpMessagesAsync(string vaultName, string resourceGroupName, string policyName, ProtectionPolicyResource parameters, string xMsAuthorizationAuxiliary = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -340,6 +343,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "policyName");
             }
 
+
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -350,6 +354,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
                 tracingParameters.Add("vaultName", vaultName);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("policyName", policyName);
+                tracingParameters.Add("xMsAuthorizationAuxiliary", xMsAuthorizationAuxiliary);
 
                 tracingParameters.Add("parameters", parameters);
 
@@ -391,6 +396,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
                     _httpRequest.Headers.Remove("accept-language");
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+            if (xMsAuthorizationAuxiliary != null)
+            {
+                if (_httpRequest.Headers.Contains("x-ms-authorization-auxiliary"))
+                {
+                    _httpRequest.Headers.Remove("x-ms-authorization-auxiliary");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-authorization-auxiliary", xMsAuthorizationAuxiliary);
             }
 
             if (customHeaders != null)

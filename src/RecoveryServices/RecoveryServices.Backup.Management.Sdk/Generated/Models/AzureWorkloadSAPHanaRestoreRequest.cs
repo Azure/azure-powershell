@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the AzureWorkloadSAPHanaRestoreRequest class.
         /// </summary>
 
+        /// <param name="resourceGuardOperationRequests">ResourceGuardOperationRequests on which LAC check will be performed
+        /// </param>
+
         /// <param name="recoveryType">Type of this recovery.
         /// Possible values include: &#39;Invalid&#39;, &#39;OriginalLocation&#39;,
         /// &#39;AlternateLocation&#39;, &#39;RestoreDisks&#39;, &#39;Offline&#39;</param>
@@ -59,9 +62,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// For e.g.
         /// /subscriptions/{subId}/resourcegroups/{rg}/provider/Microsoft.Compute/virtualmachines/{vm}
         /// </param>
-        public AzureWorkloadSAPHanaRestoreRequest(string recoveryType = default(string), string sourceResourceId = default(string), System.Collections.Generic.IDictionary<string, string> propertyBag = default(System.Collections.Generic.IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), string targetResourceGroupName = default(string), UserAssignedManagedIdentityDetails userAssignedManagedIdentityDetails = default(UserAssignedManagedIdentityDetails), SnapshotRestoreParameters snapshotRestoreParameters = default(SnapshotRestoreParameters), string targetVirtualMachineId = default(string))
+        public AzureWorkloadSAPHanaRestoreRequest(System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string recoveryType = default(string), string sourceResourceId = default(string), System.Collections.Generic.IDictionary<string, string> propertyBag = default(System.Collections.Generic.IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), string targetResourceGroupName = default(string), UserAssignedManagedIdentityDetails userAssignedManagedIdentityDetails = default(UserAssignedManagedIdentityDetails), SnapshotRestoreParameters snapshotRestoreParameters = default(SnapshotRestoreParameters), string targetVirtualMachineId = default(string))
 
-        : base(recoveryType, sourceResourceId, propertyBag, targetInfo, recoveryMode, targetResourceGroupName, userAssignedManagedIdentityDetails, snapshotRestoreParameters, targetVirtualMachineId)
+        : base(resourceGuardOperationRequests, recoveryType, sourceResourceId, propertyBag, targetInfo, recoveryMode, targetResourceGroupName, userAssignedManagedIdentityDetails, snapshotRestoreParameters, targetVirtualMachineId)
         {
             CustomInit();
         }

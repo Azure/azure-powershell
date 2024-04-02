@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the AzureWorkloadSQLRestoreRequest class.
         /// </summary>
 
+        /// <param name="resourceGuardOperationRequests">ResourceGuardOperationRequests on which LAC check will be performed
+        /// </param>
+
         /// <param name="recoveryType">Type of this recovery.
         /// Possible values include: &#39;Invalid&#39;, &#39;OriginalLocation&#39;,
         /// &#39;AlternateLocation&#39;, &#39;RestoreDisks&#39;, &#39;Offline&#39;</param>
@@ -70,9 +73,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="alternateDirectoryPaths">Data directory details
         /// </param>
-        public AzureWorkloadSQLRestoreRequest(string recoveryType = default(string), string sourceResourceId = default(string), System.Collections.Generic.IDictionary<string, string> propertyBag = default(System.Collections.Generic.IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), string targetResourceGroupName = default(string), UserAssignedManagedIdentityDetails userAssignedManagedIdentityDetails = default(UserAssignedManagedIdentityDetails), SnapshotRestoreParameters snapshotRestoreParameters = default(SnapshotRestoreParameters), string targetVirtualMachineId = default(string), bool? shouldUseAlternateTargetLocation = default(bool?), bool? isNonRecoverable = default(bool?), System.Collections.Generic.IList<SQLDataDirectoryMapping> alternateDirectoryPaths = default(System.Collections.Generic.IList<SQLDataDirectoryMapping>))
+        public AzureWorkloadSQLRestoreRequest(System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string recoveryType = default(string), string sourceResourceId = default(string), System.Collections.Generic.IDictionary<string, string> propertyBag = default(System.Collections.Generic.IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), string targetResourceGroupName = default(string), UserAssignedManagedIdentityDetails userAssignedManagedIdentityDetails = default(UserAssignedManagedIdentityDetails), SnapshotRestoreParameters snapshotRestoreParameters = default(SnapshotRestoreParameters), string targetVirtualMachineId = default(string), bool? shouldUseAlternateTargetLocation = default(bool?), bool? isNonRecoverable = default(bool?), System.Collections.Generic.IList<SQLDataDirectoryMapping> alternateDirectoryPaths = default(System.Collections.Generic.IList<SQLDataDirectoryMapping>))
 
-        : base(recoveryType, sourceResourceId, propertyBag, targetInfo, recoveryMode, targetResourceGroupName, userAssignedManagedIdentityDetails, snapshotRestoreParameters, targetVirtualMachineId)
+        : base(resourceGuardOperationRequests, recoveryType, sourceResourceId, propertyBag, targetInfo, recoveryMode, targetResourceGroupName, userAssignedManagedIdentityDetails, snapshotRestoreParameters, targetVirtualMachineId)
         {
             this.ShouldUseAlternateTargetLocation = shouldUseAlternateTargetLocation;
             this.IsNonRecoverable = isNonRecoverable;

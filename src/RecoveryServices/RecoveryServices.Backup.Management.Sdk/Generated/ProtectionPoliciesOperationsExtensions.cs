@@ -83,9 +83,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='policyName'>
         /// Backup policy to be created.
         /// </param>
-        public static ProtectionPolicyResource CreateOrUpdate(this IProtectionPoliciesOperations operations, string vaultName, string resourceGroupName, string policyName, ProtectionPolicyResource parameters)
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
+        public static ProtectionPolicyResource CreateOrUpdate(this IProtectionPoliciesOperations operations, string vaultName, string resourceGroupName, string policyName, ProtectionPolicyResource parameters, string xMsAuthorizationAuxiliary = default(string))
         {
-                return ((IProtectionPoliciesOperations)operations).CreateOrUpdateAsync(vaultName, resourceGroupName, policyName, parameters).GetAwaiter().GetResult();
+                return ((IProtectionPoliciesOperations)operations).CreateOrUpdateAsync(vaultName, resourceGroupName, policyName, parameters, xMsAuthorizationAuxiliary).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -106,12 +109,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='policyName'>
         /// Backup policy to be created.
         /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<ProtectionPolicyResource> CreateOrUpdateAsync(this IProtectionPoliciesOperations operations, string vaultName, string resourceGroupName, string policyName, ProtectionPolicyResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<ProtectionPolicyResource> CreateOrUpdateAsync(this IProtectionPoliciesOperations operations, string vaultName, string resourceGroupName, string policyName, ProtectionPolicyResource parameters, string xMsAuthorizationAuxiliary = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(vaultName, resourceGroupName, policyName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.CreateOrUpdateWithHttpMessagesAsync(vaultName, resourceGroupName, policyName, parameters, xMsAuthorizationAuxiliary, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
