@@ -13,19 +13,19 @@ Counts devices in product.
 
 ## SYNTAX
 
-### Count (Default)
+### CountDevice (Default)
 ```
 Invoke-AzSphereCountProductDevice -CatalogName <String> -ProductName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CountViaIdentity
+### CountDeviceViaIdentity
 ```
 Invoke-AzSphereCountProductDevice -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
-### CountViaIdentityCatalog
+### CountDeviceViaIdentityCatalog
 ```
 Invoke-AzSphereCountProductDevice -CatalogInputObject <ISphereIdentity> -ProductName <String>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -57,7 +57,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CountViaIdentityCatalog
+Parameter Sets: CountDeviceViaIdentityCatalog
 Aliases:
 
 Required: True
@@ -72,7 +72,7 @@ Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: Count
+Parameter Sets: CountDevice
 Aliases:
 
 Required: True
@@ -103,7 +103,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CountViaIdentity
+Parameter Sets: CountDeviceViaIdentity
 Aliases:
 
 Required: True
@@ -118,7 +118,7 @@ Name of product.
 
 ```yaml
 Type: System.String
-Parameter Sets: Count, CountViaIdentityCatalog
+Parameter Sets: CountDevice, CountDeviceViaIdentityCatalog
 Aliases:
 
 Required: True
@@ -134,7 +134,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Count
+Parameter Sets: CountDevice
 Aliases:
 
 Required: True
@@ -149,7 +149,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Count
+Parameter Sets: CountDevice
 Aliases:
 
 Required: False

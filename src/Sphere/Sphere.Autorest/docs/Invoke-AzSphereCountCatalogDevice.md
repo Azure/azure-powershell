@@ -12,13 +12,13 @@ Counts devices in catalog.
 
 ## SYNTAX
 
-### Count (Default)
+### CountDevice (Default)
 ```
 Invoke-AzSphereCountCatalogDevice -CatalogName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CountViaIdentity
+### CountDeviceViaIdentity
 ```
 Invoke-AzSphereCountCatalogDevice -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -49,7 +49,7 @@ Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: Count
+Parameter Sets: CountDevice
 Aliases:
 
 Required: True
@@ -80,7 +80,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CountViaIdentity
+Parameter Sets: CountDeviceViaIdentity
 Aliases:
 
 Required: True
@@ -96,7 +96,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Count
+Parameter Sets: CountDevice
 Aliases:
 
 Required: True
@@ -111,7 +111,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Count
+Parameter Sets: CountDevice
 Aliases:
 
 Required: False

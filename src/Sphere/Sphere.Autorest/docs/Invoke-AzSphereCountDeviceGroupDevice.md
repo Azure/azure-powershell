@@ -13,26 +13,26 @@ Counts devices in device group.
 
 ## SYNTAX
 
-### Count (Default)
+### CountDevice (Default)
 ```
 Invoke-AzSphereCountDeviceGroupDevice -CatalogName <String> -DeviceGroupName <String> -ProductName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### CountViaIdentity
+### CountDeviceViaIdentity
 ```
 Invoke-AzSphereCountDeviceGroupDevice -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
-### CountViaIdentityCatalog
+### CountDeviceViaIdentityCatalog
 ```
 Invoke-AzSphereCountDeviceGroupDevice -CatalogInputObject <ISphereIdentity> -DeviceGroupName <String>
  -ProductName <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CountViaIdentityProduct
+### CountDeviceViaIdentityProduct
 ```
 Invoke-AzSphereCountDeviceGroupDevice -DeviceGroupName <String> -ProductInputObject <ISphereIdentity>
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -64,7 +64,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CountViaIdentityCatalog
+Parameter Sets: CountDeviceViaIdentityCatalog
 Aliases:
 
 Required: True
@@ -79,7 +79,7 @@ Name of catalog
 
 ```yaml
 Type: System.String
-Parameter Sets: Count
+Parameter Sets: CountDevice
 Aliases:
 
 Required: True
@@ -110,7 +110,7 @@ Name of device group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Count, CountViaIdentityCatalog, CountViaIdentityProduct
+Parameter Sets: CountDevice, CountDeviceViaIdentityCatalog, CountDeviceViaIdentityProduct
 Aliases:
 
 Required: True
@@ -125,7 +125,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CountViaIdentity
+Parameter Sets: CountDeviceViaIdentity
 Aliases:
 
 Required: True
@@ -140,7 +140,7 @@ Identity Parameter
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Sphere.Models.ISphereIdentity
-Parameter Sets: CountViaIdentityProduct
+Parameter Sets: CountDeviceViaIdentityProduct
 Aliases:
 
 Required: True
@@ -155,7 +155,7 @@ Name of product.
 
 ```yaml
 Type: System.String
-Parameter Sets: Count, CountViaIdentityCatalog
+Parameter Sets: CountDevice, CountDeviceViaIdentityCatalog
 Aliases:
 
 Required: True
@@ -171,7 +171,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Count
+Parameter Sets: CountDevice
 Aliases:
 
 Required: True
@@ -186,7 +186,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Count
+Parameter Sets: CountDevice
 Aliases:
 
 Required: False

@@ -78,6 +78,11 @@ directive:
       verb: Invoke
       subject: ClaimDeviceGroupDevice
     remove: true
+  - where:
+      verb: Invoke
+      variant: ^Count(.*)
+    set:
+      variant: CountDevice$1
   # Remove unexpanded include json parameter set
   - where:
       variant: ^List(?!.*?Expanded)
@@ -91,7 +96,7 @@ directive:
       variant: ^Claim(?!.*?Expanded)
       subject: ClaimDeviceGroupDevice
     hide: true
-  # New-AzSphereDeviceCapabilityImage
+  # New-AzSphereDeviceCapabilityImage remove unexpanded parameter set
   - where:
       variant: ^(Generate)(?!.*?(Expanded|JsonString|JsonFilePath))
       subject: DeviceCapabilityImage
