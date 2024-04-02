@@ -28,7 +28,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// XSCL Track2 Queue Client, used to run Queue APIs
         /// </summary>
-        [Ps1Xml(Label = "Queue End Point", Target = ViewControl.Table, GroupByThis = true, ScriptBlock = "$_.QueueClient.Uri")]
+        [Ps1Xml(Label = "Storage Account Name", Target = ViewControl.Table, GroupByThis = true, ScriptBlock = "$_.QueueClient.AccountName")]
         [Ps1Xml(Label = "Name", Target = ViewControl.Table, ScriptBlock = "$_.Name", Position = 0)]
         public QueueClient QueueClient { get; private set; }
 
