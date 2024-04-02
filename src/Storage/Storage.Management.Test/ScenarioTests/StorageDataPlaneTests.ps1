@@ -459,8 +459,8 @@ function Test-Queue
         Assert-AreEqual $queue.Count 1
         Assert-AreEqual $queue[0].Name $queueName
 
-        $queueMessage = New-Object -TypeName "Microsoft.Azure.Storage.Queue.CloudQueueMessage" -ArgumentList "This is message 1"
-        $queue.CloudQueue.AddMessageAsync($QueueMessage)
+        $queueMessage =  "This is message 1"
+        $queue.QueueClient.SendMessage($queueMessage)
         
         $queueCount1 = (Get-AzStorageQueue -Context $storageContext).Count
         Remove-AzStorageQueue -Name $queueName -Force -Context $storageContext
