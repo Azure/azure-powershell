@@ -1,7 +1,7 @@
 # setup the Pester environment for policy tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyAssignmentUserAssignedIdentity'
 
-Describe 'PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
+Describe 'PolicyAssignmentUserAssignedIdentity' {
 
     BeforeAll {
         # setup
@@ -15,8 +15,7 @@ Describe 'PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
     
         # make a new resource group and policy definition
         $policy = New-AzPolicyDefinition -Name $policyName -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description
-        $userassignedidentity = New-AzUserAssignedIdentity -ResourceGroupName $rgName -Name $userassignedidentityname -Location $location
-        $userassignedidentityid = $userassignedidentity.Id
+        $userassignedidentityid = $env.userassignedidentityId
         # assign the policy definition with user MSI to the resource group
         $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $rgScope -Description $description -IdentityType "UserAssigned" -IdentityId $userassignedidentityid -Location $location
     }
@@ -100,9 +99,6 @@ Describe 'PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
         # clean up
         $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $rgScope -PassThru
         $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $rgScope -PassThru) -and $remove
-
-        Remove-AzUserAssignedIdentity -ResourceGroupName $rgName -Name $userassignedidentityname
-
         $remove = (Remove-AzPolicyDefinition -Name $policyName -Force -PassThru) -and $remove
         $remove | Should -Be $true
 

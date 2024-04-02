@@ -1,7 +1,7 @@
 # setup the Pester environment for policy backcompat tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-PolicyAssignmentUserAssignedIdentity'
 
-Describe 'Backcompat-PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
+Describe 'Backcompat-PolicyAssignmentUserAssignedIdentity' {
 
     BeforeAll {
         # setup
@@ -11,12 +11,10 @@ Describe 'Backcompat-PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
         $testPA = Get-ResourceName
         $test2 = Get-ResourceName
         $location = "westus"
-        $userassignedidentityname = "test-user-msi"
-    
+        
         # make a new resource group and policy definition
         $policy = New-AzPolicyDefinition -Name $policyName -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description -BackwardCompatible
-        $userassignedidentity = New-AzUserAssignedIdentity -ResourceGroupName $rgName -Name $userassignedidentityname -Location $location
-        $userassignedidentityid = $userassignedidentity.Id
+        $userassignedidentityid = $env.userassignedidentityId
         # assign the policy definition with user MSI to the resource group
         $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $rgScope -Description $description -IdentityType "UserAssigned" -IdentityId $userassignedidentityid -Location $location -BackwardCompatible
     }
@@ -104,9 +102,6 @@ Describe 'Backcompat-PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
         # clean up
         $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $rgScope -BackwardCompatible
         $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $rgScope -BackwardCompatible) -and $remove
-
-        Remove-AzUserAssignedIdentity -ResourceGroupName $rgName -Name $userassignedidentityname
-
         $remove = (Remove-AzPolicyDefinition -Name $policyName -Force -BackwardCompatible) -and $remove
         Assert-AreEqual True $remove
 

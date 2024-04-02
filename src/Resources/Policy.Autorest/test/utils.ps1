@@ -258,6 +258,11 @@ function setupEnv() {
     $rg = New-ResourceGroup -Name $env.rgName -Location "west us"
     $env['rgScope'] = $rg.ResourceId
 
+    $env['userassignedidentityName'] = "test-user-msi"
+    $location = "westus"
+    $userassignedidentity = New-AzUserAssignedIdentity -ResourceGroupName $env.rgName -Name $env.userassignedidentityName -Location $location
+    $env['userassignedidentityId'] = $userassignedidentity.Id
+
     $env['managementGroup'] = 'AzGovPerfTest'
     $env['managementGroupScope'] = '/providers/Microsoft.Management/managementGroups/AzGovPerfTest'
     $env['description'] = 'Unit test junk: sorry for littering. Please delete me!'
@@ -328,5 +333,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    $null = Remove-AzUserAssignedIdentity -ResourceGroupName $env.rgName -Name $env.userassignedidentityName
     $null = Remove-ResourceGroup -Name $env.rgName
 }
