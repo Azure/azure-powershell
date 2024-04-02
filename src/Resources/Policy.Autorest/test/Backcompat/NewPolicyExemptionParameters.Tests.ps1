@@ -5,12 +5,13 @@ Describe 'Backcompat-NewPolicyExemptionParameters' {
 
     BeforeAll {
         # make a new resource group and policy assignment of some built-in definition
-        $rgname = $env.rgname
-        $goodScope = "/subscriptions/$subscriptionId/resourceGroups/$rgname"
+        $rgName = $env.rgName
+        $rgScope = $env.rgScope
+        $goodScope = "/subscriptions/$subscriptionId/resourceGroups/$rgName"
 
         $assignmentName = 'testPA1'
         $policy = Get-AzPolicyDefinition -Builtin | ?{ $_.Name -eq '0a914e76-4921-4c19-b460-a2d36003525a' }
-        $goodPolicyAssignment = New-AzPolicyAssignment -Name $assignmentName -Scope $env.scope -PolicyDefinition $policy -Description $description -BackwardCompatible
+        $goodPolicyAssignment = New-AzPolicyAssignment -Name $assignmentName -Scope $rgScope -PolicyDefinition $policy -Description $description -BackwardCompatible
     }
 
     It 'no parameters' {
@@ -43,10 +44,7 @@ Describe 'Backcompat-NewPolicyExemptionParameters' {
     }
 
     AfterAll {
-        $remove = Remove-AzPolicyAssignment -Name $assignmentName -BackwardCompatible
-
-        Assert-AreEqual True $remove
-
+        Assert-AreEqual True (Remove-AzPolicyAssignment -Name $assignmentName -BackwardCompatible)
         Write-Host -ForegroundColor Magenta "Cleanup complete."
     }
 }

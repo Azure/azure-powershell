@@ -1,11 +1,12 @@
 # setup the Pester environment for policy backcompat tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-PolicyAssignmentUserAssignedIdentity'
 
-Describe 'Backcompat-PolicyAssignmentUserAssignedIdentity' {
+Describe 'Backcompat-PolicyAssignmentUserAssignedIdentity' -Tag 'LiveOnly' {
 
     BeforeAll {
         # setup
-        $rgname = $env.rgname
+        $rgName = $env.rgName
+        $rgScope = $env.rgScope
         $policyName = Get-ResourceName
         $testPA = Get-ResourceName
         $test2 = Get-ResourceName
@@ -14,21 +15,21 @@ Describe 'Backcompat-PolicyAssignmentUserAssignedIdentity' {
     
         # make a new resource group and policy definition
         $policy = New-AzPolicyDefinition -Name $policyName -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description -BackwardCompatible
-        $userassignedidentity = New-AzUserAssignedIdentity -ResourceGroupName $rgname -Name $userassignedidentityname -Location $location
+        $userassignedidentity = New-AzUserAssignedIdentity -ResourceGroupName $rgName -Name $userassignedidentityname -Location $location
         $userassignedidentityid = $userassignedidentity.Id
         # assign the policy definition with user MSI to the resource group
-        $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $env.scope -Description $description -IdentityType "UserAssigned" -IdentityId $userassignedidentityid -Location $location -BackwardCompatible
+        $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $rgScope -Description $description -IdentityType "UserAssigned" -IdentityId $userassignedidentityid -Location $location -BackwardCompatible
     }
 
     It 'make a policy assignment at RG scope with user assigned MSI' {
         {
             # get the assignment back and validate
-            $expected = Get-AzPolicyAssignment -Name $testPA -Scope $env.scope -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $testPA -Scope $rgScope -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
             Assert-AreEqual $expected.Properties.PolicyDefinitionId $policy.PolicyDefinitionId
-            Assert-AreEqual $expected.Properties.Scope $env.scope
+            Assert-AreEqual $expected.Properties.Scope $rgScope
             Assert-AreEqual "UserAssigned" $expected.Identity.IdentityType
 
             # looks like format of userassigned identities changed in the newer spec: adjusting the test to conform to the new format
@@ -73,7 +74,7 @@ Describe 'Backcompat-PolicyAssignmentUserAssignedIdentity' {
     It 'make another policy assignment without MSI then add MSI' {
         {
             # make another policy assignment without an identity
-            $withoutIdentityResult = New-AzPolicyAssignment -Name $test2 -Scope $env.scope -PolicyDefinition $policy -Description $description -BackwardCompatible
+            $withoutIdentityResult = New-AzPolicyAssignment -Name $test2 -Scope $rgScope -PolicyDefinition $policy -Description $description -BackwardCompatible
             Assert-Null($withoutIdentityResult.Identity)
             Assert-Null($withoutIdentityResult.Location)
 
@@ -90,7 +91,7 @@ Describe 'Backcompat-PolicyAssignmentUserAssignedIdentity' {
     It 'list policy assignments with user assigned MSI' {
         {
             # verify identity is returned in collection GET
-            $list = Get-AzPolicyAssignment -Scope $env.scope -BackwardCompatible | Where-Object{ $_.Name -in @($testPA, $test2) }
+            $list = Get-AzPolicyAssignment -Scope $rgScope -BackwardCompatible | Where-Object{ $_.Name -in @($testPA, $test2) }
             $userassignedidentityobject = ($list.Identity.UserAssignedIdentities | Select -Unique)    
             Assert-AreEqual "UserAssigned" ($list.Identity.IdentityType | Select -Unique)
             Assert-AreEqual 1 @(($($userassignedidentityobject.AdditionalProperties.values)[0]).PrincipalId | Select -Unique).Count
@@ -101,8 +102,8 @@ Describe 'Backcompat-PolicyAssignmentUserAssignedIdentity' {
 
     AfterAll {
         # clean up
-        $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $env.scope -BackwardCompatible
-        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $env.scope -BackwardCompatible) -and $remove
+        $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $rgScope -BackwardCompatible
+        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $rgScope -BackwardCompatible) -and $remove
 
         Remove-AzUserAssignedIdentity -ResourceGroupName $rgName -Name $userassignedidentityname
 

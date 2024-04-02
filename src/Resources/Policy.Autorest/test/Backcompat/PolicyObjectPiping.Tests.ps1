@@ -1,11 +1,12 @@
 # setup the Pester environment for policy backcompat tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-PolicyObjectPiping'
 
-Describe 'Backcompat-PolicyObjectPiping' {
+Describe 'Backcompat-PolicyObjectPiping' -Tag 'LiveOnly' {
 
     BeforeAll {
         # setup
-        $rgname = $env.rgname
+        $rgName = $env.rgName
+        $rgScope = $env.rgScope
         $policySetDefName = Get-ResourceName
         $policyDefName = Get-ResourceName
         $policyAssName = Get-ResourceName
@@ -20,15 +21,15 @@ Describe 'Backcompat-PolicyObjectPiping' {
     It 'make policy assignment from piped definition' {
         {
             # assign the policy definition to the resource group, get the assignment back and validate
-            $actual = Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -BackwardCompatible | New-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -PolicyParameterObject @{'listOfAllowedLocations'=@('westus', 'eastus'); 'effectParam'='Deny'} -Description $description -BackwardCompatible
-            $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -BackwardCompatible
+            $actual = Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -BackwardCompatible | New-AzPolicyAssignment -Name $policyAssName -Scope $rgScope -PolicyParameterObject @{'listOfAllowedLocations'=@('westus', 'eastus'); 'effectParam'='Deny'} -Description $description -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $rgScope -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-NotNull $actual.Properties.PolicyDefinitionId
             Assert-NotNull $expected.Properties.PolicyDefinitionId
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
             Assert-AreEqual $expected.Properties.PolicyDefinitionId $actual.Properties.PolicyDefinitionId
-            Assert-AreEqual $expected.Properties.Scope $env.scope
+            Assert-AreEqual $expected.Properties.Scope $rgScope
             Assert-NotNull $expected.Properties.Parameters.listOfAllowedLocations
             Assert-NotNull $expected.Properties.Parameters.listOfAllowedLocations.value
             Assert-NotNull $expected.Properties.Parameters.effectParam
@@ -42,7 +43,7 @@ Describe 'Backcompat-PolicyObjectPiping' {
     It 'update assignment from piped object' {
         {
             # get assignment by name/scope
-            $actual = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -BackwardCompatible
+            $actual = Get-AzPolicyAssignment -Name $policyAssName -Scope $rgScope -BackwardCompatible
 
             # get assignment by Id, update some properties, including parameters
             $assignment = Get-AzPolicyAssignment -Id $actual.ResourceId -BackwardCompatible
@@ -66,7 +67,7 @@ Describe 'Backcompat-PolicyObjectPiping' {
             Assert-AreEqual $updatedDescription $assignment.Properties.Description
 
             # delete the policy assignment
-            $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -BackwardCompatible | Remove-AzPolicyAssignment -BackwardCompatible
+            $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $rgScope -BackwardCompatible | Remove-AzPolicyAssignment -BackwardCompatible
             Assert-AreEqual True $remove
         } | Should -Not -Throw
     }
@@ -74,15 +75,15 @@ Describe 'Backcompat-PolicyObjectPiping' {
     It 'make policy assignment from piped set definition' {
         {
             # assign the policy set definition to the resource group, get the assignment back and validate
-            $actual = Get-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -BackwardCompatible | New-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -Description $description -BackwardCompatible
-            $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -BackwardCompatible
+            $actual = Get-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -BackwardCompatible | New-AzPolicyAssignment -Name $policyAssName -Scope $rgScope -Description $description -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $rgScope -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-NotNull $actual.Properties.PolicyDefinitionId
             Assert-NotNull $expected.Properties.PolicyDefinitionId
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
             Assert-AreEqual $expected.Properties.PolicyDefinitionId $actual.Properties.PolicyDefinitionId
-            Assert-AreEqual $expected.Properties.Scope $env.scope
+            Assert-AreEqual $expected.Properties.Scope $rgScope
         } | Should -Not -Throw
     }
 
@@ -123,8 +124,8 @@ Describe 'Backcompat-PolicyObjectPiping' {
     It 'update policy assignment from pipline and command line' {
         {
             # update the policy assignment
-            $actual = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -BackwardCompatible | Set-AzPolicyAssignment -Description $updatedDescription -BackwardCompatible
-            $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -BackwardCompatible
+            $actual = Get-AzPolicyAssignment -Name $policyAssName -Scope $rgScope -BackwardCompatible | Set-AzPolicyAssignment -Description $updatedDescription -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $policyAssName -Scope $rgScope -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-AreEqual $expected.ResourceType $actual.ResourceType
@@ -132,7 +133,7 @@ Describe 'Backcompat-PolicyObjectPiping' {
             Assert-NotNull $expected.Properties.PolicyDefinitionId
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
             Assert-AreEqual $expected.Properties.PolicyDefinitionId $actual.Properties.PolicyDefinitionId
-            Assert-AreEqual $expected.Properties.Scope $env.scope
+            Assert-AreEqual $expected.Properties.Scope $rgScope
             Assert-AreEqual $updatedDescription $actual.Properties.Description
             Assert-AreEqual $updatedDescription $expected.Properties.Description
         } | Should -Not -Throw
@@ -140,7 +141,7 @@ Describe 'Backcompat-PolicyObjectPiping' {
 
     AfterAll {
         # clean up
-        $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $env.scope -BackwardCompatible | Remove-AzPolicyAssignment -BackwardCompatible
+        $remove = Get-AzPolicyAssignment -Name $policyAssName -Scope $rgScope -BackwardCompatible | Remove-AzPolicyAssignment -BackwardCompatible
         $remove = (Get-AzPolicySetDefinition -Name $policySetDefName -SubscriptionId $subscriptionId -BackwardCompatible | Remove-AzPolicySetDefinition -Force -BackwardCompatible) -and $remove
         $remove = (Get-AzPolicyDefinition -Name $policyDefName -SubscriptionId $subscriptionId -BackwardCompatible | Remove-AzPolicyDefinition -Force -BackwardCompatible) -and $remove
         Assert-AreEqual True $remove
