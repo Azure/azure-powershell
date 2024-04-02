@@ -26,7 +26,7 @@ New-AzPolicyAssignment -Name <String> -PolicyParameterObject <Hashtable> [-Scope
  [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>]
  [-IdentityId <String>] [-IdentityType <String>] [-Location <String>] [-Metadata <String>]
  [-NonComplianceMessage <PSObject[]>] [-NotScope <String[]>] [-PolicyDefinition <PSObject>]
- [-PolicySetDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ParameterString
@@ -34,21 +34,13 @@ New-AzPolicyAssignment -Name <String> -PolicyParameterObject <Hashtable> [-Scope
 New-AzPolicyAssignment -Name <String> -PolicyParameter <String> [-Scope <String>] [-BackwardCompatible]
  [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>]
  [-IdentityType <String>] [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>]
- [-NotScope <String[]>] [-PolicyDefinition <PSObject>] [-PolicySetDefinition <PSObject>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NotScope <String[]>] [-PolicyDefinition <PSObject>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
-### PolicyDefinition
+### PolicyDefinitionOrPolicySetDefinition
 ```
 New-AzPolicyAssignment -Name <String> -PolicyDefinition <PSObject> [-Scope <String>] [-BackwardCompatible]
- [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>]
- [-IdentityType <String>] [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>]
- [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### PolicySetDefinition
-```
-New-AzPolicyAssignment -Name <String> -PolicySetDefinition <PSObject> [-Scope <String>] [-BackwardCompatible]
  [-Description <String>] [-DisplayName <String>] [-EnforcementMode <String>] [-IdentityId <String>]
  [-IdentityType <String>] [-Location <String>] [-Metadata <String>] [-NonComplianceMessage <PSObject[]>]
  [-NotScope <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -403,17 +395,17 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyDefinition
-The ID of the policy definition being assigned.
+Accept policy definition or policy set definition object
 
 ```yaml
 Type: System.Management.Automation.PSObject
-Parameter Sets: ParameterObject, ParameterString, PolicyDefinition
-Aliases:
+Parameter Sets: ParameterObject, ParameterString, PolicyDefinitionOrPolicySetDefinition
+Aliases: PolicySetDefinition
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue, ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -446,21 +438,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PolicySetDefinition
-The ID of the policy set definition being assigned.
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: ParameterObject, ParameterString, PolicySetDefinition
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
