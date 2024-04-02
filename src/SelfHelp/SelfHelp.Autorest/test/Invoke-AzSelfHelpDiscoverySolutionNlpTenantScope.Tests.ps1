@@ -15,11 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzSelfHelpDiscoverySol
 }
 
 Describe 'Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope' {
-    It 'PostExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Post' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'PostExpanded' {
+        { 
+            Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope -IssueSummary "Billing Issues"
+        } | Should -Not -Throw
     }
 }

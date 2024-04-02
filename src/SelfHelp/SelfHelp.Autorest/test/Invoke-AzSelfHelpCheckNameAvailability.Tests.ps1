@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzSelfHelpCheckNameAva
 }
 
 Describe 'Invoke-AzSelfHelpCheckNameAvailability' {
-    It 'PostExpanded' {
+    It 'Post' {
+        $resourceName = RandomString -allChars $true -len 10
         $scope = "/subscriptions/$($env.SubscriptionId)"
         $CHECKNAMEAVAILABILITYREQUEST = [ordered]@{ 
             "name" ="helloworld" 

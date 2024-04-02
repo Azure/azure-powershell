@@ -19,12 +19,11 @@ Describe 'Get-AzSelfHelpSolution' -Tag 'LiveOnly' {
         $resourceName = RandomString -allChars $false -len 10
         $criteria = [ordered]@{ 
             "name" ="SolutionId" 
-            "value" = "keyvault-lostdeletedkeys-apollo-solution" 
+            "value" = "apollo-cognitve-search-custom-skill" 
         } 
         $parameters = [ordered]@{ 
         
-             "SearchText" = "Can not RDP" 
-            "vault_name" = "DemoKeyvault" 
+            "SearchText" = "Can not Search" 
         } 
         
         New-AzSelfHelpSolution -Scope $env.scope -ResourceName $resourceName -TriggerCriterion  $criteria -Parameter $parameters

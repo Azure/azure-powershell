@@ -15,11 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSelfHelpSimplifiedSolut
 }
 
 Describe 'Get-AzSelfHelpSimplifiedSolution' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { 
+            $resourceName = RandomString -allChars $false -len 10
+            $solutionId = "9004345-7759"
+            $parameters = [ordered]@{ 
+            
+                "SearchText" = "Billing" 
+            } 
+            New-AzSelfHelpSimplifiedSolution -Scope $env.scope -SResourceName $resourceName -SolutionId $solutionId -Parameter $parameters
+            Get-AzSelfHelpSimplifiedSolution -Scope $env.scope -SResourceName $resourceName
+        } | Should -Not -Throw
     }
 }

@@ -15,11 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSelfHelpSolutionSelfHel
 }
 
 Describe 'Get-AzSelfHelpSolutionSelfHelp' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { 
+            Get-AzSelfHelpSolutionSelfHelp -SolutionId "apollo-48996ff7-002f-47c1-85b2-df138843d5d5"
+         } | Should -Not -Throw
     }
 }
