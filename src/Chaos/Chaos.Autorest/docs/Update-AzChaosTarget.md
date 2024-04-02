@@ -32,7 +32,10 @@ Create a Target resource that extends a tracked regional resource.
 
 ### Example 1: Create a Target resource that extends a tracked regional resource.
 ```powershell
-Update-AzChaosTarget -Name microsoft-virtualmachine -ParentProviderNamespace Microsoft.Compute -ParentResourceName exampleVM -ParentResourceType virtualMachines -ResourceGroupName azps_test_group_chaos -Location eastus -Property @{"type"="CertificateSubjectIssuer";"subject"="CN=example.subject"}
+$property = @{"type"="CertificateSubjectIssuer";"subject"="CN=example.subject"}
+$propertyArr = @($property)
+$identities = @{"identities"=$propertyArr}
+Update-AzChaosTarget -Name microsoft-virtualmachine -ParentProviderNamespace Microsoft.Compute -ParentResourceName exampleVM -ParentResourceType virtualMachines -ResourceGroupName azps_test_group_chaos -Location eastus -Property $identities
 ```
 
 ```output

@@ -38,6 +38,7 @@ input-file:
   - $(repo)/specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/operations.json
   - $(repo)/specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/targetTypes.json
   - $(repo)/specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/targets.json
+  - $(repo)/specification/common-types/resource-management/v2/types.json
 
 title: Chaos
 module-version: 0.1.0
@@ -46,6 +47,19 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 
 directive:
+  - from: swagger-document 
+    where: $.definitions.TrackedResource.properties.location
+    transform: >-
+      return {
+          "type": "string",
+          "x-ms-mutability": [
+            "read",
+            "create",
+            "update"
+          ],
+          "description": "The geo-location where the resource lives"
+      }
+
   - where:
       variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
     remove: true
