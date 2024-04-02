@@ -166,7 +166,6 @@ process {
     try {
       # 1. GET
       $hasEmissionPolicy = $PSBoundParameters.Remove('EmissionPolicy')
-      $ingestionSourceId = $PSBoundParameters.IngestionPolicyIngestionSource.ResourceId
       $hasIngestionPolicyIngestionSource = $PSBoundParameters.Remove('IngestionPolicyIngestionSource')
       $hasIngestionPolicyIngestionType = $PSBoundParameters.Remove('IngestionPolicyIngestionType')
       $hasTag = $PSBoundParameters.Remove('Tag')
@@ -177,7 +176,7 @@ process {
       $rg = $PSBoundParameters.ResourceGroupName
 
       # 2. Ensure exr circuit bandwidth 1G or more
-      $cktname = $ingestionSourceId | Where {$ingestionSourceId -match "/*subscriptions/(?<subid>.*)/resourceGroups/(?<rgname>.*)/providers/Microsoft.Network/expressRouteCircuits/(?<circuitname>.*)"} | Foreach {$Matches['circuitname']}
+      $cktname = $IngestionPolicyIngestionSource.ResourceId | Where {$IngestionPolicyIngestionSource.ResourceId -match "/*subscriptions/(?<subid>.*)/resourceGroups/(?<rgname>.*)/providers/Microsoft.Network/expressRouteCircuits/(?<circuitname>.*)"} | Foreach {$Matches['circuitname']}
       Import-Module Az.Network -Force
       $exrCircuit = Get-AzExpressRouteCircuit -Name $cktname -ResourceGroupName $rg
       $bandwidthInGbps = $exrCircuit.BandwidthInGbps
