@@ -17,7 +17,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.Azure.Storage.Blob;
     using Microsoft.Azure.Storage.File;
-    using Microsoft.Azure.Storage.Queue;
     using Microsoft.Azure.Cosmos.Table;
     using System;
     using System.Collections.Generic;
@@ -43,8 +42,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             if (!(typeof(T) == typeof(SharedAccessTablePolicy) ||
                 typeof(T) == typeof(SharedAccessFilePolicy) ||
-                typeof(T) == typeof(SharedAccessBlobPolicy) ||
-                (typeof(T) == typeof(SharedAccessQueuePolicy))))
+                typeof(T) == typeof(SharedAccessBlobPolicy)))
             {
                 throw new ArgumentException(Resources.InvalidAccessPolicyType);
             }
@@ -127,10 +125,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 {
                     ((SharedAccessBlobPolicy)(Object)policy).Permissions = SharedAccessBlobPermissions.None;
                 }
-                else if ((typeof(T) == typeof(SharedAccessQueuePolicy)))
-                {
-                    ((SharedAccessQueuePolicy)(Object)policy).Permissions = SharedAccessQueuePermissions.None;
-                }
                 else
                 {
                     throw new ArgumentException(Resources.InvalidAccessPolicyType);
@@ -154,10 +148,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 {
                     ((SharedAccessBlobPolicy)(Object)policy).Permissions = SharedAccessBlobPolicy.PermissionsFromString(permission);
                 }
-                else if ((typeof(T) == typeof(SharedAccessQueuePolicy)))
-                {
-                    ((SharedAccessQueuePolicy)(Object)policy).Permissions = SharedAccessQueuePolicy.PermissionsFromString(permission);
-                }
                 else
                 {
                     throw new ArgumentException(Resources.InvalidAccessPolicyType);
@@ -173,28 +163,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         {
             if (!(typeof(T) == typeof(SharedAccessTablePolicy) ||
                typeof(T) == typeof(SharedAccessBlobPolicy) ||
-               (typeof(T) == typeof(SharedAccessQueuePolicy)) ||
                (typeof(T) == typeof(SharedAccessFilePolicy))))
             {
                 throw new ArgumentException(Resources.InvalidAccessPolicyType);
-            }
-
-            string permissionString = string.Empty;
-            if (typeof(T) == typeof(SharedAccessTablePolicy)) //Table
-            {
-                permissionString = SharedAccessTablePolicy.PermissionsToString((SharedAccessTablePermissions)(sharedAccessPolicies[policyName]).GetType().GetProperty("Permissions").GetValue(sharedAccessPolicies[policyName]));
-            }
-            else if (typeof(T) == typeof(SharedAccessFilePolicy)) //File
-            { 
-                permissionString = SharedAccessFilePolicy.PermissionsToString((SharedAccessFilePermissions)(sharedAccessPolicies[policyName]).GetType().GetProperty("Permissions").GetValue(sharedAccessPolicies[policyName]));
-            }
-            else if (typeof(T) == typeof(SharedAccessQueuePolicy)) //Queue
-            {
-                permissionString = SharedAccessQueuePolicy.PermissionsToString((SharedAccessQueuePermissions)(sharedAccessPolicies[policyName]).GetType().GetProperty("Permissions").GetValue(sharedAccessPolicies[policyName]));
-            }
-            else //Blob
-            {
-                permissionString = SharedAccessBlobPolicy.PermissionsToString((SharedAccessBlobPermissions)(sharedAccessPolicies[policyName]).GetType().GetProperty("Permissions").GetValue(sharedAccessPolicies[policyName]));
             }
 
             return PowerShellUtilities.ConstructPSObject(
@@ -202,7 +173,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 "Policy",
                 policyName,
                 "Permissions",
-                permissionString,
+                (sharedAccessPolicies[policyName]).GetType().GetProperty("Permissions").GetValue(sharedAccessPolicies[policyName]),
                 "StartTime",
                 (sharedAccessPolicies[policyName]).GetType().GetProperty("SharedAccessStartTime").GetValue(sharedAccessPolicies[policyName]),
                 "ExpiryTime",
