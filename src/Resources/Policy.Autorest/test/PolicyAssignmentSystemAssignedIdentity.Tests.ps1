@@ -1,11 +1,12 @@
 # setup the Pester environment for policy tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'PolicyAssignmentSystemAssignedIdentity'
 
-Describe 'PolicyAssignmentSystemAssignedIdentity' -Tag 'LiveOnly' {
+Describe 'PolicyAssignmentSystemAssignedIdentity' {
 
     BeforeAll {
         # setup
-        $rgname = $env.rgname
+        $rgName = $env.rgName
+        $rgScope = $env.rgScope
         $policyName = Get-ResourceName
         $testPA = Get-ResourceName
         $test2 = Get-ResourceName
@@ -14,19 +15,19 @@ Describe 'PolicyAssignmentSystemAssignedIdentity' -Tag 'LiveOnly' {
         # make a new resource group and policy definition
         $policy = New-AzPolicyDefinition -Name $policyName -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description
         # assign the policy definition with system MSI to the resource group
-        $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $env.scope -Description $description -IdentityType SystemAssigned -Location $location
+        $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $rgScope -Description $description -IdentityType SystemAssigned -Location $location
     }
 
     It 'Make a policy assignment at RG scope with MSI' {
         # get the assignment back
-        $expected = Get-AzPolicyAssignment -Name $testPA -Scope $env.scope
+        $expected = Get-AzPolicyAssignment -Name $testPA -Scope $rgScope
 
         # validate the results
         $expected.Name | Should -Be $actual.Name
         $actual.Type | Should -Be Microsoft.Authorization/policyAssignments
         $expected.Id | Should -Be $actual.Id
         $expected.PolicyDefinitionId | Should -Be $policy.Id
-        $expected.Scope | Should -Be $env.scope
+        $expected.Scope | Should -Be $rgScope
         $expected.IdentityType | Should -Be 'SystemAssigned'
         $expected.IdentityPrincipalId | Should -Not -BeNullOrEmpty
         $expected.IdentityTenantId | Should -Not -BeNullOrEmpty
@@ -60,7 +61,7 @@ Describe 'PolicyAssignmentSystemAssignedIdentity' -Tag 'LiveOnly' {
 
     It 'Make another policy assignment without MSI' {
         # make another policy assignment without an identity
-        $withoutIdentityResult = New-AzPolicyAssignment -Name $test2 -Scope $env.scope -PolicyDefinition $policy -Description $description
+        $withoutIdentityResult = New-AzPolicyAssignment -Name $test2 -Scope $rgScope -PolicyDefinition $policy -Description $description
 
         # validate it does not have an identity
         $withoutIdentityResult.Identity | Should -BeNull
@@ -77,7 +78,7 @@ Describe 'PolicyAssignmentSystemAssignedIdentity' -Tag 'LiveOnly' {
 
     It 'List policy assignment with MSI' {
         # verify identity is returned in collection GET
-        $list = Get-AzPolicyAssignment -Scope $env.scope | ?{ $_.Name -in @($testPA, $test2) }
+        $list = Get-AzPolicyAssignment -Scope $rgScope | ?{ $_.Name -in @($testPA, $test2) }
         ($list.IdentityType | Select -Unique) | Should -Be 'SystemAssigned'
         @($list.IdentityPrincipalId | Select -Unique).Count | Should -Be 2
         @($list.IdentityTenantId | Select -Unique).Count | Should -Be 1
@@ -87,8 +88,8 @@ Describe 'PolicyAssignmentSystemAssignedIdentity' -Tag 'LiveOnly' {
 
     AfterAll {
         # clean up
-        $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $env.scope -PassThru
-        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $env.scope -PassThru) -and $remove
+        $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $rgScope -PassThru
+        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $rgScope -PassThru) -and $remove
         $remove = (Remove-AzPolicyDefinition -Name $policyName -Force -PassThru) -and $remove
         $remove | Should -Be $true
 

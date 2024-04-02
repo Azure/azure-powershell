@@ -1,11 +1,12 @@
 # setup the Pester environment for policy backcompat tests
 . (Join-Path $PSScriptRoot 'Common.ps1') 'Backcompat-PolicyAssignmentEnforcementMode'
 
-Describe 'Backcompat-PolicyAssignmentEnforcementMode' -Tag 'LiveOnly' {
+Describe 'Backcompat-PolicyAssignmentEnforcementMode' {
 
     BeforeAll {
         # setup
-        $rgname = $env.rgname
+        $rgName = $env.rgName
+        $rgScope = $env.rgScope
         $policyName = Get-ResourceName
         $testPA = Get-ResourceName
         $test2 = Get-ResourceName
@@ -15,18 +16,18 @@ Describe 'Backcompat-PolicyAssignmentEnforcementMode' -Tag 'LiveOnly' {
         $policy = New-AzPolicyDefinition -Name $policyName -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description -BackwardCompatible
 
         # assign the policy definition to the resource group
-        $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $env.scope -Description $description -Location $location -EnforcementMode DoNotEnforce -BackwardCompatible
+        $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $rgScope -Description $description -Location $location -EnforcementMode DoNotEnforce -BackwardCompatible
     }
 
     It 'make a policy assignment' {
         {
             # get the assignment back and validate
-            $expected = Get-AzPolicyAssignment -Name $testPA -Scope $env.scope -BackwardCompatible
+            $expected = Get-AzPolicyAssignment -Name $testPA -Scope $rgScope -BackwardCompatible
             Assert-AreEqual $expected.Name $actual.Name
             Assert-AreEqual Microsoft.Authorization/policyAssignments $actual.ResourceType
             Assert-AreEqual $expected.PolicyAssignmentId $actual.PolicyAssignmentId
             Assert-AreEqual $expected.Properties.PolicyDefinitionId $policy.PolicyDefinitionId
-            Assert-AreEqual $expected.Properties.Scope $env.scope
+            Assert-AreEqual $expected.Properties.Scope $rgScope
             Assert-AreEqual $expected.Properties.EnforcementMode $actual.Properties.EnforcementMode
             Assert-AreEqual $expected.Properties.EnforcementMode $enforcementModeDoNotEnforce
             Assert-AreEqual $location $actual.Location
@@ -63,7 +64,7 @@ Describe 'Backcompat-PolicyAssignmentEnforcementMode' -Tag 'LiveOnly' {
     It 'make another policy assignment without enforcement mode' {
         {
             # make another policy assignment without an enforcementMode, validate default mode is set
-            $withoutEnforcementMode = New-AzPolicyAssignment -Name $test2 -Scope $env.scope -PolicyDefinition $policy -Description $description -BackwardCompatible
+            $withoutEnforcementMode = New-AzPolicyAssignment -Name $test2 -Scope $rgScope -PolicyDefinition $policy -Description $description -BackwardCompatible
             Assert-AreEqual $enforcementModeDefault $withoutEnforcementMode.Properties.EnforcementMode
 
             # set an enforcement mode to the new assignment using the SET cmdlet
@@ -79,15 +80,15 @@ Describe 'Backcompat-PolicyAssignmentEnforcementMode' -Tag 'LiveOnly' {
     It 'enforcement mode in policy assignment list' {
         {
             # verify enforcement mode is returned in collection GET
-            $list = Get-AzPolicyAssignment -Scope $env.scope -BackwardCompatible | ?{ $_.Name -in @($testPA, $test2) }
+            $list = Get-AzPolicyAssignment -Scope $rgScope -BackwardCompatible | ?{ $_.Name -in @($testPA, $test2) }
             Assert-AreEqual 2 @($list.Properties.EnforcementMode | Select -Unique).Count
         } | Should -Not -Throw
     }
 
     AfterAll {
         # clean up
-        $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $env.scope -BackwardCompatible
-        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $env.scope -BackwardCompatible) -and $remove
+        $remove = Remove-AzPolicyAssignment -Name $testPA -Scope $rgScope -BackwardCompatible
+        $remove = (Remove-AzPolicyAssignment -Name $test2 -Scope $rgScope -BackwardCompatible) -and $remove
         $remove = (Remove-AzPolicyDefinition -Name $policyName -Force -BackwardCompatible) -and $remove
         Assert-AreEqual True $remove
 
