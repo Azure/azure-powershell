@@ -274,8 +274,8 @@
         <TypeName>Azure.Storage.Queues.QueueClient</TypeName>
       </ViewSelectedBy>
       <GroupBy>
-        <ScriptBlock>$_.QueueClient.Uri</ScriptBlock>
-        <Label>Queue End Point</Label>
+        <ScriptBlock>$_.QueueClient.AccountName</ScriptBlock>
+        <Label>Storage Account Name</Label>
       </GroupBy>
       <TableControl>
         <TableHeaders>
