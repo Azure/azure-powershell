@@ -13,7 +13,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzSphereImageandDeploymentSce
   }
   . ($mockingPath | Select-Object -First 1).FullName
 }
-
+### This test is running with image and deployment.
+### Please record this scenario wih first product and prod device group.
 Describe 'AzSphereImageandDepoymentScenario' {
     It 'CreateImages' {
         {
