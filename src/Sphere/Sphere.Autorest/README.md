@@ -65,7 +65,11 @@ directive:
       verb: Update
       subject: Image|Deployment
     remove: true
-  # error 'The server responded with an unrecognized response', error message missing in default error response
+  - where:
+      verb: Get
+      subject: CatalogDeployment
+    remove: true
+  # error 'The server responded with an unrecognized response', error message missing in default error response for post path
   - where:
       verb: Invoke
       subject: UploadCatalogImage
@@ -73,10 +77,6 @@ directive:
   - where:
       verb: Invoke
       subject: ClaimDeviceGroupDevice
-    remove: true
-  - where:
-      verb: Get
-      subject: CatalogDeployment
     remove: true
   # Remove unexpanded include json parameter set
   - where:
