@@ -16,7 +16,8 @@ Selectively updates the set of tags on a resource or subscription.
 
 ```
 Update-AzTag [-ResourceId] <String> [-Tag] <Hashtable> [-Operation] <TagPatchOperation>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

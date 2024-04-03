@@ -15,7 +15,8 @@ Gets available virtual machine sizes.
 
 ### ListVirtualMachineSizeParamSet (Default)
 ```
-Get-AzVMSize [-Location] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzVMSize [-Location] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ListAvailableSizesForAvailabilitySet
@@ -150,5 +151,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzVM](./Get-AzVM.md)
-
-

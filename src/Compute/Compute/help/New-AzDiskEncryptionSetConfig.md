@@ -16,8 +16,8 @@ Creates a configurable disk encryption set object.
 New-AzDiskEncryptionSetConfig [-Location] <String> [[-Tag] <Hashtable>] [[-IdentityType] <String>]
  [[-SourceVaultId] <String>] [-KeyUrl <String>] [-EncryptionType <String>]
  [-RotationToLatestKeyVersionEnabled <Boolean>] [-FederatedClientId <String>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

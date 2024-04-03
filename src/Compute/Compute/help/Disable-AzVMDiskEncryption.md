@@ -261,5 +261,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzVMDiskEncryptionExtension](./Remove-AzVMDiskEncryptionExtension.md)
 
 [Set-AzVMDiskEncryptionExtension](./Set-AzVMDiskEncryptionExtension.md)
-
-

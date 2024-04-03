@@ -15,8 +15,8 @@ Sets an EventHub Authorization Rule
 ### SetExpandedNamespace (Default)
 ```
 Set-AzEventHubAuthorizationRule -NamespaceName <String> -ResourceGroupName <String> [-Name <String>]
- [-SubscriptionId <String>] -Rights <AccessRights[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] -Rights <AccessRights[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetExpandedEntity
@@ -29,7 +29,8 @@ Set-AzEventHubAuthorizationRule -NamespaceName <String> -ResourceGroupName <Stri
 ### SetViaIdentityExpanded
 ```
 Set-AzEventHubAuthorizationRule -InputObject <IEventHubIdentity> -Rights <AccessRights[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

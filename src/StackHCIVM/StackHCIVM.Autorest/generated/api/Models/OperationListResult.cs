@@ -7,34 +7,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Extensions;
 
-    /// <summary>
-    /// A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of
-    /// results.
-    /// </summary>
+    /// <summary>The List Compute Operation operation response.</summary>
     public partial class OperationListResult :
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResult,
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultInternal
     {
 
-        /// <summary>Internal Acessors for NextLink</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultInternal.NextLink { get => this._nextLink; set { {_nextLink = value;} } }
-
         /// <summary>Internal Acessors for Value</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperation> Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultInternal.Value { get => this._value; set { {_value = value;} } }
-
-        /// <summary>Backing field for <see cref="NextLink" /> property.</summary>
-        private string _nextLink;
-
-        /// <summary>URL to get the next set of operation list results (if there are any).</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Owned)]
-        public string NextLink { get => this._nextLink; }
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue> Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationListResultInternal.Value { get => this._value; set { {_value = value;} } }
 
         /// <summary>Backing field for <see cref="Value" /> property.</summary>
-        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperation> _value;
+        private System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue> _value;
 
-        /// <summary>List of operations supported by the resource provider</summary>
+        /// <summary>The list of compute operations</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Origin(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.PropertyOrigin.Owned)]
-        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperation> Value { get => this._value; }
+        public System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue> Value { get => this._value; }
 
         /// <summary>Creates an new <see cref="OperationListResult" /> instance.</summary>
         public OperationListResult()
@@ -42,44 +29,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 
         }
     }
-    /// A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of
-    /// results.
+    /// The List Compute Operation operation response.
     public partial interface IOperationListResult :
         Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IJsonSerializable
     {
-        /// <summary>URL to get the next set of operation list results (if there are any).</summary>
+        /// <summary>The list of compute operations</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Read = true,
         Create = false,
         Update = false,
-        Description = @"URL to get the next set of operation list results (if there are any).",
-        SerializedName = @"nextLink",
-        PossibleTypes = new [] { typeof(string) })]
-        string NextLink { get;  }
-        /// <summary>List of operations supported by the resource provider</summary>
-        [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Info(
-        Required = false,
-        ReadOnly = true,
-        Read = true,
-        Create = false,
-        Update = false,
-        Description = @"List of operations supported by the resource provider",
+        Description = @"The list of compute operations",
         SerializedName = @"value",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperation) })]
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperation> Value { get;  }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue) })]
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue> Value { get;  }
 
     }
-    /// A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of
-    /// results.
+    /// The List Compute Operation operation response.
     internal partial interface IOperationListResultInternal
 
     {
-        /// <summary>URL to get the next set of operation list results (if there are any).</summary>
-        string NextLink { get; set; }
-        /// <summary>List of operations supported by the resource provider</summary>
-        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperation> Value { get; set; }
+        /// <summary>The list of compute operations</summary>
+        System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue> Value { get; set; }
 
     }
 }

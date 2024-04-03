@@ -1792,3 +1792,37 @@ function Test-SnapshotConfigElasticSanResourceId
         Clean-ResourceGroup $rgname
     }
 }
+
+
+<#
+.SYNOPSIS
+Testing SnapshotConfig create with TierOption 'EnhancedSpeed'
+#>
+function Test-SnapshotConfigTierOptionEnhancedSpeed
+{
+    $rgname = Get-ComputeTestResourceName;
+	$loc = 'eastus2';
+
+    try
+    {
+        
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # Config and create test
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -AccountType Standard_LRS -CreateOption CopyFromSanSnapshot -TierOption 'Enhanced'
+        Assert-AreEqual EnhancedSpeed $snapshotconfig.CreationData.ProvisionedBandwidthCopySpeed
+
+        $snapshot = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig
+        Assert-AreEqual CopyFromSanSnapshot $snapshot.CreationData.CreateOption
+
+        $snapshot = Get-AzSnapshot -ResourceGroupName $rgname
+        Assert-AreEqual CopyFromSanSnapshot $snapshot.CreationData.CreateOption
+        Assert-AreEqual EnhancedSpeed $snapshot.CreationData.ProvisionedBandwidthCopySpeed
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

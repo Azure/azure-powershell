@@ -73,7 +73,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderCspmAwsOfferingVMScannersConfigurationExclusionTags]
     # VM tags that indicates that VM should not be scanned.
-    # .
     ${ConfigurationExclusionTag},
 
     [Parameter()]

@@ -21,7 +21,8 @@ Invoke-AzStorageAccountFailover [-ResourceGroupName] <String> [-Name] <String> [
 ### AccountObject
 ```
 Invoke-AzStorageAccountFailover [-FailoverType <String>] -InputObject <PSStorageAccount> [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

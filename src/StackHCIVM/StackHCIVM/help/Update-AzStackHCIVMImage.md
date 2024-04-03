@@ -36,10 +36,18 @@ Please note some properties can be set only during image creation.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Update an Image.
+```powershell
 Update-AzStackHCIVMImage  -Name "testImage" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
 ```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testImage      test-rg
+```
+
+This command updates an exisiting image in the specified resource group.
 
 ## PARAMETERS
 
@@ -68,7 +76,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -114,7 +122,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -173,9 +181,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages
+
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmimage](https://learn.microsoft.com/powershell/module/az.stackhcivm/update-azstackhcivmimage)

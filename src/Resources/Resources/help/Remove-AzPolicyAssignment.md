@@ -16,7 +16,8 @@ Removes a policy assignment.
 ### NameParameterSet (Default)
 ```
 Remove-AzPolicyAssignment -Name <String> [-Scope <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### IdParameterSet
@@ -28,7 +29,8 @@ Remove-AzPolicyAssignment -Id <String> [-ApiVersion <String>] [-Pre] [-DefaultPr
 ### InputObjectParameterSet
 ```
 Remove-AzPolicyAssignment -InputObject <PsPolicyAssignment> [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -218,5 +220,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzPolicyAssignment](./New-AzPolicyAssignment.md)
 
 [Set-AzPolicyAssignment](./Set-AzPolicyAssignment.md)
-
-

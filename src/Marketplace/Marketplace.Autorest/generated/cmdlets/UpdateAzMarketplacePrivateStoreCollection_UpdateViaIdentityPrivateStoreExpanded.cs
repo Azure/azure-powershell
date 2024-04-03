@@ -397,7 +397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
                         this.PrivateStoreInputObject.Id += $"/collections/{(global::System.Uri.EscapeDataString(this.CollectionId.ToString()))}";
                         _payloadBody = await this.Client.PrivateStoreCollectionGetViaIdentityWithResult(PrivateStoreInputObject.Id, this, Pipeline);
                         this.Update_payloadBody();
-                        await this.Client.PrivateStoreCollectionCreateOrUpdateViaIdentity(PrivateStoreInputObject.Id, _payloadBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.PrivateStoreCollectionCreateOrUpdateViaIdentity(PrivateStoreInputObject.Id, _payloadBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
                         }
                         _payloadBody = await this.Client.PrivateStoreCollectionGetWithResult(PrivateStoreInputObject.PrivateStoreId ?? null, CollectionId, this, Pipeline);
                         this.Update_payloadBody();
-                        await this.Client.PrivateStoreCollectionCreateOrUpdate(PrivateStoreInputObject.PrivateStoreId ?? null, CollectionId, _payloadBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.PrivateStoreCollectionCreateOrUpdate(PrivateStoreInputObject.PrivateStoreId ?? null, CollectionId, _payloadBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

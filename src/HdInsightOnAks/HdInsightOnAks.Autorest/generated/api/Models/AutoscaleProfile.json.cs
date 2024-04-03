@@ -67,11 +67,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_scheduleBasedConfig = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("scheduleBasedConfig"), out var __jsonScheduleBasedConfig) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ScheduleBasedConfig.FromJson(__jsonScheduleBasedConfig) : ScheduleBasedConfig;}
-            {_loadBasedConfig = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("loadBasedConfig"), out var __jsonLoadBasedConfig) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.LoadBasedConfig.FromJson(__jsonLoadBasedConfig) : LoadBasedConfig;}
-            {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool)__jsonEnabled : Enabled;}
-            {_gracefulDecommissionTimeout = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("gracefulDecommissionTimeout"), out var __jsonGracefulDecommissionTimeout) ? (int?)__jsonGracefulDecommissionTimeout : GracefulDecommissionTimeout;}
-            {_autoscaleType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("autoscaleType"), out var __jsonAutoscaleType) ? (string)__jsonAutoscaleType : (string)AutoscaleType;}
+            {_scheduleBasedConfig = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("scheduleBasedConfig"), out var __jsonScheduleBasedConfig) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ScheduleBasedConfig.FromJson(__jsonScheduleBasedConfig) : _scheduleBasedConfig;}
+            {_loadBasedConfig = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("loadBasedConfig"), out var __jsonLoadBasedConfig) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.LoadBasedConfig.FromJson(__jsonLoadBasedConfig) : _loadBasedConfig;}
+            {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool)__jsonEnabled : _enabled;}
+            {_gracefulDecommissionTimeout = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("gracefulDecommissionTimeout"), out var __jsonGracefulDecommissionTimeout) ? (int?)__jsonGracefulDecommissionTimeout : _gracefulDecommissionTimeout;}
+            {_autoscaleType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("autoscaleType"), out var __jsonAutoscaleType) ? (string)__jsonAutoscaleType : (string)_autoscaleType;}
             AfterFromJson(json);
         }
 

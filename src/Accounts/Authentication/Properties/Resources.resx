@@ -405,4 +405,10 @@
   <data name="HelpMessageOfDisplaySecretsWarning" xml:space="preserve">
     <value>When enabled, a warning message will be displayed when the cmdlet output contains secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844</value>
   </data>
+  <data name="DisableInstanceDiscoveryWarning" xml:space="preserve">
+    <value>Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. It is crucial to ensure that the configured authority host is valid and trustworthy.</value>
+  </data>
+  <data name="HelpMessageOfDisableInstanceDiscovery" xml:space="preserve">
+    <value>Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. The process of instance discovery entails retrieving authority metadata from https://login.microsoft.com/ to validate the authority. By setting this to true, the validation of the authority is disabled. As a result, it is crucial to ensure that the configured authority host is valid and trustworthy.</value>
+  </data>
 </root>

@@ -18,7 +18,8 @@ Update-AzStorageFileServiceProperty [-ResourceGroupName] <String> [-StorageAccou
  [-EnableShareDeleteRetentionPolicy <Boolean>] [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>]
  [-SmbProtocolVersion <String[]>] [-SmbAuthenticationMethod <String[]>] [-SmbChannelEncryption <String[]>]
  [-SmbKerberosTicketEncryption <String[]>] [-CorsRule <PSCorsRule[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### AccountObject
@@ -27,7 +28,8 @@ Update-AzStorageFileServiceProperty -StorageAccount <PSStorageAccount>
  [-EnableShareDeleteRetentionPolicy <Boolean>] [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>]
  [-SmbProtocolVersion <String[]>] [-SmbAuthenticationMethod <String[]>] [-SmbChannelEncryption <String[]>]
  [-SmbKerberosTicketEncryption <String[]>] [-CorsRule <PSCorsRule[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### FileServicePropertiesResourceId
@@ -36,7 +38,8 @@ Update-AzStorageFileServiceProperty [-ResourceId] <String> [-EnableShareDeleteRe
  [-ShareRetentionDays <Int32>] [-EnableSmbMultichannel <Boolean>] [-SmbProtocolVersion <String[]>]
  [-SmbAuthenticationMethod <String[]>] [-SmbChannelEncryption <String[]>]
  [-SmbKerberosTicketEncryption <String[]>] [-CorsRule <PSCorsRule[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

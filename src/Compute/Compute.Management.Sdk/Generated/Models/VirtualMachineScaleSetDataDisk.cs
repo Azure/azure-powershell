@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// therefore must be unique for each data disk attached to a
         /// VM.</param>
         /// <param name="createOption">The create option. Possible values
-        /// include: 'FromImage', 'Empty', 'Attach'</param>
+        /// include: 'FromImage', 'Empty', 'Attach', 'Copy', 'Restore'</param>
         /// <param name="name">The disk name.</param>
         /// <param name="caching">Specifies the caching requirements. Possible
         /// values are: **None,** **ReadOnly,** **ReadWrite.** The default
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Management.Compute.Models
 
         /// <summary>
         /// Gets or sets the create option. Possible values include:
-        /// 'FromImage', 'Empty', 'Attach'
+        /// 'FromImage', 'Empty', 'Attach', 'Copy', 'Restore'
         /// </summary>
         [JsonProperty(PropertyName = "createOption")]
         public string CreateOption { get; set; }

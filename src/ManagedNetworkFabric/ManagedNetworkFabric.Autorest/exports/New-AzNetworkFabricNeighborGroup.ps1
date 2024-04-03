@@ -86,7 +86,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INeighborGroupDestination]
     # An array of destination IPv4 Addresses or IPv6 Addresses.
-    # To construct, see NOTES section for DESTINATION properties and create a hash table.
     ${Destination},
 
     [Parameter(ParameterSetName='CreateExpanded')]

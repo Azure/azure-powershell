@@ -1,6 +1,6 @@
 ---
 external help file: Az.ApplicationInsights-help.xml
-Module Name: Az.Applicationinsights
+Module Name: Az.ApplicationInsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightswebtest
 schema: 2.0.0
 ---
@@ -21,7 +21,8 @@ New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> [-Su
  [-RequestHttpVerb <String>] [-RequestParseDependent] [-RequestUrl <String>] [-RetryEnabled]
  [-RuleExpectedHttpStatusCode <Int32>] [-RuleIgnoreHttpsStatusCode]
  [-RuleSslCertRemainingLifetimeCheck <Int32>] [-RuleSslCheck] [-Tag <Hashtable>] [-TestName <String>]
- [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Timeout <Int32>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateClassic
@@ -30,8 +31,8 @@ New-AzApplicationInsightsWebTest -Name <String> -ResourceGroupName <String> [-Su
  -Location <String> [-ContentMatch <String>] [-Description <String>] [-Enabled] [-Frequency <Int32>]
  [-GeoLocation <IWebTestGeolocation[]>] [-Kind <WebTestKindEnum>] [-RequestParseDependent]
  [-RequestUrl <String>] [-RetryEnabled] [-RuleExpectedHttpStatusCode <Int32>] [-Tag <Hashtable>]
- [-TestName <String>] [-Timeout <Int32>] [-Configuration <String>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-TestName <String>] [-Timeout <Int32>] [-Configuration <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +40,7 @@ Creates or updates an Application Insights web test definition.
 
 ## EXAMPLES
 
-### Example 1: Creates or updates an standard kind of the Application Insights web test
+### Example 1: Creates or updates a standard kind of the Application Insights web test
 ```powershell
 $geoLocation = @()
 $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
@@ -60,7 +61,28 @@ This command creates or updates an standard kind of the Application Insights web
 
 We enter hidden-link in the `Tag` parameter to associate WebTest and Application Insights.
 
-### Example 2: Creates or updates an ping kind of the Application Insights web test
+### Example 2: Creates or updates a standard kind of the Application Insights web test in disabled state
+```powershell
+$geoLocation = @()
+$geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
+$geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "us-ca-sjc-azr"
+New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name standard-pwsh01 -Location 'westus2' `
+-Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/appinsights-portal01" = "Resource"} `
+-RequestUrl "https://www.bing.com" -RequestHttpVerb "GET" -TestName 'standard-pwsh01' `
+-RuleExpectedHttpStatusCode 200 -Frequency 300 -Enabled:$false -Timeout 120 -Kind 'standard' -RetryEnabled -GeoLocation $geoLocation
+```
+
+```output
+Name            Location WebTestKind ResourceGroupName  Enabled
+----            -------- ----------- -----------------  -------
+standard-pwsh01 westus2  standard    azpwsh-rg-test     False
+```
+
+This command creates or updates a standard kind of the Application Insights web test in disabled state.
+
+The switch parameter "-Enabled" must be set explicitly to $false to disable the test.
+
+### Example 3: Creates or updates a ping kind of the Application Insights web test
 ```powershell
 $geoLocation = @()
 $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
@@ -80,7 +102,7 @@ pingwebtest-pwsh01 westus2  ping        azpwsh-rg-test      True
 
 This command creates or updates an ping kind of the Application Insights web test.
 
-### Example 3: Creates or updates an ping kind of the Application Insights web test with custom configuration
+### Example 4: Creates or updates a ping kind of the Application Insights web test with custom configuration
 ```powershell
 $geoLocation = @()
 $geoLocation += New-AzApplicationInsightsWebTestGeolocationObject -Location "emea-nl-ams-azr"
@@ -89,20 +111,20 @@ New-AzApplicationInsightsWebTest -ResourceGroupName azpwsh-rg-test -Name 'pingwe
 -Tag @{"hidden-link:/subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/azpwsh-rg-test/providers/microsoft.insights/components/appinsights-portal01" = "Resource"} `
 -GeoLocation $geoLocation -RetryEnabled -Enabled -Frequency 300 -Timeout 90 `
 -Kind 'ping' `
--Configuration "<WebTest  Name=`"basic-portal03`"  Id=`"9407db10-5d84-487f-98a3-a1ee67bb98f0`"  Enabled=`"True`"  CssProjectStructure=`"`"  CssIteration=`"`"  Timeout=`"90`"  WorkItemIds=`"`"  xmlns=`"http://microsoft.com/schemas/VisualStudio/TeamTest/2010`"  Description=`"`"  CredentialUserName=`"`"  CredentialPassword=`"`"  PreAuthenticate=`"True`"  Proxy=`"default`"  StopOnError=`"False`"  RecordedResultFile=`"`"  ResultsLocale=`"`"> 
-    <Items> 
-        <Request Method=`"GET`"  Guid=`"a2025e53-0702-d03e-f311-5774ec16893d`"  Version=`"1.1`"  Url=`"https://www.bing.com`"  ThinkTime=`"0`"  Timeout=`"90`"  ParseDependentRequests=`"True`"  FollowRedirects=`"True`"  RecordResult=`"True`"  Cache=`"False`"  ResponseTimeGoal=`"0`"  Encoding=`"utf-8`"  ExpectedHttpStatusCode=`"200`"  ExpectedResponseUrl=`"`"  ReportingName=`"`"  IgnoreHttpStatusCode=`"False`" /> 
-    </Items> 
-    <ValidationRules> 
+-Configuration "<WebTest  Name=`"basic-portal03`"  Id=`"9407db10-5d84-487f-98a3-a1ee67bb98f0`"  Enabled=`"True`"  CssProjectStructure=`"`"  CssIteration=`"`"  Timeout=`"90`"  WorkItemIds=`"`"  xmlns=`"http://microsoft.com/schemas/VisualStudio/TeamTest/2010`"  Description=`"`"  CredentialUserName=`"`"  CredentialPassword=`"`"  PreAuthenticate=`"True`"  Proxy=`"default`"  StopOnError=`"False`"  RecordedResultFile=`"`"  ResultsLocale=`"`">
+    <Items>
+        <Request Method=`"GET`"  Guid=`"a2025e53-0702-d03e-f311-5774ec16893d`"  Version=`"1.1`"  Url=`"https://www.bing.com`"  ThinkTime=`"0`"  Timeout=`"90`"  ParseDependentRequests=`"True`"  FollowRedirects=`"True`"  RecordResult=`"True`"  Cache=`"False`"  ResponseTimeGoal=`"0`"  Encoding=`"utf-8`"  ExpectedHttpStatusCode=`"200`"  ExpectedResponseUrl=`"`"  ReportingName=`"`"  IgnoreHttpStatusCode=`"False`" />
+    </Items>
+    <ValidationRules>
         <ValidationRule  Classname=`"Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidationRuleFindText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a`"  DisplayName=`"Find Text`"  Description=`"Verifies the existence of the specified text in the response.`"  Level=`"High`"  ExectuionOrder=`"BeforeDependents`">
-            <RuleParameters> 
-            <RuleParameter Name=`"FindText`" Value=`"test&#x20;content&#x20;match`" /> 
-            <RuleParameter Name=`"IgnoreCase`" Value=`"False`" /> 
-            <RuleParameter Name=`"UseRegularExpression`" Value=`"False`" /> 
-            <RuleParameter Name=`"PassIfTextFound`" Value=`"True`" /> 
-            </RuleParameters> 
-        </ValidationRule> 
-    </ValidationRules> 
+            <RuleParameters>
+            <RuleParameter Name=`"FindText`" Value=`"test&#x20;content&#x20;match`" />
+            <RuleParameter Name=`"IgnoreCase`" Value=`"False`" />
+            <RuleParameter Name=`"UseRegularExpression`" Value=`"False`" />
+            <RuleParameter Name=`"PassIfTextFound`" Value=`"True`" />
+            </RuleParameters>
+        </ValidationRule>
+    </ValidationRules>
 </WebTest>"
 ```
 
@@ -585,19 +607,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.IWebTest
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`GEOLOCATION <IWebTestGeolocation[]>`: A list of where to physically run the tests from to give global coverage for accessibility of your application.
-  - `[Location <String>]`: Location ID for the WebTest to run from.
-
-`REQUESTHEADER <IHeaderField[]>`: List of headers and their values to add to the WebTest call.
-  - `[Name <String>]`: The name of the header.
-  - `[Value <String>]`: The value of the header.
 
 ## RELATED LINKS

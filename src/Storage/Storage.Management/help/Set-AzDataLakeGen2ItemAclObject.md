@@ -14,7 +14,8 @@ Creates/Updates a DataLake gen2 item ACL object, which can be used in Update-AzD
 
 ```
 Set-AzDataLakeGen2ItemAclObject [-EntityId <String>] [-DefaultScope] -Permission <String>
- [-InputObject <PSPathAccessControlEntry[]>] -AccessControlType <AccessControlType> [<CommonParameters>]
+ [-InputObject <PSPathAccessControlEntry[]>] -AccessControlType <AccessControlType>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -400,7 +400,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     _payloadBody = await this.Client.PrivateStoreCollectionGetWithResult(PrivateStoreId, CollectionId, this, Pipeline);
                     this.Update_payloadBody();
-                    await this.Client.PrivateStoreCollectionCreateOrUpdate(PrivateStoreId, CollectionId, _payloadBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.PrivateStoreCollectionCreateOrUpdate(PrivateStoreId, CollectionId, _payloadBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.UndeclaredResponseException urexception)

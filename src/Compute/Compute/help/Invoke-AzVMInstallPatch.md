@@ -17,47 +17,48 @@ Installs patches on the VM
 Invoke-AzVMInstallPatch -ResourceGroupName <String> -VMName <String> [-Windows] -RebootSetting <String>
  -MaximumDuration <String> [-KBNumberToInclude <String[]>] [-KBNumberToExclude <String[]>]
  [-ExcludeKBsRequiringReboot] [-ClassificationToIncludeForWindows <String[]>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### LinuxDefaultParameterSet
 ```
 Invoke-AzVMInstallPatch -ResourceGroupName <String> -VMName <String> [-Linux] -RebootSetting <String>
  -MaximumDuration <String> [-PackageNameMaskToInclude <String[]>] [-PackageNameMaskToExclude <String[]>]
- [-ClassificationToIncludeForLinux <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ClassificationToIncludeForLinux <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### WindowsResourceIDParameterSet
 ```
 Invoke-AzVMInstallPatch -ResourceId <String> [-Windows] -RebootSetting <String> -MaximumDuration <String>
  [-KBNumberToInclude <String[]>] [-KBNumberToExclude <String[]>] [-ExcludeKBsRequiringReboot]
- [-ClassificationToIncludeForWindows <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ClassificationToIncludeForWindows <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### LinuxResourceIDParameterSet
 ```
 Invoke-AzVMInstallPatch -ResourceId <String> [-Linux] -RebootSetting <String> -MaximumDuration <String>
  [-PackageNameMaskToInclude <String[]>] [-PackageNameMaskToExclude <String[]>]
- [-ClassificationToIncludeForLinux <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ClassificationToIncludeForLinux <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### WindowsInputObjectParameterSet
 ```
 Invoke-AzVMInstallPatch [-VM] <PSVirtualMachine> [-Windows] -RebootSetting <String> -MaximumDuration <String>
  [-KBNumberToInclude <String[]>] [-KBNumberToExclude <String[]>] [-ExcludeKBsRequiringReboot]
- [-ClassificationToIncludeForWindows <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ClassificationToIncludeForWindows <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### LinuxInputObjectParameterSet
 ```
 Invoke-AzVMInstallPatch [-VM] <PSVirtualMachine> [-Linux] -RebootSetting <String> -MaximumDuration <String>
  [-PackageNameMaskToInclude <String[]>] [-PackageNameMaskToExclude <String[]>]
- [-ClassificationToIncludeForLinux <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ClassificationToIncludeForLinux <String[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

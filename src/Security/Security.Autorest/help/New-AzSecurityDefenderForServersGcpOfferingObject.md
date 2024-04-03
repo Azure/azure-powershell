@@ -79,7 +79,6 @@ Accept wildcard characters: False
 
 ### -ConfigurationExclusionTag
 VM tags that indicate that VM should not be scanned.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDefenderForServersGcpOfferingVMScannersConfigurationExclusionTags
