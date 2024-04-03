@@ -257,11 +257,11 @@ function setupEnv() {
     $env['rgName'] = Get-ResourceGroupName
     $rg = New-ResourceGroup -Name $env.rgName -Location "west us"
     $env['rgScope'] = $rg.ResourceId
+    $env['location'] = $rg.Location
 
-    $env['userassignedidentityName'] = "test-user-msi"
-    $location = "westus"
-    $userassignedidentity = New-AzUserAssignedIdentity -ResourceGroupName $env.rgName -Name $env.userassignedidentityName -Location $location
-    $env['userassignedidentityId'] = $userassignedidentity.Id
+    $env['userAssignedIdentityName'] = "test-user-msi"
+    $userAssignedIdentity = New-AzUserAssignedIdentity -ResourceGroupName $env.rgName -Name $env.userAssignedIdentityName -Location $env.location
+    $env['userAssignedIdentityId'] = $userAssignedIdentity.Id
 
     $env['managementGroup'] = 'AzGovPerfTest'
     $env['managementGroupScope'] = '/providers/Microsoft.Management/managementGroups/AzGovPerfTest'
@@ -301,7 +301,7 @@ function setupEnv() {
     $env['parameterNullError'] = '. The argument is null. Provide a valid value for the argument, and then try running the command again.'
     $env['missingParameters'] = 'Cannot process command because of one or more missing mandatory parameters:'
     $env['missingAnArgument'] = 'Missing an argument for parameter '
-    $env['onlyManagementGroupOrSubscription'] = 'Only -ManagementGroupName or -SubscriptionId can be provided, not both.'
+    $env['onlyManagementGroupOrSubscription'] = 'Only ManagementGroupName or SubscriptionId can be provided, not both.'
     $env['onlyDefinitionOrSetDefinition'] = 'Only one of -PolicyDefinition or -PolicySetDefinition can be specified, not both.'
     $env['policyAssignmentNotFound'] = '[PolicyAssignmentNotFound] : '
     $env['policySetDefinitionNotFound'] = '[PolicySetDefinitionNotFound] : '
@@ -310,18 +310,19 @@ function setupEnv() {
     $env['policyAssignmentMissingIdentityId']  = 'A user assigned identity id needs to be specified if the identity type is ''UserAssigned''.'
     $env['policyExemptionNotFound'] = '[PolicyExemptionNotFound] : '
     $env['invalidRequestContent'] = '[InvalidRequestContent] : The request content was invalid and could not be deserialized: '
-    $env['policyDefinitionParameter'] = 'One of -PolicyDefinition or -PolicySetDefinition must be provided.'
+    $env['policyDefinitionParameter'] = 'One of PolicyDefinition or PolicySetDefinition must be provided.'
     $env['missingSubscription'] = '[MissingSubscription] : The request did not have a subscription or a valid tenant level resource provider.'
     $env['undefinedPolicyParameter'] = '[UndefinedPolicyParameter] : The policy assignment'
     $env['invalidPolicyRule'] = '[InvalidPolicyRule] : Failed to parse policy rule: '
     $env['authorizationFailed'] = '[AuthorizationFailed] : '
-    $env['allSwitchNotSupported'] = 'The -IncludeDescendent switch is not supported for management group scopes.'
+    $env['allSwitchNotSupported'] = 'The IncludeDescendent switch is not supported for management group scopes.'
     $env['httpMethodNotSupported'] = "HttpMethodNotSupported : The http method 'DELETE' is not supported for a resource collection."
     $env['nonInteractiveMode'] = 'PowerShell is in NonInteractive mode. Read and Prompt functionality is not available.'
     $env['parameterNullOrEmpty'] = '. The argument is null or empty. Provide an argument that is not null or empty, and then try the command again.'
     $env['invalidParameterValue'] = 'Cannot validate argument on parameter'
     $env['invalidPolicyDefinitionReference'] = 'InvalidPolicyDefinitionReference'
     $env['invalidPolicySetDefinitionRequest'] = "[InvalidCreatePolicySetDefinitionRequest] : The policy set definition 'someName' create request is invalid. At least one policy definition must be referenced."
+    $env['multiplePolicyDefinitionParams'] = "Cannot bind parameter because parameter 'PolicyDefinition' is specified more than once"
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -333,6 +334,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    $null = Remove-AzUserAssignedIdentity -ResourceGroupName $env.rgName -Name $env.userassignedidentityName
+    $null = Remove-AzUserAssignedIdentity -ResourceGroupName $env.rgName -Name $env.userAssignedIdentityName
     $null = Remove-ResourceGroup -Name $env.rgName
 }

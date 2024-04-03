@@ -10,7 +10,7 @@ Describe 'PolicyAssignmentSystemAssignedIdentity' {
         $policyName = Get-ResourceName
         $testPA = Get-ResourceName
         $test2 = Get-ResourceName
-        $location = "westus"
+        $location = $env.location
 
         # make a new resource group and policy definition
         $policy = New-AzPolicyDefinition -Name $policyName -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description

@@ -10,11 +10,11 @@ Describe 'Backcompat-PolicyAssignmentUserAssignedIdentity' {
         $policyName = Get-ResourceName
         $testPA = Get-ResourceName
         $test2 = Get-ResourceName
-        $location = "westus"
+        $location = $env.location
         
         # make a new resource group and policy definition
         $policy = New-AzPolicyDefinition -Name $policyName -Policy "$testFilesFolder\SamplePolicyDefinition.json" -Description $description -BackwardCompatible
-        $userassignedidentityid = $env.userassignedidentityId
+        $userAssignedIdentityId = $env.userAssignedIdentityId
         # assign the policy definition with user MSI to the resource group
         $actual = New-AzPolicyAssignment -Name $testPA -PolicyDefinition $policy -Scope $rgScope -Description $description -IdentityType "UserAssigned" -IdentityId $userassignedidentityid -Location $location -BackwardCompatible
     }

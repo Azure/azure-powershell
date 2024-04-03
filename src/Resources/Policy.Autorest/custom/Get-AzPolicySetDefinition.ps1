@@ -182,7 +182,7 @@ process {
 
     # handle disallowed cases not handled by PS parameter attributes
     if ($PSBoundParameters['SubscriptionId'] -and $PSBoundParameters['ManagementGroupName']) {
-        throw 'Only -ManagementGroupName or -SubscriptionId can be provided, not both.'
+        throw 'Only ManagementGroupName or SubscriptionId can be provided, not both.'
     }
 
     # handle specific parameter sets

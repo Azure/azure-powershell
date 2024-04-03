@@ -46,6 +46,7 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         # ----------------------------------------------------------+
         # populate the variables used commonly across all the tests |
         # ----------------------------------------------------------+
+        $subscriptionId = $env.SubscriptionId
         $managementGroup = $env.managementGroup
         $managementGroupScope = $env.managementGroupScope
         $description = $env.description
@@ -104,7 +105,7 @@ if ($TargetTestName -and (!$TestName -or ($TestName -eq $TargetTestName))) {
         $invalidParameterValue = $env.invalidParameterValue
         $invalidPolicyDefinitionReference = $env.invalidPolicyDefinitionReference
         $invalidPolicySetDefinitionRequest = $env.invalidPolicySetDefinitionRequest
-        $subscriptionId = $env.SubscriptionId
+        $multiplePolicyDefinitionParams = $env.multiplePolicyDefinitionParams
     }
     catch {
         Write-Host -ForegroundColor Red "Failed setting up environment for [$TargetTestName]: [$_]"

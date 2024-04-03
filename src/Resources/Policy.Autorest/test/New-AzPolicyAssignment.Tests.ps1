@@ -37,7 +37,7 @@ Describe 'NewPolicyAssignment' {
     It 'New-AzPolicyAssignment -Name -Scope -PolicyDefinition -PolicySetDefinition' {
         {
             New-AzPolicyAssignment -Name $someName -Scope $someScope -PolicyDefinition $goodPolicyDefinition -PolicySetDefinition $goodPolicySetDefinition
-        } | Should -Throw $parameterSetError
+        } | Should -Throw $multiplePolicyDefinitionParams
     }
 
     It 'New-AzPolicyAssignment -Name -Scope -PolicyDefinition -PolicyParameterObject' {
