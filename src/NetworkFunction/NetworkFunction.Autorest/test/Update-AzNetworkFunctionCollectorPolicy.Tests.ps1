@@ -16,6 +16,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzNetworkFunctionColle
 
 Describe 'Update-AzNetworkFunctionCollectorPolicy' {
     It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { 
+            $config = Update-AzNetworkFunctionCollectorPolicy -collectorpolicyname $env.collectorPolicyName -azuretrafficcollectorname $env.azureTrafficCollectorName -resourcegroupname $env.resourceGroup -location $env.location -IngestionPolicyIngestionSource @{ResourceId = $env.ResourceId1G} -IngestionPolicyIngestionType $env.IngestionType
+            $config.Name | Should -Be $env.collectorPolicyName
+        } | Should -Not -Throw
     }
-} 
+
+    It 'UpdateExpanded1' -skip {
+        { 
+            $config = Update-AzNetworkFunctionCollectorPolicy -collectorpolicyname $env.collectorPolicyName -azuretrafficcollectorname $env.azureTrafficCollectorName -resourcegroupname $env.resourceGroup -location $env.location -IngestionPolicyIngestionSource @{ResourceId = $env.ResourceIdLessThan1G} -IngestionPolicyIngestionType $env.IngestionType
+            $config.Name | Should -Be $env.collectorPolicyName
+        } | Should -Throw
+    }
+}
