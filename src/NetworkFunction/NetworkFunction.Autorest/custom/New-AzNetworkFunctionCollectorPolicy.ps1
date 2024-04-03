@@ -42,6 +42,7 @@ https://learn.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfu
 #>
 function New-AzNetworkFunctionCollectorPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy])]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
