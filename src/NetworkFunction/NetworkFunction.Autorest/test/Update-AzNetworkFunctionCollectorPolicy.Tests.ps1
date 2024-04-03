@@ -18,4 +18,4 @@ Describe 'Update-AzNetworkFunctionCollectorPolicy' {
     It 'UpdateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-}
+} 
