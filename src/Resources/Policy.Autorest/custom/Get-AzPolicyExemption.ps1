@@ -207,7 +207,7 @@ process {
             switch ($resolved.ScopeType) {
                 'mgName' {
                     if ($IncludeDescendent) {
-                        throw 'The -IncludeDescendent switch is not supported for management group scopes.'
+                        throw 'The IncludeDescendent switch is not supported for management group scopes.'
                     }
 
                     $calledParameterSet = 'List3'
