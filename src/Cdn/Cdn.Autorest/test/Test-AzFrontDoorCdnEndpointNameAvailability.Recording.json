@@ -1,15 +1,15 @@
 {
-  "Test-AzFrontDoorCdnEndpointNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-07us/providers/Microsoft.Cdn/checkEndpointNameAvailability?api-version=2023-05-01+1": {
+  "Test-AzFrontDoorCdnEndpointNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-t9nj/providers/Microsoft.Cdn/checkEndpointNameAvailability?api-version=2024-02-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-07us/providers/Microsoft.Cdn/checkEndpointNameAvailability?api-version=2023-05-01",
-      "Content": "{\r\n  \"name\": \"end-pstest090\",\r\n  \"type\": \"Microsoft.Cdn/Profiles/AfdEndpoints\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-t9nj/providers/Microsoft.Cdn/checkEndpointNameAvailability?api-version=2024-02-01",
+      "Content": "{\r\n  \"name\": \"e-clipstest140\",\r\n  \"type\": \"Microsoft.Cdn/Profiles/AfdEndpoints\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "81" ]
+        "Content-Length": [ "82" ]
       }
     },
     "Response": {
@@ -18,29 +18,30 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "cb285bbd-dfe9-479d-b0df-11df95a9ba5b" ],
-        "x-ms-client-request-id": [ "b9e9b921-22de-4042-b647-13dc9cba9272" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1189" ],
-        "x-ms-correlation-request-id": [ "e8611776-17e3-4538-b960-2a20f5508a76" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230530T025021Z:e8611776-17e3-4538-b960-2a20f5508a76" ],
+        "x-ms-request-id": [ "ddc1c16e-bc5f-4e60-a232-3fbdd29811ec" ],
+        "x-ms-client-request-id": [ "54504e5c-4977-4af1-a811-acf24954b299" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "96017405-0765-4659-9417-466b1a515e09" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240403T134451Z:96017405-0765-4659-9417-466b1a515e09" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 30 May 2023 02:50:21 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 861D348D0501437586379E90DC8645B8 Ref B: MAA201060514027 Ref C: 2024-04-03T13:44:50Z" ],
+        "Date": [ "Wed, 03 Apr 2024 13:44:51 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "120" ],
+        "Content-Length": [ "121" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"availableHostname\":\"end-pstest090-h0e0f5hpe3fmdsat.z01.azurefd.net\",\"nameAvailable\":true,\"reason\":null,\"message\":null}",
+      "Content": "{\"availableHostname\":\"e-clipstest140-cscag2daf5d4erg3.z01.azurefd.net\",\"nameAvailable\":true,\"reason\":null,\"message\":null}",
       "isContentBase64": false
     }
   },
-  "Test-AzFrontDoorCdnEndpointNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-07us/providers/Microsoft.Cdn/checkEndpointNameAvailability?api-version=2023-05-01+2": {
+  "Test-AzFrontDoorCdnEndpointNameAvailability+[NoContext]+CheckExpanded+$POST+https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-t9nj/providers/Microsoft.Cdn/checkEndpointNameAvailability?api-version=2024-02-01+2": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-07us/providers/Microsoft.Cdn/checkEndpointNameAvailability?api-version=2023-05-01",
-      "Content": "{\r\n  \"name\": \"end-bemtoi\",\r\n  \"type\": \"Microsoft.Cdn/Profiles/AfdEndpoints\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/testps-rg-t9nj/providers/Microsoft.Cdn/checkEndpointNameAvailability?api-version=2024-02-01",
+      "Content": "{\r\n  \"name\": \"end-c2djvy\",\r\n  \"type\": \"Microsoft.Cdn/Profiles/AfdEndpoints\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -55,14 +56,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "fb6d9244-ebd1-45fc-bc39-bbd76122b749" ],
-        "x-ms-client-request-id": [ "3f81969c-9d29-4c18-99c7-2c19ed50a9bd" ],
-        "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1188" ],
-        "x-ms-correlation-request-id": [ "ad3066fb-3168-419d-b5f2-f260e5e2c174" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20230530T025021Z:ad3066fb-3168-419d-b5f2-f260e5e2c174" ],
+        "x-ms-request-id": [ "fdc1902d-9e47-4069-bbb6-e57407d300b8" ],
+        "x-ms-client-request-id": [ "3c327a36-af67-4620-9262-38704e0e554d" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "d596d0e6-e638-4286-864a-a005020d3b20" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240403T134453Z:d596d0e6-e638-4286-864a-a005020d3b20" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Tue, 30 May 2023 02:50:21 GMT" ]
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B46CCC9E59B5415894837D14512FB415 Ref B: MAA201060514027 Ref C: 2024-04-03T13:44:52Z" ],
+        "Date": [ "Wed, 03 Apr 2024 13:44:53 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "113" ],
