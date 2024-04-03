@@ -6,88 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1754" ],
-        "x-ms-client-request-id": [ "aaa3c78f-573f-4351-9564-c4331f006374" ],
-        "CommandName": [ "\u0026" ],
-        "FullCommandName": [ "Remove-AzPolicyExemption_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.1", "Az.Policy/0.1.1" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 204,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
-        "x-ms-request-id": [ "1cee8415-4b47-47ac-ba46-7399e5dc6d7b" ],
-        "x-ms-correlation-request-id": [ "1cee8415-4b47-47ac-ba46-7399e5dc6d7b" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240402T220049Z:1cee8415-4b47-47ac-ba46-7399e5dc6d7b" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: AE503D23780A4DA7B8FF735BF3BA5310 Ref B: CO6AA3150218023 Ref C: 2024-04-02T22:00:49Z" ],
-        "Date": [ "Tue, 02 Apr 2024 22:00:48 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ]
-      },
-      "Content": null,
-      "isContentBase64": false
-    }
-  },
-  "RemovePolicyExemption+[NoContext]+Remove-AzPolicyExemption -Name -Scope -Force+$DELETE+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
-    "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "1755" ],
-        "x-ms-client-request-id": [ "4ade22a7-d51b-48a7-b3a6-825795541caf" ],
-        "CommandName": [ "\u0026" ],
-        "FullCommandName": [ "Remove-AzPolicyExemption_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.1", "Az.Policy/0.1.1" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 204,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
-        "x-ms-request-id": [ "46506a80-6619-4df7-94e8-a008c192d436" ],
-        "x-ms-correlation-request-id": [ "46506a80-6619-4df7-94e8-a008c192d436" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240402T220049Z:46506a80-6619-4df7-94e8-a008c192d436" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5B8D9833710A4252B90AB4267250523B Ref B: CO6AA3150218023 Ref C: 2024-04-02T22:00:49Z" ],
-        "Date": [ "Tue, 02 Apr 2024 22:00:49 GMT" ]
-      },
-      "ContentHeaders": {
-        "Expires": [ "-1" ]
-      },
-      "Content": null,
-      "isContentBase64": false
-    }
-  },
-  "RemovePolicyExemption+[NoContext]+Remove-AzPolicyExemption -Name -Scope -Force -PassThru+$DELETE+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
-    "Request": {
-      "Method": "DELETE",
-      "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "1756" ],
-        "x-ms-client-request-id": [ "6443387f-8f4f-4bb4-a4ce-ff20d66ed8aa" ],
+        "x-ms-unique-id": [ "1820" ],
+        "x-ms-client-request-id": [ "291d08f9-22d3-4f56-ae11-48eb6d9c60de" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Remove-AzPolicyExemption_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -104,13 +24,13 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
-        "x-ms-request-id": [ "c520089c-a82d-4467-91e5-cb41734e8d45" ],
-        "x-ms-correlation-request-id": [ "c520089c-a82d-4467-91e5-cb41734e8d45" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240402T220049Z:c520089c-a82d-4467-91e5-cb41734e8d45" ],
+        "x-ms-request-id": [ "8924fe76-7d8c-4a5e-8d86-a08bde23186d" ],
+        "x-ms-correlation-request-id": [ "8924fe76-7d8c-4a5e-8d86-a08bde23186d" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240403T022649Z:8924fe76-7d8c-4a5e-8d86-a08bde23186d" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 0B2E485007A14E519F80BD2A95D09F4C Ref B: CO6AA3150218023 Ref C: 2024-04-02T22:00:49Z" ],
-        "Date": [ "Tue, 02 Apr 2024 22:00:49 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: B2EA7100406A47C09F8B7416B6B84810 Ref B: CO6AA3150220023 Ref C: 2024-04-03T02:26:49Z" ],
+        "Date": [ "Wed, 03 Apr 2024 02:26:48 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
@@ -119,15 +39,55 @@
       "isContentBase64": false
     }
   },
-  "RemovePolicyExemption+[NoContext]+Remove-AzPolicyExemption -Id -Force+$DELETE+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
+  "RemovePolicyExemption+[NoContext]+Remove-AzPolicyExemption -Name -Scope -Force+$DELETE+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
     "Request": {
       "Method": "DELETE",
       "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1757" ],
-        "x-ms-client-request-id": [ "4585a876-c242-4124-bac4-cce835c20d95" ],
+        "x-ms-unique-id": [ "1821" ],
+        "x-ms-client-request-id": [ "749e27a9-8c36-4f69-a97c-7a7e8893a639" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Remove-AzPolicyExemption_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.1", "Az.Policy/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "e642bb97-a980-4d04-955e-a7013bf89626" ],
+        "x-ms-correlation-request-id": [ "e642bb97-a980-4d04-955e-a7013bf89626" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240403T022649Z:e642bb97-a980-4d04-955e-a7013bf89626" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: C793F45B9EB0443782ABAA07EA3217F8 Ref B: CO6AA3150220023 Ref C: 2024-04-03T02:26:49Z" ],
+        "Date": [ "Wed, 03 Apr 2024 02:26:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "RemovePolicyExemption+[NoContext]+Remove-AzPolicyExemption -Name -Scope -Force -PassThru+$DELETE+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1822" ],
+        "x-ms-client-request-id": [ "34c6e635-2247-4aaa-b4e6-70b4571d51f9" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Remove-AzPolicyExemption_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -144,13 +104,13 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-request-id": [ "35627715-b7ec-4369-81d3-7cdce0e09464" ],
-        "x-ms-correlation-request-id": [ "35627715-b7ec-4369-81d3-7cdce0e09464" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240402T220050Z:35627715-b7ec-4369-81d3-7cdce0e09464" ],
+        "x-ms-request-id": [ "2db8b0d8-ccc2-4703-ac7d-2a52ba39bb5b" ],
+        "x-ms-correlation-request-id": [ "2db8b0d8-ccc2-4703-ac7d-2a52ba39bb5b" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240403T022649Z:2db8b0d8-ccc2-4703-ac7d-2a52ba39bb5b" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 55C18FE6B9054F42B9242106242906D0 Ref B: CO6AA3150218023 Ref C: 2024-04-02T22:00:50Z" ],
-        "Date": [ "Tue, 02 Apr 2024 22:00:50 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 22395F363954400EABAE24AD4208DF89 Ref B: CO6AA3150220023 Ref C: 2024-04-03T02:26:49Z" ],
+        "Date": [ "Wed, 03 Apr 2024 02:26:49 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
@@ -159,15 +119,15 @@
       "isContentBase64": false
     }
   },
-  "RemovePolicyExemption+[NoContext]+Remove-AzPolicyExemption -Id -Force -PassThru+$DELETE+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
+  "RemovePolicyExemption+[NoContext]+Remove-AzPolicyExemption -Id -Force+$DELETE+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
     "Request": {
       "Method": "DELETE",
       "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1758" ],
-        "x-ms-client-request-id": [ "d82bb6fe-cef1-4071-95d6-7c95629d2fd2" ],
+        "x-ms-unique-id": [ "1823" ],
+        "x-ms-client-request-id": [ "4bdfad5a-d42e-4d23-9759-d4f5a367745d" ],
         "CommandName": [ "\u0026" ],
         "FullCommandName": [ "Remove-AzPolicyExemption_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -183,14 +143,54 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14995" ],
-        "x-ms-request-id": [ "a1e5233a-b9ed-4298-82b7-99186165edbe" ],
-        "x-ms-correlation-request-id": [ "a1e5233a-b9ed-4298-82b7-99186165edbe" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20240402T220050Z:a1e5233a-b9ed-4298-82b7-99186165edbe" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
+        "x-ms-request-id": [ "3b833663-2be3-40f9-a9e7-c5da146e61bb" ],
+        "x-ms-correlation-request-id": [ "3b833663-2be3-40f9-a9e7-c5da146e61bb" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240403T022650Z:3b833663-2be3-40f9-a9e7-c5da146e61bb" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3D6876EDE86641ADBD54F3DA6B3D33FB Ref B: CO6AA3150218023 Ref C: 2024-04-02T22:00:50Z" ],
-        "Date": [ "Tue, 02 Apr 2024 22:00:50 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DBB3E391A0CC4EF88CC200C92D4795E2 Ref B: CO6AA3150220023 Ref C: 2024-04-03T02:26:50Z" ],
+        "Date": [ "Wed, 03 Apr 2024 02:26:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "RemovePolicyExemption+[NoContext]+Remove-AzPolicyExemption -Id -Force -PassThru+$DELETE+https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com//subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policyExemptions/someName?api-version=2022-07-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1824" ],
+        "x-ms-client-request-id": [ "5d38fc15-fe93-4d2c-8be3-af5e2a848cc0" ],
+        "CommandName": [ "\u0026" ],
+        "FullCommandName": [ "Remove-AzPolicyExemption_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.0.0", "PSVersion/v7.4.1", "Az.Policy/0.1.1" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-request-id": [ "f02d2c70-dd04-41af-83d1-794541918fbd" ],
+        "x-ms-correlation-request-id": [ "f02d2c70-dd04-41af-83d1-794541918fbd" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240403T022650Z:f02d2c70-dd04-41af-83d1-794541918fbd" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2952B3F2E7754F7CA279EA62E3AD9B7B Ref B: CO6AA3150220023 Ref C: 2024-04-03T02:26:50Z" ],
+        "Date": [ "Wed, 03 Apr 2024 02:26:50 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
