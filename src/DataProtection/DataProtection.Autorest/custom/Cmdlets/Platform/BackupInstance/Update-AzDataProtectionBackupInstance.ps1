@@ -85,7 +85,7 @@ function Update-AzDataProtectionBackupInstance
     process
     {
         $hasPolicyId = $PSBoundParameters.Remove("PolicyId")
-        $null = $PSBoundParameters.Remove("VaultedBackupContainer")
+        $hasVaultedBackupContainer = $PSBoundParameters.Remove("VaultedBackupContainer")
 
         $instance = Az.DataProtection\Get-AzDataProtectionBackupInstance @PSBoundParameters
         
@@ -93,10 +93,10 @@ function Update-AzDataProtectionBackupInstance
             $instance.Property.PolicyInfo.PolicyId = $PolicyId
         }        
 
-        $DatasourceType =  GetClientDatasourceType -ServiceDatasourceType $BackupInstance.Property.DataSourceInfo.Type 
+        $DatasourceType =  GetClientDatasourceType -ServiceDatasourceType $instance.Property.DataSourceInfo.Type 
         # $manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
         
-        if($VaultedBackupContainer -ne $null){
+        if($hasVaultedBackupContainer){
 
             if($DatasourceType -ne "AzureBlob"){
                 $err = "Parameter VaultedBackupContainer isn't supported for given Datasource"
@@ -111,6 +111,7 @@ function Update-AzDataProtectionBackupInstance
             }
                         
             $datasourceParam = $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList
+            
             if($datasourceParam -ne $null -and $datasourceParam[0].ObjectType -eq "BlobBackupDatasourceParameters"){
                 $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList[0].ContainersList = $VaultedBackupContainer
             }
@@ -127,10 +128,12 @@ function Update-AzDataProtectionBackupInstance
             }
         }
 
-        $null = $PSBoundParameters.Remove("BackupInstanceName")
-        $null = $PSBoundParameters.Add("Parameter", $instance)
-        $null = $PSBoundParameters.Add("Name", $instance.Name)
+        # deep validate for update-BI
+        $instance.Property.ValidationType = "DeepValidation"
 
-        Az.DataProtection.Internal\New-AzDataProtectionBackupInstance  @PSBoundParameters
+        $null = $PSBoundParameters.Remove("BackupInstanceName")
+        $null = $PSBoundParameters.Add("Name", $instance.Name)
+        $null = $PSBoundParameters.Add("Parameter", $instance)
+        Az.DataProtection.Internal\New-AzDataProtectionBackupInstance @PSBoundParameters
     }
 }
