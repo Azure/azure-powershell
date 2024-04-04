@@ -167,7 +167,6 @@ param(
 )
 
 process {
-    try {
       $rg = $PSBoundParameters.ResourceGroupName
 
       # Ensure exr circuit bandwidth 1G or more
@@ -186,8 +185,5 @@ process {
       }
       
       Az.NetworkFunction.internal\New-AzNetworkFunctionCollectorPolicy @PSBoundParameters
-    } catch {
-        throw
-    }
     }
 }
