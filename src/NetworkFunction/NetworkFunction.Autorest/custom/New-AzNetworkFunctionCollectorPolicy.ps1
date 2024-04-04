@@ -172,7 +172,7 @@ process {
       # Ensure exr circuit bandwidth 1G or more
       $cktname = $IngestionPolicyIngestionSource.ResourceId | Where {$IngestionPolicyIngestionSource.ResourceId -match "/*subscriptions/(?<subid>.*)/resourceGroups/(?<rgname>.*)/providers/Microsoft.Network/expressRouteCircuits/(?<circuitname>.*)"} | Foreach {$Matches['circuitname']}
       #Import-Module Az.Network -Force
-      $exrCircuit = Get-AzExpressRouteCircuit -Name $cktname -ResourceGroupName $rg
+      $exrCircuit = Az.Network\Get-AzExpressRouteCircuit -Name $cktname -ResourceGroupName $rg
       $bandwidthInGbps = $exrCircuit.BandwidthInGbps
       $bandwidthInMbps = $exrCircuit.ServiceProviderProperties.BandwidthInMbps
 
