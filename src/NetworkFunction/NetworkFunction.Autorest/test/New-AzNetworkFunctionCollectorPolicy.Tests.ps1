@@ -41,7 +41,8 @@ Describe 'New-AzNetworkFunctionCollectorPolicy' {
 
     It 'CreateViaIdentity' {
         { 
-            { New-AzNetworkFunctionCollectorPolicy -collectorpolicyname $env.collectorPolicyName -azuretrafficcollectorname $env.azureTrafficCollectorName -resourcegroupname $env.resourceGroup -location $env.location -IngestionPolicyIngestionSource @{ResourceId = $env.ResourceId1G} -IngestionPolicyIngestionType $env.IngestionType } | Should -Not -Throw
-        }
+            $config = New-AzNetworkFunctionCollectorPolicy -collectorpolicyname $env.collectorPolicyName -azuretrafficcollectorname $env.azureTrafficCollectorName -resourcegroupname $env.resourceGroup -location $env.location -IngestionPolicyIngestionSource @{ResourceId = $env.ResourceId1G} -IngestionPolicyIngestionType $env.IngestionType
+            $config.Name | Should -Be $env.collectorPolicyName
+        } | Should -Not -Throw
     }
 }
