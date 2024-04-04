@@ -15,25 +15,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzNetworkFunctionCollecto
 }
 
 Describe 'New-AzNetworkFunctionCollectorPolicy' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         { 
             { New-AzNetworkFunctionCollectorPolicy -collectorpolicyname $env.collectorPolicyName -azuretrafficcollectorname $env.azureTrafficCollectorName -resourcegroupname $env.resourceGroup -location $env.location -IngestionPolicyIngestionSource @{ResourceId = $env.ResourceId1G} -IngestionPolicyIngestionType $env.IngestionType } | Should -Not -Throw
         } 
     }
 
-    It 'CreateExpanded1' -skip {
+    It 'CreateExpanded1' {
         { 
             { New-AzNetworkFunctionCollectorPolicy -collectorpolicyname $env.collectorPolicyName -azuretrafficcollectorname $env.azureTrafficCollectorName -resourcegroupname $env.resourceGroup -location $env.location -IngestionPolicyIngestionSource @{ResourceId = $env.ResourceIdLessThan1G} -IngestionPolicyIngestionType $env.IngestionType } | Should -Throw -ExpectedMessage "CollectorPolicy can not be updated because circuit has bandwidth less than 1G. Circuit size with a bandwidth of 1G or more is supported."
         } 
     }
 
-    It 'Create' -skip {
+    It 'Create' {
         { 
             { New-AzNetworkFunctionCollectorPolicy -collectorpolicyname $env.collectorPolicyName -azuretrafficcollectorname $env.azureTrafficCollectorName -resourcegroupname $env.resourceGroup -location $env.location -IngestionPolicyIngestionSource @{ResourceId = $env.ResourceId1G} -IngestionPolicyIngestionType $env.IngestionType } | Should -Not -Throw
         }
     }
 
-    It 'CreateViaIdentityExpanded' -skip {
+    It 'CreateViaIdentityExpanded' {
         { 
             { New-AzNetworkFunctionCollectorPolicy -collectorpolicyname $env.collectorPolicyName -azuretrafficcollectorname $env.azureTrafficCollectorName -resourcegroupname $env.resourceGroup -location $env.location -IngestionPolicyIngestionSource @{ResourceId = $env.ResourceId1G} -IngestionPolicyIngestionType $env.IngestionType } | Should -Not -Throw
         }
