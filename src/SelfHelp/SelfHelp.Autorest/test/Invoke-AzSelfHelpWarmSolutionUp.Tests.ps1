@@ -15,19 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzSelfHelpWarmSolution
 }
 
 Describe 'Invoke-AzSelfHelpWarmSolutionUp' {
-    It 'WarmExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Warm' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'WarmViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'WarmViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'WarmExpanded' {
+        { 
+            $resourceName = RandomString -allChars $false -len 10
+            $parameters = [ordered]@{ 
+                "ProductId" = "13491"
+            }
+            Invoke-AzSelfHelpWarmSolutionUp -Scope $env.scope -SolutionResourceName $resourceName -Parameter $parameters
+        } | Should -Not -Throw
     }
 }
