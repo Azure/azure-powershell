@@ -102,10 +102,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// for one-way failover to Azure. Possible values include: 'None',
         /// 'Manual'
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = FailoverModeHelpMessage)]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = FailoverModeHelpMessage)]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSetWithTargetDatabase, HelpMessage = FailoverModeHelpMessage)]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSetWithTargetDatabase, HelpMessage = FailoverModeHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByNameParameterSet, HelpMessage = FailoverModeHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = FailoverModeHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByNameParameterSetWithTargetDatabase, HelpMessage = FailoverModeHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByParentObjectParameterSetWithTargetDatabase, HelpMessage = FailoverModeHelpMessage)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Manual", "None")]
         public string FailoverMode { get; set; }
@@ -125,10 +125,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// Gets or sets managed instance side link role. Possible values
         /// include: 'Primary', 'Secondary'
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = InstanceLinkRoleHelpMessage)]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = InstanceLinkRoleHelpMessage)]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSetWithTargetDatabase, HelpMessage = InstanceLinkRoleHelpMessage)]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSetWithTargetDatabase, HelpMessage = InstanceLinkRoleHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByNameParameterSet, HelpMessage = InstanceLinkRoleHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = InstanceLinkRoleHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByNameParameterSetWithTargetDatabase, HelpMessage = InstanceLinkRoleHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByParentObjectParameterSetWithTargetDatabase, HelpMessage = InstanceLinkRoleHelpMessage)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Primary", "Secondary")]
         public string InstanceLinkRole { get; set; }
@@ -159,10 +159,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// Gets or sets replication mode of the link. Possible values include:
         /// 'Async', 'Sync'
         /// </summary>
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSet, HelpMessage = ReplicationModeHelpMessage)]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = ReplicationModeHelpMessage)]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByNameParameterSetWithTargetDatabase, HelpMessage = ReplicationModeHelpMessage)]
-        [Parameter(Mandatory = true, ParameterSetName = CreateByParentObjectParameterSetWithTargetDatabase, HelpMessage = ReplicationModeHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByNameParameterSet, HelpMessage = ReplicationModeHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByParentObjectParameterSet, HelpMessage = ReplicationModeHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByNameParameterSetWithTargetDatabase, HelpMessage = ReplicationModeHelpMessage)]
+        [Parameter(Mandatory = false, ParameterSetName = CreateByParentObjectParameterSetWithTargetDatabase, HelpMessage = ReplicationModeHelpMessage)]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Async", "Sync")]
         public string ReplicationMode { get; set; }

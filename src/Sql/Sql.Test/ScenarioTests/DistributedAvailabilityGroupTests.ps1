@@ -60,7 +60,7 @@ function Test-ManagedInstanceLinkMIFirstPlannedFailover
         Assert-AreEqual $linkToFailover.PartnerLinkRole $secondaryRoleConst
 
         # Perform planned failover
-        Start-AzSqlInstanceLinkFailover -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -FailoverType $failoverType -Force
+        Start-AzSqlInstanceLinkFailover -ResourceGroupName $rgName -InstanceName $miName -Name $linkName -FailoverType $failoverType
 
         # Assert that box is primary
         $linkToFailover = Get-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName
