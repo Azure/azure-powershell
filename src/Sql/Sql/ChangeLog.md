@@ -18,7 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Added `Start-AzSqlInstanceLinkFailover` cmdlet for Azure SQL Managed Instance Link.
+* Updated `New-AzSqlInstanceLink` with new input parameters
+	- Added `DistributedAvailabilityGroupName`, `FailoverMode`, `InstanceLinkRole`, `SeedingMode`
+	- Renamed `SecondaryAvailabilityGroupName` -> `InstanceAvailabilityGroupName`
+			  `SourceEndpoint` -> `PartnerEndpoint`
+			  `PrimaryAvailabilityGroupName` -> `PartnerAvailabilityGroupName`
+	- `TargetDatabase` -> `Databases`, parameter type is changed but is handled to work with both
+* Updated `AzureSqlManagedInstanceLinkModel` that is a return type of `New-AzSqlInstanceLink`, `Get-AzSqlInstanceLink`, `Update-AzSqlInstanceLink` ,`Remove-AzSqlInstanceLink`
+				
 ## Version 4.14.0
 * Added `DatabaseFormat` and `PricingModel` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance`
 * Added breaking change message for `New-AzSqlDatabaseFailoverGroup` and `Set-AzSqlDatabaseFailoverGroup`
