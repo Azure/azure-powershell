@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Description(@"Updates the specified Azure Traffic Collector tags.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}", ApiVersion = "2022-11-01")]
     public partial class UpdateAzNetworkFunctionTrafficCollectorTag_Update : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.IEventListener
     {
