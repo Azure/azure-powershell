@@ -20,25 +20,29 @@ Creates or updates a Collector Policy resource
 .Description
 Creates or updates a Collector Policy resource
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzNetworkFunctionCollectorPolicy -collectorpolicyname cp1 -azuretrafficcollectorname atc -resourcegroupname rg1 -location eastus | Format-List
+
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
+
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
 EMISSIONPOLICY <IEmissionPoliciesPropertiesFormat[]>: Emission policies.
   [EmissionDestination <IEmissionPolicyDestination[]>]: Emission policy destinations.
     [DestinationType <DestinationType?>]: Emission destination type.
   [EmissionType <EmissionType?>]: Emission format type.
+
 INGESTIONPOLICYINGESTIONSOURCE <IIngestionSourcesPropertiesFormat[]>: Ingestion Sources.
   [ResourceId <String>]: Resource ID.
   [SourceType <SourceType?>]: Ingestion source type.
+.Link
+https://learn.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfunctioncollectorpolicy
 #>
-function Update-AzNetworkFunctionCollectorPolicy {
+function New-AzNetworkFunctionCollectorPolicy {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
 param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Path')]
@@ -66,6 +70,12 @@ param(
     # Azure Subscription ID.
     ${SubscriptionId},
 
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
+    [System.String]
+    # Resource location.
+    ${Location},
+
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
@@ -88,12 +98,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.IngestionType]
     # The ingestion type.
     ${IngestionPolicyIngestionType},
-
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
-    [System.String]
-    # Resource location.
-    ${Location},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Category('Body')]
@@ -163,19 +167,9 @@ param(
 )
 
 process {
-    try {
-      # 1. GET
-      $hasEmissionPolicy = $PSBoundParameters.Remove('EmissionPolicy')
-      $hasIngestionPolicyIngestionSource = $PSBoundParameters.Remove('IngestionPolicyIngestionSource')
-      $hasIngestionPolicyIngestionType = $PSBoundParameters.Remove('IngestionPolicyIngestionType')
-      $hasTag = $PSBoundParameters.Remove('Tag')
-      $hasAsJob = $PSBoundParameters.Remove('AsJob')
-      $null = $PSBoundParameters.Remove('WhatIf')
-      $null = $PSBoundParameters.Remove('Confirm')
-      $null = $PSBoundParameters.Remove('Location')
       $rg = $PSBoundParameters.ResourceGroupName
 
-      # 2. Ensure exr circuit bandwidth 1G or more
+      # Ensure exr circuit bandwidth 1G or more
       $cktname = $IngestionPolicyIngestionSource.ResourceId | Where {$IngestionPolicyIngestionSource.ResourceId -match "/*subscriptions/(?<subid>.*)/resourceGroups/(?<rgname>.*)/providers/Microsoft.Network/expressRouteCircuits/(?<circuitname>.*)"} | Foreach {$Matches['circuitname']}
       Import-Module Az.Network -Force
       $exrCircuit = Get-AzExpressRouteCircuit -Name $cktname -ResourceGroupName $rg
@@ -189,34 +183,7 @@ process {
       if ($bandwidthInMbps -and ($bandwidthInMbps -lt 1000)) {
         throw "CollectorPolicy can not be updated because circuit has bandwidth less than 1G. Circuit size with a bandwidth of 1G or more is supported."
       }
-
-      $cp = Get-AzNetworkFunctionCollectorPolicy @PSBoundParameters
       
-      # 3. PUT
-      $null = $PSBoundParameters.Remove('AzureTrafficCollectorName')
-      $null = $PSBoundParameters.Remove('ResourceGroupName')
-      $null = $PSBoundParameters.Remove('Name')
-      $null = $PSBoundParameters.Remove('SubscriptionId')
-
-      if ($hasEmissionPolicy) {
-        $cp.EmissionPolicy = $EmissionPolicy
-      }
-      if ($hasIngestionPolicyIngestionSource) {
-        $cp.IngestionPolicyIngestionSource = $IngestionPolicyIngestionSource
-      }
-      if ($hasIngestionPolicyIngestionType) {
-        $cp.IngestionPolicyIngestionType = $IngestionPolicyIngestionType
-      }
-      if ($hasTag) {
-        $cp.Tag = $Tag
-      }
-      if ($hasAsJob) {
-        $PSBoundParameters.Add('AsJob', $true)
-      }
-      
-      Az.NetworkFunction.private\New-AzNetworkFunctionCollectorPolicy_CreateViaIdentity -InputObject $cp -Parameter $cp @PSBoundParameters
-    } catch {
-        throw
+      Az.NetworkFunction.internal\New-AzNetworkFunctionCollectorPolicy @PSBoundParameters
     }
-}
 }
