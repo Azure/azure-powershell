@@ -12,7 +12,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-      <ProjectReference Include="..\Resources.Sdk\Resources.Sdk.csproj" />
+      <ProjectReference Include="..\Resources.Management.Sdk\Resources.Management.Sdk.csproj" />
   </ItemGroup>
   
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />

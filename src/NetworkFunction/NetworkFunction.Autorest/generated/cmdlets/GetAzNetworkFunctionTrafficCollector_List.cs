@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IAzureTrafficCollector))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Description(@"Return list of Azure Traffic Collectors in a subscription")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkFunction/azureTrafficCollectors", ApiVersion = "2022-11-01")]
     public partial class GetAzNetworkFunctionTrafficCollector_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.IEventListener
     {

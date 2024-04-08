@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.IOperation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Description(@"Lists all of the available NetworkFunction Rest API operations.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.HttpPath(Path = "/providers/Microsoft.NetworkFunction/operations", ApiVersion = "2022-11-01")]
     public partial class GetAzNetworkFunctionOperation_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.IEventListener
     {

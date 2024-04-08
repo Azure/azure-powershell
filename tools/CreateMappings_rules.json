@@ -875,5 +875,9 @@
   {
     "module": "EdgeZones",
     "alias": "EdgeZones"
+  },
+  {
+    "alias": "Sphere",
+    "module": "Sphere"
   }
 ]
