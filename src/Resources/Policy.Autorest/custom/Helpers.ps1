@@ -515,7 +515,7 @@ function LocationCompleter(
 )
 {
     if ($global:currentLocations.Count -le 0) {
-        $response = Invoke-AzRestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/locations?api-version=2022-12-01" -Method GET
+        $response = Invoke-AzRestMethod -Uri "https://management.azure.com/subscriptions/$($(Get-SubscriptionId))/locations?api-version=2022-12-01" -Method GET
         $global:currentLocations = ($response.Content | ConvertFrom-Json -Depth 100).value | Sort-Object -Property name | Select-Object -ExpandProperty name
     }
 
@@ -575,5 +575,3 @@ Register-ArgumentCompleter -CommandName New-AzPolicyAssignment -ParameterName Lo
 
 # cache Azure locations to be used by the location completer (Get-AzLocation is not available in this context, need to use REST)
 $global:currentLocations = @()
-
-$subscriptionId = (Get-SubscriptionId)
