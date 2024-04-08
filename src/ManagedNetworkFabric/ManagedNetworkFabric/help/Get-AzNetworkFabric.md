@@ -14,31 +14,26 @@ Get Network Fabric resource details.
 
 ### List1 (Default)
 ```
-Get-AzNetworkFabric [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+Get-AzNetworkFabric [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkFabric -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzNetworkFabric -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzNetworkFabric -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+Get-AzNetworkFabric -InputObject <IManagedNetworkFabricIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,37 +41,55 @@ Get Network Fabric resource details.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List NetworkFabrics by Subscription
+```powershell
 Get-AzNetworkFabric -SubscriptionId $subscriptionId
 ```
 
-### EXAMPLE 2
+```output
+Location    Name                        SystemDataCreatedAt SystemDataCreatedBy      SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy     SystemDataLastModifiedByType
+--------    ----                        ------------------- -------------------      ----------------------- ------------------------ ------------------------     ------
+eastus2euap pipeline-GA-nf071423        07/14/2023 10:58:25 <identity>               User                    09/05/2023 11:14:10      <identity>                   Appli…
+eastus2euap pipeline-GA-nf080323-1      08/03/2023 13:49:42 <identity>               Application             08/03/2023 13:52:24      <identity>                   Appli…
+eastus2euap nfa-automation-testing-nf-1 08/07/2023 13:18:40 <identity>               Application             08/07/2023 13:24:41      <identity>                   Appli…
+eastus2euap nfa-automation-testing-nf-2 08/07/2023 15:36:56 <identity>               Application             08/07/2023 16:05:20      <identity>                   Appli…
+eastus2euap nfa-tool-ts-GA-nf081123     08/11/2023 06:40:50 <identity>               User                    09/05/2023 09:42:59      <identity>                   Appli…
+eastus2euap nfa-tool-ts-GA-nf081223     08/12/2023 14:01:45 <identity>               User                    09/20/2023 15:01:05      <identity>                   Appli…
+eastus2euap nffab1-4-1-BF               09/24/2023 10:14:30 <identity>               Application             09/25/2023 07:22:46      <identity>                   Appli…
+eastus2euap pipeline-nf082823           08/28/2023 07:24:46 <identity>               User                    09/22/2023 06:30:23      <identity>                   Appli…
+eastus2euap nffab3-4-1-GF1              09/21/2023 10:38:54 <identity>               Application             09/25/2023 05:30:10      <identity>                   Appli…
+eastus      fabricName                  09/21/2023 13:53:03 <identity>               User                    09/25/2023 05:53:50      <identity>                   Appli…
 ```
+
+This command lists all the NetworkFabrics under the given Subscription.
+
+### Example 2: List NetworkFabrics by Resource Group
+```powershell
 Get-AzNetworkFabric -ResourceGroupName $resourceGroupName
 ```
 
-### EXAMPLE 3
+```output
+AdministrativeState Annotation ConfigurationState ControllerId
+------------------- ---------- ------------------ ------------
+                               Provisioned        /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabri…
 ```
+
+This command lists all the NetworkFabrics under the given Resource Group.
+
+### Example 3: Get NetworkFabric
+```powershell
 Get-AzNetworkFabric -Name $name -ResourceGroupName $resourceGroupName
 ```
 
-## PARAMETERS
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+```output
+AdministrativeState Annotation ConfigurationState ControllerId
+------------------- ---------- ------------------ ------------
+                               Provisioned        /subscriptions/<identity>/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabri…
 ```
+
+This command gets details of the given NetworkFabric.
+
+## PARAMETERS
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -94,39 +107,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
@@ -151,51 +133,6 @@ Aliases: NetworkFabricName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -227,7 +164,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -238,46 +175,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkFabric
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IManagedNetworkFabricIdentity\>: Identity Parameter
-  \[AccessControlListName \<String\>\]: Name of the Access Control List.
-  \[ExternalNetworkName \<String\>\]: Name of the External Network.
-  \[IPCommunityName \<String\>\]: Name of the IP Community.
-  \[IPExtendedCommunityName \<String\>\]: Name of the IP Extended Community.
-  \[IPPrefixName \<String\>\]: Name of the IP Prefix.
-  \[Id \<String\>\]: Resource identity path
-  \[InternalNetworkName \<String\>\]: Name of the Internal Network.
-  \[InternetGatewayName \<String\>\]: Name of the Internet Gateway.
-  \[InternetGatewayRuleName \<String\>\]: Name of the Internet Gateway rule.
-  \[L2IsolationDomainName \<String\>\]: Name of the L2 Isolation Domain.
-  \[L3IsolationDomainName \<String\>\]: Name of the L3 Isolation Domain.
-  \[NeighborGroupName \<String\>\]: Name of the Neighbor Group.
-  \[NetworkDeviceName \<String\>\]: Name of the Network Device.
-  \[NetworkDeviceSkuName \<String\>\]: Name of the Network Device SKU.
-  \[NetworkFabricControllerName \<String\>\]: Name of the Network Fabric Controller.
-  \[NetworkFabricName \<String\>\]: Name of the Network Fabric.
-  \[NetworkFabricSkuName \<String\>\]: Name of the Network Fabric SKU.
-  \[NetworkInterfaceName \<String\>\]: Name of the Network Interface.
-  \[NetworkPacketBrokerName \<String\>\]: Name of the Network Packet Broker.
-  \[NetworkRackName \<String\>\]: Name of the Network Rack.
-  \[NetworkTapName \<String\>\]: Name of the Network Tap.
-  \[NetworkTapRuleName \<String\>\]: Name of the Network Tap Rule.
-  \[NetworkToNetworkInterconnectName \<String\>\]: Name of the Network to Network Interconnect.
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[RoutePolicyName \<String\>\]: Name of the Route Policy.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-The value must be an UUID.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabric](https://learn.microsoft.com/powershell/module/az.managednetworkfabric/get-aznetworkfabric)
-

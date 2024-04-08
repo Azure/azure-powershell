@@ -15,7 +15,8 @@ Deletes the federated identity credential.
 ### Delete (Default)
 ```
 Remove-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -29,15 +30,19 @@ Deletes the federated identity credential.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Delete federated identity credential
+```powershell
 Remove-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 -Name fic-pwsh01
 ```
 
-### EXAMPLE 2
-```
+This command deletes a federated identity credential.
+
+### Example 2: Delete federated identity credential by pipeline
+```powershell
 Get-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 -Name fic-pwsh01 | Remove-AzFederatedIdentityCredential
 ```
+
+This command deletes a federated identity credential by pipeline.
 
 ## PARAMETERS
 
@@ -46,7 +51,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -61,7 +66,7 @@ Accept wildcard characters: False
 The name of the identity resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases:
 
@@ -77,7 +82,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IManagedServiceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -92,7 +97,7 @@ Accept wildcard characters: False
 The name of the federated identity credential resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases:
 
@@ -107,13 +112,13 @@ Accept wildcard characters: False
 Returns true when the command succeeds
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -123,7 +128,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases:
 
@@ -138,13 +143,13 @@ Accept wildcard characters: False
 The Id of the Subscription to which the identity belongs.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -153,7 +158,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -169,7 +174,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -186,25 +191,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
+
 ## OUTPUTS
 
 ### System.Boolean
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
+ALIASES
 
-INPUTOBJECT \<IManagedServiceIdentity\>: Identity Parameter
-  \[FederatedIdentityCredentialResourceName \<String\>\]: The name of the federated identity credential resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the Resource Group to which the identity belongs.
-  \[ResourceName \<String\>\]: The name of the identity resource.
-  \[Scope \<String\>\]: The resource provider scope of the resource.
-Parent resource being extended by Managed Identities.
-  \[SubscriptionId \<String\>\]: The Id of the Subscription to which the identity belongs.
+Remove-AzFederatedIdentityCredentials
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.managedserviceidentity/remove-azfederatedidentitycredential](https://learn.microsoft.com/powershell/module/az.managedserviceidentity/remove-azfederatedidentitycredential)
-

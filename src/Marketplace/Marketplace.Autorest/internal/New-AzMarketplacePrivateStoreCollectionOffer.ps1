@@ -61,14 +61,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IOffer]
     # The privateStore offer data structure.
-    # To construct, see NOTES section for PAYLOAD properties and create a hash table.
     ${Payload},
 
     [Parameter()]

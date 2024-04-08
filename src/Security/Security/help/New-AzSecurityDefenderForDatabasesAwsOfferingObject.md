@@ -24,12 +24,25 @@ Create an in-memory object for DefenderForDatabasesAwsOffering.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new DefenderForDatabasesAwsOffering object
 ```powershell
 $arnPrefix = "arn:aws:iam::123456789012:role"
 New-AzSecurityDefenderForDatabasesAwsOfferingObject `
     -ArcAutoProvisioningEnabled $true -ArcAutoProvisioningCloudRoleArn "$arnPrefix/DefenderForCloud-ArcAutoProvisioning" `
     -DatabaseDspmEnabled $true -DatabaseDspmCloudRoleArn "$arnPrefix/DefenderForCloud-DataSecurityPostureDB"
+```
+
+```output
+ArcAutoProvisioningCloudRoleArn : arn:aws:iam::123456789012:role/DefenderForCloud-ArcAutoProvisioning
+ArcAutoProvisioningEnabled      : True
+ConfigurationPrivateLinkScope   : 
+ConfigurationProxy              : 
+DatabaseDspmCloudRoleArn        : arn:aws:iam::123456789012:role/DefenderForCloud-DataSecurityPostureDB
+DatabaseDspmEnabled             : True
+Description                     : 
+OfferingType                    : DefenderForDatabasesAws
+RdCloudRoleArn                  : 
+RdEnabled                       :
 ```
 
 ## PARAMETERS
@@ -38,7 +51,7 @@ New-AzSecurityDefenderForDatabasesAwsOfferingObject `
 The cloud role ARN in AWS for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -53,13 +66,13 @@ Accept wildcard characters: False
 Is arc auto provisioning enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -68,7 +81,7 @@ Accept wildcard characters: False
 Optional Arc private link scope resource id to link the Arc agent.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -83,7 +96,7 @@ Accept wildcard characters: False
 Optional http proxy endpoint to use for the Arc agent.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +111,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -113,13 +126,13 @@ Accept wildcard characters: False
 Is databases data security posture management (DSPM) protection enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -128,7 +141,7 @@ Accept wildcard characters: False
 The cloud role ARN in AWS for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -143,13 +156,13 @@ Accept wildcard characters: False
 Is RDS protection enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -162,8 +175,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderForDatabasesAwsOffering
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderfordatabasesawsofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderfordatabasesawsofferingobject)

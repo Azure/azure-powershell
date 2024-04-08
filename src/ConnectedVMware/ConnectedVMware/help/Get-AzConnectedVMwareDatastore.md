@@ -14,32 +14,26 @@ Implements datastore GET method.
 
 ### List (Default)
 ```
-Get-AzConnectedVMwareDatastore [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+Get-AzConnectedVMwareDatastore [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzConnectedVMwareDatastore -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzConnectedVMwareDatastore -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzConnectedVMwareDatastore -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+Get-AzConnectedVMwareDatastore -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,37 +41,85 @@ Implements datastore GET method.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List Datastores in current subscription
+```powershell
 Get-AzConnectedVMwareDatastore -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
 ```
 
-### EXAMPLE 2
+```output
+Kind   Location      Name                                  ResourceGroupName
+----   --------      ----                                  -----------------
+       eastus        test-datastore1                       test-rg1
+       eastus        test-datastore2                       test-rg2
+       eastus        test-datastore3                       test-rg3
+       eastus        test-datastore4                       test-rg4
+       eastus        test-datastore5                       test-rg5
+       eastus        test-datastore6                       test-rg6
+       eastus        test-datastore7                       test-rg7
+       eastus        test-datastore8                       test-rg8
 ```
+
+This command lists Datastores in current subscription.
+
+### Example 2: List Datastores in a resource group
+```powershell
 Get-AzConnectedVMwareDatastore -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
 ```
 
-### EXAMPLE 3
+```output
+Kind   Location Name            ResourceGroupName
+----   -------- ----            -----------------
+       eastus   test-datastore1 test-rg
+       eastus   test-datastore2 test-rg
 ```
+
+This command lists Datastores in a resource group named `test-rg`.
+
+### Example 3: Get a specific Datastore
+```powershell
 Get-AzConnectedVMwareDatastore -Name "test-datastore" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d"
 ```
 
-## PARAMETERS
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+```output
+CapacityGb                   : 439
+CustomResourceName           : 178ef312-fb33-4a85-b513-d9d7f7f5034b
+ExtendedLocationName         : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl
+ExtendedLocationType         : CustomLocation
+FreeSpaceGb                  : 408
+Id                           : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/Datastores/test-datastore
+InventoryItemId              : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vc/InventoryItems/datastore-713967
+Kind                         :
+Location                     : eastus
+MoName                       : datastore
+MoRefId                      : datastore-713967
+Name                         : datastore
+ProvisioningState            : Succeeded
+ResourceGroupName            : test-rg
+Statuses                     : {{
+                                 "type": "Ready",
+                                 "status": "True",
+                                 "lastUpdatedAt": "2023-07-12T09:54:19.7224005Z"
+                               }, {
+                                 "type": "Idle",
+                                 "status": "True",
+                                 "lastUpdatedAt": "2023-07-12T09:54:19.7224005Z"
+                               }}
+SystemDataCreatedAt          : 7/12/2023 9:53:52 AM
+SystemDataCreatedBy          : xyz
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 7/12/2023 9:53:52 AM
+SystemDataLastModifiedBy     : xyz
+SystemDataLastModifiedByType : User
+Tag                          : {
+                               }
+Type                         : microsoft.connectedvmwarevsphere/datastores
+Uuid                         : 178ef312-fb33-4a85-b513-d9d7f7f5034b
+VCenterId                    : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/VCenters/test-vc
 ```
+
+This command gets a Datastore named `test-datastore` in a resource group named `test-rg`.
+
+## PARAMETERS
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -95,39 +137,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
@@ -152,51 +163,6 @@ Aliases: DatastoreName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -226,7 +192,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -237,30 +203,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IDatastore
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IConnectedVMwareIdentity\>: Identity Parameter
-  \[ClusterName \<String\>\]: Name of the cluster.
-  \[DatastoreName \<String\>\]: Name of the datastore.
-  \[HostName \<String\>\]: Name of the host.
-  \[Id \<String\>\]: Resource identity path
-  \[InventoryItemName \<String\>\]: Name of the inventoryItem.
-  \[ResourceGroupName \<String\>\]: The Resource Group Name.
-  \[ResourcePoolName \<String\>\]: Name of the resourcePool.
-  \[ResourceUri \<String\>\]: The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-  \[SubscriptionId \<String\>\]: The Subscription ID.
-  \[VcenterName \<String\>\]: Name of the vCenter.
-  \[VirtualMachineTemplateName \<String\>\]: Name of the virtual machine template resource.
-  \[VirtualNetworkName \<String\>\]: Name of the virtual network resource.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwaredatastore](https://learn.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwaredatastore)
-

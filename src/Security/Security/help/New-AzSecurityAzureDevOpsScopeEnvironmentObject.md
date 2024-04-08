@@ -21,9 +21,15 @@ Create an in-memory object for AzureDevOpsScopeEnvironment.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new AzureDevOpsScopeEnvironment object
 ```powershell
 New-AzSecurityAzureDevOpsScopeEnvironmentObject
+```
+
+```output
+EnvironmentType
+---------------
+AzureDevOpsScope
 ```
 
 ## PARAMETERS
@@ -36,8 +42,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.AzureDevOpsScopeEnvironment
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityazuredevopsscopeenvironmentobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityazuredevopsscopeenvironmentobject)

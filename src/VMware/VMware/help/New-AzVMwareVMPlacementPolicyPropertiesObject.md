@@ -24,13 +24,16 @@ Create an in-memory object for VMPlacementPolicyProperties.
 
 ### Example 1: Create an in-memory object for VMPlacementPolicyProperties.
 ```powershell
-New-AzVMwareVMPlacementPolicyPropertiesObject -AffinityType 'Affinity' -Type 'VmVm' -VMMember @{"abc"="123"}
+New-AzVMwareVMPlacementPolicyPropertiesObject -AffinityType 'Affinity' -Type 'VmVm' -VMMember @{"test"="test"}
 ```
 
 ```output
-DisplayName ProvisioningState State AffinityType VMMember
------------ ----------------- ----- ------------ --------
-                                    Affinity     {System.Collections.Hashtable}
+AffinityType      : Affinity
+DisplayName       : 
+ProvisioningState : 
+State             : 
+Type              : VmVm
+VMMember          : {System.Collections.Hashtable}
 ```
 
 Create an in-memory object for VMPlacementPolicyProperties.
@@ -119,10 +122,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.VMPlacementPolicyProperties
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.VMPlacementPolicyProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

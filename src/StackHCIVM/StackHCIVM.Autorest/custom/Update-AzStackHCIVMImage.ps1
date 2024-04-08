@@ -123,11 +123,30 @@ function Update-AzStackHCIVMImage{
         
 
             if ($isGalleryImage){
-                return  Az.StackHCIVM.internal\Update-AzStackHCIVMGalleryImage @PSBoundParameters
+                try{
+                    Az.StackHCIVM.internal\Update-AzStackHCIVMGalleryImage -ErrorAction Stop @PSBoundParameters 
+                } catch {
+                    $e = $_
+                    if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
+                        Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please downgrade the Az.StackHCIVm version to 1.0.1 to proceed." -ErrorAction Stop
+                    } else {
+                        Write-Error $e.Exception.Message -ErrorAction Stop
+                    }
+                }
             } 
 
             if ($isMarketplaceGalleryImage){
-                return  Az.StackHCIVM.internal\Update-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+                try{
+                    Az.StackHCIVM.internal\Update-AzStackHCIVMMarketplaceGalleryImage -ErrorAction Stop @PSBoundParameters 
+                } catch {
+                    $e = $_
+                    if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
+                        Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please downgrade the Az.StackHCIVm version to 1.0.1 to proceed." -ErrorAction Stop
+                    } else {
+                        Write-Error $e.Exception.Message -ErrorAction Stop
+                    }
+                }
+                
             }
 
         }  elseif ($PSCmdlet.ParameterSetName -eq "ByResourceId"){
@@ -143,7 +162,16 @@ function Update-AzStackHCIVMImage{
                     $null = $PSBoundParameters.Remove("SubscriptionId")
                     $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
 
-                    return  Az.StackHCIVM.internal\Update-AzStackHCIVMGalleryImage @PSBoundParameters
+                    try{
+                        Az.StackHCIVM.internal\Update-AzStackHCIVMGalleryImage -ErrorAction Stop @PSBoundParameters 
+                    } catch {
+                        $e = $_
+                        if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
+                            Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please downgrade the Az.StackHCIVm version to 1.0.1 to proceed." -ErrorAction Stop
+                        } else {
+                            Write-Error $e.Exception.Message -ErrorAction Stop
+                        }
+                    }
                     
                 } elseif ($ResourceId -match $marketplaceGalImageRegex){
                     $subscriptionId = $($Matches['subscriptionId'])
@@ -154,8 +182,16 @@ function Update-AzStackHCIVMImage{
                     $PSBoundParameters.Add("ResourceGroupName", $resourceGroupName)
                     $null = $PSBoundParameters.Remove("SubscriptionId")
                     $PSBoundParameters.Add("SubscriptionId", $subscriptionId)
-
-                    return  Az.StackHCIVM.internal\Update-AzStackHCIVMMarketplaceGalleryImage @PSBoundParameters
+                    try{
+                        Az.StackHCIVM.internal\Update-AzStackHCIVMMarketplaceGalleryImage -ErrorAction Stop @PSBoundParameters 
+                    } catch {
+                        $e = $_
+                        if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
+                            Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please downgrade the Az.StackHCIVm version to 1.0.1 to proceed." -ErrorAction Stop
+                        } else {
+                            Write-Error $e.Exception.Message -ErrorAction Stop
+                        }
+                    }
 
                 } else {
                     Write-Error "Resource ID is invalid: $ResourceId"

@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.17.0
+* Enabled globally disabling instance discovery before token acquisition [#22535].
+* Implemented secrets detection feature for autorest modules.
 * Added `AsSecureString` to `Get-AzAccessToken` to convert the returned token to SecureString [#24190].
 * Upgraded Azure.Core to 1.37.0.
 

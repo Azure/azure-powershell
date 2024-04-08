@@ -77,11 +77,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_minNode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("minNodes"), out var __jsonMinNodes) ? (int)__jsonMinNodes : MinNode;}
-            {_maxNode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("maxNodes"), out var __jsonMaxNodes) ? (int)__jsonMaxNodes : MaxNode;}
-            {_pollInterval = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("pollInterval"), out var __jsonPollInterval) ? (int?)__jsonPollInterval : PollInterval;}
-            {_cooldownPeriod = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("cooldownPeriod"), out var __jsonCooldownPeriod) ? (int?)__jsonCooldownPeriod : CooldownPeriod;}
-            {_scalingRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("scalingRules"), out var __jsonScalingRules) ? If( __jsonScalingRules as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScalingRule>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScalingRule) (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ScalingRule.FromJson(__u) )) ))() : null : ScalingRule;}
+            {_minNode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("minNodes"), out var __jsonMinNodes) ? (int)__jsonMinNodes : _minNode;}
+            {_maxNode = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("maxNodes"), out var __jsonMaxNodes) ? (int)__jsonMaxNodes : _maxNode;}
+            {_pollInterval = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("pollInterval"), out var __jsonPollInterval) ? (int?)__jsonPollInterval : _pollInterval;}
+            {_cooldownPeriod = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNumber>("cooldownPeriod"), out var __jsonCooldownPeriod) ? (int?)__jsonCooldownPeriod : _cooldownPeriod;}
+            {_scalingRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("scalingRules"), out var __jsonScalingRules) ? If( __jsonScalingRules as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScalingRule>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScalingRule) (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ScalingRule.FromJson(__u) )) ))() : null : _scalingRule;}
             AfterFromJson(json);
         }
 

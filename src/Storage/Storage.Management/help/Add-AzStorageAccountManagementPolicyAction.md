@@ -29,7 +29,8 @@ Add-AzStorageAccountManagementPolicyAction -BaseBlobAction <String> -DaysAfterLa
 ### BaseBlobCreationTime
 ```
 Add-AzStorageAccountManagementPolicyAction -BaseBlobAction <String> -DaysAfterCreationGreaterThan <Int32>
- [-InputObject <PSManagementPolicyActionGroup>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-InputObject <PSManagementPolicyActionGroup>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### Snapshot

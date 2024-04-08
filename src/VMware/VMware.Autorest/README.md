@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the VMware service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -48,17 +47,19 @@ In this directory, run AutoRest:
 commit: 0baf811c3c76c87b3c127d098519bd97141222dd
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-input-file: 
+input-file:
   - $(repo)/specification/vmware/resource-manager/Microsoft.AVS/stable/2023-03-01/vmware.json
 
 module-version: 0.4.0
 title: VMware
 subject-prefix: $(service-name)
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 support-json-input: false
 
 directive:
-  - from: swagger-document 
+  - from: swagger-document
     where: $.definitions.AdminCredentials.properties.nsxtPassword
     transform: >-
       return {
@@ -68,7 +69,7 @@ directive:
           "x-ms-secret": true,
           "format": "password"
       }
-  - from: swagger-document 
+  - from: swagger-document
     where: $.definitions.AdminCredentials.properties.vcenterPassword
     transform: >-
       return {
@@ -136,7 +137,7 @@ directive:
   #     verb: Test
   #     subject: ^LocationTrialAvailability$
   #   hide: true
-  # Remove the list variant as the workloadNetwork only have one enum value 
+  # Remove the list variant as the workloadNetwork only have one enum value
   - where:
       verb: Get
       subject: WorkloadNetwork

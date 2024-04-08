@@ -16,7 +16,8 @@ Adds a certificate to a key vault.
 ```
 Add-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String>
  [-CertificatePolicy] <PSKeyVaultCertificatePolicy> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

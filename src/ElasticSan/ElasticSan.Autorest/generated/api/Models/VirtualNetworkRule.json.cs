@@ -102,8 +102,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return;
             }
-            {_virtualNetworkResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)VirtualNetworkResourceId;}
-            {_action = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("action"), out var __jsonAction) ? (string)__jsonAction : (string)Action;}
+            {_virtualNetworkResourceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)_virtualNetworkResourceId;}
+            {_action = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("action"), out var __jsonAction) ? (string)__jsonAction : (string)_action;}
             AfterFromJson(json);
         }
     }

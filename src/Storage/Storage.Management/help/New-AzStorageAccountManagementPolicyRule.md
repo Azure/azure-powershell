@@ -14,7 +14,8 @@ Creates a ManagementPolicy rule object, which can be used in Set-AzStorageAccoun
 
 ```
 New-AzStorageAccountManagementPolicyRule [-Name] <String> [-Disabled] -Action <PSManagementPolicyActionGroup>
- [-Filter <PSManagementPolicyRuleFilter>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Filter <PSManagementPolicyRuleFilter>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

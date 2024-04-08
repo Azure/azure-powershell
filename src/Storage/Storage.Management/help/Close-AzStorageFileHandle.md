@@ -40,8 +40,8 @@ Close-AzStorageFileHandle [-Share] <CloudFileShare> [-ShareClient <ShareClient>]
 ```
 Close-AzStorageFileHandle [-Share] <CloudFileShare> [-ShareClient <ShareClient>] -FileHandle <PSFileHandle>
  [-PassThru] [-AsJob] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DirectoryCloseAll
@@ -56,8 +56,8 @@ Close-AzStorageFileHandle [-Directory] <CloudFileDirectory> [-ShareDirectoryClie
 ```
 Close-AzStorageFileHandle [-File] <CloudFile> [-ShareFileClient <ShareFileClient>] [-CloseAll] [-PassThru]
  [-AsJob] [-ServerTimeoutPerRequest <Int32>] [-ClientTimeoutPerRequest <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ConcurrentTaskCount <Int32>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

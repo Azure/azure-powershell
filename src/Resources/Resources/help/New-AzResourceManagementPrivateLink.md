@@ -14,7 +14,8 @@ Create Azure Resource Management Private Link
 
 ```
 New-AzResourceManagementPrivateLink [[-ResourceGroupName] <String>] [-Name] <String> [-Location] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

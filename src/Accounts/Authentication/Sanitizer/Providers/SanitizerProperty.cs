@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
 
         public SanitizerProperty(PropertyInfo property)
         {
-            PropertyName = property.Name;
+            var fullPropName = property.Name;
+            PropertyName = fullPropName.Contains(".") ? fullPropName.Substring(fullPropName.LastIndexOf('.') + 1) : fullPropName;
             PropertyType = property.PropertyType;
             ValueSupplier = property;
         }

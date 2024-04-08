@@ -273,7 +273,6 @@ Accept wildcard characters: False
 
 ### -Statement
 Route Policy statements.
-To construct, see NOTES section for STATEMENT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementProperties[]

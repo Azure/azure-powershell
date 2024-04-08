@@ -41,15 +41,31 @@ Gets a gallery image
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1:  Get an Image
+```powershell
 Get-AzStackHCIVMImage -Name "testimage" -ResourceGroupName "test-rg"
 ```
 
-### EXAMPLE 2
+```output
+Name            ResourceGroupName
+----            -----------------
+testImage       test-rg
 ```
+
+This command gets a specific image in the specified resource group.
+
+### Example 2: List all Images in a Resource Group
+```powershell
 Get-AzStackHCIVMImage -ResourceGroupName 'test-rg'
 ```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testImage       test-rg
+```
+
+This command lists all images in the specified resource group.
 
 ## PARAMETERS
 
@@ -93,7 +109,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -139,7 +155,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -152,9 +168,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IGalleryImages
+
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IMarketplaceGalleryImages
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmimage](https://learn.microsoft.com/powershell/module/az.stackhcivm/get-azstackhcivmimage)

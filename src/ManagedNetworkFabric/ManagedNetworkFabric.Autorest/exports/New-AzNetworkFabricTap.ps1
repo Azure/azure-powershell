@@ -79,7 +79,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkTapPropertiesDestinationsItem[]]
     # List of destinations to send the filter traffic.
-    # To construct, see NOTES section for DESTINATION properties and create a hash table.
     ${Destination},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]

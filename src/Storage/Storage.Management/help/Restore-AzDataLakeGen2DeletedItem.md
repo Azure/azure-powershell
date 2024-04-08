@@ -15,15 +15,15 @@ Restores a deleted file or directory in a filesystem.
 ### ReceiveManual (Default)
 ```
 Restore-AzDataLakeGen2DeletedItem [-FileSystem] <String> [-Path] <String> [-DeletionId] <String> [-AsJob]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ItemPipeline
 ```
 Restore-AzDataLakeGen2DeletedItem -InputObject <AzureDataLakeGen2DeletedItem> [-AsJob]
- [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Context <IStorageContext>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
