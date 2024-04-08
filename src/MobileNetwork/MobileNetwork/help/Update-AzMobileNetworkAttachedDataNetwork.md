@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MobileNetwork-help.xml
 Module Name: Az.MobileNetwork
 online version: https://learn.microsoft.com/powershell/module/az.mobilenetwork/update-azmobilenetworkattacheddatanetwork
 schema: 2.0.0
@@ -18,11 +18,11 @@ Update-AzMobileNetworkAttachedDataNetwork -AttachedDataNetworkName <String>
  [-SubscriptionId <String>] [-DnsAddress <String[]>] [-NaptConfigurationEnabled <NaptEnabled>]
  [-NaptConfigurationPinholeLimit <Int32>] [-PinholeTimeoutIcmp <Int32>] [-PinholeTimeoutTcp <Int32>]
  [-PinholeTimeoutUdp <Int32>] [-PortRangeMaxPort <Int32>] [-PortRangeMinPort <Int32>]
- [-PortReuseHoldTimeTcp <Int32>] [-PortReuseHoldTimeUdp <Int32>] [-Tag <Hashtable>]
- [-UserEquipmentAddressPoolPrefix <String[]>] [-UserEquipmentStaticAddressPoolPrefix <String[]>]
- [-UserPlaneDataInterfaceIpv4Address <String>] [-UserPlaneDataInterfaceIpv4Gateway <String>]
- [-UserPlaneDataInterfaceIpv4Subnet <String>] [-UserPlaneDataInterfaceName <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PortReuseHoldTimeTcp <Int32>] [-PortReuseHoldTimeUdp <Int32>] [-UserEquipmentAddressPoolPrefix <String[]>]
+ [-UserEquipmentStaticAddressPoolPrefix <String[]>] [-UserPlaneDataInterfaceIpv4Address <String>]
+ [-UserPlaneDataInterfaceIpv4Gateway <String>] [-UserPlaneDataInterfaceIpv4Subnet <String>]
+ [-UserPlaneDataInterfaceName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -449,7 +449,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

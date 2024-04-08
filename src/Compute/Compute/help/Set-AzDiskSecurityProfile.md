@@ -14,7 +14,8 @@ Set SecurityProfile on managed disk
 
 ```
 Set-AzDiskSecurityProfile [-Disk] <PSDisk> -SecurityType <String> [-SecureVMDiskEncryptionSet <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

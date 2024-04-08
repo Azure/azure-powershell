@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.8.0
 * Added option to set snapshot consistency type in policy cmdlets for creating or updating enhanced AzureVM policies.
 * Fixed an issue while setting soft delete vault property. 
 

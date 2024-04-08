@@ -21,7 +21,8 @@ Get-AzStorageMoverProject -ResourceGroupName <String> -StorageMoverName <String>
 ### Get
 ```
 Get-AzStorageMoverProject -Name <String> -ResourceGroupName <String> -StorageMoverName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity

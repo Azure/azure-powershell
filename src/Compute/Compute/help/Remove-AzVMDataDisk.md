@@ -15,7 +15,8 @@ Removes a data disk from a virtual machine.
 
 ```
 Remove-AzVMDataDisk [-VM] <PSVirtualMachine> [[-DataDiskNames] <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -131,5 +132,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Add-AzVMDataDisk](./Add-AzVMDataDisk.md)
 
 [Get-AzVM](./Get-AzVM.md)
-
-

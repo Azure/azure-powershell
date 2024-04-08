@@ -79,8 +79,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_filter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("filters"), out var __jsonFilters) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ManagementPolicyFilter.FromJson(__jsonFilters) : Filter;}
-            {_action = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("actions"), out var __jsonActions) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ManagementPolicyAction.FromJson(__jsonActions) : Action;}
+            {_filter = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("filters"), out var __jsonFilters) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ManagementPolicyFilter.FromJson(__jsonFilters) : _filter;}
+            {_action = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("actions"), out var __jsonActions) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ManagementPolicyAction.FromJson(__jsonActions) : _action;}
             AfterFromJson(json);
         }
 

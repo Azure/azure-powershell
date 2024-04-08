@@ -15,13 +15,15 @@ Gets the details of a protection container.
 ### List1 (Default)
 ```
 Get-AzMigrateReplicationProtectionContainer -ResourceGroupName <String> -ResourceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzMigrateReplicationProtectionContainer -ResourceGroupName <String> -ResourceName <String>
- -FabricName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -FabricName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -165,7 +167,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IProtectionContainer
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

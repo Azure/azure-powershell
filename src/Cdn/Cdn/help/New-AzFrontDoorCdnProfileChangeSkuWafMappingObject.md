@@ -14,7 +14,7 @@ Create an in-memory object for ProfileChangeSkuWafMapping.
 
 ```
 New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName <String> [-ChangeToWafPolicyId <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,21 +52,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SecurityPolicyName
 The security policy name.
 
@@ -92,7 +77,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ProfileChangeSkuWafMapping
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

@@ -15,13 +15,15 @@ Starts the migration for the replicating server.
 ### ByIDVMwareCbt (Default)
 ```
 Start-AzMigrateServerMigration -TargetObjectID <String> [-OsUpgradeVersion <String>] [-TurnOffSourceServer]
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
 Start-AzMigrateServerMigration [-OsUpgradeVersion <String>] [-TurnOffSourceServer] [-SubscriptionId <String>]
- -InputObject <IMigrationItem> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -InputObject <IMigrationItem> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -165,17 +167,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMigrationItem>`: Specifies the replicating server for which migration needs to be initiated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
-  - `[Location <String>]`: Resource Location
-  - `[ProviderSpecificDetail <IMigrationProviderSpecificSettings>]`: The migration provider custom settings.
-    - `InstanceType <String>`: Gets the instance type.
 
 ## RELATED LINKS

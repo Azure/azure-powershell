@@ -25,13 +25,15 @@ Please notice that this cmdlet will mark `ObjectType` as `Unknown` in output if 
 ### RoleAssignmentParameterSet (Default)
 ```
 Set-AzRoleAssignment -InputObject <PSRoleAssignment> [-SkipClientSideScopeValidation] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputFileParameterSet
 ```
 Set-AzRoleAssignment -InputFile <String> [-SkipClientSideScopeValidation] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

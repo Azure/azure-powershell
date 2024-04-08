@@ -7,10 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Extensions;
 
-    /// <summary>
-    /// A list of REST API operations supported by an Azure Resource Provider. It contains an URL link to get the next set of
-    /// results.
-    /// </summary>
+    /// <summary>The List Compute Operation operation response.</summary>
     public partial class OperationListResult
     {
 
@@ -80,8 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
             {
                 return;
             }
-            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonArray>("value"), out var __jsonValue) ? If( __jsonValue as Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperation>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperation) (Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.Operation.FromJson(__u) )) ))() : null : _value;}
-            {_nextLink = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonString>("nextLink"), out var __jsonNextLink) ? (string)__jsonNextLink : (string)_nextLink;}
+            {_value = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonArray>("value"), out var __jsonValue) ? If( __jsonValue as Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IOperationValue) (Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.OperationValue.FromJson(__u) )) ))() : null : _value;}
             AfterFromJson(json);
         }
 
@@ -115,10 +111,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models
                     }
                     container.Add("value",__w);
                 }
-            }
-            if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeRead))
-            {
-                AddIf( null != (((object)this._nextLink)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Json.JsonString(this._nextLink.ToString()) : null, "nextLink" ,container.Add );
             }
             AfterToJson(ref container);
             return container;

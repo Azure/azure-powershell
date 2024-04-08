@@ -22,7 +22,8 @@ Set-AzEventHubConsumerGroup -Name <String> -NamespaceName <String> -EventHubName
 ### SetViaIdentityExpanded
 ```
 Set-AzEventHubConsumerGroup -InputObject <IEventHubIdentity> -UserMetadata <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -384,7 +384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
                     {
                         _payloadBody = await this.Client.PrivateStoreCollectionOfferGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
                         this.Update_payloadBody();
-                        await this.Client.PrivateStoreCollectionOfferCreateOrUpdateViaIdentity(InputObject.Id, _payloadBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.PrivateStoreCollectionOfferCreateOrUpdateViaIdentity(InputObject.Id, _payloadBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
                         }
                         _payloadBody = await this.Client.PrivateStoreCollectionOfferGetWithResult(InputObject.PrivateStoreId ?? null, InputObject.CollectionId ?? null, InputObject.OfferId ?? null, this, Pipeline);
                         this.Update_payloadBody();
-                        await this.Client.PrivateStoreCollectionOfferCreateOrUpdate(InputObject.PrivateStoreId ?? null, InputObject.CollectionId ?? null, InputObject.OfferId ?? null, _payloadBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.PrivateStoreCollectionOfferCreateOrUpdate(InputObject.PrivateStoreId ?? null, InputObject.CollectionId ?? null, InputObject.OfferId ?? null, _payloadBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

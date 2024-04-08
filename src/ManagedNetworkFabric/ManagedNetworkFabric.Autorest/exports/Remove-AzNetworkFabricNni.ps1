@@ -126,14 +126,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityNetworkFabric', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for NETWORKFABRICINPUTOBJECT properties and create a hash table.
     ${NetworkFabricInputObject},
 
     [Parameter()]

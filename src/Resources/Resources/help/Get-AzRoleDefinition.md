@@ -172,4 +172,3 @@ Keywords: azure, azurerm, arm, resource, management, manager, resource, group, t
 [New-AzRoleDefinition](./New-AzRoleDefinition.md)
 
 [Remove-AzRoleDefinition](./Remove-AzRoleDefinition.md)
-

@@ -23,20 +23,35 @@ Create an in-memory object for ActionableRemediation.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new ActionableRemediation object
 ```powershell
 New-AzSecurityConnectorActionableRemediationObject -State Enabled -InheritFromParentState Disabled `
             -BranchConfiguration @{AnnotateDefaultBranch="Enabled"; branchName=@("main", "hotfix")} -CategoryConfiguration @( @{category="First"; minimumSeverityLevel="High"}, @{category="Second"; minimumSeverityLevel="Low"})
+```
+
+```output
+BranchConfiguration    : {
+                           "branchNames": [ "main", "hotfix" ],
+                           "annotateDefaultBranch": "Enabled"
+                         }
+CategoryConfiguration  : {{
+                           "minimumSeverityLevel": "High",
+                           "category": "First"
+                         }, {
+                           "minimumSeverityLevel": "Low",
+                           "category": "Second"
+                         }}
+InheritFromParentState : Disabled
+State                  : Enabled
 ```
 
 ## PARAMETERS
 
 ### -BranchConfiguration
 Repository branch configuration for PR Annotations.
-.
 
 ```yaml
-Type: ITargetBranchConfiguration
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ITargetBranchConfiguration
 Parameter Sets: (All)
 Aliases:
 
@@ -49,10 +64,9 @@ Accept wildcard characters: False
 
 ### -CategoryConfiguration
 Gets or sets list of categories and severity levels.
-.
 
 ```yaml
-Type: ICategoryConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICategoryConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +84,7 @@ Update Settings.
         Disabled - Resource should not inherit configurations from parent.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -88,7 +102,7 @@ ActionableRemediation Setting.
         Disabled - ActionableRemediation is disabled.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -107,28 +121,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ActionableRemediation
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-BRANCHCONFIGURATION \<ITargetBranchConfiguration\>: Repository branch configuration for PR Annotations.
-  \[AnnotateDefaultBranch \<String\>\]: Configuration of PR Annotations on default branch. 
-Enabled - PR Annotations are enabled on the resource's default branch. 
-Disabled - PR Annotations are disabled on the resource's default branch.
-  \[BranchName \<List\<String\>\>\]: Gets or sets branches that should have annotations.
-
-CATEGORYCONFIGURATION \<ICategoryConfiguration\[\]\>: Gets or sets list of categories and severity levels.
-  \[Category \<String\>\]: Rule categories. 
-Code - code scanning results. 
-Artifact scanning results. 
-Dependencies scanning results. 
-IaC results. 
-Secrets scanning results. 
-Container scanning results.
-  \[MinimumSeverityLevel \<String\>\]: Gets or sets minimum severity level for a given category.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityconnectoractionableremediationobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityconnectoractionableremediationobject)

@@ -53,7 +53,6 @@ Describe 'Set-AzServiceBusGeoDRConfigurationFailOver' {
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
 
         $drConfig = Remove-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
-
         Start-TestSleep 180
 
         { Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace } | Should -Throw

@@ -14,7 +14,8 @@ Gets the resource description of the specified Event Hubs Cluster.
 
 ### List (Default)
 ```
-Get-AzEventHubCluster [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzEventHubCluster [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -31,7 +32,8 @@ Get-AzEventHubCluster -ResourceGroupName <String> [-SubscriptionId <String[]>] [
 
 ### GetViaIdentity
 ```
-Get-AzEventHubCluster -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzEventHubCluster -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

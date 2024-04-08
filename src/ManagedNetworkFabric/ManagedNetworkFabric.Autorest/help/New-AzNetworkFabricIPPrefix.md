@@ -109,7 +109,6 @@ Accept wildcard characters: False
 
 ### -IPPrefixRule
 The list of IP Prefix Rules.
-To construct, see NOTES section for IPPREFIXRULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IIPPrefixRule[]

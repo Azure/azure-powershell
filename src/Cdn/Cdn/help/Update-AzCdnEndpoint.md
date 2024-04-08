@@ -25,7 +25,7 @@ Update-AzCdnEndpoint -Name <String> -ProfileName <String> -ResourceGroupName <St
  [-OriginHostHeader <String>] [-OriginPath <String>] [-ProbePath <String>]
  [-QueryStringCachingBehavior <QueryStringCachingBehavior>] [-Tag <Hashtable>]
  [-UrlSigningKey <IUrlSigningKey[]>] [-WebApplicationFirewallPolicyLinkId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Update-AzCdnEndpoint -InputObject <ICdnIdentity> [-ContentTypesToCompress <Strin
  [-OptimizationType <OptimizationType>] [-OriginHostHeader <String>] [-OriginPath <String>]
  [-ProbePath <String>] [-QueryStringCachingBehavior <QueryStringCachingBehavior>] [-Tag <Hashtable>]
  [-UrlSigningKey <IUrlSigningKey[]>] [-WebApplicationFirewallPolicyLinkId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -390,21 +390,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -QueryStringCachingBehavior
 Defines how CDN caches requests that include query strings.
 You can ignore any query strings when caching, bypass caching to prevent requests that contain query strings from being cached, or cache every request with a unique URL.
@@ -540,48 +525,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`DELIVERYPOLICYRULE <IDeliveryRule[]>`: A list of the delivery rules.
-  - `Action <IDeliveryRuleAction1[]>`: A list of actions that are executed when all the conditions of a rule are satisfied.
-    - `Name <DeliveryRuleAction>`: The name of the action for the delivery rule.
-  - `Order <Int32>`: The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
-  - `[Condition <IDeliveryRuleCondition[]>]`: A list of conditions that must be matched for the actions to be executed
-    - `Name <MatchVariable>`: The name of the condition for the delivery rule.
-  - `[Name <String>]`: Name of the rule
-
-`GEOFILTER <IGeoFilter[]>`: List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
-  - `Action <GeoFilterActions>`: Action of the geo filter, i.e. allow or block access.
-  - `CountryCode <String[]>`: Two letter country or region codes defining user country or region access in a geo filter, e.g. AU, MX, US.
-  - `RelativePath <String>`: Relative path applicable to geo filter. (e.g. '/mypictures', '/mypicture/kitty.jpg', and etc.)
-
-`INPUTOBJECT <ICdnIdentity>`: Identity Parameter
-  - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
-  - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
-  - `[Id <String>]`: Resource identity path
-  - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
-  - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
-  - `[RouteName <String>]`: Name of the routing rule.
-  - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.
-  - `[RuleSetName <String>]`: Name of the rule set under the profile which is unique globally.
-  - `[SecretName <String>]`: Name of the Secret under the profile.
-  - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
-  - `[SubscriptionId <String>]`: Azure Subscription ID.
-
-`URLSIGNINGKEY <IUrlSigningKey[]>`: List of keys used to validate the signed URL hashes.
-  - `KeyId <String>`: Defines the customer defined key Id. This id will exist in the incoming request to indicate the key used to form the hash.
-  - `KeySourceParameterResourceGroupName <String>`: Resource group of the user's Key Vault containing the secret
-  - `KeySourceParameterSecretName <String>`: The name of secret in Key Vault.
-  - `KeySourceParameterSecretVersion <String>`: The version(GUID) of secret in Key Vault.
-  - `KeySourceParameterSubscriptionId <String>`: Subscription Id of the user's Key Vault containing the secret
-  - `KeySourceParameterVaultName <String>`: The name of the user's Key Vault containing the secret
 
 ## RELATED LINKS

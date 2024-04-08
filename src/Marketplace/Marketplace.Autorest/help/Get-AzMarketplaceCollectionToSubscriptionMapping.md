@@ -88,7 +88,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
@@ -134,7 +133,6 @@ Accept wildcard characters: False
 
 ### -Payload
 The subscriptions list to get the related collections
-To construct, see NOTES section for PAYLOAD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ICollectionsToSubscriptionsMappingPayload

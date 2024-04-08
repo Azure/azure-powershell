@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ICheckNameAvailabilityResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Description(@"Check the give namespace name availability.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.ServiceBus/CheckNameAvailability", ApiVersion = "2022-10-01-preview")]
     public partial class TestAzServiceBusNamespaceNameAvailability_Check : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.IEventListener
     {

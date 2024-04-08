@@ -21,7 +21,8 @@ Test-AzEventHubName -NamespaceName <String> [-SubscriptionId <String>] [-Default
 ### AliasAvailability
 ```
 Test-AzEventHubName -NamespaceName <String> [-SubscriptionId <String>] -AliasName <String>
- -ResourceGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
+ -ResourceGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

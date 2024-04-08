@@ -80,6 +80,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)this).SubnetId = (string) content.GetValueForProperty("SubnetId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)this).SubnetId, global::System.Convert.ToString);
             }
+            if (content.Contains("OutboundType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)this).OutboundType = (string) content.GetValueForProperty("OutboundType",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)this).OutboundType, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnablePrivateApiServer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)this).EnablePrivateApiServer = (bool?) content.GetValueForProperty("EnablePrivateApiServer",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)this).EnablePrivateApiServer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ApiServerAuthorizedIPRange"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)this).ApiServerAuthorizedIPRange = (System.Collections.Generic.List<string>) content.GetValueForProperty("ApiServerAuthorizedIPRange",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)this).ApiServerAuthorizedIPRange, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -100,6 +112,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("SubnetId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)this).SubnetId = (string) content.GetValueForProperty("SubnetId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)this).SubnetId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OutboundType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)this).OutboundType = (string) content.GetValueForProperty("OutboundType",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)this).OutboundType, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnablePrivateApiServer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)this).EnablePrivateApiServer = (bool?) content.GetValueForProperty("EnablePrivateApiServer",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)this).EnablePrivateApiServer, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ApiServerAuthorizedIPRange"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)this).ApiServerAuthorizedIPRange = (System.Collections.Generic.List<string>) content.GetValueForProperty("ApiServerAuthorizedIPRange",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPoolNetworkProfileInternal)this).ApiServerAuthorizedIPRange, __y => TypeConverterExtensions.SelectToList<string>(__y, global::System.Convert.ToString));
             }
             AfterDeserializePSObject(content);
         }

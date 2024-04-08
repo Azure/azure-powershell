@@ -36,7 +36,7 @@ The operation to install patches on a hybrid machine identity in Azure.
 The operation to assess patches on a hybrid machine identity in Azure.
 
 ### [New-AzConnectedMachineExtension](New-AzConnectedMachineExtension.md)
-The operation to create or update the extension.
+The operation to Create the extension.
 
 ### [New-AzConnectedMachineRunCommand](New-AzConnectedMachineRunCommand.md)
 The operation to Create a run command.
@@ -58,7 +58,7 @@ The operation to delete a run command.
 Deletes a Azure Arc PrivateLinkScope.
 
 ### [Set-AzConnectedMachineExtension](Set-AzConnectedMachineExtension.md)
-The operation to create or update the extension.
+The operation to Create the extension.
 
 ### [Set-AzConnectedPrivateLinkScope](Set-AzConnectedPrivateLinkScope.md)
 Creates (or updates) a Azure Arc PrivateLinkScope.
@@ -71,7 +71,7 @@ The operation to Upgrade Machine Extensions.
 The operation to update a hybrid machine.
 
 ### [Update-AzConnectedMachineExtension](Update-AzConnectedMachineExtension.md)
-The operation to create or update the extension.
+The operation to Update the extension.
 
 ### [Update-AzConnectedMachineRunCommand](Update-AzConnectedMachineRunCommand.md)
 The operation to Create a run command.

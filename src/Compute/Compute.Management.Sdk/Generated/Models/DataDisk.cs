@@ -34,15 +34,19 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// disk. This value is used to identify data disks within the VM and
         /// therefore must be unique for each data disk attached to a
         /// VM.</param>
-        /// <param name="createOption">Specifies how the virtual machine should
-        /// be created. Possible values are: **Attach.** This value is used
-        /// when you are using a specialized disk to create the virtual
-        /// machine. **FromImage.** This value is used when you are using an
-        /// image to create the virtual machine. If you are using a platform
-        /// image, you should also use the imageReference element described
-        /// above. If you are using a marketplace image, you should also use
-        /// the plan element previously described. Possible values include:
-        /// 'FromImage', 'Empty', 'Attach'</param>
+        /// <param name="createOption">Specifies how the virtual machine disk
+        /// should be created. Possible values are **Attach:** This value is
+        /// used when you are using a specialized disk to create the virtual
+        /// machine. **FromImage:** This value is used when you are using an
+        /// image to create the virtual machine data disk. If you are using a
+        /// platform image, you should also use the imageReference element
+        /// described above. If you are using a marketplace image, you should
+        /// also use the plan element previously described. **Empty:** This
+        /// value is used when creating an empty data disk. **Copy:** This
+        /// value is used to create a data disk from a snapshot or another
+        /// disk. **Restore:** This value is used to create a data disk from a
+        /// disk restore point. Possible values include: 'FromImage', 'Empty',
+        /// 'Attach', 'Copy', 'Restore'</param>
         /// <param name="name">The disk name.</param>
         /// <param name="vhd">The virtual hard disk.</param>
         /// <param name="image">The source user image virtual hard disk. The
@@ -62,6 +66,9 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// number of bytes x 1024^3 for the disk and the value cannot be
         /// larger than 1023.</param>
         /// <param name="managedDisk">The managed disk parameters.</param>
+        /// <param name="sourceResource">The source resource identifier. It can
+        /// be a snapshot, or disk restore point from which to create a
+        /// disk.</param>
         /// <param name="toBeDetached">Specifies whether the data disk is in
         /// process of detachment from the
         /// VirtualMachine/VirtualMachineScaleset</param>
@@ -93,7 +100,7 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// is deleted. **Detach.** If this value is used, the data disk is
         /// retained after VM is deleted. The default value is set to
         /// **Detach**. Possible values include: 'Delete', 'Detach'</param>
-        public DataDisk(int lun, string createOption, string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), int? diskSizeGB = default(int?), ManagedDiskParameters managedDisk = default(ManagedDiskParameters), bool? toBeDetached = default(bool?), long? diskIOPSReadWrite = default(long?), long? diskMBpsReadWrite = default(long?), string detachOption = default(string), string deleteOption = default(string))
+        public DataDisk(int lun, string createOption, string name = default(string), VirtualHardDisk vhd = default(VirtualHardDisk), VirtualHardDisk image = default(VirtualHardDisk), CachingTypes? caching = default(CachingTypes?), bool? writeAcceleratorEnabled = default(bool?), int? diskSizeGB = default(int?), ManagedDiskParameters managedDisk = default(ManagedDiskParameters), ApiEntityReference sourceResource = default(ApiEntityReference), bool? toBeDetached = default(bool?), long? diskIOPSReadWrite = default(long?), long? diskMBpsReadWrite = default(long?), string detachOption = default(string), string deleteOption = default(string))
         {
             Lun = lun;
             Name = name;
@@ -104,6 +111,7 @@ namespace Microsoft.Azure.Management.Compute.Models
             CreateOption = createOption;
             DiskSizeGB = diskSizeGB;
             ManagedDisk = managedDisk;
+            SourceResource = sourceResource;
             ToBeDetached = toBeDetached;
             DiskIOPSReadWrite = diskIOPSReadWrite;
             DiskMBpsReadWrite = diskMBpsReadWrite;
@@ -163,15 +171,19 @@ namespace Microsoft.Azure.Management.Compute.Models
         public bool? WriteAcceleratorEnabled { get; set; }
 
         /// <summary>
-        /// Gets or sets specifies how the virtual machine should be created.
-        /// Possible values are: **Attach.** This value is used when you are
-        /// using a specialized disk to create the virtual machine.
-        /// **FromImage.** This value is used when you are using an image to
-        /// create the virtual machine. If you are using a platform image, you
-        /// should also use the imageReference element described above. If you
-        /// are using a marketplace image, you should also use the plan element
-        /// previously described. Possible values include: 'FromImage',
-        /// 'Empty', 'Attach'
+        /// Gets or sets specifies how the virtual machine disk should be
+        /// created. Possible values are **Attach:** This value is used when
+        /// you are using a specialized disk to create the virtual machine.
+        /// **FromImage:** This value is used when you are using an image to
+        /// create the virtual machine data disk. If you are using a platform
+        /// image, you should also use the imageReference element described
+        /// above. If you are using a marketplace image, you should also use
+        /// the plan element previously described. **Empty:** This value is
+        /// used when creating an empty data disk. **Copy:** This value is used
+        /// to create a data disk from a snapshot or another disk. **Restore:**
+        /// This value is used to create a data disk from a disk restore point.
+        /// Possible values include: 'FromImage', 'Empty', 'Attach', 'Copy',
+        /// 'Restore'
         /// </summary>
         [JsonProperty(PropertyName = "createOption")]
         public string CreateOption { get; set; }
@@ -191,6 +203,13 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// </summary>
         [JsonProperty(PropertyName = "managedDisk")]
         public ManagedDiskParameters ManagedDisk { get; set; }
+
+        /// <summary>
+        /// Gets or sets the source resource identifier. It can be a snapshot,
+        /// or disk restore point from which to create a disk.
+        /// </summary>
+        [JsonProperty(PropertyName = "sourceResource")]
+        public ApiEntityReference SourceResource { get; set; }
 
         /// <summary>
         /// Gets or sets specifies whether the data disk is in process of

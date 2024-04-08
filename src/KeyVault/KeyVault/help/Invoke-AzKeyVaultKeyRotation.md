@@ -21,7 +21,8 @@ Invoke-AzKeyVaultKeyRotation [-VaultName] <String> [-Name] <String> [-DefaultPro
 ### ByKeyInputObject
 ```
 Invoke-AzKeyVaultKeyRotation [-InputObject] <PSKeyVaultKeyIdentityItem>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -1,0 +1,47 @@
+{
+  "resourceType": "storageAccounts/accountMigrations",
+  "apiVersion": "2023-01-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.storage"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStorageAccountMigration",
+      "description": "Gets the status of the ongoing migration for the specified storage account.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/accountMigrations/{migrationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.storage/get-azstorageaccountmigration"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-AccountName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets the status of the ongoing migration for the specified storage account.",
+          "parameters": [
+            {
+              "name": "-AccountName",
+              "value": "[Path.accountName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Management.EventGrid.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -32,6 +33,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = "EventGrid Topic Type Name.")]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("IncludeEventTypeData", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             HelpMessage = "If specified, the response will include the event types supported by a topic type.")]

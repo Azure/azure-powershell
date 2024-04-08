@@ -311,7 +311,8 @@ namespace PSModelGenerator
                 bool isGenericCollection = property.PropertyType.IsGenericType &&
                     (property.PropertyType.GetGenericTypeDefinition() == typeof(IList<>) ||
                     property.PropertyType.GetGenericTypeDefinition() == typeof(IEnumerable<>) ||
-                    property.PropertyType.GetGenericTypeDefinition() == typeof(IReadOnlyList<>));
+                    property.PropertyType.GetGenericTypeDefinition() == typeof(IReadOnlyList<>) ||
+                    property.PropertyType.GetGenericTypeDefinition() == typeof(IDictionary<,>));
 
                 CodeFieldReferenceExpression wrappedObject = new(new CodeThisReferenceExpression(), OmObject);
                 CodePropertyReferenceExpression wrappedObjectProperty = new(wrappedObject, property.Name);
@@ -369,6 +370,7 @@ namespace PSModelGenerator
             // Special handling for dict
             Type argType = property.PropertyType.GetGenericArguments()[0];
             bool magicalDictConversion = propertyType == "IDictionary";
+            bool regularDictoary = property.PropertyType.Name.Contains("IDictionary");
             string wrapperArgType = argType.FullName.StartsWith("System") || argType.FullName.StartsWith("Microsoft.Azure.Batch.Common") ? argType.FullName : OMtoPSClassMappings[argType.FullName];
             string wrapperType = magicalDictConversion ? string.Format("Dictionary<string, string>") : string.Format("List<{0}>", wrapperArgType);
             string variableName = magicalDictConversion ? "dict" : "list";
@@ -383,6 +385,11 @@ namespace PSModelGenerator
                 // CodeDom doesn't support foreach loops very well, so instead explicitly get the enumerator and loop on MoveNext() calls
                 const string enumeratorVariableName = "enumerator";
                 CodeVariableDeclarationStatement enumeratorDeclaration = new(string.Format("IEnumerator<{0}>", argType.FullName), enumeratorVariableName);
+                if (regularDictoary) // special case to handel pure Dictionary<string,string> type
+                {
+                    enumeratorDeclaration = new("IEnumerator<KeyValuePair<System.String, System.String>>", enumeratorVariableName);
+                }
+
                 CodeVariableReferenceExpression enumeratorReference = new(enumeratorVariableName);
                 CodeAssignStatement initializeEnumerator = new(enumeratorReference, new CodeMethodInvokeExpression(wrappedObjectProperty, "GetEnumerator"));
                 CodeIterationStatement loopStatement = new();
@@ -392,10 +399,17 @@ namespace PSModelGenerator
                 CodePropertyReferenceExpression enumeratorCurrent = new(enumeratorReference, "Current");
 
                 // Fill the list by individually wrapping each item in the loop
-                if (magicalDictConversion)
+                if (magicalDictConversion && !regularDictoary)
                 {
                     var keyReference = new CodePropertyReferenceExpression(enumeratorCurrent, OMToPSDictionaryConversionMappings[argType.FullName].Item1);
                     var valueReference = new CodePropertyReferenceExpression(enumeratorCurrent, OMToPSDictionaryConversionMappings[argType.FullName].Item2);
+                    CodeMethodInvokeExpression addToList = new(reference, "Add", keyReference, valueReference);
+                    loopStatement.Statements.Add(addToList);
+                }
+                else if (regularDictoary) // special case to handel pure Dictionary<string,string> type
+                {
+                    var keyReference = new CodePropertyReferenceExpression(enumeratorCurrent, "Key");
+                    var valueReference = new CodePropertyReferenceExpression(enumeratorCurrent, "Value");
                     CodeMethodInvokeExpression addToList = new(reference, "Add", keyReference, valueReference);
                     loopStatement.Statements.Add(addToList);
                 }
@@ -434,6 +448,11 @@ namespace PSModelGenerator
                 CodeBinaryOperatorExpression nullCheck = new(valueReference, CodeBinaryOperatorType.IdentityEquality, new CodePrimitiveExpression(null));
                 CodeAssignStatement nullAssignment = new(wrappedObjectProperty, new CodePrimitiveExpression(null));
                 CodeAssignStatement nonNullAssignment = new(wrappedObjectProperty, new CodeObjectCreateExpression(string.Format("List<{0}>", argType.FullName)));
+
+                if (regularDictoary) // special case to handel pure Dictionary<string,string> type
+                {
+                    nonNullAssignment = new(wrappedObjectProperty, new CodeObjectCreateExpression(string.Format("Dictionary<System.String, System.String>", argType.FullName)));
+                }
                 CodeConditionStatement ifBlock = new(nullCheck, new CodeStatement[] { nullAssignment }, new CodeStatement[] { nonNullAssignment });
                 codeProperty.SetStatements.Add(ifBlock);
                 codeProperty.SetStatements.Add(new CodeAssignStatement(fieldReference, valueReference));
@@ -527,6 +546,10 @@ namespace PSModelGenerator
 
                 string str = string.Format("IList<{0}>", GetPropertyType(argType));
                 return str;
+            }
+            else if (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(IDictionary<,>))
+            {
+                return "IDictionary";
             }
             else if (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(IReadOnlyList<>))
             {

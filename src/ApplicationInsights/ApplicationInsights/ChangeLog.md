@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.4
+* Fixed the issue that Update-AzApplicationInsights would incorrectly remove existing tags.
+
 ## Version 2.2.3
 * Enabled common parameter in get-azapplicationinsights 
 

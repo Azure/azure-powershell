@@ -66,19 +66,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return;
             }
             __clusterJobProperties = new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterJobProperties(json);
-            {_jobName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("jobName"), out var __jsonJobName) ? (string)__jsonJobName : (string)JobName;}
-            {_jobJarDirectory = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("jobJarDirectory"), out var __jsonJobJarDirectory) ? (string)__jsonJobJarDirectory : (string)JobJarDirectory;}
-            {_jarName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("jarName"), out var __jsonJarName) ? (string)__jsonJarName : (string)JarName;}
-            {_entryClass = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("entryClass"), out var __jsonEntryClass) ? (string)__jsonEntryClass : (string)EntryClass;}
-            {_arg = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("args"), out var __jsonArgs) ? (string)__jsonArgs : (string)Arg;}
-            {_savePointName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("savePointName"), out var __jsonSavePointName) ? (string)__jsonSavePointName : (string)SavePointName;}
-            {_action = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("action"), out var __jsonAction) ? (string)__jsonAction : (string)Action;}
-            {_flinkConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("flinkConfiguration"), out var __jsonFlinkConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkJobPropertiesFlinkConfiguration.FromJson(__jsonFlinkConfiguration) : FlinkConfiguration;}
-            {_jobId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("jobId"), out var __jsonJobId) ? (string)__jsonJobId : (string)JobId;}
-            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)Status;}
-            {_jobOutput = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("jobOutput"), out var __jsonJobOutput) ? (string)__jsonJobOutput : (string)JobOutput;}
-            {_actionResult = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("actionResult"), out var __jsonActionResult) ? (string)__jsonActionResult : (string)ActionResult;}
-            {_lastSavePoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("lastSavePoint"), out var __jsonLastSavePoint) ? (string)__jsonLastSavePoint : (string)LastSavePoint;}
+            {_runId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("runId"), out var __jsonRunId) ? (string)__jsonRunId : (string)_runId;}
+            {_jobName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("jobName"), out var __jsonJobName) ? (string)__jsonJobName : (string)_jobName;}
+            {_jobJarDirectory = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("jobJarDirectory"), out var __jsonJobJarDirectory) ? (string)__jsonJobJarDirectory : (string)_jobJarDirectory;}
+            {_jarName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("jarName"), out var __jsonJarName) ? (string)__jsonJarName : (string)_jarName;}
+            {_entryClass = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("entryClass"), out var __jsonEntryClass) ? (string)__jsonEntryClass : (string)_entryClass;}
+            {_arg = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("args"), out var __jsonArgs) ? (string)__jsonArgs : (string)_arg;}
+            {_savePointName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("savePointName"), out var __jsonSavePointName) ? (string)__jsonSavePointName : (string)_savePointName;}
+            {_action = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("action"), out var __jsonAction) ? (string)__jsonAction : (string)_action;}
+            {_flinkConfiguration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("flinkConfiguration"), out var __jsonFlinkConfiguration) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkJobPropertiesFlinkConfiguration.FromJson(__jsonFlinkConfiguration) : _flinkConfiguration;}
+            {_jobId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("jobId"), out var __jsonJobId) ? (string)__jsonJobId : (string)_jobId;}
+            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)_status;}
+            {_jobOutput = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("jobOutput"), out var __jsonJobOutput) ? (string)__jsonJobOutput : (string)_jobOutput;}
+            {_actionResult = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("actionResult"), out var __jsonActionResult) ? (string)__jsonActionResult : (string)_actionResult;}
+            {_lastSavePoint = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("lastSavePoint"), out var __jsonLastSavePoint) ? (string)__jsonLastSavePoint : (string)_lastSavePoint;}
             AfterFromJson(json);
         }
 
@@ -114,6 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return container;
             }
             __clusterJobProperties?.ToJson(container, serializationMode);
+            AddIf( null != (((object)this._runId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._runId.ToString()) : null, "runId" ,container.Add );
             AddIf( null != (((object)this._jobName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._jobName.ToString()) : null, "jobName" ,container.Add );
             AddIf( null != (((object)this._jobJarDirectory)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._jobJarDirectory.ToString()) : null, "jobJarDirectory" ,container.Add );
             AddIf( null != (((object)this._jarName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString(this._jarName.ToString()) : null, "jarName" ,container.Add );

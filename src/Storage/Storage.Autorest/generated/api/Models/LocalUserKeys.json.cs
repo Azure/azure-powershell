@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_sshAuthorizedKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("sshAuthorizedKeys"), out var __jsonSshAuthorizedKeys) ? If( __jsonSshAuthorizedKeys as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISshPublicKey>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISshPublicKey) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SshPublicKey.FromJson(__u) )) ))() : null : SshAuthorizedKey;}
-            {_sharedKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("sharedKey"), out var __jsonSharedKey) ? (string)__jsonSharedKey : (string)SharedKey;}
+            {_sshAuthorizedKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("sshAuthorizedKeys"), out var __jsonSshAuthorizedKeys) ? If( __jsonSshAuthorizedKeys as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISshPublicKey>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ISshPublicKey) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SshPublicKey.FromJson(__u) )) ))() : null : _sshAuthorizedKey;}
+            {_sharedKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("sharedKey"), out var __jsonSharedKey) ? (string)__jsonSharedKey : (string)_sharedKey;}
             AfterFromJson(json);
         }
 
