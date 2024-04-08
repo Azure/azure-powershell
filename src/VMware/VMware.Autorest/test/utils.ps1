@@ -5,6 +5,31 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
@@ -24,7 +49,7 @@ function setupEnv() {
     $env.Add("privateCloudName1", $privateCloudName1)
     $env.Add("privateCloudName2", $privateCloudName2)
     $env.Add("privateCloudName3", $privateCloudName3)
-    
+
     $env.Add("rstr1", $rstr1)
     $env.Add("rstr2", $rstr2)
     $env.Add("rstr3", $rstr3)
@@ -44,7 +69,7 @@ function setupEnv() {
     $env.Add("resourceGroup1", $resourceGroup1)
     $env.Add("resourceGroup2", $resourceGroup2)
     $env.Add("resourceGroup3", $resourceGroup3)
-    
+
     # Use mock environment, so we donnot run this cmdlet.
     # New-AzResourceGroup -Name $env.resourceGroup1 -Location $env.location1
     # New-AzResourceGroup -Name $env.resourceGroup2 -Location $env.location1
@@ -55,7 +80,7 @@ function setupEnv() {
     #     -Sku av36 -ManagementClusterSize 3 -Location $env.location1 -AcceptEULA
     # New-AzVMwareAuthorization -Name $env.rstr1 -PrivateCloudName $env.privateCloudName1 `
     #     -ResourceGroupName $env.resourceGroup1
-    
+
     # New-AzVMwarePrivateCloud -Name $env.privateCloudName2 `
     #     -ResourceGroupName $env.resourceGroup2 -NetworkBlock 192.168.48.0/22 `
     #     -Sku av36 -ManagementClusterSize 3 -Location $env.location1 -AcceptEULA

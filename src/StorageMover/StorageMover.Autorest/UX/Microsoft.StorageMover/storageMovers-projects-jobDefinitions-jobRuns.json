@@ -1,6 +1,6 @@
 {
   "resourceType": "storageMovers/projects/jobDefinitions/jobRuns",
-  "apiVersion": "2023-03-01",
+  "apiVersion": "2023-10-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.storagemover"
   },

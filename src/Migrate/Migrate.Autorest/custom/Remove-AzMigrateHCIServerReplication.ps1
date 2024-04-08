@@ -140,13 +140,13 @@ function Remove-AzMigrateHCIServerReplication {
 
         if ($PSCmdlet.ShouldProcess($TargetObjectID, "Stop/Complete VM replication.")) {
             $operation = Az.Migrate.Internal\Remove-AzMigrateProtectedItem @PSBoundParameters
-            $jobName = $operation.Target.Split("/")[14].Split("?")[0]
-            
+            $jobName = $operation.Target.Split("/")[-1].Split("?")[0]
+
             $null = $PSBoundParameters.Remove('ProtectedItemName')
             $null = $PSBoundParameters.Remove('NoWait')
             $null = $PSBoundParameters.Remove('ForceDelete')
-            $null = $PSBoundParameters.Add('JobName', $jobName)
 
+            $null = $PSBoundParameters.Add('JobName', $jobName)
             return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
         }
     }

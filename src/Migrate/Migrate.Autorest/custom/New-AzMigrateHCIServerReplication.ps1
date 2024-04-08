@@ -576,7 +576,7 @@ function New-AzMigrateHCIServerReplication {
             $null = $PSBoundParameters.Add('NoWait', $true)
             
             $operation = Az.Migrate.Internal\New-AzMigrateProtectedItem @PSBoundParameters
-            $jobName = $operation.Target.Split("/")[14].Split("?")[0]
+            $jobName = $operation.Target.Split("/")[-1].Split("?")[0]
             
             $null = $PSBoundParameters.Remove('Name')  
             $null = $PSBoundParameters.Remove('Property')

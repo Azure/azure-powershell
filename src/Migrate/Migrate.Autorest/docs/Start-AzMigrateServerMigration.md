@@ -14,14 +14,14 @@ Starts the migration for the replicating server.
 
 ### ByIDVMwareCbt (Default)
 ```
-Start-AzMigrateServerMigration -TargetObjectID <String> [-SubscriptionId <String>] [-TurnOffSourceServer]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Start-AzMigrateServerMigration -TargetObjectID <String> [-OsUpgradeVersion <String>]
+ [-SubscriptionId <String>] [-TurnOffSourceServer] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
-Start-AzMigrateServerMigration -InputObject <IMigrationItem> [-SubscriptionId <String>] [-TurnOffSourceServer]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Start-AzMigrateServerMigration -InputObject <IMigrationItem> [-OsUpgradeVersion <String>]
+ [-SubscriptionId <String>] [-TurnOffSourceServer] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -93,6 +93,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OsUpgradeVersion
+Specifies the target version to which the Os has to be upgraded to.
+The valid values can be selected from SupportedOSVersions retrieved using Get-AzMigrateServerReplication cmdlet.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Azure Subscription ID.
 
@@ -149,18 +165,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IJob
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMigrationItem>`: Specifies the replicating server for which migration needs to be initiated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
-  - `[Location <String>]`: Resource Location
-  - `[ProviderSpecificDetail <IMigrationProviderSpecificSettings>]`: The migration provider custom settings.
-    - `InstanceType <String>`: Gets the instance type.
 
 ## RELATED LINKS
 

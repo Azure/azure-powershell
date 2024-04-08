@@ -11,8 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Quota.private.dll'
   FormatsToProcess = './Az.Quota.format.ps1xml'
-  FunctionsToExport = 'Get-AzQuota', 'Get-AzQuotaOperation', 'Get-AzQuotaRequestStatus', 'Get-AzQuotaUsage', 'New-AzQuota', 'New-AzQuotaLimitObject', 'Update-AzQuota', '*'
-  AliasesToExport = '*'
+  FunctionsToExport = 'Get-AzQuota', 'Get-AzQuotaOperation', 'Get-AzQuotaRequestStatus', 'Get-AzQuotaUsage', 'New-AzQuota', 'New-AzQuotaLimitObject', 'Update-AzQuota'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Quota'

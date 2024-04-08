@@ -23,14 +23,29 @@ Gets a Dev Box
 ### [Get-AzDevCenterUserDevBoxAction](Get-AzDevCenterUserDevBoxAction.md)
 Gets an action.
 
+### [Get-AzDevCenterUserDevBoxOperation](Get-AzDevCenterUserDevBoxOperation.md)
+Gets an operation on a Dev Box.
+
 ### [Get-AzDevCenterUserDevBoxRemoteConnection](Get-AzDevCenterUserDevBoxRemoteConnection.md)
 Gets RDP Connection info
 
 ### [Get-AzDevCenterUserEnvironment](Get-AzDevCenterUserEnvironment.md)
 Gets an environment
 
+### [Get-AzDevCenterUserEnvironmentAction](Get-AzDevCenterUserEnvironmentAction.md)
+Retrieve a specific environment action.
+
 ### [Get-AzDevCenterUserEnvironmentDefinition](Get-AzDevCenterUserEnvironmentDefinition.md)
 Get an environment definition from a catalog.
+
+### [Get-AzDevCenterUserEnvironmentLog](Get-AzDevCenterUserEnvironmentLog.md)
+Gets the logs for an operation on an environment.
+
+### [Get-AzDevCenterUserEnvironmentOperation](Get-AzDevCenterUserEnvironmentOperation.md)
+Gets an environment action result.
+
+### [Get-AzDevCenterUserEnvironmentOutput](Get-AzDevCenterUserEnvironmentOutput.md)
+Gets Outputs from the environment
 
 ### [Get-AzDevCenterUserEnvironmentType](Get-AzDevCenterUserEnvironmentType.md)
 Lists all environment types configured for a project.
@@ -47,6 +62,9 @@ Gets a schedule.
 ### [Invoke-AzDevCenterUserDelayDevBoxAction](Invoke-AzDevCenterUserDelayDevBoxAction.md)
 Delays the occurrence of an action.
 
+### [Invoke-AzDevCenterUserDelayEnvironmentAction](Invoke-AzDevCenterUserDelayEnvironmentAction.md)
+Delays the occurrence of an action.
+
 ### [New-AzDevCenterUserDevBox](New-AzDevCenterUserDevBox.md)
 Creates or replaces a Dev Box.
 
@@ -59,10 +77,17 @@ Deletes a Dev Box.
 ### [Remove-AzDevCenterUserEnvironment](Remove-AzDevCenterUserEnvironment.md)
 Deletes an environment and all its associated resources
 
+### [Repair-AzDevCenterUserDevBox](Repair-AzDevCenterUserDevBox.md)
+Attempts automated repair steps to resolve common problems on a Dev Box.
+The Dev Box may restart during this operation.
+
 ### [Restart-AzDevCenterUserDevBox](Restart-AzDevCenterUserDevBox.md)
 Restarts a Dev Box
 
 ### [Skip-AzDevCenterUserDevBoxAction](Skip-AzDevCenterUserDevBoxAction.md)
+Skips an occurrence of an action.
+
+### [Skip-AzDevCenterUserEnvironmentAction](Skip-AzDevCenterUserEnvironmentAction.md)
 Skips an occurrence of an action.
 
 ### [Start-AzDevCenterUserDevBox](Start-AzDevCenterUserDevBox.md)
@@ -70,4 +95,7 @@ Starts a Dev Box
 
 ### [Stop-AzDevCenterUserDevBox](Stop-AzDevCenterUserDevBox.md)
 Stops a Dev Box
+
+### [Update-AzDevCenterUserEnvironment](Update-AzDevCenterUserEnvironment.md)
+Partially updates an environment
 

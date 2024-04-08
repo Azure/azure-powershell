@@ -11,7 +11,7 @@ Locale: en-US
 Microsoft Azure PowerShell: ManagedServiceIdentity cmdlets
 
 ## Az.ManagedServiceIdentity Cmdlets
-### [Get-AzFederatedIdentityCredentials](Get-AzFederatedIdentityCredentials.md)
+### [Get-AzFederatedIdentityCredential](Get-AzFederatedIdentityCredential.md)
 Gets the federated identity credential.
 
 ### [Get-AzSystemAssignedIdentity](Get-AzSystemAssignedIdentity.md)
@@ -23,19 +23,19 @@ Gets the identity.
 ### [Get-AzUserAssignedIdentityAssociatedResource](Get-AzUserAssignedIdentityAssociatedResource.md)
 Lists the associated resources for this identity.
 
-### [New-AzFederatedIdentityCredentials](New-AzFederatedIdentityCredentials.md)
+### [New-AzFederatedIdentityCredential](New-AzFederatedIdentityCredential.md)
 Create or update a federated identity credential under the specified user assigned identity.
 
 ### [New-AzUserAssignedIdentity](New-AzUserAssignedIdentity.md)
 Create or update an identity in the specified subscription and resource group.
 
-### [Remove-AzFederatedIdentityCredentials](Remove-AzFederatedIdentityCredentials.md)
+### [Remove-AzFederatedIdentityCredential](Remove-AzFederatedIdentityCredential.md)
 Deletes the federated identity credential.
 
 ### [Remove-AzUserAssignedIdentity](Remove-AzUserAssignedIdentity.md)
 Deletes the identity.
 
-### [Update-AzFederatedIdentityCredentials](Update-AzFederatedIdentityCredentials.md)
+### [Update-AzFederatedIdentityCredential](Update-AzFederatedIdentityCredential.md)
 Create or update a federated identity credential under the specified user assigned identity.
 
 ### [Update-AzUserAssignedIdentity](Update-AzUserAssignedIdentity.md)

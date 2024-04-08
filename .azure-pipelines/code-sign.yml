@@ -3,6 +3,14 @@ parameters:
   displayName: Branch for OOB pipeline
   type: string
   default: 'none'
+- name: TargetModule
+  displayName: Build Module List(Split by ':')
+  type: string
+  default: 'none'
+- name: BuildInstaller
+  displayName: Build Installer
+  type: boolean
+  default: true
 jobs:
 - job: Release
   timeoutInMinutes: 180
@@ -30,11 +38,19 @@ jobs:
     displayName: 'Install PowerShellGet [v2.1.3 has a Publish-Module bug]'
 
   - task: DotNetCoreCLI@2
-    displayName: Build
+    displayName: Build For Target Module
+    condition: ne('${{ parameters.TargetModule }}', 'none') 
     inputs:
       command: custom
       custom: msbuild
-      arguments: 'build.proj /t:"Build;CopyAboutTopics;GenerateHelp" /p:"Configuration=Release;GenerateDocumentationFile=true"'
+      arguments: 'build.proj /t:"Build;CopyAboutTopics;GenerateHelp" /p:"Configuration=Release;GenerateDocumentationFile=true;TargetModule=${{ parameters.TargetModule }}"'
+  - task: DotNetCoreCLI@2
+    displayName: Build For Modified Modules
+    condition: eq('${{ parameters.TargetModule }}', 'none') 
+    inputs:
+      command: custom
+      custom: msbuild
+      arguments: 'build.proj /t:"Build;CopyAboutTopics;GenerateHelp" /p:"Configuration=Release;GenerateDocumentationFile=true;ModifiedModuleBuild=true"'
 
   - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
     displayName: 'Manifest Generator '
@@ -54,7 +70,7 @@ jobs:
       Copy-Item .\setup\InstallerChecks.dll -Destination $Env:RepoArtifacts/
       Copy-Item .\setup\Microsoft.Deployment.WindowsInstaller.dll -Destination $Env:RepoArtifacts/
     displayName: 'Before Signing'
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Sign Dll [Authenticode + Strong Name]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -111,7 +127,7 @@ jobs:
           }
         ]
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Sign Scripts [Authenticode]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -147,7 +163,7 @@ jobs:
           }
         ]
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Sign 3rd Party [Strong Name]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -173,7 +189,7 @@ jobs:
           }
         ]
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Sign 3rd Party [Authenticode]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -236,7 +252,7 @@ jobs:
   - script: '"%wix%\sdk\MakeSfxCA.exe" "%cd%\setup\InstallerChecks.CA.dll" "%cd%\setup\SfxCA.dll" "%cd%\setup\InstallerChecks.dll" "%cd%\setup\Microsoft.Deployment.WindowsInstaller.dll;%cd%\setup\InstallerChecks\InstallerChecks\CustomAction.config"'
     displayName: 'Generate InstallerCheck.CA.dll'
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Sign Installercheck.CA.dll [Authenticode]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -284,7 +300,7 @@ jobs:
     inputs:
       command: custom
       custom: msbuild
-      arguments: 'build.proj /t:Publish /p:Configuration=Release;NuGetKey=$(NuGetKey);GenerateDocumentationFile=false'
+      arguments: 'build.proj /t:Publish /p:Configuration=Release;NuGetKey=$(NuGetKey);GenerateDocumentationFile=false;TargetModule=${{ parameters.TargetModule }}'
 
   - pwsh: |
       #this task won't be triggered unless $AzureStack was set to true
@@ -309,7 +325,7 @@ jobs:
     displayName: 'Expand modules'
     condition: and(succeeded(), ne(variables['SignPsd1'], 'false'))
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Psd1 Signing [Authenticode]'
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
@@ -346,6 +362,13 @@ jobs:
     displayName: 'Repackage modules'
     condition: and(succeeded(), ne(variables['SignPsd1'], 'false'))
 
+  - pwsh: |
+      ./tools/Docs/OutputTypeIndex.ps1 -OutputFile ./artifacts/outputtypes.json -BuildConfig Release
+      ./tools/Docs/HelpIndex.ps1 -OutputFile ./artifacts/index.json -BuildConfig Release
+    displayName: 'Post process for Docs'
+    condition: eq('${{ parameters.TargetModule }}', 'none') 
+
+
   - task: PublishBuildArtifacts@1
     displayName: 'Save artifacts'
     inputs:
@@ -359,9 +382,11 @@ jobs:
       ./setup/generate.ps1 -repository MSIcreationrepository
       Unregister-PSRepository -Name MSIcreationrepository
     displayName: 'Build Installer'
+    condition: eq(${{ parameters.buildInstaller }}, true)
 
-  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+  - task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
     displayName: 'Installer Signing [Authenticode]'
+    condition: eq(${{ parameters.buildInstaller }}, true)
     inputs:
       ConnectedServiceName: 'ESRP Signing Service'
       FolderPath: setup
@@ -404,9 +429,11 @@ jobs:
       Get-ChildItem $Env:RepoArtifacts/$folderName
       Copy-Item $Env:RepoArtifacts/$Env:Configuration/InstallModule.ps1 -Destination $Env:RepoArtifacts/$folderName
     displayName: 'Gather nuget packages and install script'
+    condition: eq(${{ parameters.buildInstaller }}, true)
 
   - task: ArchiveFiles@2
     displayName: 'Pack nuget packages as Az-Cmdlets-latest.tar.gz'
+    condition: eq(${{ parameters.buildInstaller }}, true)
     inputs:
       rootFolderOrFile: 'artifacts/$(LocalRepoName)'
       includeRootFolder: false
@@ -432,9 +459,11 @@ jobs:
                   "  - "+$sha256.Hash+"`n"
       New-Item -Path "setup" -Name "ReleaseNotes.txt" -ItemType File -Force -Value $value
     displayName: 'Rename Az-Cmdlets-latest.tar.gz and Calculate SHA256'
+    condition: eq(${{ parameters.buildInstaller }}, true)
 
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: installer'
+    condition: eq(${{ parameters.buildInstaller }}, true)
     inputs:
       PathtoPublish: setup
       ArtifactName: setup
@@ -468,4 +497,4 @@ jobs:
         Get-ChildItem -Path $Env:RepoArtifacts -Filter Az.*.0.*.*.nupkg | Compress-Archive -DestinationPath "$buildName-preview.zip" -PassThru | Set-AzStorageBlobContent -Container $(ContainerName) -Context $context -Force
       azurePowerShellVersion: LatestVersion
       pwsh: true
-    condition: and(succeeded(), eq(variables['PushPackageToStorageAccount'], 'true'))
+    condition: and(succeeded(), eq(variables['PushPackageToStorageAccount'], 'true'), eq(${{ parameters.buildInstaller }}, true))

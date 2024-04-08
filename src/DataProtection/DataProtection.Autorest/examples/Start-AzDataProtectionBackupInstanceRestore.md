@@ -129,8 +129,42 @@ while($jobstatus -ne "Completed")
 ```
 
 The first, second commands fetch the backup instance and recovery point for the backup instance.
-The third command initializes the ARM Id for target container. This parameter is needed for cross sub restore for AzureDatabaseForPostgreSQL and not needed for same susbscription restore.
+The third command initializes the ARM Id for target container. This parameter is needed for vaults where cross subscription restore is disabled and optional for  CSR enabled vaults.
 The fourth, fifth command initializes targetContainerURI and fileNamePrefix for restore.
 The sixth command initializes the restore request object for AzureDatabaseForPostgreSQL restore.
 The seventh command triggers validate before restore.
 The last command triggers the cross subscription restore as files for AzureDatabaseForPostgreSQL.
+
+### Example 8: Trigger cross region restore for AzureDatabaseForPostgreSQL.
+```powershell
+$restoreJobCRR = Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName $instance.Name -ResourceGroupName $ResourceGroupName -VaultName $vaultName -SubscriptionId $SubscriptionId -Parameter $OssRestoreReq -RestoreToSecondaryRegion
+$jobid = $restoreJobCRR.JobId.Split("/")[-1]
+$jobstatus = "InProgress"
+while($jobstatus -ne "Completed")
+{
+    Start-Sleep -Seconds 10
+    $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -UseSecondaryRegion
+    $jobstatus = $currentjob.Status
+}
+```
+
+
+This command command triggers the cross region restore for AzureDatabaseForPostgreSQL. For triggering cross region restore to secondary region, use RestoreToSecondaryRegion switch.
+
+### Example 9: Trigger restore as Files for datasource type AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL.
+```powershell
+$instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"  | Where { $_.Name -match "test-pgflex" }
+$rps = Get-AzDataProtectionRecoveryPoint -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.Name
+$targetContainerURI = "https://teststorageaccount.blob.core.windows.net/powershellpgflexrestore"
+$storageAccId = (Get-AzStorageAccount -ResourceGroupName "teststorageaccountRG" -Name "teststorageaccount").Id
+$pgFlexRestoreAsFilesRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureDatabaseForPGFlexServer -SourceDataStore VaultStore -RestoreLocation $vault.Location -RestoreType RestoreAsFiles -RecoveryPoint $rps[0].Property.RecoveryPointId -TargetContainerURI $targetContainerURI
+Set-AzDataProtectionMSIPermission -VaultResourceGroup "resourceGroupName" -VaultName "vaultName" -PermissionsScope "ResourceGroup" -RestoreRequest $pgFlexRestoreAsFilesRequest -DatasourceType AzureDatabaseForPGFlexServer -SubscriptionId $SubscriptionId -StorageAccountARMId $storageAccId
+$validateRestore = Test-AzDataProtectionBackupInstanceRestore -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -RestoreRequest $pgFlexRestoreAsFilesRequest -Name $instance.BackupInstanceName
+$restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -BackupInstanceName $instance.BackupInstanceName -Parameter $pgFlexRestoreAsFilesRequest
+```
+
+The first, second commands fetch the instance and recovery point for the instance.
+The third and fourthcommand initializes the target container id and target storage account ARM id.
+The fifth command initializes the restore request object for AzureDatabaseForPGFlexServer restore. This example also works for datasource type AzureDatabaseForMySQL.
+The sixth command assigns the permissions to the backup vault and other permissions necessary for triggering the restore for AzureDatabaseForPGFlexServer.
+The last command triggers the restore for AzureDatabaseForPGFlexServer.

@@ -31,14 +31,15 @@ Deletes the Custom Location with the specified Resource Name, Resource Group, an
 
 ### Example 1: Deletes the Custom Location.
 ```powershell
-Remove-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster
+Remove-AzCustomLocation -ResourceGroupName azps_test_cluster -Name azps-customlocation
 ```
 
 Deletes the Custom Location.
 
 ### Example 2: Deletes the Custom Location.
 ```powershell
-Get-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster | Remove-AzCustomLocation
+$obj = Get-AzCustomLocation -ResourceGroupName azps_test_cluster -Name azps-customlocation
+Remove-AzCustomLocation -InputObject $obj
 ```
 
 Deletes the Custom Location.
@@ -61,7 +62,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -210,19 +212,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <ICustomLocationIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceName <String>]`: Custom Locations name.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

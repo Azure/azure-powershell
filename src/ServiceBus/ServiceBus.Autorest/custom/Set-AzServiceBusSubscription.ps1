@@ -97,6 +97,7 @@ function Set-AzServiceBusSubscription{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus]
         # Enumerates the possible values for the status of a messaging entity.
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ParameterBreakingChangeAttribute("Status","12.0.0", "4.0.0","2024-05-21" )]
         ${Status},
 
         [Parameter(HelpMessage = "Queue/Topic name to forward the messages")]

@@ -24,7 +24,7 @@ steps:
     custom: msbuild
     arguments: 'tools\Az.Tools.Installer\build.proj /t:"Clean;Build;GenerateHelp" /p:Configuration=Release'
 
-- task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@1
+- task: SFP.build-tasks.custom-build-task-1.EsrpCodeSigning@4
   displayName: 'Signing'
   inputs:
     ConnectedServiceName: $(signServiceConnection)
@@ -66,6 +66,12 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'tools\Az.Tools.Installer\build.proj /t:Package /p:Configuration=Release'
+
+- task: ManifestGeneratorTask@0
+  displayName: 'Generation Task'
+  inputs:
+    PackageName: 'Azure PowerShell - Az Tools Installer'
+    BuildDropPath: artifacts
 
 - task: PublishPipelineArtifact@0
   displayName: 'Save artifacts'

@@ -5,9 +5,9 @@ Update-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/provid
 ```
 
 ```output
-Name              NameLocalizedValue          UsageUsagesType UsageValue ETag
-----              ------------------          --------------- ---------- ----
-PublicIPAddresses Public IP Addresses - Basic                 0
+Name              NameLocalizedValue  Unit  ETag
+----              ------------------  ----  ----
+PublicIPAddresses Public IP Addresses Count
 ```
 
 This command update the quota limit for a specific resource to the specified value.
@@ -19,10 +19,9 @@ Get-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers
 ```
 
 ```output
-Name              NameLocalizedValue          UsageUsagesType UsageValue ETag
-----              ------------------          --------------- ---------- ----
-PublicIPAddresses Public IP Addresses - Basic                 0
+Name              NameLocalizedValue  Unit  ETag
+----              ------------------  ----  ----
+PublicIPAddresses Public IP Addresses Count
 ```
 
 This command update the quota limit for a specific resource to the specified value by pipeline.
-

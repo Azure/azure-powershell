@@ -19,7 +19,7 @@ Describe 'Get-AzDevCenterUserProject' {
         $listOfProjects.Count | Should -Be 2
 
         if ($Record -or $Live) {
-            $listOfProjects = Get-AzDevCenterUserProject -DevCenter $env.devCenterName
+            $listOfProjects = Get-AzDevCenterUserProject -DevCenterName $env.devCenterName
             $listOfProjects.Count | Should -Be 2
         }
 
@@ -31,7 +31,7 @@ Describe 'Get-AzDevCenterUserProject' {
         $project.MaxDevBoxesPerUser | Should -Be 20
 
         if ($Record -or $Live) {
-            $project = Get-AzDevCenterUserProject -DevCenter $env.devCenterName -ProjectName $env.projectName
+            $project = Get-AzDevCenterUserProject -DevCenterName $env.devCenterName -ProjectName $env.projectName
             $project.Name | Should -Be $env.projectName
             $project.MaxDevBoxesPerUser | Should -Be 20
         }
@@ -44,7 +44,7 @@ Describe 'Get-AzDevCenterUserProject' {
         $project.MaxDevBoxesPerUser | Should -Be 20
 
         if ($Record -or $Live) {
-            $project = Get-AzDevCenterUserProject -DevCenter $env.devCenterName -InputObject $poolInput
+            $project = Get-AzDevCenterUserProject -DevCenterName $env.devCenterName -InputObject $poolInput
             $project.Name | Should -Be $env.projectName
             $project.MaxDevBoxesPerUser | Should -Be 20
         }
