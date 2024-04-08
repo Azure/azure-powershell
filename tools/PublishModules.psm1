@@ -275,9 +275,8 @@ function Get-AllModules {
     )
     Write-Host "Getting Azure client modules"
     $clientModules = Get-ClientModules -BuildConfig $BuildConfig -Scope $Scope -PublishLocal:$PublishLocal -IsNetCore:$isNetCore
-    Write-Host " "
-    
-    if($clientModules.Length -le 2 -and  $TargetBuild -eq "true") {
+    Write-Host  "$clientModules"
+    if($clientModules.Count -le 2 -and  $TargetBuild -eq "true") {
         return @{
             ClientModules = $clientModules
         }
@@ -285,11 +284,11 @@ function Get-AllModules {
 
     Write-Host "Getting admin modules"
     $adminModules = Get-AdminModules -BuildConfig $BuildConfig -Scope $Scope
-    Write-Host " "
+    Write-Host "$adminModules"
 
     Write-Host "Getting rollup modules"
     $rollupModules = Get-RollupModules -BuildConfig $BuildConfig -Scope $Scope -IsNetCore:$isNetCore
-    Write-Host " "
+    Write-Host "$rollupModules"
 
     return @{
         ClientModules = $clientModules;
@@ -592,6 +591,9 @@ function Add-AllModules {
     foreach ($package in $packages) {
         $fileName = $package.Name
         $versionString = $fileName.Replace('Az.Accounts.', '').Replace('.nupkg', '')
+        if ($versionString -match 'preview') {
+            return 
+        }
         $version = [version]$versionString
         
         if ($version -gt $latestVersion) {
