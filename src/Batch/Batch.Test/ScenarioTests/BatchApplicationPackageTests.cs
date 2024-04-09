@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 {
                     context = new ScenarioTestContext();
                     ScenarioTestHelpers.CreateApplicationPackage(this, context, id, version, filePath);
-                    ScenarioTestHelpers.CreateTestPool(this, context, poolId, targetDedicated: 1, targetLowPriority: 0);
+                    ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, poolId, targetDedicated: 1, targetLowPriority: 0);
                 },
                 () =>
                 {

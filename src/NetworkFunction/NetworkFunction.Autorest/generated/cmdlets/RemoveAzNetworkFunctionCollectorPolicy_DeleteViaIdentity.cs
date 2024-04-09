@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Description(@"Deletes a specified Collector Policy resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}", ApiVersion = "2022-11-01")]
     public partial class RemoveAzNetworkFunctionCollectorPolicy_DeleteViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.IEventListener
     {
