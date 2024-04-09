@@ -269,7 +269,7 @@ function New-AzMigrateHCIServerReplication {
         }
 
         if ($null -eq $targetFabric) {
-            throw "A target appliance is not available for the target cluster. Deploy and configure a new appliance for the cluster, or select a different cluster.."
+            throw "A target appliance is not available for the target cluster. Deploy and configure a new appliance for the cluster, or select a different cluster."
         }
 
         # Get Source and Target Dras
@@ -289,7 +289,7 @@ function New-AzMigrateHCIServerReplication {
             -ErrorVariable notPresent `
             -ErrorAction SilentlyContinue
         if ($null -eq $targetDras) {
-            throw "A target appliance is not available for the target cluster. Deploy and configure a new appliance for the cluster, or select a different cluster.."
+            throw "A target appliance is not available for the target cluster. Deploy and configure a new appliance for the cluster, or select a different cluster."
         }
         $targetDra = $targetDras[0]
 
@@ -473,25 +473,17 @@ function New-AzMigrateHCIServerReplication {
                 $nics += $NicObject
             }
         }
-        else {
+        else
+        {
+            # PowerUser
             if ($null -eq $DiskToInclude -or $DiskToInclude.length -eq 0) {
                 throw "Invalid DiskToInclude. At least one disk is required."
-            }
-
-            if ($null -eq $NicToInclude -or $NicToInclude.length -eq 0) {
-                throw "Invalid NicToInclude. At least one NIC is required."
             }
 
             # Validate OSDisk is set.
             $osDisk = $DiskToInclude | Where-Object { $_.IsOSDisk }
             if (($null -eq $osDisk) -or ($osDisk.length -ne 1)) {
                 throw "Invalid DiskToInclude. One and only one disk must be set as OS Disk."
-            }
-
-            # Validate at least one NIC is selected by user.
-            $selectedNics = $NicToInclude | Where-Object { $_.SelectionTypeForFailover -eq "SelectedByUser"}
-            if ($null -eq $selectedNics -or $selectedNics.length -eq 0) {
-                throw "Invalid NicToInclude. At least one NIC is required to be marked as to be created at target."
             }
             
             # Validate DiskToInclude
@@ -534,26 +526,14 @@ function New-AzMigrateHCIServerReplication {
                 }
 
                 if ($uniqueNics.Contains($nic.NicId)) {
-                    throw "The Nic id '$($nic.NicId)' is already taken."
+                    throw "The Nic id '$($nic.NicId)' is already included. Please remove the duplicate entry and try again."
                 }
+
                 $uniqueNics += $nic.NicId
                 
                 $htNic = @{}
                 $nic.PSObject.Properties | ForEach-Object { $htNic[$_.Name] = $_.Value }
                 $nics += [PSCustomObject]$htNic
-            }
-
-            # Include Nics not added by user as 'NotSelected'
-            $userGivenNicIds = $nics | Select-Object -ExpandProperty NicId
-            $remainingNics = $machine.NetworkAdapter | Where-Object { $_.NicId -notin $userGivenNicIds }
-            foreach ($remainingNic in $remainingNics) {
-                $NicObject = [PSCustomObject]@{
-                    NicId                    = $remainingNic.NicId
-                    TargetNetworkId          = $nics[0].TargetNetworkId
-                    TestNetworkId            = $nics[0].TestNetworkId
-                    SelectionTypeForFailover = "NotSelected"
-                }
-                $nics += $NicObject
             }
         }
 

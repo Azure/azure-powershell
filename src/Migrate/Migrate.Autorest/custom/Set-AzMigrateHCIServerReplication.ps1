@@ -274,12 +274,6 @@ function Set-AzMigrateHCIServerReplication {
                 $updatedNic.TestNetworkId              = $nic.TestNetworkId 
                 $updatedNic.SelectionTypeForFailover   = $nic.SelectionTypeForFailover
             }
-        } 
-
-        $selectedNics = $nics | Where-Object { $_.SelectionTypeForFailover -eq "SelectedByUser" }
-        if ($null -eq $selectedNics -or $selectedNics.length -eq 0)
-        {
-            throw "At least one NIC must be selected for creation at target."
         }
 
         # Disks
