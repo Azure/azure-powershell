@@ -514,14 +514,14 @@ function LocationCompleter(
     $fakeBoundParameter
 )
 {
-    if ($global:currentLocations.Count -le 0) {
+    if ($global:AzPSPolicyCachedLocations.Count -le 0) {
         $response = Invoke-AzRestMethod -Uri "https://management.azure.com/subscriptions/$($(Get-SubscriptionId))/locations?api-version=2022-12-01" -Method GET
-        $global:currentLocations = ($response.Content | ConvertFrom-Json -Depth 100).value | Sort-Object -Property name | Select-Object -ExpandProperty name
+        $global:AzPSPolicyCachedLocations = ($response.Content | ConvertFrom-Json -Depth 100).value | Sort-Object -Property name | Select-Object -ExpandProperty name
     }
 
     # If you see the following error, it means your context access has expired
     #   The given key 'AzureAttestationServiceEndpointSuffix' was not present in the dictionary.
-    $global:currentLocations | Where-Object { $_ -like "$wordToComplete*" }
+    $global:AzPSPolicyCachedLocations | Where-Object { $_ -like "$wordToComplete*" }
 }
 
 function Get-SubscriptionId {
@@ -574,4 +574,4 @@ function Get-ExtraParameters
 Register-ArgumentCompleter -CommandName New-AzPolicyAssignment -ParameterName Location -ScriptBlock ${function:LocationCompleter}
 
 # cache Azure locations to be used by the location completer (Get-AzLocation is not available in this context, need to use REST)
-$global:currentLocations = @()
+$global:AzPSPolicyCachedLocations = @()
