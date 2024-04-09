@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 6.1.4
 * Removed references of "Microsoft.Azure.Storage.Queue" in Queue cmdlets 
     - Get-AzStorageQueue 
     - New-AzStorageQueue
