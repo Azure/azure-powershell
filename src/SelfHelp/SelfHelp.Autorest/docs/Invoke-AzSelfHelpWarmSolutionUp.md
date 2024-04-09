@@ -43,27 +43,20 @@ Warm up the solution resource by preloading asynchronous diagnostics results int
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Warm up the solution resource
 ```powershell
-{{ Add code here }}
+$resourceName = "sampleRName"
+$parameters = [ordered]@{ 
+    "ProductId" = "13491"
+}
+Invoke-AzSelfHelpWarmSolutionUp -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/aits-data-inestion/providers/Microsoft.KeyVault/vaults/kv-akshayko519290291381" -SolutionResourceName $resourceName -Parameter $parameters
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Warm up the solution resource by preloading asynchronous diagnostics results into cache
 
 ## PARAMETERS
 

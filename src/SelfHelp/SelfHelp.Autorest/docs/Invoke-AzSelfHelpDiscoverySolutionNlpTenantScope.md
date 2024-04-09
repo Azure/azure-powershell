@@ -30,27 +30,16 @@ Solution discovery using natural language processing.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Discover Solution using natural language at tenant scope
 ```powershell
-{{ Add code here }}
+Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope -IssueSummary "Billing Issues"
 ```
 
 ```output
-{{ Add output here }}
+
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Search for relevant Azure Diagnostics, Solutions and Troubleshooters using a natural language issue summary.
 
 ## PARAMETERS
 
