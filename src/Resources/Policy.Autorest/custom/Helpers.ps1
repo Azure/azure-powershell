@@ -525,7 +525,8 @@ function LocationCompleter(
 }
 
 function Get-SubscriptionId {
-    (Utils\Get-SubscriptionIdTestSafe)
+    $script = Resolve-Path "$PSScriptRoot/../utils/Get-SubscriptionIdTestSafe.ps1"
+    return . $script
 }
 
 function Get-ExtraParameters

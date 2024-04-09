@@ -6,6 +6,11 @@ function RandomString([bool]$allChars, [int32]$len) {
     }
 }
 
+function Get-SubscriptionId {
+    $script = Resolve-Path "$PSScriptRoot/../utils/Get-SubscriptionIdTestSafe.ps1"
+    return . $script
+}
+
 <#
 .SYNOPSIS
 Create a name of the requested length that is the same across multiple runs of the same test,
@@ -89,7 +94,7 @@ function New-ResourceGroup
     )
 
     begin {
-        $subscriptionId = (Utils\Get-SubscriptionIdTestSafe)
+        $subscriptionId = Get-SubscriptionId
         $uri = "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups"
 
         if ($Name) {
@@ -131,7 +136,7 @@ function Get-ResourceGroup
     )
 
     begin {
-        $subscriptionId = (Utils\Get-SubscriptionIdTestSafe)
+        $subscriptionId = Get-SubscriptionId
         $uri = "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups"
 
         if ($Name) {
@@ -188,7 +193,7 @@ function Remove-ResourceGroup
     )
 
     begin {
-        $subscriptionId = (Utils\Get-SubscriptionIdTestSafe)
+        $subscriptionId = Get-SubscriptionId
         $base = "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups"
         $names = @()
     }
@@ -247,7 +252,7 @@ $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val,
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
-    $env.SubscriptionId = (Utils\Get-SubscriptionIdTestSafe)
+    $env.SubscriptionId = Get-SubscriptionId
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
 
