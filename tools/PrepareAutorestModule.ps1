@@ -85,7 +85,7 @@ function Update-GeneratedSubModule {
     if (Test-Path $localModulesPath) {
         Remove-Item -Path $localModulesPath -Recurse -Force
     }
-    $fileToUpdate = @('generated', 'generate-info.json', "Az.$SubModuleName.psm1", "Az.$SubModuleName.format.ps1xml", 'exports', 'internal')
+    $fileToUpdate = @('generated', 'generate-info.json', "Az.$SubModuleName.psm1", "Az.$SubModuleName.format.ps1xml", 'exports', 'internal', 'test-module.ps1')
     # Copy from src/ to generated/ 
     $fileToUpdate | Foreach-Object {
         $moveFrom = Join-Path $SourceDirectory $_
@@ -209,6 +209,9 @@ function Add-SubModuleToParentModule {
     dotnet sln $slnPath add (JoinPath $GeneratedDirectory $ModuleRootName $SubModuleName "Az.$SubModuleName.csproj")
     <#
         generate help markdown by platyPS
+    #>
+    <#
+        move help from submodule to module root
     #>
 }
 
