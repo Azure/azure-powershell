@@ -633,5 +633,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VMTLWithGallerySourceImage");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        public void TestCapacityReservationSharingProfile()
+        {
+            TestRunner.RunTestScript("Test-CapacityReservationSharingProfile");
+        }
+
     }
 }

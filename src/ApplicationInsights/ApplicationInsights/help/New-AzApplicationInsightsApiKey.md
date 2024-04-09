@@ -1,6 +1,6 @@
 ---
 external help file: Az.ApplicationInsights-help.xml
-Module Name: Az.Applicationinsights
+Module Name: Az.ApplicationInsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightsapikey
 schema: 2.0.0
 ---
@@ -14,8 +14,8 @@ Create an API Key of an Application Insights component.
 
 ```
 New-AzApplicationInsightsApiKey -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
- -Description <String> -Permissions <String[]> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -Description <String> -Permissions <String[]> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -166,7 +166,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentApiKey
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

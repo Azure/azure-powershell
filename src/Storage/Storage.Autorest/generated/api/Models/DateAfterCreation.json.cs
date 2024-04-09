@@ -65,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_daysAfterCreationGreaterThan = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("daysAfterCreationGreaterThan"), out var __jsonDaysAfterCreationGreaterThan) ? (float)__jsonDaysAfterCreationGreaterThan : DaysAfterCreationGreaterThan;}
-            {_daysAfterLastTierChangeGreaterThan = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("daysAfterLastTierChangeGreaterThan"), out var __jsonDaysAfterLastTierChangeGreaterThan) ? (float?)__jsonDaysAfterLastTierChangeGreaterThan : DaysAfterLastTierChangeGreaterThan;}
+            {_daysAfterCreationGreaterThan = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("daysAfterCreationGreaterThan"), out var __jsonDaysAfterCreationGreaterThan) ? (float)__jsonDaysAfterCreationGreaterThan : _daysAfterCreationGreaterThan;}
+            {_daysAfterLastTierChangeGreaterThan = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("daysAfterLastTierChangeGreaterThan"), out var __jsonDaysAfterLastTierChangeGreaterThan) ? (float?)__jsonDaysAfterLastTierChangeGreaterThan : _daysAfterLastTierChangeGreaterThan;}
             AfterFromJson(json);
         }
 

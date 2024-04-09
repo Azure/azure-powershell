@@ -607,30 +607,5 @@ ALIASES
 
 Set-AzServiceBusNamespaceV2
 
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IServiceBusIdentity>`: Identity parameter.
-  - `[Alias <String>]`: The Disaster Recovery configuration name
-  - `[AuthorizationRuleName <String>]`: The authorization rule name.
-  - `[ConfigName <MigrationConfigurationName?>]`: The configuration name. Should always be "$default".
-  - `[Id <String>]`: Resource identity path
-  - `[NamespaceName <String>]`: The namespace name
-  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
-  - `[QueueName <String>]`: The queue name.
-  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
-  - `[RuleName <String>]`: The rule name.
-  - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-  - `[SubscriptionName <String>]`: The subscription name.
-  - `[TopicName <String>]`: The topic name.
-
-`KEYVAULTPROPERTY <IKeyVaultProperties[]>`: Properties of KeyVault
-  - `[KeyName <String>]`: Name of the Key from KeyVault
-  - `[KeyVaultUri <String>]`: Uri of KeyVault
-  - `[KeyVersion <String>]`: Version of KeyVault
-  - `[UserAssignedIdentity <String>]`: ARM ID of user Identity selected for encryption
-
 ## RELATED LINKS
 

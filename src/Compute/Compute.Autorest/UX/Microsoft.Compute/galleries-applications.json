@@ -1,0 +1,95 @@
+{
+  "resourceType": "galleries/applications",
+  "apiVersion": "2022-01-03",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.compute"
+  },
+  "commands": [
+    {
+      "name": "Get-AzGalleryApplication",
+      "description": "Retrieves information about a gallery Application Definition.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.compute/get-azgalleryapplication"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-GalleryName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Retrieves information about a gallery Application Definition.",
+          "parameters": [
+            {
+              "name": "-GalleryName",
+              "value": "[Path.galleryName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.galleryApplicationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzGalleryApplication",
+      "description": "Delete a gallery Application.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/galleries/{galleryName}/applications/{galleryApplicationName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.compute/remove-azgalleryapplication"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-GalleryName <String>",
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a gallery Application.",
+          "parameters": [
+            {
+              "name": "-GalleryName",
+              "value": "[Path.galleryName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.galleryApplicationName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

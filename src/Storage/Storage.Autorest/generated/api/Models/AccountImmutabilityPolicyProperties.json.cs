@@ -65,9 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_immutabilityPeriodSinceCreationInDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("immutabilityPeriodSinceCreationInDays"), out var __jsonImmutabilityPeriodSinceCreationInDays) ? (int?)__jsonImmutabilityPeriodSinceCreationInDays : ImmutabilityPeriodSinceCreationInDay;}
-            {_state = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("state"), out var __jsonState) ? (string)__jsonState : (string)State;}
-            {_allowProtectedAppendWrite = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("allowProtectedAppendWrites"), out var __jsonAllowProtectedAppendWrites) ? (bool?)__jsonAllowProtectedAppendWrites : AllowProtectedAppendWrite;}
+            {_immutabilityPeriodSinceCreationInDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("immutabilityPeriodSinceCreationInDays"), out var __jsonImmutabilityPeriodSinceCreationInDays) ? (int?)__jsonImmutabilityPeriodSinceCreationInDays : _immutabilityPeriodSinceCreationInDay;}
+            {_state = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("state"), out var __jsonState) ? (string)__jsonState : (string)_state;}
+            {_allowProtectedAppendWrite = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("allowProtectedAppendWrites"), out var __jsonAllowProtectedAppendWrites) ? (bool?)__jsonAllowProtectedAppendWrites : _allowProtectedAppendWrite;}
             AfterFromJson(json);
         }
 

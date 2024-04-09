@@ -129,7 +129,13 @@ begin {
             List = 'Az.Fleet.private\Get-AzFleetCredentials_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -259,14 +265,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityFleet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -350,7 +354,13 @@ begin {
             List = 'Az.Fleet.private\Get-AzFleetMember_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -480,14 +490,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityFleet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -571,7 +579,13 @@ begin {
             List = 'Az.Fleet.private\Get-AzFleetUpdateRun_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -700,14 +714,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityFleet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -791,7 +803,13 @@ begin {
             List = 'Az.Fleet.private\Get-AzFleetUpdateStrategy_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -905,7 +923,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -989,7 +1006,13 @@ begin {
             List1 = 'Az.Fleet.private\Get-AzFleet_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1122,14 +1145,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityFleetExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -1268,7 +1289,13 @@ begin {
             CreateViaJsonString = 'Az.Fleet.private\New-AzFleetMember_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1407,14 +1434,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityFleetExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -1455,7 +1480,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[]]
     # The list of stages that compose this update run.
     # Min size: 1.
-    # To construct, see NOTES section for STRATEGYSTAGE properties and create a hash table.
     ${StrategyStage},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -1587,7 +1611,13 @@ begin {
             CreateViaJsonString = 'Az.Fleet.private\New-AzFleetUpdateRun_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1730,14 +1760,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityFleetExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -1760,7 +1788,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[]]
     # The list of stages that compose this update run.
     # Min size: 1.
-    # To construct, see NOTES section for STRATEGYSTAGE properties and create a hash table.
     ${StrategyStage},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -1869,7 +1896,13 @@ begin {
             CreateViaJsonString = 'Az.Fleet.private\New-AzFleetUpdateStrategy_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1984,7 +2017,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -2137,7 +2169,13 @@ begin {
             CreateViaJsonString = 'Az.Fleet.private\New-AzFleet_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2265,14 +2303,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityFleet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -2379,7 +2415,13 @@ begin {
             DeleteViaIdentityFleet = 'Az.Fleet.private\Remove-AzFleetMember_DeleteViaIdentityFleet';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2504,14 +2546,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityFleet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -2618,7 +2658,13 @@ begin {
             DeleteViaIdentityFleet = 'Az.Fleet.private\Remove-AzFleetUpdateRun_DeleteViaIdentityFleet';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2745,14 +2791,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityFleet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -2859,7 +2903,13 @@ begin {
             DeleteViaIdentityFleet = 'Az.Fleet.private\Remove-AzFleetUpdateStrategy_DeleteViaIdentityFleet';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2971,7 +3021,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -3077,7 +3126,13 @@ begin {
             DeleteViaIdentity = 'Az.Fleet.private\Remove-AzFleet_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3202,14 +3257,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='StartViaIdentityFleet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -3310,7 +3363,13 @@ begin {
             StartViaIdentityFleet = 'Az.Fleet.private\Start-AzFleetUpdateRun_StartViaIdentityFleet';
         }
         if (('Start') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3435,14 +3494,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='StopViaIdentityFleet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -3543,7 +3600,13 @@ begin {
             StopViaIdentityFleet = 'Az.Fleet.private\Stop-AzFleetUpdateRun_StopViaIdentityFleet';
         }
         if (('Stop') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3679,14 +3742,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityFleetExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -3809,7 +3870,13 @@ begin {
             UpdateViaJsonString = 'Az.Fleet.private\Update-AzFleetMember_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3940,14 +4007,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityFleetExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -3975,7 +4040,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[]]
     # The list of stages that compose this update run.
     # Min size: 1.
-    # To construct, see NOTES section for STRATEGYSTAGE properties and create a hash table.
     ${StrategyStage},
 
     [Parameter()]
@@ -4096,7 +4160,13 @@ begin {
             UpdateViaIdentityFleetExpanded = 'Az.Fleet.private\Update-AzFleetUpdateRun_UpdateViaIdentityFleetExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4231,14 +4301,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityFleetExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
     ${FleetInputObject},
 
     [Parameter()]
@@ -4259,7 +4327,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage[]]
     # The list of stages that compose this update run.
     # Min size: 1.
-    # To construct, see NOTES section for STRATEGYSTAGE properties and create a hash table.
     ${StrategyStage},
 
     [Parameter()]
@@ -4354,7 +4421,13 @@ begin {
             UpdateViaIdentityFleetExpanded = 'Az.Fleet.private\Update-AzFleetUpdateStrategy_UpdateViaIdentityFleetExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4469,7 +4542,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -4609,7 +4681,13 @@ begin {
             UpdateViaJsonString = 'Az.Fleet.private\Update-AzFleet_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4814,7 +4892,6 @@ param(
     # Defines the groups to be executed in parallel in this stage.
     # Duplicate groups are not allowed.
     # Min size: 1.
-    # To construct, see NOTES section for GROUP properties and create a hash table.
     ${Group}
 )
 

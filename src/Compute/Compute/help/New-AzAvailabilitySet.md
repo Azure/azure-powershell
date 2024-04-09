@@ -207,5 +207,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzAvailabilitySet](./Get-AzAvailabilitySet.md)
 
 [Remove-AzAvailabilitySet](./Remove-AzAvailabilitySet.md)
-
-

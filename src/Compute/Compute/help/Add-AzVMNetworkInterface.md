@@ -23,7 +23,8 @@ Add-AzVMNetworkInterface [-VM] <PSVirtualMachine> [-Id] <String> [-Primary] [-De
 ```
 Add-AzVMNetworkInterface [-VM] <PSVirtualMachine>
  [-NetworkInterface] <System.Collections.Generic.List`1[Microsoft.Azure.Management.Internal.Network.Common.INetworkInterfaceReference]>
- [-DeleteOption <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DeleteOption <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

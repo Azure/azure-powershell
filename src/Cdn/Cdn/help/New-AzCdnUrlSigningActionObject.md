@@ -14,7 +14,7 @@ Create an in-memory object for UrlSigningAction.
 
 ```
 New-AzCdnUrlSigningActionObject -Name <DeliveryRuleAction> [-ParameterAlgorithm <Algorithm>]
- [-ParameterNameOverride <IUrlSigningParamIdentifier[]>] [-ProgressAction <ActionPreference>]
+ [-ParameterNameOverride <IUrlSigningParamIdentifier[]>]
  [<CommonParameters>]
 ```
 
@@ -85,21 +85,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -110,16 +95,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlSigningAction
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PARAMETERNAMEOVERRIDE <IUrlSigningParamIdentifier[]>`: Defines which query string parameters in the url to be considered for expires, key id etc. .
-  - `ParamIndicator <ParamIndicator>`: Indicates the purpose of the parameter
-  - `ParamName <String>`: Parameter name
 
 ## RELATED LINKS

@@ -37,14 +37,43 @@ Returns a monitored GitLab Project resource for a given fully-qualified group na
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get discovered GitLab project by name
 ```powershell
 Get-AzSecurityConnectorGitLabProject -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-gl-01 -GroupFqName dfdsdktests -ProjectName testapp0
 ```
 
-### Example 2
+```output
+FullyQualifiedFriendlyName      : Defender for DevOps SDK Tests / TestApp0
+FullyQualifiedName              : dfdsdktests$testapp0
+FullyQualifiedParentGroupName   : dfdsdktests
+Id                              : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/dfdtest-sdk/providers/Microsoft.Security/securityConnectors/dfdsdktests-gl-01/devops/default/gitLabGroups/dfdsdktests/projects/testapp0
+Name                            : testapp0
+OnboardingState                 : Onboarded
+ProvisioningState               : Succeeded
+ProvisioningStatusMessage       : Resource modification successful.
+ProvisioningStatusUpdateTimeUtc : 1/1/1970 12:00:00 AM
+ResourceGroupName               : dfdtest-sdk
+SystemDataCreatedAt             : 
+SystemDataCreatedBy             : 
+SystemDataCreatedByType         : 
+SystemDataLastModifiedAt        : 
+SystemDataLastModifiedBy        : 
+SystemDataLastModifiedByType    : 
+Type                            : Microsoft.Security/securityConnectors/devops/gitLabGroups/projects
+Url                             : https://gitlab.com/dfdsdktests/testapp0
+```
+
+### Example 2: List discovered GitLab projects
 ```powershell
 Get-AzSecurityConnectorGitLabProject -ResourceGroupName dfdtest-sdk -SecurityConnectorName dfdsdktests-gl-01 -GroupFqName dfdsdktests
+```
+
+```output
+Name      ResourceGroupName
+----      -----------------
+testapp10 dfdtest-sdk
+testapp11 dfdtest-sdk
+testapp0  dfdtest-sdk
 ```
 
 ## PARAMETERS
@@ -54,7 +83,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -69,7 +98,7 @@ Accept wildcard characters: False
 The GitLab group fully-qualified name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get
 Aliases:
 
@@ -82,10 +111,9 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-.
 
 ```yaml
-Type: ISecurityIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -100,7 +128,7 @@ Accept wildcard characters: False
 The project name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get
 Aliases:
 
@@ -116,7 +144,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get
 Aliases:
 
@@ -131,7 +159,7 @@ Accept wildcard characters: False
 The security connector name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get
 Aliases:
 
@@ -146,13 +174,13 @@ Accept wildcard characters: False
 Azure subscription ID
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: List, Get
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -163,32 +191,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGitLabProject
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<ISecurityIdentity\>: Identity Parameter
-  \[ApiId \<String\>\]: API revision identifier.
-Must be unique in the API Management service instance.
-Non-current revision has ;rev=n as a suffix where n is the revision number.
-  \[GroupFqName \<String\>\]: The GitLab group fully-qualified name.
-  \[Id \<String\>\]: Resource identity path
-  \[OperationResultId \<String\>\]: The operation result Id.
-  \[OrgName \<String\>\]: The Azure DevOps organization name.
-  \[OwnerName \<String\>\]: The GitHub owner name.
-  \[ProjectName \<String\>\]: The project name.
-  \[RepoName \<String\>\]: The repository name.
-  \[ResourceGroupName \<String\>\]: The name of the resource group within the user's subscription.
-The name is case insensitive.
-  \[SecurityConnectorName \<String\>\]: The security connector name.
-  \[ServiceName \<String\>\]: The name of the API Management service.
-  \[SubscriptionId \<String\>\]: Azure subscription ID
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectorgitlabproject](https://learn.microsoft.com/powershell/module/az.security/get-azsecurityconnectorgitlabproject)

@@ -15,7 +15,7 @@ Create an in-memory object for CustomerCertificateParameters.
 ```
 New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -Type <SecretType> [-SecretSourceId <String>]
  [-SecretVersion <String>] [-SubjectAlternativeName <String[]>] [-UseLatestVersion <Boolean>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,21 +38,6 @@ CertificateAuthority ExpirationDate SecretVersion Subject SubjectAlternativeName
 Create an in-memory object for AzureFrontDoor CustomerCertificateParameters
 
 ## PARAMETERS
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -SecretSourceId
 Resource ID.
@@ -139,7 +124,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CustomerCertificateParameters
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

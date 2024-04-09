@@ -138,5 +138,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzVMDiagnosticsExtension](./Remove-AzVMDiagnosticsExtension.md)
 
 [Set-AzVMDiagnosticsExtension](./Set-AzVMDiagnosticsExtension.md)
-
-

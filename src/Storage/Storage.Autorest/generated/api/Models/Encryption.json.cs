@@ -65,11 +65,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_service = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("services"), out var __jsonServices) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionServices.FromJson(__jsonServices) : Service;}
-            {_keyVaultProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("keyvaultproperties"), out var __jsonKeyvaultproperties) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.KeyVaultProperties.FromJson(__jsonKeyvaultproperties) : KeyVaultProperty;}
-            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionIdentity.FromJson(__jsonIdentity) : Identity;}
-            {_keySource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("keySource"), out var __jsonKeySource) ? (string)__jsonKeySource : (string)KeySource;}
-            {_requireInfrastructureEncryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("requireInfrastructureEncryption"), out var __jsonRequireInfrastructureEncryption) ? (bool?)__jsonRequireInfrastructureEncryption : RequireInfrastructureEncryption;}
+            {_service = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("services"), out var __jsonServices) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionServices.FromJson(__jsonServices) : _service;}
+            {_keyVaultProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("keyvaultproperties"), out var __jsonKeyvaultproperties) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.KeyVaultProperties.FromJson(__jsonKeyvaultproperties) : _keyVaultProperty;}
+            {_identity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("identity"), out var __jsonIdentity) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.EncryptionIdentity.FromJson(__jsonIdentity) : _identity;}
+            {_keySource = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("keySource"), out var __jsonKeySource) ? (string)__jsonKeySource : (string)_keySource;}
+            {_requireInfrastructureEncryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("requireInfrastructureEncryption"), out var __jsonRequireInfrastructureEncryption) ? (bool?)__jsonRequireInfrastructureEncryption : _requireInfrastructureEncryption;}
             AfterFromJson(json);
         }
 

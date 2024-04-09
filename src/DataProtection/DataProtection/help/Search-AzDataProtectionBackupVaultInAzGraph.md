@@ -14,7 +14,7 @@ Searches for Backup vaults in Azure Resource Graph and retrieves the expected en
 
 ```
 Search-AzDataProtectionBackupVaultInAzGraph -Subscription <String[]> [-ResourceGroup <String[]>]
- [-Vault <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Vault <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,28 +51,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroup
 Resource Group of Vault
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: ResourceGroupName
 
 Required: False
 Position: Named
@@ -87,7 +72,7 @@ Subscription of Vault
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: SubscriptionId
 
 Required: True
 Position: Named
@@ -102,7 +87,7 @@ Name of the vault
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: VaultName
 
 Required: False
 Position: Named

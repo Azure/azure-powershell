@@ -22,9 +22,15 @@ Create an in-memory object for InformationProtectionAwsOffering.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new InformationProtectionAwsOffering object
 ```powershell
 New-AzSecurityInformationProtectionAwsOfferingObject -InformationProtectionCloudRoleArn "arn:aws:iam::123456789012:role/myRole"
+```
+
+```output
+Description InformationProtectionCloudRoleArn     OfferingType
+----------- ---------------------------------     ------------
+            arn:aws:iam::123456789012:role/myRole InformationProtectionAws
 ```
 
 ## PARAMETERS
@@ -33,7 +39,7 @@ New-AzSecurityInformationProtectionAwsOfferingObject -InformationProtectionCloud
 The cloud role ARN in AWS for this feature.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -52,8 +58,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.InformationProtectionAwsOffering
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityinformationprotectionawsofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecurityinformationprotectionawsofferingobject)

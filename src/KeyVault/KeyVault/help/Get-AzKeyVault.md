@@ -16,19 +16,21 @@ Gets key vaults.
 ### GetVaultByName (Default)
 ```
 Get-AzKeyVault [[-VaultName] <String>] [[-ResourceGroupName] <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### ByDeletedVault
 ```
 Get-AzKeyVault [-VaultName] <String> [-Location] <String> [-InRemovedState]
- [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### ListAllDeletedVaultsInSubscription
 ```
-Get-AzKeyVault [-InRemovedState] [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
- [<CommonParameters>]
+Get-AzKeyVault [-InRemovedState] [-DefaultProfile <IAzureContextContainer>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

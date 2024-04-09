@@ -81,7 +81,6 @@ Visibility                      :
 
 ### -ActionableRemediation
 Configuration payload for PR Annotations.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IActionableRemediation
@@ -128,7 +127,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity

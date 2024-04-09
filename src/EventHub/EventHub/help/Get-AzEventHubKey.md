@@ -15,7 +15,8 @@ Gets an EventHub SAS key
 ### GetExpandedNamespace (Default)
 ```
 Get-AzEventHubKey -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [<CommonParameters>]
 ```
 
 ### GetExpandedAlias

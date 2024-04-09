@@ -261,6 +261,33 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         }
                     }
 
+                    if (this.IsParameterBound(c => c.SourceImageVMId))
+                    {
+                        if (galleryImageVersion.StorageProfile == null)
+                        {
+                            galleryImageVersion.StorageProfile = new GalleryImageVersionStorageProfile();
+                        }
+                        if (galleryImageVersion.StorageProfile.Source == null)
+                        {
+                            galleryImageVersion.StorageProfile.Source = new GalleryArtifactVersionFullSource();
+                        }
+                        galleryImageVersion.StorageProfile.Source.VirtualMachineId = this.SourceImageVMId;
+
+                        var resourceId = ResourceId.TryParse(this.SourceImageVMId);
+
+                        if (string.Equals("galleries", resourceId?.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
+                         && !string.Equals(this.ComputeClient?.ComputeManagementClient?.SubscriptionId, resourceId?.SubscriptionId, StringComparison.OrdinalIgnoreCase))
+                        {
+                            List<string> resourceIds = new List<string>();
+                            resourceIds.Add(this.SourceImageVMId);
+                            var auxHeaderDictionary = GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                            if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                            {
+                                auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                            }
+                        }
+                    }
+
                     GalleryImageVersion result;
                     if (auxAuthHeader != null)
                     {
@@ -355,6 +382,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            Mandatory = false,
            ValueFromPipelineByPropertyName = true)]
         public string SourceImageId { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The resource Id of the source virtual machine.  Only required when capturing a virtual machine to source this Gallery Image Version.")]
+        public string SourceImageVMId { get; set; }
 
         [Parameter(
             Mandatory = false,

@@ -8,34 +8,33 @@ schema: 2.0.0
 # Update-AzVMwarePrivateCloud
 
 ## SYNOPSIS
-Create a private cloud
+Update a private cloud
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-EnableSystemAssignedIdentity <Boolean>] [-EncryptionStatus <String>] [-ExtendedNetworkBlock <String[]>]
- [-IdentitySource <IIdentitySource[]>] [-Internet <String>] [-KeyVaultPropertyKeyName <String>]
- [-KeyVaultPropertyKeyVaultUrl <String>] [-KeyVaultPropertyKeyVersion <String>] [-Location <String>]
- [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>] [-NsxtPassword <String>]
- [-SkuName <String>] [-Tag <Hashtable>] [-VcenterPassword <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionStatus <String>] [-ExtendedNetworkBlock <String[]>] [-IdentitySource <IIdentitySource[]>]
+ [-IdentityType <String>] [-Internet <String>] [-KeyVaultPropertyKeyName <String>]
+ [-KeyVaultPropertyKeyVaultUrl <String>] [-KeyVaultPropertyKeyVersion <String>]
+ [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-EnableSystemAssignedIdentity <Boolean>]
- [-EncryptionStatus <String>] [-ExtendedNetworkBlock <String[]>] [-IdentitySource <IIdentitySource[]>]
+Update-AzVMwarePrivateCloud -InputObject <IVMwareIdentity> [-EncryptionStatus <String>]
+ [-ExtendedNetworkBlock <String[]>] [-IdentitySource <IIdentitySource[]>] [-IdentityType <String>]
  [-Internet <String>] [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUrl <String>]
- [-KeyVaultPropertyKeyVersion <String>] [-Location <String>] [-ManagementClusterHost <String[]>]
- [-ManagementClusterSize <Int32>] [-NsxtPassword <String>] [-SkuName <String>] [-Tag <Hashtable>]
- [-VcenterPassword <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-KeyVaultPropertyKeyVersion <String>] [-ManagementClusterHost <String[]>] [-ManagementClusterSize <Int32>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a private cloud
+Update a private cloud
 
 ## EXAMPLES
 
@@ -98,21 +97,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
-
-```yaml
-Type: System.Nullable`1[System.Boolean]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -EncryptionStatus
 Status of customer managed encryption key
 
@@ -150,6 +134,23 @@ vCenter Single Sign On Identity Sources
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+The type of identity used for the private cloud.
+The type 'SystemAssigned' refers to an implicitly created identity.
+The type 'None' will remove any identities from the Private Cloud.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -235,21 +236,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Resource location
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ManagementClusterHost
 The hosts
 
@@ -310,36 +296,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NsxtPassword
-Optionally, set the NSX-T Manager password when the private cloud is created
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -350,21 +306,6 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuName
-The name of the SKU.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -391,21 +332,6 @@ Resource tags
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VcenterPassword
-Optionally, set the vCenter admin password when the private cloud is created
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

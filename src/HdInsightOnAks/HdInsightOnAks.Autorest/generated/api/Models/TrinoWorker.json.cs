@@ -101,7 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_debug = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("debug"), out var __jsonDebug) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoDebugConfig.FromJson(__jsonDebug) : Debug;}
+            {_debug = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("debug"), out var __jsonDebug) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.TrinoDebugConfig.FromJson(__jsonDebug) : _debug;}
             AfterFromJson(json);
         }
     }

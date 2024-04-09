@@ -15,22 +15,22 @@ Adds legal hold tags to a Storage blob container
 ### AccountName (Default)
 ```
 Add-AzRmStorageContainerLegalHold [-ResourceGroupName] <String> [-StorageAccountName] <String> -Name <String>
- -Tag <String[]> [-AllowProtectedAppendWriteAll <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -Tag <String[]> [-AllowProtectedAppendWriteAll <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AccountObject
 ```
 Add-AzRmStorageContainerLegalHold -Name <String> -StorageAccount <PSStorageAccount> -Tag <String[]>
- [-AllowProtectedAppendWriteAll <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AllowProtectedAppendWriteAll <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContainerObject
 ```
 Add-AzRmStorageContainerLegalHold -Container <PSContainer> -Tag <String[]>
- [-AllowProtectedAppendWriteAll <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AllowProtectedAppendWriteAll <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
