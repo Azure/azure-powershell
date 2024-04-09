@@ -50,17 +50,6 @@ sampleRName
 
 Creates Simplified Solutions for an Azure subscription using 'solutionId' as the input.
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
 ## PARAMETERS
 
 ### -AsJob

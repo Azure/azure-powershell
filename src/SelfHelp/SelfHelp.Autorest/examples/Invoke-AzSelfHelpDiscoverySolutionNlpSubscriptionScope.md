@@ -4,7 +4,7 @@ Invoke-AzSelfHelpDiscoverySolutionNlpSubscriptionScope -SubscriptionId "6bded6d5
 ```
 
 ```output
-
+[No output]
 ```
 
 Search for relevant Azure Diagnostics, Solutions and Troubleshooters using a natural language issue summary and subscription.

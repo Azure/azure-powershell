@@ -8,7 +8,7 @@ Invoke-AzSelfHelpWarmSolutionUp -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-b
 ```
 
 ```output
-
+[No output]
 ```
 
 Warm up the solution resource by preloading asynchronous diagnostics results into cache
