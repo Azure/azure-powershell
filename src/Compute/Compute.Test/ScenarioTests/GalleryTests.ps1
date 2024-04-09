@@ -873,7 +873,7 @@ function Test-GalleryVersionWithSourceImageVMId
         
         # Assert VMId in version was set to the vm.Id value and was created. 
         Assert-AreEqual $galversion.StorageProfile.Source.VirtualMachineId $vm.Id;
-        Assert-Null $galversion.PublishingProfile.TargetRegion[0].ExcludeFromLatest;
+        Assert-Null $galversion.PublishingProfile.TargetRegion ExcludeFromLatest;
 
         $targetRegions = @{Name=$loc;ReplicaCount=1; ExcludeFromLatest=$true}
 
@@ -884,7 +884,7 @@ function Test-GalleryVersionWithSourceImageVMId
         $galversion = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
 												  -GalleryImageDefinitionName $definitionName -Name $imageVersionName;
 
-        Assert-AreEqual $galversion.PublishingProfile.TargetRegions[0].ExcludeFromLatest $true;
+        Assert-AreEqual $galversion.PublishingProfile.TargetRegions.ExcludeFromLatest $true;
 
     }
     finally 
