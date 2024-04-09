@@ -18,7 +18,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterObject
@@ -27,7 +27,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterObject <Hashtable> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -47,7 +47,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterObject <Hashtable> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -57,7 +57,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterObject <Hashtable> -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -67,7 +67,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterFile <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -77,7 +77,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterFile <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -87,7 +87,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterFile <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -97,7 +97,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterFile <String> -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -107,7 +107,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -117,7 +117,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterUri <String> -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -127,7 +127,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterUri <String> -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -137,7 +137,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterUri <String> -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -147,7 +147,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateParameterUri <String> -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -157,7 +157,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithNoParameters
@@ -166,7 +166,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceId
@@ -175,7 +175,7 @@ New-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Lo
  [-DeploymentDebugLogLevel <String>] [-Tag <Hashtable>] [-WhatIfResultFormat <WhatIfResultFormat>]
  [-WhatIfExcludeChangeType <String[]>] [-ProceedIfNoChange] [-AsJob] [-QueryString <String>]
  -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -348,6 +348,21 @@ Do not ask for confirmation if there is no changes in the What-If result. Applic
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -1,0 +1,113 @@
+{
+  "NewPolicySetDefinition+[NoContext]+New-AzPolicySetDefinition -Name -PolicyDefinition+$PUT+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policySetDefinitions/someName?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policySetDefinitions/someName?api-version=2023-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"policyDefinitions\": [ ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "58" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "10a528b5-0747-4319-b083-47873671ef78" ],
+        "x-ms-correlation-request-id": [ "10a528b5-0747-4319-b083-47873671ef78" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240403T021333Z:10a528b5-0747-4319-b083-47873671ef78" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1F30BA578DC3419587D0536144EDED6F Ref B: CO6AA3150220023 Ref C: 2024-04-03T02:13:33Z" ],
+        "Date": [ "Wed, 03 Apr 2024 02:13:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "187" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"InvalidCreatePolicySetDefinitionRequest\",\"message\":\"The policy set definition \u0027someName\u0027 create request is invalid. At least one policy definition must be referenced.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "NewPolicySetDefinition+[NoContext]+New-AzPolicySetDefinition -Name -PolicyDefinition -ManagementGroupName+$PUT+https://management.azure.com/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policySetDefinitions/someName?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policySetDefinitions/someName?api-version=2023-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"policyDefinitions\": [ ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "58" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 403,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-failure-cause": [ "gateway" ],
+        "x-ms-request-id": [ "1fcf077a-2839-45f8-82c3-29c8c68e90e0" ],
+        "x-ms-correlation-request-id": [ "1fcf077a-2839-45f8-82c3-29c8c68e90e0" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240403T021334Z:1fcf077a-2839-45f8-82c3-29c8c68e90e0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 486CBF4E11D14BBDB5D182F30B23D1F8 Ref B: CO6AA3150220023 Ref C: 2024-04-03T02:13:34Z" ],
+        "Date": [ "Wed, 03 Apr 2024 02:13:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "481" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"AuthorizationFailed\",\"message\":\"The client \u0027cstack@ntdev.microsoft.com\u0027 with object id \u00273d826307-2481-45a0-a271-bcf9333f914a\u0027 does not have authorization to perform action \u0027Microsoft.Authorization/policySetDefinitions/write\u0027 over scope \u0027/providers/Microsoft.Management/managementGroups/someManagementGroup/providers/Microsoft.Authorization/policySetDefinitions/someName\u0027 or the scope is invalid. If access was recently granted, please refresh your credentials.\"}}",
+      "isContentBase64": false
+    }
+  },
+  "NewPolicySetDefinition+[NoContext]+New-AzPolicySetDefinition -Name -PolicyDefinition -SubscriptionId+$PUT+https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policySetDefinitions/someName?api-version=2023-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/edb2c18a-04d6-49e9-bc72-e23852f507ad/providers/Microsoft.Authorization/policySetDefinitions/someName?api-version=2023-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"policyDefinitions\": [ ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "58" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 400,
+      "Headers": {
+        "Cache-Control": [ "no-store, no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "c8238179-439b-4a2e-9bb7-2804c6ea46dd" ],
+        "x-ms-correlation-request-id": [ "c8238179-439b-4a2e-9bb7-2804c6ea46dd" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240403T021335Z:c8238179-439b-4a2e-9bb7-2804c6ea46dd" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 98B412A10EE64D64B8ECF2149ACAF3CA Ref B: CO6AA3150220023 Ref C: 2024-04-03T02:13:35Z" ],
+        "Date": [ "Wed, 03 Apr 2024 02:13:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "187" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"code\":\"InvalidCreatePolicySetDefinitionRequest\",\"message\":\"The policy set definition \u0027someName\u0027 create request is invalid. At least one policy definition must be referenced.\"}}",
+      "isContentBase64": false
+    }
+  }
+}
