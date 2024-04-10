@@ -14,7 +14,7 @@ jobs:
   - task: AzurePowerShell@5
     displayName: Print FederatedToken using Az
     inputs:
-      azureSubscription: $(subscription)
+      azureSubscription: $(serviceConnectionName)
       ScriptType: 'InlineScript'
       Inline: |
         $contextsetting = Get-AzContextAutosaveSetting
@@ -36,22 +36,24 @@ jobs:
 
         $baseUri = "$(system.TeamFoundationCollectionUri)"
 
-        $serviceConnectionName = "$(subscription)"
-        $serviceConnectionUrl = "$baseUri/$projectId/_apis/serviceendpoint/endpoints?endpointNames=$serviceConnectionName&type=azurerm&includeFailed=false&includeDetails=true&api-version=7.1-preview.4"
+        $serviceConnectionName = "$(serviceConnectionName)"
+        $token = "$(System.AccessToken)"
+        
+        $serviceConnectionUrl = "${baseUri}$projectId/_apis/serviceendpoint/endpoints?api-version=7.2-preview.4"
         Write-Host "Invoke-RestMethod -Uri $serviceConnectionUrl -Method Get"
-        $response = Invoke-RestMethod -Uri $serviceConnectionUrl -Method Get -ContentType "application/json" -Headers @{
-                       Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"
-                    }
-        Write-Host $response
+        #$serviceConnectionDetail = Invoke-RestMethod -Uri $serviceConnectionUrl -Method Get -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
+        $response = Invoke-RestMethod -Uri "https://dev.azure.com/azclitools/b5336d23-77d8-49b8-9327-6c483cc524dd/_apis/serviceendpoint/endpoints?endpointNames=ServiceConnectionDev&type=azurerm&includeDetails=true&api-version=7.1-preview.4" -Method Get -Headers @{Authorization = "Bearer $token"}
+        Write-Host "Details of $serviceConnectionName"
+        $response.value
+        Write-Host "applicationId & tenantId"
+        $response.value.authorization.parameters.serviceprincipalid
+        $response.value.authorization.parameters.tenantid
 
         $serviceConnectionId = "0d312308-6437-41a6-bc0d-270f72e1ae23"
-        $url = "$baseUri/$projectId/_apis/distributedtask/hubs/$hubName/plans/$planId/jobs/$jobId/oidctoken?serviceConnectionId=$serviceConnectionId&api-version=7.1-preview.1"
+        $url = "${baseUri}$projectId/_apis/distributedtask/hubs/$hubName/plans/$planId/jobs/$jobId/oidctoken?serviceConnectionId=$serviceConnectionId&api-version=7.1-preview.1"
         Write-Host "Invoke-RestMethod -Uri $url -Method Post"
-        Write-Host $($env:SYSTEM_ACCESSTOKEN)
 
-        $response = Invoke-RestMethod -Uri $url -Method Post -ContentType "application/json" -Headers @{
-                       Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"
-                    }
+        $response = Invoke-RestMethod -Uri $url -Method Post -ContentType "application/json" -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
         Write-Host $response
         $federatedToken = $response.oidcToken
         echo "##vso[task.setvariable variable=federatedToken]$federatedToken"
