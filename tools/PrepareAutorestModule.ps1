@@ -85,7 +85,7 @@ function Update-GeneratedSubModule {
     if (Test-Path $localModulesPath) {
         Remove-Item -Path $localModulesPath -Recurse -Force
     }
-    $fileToUpdate = @('generated', 'generate-info.json', "Az.$SubModuleName.psm1", "Az.$SubModuleName.format.ps1xml", 'exports', 'internal', 'test-module.ps1', 'check-dependencies.ps1')
+    $fileToUpdate = @('generated', 'generate-info.json', "Az.$SubModuleName.psd1", "Az.$SubModuleName.psm1", "Az.$SubModuleName.format.ps1xml", 'exports', 'internal', 'test-module.ps1', 'check-dependencies.ps1')
     # Copy from src/ to generated/ 
     $fileToUpdate | Foreach-Object {
         $moveFrom = Join-Path $SourceDirectory $_
@@ -251,8 +251,8 @@ foreach ($subModuleName in $outdatedSubModule) {
         if (-not (Test-Path $subModuleGeneratedDirectory)) {
             New-Item -ItemType Directory -Force -Path $subModuleGeneratedDirectory
         }
-        Update-GeneratedSubModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory
         Add-SubModuleToParentModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory
+        Update-GeneratedSubModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory
     }
 }
 
