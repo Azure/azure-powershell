@@ -30,9 +30,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdCustomDomainsCreate(string resourceGroupName, string profileName, string customDomainName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdCustomDomainsCreate(string resourceGroupName, string profileName, string customDomainName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -78,9 +78,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdCustomDomainsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdCustomDomainsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -138,7 +138,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdCustomDomainsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdCustomDomainsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -252,13 +252,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdDomain.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomain.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -287,7 +287,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdCustomDomainsCreate_Validate(string resourceGroupName, string profileName, string customDomainName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AfdCustomDomainsCreate_Validate(string resourceGroupName, string profileName, string customDomainName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -321,9 +321,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdCustomDomainsDelete(string resourceGroupName, string profileName, string customDomainName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdCustomDomainsDelete(string resourceGroupName, string profileName, string customDomainName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -368,9 +368,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdCustomDomainsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdCustomDomainsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdCustomDomainsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdCustomDomainsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -552,7 +552,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -611,9 +611,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdCustomDomainsGet(string resourceGroupName, string profileName, string customDomainName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdCustomDomainsGet(string resourceGroupName, string profileName, string customDomainName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -657,9 +657,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdCustomDomainsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdCustomDomainsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -713,7 +713,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdCustomDomainsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdCustomDomainsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -731,13 +731,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdDomain.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomain.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -792,9 +792,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdCustomDomainsListByProfile(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdCustomDomainsListByProfile(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -834,9 +834,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdCustomDomainsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdCustomDomainsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -888,7 +888,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdCustomDomainsListByProfile_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdCustomDomainsListByProfile_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -906,13 +906,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdDomainListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomainListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -966,9 +966,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdCustomDomainsRefreshValidationToken(string resourceGroupName, string profileName, string customDomainName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdCustomDomainsRefreshValidationToken(string resourceGroupName, string profileName, string customDomainName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1010,9 +1010,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdCustomDomainsRefreshValidationTokenViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdCustomDomainsRefreshValidationTokenViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1069,7 +1069,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdCustomDomainsRefreshValidationToken_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdCustomDomainsRefreshValidationToken_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1190,7 +1190,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1247,9 +1247,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdCustomDomainsUpdate(string resourceGroupName, string profileName, string customDomainName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomainUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdCustomDomainsUpdate(string resourceGroupName, string profileName, string customDomainName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomainUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1295,9 +1295,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdCustomDomainsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomainUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdCustomDomainsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomainUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1355,7 +1355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdCustomDomainsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdCustomDomainsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1469,13 +1469,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdDomain.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdDomain.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1504,7 +1504,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdCustomDomainsUpdate_Validate(string resourceGroupName, string profileName, string customDomainName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomainUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AfdCustomDomainsUpdate_Validate(string resourceGroupName, string profileName, string customDomainName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomainUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1538,9 +1538,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdEndpointsCreate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdEndpointsCreate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1589,9 +1589,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdEndpointsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdEndpointsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1649,7 +1649,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdEndpointsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdEndpointsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1763,13 +1763,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1798,7 +1798,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdEndpointsCreate_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AfdEndpointsCreate_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1832,9 +1832,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdEndpointsDelete(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdEndpointsDelete(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1879,9 +1879,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdEndpointsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdEndpointsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1936,7 +1936,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdEndpointsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdEndpointsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2063,7 +2063,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2122,9 +2122,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdEndpointsGet(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdEndpointsGet(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2168,9 +2168,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdEndpointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdEndpointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2224,7 +2224,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdEndpointsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdEndpointsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2242,13 +2242,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2303,9 +2303,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdEndpointsListByProfile(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdEndpointsListByProfile(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2345,9 +2345,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdEndpointsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdEndpointsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2399,7 +2399,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdEndpointsListByProfile_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdEndpointsListByProfile_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2417,13 +2417,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdEndpointListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdEndpointListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2479,9 +2479,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdEndpointsListResourceUsage(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdEndpointsListResourceUsage(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2525,9 +2525,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdEndpointsListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdEndpointsListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2582,7 +2582,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdEndpointsListResourceUsage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdEndpointsListResourceUsage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2600,13 +2600,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UsagesListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UsagesListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2665,9 +2665,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdEndpointsPurgeContent(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdPurgeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdEndpointsPurgeContent(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2716,9 +2716,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdEndpointsPurgeContentViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdPurgeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdEndpointsPurgeContentViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2777,7 +2777,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdEndpointsPurgeContent_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdEndpointsPurgeContent_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2898,7 +2898,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2929,7 +2929,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdEndpointsPurgeContent_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdPurgeParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AfdEndpointsPurgeContent_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdPurgeParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2964,9 +2964,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdEndpointsUpdate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpointUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdEndpointsUpdate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpointUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3016,9 +3016,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdEndpointsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpointUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdEndpointsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpointUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3076,7 +3076,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdEndpointsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdEndpointsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3190,13 +3190,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3225,7 +3225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdEndpointsUpdate_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdEndpointUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AfdEndpointsUpdate_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdEndpointUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3258,9 +3258,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdEndpointsValidateCustomDomain(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateCustomDomainInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdEndpointsValidateCustomDomain(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateCustomDomainInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3309,9 +3309,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdEndpointsValidateCustomDomainViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateCustomDomainInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdEndpointsValidateCustomDomainViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateCustomDomainInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3370,7 +3370,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdEndpointsValidateCustomDomain_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdEndpointsValidateCustomDomain_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3388,13 +3388,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ValidateCustomDomainOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidateCustomDomainOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3423,7 +3423,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdEndpointsValidateCustomDomain_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateCustomDomainInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AfdEndpointsValidateCustomDomain_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateCustomDomainInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3454,9 +3454,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginGroupsCreate(string resourceGroupName, string profileName, string originGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginGroupsCreate(string resourceGroupName, string profileName, string originGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3502,9 +3502,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginGroupsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginGroupsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3562,7 +3562,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdOriginGroupsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdOriginGroupsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3676,13 +3676,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdOriginGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3711,7 +3711,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdOriginGroupsCreate_Validate(string resourceGroupName, string profileName, string originGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AfdOriginGroupsCreate_Validate(string resourceGroupName, string profileName, string originGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3742,9 +3742,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginGroupsDelete(string resourceGroupName, string profileName, string originGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginGroupsDelete(string resourceGroupName, string profileName, string originGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3786,9 +3786,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginGroupsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginGroupsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3843,7 +3843,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdOriginGroupsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdOriginGroupsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3970,7 +3970,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4026,9 +4026,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginGroupsGet(string resourceGroupName, string profileName, string originGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginGroupsGet(string resourceGroupName, string profileName, string originGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4069,9 +4069,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginGroupsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginGroupsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4125,7 +4125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdOriginGroupsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdOriginGroupsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4143,13 +4143,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdOriginGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4204,9 +4204,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginGroupsListByProfile(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginGroupsListByProfile(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4246,9 +4246,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginGroupsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginGroupsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4300,7 +4300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdOriginGroupsListByProfile_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdOriginGroupsListByProfile_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4318,13 +4318,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdOriginGroupListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginGroupListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4380,9 +4380,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginGroupsListResourceUsage(string resourceGroupName, string profileName, string originGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginGroupsListResourceUsage(string resourceGroupName, string profileName, string originGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4426,9 +4426,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginGroupsListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginGroupsListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4483,7 +4483,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdOriginGroupsListResourceUsage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdOriginGroupsListResourceUsage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4501,13 +4501,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UsagesListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UsagesListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4564,9 +4564,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginGroupsUpdate(string resourceGroupName, string profileName, string originGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroupUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginGroupsUpdate(string resourceGroupName, string profileName, string originGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroupUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4612,9 +4612,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginGroupsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroupUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginGroupsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroupUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4672,7 +4672,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdOriginGroupsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdOriginGroupsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4786,13 +4786,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdOriginGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4821,7 +4821,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdOriginGroupsUpdate_Validate(string resourceGroupName, string profileName, string originGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginGroupUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AfdOriginGroupsUpdate_Validate(string resourceGroupName, string profileName, string originGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginGroupUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -4853,9 +4853,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginsCreate(string resourceGroupName, string profileName, string originGroupName, string originName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginsCreate(string resourceGroupName, string profileName, string originGroupName, string originName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOrigin body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4903,9 +4903,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOrigin body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4966,7 +4966,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdOriginsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdOriginsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5080,13 +5080,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdOrigin.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOrigin.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5116,7 +5116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdOriginsCreate_Validate(string resourceGroupName, string profileName, string originGroupName, string originName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AfdOriginsCreate_Validate(string resourceGroupName, string profileName, string originGroupName, string originName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOrigin body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -5149,9 +5149,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginsDelete(string resourceGroupName, string profileName, string originGroupName, string originName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginsDelete(string resourceGroupName, string profileName, string originGroupName, string originName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5195,9 +5195,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5255,7 +5255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdOriginsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdOriginsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5382,7 +5382,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5441,9 +5441,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginsGet(string resourceGroupName, string profileName, string originGroupName, string originName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginsGet(string resourceGroupName, string profileName, string originGroupName, string originName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5486,9 +5486,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5545,7 +5545,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdOriginsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdOriginsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5563,13 +5563,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdOrigin.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOrigin.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5627,9 +5627,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginsListByOriginGroup(string resourceGroupName, string profileName, string originGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginsListByOriginGroup(string resourceGroupName, string profileName, string originGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5671,9 +5671,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginsListByOriginGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginsListByOriginGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5728,7 +5728,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdOriginsListByOriginGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdOriginsListByOriginGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5746,13 +5746,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdOriginListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOriginListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5810,9 +5810,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginsUpdate(string resourceGroupName, string profileName, string originGroupName, string originName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginsUpdate(string resourceGroupName, string profileName, string originGroupName, string originName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5860,9 +5860,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdOriginsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdOriginsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5923,7 +5923,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdOriginsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdOriginsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6037,13 +6037,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdOrigin.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdOrigin.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6073,7 +6073,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdOriginsUpdate_Validate(string resourceGroupName, string profileName, string originGroupName, string originName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdOriginUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AfdOriginsUpdate_Validate(string resourceGroupName, string profileName, string originGroupName, string originName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdOriginUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -6104,9 +6104,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdProfileSkuUpgrade(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileUpgradeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdProfileSkuUpgrade(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpgradeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6151,9 +6151,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdProfileSkuUpgradeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileUpgradeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdProfileSkuUpgradeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpgradeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6209,7 +6209,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdProfileSkuUpgrade_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdProfileSkuUpgrade_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6324,13 +6324,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Profile.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Profile.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6358,7 +6358,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdProfileSkuUpgrade_Validate(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileUpgradeParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AfdProfileSkuUpgrade_Validate(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpgradeParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -6392,9 +6392,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdProfilesCheckEndpointNameAvailability(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckEndpointNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdProfilesCheckEndpointNameAvailability(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckEndpointNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6441,9 +6441,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdProfilesCheckEndpointNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckEndpointNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdProfilesCheckEndpointNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckEndpointNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6501,7 +6501,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdProfilesCheckEndpointNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdProfilesCheckEndpointNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6519,13 +6519,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CheckEndpointNameAvailabilityOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CheckEndpointNameAvailabilityOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6553,7 +6553,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdProfilesCheckEndpointNameAvailability_Validate(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckEndpointNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AfdProfilesCheckEndpointNameAvailability_Validate(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckEndpointNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -6587,9 +6587,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdProfilesCheckHostNameAvailability(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckHostNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdProfilesCheckHostNameAvailability(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckHostNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6636,9 +6636,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdProfilesCheckHostNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckHostNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdProfilesCheckHostNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckHostNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6696,7 +6696,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdProfilesCheckHostNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdProfilesCheckHostNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6714,13 +6714,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CheckNameAvailabilityOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CheckNameAvailabilityOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6748,7 +6748,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdProfilesCheckHostNameAvailability_Validate(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckHostNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AfdProfilesCheckHostNameAvailability_Validate(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckHostNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -6778,9 +6778,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdProfilesListResourceUsage(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdProfilesListResourceUsage(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6822,9 +6822,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdProfilesListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdProfilesListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6876,7 +6876,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdProfilesListResourceUsage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdProfilesListResourceUsage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6894,13 +6894,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UsagesListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UsagesListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6954,9 +6954,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdProfilesValidateSecret(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateSecretInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateSecretOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdProfilesValidateSecret(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateSecretInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateSecretOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7001,9 +7001,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task AfdProfilesValidateSecretViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateSecretInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateSecretOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task AfdProfilesValidateSecretViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateSecretInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateSecretOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7059,7 +7059,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdProfilesValidateSecret_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateSecretOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task AfdProfilesValidateSecret_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateSecretOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7077,13 +7077,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ValidateSecretOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidateSecretOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7111,7 +7111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task AfdProfilesValidateSecret_Validate(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateSecretInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task AfdProfilesValidateSecret_Validate(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateSecretInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -7144,9 +7144,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CheckEndpointNameAvailability(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckEndpointNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CheckEndpointNameAvailability(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckEndpointNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7192,9 +7192,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CheckEndpointNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckEndpointNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CheckEndpointNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckEndpointNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7247,7 +7247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CheckEndpointNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CheckEndpointNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckEndpointNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7265,13 +7265,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CheckEndpointNameAvailabilityOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CheckEndpointNameAvailabilityOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7297,7 +7297,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CheckEndpointNameAvailability_Validate(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckEndpointNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CheckEndpointNameAvailability_Validate(string subscriptionId, string resourceGroupName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckEndpointNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -7323,9 +7323,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CheckNameAvailability(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CheckNameAvailability(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7366,9 +7366,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CheckNameAvailabilityViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7418,9 +7418,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CheckNameAvailabilityWithSubscription(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CheckNameAvailabilityWithSubscription(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7463,9 +7463,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CheckNameAvailabilityWithSubscriptionViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CheckNameAvailabilityWithSubscriptionViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7517,7 +7517,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CheckNameAvailabilityWithSubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CheckNameAvailabilityWithSubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7535,13 +7535,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CheckNameAvailabilityOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CheckNameAvailabilityOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7566,7 +7566,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CheckNameAvailabilityWithSubscription_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CheckNameAvailabilityWithSubscription_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -7586,7 +7586,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CheckNameAvailability_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7604,13 +7604,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CheckNameAvailabilityOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CheckNameAvailabilityOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7634,7 +7634,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CheckNameAvailability_Validate(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CheckNameAvailability_Validate(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -7658,9 +7658,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CustomDomainsCreate(string resourceGroupName, string profileName, string endpointName, string customDomainName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomainParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CustomDomainsCreate(string resourceGroupName, string profileName, string endpointName, string customDomainName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomainParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7708,9 +7708,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CustomDomainsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomainParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CustomDomainsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomainParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7771,7 +7771,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CustomDomainsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CustomDomainsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7888,13 +7888,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CustomDomain.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomDomain.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7923,7 +7923,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CustomDomainsCreate_Validate(string resourceGroupName, string profileName, string endpointName, string customDomainName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomainParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CustomDomainsCreate_Validate(string resourceGroupName, string profileName, string endpointName, string customDomainName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomainParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -7955,9 +7955,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CustomDomainsDelete(string resourceGroupName, string profileName, string endpointName, string customDomainName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CustomDomainsDelete(string resourceGroupName, string profileName, string endpointName, string customDomainName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8001,9 +8001,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CustomDomainsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CustomDomainsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8061,7 +8061,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CustomDomainsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CustomDomainsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8188,7 +8188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -8245,9 +8245,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CustomDomainsDisableCustomHttps(string resourceGroupName, string profileName, string endpointName, string customDomainName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CustomDomainsDisableCustomHttps(string resourceGroupName, string profileName, string endpointName, string customDomainName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8291,9 +8291,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CustomDomainsDisableCustomHttpsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CustomDomainsDisableCustomHttpsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8351,7 +8351,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CustomDomainsDisableCustomHttps_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CustomDomainsDisableCustomHttps_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8469,13 +8469,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CustomDomain.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomDomain.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -8534,9 +8534,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CustomDomainsEnableCustomHttps(string resourceGroupName, string profileName, string endpointName, string customDomainName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomainHttpsParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CustomDomainsEnableCustomHttps(string resourceGroupName, string profileName, string endpointName, string customDomainName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomainHttpsParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8586,9 +8586,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CustomDomainsEnableCustomHttpsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomainHttpsParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CustomDomainsEnableCustomHttpsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomainHttpsParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8650,7 +8650,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CustomDomainsEnableCustomHttps_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CustomDomainsEnableCustomHttps_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8768,13 +8768,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CustomDomain.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomDomain.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -8804,7 +8804,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CustomDomainsEnableCustomHttps_Validate(string resourceGroupName, string profileName, string endpointName, string customDomainName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomainHttpsParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task CustomDomainsEnableCustomHttps_Validate(string resourceGroupName, string profileName, string endpointName, string customDomainName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomainHttpsParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -8835,9 +8835,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CustomDomainsGet(string resourceGroupName, string profileName, string endpointName, string customDomainName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CustomDomainsGet(string resourceGroupName, string profileName, string endpointName, string customDomainName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8880,9 +8880,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CustomDomainsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CustomDomainsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -8939,7 +8939,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CustomDomainsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CustomDomainsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8957,13 +8957,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CustomDomain.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomDomain.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -9019,9 +9019,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CustomDomainsListByEndpoint(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CustomDomainsListByEndpoint(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9063,9 +9063,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task CustomDomainsListByEndpointViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task CustomDomainsListByEndpointViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9120,7 +9120,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task CustomDomainsListByEndpoint_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task CustomDomainsListByEndpoint_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomainListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9138,13 +9138,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CustomDomainListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CustomDomainListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -9196,9 +9196,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EdgeNodesList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEdgenodeResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EdgeNodesList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEdgenodeResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9234,9 +9234,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EdgeNodesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEdgenodeResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EdgeNodesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEdgenodeResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9279,7 +9279,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EdgeNodesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEdgenodeResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EdgeNodesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEdgenodeResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9297,13 +9297,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.EdgenodeResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.EdgenodeResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -9350,9 +9350,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsCreate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsCreate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9400,9 +9400,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9460,7 +9460,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EndpointsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9577,13 +9577,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Endpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Endpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -9611,7 +9611,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsCreate_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task EndpointsCreate_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -9644,9 +9644,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsDelete(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsDelete(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9691,9 +9691,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9748,7 +9748,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EndpointsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -9875,7 +9875,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -9931,9 +9931,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsGet(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsGet(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -9976,9 +9976,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10032,7 +10032,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EndpointsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10050,13 +10050,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Endpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Endpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -10109,9 +10109,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsListByProfile(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsListByProfile(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10151,9 +10151,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10205,7 +10205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsListByProfile_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EndpointsListByProfile_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10223,13 +10223,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.EndpointListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.EndpointListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -10283,9 +10283,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsListResourceUsage(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsListResourceUsage(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10329,9 +10329,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10386,7 +10386,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsListResourceUsage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EndpointsListResourceUsage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10404,13 +10404,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ResourceUsageListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResourceUsageListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -10466,9 +10466,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsLoadContent(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ILoadParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsLoadContent(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ILoadParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10516,9 +10516,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsLoadContentViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ILoadParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsLoadContentViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ILoadParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10577,7 +10577,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsLoadContent_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EndpointsLoadContent_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10701,7 +10701,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -10730,7 +10730,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsLoadContent_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ILoadParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task EndpointsLoadContent_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ILoadParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -10761,9 +10761,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsPurgeContent(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IPurgeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsPurgeContent(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10811,9 +10811,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsPurgeContentViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IPurgeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsPurgeContentViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -10872,7 +10872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsPurgeContent_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EndpointsPurgeContent_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -10996,7 +10996,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -11025,7 +11025,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsPurgeContent_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IPurgeParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task EndpointsPurgeContent_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -11054,9 +11054,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsStart(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsStart(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11098,9 +11098,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsStartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsStartViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11155,7 +11155,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsStart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EndpointsStart_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -11273,13 +11273,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Endpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Endpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -11333,9 +11333,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsStop(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsStop(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11377,9 +11377,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsStopViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsStopViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11434,7 +11434,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsStop_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EndpointsStop_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -11552,13 +11552,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Endpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Endpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -11617,9 +11617,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsUpdate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpointUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsUpdate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpointUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11669,9 +11669,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpointUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpointUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11729,7 +11729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EndpointsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -11846,13 +11846,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Endpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Endpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -11880,7 +11880,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsUpdate_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpointUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task EndpointsUpdate_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpointUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -11912,9 +11912,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsValidateCustomDomain(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateCustomDomainInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsValidateCustomDomain(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateCustomDomainInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -11963,9 +11963,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task EndpointsValidateCustomDomainViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateCustomDomainInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task EndpointsValidateCustomDomainViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateCustomDomainInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12024,7 +12024,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsValidateCustomDomain_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task EndpointsValidateCustomDomain_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateCustomDomainOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12042,13 +12042,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ValidateCustomDomainOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidateCustomDomainOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -12076,7 +12076,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task EndpointsValidateCustomDomain_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateCustomDomainInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task EndpointsValidateCustomDomain_Validate(string resourceGroupName, string profileName, string endpointName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateCustomDomainInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -12105,9 +12105,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsLocations(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IContinentsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsLocations(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IContinentsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12147,9 +12147,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsLocationsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IContinentsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsLocationsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IContinentsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12203,7 +12203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsLocations_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IContinentsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsLocations_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IContinentsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12221,13 +12221,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ContinentsResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ContinentsResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -12289,9 +12289,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsMetrics(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogMetric[] metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogMetricsGranularity granularity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogMetricsGroupBy[] groupBy, string[] continents, string[] countryOrRegions, string[] customDomains, string[] protocols, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMetricsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsMetrics(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogMetric[] metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogMetricsGranularity granularity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogMetricsGroupBy[] groupBy, string[] continents, string[] countryOrRegions, string[] customDomains, string[] protocols, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMetricsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12358,9 +12358,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsMetricsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogMetric[] metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogMetricsGranularity granularity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogMetricsGroupBy[] groupBy, string[] continents, string[] countryOrRegions, string[] customDomains, string[] protocols, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMetricsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsMetricsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogMetric[] metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogMetricsGranularity granularity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogMetricsGroupBy[] groupBy, string[] continents, string[] countryOrRegions, string[] customDomains, string[] protocols, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMetricsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12430,7 +12430,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsMetrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMetricsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsMetrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMetricsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12448,13 +12448,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.MetricsResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MetricsResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -12537,9 +12537,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsRankings(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogRanking[] rankings, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogRankingMetric[] metrics, int maxRanking, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, string[] customDomains, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRankingsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsRankings(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogRanking[] rankings, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogRankingMetric[] metrics, int maxRanking, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, string[] customDomains, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRankingsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12597,9 +12597,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsRankingsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogRanking[] rankings, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogRankingMetric[] metrics, int maxRanking, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, string[] customDomains, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRankingsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsRankingsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogRanking[] rankings, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.LogRankingMetric[] metrics, int maxRanking, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, string[] customDomains, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRankingsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12663,7 +12663,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsRankings_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRankingsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsRankings_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRankingsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12681,13 +12681,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.RankingsResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RankingsResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -12758,9 +12758,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsResources(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourcesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsResources(string subscriptionId, string resourceGroupName, string profileName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourcesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12800,9 +12800,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsResourcesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourcesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsResourcesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourcesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -12856,7 +12856,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsResources_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourcesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task LogAnalyticsGetLogAnalyticsResources_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourcesResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12874,13 +12874,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ResourcesResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResourcesResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -12940,9 +12940,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LogAnalyticsGetWafLogAnalyticsMetrics(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafMetric[] metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafGranularity granularity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafAction[] actions, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRankingGroupBy[] groupBy, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRuleType[] ruleTypes, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IWafMetricsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LogAnalyticsGetWafLogAnalyticsMetrics(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafMetric[] metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafGranularity granularity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafAction[] actions, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRankingGroupBy[] groupBy, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRuleType[] ruleTypes, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IWafMetricsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13003,9 +13003,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LogAnalyticsGetWafLogAnalyticsMetricsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafMetric[] metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafGranularity granularity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafAction[] actions, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRankingGroupBy[] groupBy, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRuleType[] ruleTypes, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IWafMetricsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LogAnalyticsGetWafLogAnalyticsMetricsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafMetric[] metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafGranularity granularity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafAction[] actions, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRankingGroupBy[] groupBy, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRuleType[] ruleTypes, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IWafMetricsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13073,7 +13073,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task LogAnalyticsGetWafLogAnalyticsMetrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IWafMetricsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task LogAnalyticsGetWafLogAnalyticsMetrics_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IWafMetricsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -13091,13 +13091,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.WafMetricsResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.WafMetricsResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -13187,9 +13187,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LogAnalyticsGetWafLogAnalyticsRankings(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafMetric[] metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, int maxRanking, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRankingType[] rankings, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafAction[] actions, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRuleType[] ruleTypes, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IWafRankingsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LogAnalyticsGetWafLogAnalyticsRankings(string subscriptionId, string resourceGroupName, string profileName, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafMetric[] metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, int maxRanking, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRankingType[] rankings, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafAction[] actions, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRuleType[] ruleTypes, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IWafRankingsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13250,9 +13250,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task LogAnalyticsGetWafLogAnalyticsRankingsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafMetric[] metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, int maxRanking, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRankingType[] rankings, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafAction[] actions, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRuleType[] ruleTypes, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IWafRankingsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task LogAnalyticsGetWafLogAnalyticsRankingsViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafMetric[] metrics, global::System.DateTime dateTimeBegin, global::System.DateTime dateTimeEnd, int maxRanking, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRankingType[] rankings, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafAction[] actions, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.WafRuleType[] ruleTypes, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IWafRankingsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13320,7 +13320,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task LogAnalyticsGetWafLogAnalyticsRankings_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IWafRankingsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task LogAnalyticsGetWafLogAnalyticsRankings_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IWafRankingsResponse>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -13338,13 +13338,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.WafRankingsResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.WafRankingsResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -13422,9 +13422,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOperationsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOperationsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13458,9 +13458,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOperationsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOperationsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13503,7 +13503,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOperationsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOperationsListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -13521,13 +13521,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.OperationsListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OperationsListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -13573,9 +13573,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginGroupsCreate(string resourceGroupName, string profileName, string endpointName, string originGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginGroupsCreate(string resourceGroupName, string profileName, string endpointName, string originGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13623,9 +13623,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginGroupsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginGroupsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13686,7 +13686,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OriginGroupsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OriginGroupsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -13803,13 +13803,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.OriginGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -13838,7 +13838,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OriginGroupsCreate_Validate(string resourceGroupName, string profileName, string endpointName, string originGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task OriginGroupsCreate_Validate(string resourceGroupName, string profileName, string endpointName, string originGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -13870,9 +13870,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginGroupsDelete(string resourceGroupName, string profileName, string endpointName, string originGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginGroupsDelete(string resourceGroupName, string profileName, string endpointName, string originGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13916,9 +13916,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginGroupsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginGroupsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -13976,7 +13976,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OriginGroupsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OriginGroupsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -14103,7 +14103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -14160,9 +14160,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginGroupsGet(string resourceGroupName, string profileName, string endpointName, string originGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginGroupsGet(string resourceGroupName, string profileName, string endpointName, string originGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14205,9 +14205,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginGroupsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginGroupsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14264,7 +14264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OriginGroupsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OriginGroupsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -14282,13 +14282,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.OriginGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -14344,9 +14344,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginGroupsListByEndpoint(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginGroupsListByEndpoint(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14388,9 +14388,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginGroupsListByEndpointViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginGroupsListByEndpointViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14445,7 +14445,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OriginGroupsListByEndpoint_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OriginGroupsListByEndpoint_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroupListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -14463,13 +14463,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.OriginGroupListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroupListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -14525,9 +14525,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginGroupsUpdate(string resourceGroupName, string profileName, string endpointName, string originGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroupUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginGroupsUpdate(string resourceGroupName, string profileName, string endpointName, string originGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroupUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14575,9 +14575,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginGroupsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroupUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginGroupsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroupUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14638,7 +14638,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OriginGroupsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OriginGroupsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroup>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -14755,13 +14755,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.OriginGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginGroup.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -14790,7 +14790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OriginGroupsUpdate_Validate(string resourceGroupName, string profileName, string endpointName, string originGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginGroupUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task OriginGroupsUpdate_Validate(string resourceGroupName, string profileName, string endpointName, string originGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginGroupUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -14822,9 +14822,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginsCreate(string resourceGroupName, string profileName, string endpointName, string originName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginsCreate(string resourceGroupName, string profileName, string endpointName, string originName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14872,9 +14872,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -14935,7 +14935,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OriginsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OriginsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -15052,13 +15052,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Origin.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Origin.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -15087,7 +15087,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OriginsCreate_Validate(string resourceGroupName, string profileName, string endpointName, string originName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task OriginsCreate_Validate(string resourceGroupName, string profileName, string endpointName, string originName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -15119,9 +15119,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginsDelete(string resourceGroupName, string profileName, string endpointName, string originName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginsDelete(string resourceGroupName, string profileName, string endpointName, string originName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15165,9 +15165,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15225,7 +15225,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OriginsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OriginsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -15352,7 +15352,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -15409,9 +15409,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginsGet(string resourceGroupName, string profileName, string endpointName, string originName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginsGet(string resourceGroupName, string profileName, string endpointName, string originName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15454,9 +15454,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15513,7 +15513,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OriginsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OriginsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -15531,13 +15531,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Origin.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Origin.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -15593,9 +15593,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginsListByEndpoint(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginsListByEndpoint(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15637,9 +15637,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginsListByEndpointViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginsListByEndpointViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15694,7 +15694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OriginsListByEndpoint_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OriginsListByEndpoint_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -15712,13 +15712,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.OriginListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.OriginListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -15774,9 +15774,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginsUpdate(string resourceGroupName, string profileName, string endpointName, string originName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginsUpdate(string resourceGroupName, string profileName, string endpointName, string originName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15824,9 +15824,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OriginsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OriginsUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -15887,7 +15887,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OriginsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OriginsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -16004,13 +16004,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Origin.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Origin.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -16039,7 +16039,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OriginsUpdate_Validate(string resourceGroupName, string profileName, string endpointName, string originName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOriginUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task OriginsUpdate_Validate(string resourceGroupName, string profileName, string endpointName, string originName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOriginUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -16070,9 +16070,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesCanMigrate(string resourceGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesCanMigrate(string resourceGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICanMigrateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICanMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16117,9 +16117,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesCanMigrateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesCanMigrateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICanMigrateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICanMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16172,7 +16172,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProfilesCanMigrate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ProfilesCanMigrate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICanMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -16287,13 +16287,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.CanMigrateResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.CanMigrateResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -16319,7 +16319,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProfilesCanMigrate_Validate(string resourceGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ProfilesCanMigrate_Validate(string resourceGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICanMigrateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -16350,9 +16350,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesCreate(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesCreate(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16399,9 +16399,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16456,7 +16456,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProfilesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ProfilesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -16573,13 +16573,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Profile.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Profile.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -16607,7 +16607,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProfilesCreate_Validate(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ProfilesCreate_Validate(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -16639,9 +16639,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesDelete(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesDelete(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16684,9 +16684,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16738,7 +16738,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProfilesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ProfilesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -16865,7 +16865,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -16922,9 +16922,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesGenerateSsoUri(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISsoUri>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesGenerateSsoUri(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISsoUri>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -16969,9 +16969,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesGenerateSsoUriViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISsoUri>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesGenerateSsoUriViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISsoUri>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17023,7 +17023,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProfilesGenerateSsoUri_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISsoUri>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ProfilesGenerateSsoUri_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISsoUri>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -17041,13 +17041,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SsoUri.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SsoUri.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -17102,9 +17102,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesGet(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesGet(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17146,9 +17146,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17199,7 +17199,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProfilesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ProfilesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -17217,13 +17217,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Profile.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Profile.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -17275,9 +17275,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17316,9 +17316,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesListByResourceGroup(string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesListByResourceGroup(string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17358,9 +17358,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17409,7 +17409,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProfilesListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ProfilesListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -17427,13 +17427,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ProfileListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -17486,9 +17486,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesListResourceUsage(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesListResourceUsage(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17531,9 +17531,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17585,7 +17585,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProfilesListResourceUsage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ProfilesListResourceUsage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -17603,13 +17603,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ResourceUsageListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResourceUsageListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -17665,9 +17665,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesListSupportedOptimizationTypes(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISupportedOptimizationTypesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesListSupportedOptimizationTypes(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISupportedOptimizationTypesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17710,9 +17710,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesListSupportedOptimizationTypesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISupportedOptimizationTypesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesListSupportedOptimizationTypesViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISupportedOptimizationTypesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17766,7 +17766,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProfilesListSupportedOptimizationTypes_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISupportedOptimizationTypesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ProfilesListSupportedOptimizationTypes_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISupportedOptimizationTypesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -17784,13 +17784,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SupportedOptimizationTypesListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SupportedOptimizationTypesListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -17842,9 +17842,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -17890,7 +17890,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProfilesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ProfilesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -17908,13 +17908,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ProfileListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ProfileListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -17960,9 +17960,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesMigrate(string resourceGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMigrationParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesMigrate(string resourceGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrationParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18007,9 +18007,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesMigrateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMigrationParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesMigrateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrationParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18062,7 +18062,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProfilesMigrate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ProfilesMigrate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrateResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -18177,13 +18177,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.MigrateResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MigrateResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -18209,7 +18209,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProfilesMigrate_Validate(string resourceGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IMigrationParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ProfilesMigrate_Validate(string resourceGroupName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IMigrationParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -18235,9 +18235,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesMigrationCommit(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesMigrationCommit(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18277,9 +18277,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesMigrationCommitViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesMigrationCommitViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18331,7 +18331,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProfilesMigrationCommit_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ProfilesMigrationCommit_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -18452,7 +18452,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -18508,9 +18508,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesUpdate(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesUpdate(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18557,9 +18557,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ProfilesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ProfilesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18614,7 +18614,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProfilesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ProfilesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -18731,13 +18731,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Profile.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Profile.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -18765,7 +18765,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ProfilesUpdate_Validate(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ProfilesUpdate_Validate(string resourceGroupName, string profileName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -18792,9 +18792,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ResourceUsageList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ResourceUsageList(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18832,9 +18832,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ResourceUsageListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ResourceUsageListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -18880,7 +18880,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ResourceUsageList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ResourceUsageList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceUsageListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -18898,13 +18898,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ResourceUsageListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ResourceUsageListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -18955,9 +18955,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RoutesCreate(string resourceGroupName, string profileName, string endpointName, string routeName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RoutesCreate(string resourceGroupName, string profileName, string endpointName, string routeName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19008,9 +19008,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RoutesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RoutesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19071,7 +19071,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RoutesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RoutesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -19185,13 +19185,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Route.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Route.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -19221,7 +19221,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RoutesCreate_Validate(string resourceGroupName, string profileName, string endpointName, string routeName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task RoutesCreate_Validate(string resourceGroupName, string profileName, string endpointName, string routeName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -19257,9 +19257,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RoutesDelete(string resourceGroupName, string profileName, string endpointName, string routeName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RoutesDelete(string resourceGroupName, string profileName, string endpointName, string routeName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19306,9 +19306,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RoutesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RoutesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19366,7 +19366,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RoutesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RoutesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -19493,7 +19493,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -19555,9 +19555,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RoutesGet(string resourceGroupName, string profileName, string endpointName, string routeName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RoutesGet(string resourceGroupName, string profileName, string endpointName, string routeName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19603,9 +19603,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RoutesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RoutesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19662,7 +19662,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RoutesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RoutesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -19680,13 +19680,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Route.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Route.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -19744,9 +19744,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RoutesListByEndpoint(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRouteListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RoutesListByEndpoint(string resourceGroupName, string profileName, string endpointName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRouteListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19788,9 +19788,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RoutesListByEndpointViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRouteListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RoutesListByEndpointViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRouteListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19845,7 +19845,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RoutesListByEndpoint_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRouteListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RoutesListByEndpoint_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRouteListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -19863,13 +19863,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.RouteListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RouteListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -19930,9 +19930,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RoutesUpdate(string resourceGroupName, string profileName, string endpointName, string routeName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRouteUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RoutesUpdate(string resourceGroupName, string profileName, string endpointName, string routeName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRouteUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -19983,9 +19983,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RoutesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRouteUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RoutesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRouteUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20046,7 +20046,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RoutesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RoutesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRoute>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -20160,13 +20160,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Route.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Route.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -20196,7 +20196,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RoutesUpdate_Validate(string resourceGroupName, string profileName, string endpointName, string routeName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRouteUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task RoutesUpdate_Validate(string resourceGroupName, string profileName, string endpointName, string routeName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRouteUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -20228,9 +20228,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RuleSetsCreate(string resourceGroupName, string profileName, string ruleSetName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleSet>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RuleSetsCreate(string resourceGroupName, string profileName, string ruleSetName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleSet>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20272,9 +20272,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RuleSetsCreateViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleSet>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RuleSetsCreateViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleSet>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20329,7 +20329,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RuleSetsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleSet>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RuleSetsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleSet>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -20347,19 +20347,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.RuleSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RuleSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.Created:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.RuleSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RuleSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -20419,9 +20419,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RuleSetsDelete(string resourceGroupName, string profileName, string ruleSetName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RuleSetsDelete(string resourceGroupName, string profileName, string ruleSetName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20466,9 +20466,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RuleSetsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RuleSetsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20523,7 +20523,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RuleSetsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RuleSetsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -20650,7 +20650,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -20709,9 +20709,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RuleSetsGet(string resourceGroupName, string profileName, string ruleSetName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RuleSetsGet(string resourceGroupName, string profileName, string ruleSetName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20755,9 +20755,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RuleSetsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RuleSetsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20811,7 +20811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RuleSetsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RuleSetsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleSet>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -20829,13 +20829,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.RuleSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RuleSet.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -20890,9 +20890,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RuleSetsListByProfile(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RuleSetsListByProfile(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20932,9 +20932,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RuleSetsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RuleSetsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -20986,7 +20986,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RuleSetsListByProfile_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RuleSetsListByProfile_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleSetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -21004,13 +21004,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.RuleSetListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RuleSetListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -21066,9 +21066,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RuleSetsListResourceUsage(string resourceGroupName, string profileName, string ruleSetName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RuleSetsListResourceUsage(string resourceGroupName, string profileName, string ruleSetName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21112,9 +21112,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RuleSetsListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RuleSetsListResourceUsageViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21169,7 +21169,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RuleSetsListResourceUsage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RuleSetsListResourceUsage_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUsagesListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -21187,13 +21187,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UsagesListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UsagesListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -21251,9 +21251,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RulesCreate(string resourceGroupName, string profileName, string ruleSetName, string ruleName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RulesCreate(string resourceGroupName, string profileName, string ruleSetName, string ruleName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21301,9 +21301,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RulesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RulesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21364,7 +21364,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RulesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RulesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -21478,13 +21478,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Rule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Rule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -21514,7 +21514,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RulesCreate_Validate(string resourceGroupName, string profileName, string ruleSetName, string ruleName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task RulesCreate_Validate(string resourceGroupName, string profileName, string ruleSetName, string ruleName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -21547,9 +21547,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RulesDelete(string resourceGroupName, string profileName, string ruleSetName, string ruleName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RulesDelete(string resourceGroupName, string profileName, string ruleSetName, string ruleName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21593,9 +21593,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RulesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RulesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21653,7 +21653,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RulesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RulesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -21780,7 +21780,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -21839,9 +21839,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RulesGet(string resourceGroupName, string profileName, string ruleSetName, string ruleName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RulesGet(string resourceGroupName, string profileName, string ruleSetName, string ruleName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21884,9 +21884,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -21943,7 +21943,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RulesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RulesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -21961,13 +21961,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Rule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Rule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -22025,9 +22025,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RulesListByRuleSet(string resourceGroupName, string profileName, string ruleSetName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RulesListByRuleSet(string resourceGroupName, string profileName, string ruleSetName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22069,9 +22069,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RulesListByRuleSetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RulesListByRuleSetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22126,7 +22126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RulesListByRuleSet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RulesListByRuleSet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -22144,13 +22144,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.RuleListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.RuleListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -22208,9 +22208,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RulesUpdate(string resourceGroupName, string profileName, string ruleSetName, string ruleName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RulesUpdate(string resourceGroupName, string profileName, string ruleSetName, string ruleName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22258,9 +22258,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RulesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RulesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22321,7 +22321,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RulesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RulesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -22435,13 +22435,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Rule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Rule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -22471,7 +22471,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RulesUpdate_Validate(string resourceGroupName, string profileName, string ruleSetName, string ruleName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IRuleUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task RulesUpdate_Validate(string resourceGroupName, string profileName, string ruleSetName, string ruleName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IRuleUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -22503,9 +22503,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecretsCreate(string resourceGroupName, string profileName, string secretName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecret body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecret>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecretsCreate(string resourceGroupName, string profileName, string secretName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecret body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecret>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22551,9 +22551,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecretsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecret body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecret>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecretsCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecret body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecret>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22611,7 +22611,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SecretsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecret>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SecretsCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecret>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -22725,13 +22725,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Secret.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Secret.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -22760,7 +22760,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SecretsCreate_Validate(string resourceGroupName, string profileName, string secretName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecret body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SecretsCreate_Validate(string resourceGroupName, string profileName, string secretName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecret body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -22791,9 +22791,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecretsDelete(string resourceGroupName, string profileName, string secretName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecretsDelete(string resourceGroupName, string profileName, string secretName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22835,9 +22835,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecretsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecretsDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -22892,7 +22892,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SecretsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SecretsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -23019,7 +23019,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -23075,9 +23075,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecretsGet(string resourceGroupName, string profileName, string secretName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecret>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecretsGet(string resourceGroupName, string profileName, string secretName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecret>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23118,9 +23118,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecretsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecret>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecretsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecret>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23174,7 +23174,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SecretsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecret>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SecretsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecret>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -23192,13 +23192,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.Secret.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.Secret.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -23253,9 +23253,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecretsListByProfile(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecretListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecretsListByProfile(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecretListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23295,9 +23295,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecretsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecretListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecretsListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecretListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23349,7 +23349,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SecretsListByProfile_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecretListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SecretsListByProfile_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecretListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -23367,13 +23367,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SecretListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecretListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -23428,9 +23428,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecurityPoliciesCreate(string resourceGroupName, string profileName, string securityPolicyName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecurityPoliciesCreate(string resourceGroupName, string profileName, string securityPolicyName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23476,9 +23476,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecurityPoliciesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecurityPoliciesCreateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicy body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23536,7 +23536,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SecurityPoliciesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SecurityPoliciesCreate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -23650,13 +23650,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SecurityPolicy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -23685,7 +23685,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SecurityPoliciesCreate_Validate(string resourceGroupName, string profileName, string securityPolicyName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SecurityPoliciesCreate_Validate(string resourceGroupName, string profileName, string securityPolicyName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicy body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -23716,9 +23716,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecurityPoliciesDelete(string resourceGroupName, string profileName, string securityPolicyName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecurityPoliciesDelete(string resourceGroupName, string profileName, string securityPolicyName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23760,9 +23760,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecurityPoliciesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecurityPoliciesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -23817,7 +23817,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SecurityPoliciesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SecurityPoliciesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -23944,7 +23944,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -24000,9 +24000,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecurityPoliciesGet(string resourceGroupName, string profileName, string securityPolicyName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecurityPoliciesGet(string resourceGroupName, string profileName, string securityPolicyName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24043,9 +24043,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecurityPoliciesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecurityPoliciesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24099,7 +24099,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SecurityPoliciesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SecurityPoliciesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -24117,13 +24117,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SecurityPolicy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -24178,9 +24178,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecurityPoliciesListByProfile(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecurityPoliciesListByProfile(string resourceGroupName, string profileName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24220,9 +24220,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecurityPoliciesListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecurityPoliciesListByProfileViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24274,7 +24274,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SecurityPoliciesListByProfile_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SecurityPoliciesListByProfile_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicyListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -24292,13 +24292,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SecurityPolicyListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -24353,9 +24353,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecurityPoliciesPatch(string resourceGroupName, string profileName, string securityPolicyName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicyUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecurityPoliciesPatch(string resourceGroupName, string profileName, string securityPolicyName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicyUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24401,9 +24401,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SecurityPoliciesPatchViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicyUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SecurityPoliciesPatchViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicyUpdateParameters body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24461,7 +24461,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SecurityPoliciesPatch_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SecurityPoliciesPatch_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicy>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -24575,13 +24575,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SecurityPolicy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicy.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.AfdErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -24610,7 +24610,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SecurityPoliciesPatch_Validate(string resourceGroupName, string profileName, string securityPolicyName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicyUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SecurityPoliciesPatch_Validate(string resourceGroupName, string profileName, string securityPolicyName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicyUpdateParameters body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -24641,9 +24641,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ValidateProbe(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateProbeInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateProbeOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ValidateProbe(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateProbeInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateProbeOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24688,9 +24688,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ValidateProbeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateProbeInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateProbeOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ValidateProbeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateProbeInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateProbeOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2023-05-01";
+            var apiVersion = @"2024-02-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -24740,7 +24740,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ValidateProbe_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateProbeOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ValidateProbe_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateProbeOutput>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -24758,13 +24758,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ValidateProbeOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ValidateProbeOutput.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ErrorResponse.FromJson(Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -24789,7 +24789,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ValidateProbe_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateProbeInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ValidateProbe_Validate(string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateProbeInput body, Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {

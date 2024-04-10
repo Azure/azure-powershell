@@ -17,7 +17,7 @@ New-AzCdnUserManagedHttpsParametersObject -CertificateSourceParameterResourceGro
  -CertificateSourceParameterSecretName <String> -CertificateSourceParameterSubscriptionId <String>
  -CertificateSourceParameterVaultName <String> -CertificateSource <CertificateSource>
  -ProtocolType <ProtocolType> [-CertificateSourceParameterSecretVersion <String>]
- [-MinimumTlsVersion <MinimumTlsVersion>] [<CommonParameters>]
+ [-MinimumTlsVersion <MinimumTlsVersion>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -145,6 +145,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ProtocolType
 Defines the TLS extension protocol that is used for secure delivery.
 
@@ -167,7 +182,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UserManagedHttpsParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UserManagedHttpsParameters
 
 ## NOTES
 
