@@ -85,7 +85,7 @@ function Update-GeneratedSubModule {
     if (Test-Path $localModulesPath) {
         Remove-Item -Path $localModulesPath -Recurse -Force
     }
-    $fileToUpdate = @('generated', 'generate-info.json', "Az.$SubModuleName.psm1", "Az.$SubModuleName.format.ps1xml", 'exports', 'internal', 'test-module.ps1')
+    $fileToUpdate = @('generated', 'generate-info.json', "Az.$SubModuleName.psm1", "Az.$SubModuleName.format.ps1xml", 'exports', 'internal', 'test-module.ps1', 'check-dependencies.ps1')
     # Copy from src/ to generated/ 
     $fileToUpdate | Foreach-Object {
         $moveFrom = Join-Path $SourceDirectory $_
