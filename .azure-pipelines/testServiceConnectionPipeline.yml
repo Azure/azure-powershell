@@ -37,26 +37,17 @@ jobs:
         $baseUri = "$(system.TeamFoundationCollectionUri)"
 
         $serviceConnectionName = "$(serviceConnectionName)"
-        $token = "$(System.AccessToken)"
+        $token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InEtMjNmYWxldlpoaEQzaG05Q1Fia1A1TVF5VSIsImtpZCI6InEtMjNmYWxldlpoaEQzaG05Q1Fia1A1TVF5VSJ9.eyJhdWQiOiJodHRwczovL21hbmFnZW1lbnQuY29yZS53aW5kb3dzLm5ldC8iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNzEyNzcyMzI4LCJuYmYiOjE3MTI3NzIzMjgsImV4cCI6MTcxMjc3Njk0OCwiX2NsYWltX25hbWVzIjp7Imdyb3VwcyI6InNyYzEifSwiX2NsYWltX3NvdXJjZXMiOnsic3JjMSI6eyJlbmRwb2ludCI6Imh0dHBzOi8vZ3JhcGgud2luZG93cy5uZXQvNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3L3VzZXJzLzhkMDE1NzcwLTAzYWMtNGZjYi1iYTQ5LTEwNGM2NGU0MWQxNi9nZXRNZW1iZXJPYmplY3RzIn19LCJhY3IiOiIxIiwiYWlvIjoiQWNRQU8vOFdBQUFBS2hmcXpiVFJzMnJ4WGxrV00vNG0zQlZoTXJlWlBtclF4QVl3bGp2VjZBSi9Nd1Q4K3N5OHB1UGhBelVaSk4xWlRHNUpvNG11RmY1bTFhaVZwWUdXc3lieEQwUkp1SS9vNEY1V0w5V0pWTjcrbDE2UFN4NjZoUnVmbXk3dVVNbU9UU0taazJqa2N0Q2hJam1wNGpxZysyd3p0b2VsMXBHN2tWbGQrYTY0aVZ0cG1IcXFWeUEvdWo0azNOajlGNERadTltazJoem1IUnF1RHN1Q292VTRhajZ4QnF2a3ExcWRTTVJVenQ1dlB0RGtUdGpCN29kQ0VhR0tjajhvZ2VjQSIsImFtciI6WyJyc2EiLCJtZmEiXSwiYXBwaWQiOiIxOTUwYTI1OC0yMjdiLTRlMzEtYTljZi03MTc0OTU5NDVmYzIiLCJhcHBpZGFjciI6IjAiLCJjYXBvbGlkc19sYXRlYmluZCI6WyIyOTM5OWNmOS05YjZiLTQyMDUtYjViMy0xM2ExMzRlOWIyMzMiXSwiZGV2aWNlaWQiOiIxZjJiNjE1Yy00ZmIwLTQ4ZGEtODExNi1kYzZmZmFjMzI3ZDEiLCJmYW1pbHlfbmFtZSI6IkppbiIsImdpdmVuX25hbWUiOiJMZWkiLCJpZHR5cCI6InVzZXIiLCJpcGFkZHIiOiIxMTQuOTIuMTcuMTYiLCJuYW1lIjoiTGVpIEppbiIsIm9pZCI6IjhkMDE1NzcwLTAzYWMtNGZjYi1iYTQ5LTEwNGM2NGU0MWQxNiIsIm9ucHJlbV9zaWQiOiJTLTEtNS0yMS0yMTQ2NzczMDg1LTkwMzM2MzI4NS03MTkzNDQ3MDctMjUzOTY0MCIsInB1aWQiOiIxMDAzMjAwMDYyMEU3NEU1IiwicmgiOiIwLkFSb0F2NGo1Y3ZHR3IwR1JxeTE4MEJIYlIwWklmM2tBdXRkUHVrUGF3ZmoyTUJNYUFMRS4iLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJzdWIiOiJqZ29USkZ6R3hKZVpnNUlUd0NkdFFTT2JsaHhITWpKd2VwbTdURnNQdnNFIiwidGlkIjoiNzJmOTg4YmYtODZmMS00MWFmLTkxYWItMmQ3Y2QwMTFkYjQ3IiwidW5pcXVlX25hbWUiOiJsZWlqaW5AbWljcm9zb2Z0LmNvbSIsInVwbiI6ImxlaWppbkBtaWNyb3NvZnQuY29tIiwidXRpIjoiTjVpYlVnYmhPRVduS1NfNHlTb2RBQSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il0sInhtc19jYWUiOiIxIiwieG1zX2NjIjpbIkNQMSJdLCJ4bXNfZmlsdGVyX2luZGV4IjpbIjI2Il0sInhtc19yZCI6IjAuNDJMbFlCUmlsQUlBIiwieG1zX3NzbSI6IjEiLCJ4bXNfdGNkdCI6MTI4OTI0MTU0N30.VWBBtDEbSpE6qSEzDx1zaRJ-uqKR9GY1ZQK3WBcl1wHpBN-tB-h6ucixqBYTXfVKmlwIJaM3Qr2p1cASdliu3QrZVz80lB-Ld0ef55xCTssumm9QLyixJDQhtgQsgCArN3F1XI-x5WTdptTUILPnb4y2b50hizMwo272p4gtfcO03612HwV3O8G23ELosWtBAB54C0-Diy6fVlxdnTsCS-s1NKoe0sGVZZ15l3Rb3mRG0TBHaPzfOo-5jZey4ZBX-xtpkY9P_71ccRHxPqg-_GyGKilP8rCG8UQq3y_F9LWleFWxpfiaVblbTGpdaUC969EunZa-dQiEMmHIhPhtqQ"
         
-        $serviceConnectionUrl = "${baseUri}$projectId/_apis/serviceendpoint/endpoints?api-version=7.2-preview.4"
+        $serviceConnectionUrl = "${baseUri}$projectId/_apis/serviceendpoint/endpoints?endpointNames=ServiceConnectionDev&type=azurerm&includeFailed=true&includeDetails=true&api-version=7.1-preview.4"
         Write-Host "Invoke-RestMethod -Uri $serviceConnectionUrl -Method Get"
-        #$serviceConnectionDetail = Invoke-RestMethod -Uri $serviceConnectionUrl -Method Get -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
-        $response = Invoke-RestMethod -Uri "https://dev.azure.com/azclitools/b5336d23-77d8-49b8-9327-6c483cc524dd/_apis/serviceendpoint/endpoints?endpointNames=ServiceConnectionDev&type=azurerm&includeDetails=true&api-version=7.1-preview.4" -Method Get -Headers @{Authorization = "Bearer $token"}
-        Write-Host "Details of $serviceConnectionName"
-        $response.value
-        Write-Host "applicationId & tenantId"
-        $response.value.authorization.parameters.serviceprincipalid
-        $response.value.authorization.parameters.tenantid
+        Invoke-RestMethod -Uri $serviceConnectionUrl -Method Get -Headers @{Authorization = "Bearer $token"}
+        #Write-Host "Details of $serviceConnectionName"
+        #$response.value
+        #Write-Host "applicationId & tenantId"
+        #$response.value.authorization.parameters.serviceprincipalid
+        #$response.value.authorization.parameters.tenantid
 
-        $serviceConnectionId = "0d312308-6437-41a6-bc0d-270f72e1ae23"
-        $url = "${baseUri}$projectId/_apis/distributedtask/hubs/$hubName/plans/$planId/jobs/$jobId/oidctoken?serviceConnectionId=$serviceConnectionId&api-version=7.1-preview.1"
-        Write-Host "Invoke-RestMethod -Uri $url -Method Post"
-
-        $response = Invoke-RestMethod -Uri $url -Method Post -ContentType "application/json" -Headers @{Authorization = "Bearer $env:SYSTEM_ACCESSTOKEN"}
-        Write-Host $response
-        $federatedToken = $response.oidcToken
-        echo "##vso[task.setvariable variable=federatedToken]$federatedToken"
       errorActionPreference: stop
       debugPreference: 'Continue'
       pwsh: true
