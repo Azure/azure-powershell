@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzSelfHelpDiscoverySol
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope' {
+Describe 'Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope' -Tag 'LiveOnly'{
     It 'PostExpanded' {
         { 
             Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope -IssueSummary "Billing Issues"

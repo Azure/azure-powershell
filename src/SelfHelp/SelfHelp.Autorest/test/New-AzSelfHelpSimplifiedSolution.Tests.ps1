@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSelfHelpSimplifiedSolut
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzSelfHelpSimplifiedSolution' {
+Describe 'New-AzSelfHelpSimplifiedSolution' -Tag 'LiveOnly'{
     It 'Create' {
         { 
             $resourceName = RandomString -allChars $false -len 10

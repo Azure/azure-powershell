@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSelfHelpDiscoverySoluti
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzSelfHelpDiscoverySolution'{
+Describe 'Get-AzSelfHelpDiscoverySolution' -Tag 'LiveOnly'{
     It 'List' {
         { 
              Get-AzSelfHelpDiscoverySolution -Filter "ProblemClassificationId eq 'a5db90c3-f147-bce6-83b0-ab5e0aeca1f0'"

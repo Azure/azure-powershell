@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSelfHelpSolutionSelfHel
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzSelfHelpSolutionSelfHelp' {
+Describe 'Get-AzSelfHelpSolutionSelfHelp' -Tag 'LiveOnly'{
     It 'Get' {
         { 
             Get-AzSelfHelpSolutionSelfHelp -SolutionId "apollo-48996ff7-002f-47c1-85b2-df138843d5d5"

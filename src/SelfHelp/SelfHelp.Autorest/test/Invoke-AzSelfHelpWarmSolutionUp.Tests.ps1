@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzSelfHelpWarmSolution
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Invoke-AzSelfHelpWarmSolutionUp' {
+Describe 'Invoke-AzSelfHelpWarmSolutionUp' -Tag 'LiveOnly'{
     It 'WarmExpanded' {
         { 
             $resourceName = RandomString -allChars $false -len 10

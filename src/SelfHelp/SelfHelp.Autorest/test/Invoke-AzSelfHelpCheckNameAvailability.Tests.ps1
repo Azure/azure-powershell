@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzSelfHelpCheckNameAva
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Invoke-AzSelfHelpCheckNameAvailability' {
+Describe 'Invoke-AzSelfHelpCheckNameAvailability' -Tag 'LiveOnly'{
     It 'Post' {
         $resourceName = RandomString -allChars $true -len 10
         $scope = "/subscriptions/$($env.SubscriptionId)"
