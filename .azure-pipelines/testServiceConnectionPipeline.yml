@@ -1,0 +1,22 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+trigger: none
+pr: none
+
+jobs:
+- job: Job_1
+  timeoutInMinutes: 1380
+  displayName: Subs Cleanup
+  steps:
+  - task: AzurePowerShell@5
+    inputs:
+      azureSubscription: $(subscription)
+      ScriptType: 'InlineScript'
+      Inline: |
+        Write-Host "{env:EXCLUDERESOURCEGROUPS}"
+        Write-Host "All the environment variables"
+        Get-ChildItem env:* | sort-object name
+      errorActionPreference: stop
+      azurePowerShellVersion: 'LatestVersion'
+      pwsh: true
