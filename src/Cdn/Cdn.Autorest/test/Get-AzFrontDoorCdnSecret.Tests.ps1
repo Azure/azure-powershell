@@ -19,11 +19,11 @@ Describe 'Get-AzFrontDoorCdnSecret'  {
         $subId = $env.SubscriptionId
         Write-Host -ForegroundColor Green "Use SubscriptionId : $($subId)"
 
-        $secretName = "se-psName010"
+        $secretName = "kvsecret-test01"
         Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
         $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
-        -SecretSourceId "/subscriptions/$subId/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/secrets/testps"
+        -SecretSourceId "/subscriptions/$subId/resourceGroups/huaiyiz/providers/Microsoft.KeyVault/vaults/huaiyizkvtest/secrets/wildcard-huaiyiz-azfdtest-xyz"
         
         New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
     }
