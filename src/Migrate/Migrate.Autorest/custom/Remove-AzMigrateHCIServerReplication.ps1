@@ -121,7 +121,18 @@ function Remove-AzMigrateHCIServerReplication {
         $null = $PSBoundParameters.Add("VaultName", $vaultName)
         $null = $PSBoundParameters.Add("Name", $protectedItemName)
 
-        $protectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters -ErrorVariable notPresent -ErrorAction SilentlyContinue
+        for ($i = 0; $i -lt 3; $i++) {
+            $ProtectedItem = Az.Migrate.Internal\Get-AzMigrateProtectedItem @PSBoundParameters `
+                -ErrorVariable notPresent `
+                -ErrorAction SilentlyContinue
+
+            if ($null -ne $ProtectedItem) {
+                break
+            }
+
+            Start-Sleep -Seconds 30
+        }
+
         if ($null -eq $ProtectedItem)
         {
             throw "Replication item is not found with Id '$TargetObjectID'."
