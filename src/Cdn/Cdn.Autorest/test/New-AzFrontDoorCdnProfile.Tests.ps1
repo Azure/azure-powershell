@@ -30,7 +30,7 @@ Describe 'New-AzFrontDoorCdnProfile'  {
         $frontDoorCdnProfile.Location | Should -Be "Global"
     }
 
-    It 'UpdateExpanded'  -skip {
+    It 'CreateExpanded' {
         $frontDoorCdnProfileName = 'fdp-pstest011'
         Write-Host -ForegroundColor Green "New AzFrontDoorCdnProfile: $($frontDoorCdnProfileName), with using profile logScrubbing"
 
@@ -38,7 +38,7 @@ Describe 'New-AzFrontDoorCdnProfile'  {
         $rule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable QueryStringArgNames -State Enabled
         $rules = New-AzFrontDoorCdnProfileLogScrubbingObject -ScrubbingRule @($rule1, $rule2) -State Enabled
 
-        $frontDoorCdnProfile = New-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -LogScrubbingRule $rules.ScrubbingRule -LogScrubbingState Enabled -Location Global
+        $frontDoorCdnProfile = New-AzFrontDoorCdnProfile -Name $frontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -LogScrubbingRule $rules.ScrubbingRule -LogScrubbingState Enabled -Location Global  -SkuName $profileSku
 
         $frontDoorCdnProfile.LogScrubbingState | Should -Be "Enabled"
         $frontDoorCdnProfile.LogScrubbingRule.Count | Should -Be 2

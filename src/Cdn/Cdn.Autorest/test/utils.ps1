@@ -141,7 +141,7 @@ function setupEnv() {
     $env.Add("FrontDoorEndpointName", $frontDoorEndpointName)
     Write-Host -ForegroundColor Green "Standard_AzureFrontDoor SKU resources have been added to the environment."
 
-    # Create Classic Afd resources use for testing classic AFD migration scenarios
+    # Create Classic Afd resources use to test classic AFD migrated to AFDX resources scenarios
     $classicFDName01 = 'fdp-' + (RandomString -allChars $false -len 6);
     Write-Host -ForegroundColor Green "Use frontDoorName : $($classicFDName01)"
 
