@@ -1,0 +1,25 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+trigger: none
+pr: none
+
+jobs:
+- job: Job_1
+  timeoutInMinutes: 1380
+  displayName: Print FederatedToken
+  steps:
+  - task: AzurePowerShell@5
+    inputs:
+      azureSubscription: $(subscription)
+      ScriptType: 'InlineScript'
+      Inline: |
+        Write-Host "EXCLUDERESOURCEGROUPS ${env:EXCLUDERESOURCEGROUPS}"
+        Write-Host "----------All the environment variables----------"
+        #Get-ChildItem env:* | sort-object name
+        $contextsetting = Get-AzContextAutosaveSetting
+        $contextFile = Join-Path -Path $contextsetting.ContextDirectory -ChildPath "AzureRmContext.json"
+        Get-Content $contextFile
+      errorActionPreference: stop
+      azurePowerShellVersion: 'LatestVersion'
+      pwsh: true
