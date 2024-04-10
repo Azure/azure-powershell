@@ -273,6 +273,16 @@ param(
   if ($Tag){
     $PSBoundParameters.Add("Tag", $Tag)
   }
-  return Az.StackHCIVM.internal\New-AzStackHCIVMNetworkInterface @PSBoundParameters
-
+  
+  try{
+    Az.StackHCIVM.internal\New-AzStackHCIVMNetworkInterface -ErrorAction Stop @PSBoundParameters 
+  } catch {
+    $e = $_
+    if ($e.FullyQualifiedErrorId -match "MissingAzureKubernetesMapping" ){
+        Write-Error "An older version of the Arc VM cluster extension is installed on your cluster. Please downgrade the Az.StackHCIVm version to 1.0.1 to proceed." -ErrorAction Stop
+    } else {
+        Write-Error $e.Exception.Message -ErrorAction Stop
+    }
+  }
+  
 }
