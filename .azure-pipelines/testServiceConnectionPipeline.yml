@@ -8,18 +8,44 @@ jobs:
 - job: Job_1
   timeoutInMinutes: 1380
   displayName: Print FederatedToken
+  variables:
+  - name: federatedToken
+    value: '' 
   steps:
-  - task: AzurePowerShell@5
+  - task: PowerShell@2
     inputs:
+      targetType: 'Inline'
       azureSubscription: $(subscription)
-      ScriptType: 'InlineScript'
-      Inline: |
-        Write-Host "EXCLUDERESOURCEGROUPS ${env:EXCLUDERESOURCEGROUPS}"
-        Write-Host "----------All the environment variables----------"
-        #Get-ChildItem env:* | sort-object name
-        $contextsetting = Get-AzContextAutosaveSetting
-        $contextFile = Join-Path -Path $contextsetting.ContextDirectory -ChildPath "AzureRmContext.json"
-        Get-Content $contextFile
+      script: |
+        Write-Host "EXCLUDERESOURCEGROUPS ${$env:EXCLUDERESOURCEGROUPS}"
+
+        #$contextsetting = Get-AzContextAutosaveSetting
+        #$contextFile = Join-Path -Path $contextsetting.ContextDirectory -ChildPath "AzureRmContext.json"
+        #Get-Content $contextFile
+
+        Write-Host $(system.CollectionUri)
+        Write-Host $(system.TeamProjectId)
+        Write-Host $(system.HostType)
+        Write-Host $(system.PlanId)
+        Write-Host $(system.JobId)
+        Write-Host $(system.TimelineId)
+        Write-Host $(system.TaskInstanceId)
+        Write-Host $(system.AccessToken)
+
+        $projectId = "$(system.TeamProjectId)"
+        $hubName = "$(system.HostType)"
+        $planId = "$(system.PlanId)"
+        $jobId = "$(system.JobId)"
+
+        $baseUri = "$(system.TeamFoundationCollectionUri)"
+
+        $serviceConnectionId = "0d312308-6437-41a6-bc0d-270f72e1ae23"
+        $url = "$baseUri/$projectId/_apis/distributedtask/hubs/$hubName/plans/$planId/jobs/$jobId/oidctoken?serviceConnectionId=$serviceConnectionId&api-version=7.1-preview.1"
+        Write-Host "url = $url"
+
+        $response = Invoke-RestMethod -Uri $url -Method Post -ContentType "application/json"
+        Write-Host $response
+        #echo "##vso[task.setvariable variable=federatedToken]$reponse"
       errorActionPreference: stop
-      azurePowerShellVersion: 'LatestVersion'
+      debugPreference: 'Continue'
       pwsh: true
