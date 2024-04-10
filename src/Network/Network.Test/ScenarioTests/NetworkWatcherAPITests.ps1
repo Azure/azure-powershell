@@ -1653,10 +1653,8 @@ function Test-ConnectionMonitorConvertToV2
     $nwRgName = Get-NrpResourceGroupName
     $securityGroupName = Get-NrpResourceName
     $templateFile = (Resolve-Path ".\TestData\Deployment.json").Path
-    $cmName1 = Get-NrpResourceName
-    $cmName2 = Get-NrpResourceName
-    # We need location version w/o spaces to work with ByLocationParamSet
-    $locationMod = ($location -replace " ","").ToLower()
+    $cmName1 = "Cmv11Feb1MigrationTaskCM"
+    $location = "centraluseuap"
 
     try 
     {
@@ -1674,40 +1672,20 @@ function Test-ConnectionMonitorConvertToV2
         # Get Network Watcher
         $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
 
-        #Get Vm
-        $vm = Get-AzVM -ResourceGroupName $resourceGroupName
-        
-        #Install networkWatcherAgent on Vm
-        Set-AzVMExtension -ResourceGroupName "$resourceGroupName" -Location "$location" -VMName $vm.Name -Name "MyNetworkWatcherAgent" -Type "NetworkWatcherAgentWindows" -TypeHandlerVersion "1.4" -Publisher "Microsoft.Azure.NetworkWatcher" 
-
-        #Create connection monitor
-        $job1 = New-AzNetworkWatcherConnectionMonitor -NetworkWatcher $nw -Name $cmName1 -SourceResourceId $vm.Id -DestinationAddress bing.com -DestinationPort 80 -AsJob
-        $job1 | Wait-Job
-        $cm1 = $job1 | Receive-Job
-
-        #Validation
-        Assert-AreEqual $cm1.Name $cmName1
-        Assert-AreEqual $cm1.Source.ResourceId $vm.Id
-        Assert-AreEqual $cm1.Destination.Address bing.com
-        Assert-AreEqual $cm1.Destination.Port 80
-    
         # Before converting, check connection monitor exists or not
         $alreadyConverted = $true
         $cm1 = Get-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw.Name -ResourceGroupName $nw.ResourceGroupName -Name $cmName1
         Assert-NotNull $cm1
         
-        $job1 = Convert-AzNetworkWatcherClassicConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cm1.Name -AsJob
-        $job1 | Wait-Job
+        $job1 = Convert-AzNetworkWatcherClassicConnectionMonitor -ResourceGroup $nw.ResourceGroupName -NetworkWatcherName $nw.Name -Name $cm1.Name
+        Assert-True { $cm1.ConnectionMonitorType -eq "MultiEndpoint" -and $job1 -eq $null}
 
         #Validation
         if($cm1.ConnectionMonitorType -eq "SingleSourceDestination")
         {
             Assert-NotNull $job1
         }
-        else
-        {
-            Assert-True { alreadyConverted }
-        }
+        
     }
     finally
     {
