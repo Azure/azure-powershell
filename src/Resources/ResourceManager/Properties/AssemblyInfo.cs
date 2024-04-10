@@ -25,8 +25,8 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]
 [assembly: Guid("e8f34267-c461-4eae-b156-5f3528553d10")]
-[assembly: AssemblyVersion("6.15.1")]
-[assembly: AssemblyFileVersion("6.15.1")]
+[assembly: AssemblyVersion("6.16.1")]
+[assembly: AssemblyFileVersion("6.16.1")]
 #if !SIGN
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.Resources.Test")]
 [assembly: InternalsVisibleTo("Microsoft.Azure.PowerShell.Cmdlets.MachineLearning.Test")]

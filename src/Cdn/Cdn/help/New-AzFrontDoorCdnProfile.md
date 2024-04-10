@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.cdn/new-azfrontdoorcdnprofile
 schema: 2.0.0
@@ -13,10 +13,11 @@ Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profi
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnProfile -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-OriginResponseTimeoutSecond <Int32>] [-SkuName <SkuName>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzFrontDoorCdnProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-OriginResponseTimeoutSecond <Int32>] [-SkuName <SkuName>] [-Tag <Hashtable>]
+ [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -264,7 +265,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

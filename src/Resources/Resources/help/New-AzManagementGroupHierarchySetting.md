@@ -15,14 +15,15 @@ Creates Hierarchy Settings under the current tenant
 ### GroupOperations (Default)
 ```
 New-AzManagementGroupHierarchySetting [-GroupName] <String> [-Authorization <Boolean>]
- [-DefaultManagementGroup <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DefaultManagementGroup <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ParentGroupObject
 ```
 New-AzManagementGroupHierarchySetting [-GroupName] <String> [-Authorization <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

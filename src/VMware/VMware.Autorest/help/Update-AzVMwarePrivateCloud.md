@@ -129,7 +129,6 @@ Accept wildcard characters: False
 
 ### -IdentitySource
 vCenter Single Sign On Identity Sources
-To construct, see NOTES section for IDENTITYSOURCE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IIdentitySource[]
@@ -162,7 +161,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity

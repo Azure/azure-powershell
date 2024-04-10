@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnDeliveryRuleUrlFileNameConditionObject
 schema: 2.0.0
@@ -13,7 +13,7 @@ Create an in-memory object for DeliveryRuleUrlFileNameCondition.
 ## SYNTAX
 
 ```
-New-AzCdnDeliveryRuleUrlFileNameConditionObject -Name <MatchVariable> -ParameterOperator <UrlFileNameOperator>
+New-AzCdnDeliveryRuleUrlFileNameConditionObject -ParameterOperator <UrlFileNameOperator> -Name <MatchVariable>
  [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>]
  [<CommonParameters>]
 ```
@@ -124,7 +124,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

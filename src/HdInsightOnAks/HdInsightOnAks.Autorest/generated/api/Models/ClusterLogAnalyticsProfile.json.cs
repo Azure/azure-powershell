@@ -65,9 +65,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_applicationLog = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("applicationLogs"), out var __jsonApplicationLogs) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLogAnalyticsApplicationLogs.FromJson(__jsonApplicationLogs) : ApplicationLog;}
-            {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool)__jsonEnabled : Enabled;}
-            {_metricsEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("metricsEnabled"), out var __jsonMetricsEnabled) ? (bool?)__jsonMetricsEnabled : MetricsEnabled;}
+            {_applicationLog = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonObject>("applicationLogs"), out var __jsonApplicationLogs) ? Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterLogAnalyticsApplicationLogs.FromJson(__jsonApplicationLogs) : _applicationLog;}
+            {_enabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("enabled"), out var __jsonEnabled) ? (bool)__jsonEnabled : _enabled;}
+            {_metricsEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonBoolean>("metricsEnabled"), out var __jsonMetricsEnabled) ? (bool?)__jsonMetricsEnabled : _metricsEnabled;}
             AfterFromJson(json);
         }
 

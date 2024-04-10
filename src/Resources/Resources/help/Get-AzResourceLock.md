@@ -41,7 +41,8 @@ Get-AzResourceLock [-LockName <String>] [-AtScope] [-ApiVersion <String>] [-Pre]
 ### BySubscriptionLevel
 ```
 Get-AzResourceLock [-LockName <String>] [-AtScope] -ResourceName <String> -ResourceType <String>
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByLockId
@@ -247,5 +248,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzResourceLock](./Remove-AzResourceLock.md)
 
 [Set-AzResourceLock](./Set-AzResourceLock.md)
-
-

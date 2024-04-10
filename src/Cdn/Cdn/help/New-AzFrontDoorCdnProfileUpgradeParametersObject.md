@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileUpgradeParametersObject
 schema: 2.0.0
@@ -25,7 +25,7 @@ Create an in-memory object for ProfileUpgradeParameters.
 ### Example 1: Create an in-memory object for ProfileUpgradeParameters.
 ```powershell
 $waf1 = New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName policyName -ChangeToWafPolicyId toWafPolicyId
-New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf1  
+New-AzFrontDoorCdnProfileUpgradeParametersObject -WafMappingList $waf1
 ```
 
 ```output
@@ -87,16 +87,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`WAFMAPPINGLIST <IProfileChangeSkuWafMapping[]>`: Web Application Firewall (WAF) and security policy mapping for the profile upgrade.
-  - `SecurityPolicyName <String>`: The security policy name.
-  - `[ChangeToWafPolicyId <String>]`: Resource ID.
-
 ## RELATED LINKS
-

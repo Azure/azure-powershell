@@ -32,8 +32,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// 2. TierAfter: Tier all recovery points after a fixed period, as specified
         /// in duration + durationType below.
         /// 3. DoNotTier: Do not tier any recovery points
-        /// Possible values include: 'Invalid', 'TierRecommended', 'TierAfter',
-        /// 'DoNotTier'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;TierRecommended&#39;, &#39;TierAfter&#39;,
+        /// &#39;DoNotTier&#39;</param>
 
         /// <param name="duration">Number of days/weeks/months/years to retain backups in current tier before
         /// tiering.
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="durationType">Retention duration type: days/weeks/months/years
         /// Used only if TieringMode is set to TierAfter
-        /// Possible values include: 'Invalid', 'Days', 'Weeks', 'Months', 'Years'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Days&#39;, &#39;Weeks&#39;, &#39;Months&#39;, &#39;Years&#39;</param>
         public TieringPolicy(string tieringMode = default(string), int? duration = default(int?), string durationType = default(string))
 
         {

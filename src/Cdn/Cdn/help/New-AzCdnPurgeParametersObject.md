@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnPurgeParametersObject
 schema: 2.0.0
@@ -13,7 +13,8 @@ Create an in-memory object for PurgeParameters.
 ## SYNTAX
 
 ```
-New-AzCdnPurgeParametersObject -ContentPath <String[]> [<CommonParameters>]
+New-AzCdnPurgeParametersObject -ContentPath <String[]>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +65,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

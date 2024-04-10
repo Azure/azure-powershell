@@ -15,26 +15,29 @@ Get All discovered servers in a migrate project.
 ### List (Default)
 ```
 Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-DisplayName <String>]
- [-SourceMachineType <String>] [-SubscriptionId <String[]>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SourceMachineType <String>] [-SubscriptionId <String[]>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### ListInSite
 ```
 Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-DisplayName <String>]
- [-SourceMachineType <String>] [-SubscriptionId <String[]>] -ApplianceName <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SourceMachineType <String>] [-SubscriptionId <String[]>] -ApplianceName <String>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-SourceMachineType <String>]
- [-SubscriptionId <String[]>] -Name <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String[]>] -Name <String> [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### GetInSite
 ```
 Get-AzMigrateDiscoveredServer -ProjectName <String> -ResourceGroupName <String> [-SourceMachineType <String>]
- [-SubscriptionId <String[]>] -Name <String> -ApplianceName <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String[]>] -Name <String> -ApplianceName <String>
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +45,7 @@ Get Azure migrate server commandlet fetches all servers in a migrate project.
 
 ## EXAMPLES
 
-### Example 1: List
+### Example 1: List VMware machines
 ```powershell
 Get-AzMigrateDiscoveredServer -SubscriptionId xxx-xxx-xxx -ResourceGroupName julytest -ProjectName julytest
 ```
@@ -64,7 +67,7 @@ idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029cc18-ef
 
 Get All servers in a migrate project.
 
-### Example 2: Get
+### Example 2: Get VMware machine
 ```powershell
 Get-AzMigrateDiscoveredServer -Name idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029e62c-31d2-a6c3-5316-aa39f47c49fc -SubscriptionId xxx-xxx-xxx -ResourceGroupName julytest -ProjectName julytest
 ```
@@ -78,7 +81,7 @@ idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029e62c-31
 Get a server in a migrate project by name.
 Name is a unique paramenter for a server.
 
-### Example 3: List in an appliance
+### Example 3: List VMware machines in an appliance
 ```powershell
 Get-AzMigrateDiscoveredServer  -ApplianceName BBVMwareAVS -SubscriptionId xxx-xxx-xxx -ResourceGroupName julytest -ProjectName julytest
 ```
@@ -100,7 +103,7 @@ idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029cc18-ef
 
 List all servers for an appliance in a project.
 
-### Example 4: Get in an appliance
+### Example 4: Get VMware machine in an appliance
 ```powershell
 Get-AzMigrateDiscoveredServer -Name idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029e62c-31d2-a6c3-5316-aa39f47c49fc -ApplianceName BBVMwareAVS -SubscriptionId xxx-xxx-xxx -ResourceGroupName julytest -ProjectName julytest
 ```
@@ -114,7 +117,7 @@ idclab-a360-fareast-corp-micros-86617dcf-effe-59ad-8c3a-cdd3ea7300d3_5029e62c-31
 Get a server for an appliance in a project.
 Name is a unique paramenter for a server.
 
-### Example 5: List and filter by display name
+### Example 5: List and filter VMware machines by display name
 ```powershell
 Get-AzMigrateDiscoveredServer  -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -ProjectName BugBashAVSVMware -DisplayName Contoso | Format-Table DisplayName,Name,Type
 ```
@@ -133,7 +136,7 @@ ContosoAppSrv1                10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_5
 
 List servers in a migrate project and filter responses with display name.
 
-### Example 6: List in an appliance and filter by display name
+### Example 6: List VMware machines in an appliance and filter by display name
 ```powershell
 Get-AzMigrateDiscoveredServer  -SubscriptionId xxx-xxx-xxx -ResourceGroupName BugBashAVSVMware -ProjectName BugBashAVSVMware -ApplianceName BBVMwareAVS -DisplayName Contoso | Format-Table DisplayName,Name,Type
 ```
@@ -152,6 +155,23 @@ Contoso-DataTier3             10-150-8-52-b090bef3-b733-5e34-bc8f-eb6f2701432a_5
 ```
 
 List servers for an appliance in a migrate project and filter responses with display name.
+
+### Example 7: List HyperV machines
+```powershell
+Get-AzMigrateDiscoveredServer -SubscriptionId xxx-xxx-xxx -ResourceGroupName "test-rg" -ProjectName "testproj" -SourceMachineType "HyperV" | Format-Table DisplayName,Name,Type
+```
+
+```output
+DisplayName     Name                                    Type
+-----------     ----                                    ----
+testvm1         291b6c67-8793-4e21-887e-1e6c3bd00a60    Microsoft.OffAzure/HyperVSites/machines
+testvm2         0fbd6ccb-7133-4e72-b18e-5ec98c9c628f    Microsoft.OffAzure/HyperVSites/machines
+testvm3         e6390dfa-6125-431c-871d-f407bdecb571    Microsoft.OffAzure/HyperVSites/machines
+testvm4         af83b64b-2314-48e2-8d0f-fd44ab5142ba    Microsoft.OffAzure/HyperVSites/machines
+```
+
+Get All HyperV servers in a migrate project.
+Similarly, specify "HyperV" for -SourceMachineType in all the above examples can retrieve HyperV machine(s) in different ways.
 
 ## PARAMETERS
 
@@ -172,7 +192,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-Specifies the VMware machine display name.
+Specifies the source machine display name.
 
 ```yaml
 Type: System.String
@@ -187,7 +207,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Specifies the VMware machine name.
+Specifies the source machine name.
 This is an internal Name.
 For users, use display name.
 
@@ -302,10 +322,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHyperVMachine
+
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

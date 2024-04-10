@@ -22,7 +22,8 @@ Get-AzFederatedIdentityCredential -IdentityName <String> -ResourceGroupName <Str
 ### Get
 ```
 Get-AzFederatedIdentityCredential -IdentityName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -36,22 +37,47 @@ Gets the federated identity credential.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List federated identity credentials under a user assigned identity
+```powershell
 Get-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01
 ```
 
-### EXAMPLE 2
+```output
+Name       Issuer                               Subject                               Audience
+----       ------                               -------                               --------
+fic-pwsh01 https://kubernetes-oauth.azure.com   system:serviceaccount:ns:svcaccount   {api://AzureADTokenExchange}
+fic-pwsh02 https://kubernetes-oauth-2.azure.com system:serviceaccount-2:ns:svcaccount {api://AzureADTokenExchange}
 ```
+
+This command lists federated identity credentials under a user assigned identity.
+
+### Example 2: Get a federated identity credential
+```powershell
 Get-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 -Name fic-pwsh01
 ```
 
-### EXAMPLE 3
+```output
+Name       Issuer                             Subject                             Audience
+----       ------                             -------                             --------
+fic-pwsh01 https://kubernetes-oauth.azure.com system:serviceaccount:ns:svcaccount {api://AzureADTokenExchange}
 ```
+
+This command gets a federated identity credential by name.
+
+### Example 3: Get a federated identity credential by pipeline
+```powershell
 New-AzFederatedIdentityCredential -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 `
     -Name fic-pwsh03 -Issuer "https://kubernetes-oauth-3.azure.com" -Subject "system:serviceaccount-3:ns:svcaccount" `
         | Get-AzFederatedIdentityCredential
 ```
+
+```output
+Name       Issuer                               Subject                               Audience
+----       ------                               -------                               --------
+fic-pwsh03 https://kubernetes-oauth-3.azure.com system:serviceaccount-3:ns:svcaccount {api://AzureADTokenExchange}
+```
+
+This command creates and gets a federated identity credential by pipeline.
 
 ## PARAMETERS
 
@@ -60,7 +86,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -75,7 +101,7 @@ Accept wildcard characters: False
 The name of the identity resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get
 Aliases:
 
@@ -91,7 +117,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: IManagedServiceIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -106,7 +132,7 @@ Accept wildcard characters: False
 The name of the federated identity credential resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: Get
 Aliases:
 
@@ -122,7 +148,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List, Get
 Aliases:
 
@@ -138,7 +164,7 @@ A skip token is used to continue retrieving items after an operation returns a p
 If a previous response contains a nextLink element, the value of the nextLink element will include a skipToken parameter that specifies a starting point to use for subsequent calls.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: List
 Aliases:
 
@@ -153,13 +179,13 @@ Accept wildcard characters: False
 The Id of the Subscription to which the identity belongs.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: List, Get
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -168,13 +194,13 @@ Accept wildcard characters: False
 Number of records to return.
 
 ```yaml
-Type: Int32
+Type: System.Int32
 Parameter Sets: List
 Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -185,25 +211,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.IManagedServiceIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20230131.IFederatedIdentityCredential
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
 
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
+ALIASES
 
-INPUTOBJECT \<IManagedServiceIdentity\>: Identity Parameter
-  \[FederatedIdentityCredentialResourceName \<String\>\]: The name of the federated identity credential resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the Resource Group to which the identity belongs.
-  \[ResourceName \<String\>\]: The name of the identity resource.
-  \[Scope \<String\>\]: The resource provider scope of the resource.
-Parent resource being extended by Managed Identities.
-  \[SubscriptionId \<String\>\]: The Id of the Subscription to which the identity belongs.
+Get-AzFederatedIdentityCredentials
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azfederatedidentitycredential](https://learn.microsoft.com/powershell/module/az.managedserviceidentity/get-azfederatedidentitycredential)
-

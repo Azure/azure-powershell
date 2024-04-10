@@ -842,6 +842,7 @@ configuration:
             mentionees:
             - ctstone
             - anrothMSFT
+            - yungshinlintw
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1545,7 +1546,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - arindamc
+            - edwinc
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1762,7 +1763,8 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - alec-baird，costinhagiu
+            - alec-baird
+            - costinhagiu
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -1963,7 +1965,6 @@ configuration:
         - mentionUsers:
             mentionees:
             - aim-for-better
-            - idear1203
             - deshriva
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
@@ -1982,6 +1983,24 @@ configuration:
             mentionees:
             - romahamu
             - omzevall
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: ImageBuilder
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: ImageBuilder
+        then:
+        - mentionUsers:
+            mentionees:
+            - adana-popescu
+            - KalpeshChavan12
+            - ralucaminea
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -2214,6 +2233,24 @@ configuration:
             mentionees:
             - paulshealy1
             - seanyao1
+            replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
+            assignMentionees: False
+      - if:
+        - or:
+          - labelAdded:
+              label: Service Attention
+          - labelAdded:
+              label: Maintenance
+        - hasLabel:
+            label: Service Attention
+        - hasLabel:
+            label: Maintenance
+        then:
+        - mentionUsers:
+            mentionees:
+            - adana-popescu
+            - KalpeshChavan12
+            - ralucaminea
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:
@@ -3811,7 +3848,7 @@ configuration:
         then:
         - mentionUsers:
             mentionees:
-            - klaaslanghout
+            - bberera
             replyTemplate: Thanks for the feedback! We are routing this to the appropriate team for follow-up. cc ${mentionees}.
             assignMentionees: False
       - if:

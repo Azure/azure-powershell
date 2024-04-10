@@ -14,7 +14,8 @@ Create a SSH Public Key resource.
 
 ```
 New-AzSshKey -ResourceGroupName <String> -Name <String> [-PublicKey <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

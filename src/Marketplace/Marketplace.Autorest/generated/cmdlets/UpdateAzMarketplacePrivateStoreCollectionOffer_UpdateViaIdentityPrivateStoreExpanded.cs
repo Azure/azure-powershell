@@ -413,7 +413,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
                         this.PrivateStoreInputObject.Id += $"/collections/{(global::System.Uri.EscapeDataString(this.CollectionId.ToString()))}/offers/{(global::System.Uri.EscapeDataString(this.OfferId.ToString()))}";
                         _payloadBody = await this.Client.PrivateStoreCollectionOfferGetViaIdentityWithResult(PrivateStoreInputObject.Id, this, Pipeline);
                         this.Update_payloadBody();
-                        await this.Client.PrivateStoreCollectionOfferCreateOrUpdateViaIdentity(PrivateStoreInputObject.Id, _payloadBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.PrivateStoreCollectionOfferCreateOrUpdateViaIdentity(PrivateStoreInputObject.Id, _payloadBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -424,7 +424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Cmdlets
                         }
                         _payloadBody = await this.Client.PrivateStoreCollectionOfferGetWithResult(PrivateStoreInputObject.PrivateStoreId ?? null, CollectionId, OfferId, this, Pipeline);
                         this.Update_payloadBody();
-                        await this.Client.PrivateStoreCollectionOfferCreateOrUpdate(PrivateStoreInputObject.PrivateStoreId ?? null, CollectionId, OfferId, _payloadBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.PrivateStoreCollectionOfferCreateOrUpdate(PrivateStoreInputObject.PrivateStoreId ?? null, CollectionId, OfferId, _payloadBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

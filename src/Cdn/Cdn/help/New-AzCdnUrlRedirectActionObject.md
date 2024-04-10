@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnUrlRedirectActionObject
 schema: 2.0.0
@@ -13,7 +13,7 @@ Create an in-memory object for UrlRedirectAction.
 ## SYNTAX
 
 ```
-New-AzCdnUrlRedirectActionObject -Name <DeliveryRuleAction> -ParameterRedirectType <RedirectType>
+New-AzCdnUrlRedirectActionObject -ParameterRedirectType <RedirectType> -Name <DeliveryRuleAction>
  [-ParameterCustomFragment <String>] [-ParameterCustomHostname <String>] [-ParameterCustomPath <String>]
  [-ParameterCustomQueryString <String>] [-ParameterDestinationProtocol <DestinationProtocol>]
  [<CommonParameters>]
@@ -164,7 +164,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

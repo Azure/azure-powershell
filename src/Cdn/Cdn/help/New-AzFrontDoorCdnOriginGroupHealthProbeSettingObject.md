@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnOriginGroupHealthProbeSettingObject
 schema: 2.0.0
@@ -14,7 +14,8 @@ Create an in-memory object for HealthProbeParameters.
 
 ```
 New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject [-ProbeIntervalInSecond <Int32>] [-ProbePath <String>]
- [-ProbeProtocol <ProbeProtocol>] [-ProbeRequestType <HealthProbeRequestType>] [<CommonParameters>]
+ [-ProbeProtocol <ProbeProtocol>] [-ProbeRequestType <HealthProbeRequestType>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,7 +109,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

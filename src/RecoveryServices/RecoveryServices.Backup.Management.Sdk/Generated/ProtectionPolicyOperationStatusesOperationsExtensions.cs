@@ -13,9 +13,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class ProtectionPolicyOperationStatusesOperationsExtensions
     {
         /// <summary>
-        /// Provides the status of the asynchronous operations like backup, restore. The status can be in progress, completed
-        /// or failed. You can refer to the Operation Status enum for all the possible states of an operation. Some operations
-        /// create jobs. This method returns the list of jobs associated with operation.
+        /// Provides the status of the asynchronous operations like backup, restore.
+        /// The status can be in progress, completed
+        /// or failed. You can refer to the Operation Status enum for all the possible
+        /// states of an operation. Some operations
+        /// create jobs. This method returns the list of jobs associated with
+        /// operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -24,13 +27,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='policyName'>
         /// Backup policy name whose operation&#39;s status needs to be fetched.
         /// </param>
         /// <param name='operationId'>
-        /// Operation ID which represents an operation whose status needs to be fetched.
+        /// Operation ID which represents an operation whose status needs to be
+        /// fetched.
         /// </param>
         public static OperationStatus Get(this IProtectionPolicyOperationStatusesOperations operations, string vaultName, string resourceGroupName, string policyName, string operationId)
         {
@@ -38,9 +43,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Provides the status of the asynchronous operations like backup, restore. The status can be in progress, completed
-        /// or failed. You can refer to the Operation Status enum for all the possible states of an operation. Some operations
-        /// create jobs. This method returns the list of jobs associated with operation.
+        /// Provides the status of the asynchronous operations like backup, restore.
+        /// The status can be in progress, completed
+        /// or failed. You can refer to the Operation Status enum for all the possible
+        /// states of an operation. Some operations
+        /// create jobs. This method returns the list of jobs associated with
+        /// operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -49,13 +57,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='policyName'>
         /// Backup policy name whose operation&#39;s status needs to be fetched.
         /// </param>
         /// <param name='operationId'>
-        /// Operation ID which represents an operation whose status needs to be fetched.
+        /// Operation ID which represents an operation whose status needs to be
+        /// fetched.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

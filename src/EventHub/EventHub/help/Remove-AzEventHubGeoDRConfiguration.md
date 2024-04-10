@@ -15,7 +15,8 @@ Deletes an Alias(Disaster Recovery configuration)
 ### Delete (Default)
 ```
 Remove-AzEventHubGeoDRConfiguration -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity

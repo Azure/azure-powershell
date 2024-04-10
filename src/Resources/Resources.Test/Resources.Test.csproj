@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <PsModuleName>Resources</PsModuleName>
+    <PsModuleName>Resources</PsModuleName>   
   </PropertyGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.Test.props" />
@@ -27,7 +27,7 @@
     <ProjectReference Include="..\Resources\Resources.csproj" />
     <ProjectReference Include="..\..\ManagedServiceIdentity\ManagedServiceIdentity\ManagedServiceIdentity.csproj" />
     <ProjectReference Include="..\..\ManagedServiceIdentity\ManagedServiceIdentity.Autorest\Az.ManagedServiceIdentity.csproj" />
-	<ProjectReference Include="..\Resources.Sdk\Resources.Sdk.csproj" />
+	<ProjectReference Include="..\Resources.Management.Sdk\Resources.Management.Sdk.csproj" />
     <ProjectReference Include="..\..\Purview\Purview\Purview.csproj" />
     <ProjectReference Include="..\..\Purview\Purview.Autorest\Az.Purview.csproj" />
     <ProjectReference Include="..\..\Purview\Purviewdata.Autorest\Az.Purviewdata.csproj" />

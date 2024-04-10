@@ -22,7 +22,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         public static BackupResourceConfigResource Get(this IBackupResourceStorageConfigsNonCrrOperations operations, string vaultName, string resourceGroupName)
         {
@@ -39,7 +40,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -61,7 +63,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         public static BackupResourceConfigResource Update(this IBackupResourceStorageConfigsNonCrrOperations operations, string vaultName, string resourceGroupName, BackupResourceConfigResource parameters)
         {
@@ -78,7 +81,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -100,7 +104,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         public static void Patch(this IBackupResourceStorageConfigsNonCrrOperations operations, string vaultName, string resourceGroupName, BackupResourceConfigResource parameters)
         {
@@ -117,7 +122,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

@@ -16,8 +16,8 @@ Sets the operating system disk properties on an image object.
 Set-AzImageOsDisk [-Image] <PSImage> [[-OsType] <OperatingSystemTypes>]
  [[-OsState] <OperatingSystemStateTypes>] [[-BlobUri] <String>] [-Caching <CachingTypes>] [-DiskSizeGB <Int32>]
  [-StorageAccountType <String>] [-SnapshotId <String>] [-ManagedDiskId <String>]
- [-DiskEncryptionSetId <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-DiskEncryptionSetId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

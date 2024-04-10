@@ -188,6 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.PowerShell
         public VariantGroup VariantGroup { get; }
 
         protected static readonly bool IsAzure = Convert.ToBoolean(@"true");
+
         public BaseOutput(VariantGroup variantGroup)
         {
             VariantGroup = variantGroup;
@@ -289,12 +290,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.PowerShell
                 {
                     setCondition = $" -and {defaultInfo.SetCondition}";
                 }
-                sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}'){setCondition}) {{");
-                sb.AppendLine($"{Indent}{Indent}{Indent}$PSBoundParameters['{parameterName}'] = {defaultInfo.Script}");
-                sb.Append($"{Indent}{Indent}}}");
+                //Yabo: this is bad to hard code the subscription id, but autorest load input README.md reversely (entry readme -> required readme), there are no other way to 
+                //override default value set in required readme
+                if ("SubscriptionId".Equals(parameterName))
+                {
+                    sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}'){setCondition}) {{");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}$testPlayback = $false");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}$PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object {{ if ($_) {{ $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }} }}");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}if ($testPlayback) {{");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}{Indent}$PSBoundParameters['{parameterName}'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}}} else {{");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}{Indent}$PSBoundParameters['{parameterName}'] = {defaultInfo.Script}");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}}}");
+                    sb.Append($"{Indent}{Indent}}}");
+                }
+                else
+                {
+                    sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}'){setCondition}) {{");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}$PSBoundParameters['{parameterName}'] = {defaultInfo.Script}");
+                    sb.Append($"{Indent}{Indent}}}");
+                }
+
             }
             return sb.ToString();
         }
+
     }
 
     internal class ProcessOutput : BaseOutput

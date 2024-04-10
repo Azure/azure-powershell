@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnResponseBasedOriginErrorDetectionParametersObject
 schema: 2.0.0
@@ -25,7 +25,7 @@ Create an in-memory object for ResponseBasedOriginErrorDetectionParameters.
 
 ### Example 1: Create an in-memory object for ResponseBasedOriginErrorDetectionParameters
 ```powershell
-New-AzCdnResponseBasedOriginErrorDetectionParametersObject -ResponseBasedDetectedErrorType testDetctedError -ResponseBasedFailoverThresholdPercentage 6 
+New-AzCdnResponseBasedOriginErrorDetectionParametersObject -ResponseBasedDetectedErrorType testDetctedError -ResponseBasedFailoverThresholdPercentage 6
 ```
 
 ```output
@@ -95,16 +95,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`HTTPERRORRANGE <IHttpErrorRangeParameters[]>`: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
-  - `[Begin <Int32?>]`: The inclusive start of the http status code range.
-  - `[End <Int32?>]`: The inclusive end of the http status code range.
-
 ## RELATED LINKS
-

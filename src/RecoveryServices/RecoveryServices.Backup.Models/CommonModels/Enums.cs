@@ -101,6 +101,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
+    /// Snapshot consistency type. possible values: "OnlyCrashConsistent"
+    /// </summary>
+    public enum SnapshotConsistencyType
+    {
+        Default = 1,
+        OnlyCrashConsistent
+    }
+
+    /// <summary>
     /// Tier mode for automatic tiering of Recovery points
     /// </summary>
     public enum TieringMode

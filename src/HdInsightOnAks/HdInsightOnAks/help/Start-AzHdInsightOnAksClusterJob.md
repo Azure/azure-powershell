@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HdInsightOnAks-help.xml
 Module Name: Az.HdInsightOnAks
 online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/start-azhdinsightonaksclusterjob
 schema: 2.0.0
@@ -15,54 +15,56 @@ Operations on jobs of HDInsight on AKS cluster.
 ### RunExpanded (Default)
 ```
 Start-AzHdInsightOnAksClusterJob -ClusterName <String> -ClusterPoolName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Run
-```
-Start-AzHdInsightOnAksClusterJob -ClusterName <String> -ClusterPoolName <String> -ResourceGroupName <String>
- -ClusterJob <IClusterJob> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RunViaIdentity
-```
-Start-AzHdInsightOnAksClusterJob -InputObject <IHdInsightOnAksIdentity> -ClusterJob <IClusterJob>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RunViaIdentityClusterpool
-```
-Start-AzHdInsightOnAksClusterJob -ClusterName <String> -ClusterpoolInputObject <IHdInsightOnAksIdentity>
- -ClusterJob <IClusterJob> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### RunViaIdentityClusterpoolExpanded
-```
-Start-AzHdInsightOnAksClusterJob -ClusterName <String> -ClusterpoolInputObject <IHdInsightOnAksIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RunViaIdentityExpanded
-```
-Start-AzHdInsightOnAksClusterJob -InputObject <IHdInsightOnAksIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### RunViaJsonFilePath
-```
-Start-AzHdInsightOnAksClusterJob -ClusterName <String> -ClusterPoolName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RunViaJsonString
 ```
 Start-AzHdInsightOnAksClusterJob -ClusterName <String> -ClusterPoolName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RunViaJsonFilePath
+```
+Start-AzHdInsightOnAksClusterJob -ClusterName <String> -ClusterPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RunViaIdentityClusterpoolExpanded
+```
+Start-AzHdInsightOnAksClusterJob -ClusterName <String> -ClusterpoolInputObject <IHdInsightOnAksIdentity>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### RunViaIdentityClusterpool
+```
+Start-AzHdInsightOnAksClusterJob -ClusterName <String> -ClusterpoolInputObject <IHdInsightOnAksIdentity>
+ -ClusterJob <IClusterJob> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Run
+```
+Start-AzHdInsightOnAksClusterJob -ClusterName <String> -ClusterPoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -ClusterJob <IClusterJob> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RunViaIdentityExpanded
+```
+Start-AzHdInsightOnAksClusterJob -InputObject <IHdInsightOnAksIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RunViaIdentity
+```
+Start-AzHdInsightOnAksClusterJob -InputObject <IHdInsightOnAksIdentity> -ClusterJob <IClusterJob>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,7 +127,7 @@ Cluster job.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterJob
-Parameter Sets: Run, RunViaIdentity, RunViaIdentityClusterpool
+Parameter Sets: RunViaIdentityClusterpool, Run, RunViaIdentity
 Aliases:
 
 Required: True
@@ -140,7 +142,7 @@ The name of the HDInsight cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run, RunExpanded, RunViaIdentityClusterpool, RunViaIdentityClusterpoolExpanded, RunViaJsonFilePath, RunViaJsonString
+Parameter Sets: RunExpanded, RunViaJsonString, RunViaJsonFilePath, RunViaIdentityClusterpoolExpanded, RunViaIdentityClusterpool, Run
 Aliases:
 
 Required: True
@@ -152,11 +154,10 @@ Accept wildcard characters: False
 
 ### -ClusterpoolInputObject
 Identity Parameter
-To construct, see NOTES section for CLUSTERPOOLINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
-Parameter Sets: RunViaIdentityClusterpool, RunViaIdentityClusterpoolExpanded
+Parameter Sets: RunViaIdentityClusterpoolExpanded, RunViaIdentityClusterpool
 Aliases:
 
 Required: True
@@ -171,7 +172,7 @@ The name of the cluster pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run, RunExpanded, RunViaJsonFilePath, RunViaJsonString
+Parameter Sets: RunExpanded, RunViaJsonString, RunViaJsonFilePath, Run
 Aliases:
 
 Required: True
@@ -199,11 +200,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
-Parameter Sets: RunViaIdentity, RunViaIdentityExpanded
+Parameter Sets: RunViaIdentityExpanded, RunViaIdentity
 Aliases:
 
 Required: True
@@ -264,7 +264,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run, RunExpanded, RunViaJsonFilePath, RunViaJsonString
+Parameter Sets: RunExpanded, RunViaJsonString, RunViaJsonFilePath, Run
 Aliases:
 
 Required: True
@@ -280,7 +280,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Run, RunExpanded, RunViaJsonFilePath, RunViaJsonString
+Parameter Sets: RunExpanded, RunViaJsonString, RunViaJsonFilePath, Run
 Aliases:
 
 Required: False
@@ -337,4 +337,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

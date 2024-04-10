@@ -15,26 +15,21 @@ Delete a FleetUpdateStrategy
 ### Delete (Default)
 ```
 Remove-AzFleetUpdateStrategy -FleetName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-PassThru]
- [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityFleet
 ```
 Remove-AzFleetUpdateStrategy -Name <String> -FleetInputObject <IFleetIdentity> [-IfMatch <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-PassThru] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzFleetUpdateStrategy -InputObject <IFleetIdentity> [-IfMatch <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait]
- [-PassThru] [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,16 +37,21 @@ Delete a FleetUpdateStrategy
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: delete a fleet update strategy with a fleet object
+```powershell
 $f = Get-AzFleet -Name testfleet01 -ResourceGroupName K8sFleet-Test
 Remove-AzFleetUpdateStrategy -FleetInputObject $f -Name strategy3
 ```
 
-### EXAMPLE 2
-```
+The first command gets a fleet.
+The second command removes a fleet update strategy with a fleet object.
+
+### Example 2: delete a fleet update strategy
+```powershell
 Remove-AzFleetUpdateStrategy -FleetName testfleet01 -ResourceGroupName K8sFleet-Test -Name strategy2
 ```
+
+This command removes a fleet update strategy with name.
 
 ## PARAMETERS
 
@@ -65,22 +65,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -103,7 +88,6 @@ Accept wildcard characters: False
 
 ### -FleetInputObject
 Identity Parameter
-To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -132,36 +116,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -IfMatch
 The request should only proceed if an entity matches this string.
 
@@ -179,7 +133,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -218,7 +171,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -233,52 +186,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -309,7 +217,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -351,36 +259,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
+
 ## OUTPUTS
 
 ### System.Boolean
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-FLEETINPUTOBJECT \<IFleetIdentity\>: Identity Parameter
-  \[FleetMemberName \<String\>\]: The name of the Fleet member resource.
-  \[FleetName \<String\>\]: The name of the Fleet resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[UpdateRunName \<String\>\]: The name of the UpdateRun resource.
-  \[UpdateStrategyName \<String\>\]: The name of the UpdateStrategy resource.
-
-INPUTOBJECT \<IFleetIdentity\>: Identity Parameter
-  \[FleetMemberName \<String\>\]: The name of the Fleet member resource.
-  \[FleetName \<String\>\]: The name of the Fleet resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[UpdateRunName \<String\>\]: The name of the UpdateRun resource.
-  \[UpdateStrategyName \<String\>\]: The name of the UpdateStrategy resource.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.fleet/remove-azfleetupdatestrategy](https://learn.microsoft.com/powershell/module/az.fleet/remove-azfleetupdatestrategy)
-

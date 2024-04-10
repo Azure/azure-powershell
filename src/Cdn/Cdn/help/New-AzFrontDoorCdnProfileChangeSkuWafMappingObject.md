@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzFrontDoorCdnProfileChangeSkuWafMappingObject
 schema: 2.0.0
@@ -13,8 +13,8 @@ Create an in-memory object for ProfileChangeSkuWafMapping.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName <String>
- [-ChangeToWafPolicyId <String>] [<CommonParameters>]
+New-AzFrontDoorCdnProfileChangeSkuWafMappingObject -SecurityPolicyName <String> [-ChangeToWafPolicyId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,7 +78,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

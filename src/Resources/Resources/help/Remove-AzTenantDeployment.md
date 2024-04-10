@@ -15,7 +15,8 @@ Removes a deployment at tenant scope and any associated operations
 ### RemoveByDeploymentName (Default)
 ```
 Remove-AzTenantDeployment [-Name] <String> [-AsJob] [-PassThru] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RemoveByDeploymentId
@@ -27,7 +28,8 @@ Remove-AzTenantDeployment -Id <String> [-AsJob] [-PassThru] [-Pre] [-DefaultProf
 ### RemoveByInputObject
 ```
 Remove-AzTenantDeployment -InputObject <PSDeployment> [-AsJob] [-PassThru] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

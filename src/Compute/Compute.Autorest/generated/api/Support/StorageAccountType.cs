@@ -16,6 +16,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.StorageAccountType StandardLrs = @"Standard_LRS";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.StorageAccountType StandardSsdLrs = @"StandardSSD_LRS";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.StorageAccountType StandardZrs = @"Standard_ZRS";
 
         /// <summary>the value for an instance of the <see cref="StorageAccountType" /> Enum.</summary>

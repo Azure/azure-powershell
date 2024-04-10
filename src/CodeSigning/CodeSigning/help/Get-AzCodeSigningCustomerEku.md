@@ -81,7 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -EndpointUrl
-Specifies Azure CodeSigning Endpoint used to sign CI policy. It's an Url, format is https://xxx.codesigning.azure.net
+Specifies Azure CodeSigning Endpoint used to sign CI policy. It's an Url, format is `https://xxx.codesigning.azure.net`
 
 ```yaml
 Type: System.String

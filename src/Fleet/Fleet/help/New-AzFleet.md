@@ -16,34 +16,29 @@ Create a Fleet.
 ```
 New-AzFleet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
  [-IfNoneMatch <String>] -Location <String> [-IdentityType <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzFleet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-IfNoneMatch <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IfNoneMatch <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzFleet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-IfNoneMatch <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IfNoneMatch <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzFleet -InputObject <IFleetIdentity> [-IfMatch <String>] [-IfNoneMatch <String>] -Location <String>
  [-IdentityType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait]
- [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,10 +46,35 @@ Create a Fleet.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Creates a Fleet resource
+```powershell
 New-AzFleet -Name sss -ResourceGroupName ps1-test -Location eastus
 ```
+
+```output
+ETag                         : "25052d24-0000-0100-0000-65532a620000"
+Id                           : /subscriptions/'subscriptionId'/resourceGroups/ps1-test/providers/Microsoft.ContainerService/fleets/sss
+IdentityPrincipalId          : 
+IdentityTenantId             : 
+IdentityType                 : 
+IdentityUserAssignedIdentity : {
+                               }
+Location                     : eastus
+Name                         : sss
+ProvisioningState            : Succeeded
+ResourceGroupName            : ps1-test
+SystemDataCreatedAt          : 11/14/2023 8:05:54 AM
+SystemDataCreatedBy          : user1@example.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 11/14/2023 8:05:54 AM
+SystemDataLastModifiedBy     : user1@example.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                               }
+Type                         : Microsoft.ContainerService/fleets
+```
+
+This command creates a Fleet resource with a long running operation.
 
 ## PARAMETERS
 
@@ -68,22 +88,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -96,36 +101,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -181,7 +156,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -265,52 +239,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -341,7 +270,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -415,26 +344,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleet
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IFleetIdentity\>: Identity Parameter
-  \[FleetMemberName \<String\>\]: The name of the Fleet member resource.
-  \[FleetName \<String\>\]: The name of the Fleet resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[UpdateRunName \<String\>\]: The name of the UpdateRun resource.
-  \[UpdateStrategyName \<String\>\]: The name of the UpdateStrategy resource.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.fleet/new-azfleet](https://learn.microsoft.com/powershell/module/az.fleet/new-azfleet)
-

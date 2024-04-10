@@ -1,3 +1,217 @@
+## 11.5.0 - April 2024
+#### General
+* Removed Az.DevSpaces from AzPreview, see more details at [Dev Spaces was retired on 15 May 2021](https://azure.microsoft.com/updates/azure-dev-spaces-is-retiring-on-31-october-2023/)
+
+#### Az.Accounts 2.17.0
+* Enabled globally disabling instance discovery before token acquisition [#22535].
+* Implemented secrets detection feature for autorest modules.
+* Added 'AsSecureString' to 'Get-AzAccessToken' to convert the returned token to SecureString [#24190].
+* Upgraded Azure.Core to 1.37.0.
+
+#### Az.Aks 6.0.2
+* Fixed the 'Non-static method requires a target' error when updating the image version of the node pool. [#24337]
+
+#### Az.ApplicationInsights 2.2.4
+* Fixed the issue that Update-AzApplicationInsights would incorrectly remove existing tags.
+
+#### Az.Attestation 2.0.1
+* Fixed vulnerability https://github.com/advisories/GHSA-8g9c-28fc-mcx2
+
+#### Az.Compute 7.2.0
+* Added parameters '-scriptUriManagedIdentity', '-outputBlobManagedIdentity', '-errorBlobMangedIdentity', and '-TreatFailureAsDeploymentFailure' to cmdlets 'Set-AzVmRunCommand' and 'Set-AzVmssRunCommand'.
+* Added new parameter '-EnableAutomaticOSUpgrade' to 'New-AzVmss' cmdlet.
+* Renamed parameter '-AutoOSUpgrade' to '-EnableAutomaticOSUpgrade' in 'New-AzVmssConfig' cmdlet for consistency. Using '-AutoOSUpgrade' as parameter name will continue to work as it is added as an alias.
+* Upgraded Azure.Core to 1.37.0.
+* Az.Compute is updated to use the 2023-07-03 GalleryRP, 2024-03-01 ComputeRP and 2023-10-02 DiskRP API.
+* Added new parameter '-TierOption' to 'New-AzSnapshotConfig'.
+* Added breaking change warnings for the May 2024 release. The warnings are for:
+  'New-AzGalleryImageVersion' defaulting to turn on TrustedLaunchSupported and HyperVGeneration to V2.
+  'New-AzVM' and 'New-AzVmss' will default to the image 'Windows Server 2022 Azure Edition' instead of 'Windows 2016 Datacenter' by default.
+  'Get-AzVmss' will no longer allow empty values to 'ResourceGroupName' and 'VMScaleSetName' to avoid a bug where it will just return nothing.
+* Added a new parameter '-SharingProfile' to 'New-AzCapacityReservationGroup' and 'Update-AzCapacityReservationGroup'.
+* Added the new parameter 'SourceImageVMId' to the 'New-AzGalleryImageVersion' cmdlet. Also added some error messages for this new parameter and the existing parameter 'SourceImageId'.
+
+#### Az.ContainerRegistry 4.2.0
+* Upgraded Azure.Core to 1.37.0.
+* Fixed vulnerability https://github.com/advisories/GHSA-8g9c-28fc-mcx2
+* Added exposeToken parameter for Connect-AzContainerRegistry to get token
+
+#### Az.CosmosDB 1.14.2
+* Upgraded Azure.Core to 1.37.0.
+
+#### Az.DataFactory 1.18.3
+* Added ServiceNowV2, PostgreSqlV2, GoogleBigQuery in ADF
+* Fixed headers property schema deserialize issue
+* Fixed vulnerability https://github.com/advisories/GHSA-98g6-xh36-x2p7
+
+#### Az.DataProtection 2.3.0
+* Onboarded new workloads AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL for data protection.
+
+#### Az.ElasticSan 1.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.EventGrid 1.6.1
+* Added breaking change messages due to structure update:
+  - The cmdlet 'Set-AzEventGridTopic' will be removed.
+  - In the 'Remove-AzEventGridSubscription' parameters will be deprecated.
+  - In the 'Get-AzEventGrid*' the parameter 'ODataQuery', 'NextLink', 'ResourceId' will be removed.
+  - In the 'New/Update-AzEventGrid*' parameters will be deprecated.
+
+#### Az.EventHub 4.2.1
+* Added Breaking Change Warning for parameter datatype change.
+
+#### Az.KeyVault 5.2.2
+* Introduced secrets detection feature to safeguard sensitive data.
+* Formatted the output of Azure Key Vault certificate in removed state. [#24333]
+* [Upcoming Breaking Change] Added breaking change warning message for parameter 'EnableRbacAuthorization' of 'New-AzKeyVault' and 'Update-AzKeyVault'.
+    - RBAC will be enabled by default during the process of key vault creation. To disable RBAC authorization, please use parameter 'DisableRbacAuthorization'.
+    - Parameter 'EnableRbacAuthorization' is expected to be removed in Az.KeyVault 6.0.0 and Az 12.0.0.
+    - Parameter 'EnableRbacAuthorization' is expected to be replaced by  'DisableRbacAuthorization'.
+* Upgraded Azure.Core to 1.37.0.
+
+#### Az.Monitor 5.1.1
+* Added breaking change warning messages for Metric Management Plane
+    * Get-AzMetric
+    * Get-AzMetricDefinition
+    * New-AzMetricFilter
+
+#### Az.Network 7.4.1
+* Fixed a bug caused by the introduction of the new property 'GlobalConfiguration' in 'PSApplicationGateway'
+
+#### Az.PolicyInsights 1.6.5
+* Upgraded Azure.Core to 1.37.0.
+
+#### Az.RecoveryServices 6.8.0
+* Added option to set snapshot consistency type in policy cmdlets for creating or updating enhanced AzureVM policies.
+* Fixed an issue while setting soft delete vault property.
+
+#### Az.Resources 6.16.1
+* Added null check to the permissions object in the ToPSRoleDefinition method.
+* Added dynamic parameters to stack New/Set cmdlets.
+* Used correct JSON serializer settings for all templates-related deserialization.
+
+#### Az.Security 1.6.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ServiceBus 3.1.0
+* Added Breaking Change Warning for parameter datatype change.
+
+#### Az.StackHCIVM 1.0.2
+* Updated API to 2024-01-01 version.
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Storage 6.1.3
+* Introduced secrets detection feature to safeguard sensitive data.
+* Upgraded Azure.Core to 1.37.0.
+* Fixed upload file with OAuth authentication issue [#24289]
+    - 'Set-AzStorageFileContent'
+
+#### Az.Support 1.0.1
+* Added breaking change warning messages for cmdlet deprecation
+    - New-AzSupportContactProfileObject
+* Added breaking change warning messages for cmdlet rename
+    - Get-AzSupportTicketCommunication
+    - New-AzSupportTicketCommunication
+* Added breaking change warning messages for parameter name and/or structure changes
+    - Get-AzSupportService
+    - Get-AzSupportProblemClassification
+    - Get-AzSupportTicketCommunication
+    - Get-AzSupportTicket
+    - New-AzSupportTicket
+    - Update-AzSupportTicket
+* Added breaking change warning messages for output property name and/or structure changes
+    - Get-AzSupportService
+    - Get-AzSupportTicket
+    - New-AzSupportTicket
+    - Update-AzSupportTicket
+* Added breaking change warning messages for new required parameters
+    - New-AzSupportTicket
+* Added breaking change warning messages for removed parameters
+    - Get-AzSupportTicket
+    - Get-AzSupportTicketCommunication
+    - New-AzSupportTicket
+* Added breaking change warning message for removal of pipe parameter set for list/new
+    - New-AzSupportTicketCommunication
+    - Get-AzSupportProblemClassification
+    - Get-AzSupportTicketCommunication
+* Added breaking change warning message for Get-AzSupportTicket retrieving tickets from the past week if no other parameters are specified
+    - Get-AzSupportTicket
+
+#### Az.Synapse 3.0.6
+* Upgraded Azure.Core to 1.37.0.
+* Fixed vulnerability https://github.com/advisories/GHSA-98g6-xh36-x2p7
+
+## 11.4.0 - March 2024
+#### Az.Accounts 2.16.0
+* Added a preview feature to detect secrets and sensitive information from the output of Azure PowerShell cmdlets to prevent leakage. Enable it by 'Set-AzConfig -DisplaySecretsWarning True'. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844
+* Fixed 'CacheDirectory' and 'CacheFile' out-of-sync issue in AzureRmContextSettings.json and the customers are not allowed to change these 2 properties.
+* Redirected device code login messages from warning stream to information stream if use device authentication in 'Connect-AzAccount'.
+
+#### Az.Cdn 3.1.2
+* Fixed the case sensitive issue when do preparing migration steps for 'Start-AzFrontDoorCdnProfilePrepareMigration'
+
+#### Az.Compute 7.1.2
+* Fixed 'New-AzVM' when a source image is specified to avoid an error on the 'Version' value.
+
+#### Az.CosmosDB 1.14.1
+* Fixed validation issues in same-account collection/container/graph and database/table/Gremlin restores, affecting the following cmdlets:
+- Restore-AzCosmosDBSqlDatabase
+- Restore-AzCosmosDBSqlContainer
+- Restore-AzCosmosDBMongoDBDatabase
+- Restore-AzCosmosDBMongoDBCollection
+- Restore-AzCosmosDBGremlinDatabase
+- Restore-AzCosmosDBGremlinGraph
+- Restore-AzCosmosDBTable
+* Upgraded SDK 'Azure.Security.KeyVault.Keys' TO 4.6.0-beta.1.
+* Added breaking change message for ListConnectionStrings changes
+
+#### Az.DataFactory 1.18.2
+* Supported Snowflake V2 in ADF
+
+#### Az.KeyVault 5.2.1
+* Supported 'HsmPlatform' in 'KeyAttributes'.
+
+#### Az.LogicApp 1.5.1
+* Removed the *.deps.json file that caused false positive security alerts. [#23603]
+
+#### Az.Monitor 5.1.0
+* Added support for the Metric Data Plane
+
+#### Az.RedisCache 1.9.0
+* Upgraded API version to 2023-08-01
+* Added support for flush operation
+* Added support for update channels
+* Added support for Microsoft Entra Authentication
+
+#### Az.Resources 6.16.0
+* Added breaking change warnings for Azure Policy cmdlets.
+* Added 'AuxTenant' parameter in 'New-AzResourceGroupDeployment'to support cross-tenant deployment.
+* Fixed bug with custom types and deployments whatif. [#13245]
+* Fixed bug with nullable array parameters & outputs.
+* Fixed bug with TemplateParameterUri not downloading parameters correctly.
+
+#### Az.Security 1.6.0
+* Added new cmdlets for Security Connectors
+* Added new cmdlets for ApiCollections Security
+
+#### Az.StackHCI 2.3.1
+* Updated 'Set-AzStackHCI' to use HTTP PATCH for updating cluster resource instead of HTTP PUT and to only send updated properties.
+
+#### Az.StackHCIVM 1.0.1
+* Reported image download progress
+
+#### Az.Storage 6.1.2
+* Fixed parser logic when downloading blob from managed disk account with Sas Uri and bearer token on Linux and MacOS
+    - 'Get-AzStorageBlobContent'
+* Added warning messages for upcoming breaking changes in Queue cmdlets for removing references to 'Microsoft.Azure.Storage.Queue'
+    - 'New-AzStorageQueue'
+    - 'Get-AzStorageQueue'
+    - 'New-AzStorageQueueSASToken'
+* Added warning messages for an upcoming breaking change when uploading a file using SAS token without read permission
+    - 'Set-AzStorageFileContent'
+* Added warning messages for an upcoming breaking change when upgrading a Storage account to StorageV2
+    - 'Set-AzStorageAccount'
+
 ## 11.3.1 - February 2024
 #### Az.Resources 6.15.1
 * Fixed deadlock in Bicep CLI execution. [#24133]
@@ -35,7 +249,7 @@
 * Fixed a few minor issues
 * Updated 'New-AzApplicationGateway' to include 'EnableRequestBuffering' and 'EnableResponseBuffering' parameters
 * Changed the Default Rule Set from CRS3.0 to DRS2.1 in 'NewAzureApplicationGatewayFirewallPolicy'
-* Added optional property 'Profile' to 'New-AzFirewallPolicyIntrusionDetection' 
+* Added optional property 'Profile' to 'New-AzFirewallPolicyIntrusionDetection'
 * Added new cmdlet to update Connection child resource of Network Virtual Appliance. - 'Update-AzNetworkVirtualApplianceConnection'
 * Added support of 'InternetIngressIp' Property in New-AzNetworkVirtualAppliance
 * Added the new cmdlet for supporting 'InternetIngressIp' Property with Network Virtual Appliances -'New-AzVirtualApplianceInternetIngressIpsProperty'
@@ -78,7 +292,7 @@
 #### Az.Storage 6.1.1
 * Removed some code branches referencing Microsoft.Azure.Storage.Blob
     - 'Get-AzStorageBlob'
-* Updated the prompt message when deleting a share snapshot and the output format when listing 
+* Updated the prompt message when deleting a share snapshot and the output format when listing
     - 'Remove-AzStorageShare'
     - 'Remove-AzRmStorageShare'
     - 'Get-AzRmStorageShare'
@@ -92,7 +306,7 @@
 * Added upcoming breaking change warning for deprecation of config parameter 'DisableErrorRecordsPersistence'.
 
 #### Az.ApplicationInsights 2.2.3
-* Enabled common parameter in get-azapplicationinsights 
+* Enabled common parameter in get-azapplicationinsights
 
 #### Az.Automation 1.10.0
 * Updated Module operation cmdlets to support Powershell 7.2
@@ -100,7 +314,7 @@
 #### Az.Compute 7.1.1
 * Fixed 'New-AzVmss' to correctly work when using '-EdgeZone' by creating the Load Balancer in the correct edge zone.
 * Removed references to image aliases in 'New-AzVM' and 'New-AzVmss' to images that were removed.
-* Az.Compute is updated to use the 2023-09-01 ComputeRP REST API calls. 
+* Az.Compute is updated to use the 2023-09-01 ComputeRP REST API calls.
 
 #### Az.ContainerRegistry 4.1.3
 * Fixed bug in 'Get-AzContainerRegistryManifest' returns only 100 results [#22922]
@@ -126,11 +340,11 @@
 
 #### Az.KeyVault 5.1.0
 * Added parameter 'ByteArrayValue' in 'Invoke-AzKeyVaultKeyOperation' to support operating byte array without conversion to secure string.
-* Added Property 'RawResult' in the output type 'PSKeyOperationResult' of 'Invoke-AzKeyVaultKeyOperation'. 
-* [Upcoming Breaking Change] Added breaking change warning message for parameter 'Value' in 'Invoke-AzKeyVaultKeyOperation'. 
+* Added Property 'RawResult' in the output type 'PSKeyOperationResult' of 'Invoke-AzKeyVaultKeyOperation'.
+* [Upcoming Breaking Change] Added breaking change warning message for parameter 'Value' in 'Invoke-AzKeyVaultKeyOperation'.
     - Parameter 'Value' is expected to be removed in Az.KeyVault 6.0.0
     - 'ByteArrayValue' is the alternative of parameter 'Value' in byte array format
-* [Upcoming Breaking Change] Added breaking change warning message for the output type 'PSKeyOperationResult' of 'Invoke-AzKeyVaultKeyOperation'. 
+* [Upcoming Breaking Change] Added breaking change warning message for the output type 'PSKeyOperationResult' of 'Invoke-AzKeyVaultKeyOperation'.
     - Property 'Result' is expected to be removed in Az.KeyVault 6.0.0
     - Property 'RawResult' is the alternative of parameter 'Result' in byte array format
 
@@ -160,7 +374,7 @@
 #### Az.Storage 6.1.0
 * Defaults of AllowBlobPublicAccess and AllowCrossTenantReplication when creating a storage account were set to false by server changes. Please refer to https://techcommunity.microsoft.com/t5/azure-storage-blog/azure-storage-updating-some-default-security-settings-on-new/ba-p/3819554
     - 'New-AzStorageAccount'
-* Supprted filter when listing file shares with management plane cmdlet 
+* Supprted filter when listing file shares with management plane cmdlet
     - 'Get-AzRmStorageShare'
 
 #### Az.StorageMover 1.3.0
@@ -232,7 +446,7 @@
 * Added new parameters 'MaintenanceConfigurationId', 'DnsZone' to 'AzSqlInstancePool' cmdlets
 
 #### Az.Storage 6.0.1
-* Updated error message when storage context is missing in a cmdlet input 
+* Updated error message when storage context is missing in a cmdlet input
 
 ## 11.0.0 - November 2023
 #### Az.Accounts 2.13.2
@@ -264,7 +478,7 @@
 * Added new parameter '-VirtualMachineScaleSetId' to 'Update-AzVm' cmdlet.
 * Fixed 'New-AzVmss' and 'New-Azvm' to use 'SharedGalleryImageId' parameter.
 * Reduced File Permissions from 0644 to 0600 for SSH Private Key File in 'New-AzVm'.
-* Removed GuestAttestaion vm extension installation for Vmss and Vm creation cmdlets. 
+* Removed GuestAttestaion vm extension installation for Vmss and Vm creation cmdlets.
 
 #### Az.ContainerInstance 4.0.0
 * [Breaking Change] Fixed the typo that output property starting with PreviousState was misspelled as PreviouState. [#22268]
@@ -334,7 +548,7 @@
 
 #### Az.KeyVault 5.0.0
 * Removed non-core types creation in PowerShell scripts to be compatible in constrained language mode.
-* Supported user assigned identity for Managed HSM in 'New/Update-AzKeyVaultManagedHsm' 
+* Supported user assigned identity for Managed HSM in 'New/Update-AzKeyVaultManagedHsm'
 * [Breaking Change] Changed parameter 'SoftDeleteRetentionInDays' in 'New-AzKeyVaultManagedHsm' to mandatory.
 * Upgraded Azure.Core to 1.35.0.
 
@@ -421,8 +635,8 @@
 *   - The following parameters are now optional: 'CredentialName', 'OutputCredentialName', 'RefreshCredentialName'
 
 #### Az.StackHCI 2.2.3
-* Added support for ARC Onboarding using Cluster Managed Identity. 
-* Removed previous IMDS Reg Key during Registration/Repair-Registration. 
+* Added support for ARC Onboarding using Cluster Managed Identity.
+* Removed previous IMDS Reg Key during Registration/Repair-Registration.
 * Removed creation of custom IMDS Reg Key during Arc Enablement.
 * Improved logging experience.
 
@@ -485,8 +699,8 @@
 
 ## 10.4.0 - September 2023
 #### Az.Accounts 2.13.1
-* Added the module name in breaking change messages 
-* Upgraded Microsoft.ApplicationInsights version from 2.13.1 to 2.18.0 
+* Added the module name in breaking change messages
+* Upgraded Microsoft.ApplicationInsights version from 2.13.1 to 2.18.0
 
 #### Az.Cdn 3.1.1
 * Customized output property for 'Get-AzCdnEdgeNode' command
@@ -543,7 +757,7 @@
 * General availability for module Az.ArcResourceBridge
 
 #### Az.Compute 6.3.0
-* Added '-Hibernate' switch parameter to 'Stop-AzVmss' default parameter set. 
+* Added '-Hibernate' switch parameter to 'Stop-AzVmss' default parameter set.
 * For 'Get-AzVmRunCommand', a bug is fixed to work when returning a list of RunCommands [#22403]
 * Updated Azure.Core to 1.34.0.
 * Added new cmdlets 'Get-AzHostSize' and 'Update-AzHost'.
@@ -635,9 +849,9 @@
 
 #### Az.Storage 5.10.0
 * Updated Azure.Core to 1.34.0.
-* Added support for encryption context 
+* Added support for encryption context
     - 'New-AzDataLakeGen2Item'
-* Updated warning messages for an upcoming breaking change when creating a storage account 
+* Updated warning messages for an upcoming breaking change when creating a storage account
     - 'New-AzStorageAccount'
 * Updated help file of 'New-AzStorageQueueSASToken'
 
@@ -651,7 +865,7 @@
 ## 10.2.0 - August 2023
 #### Az.Accounts 2.12.5
 * Changed output stream from debug stream to warning stream for 'CmdletPreviewAttribute'
-* Decreased the prompted frequency of preview warning message to once per cmdlet in one session  
+* Decreased the prompted frequency of preview warning message to once per cmdlet in one session
 * Reworded default preview message and added estimated GA date for 'CmdletPreviewAttribute'
 * Updated Azure.Core to 1.33.0
 

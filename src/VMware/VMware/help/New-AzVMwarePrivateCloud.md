@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVMwarePrivateCloud
 
 ## SYNOPSIS
-Create or update a private cloud
+Create a private cloud
 
 ## SYNTAX
 
@@ -20,11 +20,12 @@ New-AzVMwarePrivateCloud -Name <String> -ResourceGroupName <String> [-Subscripti
  [-IdentityType <String>] [-Internet <String>] [-KeyVaultPropertyKeyName <String>]
  [-KeyVaultPropertyKeyVaultUrl <String>] [-KeyVaultPropertyKeyVersion <String>]
  [-ManagementClusterHost <String[]>] [-NsxtPassword <String>] [-Tag <Hashtable>] [-VcenterPassword <String>]
- [-AcceptEULA] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AcceptEULA] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update a private cloud
+Create a private cloud
 
 ## EXAMPLES
 
@@ -83,7 +84,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -113,13 +114,14 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -476,12 +478,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IPrivateCloud
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IPrivateCloud
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

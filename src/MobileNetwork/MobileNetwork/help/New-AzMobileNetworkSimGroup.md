@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MobileNetwork-help.xml
 Module Name: Az.MobileNetwork
 online version: https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworksimgroup
 schema: 2.0.0
@@ -13,10 +13,11 @@ Creates or updates a SIM group.
 ## SYNTAX
 
 ```
-New-AzMobileNetworkSimGroup -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-EncryptionKeyUrl <String>] [-IdentityType <ManagedServiceIdentityType>]
+New-AzMobileNetworkSimGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-EncryptionKeyUrl <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-MobileNetworkId <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -267,7 +268,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

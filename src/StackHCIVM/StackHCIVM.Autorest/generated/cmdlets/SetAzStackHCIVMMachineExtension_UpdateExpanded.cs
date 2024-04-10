@@ -481,6 +481,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
                 // Flush buffer
                 WriteObject(_firstResponse);
             }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (!string.IsNullOrEmpty(sanitizedProperties))
+                {
+                    WriteWarning($"The output of cmdlet {invocationName ?? "Unknown"} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -668,7 +678,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.MachineExtensionsCreateOrUpdate(SubscriptionId, ResourceGroupName, MachineName, ExtensionName, _extensionParametersBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.MachineExtensionsCreateOrUpdate(SubscriptionId, ResourceGroupName, MachineName, ExtensionName, _extensionParametersBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.UndeclaredResponseException urexception)
@@ -698,6 +708,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.3.0
+* First preview release for module Az.EmailService
+
 ## Version 0.2.0
 * Added a new cmdlet `Test-AzCommunicationServiceNameAvailability`
 * Updated API version to 2020-08-20

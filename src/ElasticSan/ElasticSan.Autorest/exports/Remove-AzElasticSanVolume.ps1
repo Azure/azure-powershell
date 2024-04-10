@@ -107,21 +107,18 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityElasticSan', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create a hash table.
     ${ElasticSanInputObject},
 
     [Parameter(ParameterSetName='DeleteViaIdentityVolumegroup', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for VOLUMEGROUPINPUTOBJECT properties and create a hash table.
     ${VolumegroupInputObject},
 
     [Parameter()]
@@ -241,7 +238,13 @@ begin {
             DeleteViaIdentityVolumegroup = 'Az.ElasticSan.private\Remove-AzElasticSanVolume_DeleteViaIdentityVolumegroup';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

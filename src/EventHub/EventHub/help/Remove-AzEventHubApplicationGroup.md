@@ -15,7 +15,8 @@ Deletes an ApplicationGroup for a Namespace.
 ### Delete (Default)
 ```
 Remove-AzEventHubApplicationGroup -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity

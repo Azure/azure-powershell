@@ -29,7 +29,8 @@ New-AzResourceGroupDeploymentStack -Name <String> -ResourceGroupName <String> [-
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateFile <String>
  -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateFileWithParameterUri
@@ -39,7 +40,8 @@ New-AzResourceGroupDeploymentStack -Name <String> -ResourceGroupName <String> [-
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateFile <String>
  -TemplateParameterUri <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateFileWithParameterObject
@@ -49,7 +51,8 @@ New-AzResourceGroupDeploymentStack -Name <String> -ResourceGroupName <String> [-
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateFile <String>
  -TemplateParameterObject <Hashtable> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithParameterFile
@@ -59,7 +62,8 @@ New-AzResourceGroupDeploymentStack -Name <String> -ResourceGroupName <String> [-
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateUri <String>
  -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithParameterUri
@@ -69,7 +73,8 @@ New-AzResourceGroupDeploymentStack -Name <String> -ResourceGroupName <String> [-
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateUri <String>
  -TemplateParameterUri <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithParameterObject
@@ -79,7 +84,8 @@ New-AzResourceGroupDeploymentStack -Name <String> -ResourceGroupName <String> [-
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateUri <String>
  -TemplateParameterObject <Hashtable> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithNoParameters
@@ -99,7 +105,8 @@ New-AzResourceGroupDeploymentStack -Name <String> -ResourceGroupName <String> [-
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateSpecId <String>
  -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateSpecWithParameterUri
@@ -109,7 +116,8 @@ New-AzResourceGroupDeploymentStack -Name <String> -ResourceGroupName <String> [-
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateSpecId <String>
  -TemplateParameterUri <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateSpecWithParameterObject
@@ -119,7 +127,8 @@ New-AzResourceGroupDeploymentStack -Name <String> -ResourceGroupName <String> [-
  [-DenySettingsExcludedPrincipal <String[]>] [-DenySettingsExcludedAction <String[]>]
  [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force] [-AsJob] -TemplateSpecId <String>
  -TemplateParameterObject <Hashtable> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateSpecWithNoParameters

@@ -19,7 +19,8 @@ Set-AzSubscriptionDeploymentStack -Name <String> [-Description <String>] -Locati
  -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
  [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force]
  [-AsJob] -TemplateFile <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateFileWithParameterFile
@@ -29,8 +30,8 @@ Set-AzSubscriptionDeploymentStack -Name <String> [-Description <String>] -Locati
  -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
  [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force]
  [-AsJob] -TemplateFile <String> -TemplateParameterFile <String> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateFileWithParameterUri
@@ -40,8 +41,8 @@ Set-AzSubscriptionDeploymentStack -Name <String> [-Description <String>] -Locati
  -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
  [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force]
  [-AsJob] -TemplateFile <String> -TemplateParameterUri <String> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateFileWithParameterObject
@@ -51,8 +52,8 @@ Set-AzSubscriptionDeploymentStack -Name <String> [-Description <String>] -Locati
  -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
  [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force]
  [-AsJob] -TemplateFile <String> -TemplateParameterObject <Hashtable> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithParameterFile
@@ -62,8 +63,8 @@ Set-AzSubscriptionDeploymentStack -Name <String> [-Description <String>] -Locati
  -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
  [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force]
  [-AsJob] -TemplateUri <String> -TemplateParameterFile <String> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithParameterUri
@@ -73,8 +74,8 @@ Set-AzSubscriptionDeploymentStack -Name <String> [-Description <String>] -Locati
  -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
  [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force]
  [-AsJob] -TemplateUri <String> -TemplateParameterUri <String> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithParameterObject
@@ -84,8 +85,8 @@ Set-AzSubscriptionDeploymentStack -Name <String> [-Description <String>] -Locati
  -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
  [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force]
  [-AsJob] -TemplateUri <String> -TemplateParameterObject <Hashtable> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithNoParameters
@@ -95,7 +96,8 @@ Set-AzSubscriptionDeploymentStack -Name <String> [-Description <String>] -Locati
  -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
  [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force]
  [-AsJob] -TemplateUri <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByTemplateSpecWithParameterFile
@@ -105,8 +107,8 @@ Set-AzSubscriptionDeploymentStack -Name <String> [-Description <String>] -Locati
  -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
  [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force]
  [-AsJob] -TemplateSpecId <String> -TemplateParameterFile <String> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecWithParameterUri
@@ -116,8 +118,8 @@ Set-AzSubscriptionDeploymentStack -Name <String> [-Description <String>] -Locati
  -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
  [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force]
  [-AsJob] -TemplateSpecId <String> -TemplateParameterUri <String> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecWithParameterObject
@@ -127,8 +129,8 @@ Set-AzSubscriptionDeploymentStack -Name <String> [-Description <String>] -Locati
  -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
  [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force]
  [-AsJob] -TemplateSpecId <String> -TemplateParameterObject <Hashtable> [-SkipTemplateParameterPrompt]
- [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-QueryString <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecWithNoParameters
@@ -138,7 +140,8 @@ Set-AzSubscriptionDeploymentStack -Name <String> [-Description <String>] -Locati
  -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
  [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force]
  [-AsJob] -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParameterFileWithNoTemplate
@@ -148,7 +151,8 @@ Set-AzSubscriptionDeploymentStack -Name <String> [-Description <String>] -Locati
  -DenySettingsMode <PSDenySettingsMode> [-DenySettingsExcludedPrincipal <String[]>]
  [-DenySettingsExcludedAction <String[]>] [-DenySettingsApplyToChildScopes] [-Tag <Hashtable>] [-Force]
  [-AsJob] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-QueryString <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

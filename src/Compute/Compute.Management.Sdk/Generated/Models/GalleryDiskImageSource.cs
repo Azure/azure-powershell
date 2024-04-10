@@ -29,9 +29,8 @@ namespace Microsoft.Azure.Management.Compute.Models
         /// <summary>
         /// Initializes a new instance of the GalleryDiskImageSource class.
         /// </summary>
-        /// <param name="id">The id of the gallery artifact version source. Can
-        /// specify a disk uri, snapshot uri, user image or storage account
-        /// resource.</param>
+        /// <param name="id">The id of the gallery artifact version
+        /// source.</param>
         /// <param name="uri">The uri of the gallery artifact version source.
         /// Currently used to specify vhd/blob source.</param>
         /// <param name="storageAccountId">The Storage Account Id that contains

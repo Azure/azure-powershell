@@ -926,7 +926,9 @@ Accept wildcard characters: False
 ```
 
 ### -DatabaseFormat
-The database format for the instance.
+The database format for the instance. Possible values are:
+- AlwaysUpToDate - The instance gets access to all new SQL engine features as soon as they are released in Azure. Database format keeps evolving to accommodate new features. 
+- SQLServer2022 - The instance keeps getting SQL engine bug fixes, security patches and small functional improvements via Cumulative Updates for SQL Server 2022 during its mainstream support period. Database format remains compatible with SQL Server 2022 during that time.
 
 ```yaml
 Type: System.String

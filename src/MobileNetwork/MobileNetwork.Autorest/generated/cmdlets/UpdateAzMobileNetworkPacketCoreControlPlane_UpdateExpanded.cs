@@ -17,6 +17,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Models.Api20221101.IPacketCoreControlPlane))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Description(@"Updates packet core control planes tags.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}", ApiVersion = "2022-11-01")]
     public partial class UpdateAzMobileNetworkPacketCoreControlPlane_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Runtime.IEventListener
     {

@@ -22,18 +22,25 @@ Searches for Backup vaults in Azure Resource Graph and retrieves the expected en
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Get a specific vault with its name.
+```powershell
 Search-AzDataProtectionBackupVaultInAzGraph -Subscription "xxxxxxxx-xxxx-xxxxxxxxxxxx" -ResourceGroup $resourceGroupName -Vault $vaultName
 ```
+
+```output
+ETag IdentityPrincipalId                  IdentityTenantId                     IdentityType   Location      Name            Type
+---- -------------------                  ----------------                     ------------   --------      ----            ----
+     xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx SystemAssigned centraluseuap sarath-vault    Microsoft.DataProtection/backupVaults
+```
+
+This command gets a specific vault by given vault name from ARG (Azure Resource Graph).
 
 ## PARAMETERS
 
 ### -DefaultProfile
-{{ Fill DefaultProfile Description }}
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -48,9 +55,9 @@ Accept wildcard characters: False
 Resource Group of Vault
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: ResourceGroupName
 
 Required: False
 Position: Named
@@ -63,9 +70,9 @@ Accept wildcard characters: False
 Subscription of Vault
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: SubscriptionId
 
 Required: True
 Position: Named
@@ -78,9 +85,9 @@ Accept wildcard characters: False
 Name of the vault
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: VaultName
 
 Required: False
 Position: Named
@@ -97,9 +104,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.Management.Automation.PSObject
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.dataprotection/search-azdataprotectionbackupvaultinazgraph](https://learn.microsoft.com/powershell/module/az.dataprotection/search-azdataprotectionbackupvaultinazgraph)
-
