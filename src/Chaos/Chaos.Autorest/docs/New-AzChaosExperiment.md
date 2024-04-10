@@ -12,22 +12,7 @@ Create a Experiment resource.
 
 ## SYNTAX
 
-### CreateViaIdentityExpanded (Default)
-```
-New-AzChaosExperiment -InputObject <IChaosIdentity> -Location <String> -Selector <ISelector[]> -Step <IStep[]>
- [-EnableSystemAssignedIdentity] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateExpanded
-```
-New-AzChaosExperiment -Name <String> -ResourceGroupName <String> -Location <String> -Selector <ISelector[]>
- -Step <IStep[]> [-SubscriptionId <String>] [-EnableSystemAssignedIdentity] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaJsonFilePath
+### CreateViaJsonFilePath (Default)
 ```
 New-AzChaosExperiment -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
@@ -46,23 +31,76 @@ Create a Experiment resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create Or Update a Experiment resource for Json File Path.
 ```powershell
-$actionObj = New-AzChaosActionObject -Name "urn:csci:microsoft:virtualMachine:shutdown/1.0" -Type "continuous"
-$branchObj = New-AzChaosBranchObject -Action $actionObj -Name "branch1"
-$stepObj = New-AzChaosStepObject -Branch $branchObj -Name "step1"
-$selectObj = New-AzChaosSelectorObject -Id "selector1" -Type List
-New-AzChaosExperiment -Name chaos-experiment -ResourceGroupName azps_test_group_chaos -Location eastus -Selector $selectObj -Step $stepObj
+New-AzChaosExperiment -Name experiment-test -ResourceGroupName azps_test_group_chaos -JsonFilePath "C:\Users\abc\Desktop\jsonStr.json"
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Chaos/experiments/EXPERIMENT-TEST
+IdentityPrincipalId          : 72f14040-8265-4f10-b5ea-377c6fc2671c
+IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
+IdentityType                 : SystemAssigned
+IdentityUserAssignedIdentity : {
+                               }
+Location                     : eastus2euap
+Name                         : EXPERIMENT-TEST0410
+ProvisioningState            : Succeeded
+ResourceGroupName            : azps_test_group_chaos
+Selector                     : {{
+                                 "type": "List",
+                                 "id": "selector1",
+                                 "targets": [
+                                   {
+                                     "type": "ChaosTarget",
+                                     "id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/exampleVM/providers/Microso
+                               ft.Chaos/targets/Microsoft-VirtualMachine"
+                                   }
+                                 ]
+                               }}
+Step                         : {{
+                                 "name": "step1",
+                                 "branches": [
+                                   {
+                                     "name": "branch1",
+                                     "actions": [
+                                       {
+                                         "type": "continuous",
+                                         "name": "urn:csci:microsoft:virtualMachine:shutdown/1.0",
+                                         "duration": "PT10M",
+                                         "parameters": [
+                                           {
+                                             "key": "abruptShutdown",
+                                             "value": "false"
+                                           }
+                                         ],
+                                         "selectorId": "selector1"
+                                       }
+                                     ]
+                                   }
+                                 ]
+                               }}
+SystemDataCreatedAt          : 2024-04-10 10:28:10 AM
+SystemDataCreatedBy          :
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 2024-04-10 10:32:47 AM
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : {
+                               }
+Type                         : Microsoft.Chaos/experiments
 ```
 
-{{ Add description here }}
+Create Or Update a Experiment resource for Json File Path.
 
+### Example 2: Create Or Update a Experiment resource for Json String.
+```powershell
+$jsonStr = '
 {
-  "location": "eastus",
+  "location": "eastus2euap",
+  "identity": {
+    "type": "SystemAssigned"
+  },
   "properties": {
     "steps": [
       {
@@ -95,12 +133,73 @@ New-AzChaosExperiment -Name chaos-experiment -ResourceGroupName azps_test_group_
         "targets": [
           {
             "type": "ChaosTarget",
-            "id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/exampleVM/providers/Microsoft.Chaos/targets/Microsoft-VirtualMachine"
+            "id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/exampleVM0410/providers/Microsoft.Chaos/targets/Microsoft-VirtualMachine"
           }
+        ]
       }
     ]
   }
-}
+}'
+
+New-AzChaosExperiment -Name experiment-test -ResourceGroupName azps_test_group_chaos -JsonString $jsonStr
+```
+
+```output
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Chaos/experiments/EXPERIMENT-TEST
+IdentityPrincipalId          : 72f14040-8265-4f10-b5ea-377c6fc2671c
+IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
+IdentityType                 : SystemAssigned
+IdentityUserAssignedIdentity : {
+                               }
+Location                     : eastus2euap
+Name                         : EXPERIMENT-TEST0410
+ProvisioningState            : Succeeded
+ResourceGroupName            : azps_test_group_chaos
+Selector                     : {{
+                                 "type": "List",
+                                 "id": "selector1",
+                                 "targets": [
+                                   {
+                                     "type": "ChaosTarget",
+                                     "id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/exampleVM/providers/Microso
+                               ft.Chaos/targets/Microsoft-VirtualMachine"
+                                   }
+                                 ]
+                               }}
+Step                         : {{
+                                 "name": "step1",
+                                 "branches": [
+                                   {
+                                     "name": "branch1",
+                                     "actions": [
+                                       {
+                                         "type": "continuous",
+                                         "name": "urn:csci:microsoft:virtualMachine:shutdown/1.0",
+                                         "duration": "PT10M",
+                                         "parameters": [
+                                           {
+                                             "key": "abruptShutdown",
+                                             "value": "false"
+                                           }
+                                         ],
+                                         "selectorId": "selector1"
+                                       }
+                                     ]
+                                   }
+                                 ]
+                               }}
+SystemDataCreatedAt          : 2024-04-10 10:28:10 AM
+SystemDataCreatedBy          :
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 2024-04-10 10:32:47 AM
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : {
+                               }
+Type                         : Microsoft.Chaos/experiments
+```
+
+Create Or Update a Experiment resource for Json String.
 
 ## PARAMETERS
 
@@ -135,36 +234,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableSystemAssignedIdentity
-Decides if enable a system assigned identity for the resource.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
-Parameter Sets: CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -JsonFilePath
 Path of Json file supplied to the Create operation
 
@@ -195,27 +264,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-The geo-location where the resource lives
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 String that represents a Experiment resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases: ExperimentName
 
 Required: True
@@ -245,37 +299,7 @@ String that represents an Azure resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Selector
-List of selectors.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.ISelector[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Step
-List of steps.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IStep[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -290,43 +314,12 @@ GUID that represents an Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UserAssignedIdentity
-The array of user assigned identities associated with the resource.
-The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
-
-```yaml
-Type: System.String[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -366,8 +359,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IChaosIdentity
 
 ## OUTPUTS
 

@@ -38,7 +38,6 @@ input-file:
   - $(repo)/specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/operations.json
   - $(repo)/specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/targetTypes.json
   - $(repo)/specification/chaos/resource-manager/Microsoft.Chaos/stable/2024-01-01/targets.json
-  - $(repo)/specification/common-types/resource-management/v2/types.json
 
 title: Chaos
 module-version: 0.1.0
@@ -60,6 +59,83 @@ directive:
           "description": "The geo-location where the resource lives"
       }
 
+  - from: swagger-document 
+    where: $.definitions.target
+    transform: >-
+      return {
+        "type": "object",
+        "description": "Model that represents a Target resource.",
+        "allOf": [
+          {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/907b79c0a6a660826e54dc1f16ea14b831b201d2/specification/common-types/resource-management/v2/types.json#/definitions/Resource"
+          }
+        ],
+        "properties": {
+          "systemData": {
+            "description": "The system metadata of the target resource.",
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/907b79c0a6a660826e54dc1f16ea14b831b201d2/specification/common-types/resource-management/v2/types.json#/definitions/systemData",
+            "readOnly": true
+          },
+          "location": {
+            "type": "string",
+            "description": "Location of the target resource."
+          },
+          "properties": {
+            "description": "The properties of the target resource.",
+            "x-ms-client-flatten": true,
+            "$ref": "#/definitions/targetProperties"
+          }
+        }
+      }
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}"].delete.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "OK"
+        },
+        "202": {
+          "description": "Asynchronous delete operation."
+        },
+        "default": {
+          "description": "Error response returned if request was unsuccessful.",
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/907b79c0a6a660826e54dc1f16ea14b831b201d2/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+          }
+        }
+      }
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}"].patch.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "Long running replace experiment operation.",
+          "schema": {
+            "$ref": "./types/experiments.json#/definitions/experiment"
+          }
+        },
+        "202": {
+          "description": "Long running update operation.",
+          "schema": {
+            "$ref": "./types/experiments.json#/definitions/experiment"
+          }
+        },
+        "default": {
+          "description": "Error response returned if request was unsuccessful.",
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/907b79c0a6a660826e54dc1f16ea14b831b201d2/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+          }
+        }
+      }
+
+  - where:
+      verb: New
+      subject: Experiment
+      variant: ^CreateViaIdentityExpanded$|^CreateExpanded$
+    remove: true
+
   - where:
       variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
     remove: true
@@ -67,6 +143,10 @@ directive:
   - where:
       verb: Set
     remove: true
+
+  # - where:
+  #     subject: OperationStatuses
+  #   remove: true
 
   - where:
       verb: Invoke

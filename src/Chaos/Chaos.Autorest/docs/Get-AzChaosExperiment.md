@@ -46,14 +46,14 @@ Get-AzChaosExperiment
 ```
 
 ```output
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Chaos/experiments/chaos-test
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Chaos/experiments/experiment-test
 IdentityPrincipalId          :
 IdentityTenantId             :
 IdentityType                 :
 IdentityUserAssignedIdentity : {
                                }
 Location                     : eastus
-Name                         : chaos-test
+Name                         : experiment-test
 ProvisioningState            :
 ResourceGroupName            : azps_test_group_chaos
 Selector                     : {{
@@ -108,14 +108,14 @@ Get-AzChaosExperiment -ResourceGroupName azps_test_group_chaos
 ```
 
 ```output
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Chaos/experiments/chaos-test
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Chaos/experiments/experiment-test
 IdentityPrincipalId          :
 IdentityTenantId             :
 IdentityType                 :
 IdentityUserAssignedIdentity : {
                                }
 Location                     : eastus
-Name                         : chaos-test
+Name                         : experiment-test
 ProvisioningState            :
 ResourceGroupName            : azps_test_group_chaos
 Selector                     : {{
@@ -166,18 +166,18 @@ List Experiment resource.
 
 ### Example 3: Get a Experiment resource.
 ```powershell
-Get-AzChaosExperiment -ResourceGroupName azps_test_group_chaos -Name chaos-test
+Get-AzChaosExperiment -ResourceGroupName azps_test_group_chaos -Name experiment-test
 ```
 
 ```output
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Chaos/experiments/chaos-test
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Chaos/experiments/experiment-test
 IdentityPrincipalId          :
 IdentityTenantId             :
 IdentityType                 :
 IdentityUserAssignedIdentity : {
                                }
 Location                     : eastus
-Name                         : chaos-test
+Name                         : experiment-test
 ProvisioningState            :
 ResourceGroupName            : azps_test_group_chaos
 Selector                     : {{

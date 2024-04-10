@@ -36,27 +36,31 @@ Create a Capability resource that extends a Target resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a Capability resource that extends a Target resource.
 ```powershell
-{{ Add code here }}
+Update-AzChaosCapability -Name Shutdown-1.0 -ParentProviderNamespace Microsoft.Compute -ParentResourceName exampleVM -ParentResourceType virtualMachines -ResourceGroupName azps_test_group_chaos -TargetName microsoft-virtualmachine
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Description                  :
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/exampleVM/providers/Microsoft.Chaos/targets/
+                               microsoft-virtualmachine/capabilities/Shutdown-1.0
+Name                         : Shutdown-1.0
+ParametersSchema             : https://schema-tc.eastus.chaos-prod.azure.com/targetTypes/Microsoft-VirtualMachine/capabilityTypes/Shutdown-1.0/parametersSchema.json
+Publisher                    : microsoft
+ResourceGroupName            : azps_test_group_chaos
+SystemDataCreatedAt          : 2024-03-18 上午 10:28:43
+SystemDataCreatedBy          :
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 2024-03-18 上午 11:35:18
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+TargetType                   : virtualmachine
+Type                         : Microsoft.Chaos/targets/capabilities
+Urn                          : urn:csci:microsoft:virtualMachine:shutdown/1.0
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Create a Capability resource that extends a Target resource.
 
 ## PARAMETERS
 

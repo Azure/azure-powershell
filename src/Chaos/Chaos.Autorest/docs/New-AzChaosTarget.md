@@ -15,13 +15,13 @@ Create a Target resource that extends a tracked regional resource.
 ### CreateExpanded (Default)
 ```
 New-AzChaosTarget -Name <String> -ParentProviderNamespace <String> -ParentResourceName <String>
- -ParentResourceType <String> -ResourceGroupName <String> -Property <Hashtable> [-SubscriptionId <String>]
- [-Location <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ParentResourceType <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Location <String>]
+ [-Property <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
-New-AzChaosTarget -InputObject <IChaosIdentity> -Property <Hashtable> [-Location <String>]
+New-AzChaosTarget -InputObject <IChaosIdentity> [-Location <String>] [-Property <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -217,7 +217,7 @@ Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
