@@ -721,6 +721,13 @@ directive:
 
   - where:
       verb: Get
+      subject: NamespaceSharedAccessKey
+      parameter-name: NamespaceName
+    set:
+      alias: Name
+
+  - where:
+      verb: Get
       subject: EventSubscription
     set:
       alias: Get-AzEventGridSubscription

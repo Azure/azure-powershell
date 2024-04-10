@@ -13,7 +13,7 @@ List properties of partner destination.
 
 ### Example 2: List properties of partner destination.
 ```powershell
-Get-azeventGridPartnerDestination -ResourceGroupName azps_test_group_eventgrid
+Get-AzEventGridPartnerDestination -ResourceGroupName azps_test_group_eventgrid
 ```
 
 ```output
@@ -26,7 +26,7 @@ List properties of partner destination.
 
 ### Example 3: Get properties of a partner destination.
 ```powershell
-Get-azeventGridPartnerDestination -ResourceGroupName azps_test_group_eventgrid -Name azps-destin
+Get-AzEventGridPartnerDestination -ResourceGroupName azps_test_group_eventgrid -Name azps-destin
 ```
 
 ```output
