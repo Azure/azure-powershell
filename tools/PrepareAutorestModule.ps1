@@ -85,7 +85,8 @@ function Update-GeneratedSubModule {
     if (Test-Path $localModulesPath) {
         Remove-Item -Path $localModulesPath -Recurse -Force
     }
-    $fileToUpdate = @('generated', 'generate-info.json', "Az.$SubModuleName.psd1", "Az.$SubModuleName.psm1", "Az.$SubModuleName.format.ps1xml", 'exports', 'internal', 'test-module.ps1', 'check-dependencies.ps1')
+    $subModuleNameTrimmed = $SubModuleName.TrimEnd('.Autorest')
+    $fileToUpdate = @('generated', 'generate-info.json', "Az.$subModuleNameTrimmed.psd1", "Az.$subModuleNameTrimmed.psm1", "Az.$subModuleNameTrimmed.format.ps1xml", 'exports', 'internal', 'test-module.ps1', 'check-dependencies.ps1')
     # Copy from src/ to generated/ 
     $fileToUpdate | Foreach-Object {
         $moveFrom = Join-Path $SourceDirectory $_
@@ -93,7 +94,7 @@ function Update-GeneratedSubModule {
         Copy-Item -Path $moveFrom -Destination $moveTo -Recurse -Force
     }
     # regenerate csproj
-    New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName "Az.$SubModuleName.csproj" -GeneratedDirectory $GeneratedDirectory -ModuleRootName $ModuleRootName -SubModuleName $SubModuleName
+    New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName "Az.$subModuleNameTrimmed.csproj" -GeneratedDirectory $GeneratedDirectory -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed
 }
 
 function New-GeneratedFileFromTemplate {
@@ -144,6 +145,7 @@ function Add-SubModuleToParentModule {
     }
     $moduleRootPath = Join-Path $SourceDirectory $ModuleRootName
     $parentModulePath = Join-Path $moduleRootPath $parentModuleName
+    $subModuleNameTrimmed = $SubModuleName.TrimEnd('.Autorest')
     if (-not (Test-Path $parentModulePath)) {
         New-Item -ItemType Directory -Force -Path $parentModulePath
         <#
@@ -174,9 +176,9 @@ function Add-SubModuleToParentModule {
     } else {
         $parentModuleMetadata = Import-LocalizedData -BaseDirectory $TemplatePath -FileName 'Module.psd1'
     }
-    $parentModuleMetadata.RequiredAssemblies = ($parentModuleMetadata.RequiredAssemblies + "$SubModuleName/bin/Az.$SubModuleName.private.dll") | Select-Object -Unique
-    $parentModuleMetadata.FormatsToProcess = ($parentModuleMetadata.FormatsToProcess + "$SubModuleName/Az.$SubModuleName.format.ps1xml") | Select-Object -Unique
-    $parentModuleMetadata.NestedModules = ($parentModuleMetadata.NestedModules + "$SubModuleName/Az.$SubModuleName.psm1") | Select-Object -Unique
+    $parentModuleMetadata.RequiredAssemblies = ($parentModuleMetadata.RequiredAssemblies + "$SubModuleName/bin/Az.$subModuleNameTrimmed.private.dll") | Select-Object -Unique
+    $parentModuleMetadata.FormatsToProcess = ($parentModuleMetadata.FormatsToProcess + "$SubModuleName/Az.$subModuleNameTrimmed.format.ps1xml") | Select-Object -Unique
+    $parentModuleMetadata.NestedModules = ($parentModuleMetadata.NestedModules + "$SubModuleName/Az.$subModuleNameTrimmed.psm1") | Select-Object -Unique
     # these below properties will be set in PrivateData.PSData during New-ModuleManifest
     if ($parentModuleMetadata.PrivateData -and $parentModuleMetadata.PSData) {
         $parentModuleMetadata.PrivateData.PSData.keys | ForEach-Object {
@@ -186,7 +188,7 @@ function Add-SubModuleToParentModule {
     }
  
     $subModulePath = Join-Path $SourceDirectory $ModuleRootName $SubModuleName
-    $subMoudleMetadata = Import-LocalizedData -BaseDirectory $subModulePath -FileName "Az.$SubModuleName.psd1"
+    $subMoudleMetadata = Import-LocalizedData -BaseDirectory $subModulePath -FileName "Az.$subModuleNameTrimmed.psd1"
 
     $subMoudleMetadata.FunctionsToExport | Where-Object { '*' -ne $_ } | ForEach-Object { $parentModuleMetadata.FunctionsToExport += $_ }
     $parentModuleMetadata.FunctionsToExport = $parentModuleMetadata.FunctionsToExport | Select-Object -Unique
@@ -206,7 +208,7 @@ function Add-SubModuleToParentModule {
             dotnet sln $slnPath add $_.FullName --solution-folder 'Accounts'
         }
     }
-    dotnet sln $slnPath add (JoinPath $GeneratedDirectory $ModuleRootName $SubModuleName "Az.$SubModuleName.csproj")
+    dotnet sln $slnPath add (Join-Path $GeneratedDirectory $ModuleRootName $SubModuleName "Az.$subModuleNameTrimmed.csproj")
     <#
         generate help markdown by platyPS
     #>
