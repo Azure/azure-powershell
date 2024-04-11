@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20221101.ICollectorPolicy))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Description(@"Gets the collector policy in a specified Traffic Collector")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}", ApiVersion = "2022-11-01")]
     public partial class GetAzNetworkFunctionCollectorPolicy_GetViaIdentity : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Runtime.IEventListener
     {

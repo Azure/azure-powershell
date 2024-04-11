@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed object replication policy time format parsing issue [#24434]
+ 
+## Version 6.1.3
 * Introduced secrets detection feature to safeguard sensitive data.
 * Upgraded Azure.Core to 1.37.0.
 * Fixed upload file with OAuth authentication issue [#24289] 

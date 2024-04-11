@@ -19,7 +19,9 @@
 -->
 
 ## Upcoming Release
-
+* Upgrade API version to 2024-02-01
+* Added support to configure rules to scrub PII values from the AFDx logs when new or update a AFDx resource.
+  
 ## Version 3.1.2
 * Fixed the case sensitive issue when do preparing migration steps for `Start-AzFrontDoorCdnProfilePrepareMigration`
 

@@ -991,12 +991,26 @@
     "Az.Communication": {
       "Get-AzCommunicationService": {},
       "Get-AzCommunicationServiceKey": {},
+      "Get-AzEmailService": {},
+      "Get-AzEmailServiceDomain": {},
+      "Get-AzEmailServiceSenderUsername": {},
+      "Invoke-AzEmailServiceInitiateDomainVerification": {},
       "New-AzCommunicationService": {},
       "New-AzCommunicationServiceKey": {},
+      "New-AzEmailService": {},
+      "New-AzEmailServiceDomain": {},
+      "New-AzEmailServiceSenderUsername": {},
       "Remove-AzCommunicationService": {},
+      "Remove-AzEmailService": {},
+      "Remove-AzEmailServiceDomain": {},
+      "Remove-AzEmailServiceSenderUsername": {},
       "Set-AzCommunicationServiceNotificationHub": {},
+      "Stop-AzEmailServiceDomainVerification": {},
       "Test-AzCommunicationServiceNameAvailability": {},
-      "Update-AzCommunicationService": {}
+      "Update-AzCommunicationService": {},
+      "Update-AzEmailService": {},
+      "Update-AzEmailServiceDomain": {},
+      "Update-AzEmailServiceSenderUsername": {}
     },
     "Az.Compute": {
       "Add-AzImageDataDisk": {},
@@ -2384,12 +2398,6 @@
       "Update-AzDeviceUpdateAccount": {},
       "Update-AzDeviceUpdateInstance": {}
     },
-    "Az.DevSpaces": {
-      "Get-AzDevSpacesController": {},
-      "New-AzDevSpacesController": {},
-      "Remove-AzDevSpacesController": {},
-      "Update-AzDevSpacesController": {}
-    },
     "Az.DevTestLabs": {
       "Get-AzDtlAllowedVMSizesPolicy": {},
       "Get-AzDtlAutoShutdownPolicy": {},
@@ -2852,13 +2860,17 @@
       "Get-AzHdInsightOnAksAvailableClusterPoolVersion": {},
       "Get-AzHdInsightOnAksAvailableClusterVersion": {},
       "Get-AzHdInsightOnAksCluster": {},
+      "Get-AzHdInsightOnAksClusterAvailableUpgrade": {},
       "Get-AzHdInsightOnAksClusterInstanceView": {},
       "Get-AzHdInsightOnAksClusterJob": {},
       "Get-AzHdInsightOnAksClusterPool": {},
+      "Get-AzHdInsightOnAksClusterPoolAvailableUpgrade": {},
       "Get-AzHdInsightOnAksClusterServiceConfig": {},
       "New-AzHdInsightOnAksCluster": {},
       "New-AzHdInsightOnAksClusterConfigFileObject": {},
+      "New-AzHdInsightOnAksClusterHotfixUpgradeObject": {},
       "New-AzHdInsightOnAksClusterPool": {},
+      "New-AzHdInsightOnAksClusterPoolAKSUpgradeObject": {},
       "New-AzHdInsightOnAksClusterServiceConfigObject": {},
       "New-AzHdInsightOnAksClusterServiceConfigsProfileObject": {},
       "New-AzHdInsightOnAksFlinkJobObject": {},
@@ -2872,6 +2884,7 @@
       "Start-AzHdInsightOnAksClusterJob": {},
       "Test-AzHdInsightOnAksLocationNameAvailability": {},
       "Update-AzHdInsightOnAksCluster": {},
+      "Update-AzHdInsightOnAksClusterPool": {},
       "Update-AzHdInsightOnAksClusterPoolTag": {}
     },
     "Az.HealthBot": {
