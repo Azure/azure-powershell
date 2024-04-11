@@ -31,7 +31,7 @@ function New-AzMigrateHCINicMappingObject {
         # Specifies the ID of the NIC to be updated.
         ${NicID},
 
-        [Parameter(Mandatory)]
+        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the logical network ARM ID that the VMs will use.
@@ -53,11 +53,21 @@ function New-AzMigrateHCINicMappingObject {
     )
     
     process {
-        if (!$PSBoundParameters.ContainsKey('TargetTestVirtualSwitchId')) {
-            $TargetTestVirtualSwitchId = $TargetVirtualSwitchId
-        }
+        if ($CreateAtTarget -eq "true") {
+            if (!$PSBoundParameters.ContainsKey('TargetVirtualSwitchId') -or
+                [string]::IsNullOrEmpty($TargetVirtualSwitchId)) {
+                throw "TargetVirtualSwitchId is required when CreateAtTarget is 'true'."
+            }
 
-        $selectionTypeForFailover = if ($CreateAtTarget -eq "true") { "SelectedByUser" } else { "NotSelected" }
+            if (!$PSBoundParameters.ContainsKey('TargetTestVirtualSwitchId')) {
+                $TargetTestVirtualSwitchId = $TargetVirtualSwitchId
+            }
+
+            $selectionTypeForFailover = $VMNicSelection.SelectedByUser
+        }
+        else {
+            $selectionTypeForFailover = $VMNicSelection.NotSelected
+        }
 
         $NicObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210216Preview.AzStackHCINicInput]::new(
             $NicID,

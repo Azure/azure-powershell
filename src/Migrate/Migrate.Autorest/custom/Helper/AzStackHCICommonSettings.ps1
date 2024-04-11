@@ -76,3 +76,9 @@ enum StorageAccountProvisioningState
     ResolvingDNS
     Succeeded
 }
+
+# Selection state for VM NIC
+$VMNicSelection = @{
+    SelectedByUser = "SelectedByUser";
+    NotSelected    = "NotSelected";
+}

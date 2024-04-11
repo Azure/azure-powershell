@@ -269,6 +269,11 @@ function Set-AzMigrateHCIServerReplication {
                 if ($null -eq $updatedNic){
                     throw "The Nic id '$($nic.NicId)' is not found."
                 }
+
+                if ($nic.SelectionTypeForFailover -eq $VMNicSelection.SelectedByUser -and
+                    [string]::IsNullOrEmpty($nic.TargetNetworkId)) {
+                    throw "TargetVirtualSwitchId is required when the NIC '$($nic.NicId)' is to be CreateAtTarget. Please utilize the New-AzMigrateHCINicMappingObject command to properly create a Nic mapping object."
+                }
                 
                 $updatedNic.TargetNetworkId            = $nic.TargetNetworkId
                 $updatedNic.TestNetworkId              = $nic.TestNetworkId 

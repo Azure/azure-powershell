@@ -218,7 +218,7 @@ function New-AzMigrateHCIServerReplication {
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {
             $instanceType = $AzStackHCIInstanceTypes.VMwareToAzStackHCI
             $machine = InvokeAzMigrateGetCommandWithRetries `
-                -CommandName 'Az.Migrate\Get-AzMigrateMachine' `
+                -CommandName 'Az.Migrate.Internal\Get-AzMigrateMachine' `
                 -Parameters $PSBoundParameters `
                 -ErrorMessage "Machine '$MachineName' not found in resource group '$ResourceGroupName' and site '$SiteName'."
 
@@ -455,7 +455,7 @@ function New-AzMigrateHCIServerReplication {
                     NicId                    = $sourceNic.NicId
                     TargetNetworkId          = $TargetVirtualSwitchId
                     TestNetworkId            = if ($HasTargetTestVirtualSwitchId) { $TargetTestVirtualSwitchId } else { $TargetVirtualSwitchId }
-                    SelectionTypeForFailover = "SelectedByUser"
+                    SelectionTypeForFailover = $VMNicSelection.SelectedByUser
                 }
                 $nics += $NicObject
             }
@@ -520,6 +520,12 @@ function New-AzMigrateHCIServerReplication {
                 
                 $htNic = @{}
                 $nic.PSObject.Properties | ForEach-Object { $htNic[$_.Name] = $_.Value }
+
+                if ($htNic.SelectionTypeForFailover -eq $VMNicSelection.SelectedByUser -and
+                    [string]::IsNullOrEmpty($htNic.TargetNetworkId)) {
+                    throw "TargetVirtualSwitchId is required when the NIC '$($htNic.NicId)' is to be CreateAtTarget. Please utilize the New-AzMigrateHCINicMappingObject command to properly create a Nic mapping object."
+                }
+
                 $nics += [PSCustomObject]$htNic
             }
         }

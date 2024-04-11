@@ -199,7 +199,7 @@ function InvokeAzMigrateGetCommandWithRetries {
         [Parameter()]
         [System.Int32]
         # Specifies the delay between retries in seconds.
-        ${RetryDelayInSeconds} = 10,
+        ${RetryDelayInSeconds} = 30,
 
         [Parameter()]
         [System.String]
