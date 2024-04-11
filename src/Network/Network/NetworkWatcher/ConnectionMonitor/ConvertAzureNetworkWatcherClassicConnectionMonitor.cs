@@ -11,6 +11,8 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher.ConnectionMonitor
     [Cmdlet("Convert", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkWatcherClassicConnectionMonitor", SupportsShouldProcess = true, DefaultParameterSetName = "SetByName"), OutputType(typeof(PSConnectionMonitorResultV1), typeof(PSConnectionMonitorResultV2))]
     public class ConvertAzureNetworkWatcherClassicConnectionMonitor : ConnectionMonitorBaseCmdlet
     {
+        private const string ConnectionMonitorTypeV2 = "MultiEndpoint";
+
         [Parameter(
             Mandatory = true,
             HelpMessage = "The name of network watcher.",
@@ -68,6 +70,6 @@ namespace Microsoft.Azure.Commands.Network.NetworkWatcher.ConnectionMonitor
             WriteObject(psConnectionMonitorResult);
         }
 
-        private const string ConnectionMonitorTypeV2 = "MultiEndpoint";
+        
     }
 }
