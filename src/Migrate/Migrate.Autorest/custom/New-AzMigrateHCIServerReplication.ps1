@@ -203,77 +203,56 @@ function New-AzMigrateHCIServerReplication {
         
         if ($SiteType -eq $SiteTypes.HyperVSites) {
             $instanceType = $AzStackHCIInstanceTypes.HyperVToAzStackHCI
-            $machine = Az.Migrate.Internal\Get-AzMigrateHyperVMachine @PSBoundParameters
+            $machine = InvokeAzMigrateGetCommandWithRetries `
+                -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVMachine' `
+                -Parameters $PSBoundParameters `
+                -ErrorMessage "Machine '$MachineName' not found in resource group '$ResourceGroupName' and site '$SiteName'."
+
+            $null = $PSBoundParameters.Remove('MachineName')
+
+            $siteObject = InvokeAzMigrateGetCommandWithRetries `
+                -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVSite' `
+                -Parameters $PSBoundParameters `
+                -ErrorMessage "Machine site '$SiteName' with Type '$SiteType' not found."
         }
         elseif ($SiteType -eq $SiteTypes.VMwareSites) {
             $instanceType = $AzStackHCIInstanceTypes.VMwareToAzStackHCI
-            $machine = Az.Migrate.Internal\Get-AzMigrateMachine @PSBoundParameters
+            $machine = InvokeAzMigrateGetCommandWithRetries `
+                -CommandName 'Az.Migrate\Get-AzMigrateMachine' `
+                -Parameters $PSBoundParameters `
+                -ErrorMessage "Machine '$MachineName' not found in resource group '$ResourceGroupName' and site '$SiteName'."
+
+            $null = $PSBoundParameters.Remove('MachineName')
+
+            $siteObject = InvokeAzMigrateGetCommandWithRetries `
+                -CommandName 'Az.Migrate\Get-AzMigrateSite' `
+                -Parameters $PSBoundParameters `
+                -ErrorMessage "Machine site '$SiteName' with Type '$SiteType' not found."
         }
 
-        if ($null -eq $machine) {
-            throw "No machine '$MachineName' found in resource group '$ResourceGroupName' and site '$SiteName'."
-        }
+        # $siteObject is not null or exception would have been thrown
+        $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
 
-        $null = $PSBoundParameters.Remove('MachineName')
-
-        for ($i = 0; $i -lt 3; $i++) {
-            if ($SiteType -eq $SiteTypes.VMwareSites) {
-                $siteObject = Az.Migrate\Get-AzMigrateSite @PSBoundParameters `
-                    -ErrorVariable notPresent `
-                    -ErrorAction SilentlyContinue
-            }
-            elseif ($SiteType -eq $SiteTypes.HyperVSites) {
-                $siteObject = Az.Migrate.Internal\Get-AzMigrateHyperVSite @PSBoundParameters `
-                    -ErrorVariable notPresent `
-                    -ErrorAction SilentlyContinue
-            }
-
-            if ($null -ne $siteObject) {
-                $ProjectName = $siteObject.DiscoverySolutionId.Split("/")[8]
-                break
-            }
-
-            Start-Sleep -Seconds 30
-        }
-
-        if ($null -eq $siteObject) {
-            throw "No site '$SiteName' found in resource group '$ResourceGroupName'"
-        }
-
-        $null = $PSBoundParameters.Remove('ResourceGroupName')
         $null = $PSBoundParameters.Remove('SiteName')
 
         # Get the migrate solution.
         $amhSolutionName = "Servers-Migration-ServerMigration_DataReplication"
-        $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
         $null = $PSBoundParameters.Add("Name", $amhSolutionName)
         $null = $PSBoundParameters.Add("MigrateProjectName", $ProjectName)
+
+        $solution = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName 'Az.Migrate\Get-AzMigrateSolution' `
+            -Parameters $PSBoundParameters `
+            -ErrorMessage "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
         
-        for ($i = 0; $i -lt 3; $i++) {
-            $solution = Az.Migrate\Get-AzMigrateSolution @PSBoundParameters `
-                -ErrorVariable notPresent `
-                -ErrorAction SilentlyContinue
-
-            if ($null -ne $solution) {
-                $vaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
-
-                if ([string]::IsNullOrEmpty($vaultName)) {
-                    throw "The replication vault '$vaultName' not found. Azure Migrate Project not configured. Setup Azure Migrate Project and run the Initialize-AzMigrateHCIReplicationInfrastructure script before proceeding."
-                }
-
-                break
-            }
-
-            Start-Sleep -Seconds 30
-        }
-
-        if ($null -eq $solution) {
-            throw "No Data Replication Service Solution '$amhSolutionName' found in resource group '$ResourceGroupName' and project '$ProjectName'. Please verify your appliance setup."
-        }
-
         $null = $PSBoundParameters.Remove('ResourceGroupName')
         $null = $PSBoundParameters.Remove("Name")
         $null = $PSBoundParameters.Remove("MigrateProjectName")
+        
+        $VaultName = $solution.DetailExtendedDetail.AdditionalProperties.vaultId.Split("/")[8]
+        if ([string]::IsNullOrEmpty($VaultName)) {
+            throw "Azure Migrate Project not configured: missing replication vault. Setup Azure Migrate Project and run the Initialize-AzMigrateHCIReplicationInfrastructure script before proceeding."
+        }
         
         # Get fabrics and appliances in the project
         $allFabrics = Az.Migrate\Get-AzMigrateHCIReplicationFabric -ResourceGroupName $ResourceGroupName
@@ -302,89 +281,33 @@ function New-AzMigrateHCIServerReplication {
         }
 
         # Get Source and Target Dras
-        for ($i = 0; $i -lt 3; $i++) {
-            $sourceDras = Az.Migrate.Internal\Get-AzMigrateDra `
-                -FabricName $sourceFabric.Name `
-                -ResourceGroupName $ResourceGroupName `
-                -ErrorVariable notPresent `
-                -ErrorAction SilentlyContinue
-
-            if ($null -ne $sourceDras) {
-                break
-            }
-
-            Start-Sleep -Seconds 30
-        }
-
-        if ($null -eq $sourceDras) {
-            throw "No connected source appliances are found. Kindly deploy an appliance by completing the Discover step of the migration jounery on the source cluster."
-        }
+        $sourceDras = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName 'Az.Migrate.Internal\Get-AzMigrateDra' `
+            -Parameters @{ FabricName = $sourceFabric.Name; ResourceGroupName = $ResourceGroupName } `
+            -ErrorMessage "No connected source appliances are found. Kindly deploy an appliance by completing the Discover step of the migration jounery on the source cluster."
 
         $sourceDra = $sourceDras[0]
 
-        for ($i = 0; $i -lt 3; $i++) {
-            $targetDras = Az.Migrate.Internal\Get-AzMigrateDra `
-                -FabricName $targetFabric.Name `
-                -ResourceGroupName $ResourceGroupName `
-                -ErrorVariable notPresent `
-                -ErrorAction SilentlyContinue
-
-            if ($null -ne $targetDras) {
-                break
-            }
-
-            Start-Sleep -Seconds 30
-        }
-
-        if ($null -eq $targetDras) {
-            throw "A target appliance is not available for the target cluster. Deploy and configure a new appliance for the cluster, or select a different cluster."
-        }
+        $targetDras = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName 'Az.Migrate.Internal\Get-AzMigrateDra' `
+            -Parameters @{ FabricName = $targetFabric.Name; ResourceGroupName = $ResourceGroupName } `
+            -ErrorMessage "No connected target appliances are found. Deploy and configure a new appliance for the target cluster, or select a different cluster."
 
         $targetDra = $targetDras[0]
 
         # Validate Policy
         $policyName = $vaultName + $instanceType + "policy"
-        for ($i = 0; $i -lt 3; $i++) {
-            $policy = Az.Migrate.Internal\Get-AzMigratePolicy `
-                -ResourceGroupName $ResourceGroupName `
-                -Name $policyName `
-                -VaultName $vaultName `
-                -SubscriptionId $SubscriptionId `
-                -ErrorVariable notPresent `
-                -ErrorAction SilentlyContinue
-
-            if ($null -ne $policy) {
-                break
-            }
-
-            Start-Sleep -Seconds 30
-        }
-
-        if ($null -eq $policy) {
-            throw "The replication policy '$policyName' not found. The replication infrastructure is not initialized. Run the Initialize-AzMigrateHCIReplicationInfrastructure script again."
-        }
+        $policy = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName 'Az.Migrate.Internal\Get-AzMigratePolicy' `
+            -Parameters @{ ResourceGroupName = $ResourceGroupName; Name = $policyName; VaultName = $vaultName; SubscriptionId = $SubscriptionId } `
+            -ErrorMessage "The replication policy '$policyName' not found. The replication infrastructure is not initialized. Run the Initialize-AzMigrateHCIReplicationInfrastructure script again."
 
         # Validate Replication Extension
         $replicationExtensionName = ($sourceFabric.Id -split '/')[-1] + "-" + ($targetFabric.Id -split '/')[-1] + "-MigReplicationExtn"
-        for ($i = 0; $i -lt 3; $i++) {
-            $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension `
-                -ResourceGroupName $ResourceGroupName `
-                -Name $replicationExtensionName `
-                -VaultName $vaultName `
-                -SubscriptionId $SubscriptionId `
-                -ErrorVariable notPresent `
-                -ErrorAction SilentlyContinue
-
-            if ($null -ne $replicationExtension) {
-                break
-            }
-
-            Start-Sleep -Seconds 30
-        }
-
-        if ($null -eq $replicationExtension) {
-            throw "The replication extension '$replicationExtensionName' not found. The replication infrastructure is not initialized. Run the Initialize-AzMigrateHCIReplicationInfrastructure script again."
-        }
+        $replicationExtension = InvokeAzMigrateGetCommandWithRetries `
+            -CommandName 'Az.Migrate.Internal\Get-AzMigrateReplicationExtension' `
+            -Parameters @{ ResourceGroupName = $ResourceGroupName; Name = $replicationExtensionName; VaultName = $vaultName; SubscriptionId = $SubscriptionId } `
+            -ErrorMessage "The replication extension '$replicationExtensionName' not found. The replication infrastructure is not initialized. Run the Initialize-AzMigrateHCIReplicationInfrastructure script again."
         
         $targetClusterId = $targetFabric.Property.CustomProperty.Cluster.ResourceName
         $targetClusterIdArray = $targetClusterId.Split("/")
@@ -398,31 +321,21 @@ function New-AzMigrateHCIServerReplication {
         }
             
         # Get source appliance RunAsAccount
-        for ($i = 0; $i -lt 3; $i++) {
-            if ($SiteType -eq $SiteTypes.HyperVSites) {
-                $runAsAccounts = Az.Migrate.Internal\Get-AzMigrateHyperVRunAsAccount `
-                    -ResourceGroupName $ResourceGroupName `
-                    -SiteName $SiteName `
-                    -SubscriptionId $SubscriptionId
-                $runAsAccount = $runAsAccounts | Where-Object { $_.CredentialType -eq $RunAsAccountCredentialTypes.HyperVFabric }
-            }
-            elseif ($SiteType -eq $SiteTypes.VMwareSites) {  
-                $runAsAccounts = Az.Migrate\Get-AzMigrateRunAsAccount `
-                    -ResourceGroupName $ResourceGroupName `
-                    -SiteName $SiteName `
-                    -SubscriptionId $SubscriptionId
-                $runAsAccount = $runAsAccounts | Where-Object { $_.CredentialType -eq $RunAsAccountCredentialTypes.VMwareFabric }
-            }
+        if ($SiteType -eq $SiteTypes.HyperVSites) {
+            $runAsAccounts = InvokeAzMigrateGetCommandWithRetries `
+                -CommandName 'Az.Migrate.Internal\Get-AzMigrateHyperVRunAsAccount' `
+                -Parameters @{ ResourceGroupName = $ResourceGroupName; SiteName = $SiteName; SubscriptionId = $SubscriptionId } `
+                -ErrorMessage "No run as account found for site '$SiteName'."
 
-            if ($null -ne $runAsAccount) {
-                break
-            }
-
-            Start-Sleep -Seconds 30
+            $runAsAccount = $runAsAccounts | Where-Object { $_.CredentialType -eq $RunAsAccountCredentialTypes.HyperVFabric }
         }
-            
-        if ($null -eq $runAsAccount) {
-            throw "No run as account found for site '$SiteName'."
+        elseif ($SiteType -eq $SiteTypes.VMwareSites) {
+            $runAsAccounts = InvokeAzMigrateGetCommandWithRetries `
+                -CommandName 'Az.Migrate\Get-AzMigrateRunAsAccount' `
+                -Parameters @{ ResourceGroupName = $ResourceGroupName; SiteName = $SiteName; SubscriptionId = $SubscriptionId } `
+                -ErrorMessage "No run as account found for site '$SiteName'."
+
+            $runAsAccount = $runAsAccounts | Where-Object { $_.CredentialType -eq $RunAsAccountCredentialTypes.VMwareFabric }
         }
 
         # Validate TargetVMName
