@@ -1,4 +1,4 @@
-﻿// ----------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------
 //
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -182,6 +182,18 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public bool? EnableSecureBoot { get; set; } = null;
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The ETag of the VM.")]
+        public string IfMatch { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The ETag of the VM.")]
+        public string IfNoneMatch { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -417,7 +429,9 @@ namespace Microsoft.Azure.Commands.Compute
                         var op = this.VirtualMachineClient.BeginCreateOrUpdateWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.VM.Name,
-                            parameters).GetAwaiter().GetResult();
+                            parameters,
+                            this.IfMatch,
+                            this.IfNoneMatch).GetAwaiter().GetResult();
                         var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                         WriteObject(result);
                     }
@@ -426,7 +440,9 @@ namespace Microsoft.Azure.Commands.Compute
                         var op = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
                             this.ResourceGroupName,
                             this.VM.Name,
-                            parameters).GetAwaiter().GetResult();
+                            parameters,
+                            this.IfMatch,
+                            this.IfNoneMatch).GetAwaiter().GetResult();
                         var result = ComputeAutoMapperProfile.Mapper.Map<PSAzureOperationResponse>(op);
                         WriteObject(result);
                     }
@@ -435,3 +451,4 @@ namespace Microsoft.Azure.Commands.Compute
         }
     }
 }
+

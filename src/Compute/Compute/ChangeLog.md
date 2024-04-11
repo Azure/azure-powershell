@@ -20,6 +20,25 @@
 
 -->
 ## Upcoming Release
+* Introduced a new read only property named "etag" to PSVM and PSVmss objects
+    - This property will allow users to retrieve the entity tag of a virtual machine or virtual machine scale set object.
+* Introduced two new optional headers (If-Match and If-None-Match) in New-AzVM, Update-AzVM, New-AzVmss, Update-AzVmss, Update-AzVmssVM.
+    - These headers will allow users to make conditional requests based on the entity tag of the resource.
+* Edited cmdlets:
+    - New-AzVm
+    - New-AzVmConfig
+    - New-AzVmss
+    - New-AzVmssConfig
+    - Update-AzVm
+    - Update-AzVmss
+* New parameters for the cmdlet:
+    - IfMatch string
+    - IfNotMatch string
+* Business logic of the cmdlet and parameters:
+    - The If-Match header will be used to make a request only if the entity tag of the resource matches the specified value.
+    - The If-None-Match header will be used to make a request only if the entity tag of the resource does not match the specified value.
+* Affected parameter sets on the cmdlet:
+    - All parameter sets that include the -IfMatch and -IfNoneMatch parameters are affected by this change.
 
 ## Version 7.2.0
 * Added parameters `-scriptUriManagedIdentity`, `-outputBlobManagedIdentity`, `-errorBlobMangedIdentity`, and `-TreatFailureAsDeploymentFailure` to cmdlets `Set-AzVmRunCommand` and `Set-AzVmssRunCommand`. 

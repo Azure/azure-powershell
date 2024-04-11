@@ -1,4 +1,4 @@
-// 
+ // 
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,5 +27,7 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public HttpStatusCode StatusCode { get; set; }
 
         public string ReasonPhrase { get; set; }
+
+        public string Etag { get; set; }
     }
-}
+}None

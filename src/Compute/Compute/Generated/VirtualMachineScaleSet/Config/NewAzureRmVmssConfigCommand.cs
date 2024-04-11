@@ -1,4 +1,4 @@
-//
+None //
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -346,6 +346,21 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
         public bool? EnableSecureBoot { get; set; } = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The Etag of the resource.")]
+        public string Etag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The If-Match header.")]
+        public string IfMatch { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The If-None-Match header.")]
+        public string IfNotMatch { get; set; }
 
         protected override void ProcessRecord()
         {
@@ -937,10 +952,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 Identity = vIdentity,
                 OrchestrationMode = this.IsParameterBound(c => c.OrchestrationMode) ? this.OrchestrationMode : null,
                 SpotRestorePolicy = this.IsParameterBound(c => c.EnableSpotRestore) ? new SpotRestorePolicy(true, this.SpotRestoreTimeout) : null,
-                PriorityMixPolicy = vPriorityMixPolicy 
+                PriorityMixPolicy = vPriorityMixPolicy,
+                Etag = this.Etag,
+                IfMatch = this.IfMatch,
+                IfNotMatch = this.IfNotMatch
             };
 
             WriteObject(vVirtualMachineScaleSet);
         }
     }
 }
+
