@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added cmdlet `Convert-AzNetworkWatcherClassicConnectionMonitor` for converting a classic connection monitor to V2 connection monitor.
 
 ## Version 7.4.1
 * Fixed a bug caused by the introduction of the new property `GlobalConfiguration` in `PSApplicationGateway`
@@ -39,7 +40,6 @@
 * Fixed a few minor issues
 * Onboarded `Microsoft.DBforPostgreSQL/flexibleServers` to private link cmdlets
 * Fixed missing properties in PSBackendAddressPool
-* Added cmdlet `Convert-AzNetworkWatcherClassicConnectionMonitor` for converting a classic connection monitor to V2 connection monitor..
 
 ## Version 7.1.0
 * Added DefaultOutboundAccess parameter on subnet creation

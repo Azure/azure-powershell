@@ -4193,7 +4193,6 @@
       "Add-AzVpnClientRevokedCertificate": {},
       "Add-AzVpnClientRootCertificate": {},
       "Approve-AzPrivateEndpointConnection": {},
-      "Convert-AzNetworkWatcherClassicConnectionMonitor": {},
       "Deny-AzPrivateEndpointConnection": {},
       "Deploy-AzNetworkManagerCommit": {},
       "Disconnect-AzP2SVpnGatewayVpnConnection": {},
