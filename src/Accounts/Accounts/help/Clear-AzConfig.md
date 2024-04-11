@@ -15,16 +15,18 @@ Clears the values of configs that are set by the user.
 ### ClearAll (Default)
 ```
 Clear-AzConfig [-Force] [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ClearByKey
 ```
 Clear-AzConfig [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-CheckForUpgrade]
- [-DefaultSubscriptionForLogin] [-DisableErrorRecordsPersistence] [-DisableInstanceDiscovery]
- [-DisplayBreakingChangeWarning] [-DisplayRegionIdentified] [-DisplaySurveyMessage] [-EnableDataCollection]
- [-EnableLoginByWam] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-CheckForUpgrade] [-DefaultSubscriptionForLogin] [-DisableInstanceDiscovery] [-DisplayBreakingChangeWarning]
+ [-DisplayRegionIdentified] [-DisplaySecretsWarning] [-DisplaySurveyMessage] [-EnableDataCollection]
+ [-EnableErrorRecordsPersistence] [-EnableLoginByWam] [-EnableTestCoverage] [-TestCoverageLocation]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,21 +105,6 @@ Accept wildcard characters: False
 ### -DefaultSubscriptionForLogin
 Subscription name or GUID.
 Sets the default context for Azure PowerShell when logging in without specifying a subscription.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: ClearByKey
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DisableErrorRecordsPersistence
-When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by "EnableErrorRecordsPersistence" as opt-in in the next major release of Az around November 2023.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -222,11 +209,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableErrorRecordsPersistence
+When enabled, error records will be written to ~/.Azure/ErrorRecords.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableLoginByWam
 \[Preview\] When enabled, Web Account Manager (WAM) will be the default interactive login experience.
 It will fall back to using the browser if the platform does not support WAM.
 Note that this feature is under preview. Microsoft Account (MSA) is currently not supported.
 Feel free to reach out to Azure PowerShell team if you have any feedbacks: https://aka.ms/azpsissue
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableTestCoverage
+When enabled, the test framework will generate data during test run as a preliminary for the test coverage calculation
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -270,6 +287,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Scope
 Determines the scope of config changes, for example, whether changes apply only to the current process, or to all sessions started by this user.
 By default it is CurrentUser.
@@ -279,6 +311,21 @@ Type: Microsoft.Azure.PowerShell.Common.Config.ConfigScope
 Parameter Sets: (All)
 Aliases:
 Accepted values: CurrentUser, Process, Default, Environment
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TestCoverageLocation
+Only takes effect when EnableTestCoverage equals to TRUE. Use this config to redirect the test coverage data location.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
 
 Required: False
 Position: Named

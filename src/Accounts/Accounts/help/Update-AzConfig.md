@@ -14,11 +14,12 @@ Updates the configs of Azure PowerShell.
 
 ```
 Update-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-CheckForUpgrade <Boolean>] [-DefaultSubscriptionForLogin <String>]
- [-DisableErrorRecordsPersistence <Boolean>] [-DisableInstanceDiscovery <Boolean>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-CheckForUpgrade <Boolean>]
+ [-DefaultSubscriptionForLogin <String>] [-DisableInstanceDiscovery <Boolean>]
  [-DisplayBreakingChangeWarning <Boolean>] [-DisplayRegionIdentified <Boolean>]
- [-DisplaySurveyMessage <Boolean>] [-EnableDataCollection <Boolean>] [-EnableLoginByWam <Boolean>]
- [<CommonParameters>]
+ [-DisplaySecretsWarning <Boolean>] [-DisplaySurveyMessage <Boolean>] [-EnableDataCollection <Boolean>]
+ [-EnableErrorRecordsPersistence <Boolean>] [-EnableLoginByWam <Boolean>] [-EnableTestCoverage <Boolean>]
+ [-TestCoverageLocation <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,21 +154,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -DisableErrorRecordsPersistence
-When disabled, error records will not be written to ~/.Azure/ErrorRecords. This config will be replaced by "EnableErrorRecordsPersistence" as opt-in in the next major release of Az around November 2023.
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -DisableInstanceDiscovery
 Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. The process of instance discovery entails retrieving authority metadata from https://login.microsoft.com/ to validate the authority. By setting this to true, the validation of the authority is disabled. As a result, it is crucial to ensure that the configured authority host is valid and trustworthy.
 
@@ -259,6 +245,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EnableErrorRecordsPersistence
+When enabled, error records will be written to ~/.Azure/ErrorRecords.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -EnableLoginByWam
 \[Preview\] When enabled, Web Account Manager (WAM) will be the default interactive login experience.
 It will fall back to using the browser if the platform does not support WAM.
@@ -277,6 +278,36 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -EnableTestCoverage
+When enabled, the test framework will generate data during test run as a preliminary for the test coverage calculation
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Scope
 Determines the scope of config changes, for example, whether changes apply only to the current process, or to all sessions started by this user.
 By default it is CurrentUser.
@@ -291,6 +322,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TestCoverageLocation
+Only takes effect when EnableTestCoverage equals to TRUE. Use this config to redirect the test coverage data location.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
