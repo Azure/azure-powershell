@@ -12,10 +12,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Azure.Identity" Version="1.10.3" />
+    <PackageReference Include="Azure.Identity" Version="1.11.0" />
     <PackageReference Include="Azure.Identity.Broker" Version="1.0.0-beta.5" />
-    <PackageReference Include="Microsoft.Identity.Client" Version="4.56.0" />
-    <PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="4.56.0" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.60.1" />
+    <PackageReference Include="Microsoft.Identity.Client.Extensions.Msal" Version="4.60.1" />
   </ItemGroup>
 
   <ItemGroup>
