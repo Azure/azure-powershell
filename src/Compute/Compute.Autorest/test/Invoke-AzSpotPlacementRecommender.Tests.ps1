@@ -18,7 +18,7 @@ Describe 'Invoke-AzSpotPlacementRecommender' {
     BeforeAll { 
         $resourceSku1 = @{sku = "Standard_D2_v3"}
         $resourceSku2 = @{sku = "Standard_D2_v2"}
-        $resourceSku3 = @{sku = "Standard_D32_v2"}
+        $resourceSku3 = @{sku = "Standard_D4_v3"}
         $desiredSizes = $resourceSku1,$resourceSku2,$resourceSku3
         $desiredLocations = 'eastus','eastus2','westus'
         $desiredCount = 1
@@ -33,7 +33,7 @@ Describe 'Invoke-AzSpotPlacementRecommender' {
             # Regional
             $response = Invoke-AzSpotPlacementRecommender -Location eastus -DesiredCount $desiredCount -DesiredLocation $desiredLocations -DesiredSize $desiredSizes -AvailabilityZone
             $response.PlacementScore | Should -Not -BeNullOrEmpty -ErrorAction Stop
-        }
+        } | Should -Not -Throw
     }
 
     It 'Post' {
@@ -59,6 +59,6 @@ Describe 'Invoke-AzSpotPlacementRecommender' {
             }
             $response = Invoke-AzSpotPlacementRecommender -Location eastus -SpotPlacementRecommenderInput $spotPlacementRecommenderInput
             $response.PlacementScore | Should -Not -BeNullOrEmpty -ErrorAction Stop
-        }
+        } | Should -Not -Throw
     }
 }
