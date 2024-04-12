@@ -210,18 +210,6 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = false)]
         public bool? EnableSecureBoot { get; set; } = null;
 
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "If-Match header that makes the operation conditional. For updates, the operation will be performed only if the ETag value in the request matches the ETag value for the resource. For deletes, the operation is performed only if the ETag value for the resource matches the ETag value specified in the request. If the ETag value specified in the request is empty, the operation will be performed unconditionally.")]
-        public string IfMatch { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "If-None-Match header that makes the operation conditional. For PUT and PATCH requests, the operation will be performed only if the ETag value in the request does not match the ETag value for the resource.")]
-        public string IfNotMatch { get; set; }
-
         public override void ExecuteCmdlet()
         {
             var vm = new PSVirtualMachine
@@ -236,9 +224,7 @@ namespace Microsoft.Azure.Commands.Compute
                 Tags = this.Tags != null ? this.Tags.ToDictionary() : null,
                 Zones = this.Zone,
                 EvictionPolicy = this.EvictionPolicy,
-                Priority = this.Priority,
-                IfMatch = this.IfMatch,
-                IfNotMatch = this.IfNotMatch
+                Priority = this.Priority
             };
 
             if (this.IsParameterBound(c => c.IdentityType))
