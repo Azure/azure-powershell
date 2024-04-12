@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.KubernetesConfiguration-help.xml
 Module Name: Az.KubernetesConfiguration
 online version: https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesextension
 schema: 2.0.0
@@ -14,13 +14,13 @@ Create a new Kubernetes Cluster Extension.
 
 ```
 New-AzKubernetesExtension -ClusterName <String> -ClusterType <String> -Name <String>
- -ResourceGroupName <String> -ExtensionType <String> [-SubscriptionId <String>]
- [-AkAssignedIdentityType <AksIdentityType>] [-AutoUpgradeMinorVersion]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -ExtensionType <String>
+ [-AkAssignedIdentityType <AksIdentityType>] [-AutoUpgradeMinorVersion] [-ReleaseNamespace <String>]
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>]
- [-IdentityType <ResourceIdentityType>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>] [-ReleaseNamespace <String>]
- [-ReleaseTrain <String>] [-TargetNamespace <String>] [-Version <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IdentityType <ResourceIdentityType>] [-TargetNamespace <String>] [-PlanName <String>]
+ [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-ReleaseTrain <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -319,6 +319,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReleaseNamespace
 Namespace where the extension Release must be placed, for a Cluster scoped extension.
 If this namespace does not exist, it will be created
@@ -461,4 +476,3 @@ ALIASES
 New-AzK8sExtension
 
 ## RELATED LINKS
-

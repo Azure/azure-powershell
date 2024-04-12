@@ -15,25 +15,27 @@ Get a revision of a Container App.
 ### List (Default)
 ```
 Get-AzContainerAppDiagnosticRevision -ContainerAppName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzContainerAppDiagnosticRevision -ContainerAppName <String> -ResourceGroupName <String>
- -RevisionName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -RevisionName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityContainerApp
 ```
 Get-AzContainerAppDiagnosticRevision -RevisionName <String> -ContainerAppInputObject <IAppIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzContainerAppDiagnosticRevision -InputObject <IAppIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +73,6 @@ Get a revision of a Container App.
 
 ### -ContainerAppInputObject
 Identity Parameter
-To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -133,7 +134,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -144,6 +144,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

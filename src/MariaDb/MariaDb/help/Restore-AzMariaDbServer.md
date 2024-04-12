@@ -15,7 +15,8 @@ Restore a MariaDB from a existing MariaDB.
 ```
 Restore-AzMariaDbServer -Name <String> [-ServerName <String>] [-InputObject <IServer>]
  [-ResourceGroupName <String>] [-SubscriptionId <String>] -RestorePointInTime <DateTime> [-Location <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -136,6 +137,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -265,36 +281,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.Api20180601Preview.IServer
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IServer>`: The source server object to restore from.
-  - `Location <String>`: The location the resource resides in.
-  - `[Tag <ITrackedResourceTags>]`: Application-specific metadata in the form of key-value pairs.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[AdministratorLogin <String>]`: The administrator's login name of a server. Can only be specified when the server is being created (and is required for creation).
-  - `[EarliestRestoreDate <DateTime?>]`: Earliest restore point creation time (ISO8601 format)
-  - `[FullyQualifiedDomainName <String>]`: The fully qualified domain name of a server.
-  - `[IdentityType <IdentityType?>]`: The identity type. Set this to 'SystemAssigned' in order to automatically create and assign a Microsoft Entra principal for the resource.
-  - `[MasterServerId <String>]`: The master server id of a replica server.
-  - `[ReplicaCapacity <Int32?>]`: The maximum number of replicas that a master server can have.
-  - `[ReplicationRole <String>]`: The replication role of the server.
-  - `[SkuCapacity <Int32?>]`: The scale up/out capacity, representing server's compute units.
-  - `[SkuFamily <String>]`: The family of hardware.
-  - `[SkuName <String>]`: The name of the sku, typically, tier + family + cores, e.g. B_Gen4_1, GP_Gen5_8.
-  - `[SkuSize <String>]`: The size code, to be interpreted by resource as appropriate.
-  - `[SkuTier <SkuTier?>]`: The tier of the particular SKU, e.g. Basic.
-  - `[SslEnforcement <SslEnforcementEnum?>]`: Enable ssl enforcement or not when connect to server.
-  - `[StorageProfileBackupRetentionDay <Int32?>]`: Backup retention days for the server.
-  - `[StorageProfileGeoRedundantBackup <GeoRedundantBackup?>]`: Enable Geo-redundant or not for server backup.
-  - `[StorageProfileStorageAutogrow <StorageAutogrow?>]`: Enable Storage Auto Grow.
-  - `[StorageProfileStorageMb <Int32?>]`: Max storage allowed for a server.
-  - `[UserVisibleState <ServerState?>]`: A state of a server that is visible to user.
-  - `[Version <ServerVersion?>]`: Server version.
 
 ## RELATED LINKS

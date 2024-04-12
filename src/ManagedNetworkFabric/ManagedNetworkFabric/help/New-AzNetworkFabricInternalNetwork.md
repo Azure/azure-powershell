@@ -23,21 +23,21 @@ New-AzNetworkFabricInternalNetwork -Name <String> -L3IsolationDomainName <String
  [-StaticRouteConfigurationBfdConfiguration <IBfdConfiguration>] [-StaticRouteConfigurationExtension <String>]
  [-StaticRouteConfigurationIpv4Route <IStaticRouteProperties[]>]
  [-StaticRouteConfigurationIpv6Route <IStaticRouteProperties[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzNetworkFabricInternalNetwork -Name <String> -L3IsolationDomainName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzNetworkFabricInternalNetwork -Name <String> -L3IsolationDomainName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityL3IsolationDomainExpanded
@@ -51,13 +51,13 @@ New-AzNetworkFabricInternalNetwork -Name <String> -L3IsolationDomainInputObject 
  [-StaticRouteConfigurationBfdConfiguration <IBfdConfiguration>] [-StaticRouteConfigurationExtension <String>]
  [-StaticRouteConfigurationIpv4Route <IStaticRouteProperties[]>]
  [-StaticRouteConfigurationIpv6Route <IStaticRouteProperties[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityL3IsolationDomain
 ```
 New-AzNetworkFabricInternalNetwork -Name <String> -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity>
- -Body <IInternalNetwork> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -Body <IInternalNetwork> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -444,6 +444,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

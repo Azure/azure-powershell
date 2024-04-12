@@ -21,8 +21,8 @@ Update-AzWebPubSub -Name <String> -ResourceGroupName <String> [-SubscriptionId <
  [-PublicNetworkAccess <String>] [-PublicNetworkAllow <WebPubSubRequestType[]>]
  [-PublicNetworkDeny <WebPubSubRequestType[]>] [-ResourceLogCategory <IResourceLogCategory[]>]
  [-SkuCapacity <Int32>] [-SkuName <String>] [-SkuTier <WebPubSubSkuTier>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -34,7 +34,8 @@ Update-AzWebPubSub -InputObject <IWebPubSubIdentity> [-DisableAadAuth] [-Disable
  [-PublicNetworkAllow <WebPubSubRequestType[]>] [-PublicNetworkDeny <WebPubSubRequestType[]>]
  [-ResourceLogCategory <IResourceLogCategory[]>] [-SkuCapacity <Int32>] [-SkuName <String>]
  [-SkuTier <WebPubSubSkuTier>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -279,6 +280,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 Enable or disable public network access.
 Default to "Enabled".When it's Enabled, network ACLs still apply.When it's Disabled, public network access is always disabled no matter what you set in network ACLs.
@@ -498,37 +514,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IWebPubSubIdentity>`: Identity Parameter
-  - `[CertificateName <String>]`: Custom certificate name
-  - `[HubName <String>]`: The hub name.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: the region
-  - `[Name <String>]`: Custom domain name.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[ResourceName <String>]`: The name of the resource.
-  - `[SharedPrivateLinkResourceName <String>]`: The name of the shared private link resource
-  - `[SubscriptionId <String>]`: Gets subscription Id which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
-`LIVETRACECATEGORY <ILiveTraceCategory[]>`: Gets or sets the list of category configurations.
-  - `[Enabled <String>]`: Indicates whether or the live trace category is enabled.         Available values: true, false.         Case insensitive.
-  - `[Name <String>]`: Gets or sets the live trace category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
-
-`PRIVATEENDPOINTACL <IPrivateEndpointAcl[]>`: ACLs for requests from private endpoints
-  - `Name <String>`: Name of the private endpoint connection
-  - `[Allow <WebPubSubRequestType[]>]`: Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  - `[Deny <WebPubSubRequestType[]>]`: Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-
-`RESOURCELOGCATEGORY <IResourceLogCategory[]>`: Gets or sets the list of category configurations.
-  - `[Enabled <String>]`: Indicates whether or the resource log category is enabled.         Available values: true, false.         Case insensitive.
-  - `[Name <String>]`: Gets or sets the resource log category's name.         Available values: ConnectivityLogs, MessagingLogs.         Case insensitive.
 
 ## RELATED LINKS

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ContainerInstance-help.xml
 Module Name: Az.ContainerInstance
 online version: https://learn.microsoft.com/powershell/module/az.containerinstance/update-azcontainergroup
 schema: 2.0.0
@@ -15,14 +15,15 @@ Updates container group tags with specified values.
 ### UpdateExpanded (Default)
 ```
 Update-AzContainerGroup -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Location <String>] [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Location <String>] [-Tag <Hashtable>] [-Zone <String[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzContainerGroup -InputObject <IContainerInstanceIdentity> [-Location <String>] [-Tag <Hashtable>]
- [-Zone <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Zone <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,7 +31,7 @@ Updates container group tags with specified values.
 
 ## EXAMPLES
 
-### Example 1: Update a container group 
+### Example 1: Update a container group
 ```powershell
 $container = Update-AzContainerGroup -Name test-cg -ResourceGroupName test-rg -Tag @{"k"="v"}
 $container.Tag | Format-List
@@ -118,6 +119,21 @@ Parameter Sets: UpdateExpanded
 Aliases: ContainerGroupName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -229,22 +245,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IContainerInstanceIdentity>`: Identity Parameter
-  - `[ContainerGroupName <String>]`: The name of the container group.
-  - `[ContainerName <String>]`: The name of the container instance.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The identifier for the physical azure location.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubnetName <String>]`: The name of the subnet.
-  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-  - `[VirtualNetworkName <String>]`: The name of the virtual network.
-
 ## RELATED LINKS
-

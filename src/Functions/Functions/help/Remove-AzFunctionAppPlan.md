@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Functions-help.xml
 Module Name: Az.Functions
 online version: https://learn.microsoft.com/powershell/module/az.functions/remove-azfunctionappplan
 schema: 2.0.0
@@ -15,13 +15,14 @@ Deletes a function app plan.
 ### ByName (Default)
 ```
 Remove-AzFunctionAppPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
-Remove-AzFunctionAppPlan -InputObject <IAppServicePlan> [-Force] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzFunctionAppPlan [-Force] -InputObject <IAppServicePlan> [-DefaultProfile <PSObject>] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,8 +121,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
 
 ```yaml
 Type: System.String
@@ -195,4 +210,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

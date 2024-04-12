@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Qumulo-help.xml
 Module Name: Az.Qumulo
 online version: https://learn.microsoft.com/powershell/module/az.qumulo/get-azqumulofilesystem
 schema: 2.0.0
@@ -14,24 +14,26 @@ Get a file system resource
 
 ### List (Default)
 ```
-Get-AzQumuloFileSystem [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzQumuloFileSystem [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzQumuloFileSystem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzQumuloFileSystem -InputObject <IQumuloIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzQumuloFileSystem -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzQumuloFileSystem -InputObject <IQumuloIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +69,7 @@ Location Name               SystemDataCreatedAt  SystemDataCreatedBy   SystemDat
 -------- ----               -------------------  -------------------   ----------------------- ------------------------ ------------------------             ---------------------------- -----------------  
 eastus   fileSystem         5/24/2023 7:10:01 AM user@organization.com User                    5/24/2023 7:19:16 AM     13c34964-a135-4390-aa53-32f3c7251982 Application                  ps-joyer-test      
 eastus   qumulo-resource-01 5/24/2023 7:27:12 AM user@organization.com User                    5/24/2023 7:42:17 AM     13c34964-a135-4390-aa53-32f3c7251982 Application                  ps-joyer-test      
-eastus   qumulo-resource-02 5/24/2023 9:31:50 AM user@organization.com User                    5/24/2023 9:41:10 AM     13c34964-a135-4390-aa53-32f3c7251982 Application                  ps-joyer-test 
+eastus   qumulo-resource-02 5/24/2023 9:31:50 AM user@organization.com User                    5/24/2023 9:41:10 AM     13c34964-a135-4390-aa53-32f3c7251982 Application                  ps-joyer-test
 ```
 
 Get list of file system resources by resource group
@@ -80,7 +82,7 @@ Get-AzQumuloFileSystem -ResourceGroupName azpstest-gp -Name fileSystem
 ```output
 Location Name               SystemDataCreatedAt  SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 -------- ----               -------------------  -------------------   ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
-eastus   qumulo-resource-01 5/24/2023 7:27:12 AM user@organization.com User                    5/24/2023 9:58:45 AM     user@organization.com    User                         ps-joyer-test 
+eastus   qumulo-resource-01 5/24/2023 7:27:12 AM user@organization.com User                    5/24/2023 9:58:45 AM     user@organization.com    User                         ps-joyer-test
 ```
 
 Get specific file system resource with specified resource group
@@ -134,6 +136,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -155,7 +172,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -178,18 +195,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IQumuloIdentity>`: Identity Parameter
-  - `[FileSystemName <String>]`: Name of the File System resource
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-

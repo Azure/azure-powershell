@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.BotService-help.xml
 Module Name: Az.BotService
 online version: https://learn.microsoft.com/powershell/module/az.botservice/get-azbotservicehostsetting
 schema: 2.0.0
@@ -13,7 +13,8 @@ Get per subscription settings needed to host bot in compute resource such as Azu
 ## SYNTAX
 
 ```
-Get-AzBotServiceHostSetting [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzBotServiceHostSetting [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,12 +37,28 @@ Get per subscription settings needed to host bot in compute resource such as Azu
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -76,7 +93,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.BillingBenefits-help.xml
 Module Name: Az.BillingBenefits
 online version: https://learn.microsoft.com/powershell/module/az.billingbenefits/new-azbillingbenefitsreservationorderalias
 schema: 2.0.0
@@ -20,20 +20,15 @@ New-AzBillingBenefitsReservationOrderAlias -Name <String> [-AppliedScopeProperty
  [-AppliedScopeType <AppliedScopeType>] [-BillingPlan <BillingPlan>] [-BillingScopeId <String>]
  [-DisplayName <String>] [-Location <String>] [-Quantity <Int32>] [-Renew]
  [-ReservedResourcePropertyInstanceFlexibility <InstanceFlexibility>]
- [-ReservedResourceType <ReservedResourceType>] [-ReviewDateTime <DateTime>] [-SkuName <String>]
- [-Term <Term>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ReservedResourceType <ReservedResourceType>] [-ReviewDateTime <DateTime>] [-SkuName <String>] [-Term <Term>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzBillingBenefitsReservationOrderAlias -Name <String> -Body <IReservationOrderAliasRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzBillingBenefitsReservationOrderAlias -InputObject <IBillingBenefitsIdentity>
- -Body <IReservationOrderAliasRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -45,8 +40,16 @@ New-AzBillingBenefitsReservationOrderAlias -InputObject <IBillingBenefitsIdentit
  [-AppliedScopePropertyTenantId <String>] [-AppliedScopeType <AppliedScopeType>] [-BillingPlan <BillingPlan>]
  [-BillingScopeId <String>] [-DisplayName <String>] [-Location <String>] [-Quantity <Int32>] [-Renew]
  [-ReservedResourcePropertyInstanceFlexibility <InstanceFlexibility>]
- [-ReservedResourceType <ReservedResourceType>] [-ReviewDateTime <DateTime>] [-SkuName <String>]
- [-Term <Term>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ReservedResourceType <ReservedResourceType>] [-ReviewDateTime <DateTime>] [-SkuName <String>] [-Term <Term>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzBillingBenefitsReservationOrderAlias -InputObject <IBillingBenefitsIdentity>
+ -Body <IReservationOrderAliasRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +65,7 @@ New-AzBillingBenefitsReservationOrderAlias -Name "PSRITest1" -AppliedScopeType "
 ```output
 Name      DisplayName SkuName       Location Term BillingPlan ReservedResourceType ReservationOrderId   ProvisioningState BillingScopeId                                      AppliedScopeType                 
 ----      ----------- -------       -------- ---- ----------- -------------------- ------------------   ----------------- --------------                                      --------
-PSRITest1 PSRITest1   Standard_B1ls westus   P1Y  P1M         VirtualMachines      /providers/Micro...  Created           /subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47 Shared  
+PSRITest1 PSRITest1   Standard_B1ls westus   P1Y  P1M         VirtualMachines      /providers/Micro...  Created           /subscriptions/eef82110-c91b-4395-9420-fcfcbefc5a47 Shared
 ```
 
 Create a reservation order alias.
@@ -222,7 +225,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -257,7 +261,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -287,7 +291,7 @@ Name of the reservation order alias
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: ReservationOrderAliasName
 
 Required: True
@@ -304,6 +308,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -463,44 +482,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <IReservationOrderAliasRequest>`: Reservation order alias
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[AppliedScopePropertyDisplayName <String>]`: Display name
-  - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
-  - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
-  - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
-  - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the benefit is applied.
-  - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
-  - `[BillingPlan <BillingPlan?>]`: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
-  - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing the benefit
-  - `[DisplayName <String>]`: Display name
-  - `[Location <String>]`: The Azure Region where the reservation benefits are applied to.
-  - `[Quantity <Int32?>]`: Total Quantity of the SKUs purchased in the Reservation.
-  - `[Renew <Boolean?>]`: Setting this to true will automatically purchase a new benefit on the expiration date time.
-  - `[ReservedResourcePropertyInstanceFlexibility <InstanceFlexibility?>]`: Turning this on will apply the reservation discount to other VMs in the same VM size group.
-  - `[ReservedResourceType <ReservedResourceType?>]`: The type of the resource that is being reserved.
-  - `[ReviewDateTime <DateTime?>]`: This is the date-time when the Azure Hybrid Benefit needs to be reviewed.
-  - `[SkuName <String>]`: Name of the SKU to be applied
-  - `[Term <Term?>]`: Represent benefit term in ISO 8601 format.
-
-`INPUTOBJECT <IBillingBenefitsIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ReservationOrderAliasName <String>]`: Name of the reservation order alias
-  - `[SavingsPlanId <String>]`: ID of the savings plan
-  - `[SavingsPlanOrderAliasName <String>]`: Name of the savings plan order alias
-  - `[SavingsPlanOrderId <String>]`: Order ID of the savings plan
-
 ## RELATED LINKS
-

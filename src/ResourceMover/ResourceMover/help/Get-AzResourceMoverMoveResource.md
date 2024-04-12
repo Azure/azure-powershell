@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ResourceMover-help.xml
 Module Name: Az.ResourceMover
 online version: https://learn.microsoft.com/powershell/module/az.resourcemover/get-azresourcemovermoveresource
 schema: 2.0.0
@@ -17,13 +17,15 @@ Gets the Move Resource.
 ### List (Default)
 ```
 Get-AzResourceMoverMoveResource -MoveCollectionName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzResourceMoverMoveResource -MoveCollectionName <String> -ResourceGroupName <String> -Name <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +37,7 @@ Gets the Move Resource.
 
 ### Example 1: Get details of all the resources in the Move collection.
 ```powershell
-Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -ResourceGroupName "RG-MoveCollection-demoRMS"         
+Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -ResourceGroupName "RG-MoveCollection-demoRMS"
 ```
 
 ```output
@@ -199,14 +201,13 @@ SystemDataLastModifiedBy          :
 SystemDataLastModifiedByType      :
 TargetId                          : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/PSDemoRM-target
 Type                              :
-
 ```
 
 Get details of all the resources in the move collection.
 
 ### Example 2: Get details of a specific resources in a Move collection using move resource name .
 ```powershell
-Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -ResourceGroupName "RG-MoveCollection-demoRMS" -Name "PSDemoVM"   
+Get-AzResourceMoverMoveResource -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -ResourceGroupName "RG-MoveCollection-demoRMS" -Name "PSDemoVM"
 ```
 
 ```output
@@ -240,8 +241,7 @@ SystemDataLastModifiedAt          :
 SystemDataLastModifiedBy          :
 SystemDataLastModifiedByType      :
 TargetId                          : 
-Type                              : 
-
+Type                              :
 ```
 
 Get details of a specific resources in a Move collection using move resource name .
@@ -284,8 +284,7 @@ SystemDataLastModifiedAt          :
 SystemDataLastModifiedBy          :
 SystemDataLastModifiedByType      :
 TargetId                          : 
-Type                              : 
-
+Type                              :
 ```
 
 Get details of a specific resources in a Move collection using filter such as armid ,moveStatusMoveState(verify) etc.
@@ -354,6 +353,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The Resource Group Name.
 
@@ -395,7 +409,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

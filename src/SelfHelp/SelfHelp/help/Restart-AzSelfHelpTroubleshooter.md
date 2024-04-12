@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SelfHelp-help.xml
 Module Name: Az.SelfHelp
 online version: https://learn.microsoft.com/powershell/module/az.selfhelp/restart-azselfhelptroubleshooter
 schema: 2.0.0
@@ -15,14 +15,14 @@ The old resource name is obsolete after this API is invoked.
 
 ### Restart (Default)
 ```
-Restart-AzSelfHelpTroubleshooter -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Restart-AzSelfHelpTroubleshooter -Name <String> -Scope <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestartViaIdentity
 ```
-Restart-AzSelfHelpTroubleshooter -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Restart-AzSelfHelpTroubleshooter -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +33,7 @@ The old resource name is obsolete after this API is invoked.
 
 ### Example 1: Restarts troubleshooter instance
 ```powershell
-Restart-AzSelfHelpTroubleshooter -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba" -Name "02d59989-f8a9-4b69-9919-1ef51df4eff6" 
+Restart-AzSelfHelpTroubleshooter -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba" -Name "02d59989-f8a9-4b69-9919-1ef51df4eff6"
 ```
 
 ```output
@@ -41,9 +41,7 @@ Location TroubleshooterResourceName
 
 -------- -------------------------- 
 
-         0b8b324c-be00-410b-988b-175815878690 
-
- 
+         0b8b324c-be00-410b-988b-175815878690
 ```
 
 Restarts Troubleshooter instance.
@@ -92,6 +90,21 @@ Parameter Sets: Restart
 Aliases: TroubleshooterName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -158,4 +171,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

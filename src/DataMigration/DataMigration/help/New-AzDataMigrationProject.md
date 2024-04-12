@@ -17,7 +17,7 @@ Creates a new Azure Database Migration Service (classic) project.
 New-AzDataMigrationProject -ResourceGroupName <String> -ServiceName <String> -Location <String> -Name <String>
  -SourceType <String> -TargetType <String> [-SourceConnection <ConnectionInfo>]
  [-TargetConnection <ConnectionInfo>] [-DatabaseInfo <DatabaseInfo[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ New-AzDataMigrationProject -ResourceGroupName <String> -ServiceName <String> -Lo
 New-AzDataMigrationProject [-InputObject] <PSDataMigrationService> -Location <String> -Name <String>
  -SourceType <String> -TargetType <String> [-SourceConnection <ConnectionInfo>]
  [-TargetConnection <ConnectionInfo>] [-DatabaseInfo <DatabaseInfo[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ New-AzDataMigrationProject [-InputObject] <PSDataMigrationService> -Location <St
 New-AzDataMigrationProject [-ResourceId] <String> -Location <String> -Name <String> -SourceType <String>
  -TargetType <String> [-SourceConnection <ConnectionInfo>] [-TargetConnection <ConnectionInfo>]
  [-DatabaseInfo <DatabaseInfo[]>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,6 +121,21 @@ Parameter Sets: (All)
 Aliases: ProjectName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

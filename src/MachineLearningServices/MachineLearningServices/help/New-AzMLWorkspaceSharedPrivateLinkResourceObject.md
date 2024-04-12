@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacesharedprivatelinkresourceobject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceSharedPrivateLinkResourceObject
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Create an in-memory object for SharedPrivateLinkResource.
 ```
 New-AzMLWorkspaceSharedPrivateLinkResourceObject [-GroupId <String>] [-Name <String>]
  [-PrivateLinkResourceId <String>] [-RequestMessage <String>]
- [-Status <PrivateEndpointServiceConnectionStatus>] [<CommonParameters>]
+ [-Status <PrivateEndpointServiceConnectionStatus>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,6 +77,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RequestMessage
 Request message.
 
@@ -118,7 +133,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

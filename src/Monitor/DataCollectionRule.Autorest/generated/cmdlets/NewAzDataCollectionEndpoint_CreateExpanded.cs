@@ -84,6 +84,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string Description { get => _body.Description ?? null; set => _body.Description = value; }
 
+        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        public global::System.Management.Automation.SwitchParameter EnableSystemAssignedIdentity { set => _body.IdentityType = value.IsPresent ? "SystemAssigned": null ; }
+
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
@@ -98,20 +102,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
-
-        /// <summary>
-        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
-        public string IdentityType { get => _body.IdentityType ?? null; set => _body.IdentityType = value; }
 
         /// <summary>
         /// The immutable ID of this data collection endpoint resource. This property is READ-ONLY.
@@ -256,20 +246,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResourceTags Tag { get => _body.Tag ?? null /* object */; set => _body.Tag = value; }
 
         /// <summary>
-        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        /// The dictionary values can be empty objects ({}) in requests.
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IUserAssignedIdentities UserAssignedIdentity { get => _body.IdentityUserAssignedIdentity ?? null /* object */; set => _body.IdentityUserAssignedIdentity = value; }
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
@@ -332,6 +314,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
             {
                 // Flush buffer
                 WriteObject(_firstResponse);
+            }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
             }
         }
 
@@ -422,6 +422,31 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
 
         }
 
+        private void PreProcessManagedIdentityParameters()
+        {
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _body.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _body.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.UserAssignedIdentity());
+                }
+            }
+            // calculate IdentityType
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                if ("SystemAssigned".Equals(_body.IdentityType, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    _body.IdentityType = "SystemAssigned,UserAssigned";
+                }
+                else
+                {
+                    _body.IdentityType = "UserAssigned";
+                }
+            }
+        }
+
         /// <summary>Performs execution of the command.</summary>
         protected override void ProcessRecord()
         {
@@ -482,6 +507,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+                    this.PreProcessManagedIdentityParameters();
                     await this.Client.DataCollectionEndpointsCreate(SubscriptionId, ResourceGroupName, Name, _body, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.SerializationMode.IncludeCreate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -504,6 +530,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>

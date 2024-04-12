@@ -16,14 +16,15 @@ Gets a list of key-values.
 ```
 Get-AzAppConfigurationKeyValue -Endpoint <String> [-Key <String>] [-Label <String>]
  [-Select <System.Collections.Generic.List`1[System.String]>] [-AcceptDatetime <String>] [-SyncToken <String>]
- [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzAppConfigurationKeyValue -Endpoint <String> [-Key <String>] [-Label <String>]
  [-Select <System.Collections.Generic.List`1[System.String]>] [-After <String>] [-AcceptDatetime <String>]
- [-SyncToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SyncToken <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -190,6 +191,21 @@ A filter used to match labels
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
-online version: https://learn.microsoft.com/powershell/module/az.Peering/new-AzPeeringContactDetailObject
+online version: https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringContactDetailObject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Create an in-memory object for ContactDetail.
 ## SYNTAX
 
 ```
-New-AzPeeringContactDetailObject [-Email <String>] [-Phone <String>] [-Role <Role>] [<CommonParameters>]
+New-AzPeeringContactDetailObject [-Email <String>] [-Phone <String>] [-Role <Role>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,6 +67,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Role
 The role of the contact.
 
@@ -92,7 +108,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

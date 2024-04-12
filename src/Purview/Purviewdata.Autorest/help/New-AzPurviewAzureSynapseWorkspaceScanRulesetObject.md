@@ -26,7 +26,6 @@ Create an in-memory object for AzureSynapseWorkspaceScanRuleset.
 ### Example 1: Create Azure Synapse Workspace custom scanruleset object
 ```powershell
 New-AzPurviewAzureSynapseWorkspaceScanRulesetObject -Kind 'AzureSynapseWorkspace' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
-
 ```
 
 ```output
@@ -132,8 +131,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceScanRuleset
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

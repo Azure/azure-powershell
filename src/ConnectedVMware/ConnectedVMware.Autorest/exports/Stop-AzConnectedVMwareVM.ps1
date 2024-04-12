@@ -50,7 +50,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IStopVirtualMachineOptions]
     # Defines the stop action properties.
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='StopExpanded')]

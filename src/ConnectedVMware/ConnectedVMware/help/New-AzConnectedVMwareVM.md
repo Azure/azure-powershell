@@ -25,19 +25,19 @@ New-AzConnectedVMwareVM -MachineId <String> [-ExtendedLocationName <String>] [-E
  [-OSProfileOstype <String>] [-PlacementProfileClusterId <String>] [-PlacementProfileDatastoreId <String>]
  [-PlacementProfileHostId <String>] [-PlacementProfileResourcePoolId <String>]
  [-StorageProfileDisk <IVirtualDisk[]>] [-UefiSettingSecureBootEnabled] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzConnectedVMwareVM -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzConnectedVMwareVM -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -844,6 +844,21 @@ Gets or sets the ARM Id of the resourcePool resource on which this virtual machi
 Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

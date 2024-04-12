@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MarketplaceOrdering-help.xml
 Module Name: Az.MarketplaceOrdering
 online version: https://learn.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms
 schema: 2.0.0
@@ -15,13 +15,13 @@ Get marketplace terms.
 ### Get1 (Default)
 ```
 Get-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzMarketplaceTerms -Name <String> -OfferType <OfferType> -Product <String> -Publisher <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> [-SubscriptionId <String[]>]
+ -OfferType <OfferType> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -117,6 +117,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Publisher
 Publisher identifier string of image being deployed.
 
@@ -160,7 +175,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

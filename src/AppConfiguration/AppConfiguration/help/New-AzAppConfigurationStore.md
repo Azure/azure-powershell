@@ -17,8 +17,8 @@ New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> [-Subscri
  -Location <String> -Sku <String> [-CreateMode <CreateMode>] [-DisableLocalAuth] [-EnablePurgeProtection]
  [-EncryptionKeyIdentifier <String>] [-IdentityType <IdentityType>] [-KeyVaultIdentityClientId <String>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-SoftDeleteRetentionInDay <Int32>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -227,6 +227,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 Control permission for data plane traffic coming from public networks while private endpoint is enabled.
 
@@ -374,7 +389,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

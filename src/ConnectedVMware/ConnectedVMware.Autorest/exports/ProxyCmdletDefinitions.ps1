@@ -82,7 +82,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -166,7 +165,13 @@ begin {
             List1 = 'Az.ConnectedVMware.private\Get-AzConnectedVMwareCluster_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -286,7 +291,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -370,7 +374,13 @@ begin {
             List1 = 'Az.ConnectedVMware.private\Get-AzConnectedVMwareDatastore_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -490,7 +500,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -574,7 +583,13 @@ begin {
             List1 = 'Az.ConnectedVMware.private\Get-AzConnectedVMwareHost_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -713,14 +728,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='GetViaIdentityVcenter', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for VCENTERINPUTOBJECT properties and create a hash table.
     ${VcenterInputObject},
 
     [Parameter()]
@@ -804,7 +817,13 @@ begin {
             List = 'Az.ConnectedVMware.private\Get-AzConnectedVMwareInventoryItem_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -924,7 +943,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1008,7 +1026,13 @@ begin {
             List1 = 'Az.ConnectedVMware.private\Get-AzConnectedVMwareResourcePool_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1128,7 +1152,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1212,7 +1235,13 @@ begin {
             List1 = 'Az.ConnectedVMware.private\Get-AzConnectedVMwareVCenter_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1483,7 +1512,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1567,7 +1595,13 @@ begin {
             List1 = 'Az.ConnectedVMware.private\Get-AzConnectedVMwareVMTemplate_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1838,7 +1872,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -1922,7 +1955,13 @@ begin {
             List1 = 'Az.ConnectedVMware.private\Get-AzConnectedVMwareVNet_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2011,12 +2050,6 @@ param(
     # The Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
-    [System.String]
-    # Gets or sets the location.
-    ${Location},
-
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [System.String]
@@ -2042,6 +2075,12 @@ param(
     # ApiApps are a kind of Microsoft.Web/sites type.
     # If supported, the resource provider must validate and persist this value.
     ${Kind},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
+    [System.String]
+    # Gets or sets the location.
+    ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
@@ -2166,7 +2205,13 @@ begin {
             CreateViaJsonString = 'Az.ConnectedVMware.private\New-AzConnectedVMwareCluster_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2255,12 +2300,6 @@ param(
     # The Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
-    [System.String]
-    # Gets or sets the location.
-    ${Location},
-
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [System.String]
@@ -2286,6 +2325,12 @@ param(
     # ApiApps are a kind of Microsoft.Web/sites type.
     # If supported, the resource provider must validate and persist this value.
     ${Kind},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
+    [System.String]
+    # Gets or sets the location.
+    ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
@@ -2410,7 +2455,13 @@ begin {
             CreateViaJsonString = 'Az.ConnectedVMware.private\New-AzConnectedVMwareDatastore_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2499,12 +2550,6 @@ param(
     # The Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
-    [System.String]
-    # Gets or sets the location.
-    ${Location},
-
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [System.String]
@@ -2530,6 +2575,12 @@ param(
     # ApiApps are a kind of Microsoft.Web/sites type.
     # If supported, the resource provider must validate and persist this value.
     ${Kind},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
+    [System.String]
+    # Gets or sets the location.
+    ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
@@ -2654,7 +2705,13 @@ begin {
             CreateViaJsonString = 'Az.ConnectedVMware.private\New-AzConnectedVMwareHost_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2743,12 +2800,6 @@ param(
     # The Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
-    [System.String]
-    # Gets or sets the location.
-    ${Location},
-
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [System.String]
@@ -2774,6 +2825,12 @@ param(
     # ApiApps are a kind of Microsoft.Web/sites type.
     # If supported, the resource provider must validate and persist this value.
     ${Kind},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
+    [System.String]
+    # Gets or sets the location.
+    ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
@@ -2898,7 +2955,13 @@ begin {
             CreateViaJsonString = 'Az.ConnectedVMware.private\New-AzConnectedVMwareResourcePool_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2987,18 +3050,6 @@ param(
     # The Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
-    [System.String]
-    # Gets or sets the FQDN/IPAddress of the vCenter.
-    ${Fqdn},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
-    [System.String]
-    # Gets or sets the location.
-    ${Location},
-
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [System.Security.SecureString]
@@ -3026,10 +3077,22 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [System.String]
+    # Gets or sets the FQDN/IPAddress of the vCenter.
+    ${Fqdn},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
+    [System.String]
     # Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g.
     # ApiApps are a kind of Microsoft.Web/sites type.
     # If supported, the resource provider must validate and persist this value.
     ${Kind},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
+    [System.String]
+    # Gets or sets the location.
+    ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
@@ -3148,7 +3211,13 @@ begin {
             CreateViaJsonString = 'Az.ConnectedVMware.private\New-AzConnectedVMwareVCenter_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3444,12 +3513,6 @@ param(
     # The Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
-    [System.String]
-    # Gets or sets the location.
-    ${Location},
-
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [System.String]
@@ -3475,6 +3538,12 @@ param(
     # ApiApps are a kind of Microsoft.Web/sites type.
     # If supported, the resource provider must validate and persist this value.
     ${Kind},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
+    [System.String]
+    # Gets or sets the location.
+    ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
@@ -3599,7 +3668,13 @@ begin {
             CreateViaJsonString = 'Az.ConnectedVMware.private\New-AzConnectedVMwareVMTemplate_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3775,7 +3850,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INetworkInterface[]]
     # Gets or sets the list of network interfaces associated with the virtual machine.
-    # To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
     ${NetworkProfileNetworkInterface},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -3838,7 +3912,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualDisk[]]
     # Gets or sets the list of virtual disks associated with the virtual machine.
-    # To construct, see NOTES section for STORAGEPROFILEDISK properties and create a hash table.
     ${StorageProfileDisk},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -4037,12 +4110,6 @@ param(
     # The Subscription ID.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
-    [System.String]
-    # Gets or sets the location.
-    ${Location},
-
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [System.String]
@@ -4068,6 +4135,12 @@ param(
     # ApiApps are a kind of Microsoft.Web/sites type.
     # If supported, the resource provider must validate and persist this value.
     ${Kind},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
+    [System.String]
+    # Gets or sets the location.
+    ${Location},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
@@ -4192,7 +4265,13 @@ begin {
             CreateViaJsonString = 'Az.ConnectedVMware.private\New-AzConnectedVMwareVNet_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4305,7 +4384,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -4411,7 +4489,13 @@ begin {
             DeleteViaIdentity = 'Az.ConnectedVMware.private\Remove-AzConnectedVMwareCluster_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4524,7 +4608,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -4630,7 +4713,13 @@ begin {
             DeleteViaIdentity = 'Az.ConnectedVMware.private\Remove-AzConnectedVMwareDatastore_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4743,7 +4832,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -4849,7 +4937,13 @@ begin {
             DeleteViaIdentity = 'Az.ConnectedVMware.private\Remove-AzConnectedVMwareHost_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4962,7 +5056,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -5068,7 +5161,13 @@ begin {
             DeleteViaIdentity = 'Az.ConnectedVMware.private\Remove-AzConnectedVMwareResourcePool_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5181,7 +5280,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -5287,7 +5385,13 @@ begin {
             DeleteViaIdentity = 'Az.ConnectedVMware.private\Remove-AzConnectedVMwareVCenter_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5400,7 +5504,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -5506,7 +5609,13 @@ begin {
             DeleteViaIdentity = 'Az.ConnectedVMware.private\Remove-AzConnectedVMwareVMTemplate_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5799,7 +5908,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -5905,7 +6013,13 @@ begin {
             DeleteViaIdentity = 'Az.ConnectedVMware.private\Remove-AzConnectedVMwareVNet_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6317,7 +6431,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IStopVirtualMachineOptions]
     # Defines the stop action properties.
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='StopExpanded')]
@@ -6549,7 +6662,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -6653,7 +6765,13 @@ begin {
             UpdateViaJsonString = 'Az.ConnectedVMware.private\Update-AzConnectedVMwareCluster_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6772,7 +6890,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -6876,7 +6993,13 @@ begin {
             UpdateViaJsonString = 'Az.ConnectedVMware.private\Update-AzConnectedVMwareDatastore_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6995,7 +7118,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -7099,7 +7221,13 @@ begin {
             UpdateViaJsonString = 'Az.ConnectedVMware.private\Update-AzConnectedVMwareHost_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -7218,7 +7346,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -7322,7 +7449,13 @@ begin {
             UpdateViaJsonString = 'Az.ConnectedVMware.private\Update-AzConnectedVMwareResourcePool_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -7441,7 +7574,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -7545,7 +7677,13 @@ begin {
             UpdateViaJsonString = 'Az.ConnectedVMware.private\Update-AzConnectedVMwareVCenter_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -7664,7 +7802,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -7768,7 +7905,13 @@ begin {
             UpdateViaJsonString = 'Az.ConnectedVMware.private\Update-AzConnectedVMwareVMTemplate_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -7888,7 +8031,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INetworkInterfaceUpdate[]]
     # Gets or sets the list of network interfaces associated with the virtual machine.
-    # To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
     ${NetworkProfileNetworkInterface},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -7896,7 +8038,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualDiskUpdate[]]
     # Gets or sets the list of virtual disks associated with the virtual machine.
-    # To construct, see NOTES section for STORAGEPROFILEDISK properties and create a hash table.
     ${StorageProfileDisk},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
@@ -8119,7 +8260,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -8223,7 +8363,13 @@ begin {
             UpdateViaJsonString = 'Az.ConnectedVMware.private\Update-AzConnectedVMwareVNet_UpdateViaJsonString';
         }
         if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

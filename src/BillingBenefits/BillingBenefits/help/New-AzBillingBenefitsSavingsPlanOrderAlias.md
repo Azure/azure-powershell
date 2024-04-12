@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.BillingBenefits-help.xml
 Module Name: Az.BillingBenefits
 online version: https://learn.microsoft.com/powershell/module/az.billingbenefits/new-azbillingbenefitssavingsplanorderalias
 schema: 2.0.0
@@ -21,19 +21,13 @@ New-AzBillingBenefitsSavingsPlanOrderAlias -Name <String> [-AppliedScopeProperty
  [-AppliedScopeType <AppliedScopeType>] [-BillingPlan <BillingPlan>] [-BillingScopeId <String>]
  [-CommitmentAmount <Double>] [-CommitmentCurrencyCode <String>] [-CommitmentGrain <CommitmentGrain>]
  [-DisplayName <String>] [-Kind <String>] [-SkuName <String>] [-Term <Term>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzBillingBenefitsSavingsPlanOrderAlias -Name <String> -Body <ISavingsPlanOrderAliasModel>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzBillingBenefitsSavingsPlanOrderAlias -InputObject <IBillingBenefitsIdentity>
- -Body <ISavingsPlanOrderAliasModel> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -45,7 +39,15 @@ New-AzBillingBenefitsSavingsPlanOrderAlias -InputObject <IBillingBenefitsIdentit
  [-AppliedScopePropertyTenantId <String>] [-AppliedScopeType <AppliedScopeType>] [-BillingPlan <BillingPlan>]
  [-BillingScopeId <String>] [-CommitmentAmount <Double>] [-CommitmentCurrencyCode <String>]
  [-CommitmentGrain <CommitmentGrain>] [-DisplayName <String>] [-Kind <String>] [-SkuName <String>]
- [-Term <Term>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Term <Term>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentity
+```
+New-AzBillingBenefitsSavingsPlanOrderAlias -InputObject <IBillingBenefitsIdentity>
+ -Body <ISavingsPlanOrderAliasModel> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -268,7 +270,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -303,7 +306,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: CreateViaIdentityExpanded, CreateViaIdentity
 Aliases:
 
 Required: True
@@ -333,7 +336,7 @@ Name of the savings plan order alias
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: CreateExpanded, Create
 Aliases: SavingsPlanOrderAliasName
 
 Required: True
@@ -350,6 +353,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -434,44 +452,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <ISavingsPlanOrderAliasModel>`: Savings plan order alias
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[AppliedScopePropertyDisplayName <String>]`: Display name
-  - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
-  - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
-  - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
-  - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the benefit is applied.
-  - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
-  - `[AzureAsyncOperation <String>]`: 
-  - `[BillingPlan <BillingPlan?>]`: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
-  - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing the benefit
-  - `[CommitmentAmount <Double?>]`: 
-  - `[CommitmentCurrencyCode <String>]`: The ISO 4217 3-letter currency code for the currency used by this purchase record.
-  - `[CommitmentGrain <CommitmentGrain?>]`: Commitment grain.
-  - `[DisplayName <String>]`: Display name
-  - `[Kind <String>]`: Resource provider kind
-  - `[RetryAfter <Int32?>]`: 
-  - `[SkuName <String>]`: Name of the SKU to be applied
-  - `[Term <Term?>]`: Represent benefit term in ISO 8601 format.
-
-`INPUTOBJECT <IBillingBenefitsIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ReservationOrderAliasName <String>]`: Name of the reservation order alias
-  - `[SavingsPlanId <String>]`: ID of the savings plan
-  - `[SavingsPlanOrderAliasName <String>]`: Name of the savings plan order alias
-  - `[SavingsPlanOrderId <String>]`: Order ID of the savings plan
-
 ## RELATED LINKS
-

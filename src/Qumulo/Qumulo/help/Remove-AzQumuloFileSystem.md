@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Qumulo-help.xml
 Module Name: Az.Qumulo
 online version: https://learn.microsoft.com/powershell/module/az.qumulo/remove-azqumulofilesystem
 schema: 2.0.0
@@ -15,13 +15,14 @@ Delete a file system resource
 ### Delete (Default)
 ```
 Remove-AzQumuloFileSystem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzQumuloFileSystem -InputObject <IQumuloIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,6 +131,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -205,18 +221,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IQumuloIdentity>`: Identity Parameter
-  - `[FileSystemName <String>]`: Name of the File System resource
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-

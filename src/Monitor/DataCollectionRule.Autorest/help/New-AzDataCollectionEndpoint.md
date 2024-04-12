@@ -15,9 +15,9 @@ Create a data collection endpoint.
 ### CreateExpanded (Default)
 ```
 New-AzDataCollectionEndpoint -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Description <String>] [-IdentityType <String>] [-ImmutableId <String>]
+ [-SubscriptionId <String>] [-Description <String>] [-EnableSystemAssignedIdentity] [-ImmutableId <String>]
  [-Kind <String>] [-NetworkAclsPublicNetworkAccess <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -163,11 +163,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -332,12 +332,11 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases:
 

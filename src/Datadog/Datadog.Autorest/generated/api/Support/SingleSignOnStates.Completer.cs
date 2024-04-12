@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Initial".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Initial", "Initial", global::System.Management.Automation.CompletionResultType.ParameterValue, "Initial");
+                yield return new global::System.Management.Automation.CompletionResult("'Initial'", "Initial", global::System.Management.Automation.CompletionResultType.ParameterValue, "Initial");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Enable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Enable", "Enable", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enable");
+                yield return new global::System.Management.Automation.CompletionResult("'Enable'", "Enable", global::System.Management.Automation.CompletionResultType.ParameterValue, "Enable");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Disable".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Disable", "Disable", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disable");
+                yield return new global::System.Management.Automation.CompletionResult("'Disable'", "Disable", global::System.Management.Automation.CompletionResultType.ParameterValue, "Disable");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Existing".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Existing", "Existing", global::System.Management.Automation.CompletionResultType.ParameterValue, "Existing");
+                yield return new global::System.Management.Automation.CompletionResult("'Existing'", "Existing", global::System.Management.Automation.CompletionResultType.ParameterValue, "Existing");
             }
         }
     }

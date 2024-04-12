@@ -15,19 +15,21 @@ Gets the SAP Central Services Instance resource.
 ### List (Default)
 ```
 Get-AzWorkloadsSapCentralInstance -ResourceGroupName <String> -SapVirtualInstanceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWorkloadsSapCentralInstance -Name <String> -ResourceGroupName <String> -SapVirtualInstanceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzWorkloadsSapCentralInstance -InputObject <IWorkloadsIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,6 +112,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -165,27 +182,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapCentralServerInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapCentralServerInstance
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
-  - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.
-  - `[CentralInstanceName <String>]`: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
-  - `[DatabaseInstanceName <String>]`: Database resource name string modeled as parameter for auto generation to work correctly.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[MonitorName <String>]`: Name of the SAP monitor resource.
-  - `[ProviderInstanceName <String>]`: Name of the provider instance.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SapVirtualInstanceName <String>]`: The name of the Virtual Instances for SAP solutions resource
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS

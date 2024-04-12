@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Description(@"Updates the properties of an existing address.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EdgeOrder/addresses/{addressName}", ApiVersion = "2021-12-01")]
     public partial class UpdateAzEdgeOrderAddress_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener
     {
@@ -28,16 +29,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
+        /// <summary>The Address update parameters</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressUpdateParameter _addressUpdateParameterBody = new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.AddressUpdateParameter();
+
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
-
-        /// <summary>Backing field for <see cref="AddressUpdateParameterBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressUpdateParameter _addressUpdateParameterBody= new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.AddressUpdateParameter();
-
-        /// <summary>The Address update parameters</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressUpdateParameter AddressUpdateParameterBody { get => this._addressUpdateParameterBody; set => this._addressUpdateParameterBody = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -61,12 +59,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         Description = @"Contact details for the address",
         SerializedName = @"contactDetails",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IContactDetails) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IContactDetails ContactDetail { get => AddressUpdateParameterBody.ContactDetail ?? null /* object */; set => AddressUpdateParameterBody.ContactDetail = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IContactDetails ContactDetail { get => _addressUpdateParameterBody.ContactDetail ?? null /* object */; set => _addressUpdateParameterBody.ContactDetail = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.ParameterCategory.Azure)]
@@ -105,11 +104,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -182,7 +181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         Description = @"Shipping details for the address",
         SerializedName = @"shippingAddress",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IShippingAddress) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IShippingAddress ShippingAddress { get => AddressUpdateParameterBody.ShippingAddress ?? null /* object */; set => AddressUpdateParameterBody.ShippingAddress = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IShippingAddress ShippingAddress { get => _addressUpdateParameterBody.ShippingAddress ?? null /* object */; set => _addressUpdateParameterBody.ShippingAddress = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -215,15 +214,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         Description = @"The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups).",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressUpdateParameterTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressUpdateParameterTags Tag { get => AddressUpdateParameterBody.Tag ?? null /* object */; set => AddressUpdateParameterBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressUpdateParameterTags Tag { get => _addressUpdateParameterBody.Tag ?? null /* object */; set => _addressUpdateParameterBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -234,8 +233,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource">Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -246,6 +245,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -271,7 +275,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.AddressUpdateParameterBody = this.AddressUpdateParameterBody;
+            clone._addressUpdateParameterBody = this._addressUpdateParameterBody;
             clone.Name = this.Name;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
@@ -282,7 +286,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -415,7 +436,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -430,12 +450,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.UpdateAddress(Name, SubscriptionId, ResourceGroupName, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, AddressUpdateParameterBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.UpdateAddress(Name, SubscriptionId, ResourceGroupName, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, _addressUpdateParameterBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Name=Name,SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,body=AddressUpdateParameterBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Name=Name,SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,body=_addressUpdateParameterBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -462,12 +482,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
 
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -489,14 +524,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Name=Name, SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, body=AddressUpdateParameterBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Name=Name, SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, body=_addressUpdateParameterBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Name=Name, SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, body=AddressUpdateParameterBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Name=Name, SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, body=_addressUpdateParameterBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -506,8 +541,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource">Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.IAddressResource</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>

@@ -16,13 +16,14 @@ Updates a graph query that has already been added.
 ```
 Update-AzResourceGraphQuery -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Description <String>] [-Query <String>] [-File <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzResourceGraphQuery -InputObject <IResourceGraphIdentity> [-Description <String>] [-Query <String>]
- [-File <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-File <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -135,6 +136,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Query
 KQL query that will be graph.
 
@@ -238,18 +254,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IResourceGraphIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourceName <String>]`: The name of the Graph Query resource.
-  - `[SubscriptionId <String>]`: The Azure subscription Id.
 
 ## RELATED LINKS

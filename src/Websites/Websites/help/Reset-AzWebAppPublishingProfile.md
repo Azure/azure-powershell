@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.WebSites
+Module Name: Az.Websites
 ms.assetid: 84C861B2-DCB3-47F0-8589-BB3172C6E1EC
 online version: https://learn.microsoft.com/powershell/module/az.websites/reset-azwebapppublishingprofile
 schema: 2.0.0
@@ -16,13 +16,13 @@ Resets the publishing profile for the specified Web App.
 ### S1
 ```
 Reset-AzWebAppPublishingProfile [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### S2
 ```
 Reset-AzWebAppPublishingProfile [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,6 +70,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

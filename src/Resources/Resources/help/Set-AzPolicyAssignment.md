@@ -19,7 +19,7 @@ Set-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [
  [-Description <String>] [-Metadata <String>] [-AssignIdentity] [-Location <String>]
  [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
  [-IdentityId <String>] [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### PolicyParameterNameObjectParameterSet
@@ -29,7 +29,7 @@ Set-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [
  [-Location <String>] [-EnforcementMode <PolicyAssignmentEnforcementMode>]
  [-IdentityType <ManagedIdentityType>] [-IdentityId <String>]
  [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### PolicyParameterNameStringParameterSet
@@ -38,7 +38,7 @@ Set-AzPolicyAssignment -Name <String> [-Scope <String>] [-NotScope <String[]>] [
  [-Description <String>] [-Metadata <String>] -PolicyParameter <String> [-AssignIdentity] [-Location <String>]
  [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
  [-IdentityId <String>] [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### IdParameterSet
@@ -47,7 +47,7 @@ Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String
  [-Metadata <String>] [-AssignIdentity] [-Location <String>]
  [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
  [-IdentityId <String>] [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### PolicyParameterIdObjectParameterSet
@@ -56,7 +56,7 @@ Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String
  [-Metadata <String>] -PolicyParameterObject <Hashtable> [-AssignIdentity] [-Location <String>]
  [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
  [-IdentityId <String>] [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### PolicyParameterIdStringParameterSet
@@ -65,7 +65,7 @@ Set-AzPolicyAssignment [-NotScope <String[]>] -Id <String> [-DisplayName <String
  [-Metadata <String>] -PolicyParameter <String> [-AssignIdentity] [-Location <String>]
  [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
  [-IdentityId <String>] [-NonComplianceMessage <PsNonComplianceMessage[]>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
@@ -74,7 +74,7 @@ Set-AzPolicyAssignment [-NotScope <String[]>] [-DisplayName <String>] [-Descript
  [-Metadata <String>] [-AssignIdentity] [-Location <String>]
  [-EnforcementMode <PolicyAssignmentEnforcementMode>] [-IdentityType <ManagedIdentityType>]
  [-IdentityId <String>] -InputObject <PsPolicyAssignment> [-NonComplianceMessage <PsNonComplianceMessage[]>]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -445,6 +445,21 @@ Indicates that this cmdlet considers pre-release API versions when it automatica
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

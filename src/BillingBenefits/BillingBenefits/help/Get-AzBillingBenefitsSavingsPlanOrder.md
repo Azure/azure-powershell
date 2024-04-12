@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.BillingBenefits-help.xml
 Module Name: Az.BillingBenefits
 online version: https://learn.microsoft.com/powershell/module/az.billingbenefits/get-azbillingbenefitssavingsplanorder
 schema: 2.0.0
@@ -14,19 +14,20 @@ Get a savings plan order.
 
 ### List (Default)
 ```
-Get-AzBillingBenefitsSavingsPlanOrder [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzBillingBenefitsSavingsPlanOrder [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzBillingBenefitsSavingsPlanOrder -Id <String> [-Expand <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzBillingBenefitsSavingsPlanOrder -InputObject <IBillingBenefitsIdentity> [-Expand <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +46,7 @@ OrderId                              SkuName              Status    ExpiryDate  
 23420e73-752b-47e8-96d9-6f9ac2bcee27 Compute_Savings_Plan Succeeded 11/30/2023 11:22:53 PM P1Y  P1M        
 953fc18d-04d6-4f8a-9f51-6b784cbc4d2a Compute_Savings_Plan Succeeded 11/30/2025 12:36:25 AM P3Y  P1M        
 a05e9e28-0adf-4e73-8e24-87bf51ab6cdc Compute_Savings_Plan Succeeded 11/29/2025 2:51:18 AM  P3Y  P1M        
-1a06f5fc-2152-40ec-9675-f890ab680df9 Compute_Savings_Plan Succeeded 11/29/2025 2:48:30 AM  P3Y  P1M  
+1a06f5fc-2152-40ec-9675-f890ab680df9 Compute_Savings_Plan Succeeded 11/29/2025 2:48:30 AM  P3Y  P1M
 ```
 
 List savings plan orders
@@ -66,7 +67,8 @@ Get a single savings plan order
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -126,6 +128,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -139,19 +156,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IBillingBenefitsIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ReservationOrderAliasName <String>]`: Name of the reservation order alias
-  - `[SavingsPlanId <String>]`: ID of the savings plan
-  - `[SavingsPlanOrderAliasName <String>]`: Name of the savings plan order alias
-  - `[SavingsPlanOrderId <String>]`: Order ID of the savings plan
-
 ## RELATED LINKS
-

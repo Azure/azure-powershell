@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Qumulo-help.xml
 Module Name: Az.Qumulo
 online version: https://learn.microsoft.com/powershell/module/az.qumulo/new-azqumulofilesystem
 schema: 2.0.0
@@ -13,13 +13,13 @@ Create a file system resource
 ## SYNTAX
 
 ```
-New-AzQumuloFileSystem -Name <String> -ResourceGroupName <String> -AdminPassword <SecureString>
- -DelegatedSubnetId <String> -InitialCapacity <Int32> -Location <String> -MarketplaceOfferId <String>
- -MarketplacePlanId <String> -MarketplacePublisherId <String> -StorageSku <StorageSku> -UserEmail <String>
- [-SubscriptionId <String>] [-AvailabilityZone <String>] [-ClusterLoginUrl <String>]
+New-AzQumuloFileSystem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -AdminPassword <SecureString> -DelegatedSubnetId <String> -InitialCapacity <Int32> -Location <String>
+ -MarketplaceOfferId <String> -MarketplacePlanId <String> -MarketplacePublisherId <String>
+ -StorageSku <StorageSku> -UserEmail <String> [-AvailabilityZone <String>] [-ClusterLoginUrl <String>]
  [-IdentityType <ManagedServiceIdentityType>] [-MarketplaceSubscriptionId <String>] [-PrivateIP <String[]>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -301,6 +301,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -436,7 +451,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

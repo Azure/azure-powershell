@@ -17,19 +17,19 @@ Changes private store properties
 Set-AzMarketplacePrivateStore -Id <String> [-Availability <String>] [-Branding <Hashtable>] [-ETag <String>]
  [-IsGov] [-NotificationSettingRecipient <IRecipient[]>] [-NotificationSettingSendToAllMarketplaceAdmin]
  [-PrivateStoreName <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Set-AzMarketplacePrivateStore -Id <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Set-AzMarketplacePrivateStore -Id <String> -JsonString <String> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -219,6 +219,21 @@ Private Store Name
 Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Reservations-help.xml
 Module Name: Az.Reservations
 online version: https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationexchange
 schema: 2.0.0
@@ -14,14 +14,14 @@ Returns one or more `Reservations` in exchange for one or more `Reservation` pur
 
 ### PostExpanded (Default)
 ```
-Invoke-AzReservationExchange [-SessionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Invoke-AzReservationExchange [-SessionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Post
 ```
 Invoke-AzReservationExchange -Body <IExchangeRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,6 +107,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SessionId
 SessionId that was returned by CalculateExchange API.
 
@@ -166,15 +181,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <IExchangeRequest>`: Exchange request
-  - `[SessionId <String>]`: SessionId that was returned by CalculateExchange API.
-
 ## RELATED LINKS
-

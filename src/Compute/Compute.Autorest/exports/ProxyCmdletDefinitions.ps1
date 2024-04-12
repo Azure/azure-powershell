@@ -187,7 +187,13 @@ begin {
             List = 'Az.Compute.private\Get-AzGalleryApplicationVersion_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -397,7 +403,13 @@ begin {
             List = 'Az.Compute.private\Get-AzGalleryApplication_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -625,7 +637,13 @@ begin {
             DeleteViaIdentity = 'Az.Compute.private\Remove-AzGalleryApplicationVersion_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -847,7 +865,13 @@ begin {
             DeleteViaIdentity = 'Az.Compute.private\Remove-AzGalleryApplication_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1068,7 +1092,13 @@ begin {
             DeleteViaIdentity = 'Az.Compute.private\Remove-AzVMRunCommand_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1295,7 +1325,13 @@ begin {
             DeleteViaIdentity = 'Az.Compute.private\Remove-AzVmssVMRunCommand_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1648,7 +1684,13 @@ begin {
             ScriptLocalPath = 'Az.Compute.custom\Set-AzVMRunCommand_ScriptLocalPath';
         }
         if (('UpdateExpanded', 'ScriptLocalPath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2007,7 +2049,13 @@ begin {
             ScriptLocalPath = 'Az.Compute.custom\Set-AzVmssVMRunCommand_ScriptLocalPath';
         }
         if (('UpdateExpanded', 'ScriptLocalPath') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2239,7 +2287,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.Compute.private\Update-AzGalleryApplication_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2460,7 +2514,13 @@ begin {
             __AllParameterSets = 'Az.Compute.custom\New-AzGalleryApplication';
         }
         if (('__AllParameterSets') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2776,7 +2836,13 @@ begin {
             CreateExpanded = 'Az.Compute.custom\New-AzGalleryApplicationVersion';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3069,7 +3135,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.Compute.custom\Update-AzGalleryApplicationVersion';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

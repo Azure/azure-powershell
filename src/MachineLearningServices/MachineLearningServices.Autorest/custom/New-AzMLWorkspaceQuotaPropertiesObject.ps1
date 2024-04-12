@@ -23,7 +23,7 @@ Create an in-memory object for QuotaBaseProperties.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.QuotaBaseProperties
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceQuotaPropertiesObject
+https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceQuotaPropertiesObject
 #>
 function New-AzMLWorkspaceQuotaPropertiesObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.QuotaBaseProperties')]

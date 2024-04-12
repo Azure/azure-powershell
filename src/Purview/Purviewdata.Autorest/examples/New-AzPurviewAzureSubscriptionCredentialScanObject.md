@@ -1,7 +1,9 @@
 ### Example 1: Create Azure resource sub Credential scan object
 ```powershell
 New-AzPurviewAzureSubscriptionCredentialScanObject -Kind 'AzureSubscriptionCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialType 'ServicePrincipal' -CredentialReferenceName 'svcp'
+```
 
+```output
 CollectionLastModifiedAt  :
 CollectionReferenceName   : parv-brs-2
 CollectionType            : CollectionReference

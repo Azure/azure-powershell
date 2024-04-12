@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PostgreSql-help.xml
 Module Name: Az.PostgreSql
 online version: https://learn.microsoft.com/powershell/module/az.postgresql/remove-azpostgresqlflexibleserverdatabase
 schema: 2.0.0
@@ -15,14 +15,14 @@ Deletes a database.
 ### Delete (Default)
 ```
 Remove-AzPostgreSqlFlexibleServerDatabase -Name <String> -ResourceGroupName <String> -ServerName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzPostgreSqlFlexibleServerDatabase -InputObject <IPostgreSqlIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +33,6 @@ Deletes a database.
 ### Example 1: Remove a database by name
 ```powershell
 Remove-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql -Name testdb
-
 ```
 
 Remove a database by name
@@ -41,7 +40,6 @@ Remove a database by name
 ### Example 2: Remove a database by Id
 ```powershell
 Remove-AzPostgreSqlFlexibleServerDatabase -InputObject /subscriptions/0000000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/databases/flexibleserverdb
-
 ```
 
 Remove a database by Id
@@ -64,7 +62,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -131,6 +130,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -229,24 +243,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IPostgreSqlIdentity>`: Identity Parameter
-  - `[ConfigurationName <String>]`: The name of the server configuration.
-  - `[DatabaseName <String>]`: The name of the database.
-  - `[FirewallRuleName <String>]`: The name of the server firewall rule.
-  - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: The name of the location.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
-  - `[ServerName <String>]`: The name of the server.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
-
 ## RELATED LINKS
-

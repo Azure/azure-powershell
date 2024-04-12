@@ -6026,7 +6026,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -6510,7 +6510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -8182,7 +8182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Json.JsonNode.Parse(body.Result)) .ReadHeaders(_response.Headers)));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeResource.FromJson(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -10408,7 +10408,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices
                         + "&"
                         + (null == isDefault ? global::System.String.Empty : "isDefault=" + global::System.Uri.EscapeDataString(isDefault.ToString()))
                         + "&"
-                        + (null != names  && names.Length > 0 ? "names=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(names, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != names  && names.Length > 0 ? "names=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(names, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + (string.IsNullOrEmpty(searchText) ? global::System.String.Empty : "searchText=" + global::System.Uri.EscapeDataString(searchText))
                         + "&"
@@ -10662,7 +10662,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices
                         + "&"
                         + (null == isDefault ? global::System.String.Empty : "isDefault=" + global::System.Uri.EscapeDataString(isDefault.ToString()))
                         + "&"
-                        + (null != names  && names.Length > 0 ? "names=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(names, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != names  && names.Length > 0 ? "names=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(names, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         + "&"
                         + (string.IsNullOrEmpty(searchText) ? global::System.String.Empty : "searchText=" + global::System.Uri.EscapeDataString(searchText))
                         + "&"
@@ -20389,6 +20389,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices
             }
         }
 
+        /// <summary>Creating or updating a new workspace connection</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">Name of Azure Machine Learning workspace.</param>
@@ -20439,6 +20440,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices
             }
         }
 
+        /// <summary>Creating or updating a new workspace connection</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The object for creating or updating a new workspace connection</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -20577,6 +20579,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices
             }
         }
 
+        /// <summary>Remove a new workspace connection</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">Name of Azure Machine Learning workspace.</param>
@@ -20623,6 +20626,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices
             }
         }
 
+        /// <summary>Remove a new workspace connection</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
@@ -20761,6 +20765,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices
             }
         }
 
+        /// <summary>Get a new workspace connection</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="workspaceName">Name of Azure Machine Learning workspace.</param>
@@ -20806,6 +20811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices
             }
         }
 
+        /// <summary>Get a new workspace connection</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled

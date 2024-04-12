@@ -18,15 +18,15 @@ New-AzWvdMsixPackage -HostPoolName <String> -ResourceGroupName <String> -FullNam
  [-SubscriptionId <String>] [-DisplayName <String>] [-ImagePath <String>] [-IsActive] [-IsRegularRegistration]
  [-LastUpdated <DateTime>] [-PackageApplication <IMsixPackageApplications[]>]
  [-PackageDependency <IMsixPackageDependencies[]>] [-PackageFamilyName <String>] [-PackageName <String>]
- [-PackageRelativePath <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PackageRelativePath <String>] [-Version <String>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PackageAlias
 ```
 New-AzWvdMsixPackage -HostPoolName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DisplayName <String>] [-ImagePath <String>] [-IsActive] [-IsRegularRegistration] -PackageAlias <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -292,6 +292,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -376,7 +391,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IMsixPackage
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackage
 
 ## NOTES
 

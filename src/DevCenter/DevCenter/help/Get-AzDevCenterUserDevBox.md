@@ -14,62 +14,62 @@ Gets a Dev Box
 
 ### List (Default)
 ```
-Get-AzDevCenterUserDevBox -Endpoint <String> [-DefaultProfile <PSObject>]
+Get-AzDevCenterUserDevBox -Endpoint <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDevCenterUserDevBox -Endpoint <String> -ProjectName <String> -UserId <String> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDevCenterUserDevBox -Endpoint <String> -InputObject <IDevCenterdataIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzDevCenterUserDevBox -Endpoint <String> -UserId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List2
 ```
 Get-AzDevCenterUserDevBox -Endpoint <String> -ProjectName <String> -UserId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityByDevCenter
 ```
 Get-AzDevCenterUserDevBox -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
 Get-AzDevCenterUserDevBox -DevCenterName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List2ByDevCenter
 ```
 Get-AzDevCenterUserDevBox -DevCenterName <String> -ProjectName <String> -UserId <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1ByDevCenter
 ```
 Get-AzDevCenterUserDevBox -DevCenterName <String> -UserId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
 Get-AzDevCenterUserDevBox -DevCenterName <String> -ProjectName <String> -UserId <String> -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -222,6 +222,21 @@ Parameter Sets: Get, GetByDevCenter
 Aliases: DevBoxName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

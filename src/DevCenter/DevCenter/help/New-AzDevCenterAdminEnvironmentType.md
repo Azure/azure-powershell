@@ -16,13 +16,13 @@ Creates or updates an environment type.
 ```
 New-AzDevCenterAdminEnvironmentType -DevCenterName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DisplayName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzDevCenterAdminEnvironmentType -InputObject <IDevCenterIdentity> [-DisplayName <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -121,6 +121,21 @@ Parameter Sets: CreateExpanded
 Aliases: EnvironmentTypeName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

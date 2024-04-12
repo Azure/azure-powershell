@@ -20,8 +20,8 @@ Update-AzContainerAppSourceControl -ContainerAppName <String> -Name <String> -Re
  [-GithubAccessToken <SecureString>] [-GithubConfigurationImage <String>] [-GithubContextPath <String>]
  [-GithubOS <String>] [-GithubPublishType <String>] [-GithubRuntimeStack <String>]
  [-GithubRuntimeVersion <String>] [-RegistryPassword <SecureString>] [-RegistryUrl <String>]
- [-RegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-RegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityContainerAppExpanded
@@ -32,8 +32,8 @@ Update-AzContainerAppSourceControl -Name <String> -ContainerAppInputObject <IApp
  [-GithubAccessToken <SecureString>] [-GithubConfigurationImage <String>] [-GithubContextPath <String>]
  [-GithubOS <String>] [-GithubPublishType <String>] [-GithubRuntimeStack <String>]
  [-GithubRuntimeVersion <String>] [-RegistryPassword <SecureString>] [-RegistryUrl <String>]
- [-RegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-RegistryUserName <String>] [-RepoUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -44,7 +44,8 @@ Update-AzContainerAppSourceControl -InputObject <IAppIdentity> [-AzureClientId <
  [-GithubConfigurationImage <String>] [-GithubContextPath <String>] [-GithubOS <String>]
  [-GithubPublishType <String>] [-GithubRuntimeStack <String>] [-GithubRuntimeVersion <String>]
  [-RegistryPassword <SecureString>] [-RegistryUrl <String>] [-RegistryUserName <String>] [-RepoUrl <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -214,7 +215,6 @@ Accept wildcard characters: False
 
 ### -ContainerAppInputObject
 Identity Parameter
-To construct, see NOTES section for CONTAINERAPPINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -366,7 +366,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -402,6 +401,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

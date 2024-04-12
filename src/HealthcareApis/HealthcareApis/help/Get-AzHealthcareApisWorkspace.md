@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HealthcareApis-help.xml
 Module Name: Az.HealthcareApis
 online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/get-azhealthcareapisworkspace
 schema: 2.0.0
@@ -14,25 +14,26 @@ Gets the properties of the specified workspace.
 
 ### List (Default)
 ```
-Get-AzHealthcareApisWorkspace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzHealthcareApisWorkspace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzHealthcareApisWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzHealthcareApisWorkspace -InputObject <IHealthcareApisIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzHealthcareApisWorkspace -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzHealthcareApisWorkspace -InputObject <IHealthcareApisIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +85,8 @@ List the properties of the specified resource group.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -129,6 +131,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group that contains the service instance.
 
@@ -149,7 +166,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -172,27 +189,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IHealthcareApisIdentity>`: Identity Parameter
-  - `[DicomServiceName <String>]`: The name of DICOM Service resource.
-  - `[FhirDestinationName <String>]`: The name of IoT Connector FHIR destination resource.
-  - `[FhirServiceName <String>]`: The name of FHIR Service resource.
-  - `[GroupName <String>]`: The name of the private link resource group.
-  - `[Id <String>]`: Resource identity path
-  - `[IotConnectorName <String>]`: The name of IoT Connector resource.
-  - `[LocationName <String>]`: The location of the operation.
-  - `[OperationResultId <String>]`: The ID of the operation result to get.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the service instance.
-  - `[ResourceName <String>]`: The name of the service instance.
-  - `[SubscriptionId <String>]`: The subscription identifier.
-  - `[WorkspaceName <String>]`: The name of workspace resource.
-
 ## RELATED LINKS
-

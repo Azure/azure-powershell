@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HealthcareApis-help.xml
 Module Name: Az.HealthcareApis
 online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareiotconnectorfhirdestination
 schema: 2.0.0
@@ -14,10 +14,10 @@ Creates or updates an IoT Connector FHIR destination resource with the specified
 
 ```
 New-AzHealthcareIotConnectorFhirDestination -FhirDestinationName <String> -IotConnectorName <String>
- -ResourceGroupName <String> -WorkspaceName <String> -FhirMappingContent <Hashtable>
- -FhirServiceResourceId <String> -Location <String>
- -ResourceIdentityResolutionType <IotIdentityResolutionType> [-SubscriptionId <String>] [-Etag <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>] -FhirServiceResourceId <String>
+ -ResourceIdentityResolutionType <IotIdentityResolutionType> -FhirMappingContent <Hashtable> -Location <String>
+ [-Etag <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -176,6 +176,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group that contains the service instance.
 
@@ -278,7 +293,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

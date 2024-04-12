@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SecurityInsights-help.xml
 Module Name: Az.SecurityInsights
 online version: https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelentityquery
 schema: 2.0.0
@@ -13,11 +13,11 @@ Creates or updates the entity query.
 ## SYNTAX
 
 ```
-New-AzSentinelEntityQuery -ResourceGroupName <String> -WorkspaceName <String> -Content <String>
- -Description <String> -InputEntityType <EntityType> -Kind <EntityQueryKind> -QueryDefinitionQuery <String>
- -Title <String> [-Id <String>] [-SubscriptionId <String>]
- [-EntitiesFilter <ActivityEntityQueriesPropertiesEntitiesFilter>] [-RequiredInputFieldsSet <String[]>]
- [-TemplateName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzSentinelEntityQuery -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
+ [-Id <String>] -Kind <EntityQueryKind> -Title <String> -Content <String> -Description <String>
+ -QueryDefinitionQuery <String> -InputEntityType <EntityType> [-RequiredInputFieldsSet <String[]>]
+ [-EntitiesFilter <ActivityEntityQueriesPropertiesEntitiesFilter>] [-TemplateName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ Creates or updates the entity query.
 
 ### Example 1: Create Entity Query
 ```powershell
- $template = Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "myEntityQueryTemplateId"
+$template = Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "myEntityQueryTemplateId"
  New-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Kind Activity -Title ($template.title) -InputEntityType ($template.inputEntityType) -TemplateName ($template.Name)
 ```
 
@@ -47,7 +47,7 @@ This command creates an Entity Query by using a Template.
 
 ### Example 2: Create Entity Query from cmdlet inputs
 ```powershell
- New-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -Kind Activity -Title 'An account was deleted on this host' -InputEntityType 'Host' -Content "On 'SomeCompute' the account 'SomeAccount' was deleted by 'SomeUser'" -Description "Account deleted on host" -QueryDefinitionQuery 'let GetAccountActions = (v_Host_Name:string, v_Host_NTDomain:string, v_Host_DnsDomain:string, v_Host_AzureID:string, v_Host_OMSAgentID:string){\nSecurityEvent\n| where EventID in (4725, 4726, 4767, 4720, 4722, 4723, 4724)\n// parsing for Host to handle variety of conventions coming from data\n| extend Host_HostName = case(\nComputer has ''@'', tostring(split(Computer, ''@'')[0]),\nComputer has ''\\'', tostring(split(Computer, ''\\'')[1]),\nComputer has ''.'', tostring(split(Computer, ''.'')[0]),\nComputer\n)\n| extend Host_NTDomain = case(\nComputer has ''\\'', tostring(split(Computer, ''\\'')[0]), \nComputer has ''.'', tostring(split(Computer, ''.'')[-2]), \nComputer\n)\n| extend Host_DnsDomain = case(\nComputer has ''\\'', tostring(split(Computer, ''\\'')[0]), \nComputer has ''.'', strcat_array(array_slice(split(Computer,''.''),-2,-1),''.''), \nComputer\n)\n| where (Host_HostName =~ v_Host_Name and Host_NTDomain =~ v_Host_NTDomain) \nor (Host_HostName =~ v_Host_Name and Host_DnsDomain =~ v_Host_DnsDomain) \nor v_Host_AzureID =~ _ResourceId \nor v_Host_OMSAgentID == SourceComputerId\n| project TimeGenerated, EventID, Activity, Computer, TargetAccount, TargetUserName, TargetDomainName, TargetSid, SubjectUserName, SubjectUserSid, _ResourceId, SourceComputerId\n| extend AddedBy = SubjectUserName\n// Future support for Activities\n| extend timestamp = TimeGenerated, HostCustomEntity = Computer, AccountCustomEntity = TargetAccount\n};\nGetAccountActions(''someHost'', ''SomeNTDomain'', ''SomeDNSDomain'', ''SomeID'', ''SomeOMSAgentID'')\n \n| where EventID == 4726' -RequiredInputFieldsSet @(@("Host_HostName","Host_NTDomain"),@("Host_HostName","Host_DnsDomain"),@("Host_AzureID"),@("Host_OMSAgentID")) -EntitiesFilter @{"Host_OsFamily" = @("Windows")}
+New-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -Kind Activity -Title 'An account was deleted on this host' -InputEntityType 'Host' -Content "On 'SomeCompute' the account 'SomeAccount' was deleted by 'SomeUser'" -Description "Account deleted on host" -QueryDefinitionQuery 'let GetAccountActions = (v_Host_Name:string, v_Host_NTDomain:string, v_Host_DnsDomain:string, v_Host_AzureID:string, v_Host_OMSAgentID:string){\nSecurityEvent\n| where EventID in (4725, 4726, 4767, 4720, 4722, 4723, 4724)\n// parsing for Host to handle variety of conventions coming from data\n| extend Host_HostName = case(\nComputer has ''@'', tostring(split(Computer, ''@'')[0]),\nComputer has ''\\'', tostring(split(Computer, ''\\'')[1]),\nComputer has ''.'', tostring(split(Computer, ''.'')[0]),\nComputer\n)\n| extend Host_NTDomain = case(\nComputer has ''\\'', tostring(split(Computer, ''\\'')[0]), \nComputer has ''.'', tostring(split(Computer, ''.'')[-2]), \nComputer\n)\n| extend Host_DnsDomain = case(\nComputer has ''\\'', tostring(split(Computer, ''\\'')[0]), \nComputer has ''.'', strcat_array(array_slice(split(Computer,''.''),-2,-1),''.''), \nComputer\n)\n| where (Host_HostName =~ v_Host_Name and Host_NTDomain =~ v_Host_NTDomain) \nor (Host_HostName =~ v_Host_Name and Host_DnsDomain =~ v_Host_DnsDomain) \nor v_Host_AzureID =~ _ResourceId \nor v_Host_OMSAgentID == SourceComputerId\n| project TimeGenerated, EventID, Activity, Computer, TargetAccount, TargetUserName, TargetDomainName, TargetSid, SubjectUserName, SubjectUserSid, _ResourceId, SourceComputerId\n| extend AddedBy = SubjectUserName\n// Future support for Activities\n| extend timestamp = TimeGenerated, HostCustomEntity = Computer, AccountCustomEntity = TargetAccount\n};\nGetAccountActions(''someHost'', ''SomeNTDomain'', ''SomeDNSDomain'', ''SomeID'', ''SomeOMSAgentID'')\n \n| where EventID == 4726' -RequiredInputFieldsSet @(@("Host_HostName","Host_NTDomain"),@("Host_HostName","Host_DnsDomain"),@("Host_AzureID"),@("Host_OMSAgentID")) -EntitiesFilter @{"Host_OsFamily" = @("Windows")}
 ```
 
 This command creates an Entity Query.
@@ -70,7 +70,6 @@ Accept wildcard characters: False
 ```
 
 ### -Content
-
 
 ```yaml
 Type: System.String
@@ -100,7 +99,6 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-
 
 ```yaml
 Type: System.String
@@ -146,7 +144,6 @@ Accept wildcard characters: False
 
 ### -InputEntityType
 
-
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityType
 Parameter Sets: (All)
@@ -189,8 +186,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -QueryDefinitionQuery
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -QueryDefinitionQuery
 
 ```yaml
 Type: System.String
@@ -205,7 +216,6 @@ Accept wildcard characters: False
 ```
 
 ### -RequiredInputFieldsSet
-
 
 ```yaml
 Type: System.String[]
@@ -252,7 +262,6 @@ Accept wildcard characters: False
 
 ### -TemplateName
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -266,7 +275,6 @@ Accept wildcard characters: False
 ```
 
 ### -Title
-
 
 ```yaml
 Type: System.String
@@ -338,15 +346,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ENTITIESFILTER <ActivityEntityQueriesPropertiesEntitiesFilter>`: 
-  - `[(Any) <String[]>]`: This indicates any property can be added to this object.
-
 ## RELATED LINKS
-

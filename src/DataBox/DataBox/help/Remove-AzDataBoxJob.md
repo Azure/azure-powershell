@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
 online version: https://learn.microsoft.com/powershell/module/az.databox/remove-azdataboxjob
 schema: 2.0.0
@@ -14,7 +14,8 @@ Deletes a job.
 
 ```
 Remove-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +23,7 @@ Deletes a job.
 
 ## EXAMPLES
 
-### Example 1: Deletes a job 
+### Example 1: Deletes a job
 ```powershell
 Remove-AzDataBoxJob -Name "Powershell10" -ResourceGroupName "resourceGroupName"
 ```
@@ -108,6 +109,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The Resource Group Name
 
@@ -180,7 +196,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

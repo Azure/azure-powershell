@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ServiceLinker-help.xml
 Module Name: Az.ServiceLinker
 online version: https://learn.microsoft.com/powershell/module/az.servicelinker/test-azservicelinkerforwebapp
 schema: 2.0.0
@@ -14,15 +14,16 @@ Validate a link in webapp.
 
 ### Validate (Default)
 ```
-Test-AzServiceLinkerForWebApp -Name <String> -ResourceGroupName <String> -WebApp <String>
- [-ResourceUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-SubscriptionId <String>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Test-AzServiceLinkerForWebApp -Name <String> [-ResourceUri <String>] [-DefaultProfile <PSObject>]
+ -WebApp <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentity
 ```
-Test-AzServiceLinkerForWebApp -InputObject <IServiceLinkerIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzServiceLinkerForWebApp -InputObject <IServiceLinkerIdentity> [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,6 +126,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -238,22 +254,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IServiceLinkerIdentity>`: Identity Parameter
-  - `[ConnectorName <String>]`: The name of resource.
-  - `[DryrunName <String>]`: The name of dryrun.
-  - `[Id <String>]`: Resource identity path
-  - `[LinkerName <String>]`: The name Linker resource.
-  - `[Location <String>]`: The name of Azure region.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceUri <String>]`: The fully qualified Azure Resource manager identifier of the resource to be connected.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-

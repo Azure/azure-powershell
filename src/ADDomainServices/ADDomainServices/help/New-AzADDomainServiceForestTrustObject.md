@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.ADDomainServices-help.xml
 Module Name: Az.ADDomainServices
-online version: https://learn.microsoft.com/powershell/module/az.addomainservices/new-azaddomainserviceforesttrustobject
+online version: https://learn.microsoft.com/powershell/module/Az.ADDomainServices/new-AzADDomainServiceForestTrustObject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Create an in-memory object for ForestTrust.
 
 ```
 New-AzADDomainServiceForestTrustObject [-FriendlyName <String>] [-RemoteDnsIP <String>]
- [-TrustDirection <String>] [-TrustedDomainFqdn <String>] [-TrustPassword <SecureString>] [<CommonParameters>]
+ [-TrustDirection <String>] [-TrustPassword <SecureString>] [-TrustedDomainFqdn <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +46,21 @@ Friendly Name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -124,7 +140,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkAnalytics-help.xml
 Module Name: Az.NetworkAnalytics
 online version: https://learn.microsoft.com/powershell/module/az.networkanalytics/get-aznetworkanalyticsdataproduct
 schema: 2.0.0
@@ -15,25 +15,25 @@ Retrieve data product resource.
 ### List (Default)
 ```
 Get-AzNetworkAnalyticsDataProduct [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzNetworkAnalyticsDataProduct -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzNetworkAnalyticsDataProduct -InputObject <INetworkAnalyticsIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzNetworkAnalyticsDataProduct -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzNetworkAnalyticsDataProduct -InputObject <INetworkAnalyticsIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,6 +139,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -160,7 +175,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -184,4 +199,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

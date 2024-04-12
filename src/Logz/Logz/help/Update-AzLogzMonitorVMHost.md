@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Logz-help.xml
 Module Name: Az.Logz
 online version: https://learn.microsoft.com/powershell/module/az.logz/update-azlogzmonitorvmhost
 schema: 2.0.0
@@ -14,8 +14,8 @@ Sending request to update the collection when Logz.io agent has been installed o
 
 ```
 Update-AzLogzMonitorVMHost -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-State <VMHostUpdateStates>] [-VMResource <IVMResources[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-State <VMHostUpdateStates>] [-VMResource <IVMResources[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,8 @@ This command sending request to update the collection when Logz.io agent has bee
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -63,6 +64,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -173,16 +189,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-VMRESOURCE <IVMResources[]>: Request of a list vm host update operation.
-  - `[AgentVersion <String>]`: Version of the Logz agent installed on the VM.
-  - `[Id <String>]`: Request of a list vm host update operation.
-
 ## RELATED LINKS
-

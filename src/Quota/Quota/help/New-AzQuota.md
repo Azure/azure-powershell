@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzQuota
 
 ## SYNOPSIS
-Create or update the quota limit for the specified resource with the requested value.
+Create the quota limit for the specified resource with the requested value.
 To update the quota, follow these steps:\n1.
 Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate the new quota limit.
 These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2.
@@ -20,30 +20,31 @@ Please check the URI in location header for the detailed status of the request.
 ### CreateExpanded (Default)
 ```
 New-AzQuota -ResourceName <String> -Scope <String> [-Limit <ILimitJsonObject>] [-Name <String>]
- [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ResourceType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzQuota -ResourceName <String> -Scope <String> -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzQuota -ResourceName <String> -Scope <String> -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzQuota -InputObject <IQuotaIdentity> [-Limit <ILimitJsonObject>] [-Name <String>] [-ResourceType <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update the quota limit for the specified resource with the requested value.
+Create the quota limit for the specified resource with the requested value.
 To update the quota, follow these steps:\n1.
 Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate the new quota limit.
 These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).\n2.
@@ -54,14 +55,15 @@ Please check the URI in location header for the detailed status of the request.
 
 ### Example 1: Create or update the quota limit for the specified resource with the requested value
 ```powershell
-$limit = New-AzQuotaLimitObject -Value 1003
-New-AzQuota -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses" -Name "PublicIPAddresses" -Limit $limit
+$quota = Get-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses"
+$limit = New-AzQuotaLimitObject -Value ($quota.Limit.Value + 1)
+New-AzQuota -Scope "subscriptions/{subId}/providers/Microsoft.Network/locations/eastus2" -ResourceName "PublicIPAddresses" -Name "PublicIPAddresses" -Limit $limit
 ```
 
 ```output
-Name              NameLocalizedValue          Unit  ETag
-----              ------------------          ----  ----
-PublicIPAddresses Public IP Addresses - Basic Count
+Name              NameLocalizedValue  Unit  ETag
+----              ------------------  ----  ----
+PublicIPAddresses Public IP Addresses Count
 ```
 
 This command create or update the quota limit for the specified resource with the requested value.
@@ -84,7 +86,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -100,7 +103,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
@@ -189,6 +191,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceName
 Resource name for a given resource provider.
 For example:
@@ -209,7 +226,8 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceType
-Resource type name.
+The name of the resource type.
+Optional field.
 
 ```yaml
 Type: System.String
@@ -277,12 +295,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.IQuotaIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentQuotaLimitBase
+### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

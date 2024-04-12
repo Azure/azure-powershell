@@ -996,7 +996,13 @@ begin {
             CollectionsViaJsonString = 'Az.Marketplace.private\Get-AzMarketplaceCollectionToSubscriptionMapping_CollectionsViaJsonString';
         }
         if (('CollectionsExpanded', 'CollectionsViaIdentityExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1340,7 +1346,13 @@ begin {
             ListExpanded = 'Az.Marketplace.private\Get-AzMarketplacePrivateStoreCollectionMapOffersToContext_ListExpanded';
         }
         if (('ListExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2438,7 +2450,13 @@ begin {
             QueryViaIdentityExpanded = 'Az.Marketplace.private\Get-AzMarketplacePrivateStoreUserOffer_QueryViaIdentityExpanded';
         }
         if (('QueryExpanded', 'QueryViaIdentityExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2620,7 +2638,13 @@ begin {
             QueryViaIdentityExpanded = 'Az.Marketplace.private\Get-AzMarketplacePrivateStoreUserRule_QueryViaIdentityExpanded';
         }
         if (('QueryExpanded', 'QueryViaIdentityExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

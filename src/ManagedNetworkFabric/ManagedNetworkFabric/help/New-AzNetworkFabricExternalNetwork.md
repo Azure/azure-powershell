@@ -23,21 +23,21 @@ New-AzNetworkFabricExternalNetwork -Name <String> -L3IsolationDomainName <String
  [-OptionAPropertyPrimaryIpv4Prefix <String>] [-OptionAPropertyPrimaryIpv6Prefix <String>]
  [-OptionAPropertySecondaryIpv4Prefix <String>] [-OptionAPropertySecondaryIpv6Prefix <String>]
  [-OptionAPropertyVlanId <Int32>] [-OptionBProperty <IL3OptionBProperties>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzNetworkFabricExternalNetwork -Name <String> -L3IsolationDomainName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzNetworkFabricExternalNetwork -Name <String> -L3IsolationDomainName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityL3IsolationDomainExpanded
@@ -50,13 +50,13 @@ New-AzNetworkFabricExternalNetwork -Name <String> -L3IsolationDomainInputObject 
  [-OptionAPropertyPrimaryIpv4Prefix <String>] [-OptionAPropertyPrimaryIpv6Prefix <String>]
  [-OptionAPropertySecondaryIpv4Prefix <String>] [-OptionAPropertySecondaryIpv6Prefix <String>]
  [-OptionAPropertyVlanId <Int32>] [-OptionBProperty <IL3OptionBProperties>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityL3IsolationDomain
 ```
 New-AzNetworkFabricExternalNetwork -Name <String> -L3IsolationDomainInputObject <IManagedNetworkFabricIdentity>
- -Body <IExternalNetwork> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -Body <IExternalNetwork> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -506,6 +506,21 @@ Parameter Sets: CreateExpanded, CreateViaIdentityL3IsolationDomainExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

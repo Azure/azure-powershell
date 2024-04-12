@@ -92,10 +92,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeResourceTagsTypeConverter.ConvertFrom);
             }
-            if (content.Contains("AzureAsyncOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeResourceInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeResourceInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
-            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api30.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api30.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -208,10 +204,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
             if (content.Contains("Tag"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ComputeResourceTagsTypeConverter.ConvertFrom);
-            }
-            if (content.Contains("AzureAsyncOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeResourceInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeResourceInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {

@@ -174,7 +174,13 @@ begin {
             DisableViaIdentity = 'Az.SpringCloud.private\Disable-AzSpringCloudTestEndpoint_DisableViaIdentity';
         }
         if (('Disable') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -380,7 +386,13 @@ begin {
             EnableViaIdentity = 'Az.SpringCloud.private\Enable-AzSpringCloudTestEndpoint_EnableViaIdentity';
         }
         if (('Enable') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -606,7 +618,13 @@ begin {
             List = 'Az.SpringCloud.private\Get-AzSpringCloudAppBinding_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -829,7 +847,13 @@ begin {
             List = 'Az.SpringCloud.private\Get-AzSpringCloudAppCustomDomain_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1053,7 +1077,13 @@ begin {
             GetViaIdentity = 'Az.SpringCloud.private\Get-AzSpringCloudAppDeploymentLogFileUrl_GetViaIdentity';
         }
         if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1291,7 +1321,13 @@ begin {
             List1 = 'Az.SpringCloud.private\Get-AzSpringCloudAppDeployment_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1517,7 +1553,13 @@ begin {
             List = 'Az.SpringCloud.private\Get-AzSpringCloudApp_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1746,7 +1788,13 @@ begin {
             $PSBoundParameters['BuildServiceName'] = 'default'
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1958,7 +2006,13 @@ begin {
             $PSBoundParameters['Name'] = 'default'
         }
         if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2179,7 +2233,13 @@ begin {
             $PSBoundParameters['BuildServiceName'] = 'default'
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2400,7 +2460,13 @@ begin {
             $PSBoundParameters['BuildServiceName'] = 'default'
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2621,7 +2687,13 @@ begin {
             $PSBoundParameters['BuildServiceName'] = 'default'
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2830,7 +2902,13 @@ begin {
             $PSBoundParameters['Name'] = 'default'
         }
         if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3047,7 +3125,13 @@ begin {
             List = 'Az.SpringCloud.private\Get-AzSpringCloudCertificate_List';
         }
         if (('Get', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3251,7 +3335,13 @@ begin {
             GetViaIdentity = 'Az.SpringCloud.private\Get-AzSpringCloudConfigServer_GetViaIdentity';
         }
         if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3460,7 +3550,13 @@ begin {
             $PSBoundParameters['Name'] = 'default'
         }
         if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3666,7 +3762,13 @@ begin {
             GetViaIdentity = 'Az.SpringCloud.private\Get-AzSpringCloudMonitoringSetting_GetViaIdentity';
         }
         if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3875,7 +3977,13 @@ begin {
             $PSBoundParameters['Name'] = 'default'
         }
         if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4174,7 +4282,13 @@ begin {
             List = 'Az.SpringCloud.private\Get-AzSpringCloudSku_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4342,7 +4456,13 @@ begin {
             List = 'Az.SpringCloud.private\Get-AzSpringCloudTestKey_List';
         }
         if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4558,7 +4678,13 @@ begin {
             List1 = 'Az.SpringCloud.private\Get-AzSpringCloud_List1';
         }
         if (('Get', 'List', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4770,7 +4896,13 @@ begin {
             CreateExpanded = 'Az.SpringCloud.private\New-AzSpringCloudAppBinding_CreateExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -4974,7 +5106,13 @@ begin {
             CreateExpanded = 'Az.SpringCloud.private\New-AzSpringCloudAppCustomDomain_CreateExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5236,7 +5374,13 @@ begin {
             CreateExpanded = 'Az.SpringCloud.private\New-AzSpringCloudAppDeployment_CreateExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5453,7 +5597,13 @@ begin {
             $PSBoundParameters['BuildServiceName'] = 'default'
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5681,7 +5831,13 @@ begin {
             $PSBoundParameters['Name'] = 'default'
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -5899,7 +6055,13 @@ begin {
             $PSBoundParameters['BuildServiceName'] = 'default'
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6101,7 +6263,13 @@ begin {
             CreateExpanded = 'Az.SpringCloud.private\New-AzSpringCloudCertificate_CreateExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6309,7 +6477,13 @@ begin {
             $PSBoundParameters['Name'] = 'default'
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6484,7 +6658,13 @@ begin {
             RegenerateExpanded = 'Az.SpringCloud.private\New-AzSpringCloudTestKey_RegenerateExpanded';
         }
         if (('RegenerateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6721,7 +6901,13 @@ begin {
             DeleteViaIdentity = 'Az.SpringCloud.private\Remove-AzSpringCloudAppBinding_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -6957,7 +7143,13 @@ begin {
             DeleteViaIdentity = 'Az.SpringCloud.private\Remove-AzSpringCloudAppCustomDomain_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -7194,7 +7386,13 @@ begin {
             DeleteViaIdentity = 'Az.SpringCloud.private\Remove-AzSpringCloudAppDeployment_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -7425,7 +7623,13 @@ begin {
             DeleteViaIdentity = 'Az.SpringCloud.private\Remove-AzSpringCloudApp_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -7665,7 +7869,13 @@ begin {
             $PSBoundParameters['BuildServiceName'] = 'default'
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -7898,7 +8108,13 @@ begin {
             $PSBoundParameters['BuildServiceName'] = 'default'
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -8129,7 +8345,13 @@ begin {
             DeleteViaIdentity = 'Az.SpringCloud.private\Remove-AzSpringCloudCertificate_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -8356,7 +8578,13 @@ begin {
             $PSBoundParameters['Name'] = 'default'
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -8581,7 +8809,13 @@ begin {
             DeleteViaIdentity = 'Az.SpringCloud.private\Remove-AzSpringCloud_DeleteViaIdentity';
         }
         if (('Delete') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -8818,7 +9052,13 @@ begin {
             RestartViaIdentity = 'Az.SpringCloud.private\Restart-AzSpringCloudAppDeployment_RestartViaIdentity';
         }
         if (('Restart') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -9073,7 +9313,13 @@ begin {
             StartViaIdentityExpanded = 'Az.SpringCloud.private\Start-AzSpringCloudAppDeploymentJfr_StartViaIdentityExpanded';
         }
         if (('StartExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -9310,7 +9556,13 @@ begin {
             StartViaIdentity = 'Az.SpringCloud.private\Start-AzSpringCloudAppDeployment_StartViaIdentity';
         }
         if (('Start') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -9547,7 +9799,13 @@ begin {
             StopViaIdentity = 'Az.SpringCloud.private\Stop-AzSpringCloudAppDeployment_StopViaIdentity';
         }
         if (('Stop') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -9765,7 +10023,13 @@ begin {
             ValidateViaIdentityExpanded = 'Az.SpringCloud.private\Test-AzSpringCloudAppCustomDomain_ValidateViaIdentityExpanded';
         }
         if (('ValidateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -10059,7 +10323,13 @@ begin {
             ValidateViaIdentityExpanded = 'Az.SpringCloud.private\Test-AzSpringCloudConfigServer_ValidateViaIdentityExpanded';
         }
         if (('ValidateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -10299,7 +10569,13 @@ begin {
             $PSBoundParameters['Name'] = 'default'
         }
         if (('ValidateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -10472,7 +10748,13 @@ begin {
             CheckExpanded = 'Az.SpringCloud.private\Test-AzSpringCloudNameAvailability_CheckExpanded';
         }
         if (('CheckExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -10703,7 +10985,13 @@ begin {
             SetViaIdentityExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudAppActiveDeployment_SetViaIdentityExpanded';
         }
         if (('SetExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -10953,7 +11241,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudAppBinding_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -11195,7 +11489,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudAppCustomDomain_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -11491,7 +11791,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudAppDeployment_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -11808,7 +12114,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudApp_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -12114,7 +12426,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudConfigServer_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -12363,7 +12681,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.SpringCloud.private\Update-AzSpringCloudMonitoringSetting_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -12649,7 +12973,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.SpringCloud.private\Update-AzSpringCloud_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -12865,7 +13195,13 @@ begin {
             DeployAppForEnterprise = 'Az.SpringCloud.custom\Deploy-AzSpringCloudApp';
         }
         if (('DeployAppForStandard', 'DeployAppForEnterprise') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -13114,7 +13450,13 @@ begin {
             CreateExpanded = 'Az.SpringCloud.custom\New-AzSpringCloud';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -13396,7 +13738,13 @@ begin {
             CreateExpanded = 'Az.SpringCloud.custom\New-AzSpringCloudApp';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

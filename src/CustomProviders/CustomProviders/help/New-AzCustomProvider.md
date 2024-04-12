@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.CustomProviders-help.xml
 Module Name: Az.CustomProviders
 online version: https://learn.microsoft.com/powershell/module/az.customproviders/new-azcustomprovider
 schema: 2.0.0
@@ -13,10 +13,10 @@ Creates or updates the custom resource provider.
 ## SYNTAX
 
 ```
-New-AzCustomProvider -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+New-AzCustomProvider -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-Action <ICustomRpActionRouteDefinition[]>] [-ResourceType <ICustomRpResourceTypeRouteDefinition[]>]
  [-Tag <Hashtable>] [-Validation <ICustomRpValidations[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +84,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -135,6 +136,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -264,26 +280,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-ACTION <ICustomRpActionRouteDefinition[]>: A list of actions that the custom resource provider implements.
-  - `Endpoint <String>`: The route definition endpoint URI that the custom resource provider will proxy requests to. This can be in the form of a flat URI (e.g. 'https://testendpoint/') or can specify to route via a path (e.g. 'https://testendpoint/{requestPath}')
-  - `Name <String>`: The name of the route definition. This becomes the name for the ARM extension (e.g. '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{name}')
-  - `[RoutingType <ActionRouting?>]`: The routing types that are supported for action requests.
-
-RESOURCETYPE <ICustomRpResourceTypeRouteDefinition[]>: A list of resource types that the custom resource provider implements.
-  - `Endpoint <String>`: The route definition endpoint URI that the custom resource provider will proxy requests to. This can be in the form of a flat URI (e.g. 'https://testendpoint/') or can specify to route via a path (e.g. 'https://testendpoint/{requestPath}')
-  - `Name <String>`: The name of the route definition. This becomes the name for the ARM extension (e.g. '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CustomProviders/resourceProviders/{resourceProviderName}/{name}')
-  - `[RoutingType <ResourceTypeRouting?>]`: The routing types that are supported for resource requests.
-
-VALIDATION <ICustomRpValidations[]>: A list of validations to run on the custom resource provider's requests.
-  - `Specification <String>`: A link to the validation specification. The specification must be hosted on raw.githubusercontent.com.
-  - `[ValidationType <ValidationType?>]`: The type of validation to run against a matching request.
-
 ## RELATED LINKS
-

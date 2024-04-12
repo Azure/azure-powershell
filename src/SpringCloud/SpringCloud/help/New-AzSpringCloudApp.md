@@ -18,8 +18,8 @@ New-AzSpringCloudApp -Name <String> -ResourceGroupName <String> -ServiceName <St
  [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <ManagedIdentityType>]
  [-LoadedCertificate <ILoadedCertificate[]>] [-Location <String>] [-PersistentDiskMountPath <String>]
  [-PersistentDiskSizeInGb <Int32>] [-Public] [-TemporaryDiskMountPath <String>]
- [-TemporaryDiskSizeInGb <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-TemporaryDiskSizeInGb <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -268,6 +268,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Public
 Indicates whether the App exposes public endpoint
 
@@ -401,16 +416,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`LOADEDCERTIFICATE <ILoadedCertificate[]>`: Collection of loaded certificates
-  - `ResourceId <String>`: Resource Id of loaded certificate
-  - `[LoadTrustStore <Boolean?>]`: Indicate whether the certificate will be loaded into default trust store, only work for Java runtime.
 
 ## RELATED LINKS

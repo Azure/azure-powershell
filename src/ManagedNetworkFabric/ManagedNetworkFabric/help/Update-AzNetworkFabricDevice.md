@@ -16,21 +16,21 @@ Update certain properties of the Network Device resource.
 ```
 Update-AzNetworkFabricDevice -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Annotation <String>] [-HostName <String>] [-SerialNumber <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzNetworkFabricDevice -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzNetworkFabricDevice -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ Update-AzNetworkFabricDevice -Name <String> -ResourceGroupName <String> [-Subscr
 ```
 Update-AzNetworkFabricDevice -InputObject <IManagedNetworkFabricIdentity> [-Annotation <String>]
  [-HostName <String>] [-SerialNumber <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -189,6 +189,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

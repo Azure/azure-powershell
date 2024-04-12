@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
 online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudBgpAdvertisementObject
 schema: 2.0.0
@@ -14,7 +14,7 @@ Create an in-memory object for BgpAdvertisement.
 
 ```
 New-AzNetworkCloudBgpAdvertisementObject -IPAddressPool <String[]> [-AdvertiseToFabric <AdvertiseToFabric>]
- [-Community <String[]>] [-Peer <String[]>] [<CommonParameters>]
+ [-Community <String[]>] [-Peer <String[]>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Create an in-memory object for BgpAdvertisement.
 
 ### Example 1: Create an in-memory object for BgpAdvertisement.
 ```powershell
-New-AzNetworkCloudBgpAdvertisementObject -IPAddressPool  @("pool1","pool2") -AdvertiseToFabric "True" -Community  @("communityString") -Peer @("peer1") 
+New-AzNetworkCloudBgpAdvertisementObject -IPAddressPool  @("pool1","pool2") -AdvertiseToFabric "True" -Community  @("communityString") -Peer @("peer1")
 ```
 
 ```output
@@ -99,6 +99,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -110,7 +125,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

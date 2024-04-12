@@ -15,14 +15,14 @@ Exports a Template Spec to the local filesystem
 ### ExportByNameParameterSet (Default)
 ```
 Export-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <String> -OutputFolder <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### ExportByIdParameterSet
 ```
 Export-AzTemplateSpec [-ResourceId] <String> -Version <String> -OutputFolder <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -89,6 +89,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

@@ -28,7 +28,7 @@ New-AzWvdHostPool -Name <String> -ResourceGroupName <String> -HostPoolType <Host
  [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-SsoClientId <String>]
  [-SsoClientSecretKeyVaultPath <String>] [-SsoSecretType <SsoSecretType>] [-SsoadfsAuthority <String>]
  [-StartVMOnConnect] [-Tag <Hashtable>] [-VMTemplate <String>] [-ValidationEnvironment]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FullSenerioCreate
@@ -36,7 +36,7 @@ New-AzWvdHostPool -Name <String> -ResourceGroupName <String> -HostPoolType <Host
 New-AzWvdHostPool -Name <String> -ResourceGroupName <String> -HostPoolType <HostPoolType>
  -LoadBalancerType <LoadBalancerType> -PreferredAppGroupType <PreferredAppGroupType> [-Location <String>]
  [-SubscriptionId <String>] [-DesktopAppGroupName <String>] [-WorkspaceName <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -AgentUpdateMaintenanceWindowTimeZone
-Time zone for maintenance as defined in https://learn.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid.
+Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyidview=net-5.0.
 Must be set if useLocalTime is true.
 
 ```yaml
@@ -494,6 +494,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
 
@@ -837,7 +852,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IHostPool
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IHostPool
 
 ## NOTES
 

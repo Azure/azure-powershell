@@ -22,7 +22,7 @@ Update-AzPaloAltoNetworksLocalRulestack -Name <String> -ResourceGroupName <Strin
  [-SecurityServiceFileBlockingProfile <String>] [-SecurityServiceOutboundTrustCertificate <String>]
  [-SecurityServiceOutboundUnTrustCertificate <String>] [-SecurityServiceUrlFilteringProfile <String>]
  [-SecurityServiceVulnerabilityProfile <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -35,7 +35,7 @@ Update-AzPaloAltoNetworksLocalRulestack -InputObject <IPaloAltoNetworksIdentity>
  [-SecurityServiceFileBlockingProfile <String>] [-SecurityServiceOutboundTrustCertificate <String>]
  [-SecurityServiceOutboundUnTrustCertificate <String>] [-SecurityServiceUrlFilteringProfile <String>]
  [-SecurityServiceVulnerabilityProfile <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -216,6 +216,21 @@ Rulestack Location, Required for GlobalRulestacks, Not for LocalRulestacks
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

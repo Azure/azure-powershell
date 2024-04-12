@@ -15,19 +15,21 @@ Gets an availability group listener.
 ### List (Default)
 ```
 Get-AzAvailabilityGroupListener -ResourceGroupName <String> -SqlVMGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzAvailabilityGroupListener -Name <String> -ResourceGroupName <String> -SqlVMGroupName <String>
- [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzAvailabilityGroupListener -InputObject <ISqlVirtualMachineIdentity> [-Expand <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,6 +124,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of the resource group that contains the resource.
 You can obtain this value from the Azure Resource Manager API or the portal.
@@ -180,20 +197,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISqlVirtualMachineIdentity>`: Identity Parameter
-  - `[AvailabilityGroupListenerName <String>]`: Name of the availability group listener.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[SqlVirtualMachineGroupName <String>]`: Name of the SQL virtual machine group.
-  - `[SqlVirtualMachineName <String>]`: Name of the SQL virtual machine.
-  - `[SubscriptionId <String>]`: Subscription ID that identifies an Azure subscription.
 
 ## RELATED LINKS

@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatastoresascredentialobject
+online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceDatastoreSasCredentialObject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Create an in-memory object for SasDatastoreCredentials.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceDatastoreSasCredentialObject -SasToken <String> [<CommonParameters>]
+New-AzMLWorkspaceDatastoreSasCredentialObject -SasToken <String> [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -29,6 +30,21 @@ New-AzMLWorkspaceDatastoreSasCredentialObject
 Create an in-memory object for SasDatastoreCredentials
 
 ## PARAMETERS
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -SasToken
 [Required] Storage container secrets.
@@ -56,7 +72,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

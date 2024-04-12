@@ -23,12 +23,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Inlined)]
         public bool? AppInsightsEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineDeploymentPropertiesInternal)Property).AppInsightsEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineDeploymentPropertiesInternal)Property).AppInsightsEnabled = value ?? default(bool); }
 
-        /// <summary>Backing field for <see cref="AzureAsyncOperation" /> property.</summary>
-        private string _azureAsyncOperation;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
-        public string AzureAsyncOperation { get => this._azureAsyncOperation; set => this._azureAsyncOperation = value; }
-
         /// <summary>ARM resource ID of the code asset.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Inlined)]
         public string CodeConfigurationCodeId { get => ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEndpointDeploymentPropertiesBaseInternal)Property).CodeConfigurationCodeId; set => ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEndpointDeploymentPropertiesBaseInternal)Property).CodeConfigurationCodeId = value ?? null; }
@@ -341,10 +335,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineDeploymentInternal)this).XmsAsyncOperationTimeout = System.Linq.Enumerable.FirstOrDefault(__xMSAsyncOperationTimeoutHeader0) is string __headerXMSAsyncOperationTimeoutHeader0 ? global::System.TimeSpan.TryParse( __headerXMSAsyncOperationTimeoutHeader0, out global::System.TimeSpan __headerXMSAsyncOperationTimeoutHeader0Value ) ? __headerXMSAsyncOperationTimeoutHeader0Value : default(global::System.TimeSpan?) : default(global::System.TimeSpan?);
             }
-            if (headers.TryGetValues("Azure-AsyncOperation", out var __azureAsyncOperationHeader1))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineDeploymentInternal)this).AzureAsyncOperation = System.Linq.Enumerable.FirstOrDefault(__azureAsyncOperationHeader1) is string __headerAzureAsyncOperationHeader1 ? __headerAzureAsyncOperationHeader1 : (string)null;
-            }
         }
 
         /// <summary>Creates an new <see cref="OnlineDeployment" /> instance.</summary>
@@ -377,14 +367,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         SerializedName = @"appInsightsEnabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? AppInsightsEnabled { get; set; }
-
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"",
-        SerializedName = @"Azure-AsyncOperation",
-        PossibleTypes = new [] { typeof(string) })]
-        string AzureAsyncOperation { get; set; }
         /// <summary>ARM resource ID of the code asset.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
@@ -714,8 +696,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
     {
         /// <summary>If true, enables Application Insights logging.</summary>
         bool? AppInsightsEnabled { get; set; }
-
-        string AzureAsyncOperation { get; set; }
         /// <summary>Code configuration for the endpoint deployment.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.ICodeConfiguration CodeConfiguration { get; set; }
         /// <summary>ARM resource ID of the code asset.</summary>

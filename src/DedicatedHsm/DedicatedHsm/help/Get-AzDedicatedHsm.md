@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DedicatedHsm-help.xml
 Module Name: Az.DedicatedHsm
 online version: https://learn.microsoft.com/powershell/module/az.dedicatedhsm/get-azdedicatedhsm
 schema: 2.0.0
@@ -15,24 +15,25 @@ Gets the specified Azure dedicated HSM.
 ### List1 (Default)
 ```
 Get-AzDedicatedHsm [-SubscriptionId <String[]>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDedicatedHsm -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzDedicatedHsm -InputObject <IDedicatedHsmIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzDedicatedHsm -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzDedicatedHsm -InputObject <IDedicatedHsmIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,7 +98,8 @@ This command gets a Dedicated HSM by object.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -142,6 +144,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the Resource Group to which the dedicated hsm belongs.
 
@@ -163,7 +180,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List1, Get, List
 Aliases:
 
 Required: False
@@ -178,7 +195,7 @@ Maximum number of results to return.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: List, List1
+Parameter Sets: List1, List
 Aliases:
 
 Required: False
@@ -201,18 +218,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IDedicatedHsmIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[Name <String>]`: Name of the dedicated Hsm
-  - `[ResourceGroupName <String>]`: The name of the Resource Group to which the resource belongs.
-  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
 ## RELATED LINKS
-

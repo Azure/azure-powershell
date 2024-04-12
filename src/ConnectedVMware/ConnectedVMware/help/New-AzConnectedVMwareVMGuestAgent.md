@@ -17,19 +17,19 @@ Create GuestAgent.
 New-AzConnectedVMwareVMGuestAgent -MachineId <String> [-CredentialsPassword <SecureString>]
  [-CredentialsUsername <String>] [-HttpProxyConfigHttpsProxy <String>] [-PrivateLinkScopeResourceId <String>]
  [-ProvisioningAction <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzConnectedVMwareVMGuestAgent -MachineId <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzConnectedVMwareVMGuestAgent -MachineId <String> -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -220,6 +220,21 @@ The resource id of the private link scope this machine is assigned to, if any.
 Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

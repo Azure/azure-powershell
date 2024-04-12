@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MySql-help.xml
 Module Name: Az.MySql
 online version: https://learn.microsoft.com/powershell/module/az.mysql/restart-azmysqlflexibleserver
 schema: 2.0.0
@@ -16,27 +16,28 @@ Restarts a server.
 ```
 Restart-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-MaxFailoverSecond <Int32>] [-RestartWithFailover <EnableStatusEnum>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Restart
 ```
-Restart-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String> -Parameter <IServerRestartParameter>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### RestartViaIdentity
-```
-Restart-AzMySqlFlexibleServer -InputObject <IMySqlIdentity> -Parameter <IServerRestartParameter>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restart-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Parameter <IServerRestartParameter> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RestartViaIdentityExpanded
 ```
 Restart-AzMySqlFlexibleServer -InputObject <IMySqlIdentity> [-MaxFailoverSecond <Int32>]
  [-RestartWithFailover <EnableStatusEnum>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### RestartViaIdentity
+```
+Restart-AzMySqlFlexibleServer -InputObject <IMySqlIdentity> -Parameter <IServerRestartParameter>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +106,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
-Parameter Sets: RestartViaIdentity, RestartViaIdentityExpanded
+Parameter Sets: RestartViaIdentityExpanded, RestartViaIdentity
 Aliases:
 
 Required: True
@@ -135,7 +136,7 @@ The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart, RestartExpanded
+Parameter Sets: RestartExpanded, Restart
 Aliases: ServerName
 
 Required: True
@@ -191,13 +192,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart, RestartExpanded
+Parameter Sets: RestartExpanded, Restart
 Aliases:
 
 Required: True
@@ -227,7 +243,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart, RestartExpanded
+Parameter Sets: RestartExpanded, Restart
 Aliases:
 
 Required: False
@@ -283,29 +299,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMySqlIdentity>`: Identity Parameter
-  - `[BackupName <String>]`: The name of the backup.
-  - `[ConfigurationName <String>]`: The name of the server configuration.
-  - `[DatabaseName <String>]`: The name of the database.
-  - `[FirewallRuleName <String>]`: The name of the server firewall rule.
-  - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: The name of the location.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
-  - `[ServerName <String>]`: The name of the server.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
-
-`PARAMETER <IServerRestartParameter>`: Server restart parameters.
-  - `[MaxFailoverSecond <Int32?>]`: The maximum allowed failover time in seconds.
-  - `[RestartWithFailover <EnableStatusEnum?>]`: Whether or not failover to standby server when restarting a server with high availability enabled.
-
 ## RELATED LINKS
-

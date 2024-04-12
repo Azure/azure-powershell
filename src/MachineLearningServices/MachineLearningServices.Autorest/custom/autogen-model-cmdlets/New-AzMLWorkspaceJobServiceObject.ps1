@@ -23,7 +23,7 @@ Create an in-memory object for JobService.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.JobService
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceJobServiceObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceJobServiceObject
 #>
 function New-AzMLWorkspaceJobServiceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.JobService')]

@@ -15,13 +15,15 @@ Creates or updates a spark configuration in a workspace.
 ### CreateByName (Default)
 ```
 New-AzSynapseSparkConfiguration -WorkspaceName <String> [-Name <String>] -DefinitionFile <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateByObject
 ```
 New-AzSynapseSparkConfiguration -WorkspaceObject <PSSynapseWorkspace> [-Name <String>] -DefinitionFile <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,6 +108,21 @@ The Spark Configuration name.
 Type: System.String
 Parameter Sets: (All)
 Aliases: SparkConfigurationName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

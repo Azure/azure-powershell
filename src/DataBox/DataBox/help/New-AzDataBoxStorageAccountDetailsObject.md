@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
 online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxStorageAccountDetailsObject
 schema: 2.0.0
@@ -13,8 +13,8 @@ Create an in-memory object for StorageAccountDetails.
 ## SYNTAX
 
 ```
-New-AzDataBoxStorageAccountDetailsObject -DataAccountType <DataAccountType> -StorageAccountId <String>
- [-SharePassword <String>] [<CommonParameters>]
+New-AzDataBoxStorageAccountDetailsObject -StorageAccountId <String> -DataAccountType <DataAccountType>
+ [-SharePassword <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +22,7 @@ Create an in-memory object for StorageAccountDetails.
 
 ## EXAMPLES
 
-### Example 1: Storage account in-memory object 
+### Example 1: Storage account in-memory object
 ```powershell
 New-AzDataBoxStorageAccountDetailsObject -DataAccountType "StorageAccount" -StorageAccountId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/storageAccountName"
 ```
@@ -46,6 +46,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -99,7 +114,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

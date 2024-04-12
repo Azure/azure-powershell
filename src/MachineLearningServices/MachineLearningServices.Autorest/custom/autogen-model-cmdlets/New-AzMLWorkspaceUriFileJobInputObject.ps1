@@ -23,7 +23,7 @@ Create an in-memory object for UriFileJobInput.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.UriFileJobInput
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceUriFileJobInputObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceUriFileJobInputObject
 #>
 function New-AzMLWorkspaceUriFileJobInputObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.UriFileJobInput')]

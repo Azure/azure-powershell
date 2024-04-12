@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
 
     /// <summary>
     /// Component container definition.
-    /// <see href="https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
+    /// <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(ComponentContainerPropertiesTypeConverter))]
     public partial class ComponentContainerProperties
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         }
     }
     /// Component container definition.
-    /// <see href="https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
+    /// <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
     [System.ComponentModel.TypeConverter(typeof(ComponentContainerPropertiesTypeConverter))]
     public partial interface IComponentContainerProperties
 

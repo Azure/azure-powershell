@@ -16,7 +16,7 @@ Create private store collection
 ```
 Update-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreId <String> [-AllSubscription]
  [-Claim <String>] [-CollectionName <String>] [-Enabled] [-SubscriptionsList <String[]>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPrivateStoreExpanded
@@ -24,21 +24,21 @@ Update-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreI
 Update-AzMarketplacePrivateStoreCollection -CollectionId <String>
  -PrivateStoreInputObject <IMarketplaceIdentity> [-AllSubscription] [-Claim <String>]
  [-CollectionName <String>] [-Enabled] [-SubscriptionsList <String[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPrivateStore
 ```
 Update-AzMarketplacePrivateStoreCollection -CollectionId <String>
  -PrivateStoreInputObject <IMarketplaceIdentity> -Payload <ICollection> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzMarketplacePrivateStoreCollection -InputObject <IMarketplaceIdentity> [-AllSubscription]
  [-Claim <String>] [-CollectionName <String>] [-Enabled] [-SubscriptionsList <String[]>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -203,6 +203,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

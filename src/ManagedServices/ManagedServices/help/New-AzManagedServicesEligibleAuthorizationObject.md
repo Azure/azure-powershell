@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedServices-help.xml
 Module Name: Az.ManagedServices
 online version: https://learn.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesEligibleAuthorizationObject
 schema: 2.0.0
@@ -17,7 +17,7 @@ New-AzManagedServicesEligibleAuthorizationObject -PrincipalId <String> -RoleDefi
  [-JustInTimeAccessPolicyManagedByTenantApprover <IEligibleApprover[]>]
  [-JustInTimeAccessPolicyMaximumActivationDuration <TimeSpan>]
  [-JustInTimeAccessPolicyMultiFactorAuthProvider <MultiFactorAuthProvider>] [-PrincipalIdDisplayName <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrincipalId
-The identifier of the Microsoft Entra principal.
+The identifier of the Azure Active Directory principal.
 
 ```yaml
 Type: System.String
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrincipalIdDisplayName
-The display name of the Microsoft Entra principal.
+The display name of the Azure Active Directory principal.
 
 ```yaml
 Type: System.String
@@ -136,8 +136,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RoleDefinitionId
-The identifier of the Azure built-in role that defines the permissions that the Microsoft Entra principal will have on the projected scope.
+The identifier of the Azure built-in role that defines the permissions that the Azure Active Directory principal will have on the projected scope.
 
 ```yaml
 Type: System.String
@@ -161,16 +176,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleAuthorization
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-JUSTINTIMEACCESSPOLICYMANAGEDBYTENANTAPPROVER <IEligibleApprover[]>: The list of managedByTenant approvers for the eligible authorization.
-  - `PrincipalId <String>`: The identifier of the Microsoft Entra principal.
-  - `[PrincipalIdDisplayName <String>]`: The display name of the Microsoft Entra principal.
 
 ## RELATED LINKS

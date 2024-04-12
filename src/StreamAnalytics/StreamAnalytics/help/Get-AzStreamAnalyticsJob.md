@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StreamAnalytics-help.xml
 Module Name: Az.StreamAnalytics
 online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/get-azstreamanalyticsjob
 schema: 2.0.0
@@ -15,25 +15,25 @@ Gets details about the specified streaming job.
 ### List1 (Default)
 ```
 Get-AzStreamAnalyticsJob [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzStreamAnalyticsJob -InputObject <IStreamAnalyticsIdentity> [-Expand <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Expand <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzStreamAnalyticsJob -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzStreamAnalyticsJob -InputObject <IStreamAnalyticsIdentity> [-Expand <String>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,6 +45,7 @@ Gets details about the specified streaming job.
 ```powershell
 Get-AzStreamAnalyticsJob
 ```
+
 ```output
 Location        Name          Type                                    ETag
 --------        ----          ----                                    ----
@@ -58,6 +59,7 @@ This command returns information about all the Stream Analytics jobs in the Azur
 ```powershell
 Get-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test
 ```
+
 ```output
 Location        Name          Type                                    ETag
 --------        ----          ----                                    ----
@@ -71,6 +73,7 @@ This command returns information about all the Stream Analytics jobs in the reso
 ```powershell
 Get-AzStreamAnalyticsJob -ResourceGroupName azure-rg-test -Name sajob-02-pwsh
 ```
+
 ```output
 Location        Name          Type                                    ETag
 --------        ----          ----                                    ----
@@ -81,8 +84,9 @@ This command returns information about the Stream Analytics job StreamingJob in 
 
 ### Example 4: Get information about a specific job in a resource group by pipeline
 ```powershell
-New-AzStreamAnalyticsJob -ResourceGroupName lucas-rg-test -Name sajob-02-pwsh -Location westcentralus -SkuName Standard | Get-AzStreamAnalyticsJob 
+New-AzStreamAnalyticsJob -ResourceGroupName lucas-rg-test -Name sajob-02-pwsh -Location westcentralus -SkuName Standard | Get-AzStreamAnalyticsJob
 ```
+
 ```output
 Location        Name          Type                                    ETag
 --------        ----          ----                                    ----
@@ -94,7 +98,8 @@ This command returns information about the Stream Analytics job StreamingJob in 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -156,6 +161,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -177,7 +197,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List1, Get, List
 Aliases:
 
 Required: False
@@ -200,24 +220,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IStreamAnalyticsIdentity>`: Identity Parameter
-  - `[ClusterName <String>]`: The name of the cluster.
-  - `[FunctionName <String>]`: The name of the function.
-  - `[Id <String>]`: Resource identity path
-  - `[InputName <String>]`: The name of the input.
-  - `[JobName <String>]`: The name of the streaming job.
-  - `[Location <String>]`: The region in which to retrieve the subscription's quota information. You can find out which regions Azure Stream Analytics is supported in here: https://azure.microsoft.com/en-us/regions/
-  - `[OutputName <String>]`: The name of the output.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[TransformationName <String>]`: The name of the transformation.
-
 ## RELATED LINKS
-

@@ -23,7 +23,7 @@ Create an in-memory object for SharedPrivateLinkResource.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SharedPrivateLinkResource
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceSharedPrivateLinkResourceObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceSharedPrivateLinkResourceObject
 #>
 function New-AzMLWorkspaceSharedPrivateLinkResourceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.SharedPrivateLinkResource')]

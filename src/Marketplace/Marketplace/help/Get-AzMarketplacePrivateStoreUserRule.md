@@ -15,13 +15,13 @@ All rules approved in the private store that are relevant for user subscriptions
 ### QueryExpanded (Default)
 ```
 Get-AzMarketplacePrivateStoreUserRule -PrivateStoreId <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### QueryViaIdentityExpanded
 ```
 Get-AzMarketplacePrivateStoreUserRule -InputObject <IMarketplaceIdentity> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,6 +78,21 @@ Parameter Sets: QueryExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

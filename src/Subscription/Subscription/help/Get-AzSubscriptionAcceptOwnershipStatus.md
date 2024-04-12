@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Subscription-help.xml
 Module Name: Az.Subscription
 online version: https://learn.microsoft.com/powershell/module/az.subscription/get-azsubscriptionacceptownershipstatus
 schema: 2.0.0
@@ -15,13 +15,13 @@ Accept subscription ownership status.
 ### AcceptExpanded (Default)
 ```
 Get-AzSubscriptionAcceptOwnershipStatus -SubscriptionId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### AcceptViaIdentityExpanded
 ```
 Get-AzSubscriptionAcceptOwnershipStatus -InputObject <ISubscriptionIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,6 +76,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Subscription Id.
 
@@ -105,4 +120,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

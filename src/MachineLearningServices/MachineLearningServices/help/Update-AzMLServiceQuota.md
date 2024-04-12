@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
 online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/update-azmlservicequota
 schema: 2.0.0
@@ -15,13 +15,15 @@ Update quota for each VM family in workspace.
 ### UpdateExpanded (Default)
 ```
 Update-AzMLServiceQuota -Location <String> [-SubscriptionId <String>] [-Location1 <String>]
- [-Value <IQuotaBaseProperties[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Value <IQuotaBaseProperties[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMLServiceQuota -InputObject <IMachineLearningServicesIdentity> [-Location <String>]
- [-Value <IQuotaBaseProperties[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMLServiceQuota -Location <String> -InputObject <IMachineLearningServicesIdentity>
+ [-Value <IQuotaBaseProperties[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +48,8 @@ Update quota for each VM family in workspace by pipeline
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -98,6 +101,21 @@ Region of workspace quota to be updated.
 Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -181,33 +199,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IMachineLearningServicesIdentity>`: Identity Parameter
-  - `[ComputeName <String>]`: Name of the Azure Machine Learning compute.
-  - `[ConnectionName <String>]`: Friendly name of the workspace connection
-  - `[DeploymentName <String>]`: Inference deployment identifier.
-  - `[EndpointName <String>]`: Inference Endpoint name.
-  - `[Id <String>]`: The name and identifier for the Job. This is case-sensitive.
-  - `[Id1 <String>]`: Resource identity path
-  - `[Location <String>]`: The location for which resource usage is queried.
-  - `[Name <String>]`: Container name. This is case-sensitive.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the workspace
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[Version <String>]`: Version identifier. This is case-sensitive.
-  - `[WorkspaceName <String>]`: Name of Azure Machine Learning workspace.
-
-VALUE <IQuotaBaseProperties[]>: The list for update quota.
-  - `[Id <String>]`: Specifies the resource ID.
-  - `[Limit <Int64?>]`: The maximum permitted quota of the resource.
-  - `[Type <String>]`: Specifies the resource type.
-  - `[Unit <QuotaUnit?>]`: An enum describing the unit of quota measurement.
-
 ## RELATED LINKS
-

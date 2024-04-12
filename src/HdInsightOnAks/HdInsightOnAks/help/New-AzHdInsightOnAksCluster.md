@@ -50,21 +50,21 @@ New-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName
  [-Tag <Hashtable>] [-TaskManagerCpu <Single>] [-TaskManagerMemory <Int64>]
  [-TrinoHiveCatalog <IHiveCatalogOption[]>] [-TrinoProfileUserPluginsSpecPlugin <ITrinoUserPlugin[]>]
  [-WorkerDebugEnable] [-WorkerDebugPort <Int32>] [-WorkerDebugSuspend] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityClusterpoolExpanded
@@ -104,21 +104,21 @@ New-AzHdInsightOnAksCluster -Name <String> -ClusterpoolInputObject <IHdInsightOn
  [-Tag <Hashtable>] [-TaskManagerCpu <Single>] [-TaskManagerMemory <Int64>]
  [-TrinoHiveCatalog <IHiveCatalogOption[]>] [-TrinoProfileUserPluginsSpecPlugin <ITrinoUserPlugin[]>]
  [-WorkerDebugEnable] [-WorkerDebugPort <Int32>] [-WorkerDebugSuspend] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityClusterpool
 ```
 New-AzHdInsightOnAksCluster -Name <String> -ClusterpoolInputObject <IHdInsightOnAksIdentity>
  -HdInsightOnAksCluster <ICluster> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -HdInsightOnAksCluster <ICluster> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -158,13 +158,13 @@ New-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> -Location <St
  [-Tag <Hashtable>] [-TaskManagerCpu <Single>] [-TaskManagerMemory <Int64>]
  [-TrinoHiveCatalog <IHiveCatalogOption[]>] [-TrinoProfileUserPluginsSpecPlugin <ITrinoUserPlugin[]>]
  [-WorkerDebugEnable] [-WorkerDebugPort <Int32>] [-WorkerDebugSuspend] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentity
 ```
 New-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> -HdInsightOnAksCluster <ICluster>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -1178,7 +1178,7 @@ Accept wildcard characters: False
 
 ### -HiveMetastoreDbConnectionAuthenticationMode
 The authentication mode to connect to your Hive metastore database.
-More details: https://learn.microsoft.com/azure/azure-sql/database/logins-create-manage#authentication-and-authorization
+More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization
 
 ```yaml
 Type: System.String
@@ -1543,7 +1543,7 @@ Accept wildcard characters: False
 
 ### -MetastoreSpecDbConnectionAuthenticationMode
 The authentication mode to connect to your Hive metastore database.
-More details: https://learn.microsoft.com/azure/azure-sql/database/logins-create-manage#authentication-and-authorization
+More details: https://learn.microsoft.com/en-us/azure/azure-sql/database/logins-create-manageview=azuresql#authentication-and-authorization
 
 ```yaml
 Type: System.String
@@ -1611,6 +1611,21 @@ Parameter Sets: CreateExpanded, CreateViaJsonString, CreateViaJsonFilePath, Crea
 Aliases: ClusterPoolName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

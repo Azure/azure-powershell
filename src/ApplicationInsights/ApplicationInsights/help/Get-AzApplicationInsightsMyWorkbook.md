@@ -15,20 +15,20 @@ Get a single private workbook by its resourceName.
 ### List1 (Default)
 ```
 Get-AzApplicationInsightsMyWorkbook [-SubscriptionId <String[]>] -Category <CategoryType> [-CanFetchContent]
- [-Tag <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Tag <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzApplicationInsightsMyWorkbook -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzApplicationInsightsMyWorkbook -ResourceGroupName <String> [-SubscriptionId <String[]>]
  -Category <CategoryType> [-CanFetchContent] [-LinkedSourceId <String>] [-Tag <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -160,6 +160,21 @@ Parameter Sets: Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

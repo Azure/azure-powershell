@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Functions-help.xml
 Module Name: Az.Functions
 online version: https://learn.microsoft.com/powershell/module/az.functions/start-azfunctionapp
 schema: 2.0.0
@@ -15,13 +15,14 @@ Starts a function app.
 ### StartByName (Default)
 ```
 Start-AzFunctionApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
-Start-AzFunctionApp -InputObject <ISite> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Start-AzFunctionApp -InputObject <ISite> [-DefaultProfile <PSObject>] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,8 +106,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
 
 ```yaml
 Type: System.String
@@ -180,4 +195,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

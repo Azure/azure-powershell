@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SelfHelp-help.xml
 Module Name: Az.SelfHelp
 online version: https://learn.microsoft.com/powershell/module/az.selfhelp/invoke-azselfhelpcontinuetroubleshooter
 schema: 2.0.0
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzSelfHelpContinueTroubleshooter
 
 ## SYNOPSIS
-Uses ‘stepId’ and ‘responses’ as the trigger to continue the troubleshooting steps for the respective troubleshooter resource name.
+Uses 'stepId' and 'responses' as the trigger to continue the troubleshooting steps for the respective troubleshooter resource name.
 \<br/\>Continue API is used to provide inputs that are required for the specific troubleshooter to progress into the next step in the process.
 This API is used after the Troubleshooter has been created using the Create API.
 
@@ -18,32 +18,32 @@ This API is used after the Troubleshooter has been created using the Create API.
 ```
 Invoke-AzSelfHelpContinueTroubleshooter -Scope <String> -TroubleshooterName <String>
  [-Response <ITroubleshooterResponse[]>] [-StepId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Continue
 ```
 Invoke-AzSelfHelpContinueTroubleshooter -Scope <String> -TroubleshooterName <String>
- -ContinueRequestBody <IContinueRequestBody> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ContinueViaIdentity
-```
-Invoke-AzSelfHelpContinueTroubleshooter -InputObject <ISelfHelpIdentity>
- -ContinueRequestBody <IContinueRequestBody> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ContinueRequestBody <IContinueRequestBody> [-DefaultProfile <PSObject>] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContinueViaIdentityExpanded
 ```
 Invoke-AzSelfHelpContinueTroubleshooter -InputObject <ISelfHelpIdentity>
  [-Response <ITroubleshooterResponse[]>] [-StepId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ContinueViaIdentity
+```
+Invoke-AzSelfHelpContinueTroubleshooter -InputObject <ISelfHelpIdentity>
+ -ContinueRequestBody <IContinueRequestBody> [-DefaultProfile <PSObject>] [-PassThru]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Uses ‘stepId’ and ‘responses’ as the trigger to continue the troubleshooting steps for the respective troubleshooter resource name.
+Uses 'stepId' and 'responses' as the trigger to continue the troubleshooting steps for the respective troubleshooter resource name.
 \<br/\>Continue API is used to provide inputs that are required for the specific troubleshooter to progress into the next step in the process.
 This API is used after the Troubleshooter has been created using the Create API.
 
@@ -55,7 +55,7 @@ $continueRequest = [ordered]@{
     "StepId" ="15ebac6c-96a1-4a67-ae9d-b06011d232ff" 
 } 
 
-Invoke-AzSelfHelpContinueTroubleshooter  -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba"  -TroubleshooterName  "02d59989-f8a9-4b69-9919-1ef51df4eff6" -ContinueRequestBody $continueRequest 
+Invoke-AzSelfHelpContinueTroubleshooter  -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba"  -TroubleshooterName  "02d59989-f8a9-4b69-9919-1ef51df4eff6" -ContinueRequestBody $continueRequest
 ```
 
 ```output
@@ -106,7 +106,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
-Parameter Sets: ContinueViaIdentity, ContinueViaIdentityExpanded
+Parameter Sets: ContinueViaIdentityExpanded, ContinueViaIdentity
 Aliases:
 
 Required: True
@@ -123,6 +123,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -152,7 +167,7 @@ This is an extension resource provider and only resource level extension is supp
 
 ```yaml
 Type: System.String
-Parameter Sets: Continue, ContinueExpanded
+Parameter Sets: ContinueExpanded, Continue
 Aliases:
 
 Required: True
@@ -182,7 +197,7 @@ Troubleshooter resource Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Continue, ContinueExpanded
+Parameter Sets: ContinueExpanded, Continue
 Aliases:
 
 Required: True
@@ -239,4 +254,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

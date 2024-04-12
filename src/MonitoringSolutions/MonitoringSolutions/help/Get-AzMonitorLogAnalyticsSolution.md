@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MonitoringSolutions-help.xml
 Module Name: Az.MonitoringSolutions
 online version: https://learn.microsoft.com/powershell/module/az.monitoringsolutions/get-azmonitorloganalyticssolution
 schema: 2.0.0
@@ -15,25 +15,25 @@ Retrieves the user solution.
 ### List1 (Default)
 ```
 Get-AzMonitorLogAnalyticsSolution [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMonitorLogAnalyticsSolution -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzMonitorLogAnalyticsSolution -InputObject <IMonitoringSolutionsIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzMonitorLogAnalyticsSolution -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzMonitorLogAnalyticsSolution -InputObject <IMonitoringSolutionsIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +43,7 @@ Retrieves the user solution.
 
 ### Example 1: Get a monitor log analytics solution by name
 ```powershell
-Get-AzMonitorLogAnalyticsSolution -ResourceGroupName azureps-monitor -Name 'Containers(azureps-monitor)'
+Get-AzMonitorLogAnalyticsSolution -ResourceGroupName azureps-monitor -Type "Microsoft.OperationsManagement/solutions" -Location "West US 2" -WorkspaceResourceId workspaceResourceId
 ```
 
 ```output
@@ -69,7 +69,7 @@ This command gets a monitor log analytics solution by resource id.
 
 ### Example 3: Get a monitor log analytics solution by object
 ```powershell
-$monitor = New-AzMonitorLogAnalyticsSolution -ResourceGroupName azureps-monitor -Type "Microsoft.OperationsManagement/solutions" -Location "West US 2" -WorkspaceResourceId workspaceResourceId
+$monitor = New-AzMonitorLogAnalyticsSolution -ResourceGroupName azureps-monitor -Name 'Containers(azureps-monitor)'
 Get-AzMonitorLogAnalyticsSolution -InputObject $monitor
 ```
 
@@ -96,7 +96,7 @@ This command gets all monitor log analytics solutions under a resource group.
 
 ### Example 5: Get all monitor log analytics solutions under a subscription
 ```powershell
-Get-AzMonitorLogAnalyticsSolution 
+Get-AzMonitorLogAnalyticsSolution
 ```
 
 ```output
@@ -111,7 +111,8 @@ This command gets all monitor log analytics solutions under a subscription.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -156,6 +157,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group to get.
 The name is case insensitive.
@@ -178,7 +194,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List1, Get, List
 Aliases:
 
 Required: False
@@ -201,23 +217,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IMonitoringSolutionsIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ManagementAssociationName <String>]`: User ManagementAssociation Name.
-  - `[ManagementConfigurationName <String>]`: User Management Configuration Name.
-  - `[ProviderName <String>]`: Provider name for the parent resource.
-  - `[ResourceGroupName <String>]`: The name of the resource group to get. The name is case insensitive.
-  - `[ResourceName <String>]`: Parent resource name.
-  - `[ResourceType <String>]`: Resource type for the parent resource
-  - `[SolutionName <String>]`: User Solution Name.
-  - `[SubscriptionId <String>]`: Gets subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-
 ## RELATED LINKS
-

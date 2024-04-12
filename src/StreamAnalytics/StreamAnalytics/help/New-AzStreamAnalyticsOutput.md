@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StreamAnalytics-help.xml
 Module Name: Az.StreamAnalytics
 online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput
 schema: 2.0.0
@@ -13,9 +13,9 @@ Creates an output or replaces an already existing output under an existing strea
 ## SYNTAX
 
 ```
-New-AzStreamAnalyticsOutput -File <String> -JobName <String> -Name <String> -ResourceGroupName <String>
+New-AzStreamAnalyticsOutput -JobName <String> -Name <String> -ResourceGroupName <String> -File <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,6 +27,7 @@ Creates an output or replaces an already existing output under an existing strea
 ```powershell
 New-AzStreamAnalyticsOutput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name output-01 -File .\test\template-json\StroageAccount.json
 ```
+
 ```output
 Name      Type                                            ETag
 ----      ----                                            ----
@@ -159,6 +160,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -236,7 +252,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

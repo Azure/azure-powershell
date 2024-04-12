@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ContainerInstance-help.xml
 Module Name: Az.ContainerInstance
 online version: https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancelog
 schema: 2.0.0
@@ -14,7 +14,8 @@ Get the logs for a specified container instance in a specified resource group an
 
 ```
 Get-AzContainerInstanceLog -ContainerGroupName <String> -ContainerName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-Tail <Int32>] [-Timestamp] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-Tail <Int32>] [-Timestamp] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,6 +102,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -175,7 +191,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

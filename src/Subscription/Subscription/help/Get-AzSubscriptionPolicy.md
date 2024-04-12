@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Subscription-help.xml
 Module Name: Az.Subscription
 online version: https://learn.microsoft.com/powershell/module/az.subscription/get-azsubscriptionpolicy
 schema: 2.0.0
@@ -13,7 +13,7 @@ Get the subscription tenant policy for the user's tenant.
 ## SYNTAX
 
 ```
-Get-AzSubscriptionPolicy [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSubscriptionPolicy [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,9 +27,9 @@ Get-AzSubscriptionPolicy
 ```
 
 ```output
-Name    PolicyId                             BlockSubscriptionsIntoTenant BlockSubscriptionsLeavingTenant
-----    --------                             ---------------------------- -------------------------------
-default XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX False                        True
+Name    PolicyId                             BlockSubscriptionsIntoTenant BlockSubscriptionsLeavingTenant
+----    --------                             ---------------------------- -------------------------------
+default XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX False                        True
 ```
 
 Get the subscription tenant policy for the user's tenant.
@@ -52,6 +52,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -64,4 +79,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

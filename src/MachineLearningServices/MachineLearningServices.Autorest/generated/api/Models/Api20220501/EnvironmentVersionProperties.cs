@@ -61,7 +61,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
 
         /// <summary>
         /// Environment type is either user managed or curated by the Azure ML service
-        /// <see href="https://learn.microsoft.com/en-us/azure/machine-learning/resource-curated-environments" />
+        /// <see href="https://docs.microsoft.com/en-us/azure/machine-learning/resource-curated-environments" />
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
         public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EnvironmentType? EnvironmentType { get => this._environmentType; }
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
 
         /// <summary>
         /// Name of the image that will be used for the environment.
-        /// <seealso href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image"
+        /// <seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image"
         /// />
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
@@ -212,26 +212,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         string CondaFile { get; set; }
         /// <summary>
         /// Environment type is either user managed or curated by the Azure ML service
-        /// <see href="https://learn.microsoft.com/en-us/azure/machine-learning/resource-curated-environments" />
+        /// <see href="https://docs.microsoft.com/en-us/azure/machine-learning/resource-curated-environments" />
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = true,
         Description = @"Environment type is either user managed or curated by the Azure ML service
-        <see href=""https://learn.microsoft.com/en-us/azure/machine-learning/resource-curated-environments"" />",
+        <see href=""https://docs.microsoft.com/en-us/azure/machine-learning/resource-curated-environments"" />",
         SerializedName = @"environmentType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EnvironmentType) })]
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EnvironmentType? EnvironmentType { get;  }
         /// <summary>
         /// Name of the image that will be used for the environment.
-        /// <seealso href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image"
+        /// <seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image"
         /// />
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
         ReadOnly = false,
         Description = @"Name of the image that will be used for the environment.
-        <seealso href=""https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image"" />",
+        <seealso href=""https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image"" />",
         SerializedName = @"image",
         PossibleTypes = new [] { typeof(string) })]
         string Image { get; set; }
@@ -318,12 +318,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         string CondaFile { get; set; }
         /// <summary>
         /// Environment type is either user managed or curated by the Azure ML service
-        /// <see href="https://learn.microsoft.com/en-us/azure/machine-learning/resource-curated-environments" />
+        /// <see href="https://docs.microsoft.com/en-us/azure/machine-learning/resource-curated-environments" />
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EnvironmentType? EnvironmentType { get; set; }
         /// <summary>
         /// Name of the image that will be used for the environment.
-        /// <seealso href="https://learn.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image"
+        /// <seealso href="https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-custom-docker-image#use-a-custom-base-image"
         /// />
         /// </summary>
         string Image { get; set; }

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MixedReality-help.xml
 Module Name: Az.MixedReality
 online version: https://learn.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityspatialanchorsaccountkey
 schema: 2.0.0
@@ -15,14 +15,14 @@ Regenerate specified Key of a Spatial Anchors Account
 ### RegenerateExpanded (Default)
 ```
 New-AzMixedRealitySpatialAnchorsAccountKey -AccountName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Serial <Int32>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-Serial <Int32>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RegenerateViaIdentityExpanded
 ```
 New-AzMixedRealitySpatialAnchorsAccountKey -InputObject <IMixedRealityIdentity> [-Serial <Int32>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,7 +61,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -88,6 +89,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -182,19 +198,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMixedRealityIdentity>`: Identity Parameter
-  - `[AccountName <String>]`: Name of an Mixed Reality Account.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The location in which uniqueness will be verified.
-  - `[ResourceGroupName <String>]`: Name of an Azure resource group.
-  - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
-
 ## RELATED LINKS
-

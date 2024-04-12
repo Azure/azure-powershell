@@ -17,7 +17,7 @@ Update or add an offer to a specific collection of the private store.
 Update-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String>
  -PrivateStoreId <String> [-ETag <String>] [-IconFileUri <Hashtable>] [-Plan <IPlan[]>]
  [-SpecificPlanIdLimitation <String[]>] [-UpdateSuppressedDueIdempotence] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPrivateStoreExpanded
@@ -25,28 +25,28 @@ Update-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId 
 Update-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String>
  -PrivateStoreInputObject <IMarketplaceIdentity> [-ETag <String>] [-IconFileUri <Hashtable>] [-Plan <IPlan[]>]
  [-SpecificPlanIdLimitation <String[]>] [-UpdateSuppressedDueIdempotence] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPrivateStore
 ```
 Update-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String>
  -PrivateStoreInputObject <IMarketplaceIdentity> -Payload <IOffer> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityCollectionExpanded
 ```
 Update-AzMarketplacePrivateStoreCollectionOffer -OfferId <String> -CollectionInputObject <IMarketplaceIdentity>
  [-ETag <String>] [-IconFileUri <Hashtable>] [-Plan <IPlan[]>] [-SpecificPlanIdLimitation <String[]>]
- [-UpdateSuppressedDueIdempotence] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-UpdateSuppressedDueIdempotence] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityCollection
 ```
 Update-AzMarketplacePrivateStoreCollectionOffer -OfferId <String> -CollectionInputObject <IMarketplaceIdentity>
- -Payload <IOffer> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -Payload <IOffer> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ Update-AzMarketplacePrivateStoreCollectionOffer -OfferId <String> -CollectionInp
 ```
 Update-AzMarketplacePrivateStoreCollectionOffer -InputObject <IMarketplaceIdentity> [-ETag <String>]
  [-IconFileUri <Hashtable>] [-Plan <IPlan[]>] [-SpecificPlanIdLimitation <String[]>]
- [-UpdateSuppressedDueIdempotence] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-UpdateSuppressedDueIdempotence] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -235,6 +235,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

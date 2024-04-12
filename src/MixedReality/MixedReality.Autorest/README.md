@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the MixedReality service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -28,9 +27,9 @@ For information on how to develop for `Az.MixedReality`, see [how-to.md](how-to.
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: a0c83df51e02f4e0b21ff3ae72c5a1ac52f72586
+commit: a0c83df51e02f4e0b21ff3ae72c5a1ac52f72586
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/mixedreality/resource-manager/Microsoft.MixedReality/preview/2021-03-01-preview/common.json
   - $(repo)/specification/mixedreality/resource-manager/Microsoft.MixedReality/preview/2021-03-01-preview/proxy.json
@@ -45,6 +44,10 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document 

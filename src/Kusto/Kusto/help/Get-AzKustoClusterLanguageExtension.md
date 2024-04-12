@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Kusto-help.xml
 Module Name: Az.Kusto
 online version: https://learn.microsoft.com/powershell/module/az.kusto/get-azkustoclusterlanguageextension
 schema: 2.0.0
@@ -14,7 +14,8 @@ Returns a list of language extensions that can run within KQL queries.
 
 ```
 Get-AzKustoClusterLanguageExtension -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,6 +62,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -143,4 +159,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

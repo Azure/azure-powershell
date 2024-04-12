@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SelfHelp-help.xml
 Module Name: Az.SelfHelp
 online version: https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelptroubleshooter
 schema: 2.0.0
@@ -15,13 +15,14 @@ This API requires the Troubleshooter resource name that was created using the Cr
 
 ### Get (Default)
 ```
-Get-AzSelfHelpTroubleshooter -Name <String> -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSelfHelpTroubleshooter -Name <String> -Scope <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzSelfHelpTroubleshooter -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,7 +40,6 @@ Get-AzSelfHelpTroubleshooter -Scope "/subscriptions/<subid>" -Name "02d59989-f8a
 Name                                 SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 ----                                 ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
 02d59989-f8a9-4b69-9919-1ef51df4eff6
-
 ```
 
 Get Azure SelfHelp Troubleshooter by name.
@@ -94,6 +94,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Scope
 This is an extension resource provider and only resource level extension is supported at the moment.
 
@@ -123,4 +138,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

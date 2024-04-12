@@ -15,13 +15,13 @@ Suspends the ongoing replication.
 ### ByIDVMwareCbt (Default)
 ```
 Suspend-AzMigrateServerReplication -TargetObjectID <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
 Suspend-AzMigrateServerReplication [-SubscriptionId <String>] -InputObject <IMigrationItem>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,6 +118,21 @@ Parameter Sets: ByInputObjectVMwareCbt
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

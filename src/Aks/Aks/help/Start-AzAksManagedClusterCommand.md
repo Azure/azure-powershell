@@ -18,13 +18,14 @@ For more information see [AKS Run Command](https://docs.microsoft.com/azure/aks/
 ```
 Start-AzAksManagedClusterCommand -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
  -Command <String> [-ClusterToken <String>] [-Context <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RunViaIdentityExpanded
 ```
 Start-AzAksManagedClusterCommand -InputObject <IAksIdentity> -Command <String> [-ClusterToken <String>]
- [-Context <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Context <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -183,6 +184,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -272,24 +288,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IRunCommandResult
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAksIdentity>`: Identity Parameter
-  - `[AgentPoolName <String>]`: The name of the agent pool.
-  - `[CommandId <String>]`: Id of the command.
-  - `[ConfigName <String>]`: The name of the maintenance configuration.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceName <String>]`: The name of the managed cluster resource.
-  - `[RoleName <String>]`: The name of the role for managed cluster accessProfile resource.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.BotService-help.xml
 Module Name: Az.BotService
 online version: https://learn.microsoft.com/powershell/module/az.botservice/update-azbotservice
 schema: 2.0.0
@@ -17,14 +17,14 @@ Updates a Bot Service
 Update-AzBotService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AllSetting <Hashtable>] [-AppPasswordHint <String>] [-CmekKeyVaultUrl <String>] [-Description <String>]
  [-DeveloperAppInsightKey <String>] [-DeveloperAppInsightsApiKey <String>]
- [-DeveloperAppInsightsApplicationId <String>] [-DisableLocalAuth] [-DisplayName <String>]
- [-Endpoint <String>] [-Etag <String>] [-IconUrl <String>] [-IsCmekEnabled] [-IsStreamingSupported]
- [-Kind <Kind>] [-Location <String>] [-LuisAppId <String[]>] [-LuisKey <String>] [-ManifestUrl <String>]
- [-MsaAppId <String>] [-MsaAppMsiResourceId <String>] [-MsaAppTenantId <String>] [-MsaAppType <MsaAppType>]
- [-OpenWithHint <String>] [-Parameter <Hashtable>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-PublishingCredentials <String>] [-SchemaTransformationVersion <String>] [-SkuName <SkuName>]
- [-StorageResourceId <String>] [-Tag <Hashtable>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-DeveloperAppInsightsApplicationId <String>] [-DisableLocalAuth] [-DisplayName <String>] [-Endpoint <String>]
+ [-Etag <String>] [-IconUrl <String>] [-IsCmekEnabled] [-IsStreamingSupported] [-Kind <Kind>]
+ [-Location <String>] [-LuisAppId <String[]>] [-LuisKey <String>] [-ManifestUrl <String>] [-MsaAppId <String>]
+ [-MsaAppMsiResourceId <String>] [-MsaAppTenantId <String>] [-MsaAppType <MsaAppType>] [-OpenWithHint <String>]
+ [-Parameter <Hashtable>] [-PublicNetworkAccess <PublicNetworkAccess>] [-PublishingCredentials <String>]
+ [-SchemaTransformationVersion <String>] [-SkuName <SkuName>] [-StorageResourceId <String>] [-Tag <Hashtable>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -38,7 +38,8 @@ Update-AzBotService -InputObject <IBotServiceIdentity> [-AllSetting <Hashtable>]
  [-MsaAppType <MsaAppType>] [-OpenWithHint <String>] [-Parameter <Hashtable>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-PublishingCredentials <String>]
  [-SchemaTransformationVersion <String>] [-SkuName <SkuName>] [-StorageResourceId <String>] [-Tag <Hashtable>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,7 +123,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -499,6 +501,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 Whether the bot is in an isolated network
 
@@ -678,21 +695,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IBotServiceIdentity>`: Identity Parameter
-  - `[ChannelName <ChannelName?>]`: The name of the Channel resource.
-  - `[ConnectionName <String>]`: The name of the Bot Service Connection Setting resource.
-  - `[Id <String>]`: Resource identity path
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
-  - `[ResourceGroupName <String>]`: The name of the Bot resource group in the user subscription.
-  - `[ResourceName <String>]`: The name of the Bot resource.
-  - `[SubscriptionId <String>]`: Azure Subscription ID.
-
 ## RELATED LINKS
-

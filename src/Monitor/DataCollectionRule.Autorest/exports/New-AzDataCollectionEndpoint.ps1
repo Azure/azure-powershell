@@ -77,11 +77,10 @@ param(
     ${Description},
 
     [Parameter(ParameterSetName='CreateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [System.String]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
@@ -112,12 +111,11 @@ param(
     ${Tag},
 
     [Parameter(ParameterSetName='CreateExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -212,7 +210,13 @@ begin {
             CreateViaJsonString = 'Az.DataCollectionRule.private\New-AzDataCollectionEndpoint_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -14,26 +14,26 @@ Gets the JIT network access policies
 
 ### SubscriptionScope (Default)
 ```
-Get-AzJitNetworkAccessPolicy [-DefaultProfile <IAzureContextContainer>]
+Get-AzJitNetworkAccessPolicy [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### ResourceGroupScope
 ```
 Get-AzJitNetworkAccessPolicy -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
 ```
 Get-AzJitNetworkAccessPolicy -ResourceGroupName <String> -Location <String> -Name <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Get-AzJitNetworkAccessPolicy -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -146,6 +146,21 @@ Parameter Sets: ResourceGroupLevelResource
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

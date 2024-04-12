@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.EdgeOrder-help.xml
 Module Name: Az.EdgeOrder
-online version: https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderFilterablePropertyObject
+online version: https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderFilterablePropertyObject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Create an in-memory object for FilterableProperty.
 
 ```
 New-AzEdgeOrderFilterablePropertyObject -SupportedValue <String[]> -Type <SupportedFilterTypes>
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +22,7 @@ Create an in-memory object for FilterableProperty.
 
 ## EXAMPLES
 
-### Example 1: Filterable property object 
+### Example 1: Filterable property object
 ```powershell
 $filterableProperty = New-AzEdgeOrderFilterablePropertyObject -Type "ShipToCountries" -SupportedValue @("US")
 $filterableProperty | Format-List
@@ -36,6 +36,21 @@ Type           : ShipToCountries
 ShipToCountries is mandatory filterable type, SupportedValue can be list of 2 letter valid ISO country codes.
 
 ## PARAMETERS
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -SupportedValue
 Values to be filtered.
@@ -78,7 +93,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

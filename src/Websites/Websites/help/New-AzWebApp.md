@@ -17,8 +17,8 @@ Creates an Azure Web App.
 ```
 New-AzWebApp [[-ResourceGroupName] <String>] [-Name] <String> [[-Location] <String>]
  [[-AppServicePlan] <String>] [-ContainerImageName <String>] [-EnableContainerContinuousDeployment] [-AsJob]
- [-GitRepositoryPath <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-GitRepositoryPath <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PrivateRegistry
@@ -26,7 +26,8 @@ New-AzWebApp [[-ResourceGroupName] <String>] [-Name] <String> [[-Location] <Stri
 New-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [[-Location] <String>] [[-AppServicePlan] <String>]
  -ContainerImageName <String> -ContainerRegistryUrl <String> -ContainerRegistryUser <String>
  -ContainerRegistryPassword <SecureString> [-EnableContainerContinuousDeployment] [-AsJob] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### WebAppParameterSet
@@ -35,7 +36,8 @@ New-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-SourceWebApp] <PSSite>] [[-TrafficManagerProfile] <String>] [-EnableContainerContinuousDeployment]
  [-IgnoreSourceControl] [-IgnoreCustomHostNames] [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>]
  [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-AsJob] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -331,6 +333,21 @@ Aliases: WebAppName
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

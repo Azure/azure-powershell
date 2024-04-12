@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacemltablejobinputobject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceMLTableJobInputObject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,8 @@ Create an in-memory object for MLTableJobInput.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceMLTableJobInputObject -Type <JobInputType> -Uri <String> [-Description <String>]
- [-Mode <InputDeliveryMode>] [<CommonParameters>]
+New-AzMLWorkspaceMLTableJobInputObject -Uri <String> -Type <JobInputType> [-Mode <InputDeliveryMode>]
+ [-Description <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +53,21 @@ Input Asset Delivery Mode.
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.InputDeliveryMode
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -102,7 +117,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
