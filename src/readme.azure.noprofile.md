@@ -52,6 +52,11 @@ use-extension:
   "@autorest/powershell": "4.x"
 ```
 
+> After Build Tasks
+``` yaml
+after-build-tasks: '../../tools/PrepareAutorestModule.ps1'
+```
+
 > Directives
 ``` yaml
 directive:
