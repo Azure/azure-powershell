@@ -1,4 +1,4 @@
-None //
+//
 // Copyright (c) Microsoft and contributors.  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -176,14 +176,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 var res = VirtualMachineScaleSetsClient.CreateOrUpdateWithHttpMessagesAsync(
                                         resourceGroupName,
                                         vmScaleSetName,
-                                        parameters,null,null,
+                                        parameters, this.IfMatch, this.IfNoneMatch,
                                         auxAuthHeader).GetAwaiter().GetResult();
 
                                 result = res.Body;
                             }
                             else
                             {
-                                result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters);
+                                result = VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters, this.IfMatch, this.IfNoneMatch);
                             }
 
                             var psObject = new PSVirtualMachineScaleSet();
@@ -404,18 +404,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The ETag of the VM or VMSS.")]
-        public string Etag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            HelpMessage = "The If-Match header.")]
+            HelpMessage = "The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.")]
         public string IfMatch { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The If-None-Match header.")]
-        public string IfNotMatch { get; set; }
+            HelpMessage = "Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.")]
+        public string IfNoneMatch { get; set; }
     }
 }
 

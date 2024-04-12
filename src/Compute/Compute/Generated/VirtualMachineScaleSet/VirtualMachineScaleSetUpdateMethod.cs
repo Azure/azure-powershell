@@ -81,8 +81,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
 
                     var result = (this.VirtualMachineScaleSetUpdate == null)
-                                 ? VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters)
-                                 : VirtualMachineScaleSetsClient.Update(resourceGroupName, vmScaleSetName, parametersupdate);
+                                 ? VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters, this.IfMatch, this.IfNoneMatch)
+                                 : VirtualMachineScaleSetsClient.Update(resourceGroupName, vmScaleSetName, parametersupdate, this.IfMatch, this.IfNoneMatch);
                     var psObject = new PSVirtualMachineScaleSet();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
                     WriteObject(psObject);
@@ -408,6 +408,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
         public bool? EnableSecureBoot { get; set; } = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.")]
+        public string IfMatch { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.")]
+        public string IfNoneMatch { get; set; }
 
         private void BuildPatchObject()
         {
