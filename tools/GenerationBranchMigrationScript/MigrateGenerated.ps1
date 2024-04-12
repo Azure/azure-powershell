@@ -54,8 +54,8 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
 $propsPath = Join-Path $sourceFolderPath 'Az.autorest.props'
 (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/src/Az.autorest.props").Content > $propsPath
 
-#copy src/.props from generation branch to current branch
+#copy src/.props from eng/archive-test branch to current branch
 $readmeAzurePath = Join-Path $sourceFolderPath 'readme.azure.md'
 $readmeAzureNoProfilePath = Join-Path $sourceFolderPath 'readme.azure.noprofile.md'
-(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/generation/src/readme.azure.md").Content > $readmeAzurePath
-(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/generation/src/readme.azure.noprofile.md").Content > $readmeAzureNoProfilePath
+(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/src/readme.azure.md").Content > $readmeAzurePath
+(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/src/readme.azure.noprofile.md").Content > $readmeAzureNoProfilePath
