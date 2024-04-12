@@ -182,17 +182,17 @@ namespace Microsoft.Azure.Commands.Compute
            Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public bool? EnableSecureBoot { get; set; } = null;
-
+        
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The ETag of the VM.")]
+            HelpMessage = "The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.")]
         public string IfMatch { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The ETag of the VM.")]
+            HelpMessage = "Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.")]
         public string IfNoneMatch { get; set; }
 
         public override void ExecuteCmdlet()
