@@ -558,18 +558,6 @@ Updates managed application definition
 ### [Set-AzManagementGroupDeploymentStack](Set-AzManagementGroupDeploymentStack.md)
 Sets a new Management Group scoped Deployment Stack.
 
-### [Set-AzPolicyAssignment](Set-AzPolicyAssignment.md)
-Modifies a policy assignment.
-
-### [Set-AzPolicyDefinition](Set-AzPolicyDefinition.md)
-Modifies a policy definition.
-
-### [Set-AzPolicyExemption](Set-AzPolicyExemption.md)
-Modifies a policy exemption.
-
-### [Set-AzPolicySetDefinition](Set-AzPolicySetDefinition.md)
-Modifies a policy set definition
-
 ### [Set-AzResource](Set-AzResource.md)
 Modifies a resource.
 
