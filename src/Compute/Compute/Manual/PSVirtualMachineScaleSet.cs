@@ -26,7 +26,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         // Gets or sets the FQDN.
         public string FullyQualifiedDomainName { get; set; }
 
-        // Gets or sets the ETag of the VM or VMSS.
-        public string Etag { get; set; }
     }
-}None
+}
