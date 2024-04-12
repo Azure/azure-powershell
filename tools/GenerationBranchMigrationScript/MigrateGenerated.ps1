@@ -43,6 +43,7 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
         if ("Az.$subModuleNameTrimmed.csproj" -eq $_) {
             $slnPath = (Join-Path $sourceModuleRootPath "$moduleRootName.sln")
             dotnet sln $slnPath remove $fromPath
+            dotnet sln $slnPath add $toPath
         }
         if (Test-Path $fromPath) {
             Move-Item $fromPath $toPath
