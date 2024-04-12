@@ -1,5 +1,11 @@
 # Upcoming breaking changes in Azure PowerShell
 
+## General
+
+- In the upcoming major release of Azure PowerShell (Az 12.0.0), the `DisplaySecretsWarning` configuration option will be activated by default. A warning message will be shown when secrets are detected in the output of a cmdlet.
+  For additional context, please visit [Hardening your defense in depth with secrets awareness in Azure command line tools](https://techcommunity.microsoft.com/t5/azure-tools-blog/hardening-your-defense-in-depth-with-secrets-awareness-in-azure/ba-p/4049883).
+  For command usage details, please refer to [Protect secrets in Azure PowerShell](https://go.microsoft.com/fwlink/?linkid=2258844).
+
 ## Az.Accounts
 
 ### `Clear-AzConfig`

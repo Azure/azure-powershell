@@ -74,7 +74,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.MigrationWebApplicationFirewallMapping
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.MigrationWebApplicationFirewallMapping
 
 ## NOTES
 

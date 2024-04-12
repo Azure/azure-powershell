@@ -15,7 +15,8 @@ Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profi
 ```
 New-AzFrontDoorCdnProfile -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-OriginResponseTimeoutSecond <Int32>] [-SkuName <SkuName>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-LogScrubbingRule <IProfileScrubbingRules[]>]
+ [-LogScrubbingState <ProfileScrubbingState>] [-OriginResponseTimeoutSecond <Int32>] [-SkuName <SkuName>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -36,6 +37,20 @@ Global   fdp-v542q6 frontdoor testps-rg-da16jm
 ```
 
 Create an AzureFrontDoor profile under the resource group
+
+### Example 2: Create an AzureFrontDoor profile under the resource group, with using ProfileScrubbingRule
+```powershell
+$rule = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled
+New-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -SkuName Standard_AzureFrontDoor -Location Global -LogScrubbingRule $rule -LogScrubbingState Enabled
+```
+
+```output
+Location Name       Kind      ResourceGroupName
+-------- ----       ----      -----------------
+Global   fdp-v542q6 frontdoor testps-rg-da16jm
+```
+
+Create an AzureFrontDoor profile under the resource group, with using ProfileScrubbingRule
 
 ## PARAMETERS
 
@@ -110,6 +125,38 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogScrubbingRule
+List of log scrubbing rules applied to the Azure Front Door profile logs.
+To construct, see NOTES section for LOGSCRUBBINGRULE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileScrubbingRules[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogScrubbingState
+State of the log scrubbing config.
+Default value is Enabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileScrubbingState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -260,7 +307,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile
 
 ## NOTES
 
