@@ -1,5 +1,5 @@
 ---
-external help file: Az.SelfHelp-help.xml
+external help file:
 Module Name: Az.SelfHelp
 online version: https://learn.microsoft.com/powershell/module/az.selfhelp/new-azselfhelpdiagnostic
 schema: 2.0.0
@@ -11,21 +11,21 @@ schema: 2.0.0
 Creates a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions.
 \<br/\>Diagnostics tells you precisely the root cause of the issue and the steps to address it.
 You can get diagnostics once you discover the relevant solution for your Azure issue.
-\<br/\>\<br/\> \<b\>Note: \</b\> requiredInputs' from Discovery solutions response must be passed via 'additionalParameters' as an input to Diagnostics API.
+\<br/\>\<br/\> \<b\>Note: \</b\> requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
 
 ## SYNTAX
 
 ```
-New-AzSelfHelpDiagnostic -SResourceName <String> -Scope <String> [-GlobalParameter <Hashtable>]
- [-Insight <IDiagnosticInvocation[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+New-AzSelfHelpDiagnostic -Scope <String> -SResourceName <String> [-GlobalParameter <Hashtable>]
+ [-Insight <IDiagnosticInvocation[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Creates a diagnostic for the specific resource using solutionId and requiredInputs* from discovery solutions.
 \<br/\>Diagnostics tells you precisely the root cause of the issue and the steps to address it.
 You can get diagnostics once you discover the relevant solution for your Azure issue.
-\<br/\>\<br/\> \<b\>Note: \</b\> requiredInputs' from Discovery solutions response must be passed via 'additionalParameters' as an input to Diagnostics API.
+\<br/\>\<br/\> \<b\>Note: \</b\> requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics API.
 
 ## EXAMPLES
 
@@ -124,21 +124,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Scope
 This is an extension resource provider and only resource level extension is supported at the moment.
 
@@ -212,3 +197,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+

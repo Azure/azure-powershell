@@ -1,46 +1,45 @@
 ---
-external help file: Az.SelfHelp-help.xml
+external help file:
 Module Name: Az.SelfHelp
-online version: https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpdiagnostic
+online version: https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpsolution
 schema: 2.0.0
 ---
 
-# Get-AzSelfHelpDiagnostic
+# Get-AzSelfHelpSolution
 
 ## SYNOPSIS
-Get the diagnostics using the 'diagnosticsResourceName' you chose while creating the diagnostic.
+Get the solution using the applicable solutionResourceName while creating the solution.
 
 ## SYNTAX
 
 ### Get (Default)
 ```
-Get-AzSelfHelpDiagnostic -SResourceName <String> -Scope <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzSelfHelpSolution -ResourceName <String> -Scope <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzSelfHelpDiagnostic -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+Get-AzSelfHelpSolution -InputObject <ISelfHelpIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get the diagnostics using the 'diagnosticsResourceName' you chose while creating the diagnostic.
+Get the solution using the applicable solutionResourceName while creating the solution.
 
 ## EXAMPLES
 
-### Example 1: Get diagnostic by resource id and diagnostic name
+### Example 1: Get-AzSelfHelpSolution by resource id
 ```powershell
-Get-AzSelfHelpDiagnostic -Scope "subscriptions/6bded6d5-a6df-44e1-96d3-bf71f6f5f8ba/resourceGroups/test-rgName/providers/Microsoft.KeyVault/vaults/testKeyVault" -SResourceName ab-test-983
+Get-AzSelfHelpSolution -ResourceName test-resource -Scope  /subscriptions/<subid>/resourceGroups/testRG/providers/Microsoft.KeyVault/testkv/testDB
 ```
 
 ```output
-Name
-----
-ab-test-983
+Location Name         ResourceGroupName
+-------- ----         -----------------
+         test-resource testRG
 ```
 
-Get diagnostic by resource id and diagnostic name
+Get SelfHelp Solution by resource id
 
 ## PARAMETERS
 
@@ -76,15 +75,15 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
+### -ResourceName
+Solution resource Name.
 
 ```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
+Type: System.String
+Parameter Sets: Get
+Aliases: SolutionResourceName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -106,21 +105,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SResourceName
-Unique resource name for insight resources
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: DiagnosticsResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -130,8 +114,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiagnosticResource
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource
 
 ## NOTES
 
 ## RELATED LINKS
+
