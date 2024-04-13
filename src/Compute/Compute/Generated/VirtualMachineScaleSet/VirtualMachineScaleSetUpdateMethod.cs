@@ -60,6 +60,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         BuildPutObject();
                     }
 
+                    
+
                     // check if image reference is being updated, if not remove image reference from payload for SIG 
                     if (this.VirtualMachineScaleSet != null
                             && this.VirtualMachineScaleSet.VirtualMachineProfile != null
@@ -80,9 +82,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     VirtualMachineScaleSet parameters = new VirtualMachineScaleSet();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<PSVirtualMachineScaleSet, VirtualMachineScaleSet>(this.VirtualMachineScaleSet, parameters);
 
+                    // the VirtualMachineScaleSetUpdate is only filled during the PatchObject() call.
+                    // PatchObject() is only called when a VMSS object is passed to the cmdlet. 
+                    // So Location is required the CreateOrUpdate call, maybe due to a resource thing. 
+                    /*
+                    if (this.VirtualMachineScaleSetUpdate == null && this.VirtualMachineScaleSet?.Location == null)
+                    {
+                        // need to get the vmss and then its location
+                        parameters.Location = VirtualMachineScaleSetsClient.Get(resourceGroupName, vmScaleSetName).Location;
+                    }
+                    */
+
                     var result = (this.VirtualMachineScaleSetUpdate == null)
                                  ? VirtualMachineScaleSetsClient.CreateOrUpdate(resourceGroupName, vmScaleSetName, parameters)
                                  : VirtualMachineScaleSetsClient.Update(resourceGroupName, vmScaleSetName, parametersupdate);
+                    
+                    
                     var psObject = new PSVirtualMachineScaleSet();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineScaleSet, PSVirtualMachineScaleSet>(result, psObject);
                     WriteObject(psObject);
@@ -1315,6 +1330,32 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout = this.OSImageScheduledEventNotBeforeTimeoutInMinutes;
             }
 
+            if (this.IsParameterBound(c => c.BaseRegularPriorityCount))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.PriorityMixPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.PriorityMixPolicy = new PriorityMixPolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.PriorityMixPolicy.BaseRegularPriorityCount = this.BaseRegularPriorityCount;
+            }
+
+            if (this.IsParameterBound(c => c.RegularPriorityPercentage))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.PriorityMixPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.PriorityMixPolicy = new PriorityMixPolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.PriorityMixPolicy.RegularPriorityPercentageAboveBase = this.RegularPriorityPercentage;
+            }
+
             // SecurityType, includes TrustedLaunch and ConfidentialVM and Standard. 
             if (this.IsParameterBound(c => c.SecurityType))
             {
@@ -2094,6 +2135,40 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.PriorityMixPolicy = new PriorityMixPolicy();
                 }
                 this.VirtualMachineScaleSet.PriorityMixPolicy.RegularPriorityPercentageAboveBase = this.RegularPriorityPercentage;
+            }
+
+            if (this.IsParameterBound(c => c.OSImageScheduledEventEnabled))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile = new OSImageNotificationProfile();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.Enable = this.OSImageScheduledEventEnabled;
+            }
+
+            if (this.IsParameterBound(c => c.OSImageScheduledEventNotBeforeTimeoutInMinutes))
+            {
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile = new ScheduledEventsProfile();
+                }
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile = new OSImageNotificationProfile();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.ScheduledEventsProfile.OsImageNotificationProfile.NotBeforeTimeout = this.OSImageScheduledEventNotBeforeTimeoutInMinutes;
             }
 
             if (this.IsParameterBound(c => c.SecurityType))

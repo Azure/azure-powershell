@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Fixed the `Update-AzVmss` bugs where some parameters are updated but others are not when a VMSS object is provided to the `-VirtualMachineScaleSet` parameter or not.
 
 ## Version 7.2.0
 * Added parameters `-scriptUriManagedIdentity`, `-outputBlobManagedIdentity`, `-errorBlobMangedIdentity`, and `-TreatFailureAsDeploymentFailure` to cmdlets `Set-AzVmRunCommand` and `Set-AzVmssRunCommand`. 
