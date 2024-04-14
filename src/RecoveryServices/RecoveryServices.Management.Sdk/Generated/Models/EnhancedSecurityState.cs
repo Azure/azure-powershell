@@ -7,15 +7,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 {
 
     /// <summary>
-    /// Defines values for StandardTierStorageRedundancy.
+    /// Defines values for EnhancedSecurityState.
     /// </summary>
 
 
-    public static class StandardTierStorageRedundancy
+    public static class EnhancedSecurityState
     {
         public const string Invalid = "Invalid";
-        public const string LocallyRedundant = "LocallyRedundant";
-        public const string GeoRedundant = "GeoRedundant";
-        public const string ZoneRedundant = "ZoneRedundant";
+        public const string Enabled = "Enabled";
+        public const string Disabled = "Disabled";
+        public const string AlwaysON = "AlwaysON";
     }
 }

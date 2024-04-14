@@ -92,6 +92,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public bool? DisableAzureMonitorAlertsForJobFailure { get; set; }
 
         /// <summary>
+        /// Enables or disables classic email notifications for Site Recovery in RS vault.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool? DisableEmailNotificationsForSiteRecovery { get; set; }
+
+        /// <summary>
+        /// Enables or disables monitor alerts for all replication isues in RS vault.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool? DisableAzureMonitorAlertsForAllReplicationIssues { get; set; }
+
+        /// <summary>
+        /// Enables or disables monitor alerts for all failover issues in RS vault.
+        /// </summary>
+        [Parameter(Mandatory = false)]
+        public bool? DisableAzureMonitorAlertsForAllFailoverIssues { get; set; }
+
+        /// <summary>
         /// Enables or disables public network access for RS vault.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Parameter to Enable/Disable public network access of the vault. This setting is useful with Private Endpoints.")]
@@ -239,7 +257,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                             }
                         }
                         
-                        else if (DisableAzureMonitorAlertsForJobFailure == null && DisableClassicAlerts == null && PublicNetworkAccess == null && ImmutabilityState == null && CrossSubscriptionRestoreState == null)
+                        else if (DisableAzureMonitorAlertsForJobFailure == null && DisableClassicAlerts == null && PublicNetworkAccess == null && ImmutabilityState == null && CrossSubscriptionRestoreState == null && DisableEmailNotificationsForSiteRecovery == null && DisableAzureMonitorAlertsForAllReplicationIssues == null && DisableAzureMonitorAlertsForAllFailoverIssues == null)
                         {
                             throw new ArgumentException(Resources.InvalidParameterSet);
                         }
@@ -255,20 +273,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     }
 
                     // alerts V1 changes 
-                    if (DisableAzureMonitorAlertsForJobFailure != null || DisableClassicAlerts != null)
+                    if (DisableAzureMonitorAlertsForJobFailure != null || DisableClassicAlerts != null || DisableAzureMonitorAlertsForAllReplicationIssues != null || DisableAzureMonitorAlertsForAllFailoverIssues != null || DisableEmailNotificationsForSiteRecovery != null)
                     {                        
                         MonitoringSettings alerts = (vault.Properties!= null && vault.Properties.MonitoringSettings != null) ? vault.Properties.MonitoringSettings : new MonitoringSettings();
 
-                        if(DisableAzureMonitorAlertsForJobFailure != null)
+                        if(DisableAzureMonitorAlertsForJobFailure != null || DisableAzureMonitorAlertsForAllReplicationIssues != null || DisableAzureMonitorAlertsForAllFailoverIssues != null)
                         {
                             alerts.AzureMonitorAlertSettings = new AzureMonitorAlertSettings();
                             alerts.AzureMonitorAlertSettings.AlertsForAllJobFailures = (DisableAzureMonitorAlertsForJobFailure == true) ? "Disabled" : "Enabled";
+                            alerts.AzureMonitorAlertSettings.AlertsForAllReplicationIssues = (DisableAzureMonitorAlertsForAllReplicationIssues == true) ? "Disabled" : "Enabled";
+                            alerts.AzureMonitorAlertSettings.AlertsForAllFailoverIssues = (DisableAzureMonitorAlertsForAllFailoverIssues == true) ? "Disabled" : "Enabled";
                         }
 
-                        if(DisableClassicAlerts != null)
+                        if(DisableClassicAlerts != null || DisableEmailNotificationsForSiteRecovery != null)
                         {
                             alerts.ClassicAlertSettings = new ClassicAlertSettings();
                             alerts.ClassicAlertSettings.AlertsForCriticalOperations = (DisableClassicAlerts == true) ? "Disabled" : "Enabled";
+                            alerts.ClassicAlertSettings.EmailNotificationsForSiteRecovery = (DisableEmailNotificationsForSiteRecovery == true) ? "Disabled" : "Enabled";
                         }
 
                         if (patchVault.Properties == null) { patchVault.Properties = new VaultProperties(); }

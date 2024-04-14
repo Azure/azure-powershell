@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         /// <param name="resouceGroupName">Name of the resouce group</param>
         /// <param name="vaultName">Name of the vault</param>
-        public Rest.Azure.AzureOperationResponse DeleteVault(string resouceGroupName, string vaultName)
+        public Rest.Azure.AzureOperationHeaderResponse<VaultsDeleteHeaders> DeleteVault(string resouceGroupName, string vaultName)
         {
             return GetRecoveryServicesClient.Vaults.DeleteWithHttpMessagesAsync(
                 resouceGroupName, vaultName, GetRequestHeaders()).Result;

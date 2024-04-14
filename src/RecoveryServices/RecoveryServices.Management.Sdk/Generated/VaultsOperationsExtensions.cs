@@ -162,9 +162,9 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
-        public static void Delete(this IVaultsOperations operations, string resourceGroupName, string vaultName)
+        public static VaultsDeleteHeaders Delete(this IVaultsOperations operations, string resourceGroupName, string vaultName)
         {
-                ((IVaultsOperations)operations).DeleteAsync(resourceGroupName, vaultName).GetAwaiter().GetResult();
+                return ((IVaultsOperations)operations).DeleteAsync(resourceGroupName, vaultName).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -182,9 +182,12 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task DeleteAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<VaultsDeleteHeaders> DeleteAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            (await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false)).Dispose();
+            using (var _result = await operations.DeleteWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
+            }
         }
         /// <summary>
         /// Updates the vault.
@@ -262,6 +265,45 @@ namespace Microsoft.Azure.Management.RecoveryServices
             using (var _result = await operations.BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vaultName, vault, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
+            }
+        }
+        /// <summary>
+        /// Deletes a vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        public static VaultsDeleteHeaders BeginDelete(this IVaultsOperations operations, string resourceGroupName, string vaultName)
+        {
+                return ((IVaultsOperations)operations).BeginDeleteAsync(resourceGroupName, vaultName).GetAwaiter().GetResult();
+        }
+
+        /// <summary>
+        /// Deletes a vault.
+        /// </summary>
+        /// <param name='operations'>
+        /// The operations group for this extension method.
+        /// </param>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='vaultName'>
+        /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        public static async System.Threading.Tasks.Task<VaultsDeleteHeaders> BeginDeleteAsync(this IVaultsOperations operations, string resourceGroupName, string vaultName, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        {
+            using (var _result = await operations.BeginDeleteWithHttpMessagesAsync(resourceGroupName, vaultName, null, cancellationToken).ConfigureAwait(false))
+            {
+                return _result.Headers;
             }
         }
         /// <summary>

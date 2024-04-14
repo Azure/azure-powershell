@@ -7,29 +7,26 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 {
     using System.Linq;
 
-    /// <summary>
-    /// Immutability Settings of vault
-    /// </summary>
-    public partial class ImmutabilitySettings
+    public partial class VaultsDeleteHeaders
     {
         /// <summary>
-        /// Initializes a new instance of the ImmutabilitySettings class.
+        /// Initializes a new instance of the VaultsDeleteHeaders class.
         /// </summary>
-        public ImmutabilitySettings()
+        public VaultsDeleteHeaders()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ImmutabilitySettings class.
+        /// Initializes a new instance of the VaultsDeleteHeaders class.
         /// </summary>
 
-        /// <param name="state">
-        /// Possible values include: &#39;Disabled&#39;, &#39;Unlocked&#39;, &#39;Locked&#39;</param>
-        public ImmutabilitySettings(string state = default(string))
+        /// <param name="location">
+        /// </param>
+        public VaultsDeleteHeaders(string location = default(string))
 
         {
-            this.State = state;
+            this.Location = location;
             CustomInit();
         }
 
@@ -40,9 +37,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 
 
         /// <summary>
-        /// Gets or sets Possible values include: &#39;Disabled&#39;, &#39;Unlocked&#39;, &#39;Locked&#39;
+        /// Gets or sets
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "state")]
-        public string State {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "Location")]
+        public string Location {get; set; }
     }
 }

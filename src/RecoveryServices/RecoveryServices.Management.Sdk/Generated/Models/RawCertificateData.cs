@@ -25,8 +25,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
 
         /// <param name="authType">Specifies the authentication type.
-        /// Possible values include: 'Invalid', 'ACS', 'AAD', 'AccessControlService',
-        /// 'AzureActiveDirectory'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;ACS&#39;, &#39;AAD&#39;, &#39;AccessControlService&#39;,
+        /// &#39;AzureActiveDirectory&#39;</param>
 
         /// <param name="certificate">The base64 encoded certificate raw data string
         /// </param>

@@ -7,15 +7,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 {
 
     /// <summary>
-    /// Defines values for StandardTierStorageRedundancy.
+    /// Defines values for BcdrSecurityLevel.
     /// </summary>
 
 
-    public static class StandardTierStorageRedundancy
+    public static class BcdrSecurityLevel
     {
-        public const string Invalid = "Invalid";
-        public const string LocallyRedundant = "LocallyRedundant";
-        public const string GeoRedundant = "GeoRedundant";
-        public const string ZoneRedundant = "ZoneRedundant";
+        public const string Poor = "Poor";
+        public const string Fair = "Fair";
+        public const string Good = "Good";
+        public const string Excellent = "Excellent";
     }
 }
