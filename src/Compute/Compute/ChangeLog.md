@@ -20,6 +20,9 @@
 
 -->
 ## Upcoming Release
+* Added new optional parameter `SecureVmGuestStateSas` to cmdlet `Grant-AzDiskAccess`.
+    - When user passes new parameter `SecureVmGuestStateSas`, request to return `GrantAccessData.GetSecureVMGuestStateSAS Property`.
+    - If this is for Non-Trusted launch or Confidential VM, backend API will return error `(BadRequest) GetSecureVMGuestStateSAS can be set only for disk with SecurityProfile.`
 
 ## Version 7.2.0
 * Added parameters `-scriptUriManagedIdentity`, `-outputBlobManagedIdentity`, `-errorBlobMangedIdentity`, and `-TreatFailureAsDeploymentFailure` to cmdlets `Set-AzVmRunCommand` and `Set-AzVmssRunCommand`. 
