@@ -101,5 +101,31 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "destinationPort")]
         public int? DestinationPort {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+            if (this.NetworkInterfaceTapConfigurations != null)
+            {
+                foreach (var element in this.NetworkInterfaceTapConfigurations)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
+
+
+            if (this.DestinationNetworkInterfaceIPConfiguration != null)
+            {
+                this.DestinationNetworkInterfaceIPConfiguration.Validate();
+            }
+
+        }
     }
 }
