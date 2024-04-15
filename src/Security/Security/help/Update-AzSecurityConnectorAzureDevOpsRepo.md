@@ -17,7 +17,7 @@ Updates a monitored Azure DevOps repository resource.
 Update-AzSecurityConnectorAzureDevOpsRepo -OrgName <String> -ProjectName <String> -RepoName <String>
  -ResourceGroupName <String> -SecurityConnectorName <String> [-SubscriptionId <String>]
  [-ActionableRemediation <IActionableRemediation>] [-ParentOrgName <String>] [-ParentProjectName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Update-AzSecurityConnectorAzureDevOpsRepo -OrgName <String> -ProjectName <String
 ```
 Update-AzSecurityConnectorAzureDevOpsRepo -InputObject <ISecurityIdentity>
  [-ActionableRemediation <IActionableRemediation>] [-ParentOrgName <String>] [-ParentProjectName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -192,6 +192,21 @@ Gets or sets parent Azure DevOps Project name.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

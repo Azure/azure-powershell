@@ -263,7 +263,6 @@ Accept wildcard characters: False
 
 ### -NetworkProfileNetworkInterface
 Gets or sets the list of network interfaces associated with the virtual machine.
-To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INetworkInterfaceUpdate[]
@@ -294,7 +293,6 @@ Accept wildcard characters: False
 
 ### -StorageProfileDisk
 Gets or sets the list of virtual disks associated with the virtual machine.
-To construct, see NOTES section for STORAGEPROFILEDISK properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualDiskUpdate[]
