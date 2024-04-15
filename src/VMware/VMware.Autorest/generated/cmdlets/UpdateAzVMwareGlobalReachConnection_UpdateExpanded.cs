@@ -312,11 +312,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
                 telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
                 telemetryInfo.TryGetValue("InvocationName", out var invocationName);
-                if (!string.IsNullOrEmpty(sanitizedProperties))
+                if (showSecretsWarning == "true")
                 {
-                    WriteWarning($"The output of cmdlet {invocationName ?? "Unknown"} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
                 }
             }
         }
@@ -508,7 +516,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     _globalReachConnectionBody = await this.Client.GlobalReachConnectionsGetWithResult(SubscriptionId, ResourceGroupName, PrivateCloudName, Name, this, Pipeline);
                     this.Update_globalReachConnectionBody();
-                    await this.Client.GlobalReachConnectionsCreateOrUpdate(SubscriptionId, ResourceGroupName, PrivateCloudName, Name, _globalReachConnectionBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
+                    await this.Client.GlobalReachConnectionsCreateOrUpdate(SubscriptionId, ResourceGroupName, PrivateCloudName, Name, _globalReachConnectionBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.UndeclaredResponseException urexception)

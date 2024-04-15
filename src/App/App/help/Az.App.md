@@ -273,7 +273,7 @@ Checks if resource connectedEnvironmentName is available.
 Checks if resource name is available.
 
 ### [Update-AzContainerApp](Update-AzContainerApp.md)
-Patches a Container App using JSON Merge Patch
+Create a Container App.
 
 ### [Update-AzContainerAppAuthConfig](Update-AzContainerAppAuthConfig.md)
 Create the AuthConfig for a Container App.
@@ -289,7 +289,7 @@ Create a Dapr Component in a connected environment.
 Create storage for a connectedEnvironment.
 
 ### [Update-AzContainerAppJob](Update-AzContainerAppJob.md)
-Patches a Container Apps Job using JSON Merge Patch
+Create a Container Apps Job.
 
 ### [Update-AzContainerAppManagedCert](Update-AzContainerAppManagedCert.md)
 Patches a managed certificate.

@@ -392,7 +392,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -538,7 +555,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                     {
                         _authConfigEnvelopeBody = await this.Client.ContainerAppsAuthConfigsGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
                         this.Update_authConfigEnvelopeBody();
-                        await this.Client.ContainerAppsAuthConfigsCreateOrUpdateViaIdentity(InputObject.Id, _authConfigEnvelopeBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.ContainerAppsAuthConfigsCreateOrUpdateViaIdentity(InputObject.Id, _authConfigEnvelopeBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -561,7 +578,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                         }
                         _authConfigEnvelopeBody = await this.Client.ContainerAppsAuthConfigsGetWithResult(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ContainerAppName ?? null, InputObject.AuthConfigName ?? null, this, Pipeline);
                         this.Update_authConfigEnvelopeBody();
-                        await this.Client.ContainerAppsAuthConfigsCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ContainerAppName ?? null, InputObject.AuthConfigName ?? null, _authConfigEnvelopeBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.ContainerAppsAuthConfigsCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ContainerAppName ?? null, InputObject.AuthConfigName ?? null, _authConfigEnvelopeBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -668,6 +685,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
             {
                 this.ForwardProxyCustomProtoHeaderName = (string)(this.MyInvocation?.BoundParameters["ForwardProxyCustomProtoHeaderName"]);
             }
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SecurityInsights-help.xml
 Module Name: Az.SecurityInsights
 online version: https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelbookmark
 schema: 2.0.0
@@ -18,14 +18,15 @@ New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> [-Id 
  [-SubscriptionId <String>] [-DisplayName <String>] [-EventTime <DateTime>] [-IncidentInfoIncidentId <String>]
  [-IncidentInfoRelationName <String>] [-IncidentInfoSeverity <IncidentSeverity>] [-IncidentInfoTitle <String>]
  [-Label <String[]>] [-Note <String>] [-Query <String>] [-QueryEndTime <DateTime>] [-QueryResult <String>]
- [-QueryStartTime <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-QueryStartTime <DateTime>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> -Bookmark <IBookmark>
- [-Id <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
+ [-SubscriptionId <String>] -Bookmark <IBookmark> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +36,7 @@ Creates or updates the bookmark.
 
 ### Example 1: Create a Bookmark
 ```powershell
- $queryStartTime = (Get-Date).AddDays(-1).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+$queryStartTime = (Get-Date).AddDays(-1).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
  $queryEndTime = (Get-Date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
  New-AzSentinelBookmark -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -DisplayName "Incident Evidence" -Query "SecurityEvent | take 1" -QueryStartTime $queryStartTime -QueryEndTime $queryEndTime -EventTime $queryEndTime
 ```
@@ -219,6 +220,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Query
 The query of the bookmark.
 
@@ -369,37 +385,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BOOKMARK <IBookmark>`: Represents a bookmark in Azure Security Insights.
-  - `[Etag <String>]`: Etag of the azure resource
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[Created <DateTime?>]`: The time the bookmark was created
-  - `[CreatedByObjectId <String>]`: The object id of the user.
-  - `[DisplayName <String>]`: The display name of the bookmark
-  - `[EventTime <DateTime?>]`: The bookmark event time
-  - `[IncidentInfoIncidentId <String>]`: Incident Id
-  - `[IncidentInfoRelationName <String>]`: Relation Name
-  - `[IncidentInfoSeverity <IncidentSeverity?>]`: The severity of the incident
-  - `[IncidentInfoTitle <String>]`: The title of the incident
-  - `[Label <String[]>]`: List of labels relevant to this bookmark
-  - `[Note <String>]`: The notes of the bookmark
-  - `[Query <String>]`: The query of the bookmark.
-  - `[QueryEndTime <DateTime?>]`: The end time for the query
-  - `[QueryResult <String>]`: The query result of the bookmark.
-  - `[QueryStartTime <DateTime?>]`: The start time for the query
-  - `[Updated <DateTime?>]`: The last time the bookmark was updated
-  - `[UpdatedByObjectId <String>]`: The object id of the user.
-
 ## RELATED LINKS
-

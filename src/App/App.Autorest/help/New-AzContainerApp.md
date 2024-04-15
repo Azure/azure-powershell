@@ -15,27 +15,27 @@ Create a Container App.
 ### CreateExpanded (Default)
 ```
 New-AzContainerApp -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-Configuration <IConfiguration>] [-EnvironmentId <String>] [-ExtendedLocationName <String>]
- [-ExtendedLocationType <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-ManagedBy <String>] [-ManagedEnvironmentId <String>] [-ScaleMaxReplica <Int32>] [-ScaleMinReplica <Int32>]
+ [-Configuration <IConfiguration>] [-EnableSystemAssignedIdentity] [-EnvironmentId <String>]
+ [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-ManagedBy <String>]
+ [-ManagedEnvironmentId <String>] [-ScaleMaxReplica <Int32>] [-ScaleMinReplica <Int32>]
  [-ScaleRule <IScaleRule[]>] [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>]
  [-TemplateInitContainer <IInitContainer[]>] [-TemplateRevisionSuffix <String>]
  [-TemplateServiceBind <IServiceBind[]>] [-TemplateTerminationGracePeriodSecond <Int64>]
- [-TemplateVolume <IVolume[]>] [-WorkloadProfileName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-TemplateVolume <IVolume[]>] [-UserAssignedIdentity <String[]>] [-WorkloadProfileName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzContainerApp -InputObject <IAppIdentity> -Location <String> [-Configuration <IConfiguration>]
- [-EnvironmentId <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
- [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-ManagedBy <String>]
- [-ManagedEnvironmentId <String>] [-ScaleMaxReplica <Int32>] [-ScaleMinReplica <Int32>]
- [-ScaleRule <IScaleRule[]>] [-Tag <Hashtable>] [-TemplateContainer <IContainer[]>]
- [-TemplateInitContainer <IInitContainer[]>] [-TemplateRevisionSuffix <String>]
- [-TemplateServiceBind <IServiceBind[]>] [-TemplateTerminationGracePeriodSecond <Int64>]
- [-TemplateVolume <IVolume[]>] [-WorkloadProfileName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EnableSystemAssignedIdentity] [-EnvironmentId <String>] [-ExtendedLocationName <String>]
+ [-ExtendedLocationType <String>] [-ManagedBy <String>] [-ManagedEnvironmentId <String>]
+ [-ScaleMaxReplica <Int32>] [-ScaleMinReplica <Int32>] [-ScaleRule <IScaleRule[]>] [-Tag <Hashtable>]
+ [-TemplateContainer <IContainer[]>] [-TemplateInitContainer <IInitContainer[]>]
+ [-TemplateRevisionSuffix <String>] [-TemplateServiceBind <IServiceBind[]>]
+ [-TemplateTerminationGracePeriodSecond <Int64>] [-TemplateVolume <IVolume[]>]
+ [-UserAssignedIdentity <String[]>] [-WorkloadProfileName <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -146,7 +146,6 @@ Accept wildcard characters: False
 
 ### -Configuration
 Non versioned Container App configuration properties.
-To construct, see NOTES section for CONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfiguration
@@ -168,6 +167,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
 
 Required: False
 Position: Named
@@ -221,41 +235,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -428,7 +409,6 @@ Accept wildcard characters: False
 
 ### -ScaleRule
 Scaling rules.
-To construct, see NOTES section for SCALERULE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRule[]
@@ -474,7 +454,6 @@ Accept wildcard characters: False
 
 ### -TemplateContainer
 List of container definitions for the Container App.
-To construct, see NOTES section for TEMPLATECONTAINER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer[]
@@ -490,7 +469,6 @@ Accept wildcard characters: False
 
 ### -TemplateInitContainer
 List of specialized containers that run before app containers.
-To construct, see NOTES section for TEMPLATEINITCONTAINER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IInitContainer[]
@@ -521,7 +499,6 @@ Accept wildcard characters: False
 
 ### -TemplateServiceBind
 List of container app services bound to the app
-To construct, see NOTES section for TEMPLATESERVICEBIND properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IServiceBind[]
@@ -557,10 +534,25 @@ Accept wildcard characters: False
 
 ### -TemplateVolume
 List of volume definitions for the Container App.
-To construct, see NOTES section for TEMPLATEVOLUME properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+
+```yaml
+Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
 Aliases:
 

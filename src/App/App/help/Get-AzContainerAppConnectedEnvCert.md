@@ -15,25 +15,27 @@ Get the specified Certificate.
 ### List (Default)
 ```
 Get-AzContainerAppConnectedEnvCert -ConnectedEnvironmentName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzContainerAppConnectedEnvCert -ConnectedEnvironmentName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityConnectedEnvironment
 ```
 Get-AzContainerAppConnectedEnvCert -Name <String> -ConnectedEnvironmentInputObject <IAppIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzContainerAppConnectedEnvCert -InputObject <IAppIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,7 +87,6 @@ Get the specified Certificate.
 
 ### -ConnectedEnvironmentInputObject
 Identity Parameter
-To construct, see NOTES section for CONNECTEDENVIRONMENTINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -132,7 +133,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity
@@ -155,6 +155,21 @@ Parameter Sets: Get, GetViaIdentityConnectedEnvironment
 Aliases: CertificateName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

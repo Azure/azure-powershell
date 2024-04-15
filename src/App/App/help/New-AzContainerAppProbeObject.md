@@ -17,7 +17,8 @@ New-AzContainerAppProbeObject [-FailureThreshold <Int32>] [-HttpGetHost <String>
  [-HttpGetHttpHeader <IContainerAppProbeHttpGetHttpHeadersItem[]>] [-HttpGetPath <String>]
  [-HttpGetPort <Int32>] [-HttpGetScheme <String>] [-InitialDelaySecond <Int32>] [-PeriodSecond <Int32>]
  [-SuccessThreshold <Int32>] [-TcpSocketHost <String>] [-TcpSocketPort <Int32>]
- [-TerminationGracePeriodSecond <Int64>] [-TimeoutSecond <Int32>] [-Type <String>] [<CommonParameters>]
+ [-TerminationGracePeriodSecond <Int64>] [-TimeoutSecond <Int32>] [-Type <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +80,6 @@ Accept wildcard characters: False
 ### -HttpGetHttpHeader
 Custom headers to set in the request.
 HTTP allows repeated headers.
-To construct, see NOTES section for HTTPGETHTTPHEADER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeHttpGetHttpHeadersItem[]
@@ -168,6 +168,21 @@ Maximum value is 240.
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

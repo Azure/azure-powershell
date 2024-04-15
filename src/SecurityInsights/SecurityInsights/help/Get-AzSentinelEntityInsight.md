@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SecurityInsights-help.xml
 Module Name: Az.SecurityInsights
 online version: https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentityinsight
 schema: 2.0.0
@@ -14,8 +14,9 @@ Execute Insights for an entity.
 
 ```
 Get-AzSentinelEntityInsight -EntityId <String> -ResourceGroupName <String> -WorkspaceName <String>
- -EndTime <DateTime> -StartTime <DateTime> [-SubscriptionId <String[]>] [-AddDefaultExtendedTimeRange]
- [-InsightQueryId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] -EndTime <DateTime> -StartTime <DateTime> [-AddDefaultExtendedTimeRange]
+ [-InsightQueryId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +26,7 @@ Execute Insights for an entity.
 
 ### Example 1: Get Insights for an Entity for a given time range
 ```powershell
- $startTime = (Get-Date).AddDays(-7).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+$startTime = (Get-Date).AddDays(-7).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
  $endTime = (Get-Date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
  Get-AzSentinelEntityInsight -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId" -EndTime $endTime -StartTime $startTime
 ```
@@ -42,7 +43,7 @@ This command gets insights for an Entity for a given time range.
 
 ### Example 2: Get Insights for an Entity by entity Id for a given time range
 ```powershell
- $startTime = (Get-Date).AddDays(-7).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+$startTime = (Get-Date).AddDays(-7).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
  $endTime = (Get-Date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
  $Entity = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "8d036a2d-f37d-e936-6cca-4e172687cb79"
  $Entity | Get-AzSentinelEntityInsight -EndTime $endTime -StartTime $startTime
@@ -130,6 +131,21 @@ If empty, default value is all insights of this entity
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -241,7 +257,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

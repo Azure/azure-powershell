@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Patches a Container App using JSON Merge Patch</summary>
+    /// <summary>Create a Container App.</summary>
     /// <remarks>
-    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzContainerApp_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Patches a Container App using JSON Merge Patch")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Create a Container App.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.App.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}", ApiVersion = "2023-05-01")]
     public partial class UpdateAzContainerApp_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IContext
@@ -80,6 +80,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        public System.Boolean? EnableSystemAssignedIdentity { get; set; }
+
         /// <summary>The name of the extended location.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The name of the extended location.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
@@ -117,36 +121,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         [global::System.Management.Automation.ValidateNotNull]
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
-
-        /// <summary>
-        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned,UserAssigned")]
-        public string IdentityType { get => _containerAppEnvelopeBody.IdentityType ?? null; set => _containerAppEnvelopeBody.IdentityType = value; }
-
-        /// <summary>
-        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        /// The dictionary values can be empty objects ({}) in requests.
-        /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.App.Models.IUserAssignedIdentities IdentityUserAssignedIdentity { get => _containerAppEnvelopeBody.IdentityUserAssignedIdentity ?? null /* object */; set => _containerAppEnvelopeBody.IdentityUserAssignedIdentity = value; }
 
         /// <summary>Backing field for <see cref="InputObject" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity _inputObject;
@@ -332,6 +306,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume) })]
         public Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume[] TemplateVolume { get => _containerAppEnvelopeBody.TemplateVolume?.ToArray() ?? null /* fixedArrayOf */; set => _containerAppEnvelopeBody.TemplateVolume = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume>(value) : null); }
 
+        /// <summary>
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
+
         /// <summary>Workload profile name to pin for container app execution.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Workload profile name to pin for container app execution.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.App.Category(global::Microsoft.Azure.PowerShell.Cmdlets.App.ParameterCategory.Body)]
@@ -409,7 +391,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -525,6 +524,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
             }
         }
 
+        private void PreProcessManagedIdentityParametersWithGetResult()
+        {
+            bool supportsSystemAssignedIdentity = (true == this.EnableSystemAssignedIdentity || null == this.EnableSystemAssignedIdentity && true == _containerAppEnvelopeBody?.IdentityType?.Contains("SystemAssigned"));
+            bool supportsUserAssignedIdentity = false;
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _containerAppEnvelopeBody.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _containerAppEnvelopeBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.App.Models.UserAssignedIdentity());
+                }
+            }
+            supportsUserAssignedIdentity = true == this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && this.UserAssignedIdentity?.Length > 0 ||
+                    true != this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && true == _containerAppEnvelopeBody.IdentityType?.Contains("UserAssigned");
+            if (!supportsUserAssignedIdentity)
+            {
+                _containerAppEnvelopeBody.IdentityUserAssignedIdentity = null;
+            }
+            // calculate IdentityType
+            if ((supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _containerAppEnvelopeBody.IdentityType = "SystemAssigned,UserAssigned";
+            }
+            else if ((supportsUserAssignedIdentity && !supportsSystemAssignedIdentity))
+            {
+                _containerAppEnvelopeBody.IdentityType = "UserAssigned";
+            }
+            else if ((!supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _containerAppEnvelopeBody.IdentityType = "SystemAssigned";
+            }
+            else
+            {
+                _containerAppEnvelopeBody.IdentityType = "None";
+            }
+        }
+
         /// <summary>Performs execution of the command.</summary>
         protected override void ProcessRecord()
         {
@@ -533,7 +570,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'ContainerAppsUpdate' operation"))
+                if (ShouldProcess($"Call remote 'ContainerAppsCreateOrUpdate' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -599,7 +636,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.ContainerAppsUpdateViaIdentity(InputObject.Id, _containerAppEnvelopeBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeUpdate);
+                        _containerAppEnvelopeBody = await this.Client.ContainerAppsGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
+                        this.PreProcessManagedIdentityParametersWithGetResult();
+                        this.Update_containerAppEnvelopeBody();
+                        await this.Client.ContainerAppsCreateOrUpdateViaIdentity(InputObject.Id, _containerAppEnvelopeBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -616,7 +656,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ContainerAppName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.ContainerAppsUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ContainerAppName ?? null, _containerAppEnvelopeBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeUpdate);
+                        _containerAppEnvelopeBody = await this.Client.ContainerAppsGetWithResult(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ContainerAppName ?? null, this, Pipeline);
+                        this.PreProcessManagedIdentityParametersWithGetResult();
+                        this.Update_containerAppEnvelopeBody();
+                        await this.Client.ContainerAppsCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ContainerAppName ?? null, _containerAppEnvelopeBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -647,6 +690,85 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         public UpdateAzContainerApp_UpdateViaIdentityExpanded()
         {
 
+        }
+
+        private void Update_containerAppEnvelopeBody()
+        {
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
+            {
+                this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.App.Models.ITrackedResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ManagedBy")))
+            {
+                this.ManagedBy = (string)(this.MyInvocation?.BoundParameters["ManagedBy"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ExtendedLocationName")))
+            {
+                this.ExtendedLocationName = (string)(this.MyInvocation?.BoundParameters["ExtendedLocationName"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Configuration")))
+            {
+                this.Configuration = (Microsoft.Azure.PowerShell.Cmdlets.App.Models.IConfiguration)(this.MyInvocation?.BoundParameters["Configuration"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ExtendedLocationType")))
+            {
+                this.ExtendedLocationType = (string)(this.MyInvocation?.BoundParameters["ExtendedLocationType"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("WorkloadProfileName")))
+            {
+                this.WorkloadProfileName = (string)(this.MyInvocation?.BoundParameters["WorkloadProfileName"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("TemplateRevisionSuffix")))
+            {
+                this.TemplateRevisionSuffix = (string)(this.MyInvocation?.BoundParameters["TemplateRevisionSuffix"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("TemplateInitContainer")))
+            {
+                this.TemplateInitContainer = (Microsoft.Azure.PowerShell.Cmdlets.App.Models.IInitContainer[])(this.MyInvocation?.BoundParameters["TemplateInitContainer"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("TemplateContainer")))
+            {
+                this.TemplateContainer = (Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainer[])(this.MyInvocation?.BoundParameters["TemplateContainer"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("TemplateVolume")))
+            {
+                this.TemplateVolume = (Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolume[])(this.MyInvocation?.BoundParameters["TemplateVolume"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("TemplateServiceBind")))
+            {
+                this.TemplateServiceBind = (Microsoft.Azure.PowerShell.Cmdlets.App.Models.IServiceBind[])(this.MyInvocation?.BoundParameters["TemplateServiceBind"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("TemplateTerminationGracePeriodSecond")))
+            {
+                this.TemplateTerminationGracePeriodSecond = (long)(this.MyInvocation?.BoundParameters["TemplateTerminationGracePeriodSecond"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ScaleMinReplica")))
+            {
+                this.ScaleMinReplica = (int)(this.MyInvocation?.BoundParameters["ScaleMinReplica"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ScaleMaxReplica")))
+            {
+                this.ScaleMaxReplica = (int)(this.MyInvocation?.BoundParameters["ScaleMaxReplica"]);
+            }
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("ScaleRule")))
+            {
+                this.ScaleRule = (Microsoft.Azure.PowerShell.Cmdlets.App.Models.IScaleRule[])(this.MyInvocation?.BoundParameters["ScaleRule"]);
+            }
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

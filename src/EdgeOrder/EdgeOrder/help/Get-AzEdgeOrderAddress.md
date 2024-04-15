@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.EdgeOrder-help.xml
 Module Name: Az.EdgeOrder
 online version: https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderaddress
 schema: 2.0.0
@@ -15,19 +15,19 @@ Gets information about the specified address.
 ### List (Default)
 ```
 Get-AzEdgeOrderAddress [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzEdgeOrderAddress -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzEdgeOrderAddress -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Filter <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -78,7 +78,8 @@ Get address details
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -118,6 +119,21 @@ Parameter Sets: Get
 Aliases: AddressName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -166,7 +182,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
