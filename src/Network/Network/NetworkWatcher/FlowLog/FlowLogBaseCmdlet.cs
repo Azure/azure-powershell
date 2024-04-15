@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Commands.Network
                 throw new PSArgumentException(Properties.Resources.InvalidTrafficAnalyticsInterval);
             }
 
-            if (userAssignedIdentityId != null)
+            if (userAssignedIdentityId != null && !string.Equals(userAssignedIdentityId, "none", StringComparison.OrdinalIgnoreCase))
             {
                 ResourceIdentifier userAssignedIdentityInfo = new ResourceIdentifier(userAssignedIdentityId);
                 if (!this.IsValidResourceId(userAssignedIdentityInfo, "Microsoft.ManagedIdentity/userAssignedIdentities"))

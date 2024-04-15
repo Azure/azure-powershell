@@ -650,14 +650,25 @@ namespace Microsoft.Azure.Commands.Network
 
             if (this.UserAssignedIdentityId != null)
             {
-                flowLogParameters.Identity = new ManagedServiceIdentity
+                if (string.Equals(this.UserAssignedIdentityId, "none", StringComparison.OrdinalIgnoreCase))
                 {
-                    Type = MNM.ResourceIdentityType.UserAssigned,
-                    UserAssignedIdentities = new Dictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue>
+                    flowLogParameters.Identity = new ManagedServiceIdentity
+                    {
+                        Type = MNM.ResourceIdentityType.None,
+                        UserAssignedIdentities = null,
+                    };
+                }
+                else
+                {
+                    flowLogParameters.Identity = new ManagedServiceIdentity
+                    {
+                        Type = MNM.ResourceIdentityType.UserAssigned,
+                        UserAssignedIdentities = new Dictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue>
                     {
                         { this.UserAssignedIdentityId, new ManagedServiceIdentityUserAssignedIdentitiesValue() }
                     }
-                };
+                    };
+                }
             }
 
             if (!string.IsNullOrWhiteSpace(this.FormatType) || this.FormatVersion != null)
