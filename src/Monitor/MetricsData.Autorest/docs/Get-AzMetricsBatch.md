@@ -22,9 +22,9 @@ Get-AzMetricsBatch -Endpoint <String> -Name <List<String>> -Namespace <String> [
 
 ### BatchViaIdentityExpanded
 ```
-Get-AzMetricsBatch -Endpoint <String> -InputObject <IMetricIdentity> -Name <List<String>> -Namespace <String>
- [-Aggregation <String>] [-EndTime <String>] [-Filter <String>] [-Interval <String>] [-Orderby <String>]
- [-Rollupby <String>] [-StartTime <String>] [-Top <Int32>] [-ResourceId <String[]>]
+Get-AzMetricsBatch -Endpoint <String> -InputObject <IMetricdataIdentity> -Name <List<String>>
+ -Namespace <String> [-Aggregation <String>] [-EndTime <String>] [-Filter <String>] [-Interval <String>]
+ [-Orderby <String>] [-Rollupby <String>] [-StartTime <String>] [-Top <Int32>] [-ResourceId <String[]>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -665,10 +665,9 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentity
 Parameter Sets: BatchViaIdentityExpanded
 Aliases:
 
@@ -702,7 +701,7 @@ Accept wildcard characters: False
 The names of the metrics (comma separated) to retrieve.
 
 ```yaml
-Type: System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases: MetricName
 
@@ -863,7 +862,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentity
 
 ## OUTPUTS
 

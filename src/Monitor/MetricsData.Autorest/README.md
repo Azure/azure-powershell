@@ -40,6 +40,7 @@ root-module-name: $(prefix).Monitor
 title: Metricdata
 module-version: 0.1.0
 subject-prefix: ""
+namespace: Microsoft.Azure.PowerShell.Cmdlets.Metric
 
 directive:
   - where:
