@@ -7,9 +7,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Extensions;
 
-    public partial class MetricIdentity :
-        Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity,
-        Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentityInternal
+    public partial class MetricdataIdentity :
+        Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentity,
+        Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentityInternal
     {
 
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
@@ -26,13 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Models
         [Microsoft.Azure.PowerShell.Cmdlets.Metric.Origin(Microsoft.Azure.PowerShell.Cmdlets.Metric.PropertyOrigin.Owned)]
         public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
-        /// <summary>Creates an new <see cref="MetricIdentity" /> instance.</summary>
-        public MetricIdentity()
+        /// <summary>Creates an new <see cref="MetricdataIdentity" /> instance.</summary>
+        public MetricdataIdentity()
         {
 
         }
     }
-    public partial interface IMetricIdentity :
+    public partial interface IMetricdataIdentity :
         Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.IJsonSerializable
     {
         /// <summary>Resource identity path</summary>
@@ -59,7 +59,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Models
         string SubscriptionId { get; set; }
 
     }
-    internal partial interface IMetricIdentityInternal
+    internal partial interface IMetricdataIdentityInternal
 
     {
         /// <summary>Resource identity path</summary>

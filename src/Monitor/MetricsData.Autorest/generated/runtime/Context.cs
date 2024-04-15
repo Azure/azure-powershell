@@ -28,6 +28,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime
         System.Threading.CancellationTokenSource CancellationTokenSource { get; set; }
         System.Collections.Generic.IDictionary<String, Object> ExtensibleParameters { get; }
         HttpPipeline Pipeline { get; set; }
-        Microsoft.Azure.PowerShell.Cmdlets.Metric.Metric Client { get; }
+        Microsoft.Azure.PowerShell.Cmdlets.Metric.Metricdata Client { get; }
     }
 }

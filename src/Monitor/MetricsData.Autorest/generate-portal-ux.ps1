@@ -25,7 +25,7 @@ if(-not $NotIsolated) {
   return
 }
 
-$moduleName = 'Az.Metric'
+$moduleName = 'Az.Metricdata'
 $rootModuleName = 'Az.Monitor'
 if ($rootModuleName -eq "")
 {

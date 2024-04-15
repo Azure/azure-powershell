@@ -17,6 +17,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric
     using SignalDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>;
     using EventListenerDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Management.Automation.InvocationInfo, string, string, string, global::System.Exception, global::System.Threading.Tasks.Task>;
     using NextDelegate = global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>;
+    using SanitizerDelegate = global::System.Action<object, string>;
+    using GetTelemetryInfoDelegate = global::System.Func<string, global::System.Collections.Generic.Dictionary<global::System.String,global::System.String>>;
 
     /// <summary>A class that contains the module-common code and data.</summary>
     public partial class Module
@@ -48,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric
         public ArgumentCompleterDelegate ArgumentCompleter { get; set; }
 
         /// <summary>The instance of the Client API</summary>
-        public Microsoft.Azure.PowerShell.Cmdlets.Metric.Metric ClientAPI { get; set; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Metric.Metricdata ClientAPI { get; set; }
 
         /// <summary>A delegate that gets called for each signalled event</summary>
         public EventListenerDelegate EventListener { get; set; }
@@ -59,11 +61,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric
         /// <summary>The delegate to get the telemetry Id.</summary>
         public GetTelemetryIdDelegate GetTelemetryId { get; set; }
 
+        /// <summary>The delegate to get the telemetry info.</summary>
+        public GetTelemetryInfoDelegate GetTelemetryInfo { get; set; }
+
         /// <summary>the singleton of this module class</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.Metric.Module Instance { get { if (_instance == null) { lock (_singletonLock) { if (_instance == null) { _instance = new Module(); }}} return _instance; } }
 
         /// <summary>The Name of this module</summary>
-        public string Name => @"Az.Metric";
+        public string Name => @"Az.Metricdata";
 
         /// <summary>The delegate to call when this module is loaded (supporting a commmon module).</summary>
         public ModuleLoadPipelineDelegate OnModuleLoad { get; set; }
@@ -75,7 +80,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric
         public global::System.String ProfileName { get; set; }
 
         /// <summary>The ResourceID for this module (azure arm).</summary>
-        public string ResourceId => @"Az.Metric";
+        public string ResourceId => @"Az.Metricdata";
+
+        /// <summary>The delegate to call in WriteObject to sanitize the output object.</summary>
+        public SanitizerDelegate SanitizeOutput { get; set; }
 
         /// <summary>The delegate for creating a telemetry.</summary>
         public TelemetryDelegate Telemetry { get; set; }
@@ -139,7 +147,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric
         private Module()
         {
             // constructor
-            ClientAPI = new Microsoft.Azure.PowerShell.Cmdlets.Metric.Metric();
+            ClientAPI = new Microsoft.Azure.PowerShell.Cmdlets.Metric.Metricdata();
             _handler.Proxy = _webProxy;
             _pipeline = new Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.HttpPipeline(new Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.HttpClientFactory(new global::System.Net.Http.HttpClient()));
             _pipelineWithProxy = new Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.HttpPipeline(new Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.HttpClientFactory(new global::System.Net.Http.HttpClient(_handler)));

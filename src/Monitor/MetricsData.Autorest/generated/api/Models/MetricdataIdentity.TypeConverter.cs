@@ -8,9 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Models
     using Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.PowerShell;
 
     /// <summary>
-    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="MetricIdentity" />
+    /// A PowerShell PSTypeConverter to support converting to an instance of <see cref="MetricdataIdentity" />
     /// </summary>
-    public partial class MetricIdentityTypeConverter : global::System.Management.Automation.PSTypeConverter
+    public partial class MetricdataIdentityTypeConverter : global::System.Management.Automation.PSTypeConverter
     {
 
         /// <summary>
@@ -26,13 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Models
         public override bool CanConvertFrom(object sourceValue, global::System.Type destinationType) => CanConvertFrom(sourceValue);
 
         /// <summary>
-        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="MetricIdentity"/>
+        /// Determines if the converter can convert the <paramref name="sourceValue"/> parameter to the <see cref="MetricdataIdentity"/>
         /// type.
         /// </summary>
-        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="MetricIdentity"
+        /// <param name="sourceValue">the <see cref="System.Object" /> instance to check if it can be converted to the <see cref="MetricdataIdentity"
         /// /> type.</param>
         /// <returns>
-        /// <c>true</c> if the instance could be converted to a <see cref="MetricIdentity" /> type, otherwise <c>false</c>
+        /// <c>true</c> if the instance could be converted to a <see cref="MetricdataIdentity" /> type, otherwise <c>false</c>
         /// </returns>
         public static bool CanConvertFrom(dynamic sourceValue)
         {
@@ -100,18 +100,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Models
         /// <param name="formatProvider">not used by this TypeConverter.</param>
         /// <param name="ignoreCase">when set to <c>true</c>, will ignore the case when converting.</param>
         /// <returns>
-        /// an instance of <see cref="MetricIdentity" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="MetricdataIdentity" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
         public override object ConvertFrom(object sourceValue, global::System.Type destinationType, global::System.IFormatProvider formatProvider, bool ignoreCase) => ConvertFrom(sourceValue);
 
         /// <summary>
-        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="MetricIdentity" />
+        /// Converts the <paramref name="sourceValue" /> parameter into an instance of <see cref="MetricdataIdentity" />
         /// </summary>
-        /// <param name="sourceValue">the value to convert into an instance of <see cref="MetricIdentity" />.</param>
+        /// <param name="sourceValue">the value to convert into an instance of <see cref="MetricdataIdentity" />.</param>
         /// <returns>
-        /// an instance of <see cref="MetricIdentity" />, or <c>null</c> if there is no suitable conversion.
+        /// an instance of <see cref="MetricdataIdentity" />, or <c>null</c> if there is no suitable conversion.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity ConvertFrom(dynamic sourceValue)
+        public static Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentity ConvertFrom(dynamic sourceValue)
         {
             if (null == sourceValue)
             {
@@ -121,15 +121,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Models
             // support direct string to id type conversion.
             if (type == typeof(global::System.String))
             {
-                return new MetricIdentity { Id = sourceValue };
+                return new MetricdataIdentity { Id = sourceValue };
             }
-            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity).IsAssignableFrom(type))
+            if (typeof(Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentity).IsAssignableFrom(type))
             {
                 return sourceValue;
             }
             try
             {
-                return MetricIdentity.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
+                return MetricdataIdentity.FromJsonString(typeof(string) == sourceValue.GetType() ? sourceValue : sourceValue.ToJsonString());;
             }
             catch
             {
@@ -137,11 +137,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Models
             }
             if (typeof(global::System.Management.Automation.PSObject).IsAssignableFrom(type))
             {
-                return MetricIdentity.DeserializeFromPSObject(sourceValue);
+                return MetricdataIdentity.DeserializeFromPSObject(sourceValue);
             }
             if (typeof(global::System.Collections.IDictionary).IsAssignableFrom(type))
             {
-                return MetricIdentity.DeserializeFromDictionary(sourceValue);
+                return MetricdataIdentity.DeserializeFromDictionary(sourceValue);
             }
             return null;
         }

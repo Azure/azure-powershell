@@ -28,7 +28,7 @@ function CreateModelCmdlet {
     if ('Az.Monitor'.length -gt 0) {
         $ModuleName = 'Az.Monitor'
     } else {
-        $ModuleName = 'Az.Metric'
+        $ModuleName = 'Az.Metricdata'
     }
     $CsFiles = Get-ChildItem -Path $ModelCsPath -Recurse -Filter *.cs
     $Content = ''

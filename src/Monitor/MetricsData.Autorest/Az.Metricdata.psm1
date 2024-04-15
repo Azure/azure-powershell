@@ -40,44 +40,48 @@
   Write-Information "Loaded Module '$($accountsModule.Name)'"
 
   # Load the private module dll
-  $null = Import-Module -Name (Join-Path $PSScriptRoot './bin/Az.Metric.private.dll')
+  $null = Import-Module -Name (Join-Path $PSScriptRoot './bin/Az.Metricdata.private.dll')
 
   # Get the private module's instance
   $instance = [Microsoft.Azure.PowerShell.Cmdlets.Metric.Module]::Instance
 
   # Ask for the shared functionality table
   $VTable = Register-AzModule
-  
+
   # Tweaks the pipeline on module load
   $instance.OnModuleLoad = $VTable.OnModuleLoad
 
   # Following two delegates are added for telemetry
   $instance.GetTelemetryId = $VTable.GetTelemetryId
   $instance.Telemetry = $VTable.Telemetry
-  
+
+  # Delegate to sanitize the output object
+  $instance.SanitizeOutput = $VTable.SanitizerHandler
+
+  # Delegate to get the telemetry info
+  $instance.GetTelemetryInfo = $VTable.GetTelemetryInfo
 
   # Tweaks the pipeline per call
   $instance.OnNewRequest = $VTable.OnNewRequest
-  
+
   # Gets shared parameter values
   $instance.GetParameterValue = $VTable.GetParameterValue
-  
+
   # Allows shared module to listen to events from this module
   $instance.EventListener = $VTable.EventListener
-  
+
   # Gets shared argument completers
   $instance.ArgumentCompleter = $VTable.ArgumentCompleter
-  
+
   # The name of the currently selected Azure profile
   $instance.ProfileName = $VTable.ProfileName
 
- 
   # Load the custom module
-  $customModulePath = Join-Path $PSScriptRoot './custom/Az.Metric.custom.psm1'
+  $customModulePath = Join-Path $PSScriptRoot './custom/Az.Metricdata.custom.psm1'
   if(Test-Path $customModulePath) {
     $null = Import-Module -Name $customModulePath
   }
-  
+
   # Export nothing to clear implicit exports
   Export-ModuleMember
 
@@ -97,12 +101,12 @@
     # Load the last folder if no profile is selected
     $profileDirectory = $directories | Select-Object -Last 1
   }
-  
+
   if($profileDirectory) {
     Write-Information "Loaded Azure profile '$($profileDirectory.Name)' for module '$($instance.Name)'"
     $exportsPath = $profileDirectory.FullName
   }
-  
+
   if($exportsPath) {
     Get-ChildItem -Path $exportsPath -Recurse -Include '*.ps1' -File | ForEach-Object { . $_.FullName }
     $cmdletNames = Get-ScriptCmdlet -ScriptFolder $exportsPath

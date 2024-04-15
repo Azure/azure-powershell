@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Models
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Extensions;
 
-    public partial class MetricIdentity
+    public partial class MetricdataIdentity
     {
 
         /// <summary>
@@ -53,22 +53,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Models
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentity.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentity.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity FromJson(Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentity FromJson(Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonObject json ? new MetricIdentity(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonObject json ? new MetricdataIdentity(json) : null;
         }
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonObject into a new instance of <see cref="MetricIdentity" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonObject into a new instance of <see cref="MetricdataIdentity" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal MetricIdentity(Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonObject json)
+        internal MetricdataIdentity(Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -82,13 +82,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Models
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="MetricIdentity" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonNode" />.
+        /// Serializes this instance of <see cref="MetricdataIdentity" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonNode" />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="MetricIdentity" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonNode" />.
+        /// a serialized instance of <see cref="MetricdataIdentity" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.SerializationMode serializationMode)
         {

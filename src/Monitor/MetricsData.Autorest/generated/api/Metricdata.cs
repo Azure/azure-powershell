@@ -8,9 +8,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric
     using static Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Extensions;
 
     /// <summary>
-    /// Low-level API implementation for the Metric service.
+    /// Low-level API implementation for the Metricdata service.
     /// </summary>
-    public partial class Metric
+    public partial class Metricdata
     {
 
         /// <summary>Lists the metric values for multiple resources.</summary>

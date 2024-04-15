@@ -40,13 +40,13 @@ if(Test-Path $docsFolder) {
 $null = New-Item -ItemType Directory -Force -Path $docsFolder -ErrorAction SilentlyContinue
 $examplesFolder = Join-Path $PSScriptRoot 'examples'
 
-$modulePsd1 = Get-Item -Path (Join-Path $PSScriptRoot './Az.Metric.psd1')
+$modulePsd1 = Get-Item -Path (Join-Path $PSScriptRoot './Az.Metricdata.psd1')
 $modulePath = $modulePsd1.FullName
 $moduleName = $modulePsd1.BaseName
 
 # Load DLL to use build-time cmdlets
 Import-Module -Name $modulePath
-Import-Module -Name (Join-Path $PSScriptRoot './bin/Az.Metric.private.dll')
+Import-Module -Name (Join-Path $PSScriptRoot './bin/Az.Metricdata.private.dll')
 $instance = [Microsoft.Azure.PowerShell.Cmdlets.Metric.Module]::Instance
 # Module info is shared per profile
 $moduleInfo = Get-Module -Name $moduleName

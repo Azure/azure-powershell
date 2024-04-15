@@ -7,8 +7,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Models
 {
     using Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.PowerShell;
 
-    [System.ComponentModel.TypeConverter(typeof(MetricIdentityTypeConverter))]
-    public partial class MetricIdentity
+    [System.ComponentModel.TypeConverter(typeof(MetricdataIdentityTypeConverter))]
+    public partial class MetricdataIdentity
     {
 
         /// <summary>
@@ -62,44 +62,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Models
         partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.MetricIdentity"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.MetricdataIdentity"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentity" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity DeserializeFromDictionary(global::System.Collections.IDictionary content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentity DeserializeFromDictionary(global::System.Collections.IDictionary content)
         {
-            return new MetricIdentity(content);
+            return new MetricdataIdentity(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.MetricIdentity"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.MetricdataIdentity"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
         /// <returns>
-        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity" />.
+        /// an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentity" />.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
+        public static Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentity DeserializeFromPSObject(global::System.Management.Automation.PSObject content)
         {
-            return new MetricIdentity(content);
+            return new MetricdataIdentity(content);
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="MetricIdentity" />, deserializing the content from a json string.
+        /// Creates a new instance of <see cref="MetricdataIdentity" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="MetricIdentity" /> model class.</returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonNode.Parse(jsonText));
+        /// <returns>an instance of the <see cref="MetricdataIdentity" /> model class.</returns>
+        public static Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Metric.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.MetricIdentity"
+        /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.MetricdataIdentity"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
-        internal MetricIdentity(global::System.Collections.IDictionary content)
+        internal MetricdataIdentity(global::System.Collections.IDictionary content)
         {
             bool returnNow = false;
             BeforeDeserializeDictionary(content, ref returnNow);
@@ -110,21 +110,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Models
             // actually deserialize
             if (content.Contains("SubscriptionId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentityInternal)this).Id, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentityInternal)this).Id, global::System.Convert.ToString);
             }
             AfterDeserializeDictionary(content);
         }
 
         /// <summary>
-        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.MetricIdentity"
+        /// Deserializes a <see cref="global::System.Management.Automation.PSObject" /> into a new instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.MetricdataIdentity"
         /// />.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
-        internal MetricIdentity(global::System.Management.Automation.PSObject content)
+        internal MetricdataIdentity(global::System.Management.Automation.PSObject content)
         {
             bool returnNow = false;
             BeforeDeserializePSObject(content, ref returnNow);
@@ -135,11 +135,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Models
             // actually deserialize
             if (content.Contains("SubscriptionId"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentityInternal)this).Id, global::System.Convert.ToString);
+                ((Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricdataIdentityInternal)this).Id, global::System.Convert.ToString);
             }
             AfterDeserializePSObject(content);
         }
@@ -161,8 +161,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Metric.Models
             return ToJsonString();
         }
     }
-    [System.ComponentModel.TypeConverter(typeof(MetricIdentityTypeConverter))]
-    public partial interface IMetricIdentity
+    [System.ComponentModel.TypeConverter(typeof(MetricdataIdentityTypeConverter))]
+    public partial interface IMetricdataIdentity
 
     {
 

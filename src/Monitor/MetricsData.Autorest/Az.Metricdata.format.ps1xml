@@ -126,9 +126,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.MetricIdentity</Name>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.MetricdataIdentity</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.MetricIdentity#Multiple</TypeName>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.MetricdataIdentity#Multiple</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
