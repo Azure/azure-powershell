@@ -8,6 +8,7 @@ $rootToParentMap = @{
 }
 $generatedFolderPath = Join-Path $RepoRoot 'generated'
 $sourceFolderPath = Join-Path $RepoRoot 'src'
+$toolsFolderPath = Join-Path $RepoRoot 'tools'
 
 # create $RepoRoot/generated
 New-Item -Path $generatedFolderPath -ItemType Directory -Force
@@ -63,3 +64,17 @@ $readmeAzurePath = Join-Path $sourceFolderPath 'readme.azure.md'
 $readmeAzureNoProfilePath = Join-Path $sourceFolderPath 'readme.azure.noprofile.md'
 (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/src/readme.azure.md").Content > $readmeAzurePath
 (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/src/readme.azure.noprofile.md").Content > $readmeAzureNoProfilePath
+
+#copy other scripts from eng/archive-test to current branch
+$ciFilterTaskPath = Join-Path $toolsFolderPath 'BuildPackagesTask' 'Microsoft.Azure.Build.Tasks' 'CIFilterTask.cs'
+(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/BuildPackagesTask/Microsoft.Azure.Build.Tasks/CIFilterTask.cs").Content > $ciFilterTaskPath
+$filesChangedTaskPath = Join-Path $toolsFolderPath 'BuildPackagesTask' 'Microsoft.Azure.Build.Tasks' 'FilesChangedTask.cs'
+(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/BuildPackagesTask/Microsoft.Azure.Build.Tasks/FilesChangedTask.cs").Content > $filesChangedTaskPath
+$buildModulesPath = Join-Path $toolsFolderPath 'BuildScripts' 'BuildModules.ps1'
+(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/BuildScripts/BuildModules.ps1").Content > $buildModulesPath
+$createFilterMappingsPath = Join-Path $toolsFolderPath 'CreateFilterMappings.ps1'
+(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/CreateFilterMappings.ps1").Content > $createFilterMappingsPath
+$executeCIStepPath = Join-Path $toolsFolderPath 'ExecuteCIStep.ps1'
+(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/ExecuteCIStep.ps1").Content > $executeCIStepPath
+$prepareAutorestModulePath = Join-Path $toolsFolderPath 'PrepareAutorestModule.ps1'
+(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/PrepareAutorestModule.ps1").Content > $prepareAutorestModulePath
