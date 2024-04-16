@@ -17,21 +17,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzStandbyContainerPool'))
 Describe 'AzStandbyContainerPool' {
     It 'CreateExpanded' {
         {
-            $standbyvmpool = New-AzStandbyContainerPool -Name testCGPool -ResourceGroupName test-rg -SubscriptionId $env.SubscriptionId -Location eastus -MaxReadyCapacity 1 -RefillPolicy always -ContainerProfileId "/subscriptions/$($env.SubscriptionId)/resourcegroups/test-rg/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG" -ProfileRevision 1 -SubnetIds @{id="/subscriptions/$($env.SubscriptionId)/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-rg-vnet/subnets/default"}
+            $standbyvmpool = New-AzStandbyContainerGroupPool -Name testCGPool -ResourceGroupName test-rg -SubscriptionId $env.SubscriptionId -Location eastus -MaxReadyCapacity 1 -RefillPolicy always -ContainerProfileId "/subscriptions/$($env.SubscriptionId)/resourcegroups/test-rg/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG" -ProfileRevision 1 -SubnetId @{id="/subscriptions/$($env.SubscriptionId)/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-rg-vnet/subnets/default"}
             $standbyvmpool.Name | Should -Be testCGPool
         } | Should -Not -Throw
     }
 
     It 'Get' {
         {
-            $standbyvmpool = Get-AzStandbyContainerPool -Name testCGPool -ResourceGroupName test-rg -SubscriptionId $env.SubscriptionId
+            $standbyvmpool = Get-AzStandbyContainerGroupPool -Name testCGPool -ResourceGroupName test-rg -SubscriptionId $env.SubscriptionId
             $standbyvmpool.Name | Should -Be testCGPool
         } | Should -Not -Throw
     }
 
     It 'Delete' {
         {
-            Remove-AzStandbyContainerPool -Name testCGPool -ResourceGroupName test-rg -SubscriptionId $env.SubscriptionId -NoWait
+            Remove-AzStandbyContainerGroupPool -Name testCGPool -ResourceGroupName test-rg -SubscriptionId $env.SubscriptionId -NoWait
         } | Should -Not -Throw
     }
 }

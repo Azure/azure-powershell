@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.StandbyPool
-online version: https://learn.microsoft.com/powershell/module/az.standbypool/update-azstandbycontainerpool
+online version: https://learn.microsoft.com/powershell/module/az.standbypool/update-azstandbycontainergrouppool
 schema: 2.0.0
 ---
 
-# Update-AzStandbyContainerPool
+# Update-AzStandbyContainerGroupPool
 
 ## SYNOPSIS
 Update a StandbyContainerGroupPoolResource
@@ -14,28 +14,28 @@ Update a StandbyContainerGroupPoolResource
 
 ### UpdateExpanded (Default)
 ```
-Update-AzStandbyContainerPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ContainerProfileId <String>] [-MaxReadyCapacity <Int64>] [-ProfileRevision <Int64>]
- [-RefillPolicy <String>] [-SubnetIds <ISubnet[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-RefillPolicy <String>] [-SubnetId <ISubnet[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzStandbyContainerPool -InputObject <IStandbyPoolIdentity> [-ContainerProfileId <String>]
- [-MaxReadyCapacity <Int64>] [-ProfileRevision <Int64>] [-RefillPolicy <String>] [-SubnetIds <ISubnet[]>]
+Update-AzStandbyContainerGroupPool -InputObject <IStandbyPoolIdentity> [-ContainerProfileId <String>]
+ [-MaxReadyCapacity <Int64>] [-ProfileRevision <Int64>] [-RefillPolicy <String>] [-SubnetId <ISubnet[]>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
-Update-AzStandbyContainerPool -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+Update-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
-Update-AzStandbyContainerPool -Name <String> -ResourceGroupName <String> -JsonString <String>
+Update-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -44,27 +44,42 @@ Update a StandbyContainerGroupPoolResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a standby container pool's max ready capacity to 5
 ```powershell
-{{ Add code here }}
+Update-AzStandbyContainerGroupPool `
+-Name testPool `
+-SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `
+-ResourceGroupName test-standbypool `
+-Location eastus `
+-MaxReadyCapacity 5
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+ContainerGroupProfileId           : /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourcegroups/test-standbypool/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG
+ContainerGroupProfileRevision     : 1
+ContainerGroupPropertySubnetId    : {{
+                                      "id": "/subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"
+                                    }}
+ElasticityProfileMaxReadyCapacity : 5
+ElasticityProfileRefillPolicy     : always
+Id                                : /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testPool
+Location                          : eastus
+Name                              : testPool
+ProvisioningState                 : Succeeded
+ResourceGroupName                 : test-standbypool
+SystemDataCreatedAt               : 4/10/2024 7:09:36 PM
+SystemDataCreatedBy               : dev@microsoft.com
+SystemDataCreatedByType           : User
+SystemDataLastModifiedAt          : 4/10/2024 7:09:36 PM
+SystemDataLastModifiedBy          : dev@microsoft.com
+SystemDataLastModifiedByType      : User
+Tag                               : {
+                                    }
+Type                              : microsoft.standbypool/standbycontainergrouppools
 ```
 
-{{ Add description here }}
+The above command updated a standby container pool's max ready capacity to 5.
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -220,7 +235,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubnetIds
+### -SubnetId
 Specifies subnet Ids for container group.
 
 ```yaml

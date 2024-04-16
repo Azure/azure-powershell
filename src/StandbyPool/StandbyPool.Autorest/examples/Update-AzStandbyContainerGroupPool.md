@@ -1,15 +1,11 @@
-### Example 1: Create a standby container pool
+### Example 1: Update a standby container pool's max ready capacity to 5
 ```powershell
-New-AzStandbyContainerPool `
+Update-AzStandbyContainerGroupPool `
 -Name testPool `
 -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `
 -ResourceGroupName test-standbypool `
 -Location eastus `
--MaxReadyCapacity 1 `
--RefillPolicy always `
--ContainerProfileId /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourcegroups/test-standbypool/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG `
--ProfileRevision 1 `
--SubnetIds @{id="/subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"} `
+-MaxReadyCapacity 5
 ```
 
 ```output
@@ -18,7 +14,7 @@ ContainerGroupProfileRevision     : 1
 ContainerGroupPropertySubnetId    : {{
                                       "id": "/subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"
                                     }}
-ElasticityProfileMaxReadyCapacity : 1
+ElasticityProfileMaxReadyCapacity : 5
 ElasticityProfileRefillPolicy     : always
 Id                                : /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.StandbyPool/standbyContainerGroupPools/testPool
 Location                          : eastus
@@ -36,4 +32,4 @@ Tag                               : {
 Type                              : microsoft.standbypool/standbycontainergrouppools
 ```
 
-The above command created a standby container pool.
+The above command updated a standby container pool's max ready capacity to 5.

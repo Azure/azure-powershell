@@ -63,58 +63,51 @@ directive:
       subject: StandbyVirtualMachinePool
     set:
       subject: StandbyVMPool
-
-  # Rename StandbyContainerGroupPool to StandbyContainerPool
-  - where:
-      verb: Get|New|Update|Remove
-      subject: StandbyContainerGroupPool
-    set:
-      subject: StandbyContainerPool
   
   # Rename StandbyVirtualMachine to StandbyVM
   - where:
       verb: Get
       subject: StandbyVirtualMachine
     set:
-      subject: StandbyVM
+      subject: StandbyVMPoolVM
 
-  # Rename standby container group pool parameter
+  # Rename standby container group pool parameters
   - where:
       verb: New|Update
-      subject: StandbyContainerPool
+      subject: StandbyContainerGroupPool
       parameter-name: ContainerGroupProfileId
     set:
       parameter-name: ContainerProfileId
 
   - where:
       verb: New|Update
-      subject: StandbyContainerPool
+      subject: StandbyContainerGroupPool
       parameter-name: ContainerGroupProfileRevision
     set:
       parameter-name: ProfileRevision
 
   - where:
       verb: New|Update
-      subject: StandbyContainerPool
+      subject: StandbyContainerGroupPool
       parameter-name: ElasticityProfileMaxReadyCapacity
     set:
       parameter-name: MaxReadyCapacity
 
   - where:
       verb: New|Update
-      subject: StandbyContainerPool
+      subject: StandbyContainerGroupPool
       parameter-name: ElasticityProfileRefillPolicy
     set:
       parameter-name: RefillPolicy
   
   - where:
       verb: New|Update
-      subject: StandbyContainerPool
+      subject: StandbyContainerGroupPool
       parameter-name: ContainerGroupPropertySubnetId
     set:
-      parameter-name: SubnetIds
+      parameter-name: SubnetId
 
-  # Rename standby virtual machine pool parameter
+  # Rename standby virtual machine pool parameters
   - where:
       verb: New|Update
       subject: StandbyVMPool
@@ -135,6 +128,21 @@ directive:
       parameter-name: VirtualMachineState
     set:
       parameter-name: VMState
+
+# Rename standby virtual machine parameters
+  - where:
+      verb: Get
+      subject: StandbyVMPoolVM
+      parameter-name: Name
+    set:
+      parameter-name: VMName
+      
+  - where:
+      verb: Get
+      subject: StandbyVMPoolVM
+      parameter-name: PoolName
+    set:
+      parameter-name: Name
 
   # Remove the set-* cmdlet
   - where:

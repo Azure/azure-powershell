@@ -1,6 +1,6 @@
 ### Example 1: Delete a standby container pool
 ```powershell
-Remove-AzStandbyContainerPool `
+Remove-AzStandbyContainerGroupPool `
 -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `
 -Name testPool `
 -ResourceGroupName test-standbypool `

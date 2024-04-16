@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.StandbyPool.private.dll'
   FormatsToProcess = './Az.StandbyPool.format.ps1xml'
-  FunctionsToExport = 'Get-AzStandbyContainerPool', 'Get-AzStandbyVM', 'Get-AzStandbyVMPool', 'New-AzStandbyContainerPool', 'New-AzStandbyVMPool', 'Remove-AzStandbyContainerPool', 'Remove-AzStandbyVMPool', 'Update-AzStandbyContainerPool', 'Update-AzStandbyVMPool'
+  FunctionsToExport = 'Get-AzStandbyContainerGroupPool', 'Get-AzStandbyVMPool', 'Get-AzStandbyVMPoolVM', 'New-AzStandbyContainerGroupPool', 'New-AzStandbyVMPool', 'Remove-AzStandbyContainerGroupPool', 'Remove-AzStandbyVMPool', 'Update-AzStandbyContainerGroupPool', 'Update-AzStandbyVMPool'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'StandbyPool'

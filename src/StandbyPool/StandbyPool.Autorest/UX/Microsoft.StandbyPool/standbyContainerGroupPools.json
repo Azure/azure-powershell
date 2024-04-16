@@ -6,12 +6,12 @@
   },
   "commands": [
     {
-      "name": "Get-AzStandbyContainerPool",
+      "name": "Get-AzStandbyContainerGroupPool",
       "description": "Get a StandbyContainerGroupPoolResource",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbycontainerpool"
+          "url": "https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbycontainergrouppool"
         },
         "parameterSets": [
           {
@@ -44,12 +44,12 @@
       ]
     },
     {
-      "name": "Remove-AzStandbyContainerPool",
+      "name": "Remove-AzStandbyContainerGroupPool",
       "description": "Delete a StandbyContainerGroupPoolResource",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.standbypool/remove-azstandbycontainerpool"
+          "url": "https://learn.microsoft.com/powershell/module/az.standbypool/remove-azstandbycontainergrouppool"
         },
         "parameterSets": [
           {

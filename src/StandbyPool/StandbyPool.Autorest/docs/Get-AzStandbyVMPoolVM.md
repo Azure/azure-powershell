@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.StandbyPool
-online version: https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbyvm
+online version: https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbyvmpoolvm
 schema: 2.0.0
 ---
 
-# Get-AzStandbyVM
+# Get-AzStandbyVMPoolVM
 
 ## SYNOPSIS
 Get a StandbyVirtualMachineResource
@@ -14,24 +14,24 @@ Get a StandbyVirtualMachineResource
 
 ### List (Default)
 ```
-Get-AzStandbyVM -PoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStandbyVMPoolVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzStandbyVM -Name <String> -PoolName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStandbyVMPoolVM -Name <String> -ResourceGroupName <String> -VMName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzStandbyVM -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStandbyVMPoolVM -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityStandbyVirtualMachinePool
 ```
-Get-AzStandbyVM -Name <String> -StandbyVirtualMachinePoolInputObject <IStandbyPoolIdentity>
+Get-AzStandbyVMPoolVM -StandbyVirtualMachinePoolInputObject <IStandbyPoolIdentity> -VMName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -40,27 +40,16 @@ Get a StandbyVirtualMachineResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List virtual machines in standby virtual machine pool
 ```powershell
-{{ Add code here }}
+Get-AzStandbyVMPoolVM -Name testPool -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b -ResourceGroupName test-standbypool 
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+None
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Above command is listing virtual machines in standby virtual machine pool
 
 ## PARAMETERS
 
@@ -96,21 +85,6 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the standby virtual machine
-
-```yaml
-Type: System.String
-Parameter Sets: Get, GetViaIdentityStandbyVirtualMachinePool
-Aliases: StandbyVirtualMachineName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PoolName
 Name of the standby virtual machine pool
 
 ```yaml
@@ -168,6 +142,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VMName
+Name of the standby virtual machine
+
+```yaml
+Type: System.String
+Parameter Sets: Get, GetViaIdentityStandbyVirtualMachinePool
+Aliases: StandbyVirtualMachineName
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

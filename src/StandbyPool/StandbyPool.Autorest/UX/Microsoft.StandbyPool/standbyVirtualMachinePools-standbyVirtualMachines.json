@@ -6,20 +6,20 @@
   },
   "commands": [
     {
-      "name": "Get-AzStandbyVM",
+      "name": "Get-AzStandbyVMPoolVM",
       "description": "Get a StandbyVirtualMachineResource",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyVirtualMachinePools/{standbyVirtualMachinePoolName}/standbyVirtualMachines/{standbyVirtualMachineName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbyvm"
+          "url": "https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbyvmpoolvm"
         },
         "parameterSets": [
           {
             "parameters": [
               "-Name <String>",
-              "-PoolName <String>",
               "-ResourceGroupName <String>",
-              "[-SubscriptionId <String[]>]"
+              "[-SubscriptionId <String[]>]",
+              "-VMName <String>"
             ]
           }
         ]
@@ -30,10 +30,6 @@
           "parameters": [
             {
               "name": "-Name",
-              "value": "[Path.standbyVirtualMachineName]"
-            },
-            {
-              "name": "-PoolName",
               "value": "[Path.standbyVirtualMachinePoolName]"
             },
             {
@@ -43,6 +39,10 @@
             {
               "name": "-SubscriptionId",
               "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VMName",
+              "value": "[Path.standbyVirtualMachineName]"
             }
           ]
         }

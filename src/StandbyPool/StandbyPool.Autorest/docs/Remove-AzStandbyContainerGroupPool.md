@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.StandbyPool
-online version: https://learn.microsoft.com/powershell/module/az.standbypool/remove-azstandbycontainerpool
+online version: https://learn.microsoft.com/powershell/module/az.standbypool/remove-azstandbycontainergrouppool
 schema: 2.0.0
 ---
 
-# Remove-AzStandbyContainerPool
+# Remove-AzStandbyContainerGroupPool
 
 ## SYNOPSIS
 Delete a StandbyContainerGroupPoolResource
@@ -14,13 +14,13 @@ Delete a StandbyContainerGroupPoolResource
 
 ### Delete (Default)
 ```
-Remove-AzStandbyContainerPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzStandbyContainerPool -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzStandbyContainerGroupPool -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ Delete a StandbyContainerGroupPoolResource
 
 ### Example 1: Delete a standby container pool
 ```powershell
-Remove-AzStandbyContainerPool `
+Remove-AzStandbyContainerGroupPool `
 -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `
 -Name testPool `
 -ResourceGroupName test-standbypool `

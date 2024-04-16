@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.StandbyPool
-online version: https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbycontainerpool
+online version: https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbycontainergrouppool
 schema: 2.0.0
 ---
 
-# Get-AzStandbyContainerPool
+# Get-AzStandbyContainerGroupPool
 
 ## SYNOPSIS
 Get a StandbyContainerGroupPoolResource
@@ -14,24 +14,24 @@ Get a StandbyContainerGroupPoolResource
 
 ### List (Default)
 ```
-Get-AzStandbyContainerPool [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStandbyContainerGroupPool [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzStandbyContainerPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzStandbyContainerPool -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>]
+Get-AzStandbyContainerGroupPool -InputObject <IStandbyPoolIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzStandbyContainerPool -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzStandbyContainerGroupPool -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ Get a StandbyContainerGroupPoolResource
 
 ### Example 1: Get a standby container pool
 ```powershell
-Get-AzStandbyContainerPool `
+Get-AzStandbyContainerGroupPool `
 -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `
 -Name testPool `
 -ResourceGroupName test-standbypool
@@ -73,17 +73,6 @@ Type                              : microsoft.standbypool/standbycontainergroupp
 ```
 
 Above command is getting a standby container pool.
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

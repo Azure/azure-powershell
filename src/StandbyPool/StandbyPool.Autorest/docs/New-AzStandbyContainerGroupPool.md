@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.StandbyPool
-online version: https://learn.microsoft.com/powershell/module/az.standbypool/new-azstandbycontainerpool
+online version: https://learn.microsoft.com/powershell/module/az.standbypool/new-azstandbycontainergrouppool
 schema: 2.0.0
 ---
 
-# New-AzStandbyContainerPool
+# New-AzStandbyContainerGroupPool
 
 ## SYNOPSIS
 Create a StandbyContainerGroupPoolResource
@@ -14,22 +14,22 @@ Create a StandbyContainerGroupPoolResource
 
 ### CreateExpanded (Default)
 ```
-New-AzStandbyContainerPool -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ContainerProfileId <String>] [-MaxReadyCapacity <Int64>]
- [-ProfileRevision <Int64>] [-RefillPolicy <String>] [-SubnetIds <ISubnet[]>] [-Tag <Hashtable>]
+ [-ProfileRevision <Int64>] [-RefillPolicy <String>] [-SubnetId <ISubnet[]>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
-New-AzStandbyContainerPool -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+New-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
-New-AzStandbyContainerPool -Name <String> -ResourceGroupName <String> -JsonString <String>
+New-AzStandbyContainerGroupPool -Name <String> -ResourceGroupName <String> -JsonString <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -41,7 +41,7 @@ Create a StandbyContainerGroupPoolResource
 
 ### Example 1: Create a standby container pool
 ```powershell
-New-AzStandbyContainerPool `
+New-AzStandbyContainerGroupPool `
 -Name testPool `
 -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `
 -ResourceGroupName test-standbypool `
@@ -50,7 +50,7 @@ New-AzStandbyContainerPool `
 -RefillPolicy always `
 -ContainerProfileId /subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourcegroups/test-standbypool/providers/Microsoft.ContainerInstance/containerGroupProfiles/testCG `
 -ProfileRevision 1 `
--SubnetIds @{id="/subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"} `
+-SubnetId @{id="/subscriptions/f8da6e30-a9d8-48ab-b05c-3f7fe482e13b/resourceGroups/test-standbypool/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/default"} `
 ```
 
 ```output
@@ -263,7 +263,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubnetIds
+### -SubnetId
 Specifies subnet Ids for container group.
 
 ```yaml

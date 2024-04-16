@@ -11,28 +11,28 @@ Locale: en-US
 Microsoft Azure PowerShell: StandbyPool cmdlets
 
 ## Az.StandbyPool Cmdlets
-### [Get-AzStandbyContainerPool](Get-AzStandbyContainerPool.md)
+### [Get-AzStandbyContainerGroupPool](Get-AzStandbyContainerGroupPool.md)
 Get a StandbyContainerGroupPoolResource
-
-### [Get-AzStandbyVM](Get-AzStandbyVM.md)
-Get a StandbyVirtualMachineResource
 
 ### [Get-AzStandbyVMPool](Get-AzStandbyVMPool.md)
 Get a StandbyVirtualMachinePoolResource
 
-### [New-AzStandbyContainerPool](New-AzStandbyContainerPool.md)
+### [Get-AzStandbyVMPoolVM](Get-AzStandbyVMPoolVM.md)
+Get a StandbyVirtualMachineResource
+
+### [New-AzStandbyContainerGroupPool](New-AzStandbyContainerGroupPool.md)
 Create a StandbyContainerGroupPoolResource
 
 ### [New-AzStandbyVMPool](New-AzStandbyVMPool.md)
 Create a StandbyVirtualMachinePoolResource
 
-### [Remove-AzStandbyContainerPool](Remove-AzStandbyContainerPool.md)
+### [Remove-AzStandbyContainerGroupPool](Remove-AzStandbyContainerGroupPool.md)
 Delete a StandbyContainerGroupPoolResource
 
 ### [Remove-AzStandbyVMPool](Remove-AzStandbyVMPool.md)
 Delete a StandbyVirtualMachinePoolResource
 
-### [Update-AzStandbyContainerPool](Update-AzStandbyContainerPool.md)
+### [Update-AzStandbyContainerGroupPool](Update-AzStandbyContainerGroupPool.md)
 Update a StandbyContainerGroupPoolResource
 
 ### [Update-AzStandbyVMPool](Update-AzStandbyVMPool.md)

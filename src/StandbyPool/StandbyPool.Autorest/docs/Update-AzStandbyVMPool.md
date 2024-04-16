@@ -73,7 +73,6 @@ VirtualMachineState               : Running
 
 Above command is updating standby virtual machine pool's max ready capacity.
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
