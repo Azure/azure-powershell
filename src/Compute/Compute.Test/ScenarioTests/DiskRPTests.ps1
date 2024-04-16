@@ -1853,7 +1853,7 @@ function Test-DiskGrantAccessGetSASWithTL
 
         $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
         
-        $grantAccess = Grant-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access 'Read' -DurationInSecond 60 -SecureVmGuestStateSas;
+        $grantAccess = Grant-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access 'Read' -DurationInSecond 60 -SecureVMGuestStateSAS;
         Assert-NotNull $grantAccess.securityDataAccessSAS;
         Assert-NotNull $grantAccess.AccessSAS;
 
