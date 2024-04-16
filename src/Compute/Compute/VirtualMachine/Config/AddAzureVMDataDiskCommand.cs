@@ -99,6 +99,7 @@ namespace Microsoft.Azure.Commands.Compute
             Position = 6,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = HelpMessages.VMDataDiskCreateOption)]
+        [PSArgumentCompleter("Attach", "Empty", "FromImage", "Copy", "Restore")]
         public string CreateOption { get; set; }
 
         [Alias("SourceImage")]
@@ -183,7 +184,7 @@ namespace Microsoft.Azure.Commands.Compute
                         Uri = this.SourceImageUri
                     },
                     DeleteOption = this.DeleteOption,
-                    SourceResourceId = this.SourceResourceId
+                    SourceResource = new ApiEntityReference(this.SourceResourceId)
                 });
 
                 this.VM.StorageProfile = storageProfile;
@@ -222,7 +223,7 @@ namespace Microsoft.Azure.Commands.Compute
                     ManagedDisk = SetManagedDisk(this.ManagedDiskId, this.DiskEncryptionSetId, this.StorageAccountType),
                     WriteAcceleratorEnabled = this.WriteAccelerator.IsPresent,
                     DeleteOption = this.DeleteOption,
-                    SourceResourceId = this.SourceResourceId
+                    SourceResource = new ApiEntityReference(this.SourceResourceId)
                 });
 
                 this.VM.StorageProfile = storageProfile;
