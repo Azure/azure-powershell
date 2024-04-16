@@ -93,7 +93,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Parameter(
             ParameterSetName = "DefaultParameter",
             HelpMessage = "Set this flag to true to get additional SAS for VM guest state",
-            Mandatory = false)]
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
         public SwitchParameter SecureVmGuestStateSas { get; set; }
     }
 }
