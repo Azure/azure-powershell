@@ -63,6 +63,7 @@ Service Bus                           | `Az.ServiceBus`                         
 Service Fabric                        | `Az.ServiceFabric`                      | [![ServiceFabric]][ServiceFabricGallery]
 SignalR                               | `Az.SignalR`                            | [![SignalR]][SignalRGallery]
 SQL                                   | `Az.Sql`                                | [![Sql]][SqlGallery]
+Standby Pool                          | `Az.StandbyPool`                        | [![StandbyPool]][StandbyPoolGallery]
 Storage                               | `Az.Storage`                            | [![Storage]][StorageGallery]
 File Sync                             | `Az.StorageSync`                        | [![StorageSync]][StorageSyncGallery]
 Stream Analytics                      | `Az.StreamAnalytics`                    | [![StreamAnalytics]][StreamAnalyticsGallery]
@@ -127,6 +128,7 @@ Web App Service                       | `Az.Websites`                           
 [ServiceFabric]:              https://img.shields.io/powershellgallery/v/Az.ServiceFabric.svg?style=flat-square&label=Az.ServiceFabric
 [SignalR]:                    https://img.shields.io/powershellgallery/v/Az.SignalR.svg?style=flat-square&label=Az.SignalR
 [Sql]:                        https://img.shields.io/powershellgallery/v/Az.Sql.svg?style=flat-square&label=Az.Sql
+[StandbyPool]:                https://img.shields.io/powershellgallery/v/Az.StandbyPool.svg?style=flat-square&label=Az.StandbyPool
 [Storage]:                    https://img.shields.io/powershellgallery/v/Az.Storage.svg?style=flat-square&label=Az.Storage
 [StorageSync]:                https://img.shields.io/powershellgallery/v/Az.StorageSync.svg?style=flat-square&label=Az.StorageSync
 [StreamAnalytics]:            https://img.shields.io/powershellgallery/v/Az.StreamAnalytics.svg?style=flat-square&label=Az.StreamAnalytics
@@ -189,6 +191,7 @@ Web App Service                       | `Az.Websites`                           
 [ServiceFabricGallery]:              https://www.powershellgallery.com/packages/Az.ServiceFabric/
 [SignalRGallery]:                    https://www.powershellgallery.com/packages/Az.SignalR/
 [SqlGallery]:                        https://www.powershellgallery.com/packages/Az.Sql/
+[StandbyPoolGallery]:                https://www.powershellgallery.com/packages/Az.StandbyPool/
 [StorageGallery]:                    https://www.powershellgallery.com/packages/Az.Storage/
 [StorageSyncGallery]:                https://www.powershellgallery.com/packages/Az.StorageSync/
 [StreamAnalyticsGallery]:            https://www.powershellgallery.com/packages/Az.StreamAnalytics/
