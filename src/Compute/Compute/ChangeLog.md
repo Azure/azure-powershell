@@ -20,6 +20,13 @@
 
 -->
 ## Upcoming Release
+* Enhanced `Add-AzVMDataDisk` cmdlet with new parameters and functionalities.
+    - Added new parameter `-SourceResourceId` of type String (ARM ID of disk/snapshot/disk restore point).
+    - Enhanced existing parameter `-createOption` by adding new possible enum values: `Copy` and `Restore`.
+    - The new disk will now be copied/restored from the passed source resource ID.
+    - Affected parameter sets: `createOption`, `SourceResourceId`.
+    - Sample syntax: `PS C:\> Add-AzVMDataDisk -VM $VirtualMachine -Name 'DataDisk1' -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -CreateOption Copy -SourceResourceId "ARM ID of disk/snapshot"`
+    - API tests for this feature can be found [here](https://github.com/Azure/azure-rest-api-specs/pull/27776).
 
 ## Version 7.2.0
 * Added parameters `-scriptUriManagedIdentity`, `-outputBlobManagedIdentity`, `-errorBlobMangedIdentity`, and `-TreatFailureAsDeploymentFailure` to cmdlets `Set-AzVmRunCommand` and `Set-AzVmssRunCommand`. 
