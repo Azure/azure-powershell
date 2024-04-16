@@ -122,7 +122,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SecureVmGuestStateSas
+### -SecureVMGuestStateSAS
 Set this flag to true to get additional SAS for VM guest state
 
 ```yaml
