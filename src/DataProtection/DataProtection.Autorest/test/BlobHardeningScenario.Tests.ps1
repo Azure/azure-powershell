@@ -20,10 +20,11 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly' {
         $storageAccountName = $env.TestBlobHardeningScenario.StorageAccountName
         $targetStorageAccId = $env.TestBlobHardeningScenario.TargetStorageAccId
         $targetStorageAccountRGName = $env.TestBlobHardeningScenario.TargetStorageAccountRGName
+        $targetStorageAccountName = $env.TestBlobHardeningScenario.TargetStorageAccountName
         
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
 
-        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -DatasourceType AzureBlob | Where-Object { $_.Name -match $storageAcountName }
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
 
         $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
 
@@ -50,7 +51,12 @@ Describe 'BlobHardeningScenario' -Tag 'LiveOnly' {
 
         $restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $restoreReq
 
-        $restoreJob.Status -in "InProgress", "Completed" | Should be $true
+        $jobid = $restoreJob.JobId.Split("/")[-1]
+        ($jobid -ne $null) | Should be $true
+
+        $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
+
+        ($currentjob.Status -in "InProgress", "Completed") | Should be $true
     }
 
     It 'ConfigureBackup' -skip {
