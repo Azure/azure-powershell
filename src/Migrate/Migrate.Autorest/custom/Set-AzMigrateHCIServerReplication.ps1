@@ -173,8 +173,11 @@ function Set-AzMigrateHCIServerReplication {
         $MachineIdArray = $customProperties.FabricDiscoveryMachineId.Split("/")
         $SiteType = $MachineIdArray[7]
        
-        if (!$protectedItemProperties.AllowedJob.Contains('PlannedFailover')) {
-            throw "Set server replication is not allowed for this item '$TargetObjectID'."
+        # No "DisableProtection" means IR has not been initiated
+        # "CommitFailover" means migration has been completed
+        if (!$protectedItemProperties.AllowedJob.Contains('DisableProtection') -or
+            $protectedItemProperties.AllowedJob.Contains('CommitFailover')) {
+            throw "Set server replication is not allowed for this item '$TargetObjectID' at the moment. Please check its status and try again later."
         }
 
         if ($HasTargetVMName) {
