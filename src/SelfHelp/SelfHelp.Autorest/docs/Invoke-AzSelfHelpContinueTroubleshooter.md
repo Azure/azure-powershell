@@ -49,7 +49,7 @@ This API is used after the Troubleshooter has been created using the Create API.
 
 ## EXAMPLES
 
-### Example 1: Continue to next troubleshooter step
+### Example 1: Continue Troubleshooter to next step
 ```powershell
 $continueRequest = [ordered]@{ 
     "StepId" ="15ebac6c-96a1-4a67-ae9d-b06011d232ff" 
@@ -61,8 +61,10 @@ Invoke-AzSelfHelpContinueTroubleshooter  -Scope "/subscriptions/6bded6d5-a6af-43
 ```output
 [No Response Body If Success - HttpStatus Code 204]
 ```
-If continue is success, you will see no response. If continue is not success, you will see the error message. You can see the status of the troubleshooter step by using `Get-AzSelfHelpTroubleshooter` cmdlet.
 
+If continue is success, you will see no response.
+If continue is not success, you will see the error message.
+You can see the status of the troubleshooter step by using `Get-AzSelfHelpTroubleshooter` cmdlet.
 
 ## PARAMETERS
 
@@ -71,7 +73,7 @@ Troubleshooter ContinueRequest body.
 To construct, see NOTES section for CONTINUEREQUESTBODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IContinueRequestBody
+Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IContinueRequestBody
 Parameter Sets: Continue, ContinueViaIdentity
 Aliases:
 
@@ -134,7 +136,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for RESPONSE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResponse[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITroubleshooterResponse[]
 Parameter Sets: ContinueExpanded, ContinueViaIdentityExpanded
 Aliases:
 
@@ -146,7 +148,7 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-This is an extension resource provider and only resource level extension is supported at the moment.
+scope = resourceUri of affected resource.\<br/\> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
 
 ```yaml
 Type: System.String
@@ -226,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IContinueRequestBody
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IContinueRequestBody
 
 ### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
 
@@ -235,32 +237,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`CONTINUEREQUESTBODY <IContinueRequestBody>`: Troubleshooter ContinueRequest body.
-  - `[Response <ITroubleshooterResponse[]>]`: 
-    - `[QuestionId <String>]`: id of the question.
-    - `[QuestionType <QuestionType?>]`: Text Input. Will be a single line input.
-    - `[Response <String>]`: Response key for SingleInput. For Multi-line test/open ended question it is free form text
-  - `[StepId <String>]`: Unique id of the result.
-
-`INPUTOBJECT <ISelfHelpIdentity>`: Identity Parameter
-  - `[DiagnosticsResourceName <String>]`: Unique resource name for insight resources
-  - `[Id <String>]`: Resource identity path
-  - `[Scope <String>]`: This is an extension resource provider and only resource level extension is supported at the moment.
-  - `[SolutionResourceName <String>]`: Solution resource Name.
-  - `[TroubleshooterName <String>]`: Troubleshooter resource Name.
-
-`RESPONSE <ITroubleshooterResponse[]>`: .
-  - `[QuestionId <String>]`: id of the question.
-  - `[QuestionType <QuestionType?>]`: Text Input. Will be a single line input.
-  - `[Response <String>]`: Response key for SingleInput. For Multi-line test/open ended question it is free form text
 
 ## RELATED LINKS
 
