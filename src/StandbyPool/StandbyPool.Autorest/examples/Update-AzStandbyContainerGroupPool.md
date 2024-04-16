@@ -4,7 +4,6 @@ Update-AzStandbyContainerGroupPool `
 -Name testPool `
 -SubscriptionId f8da6e30-a9d8-48ab-b05c-3f7fe482e13b `
 -ResourceGroupName test-standbypool `
--Location eastus `
 -MaxReadyCapacity 5
 ```
 
