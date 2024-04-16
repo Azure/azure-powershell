@@ -1829,18 +1829,17 @@ function Test-SnapshotConfigTierOptionEnhancedSpeed
 
 <#
 .SYNOPSIS
-Disk creation defaults to TL when being created from an Image that is HyperVGeneration V2.
-Feature request 1248
+Using a TL disk, use the SecureVmGuestStateSas parameter to get the securityDataAccessSAS value.
 #>
-function Test-DiskGrantAccessGetSAS
+function Test-DiskGrantAccessGetSASWithTL
 {
     $rgname = Get-ComputeTestResourceName;
-	$loc = 'eastus';
+	$loc = Get-ComputeVMLocation;#'eastus';
 
 	try
     {
-        $rgname = "adsandtlg4";
-        $loc = "eastus";
+        # $rgname = "adsandtlg4";
+        # $loc = "eastus";
 		New-AzResourceGroup -Name $rgname -Location $loc -Force;
         
         $diskname = "d" + $rgname;
@@ -1859,6 +1858,7 @@ function Test-DiskGrantAccessGetSAS
         Assert-NotNull $grantAccess.AccessSAS;
 
         $grantAccess = Grant-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access 'Read' -DurationInSecond 60;
+        Assert-NotNull $grantAccess.AccessSAS;
         Assert-Null $grantAccess.securityDataAccessSAS;
         
 	}
