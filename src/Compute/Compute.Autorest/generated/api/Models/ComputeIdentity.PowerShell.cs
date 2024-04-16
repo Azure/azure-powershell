@@ -119,6 +119,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).InstanceId = (string) content.GetValueForProperty("InstanceId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).InstanceId, global::System.Convert.ToString);
             }
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).OperationId, global::System.Convert.ToString);
+            }
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).Id, global::System.Convert.ToString);
@@ -191,6 +195,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
             if (content.Contains("InstanceId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).InstanceId = (string) content.GetValueForProperty("InstanceId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).InstanceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).OperationId = (string) content.GetValueForProperty("OperationId",((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentityInternal)this).OperationId, global::System.Convert.ToString);
             }
             if (content.Contains("Id"))
             {
