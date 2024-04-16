@@ -41,14 +41,16 @@ function Get-OutdatedSubModule {
     foreach ($subModule in $subModuleSource) {
         $generateInfoSource = Join-Path $SourceDirectory $subModule "generate-info.json"
         $generateInfoGenerated = Join-Path $GeneratedDirectory $subModule "generate-info.json"
-        if (Test-Path $generateInfoGenerated) {
-            continue
-        } 
-        $generateIdSource = (Get-Content -Path $generateInfoSource | ConvertFrom-Json).generate_Id
-        $generateIdGenerated = (Get-Content -Path $generateInfoGenerated | ConvertFrom-Json).generate_Id
-        if ($generateIdSource -eq $generateIdGenerated) {
-            continue
+        if (-not (Test-Path $generateInfoSource)) {
+            Write-Error "$generateInfoSource was not found!"
         }
+        if (Test-Path $generateInfoGenerated) {
+            $generateIdSource = (Get-Content -Path $generateInfoSource | ConvertFrom-Json).generate_Id
+            $generateIdGenerated = (Get-Content -Path $generateInfoGenerated | ConvertFrom-Json).generate_Id
+            if ($generateIdSource && $generateIdGenerated && ($generateIdSource -eq $generateIdGenerated)) {
+                continue
+            }
+        } 
         $outDatedSubModule += $subModule
     }
     return $outDatedSubModule
@@ -217,6 +219,9 @@ function Add-SubModuleToParentModule {
     #>
 }
 
+<################################################
+#  Main
+#################################################>
 <#
     TODO: add comment, add log
 #>

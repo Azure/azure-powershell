@@ -47,6 +47,9 @@ function Get-CsprojFromModule {
     return Get-ChildItem -Path $modulePath -Filter "*.csproj" -Recurse | foreach-object { $_.FullName }
 }
 
+<################################################
+#  Main
+#################################################>
 <#
     TODO: add comments
 #>
