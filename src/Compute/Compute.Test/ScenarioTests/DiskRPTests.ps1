@@ -1839,7 +1839,7 @@ function Test-DiskGrantAccessGetSAS
 
 	try
     {
-        $rgname = "adsandtlg2";
+        $rgname = "adsandtlg4";
         $loc = "eastus";
 		New-AzResourceGroup -Name $rgname -Location $loc -Force;
         
@@ -1855,7 +1855,11 @@ function Test-DiskGrantAccessGetSAS
         $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
         
         $grantAccess = Grant-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access 'Read' -DurationInSecond 60 -SecureVmGuestStateSas;
-        
+        Assert-NotNull $grantAccess.securityDataAccessSAS;
+        Assert-NotNull $grantAccess.AccessSAS;
+
+        $grantAccess = Grant-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access 'Read' -DurationInSecond 60;
+        Assert-Null $grantAccess.securityDataAccessSAS;
         
 	}
     finally 
