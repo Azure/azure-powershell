@@ -15,7 +15,7 @@ Create an in-memory object for AutoscaleNotification.
 ```
 New-AzAutoscaleNotificationObject [-EmailCustomEmail <String[]>]
  [-EmailSendToSubscriptionAdministrator <Boolean>] [-EmailSendToSubscriptionCoAdministrator <Boolean>]
- [-Webhook <IWebhookNotification[]>] [<CommonParameters>]
+ [-Webhook <IWebhookNotification[]>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +71,21 @@ a value indicating whether to send email to subscription co-administrators.
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

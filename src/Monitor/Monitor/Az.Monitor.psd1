@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.16.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.17.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'ActionGroup.Autorest/bin/Az.ActionGroup.private.dll', 

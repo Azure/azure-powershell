@@ -90,6 +90,9 @@ Gets V2 (non-classic) metric alert rules
 ### [Get-AzMetricDefinition](Get-AzMetricDefinition.md)
 Gets metric definitions.
 
+### [Get-AzMetricsBatch](Get-AzMetricsBatch.md)
+Lists the metric values for multiple resources.
+
 ### [Get-AzMonitorWorkspace](Get-AzMonitorWorkspace.md)
 Returns the specific Azure Monitor workspace
 
