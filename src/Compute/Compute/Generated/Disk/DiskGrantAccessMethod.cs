@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     var grantAccessData = new GrantAccessData();
                     grantAccessData.Access = this.Access;
                     grantAccessData.DurationInSeconds = this.DurationInSecond;
-                    grantAccessData.GetSecureVMGuestStateSAS = this.SecureVmGuestStateSas;
+                    grantAccessData.GetSecureVMGuestStateSAS = this.SecureVMGuestStateSAS;
 
                     var result = DisksClient.GrantAccess(resourceGroupName, diskName, grantAccessData);
                     var psObject = new PSAccessUri();
@@ -92,8 +92,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ParameterSetName = "DefaultParameter",
-            Position = 4,
-            Mandatory = false)]
-        public bool SecureVmGuestStateSas { get; set; }
+            HelpMessage = "Set this flag to true to get additional SAS for VM guest state",
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter SecureVMGuestStateSAS { get; set; }
     }
 }
