@@ -118,7 +118,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
     [System.String]
     # The id of an existing Subnet the private access server will created to.
-    # Please note that the subnet will be delegated to Microsoft.DBforPostgreSQL/flexibleServers.
+    # Please note that the subnet will be delegated to Microsoft.DBforMySQL/flexibleServers.
     # After delegation, this subnet cannot be used for any other type of Azure resources.
     ${Subnet},
 
