@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "ARM ID of disk/snapshot/disk restore point")]
+            HelpMessage = "The source resource identifier. It can be a snapshot, or disk restore point from which to create a disk.")]
         [ValidateNotNullOrEmpty]
         public string SourceResourceId { get; set; }
 

@@ -1826,3 +1826,73 @@ function Test-SnapshotConfigTierOptionEnhancedSpeed
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Using a TL disk, use the SecureVmGuestStateSas parameter to get the securityDataAccessSAS value.
+#>
+function Test-DiskGrantAccessGetSASWithTL
+{
+    $rgname = Get-ComputeTestResourceName;
+	$loc = Get-ComputeVMLocation;#'eastus';
+
+	try
+    {
+        $rgname = "adsandsrc1";
+        $loc = "eastus2euap";
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $diskname = "d" + $rgname;
+        $securityTypeTL = "TrustedLaunch";
+        $hyperVGen2 = "V2";
+
+        $image = Get-AzVMImage -Skus 2022-datacenter-azure-edition -Offer WindowsServer -PublisherName MicrosoftWindowsServer -Location $loc -Version latest;
+        $diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
+
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image.Id;
+
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+
+        $vmname = "v" + $rgname;
+        $vmsize = "Standard_D2s_v5";
+        $datadiskname = "dd" + $rgname;
+        $vmconfig = New-AzVmConfig -VMName $vmname -VMsize $vmsize;
+        
+        $domainNameLabel = "d1" + $rgname;
+        $vnetname = "vn" + $rgname;
+        $vnetAddress = "10.0.0.0/16";
+        $subnetname = "slb" + $rgname;
+        $subnetAddress = "10.0.2.0/24";
+        $OSDiskName = $vmname + "-osdisk";
+        $NICName = $vmname+ "-nic";
+        $NSGName = $vmname + "-NSG";
+
+         # Creating a VM using Simple parameterset
+        $password = Get-PasswordForVM;
+        $user = Get-ComputeTestResourceName;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+
+        $vnet = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+         
+        $nsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name RDP  -Protocol Tcp  -Direction Inbound -Priority 1001 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 3389 -Access Allow;
+        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $RGName -Location $loc -Name $NSGName  -SecurityRules $nsgRuleRDP;
+        $nic = New-AzNetworkInterface -Name $NICName -ResourceGroupName $RGName -Location $loc -SubnetId $vnet.Subnets[0].Id -NetworkSecurityGroupId $nsg.Id -EnableAcceleratedNetworking;
+
+        # VM
+        $vmConfig = New-AzVMConfig -VMName $vmName -VMSize $VMSize;
+        Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred;
+        Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version $version ;
+        Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
+        Add-AzVMDataDisk -VM $vmconfig -Name $datadiskname -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -CreateOption Copy -SourceResourceId $disk.Id;
+
+        $vm = New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
+	}
+    finally 
+    {
+		# Cleanup
+		Clean-ResourceGroup $rgname;
+	}
+}
