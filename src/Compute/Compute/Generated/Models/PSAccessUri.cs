@@ -29,7 +29,5 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
     {
         public string AccessSAS { get; set; }
 
-        public bool? SecureVmGuestStateSas { get; set; }
-
     }
 }
