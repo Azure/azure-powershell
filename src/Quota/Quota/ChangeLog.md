@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.1.2
+* Fixed formating of the MD for module Az.Quota
+
 ## Version 0.1.1
 * Upgraded api version to 2023-02-01 stable.
 
