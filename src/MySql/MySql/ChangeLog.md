@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed doc of MySql.Autorest/custom/Restore-AzMySqlFlexibleServer_PointInTimeRestore.ps1
+* Fixed doc of MySql.Autorest/exports/Restore-AzMySqlFlexibleServer.ps1
+* Fixed doc of MySql/help/Restore-AzMySqlFlexibleServer.md
 
 ## Version 1.1.1
 * Fixed iops and high availability parameters issue
