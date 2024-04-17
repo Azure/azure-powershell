@@ -16,13 +16,13 @@ Validates the custom domain mapping to ensure it maps to the correct CDN endpoin
 ```
 Test-AzCdnEndpointCustomDomain -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -HostName <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentityExpanded1
 ```
 Test-AzCdnEndpointCustomDomain -InputObject <ICdnIdentity> -HostName <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,6 +130,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of the Resource group within the Azure subscription.
 
@@ -200,7 +215,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateCustomDomainOutput
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateCustomDomainOutput
 
 ## NOTES
 

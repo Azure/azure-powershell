@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.1.1
 * Changes in the Cluster Pool
   - Enable create cluster pool with user network profile.
   - Enable get cluster pool available upgrade versions.

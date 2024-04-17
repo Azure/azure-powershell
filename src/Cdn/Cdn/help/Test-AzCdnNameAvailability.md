@@ -16,13 +16,13 @@ This is needed for resources where name is globally unique, such as a CDN endpoi
 ### CheckExpanded (Default)
 ```
 Test-AzCdnNameAvailability -Name <String> -Type <ResourceType> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckExpanded1
 ```
 Test-AzCdnNameAvailability [-SubscriptionId <String>] -Name <String> -Type <ResourceType>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +71,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -145,7 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICheckNameAvailabilityOutput
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICheckNameAvailabilityOutput
 
 ## NOTES
 

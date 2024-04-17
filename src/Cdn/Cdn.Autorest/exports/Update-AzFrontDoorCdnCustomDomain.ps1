@@ -33,7 +33,7 @@ Get-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -63,7 +63,7 @@ TLSSETTING <IAfdDomainHttpsParameters>: The configuration specifying how to enab
 https://learn.microsoft.com/powershell/module/az.cdn/update-azfrontdoorcdncustomdomain
 #>
 function Update-AzFrontDoorCdnCustomDomain {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomain])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomain])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
@@ -112,7 +112,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IAfdDomainHttpsParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IAfdDomainHttpsParameters]
     # The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate.
     # If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
     # To construct, see NOTES section for TLSSETTING properties and create a hash table.
@@ -210,7 +210,7 @@ begin {
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

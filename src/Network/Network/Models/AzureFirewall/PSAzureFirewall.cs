@@ -386,6 +386,24 @@ namespace Microsoft.Azure.Commands.Network.Models
             }
         }
 
+        public void AddIpAddressesForByopipHubFirewall(PSPublicIpAddress[] publicIpAddresses)
+        {
+            this.IpConfigurations = new List<PSAzureFirewallIpConfiguration>();
+
+            if (publicIpAddresses != null && publicIpAddresses.Length > 0)
+            {
+                for (var i = 0; i < publicIpAddresses.Length; i++)
+                {
+                    this.IpConfigurations.Add(
+                        new PSAzureFirewallIpConfiguration
+                        {
+                            Name = $"{AzureFirewallIpConfigurationName}{i}",
+                            PublicIpAddress = new PSResourceId { Id = publicIpAddresses[i].Id }
+                        });
+                }
+            }
+        }
+
         #endregion // Ip Configuration Operations
 
         #region Application Rule Collections Operations

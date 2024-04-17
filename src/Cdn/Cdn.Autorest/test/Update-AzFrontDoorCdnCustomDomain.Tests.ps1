@@ -32,7 +32,7 @@ Describe 'Update-AzFrontDoorCdnCustomDomain'  {
             Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
 
             $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
-            -SecretSourceId "/subscriptions/$subId/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/secrets/testps"
+            -SecretSourceId "/subscriptions/$subId/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv-use/secrets/testps"
 
             $secret = New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
             $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
@@ -57,7 +57,7 @@ Describe 'Update-AzFrontDoorCdnCustomDomain'  {
             Write-Host -ForegroundColor Green "Use secretName : $($secretName)"
     
             $parameter = New-AzFrontDoorCdnSecretCustomerCertificateParametersObject -UseLatestVersion $true -SubjectAlternativeName @() -Type "CustomerCertificate"`
-            -SecretSourceId "/subscriptions/$subId/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv/secrets/testps"
+            -SecretSourceId "/subscriptions/$subId/resourceGroups/powershelltest/providers/Microsoft.KeyVault/vaults/cdn-ps-kv-use/secrets/testps"
     
             $secret = New-AzFrontDoorCdnSecret -Name $secretName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Parameter $parameter
             $secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id

@@ -23,12 +23,12 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 Get-AzCdnProfileResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName cdn001
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsage
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceUsage
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnprofileresourceusage
 #>
 function Get-AzCdnProfileResourceUsage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IResourceUsage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IResourceUsage])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -129,7 +129,7 @@ begin {
         }
         if (('List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

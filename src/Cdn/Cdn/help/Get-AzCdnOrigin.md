@@ -15,20 +15,20 @@ Gets an existing origin within an endpoint.
 ### List1 (Default)
 ```
 Get-AzCdnOrigin -EndpointName <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### Get1
 ```
 Get-AzCdnOrigin -EndpointName <String> -Name <String> -ProfileName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity1
 ```
-Get-AzCdnOrigin -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>]
+Get-AzCdnOrigin -InputObject <ICdnIdentity> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -156,6 +156,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Name of the Resource group within the Azure subscription.
 
@@ -195,7 +210,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IOrigin
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IOrigin
 
 ## NOTES
 

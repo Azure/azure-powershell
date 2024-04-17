@@ -23,12 +23,12 @@ Create an in-memory object for DeliveryRuleHostNameCondition.
 New-AzFrontDoorCdnRuleHostNameConditionObject -Name HostName -ParameterOperator Equal -ParameterMatchValue azure.com
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleHostNameCondition
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleHostNameCondition
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleHostNameConditionObject
 #>
 function New-AzFrontDoorCdnRuleHostNameConditionObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleHostNameCondition])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleHostNameCondition])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

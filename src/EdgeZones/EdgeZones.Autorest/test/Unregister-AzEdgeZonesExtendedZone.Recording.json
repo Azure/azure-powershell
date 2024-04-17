@@ -1,0 +1,143 @@
+{
+  "Unregister-AzEdgeZonesExtendedZone+[NoContext]+Unregister+$POST+https://management.azure.com/subscriptions/2027ff61-4414-4aa3-bd20-170c46f69b19/providers/Microsoft.EdgeZones/extendedZones/microsoftrrezm1/unregister?api-version=2024-04-01-preview+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/2027ff61-4414-4aa3-bd20-170c46f69b19/providers/Microsoft.EdgeZones/extendedZones/microsoftrrezm1/unregister?api-version=2024-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "8ca5b58f-2c11-44dd-acc7-d50cdedec385" ],
+        "CommandName": [ "Unregister-AzEdgeZonesExtendedZone" ],
+        "FullCommandName": [ "Unregister-AzEdgeZonesExtendedZone_Unregister" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v5.4.0", "PSVersion/v7.4.1", "Az.EdgeZones/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=753642ccc7fea07fad427255f74d194b1e9d4b31b0a333225ba7b990debc476d;Path=/;HttpOnly;Secure;Domain=edgezonerp-canary.trafficmanager.net", "ARRAffinitySameSite=753642ccc7fea07fad427255f74d194b1e9d4b31b0a333225ba7b990debc476d;Path=/;HttpOnly;SameSite=None;Secure;Domain=edgezonerp-canary.trafficmanager.net" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "09a76bdc-07b3-494d-8360-7d5171c47dd7" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "edb3925c-b743-40a1-a767-d14d3d51613b" ],
+        "x-ms-correlation-request-id": [ "44d2f063-1ab7-4321-bfc3-071f0ba18738" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240325T225126Z:44d2f063-1ab7-4321-bfc3-071f0ba18738" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 6A4B5B3CE5774E51A6A9383420E53DDA Ref B: CO6AA3150217047 Ref C: 2024-03-25T22:51:25Z" ],
+        "Date": [ "Mon, 25 Mar 2024 22:51:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "512" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"registrationState\":\"NotRegistered\",\"displayName\":\"Los Angeles Test\",\"regionalDisplayName\":\"(US) Los Angeles Test\",\"regionType\":\"Physical\",\"regionCategory\":\"Other\",\"geography\":\"usa\",\"geographyGroup\":\"US\",\"longitude\":\"-118.235374\",\"latitude\":\"34.058414\",\"homeLocation\":\"westus\"},\"id\":\"/subscriptions/2027ff61-4414-4aa3-bd20-170c46f69b19/providers/Microsoft.EdgeZones/extendedZones/microsoftrrezm1\",\"name\":\"microsoftrrezm1\",\"type\":\"Microsoft.EdgeZones/extendedZones\"}",
+      "isContentBase64": false
+    }
+  },
+  "Unregister-AzEdgeZonesExtendedZone+[NoContext]+UnregisterViaIdentity+$GET+https://management.azure.com/subscriptions/2027ff61-4414-4aa3-bd20-170c46f69b19/providers/Microsoft.EdgeZones/extendedZones/microsoftrrezm1?api-version=2024-04-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/2027ff61-4414-4aa3-bd20-170c46f69b19/providers/Microsoft.EdgeZones/extendedZones/microsoftrrezm1?api-version=2024-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "4db047a5-fcaf-41f8-b8ff-5394df075321" ],
+        "CommandName": [ "Get-AzEdgeZonesExtendedZone" ],
+        "FullCommandName": [ "Get-AzEdgeZonesExtendedZone_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v5.4.0", "PSVersion/v7.4.1", "Az.EdgeZones/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=72f94d4b889d42a38551413966812bd53c7a651c102bf98da2dca68402e21287;Path=/;HttpOnly;Secure;Domain=edgezonerp-canary.trafficmanager.net", "ARRAffinitySameSite=72f94d4b889d42a38551413966812bd53c7a651c102bf98da2dca68402e21287;Path=/;HttpOnly;SameSite=None;Secure;Domain=edgezonerp-canary.trafficmanager.net" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "0ac7c755-8b5d-4e99-9815-148fef34ad59" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "c842a506-754d-453f-9b37-711403d7235f" ],
+        "x-ms-correlation-request-id": [ "51f2caa4-ee16-4f42-9324-e7e24f5d4146" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240325T225127Z:51f2caa4-ee16-4f42-9324-e7e24f5d4146" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: B5E8E1F527F34D2A8AB34213CFBEA2B4 Ref B: CO6AA3150217047 Ref C: 2024-03-25T22:51:26Z" ],
+        "Date": [ "Mon, 25 Mar 2024 22:51:26 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "512" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/2027ff61-4414-4aa3-bd20-170c46f69b19/providers/Microsoft.EdgeZones/extendedZones/microsoftrrezm1\",\"name\":\"microsoftrrezm1\",\"type\":\"Microsoft.EdgeZones/extendedZones\",\"properties\":{\"provisioningState\":\"Succeeded\",\"registrationState\":\"NotRegistered\",\"displayName\":\"Los Angeles Test\",\"regionalDisplayName\":\"(US) Los Angeles Test\",\"regionType\":\"Physical\",\"regionCategory\":\"Other\",\"geography\":\"usa\",\"geographyGroup\":\"US\",\"longitude\":\"-118.235374\",\"latitude\":\"34.058414\",\"homeLocation\":\"westus\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Unregister-AzEdgeZonesExtendedZone+[NoContext]+UnregisterViaIdentity+$POST+https://management.azure.com/subscriptions/2027ff61-4414-4aa3-bd20-170c46f69b19/providers/Microsoft.EdgeZones/extendedZones/microsoftrrezm1/unregister?api-version=2024-04-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/2027ff61-4414-4aa3-bd20-170c46f69b19/providers/Microsoft.EdgeZones/extendedZones/microsoftrrezm1/unregister?api-version=2024-04-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "f6c582f8-6596-4073-adee-501b6dc4ae18" ],
+        "CommandName": [ "Unregister-AzEdgeZonesExtendedZone" ],
+        "FullCommandName": [ "Unregister-AzEdgeZonesExtendedZone_UnregisterViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v5.4.0", "PSVersion/v7.4.1", "Az.EdgeZones/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "Set-Cookie": [ "ARRAffinity=72f94d4b889d42a38551413966812bd53c7a651c102bf98da2dca68402e21287;Path=/;HttpOnly;Secure;Domain=edgezonerp-canary.trafficmanager.net", "ARRAffinitySameSite=72f94d4b889d42a38551413966812bd53c7a651c102bf98da2dca68402e21287;Path=/;HttpOnly;SameSite=None;Secure;Domain=edgezonerp-canary.trafficmanager.net" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "e94c46a6-2726-4b34-81c2-0f1762a3a31c" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "31ec2c62-bc43-40af-acd8-eb92405522f2" ],
+        "x-ms-correlation-request-id": [ "baaa3456-2dcc-46f6-851e-506376d7d701" ],
+        "x-ms-routing-request-id": [ "WESTUS2:20240325T225128Z:baaa3456-2dcc-46f6-851e-506376d7d701" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: CA819E73708D44D6AF0F58EA886434BF Ref B: CO6AA3150217047 Ref C: 2024-03-25T22:51:27Z" ],
+        "Date": [ "Mon, 25 Mar 2024 22:51:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "512" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"provisioningState\":\"Succeeded\",\"registrationState\":\"NotRegistered\",\"displayName\":\"Los Angeles Test\",\"regionalDisplayName\":\"(US) Los Angeles Test\",\"regionType\":\"Physical\",\"regionCategory\":\"Other\",\"geography\":\"usa\",\"geographyGroup\":\"US\",\"longitude\":\"-118.235374\",\"latitude\":\"34.058414\",\"homeLocation\":\"westus\"},\"id\":\"/subscriptions/2027ff61-4414-4aa3-bd20-170c46f69b19/providers/Microsoft.EdgeZones/extendedZones/microsoftrrezm1\",\"name\":\"microsoftrrezm1\",\"type\":\"Microsoft.EdgeZones/extendedZones\"}",
+      "isContentBase64": false
+    }
+  }
+}

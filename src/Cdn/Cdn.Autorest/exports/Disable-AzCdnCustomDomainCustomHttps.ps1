@@ -25,7 +25,7 @@ Disable-AzCdnCustomDomainCustomHttps -ResourceGroupName testps-rg-da16jm -Profil
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -49,7 +49,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/disable-azcdncustomdomaincustomhttps
 #>
 function Disable-AzCdnCustomDomainCustomHttps {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICustomDomain])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICustomDomain])]
 [CmdletBinding(DefaultParameterSetName='Disable', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Disable', Mandatory)]
@@ -182,7 +182,7 @@ begin {
         }
         if (('Disable') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $testPlayback = $false
-            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName) }
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {
                 $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
             } else {

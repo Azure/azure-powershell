@@ -1,27 +1,259 @@
 {
   "Entries": [
     {
-      "RequestUri": "/jobschedules?api-version=2023-05-01.17.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDIzLTA1LTAxLjE3LjA=",
+      "RequestUri": "/pools?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMjQtMDItMDEuMTkuMA==",
       "RequestMethod": "POST",
       "RequestHeaders": {
         "client-request-id": [
-          "cd2b70cc-deef-4fd2-9639-38767bd1662e"
+          "86abbf5c-1361-4275-b31b-23c31780d4ca"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 16 Jun 2023 07:20:12 GMT"
-        ],
-        "x-ms-client-request-id": [
-          "3b7926b6-4a9e-43cd-866e-cf544c589e73"
+          "Fri, 22 Mar 2024 20:44:13 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.2824.12007",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
+          "AzurePowershell/Az1.0.0"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; charset=utf-8"
+        ],
+        "Content-Length": [
+          "506"
+        ]
+      },
+      "RequestBody": "{\r\n  \"id\": \"testPool\",\r\n  \"vmSize\": \"STANDARD_D2S_V3\",\r\n  \"virtualMachineConfiguration\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"canonical\",\r\n      \"offer\": \"0001-com-ubuntu-server-focal\",\r\n      \"sku\": \"20_04-lts\"\r\n    },\r\n    \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n    \"nodePlacementConfiguration\": {\r\n      \"policy\": \"zonal\"\r\n    }\r\n  },\r\n  \"targetDedicatedNodes\": 2,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableInterNodeCommunication\": false,\r\n  \"targetNodeCommunicationMode\": \"default\"\r\n}",
+      "ResponseHeaders": {
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "2a89cedf-ee1b-403d-ac09-834c23af06bd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Fri, 22 Mar 2024 20:44:13 GMT"
+        ],
+        "Content-Length": [
+          "336"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://billstestba24326.uksouth.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\r\n  \"code\": \"PoolExists\",\r\n  \"message\": {\r\n    \"lang\": \"en-US\",\r\n    \"value\": \"The specified pool already exists.\\nRequestId:2a89cedf-ee1b-403d-ac09-834c23af06bd\\nTime:2024-03-22T20:44:14.5234345Z\"\r\n  }\r\n}",
+      "StatusCode": 409
+    },
+    {
+      "RequestUri": "/pools?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMjQtMDItMDEuMTkuMA==",
+      "RequestMethod": "POST",
+      "RequestHeaders": {
+        "client-request-id": [
+          "d531e61b-76b3-4b90-a93c-8762051943d2"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Fri, 22 Mar 2024 20:44:14 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2824.12007",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
+          "AzurePowershell/Az1.0.0"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata; charset=utf-8"
+        ],
+        "Content-Length": [
+          "507"
+        ]
+      },
+      "RequestBody": "{\r\n  \"id\": \"testPool2\",\r\n  \"vmSize\": \"STANDARD_D2S_V3\",\r\n  \"virtualMachineConfiguration\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"canonical\",\r\n      \"offer\": \"0001-com-ubuntu-server-focal\",\r\n      \"sku\": \"20_04-lts\"\r\n    },\r\n    \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n    \"nodePlacementConfiguration\": {\r\n      \"policy\": \"zonal\"\r\n    }\r\n  },\r\n  \"targetDedicatedNodes\": 2,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableInterNodeCommunication\": false,\r\n  \"targetNodeCommunicationMode\": \"default\"\r\n}",
+      "ResponseHeaders": {
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "e177ca61-199c-4cd4-b0c7-f5ab95b8603e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Fri, 22 Mar 2024 20:44:14 GMT"
+        ],
+        "Content-Length": [
+          "336"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://billstestba24326.uksouth.batch.azure.com/$metadata#Microsoft.Azure.Batch.Protocol.Entities.Container.errors/@Element\",\r\n  \"code\": \"PoolExists\",\r\n  \"message\": {\r\n    \"lang\": \"en-US\",\r\n    \"value\": \"The specified pool already exists.\\nRequestId:e177ca61-199c-4cd4-b0c7-f5ab95b8603e\\nTime:2024-03-22T20:44:15.0523526Z\"\r\n  }\r\n}",
+      "StatusCode": 409
+    },
+    {
+      "RequestUri": "/pools/testPool?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sP2FwaS12ZXJzaW9uPTIwMjQtMDItMDEuMTkuMA==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "client-request-id": [
+          "fe192a26-2e55-41bb-961e-65c18ae51c43"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Fri, 22 Mar 2024 20:44:14 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2824.12007",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
+          "AzurePowershell/Az1.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "ETag": [
+          "0x8DC4AAF45E03C32"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "e7df0096-3945-4eac-a5ba-c3ec0abadcd0"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Fri, 22 Mar 2024 20:44:13 GMT"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Fri, 22 Mar 2024 20:33:03 GMT"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://billstestba24326.uksouth.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"testPool\",\r\n  \"url\": \"https://billstestba24326.uksouth.batch.azure.com/pools/testPool\",\r\n  \"eTag\": \"0x8DC4AAF45E03C32\",\r\n  \"lastModified\": \"2024-03-22T20:33:03.182341Z\",\r\n  \"creationTime\": \"2024-03-22T20:33:03.1823398Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2024-03-22T20:33:03.1823398Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2024-03-22T20:33:30.3746168Z\",\r\n  \"vmSize\": \"standard_d2s_v3\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 2,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": false,\r\n  \"taskSlotsPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"virtualMachineConfiguration\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"canonical\",\r\n      \"offer\": \"0001-com-ubuntu-server-focal\",\r\n      \"sku\": \"20_04-lts\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n    \"nodePlacementConfiguration\": {\r\n      \"policy\": \"Zonal\"\r\n    }\r\n  },\r\n  \"targetNodeCommunicationMode\": \"default\",\r\n  \"currentNodeCommunicationMode\": \"classic\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/pools/testPool2?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sMj9hcGktdmVyc2lvbj0yMDI0LTAyLTAxLjE5LjA=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "client-request-id": [
+          "501e9a6c-11b2-46e1-b693-72a4f9f1133c"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Fri, 22 Mar 2024 20:44:14 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2824.12007",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
+          "AzurePowershell/Az1.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "ETag": [
+          "0x8DC4AAF59354BB8"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "6abc7082-4bbb-47c3-a2ab-8e699c736b13"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Fri, 22 Mar 2024 20:44:14 GMT"
+        ],
+        "Content-Type": [
+          "application/json; odata=minimalmetadata"
+        ],
+        "Last-Modified": [
+          "Fri, 22 Mar 2024 20:33:35 GMT"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://billstestba24326.uksouth.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"testPool2\",\r\n  \"url\": \"https://billstestba24326.uksouth.batch.azure.com/pools/testPool2\",\r\n  \"eTag\": \"0x8DC4AAF59354BB8\",\r\n  \"lastModified\": \"2024-03-22T20:33:35.6165048Z\",\r\n  \"creationTime\": \"2024-03-22T20:33:35.6165038Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2024-03-22T20:33:35.6165038Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2024-03-22T20:34:07.8697301Z\",\r\n  \"vmSize\": \"standard_d2s_v3\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 2,\r\n  \"targetDedicatedNodes\": 2,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": false,\r\n  \"taskSlotsPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"virtualMachineConfiguration\": {\r\n    \"imageReference\": {\r\n      \"publisher\": \"canonical\",\r\n      \"offer\": \"0001-com-ubuntu-server-focal\",\r\n      \"sku\": \"20_04-lts\",\r\n      \"version\": \"latest\"\r\n    },\r\n    \"nodeAgentSKUId\": \"batch.node.ubuntu 20.04\",\r\n    \"nodePlacementConfiguration\": {\r\n      \"policy\": \"Zonal\"\r\n    }\r\n  },\r\n  \"targetNodeCommunicationMode\": \"default\",\r\n  \"currentNodeCommunicationMode\": \"classic\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/jobschedules?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDI0LTAyLTAxLjE5LjA=",
+      "RequestMethod": "POST",
+      "RequestHeaders": {
+        "client-request-id": [
+          "5734a5c2-a7bc-41b3-bde8-1c2025117fcf"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Fri, 22 Mar 2024 20:44:21 GMT"
+        ],
+        "x-ms-client-request-id": [
+          "d846e693-04dc-4d8d-abea-dd67ff9333b0"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2824.12007",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Type": [
@@ -37,16 +269,16 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DB6E3A209A9AA1"
+          "0x8DC4AB0DAAE2EC4"
         ],
         "Location": [
-          "https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/jobSchedule1"
+          "https://billstestba24326.uksouth.batch.azure.com/jobschedules/jobSchedule1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "5f15b7ee-672e-428b-ab9b-59a5fe950b60"
+          "58ac44ed-c326-4412-b60a-44a3d4f13df7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -58,40 +290,40 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/jobSchedule1"
+          "https://billstestba24326.uksouth.batch.azure.com/jobschedules/jobSchedule1"
         ],
         "Date": [
-          "Fri, 16 Jun 2023 07:20:13 GMT"
+          "Fri, 22 Mar 2024 20:44:22 GMT"
         ],
         "Last-Modified": [
-          "Fri, 16 Jun 2023 07:20:13 GMT"
+          "Fri, 22 Mar 2024 20:44:22 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobschedules?api-version=2023-05-01.17.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDIzLTA1LTAxLjE3LjA=",
+      "RequestUri": "/jobschedules?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDI0LTAyLTAxLjE5LjA=",
       "RequestMethod": "POST",
       "RequestHeaders": {
         "client-request-id": [
-          "e4d0cc42-cc23-4ae7-81d2-087a554c5e6f"
+          "95d19609-bbe9-47b6-8e0c-6c9737d89050"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 16 Jun 2023 07:20:12 GMT"
+          "Fri, 22 Mar 2024 20:44:22 GMT"
         ],
         "x-ms-client-request-id": [
-          "5db9cb43-3d3c-4257-a12e-336ec8781ca0"
+          "9d798ec9-7383-4893-bf8b-d9b20d12a0bd"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.2824.12007",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Type": [
@@ -101,22 +333,22 @@
           "182"
         ]
       },
-      "RequestBody": "{\r\n  \"id\": \"jobSchedule2\",\r\n  \"schedule\": {\r\n    \"doNotRunUntil\": \"2024-01-01T12:30:00Z\"\r\n  },\r\n  \"jobSpecification\": {\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool2\"\r\n    }\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"id\": \"jobSchedule2\",\r\n  \"schedule\": {\r\n    \"doNotRunUntil\": \"2024-12-01T12:30:00Z\"\r\n  },\r\n  \"jobSpecification\": {\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool2\"\r\n    }\r\n  }\r\n}",
       "ResponseHeaders": {
         "Transfer-Encoding": [
           "chunked"
         ],
         "ETag": [
-          "0x8DB6E3A20AE9885"
+          "0x8DC4AB0DAC9F448"
         ],
         "Location": [
-          "https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/jobSchedule2"
+          "https://billstestba24326.uksouth.batch.azure.com/jobschedules/jobSchedule2"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "73c90bf9-bd45-4f6e-b81b-a08df5292d46"
+          "ccc12223-4b0a-436d-932a-ff053a5f32c6"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -128,40 +360,40 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/jobSchedule2"
+          "https://billstestba24326.uksouth.batch.azure.com/jobschedules/jobSchedule2"
         ],
         "Date": [
-          "Fri, 16 Jun 2023 07:20:13 GMT"
+          "Fri, 22 Mar 2024 20:44:22 GMT"
         ],
         "Last-Modified": [
-          "Fri, 16 Jun 2023 07:20:13 GMT"
+          "Fri, 22 Mar 2024 20:44:22 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/jobschedules?api-version=2023-05-01.17.0&$filter=id%20eq%20%27jobSchedule1%27%20or%20id%20eq%20%27jobSchedule2%27",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDIzLTA1LTAxLjE3LjAmJGZpbHRlcj1pZCUyMGVxJTIwJTI3am9iU2NoZWR1bGUxJTI3JTIwb3IlMjBpZCUyMGVxJTIwJTI3am9iU2NoZWR1bGUyJTI3",
+      "RequestUri": "/jobschedules?api-version=2024-02-01.19.0&$filter=id%20eq%20%27jobSchedule1%27%20or%20id%20eq%20%27jobSchedule2%27",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDI0LTAyLTAxLjE5LjAmJGZpbHRlcj1pZCUyMGVxJTIwJTI3am9iU2NoZWR1bGUxJTI3JTIwb3IlMjBpZCUyMGVxJTIwJTI3am9iU2NoZWR1bGUyJTI3",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "client-request-id": [
-          "941417f1-4ad9-47a7-b653-7de9fd6f1310"
+          "160eb417-456e-4640-bb1f-a884518cab0c"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 16 Jun 2023 07:20:12 GMT"
+          "Fri, 22 Mar 2024 20:44:22 GMT"
         ],
         "x-ms-client-request-id": [
-          "b8fca593-ba24-46be-b8b4-81c43e749027"
+          "f3db86f4-0d50-4b16-b705-e58022f77187"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.2824.12007",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -174,7 +406,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "d6c50156-b607-42cd-ac50-5edfe3adef12"
+          "cbb7e972-8a1b-4278-be7e-d3d56e9f837e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -186,37 +418,37 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 16 Jun 2023 07:20:13 GMT"
+          "Fri, 22 Mar 2024 20:44:22 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://hoppeeastasia2.eastasia.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"jobSchedule1\",\r\n      \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/jobSchedule1\",\r\n      \"eTag\": \"0x8DB6E3A209A9AA1\",\r\n      \"lastModified\": \"2023-06-16T07:20:13.7218721Z\",\r\n      \"creationTime\": \"2023-06-16T07:20:13.7218721Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2023-06-16T07:20:13.7218721Z\",\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"maxParallelTasks\": -1,\r\n        \"allowTaskPreemption\": false,\r\n        \"usesTaskDependencies\": false,\r\n        \"onAllTasksComplete\": \"noaction\",\r\n        \"onTaskFailure\": \"noaction\",\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"recentJob\": {\r\n          \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/jobs/jobSchedule1:job-1\",\r\n          \"id\": \"jobSchedule1:job-1\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"jobSchedule2\",\r\n      \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/jobSchedule2\",\r\n      \"eTag\": \"0x8DB6E3A20AE9885\",\r\n      \"lastModified\": \"2023-06-16T07:20:13.8528901Z\",\r\n      \"creationTime\": \"2023-06-16T07:20:13.8528901Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2023-06-16T07:20:13.8528901Z\",\r\n      \"schedule\": {\r\n        \"doNotRunUntil\": \"2024-01-01T12:30:00Z\"\r\n      },\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"maxParallelTasks\": -1,\r\n        \"allowTaskPreemption\": false,\r\n        \"usesTaskDependencies\": false,\r\n        \"onAllTasksComplete\": \"noaction\",\r\n        \"onTaskFailure\": \"noaction\",\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool2\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"nextRunTime\": \"2024-01-01T12:30:00Z\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://billstestba24326.uksouth.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"jobSchedule1\",\r\n      \"url\": \"https://billstestba24326.uksouth.batch.azure.com/jobschedules/jobSchedule1\",\r\n      \"eTag\": \"0x8DC4AB0DAAE2EC4\",\r\n      \"lastModified\": \"2024-03-22T20:44:22.3315652Z\",\r\n      \"creationTime\": \"2024-03-22T20:44:22.3315652Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2024-03-22T20:44:22.3315652Z\",\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"maxParallelTasks\": -1,\r\n        \"allowTaskPreemption\": false,\r\n        \"usesTaskDependencies\": false,\r\n        \"onAllTasksComplete\": \"noaction\",\r\n        \"onTaskFailure\": \"noaction\",\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"recentJob\": {\r\n          \"url\": \"https://billstestba24326.uksouth.batch.azure.com/jobs/jobSchedule1:job-1\",\r\n          \"id\": \"jobSchedule1:job-1\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"jobSchedule2\",\r\n      \"url\": \"https://billstestba24326.uksouth.batch.azure.com/jobschedules/jobSchedule2\",\r\n      \"eTag\": \"0x8DC4AB0DAC9F448\",\r\n      \"lastModified\": \"2024-03-22T20:44:22.5135688Z\",\r\n      \"creationTime\": \"2024-03-22T20:44:22.5135688Z\",\r\n      \"state\": \"active\",\r\n      \"stateTransitionTime\": \"2024-03-22T20:44:22.5135688Z\",\r\n      \"schedule\": {\r\n        \"doNotRunUntil\": \"2024-12-01T12:30:00Z\"\r\n      },\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"maxParallelTasks\": -1,\r\n        \"allowTaskPreemption\": false,\r\n        \"usesTaskDependencies\": false,\r\n        \"onAllTasksComplete\": \"noaction\",\r\n        \"onTaskFailure\": \"noaction\",\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool2\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"nextRunTime\": \"2024-12-01T12:30:00Z\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobschedules/jobSchedule2?api-version=2023-05-01.17.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy9qb2JTY2hlZHVsZTI/YXBpLXZlcnNpb249MjAyMy0wNS0wMS4xNy4w",
+      "RequestUri": "/jobschedules/jobSchedule2?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy9qb2JTY2hlZHVsZTI/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4w",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "client-request-id": [
-          "742e7b63-a757-431e-b840-5f41f03486d5"
+          "c5383524-f20b-4e8a-abd0-a08237fd3791"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 16 Jun 2023 07:20:12 GMT"
+          "Fri, 22 Mar 2024 20:44:22 GMT"
         ],
         "x-ms-client-request-id": [
-          "4e1d4afe-669d-43a4-b8d2-4a3ffa888877"
+          "241c8a14-9843-46ec-a390-a6972bb10d57"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.2824.12007",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Type": [
@@ -232,13 +464,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DB6E3A20E2E38E"
+          "0x8DC4AB0DB160EF8"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "23431965-2f99-46d9-9571-2bc918bd0cf6"
+          "bafe6fba-48de-4f64-956d-dcff7f3f7be8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -250,40 +482,40 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/jobSchedule2"
+          "https://billstestba24326.uksouth.batch.azure.com/jobschedules/jobSchedule2"
         ],
         "Date": [
-          "Fri, 16 Jun 2023 07:20:13 GMT"
+          "Fri, 22 Mar 2024 20:44:22 GMT"
         ],
         "Last-Modified": [
-          "Fri, 16 Jun 2023 07:20:14 GMT"
+          "Fri, 22 Mar 2024 20:44:23 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobschedules/jobSchedule2?api-version=2023-05-01.17.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy9qb2JTY2hlZHVsZTI/YXBpLXZlcnNpb249MjAyMy0wNS0wMS4xNy4w",
+      "RequestUri": "/jobschedules/jobSchedule2?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy9qb2JTY2hlZHVsZTI/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4w",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "client-request-id": [
-          "b152f594-6dd5-450d-8742-bd5671bd7c91"
+          "10fcfd6e-8b31-45fd-ad09-005a2e5a9e31"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 16 Jun 2023 07:20:13 GMT"
+          "Fri, 22 Mar 2024 20:44:22 GMT"
         ],
         "x-ms-client-request-id": [
-          "be83a1a5-533e-4d54-bf45-ac8a19256e8f"
+          "05c33dd5-ac86-4f7c-8bfe-01b22a05437d"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.2824.12007",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -293,13 +525,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8DB6E3A20E2E38E"
+          "0x8DC4AB0DB160EF8"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "292cc1f7-f49d-4c11-a95c-486e52f0e31e"
+          "78796a7e-2c56-4637-b179-0a27a67afd8e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -311,40 +543,40 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 16 Jun 2023 07:20:13 GMT"
+          "Fri, 22 Mar 2024 20:44:22 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Fri, 16 Jun 2023 07:20:14 GMT"
+          "Fri, 22 Mar 2024 20:44:23 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://hoppeeastasia2.eastasia.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"jobSchedule2\",\r\n  \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/jobSchedule2\",\r\n  \"eTag\": \"0x8DB6E3A20E2E38E\",\r\n  \"lastModified\": \"2023-06-16T07:20:14.1955982Z\",\r\n  \"creationTime\": \"2023-06-16T07:20:13.8528901Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2023-06-16T07:20:13.8528901Z\",\r\n  \"schedule\": {\r\n    \"doNotRunUntil\": \"2025-01-01T12:30:00Z\"\r\n  },\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"maxParallelTasks\": -1,\r\n    \"allowTaskPreemption\": false,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool2\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2025-01-01T12:30:00Z\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://billstestba24326.uksouth.batch.azure.com/$metadata#jobschedules/@Element\",\r\n  \"id\": \"jobSchedule2\",\r\n  \"url\": \"https://billstestba24326.uksouth.batch.azure.com/jobschedules/jobSchedule2\",\r\n  \"eTag\": \"0x8DC4AB0DB160EF8\",\r\n  \"lastModified\": \"2024-03-22T20:44:23.0123256Z\",\r\n  \"creationTime\": \"2024-03-22T20:44:22.5135688Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2024-03-22T20:44:22.5135688Z\",\r\n  \"schedule\": {\r\n    \"doNotRunUntil\": \"2025-01-01T12:30:00Z\"\r\n  },\r\n  \"jobSpecification\": {\r\n    \"priority\": 0,\r\n    \"maxParallelTasks\": -1,\r\n    \"allowTaskPreemption\": false,\r\n    \"usesTaskDependencies\": false,\r\n    \"onAllTasksComplete\": \"noaction\",\r\n    \"onTaskFailure\": \"noaction\",\r\n    \"constraints\": {\r\n      \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n      \"maxTaskRetryCount\": 0\r\n    },\r\n    \"poolInfo\": {\r\n      \"poolId\": \"testPool2\"\r\n    }\r\n  },\r\n  \"executionInfo\": {\r\n    \"nextRunTime\": \"2025-01-01T12:30:00Z\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/jobschedules/jobSchedule1?api-version=2023-05-01.17.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy9qb2JTY2hlZHVsZTE/YXBpLXZlcnNpb249MjAyMy0wNS0wMS4xNy4w",
+      "RequestUri": "/jobschedules/jobSchedule1?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy9qb2JTY2hlZHVsZTE/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4w",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "client-request-id": [
-          "a9dd4b34-0163-4718-8b42-ee186214a2e7"
+          "27ee4e10-45ea-4a53-8d61-c1d304c81241"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 16 Jun 2023 07:20:13 GMT"
+          "Fri, 22 Mar 2024 20:44:23 GMT"
         ],
         "x-ms-client-request-id": [
-          "7962883b-cc40-40ab-b2d8-2c41a385fdcb"
+          "cfd7b27a-ac13-428a-8da3-168287d856cb"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.2824.12007",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
@@ -360,7 +592,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "110f6336-3fad-4d6b-b28e-3d31cff40f18"
+          "a137d074-b51b-4548-8379-b2db0c0af665"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -372,34 +604,34 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 16 Jun 2023 07:20:13 GMT"
+          "Fri, 22 Mar 2024 20:44:23 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/jobschedules/jobSchedule2?api-version=2023-05-01.17.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy9qb2JTY2hlZHVsZTI/YXBpLXZlcnNpb249MjAyMy0wNS0wMS4xNy4w",
+      "RequestUri": "/jobschedules/jobSchedule2?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcy9qb2JTY2hlZHVsZTI/YXBpLXZlcnNpb249MjAyNC0wMi0wMS4xOS4w",
       "RequestMethod": "DELETE",
       "RequestHeaders": {
         "client-request-id": [
-          "b42c3c04-f1dc-4b12-8750-24c4ba128260"
+          "5ff69739-3aa1-44a8-b21e-0b5ae9bbaf51"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 16 Jun 2023 07:20:13 GMT"
+          "Fri, 22 Mar 2024 20:44:23 GMT"
         ],
         "x-ms-client-request-id": [
-          "70bdf9ec-bb40-43e8-a578-6f0963bc4075"
+          "4eb031d8-7db5-477f-8b55-a8987ae85f9d"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.2824.12007",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
@@ -415,7 +647,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "8d1761d3-a90e-41a9-9541-a77de653cb85"
+          "a84e47a8-42ce-4b40-b80d-2d6dafee14f1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -427,34 +659,34 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 16 Jun 2023 07:20:13 GMT"
+          "Fri, 22 Mar 2024 20:44:23 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/jobschedules?api-version=2023-05-01.17.0",
-      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDIzLTA1LTAxLjE3LjA=",
+      "RequestUri": "/jobschedules?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L2pvYnNjaGVkdWxlcz9hcGktdmVyc2lvbj0yMDI0LTAyLTAxLjE5LjA=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "client-request-id": [
-          "75026735-19eb-4c9e-b0e6-8c10e32caf86"
+          "97765341-cc10-40ae-b4a8-3ea1b890dd8e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Fri, 16 Jun 2023 07:20:13 GMT"
+          "Fri, 22 Mar 2024 20:44:23 GMT"
         ],
         "x-ms-client-request-id": [
-          "8484a36e-dc09-4a2e-a4aa-7df051a58552"
+          "045a399c-6c79-413a-99e3-97c4ca042628"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.55902",
+          "FxVersion/6.0.2824.12007",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22621",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.0.23.31502",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -467,7 +699,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "6a024883-2f8a-41b9-9219-cb5a17a8274c"
+          "2833c145-61f9-4b0a-ad9f-a7762e8b6372"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -479,21 +711,125 @@
           "3.0"
         ],
         "Date": [
-          "Fri, 16 Jun 2023 07:20:14 GMT"
+          "Fri, 22 Mar 2024 20:44:23 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://hoppeeastasia2.eastasia.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"jobSchedule1\",\r\n      \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/jobSchedule1\",\r\n      \"eTag\": \"0x8DB6E3A209A9AA1\",\r\n      \"lastModified\": \"2023-06-16T07:20:13.7218721Z\",\r\n      \"creationTime\": \"2023-06-16T07:20:13.7218721Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2023-06-16T07:20:14.4963299Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2023-06-16T07:20:13.7218721Z\",\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"maxParallelTasks\": -1,\r\n        \"allowTaskPreemption\": false,\r\n        \"usesTaskDependencies\": false,\r\n        \"onAllTasksComplete\": \"noaction\",\r\n        \"onTaskFailure\": \"noaction\",\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"recentJob\": {\r\n          \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/jobs/jobSchedule1:job-1\",\r\n          \"id\": \"jobSchedule1:job-1\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"jobSchedule2\",\r\n      \"url\": \"https://hoppeeastasia2.eastasia.batch.azure.com/jobschedules/jobSchedule2\",\r\n      \"eTag\": \"0x8DB6E3A20E2E38E\",\r\n      \"lastModified\": \"2023-06-16T07:20:14.1955982Z\",\r\n      \"creationTime\": \"2023-06-16T07:20:13.8528901Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2023-06-16T07:20:14.6122827Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2023-06-16T07:20:13.8528901Z\",\r\n      \"schedule\": {\r\n        \"doNotRunUntil\": \"2025-01-01T12:30:00Z\"\r\n      },\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"maxParallelTasks\": -1,\r\n        \"allowTaskPreemption\": false,\r\n        \"usesTaskDependencies\": false,\r\n        \"onAllTasksComplete\": \"noaction\",\r\n        \"onTaskFailure\": \"noaction\",\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool2\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"nextRunTime\": \"2025-01-01T12:30:00Z\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://billstestba24326.uksouth.batch.azure.com/$metadata#jobschedules\",\r\n  \"value\": [\r\n    {\r\n      \"id\": \"jobSchedule1\",\r\n      \"url\": \"https://billstestba24326.uksouth.batch.azure.com/jobschedules/jobSchedule1\",\r\n      \"eTag\": \"0x8DC4AB0DAAE2EC4\",\r\n      \"lastModified\": \"2024-03-22T20:44:22.3315652Z\",\r\n      \"creationTime\": \"2024-03-22T20:44:22.3315652Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2024-03-22T20:44:23.4768391Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2024-03-22T20:44:22.3315652Z\",\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"maxParallelTasks\": -1,\r\n        \"allowTaskPreemption\": false,\r\n        \"usesTaskDependencies\": false,\r\n        \"onAllTasksComplete\": \"noaction\",\r\n        \"onTaskFailure\": \"noaction\",\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"recentJob\": {\r\n          \"url\": \"https://billstestba24326.uksouth.batch.azure.com/jobs/jobSchedule1:job-1\",\r\n          \"id\": \"jobSchedule1:job-1\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"jobSchedule2\",\r\n      \"url\": \"https://billstestba24326.uksouth.batch.azure.com/jobschedules/jobSchedule2\",\r\n      \"eTag\": \"0x8DC4AB0DB160EF8\",\r\n      \"lastModified\": \"2024-03-22T20:44:23.0123256Z\",\r\n      \"creationTime\": \"2024-03-22T20:44:22.5135688Z\",\r\n      \"state\": \"deleting\",\r\n      \"stateTransitionTime\": \"2024-03-22T20:44:23.6462009Z\",\r\n      \"previousState\": \"active\",\r\n      \"previousStateTransitionTime\": \"2024-03-22T20:44:22.5135688Z\",\r\n      \"schedule\": {\r\n        \"doNotRunUntil\": \"2025-01-01T12:30:00Z\"\r\n      },\r\n      \"jobSpecification\": {\r\n        \"priority\": 0,\r\n        \"maxParallelTasks\": -1,\r\n        \"allowTaskPreemption\": false,\r\n        \"usesTaskDependencies\": false,\r\n        \"onAllTasksComplete\": \"noaction\",\r\n        \"onTaskFailure\": \"noaction\",\r\n        \"constraints\": {\r\n          \"maxWallClockTime\": \"P10675199DT2H48M5.4775807S\",\r\n          \"maxTaskRetryCount\": 0\r\n        },\r\n        \"poolInfo\": {\r\n          \"poolId\": \"testPool2\"\r\n        }\r\n      },\r\n      \"executionInfo\": {\r\n        \"nextRunTime\": \"2025-01-01T12:30:00Z\"\r\n      }\r\n    }\r\n  ]\r\n}",
       "StatusCode": 200
+    },
+    {
+      "RequestUri": "/pools/testPool?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sP2FwaS12ZXJzaW9uPTIwMjQtMDItMDEuMTkuMA==",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "client-request-id": [
+          "5da06e14-897a-437f-aefd-1f53e1fe3bcb"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Fri, 22 Mar 2024 20:44:23 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2824.12007",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
+          "AzurePowershell/Az1.0.0"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "a1761199-f5ab-4cae-95f5-638d81bcc97e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Fri, 22 Mar 2024 20:44:23 GMT"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
+    },
+    {
+      "RequestUri": "/pools/testPool2?api-version=2024-02-01.19.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Rlc3RQb29sMj9hcGktdmVyc2lvbj0yMDI0LTAyLTAxLjE5LjA=",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "client-request-id": [
+          "18b8d1d5-e174-4b02-9d18-8c0090c88c8b"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "ocp-date": [
+          "Fri, 22 Mar 2024 20:44:23 GMT"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2824.12007",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/16.200.24.12902",
+          "AzurePowershell/Az1.0.0"
+        ],
+        "Content-Length": [
+          "0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Transfer-Encoding": [
+          "chunked"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "request-id": [
+          "0ab55ab8-1270-4af3-87a9-2cce0169a79e"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "DataServiceVersion": [
+          "3.0"
+        ],
+        "Date": [
+          "Fri, 22 Mar 2024 20:44:23 GMT"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 202
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "21abd678-18c5-4660-9fdd-8c5ba6b6fe1f",
-    "AZURE_BATCH_ACCOUNT": "hoppeeastasia2",
-    "AZURE_BATCH_ENDPOINT": "https://hoppeeastasia2.eastasia.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "123"
+    "SubscriptionId": "6602ac9a-5dad-41bd-a792-592c704b6a31",
+    "AZURE_BATCH_ACCOUNT": "billstestba24326",
+    "AZURE_BATCH_ENDPOINT": "https://billstestba24326.uksouth.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "automation"
   }
 }

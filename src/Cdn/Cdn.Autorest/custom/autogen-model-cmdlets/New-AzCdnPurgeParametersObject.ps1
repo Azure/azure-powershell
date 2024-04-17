@@ -21,12 +21,12 @@ Create an in-memory object for PurgeParameters.
 Create an in-memory object for PurgeParameters.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.PurgeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.PurgeParameters
 .Link
 https://learn.microsoft.com/powershell/module/Az.Cdn/new-AzCdnPurgeParametersObject
 #>
 function New-AzCdnPurgeParametersObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.PurgeParameters')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.PurgeParameters')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -36,7 +36,7 @@ function New-AzCdnPurgeParametersObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.PurgeParameters]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.PurgeParameters]::New()
 
         if ($PSBoundParameters.ContainsKey('ContentPath')) {
             $Object.ContentPath = $ContentPath
