@@ -23,12 +23,12 @@ Edgenodes are the global Point of Presence (POP) locations used to deliver CDN c
 Get-AzCdnEdgeNode
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEdgeNode
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEdgeNode
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azcdnedgenode
 #>
 function Get-AzCdnEdgeNode {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEdgeNode])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEdgeNode])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]

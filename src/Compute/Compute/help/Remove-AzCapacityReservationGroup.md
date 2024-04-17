@@ -15,7 +15,8 @@ Removes a Capacity Reservation Group
 ### DefaultParameterSet (Default)
 ```
 Remove-AzCapacityReservationGroup -ResourceGroupName <String> -Name <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIDParameterSet
@@ -27,7 +28,8 @@ Remove-AzCapacityReservationGroup -ResourceId <String> [-AsJob] [-DefaultProfile
 ### InputObjectParameterSet
 ```
 Remove-AzCapacityReservationGroup -InputObject <PSCapacityReservationGroup> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

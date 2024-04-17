@@ -117,6 +117,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpecInternal)this).DbName = (string) content.GetValueForProperty("DbName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpecInternal)this).DbName, global::System.Convert.ToString);
             }
+            if (content.Contains("DbConnectionAuthenticationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpecInternal)this).DbConnectionAuthenticationMode = (string) content.GetValueForProperty("DbConnectionAuthenticationMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpecInternal)this).DbConnectionAuthenticationMode, global::System.Convert.ToString);
+            }
             if (content.Contains("DbUserName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpecInternal)this).DbUserName = (string) content.GetValueForProperty("DbUserName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpecInternal)this).DbUserName, global::System.Convert.ToString);
@@ -157,6 +161,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("DbName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpecInternal)this).DbName = (string) content.GetValueForProperty("DbName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpecInternal)this).DbName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DbConnectionAuthenticationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpecInternal)this).DbConnectionAuthenticationMode = (string) content.GetValueForProperty("DbConnectionAuthenticationMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkMetastoreSpecInternal)this).DbConnectionAuthenticationMode, global::System.Convert.ToString);
             }
             if (content.Contains("DbUserName"))
             {

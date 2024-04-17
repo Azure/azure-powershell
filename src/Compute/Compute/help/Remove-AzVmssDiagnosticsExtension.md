@@ -15,7 +15,8 @@ Removes a diagnostics extension from the VMSS.
 
 ```
 Remove-AzVmssDiagnosticsExtension [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [[-Name] <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -130,5 +131,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzVMDiagnosticsExtension](./Remove-AzVMDiagnosticsExtension.md)
 
 [Remove-AzVmssExtension](./Remove-AzVmssExtension.md)
-
-

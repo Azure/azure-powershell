@@ -71,7 +71,6 @@ Get the detail of the resourceSyncRule with a specified resource group, subscrip
 
 ### -CustomlocationInputObject
 Identity Parameter
-To construct, see NOTES section for CUSTOMLOCATIONINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
@@ -118,7 +117,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity

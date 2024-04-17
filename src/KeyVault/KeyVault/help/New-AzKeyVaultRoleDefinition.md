@@ -15,13 +15,15 @@ Creates a custom role definition on an HSM.
 ### InputObject (Default)
 ```
 New-AzKeyVaultRoleDefinition [-HsmName] <String> [-Scope <String>] [-Role] <PSKeyVaultRoleDefinition>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputFile
 ```
 New-AzKeyVaultRoleDefinition [-HsmName] <String> [-Scope <String>] [-InputFile] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

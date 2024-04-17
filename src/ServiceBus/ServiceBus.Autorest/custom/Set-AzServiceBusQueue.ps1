@@ -132,6 +132,7 @@ function Set-AzServiceBusQueue{
         [Parameter(HelpMessage = "Maximum size (in KB) of the message payload that can be accepted by the queue. This property is only used in Premium today and default is 1024.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ParameterBreakingChangeAttribute("Status","12.0.0", "4.0.0","2024-05-21" )]
         # Maximum size (in KB) of the message payload that can be accepted by the queue. This property is only used in Premium today and default is 1024.
         ${Status},
 

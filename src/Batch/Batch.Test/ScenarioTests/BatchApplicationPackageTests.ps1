@@ -79,11 +79,14 @@ function Test-CreatePoolWithApplicationPackage
         $apr = [Microsoft.Azure.Commands.Batch.Models.PSApplicationPackageReference[]]$apr1
 
         # Create a pool with application package reference
-        $osFamily = "4"
-        $targetOSVersion = "*"
-        $paasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration -ArgumentList @($osFamily, $targetOSVersion)
-
-        New-AzBatchPool -Id $poolId -CloudServiceConfiguration $paasConfiguration -TargetDedicated 3 -VirtualMachineSize "small" -BatchContext $context -ApplicationPackageReferences $apr
+        $vmSize = "standard_d1_v2"
+        $publisher = "microsoft-azure-batch"
+        $offer = "ubuntu-server-container"
+        $osSKU = "20-04-lts"
+        $nodeAgent = "batch.node.ubuntu 20.04"
+        $imageRef = New-Object Microsoft.Azure.Commands.Batch.Models.PSImageReference -ArgumentList @($offer, $publisher, $osSKU)
+        $iaasConfiguration = New-Object Microsoft.Azure.Commands.Batch.Models.PSVirtualMachineConfiguration -ArgumentList @($imageRef, $nodeAgent)
+        New-AzBatchPool -Id $poolId -VirtualMachineSize "standard_d1_v2" -TargetDedicated 3 -VirtualMachineConfiguration $iaasConfiguration -BatchContext $context -ApplicationPackageReferences $apr
     }
     finally
     {

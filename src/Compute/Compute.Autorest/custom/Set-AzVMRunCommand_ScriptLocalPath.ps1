@@ -15,7 +15,7 @@
 # ----------------------------------------------------------------------------------
 
 function Set-AzVMRunCommand_ScriptLocalPath {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -78,7 +78,7 @@ function Set-AzVMRunCommand_ScriptLocalPath {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]]
         # The parameters used by the script.
         # To construct, see NOTES section for PARAMETER properties and create a hash table.
         ${Parameter},
@@ -86,7 +86,7 @@ function Set-AzVMRunCommand_ScriptLocalPath {
         [Parameter()]
         [AllowEmptyCollection()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]]
         # The parameters used by the script.
         # To construct, see NOTES section for PROTECTEDPARAMETER properties and create a hash table.
         ${ProtectedParameter},
@@ -102,10 +102,61 @@ function Set-AzVMRunCommand_ScriptLocalPath {
         [System.String]
         # Specifies the user account on the VM when executing the run command.
         ${RunAsUser},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+        [System.String]
+        # Client Id (GUID value) of the user-assigned managed identity.
+        # ObjectId should not be used if this is provided.
+        ${ScriptUriManagedIdentityClientId},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IResourceTags]))]
+        [System.String]
+        # Object Id (GUID value) of the user-assigned managed identity.
+        # ClientId should not be used if this is provided.
+        ${ScriptUriManagedIdentityObjectId},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+        [System.Management.Automation.SwitchParameter]
+        # Optional.
+        # If set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed.
+        # If set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures.
+        # See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
+        ${TreatFailureAsDeploymentFailure},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+        [System.String]
+        # Client Id (GUID value) of the user-assigned managed identity.
+        # ObjectId should not be used if this is provided.
+        ${OutputBlobManagedIdentityClientId},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+        [System.String]
+        # Object Id (GUID value) of the user-assigned managed identity.
+        # ClientId should not be used if this is provided.
+        ${OutputBlobManagedIdentityObjectId},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+        [System.String]
+        # Client Id (GUID value) of the user-assigned managed identity.
+        # ObjectId should not be used if this is provided.
+        ${ErrorBlobManagedIdentityClientId},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+        [System.String]
+        # Object Id (GUID value) of the user-assigned managed identity.
+        # ClientId should not be used if this is provided.
+        ${ErrorBlobManagedIdentityObjectId},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags]))]
         [System.Collections.Hashtable]
         # Resource tags
         ${Tag},

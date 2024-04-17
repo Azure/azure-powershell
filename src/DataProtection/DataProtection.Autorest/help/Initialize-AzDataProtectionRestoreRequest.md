@@ -52,9 +52,9 @@ Initialize-AzDataProtectionRestoreRequest -BackupInstance <BackupInstanceResourc
 
 ### RestoreAsFiles
 ```
-Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -FileNamePrefix <String>
- -RestoreLocation <String> -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType>
- -TargetContainerURI <String> [-RecoveryPoint <String>] [-RehydrationDuration <String>]
+Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -RestoreLocation <String>
+ -RestoreType <RestoreTargetType> -SourceDataStore <DataStoreType> -TargetContainerURI <String>
+ [-FileNamePrefix <String>] [-RecoveryPoint <String>] [-RehydrationDuration <String>]
  [-RehydrationPriority <String>] [-SecretStoreType <SecretStoreTypes>] [-SecretStoreURI <String>]
  [-TargetResourceIdForRestoreAsFile <String>] [<CommonParameters>]
 ```
@@ -193,7 +193,7 @@ Backup Instance object to trigger original localtion restore.
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.BackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.BackupInstanceResource
 Parameter Sets: OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
@@ -242,7 +242,7 @@ Type: System.String
 Parameter Sets: RestoreAsFiles
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -346,7 +346,7 @@ Use this parameter to restore with AzureKubernetesService.
 To construct, see NOTES section for RESTORECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.KubernetesClusterRestoreCriteria
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.KubernetesClusterRestoreCriteria
 Parameter Sets: AlternateLocationFullRecovery, AlternateLocationILR, OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
@@ -467,7 +467,7 @@ Accept wildcard characters: False
 
 ### -TargetResourceIdForRestoreAsFile
 Target storage account container ARM Id to which backup data will be restored as files.
-This parameter is required for restoring as files to another subscription.
+This parameter is required for restoring as files when cross subscription restore is disabled on the backup vault.
 
 ```yaml
 Type: System.String
@@ -503,7 +503,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IAzureBackupRestoreRequest
 
 ## NOTES
 

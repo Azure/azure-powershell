@@ -16,21 +16,28 @@ The operation to create or update the VMSS VM run command.
 ```
 Set-AzVmssVMRunCommand -InstanceId <String> -ResourceGroupName <String> -RunCommandName <String>
  -VMScaleSetName <String> -Location <String> [-SubscriptionId <String>] [-AsyncExecution]
- [-ErrorBlobUri <String>] [-OutputBlobUri <String>] [-Parameter <IRunCommandInputParameter[]>]
- [-ProtectedParameter <IRunCommandInputParameter[]>] [-RunAsPassword <String>] [-RunAsUser <String>]
- [-SourceCommandId <String>] [-SourceScript <String>] [-SourceScriptUri <String>] [-Tag <Hashtable>]
- [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ErrorBlobManagedIdentityClientId <String>] [-ErrorBlobManagedIdentityObjectId <String>]
+ [-ErrorBlobUri <String>] [-OutputBlobManagedIdentityClientId <String>]
+ [-OutputBlobManagedIdentityObjectId <String>] [-OutputBlobUri <String>]
+ [-Parameter <IRunCommandInputParameter[]>] [-ProtectedParameter <IRunCommandInputParameter[]>]
+ [-RunAsPassword <String>] [-RunAsUser <String>] [-ScriptUriManagedIdentityClientId <String>]
+ [-ScriptUriManagedIdentityObjectId <String>] [-SourceCommandId <String>] [-SourceScript <String>]
+ [-SourceScriptUri <String>] [-Tag <Hashtable>] [-TimeoutInSecond <Int32>] [-TreatFailureAsDeploymentFailure]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ScriptLocalPath
 ```
 Set-AzVmssVMRunCommand -InstanceId <String> -ResourceGroupName <String> -RunCommandName <String>
  -VMScaleSetName <String> -Location <String> -ScriptLocalPath <String> [-SubscriptionId <String>]
- [-AsyncExecution] [-ErrorBlobUri <String>] [-OutputBlobUri <String>]
+ [-AsyncExecution] [-ErrorBlobManagedIdentityClientId <String>] [-ErrorBlobManagedIdentityObjectId <String>]
+ [-ErrorBlobUri <String>] [-OutputBlobManagedIdentityClientId <String>]
+ [-OutputBlobManagedIdentityObjectId <String>] [-OutputBlobUri <String>]
  [-Parameter <IRunCommandInputParameter[]>] [-ProtectedParameter <IRunCommandInputParameter[]>]
- [-RunAsPassword <String>] [-RunAsUser <String>] [-Tag <Hashtable>] [-TimeoutInSecond <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-RunAsPassword <String>] [-RunAsUser <String>] [-ScriptUriManagedIdentityClientId <String>]
+ [-ScriptUriManagedIdentityObjectId <String>] [-Tag <Hashtable>] [-TimeoutInSecond <Int32>]
+ [-TreatFailureAsDeploymentFailure] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -162,7 +169,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -176,8 +184,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ErrorBlobManagedIdentityClientId
+Client Id (GUID value) of the user-assigned managed identity.
+ObjectId should not be used if this is provided.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ErrorBlobManagedIdentityObjectId
+Object Id (GUID value) of the user-assigned managed identity.
+ClientId should not be used if this is provided.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ErrorBlobUri
 Specifies the Azure storage blob where script error stream will be uploaded.
+Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob.
+Refer errorBlobManagedIdentity parameter.
 
 ```yaml
 Type: System.String
@@ -236,8 +278,42 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -OutputBlobManagedIdentityClientId
+Client Id (GUID value) of the user-assigned managed identity.
+ObjectId should not be used if this is provided.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OutputBlobManagedIdentityObjectId
+Object Id (GUID value) of the user-assigned managed identity.
+ClientId should not be used if this is provided.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OutputBlobUri
 Specifies the Azure storage blob where script output stream will be uploaded.
+Use a SAS URI with read, append, create, write access OR use managed identity to provide the VM access to the blob.
+Refer outputBlobManagedIdentity parameter.
 
 ```yaml
 Type: System.String
@@ -256,7 +332,7 @@ The parameters used by the script.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -272,7 +348,7 @@ The parameters used by the script.
 To construct, see NOTES section for PROTECTEDPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IRunCommandInputParameter[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IRunCommandInputParameter[]
 Parameter Sets: (All)
 Aliases:
 
@@ -358,6 +434,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ScriptUriManagedIdentityClientId
+Client Id (GUID value) of the user-assigned managed identity.
+ObjectId should not be used if this is provided.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScriptUriManagedIdentityObjectId
+Object Id (GUID value) of the user-assigned managed identity.
+ClientId should not be used if this is provided.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SourceCommandId
 Specifies a commandId of predefined built-in script.
 
@@ -390,6 +498,7 @@ Accept wildcard characters: False
 
 ### -SourceScriptUri
 Specifies the script download location.
+It can be either SAS URI of an Azure storage blob with read access or public URI.
 
 ```yaml
 Type: System.String
@@ -439,6 +548,24 @@ The timeout in seconds to execute the run command.
 
 ```yaml
 Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TreatFailureAsDeploymentFailure
+Optional.
+If set to true, any failure in the script will fail the deployment and ProvisioningState will be marked as Failed.
+If set to false, ProvisioningState would only reflect whether the run command was run or not by the extensions platform, it would not indicate whether script failed in case of script failures.
+See instance view of run command in case of script failures to see executionMessage, output, error: https://aka.ms/runcommandmanaged#get-execution-status-and-results
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -502,24 +629,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IVirtualMachineRunCommand
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20230701.IVirtualMachineRunCommand
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PARAMETER <IRunCommandInputParameter[]>`: The parameters used by the script.
-  - `Name <String>`: The run command parameter name.
-  - `Value <String>`: The run command parameter value.
-
-`PROTECTEDPARAMETER <IRunCommandInputParameter[]>`: The parameters used by the script.
-  - `Name <String>`: The run command parameter name.
-  - `Value <String>`: The run command parameter value.
 
 ## RELATED LINKS
 

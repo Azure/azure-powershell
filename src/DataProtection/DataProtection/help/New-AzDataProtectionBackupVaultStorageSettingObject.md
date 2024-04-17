@@ -14,7 +14,7 @@ Get Backup Vault storage setting object
 
 ```
 New-AzDataProtectionBackupVaultStorageSettingObject -Type <StorageSettingType> -DataStoreType <DataStoreType>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,21 +47,6 @@ Aliases:
 Accepted values: ArchiveStore, OperationalStore, VaultStore
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

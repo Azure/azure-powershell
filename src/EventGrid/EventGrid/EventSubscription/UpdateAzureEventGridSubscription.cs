@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -143,6 +144,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string DomainTopicName { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("EndpointType", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             HelpMessage = EventGridConstants.EndpointTypeHelp,
@@ -171,6 +173,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string EndpointType { get; set; } = EventGridConstants.Webhook;
 
+        [CmdletParameterBreakingChangeWithVersion("Endpoint", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             HelpMessage = EventGridConstants.EndpointHelp,
@@ -370,6 +373,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public Hashtable[] AdvancedFilter { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("DeliveryAttributeMapping", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
@@ -469,6 +473,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateRange(1, 30)]
         public int MaxDeliveryAttempt { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("DeadLetterEndpoint", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
@@ -502,6 +507,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateNotNullOrEmpty]
         public string DeadLetterEndpoint { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("MaxEventsPerBatch", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
@@ -535,6 +541,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateRange(1, 5000)]
         public int MaxEventsPerBatch { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("PreferredBatchSizeInKiloByte", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
@@ -568,6 +575,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [ValidateRange(1, 1024)]
         public int PreferredBatchSizeInKiloByte { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("AzureActiveDirectoryApplicationIdOrUri", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,
@@ -601,6 +609,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Alias(AliasAadAppIdUri)]
         public string AzureActiveDirectoryApplicationIdOrUri { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("AzureActiveDirectoryTenantId", "12.0.0", "2.0.0", ChangeDescription = "This parameter will be deprecated.")]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = false,

@@ -224,5 +224,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVM](./Get-AzVM.md)
 
 [Update-AzVM](./Update-AzVM.md)
-
-
