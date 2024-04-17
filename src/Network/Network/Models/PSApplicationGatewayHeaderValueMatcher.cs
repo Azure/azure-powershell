@@ -13,21 +13,19 @@
 // limitations under the License.
 //
 
-using Microsoft.Azure.Management.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSApplicationGatewayHeaderConfiguration
+    public class PSApplicationGatewayHeaderValueMatcher
     {
         [Ps1Xml(Target = ViewControl.Table)]
-        public string HeaderName { get; set; }
+        public string Pattern { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public string HeaderValue { get; set; }
+        public bool? IgnoreCase { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public PSApplicationGatewayHeaderValueMatcher HeaderValueMatcher { get; set; }
+        public bool? Negate { get; set; }
     }
 }

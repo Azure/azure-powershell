@@ -11,47 +11,46 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+//
 
 using Microsoft.Azure.Commands.Network.Models;
-using System;
-using System.Collections.Generic;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    public class AzureApplicationGatewayRewriteRuleHeaderConfigurationBase : NetworkBaseCmdlet
+    public class AzureApplicationGatewayHeaderValueMatcherBase : NetworkBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Name of the Header to rewrite")]
-        [ValidateNotNullOrEmpty]
-        public string HeaderName { get; set; }
+            HelpMessage = "Pattern to look for in the Header Values")]
+        [AllowEmptyString()]
+        public string Pattern { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Header value to set for the given header name. Header will be deleted if this is omitted")]
-        public string HeaderValue { get; set; }
+            HelpMessage = "Set this flag to ignore case on the pattern")]
+        public SwitchParameter IgnoreCase { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "[ToDo] Provide help message")]
-        public PSApplicationGatewayHeaderValueMatcher HeaderValueMatcher { get; set; }
+            HelpMessage = "Set this flag to negate the condition validation")]
+        public SwitchParameter Negate { get; set; }
 
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
         }
 
-        public PSApplicationGatewayHeaderConfiguration NewObject()
+        public PSApplicationGatewayHeaderValueMatcher NewObject()
         {
-            var headerConfiguration = new PSApplicationGatewayHeaderConfiguration
+            var headerValueMatcherObj = new PSApplicationGatewayHeaderValueMatcher
             {
-                HeaderName = this.HeaderName,
-                HeaderValue = this.HeaderValue,
-                HeaderValueMatcher = this.HeaderValueMatcher
+                Pattern = this.Pattern,
+                IgnoreCase = this.IgnoreCase.IsPresent,
+                Negate = this.Negate.IsPresent
             };
 
-            return headerConfiguration;
+            return headerValueMatcherObj;
         }
     }
 }
