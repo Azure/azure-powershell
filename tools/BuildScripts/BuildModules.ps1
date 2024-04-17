@@ -72,13 +72,13 @@ function Get-CsprojFromModule {
                 return
             }
             $result += $csprojPath
-            Write-Host "Will build csproj for module $path`r`n$($csprojPath)"
+            Write-Host "Including project: $($csprojPath)"
         }
     }
     if ('Debug' -eq $Configuration -and $TestModuleList -and $TestModuleList.Length -ne 0) {
         $testFxCsprojpath =  Join-Path $RepoRoot "tools" "TestFx" "TestFx.csproj"
         $result += $testFxCsprojpath
-        Write-Host "Will build csproj for test framework`r`n$($testFxCsprojpath)"
+        Write-Host "Including project: $($testFxCsprojpath)"
     }
     return $result
 }
