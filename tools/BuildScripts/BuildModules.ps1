@@ -72,13 +72,13 @@ function Get-CsprojFromModule {
                 return
             }
             $result += $csprojPath
-            Write-Host "Including project: $($csprojPath)"
+            Write-Host "Including project: $($csprojPath)" -ForegroundColor Cyan
         }
     }
     if ('Debug' -eq $Configuration -and $TestModuleList -and $TestModuleList.Length -ne 0) {
         $testFxCsprojpath =  Join-Path $RepoRoot "tools" "TestFx" "TestFx.csproj"
         $result += $testFxCsprojpath
-        Write-Host "Including project: $($testFxCsprojpath)"
+        Write-Host "Including project: $($testFxCsprojpath)" -ForegroundColor Cyan
     }
     return $result
 }
