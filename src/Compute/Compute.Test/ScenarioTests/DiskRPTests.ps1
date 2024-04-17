@@ -1838,7 +1838,7 @@ function Test-DiskGrantAccessGetSASWithTL
 
 	try
     {
-        $rgname = "adsandsrc1";
+        $rgname = "adsandsrc7";
         $loc = "eastus2euap";
 		New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
@@ -1866,10 +1866,14 @@ function Test-DiskGrantAccessGetSASWithTL
         $OSDiskName = $vmname + "-osdisk";
         $NICName = $vmname+ "-nic";
         $NSGName = $vmname + "-NSG";
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2022-datacenter-azure-edition";
+        $version = "latest";
 
          # Creating a VM using Simple parameterset
-        $password = Get-PasswordForVM;
-        $user = Get-ComputeTestResourceName;
+        $password = "Testing1234567";#Get-PasswordForVM;
+        $user = "usertest";#Get-ComputeTestResourceName;
         $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
@@ -1886,7 +1890,7 @@ function Test-DiskGrantAccessGetSASWithTL
         Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred;
         Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version $version ;
         Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
-        Add-AzVMDataDisk -VM $vmconfig -Name $datadiskname -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -CreateOption Copy -SourceResourceId $disk.Id;
+        Add-AzVMDataDisk -VM $vmconfig -Name $datadiskname -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -CreateOption Copy -SourceResourceId $disk.Id -SecurityEncryptionType "TrustedLaunch";
 
         $vm = New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
 	}

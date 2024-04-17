@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using CM = Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Compute.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -152,6 +153,13 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string SourceResourceId { get; set; }
 
+        [Parameter(
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Sets the SecurityEncryptionType value on the managed disk of the VM. Possible values include: TrustedLaunch")]
+        [PSArgumentCompleter("TrustedLaunch")]
+        public string SecurityEncryptionType { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.ParameterSetName.Equals(VmNormalDiskParameterSet))
@@ -161,6 +169,18 @@ namespace Microsoft.Azure.Commands.Compute
                 if (storageProfile == null)
                 {
                     storageProfile = new StorageProfile();
+                }
+
+                ManagedDiskParameters mdparams = new ManagedDiskParameters();
+                if (this.IsParameterBound(c => c.SecurityEncryptionType))
+                {
+                    var securityProfile = this.VM.SecurityProfile;
+                    if (securityProfile == null)
+                    {
+                        securityProfile = new SecurityProfile();
+                    }
+                    mdparams.SecurityProfile = new VMDiskSecurityProfile();
+                    mdparams.SecurityProfile.SecurityEncryptionType = this.SecurityEncryptionType;
                 }
 
                 if (storageProfile.DataDisks == null)
@@ -184,7 +204,8 @@ namespace Microsoft.Azure.Commands.Compute
                         Uri = this.SourceImageUri
                     },
                     DeleteOption = this.DeleteOption,
-                    SourceResource = new ApiEntityReference(this.SourceResourceId)
+                    SourceResource = new ApiEntityReference(this.SourceResourceId),
+                    ManagedDisk = mdparams
                 });
 
                 this.VM.StorageProfile = storageProfile;
