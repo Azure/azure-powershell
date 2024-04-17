@@ -109,12 +109,14 @@ if (-not (Test-Path $sourceDirectory)) {
 
 switch ($PSCmdlet.ParameterSetName) {
     'AllSet' {
+        Write-Host "Start building all modules" -ForegroundColor DarkYellow
         foreach ($module in (Get-Childitem -Path $sourceDirectory -Directory)) {
             $moduleName = $module.Name
-            if ($name -in $notModules) {
+            if ($moduleName -in $notModules) {
                 continue
             }
-            $TargetModule += $name
+            $TargetModule += $moduleName
+            Write-Host "$moduleName" -ForegroundColor DarkYellow
         }
         if ('Core' -eq $TestsToRun) {
             $testModules = $coreTestModules
@@ -123,7 +125,6 @@ switch ($PSCmdlet.ParameterSetName) {
         } else {
             $testModules = $TargetModule
         }
-        Write-Host "Start building all modules`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
     }
     'CIPlanSet' {
         $CIPlanPath = Join-Path $RepoArtifacts "PipelineResult" "CIPlan.json"
