@@ -29,6 +29,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
 
         internal string ResolvePropertyPath(SanitizerProperty property)
         {
+            if (property == null)
+                return null;
+
             var propertyPath = property.PropertyName;
             var parentProperty = property.ParentProperty;
             while (parentProperty != null)
