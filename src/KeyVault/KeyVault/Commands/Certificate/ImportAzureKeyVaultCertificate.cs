@@ -12,20 +12,21 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-using System.IO;
-using System.Security;
-using System.Collections.Generic;
-using System.Management.Automation;
-using System.Security.Cryptography.X509Certificates;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.KeyVault.Models;
-using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
-using Microsoft.Azure.KeyVault.Models;
+using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Common.Exceptions;
-using Microsoft.Azure.Commands.KeyVault.Properties;
+
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Management.Automation;
+using System.Security;
+using System.Security.Cryptography.X509Certificates;
+
+using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault
 {
