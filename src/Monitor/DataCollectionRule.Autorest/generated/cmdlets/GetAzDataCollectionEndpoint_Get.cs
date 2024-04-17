@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionEndpoints/{dataCollectionEndpointName}"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzDataCollectionEndpoint_Get")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get,  @"AzDataCollectionEndpoint_Get")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResource))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Description(@"Returns the specified data collection endpoint.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Generated]

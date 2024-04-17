@@ -21,7 +21,7 @@ Returns the specified data collection rule.
 Returns the specified association.
 
 ### [New-AzDataCollectionEndpoint](New-AzDataCollectionEndpoint.md)
-Create a data collection endpoint.
+Creates a data collection endpoint.
 
 ### [New-AzDataCollectionRule](New-AzDataCollectionRule.md)
 Create a data collection rule.

@@ -12,7 +12,7 @@ Microsoft Azure PowerShell: App cmdlets
 
 ## Az.App Cmdlets
 ### [Disable-AzContainerAppRevision](Disable-AzContainerAppRevision.md)
-Deactivates a revision for a Container App
+Deactivates a revision for a Container App.
 
 ### [Enable-AzContainerAppRevision](Enable-AzContainerAppRevision.md)
 Activates a revision for a Container App

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.App/containerApps/{containerAppName}"
     /// </remarks>
-    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzContainerApp_Get")]
+    [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get,  @"AzContainerApp_Get")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Description(@"Get the properties of a Container App.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.App.Generated]
