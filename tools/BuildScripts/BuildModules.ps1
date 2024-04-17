@@ -177,6 +177,7 @@ foreach ($moduleRootName in $TargetModule) {
     . "$toolDirectory/PrepareAutorestModule.ps1" -ModuleRootName $moduleRootName -RepoRoot $RepoRoot
 }
 
+#Yabo: Do we really need to add all csproj in on sln and build the sln? Why not build each csproj individually?
 & dotnet --version
 & dotnet new sln -n Azure.PowerShell -o $RepoArtifacts --force
 $sln = Join-Path $RepoArtifacts "Azure.PowerShell.sln"
