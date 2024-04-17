@@ -58,6 +58,7 @@ function setupEnv() {
         ResourceGroupName = "sarath-rg"
         VaultName = "sarath-vault"
         NewVaultName = "new-pstest-vault"
+        NewCSRVault = "csr-pstest-vault"
     }
 
     $BackupJobTestVariables = @{
