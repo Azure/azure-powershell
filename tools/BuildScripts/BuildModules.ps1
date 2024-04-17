@@ -60,21 +60,20 @@ function Get-CsprojFromModule {
     $testCsprojPattern = ($testCsprojPattern | Join-String -Separator '|')
 
     $result = @()
-    foreach ($path in $modulePath) {
-        Get-ChildItem -Path $path -Filter "*.csproj" -Recurse | foreach-object {
-            $csprojPath = $_.FullName
-            # Release do not need test, exclude all test projects
-            $releaseReturnCondition = ("Release" -eq $Configuration) -and ($csprojPath -match ".*Test.csproj$")
-            # Debug only include: 1. not test project 2. is test projects and only in calculated test project list 
-            $debugReturnCondition = ("Debug" -eq $Configuration) -and ($csprojPath -match ".*Test.csproj$") -and ($csprojPath -notmatch $testCsprojPattern)
-            $uniqueNameReturnCondition = $csprojPath -in $result
-            if ($uniqueNameReturnCondition -or $releaseReturnCondition -or $debugReturnCondition) {
-                return
-            }
-            $result += $csprojPath
-            Write-Host "Including project: $($csprojPath)" -ForegroundColor Cyan
+    foreach ($csproj in (Get-ChildItem -Path $modulePath -Filter "*.csproj" -Recurse)) {
+        $csprojPath = $csproj.FullName
+        # Release do not need test, exclude all test projects
+        $releaseReturnCondition = ("Release" -eq $Configuration) -and ($csprojPath -match ".*Test.csproj$")
+        # Debug only include: 1. not test project 2. is test projects and only in calculated test project list 
+        $debugReturnCondition = ("Debug" -eq $Configuration) -and ($csprojPath -match ".*Test.csproj$") -and ($csprojPath -notmatch $testCsprojPattern)
+        $uniqueNameReturnCondition = $csprojPath -in $result
+        if ($uniqueNameReturnCondition -or $releaseReturnCondition -or $debugReturnCondition) {
+            return
         }
+        $result += $csprojPath
+        Write-Host "Including project: $($csprojPath)" -ForegroundColor Cyan
     }
+
     if ('Debug' -eq $Configuration -and $TestModuleList -and $TestModuleList.Length -ne 0) {
         $testFxCsprojpath =  Join-Path $RepoRoot "tools" "TestFx" "TestFx.csproj"
         $result += $testFxCsprojpath
@@ -110,7 +109,13 @@ if (-not (Test-Path $sourceDirectory)) {
 
 switch ($PSCmdlet.ParameterSetName) {
     'AllSet' {
-        $TargetModule = Get-Childitem -Path $sourceDirectory -Directory | ForEach-Object {$_.Name} | Where-Object { $_ -notin $notModules}
+        foreach ($module in (Get-Childitem -Path $sourceDirectory -Directory)) {
+            $moduleName = $module.Name
+            if ($name -in $notModules) {
+                continue
+            }
+            $TargetModule += $name
+        }
         if ('Core' -eq $TestsToRun) {
             $testModules = $coreTestModules
         } elseif ('NonCore') {
@@ -118,7 +123,7 @@ switch ($PSCmdlet.ParameterSetName) {
         } else {
             $testModules = $TargetModule
         }
-        Write-Host -ForegroundColor "Start building all modules`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
+        Write-Host "Start building all modules`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
     }
     'CIPlanSet' {
         $CIPlanPath = Join-Path $RepoArtifacts "PipelineResult" "CIPlan.json"
@@ -127,7 +132,7 @@ switch ($PSCmdlet.ParameterSetName) {
             $TargetModule = $CIPlan.build
             $testModules = $CIPlan.test
         }
-        Write-Host -ForegroundColor "Start building modules from $CIPlanPath`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
+        Write-Host "Start building modules from $CIPlanPath`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
     }
     'ModifiedBuildSet' {
         $changelogPath = Join-Path $RepoRoot "tools" "Azpreview" "changelog.md"
@@ -148,17 +153,19 @@ switch ($PSCmdlet.ParameterSetName) {
             }
         }
         $testModules = $TargetModule
-        Write-Host -ForegroundColor "Start building modified modules`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
+        Write-Host  "Start building modified modules`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
     }
     'TargetModuleSet' {
         $testModules = $TargetModule
-        Write-Host -ForegroundColor "Start building target modules`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
+        Write-Host  "Start building target modules`r`n$($TargetModule | Join-String -Separator "`r`n")" -ForegroundColor DarkYellow
     }
 }
 
 $csprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -TestModuleList $testModules -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory -Configuration $Configuration
-$TargetModule | Foreach-Object {
-    . "$toolDirectory/PrepareAutorestModule.ps1" -ModuleRootName $_ -RepoRoot $RepoRoot
+
+# Prepare autorest based modules
+foreach ($moduleRootName in $TargetModule) {
+    . "$toolDirectory/PrepareAutorestModule.ps1" -ModuleRootName $moduleRootName -RepoRoot $RepoRoot
 }
 
 & dotnet --version
