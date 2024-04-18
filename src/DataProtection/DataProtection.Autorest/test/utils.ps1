@@ -255,6 +255,16 @@ function setupEnv() {
         TargetContainerURI = "https://vdhingra1psa.blob.core.windows.net/powershellpgflexrestore"
     }
 
+    $CmkEncryptionVariables = @{
+        SubscriptionId = "191973cd-9c54-41e0-ac19-25dd9a92d5a8"
+        ResourceGroupName = "jeevan-wrk-vms"
+        VaultName = "pstestvault-automated"
+        Location = "eastasia"
+        CmkUserAssignedIdentityId = "/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest"
+        CmkEncryptionKeyUri = "https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1"
+        CmkEncryptionKeyUriUpdated = "https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1"
+    }
+
     $env.add("TestBackupInstance", $BackupInstanceTestVariables) | Out-Null
     $env.add("TestBackupPolicy", $BackupPolicyTestVariables) | Out-Null
     $env.add("TestBackupVault", $BackupVaultTestVariables) | Out-Null
@@ -276,6 +286,7 @@ function setupEnv() {
     $env.add("TestMUA", $MUAVariables) | Out-Null
     $env.add("TestPGFlex", $PGFlexVariables) | Out-Null
     $env.add("TestMySQL", $MySQLVariables) | Out-Null
+    $env.add("TestCmkEncryption", $CmkEncryptionVariables) | Out-Null
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

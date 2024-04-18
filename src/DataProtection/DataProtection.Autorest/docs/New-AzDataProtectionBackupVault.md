@@ -15,11 +15,15 @@ Creates or updates a BackupVault resource belonging to a resource group.
 ```
 New-AzDataProtectionBackupVault -Location <String> -ResourceGroupName <String>
  -StorageSetting <IStorageSetting[]> -VaultName <String> [-AsJob]
- [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-CrossRegionRestoreState <CrossRegionRestoreState>]
+ [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-CmkEncryptionKeyUri <String>]
+ [-CmkEncryptionState <EncryptionState>] [-CmkIdentityType <IdentityType>]
+ [-CmkInfrastructureEncryption <InfrastructureEncryptionState>] [-CmkUserAssignedIdentityId <String>]
+ [-CrossRegionRestoreState <CrossRegionRestoreState>]
  [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-DefaultProfile <PSObject>]
- [-ETag <String>] [-IdentityType <String>] [-ImmutabilityState <ImmutabilityState>] [-NoWait]
- [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <SoftDeleteState>] [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ETag <String>] [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-ImmutabilityState <ImmutabilityState>] [-NoWait] [-SoftDeleteRetentionDurationInDay <Double>]
+ [-SoftDeleteState <SoftDeleteState>] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,6 +61,27 @@ ETag IdentityPrincipalId IdentityTenantId IdentityType Location Name    Type
 
 This command creates a new backup vault while setting Immutability state, cross subscription restore state, soft delete settings of the vault at creation time.
 
+### Example 3: Create a Backup Vault with CMK
+```powershell
+$storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType "<DataStoreType>" -Type "<Type>"
+$userAssignedIdentity = @{ 
+    "<userAssignedId1>" = @{
+        "clientId": "<clientId1>",
+        "principalId": "<clientId2>"
+    };
+    "<userAssignedId2>" = @{}
+}
+New-AzDataProtectionBackupVault -SubscriptionId <subscriptionId> -ResourceGroupName <resourceGroupName> -VaultName <vaultName> -Location <location> -StorageSetting $storagesetting -IdentityType UserAssigned -UserAssignedIdentity $userAssignedIdentity -CmkEncryptionState Enabled -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId <cmkUserAssignedIdentityId> -CmkEncryptionKeyUri <cmkEncryptionKeyUri>  -CmkInfrastructureEncryption Enabled
+```
+
+```output
+Name      Location   IdentityType
+--------  --------   ------------
+vaultName location   UserAssigned
+```
+
+This command creates a backup vault with CMK encryption enabled
+
 ## PARAMETERS
 
 ### -AsJob
@@ -80,6 +105,84 @@ Security alerts cannot be disabled.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CmkEncryptionKeyUri
+The Key URI of the CMK key to be used for encryption.
+To enable auto-rotation of keys, exclude the version component from the Key URI.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CmkEncryptionState
+Enable CMK encryption state for a Backup Vault.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.EncryptionState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CmkIdentityType
+The identity type to be used for CMK encryption - SystemAssigned or UserAssigned Identity.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.IdentityType
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CmkInfrastructureEncryption
+Enable infrastructure encryption with CMK on this vault.
+Infrastructure encryption must be configured only when creating the vault.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.InfrastructureEncryptionState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CmkUserAssignedIdentityId
+This parameter is required if the identity type is UserAssigned.
+Add the user assigned managed identity id to be used which has access permissions to the Key Vault.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -153,12 +256,27 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-The identityType which can be either SystemAssigned or None.
+The identityType which can be either SystemAssigned, UserAssigned, SystemAssigned,UserAssigned or None.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityUserAssignedIdentity
+Gets or sets the user assigned identities.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases: UserAssignedIdentity
 
 Required: False
 Position: Named
@@ -265,7 +383,7 @@ Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
 To construct, see NOTES section for STORAGESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IStorageSetting[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240301.IStorageSetting[]
 Parameter Sets: (All)
 Aliases:
 

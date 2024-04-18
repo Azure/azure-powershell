@@ -37,3 +37,29 @@ vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned
 ```
 
 This command is used to modify Immutability state, cross subscription restore state, soft delete settings of the vault. These parameters are optional and can be used independently.
+
+### Example 4: Update vault CmkIdentityType from UserAssignedManagedIdentity to SystemAssignedManagedIdentity and CmkEncryptionKeyUri
+```powershell
+Update-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -CmkIdentityType SystemAssigned -CmkEncryptionKeyUri "cmkKeyUri"
+```
+
+```output
+Name          Location      Type                                  IdentityType
+----          --------      ----                                  ------------
+vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned
+```
+
+This command is used to modify CmkIdentityType and CmkEncryptionKeyUri. These parameters are optional and can be used independently.
+
+### Example 5: Update vault CmkIdentityType from SystemAssignedManagedIdentity to UserAssignedManagedIdentity
+```powershell
+Update-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -CmkIdentityType UserAssigned -CmkIdentityId "cmkIdentityId" -CmkEncryptionKeyUri
+```
+
+```output
+Name          Location      Type                                  IdentityType
+----          --------      ----                                  ------------
+vaultName southeastasia Microsoft.DataProtection/backupVaults UserAssigned
+```
+
+This command is used to change CmkIdentityType from SystemAssigned to UserAssgined. CmkIdenityId is a required parameter.
