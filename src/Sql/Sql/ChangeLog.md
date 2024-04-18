@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Made 1.2 as default for MinimalTlsVersion when creating new Sql Server from Powershell
+* Fixed an existing issue with `Set-AzSqlInstanceActiveDirectoryAdministrator`
 
 ## Version 4.14.0
 * Added `DatabaseFormat` and `PricingModel` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance`
