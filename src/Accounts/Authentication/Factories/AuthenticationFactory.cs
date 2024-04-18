@@ -16,6 +16,7 @@ using Hyak.Common;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Authentication.Utilities;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Shared.Config;
@@ -615,7 +616,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
         private static AuthenticationParameters GetInteractiveParameters(PowerShellTokenCacheProvider tokenCacheProvider, IAzureAccount account, IAzureEnvironment environment, string tenant, Action<string> promptAction, IAzureTokenCache tokenCache, string resourceId, string homeAccountId)
         {
-            return IsWamEnabled()
+            return AzConfigReader.IsWamEnabled()
                 ? new InteractiveWamParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.GetProperty("LoginHint"), homeAccountId, promptAction) as AuthenticationParameters
                 : new InteractiveParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.GetProperty("LoginHint"), homeAccountId, promptAction);
         }
@@ -623,12 +624,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         private static AuthenticationParameters GetSilentParameters(PowerShellTokenCacheProvider tokenCacheProvider, IAzureAccount account, IAzureEnvironment environment, string tenant, IAzureTokenCache tokenCache, string resourceId, string homeAccountId)
         {
             return new SilentParameters(tokenCacheProvider, environment, tokenCache, tenant, resourceId, account.Id, homeAccountId);
-        }
-
-        private static bool IsWamEnabled()
-        {
-            return AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var config)
-                && config.GetConfigValue<bool>(ConfigKeys.EnableLoginByWam);
         }
     }
 }
