@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.KeyVault
     /// <summary>
     /// Starts the process for enrolling for a certificate in Azure Key Vault
     /// </summary>
-    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificate",SupportsShouldProcess = true)]
+    [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzurePrefix + "KeyVaultCertificate", SupportsShouldProcess = true, DefaultParameterSetName = EnrollCertWithPolicyPath)]
     [OutputType(typeof(PSKeyVaultCertificateOperation))]
     public class AddAzureKeyVaultCertificate : KeyVaultCmdletBase
     {
