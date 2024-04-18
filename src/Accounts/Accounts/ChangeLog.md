@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Enable WAM as default way of interactive login flow.
 * Upgraded Azure.Identity to 1.11.2 and Azure.Identity.Broker to 1.1.0.
 * Upgraded Azure.Core to 1.38.0 and Microsoft.Identity.Client to 4.60.3.
 * Updated the reference of Azure PowerShell Common to 1.3.94-preview.
