@@ -20,6 +20,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
 {
     public abstract class SanitizerProviderBase
     {
+        private const int MaxDepth = 10;
+
         protected ISanitizerService Service { get; private set; }
 
         public SanitizerProviderBase(ISanitizerService service)
@@ -27,8 +29,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
             Service = service;
         }
 
-        internal string ResolvePropertyPath(SanitizerProperty property)
+        protected string ResolvePropertyPath(SanitizerProperty property)
         {
+            if (property == null)
+                return null;
+
             var propertyPath = property.PropertyName;
             var parentProperty = property.ParentProperty;
             while (parentProperty != null)
@@ -37,6 +42,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
                 parentProperty = parentProperty.ParentProperty;
             }
             return propertyPath;
+        }
+
+        protected bool ExceedsMaxDepth(SanitizerProperty property)
+        {
+            if (property == null)
+                return false;
+
+            var currentProperty = property;
+
+            for (var i = 0; i < MaxDepth; i++)
+            {
+                if (currentProperty.ParentProperty == null)
+                    return false;
+
+                currentProperty = currentProperty.ParentProperty;
+            }
+
+            return true;
         }
 
         internal abstract SanitizerProviderType ProviderType { get; }

@@ -42,14 +42,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer
             var watch = Stopwatch.StartNew();
 
             var sanitizingStack = new Stack<object>();
-            telemetry = new SanitizerTelemetry
-            {
-                /*
-                 * QosEvent has the initial value of ShowSecretsWarning as FALSE.
-                 * If this method gets invoked, it means RequireSecretsDetection is TRUE.
-                */
-                ShowSecretsWarning = true
-            };
+            telemetry = new SanitizerTelemetry(showSecretsWarning: true);
 
             if (sanitizingObject != null)
             {
