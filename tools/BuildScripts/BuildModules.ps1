@@ -24,6 +24,7 @@ param (
     [switch]$ModifiedModuleBuild,
 	[Parameter(ParameterSetName="TargetModuleSet")]
     [string[]]$TargetModule,
+    [switch]$ForceRegenerate,
     [switch]$GenerateDocumentationFile,
     [switch]$EnableTestCoverage
 
@@ -174,7 +175,7 @@ $csprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -TestModuleLi
 
 # Prepare autorest based modules
 foreach ($moduleRootName in $TargetModule) {
-    . "$toolDirectory/PrepareAutorestModule.ps1" -ModuleRootName $moduleRootName -RepoRoot $RepoRoot
+    . "$toolDirectory/PrepareAutorestModule.ps1" -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -ForceRegenerate $ForceRegenerate
 }
 
 #Yabo: Do we really need to add all csproj in on sln and build the sln? Why not build each csproj individually?

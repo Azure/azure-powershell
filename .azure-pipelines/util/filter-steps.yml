@@ -1,5 +1,14 @@
+parameters:
+  TargetModule: ''
+
 steps:
 - template: get-github-pat-steps.yml
+- task: Bash@3
+  displayName: 'Print pipeline environment variables'
+  inputs:
+    targetType: inline
+    script: |
+      printenv
 - task: PowerShell@2
   displayName: 'Check Ignored File'
   inputs:
@@ -9,9 +18,56 @@ steps:
   inputs:
     packageType: sdk
     version: 6.0.x
-- task: Bash@3
-  displayName: 'print env'
+- task: PowerShell@2
+  displayName: 'Set files changed Id and trigger'
   inputs:
     targetType: inline
     script: |
-      printenv
+      $reason = $(Build.Reason)
+      switch ($reason) {
+        { $reason -in @('IndividualCI', 'BatchedCI' } {
+          $filesChangedId = $(Build.SourceVersion)
+          $trigger = 'Commit'
+          break
+        }
+        'PullRequest' {
+          $filesChangedId = $(System.PullRequest.PullRequestNumber)
+          $trigger = 'PullRequest'
+        }
+        { $reason -in @('Manual', 'Schedule') } {
+          $targetModule = ${{ parameters.TargetModule }}
+          if ('' -eq $targetModule) {
+            $notModules = @('lib', 'shared')
+            $src = Join-Path $(Build.SourcesDirectory) 'src'
+            $targetModule = Get-Childitem -Path $src -Directory | ForEach-Object {
+              if ($_.Name -in $notModules) {
+                return
+              }
+              return Join-Path $_.Parent.Name $_.Name
+            } | Join-String -Separator ','
+          } else {
+            $targetModule = $targetModule.Split(',') | ForEach-Object { Join-Path 'src' $_ } | Join-String -Separator ','
+          }
+          $trigger = 'TargetModule'
+        }
+        default {
+          $trigger = Null
+          break
+        }
+      }
+      
+      Write-Host "##vso[task.setvariable variable=trigger]$trigger"
+      Write-Host "##vso[task.setvariable variable=filesChangedId]$filesChangedId"
+      Write-Host "##vso[task.setvariable variable=targetModule]$targetModule"
+
+      Write-Host "Filter files triggered by $reason: $filesChangedId$targetModule" -ForegroundColor DarkYellow
+- task: DotNetCoreCLI@2
+  condition: ne(variables.trigger, Null)
+  displayName: Filter
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:FilterBuild /p:FilesChangedId=$(filesChangedId);Trigger=$(trigger)'
+  env:
+      OCTOKITPAT: $(GithubToken)
+      PowerShellPlatform: ${{ parameters.powerShellPlatform }}

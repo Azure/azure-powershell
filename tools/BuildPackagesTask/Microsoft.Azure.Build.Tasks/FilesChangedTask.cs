@@ -41,7 +41,8 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         public enum TriggerType
         {
             PullRequest,
-            Commit
+            Commit,
+            TargetModule
         }
 
         /// <summary>
@@ -53,8 +54,13 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         /// <summary>
         /// Gets or set the file changed Id, could be commit ID when CI triggered, or pull request number when PR triggered.
         /// </summary>
-        [Required]
         public string FilesChangedId { get; set; }
+
+        /// <summary>
+        /// Gets or set the comma separated string represented list of module, triggered manually or scheduled
+        /// </summary>
+        public string TargetModule { get; set;}
+
         /// <summary>
         /// Gets or set the OutputFile, store FilesChanged.txt in 'artifacts' folder
         /// </summary>

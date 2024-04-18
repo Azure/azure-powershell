@@ -40,15 +40,6 @@ steps:
       OCTOKITPAT: $(GithubToken)
       PowerShellPlatform: ${{ parameters.powerShellPlatform }}
 
-- task: PowerShell@2
-  displayName: Build-AzPredictor
-  condition: eq(variables.BuildAzPredictor, 'true')
-  inputs:
-    targetType: inline
-    script: "dotnet msbuild tools/Az.Tools.Predictor/build.proj /t:\"clean;build;test\""
-    pwsh: true
-  continueOnError: true
-
 - template: publish-artifacts-steps.yml
   parameters:
     artifactName: build-${{ parameters.testFramework }}

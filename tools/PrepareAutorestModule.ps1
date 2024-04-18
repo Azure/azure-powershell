@@ -19,7 +19,8 @@ param (
     [Parameter(Mandatory=$true)]
     [string]$RepoRoot,
     [Parameter(ParameterSetName="ModuleNameSet", Mandatory=$true)]
-    [string]$ModuleRootName
+    [string]$ModuleRootName,
+    [switch]$ForceRegenerate
 )
 
 <#
@@ -47,7 +48,7 @@ function Get-OutdatedSubModule {
         if (Test-Path $generateInfoGenerated) {
             $generateIdSource = (Get-Content -Path $generateInfoSource | ConvertFrom-Json).generate_Id
             $generateIdGenerated = (Get-Content -Path $generateInfoGenerated | ConvertFrom-Json).generate_Id
-            if ($generateIdSource && $generateIdGenerated && ($generateIdSource -eq $generateIdGenerated)) {
+            if ($generateIdSource && $generateIdGenerated && ($generateIdSource -eq $generateIdGenerated) && (-not $ForceRegenerate)) {
                 continue
             }
         } 
