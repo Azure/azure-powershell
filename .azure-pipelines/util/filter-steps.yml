@@ -1,0 +1,17 @@
+steps:
+- template: get-github-pat-steps.yml
+- task: PowerShell@2
+  displayName: 'Check Ignored File'
+  inputs:
+    filePath: tools/CheckIgnoredFile.ps1
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk 6.0.x'
+  inputs:
+    packageType: sdk
+    version: 6.0.x
+- task: Bash
+  displayName: 'print env'
+  inputs:
+    targetType: inline
+    script: |
+      printenv

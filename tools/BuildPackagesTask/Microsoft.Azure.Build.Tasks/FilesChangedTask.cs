@@ -38,19 +38,27 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         [Required]
         public string RepositoryName { get; set; }
 
-        /// <summary>
-        /// Gets or set the PullRequestNumber of a GitHub Pull Request.
-        /// </summary>
-        public string PullRequestNumber { get; set; }
+        public enum TriggerType
+        {
+            PullRequest,
+            Commit
+        }
 
         /// <summary>
-        /// Gets or set the Commit Id triggered this task.
+        /// Gets or set the trigger type, either PullRequest or Commit.
         /// </summary>
-        public string CommitId { get; set; }
+        [Required]
+        public TriggerType Trigger { get; set; }
 
+        /// <summary>
+        /// Gets or set the file changed Id, could be commit ID when CI triggered, or pull request number when PR triggered.
+        /// </summary>
+        [Required]
+        public string FilesChangedId { get; set; }
         /// <summary>
         /// Gets or set the OutputFile, store FilesChanged.txt in 'artifacts' folder
         /// </summary>
+        /// 
         public string OutputFile { get; set; }
 
         /// <summary>
@@ -86,7 +94,18 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
             if (debug)
             {
-                Console.WriteLine("PullRequestNumber:" + PullRequestNumber);
+                if (Trigger == TriggerType.PullRequest)
+                {
+                    Console.WriteLine("Pull Request Number:" + FilesChangedId);
+                }
+                else if (Trigger == TriggerType.Commit)
+                {
+                    Console.WriteLine("Commit Id:" + FilesChangedId);
+                }
+                else
+                {
+                    Console.WriteLine("DEBUG: ---Invalid TriggerType");
+                }
             }
 
             try 
@@ -97,39 +116,43 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 };
                 // The next statement will convert the string representation of a number to its integer equivalent.
                 // If it succeeds it will return 'true'.
-                if (int.TryParse(PullRequestNumber, out int ParsedPullRequestNumber))
+                switch (Trigger) 
                 {
-                    try
+                    case TriggerType.PullRequest 
                     {
-                        FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, ParsedPullRequestNumber)
-                                        .ConfigureAwait(false).GetAwaiter().GetResult().Select(x => x.FileName).ToArray<string>();
+                        try
+                        {
+                            FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, FilesChangedId)
+                                            .ConfigureAwait(false).GetAwaiter().GetResult().Select(x => x.FileName).ToArray<string>();
+                        }
+                        catch (AuthorizationException e)
+                        {
+                            Console.WriteLine(e.Message);
+                            client = new GitHubClient(new ProductHeaderValue("Azure"));
+                            FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, FilesChangedId)
+                                            .ConfigureAwait(false).GetAwaiter().GetResult().Select(x => x.FileName).ToArray<string>();
+                        }
                     }
-                    catch (AuthorizationException e)
+                    case TriggerType.Commit
                     {
-                        Console.WriteLine(e.Message);
-                        client = new GitHubClient(new ProductHeaderValue("Azure"));
-                        FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, ParsedPullRequestNumber)
-                                        .ConfigureAwait(false).GetAwaiter().GetResult().Select(x => x.FileName).ToArray<string>();
+                        try
+                        {
+                            FilesChanged = client.Repository.Commit.Get(RepositoryOwner, RepositoryName, FilesChangedId)
+                                            .ConfigureAwait(false).GetAwaiter().GetResult().Files.Select(x => x.Filename).ToArray<string>();
+                        }
+                        catch (AuthorizationException e)
+                        {
+                            Console.WriteLine(e.Message);
+                            client = new GitHubClient(new ProductHeaderValue("Azure"));
+                            FilesChanged = client.Repository.Commit.Get(RepositoryOwner, RepositoryName, FilesChangedId)
+                                            .ConfigureAwait(false).GetAwaiter().GetResult().Files.Select(x => x.Filename).ToArray<string>();
+                        }
                     }
-                }
-                else if (!string.IsNullOrEmpty(CommitId))
-                {
-                    try
+                    default
                     {
-                        FilesChanged = client.Repository.Commit.Get(RepositoryOwner, RepositoryName, CommitId)
-                                        .ConfigureAwait(false).GetAwaiter().GetResult().Files.Select(x => x.Filename).ToArray<string>();
+                        FilesChanged = new string[] { };
+                    
                     }
-                    catch (AuthorizationException e)
-                    {
-                        Console.WriteLine(e.Message);
-                        client = new GitHubClient(new ProductHeaderValue("Azure"));
-                        FilesChanged = client.Repository.Commit.Get(RepositoryOwner, RepositoryName, CommitId)
-                                        .ConfigureAwait(false).GetAwaiter().GetResult().Files.Select(x => x.Filename).ToArray<string>();
-                    }
-                }
-                else
-                {
-                    FilesChanged = new string[] { };
                 }
             }
             catch (Exception e)

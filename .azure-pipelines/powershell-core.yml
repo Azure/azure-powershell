@@ -21,16 +21,24 @@ variables:
   TestCoverageLocation: $(Build.SourcesDirectory)/artifacts
   PowerShellPlatform: PowerShell Core
 
-trigger: none
+trigger:
+  branches: eng/archive-test
 
 pr:
   branches:
     include:
-      - '*'
-    exclude:
-      - Azs-tzl
+      - eng/archive-test
 
 jobs:
+- job: Filter
+  displayName: Filter
+  condition: succeeded()
+  timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
+  pool: pool-windows-2019
+
+  steps:
+  - template: util/filter-steps.yml
+
 - job: Build
   displayName: Build
   condition: succeeded()

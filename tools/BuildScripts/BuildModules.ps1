@@ -203,3 +203,7 @@ if ($EnableTestCoverage -eq "true")
     $buildCmdResult += " -p:TestCoverage=TESTCOVERAGE"
 }
 Invoke-Expression -Command $buildCmdResult
+
+if ('CIPlanSet' -eq $PSCmdlet.ParameterSetName) {
+    . "$toolDirectory/ExecuteCIStep.ps1"
+}
