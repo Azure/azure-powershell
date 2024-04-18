@@ -30,10 +30,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
         private string _scope;
 
         /// <summary>
-        /// This is an extension resource provider and only resource level extension is supported at the moment.
+        /// scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Origin(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.PropertyOrigin.Owned)]
         public string Scope { get => this._scope; set => this._scope = value; }
+
+        /// <summary>Backing field for <see cref="SimplifiedSolutionsResourceName" /> property.</summary>
+        private string _simplifiedSolutionsResourceName;
+
+        /// <summary>Simplified Solutions Resource Name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Origin(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.PropertyOrigin.Owned)]
+        public string SimplifiedSolutionsResourceName { get => this._simplifiedSolutionsResourceName; set => this._simplifiedSolutionsResourceName = value; }
+
+        /// <summary>Backing field for <see cref="SolutionId" /> property.</summary>
+        private string _solutionId;
+
+        /// <summary>
+        /// SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Origin(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.PropertyOrigin.Owned)]
+        public string SolutionId { get => this._solutionId; set => this._solutionId = value; }
 
         /// <summary>Backing field for <see cref="SolutionResourceName" /> property.</summary>
         private string _solutionResourceName;
@@ -41,6 +57,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
         /// <summary>Solution resource Name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Origin(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.PropertyOrigin.Owned)]
         public string SolutionResourceName { get => this._solutionResourceName; set => this._solutionResourceName = value; }
+
+        /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
+        private string _subscriptionId;
+
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Origin(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.PropertyOrigin.Owned)]
+        public string SubscriptionId { get => this._subscriptionId; set => this._subscriptionId = value; }
 
         /// <summary>Backing field for <see cref="TroubleshooterName" /> property.</summary>
         private string _troubleshooterName;
@@ -75,15 +98,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
         PossibleTypes = new [] { typeof(string) })]
         string Id { get; set; }
         /// <summary>
-        /// This is an extension resource provider and only resource level extension is supported at the moment.
+        /// scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"This is an extension resource provider and only resource level extension is supported at the moment.",
+        Description = @"scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read ",
         SerializedName = @"scope",
         PossibleTypes = new [] { typeof(string) })]
         string Scope { get; set; }
+        /// <summary>Simplified Solutions Resource Name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Simplified Solutions Resource Name.",
+        SerializedName = @"simplifiedSolutionsResourceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string SimplifiedSolutionsResourceName { get; set; }
+        /// <summary>
+        /// SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP",
+        SerializedName = @"solutionId",
+        PossibleTypes = new [] { typeof(string) })]
+        string SolutionId { get; set; }
         /// <summary>Solution resource Name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
         Required = false,
@@ -92,6 +133,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
         SerializedName = @"solutionResourceName",
         PossibleTypes = new [] { typeof(string) })]
         string SolutionResourceName { get; set; }
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The ID of the target subscription. The value must be an UUID.",
+        SerializedName = @"subscriptionId",
+        PossibleTypes = new [] { typeof(string) })]
+        string SubscriptionId { get; set; }
         /// <summary>Troubleshooter resource Name.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
         Required = false,
@@ -110,11 +159,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>
-        /// This is an extension resource provider and only resource level extension is supported at the moment.
+        /// scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
         /// </summary>
         string Scope { get; set; }
+        /// <summary>Simplified Solutions Resource Name.</summary>
+        string SimplifiedSolutionsResourceName { get; set; }
+        /// <summary>
+        /// SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
+        /// </summary>
+        string SolutionId { get; set; }
         /// <summary>Solution resource Name.</summary>
         string SolutionResourceName { get; set; }
+        /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
+        string SubscriptionId { get; set; }
         /// <summary>Troubleshooter resource Name.</summary>
         string TroubleshooterName { get; set; }
 
