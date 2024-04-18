@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* [Breaking change] Removed parameter `Value` in `Invoke-AzKeyVaultKeyOperation`.
+* [Breaking change] Removed parameter `Value` from `Invoke-AzKeyVaultKeyOperation`.
 * [Breaking change] Removed property `Result` from the output type `PSKeyOperationResult` of `Invoke-AzKeyVaultKeyOperation`.
 
 ## Version 5.2.2
