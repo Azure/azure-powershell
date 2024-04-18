@@ -22,7 +22,9 @@ variables:
   PowerShellPlatform: PowerShell Core
 
 trigger:
-  branches: eng/archive-test
+  branches:
+    include:
+      - eng/archive-test
 
 pr:
   branches:
