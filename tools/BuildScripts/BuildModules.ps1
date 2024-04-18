@@ -207,3 +207,5 @@ Invoke-Expression -Command $buildCmdResult
 if ('CIPlanSet' -eq $PSCmdlet.ParameterSetName) {
     . "$toolDirectory/ExecuteCIStep.ps1"
 }
+
+#test
