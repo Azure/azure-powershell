@@ -27,6 +27,5 @@ namespace Microsoft.Azure.Commands.Compute.Models
         public HttpStatusCode StatusCode { get; set; }
 
         public string ReasonPhrase { get; set; }
-
     }
 }
