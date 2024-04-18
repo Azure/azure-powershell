@@ -9,7 +9,7 @@ steps:
   inputs:
     packageType: sdk
     version: 6.0.x
-- task: Bash
+- task: Bash@3
   displayName: 'print env'
   inputs:
     targetType: inline
