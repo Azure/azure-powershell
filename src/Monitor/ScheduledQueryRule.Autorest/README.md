@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ScheduledQueryRule service.
 
 ---
-## Status
-[![Az.ScheduledQueryRule](https://img.shields.io/powershellgallery/v/Az.ScheduledQueryRule.svg?style=flat-square&label=Az.ScheduledQueryRule "Az.ScheduledQueryRule")](https://www.powershellgallery.com/packages/Az.ScheduledQueryRule/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

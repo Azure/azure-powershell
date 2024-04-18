@@ -1,11 +1,8 @@
 <!-- region Generated -->
-# Az.Metric
-This directory contains the PowerShell module for the Metric service.
+# Az.Metricdata
+This directory contains the PowerShell module for the Metricdata service.
 
 ---
-## Status
-[![Az.Metric](https://img.shields.io/powershellgallery/v/Az.Metric.svg?style=flat-square&label=Az.Metric "Az.Metric")](https://www.powershellgallery.com/packages/Az.Metric/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -23,7 +20,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.Metric`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.Metricdata`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ### AutoRest Configuration
@@ -40,10 +37,10 @@ input-file:
     - $(repo)/specification/monitor/data-plane/Microsoft.Insights/stable/2023-10-01/metricBatch.json
 
 root-module-name: $(prefix).Monitor
-title: Metric
-module-name: Az.Metric
+title: Metricdata
 module-version: 0.1.0
 subject-prefix: ""
+namespace: Microsoft.Azure.PowerShell.Cmdlets.Metric
 
 directive:
   - where:
