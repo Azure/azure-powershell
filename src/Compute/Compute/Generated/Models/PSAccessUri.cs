@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
     {
         public string AccessSAS { get; set; }
 
-        public string SecurityDataAccessSAS { get; private set; }
+        public string SecurityDataAccessSAS { get; set; }
 
     }
 }
