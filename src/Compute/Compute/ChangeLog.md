@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* Added cmdlet `Invoke-AzSpotPlacementRecommender`
+* Added cmdlet `Invoke-AzSpotPlacementRecommender`.
 
 ## Version 7.2.0
 * Added parameters `-scriptUriManagedIdentity`, `-outputBlobManagedIdentity`, `-errorBlobMangedIdentity`, and `-TreatFailureAsDeploymentFailure` to cmdlets `Set-AzVmRunCommand` and `Set-AzVmssRunCommand`. 
