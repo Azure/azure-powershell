@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameter `PolicyPath` in `Add-AzKeyVaultCertificate` to support custom policy in the process of certificate enrollment. 
+* Upgraded the API version of merging certificate to 7.5. [#24323]
 
 ## Version 5.2.2
 * Introduced secrets detection feature to safeguard sensitive data.
