@@ -25,11 +25,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
             new SecretMasker(WellKnownRegexPatterns.HighConfidenceMicrosoftSecurityModels,
                              generateCorrelatingIds: true);
 
-        public string SanitizedValue => "******";
-
-        public Dictionary<string, IEnumerable<string>> IgnoredProperties => BuildIgnoredProperties();
-
-        private Dictionary<string, IEnumerable<string>> BuildIgnoredProperties()
+        public Dictionary<string, IEnumerable<string>> IgnoredProperties => new Dictionary<string, IEnumerable<string>>()
         {
             /*
              * This dictionary is used to store the properties that should be ignored during sanitization.

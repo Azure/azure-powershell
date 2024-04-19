@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
 {
     public abstract class SanitizerProviderBase
     {
-        private const int MaxDepth = 10;
+        private const int MaxDepth = 5;
 
         protected ISanitizerService Service { get; private set; }
 
