@@ -16,9 +16,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzFrontDoorCdnRoute'))
 
 Describe 'Remove-AzFrontDoorCdnRoute'  {
     BeforeAll {
-        $frontDoorEndpointName = 'end-pstest010'
-        Write-Host -ForegroundColor Green "Start to create Stand_AzureFrontDoor SKU endpoint domain : $($frontDoorEndpointName)"
-        New-AzFrontDoorCdnEndpoint -EndpointName $frontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
+        $endpointName = 'e-clipstest110'
+        Write-Host -ForegroundColor Green "Start to create Stand_AzureFrontDoor SKU endpoint domain : $($endpointName)"
+        New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global | Out-Null
 
         $originGroupName = 'org-pstest100'
         $healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" `
@@ -59,18 +59,18 @@ Describe 'Remove-AzFrontDoorCdnRoute'  {
 
         $routeName = 'routeName030'
         Write-Host -ForegroundColor Green "Use routeName : $($routeName)"
-        New-AzFrontDoorCdnRoute -Name $routeName -EndpointName $frontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+        New-AzFrontDoorCdnRoute -Name $routeName -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
             -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled"
     }
 
     It 'Delete'  {
-        Remove-AzFrontDoorCdnRoute -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $frontDoorEndpointName -Name $routeName
+        Remove-AzFrontDoorCdnRoute -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $endpointName -Name $routeName
     }
 
     It 'DeleteViaIdentity' {
-        New-AzFrontDoorCdnRoute -SubscriptionId $env.SubscriptionId -Name $routeName -EndpointName $frontDoorEndpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
+        New-AzFrontDoorCdnRoute -SubscriptionId $env.SubscriptionId -Name $routeName -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName `
             -OriginGroupId $originGroup.Id -RuleSet @($ruleSetResoure) -PatternsToMatch "/*" -LinkToDefaultDomain "Enabled" -EnabledState "Enabled"
-        $routeObject = Get-AzFrontDoorCdnRoute -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $frontDoorEndpointName -Name $routeName
+        $routeObject = Get-AzFrontDoorCdnRoute -ResourceGroupName $env.ResourceGroupName -ProfileName $env.FrontDoorCdnProfileName -EndpointName $endpointName -Name $routeName
         Remove-AzFrontDoorCdnRoute -InputObject $routeObject
     }
 }

@@ -1,0 +1,42 @@
+{
+  "Remove-AzFirmwareAnalysisWorkspace+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/testworkspace1?api-version=2024-01-10+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://api-dogfood.resources.windows-int.net/subscriptions/4a6ec1c4-e0e2-4e4c-b532-fe37a0d9b3ab/resourceGroups/FirmwareAnalysisRG/providers/Microsoft.IoTFirmwareDefense/workspaces/testworkspace1?api-version=2024-01-10",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "a56959bc-9f71-4410-8a09-c75e309884e2" ],
+        "CommandName": [ "Remove-AzFirmwareAnalysisWorkspace" ],
+        "FullCommandName": [ "Remove-AzFirmwareAnalysisWorkspace_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.FirmwareAnalysis/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "198" ],
+        "x-ms-request-id": [ "c4d25e44-fab6-40e5-9fcf-2f13a34b18e1" ],
+        "x-ms-correlation-request-id": [ "c4d25e44-fab6-40e5-9fcf-2f13a34b18e1" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20240216T193014Z:c4d25e44-fab6-40e5-9fcf-2f13a34b18e1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 2A6DEE847D4849AC9F118265CD72D0E2 Ref B: CO6AA3150217023 Ref C: 2024-02-16T19:30:14Z" ],
+        "Date": [ "Fri, 16 Feb 2024 19:30:13 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

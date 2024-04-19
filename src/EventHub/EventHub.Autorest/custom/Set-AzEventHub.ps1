@@ -68,6 +68,7 @@ function Set-AzEventHub{
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EncodingCaptureDescription]
         #Enumerates the possible values for the encoding format of capture description. Note: 'AvroDeflate' will be deprecated in New API Version
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("Encoding","12.0.0", "5.0.0","2024-05-21" )]
         ${Encoding},
 
         [Parameter(HelpMessage = "The time window allows you to set the frequency with which the capture to Azure Blobs will happen, value should between 60 to 900 seconds")]
@@ -103,6 +104,7 @@ function Set-AzEventHub{
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EntityStatus]
         # Enumerates the possible values for the status of the Event Hub.
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("Status","12.0.0", "5.0.0","2024-05-21" )]
         ${Status},
 
         [Parameter(HelpMessage = "Name for capture destination")]
@@ -113,6 +115,7 @@ function Set-AzEventHub{
         [Parameter(HelpMessage = "Type of managed service identity.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.ManagedServiceIdentityType]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("IdentityType","12.0.0", "5.0.0","2024-05-21" )]
         ${IdentityType},
 
         [Parameter(HelpMessage = "Properties for User Assigned Identities")]

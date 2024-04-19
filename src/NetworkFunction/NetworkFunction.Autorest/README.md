@@ -63,4 +63,8 @@ directive:
   - where:
       verb: Set
     hide: true
+  - where:
+      verb: New
+      subject: ^CollectorPolicy(.*)
+    hide: true
 ```

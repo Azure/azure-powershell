@@ -33,17 +33,19 @@ For information on how to develop for `Az.CustomLocation`, see [how-to.md](how-t
 commit: f1180941e238bc99ac71f9535ecd126bb8b77d8f
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-input-file: 
+input-file:
   - $(repo)/specification/extendedlocation/resource-manager/Microsoft.ExtendedLocation/preview/2021-08-31-preview/customlocations.json
 
 module-version: 0.1.0
 title: CustomLocation
 subject-prefix: $(service-name)
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 identity-correction-for-post: true
 
 directive:
-  - from: swagger-document 
+  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}"].delete.responses
     transform: >-
       return {
@@ -64,7 +66,7 @@ directive:
         }
       }
 
-  - from: swagger-document 
+  - from: swagger-document
     where: $.definitions.customLocationProperties.properties.provisioningState
     transform: >-
       return {
