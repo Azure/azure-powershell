@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* Added new optional parameter `SecureVmGuestStateSas` to cmdlet `Grant-AzDiskAccess`.
+* Added new optional parameter `SecureVMGuestStateSAS` to cmdlet `Grant-AzDiskAccess`.
 
 ## Version 7.2.0
 * Added parameters `-scriptUriManagedIdentity`, `-outputBlobManagedIdentity`, `-errorBlobMangedIdentity`, and `-TreatFailureAsDeploymentFailure` to cmdlets `Set-AzVmRunCommand` and `Set-AzVmssRunCommand`. 

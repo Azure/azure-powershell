@@ -1834,17 +1834,13 @@ Using a TL disk, use the SecureVmGuestStateSas parameter to get the securityData
 function Test-DiskGrantAccessGetSASWithTL
 {
     $rgname = Get-ComputeTestResourceName;
-	$loc = Get-ComputeVMLocation;#'eastus';
+	$loc = Get-ComputeVMLocation;
 
 	try
     {
-        # $rgname = "adsandtlg4";
-        # $loc = "eastus";
 		New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         $diskname = "d" + $rgname;
-        $securityTypeTL = "TrustedLaunch";
-        $hyperVGen2 = "V2";
 
         $image = Get-AzVMImage -Skus 2022-datacenter-azure-edition -Offer WindowsServer -PublisherName MicrosoftWindowsServer -Location $loc -Version latest;
         $diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
