@@ -64,13 +64,13 @@ This command creates a new backup vault while setting Immutability state, cross 
 ### Example 3: Create a Backup Vault with CMK
 ```powershell
 $storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType "<DataStoreType>" -Type "<Type>"
-$userAssignedIdentity = @{ 
-    "<userAssignedId1>" = @{
-        "clientId": "<clientId1>",
-        "principalId": "<clientId2>"
-    };
-    "<userAssignedId2>" = @{}
-}
+$userAssignedIdentity = @{
+     "<userAssignedId1>" = @{
+         clientId = "<clientId1>";
+         principalId = "<principalId1>
+     };
+     "<userAssignedId2>" = @{}
+ }
 New-AzDataProtectionBackupVault -SubscriptionId <subscriptionId> -ResourceGroupName <resourceGroupName> -VaultName <vaultName> -Location <location> -StorageSetting $storagesetting -IdentityType UserAssigned -UserAssignedIdentity $userAssignedIdentity -CmkEncryptionState Enabled -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId <cmkUserAssignedIdentityId> -CmkEncryptionKeyUri <cmkEncryptionKeyUri>  -CmkInfrastructureEncryption Enabled
 ```
 

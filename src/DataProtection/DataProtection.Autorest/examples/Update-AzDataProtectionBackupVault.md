@@ -53,7 +53,7 @@ This command is used to modify CmkIdentityType and CmkEncryptionKeyUri. These pa
 
 ### Example 5: Update vault CmkIdentityType from SystemAssignedManagedIdentity to UserAssignedManagedIdentity
 ```powershell
-Update-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -CmkIdentityType UserAssigned -CmkIdentityId "cmkIdentityId" -CmkEncryptionKeyUri
+Update-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId "cmkIdentityId" -CmkEncryptionKeyUri "cmkEncryptionKeyUri"
 ```
 
 ```output

@@ -102,7 +102,7 @@ These parameters are optional and can be used independently.
 
 ### Example 5: Update vault CmkIdentityType from SystemAssignedManagedIdentity to UserAssignedManagedIdentity
 ```powershell
-Update-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -CmkIdentityType UserAssigned -CmkIdentityId "cmkIdentityId" -CmkEncryptionKeyUri
+Update-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId "cmkIdentityId" -CmkEncryptionKeyUri "cmkEncryptionKeyUri"
 ```
 
 ```output
@@ -484,8 +484,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240301.IBackupVaultResource
-
-### System.Management.Automation.PSObject
 
 ## NOTES
 
