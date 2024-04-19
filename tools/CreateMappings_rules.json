@@ -879,5 +879,9 @@
   {
     "alias": "Sphere",
     "module": "Sphere"
+  },
+  {
+    "module": "StandbyPool",
+    "alias": "StandbyPool"
   }
 ]
