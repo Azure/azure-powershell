@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Support Parameterization in ScriptActivityScriptBlock Type property 
+* Supported Parameterization in ScriptActivityScriptBlock Type property 
 
 ## Version 1.18.3
 * Added ServiceNowV2, PostgreSqlV2, GoogleBigQuery in ADF
