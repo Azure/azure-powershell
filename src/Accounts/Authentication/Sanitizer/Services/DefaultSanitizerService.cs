@@ -36,24 +36,26 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
              * The key is the full name of the object type that contains the properties to be ignored.
              * The value is the list of property names that should be ignored.
              */
-            return new Dictionary<string, IEnumerable<string>>
-            {
-                // Skip lazy load properties
-                { "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount", new[] { "Context" } },
-                { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageContainer", new[] { "CloudBlobContainer", "Permission" } },
-                { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob", new[] { "BlobProperties" } }
-            };
-        }
+
+            // Skip lazy load properties
+            { "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount", new[] { "Context" } },
+            { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageContainer", new[] { "CloudBlobContainer", "Permission" } },
+            { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob", new[] { "BlobProperties" } },
+            { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFile", new[] { "FileProperties" } },
+            { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFileShare", new[] { "ShareProperties" } },
+            { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFileDirectory", new[] { "ShareDirectoryProperties" } },
+        };
 
         public bool TrySanitizeData(string data, out string sanitizedData)
         {
+            sanitizedData = string.Empty;
+
             if (!string.IsNullOrWhiteSpace(data))
             {
                 sanitizedData = this.secretMasker.MaskSecrets(data);
                 return !object.ReferenceEquals(data, sanitizedData);
             }
 
-            sanitizedData = string.Empty;
             return false;
         }
     }

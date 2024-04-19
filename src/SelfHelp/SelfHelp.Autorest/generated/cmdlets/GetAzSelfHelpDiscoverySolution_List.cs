@@ -11,19 +11,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
     /// <summary>
     /// Lists the relevant Azure diagnostics and solutions using [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP))
     /// AND resourceUri or resourceType.<br/> Discovery Solutions is the initial entry point within Help API, which identifies
-    /// relevant Azure diagnostics and solutions. We will do our best to return the most effective solutions based on the type
-    /// of inputs, in the request URL <br/><br/> Mandatory input : problemClassificationId (Use the [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP))
-    /// <br/>Optional input: resourceUri OR resource Type <br/><br/> <b>Note: </b> ‘requiredInputs’ from Discovery solutions response
-    /// must be passed via ‘additionalParameters’ as an input to Diagnostics and Solutions API.
+    /// relevant Azure diagnostics and solutions. <br/><br/> Required Input : problemClassificationId (Use the [problemClassification
+    /// API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP)) <br/>Optional input: resourceUri
+    /// OR resource Type <br/><br/> <b>Note: </b> ‘requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’
+    /// as an input to Diagnostics and Solutions API.
     /// </summary>
     /// <remarks>
-    /// [OpenAPI] List=>GET:"/{scope}/providers/Microsoft.Help/discoverySolutions"
+    /// [OpenAPI] List=>GET:"/providers/Microsoft.Help/discoverySolutions"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzSelfHelpDiscoverySolution_List")]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionMetadataResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Description(@"Lists the relevant Azure diagnostics and solutions using [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP)) AND  resourceUri or resourceType.<br/> Discovery Solutions is the initial entry point within Help API, which identifies relevant Azure diagnostics and solutions. We will do our best to return the most effective solutions based on the type of inputs, in the request URL  <br/><br/> Mandatory input :  problemClassificationId (Use the [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP)) <br/>Optional input: resourceUri OR resource Type <br/><br/> <b>Note: </b>  ‘requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics and Solutions API.")]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionMetadataResource))]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Description(@"Lists the relevant Azure diagnostics and solutions using [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP)) AND  resourceUri or resourceType.<br/> Discovery Solutions is the initial entry point within Help API, which identifies relevant Azure diagnostics and solutions. <br/><br/> Required Input :  problemClassificationId (Use the [problemClassification API](https://learn.microsoft.com/rest/api/support/problem-classifications/list?tabs=HTTP)) <br/>Optional input: resourceUri OR resource Type <br/><br/> <b>Note: </b>  ‘requiredInputs’ from Discovery solutions response must be passed via ‘additionalParameters’ as an input to Diagnostics and Solutions API.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.HttpPath(Path = "/{scope}/providers/Microsoft.Help/discoverySolutions", ApiVersion = "2023-09-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.HttpPath(Path = "/providers/Microsoft.Help/discoverySolutions", ApiVersion = "2024-03-01-preview")]
     public partial class GetAzSelfHelpDiscoverySolution_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener
     {
@@ -69,15 +69,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         private string _filter;
 
         /// <summary>
-        /// 'ProblemClassificationId' or 'Id' is a mandatory filter to get solutions ids. It also supports optional 'ResourceType'
-        /// and 'SolutionType' filters. The filter supports only 'and', 'or' and 'eq' operators. Example: $filter=ProblemClassificationId
-        /// eq '1ddda5b4-cf6c-4d4f-91ad-bc38ab0e811e'
+        /// 'ProblemClassificationId' is a mandatory filter to get solutions ids. It also supports optional 'ResourceType' and 'SolutionType'
+        /// filters. The [$filter](https://learn.microsoft.com/en-us/odata/webapi/first-odata-api#filter) supports only 'and', 'or'
+        /// and 'eq' operators. Example: $filter=ProblemClassificationId eq '1ddda5b4-cf6c-4d4f-91ad-bc38ab0e811e'
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "'ProblemClassificationId' or 'Id' is a mandatory filter to get solutions ids. It also supports optional 'ResourceType' and 'SolutionType' filters. The filter supports only 'and', 'or' and 'eq' operators. Example: $filter=ProblemClassificationId eq '1ddda5b4-cf6c-4d4f-91ad-bc38ab0e811e'")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "'ProblemClassificationId' is a mandatory filter to get solutions ids. It also supports optional 'ResourceType' and 'SolutionType' filters. The [$filter](https://learn.microsoft.com/en-us/odata/webapi/first-odata-api#filter) supports only 'and', 'or' and 'eq' operators. Example: $filter=ProblemClassificationId eq '1ddda5b4-cf6c-4d4f-91ad-bc38ab0e811e'")]
         [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"'ProblemClassificationId' or 'Id' is a mandatory filter to get solutions ids. It also supports optional 'ResourceType' and 'SolutionType' filters. The filter supports only 'and', 'or' and 'eq' operators. Example: $filter=ProblemClassificationId eq '1ddda5b4-cf6c-4d4f-91ad-bc38ab0e811e'",
+        Description = @"'ProblemClassificationId' is a mandatory filter to get solutions ids. It also supports optional 'ResourceType' and 'SolutionType' filters. The [$filter](https://learn.microsoft.com/en-us/odata/webapi/first-odata-api#filter) supports only 'and', 'or' and 'eq' operators. Example: $filter=ProblemClassificationId eq '1ddda5b4-cf6c-4d4f-91ad-bc38ab0e811e'",
         SerializedName = @"$filter",
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.ParameterCategory.Query)]
@@ -127,22 +127,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter ProxyUseDefaultCredentials { get; set; }
 
-        /// <summary>Backing field for <see cref="Scope" /> property.</summary>
-        private string _scope;
-
-        /// <summary>
-        /// This is an extension resource provider and only resource level extension is supported at the moment.
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "This is an extension resource provider and only resource level extension is supported at the moment.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(
-        Required = true,
-        ReadOnly = false,
-        Description = @"This is an extension resource provider and only resource level extension is supported at the moment.",
-        SerializedName = @"scope",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.ParameterCategory.Path)]
-        public string Scope { get => this._scope; set => this._scope = value; }
-
         /// <summary>Backing field for <see cref="Skiptoken" /> property.</summary>
         private string _skiptoken;
 
@@ -174,12 +158,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiscoveryResponse">Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiscoveryResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryResponse">Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryResponse</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiscoveryResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryResponse> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -202,7 +186,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -324,12 +325,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.DiscoverySolutionList(Scope, this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, this.InvocationInformation.BoundParameters.ContainsKey("Skiptoken") ? Skiptoken : null, onOk, onDefault, this, Pipeline);
+                    await this.Client.DiscoverySolutionList(this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, this.InvocationInformation.BoundParameters.ContainsKey("Skiptoken") ? Skiptoken : null, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Scope=Scope,Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null,Skiptoken=this.InvocationInformation.BoundParameters.ContainsKey("Skiptoken") ? Skiptoken : null})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null,Skiptoken=this.InvocationInformation.BoundParameters.ContainsKey("Skiptoken") ? Skiptoken : null})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -346,6 +347,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>
@@ -375,14 +391,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api40.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, Skiptoken=this.InvocationInformation.BoundParameters.ContainsKey("Skiptoken") ? Skiptoken : null })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, Skiptoken=this.InvocationInformation.BoundParameters.ContainsKey("Skiptoken") ? Skiptoken : null })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, Skiptoken=this.InvocationInformation.BoundParameters.ContainsKey("Skiptoken") ? Skiptoken : null })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Filter=this.InvocationInformation.BoundParameters.ContainsKey("Filter") ? Filter : null, Skiptoken=this.InvocationInformation.BoundParameters.ContainsKey("Skiptoken") ? Skiptoken : null })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -392,12 +408,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiscoveryResponse">Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiscoveryResponse</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryResponse">Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryResponse</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IDiscoveryResponse> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IDiscoveryResponse> response)
         {
             using( NoSynchronizationContext )
             {
