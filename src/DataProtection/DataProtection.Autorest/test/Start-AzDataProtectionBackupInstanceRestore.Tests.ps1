@@ -200,7 +200,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         $fileNamePrefix = $env.TestCrossSubscriptionRestoreScenario.FileNamePrefix + "-" + $recordDate
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName
-        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where { $_.Property.DataSourceInfo.ResourceType -match "Postgre" }
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subscriptionId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Property.DataSourceInfo.ResourceType -match "Postgre" }
 
         $rp = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $instance[0].BackupInstanceName -ResourceGroupName $resourceGroupName -SubscriptionId $subscriptionId -VaultName $vaultName
 
@@ -247,7 +247,7 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         ($instance -ne $null) | Should be $true
 
         # Trigger Backup
-        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | where {$_.Name -eq $policyName}
+        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | Where-Object {$_.Name -eq $policyName}
 
         $backupJob = Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $instance.Name -ResourceGroupName $rgName -SubscriptionId $sub -VaultName $vaultName -BackupRuleOptionRuleName $policy.Property.PolicyRule[0].Name -TriggerOptionRetentionTagOverride $policy.Property.PolicyRule[0].Trigger.TaggingCriterion[0].TagInfoTagName
 
