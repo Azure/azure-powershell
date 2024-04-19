@@ -10,18 +10,18 @@ namespace Microsoft.Azure.Management.DataFactory.Models
     /// <summary>
     /// Credential resource type.
     /// </summary>
-    public partial class ManagedIdentityCredentialResource : CredentialResource
+    public partial class ServicePrincipalCredentialResource : CredentialResource
     {
         /// <summary>
-        /// Initializes a new instance of the ManagedIdentityCredentialResource class.
+        /// Initializes a new instance of the ServicePrincipalCredentialResource class.
         /// </summary>
-        public ManagedIdentityCredentialResource()
+        public ServicePrincipalCredentialResource()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the ManagedIdentityCredentialResource class.
+        /// Initializes a new instance of the ServicePrincipalCredentialResource class.
         /// </summary>
 
         /// <param name="id">The resource identifier.
@@ -39,9 +39,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="properties">Properties of credentials.
         /// </param>
 
-        /// <param name="properties">Managed Identity Credential properties.
+        /// <param name="properties">Service Principal Credential properties.
         /// </param>
-        public ManagedIdentityCredentialResource(Credential properties, ManagedIdentityCredential properties, string id = default(string), string name = default(string), string type = default(string), string etag = default(string))
+        public ServicePrincipalCredentialResource(Credential properties, ServicePrincipalCredential properties, string id = default(string), string name = default(string), string type = default(string), string etag = default(string))
 
         : base(properties, id, name, type, etag)
         {
@@ -56,10 +56,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
 
         /// <summary>
-        /// Gets or sets managed Identity Credential properties.
+        /// Gets or sets service Principal Credential properties.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties")]
-        public ManagedIdentityCredential Properties {get; set; }
+        public ServicePrincipalCredential Properties {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -73,7 +73,10 @@ namespace Microsoft.Azure.Management.DataFactory.Models
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "Properties");
             }
-
+            if (this.Properties != null)
+            {
+                this.Properties.Validate();
+            }
         }
     }
 }

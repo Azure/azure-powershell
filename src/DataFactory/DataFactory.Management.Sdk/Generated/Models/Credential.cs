@@ -27,14 +27,20 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the Credential class.
         /// </summary>
 
+        /// <param name="additionalProperties">The Azure Data Factory nested object which contains the information and
+        /// credential which can be used to connect with related store or compute
+        /// resource.
+        /// </param>
+
         /// <param name="description">Credential description.
         /// </param>
 
         /// <param name="annotations">List of tags that can be used for describing the Credential.
         /// </param>
-        public Credential(string description = default(string), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>))
+        public Credential(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string description = default(string), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>))
 
         {
+            this.AdditionalProperties = additionalProperties;
             this.Description = description;
             this.Annotations = annotations;
             CustomInit();
@@ -45,6 +51,14 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// </summary>
         partial void CustomInit();
 
+
+        /// <summary>
+        /// Gets or sets the Azure Data Factory nested object which contains the
+        /// information and credential which can be used to connect with related store
+        /// or compute resource.
+        /// </summary>
+        [Newtonsoft.Json.JsonExtensionData]
+        public System.Collections.Generic.IDictionary<string, object> AdditionalProperties {get; set; }
 
         /// <summary>
         /// Gets or sets credential description.

@@ -26,6 +26,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// Initializes a new instance of the ServicePrincipalCredential class.
         /// </summary>
 
+        /// <param name="additionalProperties">The Azure Data Factory nested object which contains the information and
+        /// credential which can be used to connect with related store or compute
+        /// resource.
+        /// </param>
+
         /// <param name="description">Credential description.
         /// </param>
 
@@ -40,9 +45,9 @@ namespace Microsoft.Azure.Management.DataFactory.Models
 
         /// <param name="tenant">The ID of the tenant to which the service principal belongs
         /// </param>
-        public ServicePrincipalCredential(string description = default(string), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object servicePrincipalId = default(object), AzureKeyVaultSecretReference servicePrincipalKey = default(AzureKeyVaultSecretReference), object tenant = default(object))
+        public ServicePrincipalCredential(System.Collections.Generic.IDictionary<string, object> additionalProperties = default(System.Collections.Generic.IDictionary<string, object>), string description = default(string), System.Collections.Generic.IList<object> annotations = default(System.Collections.Generic.IList<object>), object servicePrincipalId = default(object), AzureKeyVaultSecretReference servicePrincipalKey = default(AzureKeyVaultSecretReference), object tenant = default(object))
 
-        : base(description, annotations)
+        : base(additionalProperties, description, annotations)
         {
             this.ServicePrincipalId = servicePrincipalId;
             this.ServicePrincipalKey = servicePrincipalKey;
