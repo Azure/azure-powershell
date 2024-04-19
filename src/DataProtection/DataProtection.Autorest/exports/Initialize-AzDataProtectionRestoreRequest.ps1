@@ -234,6 +234,14 @@ param(
     # Container names for Item Level Recovery.
     ${ContainersList},
 
+    [Parameter(ParameterSetName='AlternateLocationILR')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.Collections.Hashtable]
+    # Use this parameter to filter block blobs by prefix in a container for alternate location ILR.
+    # When you specify a prefix, only blobs matching that prefix in the container will be restored.
+    # Input for this parameter is a hashtable where each key is a container name and each value is an array of string prefixes for that container.
+    ${PrefixMatch},
+
     [Parameter(ParameterSetName='RestoreAsFiles', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String]
@@ -264,13 +272,17 @@ param(
     [Parameter(ParameterSetName='OriginalLocationILR')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String[]]
-    # Minimum matching value for Item Level Recovery.
+    # Specify the blob restore start range for PITR.
+    # You can use this option to specify the starting range for a subset of blobs in each container to restore.
+    # use a forward slash (/) to separate the container name from the blob prefix pattern.
     ${FromPrefixPattern},
 
     [Parameter(ParameterSetName='OriginalLocationILR')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String[]]
-    # Maximum matching value for Item Level Recovery.
+    # Specify the blob restore end range for PITR.
+    # You can use this option to specify the ending range for a subset of blobs in each container to restore.
+    # use a forward slash (/) to separate the container name from the blob prefix pattern.
     ${ToPrefixPattern}
 )
 

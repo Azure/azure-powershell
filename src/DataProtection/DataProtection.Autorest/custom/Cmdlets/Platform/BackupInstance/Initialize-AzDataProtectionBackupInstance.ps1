@@ -43,7 +43,7 @@ function Initialize-AzDataProtectionBackupInstance {
         [System.String]
         ${FriendlyName},
                 
-        [Parameter(Mandatory=$false, HelpMessage='Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService.')]
+        [Parameter(Mandatory=$false, HelpMessage='Backup configuration for backup. Use this parameter to configure protection for AzureKubernetesService,AzureBlob.')]
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBackupDatasourceParameters]
         ${BackupConfiguration}
     )
@@ -118,7 +118,7 @@ function Initialize-AzDataProtectionBackupInstance {
             else{
                 $errormsg = "Please ensure that secret store based authentication is supported for given data source"
         		throw $errormsg
-            }            
+            }
         }
 
         $backupInstanceResource = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.BackupInstanceResource]::new()
