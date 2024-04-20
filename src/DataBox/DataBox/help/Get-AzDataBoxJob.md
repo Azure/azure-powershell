@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
 online version: https://learn.microsoft.com/powershell/module/az.databox/get-azdataboxjob
 schema: 2.0.0
@@ -15,19 +15,19 @@ Gets information about the specified job.
 ### List (Default)
 ```
 Get-AzDataBoxJob [-SubscriptionId <String[]>] [-SkipToken <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzDataBoxJob -ResourceGroupName <String> [-SubscriptionId <String[]>] [-SkipToken <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,7 @@ Gets information about the specified job.
 
 ## EXAMPLES
 
-### Example 1: Gets a particular job 
+### Example 1: Gets a particular job
 ```powershell
 Get-AzDataBoxJob -Name "Powershell10" -ResourceGroupName "resourceGroupName"  -SubscriptionId "SubscriptionId"
 ```
@@ -48,7 +48,7 @@ Powershell10 WestUS   DeviceOrdered ImportToAzure DataBox None         NonSchedu
 
 Gets a particular job
 
-### Example 2: List all job under a subscription 
+### Example 2: List all job under a subscription
 ```powershell
 Get-AzDataBoxJob -SubscriptionId "SubscriptionId"
 ```
@@ -62,7 +62,7 @@ testorder  uksouth       Cancelled     ImportToAzure   DataBoxDisk None         
 
 List all job under a subscription
 
-### Example 3: List all job under a resourcegroup 
+### Example 3: List all job under a resourcegroup
 ```powershell
 Get-AzDataBoxJob -ResourceGroupName "resourceGroupName"
 ```
@@ -126,6 +126,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The Resource Group Name
 
@@ -182,7 +197,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -14,7 +14,7 @@ Create an object to hold the cluster upgrade parameters.
 
 ```
 New-AzHdInsightOnAksClusterHotfixUpgradeObject [-ComponentName <String>] [-TargetBuildNumber <String>]
- [-TargetClusterVersion <String>] [-TargetOssVersion <String>]
+ [-TargetClusterVersion <String>] [-TargetOssVersion <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -45,6 +45,21 @@ Name of component to be upgraded.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

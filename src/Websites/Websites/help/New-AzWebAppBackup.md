@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.WebSites
+Module Name: Az.Websites
 ms.assetid: D3FE0440-C663-4379-8F5F-2E66EF024E5D
 online version: https://learn.microsoft.com/powershell/module/az.websites/new-azwebappbackup
 schema: 2.0.0
@@ -17,13 +17,14 @@ Creates an Azure Web App Backup.
 ```
 New-AzWebAppBackup [[-BackupName] <String>] [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>]
  [-DefaultProfile <IAzureContextContainer>] [-StorageAccountUrl] <String>
- [-Databases <DatabaseBackupSetting[]>] [<CommonParameters>]
+ [-Databases <DatabaseBackupSetting[]>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### FromWebApp
 ```
 New-AzWebAppBackup [[-BackupName] <String>] [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
- [-StorageAccountUrl] <String> [-Databases <DatabaseBackupSetting[]>] [<CommonParameters>]
+ [-StorageAccountUrl] <String> [-Databases <DatabaseBackupSetting[]>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,6 +109,21 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

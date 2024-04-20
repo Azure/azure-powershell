@@ -457,11 +457,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
                 telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
                 telemetryInfo.TryGetValue("InvocationName", out var invocationName);
-                if (!string.IsNullOrEmpty(sanitizedProperties))
+                if (showSecretsWarning == "true")
                 {
-                    WriteWarning($"The output of cmdlet {invocationName ?? "Unknown"} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
                 }
             }
         }
@@ -656,7 +664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                         this.MachineInputObject.Id += $"/runCommands/{(global::System.Uri.EscapeDataString(this.RunCommandName.ToString()))}";
                         _runCommandPropertiesBody = await this.Client.MachineRunCommandsGetViaIdentityWithResult(MachineInputObject.Id, this, Pipeline);
                         this.Update_runCommandPropertiesBody();
-                        await this.Client.MachineRunCommandsCreateOrUpdateViaIdentity(MachineInputObject.Id, _runCommandPropertiesBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.MachineRunCommandsCreateOrUpdateViaIdentity(MachineInputObject.Id, _runCommandPropertiesBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -675,7 +683,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                         }
                         _runCommandPropertiesBody = await this.Client.MachineRunCommandsGetWithResult(MachineInputObject.SubscriptionId ?? null, MachineInputObject.ResourceGroupName ?? null, MachineInputObject.MachineName ?? null, RunCommandName, this, Pipeline);
                         this.Update_runCommandPropertiesBody();
-                        await this.Client.MachineRunCommandsCreateOrUpdate(MachineInputObject.SubscriptionId ?? null, MachineInputObject.ResourceGroupName ?? null, MachineInputObject.MachineName ?? null, RunCommandName, _runCommandPropertiesBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.MachineRunCommandsCreateOrUpdate(MachineInputObject.SubscriptionId ?? null, MachineInputObject.ResourceGroupName ?? null, MachineInputObject.MachineName ?? null, RunCommandName, _runCommandPropertiesBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

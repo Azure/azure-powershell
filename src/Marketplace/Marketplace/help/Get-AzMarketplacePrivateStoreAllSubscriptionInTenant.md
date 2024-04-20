@@ -15,13 +15,13 @@ Fetch all subscriptions in tenant, only for marketplace admin
 ### Fetch (Default)
 ```
 Get-AzMarketplacePrivateStoreAllSubscriptionInTenant -PrivateStoreId <String> [-NextPageToken <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FetchViaIdentity
 ```
 Get-AzMarketplacePrivateStoreAllSubscriptionInTenant -InputObject <IMarketplaceIdentity>
- [-NextPageToken <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-NextPageToken <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -94,6 +94,21 @@ Parameter Sets: Fetch
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

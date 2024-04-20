@@ -15,20 +15,22 @@ Updates the landing zone credential of a link connection.
 ### UpdateByName (Default)
 ```
 Update-AzSynapseLinkConnectionLandingZoneCredential -WorkspaceName <String> -LinkConnectionName <String>
- -SasToken <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SasToken <SecureString> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByObject
 ```
 Update-AzSynapseLinkConnectionLandingZoneCredential -WorkspaceObject <PSSynapseWorkspace>
- -LinkConnectionName <String> -SasToken <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -LinkConnectionName <String> -SasToken <SecureString> [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByInputObject
 ```
 Update-AzSynapseLinkConnectionLandingZoneCredential -InputObject <PSLinkConnectionResource>
- -SasToken <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SasToken <SecureString> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -100,6 +102,21 @@ Parameter Sets: UpdateByName, UpdateByObject
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

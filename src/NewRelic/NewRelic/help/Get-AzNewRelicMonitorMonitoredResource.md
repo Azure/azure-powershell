@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NewRelic-help.xml
 Module Name: Az.NewRelic
 online version: https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicmonitormonitoredresource
 schema: 2.0.0
@@ -14,7 +14,8 @@ List the resources currently being monitored by the NewRelic monitor resource.
 
 ```
 Get-AzNewRelicMonitorMonitoredResource -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -63,7 +64,7 @@ Id                     : /SUBSCRIPTIONS/272C26CB-7026-4B37-B190-7CB7B2ABECB0/RES
 ReasonForLogsStatus    : DiagnosticSettingsLimitReached
 ReasonForMetricsStatus : 
 SendingLog             : Disabled
-SendingMetric          : 
+SendingMetric          :
 ```
 
 List the resources currently being monitored by the NewRelic monitor resource.
@@ -95,6 +96,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -174,7 +190,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

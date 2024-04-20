@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ContainerInstance-help.xml
 Module Name: Az.ContainerInstance
 online version: https://learn.microsoft.com/powershell/module/az.containerinstance/get-azcontainerinstancecontainergroupoutboundnetworkdependencyendpoint
 schema: 2.0.0
@@ -16,13 +16,15 @@ For container groups, this will always be an empty list.
 ### Get (Default)
 ```
 Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint -ContainerGroupName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzContainerInstanceContainerGroupOutboundNetworkDependencyEndpoint
- -InputObject <IContainerInstanceIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -InputObject <IContainerInstanceIdentity> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,6 +94,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -140,20 +157,4 @@ ALIASES
 
 Get-AzContainerGroupOutboundNetworkDependencyEndpoint
 
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IContainerInstanceIdentity>`: Identity Parameter
-  - `[ContainerGroupName <String>]`: The name of the container group.
-  - `[ContainerName <String>]`: The name of the container instance.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The identifier for the physical azure location.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubnetName <String>]`: The name of the subnet.
-  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-  - `[VirtualNetworkName <String>]`: The name of the virtual network.
-
 ## RELATED LINKS
-

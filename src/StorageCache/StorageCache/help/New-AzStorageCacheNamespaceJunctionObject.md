@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StorageCache-help.xml
 Module Name: Az.StorageCache
 online version: https://learn.microsoft.com/powershell/module/Az.StorageCache/new-AzStorageCacheNamespaceJunctionObject
 schema: 2.0.0
@@ -14,7 +14,7 @@ Create an in-memory object for NamespaceJunction.
 
 ```
 New-AzStorageCacheNamespaceJunctionObject [-NamespacePath <String>] [-NfsAccessPolicy <String>]
- [-NfsExport <String>] [-TargetPath <String>] [<CommonParameters>]
+ [-NfsExport <String>] [-TargetPath <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,6 +82,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -TargetPath
 Path in Storage Target to which namespacePath points.
 
@@ -108,7 +123,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

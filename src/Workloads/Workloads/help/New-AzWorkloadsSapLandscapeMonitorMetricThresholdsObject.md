@@ -14,7 +14,7 @@ Create an in-memory object for SapLandscapeMonitorMetricThresholds.
 
 ```
 New-AzWorkloadsSapLandscapeMonitorMetricThresholdsObject [-Green <Single>] [-Name <String>] [-Red <Single>]
- [-Yellow <Single>] [<CommonParameters>]
+ [-Yellow <Single>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,6 +67,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Red
 Gets or sets the threshold value for Red.
 
@@ -107,7 +122,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.SapLandscapeMonitorMetricThresholds
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

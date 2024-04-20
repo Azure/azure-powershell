@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -84,7 +86,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// Creates a new instance of <see cref="LogzMonitorResourceUpdateParameters" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>
+        /// an instance of the <see cref="LogzMonitorResourceUpdateParameters" /> model class.
+        /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParameters FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -101,9 +105,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitorUpdateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.MonitorUpdatePropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.LogzMonitorResourceUpdateParametersTagsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).MonitoringStatus = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MonitoringStatus?) content.GetValueForProperty("MonitoringStatus",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).MonitoringStatus, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MonitoringStatus.CreateFrom);
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitorUpdateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.MonitorUpdatePropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.LogzMonitorResourceUpdateParametersTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MonitoringStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).MonitoringStatus = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MonitoringStatus?) content.GetValueForProperty("MonitoringStatus",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).MonitoringStatus, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MonitoringStatus.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,9 +134,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitorUpdateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.MonitorUpdatePropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.LogzMonitorResourceUpdateParametersTagsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).MonitoringStatus = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MonitoringStatus?) content.GetValueForProperty("MonitoringStatus",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).MonitoringStatus, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MonitoringStatus.CreateFrom);
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IMonitorUpdateProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.MonitorUpdatePropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.LogzMonitorResourceUpdateParametersTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MonitoringStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).MonitoringStatus = (Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MonitoringStatus?) content.GetValueForProperty("MonitoringStatus",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.ILogzMonitorResourceUpdateParametersInternal)this).MonitoringStatus, Microsoft.Azure.PowerShell.Cmdlets.Logz.Support.MonitoringStatus.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

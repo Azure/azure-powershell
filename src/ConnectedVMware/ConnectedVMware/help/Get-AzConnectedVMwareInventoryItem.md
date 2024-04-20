@@ -15,25 +15,25 @@ Implements InventoryItem GET method.
 ### List (Default)
 ```
 Get-AzConnectedVMwareInventoryItem -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -VcenterName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -VcenterName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityVcenter
 ```
 Get-AzConnectedVMwareInventoryItem -Name <String> -VcenterInputObject <IConnectedVMwareIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzConnectedVMwareInventoryItem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -VcenterName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -VcenterName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzConnectedVMwareInventoryItem -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,6 +138,21 @@ Parameter Sets: GetViaIdentityVcenter, Get
 Aliases: InventoryItemName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -19,7 +19,7 @@ New-AzAvailabilityGroupListener -Name <String> -ResourceGroupName <String> -SqlV
  [-LoadBalancerResourceId <String>] [-ProbePort <Int32>] [-PublicIpAddressResourceId <String>]
  [-SqlVirtualMachineId <String[]>] [-SubnetId <String>]
  [-MultiSubnetIPConfiguration <IMultiSubnetIPConfiguration[]>] [-Port <Int32>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -240,6 +240,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicIpAddressResourceId
 Resource id of the public IP.
 
@@ -372,24 +387,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.IAvailabilityGroupListener
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`AVAILABILITYGROUPCONFIGURATIONREPLICA <IAgReplica[]>`: Replica configurations.
-  - `[Commit <Commit?>]`: Replica commit mode in availability group.
-  - `[Failover <Failover?>]`: Replica failover mode in availability group.
-  - `[ReadableSecondary <ReadableSecondary?>]`: Replica readable secondary mode in availability group.
-  - `[Role <Role?>]`: Replica Role in availability group.
-  - `[SqlVirtualMachineInstanceId <String>]`: Sql VirtualMachine Instance Id.
-
-`MULTISUBNETIPCONFIGURATION <IMultiSubnetIPConfiguration[]>`: List of multi subnet IP configurations for an AG listener.
-  - `SqlVirtualMachineInstance <String>`: SQL virtual machine instance resource id that are enrolled into the availability group listener.
-  - `[PrivateIPAddressIpaddress <String>]`: Private IP address bound to the availability group listener.
-  - `[PrivateIPAddressSubnetResourceId <String>]`: Subnet used to include private IP.
 
 ## RELATED LINKS

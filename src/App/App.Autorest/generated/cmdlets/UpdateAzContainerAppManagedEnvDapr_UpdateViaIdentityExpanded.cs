@@ -255,7 +255,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -401,7 +418,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                     {
                         _daprComponentEnvelopeBody = await this.Client.DaprComponentsGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
                         this.Update_daprComponentEnvelopeBody();
-                        await this.Client.DaprComponentsCreateOrUpdateViaIdentity(InputObject.Id, _daprComponentEnvelopeBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.DaprComponentsCreateOrUpdateViaIdentity(InputObject.Id, _daprComponentEnvelopeBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -424,7 +441,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
                         }
                         _daprComponentEnvelopeBody = await this.Client.DaprComponentsGetWithResult(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.EnvironmentName ?? null, InputObject.ComponentName ?? null, this, Pipeline);
                         this.Update_daprComponentEnvelopeBody();
-                        await this.Client.DaprComponentsCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.EnvironmentName ?? null, InputObject.ComponentName ?? null, _daprComponentEnvelopeBody, onOk, onDefault, this, Pipeline);
+                        await this.Client.DaprComponentsCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.EnvironmentName ?? null, InputObject.ComponentName ?? null, _daprComponentEnvelopeBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -491,6 +508,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App.Cmdlets
             {
                 this.Scope = (string[])(this.MyInvocation?.BoundParameters["Scope"]);
             }
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.App.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

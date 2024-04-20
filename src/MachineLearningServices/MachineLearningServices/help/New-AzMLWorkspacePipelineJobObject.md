@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacepipelinejobobject
+online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspacePipelineJobObject
 schema: 2.0.0
 ---
 
@@ -13,12 +13,12 @@ Create an in-memory object for PipelineJob.
 ## SYNTAX
 
 ```
-New-AzMLWorkspacePipelineJobObject [-ComputeId <String>] [-Description <String>] [-DisplayName <String>]
+New-AzMLWorkspacePipelineJobObject [-JobInput <IPipelineJobInputs>] [-Job <IPipelineJobJobs>]
+ [-JobOutput <IPipelineJobOutputs>] [-Setting <IAny>] [-ComputeId <String>] [-DisplayName <String>]
  [-ExperimentName <String>] [-IdentityType <IdentityConfigurationType>] [-IsArchived <Boolean>]
- [-Job <IPipelineJobJobs>] [-JobInput <IPipelineJobInputs>] [-JobOutput <IPipelineJobOutputs>]
- [-Property <IResourceBaseProperties>] [-ServiceEndpoint <String>] [-ServicePort <Int32>]
- [-ServiceProperty <IJobServiceProperties>] [-ServiceType <String>] [-Setting <IAny>]
- [-Tag <IResourceBaseTags>] [<CommonParameters>]
+ [-ServiceEndpoint <String>] [-ServicePort <Int32>] [-ServiceProperty <IJobServiceProperties>]
+ [-ServiceType <String>] [-Description <String>] [-Property <IResourceBaseProperties>]
+ [-Tag <IResourceBaseTags>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -191,6 +191,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Property
 The asset property dictionary.
 To construct, see NOTES section for PROPERTY properties and create a hash table.
@@ -311,30 +326,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-JOB `<IPipelineJobJobs>`: Jobs construct the Pipeline Job.
-  - `[(Any) <Object>]`: This indicates any property can be added to this object.
-
-JOBINPUT `<IPipelineJobInputs>`: Inputs for the pipeline job.
-  - `[(Any) <IJobInput>]`: This indicates any property can be added to this object.
-
-JOBOUTPUT `<IPipelineJobOutputs>`: Outputs for the pipeline job.
-  - `[(Any) <IJobOutput>]`: This indicates any property can be added to this object.
-
-PROPERTY `<IResourceBaseProperties>`: The asset property dictionary.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-SERVICEPROPERTY `<IJobServiceProperties>`: Additional properties to set on the endpoint.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-TAG `<IResourceBaseTags>`: Tag dictionary. Tags can be added, removed, and updated.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Automanage-help.xml
 Module Name: Az.Automanage
 online version: https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanageconfigprofileassignment
 schema: 2.0.0
@@ -15,37 +15,37 @@ Get information about a configuration profile assignment
 ### List2 (Default)
 ```
 Get-AzAutomanageConfigProfileAssignment [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### Get
+### List4
 ```
-Get-AzAutomanageConfigProfileAssignment -ResourceGroupName <String> -VMName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAutomanageConfigProfileAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -ClusterName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### List3
 ```
-Get-AzAutomanageConfigProfileAssignment -InputObject <IAutomanageIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzAutomanageConfigProfileAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -MachineName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzAutomanageConfigProfileAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### List3
+### Get
 ```
-Get-AzAutomanageConfigProfileAssignment -MachineName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAutomanageConfigProfileAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -VMName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### List4
+### GetViaIdentity
 ```
-Get-AzAutomanageConfigProfileAssignment -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAutomanageConfigProfileAssignment -InputObject <IAutomanageIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,7 +111,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -156,13 +157,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1, List3, List4
+Parameter Sets: List4, List3, List1, Get
 Aliases:
 
 Required: True
@@ -177,7 +193,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List1, List2, List3, List4
+Parameter Sets: List2, List4, List3, List1, Get
 Aliases:
 
 Required: False
@@ -215,25 +231,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAutomanageIdentity>`: Identity Parameter
-  - `[BestPracticeName <String>]`: The Automanage best practice name.
-  - `[ClusterName <String>]`: The name of the Arc machine.
-  - `[ConfigurationProfileAssignmentName <String>]`: Name of the configuration profile assignment. Only default is supported.
-  - `[ConfigurationProfileName <String>]`: Name of the configuration profile.
-  - `[Id <String>]`: Resource identity path
-  - `[MachineName <String>]`: The name of the Arc machine.
-  - `[ReportName <String>]`: The report name.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VMName <String>]`: The name of the virtual machine.
-  - `[VersionName <String>]`: The Automanage best practice version name.
-
 ## RELATED LINKS
-

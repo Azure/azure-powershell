@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.GuestConfiguration-help.xml
 Module Name: Az.GuestConfiguration
 online version: https://learn.microsoft.com/powershell/module/az.guestconfiguration/get-azguestconfigurationassignmentreport
 schema: 2.0.0
@@ -14,41 +14,44 @@ Get a report for the guest configuration assignment, by reportId.
 
 ### List (Default)
 ```
-Get-AzGuestConfigurationAssignmentReport -GuestConfigurationAssignmentName <String>
- -ResourceGroupName <String> -VMName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzGuestConfigurationAssignmentReport -GuestConfigurationAssignmentName <String> -ReportId <String>
- -ResourceGroupName <String> -VMName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Get1
-```
-Get-AzGuestConfigurationAssignmentReport -GuestConfigurationAssignmentName <String> -MachineName <String>
- -ReportId <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Get2
-```
-Get-AzGuestConfigurationAssignmentReport -Name <String> -ReportId <String> -ResourceGroupName <String>
- -VmssName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzGuestConfigurationAssignmentReport -ResourceGroupName <String> -GuestConfigurationAssignmentName <String>
+ [-SubscriptionId <String[]>] -VMName <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzGuestConfigurationAssignmentReport -GuestConfigurationAssignmentName <String> -MachineName <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzGuestConfigurationAssignmentReport -ResourceGroupName <String> -GuestConfigurationAssignmentName <String>
+ [-SubscriptionId <String[]>] -MachineName <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### Get1
+```
+Get-AzGuestConfigurationAssignmentReport -ResourceGroupName <String> -GuestConfigurationAssignmentName <String>
+ -ReportId <String> [-SubscriptionId <String[]>] -MachineName <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzGuestConfigurationAssignmentReport -ResourceGroupName <String> -GuestConfigurationAssignmentName <String>
+ -ReportId <String> [-SubscriptionId <String[]>] -VMName <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### Get2
+```
+Get-AzGuestConfigurationAssignmentReport -ResourceGroupName <String> -ReportId <String>
+ [-SubscriptionId <String[]>] -Name <String> -VmssName <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List2
 ```
-Get-AzGuestConfigurationAssignmentReport -Name <String> -ResourceGroupName <String> -VmssName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzGuestConfigurationAssignmentReport -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -Name <String> -VmssName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +76,8 @@ List reports for a guest configuration assignment
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -92,7 +96,7 @@ The guest configuration assignment name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1, List, List1
+Parameter Sets: List, List1, Get1, Get
 Aliases:
 
 Required: True
@@ -107,7 +111,7 @@ The name of the ARC machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, List1
+Parameter Sets: List1, Get1
 Aliases:
 
 Required: True
@@ -132,12 +136,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReportId
 The GUID for the guest configuration assignment report.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1, Get2
+Parameter Sets: Get1, Get, Get2
 Aliases:
 
 Required: True
@@ -183,7 +202,7 @@ The name of the virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -219,7 +238,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

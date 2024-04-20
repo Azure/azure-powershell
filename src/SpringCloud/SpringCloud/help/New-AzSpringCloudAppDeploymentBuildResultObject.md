@@ -13,7 +13,8 @@ Create an in-memory object for BuildResultUserSourceInfo.
 ## SYNTAX
 
 ```
-New-AzSpringCloudAppDeploymentBuildResultObject [-Version <String>] [<CommonParameters>]
+New-AzSpringCloudAppDeploymentBuildResultObject [-Version <String>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +36,21 @@ Version BuildResultId
 Create an in-memory object for BuildResultUserSourceInfo.
 
 ## PARAMETERS
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -Version
 Version of the source.
@@ -61,7 +77,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildResultUserSourceInfo
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

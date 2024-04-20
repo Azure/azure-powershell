@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonPostgreSqlCredentialScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonPostgreSqlCredentialScanObject
 schema: 2.0.0
 ---
 
@@ -17,7 +17,7 @@ New-AzPurviewAmazonPostgreSqlCredentialScanObject -Kind <ScanAuthorizationType>
  [-CollectionReferenceName <String>] [-CollectionType <String>] [-ConnectedViaReferenceName <String>]
  [-CredentialReferenceName <String>] [-CredentialType <CredentialType>] [-DatabaseName <String>]
  [-Port <Int32>] [-ScanRulesetName <String>] [-ScanRulesetType <ScanRulesetType>] [-ServerEndpoint <String>]
- [-VpcEndpointServiceName <String>] [-Worker <Int32>] [<CommonParameters>]
+ [-VpcEndpointServiceName <String>] [-Worker <Int32>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -168,6 +168,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ScanRulesetName
 
 ```yaml
@@ -248,7 +263,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonPostgreSqlCredentialScan
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

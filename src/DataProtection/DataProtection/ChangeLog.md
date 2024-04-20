@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Introduced secrets detection feature to safeguard sensitive data.
 * Added vault tier restore and update backup instance for blobs.
 
 ## Version 2.3.0

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Quantum-help.xml
 Module Name: Az.Quantum
 online version: https://learn.microsoft.com/powershell/module/az.quantum/get-azquantumoffering
 schema: 2.0.0
@@ -14,7 +14,7 @@ Returns the list of all provider offerings available for the given location.
 
 ```
 Get-AzQuantumOffering -LocationName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,6 +74,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The Azure subscription ID.
 
@@ -100,7 +115,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

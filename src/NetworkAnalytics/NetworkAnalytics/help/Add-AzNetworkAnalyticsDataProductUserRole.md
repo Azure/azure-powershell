@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkAnalytics-help.xml
 Module Name: Az.NetworkAnalytics
 online version: https://learn.microsoft.com/powershell/module/az.networkanalytics/add-aznetworkanalyticsdataproductuserrole
 schema: 2.0.0
@@ -15,16 +15,16 @@ Assign role to the data product.
 ### AddExpanded (Default)
 ```
 Add-AzNetworkAnalyticsDataProductUserRole -DataProductName <String> -ResourceGroupName <String>
- -DataTypeScope <String[]> -PrincipalId <String> -PrincipalType <String> -Role <DataProductUserRole>
- -RoleId <String> -UserName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -DataTypeScope <String[]> -PrincipalId <String> -PrincipalType <String>
+ -Role <DataProductUserRole> -RoleId <String> -UserName <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AddViaIdentityExpanded
 ```
 Add-AzNetworkAnalyticsDataProductUserRole -InputObject <INetworkAnalyticsIdentity> -DataTypeScope <String[]>
  -PrincipalId <String> -PrincipalType <String> -Role <DataProductUserRole> -RoleId <String> -UserName <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +34,7 @@ Assign role to the data product.
 
 ### Example 1: Assign user role to the data product.
 ```powershell
- Add-AzNetworkAnalyticsDataProductUserRole -DataProductName "dataProductName" -ResourceGroupName "ResourceGroupName" -PrincipalId user@microsoft.com -Role Reader -RoleId " " -UserName "User Name" -PrincipalType user  -DataTypeScope "dataProductName"
+Add-AzNetworkAnalyticsDataProductUserRole -DataProductName "dataProductName" -ResourceGroupName "ResourceGroupName" -PrincipalId user@microsoft.com -Role Reader -RoleId " " -UserName "User Name" -PrincipalType user  -DataTypeScope "dataProductName"
 ```
 
 ```output
@@ -133,6 +133,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -260,4 +275,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -16,18 +16,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IValidates
     {
         /// <summary>
-        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResource"
-        /// />
+        /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResource" />
         /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.Resource();
+        private Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResource __resource = new Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.Resource();
 
         /// <summary>Resource Id</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inherited)]
-        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Id; }
+        public string Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Id; }
 
         /// <summary>Resource location</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inherited)]
-        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Location = value ; }
+        public string Location { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Location; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Location = value ; }
+
+        /// <summary>Internal Acessors for Id</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Id = value; }
+
+        /// <summary>Internal Acessors for Name</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Name = value; }
+
+        /// <summary>Internal Acessors for Type</summary>
+        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Type = value; }
 
         /// <summary>Internal Acessors for OSDiskImageSizeInGb</summary>
         int? Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionInternal.OSDiskImageSizeInGb { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionPropertiesInternal)Property).OSDiskImageSizeInGb; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionPropertiesInternal)Property).OSDiskImageSizeInGb = value; }
@@ -65,18 +73,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
         /// <summary>Internal Acessors for StorageProfileSource</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryArtifactVersionSource Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionInternal.StorageProfileSource { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionPropertiesInternal)Property).StorageProfileSource; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryImageVersionPropertiesInternal)Property).StorageProfileSource = value; }
 
-        /// <summary>Internal Acessors for Id</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal.Id { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Id; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Id = value; }
-
-        /// <summary>Internal Acessors for Name</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal.Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Name = value; }
-
-        /// <summary>Internal Acessors for Type</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal.Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Type; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Type = value; }
-
         /// <summary>Resource name</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inherited)]
-        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Name; }
+        public string Name { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Name; }
 
         /// <summary>
         /// The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
@@ -181,11 +180,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
 
         /// <summary>Resource tags</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inherited)]
-        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Tag = value ?? null /* model class */; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceTags Tag { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Tag; set => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Tag = value ?? null /* model class */; }
 
         /// <summary>Resource type</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Compute.Origin(Microsoft.Azure.PowerShell.Cmdlets.Compute.PropertyOrigin.Inherited)]
-        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal)__resource).Type; }
+        public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal)__resource).Type; }
 
         /// <summary>
         /// The uri of the gallery artifact version source. Currently used to specify vhd/blob source.
@@ -214,7 +213,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
     /// Specifies information about the gallery image version that you want to create or update.
     public partial interface IGalleryImageVersion :
         Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.IJsonSerializable,
-        Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResource
+        Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResource
     {
         /// <summary>
         /// The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
@@ -392,7 +391,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
     }
     /// Specifies information about the gallery image version that you want to create or update.
     internal partial interface IGalleryImageVersionInternal :
-        Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IResourceInternal
+        Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api10.IResourceInternal
     {
         /// <summary>
         /// The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'

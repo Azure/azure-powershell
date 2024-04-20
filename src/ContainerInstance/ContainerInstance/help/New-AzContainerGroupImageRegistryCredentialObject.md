@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ContainerInstance-help.xml
 Module Name: Az.ContainerInstance
 online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupImageRegistryCredentialObject
 schema: 2.0.0
@@ -13,8 +13,8 @@ Create a in-memory object for ImageRegistryCredential
 ## SYNTAX
 
 ```
-New-AzContainerGroupImageRegistryCredentialObject -Server <String> [-AcrIdentity <String>]
- [-Password <SecureString>] [-Username <String>] [<CommonParameters>]
+New-AzContainerGroupImageRegistryCredentialObject -Server <String> [-Password <SecureString>]
+ [-Username <String>] [-AcrIdentity <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Create a in-memory object for ImageRegistryCredential
 
 ### Example 1: Set up an image registry credential to create a container group
 ```powershell
-New-AzContainerGroupImageRegistryCredentialObject -Server "myserver.com" -Username "username" -Password (ConvertTo-SecureString "******" -AsPlainText -Force) 
+New-AzContainerGroupImageRegistryCredentialObject -Server "myserver.com" -Username "username" -Password (ConvertTo-SecureString "******" -AsPlainText -Force)
 ```
 
 ```output
@@ -59,6 +59,21 @@ The password for the private registry.
 Type: System.Security.SecureString
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -108,7 +123,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

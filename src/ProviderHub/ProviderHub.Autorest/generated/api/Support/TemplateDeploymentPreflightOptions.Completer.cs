@@ -28,23 +28,23 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ValidationRequests".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ValidationRequests", "ValidationRequests", global::System.Management.Automation.CompletionResultType.ParameterValue, "ValidationRequests");
+                yield return new global::System.Management.Automation.CompletionResult("'ValidationRequests'", "ValidationRequests", global::System.Management.Automation.CompletionResultType.ParameterValue, "ValidationRequests");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DeploymentRequests".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DeploymentRequests", "DeploymentRequests", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeploymentRequests");
+                yield return new global::System.Management.Automation.CompletionResult("'DeploymentRequests'", "DeploymentRequests", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeploymentRequests");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "TestOnly".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("TestOnly", "TestOnly", global::System.Management.Automation.CompletionResultType.ParameterValue, "TestOnly");
+                yield return new global::System.Management.Automation.CompletionResult("'TestOnly'", "TestOnly", global::System.Management.Automation.CompletionResultType.ParameterValue, "TestOnly");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "RegisteredOnly".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("RegisteredOnly", "RegisteredOnly", global::System.Management.Automation.CompletionResultType.ParameterValue, "RegisteredOnly");
+                yield return new global::System.Management.Automation.CompletionResult("'RegisteredOnly'", "RegisteredOnly", global::System.Management.Automation.CompletionResultType.ParameterValue, "RegisteredOnly");
             }
         }
     }

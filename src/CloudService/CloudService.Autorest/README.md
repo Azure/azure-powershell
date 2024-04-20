@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the CloudService service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -45,17 +44,22 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+commit: afc91d411dc6f5b8f6c6e6d5abbc46da096729e0
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/afc91d411dc6f5b8f6c6e6d5abbc46da096729e0/specification/compute/resource-manager/Microsoft.Compute/CloudserviceRP/stable/2022-09-04/cloudService.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/b69b3fa5c26c94aa6efe6dadb76f599c204f297b/specification/network/resource-manager/Microsoft.Network/stable/2021-03-01/cloudServiceNetworkInterface.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/b69b3fa5c26c94aa6efe6dadb76f599c204f297b/specification/network/resource-manager/Microsoft.Network/stable/2021-03-01/cloudServicePublicIpAddress.json
+  - $(repo)/specification/compute/resource-manager/Microsoft.Compute/CloudserviceRP/stable/2022-09-04/cloudService.json
+  - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2021-03-01/cloudServiceNetworkInterface.json
+  - $(repo)/specification/network/resource-manager/Microsoft.Network/stable/2021-03-01/cloudServicePublicIpAddress.json
 
 title: CloudService
 module-version: 0.1.0
 
 identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

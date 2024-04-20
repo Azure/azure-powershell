@@ -5380,7 +5380,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.684\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
+                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.694\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -5439,7 +5439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.684\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
+                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.694\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -6056,7 +6056,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.684\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
+                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.694\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -6112,7 +6112,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Marketplace
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.684\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
+                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@4.0.694\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call

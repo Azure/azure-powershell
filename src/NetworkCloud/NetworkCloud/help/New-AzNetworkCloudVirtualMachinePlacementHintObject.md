@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
 online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudVirtualMachinePlacementHintObject
 schema: 2.0.0
@@ -15,7 +15,7 @@ Create an in-memory object for VirtualMachinePlacementHint.
 ```
 New-AzNetworkCloudVirtualMachinePlacementHintObject -HintType <VirtualMachinePlacementHintType>
  -ResourceId <String> -SchedulingExecution <VirtualMachineSchedulingExecution>
- -Scope <VirtualMachinePlacementHintPodAffinityScope> [<CommonParameters>]
+ -Scope <VirtualMachinePlacementHintPodAffinityScope> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +47,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -110,7 +125,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

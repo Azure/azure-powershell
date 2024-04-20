@@ -14,7 +14,7 @@ Create an in-memory object for TrafficWeight.
 
 ```
 New-AzContainerAppTrafficWeightObject [-Label <String>] [-LatestRevision <Boolean>] [-RevisionName <String>]
- [-Weight <Int32>] [<CommonParameters>]
+ [-Weight <Int32>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,6 +59,21 @@ Indicates that the traffic weight belongs to a latest stable revision.
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

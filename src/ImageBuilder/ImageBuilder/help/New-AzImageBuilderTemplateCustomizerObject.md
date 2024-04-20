@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ImageBuilder-help.xml
 Module Name: Az.ImageBuilder
 online version: https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatecustomizerobject
 schema: 2.0.0
@@ -14,33 +14,34 @@ Create an in-memory object for ImageTemplateCustomizer.
 
 ### FileCustomizer (Default)
 ```
-New-AzImageBuilderTemplateCustomizerObject -FileCustomizer [-Destination <String>] [-Name <String>]
- [-Sha256Checksum <String>] [-SourceUri <String>] [<CommonParameters>]
-```
-
-### PowerShellCustomizer
-```
-New-AzImageBuilderTemplateCustomizerObject -PowerShellCustomizer [-Inline <String[]>] [-Name <String>]
- [-RunAsSystem <Boolean>] [-RunElevated <Boolean>] [-ScriptUri <String>] [-Sha256Checksum <String>]
- [-ValidExitCode <Int32[]>] [<CommonParameters>]
-```
-
-### RestartCustomizer
-```
-New-AzImageBuilderTemplateCustomizerObject -RestartCustomizer [-Name <String>] [-RestartCheckCommand <String>]
- [-RestartCommand <String>] [-RestartTimeout <String>] [<CommonParameters>]
+New-AzImageBuilderTemplateCustomizerObject [-FileCustomizer] [-Destination <String>] [-Sha256Checksum <String>]
+ [-SourceUri <String>] [-Name <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ShellCustomizer
 ```
-New-AzImageBuilderTemplateCustomizerObject -ShellCustomizer [-Inline <String[]>] [-Name <String>]
- [-ScriptUri <String>] [-Sha256Checksum <String>] [<CommonParameters>]
+New-AzImageBuilderTemplateCustomizerObject [-Sha256Checksum <String>] [-Name <String>] [-Inline <String[]>]
+ [-ScriptUri <String>] [-ShellCustomizer] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### PowerShellCustomizer
+```
+New-AzImageBuilderTemplateCustomizerObject [-Sha256Checksum <String>] [-Name <String>] [-PowerShellCustomizer]
+ [-Inline <String[]>] [-RunAsSystem <Boolean>] [-RunElevated <Boolean>] [-ScriptUri <String>]
+ [-ValidExitCode <Int32[]>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### RestartCustomizer
+```
+New-AzImageBuilderTemplateCustomizerObject [-Name <String>] [-RestartCustomizer]
+ [-RestartCheckCommand <String>] [-RestartCommand <String>] [-RestartTimeout <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### WindowsUpdateCustomizer
 ```
-New-AzImageBuilderTemplateCustomizerObject -WindowsUpdateCustomizer [-Filter <String[]>] [-Name <String>]
- [-SearchCriterion <String>] [-UpdateLimit <Int32>] [<CommonParameters>]
+New-AzImageBuilderTemplateCustomizerObject [-Name <String>] [-WindowsUpdateCustomizer] [-Filter <String[]>]
+ [-SearchCriterion <String>] [-UpdateLimit <Int32>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,7 +103,7 @@ This command creates a restart customizer.
 
 ### Example 5: Create a shell customizer.
 ```powershell
-New-AzImageBuilderTemplateCustomizerObject -ShellCustomizer -Name downloadBuildArtifacts -ScriptUri "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh" 
+New-AzImageBuilderTemplateCustomizerObject -ShellCustomizer -Name downloadBuildArtifacts -ScriptUri "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh"
 ```
 
 ```output
@@ -168,7 +169,7 @@ Array of PowerShell commands to execute.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: PowerShellCustomizer, ShellCustomizer
+Parameter Sets: ShellCustomizer, PowerShellCustomizer
 Aliases:
 
 Required: False
@@ -204,6 +205,21 @@ Parameter Sets: PowerShellCustomizer
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -309,7 +325,7 @@ It can be a github link, SAS URI for Azure Storage, etc.
 
 ```yaml
 Type: System.String
-Parameter Sets: PowerShellCustomizer, ShellCustomizer
+Parameter Sets: ShellCustomizer, PowerShellCustomizer
 Aliases:
 
 Required: False
@@ -341,7 +357,7 @@ SHA256 checksum of the file provided in the sourceUri field above.
 
 ```yaml
 Type: System.String
-Parameter Sets: FileCustomizer, PowerShellCustomizer, ShellCustomizer
+Parameter Sets: FileCustomizer, ShellCustomizer, PowerShellCustomizer
 Aliases:
 
 Required: False
@@ -451,7 +467,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

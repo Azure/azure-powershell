@@ -14,7 +14,7 @@ Create an in-memory object for KeyVaultCertificateProperties.
 
 ```
 New-AzSpringCloudKeyVaultCertificateObject -Name <String> -VaultUri <String> [-Version <String>]
- [-ExcludePrivateKey <Boolean>] [<CommonParameters>]
+ [-ExcludePrivateKey <Boolean>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,6 +68,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -VaultUri
 The vault uri of user key vault.
 
@@ -108,7 +123,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.KeyVaultCertificateProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

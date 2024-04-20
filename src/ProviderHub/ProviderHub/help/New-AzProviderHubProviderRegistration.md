@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ProviderHub-help.xml
 Module Name: Az.ProviderHub
 online version: https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubproviderregistration
 schema: 2.0.0
@@ -17,7 +17,7 @@ New-AzProviderHubProviderRegistration -ProviderNamespace <String> [-Subscription
  [-Capability <IResourceProviderCapabilities[]>] [-FeatureRuleRequiredFeaturesPolicy <String>]
  [-ManagementIncidentContactEmail <String>] [-ManagementIncidentRoutingService <String>]
  [-ManagementIncidentRoutingTeam <String>] [-ManagementManifestOwner <String[]>]
- [-ManagementResourceAccessPolicy <String>] [-ManagementResourceAccessRole <IAny[]>]
+ [-ManagementResourceAccessPolicy <ResourceAccessPolicy>] [-ManagementResourceAccessRole <IAny[]>]
  [-ManagementSchemaOwner <String[]>] [-ManagementServiceTreeInfo <IServiceTreeInfo[]>] [-Metadata <IAny>]
  [-Namespace <String>] [-ProviderAuthenticationAllowedAudience <String[]>]
  [-ProviderAuthorization <IResourceProviderAuthorization[]>]
@@ -30,7 +30,7 @@ New-AzProviderHubProviderRegistration -ProviderNamespace <String> [-Subscription
  [-TemplateDeploymentOptionPreflightOption <PreflightOption[]>] [-TemplateDeploymentOptionPreflightSupported]
  [-ThirdPartyProviderAuthorizationAuthorization <ILightHouseAuthorization[]>]
  [-ThirdPartyProviderAuthorizationManagedByTenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -98,7 +98,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -191,7 +192,7 @@ Accept wildcard characters: False
 .
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support.ResourceAccessPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -285,6 +286,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -594,39 +610,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-CAPABILITY <IResourceProviderCapabilities[]>: .
-  - `Effect <ResourceProviderCapabilitiesEffect>`: 
-  - `QuotaId <String>`: 
-  - `[RequiredFeature <String[]>]`: 
-
-MANAGEMENTSERVICETREEINFO <IServiceTreeInfo[]>: .
-  - `[ComponentId <String>]`: 
-  - `[ServiceId <String>]`: 
-
-PROVIDERAUTHORIZATION <IResourceProviderAuthorization[]>: .
-  - `[ApplicationId <String>]`: 
-  - `[ManagedByRoleDefinitionId <String>]`: 
-  - `[RoleDefinitionId <String>]`: 
-
-PROVIDERHUBMETADATAPROVIDERAUTHORIZATION <IResourceProviderAuthorization[]>: .
-  - `[ApplicationId <String>]`: 
-  - `[ManagedByRoleDefinitionId <String>]`: 
-  - `[RoleDefinitionId <String>]`: 
-
-SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION <ISubscriptionStateOverrideAction[]>: .
-  - `Action <SubscriptionNotificationOperation>`: 
-  - `State <SubscriptionTransitioningState>`: 
-
-THIRDPARTYPROVIDERAUTHORIZATIONAUTHORIZATION <ILightHouseAuthorization[]>: .
-  - `PrincipalId <String>`: 
-  - `RoleDefinitionId <String>`: 
-
 ## RELATED LINKS
-

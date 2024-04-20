@@ -15,8 +15,8 @@ Creates an agent pool for a container registry with the specified parameters.
 ```
 New-AzContainerRegistryAgentPool -Name <String> -RegistryName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -Location <String> [-Count <Int32>] [-OS <OS>] [-Tag <Hashtable>] [-Tier <String>]
- [-VirtualNetworkSubnetResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-VirtualNetworkSubnetResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,6 +139,21 @@ The OS of agent machine
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.OS
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -279,7 +294,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api20190601Preview.IAgentPool
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

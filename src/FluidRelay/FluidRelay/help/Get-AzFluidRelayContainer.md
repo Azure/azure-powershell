@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.FluidRelay-help.xml
 Module Name: Az.FluidRelay
 online version: https://learn.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelaycontainer
 schema: 2.0.0
@@ -15,18 +15,20 @@ Get a Fluid Relay container.
 ### List (Default)
 ```
 Get-AzFluidRelayContainer -FluidRelayServerName <String> -ResourceGroup <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzFluidRelayContainer -FluidRelayServerName <String> -Name <String> -ResourceGroup <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzFluidRelayContainer -InputObject <IFluidRelayIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFluidRelayContainer -InputObject <IFluidRelayIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +68,8 @@ Read and execute this document [Quickstart: Dice roller](https://learn.microsoft
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -85,7 +88,7 @@ The Fluid Relay server resource name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -126,12 +129,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroup
 The resource group containing the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -146,7 +164,7 @@ The subscription id (GUID) for this resource.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -169,19 +187,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IFluidRelayIdentity>`: Identity Parameter
-  - `[FluidRelayContainerName <String>]`: The Fluid Relay container resource name.
-  - `[FluidRelayServerName <String>]`: The Fluid Relay server resource name.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroup <String>]`: The resource group containing the resource.
-  - `[SubscriptionId <String>]`: The subscription id (GUID) for this resource.
-
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MixedReality-help.xml
 Module Name: Az.MixedReality
 online version: https://learn.microsoft.com/powershell/module/az.mixedreality/update-azmixedrealityobjectanchorsaccount
 schema: 2.0.0
@@ -14,12 +14,12 @@ Updating an Object Anchors Account
 
 ### UpdateExpanded (Default)
 ```
-Update-AzMixedRealityObjectAnchorsAccount -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-IdentityType <ResourceIdentityType>] [-KindCapacity <Int32>]
- [-KindFamily <String>] [-KindName <String>] [-KindSize <String>] [-KindTier <SkuTier>]
- [-PlanType <ResourceIdentityType>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
- [-SkuSize <String>] [-SkuTier <SkuTier>] [-StorageAccountName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMixedRealityObjectAnchorsAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-IdentityType <ResourceIdentityType>] [-KindCapacity <Int32>] [-KindFamily <String>]
+ [-KindName <String>] [-KindSize <String>] [-KindTier <SkuTier>] [-PlanType <ResourceIdentityType>]
+ [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
+ [-StorageAccountName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -28,8 +28,8 @@ Update-AzMixedRealityObjectAnchorsAccount -InputObject <IMixedRealityIdentity> -
  [-IdentityType <ResourceIdentityType>] [-KindCapacity <Int32>] [-KindFamily <String>] [-KindName <String>]
  [-KindSize <String>] [-KindTier <SkuTier>] [-PlanType <ResourceIdentityType>] [-SkuCapacity <Int32>]
  [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
- [-StorageAccountName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-StorageAccountName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,7 +53,8 @@ Updating an Object Anchors Account.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -214,6 +215,21 @@ The identity type.
 Type: Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.ResourceIdentityType
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -407,19 +423,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMixedRealityIdentity>`: Identity Parameter
-  - `[AccountName <String>]`: Name of an Mixed Reality Account.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The location in which uniqueness will be verified.
-  - `[ResourceGroupName <String>]`: Name of an Azure resource group.
-  - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
-
 ## RELATED LINKS
-

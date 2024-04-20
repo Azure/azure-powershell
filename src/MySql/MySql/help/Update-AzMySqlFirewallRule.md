@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MySql-help.xml
 Module Name: Az.MySql
 online version: https://learn.microsoft.com/powershell/module/az.mysql/update-azmysqlfirewallrule
 schema: 2.0.0
@@ -15,27 +15,28 @@ Creates a new firewall rule or updates an existing firewall rule.
 ### UpdateExpanded (Default)
 ```
 Update-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
- -EndIPAddress <String> -StartIPAddress <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -EndIPAddress <String> -StartIPAddress <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ClientIPAddress
 ```
 Update-AzMySqlFirewallRule -Name <String> -ResourceGroupName <String> -ServerName <String>
- -ClientIPAddress <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ClientIPAddressViaIdentity
-```
-Update-AzMySqlFirewallRule -InputObject <IMySqlIdentity> -ClientIPAddress <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -ClientIPAddress <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzMySqlFirewallRule -InputObject <IMySqlIdentity> -EndIPAddress <String> -StartIPAddress <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### ClientIPAddressViaIdentity
+```
+Update-AzMySqlFirewallRule -InputObject <IMySqlIdentity> -ClientIPAddress <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -154,7 +155,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
-Parameter Sets: ClientIPAddressViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, ClientIPAddressViaIdentity
 Aliases:
 
 Required: True
@@ -169,7 +170,7 @@ The name of the server firewall rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClientIPAddress, UpdateExpanded
+Parameter Sets: UpdateExpanded, ClientIPAddress
 Aliases: FirewallRuleName
 
 Required: True
@@ -194,13 +195,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClientIPAddress, UpdateExpanded
+Parameter Sets: UpdateExpanded, ClientIPAddress
 Aliases:
 
 Required: True
@@ -215,7 +231,7 @@ The name of the server.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClientIPAddress, UpdateExpanded
+Parameter Sets: UpdateExpanded, ClientIPAddress
 Aliases:
 
 Required: True
@@ -246,7 +262,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ClientIPAddress, UpdateExpanded
+Parameter Sets: UpdateExpanded, ClientIPAddress
 Aliases:
 
 Required: False
@@ -300,25 +316,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMySqlIdentity>`: Identity Parameter
-  - `[BackupName <String>]`: The name of the backup.
-  - `[ConfigurationName <String>]`: The name of the server configuration.
-  - `[DatabaseName <String>]`: The name of the database.
-  - `[FirewallRuleName <String>]`: The name of the server firewall rule.
-  - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: The name of the location.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
-  - `[ServerName <String>]`: The name of the server.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
-
 ## RELATED LINKS
-
