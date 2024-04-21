@@ -81,16 +81,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         public bool? DisableEmailNotificationsForSiteRecovery { get; set; }
 
         /// <summary>
-        /// Enables or disables monitor alerts for all replication isues in RS vault.
+        /// Enables or disables monitor alerts for replication issue in RS vault.
         /// </summary>
         [Parameter(Mandatory = false)]
-        public bool? DisableAzureMonitorAlertsForAllReplicationIssues { get; set; }
+        public bool? DisableAzureMonitorAlertsForAllReplicationIssue { get; set; }
 
         /// <summary>
-        /// Enables or disables monitor alerts for all failover issues in RS vault.
+        /// Enables or disables monitor alerts for failover issue in RS vault.
         /// </summary>
         [Parameter(Mandatory = false)]
-        public bool? DisableAzureMonitorAlertsForAllFailoverIssues { get; set; }
+        public bool? DisableAzureMonitorAlertsForAllFailoverIssue { get; set; }
 
         /// <summary>
         /// Enables or disables public network access for RS vault.
@@ -133,16 +133,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     vaultCreateArgs.Sku = new Sku();
                     vaultCreateArgs.Sku.Name = SkuName.Standard;
 
-                    if (DisableAzureMonitorAlertsForJobFailure != null || DisableClassicAlerts != null || DisableEmailNotificationsForSiteRecovery != null || DisableAzureMonitorAlertsForAllReplicationIssues != null || DisableAzureMonitorAlertsForAllFailoverIssues != null)
+                    if (DisableAzureMonitorAlertsForJobFailure != null || DisableClassicAlerts != null || DisableEmailNotificationsForSiteRecovery != null || DisableAzureMonitorAlertsForAllReplicationIssue != null || DisableAzureMonitorAlertsForAllFailoverIssue != null)
                     {   
-                        if(DisableAzureMonitorAlertsForJobFailure != null && DisableClassicAlerts != null && DisableEmailNotificationsForSiteRecovery != null && DisableAzureMonitorAlertsForAllReplicationIssues != null && DisableAzureMonitorAlertsForAllFailoverIssues != null)
+                        if(DisableAzureMonitorAlertsForJobFailure != null && DisableClassicAlerts != null && DisableEmailNotificationsForSiteRecovery != null && DisableAzureMonitorAlertsForAllReplicationIssue != null && DisableAzureMonitorAlertsForAllFailoverIssue != null)
                         {
                             MonitoringSettings alerts = new MonitoringSettings();
 
                             alerts.AzureMonitorAlertSettings = new AzureMonitorAlertSettings();
                             alerts.AzureMonitorAlertSettings.AlertsForAllJobFailures = (DisableAzureMonitorAlertsForJobFailure == true) ? "Disabled" : "Enabled";
-                            alerts.AzureMonitorAlertSettings.AlertsForAllReplicationIssues = (DisableAzureMonitorAlertsForAllReplicationIssues == true) ? "Disabled" : "Enabled";
-                            alerts.AzureMonitorAlertSettings.AlertsForAllFailoverIssues = (DisableAzureMonitorAlertsForAllFailoverIssues == true) ? "Disabled" : "Enabled";
+                            alerts.AzureMonitorAlertSettings.AlertsForAllReplicationIssues = (DisableAzureMonitorAlertsForAllReplicationIssue == true) ? "Disabled" : "Enabled";
+                            alerts.AzureMonitorAlertSettings.AlertsForAllFailoverIssues = (DisableAzureMonitorAlertsForAllFailoverIssue == true) ? "Disabled" : "Enabled";
 
                             alerts.ClassicAlertSettings = new ClassicAlertSettings();
                             alerts.ClassicAlertSettings.AlertsForCriticalOperations = (DisableClassicAlerts == true) ? "Disabled" : "Enabled";

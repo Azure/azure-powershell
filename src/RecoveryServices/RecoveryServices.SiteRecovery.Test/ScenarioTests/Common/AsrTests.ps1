@@ -290,8 +290,8 @@ function Test-AzureMonitorAlertsForSiteRecovery
 		# create a vault with Alert settings 
 		$vault2 = New-AzRecoveryServicesVault -Name $vaultName2 -ResourceGroupName $resourceGroupName -Location "centraluseuap" `
 			-DisableAzureMonitorAlertsForJobFailure $false `
-            -DisableAzureMonitorAlertsForAllReplicationIssues $false `
-            -DisableAzureMonitorAlertsForAllFailoverIssues $true `
+            -DisableAzureMonitorAlertsForAllReplicationIssue $false `
+            -DisableAzureMonitorAlertsForAllFailoverIssue $true `
             -DisableEmailNotificationsForSiteRecovery $false `
 			-DisableClassicAlerts $true			
 		
@@ -302,11 +302,11 @@ function Test-AzureMonitorAlertsForSiteRecovery
 		Assert-True { $vault2.Properties.AlertSettings.AzureMonitorAlertsForAllFailoverIssues -eq "Disabled" }
         Assert-True { $vault2.Properties.AlertSettings.EmailNotificationsForSiteRecovery -eq "Enabled" }
 
-		$vault = Update-AzRecoveryServicesVault -ResourceGroupName "vijami-alertrg"  -Name "ASRalerts-pstest-vault1" -DisableAzureMonitorAlertsForAllReplicationIssues $true
+		$vault = Update-AzRecoveryServicesVault -ResourceGroupName "vijami-alertrg"  -Name "ASRalerts-pstest-vault1" -DisableAzureMonitorAlertsForAllReplicationIssue $true
 
 		# update alert settings 
 		$vault1 = Update-AzRecoveryServicesVault -Name $vaultName1 -ResourceGroupName $resourceGroupName `
-			-DisableAzureMonitorAlertsForAllFailoverIssues $false `
+			-DisableAzureMonitorAlertsForAllFailoverIssue $false `
 			-DisableEmailNotificationsForSiteRecovery $true
 
 		Assert-True { $vault1.Properties.AlertSettings -ne $null }
@@ -314,7 +314,7 @@ function Test-AzureMonitorAlertsForSiteRecovery
 		Assert-True { $vault1.Properties.AlertSettings.EmailNotificationsForSiteRecovery -eq "Disabled" }
 		
 		$vault2 = Update-AzRecoveryServicesVault -Name $vaultName2 -ResourceGroupName $resourceGroupName `
-			-DisableAzureMonitorAlertsForAllFailoverIssues $true `
+			-DisableAzureMonitorAlertsForAllFailoverIssue $true `
 			-DisableEmailNotificationsForSiteRecovery $false
 
 		Assert-True { $vault2.Properties.AlertSettings -ne $null }
