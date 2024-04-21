@@ -49,13 +49,13 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         public string Type { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Cleans the target directory prior to deploying the file(s).")]
-        public SwitchParameter Clean { get; set; }
+        public bool? Clean { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The artifact is deployed asynchronously. (The command will exit once the artifact is pushed to the web app.)")]
-        public SwitchParameter Async { get; set; }
+        public bool? Async { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "The web app will be restarted following the deployment. Set this to false if you are deploying multiple artifacts and do not want to restart the site on the earlier deployments.")]
-        public SwitchParameter Restart { get; set; }
+        public bool? Restart { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Absolute path that the artifact should be deployed to.")]
         public string TargetPath { get; set; }
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
             paramValues.Add("path", TargetPath);
 
             // default async to true if not provided to match old behavior
-            if (Async.IsPresent)
+            if (Async != null)
             {
                 paramValues.Add("async", Async.ToString());
             }
@@ -130,12 +130,12 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 paramValues.Add("async", "true");
             }
 
-            if (Restart.IsPresent)
+            if (Restart != null)
             {
                 paramValues.Add("restart", Restart.ToString());
             }
 
-            if (Clean.IsPresent)
+            if (Clean != null)
             {
                 paramValues.Add("clean", Clean.ToString());
             }

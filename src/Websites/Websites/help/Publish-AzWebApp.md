@@ -14,16 +14,18 @@ Deploys an Azure Web App from a ZIP, JAR, or WAR file using zipdeploy.
 
 ### FromWebApp (Default)
 ```
-Publish-AzWebApp -ArchivePath <String> [-Type <String>] [-Clean] [-Async] [-Restart] [-TargetPath <String>]
- [-IgnoreStack] [-Reset] [-Force] [-AsJob] [-Timeout <Double>] [-WebApp] <PSSite>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Publish-AzWebApp -ArchivePath <String> [-Type <String>] [-Clean <Boolean>] [-Async <Boolean>]
+ [-Restart <Boolean>] [-TargetPath <String>] [-IgnoreStack] [-Reset] [-Force] [-AsJob] [-Timeout <Double>]
+ [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### FromResourceName
 ```
-Publish-AzWebApp -ArchivePath <String> [-Type <String>] [-Clean] [-Async] [-Restart] [-TargetPath <String>]
- [-IgnoreStack] [-Reset] [-Force] [-AsJob] [-Timeout <Double>] [-ResourceGroupName] <String> [-Name] <String>
- [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Publish-AzWebApp -ArchivePath <String> [-Type <String>] [-Clean <Boolean>] [-Async <Boolean>]
+ [-Restart <Boolean>] [-TargetPath <String>] [-IgnoreStack] [-Reset] [-Force] [-AsJob] [-Timeout <Double>]
+ [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,7 +113,7 @@ Accept wildcard characters: False
 The artifact is deployed asynchronously. (The command will exit once the artifact is pushed to the web app.)
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -126,7 +128,7 @@ Accept wildcard characters: False
 Cleans the target directory prior to deploying the file(s).
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -231,7 +233,7 @@ Accept wildcard characters: False
 The web app will be restarted following the deployment. Set this to false if you are deploying multiple artifacts and do not want to restart the site on the earlier deployments.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
