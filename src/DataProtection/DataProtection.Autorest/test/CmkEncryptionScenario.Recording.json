@@ -1,13 +1,13 @@
 {
-  "CmkEncryptionScenario+[NoContext]+Get-AzDataProtectionBackupVault+$GET+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-03-01+1": {
+  "CmkEncryptionScenario+[NoContext]+Get-AzDataProtectionBackupVault+$GET+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "2b119c04-9bab-478e-a83f-a9cb086485a1" ],
+        "x-ms-client-request-id": [ "df87f606-f6c5-475f-a682-62ff7f024974" ],
         "CommandName": [ "Get-AzDataProtectionBackupVault" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupVault_Get2" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -26,11 +26,11 @@
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
-        "x-ms-request-id": [ "4492a8d7-219c-4172-92d7-259f69b956aa" ],
-        "x-ms-correlation-request-id": [ "4492a8d7-219c-4172-92d7-259f69b956aa" ],
-        "x-ms-routing-request-id": [ "WESTEUROPE:20240419T064228Z:4492a8d7-219c-4172-92d7-259f69b956aa" ],
+        "x-ms-request-id": [ "7bbbc74f-7d31-4fe6-b4fe-6617ab0b0c5c" ],
+        "x-ms-correlation-request-id": [ "7bbbc74f-7d31-4fe6-b4fe-6617ab0b0c5c" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20240422T041236Z:7bbbc74f-7d31-4fe6-b4fe-6617ab0b0c5c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Fri, 19 Apr 2024 06:42:28 GMT" ]
+        "Date": [ "Mon, 22 Apr 2024 04:12:36 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1376" ],
@@ -41,10 +41,10 @@
       "isContentBase64": false
     }
   },
-  "CmkEncryptionScenario+[NoContext]+New-AzDataProtectionBackupVault+$PUT+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-03-01+1": {
+  "CmkEncryptionScenario+[NoContext]+New-AzDataProtectionBackupVault+$PUT+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01",
       "Content": "{\r\n  \"location\": \"eastasia\",\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\": {\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"securitySettings\": {\r\n      \"encryptionSettings\": {\r\n        \"state\": \"Enabled\",\r\n        \"keyVaultProperties\": {\r\n          \"keyUri\": \"https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1\"\r\n        },\r\n        \"kekIdentity\": {\r\n          \"identityType\": \"UserAssigned\",\r\n          \"identityId\": \"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\"\r\n        },\r\n        \"infrastructureEncryption\": \"Enabled\"\r\n      }\r\n    },\r\n    \"storageSettings\": [\r\n      {\r\n        \"datastoreType\": \"VaultStore\",\r\n        \"type\": \"LocallyRedundant\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -61,14 +61,14 @@
         "Pragma": [ "no-cache" ],
         "x-ms-throttling-version": [ "v1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-arm-resource-system-data": [ "{\"lastModifiedBy\":\"karmahajan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-04-19T06:42:28.8640481Z\"}" ],
+        "x-ms-arm-resource-system-data": [ "{\"lastModifiedBy\":\"karmahajan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-04-22T04:12:37.0625743Z\"}" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
-        "x-ms-request-id": [ "e538ee44-711b-47fe-8723-2b30b0bb7e70" ],
-        "x-ms-correlation-request-id": [ "e538ee44-711b-47fe-8723-2b30b0bb7e70" ],
-        "x-ms-routing-request-id": [ "WESTEUROPE:20240419T064230Z:e538ee44-711b-47fe-8723-2b30b0bb7e70" ],
+        "x-ms-request-id": [ "28a65c6c-10a6-435c-9915-0df72dc385aa" ],
+        "x-ms-correlation-request-id": [ "28a65c6c-10a6-435c-9915-0df72dc385aa" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20240422T041238Z:28a65c6c-10a6-435c-9915-0df72dc385aa" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Fri, 19 Apr 2024 06:42:30 GMT" ]
+        "Date": [ "Mon, 22 Apr 2024 04:12:38 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1376" ],
@@ -79,16 +79,16 @@
       "isContentBase64": false
     }
   },
-  "CmkEncryptionScenario+[NoContext]+New-AzDataProtectionBackupVault+$GET+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-03-01+2": {
+  "CmkEncryptionScenario+[NoContext]+New-AzDataProtectionBackupVault+$GET+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "3" ],
-        "x-ms-client-request-id": [ "f3ec8476-be7c-43bd-8a17-75624bcee03b" ],
+        "x-ms-client-request-id": [ "c4124ad5-78b3-48f6-ba2f-9e1b7ac0e24d" ],
         "CommandName": [ "Az.DataProtection.Internal\\New-AzDataProtectionBackupVault" ],
         "FullCommandName": [ "New-AzDataProtectionBackupVault_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -106,11 +106,11 @@
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "498" ],
-        "x-ms-request-id": [ "a71ac822-ea0c-46c2-9ca9-d126e65306d1" ],
-        "x-ms-correlation-request-id": [ "a71ac822-ea0c-46c2-9ca9-d126e65306d1" ],
-        "x-ms-routing-request-id": [ "WESTEUROPE:20240419T064301Z:a71ac822-ea0c-46c2-9ca9-d126e65306d1" ],
+        "x-ms-request-id": [ "dbceb4d8-ec34-41e7-8741-c352d80ec4db" ],
+        "x-ms-correlation-request-id": [ "dbceb4d8-ec34-41e7-8741-c352d80ec4db" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20240422T041309Z:dbceb4d8-ec34-41e7-8741-c352d80ec4db" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Fri, 19 Apr 2024 06:43:00 GMT" ]
+        "Date": [ "Mon, 22 Apr 2024 04:13:08 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1376" ],
@@ -121,16 +121,16 @@
       "isContentBase64": false
     }
   },
-  "CmkEncryptionScenario+[NoContext]+New-AzDataProtectionBackupVault+$GET+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-03-01+3": {
+  "CmkEncryptionScenario+[NoContext]+New-AzDataProtectionBackupVault+$GET+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
         "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "f3ec8476-be7c-43bd-8a17-75624bcee03b" ],
+        "x-ms-client-request-id": [ "c4124ad5-78b3-48f6-ba2f-9e1b7ac0e24d" ],
         "CommandName": [ "Az.DataProtection.Internal\\New-AzDataProtectionBackupVault" ],
         "FullCommandName": [ "New-AzDataProtectionBackupVault_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -148,11 +148,11 @@
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
-        "x-ms-request-id": [ "be663f58-d216-456a-b588-eac31c2a087a" ],
-        "x-ms-correlation-request-id": [ "be663f58-d216-456a-b588-eac31c2a087a" ],
-        "x-ms-routing-request-id": [ "WESTEUROPE:20240419T064301Z:be663f58-d216-456a-b588-eac31c2a087a" ],
+        "x-ms-request-id": [ "a3f98f7d-b590-4bb0-9066-70804b6bf018" ],
+        "x-ms-correlation-request-id": [ "a3f98f7d-b590-4bb0-9066-70804b6bf018" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20240422T041309Z:a3f98f7d-b590-4bb0-9066-70804b6bf018" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Fri, 19 Apr 2024 06:43:00 GMT" ]
+        "Date": [ "Mon, 22 Apr 2024 04:13:08 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1376" ],
@@ -163,15 +163,15 @@
       "isContentBase64": false
     }
   },
-  "CmkEncryptionScenario+[NoContext]+Update-AzDataProtectionBackupVault+$GET+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-03-01+1": {
+  "CmkEncryptionScenario+[NoContext]+Update-AzDataProtectionBackupVault+$GET+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "5" ],
-        "x-ms-client-request-id": [ "1d3b6cdc-848e-456c-a424-14309e74b71a" ],
+        "x-ms-client-request-id": [ "30879aec-f316-4da3-a853-8b777d199987" ],
         "CommandName": [ "Az.DataProtection\\Get-AzDataProtectionBackupVault" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupVault_Get2" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -190,11 +190,11 @@
         "X-Content-Type-Options": [ "nosniff" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "496" ],
-        "x-ms-request-id": [ "1783942a-84f0-4f96-91f6-d4e91ff71f2e" ],
-        "x-ms-correlation-request-id": [ "1783942a-84f0-4f96-91f6-d4e91ff71f2e" ],
-        "x-ms-routing-request-id": [ "WESTEUROPE:20240419T064301Z:1783942a-84f0-4f96-91f6-d4e91ff71f2e" ],
+        "x-ms-request-id": [ "3057b474-573c-4f1c-b37a-1fed389105f1" ],
+        "x-ms-correlation-request-id": [ "3057b474-573c-4f1c-b37a-1fed389105f1" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20240422T041310Z:3057b474-573c-4f1c-b37a-1fed389105f1" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Fri, 19 Apr 2024 06:43:01 GMT" ]
+        "Date": [ "Mon, 22 Apr 2024 04:13:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1376" ],
@@ -205,10 +205,10 @@
       "isContentBase64": false
     }
   },
-  "CmkEncryptionScenario+[NoContext]+Update-AzDataProtectionBackupVault+$PATCH+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-03-01+2": {
+  "CmkEncryptionScenario+[NoContext]+Update-AzDataProtectionBackupVault+$PATCH+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-03-01",
+      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01",
       "Content": "{\r\n  \"properties\": {\r\n    \"securitySettings\": {\r\n      \"encryptionSettings\": {\r\n        \"state\": \"Enabled\",\r\n        \"keyVaultProperties\": {\r\n          \"keyUri\": \"https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1\"\r\n        },\r\n        \"kekIdentity\": {\r\n          \"identityType\": \"UserAssigned\",\r\n          \"identityId\": \"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\"\r\n        },\r\n        \"infrastructureEncryption\": \"Enabled\"\r\n      }\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -225,15 +225,14 @@
         "Pragma": [ "no-cache" ],
         "x-ms-throttling-version": [ "v1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-arm-resource-system-data": [ "{\"lastModifiedBy\":\"karmahajan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-04-19T06:43:02.3640095Z\"}" ],
+        "x-ms-arm-resource-system-data": [ "{\"lastModifiedBy\":\"karmahajan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-04-22T04:13:10.6559453Z\"}" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "98" ],
-        "x-ms-request-id": [ "529d076a-4148-496f-ab6f-b72a57be2b4f" ],
-        "x-ms-correlation-request-id": [ "529d076a-4148-496f-ab6f-b72a57be2b4f" ],
-        "x-ms-routing-request-id": [ "WESTEUROPE:20240419T064302Z:529d076a-4148-496f-ab6f-b72a57be2b4f" ],
+        "x-ms-request-id": [ "ddba63b3-ad38-4460-bf38-7f57c7503930" ],
+        "x-ms-correlation-request-id": [ "ddba63b3-ad38-4460-bf38-7f57c7503930" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20240422T041310Z:ddba63b3-ad38-4460-bf38-7f57c7503930" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Date": [ "Fri, 19 Apr 2024 06:43:02 GMT" ],
-        "Connection": [ "close" ]
+        "Date": [ "Mon, 22 Apr 2024 04:13:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1376" ],

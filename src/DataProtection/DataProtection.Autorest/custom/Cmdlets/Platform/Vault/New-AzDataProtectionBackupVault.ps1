@@ -160,13 +160,13 @@
             return
         }
 
-        $encryptionSettings = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240301.EncryptionSettings]::new()
+        $encryptionSettings = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.EncryptionSettings]::new()
         $encryptionSettings.State = $CmkEncryptionState
         $encryptionSettings.CmkInfrastructureEncryption = $CmkInfrastructureEncryption
-        $encryptionSettings.CmkIdentity = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240301.CmkKekIdentity]::new()
+        $encryptionSettings.CmkIdentity = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.CmkKekIdentity]::new()
         $encryptionSettings.CmkIdentity.IdentityType = $CmkIdentityType
         $encryptionSettings.CmkIdentity.IdentityId = $CmkUserAssignedIdentityId
-        $encryptionSettings.CmkKeyVaultProperty = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240301.CmkKeyVaultProperties]::new()
+        $encryptionSettings.CmkKeyVaultProperty = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.CmkKeyVaultProperties]::new()
         $encryptionSettings.CmkKeyVaultProperty.KeyUri = $CmkEncryptionKeyUri
 
         $PSBoundParameters.Add("EncryptionSetting", $encryptionSettings)
