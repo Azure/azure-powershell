@@ -14,13 +14,14 @@ Login to an azure container registry.
 
 ### WithoutNameAndPasswordParameterSet (Default)
 ```
-Connect-AzContainerRegistry -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Connect-AzContainerRegistry -Name <String> [-ExposeToken] [-DefaultProfile <IAzureContextContainer>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### WithNameAndPasswordParameterSet
 ```
-Connect-AzContainerRegistry -Name <String> -UserName <String> -Password <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Connect-AzContainerRegistry -Name <String> -UserName <String> -Password <String> [-ExposeToken]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,6 +67,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ExposeToken
+{{ Fill ExposeToken Description }}
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 Azure Container Registry Name.
 
@@ -93,6 +109,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
