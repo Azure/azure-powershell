@@ -98,7 +98,7 @@ First command gets a specific vault by given vault name, then we fetch the secur
 
 ### Example 4: Get encryption settings of backup vault.
 ```powershell
-$vault = Get-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxxx" -ResourceGroupName <resourceGroupName> -VaultName <vaultName>
+$vault = Get-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
 $vault.EncryptionSetting |fl
 $vault.EncryptionSetting.CmkIdentity |fl
 $vault.EncryptionSetting.CmkKeyVaultProperty |fl

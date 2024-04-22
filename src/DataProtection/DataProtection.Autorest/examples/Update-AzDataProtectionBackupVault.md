@@ -40,7 +40,9 @@ This command is used to modify Immutability state, cross subscription restore st
 
 ### Example 4: Update vault CmkIdentityType from UserAssignedManagedIdentity to SystemAssignedManagedIdentity and CmkEncryptionKeyUri
 ```powershell
-Update-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -CmkIdentityType SystemAssigned -CmkEncryptionKeyUri "cmkKeyUri"
+$cmkKeyUri = "https://samplekvazbckp.vault.azure.net/keys/testkey/3cd5235ad6ac4c11b40a6f35444bcbe1"
+
+Update-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -CmkIdentityType SystemAssigned -CmkEncryptionKeyUri $cmkKeyUri
 ```
 
 ```output
@@ -53,7 +55,9 @@ This command is used to modify CmkIdentityType and CmkEncryptionKeyUri. These pa
 
 ### Example 5: Update vault CmkIdentityType from SystemAssignedManagedIdentity to UserAssignedManagedIdentity
 ```powershell
-Update-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId "cmkIdentityId" -CmkEncryptionKeyUri "cmkEncryptionKeyUri"
+$cmkIdentityId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami"
+
+Update-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId $cmkIdentityId
 ```
 
 ```output
