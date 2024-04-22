@@ -1,0 +1,2 @@
+"Module","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.Monitor","Get-AzMetricsBatch","Get-AzMetricsBatch","0","2020","The cmdlet 'Get-AzMetricsBatch' no longer supports the type 'Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity' for parameter 'InputObject'.","Change the type for parameter 'InputObject' back to 'Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricIdentity'."

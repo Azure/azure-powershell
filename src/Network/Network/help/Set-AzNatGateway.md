@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/set-aznatgateway.md
+online version: https://learn.microsoft.com/powershell/module/az.network/set-aznatgateway
 schema: 2.0.0
 ---
 

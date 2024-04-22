@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.2.0
 * Upgraded Azure.Core to 1.37.0.
 * Fixed vulnerability https://github.com/advisories/GHSA-8g9c-28fc-mcx2
 * Added exposeToken parameter for Connect-AzContainerRegistry to get token

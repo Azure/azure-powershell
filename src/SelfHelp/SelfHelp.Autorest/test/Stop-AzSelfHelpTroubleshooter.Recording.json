@@ -1,0 +1,81 @@
+{
+  "Stop-AzSelfHelpTroubleshooter+[NoContext]+End+$PUT+https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/sm1dxne74h/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/troubleshooters/8afb06ca-dc4a-4f6d-9de0-5c97508271bf?api-version=2024-03-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/sm1dxne74h/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/troubleshooters/8afb06ca-dc4a-4f6d-9de0-5c97508271bf?api-version=2024-03-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"solutionId\": \"e104dbdf-9e14-4c9f-bc78-21ac90382231\",\n    \"parameters\": {\n      \"ResourceUri\": \"/subscriptions/02d59989-f8a9-4b69-9919-1ef51df4eff6\"\n    }\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "184" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "4065321b-3096-42c5-847f-e0c25e7916ac" ],
+        "x-ms-correlation-request-id": [ "4065321b-3096-42c5-847f-e0c25e7916ac" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240405T204921Z:4065321b-3096-42c5-847f-e0c25e7916ac" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 67584A42EC374DCA9FE3CB344F73FBD6 Ref B: BN1AA2051015017 Ref C: 2024-04-05T20:49:21Z" ],
+        "Date": [ "Fri, 05 Apr 2024 20:49:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "980" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/sm1dxne74h/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/troubleshooters/8afb06ca-dc4a-4f6d-9de0-5c97508271bf\",\"name\":\"8afb06ca-dc4a-4f6d-9de0-5c97508271bf\",\"type\":\"Microsoft.Help/troubleshooters\",\"properties\":{\"provisioningState\":\"AutoContinue\",\"solutionId\":\"e104dbdf-9e14-4c9f-bc78-21ac90382231\",\"steps\":[{\"id\":\"792d1984-b3f7-48eb-8642-6314ab76e04b\",\"title\":\"Intro Step\",\"type\":\"Decision\",\"executionStatus\":\"Success\",\"isLastStep\":false,\"inputs\":[{\"questionId\":\"0\",\"questionType\":\"MultiLineInfoBox\",\"questionContent\":\"{\\\"title\\\":\\\"Connectivity Guided Troubleshooter\\\",\\\"content\\\":\\\"This guided troubleshooter will enable you to self-troubleshoot your Virtual Machine (VM) SSH issues by checking VM health state, network settings, CPU and memory usage, etc. It typically takes between 3 to 5 minutes to complete the flow.\\\"}\",\"questionContentType\":\"Text\"}]}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzSelfHelpTroubleshooter+[NoContext]+End+$POST+https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/sm1dxne74h/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/troubleshooters/8afb06ca-dc4a-4f6d-9de0-5c97508271bf/end?api-version=2024-03-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com//subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourcegroups/sm1dxne74h/providers/Microsoft.Storage/storageAccounts/teststorageforselfhelp/providers/Microsoft.Help/troubleshooters/8afb06ca-dc4a-4f6d-9de0-5c97508271bf/end?api-version=2024-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "36" ],
+        "x-ms-client-request-id": [ "270403c8-0e2a-4cf1-bcb0-4f3a380207c2" ],
+        "CommandName": [ "Stop-AzSelfHelpTroubleshooter" ],
+        "FullCommandName": [ "Stop-AzSelfHelpTroubleshooter_End" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.SelfHelp/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 204,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-request-id": [ "e5acda74-3fd4-46ee-8aed-f081c7bc3236" ],
+        "x-ms-correlation-request-id": [ "e5acda74-3fd4-46ee-8aed-f081c7bc3236" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240405T204921Z:e5acda74-3fd4-46ee-8aed-f081c7bc3236" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8FF0A6DF075F454BBA4878B7B132FC24 Ref B: BN1AA2051015017 Ref C: 2024-04-05T20:49:21Z" ],
+        "Date": [ "Fri, 05 Apr 2024 20:49:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

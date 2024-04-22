@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.1.0
 * Added Breaking Change Warning for parameter datatype change.
 
 ## Version 3.0.0

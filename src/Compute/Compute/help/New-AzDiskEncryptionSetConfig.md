@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://learn.microsoft.com/powershell/module/az.compute/new-azdiskencryptionsetconfig.md
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azdiskencryptionsetconfig
 schema: 2.0.0
 ---
 
@@ -17,7 +17,7 @@ New-AzDiskEncryptionSetConfig [-Location] <String> [[-Tag] <Hashtable>] [[-Ident
  [[-SourceVaultId] <String>] [-KeyUrl <String>] [-EncryptionType <String>]
  [-RotationToLatestKeyVersionEnabled <Boolean>] [-FederatedClientId <String>]
  [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -131,6 +131,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

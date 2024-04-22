@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkFunction-help.xml
 Module Name: Az.NetworkFunction
 online version: https://learn.microsoft.com/powershell/module/az.networkfunction/update-aznetworkfunctioncollectorpolicy
 schema: 2.0.0
@@ -14,11 +14,11 @@ Creates or updates a Collector Policy resource
 
 ```
 Update-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName <String> -Name <String>
- -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-EmissionPolicy <IEmissionPoliciesPropertiesFormat[]>]
  [-IngestionPolicyIngestionSource <IIngestionSourcesPropertiesFormat[]>]
  [-IngestionPolicyIngestionType <IngestionType>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -201,6 +201,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -288,21 +303,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`EMISSIONPOLICY <IEmissionPoliciesPropertiesFormat[]>`: Emission policies.
-  - `[EmissionDestination <IEmissionPolicyDestination[]>]`: Emission policy destinations.
-    - `[DestinationType <DestinationType?>]`: Emission destination type.
-  - `[EmissionType <EmissionType?>]`: Emission format type.
-
-`INGESTIONPOLICYINGESTIONSOURCE <IIngestionSourcesPropertiesFormat[]>`: Ingestion Sources.
-  - `[ResourceId <String>]`: Resource ID.
-  - `[SourceType <SourceType?>]`: Ingestion source type.
-
 ## RELATED LINKS
-

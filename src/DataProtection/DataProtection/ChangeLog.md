@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added vault tier restore and update backup instance for blobs.
+
+## Version 2.3.0
 * Onboarded new workloads AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL for data protection.
 
 ## Version 2.2.0

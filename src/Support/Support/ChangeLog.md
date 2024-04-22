@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.0.1
 * Added breaking change warning messages for cmdlet deprecation
     - New-AzSupportContactProfileObject
 * Added breaking change warning messages for cmdlet rename

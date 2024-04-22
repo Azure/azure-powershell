@@ -122,6 +122,9 @@ function New-AzFunctionAppPlan {
         ${ProxyUseDefaultCredentials}
     )
     process {
+
+        RegisterFunctionsTabCompleters
+
         # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets.
         foreach ($paramName in @("Sku", "WorkerType", "MaximumWorkerCount", "MinimumWorkerCount", "Location", "Tag"))
         {

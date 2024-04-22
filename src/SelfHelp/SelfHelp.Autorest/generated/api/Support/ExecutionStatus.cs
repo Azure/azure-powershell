@@ -10,12 +10,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support
     public partial struct ExecutionStatus :
         System.IEquatable<ExecutionStatus>
     {
+        /// <summary>Step execution failed</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.ExecutionStatus Failed = @"Failed";
 
+        /// <summary>Step execution running</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.ExecutionStatus Running = @"Running";
 
+        /// <summary>Step execution succeeded.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.ExecutionStatus Success = @"Success";
 
+        /// <summary>Step execution warning</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.ExecutionStatus Warning = @"Warning";
 
         /// <summary>the value for an instance of the <see cref="ExecutionStatus" /> Enum.</summary>
