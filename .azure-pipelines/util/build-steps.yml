@@ -40,6 +40,7 @@ steps:
   displayName: 'Write pipeline result'
   inputs:
     targetType: inline
+    pwsh: true
     script: |
       $pipelineScript = Join-Path "$(Build.SourcesDirectory)" 'tools' 'ExecuteCIStep.ps1'
       $repoArtifact = Join-Path "$(Build.SourcesDirectory)" 'artifacts'

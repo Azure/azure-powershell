@@ -22,6 +22,7 @@ steps:
   displayName: 'Set files changed trigger'
   inputs:
     targetType: inline
+    pwsh: true
     script: |
       $reason = "$(Build.Reason)"
       switch ($reason) {
@@ -76,6 +77,7 @@ steps:
   displayName: 'Set subtasks if any'
   inputs:
     targetType: inline
+    pwsh: true
     script: |
       Get-Content | ${{ variables.SubTasksFilePath }} | ForEach-Object {
         if ($_ && 'Predictor' -eq $_) {
