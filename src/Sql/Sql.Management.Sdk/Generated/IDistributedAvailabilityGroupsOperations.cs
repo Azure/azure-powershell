@@ -168,6 +168,72 @@ namespace Microsoft.Azure.Management.Sql
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DistributedAvailabilityGroup>> UpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroup parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
+        /// Performs requested failover type in this distributed availability group.
+        /// </summary>
+        /// <remarks>
+        /// Performs requested failover type in this distributed availability group.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='distributedAvailabilityGroupName'>
+        /// The distributed availability group name.
+        /// </param>
+        /// <param name='parameters'>
+        /// The distributed availability group failover request parameters.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DistributedAvailabilityGroup,DistributedAvailabilityGroupsFailoverHeaders>> FailoverWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroupsFailoverRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Sets the role for managed instance in a distributed availability group.
+        /// </summary>
+        /// <remarks>
+        /// Sets the role for managed instance in a distributed availability group.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='distributedAvailabilityGroupName'>
+        /// The distributed availability group name.
+        /// </param>
+        /// <param name='parameters'>
+        /// The distributed availability group set role request parameters.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DistributedAvailabilityGroup>> SetRoleWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroupSetRole parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
         /// Creates a distributed availability group between Sql On-Prem and Sql
         /// Managed Instance.
         /// </summary>
@@ -263,6 +329,72 @@ namespace Microsoft.Azure.Management.Sql
         /// Thrown when unable to deserialize the response
         /// </exception>
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DistributedAvailabilityGroup>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroup parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Performs requested failover type in this distributed availability group.
+        /// </summary>
+        /// <remarks>
+        /// Performs requested failover type in this distributed availability group.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='distributedAvailabilityGroupName'>
+        /// The distributed availability group name.
+        /// </param>
+        /// <param name='parameters'>
+        /// The distributed availability group failover request parameters.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DistributedAvailabilityGroup,DistributedAvailabilityGroupsFailoverHeaders>> BeginFailoverWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroupsFailoverRequest parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+
+        /// <summary>
+        /// Sets the role for managed instance in a distributed availability group.
+        /// </summary>
+        /// <remarks>
+        /// Sets the role for managed instance in a distributed availability group.
+        /// </remarks>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group that contains the resource. You can obtain
+        /// this value from the Azure Resource Manager API or the portal.
+        /// </param>
+        /// <param name='managedInstanceName'>
+        /// The name of the managed instance.
+        /// </param>
+        /// <param name='distributedAvailabilityGroupName'>
+        /// The distributed availability group name.
+        /// </param>
+        /// <param name='parameters'>
+        /// The distributed availability group set role request parameters.
+        /// </param>
+        /// <param name='customHeaders'>
+        /// The headers that will be added to request.
+        /// </param>
+        /// <param name='cancellationToken'>
+        /// The cancellation token.
+        /// </param>
+        /// <exception cref="Microsoft.Rest.Azure.CloudException">
+        /// Thrown when the operation returned an invalid status code
+        /// </exception>
+        /// <exception cref="Microsoft.Rest.SerializationException">
+        /// Thrown when unable to deserialize the response
+        /// </exception>
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<DistributedAvailabilityGroup>> BeginSetRoleWithHttpMessagesAsync(string resourceGroupName, string managedInstanceName, string distributedAvailabilityGroupName, DistributedAvailabilityGroupSetRole parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Gets a list of a distributed availability groups in instance.
