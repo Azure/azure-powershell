@@ -38,18 +38,11 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         [Required]
         public string RepositoryName { get; set; }
 
-        public enum TriggerTypeEnum
-        {
-            PullRequest,
-            Commit,
-            TargetModule
-        }
-
         /// <summary>
-        /// Gets or set the trigger type, either PullRequest or Commit.
+        /// Gets or set the trigger type, either PullRequest, Commit, or TargetModule.
         /// </summary>
         [Required]
-        public TriggerTypeEnum TriggerType { get; set; }
+        public string TriggerType { get; set; }
 
         /// <summary>
         /// Gets or set the file changed trigger, could be commit ID when CI triggered or pull request number when PR triggered, target modules when manual triggered or scheduled.
@@ -95,15 +88,15 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
             if (debug)
             {
-                if (TriggerType == TriggerTypeEnum.PullRequest)
+                if (string.Equals("PullRequest", TriggerType))
                 {
                     Console.WriteLine("Pull Request Number:" + Trigger);
                 }
-                else if (TriggerType == TriggerTypeEnum.Commit)
+                else if (string.Equals("Commit", TriggerType))
                 {
                     Console.WriteLine("Commit Id:" + Trigger);
                 }
-                else if (TriggerType == TriggerTypeEnum.TargetModule)
+                else if (string.Equals("TargetModule", TriggerType))
                 {
                     Console.WriteLine("Target Module:" + Trigger);
                 }
@@ -123,7 +116,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 // If it succeeds it will return 'true'.
                 switch (TriggerType) 
                 {
-                    case TriggerTypeEnum.PullRequest:
+                    case "PullRequest":
                         try
                         {
                             FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, Int32.Parse(Trigger))
@@ -137,7 +130,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                                             .ConfigureAwait(false).GetAwaiter().GetResult().Select(x => x.FileName).ToArray<string>();
                         }
                         break;
-                    case TriggerTypeEnum.Commit:
+                    case "Commit":
                         try
                         {
                             FilesChanged = client.Repository.Commit.Get(RepositoryOwner, RepositoryName, Trigger)
@@ -151,7 +144,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                                             .ConfigureAwait(false).GetAwaiter().GetResult().Files.Select(x => x.Filename).ToArray<string>();
                         }
                         break;
-                    case TriggerTypeEnum.TargetModule:
+                    case "TargetModule":
                         FilesChanged = Trigger.Split(',');
                         break;
                     default:
