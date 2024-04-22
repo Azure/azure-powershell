@@ -8,51 +8,36 @@ schema: 2.0.0
 # Suspend-AzDataProtectionBackupInstanceBackup
 
 ## SYNOPSIS
-This operation will stop backup for a backup instance and retains the backup data as per the policy (except latest Recovery point, which will be retained forever)
+This operation will stop backup for a backup instance and retains the backup data as per the policy except latest Recovery point, which will be retained forever
 
 ## SYNTAX
 
 ### Suspend (Default)
 ```
 Suspend-AzDataProtectionBackupInstanceBackup -BackupInstanceName <String> -ResourceGroupName <String>
- -VaultName <String> [-Token <String>] [-AsJob] [-DefaultProfile <PSObject>] [-NoWait] [-PassThru]
- [-ResourceGuardOperationRequest <String[]>] [-SubscriptionId <String>] [-Confirm] [-WhatIf]
+ -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>] [-NoWait] [-PassThru]
+ [-ResourceGuardOperationRequest <String[]>] [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### SuspendViaIdentity
 ```
-Suspend-AzDataProtectionBackupInstanceBackup -InputObject <IDataProtectionIdentity>
- -Parameter <ISuspendBackupRequest> [-Token <String>] [-AsJob] [-DefaultProfile <PSObject>] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Suspend-AzDataProtectionBackupInstanceBackup -InputObject <IDataProtectionIdentity> [-AsJob]
+ [-DefaultProfile <PSObject>] [-NoWait] [-PassThru] [-ResourceGuardOperationRequest <String[]>]
+ [-Token <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-This operation will stop backup for a backup instance and retains the backup data as per the policy (except latest Recovery point, which will be retained forever)
+This operation will stop backup for a backup instance and retains the backup data as per the policy except latest Recovery point, which will be retained forever
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Suspend backups for a backup instance
 ```powershell
-{{ Add code here }}
+Suspend-AzDataProtectionBackupInstanceBackup -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The above command can be used to stop backups of a backup instance, this will move the backup instance to a suspended state.
 
 ## PARAMETERS
 
@@ -87,8 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -133,22 +117,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Request body of Suspend backup when MUA is Enabled
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ISuspendBackupRequest
-Parameter Sets: SuspendViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PassThru
 Returns true when the command succeeds
 
@@ -185,7 +153,7 @@ Use this parameter when the operation is MUA protected.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Suspend
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -276,8 +244,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ISuspendBackupRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 

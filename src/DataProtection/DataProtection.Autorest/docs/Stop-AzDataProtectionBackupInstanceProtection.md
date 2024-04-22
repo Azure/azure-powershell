@@ -15,16 +15,16 @@ This operation will stop protection of a backup instance and data will be held f
 ### Stop (Default)
 ```
 Stop-AzDataProtectionBackupInstanceProtection -BackupInstanceName <String> -ResourceGroupName <String>
- -VaultName <String> [-Token <String>] [-AsJob] [-DefaultProfile <PSObject>] [-NoWait] [-PassThru]
- [-ResourceGuardOperationRequest <String[]>] [-SubscriptionId <String>] [-Confirm] [-WhatIf]
+ -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>] [-NoWait] [-PassThru]
+ [-ResourceGuardOperationRequest <String[]>] [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### StopViaIdentity
 ```
-Stop-AzDataProtectionBackupInstanceProtection -InputObject <IDataProtectionIdentity>
- -Parameter <IStopProtectionRequest> [-Token <String>] [-AsJob] [-DefaultProfile <PSObject>] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzDataProtectionBackupInstanceProtection -InputObject <IDataProtectionIdentity> [-AsJob]
+ [-DefaultProfile <PSObject>] [-NoWait] [-PassThru] [-ResourceGuardOperationRequest <String[]>]
+ [-Token <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,27 +32,12 @@ This operation will stop protection of a backup instance and data will be held f
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Stop protection for a backup instance
 ```powershell
-{{ Add code here }}
+Stop-AzDataProtectionBackupInstanceProtection -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName" -BackupInstanceName $backupInstance.BackupInstanceName
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+The above command can be used to stop protection of a backup instance
 
 ## PARAMETERS
 
@@ -87,8 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -133,22 +117,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameter
-Request body of Stop protection when MUA is Enabled
-To construct, see NOTES section for PARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IStopProtectionRequest
-Parameter Sets: StopViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -PassThru
 Returns true when the command succeeds
 
@@ -185,7 +153,7 @@ Use this parameter when the operation is MUA protected.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Stop
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -276,8 +244,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IStopProtectionRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 

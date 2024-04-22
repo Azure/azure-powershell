@@ -13,12 +13,12 @@ while(-not $mockingPath) {
 
 Describe 'Start-AzDataProtectionBackupInstanceRestore' {
     It 'PGFlexRestore' {
-        $subId = $env.TestPGFlex.SubscriptionId
-        $resourceGroupName = $env.TestPGFlex.ResourceGroupName
-        $vaultName = $env.TestPGFlex.VaultName
-        $policyName = $env.TestPGFlex.PolicyName
-        $targetContainerURI = $env.TestPGFlex.TargetContainerURI
-        $backupInstanceName = $env.TestPGFlex.BackupInstanceName
+        $subId = $env.TestPGFlexRestore.SubscriptionId
+        $resourceGroupName = $env.TestPGFlexRestore.ResourceGroupName
+        $vaultName = $env.TestPGFlexRestore.VaultName
+        $policyName = $env.TestPGFlexRestore.PolicyName
+        $targetContainerURI = $env.TestPGFlexRestore.TargetContainerURI
+        $backupInstanceName = $env.TestPGFlexRestore.BackupInstanceName
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
         
@@ -69,12 +69,12 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
     }
 
     It 'MySQLRestore' -skip {
-        $subId = $env.TestMySQL.SubscriptionId
-        $resourceGroupName = $env.TestMySQL.ResourceGroupName
-        $vaultName = $env.TestMySQL.VaultName
-        $policyName = $env.TestMySQL.PolicyName
-        $targetContainerURI = $env.TestMySQL.TargetContainerURI
-        $backupInstanceName = $env.TestMySQL.BackupInstanceName
+        $subId = $env.TestMySQLRestore.SubscriptionId
+        $resourceGroupName = $env.TestMySQLRestore.ResourceGroupName
+        $vaultName = $env.TestMySQLRestore.VaultName
+        $policyName = $env.TestMySQLRestore.PolicyName
+        $targetContainerURI = $env.TestMySQLRestore.TargetContainerURI
+        $backupInstanceName = $env.TestMySQLRestore.BackupInstanceName
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
         

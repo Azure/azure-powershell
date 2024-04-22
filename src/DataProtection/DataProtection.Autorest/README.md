@@ -245,8 +245,8 @@ directive:
   - where:
       verb: Stop
       subject: ^BackupInstanceProtection$
-      variant: StopExpanded$
-    hide: true
+      variant: StopExpanded$|StopViaIdentity$
+    hide: true  
   - where:
       verb: Suspend
       subject: ^BackupInstanceBackup$
@@ -255,7 +255,7 @@ directive:
   - where:
       verb: Suspend
       subject: ^BackupInstanceBackup$
-      variant: SuspendExpanded$
+      variant: SuspendExpanded$|SuspendViaIdentity$
     hide: true
   - where:
       verb: Get

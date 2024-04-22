@@ -6,30 +6,28 @@ function Suspend-AzDataProtectionBackupInstanceBackup
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('This operation will stop backup for a backup instance and retains the backup data as per the policy except latest Recovery point, which will be retained forever')]
 
-    param(
-        # Stop, StopExpanded
-        [Parameter(Mandatory=$false, HelpMessage='Subscription Id of the backup vault')]
+    param(        
+        [Parameter(ParameterSetName="Suspend", Mandatory=$false, HelpMessage='Subscription Id of the backup vault')]
         [System.String]
         ${SubscriptionId},
 
-        [Parameter(Mandatory, HelpMessage='The name of the resource group where the backup vault is present')]
+        [Parameter(ParameterSetName="Suspend", Mandatory, HelpMessage='The name of the resource group where the backup vault is present')]
         [System.String]
         ${ResourceGroupName},
 
-        [Parameter(Mandatory, HelpMessage='The name of the backup instance')]
+        [Parameter(ParameterSetName="Suspend", Mandatory, HelpMessage='The name of the backup instance')]
         [System.String]
         ${BackupInstanceName},
 
-        [Parameter(Mandatory, HelpMessage='The name of the backup vault')]
+        [Parameter(ParameterSetName="Suspend", Mandatory, HelpMessage='The name of the backup vault')]
         [System.String]
         ${VaultName},
 
-        # TODO: remove from here and StopProtection
-        #[Parameter(ParameterSetName="Stop", Mandatory, HelpMessage='Restore request object to be initialized using Initialize-AzDataProtectionRestoreRequest cmdlet', #ValueFromPipeline=$true)]
-        #[Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ISuspendBackupRequest]
-        #${Parameter},
+        [Parameter(ParameterSetName="SuspendViaIdentity", Mandatory, HelpMessage='Identity Parameter To construct, see NOTES section for INPUTOBJECT properties and create a hash table.', ValueFromPipeline=$true)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity]
+        ${InputObject},
 
-        [Parameter(ParameterSetName="Suspend", Mandatory=$false, HelpMessage='Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppDisableSuspendBackupsRequests/default. Use this parameter when the operation is MUA protected.')]
+        [Parameter(Mandatory=$false, HelpMessage='Resource guard operation request in the format similar to <ResourceGuard-ARMID>/dppDisableSuspendBackupsRequests/default. Use this parameter when the operation is MUA protected.')]
         [System.String[]]
         ${ResourceGuardOperationRequest},
 
@@ -94,6 +92,18 @@ function Suspend-AzDataProtectionBackupInstanceBackup
 
     process
     {
+        $parameterSetName = $PsCmdlet.ParameterSetName
+        if($parameterSetName -eq "SuspendViaIdentity"){
+            $Parameter = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.SuspendBackupRequest]::new()
+
+            $hasResourceGuardOperationRequest = $PSBoundParameters.Remove("ResourceGuardOperationRequest")
+            if($hasResourceGuardOperationRequest){
+                $Parameter.ResourceGuardOperationRequest = $ResourceGuardOperationRequest
+            }
+
+            $null = $PSBoundParameters.Add("Parameter", $Parameter)
+        }
+
         if($PSBoundParameters.ContainsKey("Token"))
         {            
             $null = $PSBoundParameters.Remove("Token")

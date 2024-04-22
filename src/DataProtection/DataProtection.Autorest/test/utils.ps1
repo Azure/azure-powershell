@@ -237,7 +237,7 @@ function setupEnv() {
         ResourceGuardId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/hiaga-rg/providers/Microsoft.DataProtection/ResourceGuards/mua-pstest-dpp-ccy-resguard"
     }
 
-    $PGFlexVariables = @{
+    $PGFlexRestoreVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c" # "62b829ee-7936-40c9-a1c9-47a93f9f3965"
         ResourceGroupName = "zubairRG" #"vdhingraRG"
         VaultName = "zpgflex" #"vdhingraBackupVault"
@@ -247,7 +247,7 @@ function setupEnv() {
         BackupInstanceName = "zubair-pgflex-cli1" # "archive-test"
     }
 
-    $MySQLVariables = @{
+    $MySQLRetoreVariables = @{
         SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
         ResourceGroupName = "MySQLTest" # "vdhingraRG"
         VaultName = "MYSQLBugBashCCY" #"vdhingraBackupVault"
@@ -255,6 +255,24 @@ function setupEnv() {
         PolicyName = "LowRetention" #"pstest-simple-mysql"
         TargetContainerURI = "https://adityaccy.blob.core.windows.net/ads" # "https://vdhingra1psa.blob.core.windows.net/powershellpgflexrestore"
         BackupInstanceName = "bugbash-02" # "arhive-test"
+    }
+
+    $PGFlexVariables = @{
+        SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        ResourceGroupName = "vdhingraRG"
+        VaultName = "vdhingraBackupVault"
+        NewPolicyName = "pstest-pgflex-policy"
+        PolicyName = "pgflexArchivePolicy1"
+        TargetContainerURI = "https://vdhingra1psa.blob.core.windows.net/powershellpgflexrestore"
+    }
+
+    $MySQLVariables = @{
+        SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        ResourceGroupName = "vdhingraRG"
+        VaultName = "vdhingraBackupVault"
+        NewPolicyName = "pstest-mysql-policy"
+        PolicyName = "pstest-simple-mysql"
+        TargetContainerURI = "https://vdhingra1psa.blob.core.windows.net/powershellpgflexrestore"
     }
 
     $CmkEncryptionVariables = @{
@@ -288,6 +306,8 @@ function setupEnv() {
     $env.add("TestMUA", $MUAVariables) | Out-Null
     $env.add("TestPGFlex", $PGFlexVariables) | Out-Null
     $env.add("TestMySQL", $MySQLVariables) | Out-Null
+    $env.add("TestPGFlexRestore", $PGFlexRestoreVariables) | Out-Null
+    $env.add("TestMySQLRestore", $MySQLRestoreVariables) | Out-Null
     $env.add("TestCmkEncryption", $CmkEncryptionVariables) | Out-Null
 
     $envFile = 'env.json'
