@@ -67,6 +67,7 @@ function Invoke-SubModuleGeneration {
     if ($lastexitcode -ne 0) {
         return $false
     } else {
+        #TODO: disable generation-info.json generated
         ./build-module.ps1
         return $true
     }

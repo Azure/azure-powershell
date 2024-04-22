@@ -59,7 +59,7 @@ steps:
       }
       Write-Host "##vso[task.setvariable variable=triggerType]$TriggerType"
       Write-Host "##vso[task.setvariable variable=trigger]$Trigger"
-      Write-Host "Filter files triggered by $reason: $trigger" -ForegroundColor DarkYellow
+      Write-Host "Filter files triggered by ${reason}: ${trigger}" -ForegroundColor DarkYellow
 
       $subTasksFilePath = Join-Path $(Build.SourcesDirectory) 'artifacts' 'SubTasksFile.txt'
       Write-Host "##vso[task.setvariable variable=subTasksFilePath]$SubTasksFilePath"
