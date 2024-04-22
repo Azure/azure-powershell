@@ -15,24 +15,27 @@ For example, updating tags for a resource.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzDataProtectionBackupVault -ResourceGroupName <String> [-SubscriptionId <String>] -VaultName <String>
- [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-CrossRegionRestoreState <CrossRegionRestoreState>]
+Update-AzDataProtectionBackupVault [-Token <String>] [-AzureMonitorAlertsForAllJobFailure <AlertsState>]
+ [-CrossRegionRestoreState <CrossRegionRestoreState>]
  [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-IdentityType <String>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>]
- [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ResourceGuardOperationRequest <String[]>] [-SoftDeleteRetentionDurationInDay <Double>]
+ [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String>]
+ [-CmkEncryptionState <EncryptionState>] [-CmkIdentityType <IdentityType>]
+ [-CmkUserAssignedIdentityId <String>] [-CmkEncryptionKeyUri <String>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity>
+Update-AzDataProtectionBackupVault -InputObject <IDataProtectionIdentity> [-Token <String>]
  [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-CrossRegionRestoreState <CrossRegionRestoreState>]
- [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-IdentityType <String>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>]
- [-SoftDeleteRetentionDurationInDay <Double>] [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-CrossSubscriptionRestoreState <CrossSubscriptionRestoreState>] [-EncryptionSetting <IEncryptionSettings>]
+ [-IdentityType <String>] [-IdentityUserAssignedIdentity <Hashtable>] [-ImmutabilityState <ImmutabilityState>]
+ [-ResourceGuardOperationRequest <String[]>] [-SoftDeleteRetentionDurationInDay <Double>]
+ [-SoftDeleteState <SoftDeleteState>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,6 +88,34 @@ vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned
 This command is used to modify Immutability state, cross subscription restore state, soft delete settings of the vault.
 These parameters are optional and can be used independently.
 
+### Example 4: Update vault CmkIdentityType from UserAssignedManagedIdentity to SystemAssignedManagedIdentity and CmkEncryptionKeyUri
+```powershell
+Update-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -CmkIdentityType SystemAssigned -CmkEncryptionKeyUri "cmkKeyUri"
+```
+
+```output
+Name          Location      Type                                  IdentityType
+----          --------      ----                                  ------------
+vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned
+```
+
+This command is used to modify CmkIdentityType and CmkEncryptionKeyUri.
+These parameters are optional and can be used independently.
+
+### Example 5: Update vault CmkIdentityType from SystemAssignedManagedIdentity to UserAssignedManagedIdentity
+```powershell
+Update-AzDataProtectionBackupVault -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId "cmkIdentityId" -CmkEncryptionKeyUri "cmkEncryptionKeyUri"
+```
+
+```output
+Name          Location      Type                                  IdentityType
+----          --------      ----                                  ------------
+vaultName southeastasia Microsoft.DataProtection/backupVaults UserAssigned
+```
+
+This command is used to change CmkIdentityType from SystemAssigned to UserAssgined.
+CmkIdenityId is a required parameter.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -109,6 +140,68 @@ Security alerts cannot be disabled.
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CmkEncryptionKeyUri
+The Key URI of the CMK key to be used for encryption.
+To enable auto-rotation of keys, exclude the version component from the Key URI.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CmkEncryptionState
+Enable CMK encryption state for a Backup Vault.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.EncryptionState
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CmkIdentityType
+The identity type to be used for CMK encryption - SystemAssigned or UserAssigned Identity.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.IdentityType
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CmkUserAssignedIdentityId
+This parameter is required if the identity type is UserAssigned.
+Add the user assigned managed identity id to be used which has access permissions to the Key Vault.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -166,6 +259,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EncryptionSetting
+Customer Managed Key details of the resource.
+To construct, see NOTES section for ENCRYPTIONSETTING properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IEncryptionSettings
+Parameter Sets: UpdateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -IdentityType
 The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
 
@@ -187,7 +296,7 @@ Gets or sets the user assigned identities.
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
-Aliases:
+Aliases: UserAssignedIdentity
 
 Required: False
 Position: Named
@@ -274,6 +383,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGuardOperationRequest
+ResourceGuardOperationRequests on which LAC check will be performed
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SoftDeleteRetentionDurationInDay
 Soft delete retention duration in days.
 
@@ -316,7 +440,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -326,6 +450,22 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Token
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -391,7 +531,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBackupVaultResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupVaultResource
 
 ## NOTES
 
