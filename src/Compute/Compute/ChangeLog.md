@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* ChangeLog: Introduced secrets detection feature to safeguard sensitive data.
 * Added cmdlet `Invoke-AzSpotPlacementRecommender`.
 
 ## Version 7.2.0

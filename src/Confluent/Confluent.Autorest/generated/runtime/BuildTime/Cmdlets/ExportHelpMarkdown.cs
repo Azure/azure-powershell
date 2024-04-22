@@ -33,6 +33,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.PowerShell
     [ValidateNotNullOrEmpty]
     public string ExamplesFolder { get; set; }
 
+    [Parameter()]
+    public SwitchParameter AddComplexInterfaceInfo { get; set; }
+
     protected override void ProcessRecord()
     {
       try
@@ -41,7 +44,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.PowerShell
         var variantGroups = FunctionInfo.Select(fi => fi.BaseObject).Cast<FunctionInfo>()
             .Join(helpInfos, fi => fi.Name, phi => phi.CmdletName, (fi, phi) => fi.ToVariants(phi))
             .Select(va => new VariantGroup(ModuleInfo.Name, va.First().CmdletName, va, String.Empty));
-        WriteMarkdowns(variantGroups, ModuleInfo.ToModuleInfo(), DocsFolder, ExamplesFolder);
+        WriteMarkdowns(variantGroups, ModuleInfo.ToModuleInfo(), DocsFolder, ExamplesFolder, AddComplexInterfaceInfo.IsPresent);
       }
       catch (Exception ee)
       {
