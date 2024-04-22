@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
 online version: https://learn.microsoft.com/powershell/module/az.peering/get-azpeeringreceivedroute
 schema: 2.0.0
@@ -15,7 +15,7 @@ Lists the prefixes received over the specified peering under the given subscript
 ```
 Get-AzPeeringReceivedRoute -PeeringName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-AsPath <String>] [-OriginAsValidationState <String>] [-Prefix <String>] [-RpkiValidationState <String>]
- [-SkipToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SkipToken <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,7 +88,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -139,6 +140,21 @@ The optional prefix that can be used to filter the routes.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -218,7 +234,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
 online version: https://learn.microsoft.com/powershell/module/az.peering/new-azpeering
 schema: 2.0.0
@@ -13,11 +13,11 @@ Creates a new peering or updates an existing peering with the specified name und
 ## SYNTAX
 
 ```
-New-AzPeering -Name <String> -ResourceGroupName <String> -Kind <Kind> -Location <String>
- [-SubscriptionId <String>] [-DirectConnection <IDirectConnection[]>] [-DirectPeerAsnId <String>]
+New-AzPeering -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <Kind>
+ -Location <String> [-DirectConnection <IDirectConnection[]>] [-DirectPeerAsnId <String>]
  [-DirectPeeringType <DirectPeeringType>] [-ExchangeConnection <IExchangeConnection[]>]
  [-ExchangePeerAsnId <String>] [-PeeringLocation <String>] [-Sku <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +44,8 @@ Create a new direct peering object
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -195,6 +196,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -297,41 +313,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`DIRECTCONNECTION <IDirectConnection[]>`: The set of connections that constitute a direct peering.
-  - `[BandwidthInMbps <Int32?>]`: The bandwidth of the connection.
-  - `[BgpSessionMaxPrefixesAdvertisedV4 <Int32?>]`: The maximum number of prefixes advertised over the IPv4 session.
-  - `[BgpSessionMaxPrefixesAdvertisedV6 <Int32?>]`: The maximum number of prefixes advertised over the IPv6 session.
-  - `[BgpSessionMd5AuthenticationKey <String>]`: The MD5 authentication key of the session.
-  - `[BgpSessionMicrosoftSessionIPv4Address <String>]`: The IPv4 session address on Microsoft's end.
-  - `[BgpSessionMicrosoftSessionIPv6Address <String>]`: The IPv6 session address on Microsoft's end.
-  - `[BgpSessionPeerSessionIPv4Address <String>]`: The IPv4 session address on peer's end.
-  - `[BgpSessionPeerSessionIPv6Address <String>]`: The IPv6 session address on peer's end.
-  - `[BgpSessionPrefixV4 <String>]`: The IPv4 prefix that contains both ends' IPv4 addresses.
-  - `[BgpSessionPrefixV6 <String>]`: The IPv6 prefix that contains both ends' IPv6 addresses.
-  - `[ConnectionIdentifier <String>]`: The unique identifier (GUID) for the connection.
-  - `[PeeringDbFacilityId <Int32?>]`: The PeeringDB.com ID of the facility at which the connection has to be set up.
-  - `[SessionAddressProvider <SessionAddressProvider?>]`: The field indicating if Microsoft provides session ip addresses.
-  - `[UseForPeeringService <Boolean?>]`: The flag that indicates whether or not the connection is used for peering service.
-
-`EXCHANGECONNECTION <IExchangeConnection[]>`: The set of connections that constitute an exchange peering.
-  - `[BgpSessionMaxPrefixesAdvertisedV4 <Int32?>]`: The maximum number of prefixes advertised over the IPv4 session.
-  - `[BgpSessionMaxPrefixesAdvertisedV6 <Int32?>]`: The maximum number of prefixes advertised over the IPv6 session.
-  - `[BgpSessionMd5AuthenticationKey <String>]`: The MD5 authentication key of the session.
-  - `[BgpSessionMicrosoftSessionIPv4Address <String>]`: The IPv4 session address on Microsoft's end.
-  - `[BgpSessionMicrosoftSessionIPv6Address <String>]`: The IPv6 session address on Microsoft's end.
-  - `[BgpSessionPeerSessionIPv4Address <String>]`: The IPv4 session address on peer's end.
-  - `[BgpSessionPeerSessionIPv6Address <String>]`: The IPv6 session address on peer's end.
-  - `[BgpSessionPrefixV4 <String>]`: The IPv4 prefix that contains both ends' IPv4 addresses.
-  - `[BgpSessionPrefixV6 <String>]`: The IPv6 prefix that contains both ends' IPv6 addresses.
-  - `[ConnectionIdentifier <String>]`: The unique identifier (GUID) for the connection.
-  - `[PeeringDbFacilityId <Int32?>]`: The PeeringDB.com ID of the facility at which the connection has to be set up.
-
 ## RELATED LINKS
-

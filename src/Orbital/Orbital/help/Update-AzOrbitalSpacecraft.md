@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Orbital-help.xml
 Module Name: Az.Orbital
 online version: https://learn.microsoft.com/powershell/module/az.orbital/update-azorbitalspacecraft
 schema: 2.0.0
@@ -15,13 +15,14 @@ Updates the specified spacecraft tags.
 ### UpdateExpanded (Default)
 ```
 Update-AzOrbitalSpacecraft -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzOrbitalSpacecraft -InputObject <IOrbitalIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -135,6 +136,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -225,22 +241,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IOrbitalIdentity>`: Identity Parameter
-  - `[ContactName <String>]`: Contact name.
-  - `[ContactProfileName <String>]`: Contact Profile name.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[OperationId <String>]`: The ID of an ongoing async operation.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SpacecraftName <String>]`: Spacecraft ID.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-

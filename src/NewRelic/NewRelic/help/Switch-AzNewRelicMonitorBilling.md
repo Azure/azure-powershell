@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NewRelic-help.xml
 Module Name: Az.NewRelic
 online version: https://learn.microsoft.com/powershell/module/az.newrelic/switch-aznewrelicmonitorbilling
 schema: 2.0.0
@@ -14,11 +14,11 @@ Switches the billing for NewRelic monitor resource.
 
 ### SwitchExpanded (Default)
 ```
-Switch-AzNewRelicMonitorBilling -MonitorName <String> -ResourceGroupName <String> -UserEmail <String>
- [-SubscriptionId <String>] [-AzureResourceId <String>] [-OrganizationId <String>]
+Switch-AzNewRelicMonitorBilling -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -UserEmail <String> [-AzureResourceId <String>] [-OrganizationId <String>]
  [-PlanDataBillingCycle <BillingCycle>] [-PlanDataEffectiveDate <DateTime>] [-PlanDataPlanDetail <String>]
- [-PlanDataUsageType <UsageType>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-PlanDataUsageType <UsageType>] [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SwitchViaIdentityExpanded
@@ -26,7 +26,8 @@ Switch-AzNewRelicMonitorBilling -MonitorName <String> -ResourceGroupName <String
 Switch-AzNewRelicMonitorBilling -InputObject <INewRelicIdentity> -UserEmail <String>
  [-AzureResourceId <String>] [-OrganizationId <String>] [-PlanDataBillingCycle <BillingCycle>]
  [-PlanDataEffectiveDate <DateTime>] [-PlanDataPlanDetail <String>] [-PlanDataUsageType <UsageType>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -197,6 +198,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -287,19 +303,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <INewRelicIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Name of the Monitors resource
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleSetName <String>]`: Name of the TagRule
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-

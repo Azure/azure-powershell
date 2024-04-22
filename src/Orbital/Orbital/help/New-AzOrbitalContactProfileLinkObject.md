@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Orbital-help.xml
 Module Name: Az.Orbital
 online version: https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkObject
 schema: 2.0.0
@@ -15,7 +15,7 @@ Create an in-memory object for ContactProfileLink.
 ```
 New-AzOrbitalContactProfileLinkObject -Channel <IContactProfileLinkChannel[]> -Direction <Direction>
  -Name <String> -Polarization <Polarization> [-EirpdBw <Single>] [-GainOverTemperature <Single>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,6 +132,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -143,25 +158,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`CHANNEL <IContactProfileLinkChannel[]>`: Contact Profile Link Channel.
-  - `BandwidthMHz <Single>`: Bandwidth in MHz.
-  - `CenterFrequencyMHz <Single>`: Center Frequency in MHz.
-  - `EndPointIPAddress <String>`: IP Address (IPv4).
-  - `EndPointName <String>`: Name of an end point.
-  - `EndPointPort <String>`: TCP port to listen on to receive data.
-  - `EndPointProtocol <Protocol>`: Protocol either UDP or TCP.
-  - `Name <String>`: Channel name.
-  - `[DecodingConfiguration <String>]`: Currently unused.
-  - `[DemodulationConfiguration <String>]`: Copy of the modem configuration file such as Kratos QRadio or Kratos QuantumRx. Only valid for downlink directions. If provided, the modem connects to the customer endpoint and sends demodulated data instead of a VITA.49 stream.
-  - `[EncodingConfiguration <String>]`: Currently unused.
-  - `[ModulationConfiguration <String>]`: Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
-
 ## RELATED LINKS
-
