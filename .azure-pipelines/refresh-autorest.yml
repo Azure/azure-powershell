@@ -7,12 +7,12 @@ parameters:
 - name: scope
   displayName: Select target Autorest modules
   type: string
-  default: autorest-all
+  default: autorest-selected
   values:
-  - autorest-all
+  - autorest-selected
   - autorest-v3-only
   - autorest-v4-only
-  - autorest-selected
+  - autorest-all
 
 - name: selectedServices
   displayName: Input service names you want to refresh separated by semi-colon (;). Wildcard match is supported.
