@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.GuestConfiguration-help.xml
 Module Name: Az.GuestConfiguration
 online version: https://learn.microsoft.com/powershell/module/az.guestconfiguration/remove-azguestconfigurationassignment
 schema: 2.0.0
@@ -15,25 +15,28 @@ Delete a guest configuration assignment
 ### Delete (Default)
 ```
 Remove-AzGuestConfigurationAssignment -Name <String> -ResourceGroupName <String> -VMName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Delete1
 ```
-Remove-AzGuestConfigurationAssignment -MachineName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzGuestConfigurationAssignment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -MachineName <String> [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Delete2
 ```
-Remove-AzGuestConfigurationAssignment -Name <String> -ResourceGroupName <String> -VmssName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzGuestConfigurationAssignment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -VmssName <String> [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzGuestConfigurationAssignment -InputObject <IGuestConfigurationIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,6 +136,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -248,23 +266,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IGuestConfigurationIdentity>`: Identity Parameter
-  - `[GuestConfigurationAssignmentName <String>]`: Name of the guest configuration assignment.
-  - `[Id <String>]`: Resource identity path
-  - `[MachineName <String>]`: The name of the ARC machine.
-  - `[Name <String>]`: The guest configuration assignment name.
-  - `[ReportId <String>]`: The GUID for the guest configuration assignment report.
-  - `[ResourceGroupName <String>]`: The resource group name.
-  - `[SubscriptionId <String>]`: Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-  - `[VMName <String>]`: The name of the virtual machine.
-  - `[VmssName <String>]`: The name of the virtual machine scale set.
-
 ## RELATED LINKS
-

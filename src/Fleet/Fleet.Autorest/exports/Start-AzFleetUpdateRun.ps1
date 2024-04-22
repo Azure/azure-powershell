@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Starts an UpdateRun.
+Starts an StartRun.
 .Description
-Starts an UpdateRun.
+Starts an StartRun.
 .Example
 Start-AzFleetUpdateRun -FleetName testfleet01 -Name run1 -ResourceGroupName K8sFleet-Test
 
