@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DiskPool-help.xml
 Module Name: Az.DiskPool
 online version: https://learn.microsoft.com/powershell/module/az.diskpool/update-azdiskpool
 schema: 2.0.0
@@ -16,14 +16,16 @@ Update a Disk pool.
 ```
 Update-AzDiskPool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-DiskId <String[]>]
  [-ManagedBy <String>] [-ManagedByExtended <String[]>] [-SkuName <String>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzDiskPool -InputObject <IDiskPoolIdentity> [-DiskId <String[]>] [-ManagedBy <String>]
  [-ManagedByExtended <String[]>] [-SkuName <String>] [-SkuTier <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -182,6 +184,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -302,20 +319,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IDiskPoolIdentity>`: Identity Parameter
-  - `[DiskPoolName <String>]`: The name of the Disk Pool.
-  - `[Id <String>]`: Resource identity path
-  - `[IscsiTargetName <String>]`: The name of the iSCSI Target.
-  - `[Location <String>]`: The location of the resource.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-
