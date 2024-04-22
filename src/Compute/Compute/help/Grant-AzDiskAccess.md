@@ -16,6 +16,7 @@ Grants an access to a disk.
 Grant-AzDiskAccess [-ResourceGroupName] <String> [-DiskName] <String> [-Access] <String>
  [[-DurationInSecond] <Int32>] [-AsJob] [-SecureVMGuestStateSAS] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
+```
 
 ## DESCRIPTION
 The **Grant-AzDiskAccess** cmdlet grants an access to a disk.
