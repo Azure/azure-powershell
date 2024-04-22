@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceUpdate-help.xml
 Module Name: Az.DeviceUpdate
 online version: https://learn.microsoft.com/powershell/module/az.deviceupdate/new-azdeviceupdateinstance
 schema: 2.0.0
@@ -13,10 +13,11 @@ Creates or updates instance.
 ## SYNTAX
 
 ```
-New-AzDeviceUpdateInstance -AccountName <String> -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-DiagnosticStoragePropertyConnectionString <String>]
+New-AzDeviceUpdateInstance -AccountName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -Location <String> [-DiagnosticStoragePropertyConnectionString <String>]
  [-DiagnosticStoragePropertyResourceId <String>] [-EnableDiagnostic] [-IotHubId <String[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -190,6 +191,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -277,7 +293,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

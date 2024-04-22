@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Datadog-help.xml
 Module Name: Az.Datadog
 online version: https://learn.microsoft.com/powershell/module/az.datadog/new-azdatadogmonitor
 schema: 2.0.0
@@ -13,13 +13,13 @@ Create a monitor resource.
 ## SYNTAX
 
 ```
-New-AzDatadogMonitor -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+New-AzDatadogMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-IdentityType <ManagedIdentityTypes>] [-MonitoringStatus <MonitoringStatus>] [-OrganizationApiKey <String>]
  [-OrganizationApplicationKey <String>] [-OrganizationEnterpriseAppId <String>]
  [-OrganizationLinkingAuthCode <String>] [-OrganizationLinkingClientId <String>]
  [-OrganizationRedirectUri <String>] [-SkuName <String>] [-Tag <Hashtable>] [-UserInfoEmailAddress <String>]
  [-UserInfoName <String>] [-UserInfoPhoneNumber <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +58,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -237,6 +238,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -385,7 +401,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

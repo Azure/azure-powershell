@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DigitalTwins-help.xml
 Module Name: Az.DigitalTwins
 online version: https://learn.microsoft.com/powershell/module/az.digitaltwins/new-azdigitaltwinsinstance
 schema: 2.0.0
@@ -15,10 +15,11 @@ The usual pattern to modify a property is to retrieve the DigitalTwinsInstance a
 
 ### CreateExpanded (Default)
 ```
-New-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> -Location <String>
- [-SubscriptionId <String>] [-IdentityType <DigitalTwinsIdentityType>]
+New-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
+ -Location <String> [-IdentityType <DigitalTwinsIdentityType>]
  [-PrivateEndpointConnection <IPrivateEndpointConnection[]>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -26,7 +27,7 @@ New-AzDigitalTwinsInstance -ResourceGroupName <String> -ResourceName <String> -L
 New-AzDigitalTwinsInstance -InputObject <IDigitalTwinsIdentity> -Location <String>
  [-IdentityType <DigitalTwinsIdentityType>] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +68,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -151,6 +153,21 @@ To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and cre
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Models.Api20220531.IPrivateEndpointConnection[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -278,35 +295,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDigitalTwinsIdentity>`: Identity Parameter
-  - `[EndpointName <String>]`: Name of Endpoint Resource.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: Location of DigitalTwinsInstance.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the DigitalTwinsInstance.
-  - `[ResourceId <String>]`: The name of the private link resource.
-  - `[ResourceName <String>]`: The name of the DigitalTwinsInstance.
-  - `[SubscriptionId <String>]`: The subscription identifier.
-  - `[TimeSeriesDatabaseConnectionName <String>]`: Name of time series database connection.
-
-`PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>`: The private endpoint connections.
-  - `[GroupId <String[]>]`: The list of group ids for the private endpoint connection.
-  - `[PrivateLinkServiceConnectionStateActionsRequired <String>]`: Actions required for a private endpoint connection.
-  - `[PrivateLinkServiceConnectionStateDescription <String>]`: The description for the current state of a private endpoint connection.
-  - `[PrivateLinkServiceConnectionStateStatus <PrivateLinkServiceConnectionStatus?>]`: The status of a private endpoint connection.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-
 ## RELATED LINKS
-

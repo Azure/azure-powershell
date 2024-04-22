@@ -15,38 +15,38 @@ Gets an action.
 ### List (Default)
 ```
 Get-AzDevCenterUserDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzDevCenterUserDevBoxAction -Endpoint <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] -Name <String> [-DefaultProfile <PSObject>]
+ [-UserId <String>] -Name <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzDevCenterUserDevBoxAction -Endpoint <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityByDevCenter
 ```
 Get-AzDevCenterUserDevBoxAction -DevCenterName <String> -InputObject <IDevCenterdataIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListByDevCenter
 ```
 Get-AzDevCenterUserDevBoxAction -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-UserId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByDevCenter
 ```
 Get-AzDevCenterUserDevBoxAction -DevCenterName <String> -DevBoxName <String> -ProjectName <String>
- [-UserId <String>] -Name <String> [-DefaultProfile <PSObject>]
+ [-UserId <String>] -Name <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -187,6 +187,21 @@ Parameter Sets: Get, GetByDevCenter
 Aliases: ActionName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
