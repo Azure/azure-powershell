@@ -65,12 +65,15 @@ This command creates a new backup vault while setting Immutability state, cross 
 ```powershell
 $storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType "<DataStoreType>" -Type "<Type>"
 $userAssignedIdentity = @{
-     "<userAssignedId1>" = @{
-         clientId = "<clientId1>";
-         principalId = "<principalId1>
-     };
-     "<userAssignedId2>" = @{}
- }
+    "<userAssignedId1>" = @{
+        clientId = "<clientId1>"
+        principalId = "<principalId1>"
+    }
+    "<userAssignedId2>" = @{
+        clientId = "<clientId2>"
+        principalId = "<principalId2>"
+    }
+}
 New-AzDataProtectionBackupVault -SubscriptionId <subscriptionId> -ResourceGroupName <resourceGroupName> -VaultName <vaultName> -Location <location> -StorageSetting $storagesetting -IdentityType UserAssigned -UserAssignedIdentity $userAssignedIdentity -CmkEncryptionState Enabled -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId <cmkUserAssignedIdentityId> -CmkEncryptionKeyUri <cmkEncryptionKeyUri>  -CmkInfrastructureEncryption Enabled
 ```
 
