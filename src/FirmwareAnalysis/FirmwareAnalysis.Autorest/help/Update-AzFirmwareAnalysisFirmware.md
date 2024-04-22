@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFirmwareAnalysisFirmware
 
 ## SYNOPSIS
-The operation to update firmware.
+The operation to Update firmware.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzFirmwareAnalysisFirmware -Id <String> -WorkspaceInputObject <IFirmwareA
 ```
 
 ## DESCRIPTION
-The operation to update firmware.
+The operation to Update firmware.
 
 ## EXAMPLES
 

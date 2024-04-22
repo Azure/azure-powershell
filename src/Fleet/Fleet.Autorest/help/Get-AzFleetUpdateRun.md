@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzFleetUpdateRun
 
 ## SYNOPSIS
-Get a UpdateRun
+Get a GetRun
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Get-AzFleetUpdateRun -FleetInputObject <IFleetIdentity> -Name <String> [-Default
 ```
 
 ## DESCRIPTION
-Get a UpdateRun
+Get a GetRun
 
 ## EXAMPLES
 

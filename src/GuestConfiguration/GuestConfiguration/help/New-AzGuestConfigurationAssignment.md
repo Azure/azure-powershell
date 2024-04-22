@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.GuestConfiguration-help.xml
 Module Name: Az.GuestConfiguration
 online version: https://learn.microsoft.com/powershell/module/az.guestconfiguration/new-azguestconfigurationassignment
 schema: 2.0.0
@@ -15,23 +15,23 @@ Creates an association between a VM and guest configuration
 ### CreateExpanded (Default)
 ```
 New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName <String> -ResourceGroupName <String>
- -VMName <String> -GuestConfigurationContentHash <String> -GuestConfigurationContentUri <String>
- -GuestConfigurationName <String> -GuestConfigurationVersion <String> [-SubscriptionId <String>]
+ [-SubscriptionId <String>] -VMName <String> -GuestConfigurationContentHash <String>
+ -GuestConfigurationContentUri <String> -GuestConfigurationName <String> -GuestConfigurationVersion <String>
  [-Context <String>] [-GuestConfigurationAssignmentType <AssignmentType>] [-GuestConfigurationKind <Kind>]
  [-GuestConfigurationParameter <IConfigurationParameter[]>]
  [-GuestConfigurationProtectedParameter <IConfigurationParameter[]>] [-Location <String>] [-Name <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateExpanded1
 ```
-New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName <String> -MachineName <String>
- -ResourceGroupName <String> -GuestConfigurationContentHash <String> -GuestConfigurationContentUri <String>
- -GuestConfigurationName <String> -GuestConfigurationVersion <String> [-SubscriptionId <String>]
+New-AzGuestConfigurationAssignment -GuestConfigurationAssignmentName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -MachineName <String> -GuestConfigurationContentHash <String>
+ -GuestConfigurationContentUri <String> -GuestConfigurationName <String> -GuestConfigurationVersion <String>
  [-Context <String>] [-GuestConfigurationAssignmentType <AssignmentType>] [-GuestConfigurationKind <Kind>]
  [-GuestConfigurationParameter <IConfigurationParameter[]>]
  [-GuestConfigurationProtectedParameter <IConfigurationParameter[]>] [-Location <String>] [-Name <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +84,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -282,6 +283,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
@@ -370,23 +386,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-GUESTCONFIGURATIONPARAMETER <IConfigurationParameter[]>: The configuration parameters for the guest configuration.
-  - `[Name <String>]`: Name of the configuration parameter.
-  - `[Value <String>]`: Value of the configuration parameter.
-
-GUESTCONFIGURATIONPROTECTEDPARAMETER <IConfigurationParameter[]>: The protected configuration parameters for the guest configuration.
-  - `[Name <String>]`: Name of the configuration parameter.
-  - `[Value <String>]`: Value of the configuration parameter.
-
-LATESTASSIGNMENTREPORTRESOURCE <IAssignmentReportResource[]>: The list of resources for which guest configuration assignment compliance is checked.
-  - `[Reason <IAssignmentReportResourceComplianceReason[]>]`: Compliance reason and reason code for a resource.
-
 ## RELATED LINKS
-

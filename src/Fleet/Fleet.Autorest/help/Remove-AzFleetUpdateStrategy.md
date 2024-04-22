@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzFleetUpdateStrategy
 
 ## SYNOPSIS
-Delete a FleetUpdateStrategy
+Delete a FleetDeletetrategy
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Remove-AzFleetUpdateStrategy -FleetInputObject <IFleetIdentity> -Name <String> [
 ```
 
 ## DESCRIPTION
-Delete a FleetUpdateStrategy
+Delete a FleetDeletetrategy
 
 ## EXAMPLES
 

@@ -414,9 +414,9 @@ end {
 
 <#
 .Synopsis
-Get a UpdateRun
+Get a GetRun
 .Description
-Get a UpdateRun
+Get a GetRun
 .Example
 Get-AzFleetUpdateRun -FleetName testfleet01 -ResourceGroupName K8sFleet-Test
 .Example
@@ -639,9 +639,9 @@ end {
 
 <#
 .Synopsis
-Get a FleetUpdateStrategy
+Get a FleetGettrategy
 .Description
-Get a FleetUpdateStrategy
+Get a FleetGettrategy
 .Example
 Get-AzFleetUpdateStrategy -FleetName testfleet01 -ResourceGroupName K8sFleet-Test
 .Example
@@ -1349,9 +1349,9 @@ end {
 
 <#
 .Synopsis
-Create a UpdateRun
+Create a CreateRun
 .Description
-Create a UpdateRun
+Create a CreateRun
 .Example
 New-AzFleetUpdateRun -FleetName testfleet01 -Name run1 -ResourceGroupName K8sFleet-Test -UpgradeType Full -UpgradeKubernetesVersion "1.26.1" -NodeImageSelectionType Latest
 
@@ -1671,9 +1671,9 @@ end {
 
 <#
 .Synopsis
-Create a FleetUpdateStrategy
+Create a FleetCreatetrategy
 .Description
-Create a FleetUpdateStrategy
+Create a FleetCreatetrategy
 .Example
 $stage = New-AzFleetUpdateStageObject -Name stag1 -Group @{name='group-a'} -AfterStageWaitInSecond 3600
 New-AzFleetUpdateStrategy -FleetName testfleet01 -ResourceGroupName K8sFleet-Test -Name strategy1 -StrategyStage $stage
@@ -2475,9 +2475,9 @@ end {
 
 <#
 .Synopsis
-Delete a UpdateRun
+Delete a DeleteRun
 .Description
-Delete a UpdateRun
+Delete a DeleteRun
 .Example
 Remove-AzFleetUpdateRun -FleetName testfleet01 -Name run2 -ResourceGroupName K8sFleet-Test
 
@@ -2718,9 +2718,9 @@ end {
 
 <#
 .Synopsis
-Delete a FleetUpdateStrategy
+Delete a FleetDeletetrategy
 .Description
-Delete a FleetUpdateStrategy
+Delete a FleetDeletetrategy
 .Example
 $f = Get-AzFleet -Name testfleet01 -ResourceGroupName K8sFleet-Test
 Remove-AzFleetUpdateStrategy -FleetInputObject $f -Name strategy3
@@ -3186,9 +3186,9 @@ end {
 
 <#
 .Synopsis
-Starts an UpdateRun.
+Starts an StartRun.
 .Description
-Starts an UpdateRun.
+Starts an StartRun.
 .Example
 Start-AzFleetUpdateRun -FleetName testfleet01 -Name run1 -ResourceGroupName K8sFleet-Test
 
@@ -3423,9 +3423,9 @@ end {
 
 <#
 .Synopsis
-Stops an UpdateRun.
+Stops an StopRun.
 .Description
-Stops an UpdateRun.
+Stops an StopRun.
 .Example
 Stop-AzFleetUpdateRun -FleetName testfleet01 -Name run1 -ResourceGroupName K8sFleet-Test
 
@@ -3930,9 +3930,9 @@ end {
 
 <#
 .Synopsis
-Create a UpdateRun
+Update a UpdateRun
 .Description
-Create a UpdateRun
+Update a UpdateRun
 .Example
 Update-AzFleetUpdateRun -FleetName testfleet01 -Name run1 -ResourceGroupName K8sFleet-Test -UpgradeKubernetesVersion "1.28.3"
 
@@ -4220,9 +4220,9 @@ end {
 
 <#
 .Synopsis
-Create a FleetUpdateStrategy
+Update a FleetUpdatetrategy
 .Description
-Create a FleetUpdateStrategy
+Update a FleetUpdatetrategy
 .Example
 $f = Get-AzFleet -Name testfleet01 -ResourceGroupName K8sFleet-Test
 $stage = New-AzFleetUpdateStageObject -Name stag1 -Group @{name='group-a'} -AfterStageWaitInSecond 3600
