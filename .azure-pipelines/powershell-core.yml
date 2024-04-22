@@ -50,6 +50,16 @@ jobs:
     parameters:
       TargetModule: ${{ parameters.TargetModule }}
 
+- Job: Required Files
+  displayName: Required Files
+  dependsOn: Filter
+  condition: succeeded()
+  timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
+  pool: pool-windows-2019
+
+  steps:
+  - template: util/required-files-steps.yml
+
 - job: Build
   displayName: Build
   condition: succeeded()

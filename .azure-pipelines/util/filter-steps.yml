@@ -23,7 +23,7 @@ steps:
   inputs:
     targetType: inline
     script: |
-      $reason = $(Build.Reason)
+      $reason = "$(Build.Reason)"
       switch ($reason) {
         { $reason -in @('IndividualCI', 'BatchedCI') } {
           $trigger = $(Build.SourceVersion)
