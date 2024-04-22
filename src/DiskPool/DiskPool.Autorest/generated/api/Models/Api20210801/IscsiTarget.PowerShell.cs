@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -90,7 +92,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
         /// Creates a new instance of <see cref="IscsiTarget" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="IscsiTarget" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTarget FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -107,28 +109,94 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiTargetPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ISystemMetadata) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.SystemMetadataTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ManagedBy = (string) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ManagedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ManagedByExtended = (string[]) content.GetValueForProperty("ManagedByExtended",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ManagedByExtended, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).AclMode = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.IscsiTargetAclMode) content.GetValueForProperty("AclMode",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).AclMode, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.IscsiTargetAclMode.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).StaticAcls = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl[]) content.GetValueForProperty("StaticAcls",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).StaticAcls, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.AclTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Lun = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun[]) content.GetValueForProperty("Lun",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Lun, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLunTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).TargetIqn = (string) content.GetValueForProperty("TargetIqn",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).TargetIqn, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ProvisioningStates) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ProvisioningStates.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.OperationalStatus) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.OperationalStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Endpoint = (string[]) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Endpoint, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Port = (int?) content.GetValueForProperty("Port",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Port, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Session = (string[]) content.GetValueForProperty("Session",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Session, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.CreatedByType?) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedByType, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.CreatedByType?) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiTargetPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ISystemMetadata) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.SystemMetadataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ManagedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ManagedBy = (string) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ManagedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagedByExtended"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ManagedByExtended = (string[]) content.GetValueForProperty("ManagedByExtended",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ManagedByExtended, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("AclMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).AclMode = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.IscsiTargetAclMode) content.GetValueForProperty("AclMode",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).AclMode, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.IscsiTargetAclMode.CreateFrom);
+            }
+            if (content.Contains("StaticAcls"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).StaticAcls = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl[]) content.GetValueForProperty("StaticAcls",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).StaticAcls, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.AclTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Lun"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Lun = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun[]) content.GetValueForProperty("Lun",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Lun, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLunTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("TargetIqn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).TargetIqn = (string) content.GetValueForProperty("TargetIqn",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).TargetIqn, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ProvisioningStates) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ProvisioningStates.CreateFrom);
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.OperationalStatus) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.OperationalStatus.CreateFrom);
+            }
+            if (content.Contains("Endpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Endpoint = (string[]) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Endpoint, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("Port"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Port = (int?) content.GetValueForProperty("Port",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Port, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Session"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Session = (string[]) content.GetValueForProperty("Session",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Session, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.CreatedByType?) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedByType, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.CreatedByType?) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -146,28 +214,94 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiTargetPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ISystemMetadata) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.SystemMetadataTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ManagedBy = (string) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ManagedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ManagedByExtended = (string[]) content.GetValueForProperty("ManagedByExtended",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ManagedByExtended, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).AclMode = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.IscsiTargetAclMode) content.GetValueForProperty("AclMode",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).AclMode, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.IscsiTargetAclMode.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).StaticAcls = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl[]) content.GetValueForProperty("StaticAcls",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).StaticAcls, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.AclTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Lun = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun[]) content.GetValueForProperty("Lun",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Lun, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLunTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).TargetIqn = (string) content.GetValueForProperty("TargetIqn",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).TargetIqn, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ProvisioningStates) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ProvisioningStates.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.OperationalStatus) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.OperationalStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Endpoint = (string[]) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Endpoint, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Port = (int?) content.GetValueForProperty("Port",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Port, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Session = (string[]) content.GetValueForProperty("Session",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Session, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.CreatedByType?) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedByType, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.CreatedByType?) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiTargetPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.ISystemMetadata) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.SystemMetadataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ManagedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ManagedBy = (string) content.GetValueForProperty("ManagedBy",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ManagedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagedByExtended"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ManagedByExtended = (string[]) content.GetValueForProperty("ManagedByExtended",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ManagedByExtended, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("AclMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).AclMode = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.IscsiTargetAclMode) content.GetValueForProperty("AclMode",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).AclMode, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.IscsiTargetAclMode.CreateFrom);
+            }
+            if (content.Contains("StaticAcls"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).StaticAcls = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl[]) content.GetValueForProperty("StaticAcls",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).StaticAcls, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.AclTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Lun"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Lun = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun[]) content.GetValueForProperty("Lun",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Lun, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLunTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("TargetIqn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).TargetIqn = (string) content.GetValueForProperty("TargetIqn",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).TargetIqn, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ProvisioningStates) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ProvisioningStates.CreateFrom);
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.OperationalStatus) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.OperationalStatus.CreateFrom);
+            }
+            if (content.Contains("Endpoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Endpoint = (string[]) content.GetValueForProperty("Endpoint",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Endpoint, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("Port"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Port = (int?) content.GetValueForProperty("Port",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Port, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Session"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Session = (string[]) content.GetValueForProperty("Session",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).Session, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.CreatedByType?) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedByType, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.CreatedByType?) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializePSObject(content);
         }
 
