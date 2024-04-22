@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Functions-help.xml
 Module Name: Az.Functions
 online version: https://learn.microsoft.com/powershell/module/az.functions/remove-azfunctionappsetting
 schema: 2.0.0
@@ -14,14 +14,15 @@ Removes app settings from a function app.
 
 ### ByName (Default)
 ```
-Remove-AzFunctionAppSetting -Name <String> -ResourceGroupName <String> -AppSettingName <String[]>
- [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzFunctionAppSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -AppSettingName <String[]> [-Force] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByObjectInput
 ```
-Remove-AzFunctionAppSetting -AppSettingName <String[]> -InputObject <ISite> [-Force]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzFunctionAppSetting -AppSettingName <String[]> [-Force] -InputObject <ISite>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,7 +55,6 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -107,6 +107,21 @@ Parameter Sets: ByName
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -188,4 +203,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
