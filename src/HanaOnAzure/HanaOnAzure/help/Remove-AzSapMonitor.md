@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HanaOnAzure-help.xml
 Module Name: Az.HanaOnAzure
 online version: https://learn.microsoft.com/powershell/module/az.hanaonazure/remove-azsapmonitor
 schema: 2.0.0
@@ -15,13 +15,14 @@ Deletes a SAP monitor with the specified subscription, resource group, and monit
 ### Delete (Default)
 ```
 Remove-AzSapMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzSapMonitor -InputObject <IHanaOnAzureIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +63,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -129,6 +131,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -212,24 +229,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IHanaOnAzureIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The location of the deleted vault.
-  - `[OperationKind <AccessPolicyUpdateKind?>]`: Name of the operation
-  - `[ProviderInstanceName <String>]`: Name of the provider instance.
-  - `[ResourceGroupName <String>]`: Name of the resource group.
-  - `[ResourceName <String>]`: The name of the identity resource.
-  - `[SapMonitorName <String>]`: Name of the SAP monitor resource.
-  - `[Scope <String>]`: The resource provider scope of the resource. Parent resource being extended by Managed Identities.
-  - `[SubscriptionId <String>]`: Subscription ID which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-  - `[VaultName <String>]`: Name of the vault
-
 ## RELATED LINKS
-

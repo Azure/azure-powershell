@@ -14,7 +14,7 @@ Create a reference to provide a secret to store the password for accessing the d
 
 ```
 New-AzHdInsightOnAksSecretReferenceObject -SecretName <String> -ReferenceName <String> [-Version <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +46,21 @@ KeyVaultObjectName ReferenceName                Type   Version
 Create a reference to provide a secret to store the password for accessing the database.
 
 ## PARAMETERS
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -ReferenceName
 The reference name of the secret to be used in service configs.

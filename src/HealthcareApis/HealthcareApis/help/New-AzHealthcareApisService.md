@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HealthcareApis-help.xml
 Module Name: Az.HealthcareApis
 online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareapisservice
 schema: 2.0.0
@@ -13,15 +13,15 @@ Create or update the metadata of a service instance.
 ## SYNTAX
 
 ```
-New-AzHealthcareApisService -Name <String> -ResourceGroupName <String> -CosmosOfferThroughput <Int32>
- -Kind <Kind> -Location <String> [-SubscriptionId <String>]
- [-AccessPolicyObjectId <IServiceAccessPolicyEntry[]>] [-AcrConfigurationLoginServer <String[]>]
- [-AcrConfigurationOciArtifact <IServiceOciArtifactEntry[]>] [-AllowCorsCredential] [-Audience <String>]
- [-Authority <String>] [-CorsHeader <String[]>] [-CorsMaxAge <Int32>] [-CorsMethod <String[]>]
- [-CorsOrigin <String[]>] [-CosmosKeyVaultKeyUri <String>] [-EnableSmartProxy] [-Etag <String>]
- [-ExportStorageAccountName <String>] [-IdentityType <ManagedServiceIdentityType>]
- [-PrivateEndpointConnection <IPrivateEndpointConnection[]>] [-PublicNetworkAccess <PublicNetworkAccess>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzHealthcareApisService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <Kind>
+ -Location <String> -CosmosOfferThroughput <Int32> [-AccessPolicyObjectId <IServiceAccessPolicyEntry[]>]
+ [-AcrConfigurationLoginServer <String[]>] [-AcrConfigurationOciArtifact <IServiceOciArtifactEntry[]>]
+ [-AllowCorsCredential] [-Audience <String>] [-Authority <String>] [-CorsHeader <String[]>]
+ [-CorsMaxAge <Int32>] [-CorsMethod <String[]>] [-CorsOrigin <String[]>] [-CosmosKeyVaultKeyUri <String>]
+ [-EnableSmartProxy] [-Etag <String>] [-ExportStorageAccountName <String>]
+ [-IdentityType <ManagedServiceIdentityType>] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -392,6 +392,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 Control permission for data plane traffic coming from public networks while private endpoint is enabled.
 
@@ -493,25 +508,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesDescription
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-ACCESSPOLICYOBJECTID <IServiceAccessPolicyEntry[]>: The access policies of the service instance.
-  - `ObjectId <String>`: a Microsoft Entra object ID (User or Apps) that is allowed access to the FHIR service.
-
-ACRCONFIGURATIONOCIARTIFACT <IServiceOciArtifactEntry[]>: The list of Open Container Initiative (OCI) artifacts.
-  - `[Digest <String>]`: The artifact digest.
-  - `[ImageName <String>]`: The artifact name.
-  - `[LoginServer <String>]`: The Azure Container Registry login server.
-
-PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: The list of private endpoint connections that are set up for this resource.
-  - `[PrivateLinkServiceConnectionStateActionsRequired <String>]`: A message indicating if changes on the service provider require any updates on the consumer.
-  - `[PrivateLinkServiceConnectionStateDescription <String>]`: The reason for approval/rejection of the connection.
-  - `[PrivateLinkServiceConnectionStateStatus <PrivateEndpointServiceConnectionStatus?>]`: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
 
 ## RELATED LINKS

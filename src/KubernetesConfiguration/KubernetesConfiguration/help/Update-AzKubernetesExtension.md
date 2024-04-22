@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.KubernetesConfiguration-help.xml
 Module Name: Az.KubernetesConfiguration
 online version: https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/update-azkubernetesextension
 schema: 2.0.0
@@ -17,14 +17,16 @@ Patch an existing Kubernetes Cluster Extension.
 Update-AzKubernetesExtension -ClusterName <String> -ClusterType <String> -Name <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-AutoUpgradeMinorVersion]
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>] [-ReleaseTrain <String>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzKubernetesExtension -InputObject <IKubernetesConfigurationIdentity> [-AutoUpgradeMinorVersion]
  [-ConfigurationProtectedSetting <Hashtable>] [-ConfigurationSetting <Hashtable>] [-ReleaseTrain <String>]
- [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Version <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -200,6 +202,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReleaseTrain
 ReleaseTrain this extension participates in for auto-upgrade (e.g.
 Stable, Preview, etc.) - only if autoUpgradeMinorVersion is 'true'.
@@ -311,22 +328,4 @@ ALIASES
 
 Update-AzK8sExtension
 
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IKubernetesConfigurationIdentity>`: Identity Parameter
-  - `[ClusterName <String>]`: The name of the kubernetes cluster.
-  - `[ClusterResourceName <String>]`: The Kubernetes cluster resource name - i.e. managedClusters, connectedClusters, provisionedClusters.
-  - `[ClusterRp <String>]`: The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
-  - `[ExtensionName <String>]`: Name of the Extension.
-  - `[FluxConfigurationName <String>]`: Name of the Flux Configuration.
-  - `[Id <String>]`: Resource identity path
-  - `[OperationId <String>]`: operation Id
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SourceControlConfigurationName <String>]`: Name of the Source Control Configuration.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-

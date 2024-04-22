@@ -75,10 +75,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime
                 return new JsonBoolean(bValue);
             }
 
-            // dates 
+            // dates
             if (vValue is DateTime dtValue)
             {
                 return new JsonDate(dtValue);
+            }
+
+            // DictionaryEntity struct type
+            if (vValue is System.Collections.DictionaryEntry deValue)
+            {
+                return new JsonObject { { deValue.Key.ToString(), ToJsonValue(deValue.Value) } };
             }
 
             // sorry, no idea.
@@ -113,7 +119,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime
             // if we got something out, let's use it.
             if (null != jsonValue)
             {
-                // JsonNumber is really a literal json value. Just don't try to cast that back to an actual number, ok? 
+                // JsonNumber is really a literal json value. Just don't try to cast that back to an actual number, ok?
                 return new JsonNumber(jsonValue.ToString());
             }
 
@@ -123,11 +129,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime
         /// <summary>
         /// Serialize an object by using a variety of methods.
         /// </summary>
-        /// <param name="oValue">the object to be serialized.</param>
+        /// <param name="value">the object to be serialized.</param>
         /// <returns>the serialized JsonNode (if successful), otherwise, <c>null</c></returns>
         internal static JsonNode ToJsonValue(object value)
         {
-            // things that implement our interface are preferred. 
+            // things that implement our interface are preferred.
             if (value is Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.IJsonSerializable jsonSerializable)
             {
                 return jsonSerializable.ToJson();
@@ -139,7 +145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime
                 return new JsonString(value.ToString());
             }
 
-            // value types are fairly straightforward (fallback to ToJson()/ToJsonString() or literal JsonString ) 
+            // value types are fairly straightforward (fallback to ToJson()/ToJsonString() or literal JsonString )
             if (value is System.ValueType vValue)
             {
                 return ToJsonValue(vValue) ?? TryToJsonValue(vValue) ?? new JsonString(vValue.ToString());
@@ -151,7 +157,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime
                 return Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.JsonSerializable.ToJson(dictionary, null);
             }
 
-            // enumerable collections are handled like arrays (again, fallback to ToJson()/ToJsonString() or literal JsonString) 
+            // hashtables are converted to dictionaries for serialization
+            if (value is System.Collections.Hashtable hashtable)
+            {
+                var dict = new System.Collections.Generic.Dictionary<string, object>();
+                DictionaryExtensions.HashTableToDictionary<object>(hashtable, dict);
+                return Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime.JsonSerializable.ToJson(dict, null);
+            }
+
+            // enumerable collections are handled like arrays (again, fallback to ToJson()/ToJsonString() or literal JsonString)
             if (value is System.Collections.IEnumerable enumerableValue)
             {
                 // some kind of enumerable value
@@ -177,7 +191,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Runtime
             {
                 foreach (var key in dictionary)
                 {
-                    // currently, we don't serialize null values. 
+                    // currently, we don't serialize null values.
                     if (null != key.Value)
                     {
                         container.Add(key.Key, ToJsonValue(key.Value));
