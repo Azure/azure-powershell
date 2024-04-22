@@ -62,7 +62,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         public string TestCsprojListFile { get; set; }
 
-        public string SubTasksFile { get; set; }
+        public string SubTasksFilePath { get; set; }
 
         private const string TaskMappingConfigName = ".ci-config.json";
 
@@ -391,23 +391,13 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
             influencedModuleInfo[TEST_PHASE] = new HashSet<string>(influencedModuleInfo[TEST_PHASE].Where(x => x.EndsWith(".csproj")));
 
-            BuildCsprojList = influencedModuleInfo[BUILD_PHASE].ToArray();
-            SerializeChangedFilesToFile(BuildCsprojList, BuildCsprojListFile);
-            TestCsprojList = influencedModuleInfo[TEST_PHASE].ToArray();
-            SerializeChangedFilesToFile(TestCsprojList, TestCsprojListFile);
             if (influencedModuleInfo.ContainsKey(SUB_TASK_PHASE))
             {
-                SubTasks = string.Join("; ", influencedModuleInfo[SUB_TASK_PHASE].ToArray());
-                SerializeChangedFilesToFile(new string[]{SubTasks}, SubTasksFile);
+                SubTasks = influencedModuleInfo[SUB_TASK_PHASE].ToArray();
+                File.WriteAllLines(SubTasksFilePath, SubTasks);
             }
 
             return true;
-        }
-
-        // This method will record the changed files into a text file at `OutputFile` for other task to consume.
-        private void SerializeChangedFilesToFile(string[] FilesChanged, string OutputFile)
-        {
-            File.WriteAllLines(OutputFile, FilesChanged);
         }
 
         /// <summary>

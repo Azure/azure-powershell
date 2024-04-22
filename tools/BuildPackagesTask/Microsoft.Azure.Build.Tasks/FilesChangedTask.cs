@@ -49,17 +49,12 @@ namespace Microsoft.WindowsAzure.Build.Tasks
         /// Gets or set the trigger type, either PullRequest or Commit.
         /// </summary>
         [Required]
-        public TriggerType Trigger { get; set; }
+        public TriggerType TriggerType { get; set; }
 
         /// <summary>
-        /// Gets or set the file changed Id, could be commit ID when CI triggered, or pull request number when PR triggered.
+        /// Gets or set the file changed trigger, could be commit ID when CI triggered or pull request number when PR triggered, target modules when manual triggered or scheduled.
         /// </summary>
-        public string FilesChangedId { get; set; }
-
-        /// <summary>
-        /// Gets or set the comma separated string represented list of module, triggered manually or scheduled
-        /// </summary>
-        public string TargetModule { get; set;}
+        public string Trigger { get; set; }
 
         /// <summary>
         /// Gets or set the OutputFile, store FilesChanged.txt in 'artifacts' folder
@@ -100,13 +95,17 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
             if (debug)
             {
-                if (Trigger == TriggerType.PullRequest)
+                if (TriggerType == TriggerType.PullRequest)
                 {
-                    Console.WriteLine("Pull Request Number:" + FilesChangedId);
+                    Console.WriteLine("Pull Request Number:" + Trigger);
                 }
-                else if (Trigger == TriggerType.Commit)
+                else if (TriggerType == TriggerType.Commit)
                 {
-                    Console.WriteLine("Commit Id:" + FilesChangedId);
+                    Console.WriteLine("Commit Id:" + Trigger);
+                }
+                else if (TriggerType == TriggerType.TargetModule)
+                {
+                    Console.WriteLine("Target Module:" + Trigger);
                 }
                 else
                 {
@@ -122,20 +121,20 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 };
                 // The next statement will convert the string representation of a number to its integer equivalent.
                 // If it succeeds it will return 'true'.
-                switch (Trigger) 
+                switch (TriggerType) 
                 {
                     case TriggerType.PullRequest 
                     {
                         try
                         {
-                            FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, FilesChangedId)
+                            FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, Trigger)
                                             .ConfigureAwait(false).GetAwaiter().GetResult().Select(x => x.FileName).ToArray<string>();
                         }
                         catch (AuthorizationException e)
                         {
                             Console.WriteLine(e.Message);
                             client = new GitHubClient(new ProductHeaderValue("Azure"));
-                            FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, FilesChangedId)
+                            FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, Trigger)
                                             .ConfigureAwait(false).GetAwaiter().GetResult().Select(x => x.FileName).ToArray<string>();
                         }
                     }
@@ -143,16 +142,20 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     {
                         try
                         {
-                            FilesChanged = client.Repository.Commit.Get(RepositoryOwner, RepositoryName, FilesChangedId)
+                            FilesChanged = client.Repository.Commit.Get(RepositoryOwner, RepositoryName, Trigger)
                                             .ConfigureAwait(false).GetAwaiter().GetResult().Files.Select(x => x.Filename).ToArray<string>();
                         }
                         catch (AuthorizationException e)
                         {
                             Console.WriteLine(e.Message);
                             client = new GitHubClient(new ProductHeaderValue("Azure"));
-                            FilesChanged = client.Repository.Commit.Get(RepositoryOwner, RepositoryName, FilesChangedId)
+                            FilesChanged = client.Repository.Commit.Get(RepositoryOwner, RepositoryName, Trigger)
                                             .ConfigureAwait(false).GetAwaiter().GetResult().Files.Select(x => x.Filename).ToArray<string>();
                         }
+                    }
+                    case TriggerType.TargetModule
+                    {
+                        FilesChanged = Trigger.Split(',');
                     }
                     default
                     {

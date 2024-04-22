@@ -24,7 +24,10 @@ Param(
     $BuildAction='build',
 
     [String]
-    $PullRequestNumber,
+    $TriggerType,
+
+    [String]
+    $Trigger,
 
     [String]
     $GenerateDocumentationFile,
@@ -271,8 +274,8 @@ If ($Build)
             }
             $Template.$DependencyStep.Details += $Detail
         }
-        If ($PSBoundParameters.ContainsKey("PullRequestNumber")) {
-            $Template | Add-Member -NotePropertyName pull_request_number -NotePropertyValue $PullRequestNumber
+        If ($PSBoundParameters.ContainsKey("TriggerType") && $PSBoundParameters.ContainsKey("Trigger")) {
+            $Template | Add-Member -NotePropertyName "$TriggerType triggered" -NotePropertyValue $Trigger
         }
 
         ConvertTo-Json -Depth 10 -InputObject $Template | Out-File -FilePath "$RepoArtifacts/PipelineResult/PipelineResult.json"

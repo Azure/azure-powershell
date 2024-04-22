@@ -19,55 +19,70 @@ steps:
     packageType: sdk
     version: 6.0.x
 - task: PowerShell@2
-  displayName: 'Set files changed Id and trigger'
+  displayName: 'Set files changed trigger'
   inputs:
     targetType: inline
     script: |
       $reason = $(Build.Reason)
       switch ($reason) {
         { $reason -in @('IndividualCI', 'BatchedCI' } {
-          $filesChangedId = $(Build.SourceVersion)
-          $trigger = 'Commit'
+          $trigger = $(Build.SourceVersion)
+          $triggerType = 'Commit'
           break
         }
         'PullRequest' {
-          $filesChangedId = $(System.PullRequest.PullRequestNumber)
-          $trigger = 'PullRequest'
+          $trigger = $(System.PullRequest.PullRequestNumber)
+          $triggerType = 'PullRequest'
+          break
         }
         { $reason -in @('Manual', 'Schedule') } {
           $targetModule = ${{ parameters.TargetModule }}
           if ('' -eq $targetModule) {
             $notModules = @('lib', 'shared')
             $src = Join-Path $(Build.SourcesDirectory) 'src'
-            $targetModule = Get-Childitem -Path $src -Directory | ForEach-Object {
+            $trigger = Get-Childitem -Path $src -Directory | ForEach-Object {
               if ($_.Name -in $notModules) {
                 return
               }
               return Join-Path $_.Parent.Name $_.Name
             } | Join-String -Separator ','
           } else {
-            $targetModule = $targetModule.Split(',') | ForEach-Object { Join-Path 'src' $_ } | Join-String -Separator ','
+            $trigger = $targetModule.Split(',') | ForEach-Object { Join-Path 'src' $_ } | Join-String -Separator ','
           }
-          $trigger = 'TargetModule'
+          $triggerType = 'TargetModule'
+          break
         }
         default {
-          $trigger = Null
+          $triggerType = Null
           break
         }
       }
-      
-      Write-Host "##vso[task.setvariable variable=trigger]$trigger"
-      Write-Host "##vso[task.setvariable variable=filesChangedId]$filesChangedId"
-      Write-Host "##vso[task.setvariable variable=targetModule]$targetModule"
+      Write-Host "##vso[task.setvariable variable=triggerType]$TriggerType"
+      Write-Host "##vso[task.setvariable variable=trigger]$Trigger"
+      Write-Host "Filter files triggered by $reason: $trigger" -ForegroundColor DarkYellow
 
-      Write-Host "Filter files triggered by $reason: $filesChangedId$targetModule" -ForegroundColor DarkYellow
+      $subTasksFilePath = Join-Path $(Build.SourcesDirectory) 'artifacts' 'SubTasksFile.txt'
+      Write-Host "##vso[task.setvariable variable=subTasksFilePath]$SubTasksFilePath"
 - task: DotNetCoreCLI@2
-  condition: ne(variables.trigger, Null)
-  displayName: Filter
+  displayName: Filter when commit or pull request
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'build.proj /t:FilterBuild /p:FilesChangedId=$(filesChangedId);Trigger=$(trigger)'
+    arguments: 'build.proj /t:FilterBuild /p:TriggerType=${{ variables.TriggerType }};Trigger=${{ variables.Trigger }};SubTasksFilePath=${{ variables.SubTasksFilePath }}'
   env:
       OCTOKITPAT: $(GithubToken)
-      PowerShellPlatform: ${{ parameters.powerShellPlatform }}
+      PowerShellPlatform: ${{ parameters.PowerShellPlatform }}
+- task: PowerShell@2
+  displayName: 'Set subtasks if any'
+  inputs:
+    targetType: inline
+    script: |
+      Get-Content | ${{ variables.SubTasksFilePath }} | ForEach-Object {
+        if ($_ && 'Predictor' -eq $_) {
+          Write-Host "##vso[task.setvariable variable=SubTaskPredictor]true"
+        } elseif ($_ && 'Installer' -eq $_) {
+          Write-Host "##vso[task.setvariable variable=SubTaskInstaller]true"
+        } elseif ($_ && 'all' -eq $_) {
+          Write-Host "##vso[task.setvariable variable=SubTaskAll]true"
+        }
+      }

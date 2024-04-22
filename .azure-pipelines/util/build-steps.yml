@@ -6,7 +6,6 @@ parameters:
 steps:
 - template: get-github-pat-steps.yml
 - task: NodeTool@0
-  condition: eq(variables.IsGenerateBased, true)
   displayName: Install Autorest
   inputs:
     versionSpec: '14.17.1'
@@ -14,7 +13,6 @@ steps:
     verbose: false
     customCommand: install autorest@latest
 - task: PowerShell@2
-  condition: eq(variables.IsGenerateBased, true)
   displayName: Setup environment for Autorest
   inputs:
     targetType: inline
@@ -29,17 +27,37 @@ steps:
   inputs:
     packageType: sdk
     version: 6.0.x
-    
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'build.proj /t:Build /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
+    arguments: 'build.proj /t:Build /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }}'
   env:
       OCTOKITPAT: $(GithubToken)
       PowerShellPlatform: ${{ parameters.powerShellPlatform }}
-
+- task: PowerShell@2
+  displayName: 'Write pipeline result'
+  inputs:
+    targetType: inline
+    script: |
+      $pipelineScript = Join-Path $(Build.SourcesDirectory) 'tools' 'ExecuteCIStep.ps1'
+      $repoArtifact = Join-Path $(Build.SourcesDirectory) 'artifacts'
+      . $pipelineScript -Build -TriggerType $(Build.Reason) -Trigger ${{ variables.trigger }} -RepoArtifacts $repoArtifact -Configuration ${{ parameters.configuration }}
+- task: DotNetCoreCLI@2
+  displayName: 'SubTask Predictor'
+  condition: or(eq(variables.SubTaskPredictor, true), eq(variables.SubTaskAll, true))
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:AzToolsPredictor'
+- task: DotNetCoreCLI@2
+  displayName: 'SubTask Installer'
+  condition: or(eq(variables.SubTaskInstaller, true), eq(variables.SubTaskAll, true))
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:AzToolsInstaller'
 - template: publish-artifacts-steps.yml
   parameters:
     artifactName: build-${{ parameters.testFramework }}
