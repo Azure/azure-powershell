@@ -7,12 +7,12 @@ parameters:
 - name: scope
   displayName: Select target Autorest modules
   type: string
-  default: autorest-all
+  default: autorest-selected
   values:
-  - autorest-all
+  - autorest-selected
   - autorest-v3-only
   - autorest-v4-only
-  - autorest-selected
+  - autorest-all
 
 - name: selectedServices
   displayName: Input service names you want to refresh separated by semi-colon (;). Wildcard match is supported.
@@ -55,7 +55,7 @@ jobs:
       script: |
         $autorestPaths = @()
         $autorestModules = Get-ChildItem -Filter "*.Autorest" -Directory -Recurse | Select-Object -ExpandProperty FullName
-        if ("${{ parameters.scope }}" -eq "autorest-v3-v4") {
+        if ("${{ parameters.scope }}" -eq "autorest-all") {
           $autorestPaths = $autorestModules
         }
         elseif ("${{ parameters.scope }}" -eq "autorest-selected") {
@@ -144,9 +144,10 @@ jobs:
           Write-Host "##[endgroup]"
           Write-Host
         }
+        $time = [DateTime]::UtcNow.ToString("O")
 
         Set-Location ..
-        git checkout -b 'codegen/${{ parameters.scope }}' 'origin/${{ parameters.targetBranch }}'
+        git checkout -b "codegen/${{ parameters.scope }}-$time" 'origin/${{ parameters.targetBranch }}'
 
   - task: PowerShell@2
     displayName: Migrate from generation to target branch
