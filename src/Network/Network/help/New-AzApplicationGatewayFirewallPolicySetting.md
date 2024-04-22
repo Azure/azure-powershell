@@ -18,7 +18,7 @@ New-AzApplicationGatewayFirewallPolicySetting [-Mode <String>] [-State <String>]
  [-MaxRequestBodySizeInKb <Int32>] [-DisableFileUploadEnforcement <Boolean>] [-MaxFileUploadInMb <Int32>]
  [-CustomBlockResponseStatusCode <Int32>] [-CustomBlockResponseBody <String>]
  [-LogScrubbing <PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration>]
- [-JsChallengeCookieExpirationInMins <Int32>]
+ [-JSChallengeCookieExpirationInMins <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -53,10 +53,10 @@ The new policySettings is stored to $condition.
 
 ### Example 4
 ```powershell
-$condition = New-AzApplicationGatewayFirewallPolicySetting -State $enabledState -Mode $enabledMode -DisableRequestBodyCheck -MaxFileUploadInMb $fileUploadLimitInMb -MaxRequestBodySizeInKb $maxRequestBodySizeInKb -JsChallengeCookieExpirationInMins $jsChallengeCookieExpirationInMins
+$condition = New-AzApplicationGatewayFirewallPolicySetting -State $enabledState -Mode $enabledMode -DisableRequestBodyCheck -MaxFileUploadInMb $fileUploadLimitInMb -MaxRequestBodySizeInKb $maxRequestBodySizeInKb -JSChallengeCookieExpirationInMins $jsChallengeCookieExpirationInMins
 ```
 
-The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyCheck as false, FileUploadLimitInMb as $fileUploadLimitInMb and MaxRequestBodySizeInKb as $maxRequestBodySizeInKb, JsChallengeCookieExpirationInMins as $jsChallengeCookieExpirationInMins.
+The command creates a policy setting with state as $enabledState, mode as $enabledMode, RequestBodyCheck as false, FileUploadLimitInMb as $fileUploadLimitInMb and MaxRequestBodySizeInKb as $maxRequestBodySizeInKb, JSChallengeCookieExpirationInMins as $jsChallengeCookieExpirationInMins.
 The new policySettings is stored to $condition.
 
 ## PARAMETERS
@@ -227,7 +227,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -JsChallengeCookieExpirationInMins
+### -JSChallengeCookieExpirationInMins
 Web Application Firewall JavaScript Challenge Cookie Expiration time in minutes.
 
 ```yaml

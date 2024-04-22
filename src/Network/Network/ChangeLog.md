@@ -29,7 +29,7 @@
 * Added the new cmdlet for supporting `InternetIngressIp` Property with Network Virtual Appliances -`New-AzVirtualApplianceInternetIngressIpsProperty`
 * Added a new AuxiliaryMode value `AuxiliaryMode.Floating`
 * Added support for AzureFirewallPacketCapture
-* Updated cmdlet to add the property of JsChallengeCookieExpirationInMins
+* Updated cmdlet to add the property of JSChallengeCookieExpirationInMins
     - `New-AzApplicationGatewayFirewallPolicySetting`
 
 ## Version 7.3.0

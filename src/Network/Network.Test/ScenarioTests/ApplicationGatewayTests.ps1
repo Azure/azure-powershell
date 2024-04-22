@@ -5337,7 +5337,7 @@ function Test-ApplicationGatewayFirewallPolicyWithInspectionLimit
 	}
 }
 
-function Test-ApplicationGatewayFirewallPolicyWithJsChallenge
+function Test-ApplicationGatewayFirewallPolicyWithJSChallenge
 {
 	# Setup
 	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
@@ -5353,7 +5353,7 @@ function Test-ApplicationGatewayFirewallPolicyWithJsChallenge
 		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator Any -NegationCondition $False
 		$customRule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
 
-		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70 -JsChallengeCookieExpirationInMins 100
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70 -JSChallengeCookieExpirationInMins 100
 		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
 		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet 
 		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings -CustomRule $customRule
@@ -5375,7 +5375,7 @@ function Test-ApplicationGatewayFirewallPolicyWithJsChallenge
 		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
 		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
 		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
-		Assert-AreEqual $policy.PolicySettings.JsChallengeCookieExpirationInMins $policySettings.JsChallengeCookieExpirationInMins
+		Assert-AreEqual $policy.PolicySettings.JSChallengeCookieExpirationInMins $policySettings.JSChallengeCookieExpirationInMins
 	}
 	finally
 	{

@@ -56,6 +56,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public PSApplicationGatewayFirewallPolicyLogScrubbingConfiguration LogScrubbing { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public int? JsChallengeCookieExpirationInMins { get; set; }
+        public int? JSChallengeCookieExpirationInMins { get; set; }
     }
 }

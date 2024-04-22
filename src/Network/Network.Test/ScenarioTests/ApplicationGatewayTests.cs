@@ -346,7 +346,7 @@ namespace Commands.Network.Test.ScenarioTests
         [Trait(Category.Owner, NrpTeamAlias.nvadev_subset1)]
         public void TestApplicationGatewayFirewallPolicyWithJsChallenge()
         {
-            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithJsChallenge");
+            TestRunner.RunTestScript("Test-ApplicationGatewayFirewallPolicyWithJSChallenge");
         }
 
         [Fact]

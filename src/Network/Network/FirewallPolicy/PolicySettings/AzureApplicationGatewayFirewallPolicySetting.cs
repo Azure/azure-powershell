@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(Mandatory = false, HelpMessage = "Web Application Firewall JavaScript Challenge Cookie Expiration time in minutes.")]
         [ValidateNotNullOrEmpty]
         [ValidateRange(5,1440)]
-        public int? JsChallengeCookieExpirationInMins { get; set; }
+        public int? JSChallengeCookieExpirationInMins { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -129,9 +129,9 @@ namespace Microsoft.Azure.Commands.Network
                 this.CustomBlockResponseBody = null;
             }
 
-            if (!this.MyInvocation.BoundParameters.ContainsKey("JsChallengeCookieExpirationInMins"))
+            if (!this.MyInvocation.BoundParameters.ContainsKey("JSChallengeCookieExpirationInMins"))
             {
-                this.JsChallengeCookieExpirationInMins = (int?)null;
+                this.JSChallengeCookieExpirationInMins = (int?)null;
             }
         }
 
@@ -169,7 +169,7 @@ namespace Microsoft.Azure.Commands.Network
                 CustomBlockResponseBody = this.CustomBlockResponseBody,
                 CustomBlockResponseStatusCode = this.CustomBlockResponseStatusCode,
                 LogScrubbing = this.LogScrubbing,
-                JsChallengeCookieExpirationInMins = this.JsChallengeCookieExpirationInMins
+                JSChallengeCookieExpirationInMins = this.JSChallengeCookieExpirationInMins
             };
         }
     }
