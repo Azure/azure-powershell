@@ -76,7 +76,8 @@ steps:
     targetType: inline
     pwsh: true
     script: |
-      Get-Content $(SubTasksFilePath) | ForEach-Object {
+      if (Test-Path $(SubTasksFilePath) {
+        Get-Content $(SubTasksFilePath) | ForEach-Object {
         if ($_ && 'Predictor' -eq $_) {
           Write-Host "##vso[task.setvariable variable=SubTaskPredictor]true"
         } elseif ($_ && 'Installer' -eq $_) {
@@ -84,6 +85,7 @@ steps:
         } elseif ($_ && 'all' -eq $_) {
           Write-Host "##vso[task.setvariable variable=SubTaskAll]true"
         }
+      }
       }
 - task: PowerShell@2
   displayName: 'Analyze required files'
