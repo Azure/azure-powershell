@@ -66,7 +66,7 @@ steps:
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'build.proj /t:FilterBuild /p:TriggerType=${{ variables.TriggerType }};Trigger=${{ variables.Trigger }};SubTasksFilePath=${{ variables.SubTasksFilePath }}'
+    arguments: 'build.proj /t:FilterBuild /p:TriggerType=$(variables.TriggerType);Trigger=$(variables.Trigger);SubTasksFilePath=$(variables.SubTasksFilePath)'
   env:
       OCTOKITPAT: $(GithubToken)
       PowerShellPlatform: ${{ parameters.PowerShellPlatform }}
@@ -76,7 +76,7 @@ steps:
     targetType: inline
     pwsh: true
     script: |
-      Get-Content ${{ variables.SubTasksFilePath }} | ForEach-Object {
+      Get-Content $(variables.SubTasksFilePath) | ForEach-Object {
         if ($_ && 'Predictor' -eq $_) {
           Write-Host "##vso[task.setvariable variable=SubTaskPredictor]true"
         } elseif ($_ && 'Installer' -eq $_) {
@@ -124,7 +124,7 @@ steps:
     script: |
       $pipelineScript = Join-Path "$(Build.SourcesDirectory)" 'tools' 'ExecuteCIStep.ps1'
       $repoArtifact = Join-Path "$(Build.SourcesDirectory)" 'artifacts'
-      . $pipelineScript -Build -TriggerType "$(Build.Reason)" -Trigger ${{ variables.trigger }} -RepoArtifacts $repoArtifact -Configuration ${{ parameters.configuration }}
+      . $pipelineScript -Build -TriggerType "$(Build.Reason)" -Trigger $(variables.trigger) -RepoArtifacts $repoArtifact -Configuration ${{ parameters.configuration }}
 - task: DotNetCoreCLI@2
   displayName: 'SubTask Predictor'
   condition: or(eq(variables.SubTaskPredictor, true), eq(variables.SubTaskAll, true))
