@@ -18,7 +18,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
  [-RecoveryPoint <String>] [-PointInTime <DateTime>] [-RehydrationDuration <String>]
  [-RehydrationPriority <String>] [-RestoreConfiguration <KubernetesClusterRestoreCriteria>]
- [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>]
+ [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -27,7 +27,8 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
  [-RecoveryPoint <String>] [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-ItemLevelRecovery]
- [-ContainersList <String[]>] [<CommonParameters>]
+ [-ContainersList <String[]>] [-PrefixMatch <Hashtable>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### OriginalLocationFullRecovery
@@ -37,7 +38,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  [-RehydrationDuration <String>] [-RehydrationPriority <String>]
  [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-SecretStoreURI <String>]
  [-SecretStoreType <SecretStoreTypes>] -BackupInstance <BackupInstanceResource>
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### OriginalLocationILR
@@ -48,7 +49,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-SecretStoreURI <String>]
  [-SecretStoreType <SecretStoreTypes>] [-ItemLevelRecovery] [-ContainersList <String[]>]
  -BackupInstance <BackupInstanceResource> [-FromPrefixPattern <String[]>] [-ToPrefixPattern <String[]>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### RestoreAsFiles
@@ -57,7 +58,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>]
  [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreURI <String>]
  [-SecretStoreType <SecretStoreTypes>] -TargetContainerURI <String>
- [-TargetResourceIdForRestoreAsFile <String>] [-FileNamePrefix <String>]
+ [-TargetResourceIdForRestoreAsFile <String>] [-FileNamePrefix <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -253,7 +254,9 @@ Accept wildcard characters: False
 ```
 
 ### -FromPrefixPattern
-Minimum matching value for Item Level Recovery.
+Specify the blob restore start range for PITR.
+You can use this option to specify the starting range for a subset of blobs in each container to restore.
+use a forward slash (/) to separate the container name from the blob prefix pattern.
 
 ```yaml
 Type: System.String[]
@@ -289,6 +292,38 @@ Point In Time for restore.
 Type: System.DateTime
 Parameter Sets: AlternateLocationFullRecovery, OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrefixMatch
+Use this parameter to filter block blobs by prefix in a container for alternate location ILR.
+When you specify a prefix, only blobs matching that prefix in the container will be restored.
+Input for this parameter is a hashtable where each key is a container name and each value is an array of string prefixes for that container.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: AlternateLocationILR
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -488,7 +523,9 @@ Accept wildcard characters: False
 ```
 
 ### -ToPrefixPattern
-Maximum matching value for Item Level Recovery.
+Specify the blob restore end range for PITR.
+You can use this option to specify the ending range for a subset of blobs in each container to restore.
+use a forward slash (/) to separate the container name from the blob prefix pattern.
 
 ```yaml
 Type: System.String[]

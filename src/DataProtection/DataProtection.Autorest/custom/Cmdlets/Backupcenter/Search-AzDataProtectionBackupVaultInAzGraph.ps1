@@ -8,7 +8,7 @@
         [Parameter(Mandatory, HelpMessage='Subscription of Vault')]
         [Alias('SubscriptionId')]
         [System.String[]]
-        ${Subscription},
+        ${Subscription}, # TODO: add alias to all ARG command params
 
         [Parameter(Mandatory=$false, HelpMessage='Resource Group of Vault')]
         [Alias('ResourceGroupName')]
