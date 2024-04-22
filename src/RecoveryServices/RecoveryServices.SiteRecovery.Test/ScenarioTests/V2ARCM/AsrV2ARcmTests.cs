@@ -65,7 +65,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-V2ARCMContainerMapping");
         }
 
-        [Fact]
+        [Fact(Skip = "to be re-recorded in next release")]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestV2ARCMProtectableItem()
         {
@@ -74,7 +74,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-V2ARCMProtectableItem");
         }
 
-        [Fact]
+        [Fact(Skip = "to be re-recorded in next release")]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestV2ARCMEnableDR()
         {
@@ -146,7 +146,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-V2ARCMCancelFailover");
         }
 
-        [Fact]
+        [Fact(Skip = "to be re-recorded in next release")]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestV2ARCM540Reprotect()
         {

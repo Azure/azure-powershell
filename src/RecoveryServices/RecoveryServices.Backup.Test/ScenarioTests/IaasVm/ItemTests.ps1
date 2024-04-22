@@ -212,28 +212,31 @@ function Test-AzureCrossZonalRestore
 function Test-AzureMonitorAlerts
 {
 	$location = "centraluseuap"
-	$resourceGroupName = "hiagarg"
-	$vaultName1 = "alerts-pstest-vault1"
-	$vaultName2 = "alerts-pstest-vault2"
+	$resourceGroupName = "vijami-alertrg"
+	$vaultName1 = "Backupalerts-pstest-vault1"
+	$vaultName2 = "Backupalerts-pstest-vault2"
 
 	try
 	{	
 		# create a vault without Alert settings
-		$tag= @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="06-2099"}
+		$tag= @{"MABUsed"="Yes";"Owner"="vijami";"Purpose"="Testing";"DeleteBy"="06-2099"}
 		$vault1 = New-AzRecoveryServicesVault -Name $vaultName1 -ResourceGroupName $resourceGroupName -Location "centraluseuap" -Tag $tag
 		
 		Assert-True { $vault1.Properties.AlertSettings -eq $null }
 
 		# create a vault with Alert settings 
 		$vault2 = New-AzRecoveryServicesVault -Name $vaultName2 -ResourceGroupName $resourceGroupName -Location "centraluseuap" `
-			-Tag $tag -DisableAzureMonitorAlertsForJobFailure $false `
-			-DisableClassicAlerts $true			
+			-DisableAzureMonitorAlertsForJobFailure $false `
+            -DisableAzureMonitorAlertsForAllReplicationIssue $false `
+            -DisableAzureMonitorAlertsForAllFailoverIssue $true `
+            -DisableEmailNotificationsForSiteRecovery $false `
+			-DisableClassicAlerts $true
 		
 		Assert-True { $vault2.Properties.AlertSettings -ne $null }
 		Assert-True { $vault2.Properties.AlertSettings.AzureMonitorAlertsForAllJobFailure -eq "Enabled" }
 		Assert-True { $vault2.Properties.AlertSettings.ClassicAlertsForCriticalOperations -eq "Disabled" }
 
-		$vault = Update-AzRecoveryServicesVault -ResourceGroupName "hiagarg"  -Name "hiagaVault" -DisableClassicAlerts $false
+		$vault = Update-AzRecoveryServicesVault -ResourceGroupName "vijami-alertrg"  -Name $vaultName1 -DisableClassicAlerts $false
 
 		# update alert settings 
 		$vault1 = Update-AzRecoveryServicesVault -Name $vaultName1 -ResourceGroupName $resourceGroupName `
