@@ -85,6 +85,13 @@ steps:
           Write-Host "##vso[task.setvariable variable=SubTaskAll]true"
         }
       }
+- task: PowerShell@2
+  displayName: 'Analyze required files'
+  inputs:
+    targetType: inline
+    pwsh: true
+    script: |
+      Write-Host "This task is to check required files"
 - task: NodeTool@0
   displayName: Install Autorest
   inputs:
