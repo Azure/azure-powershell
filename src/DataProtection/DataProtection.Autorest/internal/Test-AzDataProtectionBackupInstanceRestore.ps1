@@ -29,11 +29,11 @@ $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instances[0
 $validateRestore = Test-AzDataProtectionBackupInstanceRestore -ResourceGroupName $ResourceGroupName -Name $instance[0].Name -VaultName $VaultName -RestoreRequest $RestoreRequestObject -SubscriptionId $SubscriptionId -RestoreToSecondaryRegion
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IValidateRestoreRequestObject
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IValidateRestoreRequestObject
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IOperationJobExtendedInfo
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,6 +51,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceGuardProxyName <String>]: name of the resource guard proxy
   [ResourceGuardsName <String>]: The name of ResourceGuard
+  [ResourceId <String>]: ARM path of the resource to be protected using Microsoft.DataProtection
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VaultName <String>]: The name of the backup vault.
 
@@ -63,6 +64,7 @@ PARAMETER <IValidateRestoreRequestObject>: Validate restore request object
     SourceDataStoreType <SourceDataStoreType>: Gets or sets the type of the source data store.
     [IdentityDetailUseSystemAssignedIdentity <Boolean?>]: Specifies if the BI is protected by System Identity.
     [IdentityDetailUserAssignedIdentityArmUrl <String>]: ARM URL for User Assigned Identity.
+    [ResourceGuardOperationRequest <String[]>]: ResourceGuardOperationRequests on which LAC check will be performed
     [SourceResourceId <String>]: Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
 
 RESTOREREQUESTOBJECT <IAzureBackupRestoreRequest>: Gets or sets the restore request object.
@@ -73,12 +75,13 @@ RESTOREREQUESTOBJECT <IAzureBackupRestoreRequest>: Gets or sets the restore requ
   SourceDataStoreType <SourceDataStoreType>: Gets or sets the type of the source data store.
   [IdentityDetailUseSystemAssignedIdentity <Boolean?>]: Specifies if the BI is protected by System Identity.
   [IdentityDetailUserAssignedIdentityArmUrl <String>]: ARM URL for User Assigned Identity.
+  [ResourceGuardOperationRequest <String[]>]: ResourceGuardOperationRequests on which LAC check will be performed
   [SourceResourceId <String>]: Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancerestore
 #>
 function Test-AzDataProtectionBackupInstanceRestore {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IOperationJobExtendedInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo])]
 [CmdletBinding(DefaultParameterSetName='ValidateViaIdentity1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Validate1', Mandatory)]
@@ -124,7 +127,7 @@ param(
     [Parameter(ParameterSetName='Validate1', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ValidateViaIdentity1', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IValidateRestoreRequestObject]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IValidateRestoreRequestObject]
     # Validate restore request object
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -132,7 +135,7 @@ param(
     [Parameter(ParameterSetName='ValidateExpanded1', Mandatory)]
     [Parameter(ParameterSetName='ValidateViaIdentityExpanded1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IAzureBackupRestoreRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest]
     # Gets or sets the restore request object.
     # To construct, see NOTES section for RESTOREREQUESTOBJECT properties and create a hash table.
     ${RestoreRequestObject},
