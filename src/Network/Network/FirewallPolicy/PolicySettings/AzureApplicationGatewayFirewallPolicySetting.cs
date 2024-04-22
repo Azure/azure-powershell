@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(Mandatory = false, HelpMessage = "Web Application Firewall JavaScript Challenge Cookie Expiration time in minutes.")]
         [ValidateNotNullOrEmpty]
-        [ValidateLength(5,1440)]
+        [ValidateRange(5,1440)]
         public int? JsChallengeCookieExpirationInMins { get; set; }
 
         public override void ExecuteCmdlet()
