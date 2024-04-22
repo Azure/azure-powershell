@@ -55,12 +55,12 @@ steps:
           break
         }
       }
-      Write-Host "##vso[task.setvariable variable=triggerType]$TriggerType"
-      Write-Host "##vso[task.setvariable variable=trigger]$Trigger"
+      Write-Host "##vso[task.setvariable variable=TriggerType]$triggerType"
+      Write-Host "##vso[task.setvariable variable=Trigger]$trigger"
       Write-Host "Filter files triggered by ${reason}: ${trigger}" -ForegroundColor DarkYellow
 
       $subTasksFilePath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'SubTasksFile.txt'
-      Write-Host "##vso[task.setvariable variable=subTasksFilePath]$SubTasksFilePath"
+      Write-Host "##vso[task.setvariable variable=SubTasksFilePath]$subTasksFilePath"
 - task: DotNetCoreCLI@2
   displayName: Filter changed files
   inputs:
