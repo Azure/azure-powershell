@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Portal-help.xml
 Module Name: Az.Portal
 online version: https://learn.microsoft.com/powershell/module/az.portal/new-azportaldashboard
 schema: 2.0.0
@@ -14,21 +14,23 @@ Creates or updates a Dashboard.
 
 ### CreateExpanded (Default)
 ```
-New-AzPortalDashboard -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-Lens <Hashtable>] [-Metadata <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+ [-Lens <Hashtable>] [-Metadata <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzPortalDashboard -Name <String> -ResourceGroupName <String> -Dashboard <IDashboard>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Dashboard <IDashboard> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateByFile
 ```
-New-AzPortalDashboard -Name <String> -ResourceGroupName <String> -DashboardPath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -DashboardPath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +86,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -152,6 +155,21 @@ Parameter Sets: (All)
 Aliases: DashboardName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -249,21 +267,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-DASHBOARD `<IDashboard>`: The shared dashboard resource definition.
-  - `Location <String>`: Resource location
-  - `[Lens <IDashboardPropertiesLenses>]`: The dashboard lenses.
-    - `[(Any) <IDashboardLens>]`: This indicates any property can be added to this object.
-  - `[Metadata <IDashboardPropertiesMetadata>]`: The dashboard metadata.
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[Tag <IDashboardTags>]`: Resource tags
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-
 ## RELATED LINKS
-
