@@ -63,6 +63,7 @@ jobs:
 - job: Build
   displayName: Build
   condition: succeeded()
+  dependsOn: Filter
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
   pool: pool-windows-2019
 

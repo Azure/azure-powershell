@@ -26,12 +26,12 @@ steps:
       $reason = "$(Build.Reason)"
       switch ($reason) {
         { $reason -in @('IndividualCI', 'BatchedCI') } {
-          $trigger = $(Build.SourceVersion)
+          $trigger = "$(Build.SourceVersion)"
           $triggerType = 'Commit'
           break
         }
         'PullRequest' {
-          $trigger = $(System.PullRequest.PullRequestNumber)
+          $trigger = "$(System.PullRequest.PullRequestNumber)"
           $triggerType = 'PullRequest'
           break
         }
@@ -39,7 +39,7 @@ steps:
           $targetModule = ${{ parameters.TargetModule }}
           if ('' -eq $targetModule) {
             $notModules = @('lib', 'shared')
-            $src = Join-Path $(Build.SourcesDirectory) 'src'
+            $src = Join-Path "$(Build.SourcesDirectory)" 'src'
             $trigger = Get-Childitem -Path $src -Directory | ForEach-Object {
               if ($_.Name -in $notModules) {
                 return
@@ -61,7 +61,7 @@ steps:
       Write-Host "##vso[task.setvariable variable=trigger]$Trigger"
       Write-Host "Filter files triggered by ${reason}: ${trigger}" -ForegroundColor DarkYellow
 
-      $subTasksFilePath = Join-Path $(Build.SourcesDirectory) 'artifacts' 'SubTasksFile.txt'
+      $subTasksFilePath = Join-Path $"(Build.SourcesDirectory)" 'artifacts' 'SubTasksFile.txt'
       Write-Host "##vso[task.setvariable variable=subTasksFilePath]$SubTasksFilePath"
 - task: DotNetCoreCLI@2
   displayName: Filter when commit or pull request
