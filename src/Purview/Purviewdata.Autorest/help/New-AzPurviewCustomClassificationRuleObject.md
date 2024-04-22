@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewCustomClassificationRuleObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewCustomClassificationRuleObject
 schema: 2.0.0
 ---
 
@@ -30,7 +30,6 @@ $reg1 = New-AzPurviewRegexClassificationRulePatternObject -Pattern '^col1$'
 $reg2 = New-AzPurviewRegexClassificationRulePatternObject -Pattern '^col2$'
 $regexarr = @($reg1, $reg2)
 New-AzPurviewCustomClassificationRuleObject -Kind 'Custom' -ClassificationName ClassificationRule4 -MinimumPercentageMatch 60 -RuleStatus 'Enabled' -Description 'This is a rule2' -ColumnPattern $regexarr
-
 ```
 
 ```output
@@ -174,8 +173,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.CustomClassificationRule
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

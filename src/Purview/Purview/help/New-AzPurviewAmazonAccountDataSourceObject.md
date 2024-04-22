@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonAccountDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonAccountDataSourceObject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Create an in-memory object for AmazonAccountDataSource.
 
 ```
 New-AzPurviewAmazonAccountDataSourceObject -Kind <DataSourceType> [-AwsAccountId <String>]
- [-CollectionReferenceName <String>] [-CollectionType <String>] [-RoleArn <String>] [<CommonParameters>]
+ [-CollectionReferenceName <String>] [-CollectionType <String>] [-RoleArn <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,6 +102,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RoleArn
 
 ```yaml
@@ -125,7 +141,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonAccountDataSource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewFilterObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewFilterObject
 schema: 2.0.0
 ---
 
@@ -24,7 +24,6 @@ Create an in-memory object for Filter.
 ### Example 1: Create filter object
 ```powershell
 New-AzPurviewFilterObject -ExcludeUriPrefix @('https://foo.file.core.windows.net/share1/user/temp') -IncludeUriPrefix @('https://foo.file.core.windows.net/share1/user','https://foo.file.core.windows.net/share1/aggregated')
-
 ```
 
 ```output
@@ -79,8 +78,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Filter
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
