@@ -393,8 +393,8 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
             if (influencedModuleInfo.ContainsKey(SUB_TASK_PHASE))
             {
-                SubTasks = influencedModuleInfo[SUB_TASK_PHASE].ToArray();
-                File.WriteAllLines(SubTasksFilePath, SubTasks);
+                SubTasks = string.Join("; ", influencedModuleInfo[SUB_TASK_PHASE].ToArray());
+                File.WriteAllLines(SubTasksFilePath, influencedModuleInfo[SUB_TASK_PHASE].ToArray());
             }
 
             return true;
