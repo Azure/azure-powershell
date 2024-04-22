@@ -144,7 +144,7 @@ jobs:
           Write-Host "##[endgroup]"
           Write-Host
         }
-        $time = [DateTime]::UtcNow.ToString("O")
+        $time = (Get-Date -Format "yyyy-MM-dd-HH-mm-ss")
 
         Set-Location ..
         git checkout -b "codegen/${{ parameters.scope }}-$time" 'origin/${{ parameters.targetBranch }}'
