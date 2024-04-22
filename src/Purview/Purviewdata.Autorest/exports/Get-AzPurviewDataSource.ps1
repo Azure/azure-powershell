@@ -20,54 +20,9 @@ Get a data source
 .Description
 Get a data source
 .Example
-PS C:\> Get-AzPurviewDataSource -Endpoint 'https://brs-2.purview.azure.com/' -Name 'NewDataSource'
-
-CollectionLastModifiedAt : 2/9/2022 2:49:14 AM
-CollectionReferenceName  : brs-2
-CollectionType           : CollectionReference
-CreatedAt                : 2/9/2022 2:49:14 AM
-Endpoint                 : https://data123scantest.blob.core.windows.net/
-Id                       : datasources/NewDataSource
-Kind                     : AzureStorage
-LastModifiedAt           : 2/9/2022 3:02:56 AM
-Location                 : westus
-Name                     : NewDataSource
-ResourceGroup            : rg
-ResourceName             : datascantest
-Scan                     :
-SubscriptionId           : 4348d67b-ffc5-465d-b5dd-xxxxxxxxx
+Get-AzPurviewDataSource -Endpoint 'https://brs-2.purview.azure.com/' -Name 'NewDataSource'
 .Example
-PS C:\>  Get-AzPurviewDataSource -Endpoint 'https://brs-2.purview.azure.com/'
-
-CollectionLastModifiedAt : 1/31/2022 10:28:16 AM
-CollectionReferenceName  : brs-2
-CollectionType           : CollectionReference
-CreatedAt                : 1/31/2022 10:28:16 AM
-Endpoint                 : https://0cb22aa692584b54b09files.file.core.windows.net/
-Id                       : datasources/AzureFileStorage-f1B
-Kind                     : AzureFileService
-LastModifiedAt           : 1/31/2022 10:28:16 AM
-Location                 : westus2
-Name                     : AzureFileStorage-f1B
-ResourceGroup            : scanning-wus2-df-files
-ResourceName             : 0cb22aa692584b54b09files
-Scan                     :
-SubscriptionId           : aa41bbd9-a6aa-44a8-b5cb-xxxxxxxxx
-
-CollectionLastModifiedAt : 2/9/2022 2:49:14 AM
-CollectionReferenceName  : brs-2
-CollectionType           : CollectionReference
-CreatedAt                : 2/9/2022 2:49:14 AM
-Endpoint                 : https://datascan123test.blob.core.windows.net/
-Id                       : datasources/NewDataSource
-Kind                     : AzureStorage
-LastModifiedAt           : 2/9/2022 3:02:56 AM
-Location                 : westus
-Name                     : NewDataSource
-ResourceGroup            : rg
-ResourceName             : datascantest
-Scan                     :
-SubscriptionId           : 4348d67b-ffc5-465d-b5dd-xxxxxxxxx
+Get-AzPurviewDataSource -Endpoint 'https://brs-2.purview.azure.com/'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
@@ -97,7 +52,8 @@ param(
     [ValidateNotNull()]
     [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Category('Azure')]
     [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
+    # The DefaultProfile parameter is not functional.
+    # Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
     ${DefaultProfile},
 
     [Parameter(DontShow)]
@@ -147,17 +103,40 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Get = 'Az.Purviewdata.private\Get-AzPurviewDataSource_Get';
             List = 'Az.Purviewdata.private\Get-AzPurviewDataSource_List';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -166,15 +145,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
 online version: https://learn.microsoft.com/powershell/module/az.peering/get-azpeeringasn
 schema: 2.0.0
@@ -14,17 +14,20 @@ Gets the peer ASN with the specified name under the given subscription.
 
 ### List (Default)
 ```
-Get-AzPeeringAsn [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPeeringAsn [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzPeeringAsn -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPeeringAsn -Name <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzPeeringAsn -InputObject <IPeeringIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPeeringAsn -InputObject <IPeeringIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +44,6 @@ Get-AzPeeringAsn
 Name            PeerName PropertiesPeerAsn ValidationState PeerContactDetail
 ----            -------- ----------------- --------------- -----------------
 ContosoEdgeTest Contoso  65000             Approved        {{…}}
-
 ```
 
 List all the peer asns under subscription
@@ -62,7 +64,8 @@ Get peer asn by name
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -107,12 +110,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The Azure subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -135,24 +153,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IPeeringIdentity>`: Identity Parameter
-  - `[ConnectionMonitorTestName <String>]`: The name of the connection monitor test
-  - `[Id <String>]`: Resource identity path
-  - `[PeerAsnName <String>]`: The peer ASN name.
-  - `[PeeringName <String>]`: The name of the peering.
-  - `[PeeringServiceName <String>]`: The name of the peering service.
-  - `[PrefixName <String>]`: The name of the prefix.
-  - `[RegisteredAsnName <String>]`: The name of the registered ASN.
-  - `[RegisteredPrefixName <String>]`: The name of the registered prefix.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubscriptionId <String>]`: The Azure subscription ID.
-
 ## RELATED LINKS
-
