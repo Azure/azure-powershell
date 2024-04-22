@@ -17,7 +17,8 @@ Starts SQL virtual machine troubleshooting.
 Invoke-AzSqlVMTroubleshoot -ResourceGroupName <String> -SqlVirtualMachineName <String>
  [-SubscriptionId <String>] [-EndTimeUtc <DateTime>] [-StartTimeUtc <DateTime>]
  [-TroubleshootingScenario <TroubleshootingScenario>] [-UnhealthyReplicaInfoAvailabilityGroupName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### TroubleshootViaIdentityExpanded
@@ -25,7 +26,7 @@ Invoke-AzSqlVMTroubleshoot -ResourceGroupName <String> -SqlVirtualMachineName <S
 Invoke-AzSqlVMTroubleshoot -InputObject <ISqlVirtualMachineIdentity> [-EndTimeUtc <DateTime>]
  [-StartTimeUtc <DateTime>] [-TroubleshootingScenario <TroubleshootingScenario>]
  [-UnhealthyReplicaInfoAvailabilityGroupName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,6 +126,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -267,20 +283,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVMTroubleshooting
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISqlVirtualMachineIdentity>`: Identity Parameter
-  - `[AvailabilityGroupListenerName <String>]`: Name of the availability group listener.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  - `[SqlVirtualMachineGroupName <String>]`: Name of the SQL virtual machine group.
-  - `[SqlVirtualMachineName <String>]`: Name of the SQL virtual machine.
-  - `[SubscriptionId <String>]`: Subscription ID that identifies an Azure subscription.
 
 ## RELATED LINKS

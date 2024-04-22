@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SecurityInsights-help.xml
 Module Name: Az.SecurityInsights
 online version: https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelentity
 schema: 2.0.0
@@ -14,20 +14,20 @@ Gets an entity.
 
 ### List (Default)
 ```
-Get-AzSentinelEntity -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSentinelEntity -ResourceGroupName <String> [-SubscriptionId <String[]>] -WorkspaceName <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzSentinelEntity -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSentinelEntity -Id <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzSentinelEntity -InputObject <ISecurityInsightsIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,7 +37,7 @@ Gets an entity.
 
 ### Example 1: List all Entities
 ```powershell
- Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
 ```
 
 ```output
@@ -54,7 +54,7 @@ This command lists all Entities under a Microsoft Sentinel workspace.
 
 ### Example 2: Get an Entity
 ```powershell
- Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "8d036a2d-f37d-e936-6cca-4e172687cb79"
+Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "8d036a2d-f37d-e936-6cca-4e172687cb79"
 ```
 
 ```output
@@ -67,7 +67,7 @@ This command gets an Entity.
 
 ### Example 3: Get a Entity by object Id
 ```powershell
- $Entitys = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+$Entitys = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
  $Entitys[0] | Get-AzSentinelEntity
 ```
 
@@ -81,7 +81,7 @@ This command gets an Entity by object
 
 ### Example 4: Get a Entity by kind
 ```powershell
- Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" | Where-Object {$_.Kind -eq "CloudApplication"} 
+Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" | Where-Object {$_.Kind -eq "CloudApplication"}
 ```
 
 ```output
@@ -141,13 +141,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -162,7 +177,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -177,7 +192,7 @@ The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -200,36 +215,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
-  - `[ActionId <String>]`: Action ID
-  - `[AlertRuleTemplateId <String>]`: Alert rule template ID
-  - `[AutomationRuleId <String>]`: Automation rule ID
-  - `[BookmarkId <String>]`: Bookmark ID
-  - `[ConsentId <String>]`: consent ID
-  - `[DataConnectorId <String>]`: Connector ID
-  - `[EntityId <String>]`: entity ID
-  - `[EntityQueryId <String>]`: entity query ID
-  - `[EntityQueryTemplateId <String>]`: entity query template ID
-  - `[Id <String>]`: Resource identity path
-  - `[IncidentCommentId <String>]`: Incident comment ID
-  - `[IncidentId <String>]`: Incident ID
-  - `[MetadataName <String>]`: The Metadata name.
-  - `[Name <String>]`: Threat intelligence indicator name field.
-  - `[RelationName <String>]`: Relation Name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleId <String>]`: Alert rule ID
-  - `[SentinelOnboardingStateName <String>]`: The Sentinel onboarding state name. Supports - default
-  - `[SettingsName <String>]`: The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
-  - `[SourceControlId <String>]`: Source control Id
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WorkspaceName <String>]`: The name of the workspace.
-
 ## RELATED LINKS
-

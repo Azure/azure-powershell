@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SecurityInsights-help.xml
 Module Name: Az.SecurityInsights
 online version: https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelalertruleaction
 schema: 2.0.0
@@ -15,7 +15,7 @@ Creates or updates the action of alert rule.
 ```
 New-AzSentinelAlertRuleAction -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String>
  [-Id <String>] [-SubscriptionId <String>] [-LogicAppResourceId <String>] [-TriggerUri <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,7 @@ Creates or updates the action of alert rule.
 
 ### Example 1: Add a Logic App Playbook as an action to an existing analytics rule
 ```powershell
- $LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "myLogicAppResourceGroupName" -Name "myLogicAppPlaybookName"
+$LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "myLogicAppResourceGroupName" -Name "myLogicAppPlaybookName"
 $LogicAppTriggerUri = Get-AzLogicAppTriggerCallbackUrl -ResourceGroupName "myLogicAppResourceGroupName" -Name $LogicAppResourceId.Name -TriggerName "When_a_response_to_an_Azure_Sentinel_alert_is_triggered"
 New-AzSentinelAlertRuleAction -ResourceGroupName "mySentinelResourceGroupName" -workspaceName "myWorkspaceName" -RuleId "48bbf86d-540b-4a7b-9fee-2bd7d810dbed" -LogicAppResourceId ($LogicAppResourceId.Id) -TriggerUri ($LogicAppTriggerUri.Value) -Id ((New-Guid).Guid)
 ```
@@ -72,6 +72,21 @@ Logic App Resource Id, /subscriptions/{my-subscription}/resourceGroups/{my-resou
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -198,7 +213,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SecurityInsights-help.xml
 Module Name: Az.SecurityInsights
 online version: https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidententity
 schema: 2.0.0
@@ -14,7 +14,8 @@ Gets all incident related entities.
 
 ```
 Get-AzSentinelIncidentEntity -IncidentId <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +25,7 @@ Gets all incident related entities.
 
 ### Example 1: List all Entities for a given Incident
 ```powershell
- Get-AzSentinelIncidentEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "0ddb580f-efd0-4076-bb77-77e9aef8a187"
+Get-AzSentinelIncidentEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "0ddb580f-efd0-4076-bb77-77e9aef8a187"
 ```
 
 ```output
@@ -62,6 +63,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -156,7 +172,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
