@@ -340,8 +340,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                                     downloadOptions.Range = new HttpRange(downloadOffset, contentSize);
                                     ShareFileDownloadInfo download = fileClientToBeDownloaded.Download(downloadOptions, cancellationToken: this.CmdletCancellationToken);
                                     download.Content.CopyTo(stream);
-                                    downloadOffset += contentSize;
-                                    contentLenLeft -= contentSize;
+                                    downloadOffset += download.ContentLength;
+                                    contentLenLeft -= download.ContentLength;
                                     progressHandler.Report(downloadOffset);
                                 }
                             }

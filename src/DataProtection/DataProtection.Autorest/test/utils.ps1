@@ -58,6 +58,7 @@ function setupEnv() {
         ResourceGroupName = "sarath-rg"
         VaultName = "sarath-vault"
         NewVaultName = "new-pstest-vault"
+        NewCSRVault = "csr-pstest-vault"
     }
 
     $BackupJobTestVariables = @{
@@ -184,6 +185,8 @@ function setupEnv() {
         ResourceGroupName = "blob-eus-pstest-rg"
         VaultName = "blob-eus-pstest-vault"
         PolicyName = "operational-vaulted-policy"
+        UpdatePolicyName = "op-vault-pstest-policy"
+        UpdatedContainersList = @( "conaaa", "conabb", "coneee", "conwxy", "conzzz" )
         StorageAccountName = "blobeuspstestsa"
         OperationalPolicyName = "op-pstest-policy"
         VaultPolicyName = "vaulted-pstest-policy"

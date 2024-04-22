@@ -15,7 +15,7 @@ Unlocks the critical operation which is protected by the resource guard
 ```
 Unlock-AzDataProtectionResourceGuardOperation -ResourceGroupName <String> -VaultName <String>
  [-SubscriptionId <String>] [-ResourceGuardOperationRequest <String[]>] [-ResourceToBeDeleted <String>]
- [-Token <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-Token <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -104,6 +104,21 @@ Pass access token in case of cross tenant resource guard.
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

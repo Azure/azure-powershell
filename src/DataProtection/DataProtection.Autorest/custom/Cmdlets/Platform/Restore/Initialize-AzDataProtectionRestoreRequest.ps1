@@ -102,13 +102,17 @@
         [Parameter(ParameterSetName="AlternateLocationILR", Mandatory=$false, HelpMessage='Container names for Item Level Recovery.')]
         [System.String[]]
         ${ContainersList},
+                
+        [Parameter(ParameterSetName="AlternateLocationILR", Mandatory=$false, HelpMessage='Use this parameter to filter block blobs by prefix in a container for alternate location ILR. When you specify a prefix, only blobs matching that prefix in the container will be restored. Input for this parameter is a hashtable where each key is a container name and each value is an array of string prefixes for that container.')]
+        [Hashtable]
+        ${PrefixMatch},
 
-        [Parameter(ParameterSetName="OriginalLocationILR", Mandatory=$false, HelpMessage='Minimum matching value for Item Level Recovery.')]
+        [Parameter(ParameterSetName="OriginalLocationILR", Mandatory=$false, HelpMessage='Specify the blob restore start range for PITR. You can use this option to specify the starting range for a subset of blobs in each container to restore. use a forward slash (/) to separate the container name from the blob prefix pattern.')]
         # [Parameter(ParameterSetName="AlternateLocationILR", Mandatory=$false, HelpMessage='Minimum matching value for Item Level Recovery.')]
         [System.String[]]
         ${FromPrefixPattern},
 
-        [Parameter(ParameterSetName="OriginalLocationILR", Mandatory=$false, HelpMessage='Maximum matching value for Item Level Recovery.')]
+        [Parameter(ParameterSetName="OriginalLocationILR", Mandatory=$false, HelpMessage='Specify the blob restore end range for PITR. You can use this option to specify the ending range for a subset of blobs in each container to restore. use a forward slash (/) to separate the container name from the blob prefix pattern.')]
         # [Parameter(ParameterSetName="AlternateLocationILR", Mandatory=$false, HelpMessage='Maximum matching value for Item Level Recovery.')]
         [System.String[]]
         ${ToPrefixPattern},
@@ -257,6 +261,7 @@
             if($DatasourceType -ne "AzureKubernetesService"){ # TODO: remove Datasource dependency
                 
                 if(($RecoveryPoint -ne $null) -and ($RecoveryPoint -ne "") -and $ContainersList.length -gt 0){
+                    $hasPrefixMatch = $PSBoundParameters.Remove("PrefixMatch")
                     for($i = 0; $i -lt $ContainersList.length; $i++){
                                 
                         $restoreCriteria = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.ItemPathBasedRestoreCriteria]::new()
@@ -264,6 +269,14 @@
                         $restoreCriteria.ObjectType = "ItemPathBasedRestoreCriteria"
                         $restoreCriteria.ItemPath = $ContainersList[$i]
                         $restoreCriteria.IsPathRelativeToBackupItem = $true
+
+                        if($hasPrefixMatch){
+                            $pathPrefix = $PrefixMatch[$ContainersList[$i]]
+                            if($pathPrefix -ne $null -and !($pathPrefix -is [Array])){
+                                throw "values for PrefixMatch must be string array for each container"
+                            }
+                            $restoreCriteria.SubItemPathPrefix = $pathPrefix
+                        }
 
                         # adding a criteria for each container given
                         $restoreCriteriaList += ($restoreCriteria)
