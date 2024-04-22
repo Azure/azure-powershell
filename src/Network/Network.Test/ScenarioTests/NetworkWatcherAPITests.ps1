@@ -1117,6 +1117,95 @@ function Test-CRUDVnetFlowLogWithManagedIdentity
 .SYNOPSIS
 Test Flow log CRUD API With Managed Identity.
 #>
+function Test-CRUDVnetFlowLogWithNoneManagedIdentity
+{
+    # Setup
+    $resourceGroupName = Get-NrpResourceGroupName
+    $nwName = Get-NrpResourceName
+    $nwRgName = Get-NrpResourceGroupName
+    $flowLogName = Get-NrpResourceName
+    $domainNameLabel = Get-NrpResourceName
+    $vnetName = Get-NrpResourceName
+    $stoname =  Get-NrpResourceName
+    $location = Get-ProviderLocation "Microsoft.Network/networkWatchers" "Central US EUAP"
+    $identityName = Get-NrpResourceName
+
+    try 
+    {
+        # Create Resource group
+        New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name "FlowLogSubnet" -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName
+        
+        # Create Resource group for Network Watcher
+        New-AzResourceGroup -Name $nwRgName -Location "$location"
+        
+        # Get Network Watcher
+        $nw = Get-CreateTestNetworkWatcher -location $location -nwName $nwName -nwRgName $nwRgName
+ 
+        # Create storage
+        $stoname = 'sto' + $stoname
+        $stotype = 'Standard_GRS'
+
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname -Location $location -Type $stotype;
+        $sto = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $stoname;
+
+        # Create Managed Identity
+		$identity = New-AzUserAssignedIdentity -Name $identityName -Location $location -ResourceGroup $resourceGroupName
+
+        # Create flow log
+        $config = New-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName -TargetResourceId $vnet.Id -StorageId $sto.Id -Enabled $true -UserAssignedIdentity $identity.Id
+
+        # Validation set operation
+        Assert-AreEqual $config.TargetResourceId $vnet.Id
+        Assert-AreEqual $config.StorageId $sto.Id
+        Assert-AreEqual $config.Enabled $true
+        Assert-AreEqual $config.Format.Version 2
+
+        # Get flow log
+        $flowLog = Get-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName
+
+        # Get flow log Identity
+        $identity01 = $flowLog.Identity
+
+        # Validation get operation
+        Assert-AreEqual $flowLog.TargetResourceId $vnet.Id
+        Assert-AreEqual $flowLog.StorageId $sto.Id
+        Assert-AreEqual $flowLog.Enabled $true
+        Assert-AreEqual $identity01.UserAssignedIdentities.Count 1
+		Assert-NotNull $identity01.UserAssignedIdentities.Values[0].PrincipalId
+		Assert-NotNull $identity01.UserAssignedIdentities.Values[0].ClientId
+
+        Set-AzNetworkWatcherFlowLog -InputObject $flowLog -UserAssignedIdentity "None" -Force
+
+         # Get flow log
+        $updatedFlowLog = Get-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName
+
+        # Get flow log Identity
+        $identity01 = $updatedFlowLog.Identity
+
+        Assert-AreEqual $identity01.UserAssignedIdentities.Count 0
+        Assert-Null $identity01.UserAssignedIdentities.Values[0].PrincipalId
+        Assert-Null $identity01.UserAssignedIdentities.Values[0].ClientId
+
+        # Delete flow log
+        Remove-AzNetworkWatcherFlowLog -NetworkWatcher $nw -Name $flowLogName
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $resourceGroupName
+        Clean-ResourceGroup $nwRgName
+    }
+}
+
+<#
+.SYNOPSIS
+Test Flow log CRUD API With Managed Identity.
+#>
 function Test-SetVnetFlowLogWithManagedIdentity
 {
     # Setup

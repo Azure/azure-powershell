@@ -655,7 +655,6 @@ namespace Microsoft.Azure.Commands.Network
                     flowLogParameters.Identity = new ManagedServiceIdentity
                     {
                         Type = MNM.ResourceIdentityType.None,
-                        UserAssignedIdentities = null,
                     };
                 }
                 else
