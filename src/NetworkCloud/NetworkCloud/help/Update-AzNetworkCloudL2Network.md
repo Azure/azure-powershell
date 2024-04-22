@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
 online version: https://learn.microsoft.com/powershell/module/az.networkcloud/update-aznetworkcloudl2network
 schema: 2.0.0
@@ -15,13 +15,14 @@ Update tags associated with the provided layer 2 (L2) network.
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkCloudL2Network -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkCloudL2Network -InputObject <INetworkCloudIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,6 +86,21 @@ Parameter Sets: UpdateExpanded
 Aliases: L2NetworkName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -182,35 +198,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <INetworkCloudIdentity>`: Identity Parameter
-  - `[AgentPoolName <String>]`: The name of the Kubernetes cluster agent pool.
-  - `[BareMetalMachineKeySetName <String>]`: The name of the bare metal machine key set.
-  - `[BareMetalMachineName <String>]`: The name of the bare metal machine.
-  - `[BmcKeySetName <String>]`: The name of the baseboard management controller key set.
-  - `[CloudServicesNetworkName <String>]`: The name of the cloud services network.
-  - `[ClusterManagerName <String>]`: The name of the cluster manager.
-  - `[ClusterName <String>]`: The name of the cluster.
-  - `[ConsoleName <String>]`: The name of the virtual machine console.
-  - `[Id <String>]`: Resource identity path
-  - `[KubernetesClusterName <String>]`: The name of the Kubernetes cluster.
-  - `[L2NetworkName <String>]`: The name of the L2 network.
-  - `[L3NetworkName <String>]`: The name of the L3 network.
-  - `[MetricsConfigurationName <String>]`: The name of the metrics configuration for the cluster.
-  - `[RackName <String>]`: The name of the rack.
-  - `[RackSkuName <String>]`: The name of the rack SKU.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[StorageApplianceName <String>]`: The name of the storage appliance.
-  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
-  - `[TrunkedNetworkName <String>]`: The name of the trunked network.
-  - `[VirtualMachineName <String>]`: The name of the virtual machine.
-  - `[VolumeName <String>]`: The name of the volume.
-
 ## RELATED LINKS
-

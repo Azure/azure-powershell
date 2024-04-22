@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Maps-help.xml
 Module Name: Az.Maps
 online version: https://learn.microsoft.com/powershell/module/az.maps/new-azmapsaccount
 schema: 2.0.0
@@ -14,9 +14,9 @@ A Maps Account holds the keys which allow access to the Maps REST APIs.
 ## SYNTAX
 
 ```
-New-AzMapsAccount -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <Name>
- [-SubscriptionId <String>] [-DisableLocalAuth] [-Kind <Kind>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMapsAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+ -SkuName <Name> [-DisableLocalAuth] [-Kind <Kind>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -41,7 +41,8 @@ This command creates a Maps Account.A Maps Account holds the keys which allow ac
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -110,6 +111,21 @@ Parameter Sets: (All)
 Aliases: AccountName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -219,7 +235,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
