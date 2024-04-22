@@ -63,18 +63,23 @@ This command creates a new backup vault while setting Immutability state, cross 
 
 ### Example 3: Create a Backup Vault with CMK
 ```powershell
-$storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType "<DataStoreType>" -Type "<Type>"
+$storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
 $userAssignedIdentity = @{
-    "<userAssignedId1>" = @{
-        clientId = "<clientId1>"
-        principalId = "<principalId1>"
+    "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami" = @{
+        clientId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        principalId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     }
-    "<userAssignedId2>" = @{
-        clientId = "<clientId2>"
-        principalId = "<principalId2>"
+    "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami2" = @{
+        clientId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+        principalId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     }
 }
-New-AzDataProtectionBackupVault -SubscriptionId <subscriptionId> -ResourceGroupName <resourceGroupName> -VaultName <vaultName> -Location <location> -StorageSetting $storagesetting -IdentityType UserAssigned -UserAssignedIdentity $userAssignedIdentity -CmkEncryptionState Enabled -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId <cmkUserAssignedIdentityId> -CmkEncryptionKeyUri <cmkEncryptionKeyUri>  -CmkInfrastructureEncryption Enabled
+
+$cmkIdentityId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/samplerg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/sampleuami"
+
+$cmkKeyUri = "https://samplekvazbckp.vault.azure.net/keys/testkey/3cd5235ad6ac4c11b40a6f35444bcbe1"
+
+New-AzDataProtectionBackupVault -SubscriptionId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ResourceGroupName "resourceGroupName" -VaultName "vaultName" -Location "location" -StorageSetting $storagesetting -IdentityType UserAssigned -UserAssignedIdentity $userAssignedIdentity -CmkEncryptionState Enabled -CmkIdentityType UserAssigned -CmkUserAssignedIdentityId $cmkIdentityId -CmkEncryptionKeyUri $cmkKeyUri -CmkInfrastructureEncryption Enabled
 ```
 
 ```output
