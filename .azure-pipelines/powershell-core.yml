@@ -38,6 +38,7 @@ pr:
     include:
       - eng/archive-test
 
+jobs:
 - job: Build
   displayName: Build
   condition: succeeded()
