@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Automanage-help.xml
 Module Name: Az.Automanage
 online version: https://learn.microsoft.com/powershell/module/az.automanage/get-azautomanagehcireport
 schema: 2.0.0
@@ -15,18 +15,20 @@ Get information about a report associated with a configuration profile assignmen
 ### List (Default)
 ```
 Get-AzAutomanageHciReport -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzAutomanageHciReport -ClusterName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzAutomanageHciReport -InputObject <IAutomanageIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAutomanageHciReport -InputObject <IAutomanageIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +76,7 @@ The name of the Arc machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -85,7 +87,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -130,13 +133,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -151,7 +169,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -174,25 +192,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAutomanageIdentity>`: Identity Parameter
-  - `[BestPracticeName <String>]`: The Automanage best practice name.
-  - `[ClusterName <String>]`: The name of the Arc machine.
-  - `[ConfigurationProfileAssignmentName <String>]`: Name of the configuration profile assignment. Only default is supported.
-  - `[ConfigurationProfileName <String>]`: Name of the configuration profile.
-  - `[Id <String>]`: Resource identity path
-  - `[MachineName <String>]`: The name of the Arc machine.
-  - `[ReportName <String>]`: The report name.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VMName <String>]`: The name of the virtual machine.
-  - `[VersionName <String>]`: The Automanage best practice version name.
-
 ## RELATED LINKS
-

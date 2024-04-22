@@ -15,8 +15,8 @@ Create or update a Prometheus rule group definition.
 ```
 New-AzPrometheusRuleGroup -ResourceGroupName <String> -RuleGroupName <String> [-SubscriptionId <String>]
  -Location <String> -Rule <IPrometheusRule[]> -Scope <String[]> [-ClusterName <String>] [-Description <String>]
- [-Enabled] [-Interval <TimeSpan>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Enabled] [-Interval <TimeSpan>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -146,6 +146,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -287,30 +302,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleGroupResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`RULE <IPrometheusRule[]>`: Defines the rules in the Prometheus rule group.
-  - `Expression <String>`: The PromQL expression to evaluate. https://prometheus.io/docs/prometheus/latest/querying/basics/. Evaluated periodically as given by 'interval', and the result recorded as a new set of time series with the metric name as given by 'record'.
-  - `[Action <IPrometheusRuleGroupAction[]>]`: Actions that are performed when the alert rule becomes active, and when an alert condition is resolved.
-    - `[ActionGroupId <String>]`: The resource id of the action group to use.
-    - `[ActionProperty <IPrometheusRuleGroupActionProperties>]`: The properties of an action group object.
-      - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Alert <String>]`: Alert rule name.
-  - `[Annotation <IPrometheusRuleAnnotations>]`: The annotations clause specifies a set of informational labels that can be used to store longer additional information such as alert descriptions or runbook links. The annotation values can be templated.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Enabled <Boolean?>]`: Enable/disable rule.
-  - `[For <TimeSpan?>]`: The amount of time alert must be active before firing.
-  - `[Label <IPrometheusRuleLabels>]`: Labels to add or overwrite before storing the result.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Record <String>]`: Recorded metrics name.
-  - `[ResolveConfigurationAutoResolved <Boolean?>]`: Enable alert auto-resolution.
-  - `[ResolveConfigurationTimeToResolve <TimeSpan?>]`: Alert auto-resolution timeout.
-  - `[Severity <Int32?>]`: The severity of the alerts fired by the rule. Must be between 0 and 4.
 
 ## RELATED LINKS

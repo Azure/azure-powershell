@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEmailServiceDomain
 
 ## SYNOPSIS
-Operation to update an existing Domains resource.
+Operation to Update an existing Domains resource.
 
 ## SYNTAX
 
@@ -55,7 +55,7 @@ Update-AzEmailServiceDomain -EmailServiceName <String> -Name <String> -ResourceG
 ```
 
 ## DESCRIPTION
-Operation to update an existing Domains resource.
+Operation to Update an existing Domains resource.
 
 ## EXAMPLES
 

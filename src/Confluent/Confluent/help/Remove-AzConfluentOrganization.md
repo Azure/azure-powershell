@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Confluent-help.xml
 Module Name: Az.Confluent
 online version: https://learn.microsoft.com/powershell/module/az.confluent/remove-azconfluentorganization
 schema: 2.0.0
@@ -15,13 +15,14 @@ Delete Organization resource
 ### Delete (Default)
 ```
 Remove-AzConfluentOrganization -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzConfluentOrganization -InputObject <IConfluentIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,7 +37,7 @@ Remove-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluento
 
 ```output
 - This action cannot be undone.
-- This will permanently delete ‘<resource_name>’ and its Azure subscription
+- This will permanently delete '<resource_name>' and its Azure subscription
 - Stop billing for the selected Confluent organization through Azure Marketplace
 Do you want to proceed (Y/N)?: y
 ```
@@ -50,7 +51,7 @@ Get-AzConfluentOrganization -ResourceGroupName azure-rg-test -Name confluentorg-
 
 ```output
 - This action cannot be undone.
-- This will permanently delete ‘<resource_name>’ and its Azure subscription
+- This will permanently delete '<resource_name>' and its Azure subscription
 - Stop billing for the selected Confluent organization through Azure Marketplace
 Do you want to proceed (Y/N)?: y
 ```
@@ -150,6 +151,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Resource group name
 
@@ -224,18 +240,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IConfluentIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[OrganizationName <String>]`: Organization resource name
-  - `[ResourceGroupName <String>]`: Resource group name
-  - `[SubscriptionId <String>]`: Microsoft Azure subscription id
-
 ## RELATED LINKS
-
