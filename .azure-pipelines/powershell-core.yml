@@ -50,7 +50,7 @@ jobs:
     parameters:
       TargetModule: ${{ parameters.TargetModule }}
 
-- Job: Required Files
+- job: Required Files
   displayName: Required Files
   dependsOn: Filter
   condition: succeeded()
