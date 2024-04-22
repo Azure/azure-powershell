@@ -152,6 +152,9 @@ Undeletes a soft deleted backup instance
 ### [Unlock-AzDataProtectionResourceGuardOperation](Unlock-AzDataProtectionResourceGuardOperation.md)
 Unlocks the critical operation which is protected by the resource guard
 
+### [Update-AzDataProtectionBackupInstance](Update-AzDataProtectionBackupInstance.md)
+Updates a given backup instance
+
 ### [Update-AzDataProtectionBackupInstanceAssociatedPolicy](Update-AzDataProtectionBackupInstanceAssociatedPolicy.md)
 Updates associated policy for a given backup instance
 

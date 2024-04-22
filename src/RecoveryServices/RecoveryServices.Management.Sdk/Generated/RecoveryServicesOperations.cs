@@ -40,8 +40,10 @@ namespace Microsoft.Azure.Management.RecoveryServices
 
         /// <summary>
         /// API to check for resource name availability.
-        /// A name is available if no other resource exists that has the same SubscriptionId, Resource Name and Type
-        /// or if one or more such resources exist, each of these must be GC&#39;d and their time of deletion be more than 24 Hours Ago
+        /// A name is available if no other resource exists that has the same
+        /// SubscriptionId, Resource Name and Type
+        /// or if one or more such resources exist, each of these must be GC&#39;d and
+        /// their time of deletion be more than 24 Hours Ago
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group. The name is case insensitive.
@@ -289,7 +291,8 @@ namespace Microsoft.Azure.Management.RecoveryServices
 
         }
         /// <summary>
-        /// API to get details about capabilities provided by Microsoft.RecoveryServices RP
+        /// API to get details about capabilities provided by
+        /// Microsoft.RecoveryServices RP
         /// </summary>
         /// <param name='location'>
         /// Location of the resource

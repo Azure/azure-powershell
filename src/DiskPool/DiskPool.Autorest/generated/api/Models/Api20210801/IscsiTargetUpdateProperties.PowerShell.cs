@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -92,7 +94,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
         /// Creates a new instance of <see cref="IscsiTargetUpdateProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="IscsiTargetUpdateProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdateProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -109,8 +111,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdatePropertiesInternal)this).StaticAcls = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl[]) content.GetValueForProperty("StaticAcls",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdatePropertiesInternal)this).StaticAcls, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.AclTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdatePropertiesInternal)this).Lun = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun[]) content.GetValueForProperty("Lun",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdatePropertiesInternal)this).Lun, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLunTypeConverter.ConvertFrom));
+            if (content.Contains("StaticAcls"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdatePropertiesInternal)this).StaticAcls = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl[]) content.GetValueForProperty("StaticAcls",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdatePropertiesInternal)this).StaticAcls, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.AclTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Lun"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdatePropertiesInternal)this).Lun = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun[]) content.GetValueForProperty("Lun",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdatePropertiesInternal)this).Lun, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLunTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -128,8 +136,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdatePropertiesInternal)this).StaticAcls = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl[]) content.GetValueForProperty("StaticAcls",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdatePropertiesInternal)this).StaticAcls, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.AclTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdatePropertiesInternal)this).Lun = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun[]) content.GetValueForProperty("Lun",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdatePropertiesInternal)this).Lun, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLunTypeConverter.ConvertFrom));
+            if (content.Contains("StaticAcls"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdatePropertiesInternal)this).StaticAcls = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl[]) content.GetValueForProperty("StaticAcls",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdatePropertiesInternal)this).StaticAcls, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IAcl>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.AclTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Lun"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdatePropertiesInternal)this).Lun = (Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun[]) content.GetValueForProperty("Lun",((Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiTargetUpdatePropertiesInternal)this).Lun, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IIscsiLun>(__y, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Models.Api20210801.IscsiLunTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated logic to populate tab completers and cache in the New-AzFunctionApp cmdlet
 
 ## Version 4.0.7
 * Used ARM API to get Stacks information for Functions [#14682]
