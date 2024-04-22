@@ -225,29 +225,6 @@ namespace Microsoft.Azure.Management.RecoveryServices
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VaultsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string vaultName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Deletes a vault.
-        /// </summary>
-        /// <remarks>
-        /// Deletes a vault.
-        /// </remarks>
-        /// <param name='resourceGroupName'>
-        /// The name of the resource group. The name is case insensitive.
-        /// </param>
-        /// <param name='vaultName'>
-        /// The name of the recovery services vault.
-        /// </param>
-        /// <param name='customHeaders'>
-        /// The headers that will be added to request.
-        /// </param>
-        /// <param name='cancellationToken'>
-        /// The cancellation token.
-        /// </param>
-        /// <exception cref="Microsoft.Rest.Azure.CloudException">
-        /// Thrown when the operation returned an invalid status code
-        /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationHeaderResponse<VaultsDeleteHeaders>> BeginDeleteWithHttpMessagesAsync(string resourceGroupName, string vaultName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
-
-        /// <summary>
         /// Updates the vault.
         /// </summary>
         /// <remarks>

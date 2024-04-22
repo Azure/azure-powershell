@@ -579,7 +579,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 var policyProperties = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)policy.Properties);
                 
-                if (policyProperties.PolicyType.ToLower() == "v2")
+                if (policyProperties.PolicyType != null && policyProperties.PolicyType.ToLower() == "v2")
                 {
                     var schedulePolicyv2 = ((ServiceClientModel.SimpleSchedulePolicyV2)policyProperties.SchedulePolicy);
                     if(schedulePolicyv2.ScheduleRunFrequency.ToLower() == "hourly")
@@ -591,7 +591,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         else 
                         {
                             rpoTime = (TimeSpan.FromHours(hoursInOneDay) - TimeSpan.FromHours((double)schedulePolicyv2.HourlySchedule.ScheduleWindowDuration)).Ticks;
-                        }                        
+                        }
                     }
                     else if(schedulePolicyv2.ScheduleRunFrequency.ToLower() == "daily")
                     {

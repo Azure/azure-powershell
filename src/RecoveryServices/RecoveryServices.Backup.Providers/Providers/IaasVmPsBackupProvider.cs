@@ -940,7 +940,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             }
                 
             Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
-                        
+
             PolicyHelpers.ValidateLongTermRetentionPolicyWithTieringPolicy((CmdletModel.LongTermRetentionPolicy)retentionPolicy, tieringDetails);            
             Logger.Instance.WriteDebug("Validation of Retention policy with Tiering policy is successful");
 
@@ -1174,7 +1174,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         ((AzureVmPolicy)policy).AzureBackupRGNameSuffix),
                     SnapshotConsistencyType = consistencyType
                 }
-            };            
+            };
 
             // check for MUA
             bool isMUAProtected = false;

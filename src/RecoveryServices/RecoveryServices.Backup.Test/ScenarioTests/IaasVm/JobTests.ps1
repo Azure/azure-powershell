@@ -18,9 +18,9 @@ function Test-AzureVMGetJobs
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiaga-adhoc-vault"
 	$vmName1 = "VM;iaasvmcontainerv2;hiagarg;hiaga-adhoc-vm"
-	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;hiaganewvm3"	
+	$vmName2 = "VM;iaasvmcontainerv2;hiagarg;hiaganevm4" # hiaganewvm3"
 	$vmFriendlyName1 = "hiaga-adhoc-vm"
-	$vmFriendlyName2 = "hiaganewvm3"	
+	$vmFriendlyName2 = "hiaganevm4" # "hiaganewvm3"	
 	
 	try
 	{
