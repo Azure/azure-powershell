@@ -16,7 +16,7 @@ Fully restores a managed HSM from backup.
 ```
 Restore-AzKeyVault -BackupFolder <String> [-KeyName <String>] [-PassThru] [-HsmName] <String>
  -StorageAccountName <String> -StorageContainerName <String> [-SasToken <SecureString>]
- [-UseUserManagedIdentity] [-DefaultProfile <IAzureContextContainer>]
+ [-UseUserManagedIdentity] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Restore-AzKeyVault -BackupFolder <String> [-KeyName <String>] [-PassThru] [-HsmN
 ```
 Restore-AzKeyVault -BackupFolder <String> [-KeyName <String>] [-PassThru] [-HsmName] <String>
  -StorageContainerUri <Uri> [-SasToken <SecureString>] [-UseUserManagedIdentity]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ Restore-AzKeyVault -BackupFolder <String> [-KeyName <String>] [-PassThru] [-HsmN
 ```
 Restore-AzKeyVault -BackupFolder <String> [-KeyName <String>] [-PassThru] -StorageContainerUri <Uri>
  [-SasToken <SecureString>] [-UseUserManagedIdentity] -HsmObject <PSManagedHsm>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ Restore-AzKeyVault -BackupFolder <String> [-KeyName <String>] [-PassThru] -Stora
 ```
 Restore-AzKeyVault -BackupFolder <String> [-KeyName <String>] [-PassThru] -StorageAccountName <String>
  -StorageContainerName <String> [-SasToken <SecureString>] [-UseUserManagedIdentity] -HsmObject <PSManagedHsm>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -153,6 +153,21 @@ Return true when the HSM is restored.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

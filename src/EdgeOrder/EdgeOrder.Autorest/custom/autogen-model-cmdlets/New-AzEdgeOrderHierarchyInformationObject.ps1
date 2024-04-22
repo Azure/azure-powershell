@@ -23,7 +23,7 @@ Create an in-memory object for HierarchyInformation.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.HierarchyInformation
 .Link
-https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderHierarchyInformationObject
+https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderHierarchyInformationObject
 #>
 function New-AzEdgeOrderHierarchyInformationObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.HierarchyInformation')]

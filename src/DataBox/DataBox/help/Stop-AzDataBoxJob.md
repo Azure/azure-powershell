@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
 online version: https://learn.microsoft.com/powershell/module/az.databox/stop-azdataboxjob
 schema: 2.0.0
@@ -13,8 +13,9 @@ CancelJob.
 ## SYNTAX
 
 ```
-Stop-AzDataBoxJob -Name <String> -ResourceGroupName <String> -Reason <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Reason <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +23,7 @@ CancelJob.
 
 ## EXAMPLES
 
-### Example 1:  Cancel a Job 
+### Example 1:  Cancel a Job
 ```powershell
 Stop-AzDataBoxJob -Name "Powershell10" -ResourceGroupName "resourceGroupName" -Reason "Powershell demo job"
 Get-AzDataBoxJob -Name "Powershell10" -ResourceGroupName "resourceGroupName"
@@ -77,6 +78,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -172,7 +188,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

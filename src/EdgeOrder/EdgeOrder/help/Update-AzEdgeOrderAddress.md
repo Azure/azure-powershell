@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.EdgeOrder-help.xml
 Module Name: Az.EdgeOrder
 online version: https://learn.microsoft.com/powershell/module/az.edgeorder/update-azedgeorderaddress
 schema: 2.0.0
@@ -16,14 +16,15 @@ Updates the properties of an existing address.
 ```
 Update-AzEdgeOrderAddress -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ContactDetail <IContactDetails>] [-ShippingAddress <IShippingAddress>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzEdgeOrderAddress -InputObject <IEdgeOrderIdentity> [-ContactDetail <IContactDetails>]
  [-ShippingAddress <IShippingAddress>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -90,7 +91,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -143,6 +145,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -258,40 +275,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-CONTACTDETAIL `<IContactDetails>`: Contact details for the address
-  - `ContactName <String>`: Contact name of the person.
-  - `EmailList <String[]>`: List of Email-ids to be notified about job progress.
-  - `Phone <String>`: Phone number of the contact person.
-  - `[Mobile <String>]`: Mobile number of the contact person.
-  - `[PhoneExtension <String>]`: Phone extension number of the contact person.
-
-INPUTOBJECT `<IEdgeOrderIdentity>`: Identity Parameter
-  - `[AddressName <String>]`: The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[OrderItemName <String>]`: The name of the order item
-  - `[OrderName <String>]`: The name of the order
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-SHIPPINGADDRESS `<IShippingAddress>`: Shipping details for the address
-  - `Country <String>`: Name of the Country.
-  - `StreetAddress1 <String>`: Street Address line 1.
-  - `[AddressType <AddressType?>]`: Type of address.
-  - `[City <String>]`: Name of the City.
-  - `[CompanyName <String>]`: Name of the company.
-  - `[PostalCode <String>]`: Postal code.
-  - `[StateOrProvince <String>]`: Name of the State or Province.
-  - `[StreetAddress2 <String>]`: Street Address line 2.
-  - `[StreetAddress3 <String>]`: Street Address line 3.
-  - `[ZipExtendedCode <String>]`: Extended Zip Code.
-
 ## RELATED LINKS
-

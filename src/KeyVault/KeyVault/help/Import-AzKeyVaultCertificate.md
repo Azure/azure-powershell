@@ -17,7 +17,7 @@ Imports a certificate to a key vault.
 ```
 Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> -FilePath <String>
  [-Password <SecureString>] [-PolicyPath <String>] [-PolicyObject <PSKeyVaultCertificatePolicy>]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,14 +26,14 @@ Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> -FilePath <S
 Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> -CertificateString <String>
  [-ContentType <String>] [-Password <SecureString>] [-PolicyPath <String>]
  [-PolicyObject <PSKeyVaultCertificatePolicy>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ImportWithPrivateKeyFromCollection
 ```
 Import-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-PolicyPath <String>]
  [-PolicyObject <PSKeyVaultCertificatePolicy>] [-CertificateCollection] <X509Certificate2Collection>
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -304,6 +304,21 @@ A file path to specify management policy for the certificate that contains JSON 
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
