@@ -38,32 +38,9 @@ pr:
     include:
       - eng/archive-test
 
-jobs:
-- job: Filter
-  displayName: Filter
-  condition: succeeded()
-  timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
-  pool: pool-windows-2019
-
-  steps:
-  - template: util/filter-steps.yml
-    parameters:
-      TargetModule: ${{ parameters.TargetModule }}
-
-# - job: Required Files
-#   displayName: Required Files
-#   dependsOn: Filter
-#   condition: succeeded()
-#   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
-#   pool: pool-windows-2019
-
-#   steps:
-#   - template: util/required-files-steps.yml
-
 - job: Build
   displayName: Build
   condition: succeeded()
-  dependsOn: Filter
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
   pool: pool-windows-2019
 
@@ -73,6 +50,7 @@ jobs:
       configuration: ${{ variables.Configuration }}
       testFramework: ${{ variables.TestFramework }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
+      TargetModule: ${{ parameters.TargetModule }}
 
 - job: Analyze
   displayName: Analyze
