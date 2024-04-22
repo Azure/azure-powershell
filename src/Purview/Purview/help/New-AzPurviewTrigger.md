@@ -14,7 +14,7 @@ Creates an instance of a trigger
 
 ```
 New-AzPurviewTrigger -Endpoint <String> -DataSourceName <String> -ScanName <String> -Body <ITrigger>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -88,7 +88,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -112,6 +113,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -176,33 +192,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ITrigger
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-BODY `<ITrigger>`: .
-  - `[IncrementalScanStartTime <DateTime?>]`:
-  - `[Interval <Int32?>]`:
-  - `[RecurrenceEndTime <DateTime?>]`:
-  - `[RecurrenceFrequency <TriggerFrequency?>]`:
-  - `[RecurrenceInterval <String>]`:
-  - `[RecurrenceStartTime <DateTime?>]`:
-  - `[RecurrenceTimeZone <String>]`:
-  - `[ScanLevel <ScanLevelType?>]`:
-  - `[ScheduleAdditionalProperty <IRecurrenceScheduleAdditionalProperties>]`: Dictionary of `<any>`
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[ScheduleHour <Int32[]>]`:
-  - `[ScheduleMinute <Int32[]>]`:
-  - `[ScheduleMonthDay <Int32[]>]`:
-  - `[ScheduleMonthlyOccurrence <IRecurrenceScheduleOccurrence[]>]`:
-    - `[AdditionalProperty <IRecurrenceScheduleOccurrenceAdditionalProperties>]`: Dictionary of `<any>`
-      - `[(Any) <Object>]`: This indicates any property can be added to this object.
-    - `[Day <DayOfWeek?>]`:
-    - `[Occurrence <Int32?>]`:
-  - `[ScheduleWeekDay <DaysOfWeek[]>]`:
 
 ## RELATED LINKS

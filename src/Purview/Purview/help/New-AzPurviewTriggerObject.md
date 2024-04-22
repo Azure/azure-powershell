@@ -19,7 +19,7 @@ New-AzPurviewTriggerObject [-IncrementalScanStartTime <DateTime>] [-Interval <In
  [-ScheduleAdditionalProperty <IRecurrenceScheduleAdditionalProperties>] [-ScheduleHour <Int32[]>]
  [-ScheduleMinute <Int32[]>] [-ScheduleMonthDay <Int32[]>]
  [-ScheduleMonthlyOccurrence <IRecurrenceScheduleOccurrence[]>] [-ScheduleWeekDay <DaysOfWeek[]>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,6 +80,21 @@ Accept wildcard characters: False
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -269,21 +284,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.Trigger
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-SCHEDULEADDITIONALPROPERTY `<IRecurrenceScheduleAdditionalProperties>`: Dictionary of `<any>`.
-  - `[(Any) <Object>]`: This indicates any property can be added to this object.
-
-SCHEDULEMONTHLYOCCURRENCE <IRecurrenceScheduleOccurrence[]>:
-  - `[AdditionalProperty <IRecurrenceScheduleOccurrenceAdditionalProperties>]`: Dictionary of `<any>`
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[Day <DayOfWeek?>]`:
-  - `[Occurrence <Int32?>]`:
 
 ## RELATED LINKS

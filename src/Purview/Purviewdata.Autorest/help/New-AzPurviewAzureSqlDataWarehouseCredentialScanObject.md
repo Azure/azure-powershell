@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSqlDataWarehouseCredentialScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSqlDataWarehouseCredentialScanObject
 schema: 2.0.0
 ---
 
@@ -27,7 +27,7 @@ Create an in-memory object for AzureSqlDataWarehouseCredentialScan.
 
 ### Example 1: Create Azure Sql Data Warehouse Credential scan object
 ```powershell
- New-AzPurviewAzureSqlDataWarehouseCredentialScanObject -Kind 'AzureSqlDataWarehouseCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDataWarehouse' -ScanRulesetType 'System' -ServerEndpoint 'canstzn.database.windows.net' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth'
+New-AzPurviewAzureSqlDataWarehouseCredentialScanObject -Kind 'AzureSqlDataWarehouseCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -DatabaseName 'db' -ScanRulesetName 'AzureSqlDataWarehouse' -ScanRulesetType 'System' -ServerEndpoint 'canstzn.database.windows.net' -CredentialReferenceName 'sqlauth' -CredentialType 'SqlAuth'
 ```
 
 ```output
@@ -229,8 +229,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseCredentialScan
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
