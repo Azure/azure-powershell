@@ -123,8 +123,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 // If it succeeds it will return 'true'.
                 switch (TriggerType) 
                 {
-                    case TriggerType.PullRequest 
-                    {
+                    case TriggerType.PullRequest:
                         try
                         {
                             FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, Trigger)
@@ -137,9 +136,8 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                             FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, Trigger)
                                             .ConfigureAwait(false).GetAwaiter().GetResult().Select(x => x.FileName).ToArray<string>();
                         }
-                    }
-                    case TriggerType.Commit
-                    {
+                        break;
+                    case TriggerType.Commit:
                         try
                         {
                             FilesChanged = client.Repository.Commit.Get(RepositoryOwner, RepositoryName, Trigger)
@@ -152,16 +150,13 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                             FilesChanged = client.Repository.Commit.Get(RepositoryOwner, RepositoryName, Trigger)
                                             .ConfigureAwait(false).GetAwaiter().GetResult().Files.Select(x => x.Filename).ToArray<string>();
                         }
-                    }
-                    case TriggerType.TargetModule
-                    {
+                        break;
+                    case TriggerType.TargetModule:
                         FilesChanged = Trigger.Split(',');
-                    }
-                    default
-                    {
+                        break;
+                    default:
                         FilesChanged = new string[] { };
-                    
-                    }
+                        break;
                 }
             }
             catch (Exception e)
