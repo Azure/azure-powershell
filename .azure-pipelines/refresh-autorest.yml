@@ -55,7 +55,7 @@ jobs:
       script: |
         $autorestPaths = @()
         $autorestModules = Get-ChildItem -Filter "*.Autorest" -Directory -Recurse | Select-Object -ExpandProperty FullName
-        if ("${{ parameters.scope }}" -eq "autorest-v3-v4") {
+        if ("${{ parameters.scope }}" -eq "autorest-all") {
           $autorestPaths = $autorestModules
         }
         elseif ("${{ parameters.scope }}" -eq "autorest-selected") {
