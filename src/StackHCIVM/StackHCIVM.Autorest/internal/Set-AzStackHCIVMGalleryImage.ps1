@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-The operation to Create a gallery image.
+The operation to Update a gallery image.
 Please note some properties can be set only during gallery image creation.
 .Description
-The operation to Create a gallery image.
+The operation to Update a gallery image.
 Please note some properties can be set only during gallery image creation.
 .Example
 {{ Add code here }}

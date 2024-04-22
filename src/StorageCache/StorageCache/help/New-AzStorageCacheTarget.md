@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StorageCache-help.xml
 Module Name: Az.StorageCache
 online version: https://learn.microsoft.com/powershell/module/az.storagecache/new-azstoragecachetarget
 schema: 2.0.0
@@ -20,7 +20,7 @@ New-AzStorageCacheTarget -CacheName <String> -Name <String> -ResourceGroupName <
  [-Junction <INamespaceJunction[]>] [-Nfs3Target <String>] [-Nfs3UsageModel <String>]
  [-Nfs3VerificationTimer <Int32>] [-Nfs3WriteBackTimer <Int32>] [-State <OperationalStateType>]
  [-TargetType <StorageTargetType>] [-UnknownAttribute <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -273,6 +273,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -391,18 +406,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`JUNCTION <INamespaceJunction[]>`: List of cache namespace junctions to target for namespace associations.
-  - `[NamespacePath <String>]`: Namespace path on a cache for a Storage Target.
-  - `[NfsAccessPolicy <String>]`: Name of the access policy applied to this junction.
-  - `[NfsExport <String>]`: NFS export where targetPath exists.
-  - `[TargetPath <String>]`: Path in Storage Target to which namespacePath points.
-
 ## RELATED LINKS
-

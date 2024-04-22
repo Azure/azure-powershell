@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.WindowsIotServices-help.xml
 Module Name: Az.WindowsIotServices
 online version: https://learn.microsoft.com/powershell/module/az.windowsiotservices/get-azwindowsiotservicesdevice
 schema: 2.0.0
@@ -14,25 +14,26 @@ Get the non-security related metadata of a Windows IoT Device Service.
 
 ### List1 (Default)
 ```
-Get-AzWindowsIotServicesDevice [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWindowsIotServicesDevice [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWindowsIotServicesDevice -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzWindowsIotServicesDevice -InputObject <IWindowsIotServicesIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzWindowsIotServicesDevice -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzWindowsIotServicesDevice -InputObject <IWindowsIotServicesIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,6 +45,7 @@ Get the non-security related metadata of a Windows IoT Device Service.
 ```powershell
 Get-AzWindowsIotServicesDevice
 ```
+
 ```output
 Location Name    Type                                Etag
 -------- ----    ----                                ----
@@ -57,6 +59,7 @@ This command gets all Windows IoT services under a subscription.
 ```powershell
 Get-AzWindowsIotServicesDevice -ResourceGroupName azure-rg-test
 ```
+
 ```output
 Location Name    Type                                Etag
 -------- ----    ----                                ----
@@ -70,6 +73,7 @@ This command gets all Windows IoT services under a resource group.
 ```powershell
 Get-AzWindowsIotServicesDevice -ResourceGroupName azure-rg-test -Name wsi-t01
 ```
+
 ```output
 Location Name    Type                                Etag
 -------- ----    ----                                ----
@@ -83,6 +87,7 @@ This command gets a Windows IoT service by name.
 $wsi = New-AzWindowsIotServicesDevice -Name wsi-t01 -ResourceGroupName azure-rg-test -Location eastus -Quantity 10 -BillingDomainName 'microsoft.onmicrosoft.com' -AdminDomainName 'microsoft.onmicrosoft.com'
 Get-AzWindowsIotServicesDevice -InputObject $wsi
 ```
+
 ```output
 Location Name    Type                                Etag
 -------- ----    ----                                ----
@@ -95,6 +100,7 @@ This command gets a Windows IoT service by object.
 ```powershell
 $wsi = New-AzWindowsIotServicesDevice -Name wsi-t01 -ResourceGroupName azure-rg-test -Location eastus -Quantity 10 -BillingDomainName 'microsoft.onmicrosoft.com' -AdminDomainName 'microsoft.onmicrosoft.com' | Get-AzWindowsIotServicesDevice
 ```
+
 ```output
 Location Name    Type                                Etag
 -------- ----    ----                                ----
@@ -106,7 +112,8 @@ This command gets a Windows IoT service by pipeline.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -151,6 +158,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group that contains the Windows IoT Device Service.
 
@@ -171,7 +193,7 @@ The subscription identifier.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List1, Get, List
 Aliases:
 
 Required: False
@@ -194,18 +216,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IWindowsIotServicesIdentity>`: Identity Parameter
-  - `[DeviceName <String>]`: The name of the Windows IoT Device Service.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the Windows IoT Device Service.
-  - `[SubscriptionId <String>]`: The subscription identifier.
-
 ## RELATED LINKS
-
