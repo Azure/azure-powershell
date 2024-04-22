@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Breaking Change] Replaced parameter `EnableRbacAuthorization` by `DisableRbacAuthorization` in `New-AzKeyVault` and `Update-AzKeyVault`.
+    - RBAC will be enabled by default during the process of key vault creation. 
 * Added parameter `PolicyPath` in `Add-AzKeyVaultCertificate` to support custom policy in the process of certificate enrollment. 
 * Upgraded the API version of merging certificate to 7.5. [#24323]
 
@@ -27,7 +29,7 @@
 * [Upcoming Breaking Change] Added breaking change warning message for parameter `EnableRbacAuthorization` of `New-AzKeyVault` and `Update-AzKeyVault`.
     - RBAC will be enabled by default during the process of key vault creation. To disable RBAC authorization, please use parameter 'DisableRbacAuthorization'.
     - Parameter `EnableRbacAuthorization` is expected to be removed in Az.KeyVault 6.0.0 and Az 12.0.0.
-    - Parameter `EnableRbacAuthorization` is expected to be replaced by  `DisableRbacAuthorization`.
+    - Parameter `EnableRbacAuthorization` is expected to be replaced by `DisableRbacAuthorization`.
 * Upgraded Azure.Core to 1.37.0.
 
 ## Version 5.2.1

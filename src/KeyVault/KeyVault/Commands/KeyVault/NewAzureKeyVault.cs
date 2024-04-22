@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     EnabledForDiskEncryption = EnabledForDiskEncryption.IsPresent ? true : null as bool?,
                     EnableSoftDelete = null,
                     EnablePurgeProtection = EnablePurgeProtection.IsPresent ? true : (bool?)null, // false is not accepted
-                    EnableRbacAuthorization = DisableRbacAuthorization.IsPresent ? false : null as bool?,
+                    EnableRbacAuthorization = DisableRbacAuthorization.IsPresent ? false : true,
                     /*
                      * If retention days is not specified, use the default value,
                      * else use the vault user provides
