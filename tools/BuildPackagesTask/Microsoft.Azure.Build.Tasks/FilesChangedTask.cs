@@ -126,14 +126,14 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     case TriggerTypeEnum.PullRequest:
                         try
                         {
-                            FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, Trigger)
+                            FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, Int32.Parse(Trigger))
                                             .ConfigureAwait(false).GetAwaiter().GetResult().Select(x => x.FileName).ToArray<string>();
                         }
                         catch (AuthorizationException e)
                         {
                             Console.WriteLine(e.Message);
                             client = new GitHubClient(new ProductHeaderValue("Azure"));
-                            FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, Trigger)
+                            FilesChanged = client.PullRequest.Files(RepositoryOwner, RepositoryName, Int32.Parse(Trigger))
                                             .ConfigureAwait(false).GetAwaiter().GetResult().Select(x => x.FileName).ToArray<string>();
                         }
                         break;
