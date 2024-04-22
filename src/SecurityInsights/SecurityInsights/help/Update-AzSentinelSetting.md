@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SecurityInsights-help.xml
 Module Name: Az.SecurityInsights
 online version: https://learn.microsoft.com/powershell/module/az.securityinsights/update-azsentinelsetting
 schema: 2.0.0
@@ -14,28 +14,30 @@ Updates setting.
 
 ### UpdateExpandedAnomaliesEyesOnEntityAnalytics (Default)
 ```
-Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -Enabled <Boolean>
- -SettingsName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
+ -SettingsName <String> -Enabled <Boolean> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpandedUeba
 ```
-Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -DataSource <UebaDataSources[]>
- -SettingsName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
+ -SettingsName <String> -DataSource <UebaDataSources[]> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics
 ```
 Update-AzSentinelSetting -InputObject <ISecurityInsightsIdentity> -Enabled <Boolean>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedUeba
 ```
 Update-AzSentinelSetting -InputObject <ISecurityInsightsIdentity> -DataSource <UebaDataSources[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,7 +47,7 @@ Updates setting.
 
 ### Example 1: Update the Anomalies setting
 ```powershell
- Update-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -SettingsName "Anomalies" -Enabled $true
+Update-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -SettingsName "Anomalies" -Enabled $true
 ```
 
 This command updates the Anomalies setting, other settings are: EyesOn, EntityAnalytics and Ueba
@@ -68,7 +70,6 @@ Accept wildcard characters: False
 ```
 
 ### -DataSource
-
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.UebaDataSources[]
@@ -135,6 +136,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -249,36 +265,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
-  - `[ActionId <String>]`: Action ID
-  - `[AlertRuleTemplateId <String>]`: Alert rule template ID
-  - `[AutomationRuleId <String>]`: Automation rule ID
-  - `[BookmarkId <String>]`: Bookmark ID
-  - `[ConsentId <String>]`: consent ID
-  - `[DataConnectorId <String>]`: Connector ID
-  - `[EntityId <String>]`: entity ID
-  - `[EntityQueryId <String>]`: entity query ID
-  - `[EntityQueryTemplateId <String>]`: entity query template ID
-  - `[Id <String>]`: Resource identity path
-  - `[IncidentCommentId <String>]`: Incident comment ID
-  - `[IncidentId <String>]`: Incident ID
-  - `[MetadataName <String>]`: The Metadata name.
-  - `[Name <String>]`: Threat intelligence indicator name field.
-  - `[RelationName <String>]`: Relation Name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleId <String>]`: Alert rule ID
-  - `[SentinelOnboardingStateName <String>]`: The Sentinel onboarding state name. Supports - default
-  - `[SettingsName <String>]`: The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
-  - `[SourceControlId <String>]`: Source control Id
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WorkspaceName <String>]`: The name of the workspace.
-
 ## RELATED LINKS
-

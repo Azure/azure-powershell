@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SecurityInsights-help.xml
 Module Name: Az.SecurityInsights
 online version: https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelmetadata
 schema: 2.0.0
@@ -14,21 +14,21 @@ Get a Metadata.
 
 ### List (Default)
 ```
-Get-AzSentinelMetadata -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String[]>]
+Get-AzSentinelMetadata -ResourceGroupName <String> [-SubscriptionId <String[]>] -WorkspaceName <String>
  [-Filter <String>] [-Orderby <String>] [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzSentinelMetadata -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSentinelMetadata -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzSentinelMetadata -InputObject <ISecurityInsightsIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,13 +38,13 @@ Get a Metadata.
 
 ### Example 1: Get Solution metadata from the workspace
 ```powershell
- Get-AzSentinelMetadata -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
+Get-AzSentinelMetadata -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName"
 ```
 
 ```output
 Etag    Name                                                SystemDataCreatedAt     SystemDataCreatedBy SystemDataCreatedByType
 ----    ----                                                -------------------     ------------------- -----------
-        azuresentinel.azure-sentinel-solution-slackaudit    3/11/2022 11:20:19 PM   user@domain.local   User       
+        azuresentinel.azure-sentinel-solution-slackaudit    3/11/2022 11:20:19 PM   user@domain.local   User
 ```
 
 This command lists all Solution metadata for a workspace.
@@ -130,32 +130,31 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Skip
-Used to skip n elements in the OData query (offset).
-Returns a nextLink to the next page of results if there are any left.
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
-Type: System.Int32
-Parameter Sets: List
+Type: System.String
+Parameter Sets: List, Get
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -167,7 +166,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -198,10 +197,26 @@ The name of the workspace.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Skip
+Used to skip n elements in the OData query (offset).
+Returns a nextLink to the next page of results if there are any left.
+
+```yaml
+Type: System.Int32
+Parameter Sets: List
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -221,36 +236,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
-  - `[ActionId <String>]`: Action ID
-  - `[AlertRuleTemplateId <String>]`: Alert rule template ID
-  - `[AutomationRuleId <String>]`: Automation rule ID
-  - `[BookmarkId <String>]`: Bookmark ID
-  - `[ConsentId <String>]`: consent ID
-  - `[DataConnectorId <String>]`: Connector ID
-  - `[EntityId <String>]`: entity ID
-  - `[EntityQueryId <String>]`: entity query ID
-  - `[EntityQueryTemplateId <String>]`: entity query template ID
-  - `[Id <String>]`: Resource identity path
-  - `[IncidentCommentId <String>]`: Incident comment ID
-  - `[IncidentId <String>]`: Incident ID
-  - `[MetadataName <String>]`: The Metadata name.
-  - `[Name <String>]`: Threat intelligence indicator name field.
-  - `[RelationName <String>]`: Relation Name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleId <String>]`: Alert rule ID
-  - `[SentinelOnboardingStateName <String>]`: The Sentinel onboarding state name. Supports - default
-  - `[SettingsName <String>]`: The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
-  - `[SourceControlId <String>]`: Source control Id
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WorkspaceName <String>]`: The name of the workspace.
-
 ## RELATED LINKS
-

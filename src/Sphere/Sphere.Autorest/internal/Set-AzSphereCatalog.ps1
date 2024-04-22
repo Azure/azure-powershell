@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a Catalog
+Update a Catalog
 .Description
-Create a Catalog
+Update a Catalog
 .Example
 {{ Add code here }}
 .Example

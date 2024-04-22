@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SecurityInsights-help.xml
 Module Name: Az.SecurityInsights
 online version: https://learn.microsoft.com/powershell/module/az.securityinsights/remove-azsentinelentityquery
 schema: 2.0.0
@@ -14,14 +14,15 @@ Delete the entity query.
 
 ### Delete (Default)
 ```
-Remove-AzSentinelEntityQuery -Id <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzSentinelEntityQuery -Id <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzSentinelEntityQuery -InputObject <ISecurityInsightsIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,14 +32,14 @@ Delete the entity query.
 
 ### Example 1: Remove Entity Query
 ```powershell
- Remove-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "myEntityQueryTemplateId"
+Remove-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "myEntityQueryTemplateId"
 ```
 
 This command removes a specific entity query based on the entity query Id
 
 ### Example 2: Remove an Entity Query based on the title
 ```powershell
- $queryTemplateId = Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" | Where-Object {$_.Title -eq "The user has created an account"}
+$queryTemplateId = Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" | Where-Object {$_.Title -eq "The user has created an account"}
 Remove-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id $queryTemplateId.Name
 ```
 
@@ -100,6 +101,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -198,36 +214,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
-  - `[ActionId <String>]`: Action ID
-  - `[AlertRuleTemplateId <String>]`: Alert rule template ID
-  - `[AutomationRuleId <String>]`: Automation rule ID
-  - `[BookmarkId <String>]`: Bookmark ID
-  - `[ConsentId <String>]`: consent ID
-  - `[DataConnectorId <String>]`: Connector ID
-  - `[EntityId <String>]`: entity ID
-  - `[EntityQueryId <String>]`: entity query ID
-  - `[EntityQueryTemplateId <String>]`: entity query template ID
-  - `[Id <String>]`: Resource identity path
-  - `[IncidentCommentId <String>]`: Incident comment ID
-  - `[IncidentId <String>]`: Incident ID
-  - `[MetadataName <String>]`: The Metadata name.
-  - `[Name <String>]`: Threat intelligence indicator name field.
-  - `[RelationName <String>]`: Relation Name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleId <String>]`: Alert rule ID
-  - `[SentinelOnboardingStateName <String>]`: The Sentinel onboarding state name. Supports - default
-  - `[SettingsName <String>]`: The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
-  - `[SourceControlId <String>]`: Source control Id
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WorkspaceName <String>]`: The name of the workspace.
-
 ## RELATED LINKS
-

@@ -16,20 +16,20 @@ Retrieves the description for the specified rule.
 ```
 Get-AzServiceBusRule -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  -SubscriptionName <String> -TopicName <String> [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -SubscriptionName <String> -TopicName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzServiceBusRule -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,6 +132,21 @@ Parameter Sets: List, Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SecurityInsights-help.xml
 Module Name: Az.SecurityInsights
 online version: https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelincidentteam
 schema: 2.0.0
@@ -15,15 +15,16 @@ Creates a Microsoft team to investigate the incident by sharing information and 
 ### CreateExpanded (Default)
 ```
 New-AzSentinelIncidentTeam -IncidentId <String> -ResourceGroupName <String> -WorkspaceName <String>
- -TeamName <String> [-SubscriptionId <String>] [-GroupId <String[]>] [-MemberId <String[]>]
- [-TeamDescription <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -TeamName <String> [-GroupId <String[]>] [-MemberId <String[]>]
+ [-TeamDescription <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzSentinelIncidentTeam -IncidentId <String> -ResourceGroupName <String> -WorkspaceName <String>
- -TeamProperty <ITeamProperties> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] -TeamProperty <ITeamProperties> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +34,7 @@ Creates a Microsoft team to investigate the incident by sharing information and 
 
 ### Example 1: Create an Incident Teams Room
 ```powershell
- $incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id "myIncidentId"
+$incident = Get-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id "myIncidentId"
  New-AzSentinelIncidentTeam -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId ($incident.Name) -TeamName ("Incident "+$incident.incidentNumber+": "+$incident.title)
 ```
 
@@ -103,6 +104,21 @@ List of member IDs to add to the team
 Type: System.String[]
 Parameter Sets: CreateExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -247,18 +263,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`TEAMPROPERTY <ITeamProperties>`: Describes team properties
-  - `TeamName <String>`: The name of the team
-  - `[GroupId <String[]>]`: List of group IDs to add their members to the team
-  - `[MemberId <String[]>]`: List of member IDs to add to the team
-  - `[TeamDescription <String>]`: The description of the team
-
 ## RELATED LINKS
-
