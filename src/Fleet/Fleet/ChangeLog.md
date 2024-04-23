@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 * Introduced secrets detection feature to safeguard sensitive data.
+* Upgrade managed identity parameters
+* Update example for new managed identity
+* Update command description
 
 ## Version 0.1.1
 * Introduced secrets detection feature to safeguard sensitive data.
