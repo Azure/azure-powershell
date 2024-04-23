@@ -14,32 +14,32 @@ Gets security alerts that were detected by Azure Security Center
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecurityAlert [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+Get-AzSecurityAlert [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ### ResourceGroupScope
 ```
 Get-AzSecurityAlert -ResourceGroupName <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupLevelResource
 ```
 Get-AzSecurityAlert -ResourceGroupName <String> -Name <String> -Location <String>
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
 ```
 Get-AzSecurityAlert -Name <String> -Location <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Get-AzSecurityAlert -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -395,21 +395,6 @@ Parameter Sets: ResourceGroupLevelResource, SubscriptionLevelResource
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
