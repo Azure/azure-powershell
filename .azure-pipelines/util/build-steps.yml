@@ -21,6 +21,12 @@ steps:
     targetType: inline
     pwsh: true
     script: |
+      $subTasksFilePath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'SubTasksFile.txt'
+      Write-Host "##vso[task.setvariable variable=SubTasksFilePath]$subTasksFilePath"
+
+      $filesChangedOutputPath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'FilesChanged.txt'
+      Write-Host "##vso[task.setvariable variable=FilesChangedOutputPath]$filesChangedOutputPath"
+
       $reason = "$(Build.Reason)"
       switch ($reason) {
         { $reason -in @('IndividualCI', 'BatchedCI') } {
@@ -57,16 +63,13 @@ steps:
       }
       Write-Host "##vso[task.setvariable variable=TriggerType]$triggerType"
       Write-Host "##vso[task.setvariable variable=Trigger]$trigger"
-      Write-Host "Filter files triggered by ${reason}: ${trigger}" -ForegroundColor DarkYellow
-
-      $subTasksFilePath = Join-Path "$(Build.SourcesDirectory)" 'artifacts' 'SubTasksFile.txt'
-      Write-Host "##vso[task.setvariable variable=SubTasksFilePath]$subTasksFilePath"
+      Write-Host "##[section]Filter files triggered by ${reason}: ${trigger}" -ForegroundColor DarkYellow
 - task: DotNetCoreCLI@2
   displayName: Filter changed files
   inputs:
     command: custom
     custom: msbuild
-    arguments: 'build.proj /t:FilterBuild /p:TriggerType=$(TriggerType);Trigger=$(Trigger);SubTasksFilePath=$(SubTasksFilePath)'
+    arguments: 'build.proj /t:FilterBuild /p:TriggerType=$(TriggerType);Trigger=$(Trigger);FilesChangedOutputPath=$(FilesChangedOutputPath);SubTasksFilePath=$(SubTasksFilePath)'
   env:
       OCTOKITPAT: $(GithubToken)
       PowerShellPlatform: ${{ parameters.PowerShellPlatform }}
@@ -93,7 +96,21 @@ steps:
     targetType: inline
     pwsh: true
     script: |
-      Write-Host "This task is to check required files"
+      Write-Host "##[group]#1. Analyzing generation Id for autorest generated modules"
+      $noGenerateInfo = @()
+      $modules=Get-Content $(FilesChangedOutputPath) -OutVariable paths | foreach-object { if($_ -match "^src.*\.Autorest"){ Write-Output $Matches[0] } } | Select-Object -Unique
+      foreach ($module in $modules) {
+        $pattern = "^$module.*generate-info.json"
+        foreach ($path in $paths) {
+          if ($path -match $pattern) {
+            continue
+          }
+        }
+        $noGenerateInfo += $module
+      }
+      if ($noGenerateInfo -and $noGenerateInfo.Count -gt 0) {
+        Write-Error
+      }
 - task: NodeTool@0
   displayName: Install Autorest
   inputs:
