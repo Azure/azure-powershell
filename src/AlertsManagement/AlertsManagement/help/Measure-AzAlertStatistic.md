@@ -17,7 +17,7 @@ Gets Alert Summary Information
 Measure-AzAlertStatistic -GroupBy <String> [-TargetResourceType <String>] [-TargetResourceGroup <String>]
  [-MonitorService <String>] [-MonitorCondition <String>] [-Severity <String>] [-State <String>]
  [-AlertRuleId <String>] [-TimeRange <String>] [-CustomTimeRange <String>] [-IncludeSmartGroupsCount <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SummaryTargetResourceIdFilter
@@ -25,7 +25,7 @@ Measure-AzAlertStatistic -GroupBy <String> [-TargetResourceType <String>] [-Targ
 Measure-AzAlertStatistic -GroupBy <String> -TargetResourceId <String> [-MonitorService <String>]
  [-MonitorCondition <String>] [-Severity <String>] [-State <String>] [-AlertRuleId <String>]
  [-TimeRange <String>] [-CustomTimeRange <String>] [-IncludeSmartGroupsCount <Boolean>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -139,6 +139,21 @@ Filter on Moniter Service
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
