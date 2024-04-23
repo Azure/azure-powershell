@@ -253,7 +253,7 @@ foreach ($subModuleName in $outdatedSubModule) {
         Write-Error "Failed to generate code for module: $ModuleRootName, $subModuleName"
         Write-Error "========= Start of error log for $ModuleRootName, $subModuleName ========="
         Write-Error "log can be found at $generatedLog"
-        $generateLogDirectory | Get-Content | Foreach-Object { Write-Error $_ }
+        Get-Content $generateLogDirectory | Foreach-Object { Write-Error $_ }
         Write-Error "========= End of error log for $ModuleRootName, $subModuleName"
     } else {
         $subModuleGeneratedDirectory = Join-Path $generatedDirectory $ModuleRootName $subModuleName
