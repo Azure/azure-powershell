@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedNetwork-help.xml
 Module Name: Az.ConnectedNetwork
 online version: https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkvendorskupreview
 schema: 2.0.0
@@ -14,8 +14,8 @@ Creates or updates preview information of a vendor sku.
 
 ```
 New-AzConnectedNetworkVendorSkuPreview -PreviewSubscription <String> -SkuName <String> -VendorName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,6 @@ SystemDataLastModifiedAt     : 12/6/2021 5:37:35 AM
 SystemDataLastModifiedBy     : user@microsoft.com
 SystemDataLastModifiedByType : User
 Type                         : microsoft.hybridnetwork/vendors/vendorskus/previewsubscriptions
-
 ```
 
 Creating preview subscription for subscription xxxxx-00000-xxxxx-00000 of a vendor sku mySku with vendor name myVendor, which is allowed to deploy network function.
@@ -63,7 +62,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -101,6 +101,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -194,7 +209,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.CostManagement-help.xml
 Module Name: Az.CostManagement
 online version: https://learn.microsoft.com/powershell/module/az.costmanagement/invoke-azcostmanagementquery
 schema: 2.0.0
@@ -17,7 +17,8 @@ Query the usage data for scope defined.
 Invoke-AzCostManagementQuery -Scope <String> -Timeframe <TimeframeType> -Type <ExportType>
  [-ConfigurationColumn <String[]>] [-DatasetAggregation <Hashtable>] [-DatasetFilter <IQueryFilter>]
  [-DatasetGranularity <GranularityType>] [-DatasetGrouping <IQueryGrouping[]>] [-TimePeriodFrom <DateTime>]
- [-TimePeriodTo <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-TimePeriodTo <DateTime>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UsageExpanded1
@@ -26,7 +27,8 @@ Invoke-AzCostManagementQuery -ExternalCloudProviderId <String>
  -ExternalCloudProviderType <ExternalCloudProviderType> -Timeframe <TimeframeType> -Type <ExportType>
  [-ConfigurationColumn <String[]>] [-DatasetAggregation <Hashtable>] [-DatasetFilter <IQueryFilter>]
  [-DatasetGranularity <GranularityType>] [-DatasetGrouping <IQueryGrouping[]>] [-TimePeriodFrom <DateTime>]
- [-TimePeriodTo <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-TimePeriodTo <DateTime>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -186,6 +188,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Scope
 This includes 'subscriptions/{subscriptionId}/' for subscription scope, 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for resourceGroup scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/departments/{departmentId}' for Department scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/enrollmentAccounts/{enrollmentAccountId}' for EnrollmentAccount scope, 'providers/Microsoft.Management/managementGroups/{managementGroupId} for Management Group scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billingProfile scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}/invoiceSections/{invoiceSectionId}' for invoiceSection scope, and 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/customers/{customerId}' specific for partners.
 
@@ -303,25 +320,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`DATASETFILTER <IQueryFilter>`: Has filter expression to use in the query.
-  - `[And <IQueryFilter[]>]`: The logical "AND" expression. Must have at least 2 items.
-  - `[Dimensions <IQueryComparisonExpression>]`: Has comparison expression for a dimension
-    - `Name <String>`: The name of the column to use in comparison.
-    - `Value <String[]>`: Array of values to use for comparison
-  - `[Not <IQueryFilter>]`: The logical "NOT" expression.
-  - `[Or <IQueryFilter[]>]`: The logical "OR" expression. Must have at least 2 items.
-  - `[Tag <IQueryComparisonExpression>]`: Has comparison expression for a tag
-
-`DATASETGROUPING <IQueryGrouping[]>`: Array of group by expression to use in the query.
-  - `Name <String>`: The name of the column to group.
-  - `Type <QueryColumnType>`: Has type of the column to group.
-
 ## RELATED LINKS
-

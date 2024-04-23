@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedNetwork-help.xml
 Module Name: Az.ConnectedNetwork
 online version: https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkvendorfunctionroleinstance
 schema: 2.0.0
@@ -15,19 +15,21 @@ Gets the information of role instance of vendor network function.
 ### List (Default)
 ```
 Get-AzConnectedNetworkVendorFunctionRoleInstance -LocationName <String> -ServiceKey <String>
- -VendorName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] -VendorName <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzConnectedNetworkVendorFunctionRoleInstance -LocationName <String> -Name <String> -ServiceKey <String>
- -VendorName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] -VendorName <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzConnectedNetworkVendorFunctionRoleInstance -InputObject <IConnectedNetworkIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,7 +55,6 @@ SystemDataLastModifiedAt     :
 SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType :
 Type                         :
-
 ```
 
 Getting the role instance information of role hpehss with Location centraluseuap, Service key 1234-abcd-4321-dcba and vendor name myVendor.
@@ -77,7 +78,6 @@ SystemDataLastModifiedAt     :
 SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType :
 Type                         :
-
 ```
 
 Getting the role instance information of role hpehss with Location centraluseuap, Service key 1234-abcd-4321-dcba, vendor name myVendor and the given subscription.
@@ -85,7 +85,8 @@ Getting the role instance information of role hpehss with Location centraluseuap
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -120,7 +121,7 @@ The Azure region where the network function resource was created by customer.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -145,12 +146,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ServiceKey
 The GUID for the vendor network function.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -165,7 +181,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -180,7 +196,7 @@ The name of the vendor.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -203,26 +219,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IConnectedNetworkIdentity>`: Identity Parameter
-  - `[DeviceName <String>]`: The name of the device resource.
-  - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.
-  - `[NetworkFunctionName <String>]`: The name of the network function.
-  - `[PreviewSubscription <String>]`: Preview subscription ID.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RoleInstanceName <String>]`: The name of the role instance of the vendor network function.
-  - `[ServiceKey <String>]`: The GUID for the vendor network function.
-  - `[SkuName <String>]`: The name of the sku.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VendorName <String>]`: The name of the vendor.
-  - `[VendorSkuName <String>]`: The name of the network function sku.
-
 ## RELATED LINKS
-

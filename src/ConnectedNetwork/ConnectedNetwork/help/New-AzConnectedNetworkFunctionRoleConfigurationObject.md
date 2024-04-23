@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedNetwork-help.xml
 Module Name: Az.ConnectedNetwork
 online version: https://learn.microsoft.com/powershell/module/az.ConnectedNetwork/new-AzConnectedNetworkFunctionRoleConfigurationObject
 schema: 2.0.0
@@ -20,7 +20,8 @@ New-AzConnectedNetworkFunctionRoleConfigurationObject [-CustomProfileMetadataCon
  [-OSProfileAdminUsername <String>] [-OSProfileCustomData <String>] [-OSProfileCustomDataRequired <Boolean>]
  [-RoleName <String>] [-RoleType <NetworkFunctionRoleConfigurationType>] [-SshPublicKey <ISshPublicKey[]>]
  [-StorageProfileDataDisk <IDataDisk[]>] [-UserDataParameter <IAny>] [-UserDataTemplate <IAny>]
- [-VhdUri <String>] [-VirtualMachineSize <VirtualMachineSizeTypes>] [<CommonParameters>]
+ [-VhdUri <String>] [-VirtualMachineSize <VirtualMachineSizeTypes>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +44,6 @@ $role = New-AzConnectedNetworkFunctionRoleConfigurationObject -NetworkInterface 
 RoleName RoleType       VirtualMachineSize
 -------- --------       ------------------
 hpehss   VirtualMachine Standard_D3_v2
-
 ```
 
 Creating 2 ip configuration objects (ipconf1 and ipconf2) with dynamic allocation method and IPv4.
@@ -214,19 +214,19 @@ Accept wildcard characters: False
 Specifies the name of the administrator account.
 
 
- **Windows-only restriction:** Cannot end in "."
+ **Windows-only restriction:** Cannot end in "." 
 
  **Disallowed values:** "administrator", "admin", "user", "user1", "test", "user2", "test1", "user3", "admin1", "1", "123", "a", "actuser", "adm", "admin2", "aspnet", "backup", "console", "david", "guest", "john", "owner", "root", "server", "sql", "support", "support_388945a0", "sys", "test2", "test3", "user4", "user5".
 
 
- **Minimum-length (Linux):** 1  character
+ **Minimum-length (Linux):** 1  character 
 
- **Max-length (Linux):** 64 characters
+ **Max-length (Linux):** 64 characters 
 
- **Max-length (Windows):** 20 characters
+ **Max-length (Windows):** 20 characters  
 
-\<li\> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-\<li\> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://learn.microsoft.com/azure/virtual-machines/linux/usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+\<li\> For root access to the Linux VM, see [Using root privileges on Linux virtual machines in Azure](https://learn.microsoft.com/azure/virtual-machines/virtual-machines-linux-use-root-privileges?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+\<li\> For a list of built-in system users on Linux that should not be used in this field, see [Selecting User Names for Linux on Azure](https://learn.microsoft.com/azure/virtual-machines/virtual-machines-linux-usernames?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ```yaml
 Type: System.String
@@ -246,15 +246,15 @@ The base-64 encoded string is decoded to a binary array that is saved as a file 
 The maximum length of the binary array is 65535 bytes.
 
 
- **Note: Do not pass any secrets or passwords in customData property**
+ **Note: Do not pass any secrets or passwords in customData property** 
 
  This property cannot be updated after the VM is created.
 
 
  customData is passed to the VM to be saved as a file.
-For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/)
+For more information see [Custom Data on Azure VMs](https://azure.microsoft.com/en-us/blog/custom-data-and-cloud-init-on-windows-azure/) 
 
- For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://learn.microsoft.com/azure/virtual-machines/linux/using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+ For using cloud-init for your Linux VM, see [Using cloud-init to customize a Linux VM during creation](https://learn.microsoft.com/azure/virtual-machines/virtual-machines-linux-using-cloud-init?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ```yaml
 Type: System.String
@@ -275,6 +275,21 @@ Indicates if custom data is required to deploy this role.
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -418,33 +433,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-NETWORKINTERFACE <INetworkInterface[]>: The network interface configurations.
-  - `[IPConfiguration <INetworkInterfaceIPConfiguration[]>]`: A list of IP configurations of the network interface.
-    - `[DnsServer <String[]>]`: The list of DNS servers IP addresses.
-    - `[Gateway <String>]`: The value of the gateway.
-    - `[IPAddress <String>]`: The value of the IP address.
-    - `[IPAllocationMethod <IPAllocationMethod?>]`: IP address allocation method.
-    - `[IPVersion <IPVersion?>]`: IP address version.
-    - `[Subnet <String>]`: The value of the subnet.
-  - `[MacAddress <String>]`: The MAC address of the network interface.
-  - `[Name <String>]`: The name of the network interface.
-  - `[VMSwitchType <VMSwitchType?>]`: The type of the VM switch.
-
-SSHPUBLICKEY <ISshPublicKey[]>: The list of SSH public keys used to authenticate with linux based VMs.
-  - `[KeyData <String>]`: SSH public key certificate used to authenticate with the VM through ssh. The key needs to be at least 2048-bit and in ssh-rsa format.    For creating ssh keys, see [Create SSH keys on Linux and Mac for Linux VMs in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-  - `[Path <String>]`: Specifies the full path on the created VM where ssh public key is stored. If the file already exists, the specified key is appended to the file. Example: /home/user/.ssh/authorized_keys
-
-STORAGEPROFILEDATADISK <IDataDisk[]>: Specifies the parameters that are used to add a data disk to a virtual machine.
-  - `[CreateOption <DiskCreateOptionTypes?>]`: Specifies how the virtual machine should be created.
-  - `[DiskSizeGb <Int32?>]`: Specifies the size of an empty disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image.
-  - `[Name <String>]`: The name of data disk.
-
 ## RELATED LINKS
-
