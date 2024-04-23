@@ -1,6 +1,6 @@
 {
   "resourceType": "diagnostics",
-  "apiVersion": "2023-06-01",
+  "apiVersion": "2024-03-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.selfhelp"
   },
