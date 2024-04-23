@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ServiceLinker-help.xml
 Module Name: Az.ServiceLinker
 online version: https://learn.microsoft.com/powershell/module/az.servicelinker/new-azservicelinkerforspringcloud
 schema: 2.0.0
@@ -13,15 +13,15 @@ Create or update linker resource in spring cloud.
 ## SYNTAX
 
 ```
-New-AzServiceLinkerForSpringCloud -AuthInfo <IAuthInfoBase> -TargetService <ITargetServiceBase>
- -AppName <String> -ResourceGroupName <String> -ServiceName <String> [-Name <String>] [-ResourceUri <String>]
- [-ClientType <ClientType>] [-ConfigurationInfoAction <ActionType>]
+New-AzServiceLinkerForSpringCloud [-ResourceUri <String>] [-Name <String>] -AuthInfo <IAuthInfoBase>
+ -TargetService <ITargetServiceBase> [-ClientType <ClientType>] [-ConfigurationInfoAction <ActionType>]
  [-ConfigurationInfoAdditionalConfiguration <Hashtable>] [-ConfigurationInfoCustomizedKey <Hashtable>]
  [-FirewallRuleAzureService <AllowType>] [-FirewallRuleCallerClientIP <AllowType>]
  [-FirewallRuleIPRange <String[]>] [-PublicNetworkSolutionAction <ActionType>] [-Scope <String>]
  [-SecretStoreKeyVaultId <String>] [-SecretStoreKeyVaultSecretName <String>]
- [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] [-AsJob] [-DeploymentName <String>]
- [-NoWait] [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] -ServiceName <String> -AppName <String>
+ -ResourceGroupName <String> [-DeploymentName <String>] [-SubscriptionId <String>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,9 +35,7 @@ $target=New-AzServiceLinkerAzureResourceObject -Id /subscriptions/00000000-0000-
 
 $authInfo=New-AzServiceLinkerSecretAuthInfoObject -Name testUser -SecretValue ***  
 
-New-AzServiceLinkerForSpringCloud -TargetService $target -AuthInfo $auth -ClientType dotnet -LinkerName testLinker -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group 
-
-
+New-AzServiceLinkerForSpringCloud -TargetService $target -AuthInfo $auth -ClientType dotnet -LinkerName testLinker -ServiceName servicelinker-springcloud -AppName appconfiguration -DeploymentName "default" -ResourceGroupName servicelinker-test-group
 ```
 
 ```output
@@ -185,7 +183,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: "default"
 Accept pipeline input: False
@@ -260,6 +258,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -467,18 +480,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`AUTHINFO <IAuthInfoBase>`: The authentication type.
-  - `AuthType <AuthType>`: The authentication type.
-
-`TARGETSERVICE <ITargetServiceBase>`: The target service properties
-  - `Type <TargetServiceType>`: The target service type.
-
 ## RELATED LINKS
-

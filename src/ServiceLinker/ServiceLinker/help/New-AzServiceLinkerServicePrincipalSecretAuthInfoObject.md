@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ServiceLinker-help.xml
 Module Name: Az.ServiceLinker
 online version: https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerserviceprincipalsecretauthinfoobject
 schema: 2.0.0
@@ -14,7 +14,7 @@ Create an in-memory object for ServicePrincipalSecretAuthInfo.
 
 ```
 New-AzServiceLinkerServicePrincipalSecretAuthInfoObject -ClientId <String> -PrincipalId <String>
- -Secret <String> [<CommonParameters>]
+ -Secret <String> [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,11 +28,9 @@ New-AzServiceLinkerServicePrincipalSecretAuthInfoObject -ClientId 00000000-0000-
 ```
 
 ```output
-
 AuthType               ClientId                             PrincipalId
 --------               --------                             -----------
 servicePrincipalSecret 00000000-0000-0000-0000-000000000000 00000000-0000-0000-0000-00…
-
 ```
 
 Create AuthInfo of service principal secret type
@@ -69,6 +67,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Secret
 Secret for servicePrincipal auth.
 
@@ -95,7 +108,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

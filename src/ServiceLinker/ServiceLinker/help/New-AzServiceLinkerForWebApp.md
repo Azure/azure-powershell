@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ServiceLinker-help.xml
 Module Name: Az.ServiceLinker
 online version: https://learn.microsoft.com/powershell/module/az.servicelinker/new-azservicelinkerforwebapp
 schema: 2.0.0
@@ -13,15 +13,15 @@ Create or update linker resource in webapp.
 ## SYNTAX
 
 ```
-New-AzServiceLinkerForWebApp -AuthInfo <IAuthInfoBase> -TargetService <ITargetServiceBase>
- -ResourceGroupName <String> -WebApp <String> [-Name <String>] [-ResourceUri <String>]
- [-ClientType <ClientType>] [-ConfigurationInfoAction <ActionType>]
+New-AzServiceLinkerForWebApp [-ResourceUri <String>] [-Name <String>] -AuthInfo <IAuthInfoBase>
+ -TargetService <ITargetServiceBase> [-ClientType <ClientType>] [-ConfigurationInfoAction <ActionType>]
  [-ConfigurationInfoAdditionalConfiguration <Hashtable>] [-ConfigurationInfoCustomizedKey <Hashtable>]
  [-FirewallRuleAzureService <AllowType>] [-FirewallRuleCallerClientIP <AllowType>]
  [-FirewallRuleIPRange <String[]>] [-PublicNetworkSolutionAction <ActionType>] [-Scope <String>]
  [-SecretStoreKeyVaultId <String>] [-SecretStoreKeyVaultSecretName <String>]
- [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] -ResourceGroupName <String>
+ -WebApp <String> [-SubscriptionId <String>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -236,6 +236,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkSolutionAction
 Optional.
 Indicates public network solution.
@@ -436,18 +451,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`AUTHINFO <IAuthInfoBase>`: The authentication type.
-  - `AuthType <AuthType>`: The authentication type.
-
-`TARGETSERVICE <ITargetServiceBase>`: The target service properties
-  - `Type <TargetServiceType>`: The target service type.
-
 ## RELATED LINKS
-

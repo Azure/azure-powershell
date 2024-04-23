@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ResourceMover-help.xml
 Module Name: Az.ResourceMover
 online version: https://learn.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverprepare
 schema: 2.0.0
@@ -18,8 +18,9 @@ To aid the user to prerequisite the operation the client can call operation with
 
 ```
 Invoke-AzResourceMoverPrepare -MoveCollectionName <String> -ResourceGroupName <String>
- -MoveResource <String[]> [-SubscriptionId <String>] [-MoveResourceInputType <MoveResourceInputType>]
- [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -MoveResource <String[]> [-MoveResourceInputType <MoveResourceInputType>]
+ [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +106,6 @@ Name           : c7b13d43-a6fe-48e3-bb8c-3ad9e6ba3355
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/9/2021 11:05:27 AM
 Status         : Succeeded
-
 ```
 
 Initiate prepare for the set of resources in the Move Collection using "SourceARMID".
@@ -203,6 +203,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The Resource Group Name.
 
@@ -290,7 +305,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
