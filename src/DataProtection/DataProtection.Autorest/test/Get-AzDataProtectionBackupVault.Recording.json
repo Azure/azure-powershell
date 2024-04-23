@@ -1,17 +1,17 @@
 {
-  "Get-AzDataProtectionBackupVault+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault?api-version=2023-12-01+1": {
+  "Get-AzDataProtectionBackupVault+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault?api-version=2024-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault?api-version=2023-12-01",
+      "RequestUri": "https://management.azure.com/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/sarath-rg/providers/Microsoft.DataProtection/backupVaults/sarath-vault?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "1" ],
-        "x-ms-client-request-id": [ "ff2d7faa-3ae9-4d83-aaa6-cb7804dc67aa" ],
+        "x-ms-unique-id": [ "132" ],
+        "x-ms-client-request-id": [ "56d322e7-2a1e-42cf-8019-7dfb7208a095" ],
         "CommandName": [ "Get-AzDataProtectionBackupVault" ],
         "FullCommandName": [ "Get-AzDataProtectionBackupVault_Get2" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.3.1", "PSVersion/v7.4.1", "Az.DataProtection/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v11.3.1", "PSVersion/v7.4.2", "Az.DataProtection/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -22,22 +22,23 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
+        "x-ms-throttling-version": [ "v1" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "4dd65a41-83dc-4b28-be57-ef0f19c394d7" ],
-        "x-ms-correlation-request-id": [ "4dd65a41-83dc-4b28-be57-ef0f19c394d7" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20240325T013151Z:4dd65a41-83dc-4b28-be57-ef0f19c394d7" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
+        "x-ms-request-id": [ "410e1d35-48da-4252-80d4-0100e1b136e7" ],
+        "x-ms-correlation-request-id": [ "410e1d35-48da-4252-80d4-0100e1b136e7" ],
+        "x-ms-routing-request-id": [ "WESTINDIA:20240421T143301Z:410e1d35-48da-4252-80d4-0100e1b136e7" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9DAFFF046CBD488B8A8F73A3BB33F385 Ref B: MAA201060513033 Ref C: 2024-03-25T01:31:50Z" ],
-        "Date": [ "Mon, 25 Mar 2024 01:31:50 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 824EBBD68BAC4ED2A8A970B612B6AFEC Ref B: MAA201060513019 Ref C: 2024-04-21T14:33:00Z" ],
+        "Date": [ "Sun, 21 Apr 2024 14:33:01 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "682" ],
+        "Content-Length": [ "709" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"location\":\"centraluseuap\",\"tags\":{\"A\":\"b\"},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"fcb264a5-d728-46c8-8565-69fc1fbe4e0c\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"featureSettings\":{\"crossSubscriptionRestoreSettings\":{\"state\":\"Enabled\"}},\"secureScore\":\"None\",\"replicatedRegions\":[]},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/sarath-rg/providers/Microsoft.DataProtection/BackupVaults/sarath-vault\",\"name\":\"sarath-vault\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "Content": "{\"location\":\"centraluseuap\",\"tags\":{\"A\":\"b\"},\"identity\":{\"type\":\"SystemAssigned\",\"principalId\":\"fcb264a5-d728-46c8-8565-69fc1fbe4e0c\",\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"featureSettings\":{\"crossSubscriptionRestoreSettings\":{\"state\":\"Enabled\"}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[]},\"id\":\"/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/sarath-rg/providers/Microsoft.DataProtection/BackupVaults/sarath-vault\",\"name\":\"sarath-vault\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
       "isContentBase64": false
     }
   }

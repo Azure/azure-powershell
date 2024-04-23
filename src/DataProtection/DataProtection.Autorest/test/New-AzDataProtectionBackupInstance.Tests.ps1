@@ -23,7 +23,7 @@ Describe 'New-AzDataProtectionBackupInstance' {
         $secretURI = $env.TestOssBackupScenario.SecretURI
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName $rgName  -VaultName  $vaultName
-        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | where {$_.Name -eq $policyName}
+        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | Where-Object {$_.Name -eq $policyName}
 
         $instance  = Get-AzDataProtectionBackupInstance -Subscription $sub -ResourceGroup $rgName -Vault $vaultName | Where-Object {($_.Property.DataSourceInfo.Type -eq "Microsoft.DBforPostgreSQL/servers/databases") -and ($_.Property.DataSourceInfo.ResourceId -match $serverName)}
 
@@ -55,8 +55,8 @@ Describe 'New-AzDataProtectionBackupInstance' {
         $clusterName = $env.TestAksRestoreScenario.ClusterName
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
-        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where { $_.Name -match $clusterName }
-        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | where {$_.Name -eq $policyName}
+        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName }
+        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | Where-Object {$_.Name -eq $policyName}
 
         # remove permissions
         #
@@ -88,13 +88,13 @@ Describe 'New-AzDataProtectionBackupInstance' {
         # }
 
         # validate bi created
-        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where { $_.Name -match $clusterName }
+        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName }
         ($backupInstance -ne $null) | Should be $true
 
         while($backupInstance.Property.ProtectionStatus.Status -ne "ProtectionConfigured")
         {
             Start-TestSleep -Seconds 10
-            $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where { $_.Name -match $clusterName }
+            $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName }
         }
 
         # adhoc backup

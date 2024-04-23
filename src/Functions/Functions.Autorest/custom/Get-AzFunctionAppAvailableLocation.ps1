@@ -73,6 +73,8 @@ function Get-AzFunctionAppAvailableLocation {
     
     process {
 
+        RegisterFunctionsTabCompleters
+
         # Remove bound parameters from the dictionary that cannot be process by the intenal cmdlets
         $paramsToRemove = @(
             "OSType",
