@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.RedisEnterpriseCache-help.xml
 Module Name: Az.RedisEnterpriseCache
 online version: https://learn.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecache
 schema: 2.0.0
@@ -14,19 +14,20 @@ Gets information about a Redis Enterprise cluster and its associated databases.
 
 ### ListBySubscriptionId (Default)
 ```
-Get-AzRedisEnterpriseCache [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzRedisEnterpriseCache [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzRedisEnterpriseCache [-SubscriptionId <String[]>] -ResourceGroupName <String> -ClusterName <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListByResourceGroup
 ```
-Get-AzRedisEnterpriseCache -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzRedisEnterpriseCache [-SubscriptionId <String[]>] -ResourceGroupName <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +44,6 @@ Get-AzRedisEnterpriseCache -ResourceGroupName "MyGroup" -Name "MyCache"
 Location Name    Type                            Zone Database
 -------- ----    ----                            ---- --------
 West US  MyCache Microsoft.Cache/redisEnterprise      {default}
-
 ```
 
 This command gets information about the Redis Enterprise cache named MyCache.
@@ -58,7 +58,6 @@ Location Name     Type                            Zone      Database
 -------- ----     ----                            ----      --------
 East US  MyCache1 Microsoft.Cache/redisEnterprise           {default}
 East US  MyCache2 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
-
 ```
 
 This command gets information about every Redis Enterprise cache in the specified resource group.
@@ -75,7 +74,6 @@ East US     MyCache1 Microsoft.Cache/redisEnterprise           {default}
 East US     MyCache2 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
 West US     MyCache3 Microsoft.Cache/redisEnterprise           {default}
 Central US  MyCache4 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
-
 ```
 
 This command gets information about every Redis Enterprise cache in the current subscription.
@@ -104,6 +102,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -154,7 +167,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -15,19 +15,19 @@ Get a single graph query by its resourceName.
 ### List (Default)
 ```
 Get-AzResourceGraphQuery -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzResourceGraphQuery -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzResourceGraphQuery -InputObject <IResourceGraphIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +35,7 @@ Get a single graph query by its resourceName.
 
 ## EXAMPLES
 
-### Example 1: Get all resource graph queries under a resource group
+### Example 1: Get all resource graph query under a resource group
 ```powershell
 Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test
 ```
@@ -43,7 +43,7 @@ Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test
 ```output
 Location Name            Type
 -------- ----            ----
-     global   SharedQuery-t01 microsoft.resourcegraph/queries
+global   SharedQuery-t01 microsoft.resourcegraph/queries
 ```
 
 This command gets all resource graph query under a resource group.
@@ -61,7 +61,7 @@ global   SharedQuery-t01 microsoft.resourcegraph/queries
 
 This command gets a resource graph query by name.
 
-### Example 3: Get a resource graph query by object
+### Example 3: Get a resource graph query by objecy
 ```powershell
 $query = New-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t03 -Location 'global' -Query 'project id, name, type, location' -Description 'test'
 Get-AzResourceGraphQuery -InputObject $query
@@ -78,7 +78,8 @@ This command gets a resource graph query by object.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -94,7 +95,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
@@ -118,6 +118,21 @@ Parameter Sets: Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -166,18 +181,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IResourceGraphIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourceName <String>]`: The name of the Graph Query resource.
-  - `[SubscriptionId <String>]`: The Azure subscription Id.
 
 ## RELATED LINKS

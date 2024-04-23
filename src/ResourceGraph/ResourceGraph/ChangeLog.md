@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 0.13.0
 * Introduced -UseTenantScope parameter. Should be used to query for all accessible resources under current tenant.
