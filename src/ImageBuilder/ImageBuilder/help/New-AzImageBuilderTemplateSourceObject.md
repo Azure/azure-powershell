@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ImageBuilder-help.xml
 Module Name: Az.ImageBuilder
 online version: https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatesourceobject
 schema: 2.0.0
@@ -14,19 +14,21 @@ Create an in-memory object for ImageTemplateSource.
 
 ### PlatformImageSource (Default)
 ```
-New-AzImageBuilderTemplateSourceObject -PlatformImageSource [-Offer <String>] [-PlanInfoPlanName <String>]
+New-AzImageBuilderTemplateSourceObject [-PlatformImageSource] [-Offer <String>] [-PlanInfoPlanName <String>]
  [-PlanInfoPlanProduct <String>] [-PlanInfoPlanPublisher <String>] [-Publisher <String>] [-Sku <String>]
- [-Version <String>] [<CommonParameters>]
+ [-Version <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ManagedImageSource
 ```
-New-AzImageBuilderTemplateSourceObject -ImageId <String> -ManagedImageSource [<CommonParameters>]
+New-AzImageBuilderTemplateSourceObject -ImageId <String> [-ManagedImageSource]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SharedImageVersionSource
 ```
-New-AzImageBuilderTemplateSourceObject -ImageVersionId <String> -SharedImageVersionSource [<CommonParameters>]
+New-AzImageBuilderTemplateSourceObject -ImageVersionId <String> [-SharedImageVersionSource]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +51,7 @@ This command creates a managed image source.
 
 ### Example 2: Create a shared image source.
 ```powershell
-New-AzImageBuilderTemplateSourceObject -SharedImageVersionSource -ImageVersionId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/galleries/azpsazurecomputergallery/images/azps-vm-image/versions/1.0.0" 
+New-AzImageBuilderTemplateSourceObject -SharedImageVersionSource -ImageVersionId "/subscriptions/{subId}/resourceGroups/azps_test_group_imagebuilder/providers/Microsoft.Compute/galleries/azpsazurecomputergallery/images/azps-vm-image/versions/1.0.0"
 ```
 
 ```output
@@ -197,6 +199,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Publisher
 Image Publisher in [Azure Gallery Images](https://learn.microsoft.com/en-us/rest/api/compute/virtualmachineimages).
 
@@ -273,7 +290,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

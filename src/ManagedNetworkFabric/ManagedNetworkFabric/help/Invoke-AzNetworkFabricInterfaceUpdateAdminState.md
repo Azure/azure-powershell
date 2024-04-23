@@ -16,7 +16,7 @@ Update the admin state of the Network Interface.
 ```
 Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkDeviceName <String> -NetworkInterfaceName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-ResourceId <String[]>] [-State <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,21 +24,21 @@ Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkDeviceName <String> -Net
 ```
 Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkDeviceName <String> -NetworkInterfaceName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkDeviceName <String> -NetworkInterfaceName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityNetworkDeviceExpanded
 ```
 Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkInterfaceName <String>
  -NetworkDeviceInputObject <IManagedNetworkFabricIdentity> [-ResourceId <String[]>] [-State <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -46,7 +46,7 @@ Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkInterfaceName <String>
 ```
 Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkInterfaceName <String>
  -NetworkDeviceInputObject <IManagedNetworkFabricIdentity> -Body <IUpdateAdministrativeState>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ Invoke-AzNetworkFabricInterfaceUpdateAdminState -NetworkInterfaceName <String>
 ```
 Invoke-AzNetworkFabricInterfaceUpdateAdminState -InputObject <IManagedNetworkFabricIdentity>
  [-ResourceId <String[]>] [-State <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -215,6 +215,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
