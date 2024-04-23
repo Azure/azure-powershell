@@ -8,8 +8,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
     using System.Linq;
 
     /// <summary>
-    /// Base class for tiering cost request.
-    /// Specific cost request types are derived from this class.
+    /// Base class for tiering cost request. Specific cost request types are
+    /// derived from this class.
     /// </summary>
     [Newtonsoft.Json.JsonObject("FetchTieringCostInfoRequest")]
     public partial class FetchTieringCostInfoRequest

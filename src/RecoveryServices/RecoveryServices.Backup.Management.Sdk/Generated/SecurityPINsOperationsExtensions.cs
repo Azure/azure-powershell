@@ -25,9 +25,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the resource group where the recovery services vault is
         /// present.
         /// </param>
-        public static TokenInformation Get(this ISecurityPiNsOperations operations, string vaultName, string resourceGroupName, System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>))
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
+        public static TokenInformation Get(this ISecurityPiNsOperations operations, string vaultName, string resourceGroupName, System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string xMsAuthorizationAuxiliary = default(string))
         {
-                return ((ISecurityPiNsOperations)operations).GetAsync(vaultName, resourceGroupName, resourceGuardOperationRequests).GetAwaiter().GetResult();
+                return ((ISecurityPiNsOperations)operations).GetAsync(vaultName, resourceGroupName, resourceGuardOperationRequests, xMsAuthorizationAuxiliary).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -43,12 +46,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the resource group where the recovery services vault is
         /// present.
         /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<TokenInformation> GetAsync(this ISecurityPiNsOperations operations, string vaultName, string resourceGroupName, System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<TokenInformation> GetAsync(this ISecurityPiNsOperations operations, string vaultName, string resourceGroupName, System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string xMsAuthorizationAuxiliary = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.GetWithHttpMessagesAsync(vaultName, resourceGroupName, resourceGuardOperationRequests, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.GetWithHttpMessagesAsync(vaultName, resourceGroupName, resourceGuardOperationRequests, xMsAuthorizationAuxiliary, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

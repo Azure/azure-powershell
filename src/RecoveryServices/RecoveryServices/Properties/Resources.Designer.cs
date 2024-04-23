@@ -577,6 +577,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} is not protected via MUA, either protect or try without the Token parameter.
+        /// </summary>
+        internal static string UnexpectedParameterToken {
+            get {
+                return ResourceManager.GetString("UnexpectedParameterToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to RecoveryService - Successfully uploaded the certificate.
         /// </summary>
         internal static string UploadedCertToIdmgmt {

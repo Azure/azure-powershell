@@ -694,6 +694,9 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
         /// <param name='vault'>
         /// Recovery Services Vault to be created.
         /// </param>
@@ -703,10 +706,10 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, Vault vault, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, Vault vault, string xMsAuthorizationAuxiliary = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<Vault> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vaultName, vault, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<Vault> _response = await BeginCreateOrUpdateWithHttpMessagesAsync(resourceGroupName, vaultName, vault, xMsAuthorizationAuxiliary, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -741,6 +744,9 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
         /// <param name='vault'>
         /// Recovery Services Vault to be created.
         /// </param>
@@ -750,10 +756,10 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, PatchVault vault, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, PatchVault vault, string xMsAuthorizationAuxiliary = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
                 // Send Request
-                Microsoft.Rest.Azure.AzureOperationResponse<Vault> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, vaultName, vault, customHeaders, cancellationToken).ConfigureAwait(false);
+                Microsoft.Rest.Azure.AzureOperationResponse<Vault> _response = await BeginUpdateWithHttpMessagesAsync(resourceGroupName, vaultName, vault, xMsAuthorizationAuxiliary, customHeaders, cancellationToken).ConfigureAwait(false);
                 return await this.Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -765,6 +771,9 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// </param>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
+        /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
         /// </param>
         /// <param name='vault'>
         /// Recovery Services Vault to be created.
@@ -790,7 +799,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, Vault vault, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, Vault vault, string xMsAuthorizationAuxiliary = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -840,6 +849,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vaultName");
             }
 
+
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -849,6 +859,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("vaultName", vaultName);
+                tracingParameters.Add("xMsAuthorizationAuxiliary", xMsAuthorizationAuxiliary);
 
                 tracingParameters.Add("vault", vault);
 
@@ -889,6 +900,14 @@ namespace Microsoft.Azure.Management.RecoveryServices
                     _httpRequest.Headers.Remove("accept-language");
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+            if (xMsAuthorizationAuxiliary != null)
+            {
+                if (_httpRequest.Headers.Contains("x-ms-authorization-auxiliary"))
+                {
+                    _httpRequest.Headers.Remove("x-ms-authorization-auxiliary");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-authorization-auxiliary", xMsAuthorizationAuxiliary);
             }
 
             if (customHeaders != null)
@@ -1247,6 +1266,9 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
         /// <param name='vault'>
         /// Recovery Services Vault to be created.
         /// </param>
@@ -1271,7 +1293,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, PatchVault vault, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, PatchVault vault, string xMsAuthorizationAuxiliary = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -1317,6 +1339,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "vaultName");
             }
 
+
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1326,6 +1349,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("vaultName", vaultName);
+                tracingParameters.Add("xMsAuthorizationAuxiliary", xMsAuthorizationAuxiliary);
 
                 tracingParameters.Add("vault", vault);
 
@@ -1366,6 +1390,14 @@ namespace Microsoft.Azure.Management.RecoveryServices
                     _httpRequest.Headers.Remove("accept-language");
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+            if (xMsAuthorizationAuxiliary != null)
+            {
+                if (_httpRequest.Headers.Contains("x-ms-authorization-auxiliary"))
+                {
+                    _httpRequest.Headers.Remove("x-ms-authorization-auxiliary");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-authorization-auxiliary", xMsAuthorizationAuxiliary);
             }
 
             if (customHeaders != null)
