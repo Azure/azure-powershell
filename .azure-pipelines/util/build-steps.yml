@@ -76,7 +76,7 @@ steps:
     targetType: inline
     pwsh: true
     script: |
-      if (Test-Path $(SubTasksFilePath) {
+      if (Test-Path $(SubTasksFilePath)) {
         Get-Content $(SubTasksFilePath) | ForEach-Object {
         if ($_ && 'Predictor' -eq $_) {
           Write-Host "##vso[task.setvariable variable=SubTaskPredictor]true"
