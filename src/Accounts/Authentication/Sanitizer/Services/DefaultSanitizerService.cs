@@ -34,6 +34,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
             { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFile", new[] { "FileProperties" } },
             { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFileShare", new[] { "ShareProperties" } },
             { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFileDirectory", new[] { "ShareDirectoryProperties" } },
+
+            // Skip infinite recursion properties
+            { "Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.InnerError", new[] { "EmbeddedInnerError" } },
         };
 
         private static readonly IEnumerable<string> SensitiveDataPatterns = new List<string>()
