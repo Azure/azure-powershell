@@ -16,8 +16,8 @@ Creates a SAP Landscape Monitor Dashboard for the specified subscription, resour
 New-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-GroupingLandscape <ISapLandscapeMonitorSidMapping[]>]
  [-GroupingSapApplication <ISapLandscapeMonitorSidMapping[]>]
- [-TopMetricsThreshold <ISapLandscapeMonitorMetricThresholds[]>] [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-TopMetricsThreshold <ISapLandscapeMonitorMetricThresholds[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -134,6 +134,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -222,26 +237,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapLandscapeMonitor
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`GROUPINGLANDSCAPE <ISapLandscapeMonitorSidMapping[]>`: Gets or sets the list of landscape to SID mappings.
-  - `[Name <String>]`: Gets or sets the name of the grouping.
-  - `[TopSid <String[]>]`: Gets or sets the list of SID's.
-
-`GROUPINGSAPAPPLICATION <ISapLandscapeMonitorSidMapping[]>`: Gets or sets the list of Sap Applications to SID mappings.
-  - `[Name <String>]`: Gets or sets the name of the grouping.
-  - `[TopSid <String[]>]`: Gets or sets the list of SID's.
-
-`TOPMETRICSTHRESHOLD <ISapLandscapeMonitorMetricThresholds[]>`: Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
-  - `[Green <Single?>]`: Gets or sets the threshold value for Green.
-  - `[Name <String>]`: Gets or sets the name of the threshold.
-  - `[Red <Single?>]`: Gets or sets the threshold value for Red.
-  - `[Yellow <Single?>]`: Gets or sets the threshold value for Yellow.
 
 ## RELATED LINKS

@@ -15,7 +15,7 @@ Create an in-memory object for DB2ProviderInstanceProperties.
 ```
 New-AzWorkloadsProviderDB2InstanceObject [-Name <String>] [-Password <String>] [-PasswordUri <String>]
  [-Port <String>] [-Username <String>] [-Hostname <String>] [-SapSid <String>] [-SslCertificateUri <String>]
- [-SslPreference <SslPreference>] [<CommonParameters>]
+ [-SslPreference <SslPreference>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,6 +113,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SapSid
 Gets or sets the SAP System Identifier.
 
@@ -183,7 +198,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.Db2ProviderInstanceProperties
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
