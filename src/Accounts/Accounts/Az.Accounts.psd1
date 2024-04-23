@@ -147,8 +147,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '> [!IMPORTANT]
-> Preannouncement: The default interactive login experience will change from browser based to ''Web Account Manager'' (WAM) based on supported platforms, [learn more](https://learn.microsoft.com/en-us/entra/msal/dotnet/acquiring-tokens/desktop-mobile/wam). Only interactive login flow is influeced by WAM. This will take effect from the release of **May 21st**.
+        ReleaseNotes = '* Preannouncement: The default interactive login experience will change from browser based to Web Account Manager (WAM) based on supported platforms, [learn more](
+https://learn.microsoft.com/en-us/entra/msal/dotnet/acquiring-tokens/desktop-mobile/wam). Only interactive login flow is influeced by WAM. This will take effect from the release of May 21st.
 * Fixed secrets detection issues.'
 
         # Prerelease string of this module

@@ -3,9 +3,8 @@
 * Introduced secrets detection feature to safeguard sensitive data.
 
 #### Az.Accounts 2.19.0
-* Preannouncement: The default interactive login experience will change from browser based to Web Account Manager (WAM) based on supported platforms, [learn more](
-https://learn.microsoft.com/en-us/entra/msal/dotnet/acquiring-tokens/desktop-mobile/wam).
-Nothing changes of user operations. This will take effect from the release of May 21st
+> [!IMPORTANT]
+> Preannouncement: The default interactive login experience will change from browser based to `Web Account Manager` (WAM) based on supported platforms, [learn more](https://learn.microsoft.com/en-us/entra/msal/dotnet/acquiring-tokens/desktop-mobile/wam). Only interactive login flow is influeced by WAM. This will take effect from the release of **May 21st**.
 * Fixed secrets detection issues.
 
 #### Az.Batch 3.6.0
