@@ -14,9 +14,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Provides the details of the backup policies associated to Recovery Services
-        /// Vault. This is an asynchronous
-        /// operation. Status of the operation can be fetched using
-        /// GetPolicyOperationResult API.
+        /// Vault. This is an asynchronous operation. Status of the operation can be
+        /// fetched using GetPolicyOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -38,9 +37,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Provides the details of the backup policies associated to Recovery Services
-        /// Vault. This is an asynchronous
-        /// operation. Status of the operation can be fetched using
-        /// GetPolicyOperationResult API.
+        /// Vault. This is an asynchronous operation. Status of the operation can be
+        /// fetched using GetPolicyOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -67,8 +65,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
         /// <summary>
         /// Creates or modifies a backup policy. This is an asynchronous operation.
-        /// Status of the operation can be fetched
-        /// using GetPolicyOperationResult API.
+        /// Status of the operation can be fetched using GetPolicyOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -93,8 +90,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Creates or modifies a backup policy. This is an asynchronous operation.
-        /// Status of the operation can be fetched
-        /// using GetPolicyOperationResult API.
+        /// Status of the operation can be fetched using GetPolicyOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -124,8 +120,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
         /// <summary>
         /// Deletes specified backup policy from your Recovery Services Vault. This is
-        /// an asynchronous operation. Status of the
-        /// operation can be fetched using GetProtectionPolicyOperationResult API.
+        /// an asynchronous operation. Status of the operation can be fetched using
+        /// GetProtectionPolicyOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -147,8 +143,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Deletes specified backup policy from your Recovery Services Vault. This is
-        /// an asynchronous operation. Status of the
-        /// operation can be fetched using GetProtectionPolicyOperationResult API.
+        /// an asynchronous operation. Status of the operation can be fetched using
+        /// GetProtectionPolicyOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -172,8 +168,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
         /// <summary>
         /// Deletes specified backup policy from your Recovery Services Vault. This is
-        /// an asynchronous operation. Status of the
-        /// operation can be fetched using GetProtectionPolicyOperationResult API.
+        /// an asynchronous operation. Status of the operation can be fetched using
+        /// GetProtectionPolicyOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -195,8 +191,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Deletes specified backup policy from your Recovery Services Vault. This is
-        /// an asynchronous operation. Status of the
-        /// operation can be fetched using GetProtectionPolicyOperationResult API.
+        /// an asynchronous operation. Status of the operation can be fetched using
+        /// GetProtectionPolicyOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             if(objectType != null||excludedRPList != null)
             {
                 parameters.ObjectType = objectType;
-                parameters.ExcludedRpList = excludedRPList;
+                parameters.ExcludedRPList = excludedRPList;
             }
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;

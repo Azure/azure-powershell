@@ -27,6 +27,15 @@ commit: e6a20fec72ed3bcb4b43c559ee20b56ca2786ec0
 input-file:
   - https://github.com/Azure/azure-rest-api-specs/blob/$(commit)/specification/recoveryservicesbackup/resource-manager/Microsoft.RecoveryServices/stable/2024-04-01/bms.json
 
+directive:
+  - from: swagger-document
+    where: 
+      - $..description
+    transform: $ = $.replace(/\r\n/g, ' ')
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace(/xcludedRpList/g, 'xcludedRPList')
+
 output-folder: Generated
 
 namespace: Microsoft.Azure.Management.RecoveryServices.Backup

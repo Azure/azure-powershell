@@ -50,16 +50,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="targetResourceGroupName">Defines the Resource group of the Target VM
         /// </param>
 
-        /// <param name="userAssignedManagedIdentityDetails">User Assigned managed identity details
-        /// Currently used for snapshot.
+        /// <param name="userAssignedManagedIdentityDetails">User Assigned managed identity details Currently used for snapshot.
         /// </param>
 
-        /// <param name="snapshotRestoreParameters">Additional details for snapshot recovery
-        /// Currently used for snapshot for SAP Hana.
+        /// <param name="snapshotRestoreParameters">Additional details for snapshot recovery Currently used for snapshot for
+        /// SAP Hana.
         /// </param>
 
-        /// <param name="targetVirtualMachineId">This is the complete ARM Id of the target VM
-        /// For e.g.
+        /// <param name="targetVirtualMachineId">This is the complete ARM Id of the target VM For e.g.
         /// /subscriptions/{subId}/resourcegroups/{rg}/provider/Microsoft.Compute/virtualmachines/{vm}
         /// </param>
         public AzureWorkloadRestoreRequest(System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string recoveryType = default(string), string sourceResourceId = default(string), System.Collections.Generic.IDictionary<string, string> propertyBag = default(System.Collections.Generic.IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), string targetResourceGroupName = default(string), UserAssignedManagedIdentityDetails userAssignedManagedIdentityDetails = default(UserAssignedManagedIdentityDetails), SnapshotRestoreParameters snapshotRestoreParameters = default(SnapshotRestoreParameters), string targetVirtualMachineId = default(string))
@@ -123,22 +121,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public string TargetResourceGroupName {get; set; }
 
         /// <summary>
-        /// Gets or sets user Assigned managed identity details
-        /// Currently used for snapshot.
+        /// Gets or sets user Assigned managed identity details Currently used for
+        /// snapshot.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "userAssignedManagedIdentityDetails")]
         public UserAssignedManagedIdentityDetails UserAssignedManagedIdentityDetails {get; set; }
 
         /// <summary>
-        /// Gets or sets additional details for snapshot recovery
-        /// Currently used for snapshot for SAP Hana.
+        /// Gets or sets additional details for snapshot recovery Currently used for
+        /// snapshot for SAP Hana.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "snapshotRestoreParameters")]
         public SnapshotRestoreParameters SnapshotRestoreParameters {get; set; }
 
         /// <summary>
-        /// Gets or sets this is the complete ARM Id of the target VM
-        /// For e.g.
+        /// Gets or sets this is the complete ARM Id of the target VM For e.g.
         /// /subscriptions/{subId}/resourcegroups/{rg}/provider/Microsoft.Compute/virtualmachines/{vm}
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetVirtualMachineId")]

@@ -51,16 +51,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="targetResourceGroupName">Defines the Resource group of the Target VM
         /// </param>
 
-        /// <param name="userAssignedManagedIdentityDetails">User Assigned managed identity details
-        /// Currently used for snapshot.
+        /// <param name="userAssignedManagedIdentityDetails">User Assigned managed identity details Currently used for snapshot.
         /// </param>
 
-        /// <param name="snapshotRestoreParameters">Additional details for snapshot recovery
-        /// Currently used for snapshot for SAP Hana.
+        /// <param name="snapshotRestoreParameters">Additional details for snapshot recovery Currently used for snapshot for
+        /// SAP Hana.
         /// </param>
 
-        /// <param name="targetVirtualMachineId">This is the complete ARM Id of the target VM
-        /// For e.g.
+        /// <param name="targetVirtualMachineId">This is the complete ARM Id of the target VM For e.g.
         /// /subscriptions/{subId}/resourcegroups/{rg}/provider/Microsoft.Compute/virtualmachines/{vm}
         /// </param>
 

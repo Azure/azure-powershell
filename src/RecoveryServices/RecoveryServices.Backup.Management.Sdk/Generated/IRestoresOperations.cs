@@ -15,13 +15,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Restores the specified backed up data. This is an asynchronous operation.
-        /// To know the status of this API call, use
-        /// GetProtectedItemOperationResult API.
+        /// To know the status of this API call, use GetProtectedItemOperationResult
+        /// API.
         /// </summary>
         /// <remarks>
         /// Restores the specified backed up data. This is an asynchronous operation.
-        /// To know the status of this API call, use
-        /// GetProtectedItemOperationResult API.
+        /// To know the status of this API call, use GetProtectedItemOperationResult
+        /// API.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
@@ -61,13 +61,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Restores the specified backed up data. This is an asynchronous operation.
-        /// To know the status of this API call, use
-        /// GetProtectedItemOperationResult API.
+        /// To know the status of this API call, use GetProtectedItemOperationResult
+        /// API.
         /// </summary>
         /// <remarks>
         /// Restores the specified backed up data. This is an asynchronous operation.
-        /// To know the status of this API call, use
-        /// GetProtectedItemOperationResult API.
+        /// To know the status of this API call, use GetProtectedItemOperationResult
+        /// API.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
