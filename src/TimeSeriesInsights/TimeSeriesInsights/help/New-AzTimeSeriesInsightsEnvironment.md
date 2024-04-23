@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.TimeSeriesInsights-help.xml
 Module Name: Az.TimeSeriesInsights
 online version: https://learn.microsoft.com/powershell/module/az.timeseriesinsights/new-aztimeseriesinsightsenvironment
 schema: 2.0.0
@@ -14,19 +14,20 @@ Create an environment in the specified subscription and resource group.
 
 ### Gen1 (Default)
 ```
-New-AzTimeSeriesInsightsEnvironment -Name <String> -ResourceGroupName <String> -Capacity <Int32>
- -DataRetentionTime <TimeSpan> -Kind <Kind> -Location <String> -Sku <SkuName> [-SubscriptionId <String>]
+New-AzTimeSeriesInsightsEnvironment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Kind <Kind> -Location <String> -Sku <SkuName> -Capacity <Int32> -DataRetentionTime <TimeSpan>
  [-PartitionKeyProperty <ITimeSeriesIdProperty[]>] [-StorageLimitExceededBehavior <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Gen2
 ```
-New-AzTimeSeriesInsightsEnvironment -Name <String> -ResourceGroupName <String> -Kind <Kind> -Location <String>
- -Sku <SkuName> -StorageAccountKey <SecureString> -StorageAccountName <String>
- -TimeSeriesIdProperty <ITimeSeriesIdProperty[]> [-SubscriptionId <String>] [-Tag <Hashtable>]
- [-WarmStoreDataRetentionTime <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzTimeSeriesInsightsEnvironment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Kind <Kind> -Location <String> -Sku <SkuName> [-Tag <Hashtable>]
+ -TimeSeriesIdProperty <ITimeSeriesIdProperty[]> -StorageAccountName <String> -StorageAccountKey <SecureString>
+ [-WarmStoreDataRetentionTime <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,10 +40,11 @@ Create an environment in the specified subscription and resource group.
 $TimeSpan = New-TimeSpan -Days 1 -Hours 1 -Minutes 25
 New-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest001 -Kind Gen1 -Location eastus -Sku S1 -DataRetentionTime $TimeSpan -Capacity 2
 ```
+
 ```output
-Kind     Location    Name        SkuCapacity   SkuName   Type
-----     --------    ----        -----------   -------    ----
-Gen1     eastus    tsitest001        2           S1      Microsoft.TimeSeriesInsights/Environments
+Kind     Location  Name         SkuCapacity  SkuName  Type
+----     --------  ----         -----------  -------  ----
+Gen1     eastus    tsitest001      2           S1     Microsoft.TimeSeriesInsights/Environments
 ```
 
 This command creates a Gen1 time series insights environment.
@@ -53,10 +55,11 @@ $ks = Get-AzStorageAccountKey -ResourceGroupName "testgroup" -Name "staccount001
 $k  = $ks[0].Value | ConvertTo-SecureString -AsPlainText -Force
 New-AzTimeSeriesInsightsEnvironment -ResourceGroupName testgroup -Name tsitest002 -Kind Gen2 -Location eastus -Sku L1 -StorageAccountName staccount001 -StorageAccountKey $k -TimeSeriesIdProperty @{name='cdc';type='string'}
 ```
+
 ```output
-Kind     Location   Name       SkuCapacity   SkuName  Type
-----     --------   ----       -----------   -------  ----
-Gen2     eastus   tsitest002        1         L1      Microsoft.TimeSeriesInsights/Environments
+Kind     Location  Name        SkuCapacity  SkuName  ype
+----     --------  ----        -----------  -------  ----
+Gen2     eastus    tsitest002       1         L1     Microsoft.TimeSeriesInsights/Environments
 ```
 
 This command creates a Gen2 time series insights environment.
@@ -192,6 +195,21 @@ To construct, see NOTES section for PARTITIONKEYPROPERTY properties and create a
 Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]
 Parameter Sets: Gen1
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -378,20 +396,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-PARTITIONKEYPROPERTY <ITimeSeriesIdProperty[]>: The list of event properties which will be used to partition data in the environment.
-  - `[Name <String>]`: The name of the property.
-  - `[Type <PropertyType?>]`: The type of the property.
-
-TIMESERIESIDPROPERTY <ITimeSeriesIdProperty[]>: The list of event properties which will be used to define the environment's time series id.
-  - `[Name <String>]`: The name of the property.
-  - `[Type <PropertyType?>]`: The type of the property.
-
 ## RELATED LINKS
-

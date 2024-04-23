@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.VoiceServices-help.xml
 Module Name: Az.VoiceServices
 online version: https://learn.microsoft.com/powershell/module/az.VoiceServices/new-AzVoiceServicesCommunicationsGatewayServiceRegionObject
 schema: 2.0.0
@@ -14,7 +14,8 @@ Create an in-memory object for ServiceRegionProperties.
 
 ```
 New-AzVoiceServicesCommunicationsGatewayServiceRegionObject -Name <String>
- -PrimaryRegionOperatorAddress <String[]> [-PrimaryRegionEsrpAddress <String[]>] [<CommonParameters>]
+ -PrimaryRegionOperatorAddress <String[]> [-PrimaryRegionEsrpAddress <String[]>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +35,7 @@ New-AzVoiceServicesCommunicationsGateway -ResourceGroupName 'vtest-communication
 ```output
 Location      Name               SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName      RetryAfter
 --------      ----               -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------      ----------
-westcentralus vsc-gateway-pwsh01 12/7/2022 7:09:45 AM v-diya@microsoft.com User                    12/7/2022 7:09:45 AM     v-diya@microsoft.com     User                         vtest-communication-rg 
+westcentralus vsc-gateway-pwsh01 12/7/2022 7:09:45 AM v-diya@microsoft.com User                    12/7/2022 7:09:45 AM     v-diya@microsoft.com     User                         vtest-communication-rg
 ```
 
 Create an in-memory object for ServiceRegionProperties and assign to ServiceLocation parameter of the New-AzVoiceServicesCommunicationsGateway.
@@ -86,6 +87,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -97,7 +113,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

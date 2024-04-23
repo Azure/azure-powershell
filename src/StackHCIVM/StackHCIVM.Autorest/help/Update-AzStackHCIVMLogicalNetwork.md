@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStackHCIVMLogicalNetwork
 
 ## SYNOPSIS
-The operation to update a logical network.
+The operation to Update a logical network.
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ Update-AzStackHCIVMLogicalNetwork -Name <String> -ResourceGroupName <String> -Js
 ```
 
 ## DESCRIPTION
-The operation to update a logical network.
+The operation to Update a logical network.
 
 ## EXAMPLES
 

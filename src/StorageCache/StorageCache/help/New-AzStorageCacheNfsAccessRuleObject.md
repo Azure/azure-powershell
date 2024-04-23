@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StorageCache-help.xml
 Module Name: Az.StorageCache
 online version: https://learn.microsoft.com/powershell/module/Az.StorageCache/new-AzStorageCacheNfsAccessRuleObject
 schema: 2.0.0
@@ -15,7 +15,7 @@ Create an in-memory object for NfsAccessRule.
 ```
 New-AzStorageCacheNfsAccessRuleObject -Access <NfsAccessRuleAccess> -Scope <NfsAccessRuleScope>
  [-AnonymousGid <String>] [-AnonymousUid <String>] [-Filter <String>] [-RootSquash <Boolean>]
- [-SubmountAccess <Boolean>] [-Suid <Boolean>] [<CommonParameters>]
+ [-SubmountAccess <Boolean>] [-Suid <Boolean>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,6 +105,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RootSquash
 Map root accesses to anonymousUID and anonymousGID.
 
@@ -179,7 +194,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

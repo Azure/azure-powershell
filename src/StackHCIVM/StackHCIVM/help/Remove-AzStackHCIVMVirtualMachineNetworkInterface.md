@@ -15,7 +15,7 @@ The operation to delete a network interface from a virtual machine.
 ### ByResourceId (Default)
 ```
 Remove-AzStackHCIVMVirtualMachineNetworkInterface -ResourceId <String> [-NicId <String[]>]
- [-NicName <String[]>] [-NicResourceGroup <String>] [-NoWait] [-WhatIf]
+ [-NicName <String[]>] [-NicResourceGroup <String>] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,7 +23,7 @@ Remove-AzStackHCIVMVirtualMachineNetworkInterface -ResourceId <String> [-NicId <
 ```
 Remove-AzStackHCIVMVirtualMachineNetworkInterface -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-NicId <String[]>] [-NicName <String[]>] [-NicResourceGroup <String>] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,6 +113,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

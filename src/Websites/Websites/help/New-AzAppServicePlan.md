@@ -18,7 +18,8 @@ Creates an Azure App Service plan in a given Geo location.
 New-AzAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
  [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [[-AseResourceId] <String>]
  [-PerSiteScaling <Boolean>] [-HyperV] [-AsJob] [-Tag <Hashtable>] [-Linux] [-ResourceGroupName] <String>
- [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### S2
@@ -26,7 +27,7 @@ New-AzAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers]
 New-AzAppServicePlan [-Location] <String> [[-Tier] <String>] [[-NumberofWorkers] <Int32>]
  [[-WorkerSize] <String>] [[-AseName] <String>] [[-AseResourceGroupName] <String>] [[-AseResourceId] <String>]
  [-PerSiteScaling <Boolean>] [-AsJob] [-AppServicePlan] <PSAppServicePlan>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -216,6 +217,21 @@ Whether or not to enable Per Site Scaling
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

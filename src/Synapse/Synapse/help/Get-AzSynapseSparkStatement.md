@@ -15,13 +15,14 @@ Gets a Synapse Analytics Spark statement.
 ### GetSparkStatementsByIdParameterSet (Default)
 ```
 Get-AzSynapseSparkStatement -WorkspaceName <String> -SparkPoolName <String> [-LivyId <Int32>]
- -SessionId <Int32> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -SessionId <Int32> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### GetSparkStatementsByParentObjectParameterSet
 ```
 Get-AzSynapseSparkStatement -SessionObject <PSSynapseSparkSession> [-LivyId <Int32>] [-SessionId <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,6 +76,21 @@ Identifier of Spark statement.
 Type: System.Int32
 Parameter Sets: (All)
 Aliases: Id
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

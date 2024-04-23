@@ -33,7 +33,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -45,7 +46,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -68,18 +70,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingProperty = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ITableLevelSharingProperties) content.GetValueForProperty("TableLevelSharingProperty",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingProperty, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.TableLevelSharingPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).DatabaseName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).KustoPoolResourceId = (string) content.GetValueForProperty("KustoPoolResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).KustoPoolResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).AttachedDatabaseName = (string[]) content.GetValueForProperty("AttachedDatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).AttachedDatabaseName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).DefaultPrincipalsModificationKind = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.DefaultPrincipalsModificationKind) content.GetValueForProperty("DefaultPrincipalsModificationKind",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).DefaultPrincipalsModificationKind, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.DefaultPrincipalsModificationKind.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyTablesToInclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyTablesToInclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyTablesToInclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyTablesToExclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyTablesToExclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyTablesToExclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyExternalTablesToInclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyExternalTablesToInclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyExternalTablesToInclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyExternalTablesToExclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyExternalTablesToExclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyExternalTablesToExclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyMaterializedViewsToInclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyMaterializedViewsToInclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyMaterializedViewsToInclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyMaterializedViewsToExclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyMaterializedViewsToExclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyMaterializedViewsToExclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("TableLevelSharingProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingProperty = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ITableLevelSharingProperties) content.GetValueForProperty("TableLevelSharingProperty",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingProperty, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.TableLevelSharingPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState.CreateFrom);
+            }
+            if (content.Contains("DatabaseName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).DatabaseName, global::System.Convert.ToString);
+            }
+            if (content.Contains("KustoPoolResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).KustoPoolResourceId = (string) content.GetValueForProperty("KustoPoolResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).KustoPoolResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AttachedDatabaseName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).AttachedDatabaseName = (string[]) content.GetValueForProperty("AttachedDatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).AttachedDatabaseName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("DefaultPrincipalsModificationKind"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).DefaultPrincipalsModificationKind = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.DefaultPrincipalsModificationKind) content.GetValueForProperty("DefaultPrincipalsModificationKind",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).DefaultPrincipalsModificationKind, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.DefaultPrincipalsModificationKind.CreateFrom);
+            }
+            if (content.Contains("TableLevelSharingPropertyTablesToInclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyTablesToInclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyTablesToInclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyTablesToInclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("TableLevelSharingPropertyTablesToExclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyTablesToExclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyTablesToExclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyTablesToExclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("TableLevelSharingPropertyExternalTablesToInclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyExternalTablesToInclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyExternalTablesToInclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyExternalTablesToInclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("TableLevelSharingPropertyExternalTablesToExclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyExternalTablesToExclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyExternalTablesToExclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyExternalTablesToExclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("TableLevelSharingPropertyMaterializedViewsToInclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyMaterializedViewsToInclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyMaterializedViewsToInclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyMaterializedViewsToInclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("TableLevelSharingPropertyMaterializedViewsToExclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyMaterializedViewsToExclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyMaterializedViewsToExclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyMaterializedViewsToExclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -97,18 +135,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingProperty = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ITableLevelSharingProperties) content.GetValueForProperty("TableLevelSharingProperty",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingProperty, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.TableLevelSharingPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).DatabaseName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).KustoPoolResourceId = (string) content.GetValueForProperty("KustoPoolResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).KustoPoolResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).AttachedDatabaseName = (string[]) content.GetValueForProperty("AttachedDatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).AttachedDatabaseName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).DefaultPrincipalsModificationKind = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.DefaultPrincipalsModificationKind) content.GetValueForProperty("DefaultPrincipalsModificationKind",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).DefaultPrincipalsModificationKind, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.DefaultPrincipalsModificationKind.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyTablesToInclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyTablesToInclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyTablesToInclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyTablesToExclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyTablesToExclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyTablesToExclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyExternalTablesToInclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyExternalTablesToInclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyExternalTablesToInclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyExternalTablesToExclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyExternalTablesToExclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyExternalTablesToExclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyMaterializedViewsToInclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyMaterializedViewsToInclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyMaterializedViewsToInclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyMaterializedViewsToExclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyMaterializedViewsToExclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyMaterializedViewsToExclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("TableLevelSharingProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingProperty = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ITableLevelSharingProperties) content.GetValueForProperty("TableLevelSharingProperty",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingProperty, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.TableLevelSharingPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState.CreateFrom);
+            }
+            if (content.Contains("DatabaseName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).DatabaseName, global::System.Convert.ToString);
+            }
+            if (content.Contains("KustoPoolResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).KustoPoolResourceId = (string) content.GetValueForProperty("KustoPoolResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).KustoPoolResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AttachedDatabaseName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).AttachedDatabaseName = (string[]) content.GetValueForProperty("AttachedDatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).AttachedDatabaseName, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("DefaultPrincipalsModificationKind"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).DefaultPrincipalsModificationKind = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.DefaultPrincipalsModificationKind) content.GetValueForProperty("DefaultPrincipalsModificationKind",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).DefaultPrincipalsModificationKind, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.DefaultPrincipalsModificationKind.CreateFrom);
+            }
+            if (content.Contains("TableLevelSharingPropertyTablesToInclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyTablesToInclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyTablesToInclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyTablesToInclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("TableLevelSharingPropertyTablesToExclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyTablesToExclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyTablesToExclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyTablesToExclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("TableLevelSharingPropertyExternalTablesToInclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyExternalTablesToInclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyExternalTablesToInclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyExternalTablesToInclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("TableLevelSharingPropertyExternalTablesToExclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyExternalTablesToExclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyExternalTablesToExclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyExternalTablesToExclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("TableLevelSharingPropertyMaterializedViewsToInclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyMaterializedViewsToInclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyMaterializedViewsToInclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyMaterializedViewsToInclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("TableLevelSharingPropertyMaterializedViewsToExclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyMaterializedViewsToExclude = (string[]) content.GetValueForProperty("TableLevelSharingPropertyMaterializedViewsToExclude",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationPropertiesInternal)this).TableLevelSharingPropertyMaterializedViewsToExclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -145,7 +219,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         /// string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>
+        /// an instance of the <see cref="AttachedDatabaseConfigurationProperties" /> model class.
+        /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IAttachedDatabaseConfigurationProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Subscription-help.xml
 Module Name: Az.Subscription
 online version: https://learn.microsoft.com/powershell/module/az.subscription/enable-azsubscription
 schema: 2.0.0
@@ -14,13 +14,14 @@ The operation to enable a subscription
 
 ### Enable (Default)
 ```
-Enable-AzSubscription -Id <String> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Enable-AzSubscription -Id <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### EnableViaIdentity
 ```
-Enable-AzSubscription -InputObject <ISubscriptionIdentity> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Enable-AzSubscription -InputObject <ISubscriptionIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,6 +86,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -130,4 +146,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
