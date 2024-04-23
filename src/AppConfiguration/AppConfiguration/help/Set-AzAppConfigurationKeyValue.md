@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzAppConfigurationKeyValue
 
 ## SYNOPSIS
-Creates a key-value.
+Put a key-value.
 
 ## SYNTAX
 
@@ -23,19 +23,19 @@ Set-AzAppConfigurationKeyValue -Endpoint <String> -Key <String> [-Label <String>
 ### PutViaJsonFilePath
 ```
 Set-AzAppConfigurationKeyValue -Endpoint <String> -Key <String> [-Label <String>] [-IfMatch <String>]
- [-IfNoneMatch <String>] [-SyncToken <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-IfNoneMatch <String>] [-SyncToken <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PutViaJsonString
 ```
 Set-AzAppConfigurationKeyValue -Endpoint <String> -Key <String> [-Label <String>] [-IfMatch <String>]
- [-IfNoneMatch <String>] [-SyncToken <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-IfNoneMatch <String>] [-SyncToken <String>] -JsonString <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a key-value.
+Put a key-value.
 
 ## EXAMPLES
 

@@ -20,7 +20,8 @@ Get-AzSignalRKey [-ResourceGroupName <String>] [-Name] <String> [-DefaultProfile
 
 ### ResourceIdParameterSet
 ```
-Get-AzSignalRKey -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSignalRKey -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet

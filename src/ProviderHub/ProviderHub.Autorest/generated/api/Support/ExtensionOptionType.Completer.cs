@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSpecified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotSpecified", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
+                yield return new global::System.Management.Automation.CompletionResult("'NotSpecified'", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DoNotMergeExistingReadOnlyAndSecretProperties".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DoNotMergeExistingReadOnlyAndSecretProperties", "DoNotMergeExistingReadOnlyAndSecretProperties", global::System.Management.Automation.CompletionResultType.ParameterValue, "DoNotMergeExistingReadOnlyAndSecretProperties");
+                yield return new global::System.Management.Automation.CompletionResult("'DoNotMergeExistingReadOnlyAndSecretProperties'", "DoNotMergeExistingReadOnlyAndSecretProperties", global::System.Management.Automation.CompletionResultType.ParameterValue, "DoNotMergeExistingReadOnlyAndSecretProperties");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "IncludeInternalMetadata".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("IncludeInternalMetadata", "IncludeInternalMetadata", global::System.Management.Automation.CompletionResultType.ParameterValue, "IncludeInternalMetadata");
+                yield return new global::System.Management.Automation.CompletionResult("'IncludeInternalMetadata'", "IncludeInternalMetadata", global::System.Management.Automation.CompletionResultType.ParameterValue, "IncludeInternalMetadata");
             }
         }
     }

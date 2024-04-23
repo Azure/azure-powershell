@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ResourceMover-help.xml
 Module Name: Az.ResourceMover
 online version: https://learn.microsoft.com/powershell/module/az.resourcemover/new-azresourcemovermovecollection
 schema: 2.0.0
@@ -22,9 +22,9 @@ RegionToZone** (Moving virtual machines into a zone within the same region)
 ```
 New-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <ResourceIdentityType>]
- [-Location <String>] [-MoveRegion <String>] [-MoveType <MoveType>] [-SourceRegion <String>]
- [-Tag <Hashtable>] [-TargetRegion <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Location <String>] [-MoveRegion <String>] [-MoveType <MoveType>] [-SourceRegion <String>] [-Tag <Hashtable>]
+ [-TargetRegion <String>] [-Version <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -324,7 +324,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

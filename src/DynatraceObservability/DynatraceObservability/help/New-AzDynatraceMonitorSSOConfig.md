@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DynatraceObservability-help.xml
 Module Name: Az.DynatraceObservability
 online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitorssoconfig
 schema: 2.0.0
@@ -15,8 +15,8 @@ Create a DynatraceSingleSignOnResource
 ```
 New-AzDynatraceMonitorSSOConfig -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AadDomain <String[]>] [-EnterpriseAppId <String>] [-SingleSignOnState <SingleSignOnStates>]
- [-SingleSignOnUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SingleSignOnUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ This command create a dynatrace SingleSignOn resource.
 ## PARAMETERS
 
 ### -AadDomain
-array of Microsoft Entra domains
+array of Aad(azure active directory) domains
 
 ```yaml
 Type: System.String[]
@@ -232,7 +232,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IDynatraceSingleSignOnResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

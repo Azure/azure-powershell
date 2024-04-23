@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-The operation to Create a hybrid machine.
+The operation to Update a hybrid machine.
 Please note some properties can be set only during machine creation.
 .Description
-The operation to Create a hybrid machine.
+The operation to Update a hybrid machine.
 Please note some properties can be set only during machine creation.
 .Example
 {{ Add code here }}

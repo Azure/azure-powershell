@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEmailService
 
 ## SYNOPSIS
-Operation to update an existing EmailService.
+Operation to Update an existing EmailService.
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Update-AzEmailService -InputObject <IEmailServiceIdentity> [-Tag <Hashtable>] [-
 ```
 
 ## DESCRIPTION
-Operation to update an existing EmailService.
+Operation to Update an existing EmailService.
 
 ## EXAMPLES
 

@@ -25,11 +25,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
 
         /// <param name="standardTierStorageRedundancy">The storage redundancy setting of a vault
-        /// Possible values include: 'LocallyRedundant', 'GeoRedundant',
-        /// 'ZoneRedundant'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;LocallyRedundant&#39;, &#39;GeoRedundant&#39;,
+        /// &#39;ZoneRedundant&#39;</param>
 
         /// <param name="crossRegionRestore">Flag to show if Cross Region Restore is enabled on the Vault or not
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
         public VaultPropertiesRedundancySettings(string standardTierStorageRedundancy = default(string), string crossRegionRestore = default(string))
 
         {
@@ -45,15 +45,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 
 
         /// <summary>
-        /// Gets the storage redundancy setting of a vault Possible values include: &#39;LocallyRedundant&#39;, &#39;GeoRedundant&#39;, &#39;ZoneRedundant&#39;
+        /// Gets or sets the storage redundancy setting of a vault Possible values include: &#39;Invalid&#39;, &#39;LocallyRedundant&#39;, &#39;GeoRedundant&#39;, &#39;ZoneRedundant&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "standardTierStorageRedundancy")]
-        public string StandardTierStorageRedundancy {get; private set; }
+        public string StandardTierStorageRedundancy {get; set; }
 
         /// <summary>
-        /// Gets flag to show if Cross Region Restore is enabled on the Vault or not Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
+        /// Gets or sets flag to show if Cross Region Restore is enabled on the Vault
+        /// or not Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "crossRegionRestore")]
-        public string CrossRegionRestore {get; private set; }
+        public string CrossRegionRestore {get; set; }
     }
 }

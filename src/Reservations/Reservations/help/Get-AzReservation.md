@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Reservations-help.xml
 Module Name: Az.Reservations
 online version: https://learn.microsoft.com/powershell/module/az.reservations/get-azreservation
 schema: 2.0.0
@@ -24,15 +24,16 @@ Get-AzReservation -Id <String> -OrderId <String> [-Expand <String>] [-DefaultPro
  [<CommonParameters>]
 ```
 
+### List
+```
+Get-AzReservation -OrderId <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
 ### GetViaIdentity
 ```
 Get-AzReservation -InputObject <IReservationsIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
-```
-
-### List
-```
-Get-AzReservation -OrderId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -115,21 +116,6 @@ Reservation properties include sku/name, properties/{appliedScopeType, archived,
 
 ```yaml
 Type: System.String
-Parameter Sets: List1
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -First
-Gets only the first 'n' objects.
-
-```yaml
-Type: System.UInt64
 Parameter Sets: List1
 Aliases:
 
@@ -231,6 +217,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -First
+Gets only the first 'n' objects.
+
+```yaml
+Type: System.UInt64
+Parameter Sets: List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -244,18 +245,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ReservationId <String>]`: Id of the reservation item
-  - `[ReservationOrderId <String>]`: Order Id of the reservation
-  - `[SubscriptionId <String>]`: Id of the subscription
-
 ## RELATED LINKS
-

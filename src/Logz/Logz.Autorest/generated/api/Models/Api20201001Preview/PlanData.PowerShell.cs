@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
         /// Creates a new instance of <see cref="PlanData" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="PlanData" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanData FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Logz.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -98,10 +100,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).UsageType = (string) content.GetValueForProperty("UsageType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).UsageType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).BillingCycle = (string) content.GetValueForProperty("BillingCycle",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).BillingCycle, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).PlanDetail = (string) content.GetValueForProperty("PlanDetail",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).PlanDetail, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).EffectiveDate = (global::System.DateTime?) content.GetValueForProperty("EffectiveDate",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).EffectiveDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("UsageType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).UsageType = (string) content.GetValueForProperty("UsageType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).UsageType, global::System.Convert.ToString);
+            }
+            if (content.Contains("BillingCycle"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).BillingCycle = (string) content.GetValueForProperty("BillingCycle",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).BillingCycle, global::System.Convert.ToString);
+            }
+            if (content.Contains("PlanDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).PlanDetail = (string) content.GetValueForProperty("PlanDetail",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).PlanDetail, global::System.Convert.ToString);
+            }
+            if (content.Contains("EffectiveDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).EffectiveDate = (global::System.DateTime?) content.GetValueForProperty("EffectiveDate",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).EffectiveDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -119,10 +133,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).UsageType = (string) content.GetValueForProperty("UsageType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).UsageType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).BillingCycle = (string) content.GetValueForProperty("BillingCycle",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).BillingCycle, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).PlanDetail = (string) content.GetValueForProperty("PlanDetail",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).PlanDetail, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).EffectiveDate = (global::System.DateTime?) content.GetValueForProperty("EffectiveDate",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).EffectiveDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("UsageType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).UsageType = (string) content.GetValueForProperty("UsageType",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).UsageType, global::System.Convert.ToString);
+            }
+            if (content.Contains("BillingCycle"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).BillingCycle = (string) content.GetValueForProperty("BillingCycle",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).BillingCycle, global::System.Convert.ToString);
+            }
+            if (content.Contains("PlanDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).PlanDetail = (string) content.GetValueForProperty("PlanDetail",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).PlanDetail, global::System.Convert.ToString);
+            }
+            if (content.Contains("EffectiveDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).EffectiveDate = (global::System.DateTime?) content.GetValueForProperty("EffectiveDate",((Microsoft.Azure.PowerShell.Cmdlets.Logz.Models.Api20201001Preview.IPlanDataInternal)this).EffectiveDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializePSObject(content);
         }
 

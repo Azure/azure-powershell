@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Relay-help.xml
 Module Name: Az.Relay
 online version: https://learn.microsoft.com/powershell/module/az.Relay/new-AzRelayNetworkRuleSetIPRuleObject
 schema: 2.0.0
@@ -13,7 +13,8 @@ Create an in-memory object for NwRuleSetIPRules.
 ## SYNTAX
 
 ```
-New-AzRelayNetworkRuleSetIPRuleObject [-Action <NetworkRuleIPAction>] [-IPMask <String>] [<CommonParameters>]
+New-AzRelayNetworkRuleSetIPRuleObject [-Action <NetworkRuleIPAction>] [-IPMask <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +75,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -45,7 +45,7 @@ Update-AzCdnEndpoint -Name cdntestcert -ProfileName classicCDNtest -ResourceGrou
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -90,7 +90,7 @@ URLSIGNINGKEY <IUrlSigningKey[]>: List of keys used to validate the signed URL h
 https://learn.microsoft.com/powershell/module/az.cdn/update-azcdnendpoint
 #>
 function Update-AzCdnEndpoint {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpoint])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpoint])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded1', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded1', Mandatory)]
@@ -149,7 +149,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IDeliveryRule[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IDeliveryRule[]]
     # A list of the delivery rules.
     # To construct, see NOTES section for DELIVERYPOLICYRULE properties and create a hash table.
     ${DeliveryPolicyRule},
@@ -157,7 +157,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IGeoFilter[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IGeoFilter[]]
     # List of rules defining the user's geo access within a CDN endpoint.
     # Each geo filter defines an access rule to a specified path or content, e.g.
     # block APAC for path /pictures/
@@ -231,7 +231,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IEndpointUpdateParametersTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IEndpointUpdateParametersTags]))]
     [System.Collections.Hashtable]
     # Endpoint tags.
     ${Tag},
@@ -239,7 +239,7 @@ param(
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUrlSigningKey[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUrlSigningKey[]]
     # List of keys used to validate the signed URL hashes.
     # To construct, see NOTES section for URLSIGNINGKEY properties and create a hash table.
     ${UrlSigningKey},

@@ -16,8 +16,10 @@
 
 <#
 .Synopsis
-Creates a solution for the specific Azure resource or subscription using the triggering criteria ‘solutionId and requiredInputs’ from discovery solutions.<br/> Solutions are a rich, insightful and a centralized self help experience that brings all the relevant content to troubleshoot an Azure issue into a unified experience.
-Solutions include the following components : Text, Diagnostics , Troubleshooters, Images , Video tutorials, Tables , custom charts, images , AzureKB, etc, with capabilities to support new solutions types in the future.
+Creates a solution for the specific Azure resource or subscription using the inputs ‘solutionId and requiredInputs’ from discovery solutions.
+<br/> Azure solutions comprise a comprehensive library of self-help resources that have been thoughtfully curated by Azure engineers to aid customers in resolving typical troubleshooting issues.
+These solutions encompass (1.) dynamic and context-aware diagnostics, guided troubleshooting wizards, and data visualizations, (2.) rich instructional video tutorials and illustrative diagrams and images, and (3.) thoughtfully assembled textual troubleshooting instructions.
+All these components are seamlessly converged into unified solutions tailored to address a specific support problem area.
 Each solution type may require one or more ‘requiredParameters’ that are required to execute the individual solution component.
 In the absence of the ‘requiredParameters’ it is likely that some of the solutions might fail execution, and you might see an empty response.
 <br/><br/> <b>Note:</b>  <br/>1.
@@ -26,8 +28,10 @@ In the absence of the ‘requiredParameters’ it is likely that some of the sol
 ‘requiredParameters’ from the Solutions response is the same as ‘ additionalParameters’ in the request for diagnostics <br/>3.
 ‘requiredParameters’ from the Solutions response is the same as ‘properties.parameters’ in the request for Troubleshooters
 .Description
-Creates a solution for the specific Azure resource or subscription using the triggering criteria ‘solutionId and requiredInputs’ from discovery solutions.<br/> Solutions are a rich, insightful and a centralized self help experience that brings all the relevant content to troubleshoot an Azure issue into a unified experience.
-Solutions include the following components : Text, Diagnostics , Troubleshooters, Images , Video tutorials, Tables , custom charts, images , AzureKB, etc, with capabilities to support new solutions types in the future.
+Creates a solution for the specific Azure resource or subscription using the inputs ‘solutionId and requiredInputs’ from discovery solutions.
+<br/> Azure solutions comprise a comprehensive library of self-help resources that have been thoughtfully curated by Azure engineers to aid customers in resolving typical troubleshooting issues.
+These solutions encompass (1.) dynamic and context-aware diagnostics, guided troubleshooting wizards, and data visualizations, (2.) rich instructional video tutorials and illustrative diagrams and images, and (3.) thoughtfully assembled textual troubleshooting instructions.
+All these components are seamlessly converged into unified solutions tailored to address a specific support problem area.
 Each solution type may require one or more ‘requiredParameters’ that are required to execute the individual solution component.
 In the absence of the ‘requiredParameters’ it is likely that some of the solutions might fail execution, and you might see an empty response.
 <br/><br/> <b>Note:</b>  <br/>1.
@@ -36,122 +40,23 @@ In the absence of the ‘requiredParameters’ it is likely that some of the sol
 ‘requiredParameters’ from the Solutions response is the same as ‘ additionalParameters’ in the request for diagnostics <br/>3.
 ‘requiredParameters’ from the Solutions response is the same as ‘properties.parameters’ in the request for Troubleshooters
 .Example
-$criteria = [ordered]@{
-    "name" ="SolutionId"
-    "value" = "keyvault-lostdeletedkeys-apollo-solution"
-}
-$parameters = [ordered]@{
-        "SearchText" = "Can not RDP"
-        "vault_name" = "DemoKeyvault"
-}
-New-AzSelfHelpSolution -ResourceName test-resource -Scope  /subscriptions/<subid>/resourceGroups/testRG/providers/Microsoft.KeyVault/kv/testDB -Parameter $parameters -TriggerCriterion $criteria
+$criteria = [ordered]@{ 
+    "name" ="SolutionId" 
+    "value" = "apollo-cognitve-search-custom-skill" 
+} 
+
+$parameters = [ordered]@{ 
+        "SearchText" = "Can not Search" 
+} 
+
+New-AzSelfHelpSolution -ResourceName test-resource234 -Scope  /subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba/resourceGroups/DiagnosticsRp-Ev2AssistId-Public-Dev/providers/Microsoft.KeyVault/vaults/DiagRp-Ev2PublicDev -Parameter $parameters -TriggerCriterion $criteria 
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-REPLACEMENTMAPDIAGNOSTIC <ISolutionsDiagnostic[]>: Solution diagnostics results.
-  [Insight <IInsight[]>]: Diagnostic insights
-    [Id <String>]: Article id.
-    [ImportanceLevel <ImportanceLevel?>]: Importance level of the insight.
-    [Result <String>]: Detailed result content.
-    [Title <String>]: This insight's title.
-  [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-  [RequiredParameter <String[]>]: Required parameters of this item
-  [SolutionId <String>]: Solution Id to identify single Solutions Diagnostic
-  [Status <Status?>]: Denotes the status of the diagnostic resource.
-  [StatusDetail <String>]: Details of the status
-
-REPLACEMENTMAPMETRICSBASEDCHART <IMetricsBasedChart[]>: Solution metrics based charts
-  [AggregationType <AggregationType?>]: Allowed values are Sum, Avg, Count, Min, Max. Default is Sum
-  [FilterGroupFilter <IFilter[]>]: List of filters
-    [Name <String>]: Filter name
-    [Operator <String>]: Filter operator
-    [Value <String>]: Filter values
-  [Name <String>]: Chart name
-  [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-  [TimeSpanDuration <String>]: Time span duration
-  [Title <String>]: Chart title
-
-REPLACEMENTMAPTROUBLESHOOTER <ISolutionsTroubleshooters[]>: Solutions Troubleshooters
-  [SolutionId <String>]: Solution Id to identify single Solutions Troubleshooter
-  [Summary <String>]: Troubleshooter summary
-  [Title <String>]: Troubleshooter title
-
-REPLACEMENTMAPVIDEO <IVideo[]>: Video solutions, which have the power to engage the customer by stimulating their senses
-  [Src <String>]: Link to the video
-  [Title <String>]: Title of the video
-  [ReplacementKey <String>]: Place holder used in HTML Content replace control with the insight content
-
-REPLACEMENTMAPVIDEOGROUP <IVideoGroup[]>: Group of Videos
-  [ReplacementKey <String>]: Place holder used in HTML Content replace control with the insight content
-  [Video <IVideoGroupVideo[]>]: List of videos will be shown to customers
-    [Src <String>]: Link to the video
-    [Title <String>]: Title of the video
-
-REPLACEMENTMAPWEBRESULT <IWebResult[]>: Solution AzureKB results
-  [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-  [SearchResult <ISearchResult[]>]: AzureKB search results
-    [Confidence <Confidence?>]: Confidence of the search result.
-    [Content <String>]: Content of the search result.
-    [Link <String>]: Link to the document.
-    [Rank <Int32?>]: rank of the search result
-    [ResultType <ResultType?>]: Result type of the search result.
-    [SolutionId <String>]: Unique id of the result.
-    [Source <String>]: Source of the search result.
-    [Title <String>]: Title of the search result.
-
-SECTION <ISection[]>: List of section object.
-  [Content <String>]: Solution sections content.
-  [ReplacementMapDiagnostic <ISolutionsDiagnostic[]>]: Solution diagnostics results.
-    [Insight <IInsight[]>]: Diagnostic insights
-      [Id <String>]: Article id.
-      [ImportanceLevel <ImportanceLevel?>]: Importance level of the insight.
-      [Result <String>]: Detailed result content.
-      [Title <String>]: This insight's title.
-    [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-    [RequiredParameter <String[]>]: Required parameters of this item
-    [SolutionId <String>]: Solution Id to identify single Solutions Diagnostic
-    [Status <Status?>]: Denotes the status of the diagnostic resource.
-    [StatusDetail <String>]: Details of the status
-  [ReplacementMapMetricsBasedChart <IMetricsBasedChart[]>]: Solution metrics based charts
-    [AggregationType <AggregationType?>]: Allowed values are Sum, Avg, Count, Min, Max. Default is Sum
-    [FilterGroupFilter <IFilter[]>]: List of filters
-      [Name <String>]: Filter name
-      [Operator <String>]: Filter operator
-      [Value <String>]: Filter values
-    [Name <String>]: Chart name
-    [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-    [TimeSpanDuration <String>]: Time span duration
-    [Title <String>]: Chart title
-  [ReplacementMapTroubleshooter <ISolutionsTroubleshooters[]>]: Solutions Troubleshooters
-    [SolutionId <String>]: Solution Id to identify single Solutions Troubleshooter
-    [Summary <String>]: Troubleshooter summary
-    [Title <String>]: Troubleshooter title
-  [ReplacementMapVideo <IVideo[]>]: Video solutions, which have the power to engage the customer by stimulating their senses
-    [Src <String>]: Link to the video
-    [Title <String>]: Title of the video
-    [ReplacementKey <String>]: Place holder used in HTML Content replace control with the insight content
-  [ReplacementMapVideoGroup <IVideoGroup[]>]: Group of Videos
-    [ReplacementKey <String>]: Place holder used in HTML Content replace control with the insight content
-    [Video <IVideoGroupVideo[]>]: List of videos will be shown to customers
-      [Src <String>]: Link to the video
-      [Title <String>]: Title of the video
-  [ReplacementMapWebResult <IWebResult[]>]: Solution AzureKB results
-    [ReplacementKey <String>]: Place holder used in HTML Content replace control with the content
-    [SearchResult <ISearchResult[]>]: AzureKB search results
-      [Confidence <Confidence?>]: Confidence of the search result.
-      [Content <String>]: Content of the search result.
-      [Link <String>]: Link to the document.
-      [Rank <Int32?>]: rank of the search result
-      [ResultType <ResultType?>]: Result type of the search result.
-      [SolutionId <String>]: Unique id of the result.
-      [Source <String>]: Source of the search result.
-      [Title <String>]: Title of the search result.
-  [Title <String>]: Solution sections title.
 
 TRIGGERCRITERION <ITriggerCriterion[]>: Solution request trigger criteria
   [Name <Name?>]: Trigger criterion name.
@@ -160,7 +65,7 @@ TRIGGERCRITERION <ITriggerCriterion[]>: Solution request trigger criteria
 https://learn.microsoft.com/powershell/module/az.selfhelp/new-azselfhelpsolution
 #>
 function New-AzSelfHelpSolution {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResource])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -173,101 +78,20 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
-    # This is an extension resource provider and only resource level extension is supported at the moment.
+    # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
     ${Scope},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [System.String]
-    # The HTML content that needs to be rendered and shown to customer.
-    ${Content},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionResourcePropertiesParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ISolutionResourcePropertiesParameters]))]
     [System.Collections.Hashtable]
     # Client input parameters to run Solution
     ${Parameter},
 
     [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionProvisioningState])]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionProvisioningState]
-    # Status of solution provisioning.
-    ${ProvisioningState},
-
-    [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionsDiagnostic[]]
-    # Solution diagnostics results.
-    # To construct, see NOTES section for REPLACEMENTMAPDIAGNOSTIC properties and create a hash table.
-    ${ReplacementMapDiagnostic},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IMetricsBasedChart[]]
-    # Solution metrics based charts
-    # To construct, see NOTES section for REPLACEMENTMAPMETRICSBASEDCHART properties and create a hash table.
-    ${ReplacementMapMetricsBasedChart},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISolutionsTroubleshooters[]]
-    # Solutions Troubleshooters
-    # To construct, see NOTES section for REPLACEMENTMAPTROUBLESHOOTER properties and create a hash table.
-    ${ReplacementMapTroubleshooter},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IVideo[]]
-    # Video solutions, which have the power to engage the customer by stimulating their senses
-    # To construct, see NOTES section for REPLACEMENTMAPVIDEO properties and create a hash table.
-    ${ReplacementMapVideo},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IVideoGroup[]]
-    # Group of Videos
-    # To construct, see NOTES section for REPLACEMENTMAPVIDEOGROUP properties and create a hash table.
-    ${ReplacementMapVideoGroup},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IWebResult[]]
-    # Solution AzureKB results
-    # To construct, see NOTES section for REPLACEMENTMAPWEBRESULT properties and create a hash table.
-    ${ReplacementMapWebResult},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ISection[]]
-    # List of section object.
-    # To construct, see NOTES section for SECTION properties and create a hash table.
-    ${Section},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [System.String]
-    # Solution Id to identify single solution.
-    ${SolutionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [System.String]
-    # The title.
-    ${Title},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITriggerCriterion[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITriggerCriterion[]]
     # Solution request trigger criteria
     # To construct, see NOTES section for TRIGGERCRITERION properties and create a hash table.
     ${TriggerCriterion},

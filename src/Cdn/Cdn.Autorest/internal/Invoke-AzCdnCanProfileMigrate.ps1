@@ -25,11 +25,11 @@ Checks if CDN profile can be migrated to Azure Frontdoor(Standard/Premium) profi
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICanMigrateParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateResult
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICanMigrateResult
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -56,7 +56,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.cdn/invoke-azcdncanprofilemigrate
 #>
 function Invoke-AzCdnCanProfileMigrate {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateResult])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICanMigrateResult])]
 [CmdletBinding(DefaultParameterSetName='CanExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Can', Mandatory)]
@@ -85,7 +85,7 @@ param(
     [Parameter(ParameterSetName='Can', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CanViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ICanMigrateParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ICanMigrateParameters]
     # Request body for CanMigrate operation.
     # To construct, see NOTES section for CANMIGRATEPARAMETER properties and create a hash table.
     ${CanMigrateParameter},

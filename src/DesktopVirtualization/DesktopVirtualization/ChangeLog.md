@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 4.3.0
 * Removed AppAttach Cmdlets and ResetIcon parameter to Update-AzWvdApplication

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for MUA for disabling vault Immutability, increasing RPO for policy schedule, restore, stop protection with retain data.
+* Added support for Enabling/Disabling the azure monitor and email notification alerts for site recovery in recovery services vault.
 
 ## Version 6.8.0
 * Added option to set snapshot consistency type in policy cmdlets for creating or updating enhanced AzureVM policies.

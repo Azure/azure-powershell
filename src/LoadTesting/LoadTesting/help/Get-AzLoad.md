@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.LoadTesting-help.xml
 Module Name: Az.LoadTesting
 online version: https://learn.microsoft.com/powershell/module/az.loadtesting/get-azload
 schema: 2.0.0
@@ -14,18 +14,19 @@ Get the details of an Azure Load Testing resource.
 
 ### List (Default)
 ```
-Get-AzLoad [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLoad [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzLoad -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLoad [-SubscriptionId <String[]>] -Name <String> -ResourceGroupName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzLoad -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzLoad [-SubscriptionId <String[]>] -ResourceGroupName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -148,7 +149,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

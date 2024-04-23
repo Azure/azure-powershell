@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFirmwareAnalysisFirmware
 
 ## SYNOPSIS
-The operation to create a firmware.
+The operation to Create a firmware.
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ New-AzFirmwareAnalysisFirmware -ResourceGroupName <String> -WorkspaceName <Strin
 ```
 
 ## DESCRIPTION
-The operation to create a firmware.
+The operation to Create a firmware.
 
 ## EXAMPLES
 

@@ -103,26 +103,26 @@ The operation to start a virtual machine instance.
 The operation to power off (stop) a virtual machine instance.
 
 ### [Update-AzConnectedVMwareCluster](Update-AzConnectedVMwareCluster.md)
-API to update certain properties of the cluster resource.
+API to Update certain properties of the cluster resource.
 
 ### [Update-AzConnectedVMwareDatastore](Update-AzConnectedVMwareDatastore.md)
-API to update certain properties of the datastore resource.
+API to Update certain properties of the datastore resource.
 
 ### [Update-AzConnectedVMwareHost](Update-AzConnectedVMwareHost.md)
-API to update certain properties of the host resource.
+API to Update certain properties of the host resource.
 
 ### [Update-AzConnectedVMwareResourcePool](Update-AzConnectedVMwareResourcePool.md)
-API to update certain properties of the resourcePool resource.
+API to Update certain properties of the resourcePool resource.
 
 ### [Update-AzConnectedVMwareVCenter](Update-AzConnectedVMwareVCenter.md)
-API to update certain properties of the vCenter resource.
+API to Update certain properties of the vCenter resource.
 
 ### [Update-AzConnectedVMwareVM](Update-AzConnectedVMwareVM.md)
-The operation to update a virtual machine instance.
+The operation to Update a virtual machine instance.
 
 ### [Update-AzConnectedVMwareVMTemplate](Update-AzConnectedVMwareVMTemplate.md)
-API to update certain properties of the virtual machine template resource.
+API to Update certain properties of the virtual machine template resource.
 
 ### [Update-AzConnectedVMwareVNet](Update-AzConnectedVMwareVNet.md)
-API to update certain properties of the virtual network resource.
+API to Update certain properties of the virtual network resource.
 

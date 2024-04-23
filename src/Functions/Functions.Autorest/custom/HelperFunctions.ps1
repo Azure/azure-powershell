@@ -1843,11 +1843,7 @@ function ParseMinorVersion
     (
         [Parameter(Mandatory=$false)]
         [System.String]
-        $RuntimeName,
-
-        [Parameter(Mandatory=$false)]
-        [System.String]
-        $RuntimeVersion,
+        $StackMinorVersion,
 
         [Parameter(Mandatory=$false)]
         [System.String]
@@ -1862,7 +1858,7 @@ function ParseMinorVersion
         $RuntimeFullName,
 
         [Parameter(Mandatory=$false)]
-        [Switch]
+        [Bool]
         $StackIsLinux
     )
 
@@ -1870,7 +1866,7 @@ function ParseMinorVersion
     if ($RuntimeSettings.supportedFunctionsExtensionVersions -notcontains "~$DefaultFunctionsVersion")
     {
         $supportedFunctionsExtensionVersions = $RuntimeSettings.supportedFunctionsExtensionVersions -join ", "
-        Write-Debug "$DEBUG_PREFIX Minimium required Functions version '$DefaultFunctionsVersion' is not supported. Current supported Functions versions: $supportedFunctionsExtensionVersions. Skipping..."
+        Write-Debug "$DEBUG_PREFIX Minimium required Functions version '$DefaultFunctionsVersion' is not supported. Runtime supported Functions versions: $supportedFunctionsExtensionVersions. Skipping..."
         return
     }
     else
@@ -1878,29 +1874,38 @@ function ParseMinorVersion
         Write-Debug "$DEBUG_PREFIX Minimium required Functions version '$DefaultFunctionsVersion' is supported."
     }
 
-    if (-not $RuntimeName)
+    $runtimeName = GetRuntimeName -AppSettingsDictionary $RuntimeSettings.AppSettingsDictionary
+
+    $version = $null
+    if ($RuntimeName -eq "Java" -and $RuntimeSettings.RuntimeVersion -eq "1.8")
     {
-        $RuntimeName = GetRuntimeName -AppSettingsDictionary $RuntimeSettings.AppSettingsDictionary
+        # Java 8 is only supported in Windows. The display value is 8; however, the actual SiteConfig.JavaVersion is 1.8
+        $version = $StackMinorVersion
+    }
+    else
+    {
+        $version = $RuntimeSettings.RuntimeVersion
     }
 
-    if ($runtimeName -like "dotnet*" -or $runtimeName -like "node*")
-    {
-        $RuntimeVersion = GetRuntimeVersion -Version $RuntimeVersion
-    }
-
-    # Some runtimes do not have a version like custom handler
-    if (-not $runtimeVersion -and $RuntimeSettings.RuntimeVersion)
-    {
-        $version = GetRuntimeVersion -Version $RuntimeSettings.RuntimeVersion -StackIsLinux $StackIsLinux.IsPresent
-        $RuntimeVersion = $version
-    }
+    $runtimeVersion = GetRuntimeVersion -Version $version -StackIsLinux $StackIsLinux
 
     # For Java function app, the version from the Stacks API is 8.0, 11.0, and 17.0. However, this is a breaking change which cannot be supported in the current release.
-    # We will convert the version to 8, 11, and 17. This change will be reverted for the November 2023 breaking release.
+    # We will convert the version to 8, 11, and 17. This change will be reverted for the May 2024 breaking release.
     if ($RuntimeName -eq "Java")
     {
-        $RuntimeVersion = [int]$RuntimeVersion
-        Write-Debug "$DEBUG_PREFIX Runtime version for Java is modified to be compatible with the current release. Current version '$RuntimeVersion'"
+        $runtimeVersion = [int]$runtimeVersion
+        Write-Debug "$DEBUG_PREFIX Runtime version for Java is modified to be compatible with the current release. Current version '$runtimeVersion'"
+    }
+
+    # For DotNet function app, the version from the Stacks API is 6.0. 7.0, and 8.0. However, this is a breaking change which cannot be supported in the current release.
+    # We will convert the version to 6, 7, and 8. This change will be reverted for the May 2024 breaking release.
+    if ($RuntimeName -like "DotNet*")
+    {
+        if ($runtimeVersion.EndsWith(".0"))
+        {
+            $runtimeVersion = [int]$runtimeVersion
+        }
+        Write-Debug "$DEBUG_PREFIX Runtime version for $runtimeName is modified to be compatible with the current release. Current version '$runtimeVersion'"
     }
 
     $runtime = [Runtime]::new()
@@ -1926,10 +1931,10 @@ function ParseMinorVersion
         return
     }
 
-    if ($RuntimeVersion -and ($runtimeName -ne "custom"))
+    if ($runtimeVersion -and ($runtimeName -ne "custom"))
     {
-        Write-Debug "$DEBUG_PREFIX Runtime version: $RuntimeVersion"
-        $runtime.Version = $RuntimeVersion
+        Write-Debug "$DEBUG_PREFIX Runtime version: $runtimeVersion"
+        $runtime.Version = $runtimeVersion
     }
     else
     {
@@ -1947,7 +1952,7 @@ function ParseMinorVersion
         $runtime.PreferredOs = $PreferredOs
     }
 
-    $targetOs = if ($StackIsLinux.IsPresent) { 'Linux' } else { 'Windows' }
+    $targetOs = if ($StackIsLinux) { 'Linux' } else { 'Windows' }
     Write-Debug "$DEBUG_PREFIX Runtime '$runtimeName' for '$targetOs' parsed successfully."
 
     return $runtime
@@ -1959,23 +1964,28 @@ function GetRuntimeVersion
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
     param
     (
-        [Parameter(Mandatory=$true)]
-        [ValidateNotNullOrEmpty()]
+        [Parameter(Mandatory=$false)]
         [System.String]
         $Version,
 
         [Parameter(Mandatory=$false)]
-        [Switch]
+        [Bool]
         $StackIsLinux
     )
 
-    if ($StackIsLinux.IsPresent)
+    if (-not $Version)
+    {
+        # Some runtimes do not have a version like custom handler
+        return
+    }
+
+    if ($StackIsLinux)
     {
         $Version = $Version.Split('|')[1]
     }
     else
     {
-        $valuesToReplace = @('STS', 'non-', 'LTS', 'Isolated', '(', ')', '~', 'custom')
+        $valuesToReplace = @('v', '~')
         foreach ($value in $valuesToReplace)
         {
             if ($Version.Contains($value))
@@ -1986,8 +1996,7 @@ function GetRuntimeVersion
     }
 
     $Version =  $Version.Trim()
-
-   return $Version
+    return $Version
 }
 
 function GetDictionary
@@ -2123,27 +2132,26 @@ function SetLinuxandWindowsSupportedRuntimes
     {
         $preferredOs = $stackDefinition.properties.preferredOs
 
-        # runtime name is the $stackDefinition.Name
-        $runtimeName = $stackDefinition.properties.value
-        Write-Debug "$DEBUG_PREFIX Parsing runtime name: $runtimeName"
+        $stackName = $stackDefinition.properties.value
+        Write-Debug "$DEBUG_PREFIX Parsing stack name: $stackName"
 
         foreach ($majorVersion in $stackDefinition.properties.majorVersions)
         {
             foreach ($minorVersion in $majorVersion.minorVersions)
             {
                 $runtimeFullName = $minorVersion.DisplayText
-                $runtimeVersion = $minorVersion.value
                 Write-Debug "$DEBUG_PREFIX runtime full name: $runtimeFullName"
-                Write-Debug "$DEBUG_PREFIX runtime version: $runtimeVersion"
 
+                $stackMinorVersion = $minorVersion.value
+                Write-Debug "$DEBUG_PREFIX stack minor version: $stackMinorVersion"
                 $runtime = $null
 
                 if (ContainsProperty -Object $minorVersion.stackSettings -PropertyName "windowsRuntimeSettings")
                 {
-                    $runtime = ParseMinorVersion -RuntimeVersion $runtimeVersion `
-                                                 -RuntimeSettings $minorVersion.stackSettings.windowsRuntimeSettings `
+                    $runtime = ParseMinorVersion -RuntimeSettings $minorVersion.stackSettings.windowsRuntimeSettings `
                                                  -RuntimeFullName $runtimeFullName `
-                                                 -PreferredOs $preferredOs
+                                                 -PreferredOs $preferredOs `
+                                                 -StackMinorVersion $stackMinorVersion
 
                     if ($runtime)
                     {
@@ -2153,11 +2161,10 @@ function SetLinuxandWindowsSupportedRuntimes
 
                 if (ContainsProperty -Object $minorVersion.stackSettings -PropertyName "linuxRuntimeSettings")
                 {
-                    $runtime = ParseMinorVersion -RuntimeVersion $runtimeVersion `
-                                                 -RuntimeSettings $minorVersion.stackSettings.linuxRuntimeSettings `
+                    $runtime = ParseMinorVersion -RuntimeSettings $minorVersion.stackSettings.linuxRuntimeSettings `
                                                  -RuntimeFullName $runtimeFullName `
                                                  -PreferredOs $preferredOs `
-                                                 -StackIsLinux
+                                                 -StackIsLinux $true
 
                     if ($runtime)
                     {
@@ -2168,44 +2175,60 @@ function SetLinuxandWindowsSupportedRuntimes
         }
     }
 }
-SetLinuxandWindowsSupportedRuntimes
 
-# New-AzFunction app ArgumentCompleter for the RuntimeVersion parameter
-# The values of RuntimeVersion depend on the selection of the Runtime parameter
-$GetRuntimeVersionCompleter = {
+# This method pulls down the Functions stack definitions from the ARM API and builds a list of supported runtimes and runtime versions.
+# This is used to build the tab completers for the New-AzFunctionApp cmdlet.
+function RegisterFunctionsTabCompleters
+{
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.DoNotExportAttribute()]
+    param ()
 
-    param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
-
-    if ($fakeBoundParameters.ContainsKey('Runtime'))
+    if ($env:FunctionsTabCompletersRegistered)
     {
-        # RuntimeVersions is defined in SetLinuxandWindowsSupportedRuntimes
-        $AllRuntimeVersions[$fakeBoundParameters.Runtime] | Where-Object {
-            $_ -like "$wordToComplete*"
-        } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
+        return
     }
+
+    SetLinuxandWindowsSupportedRuntimes
+
+    # New-AzFunction app ArgumentCompleter for the RuntimeVersion parameter
+    # The values of RuntimeVersion depend on the selection of the Runtime parameter
+    $GetRuntimeVersionCompleter = {
+
+        param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+
+        if ($fakeBoundParameters.ContainsKey('Runtime'))
+        {
+            # RuntimeVersions is defined in SetLinuxandWindowsSupportedRuntimes
+            $AllRuntimeVersions[$fakeBoundParameters.Runtime] | Where-Object {
+                $_ -like "$wordToComplete*"
+            } | ForEach-Object { [System.Management.Automation.CompletionResult]::new($_, $_, 'ParameterValue', $_) }
+        }
+    }
+
+    # New-AzFunction app ArgumentCompleter for the Runtime parameter
+    $GetAllRuntimesCompleter = {
+
+        param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+
+        $runtimeValues = $AllRuntimeVersions.Keys | Sort-Object | ForEach-Object { $_ }
+
+        $runtimeValues | Where-Object { $_ -like "$wordToComplete*" }
+    }
+
+    # New-AzFunction app ArgumentCompleter for the Runtime parameter
+    $GetAllFunctionsVersionsCompleter = {
+
+        param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
+
+        $functionsVersions = $AllFunctionsExtensionVersions | Sort-Object | ForEach-Object { $_ }
+
+        $functionsVersions | Where-Object { $_ -like "$wordToComplete*" }
+    }
+
+    # Register tab completers
+    Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName FunctionsVersion -ScriptBlock $GetAllFunctionsVersionsCompleter
+    Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName Runtime -ScriptBlock $GetAllRuntimesCompleter
+    Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName RuntimeVersion -ScriptBlock $GetRuntimeVersionCompleter
+
+    $env:FunctionsTabCompletersRegistered = $true
 }
-
-# New-AzFunction app ArgumentCompleter for the Runtime parameter
-$GetAllRuntimesCompleter = {
-
-    param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
-
-    $runtimeValues = $AllRuntimeVersions.Keys | Sort-Object | ForEach-Object { $_ }
-
-    $runtimeValues | Where-Object { $_ -like "$wordToComplete*" }
-}
-
-# New-AzFunction app ArgumentCompleter for the Runtime parameter
-$GetAllFunctionsVersionsCompleter = {
-
-    param ($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
-
-    $functionsVersions = $AllFunctionsExtensionVersions | Sort-Object | ForEach-Object { $_ }
-
-    $functionsVersions | Where-Object { $_ -like "$wordToComplete*" }
-}
-
-# Register tab completers
-Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName FunctionsVersion -ScriptBlock $GetAllFunctionsVersionsCompleter
-Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName Runtime -ScriptBlock $GetAllRuntimesCompleter
-Register-ArgumentCompleter -CommandName New-AzFunctionApp -ParameterName RuntimeVersion -ScriptBlock $GetRuntimeVersionCompleter

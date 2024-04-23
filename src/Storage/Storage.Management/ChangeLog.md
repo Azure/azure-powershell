@@ -18,7 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Introduced secrets detection feature to safeguard sensitive data.
+* Fixed object replication policy time format parsing issue [#24434]
+* Updated download offset and content length calculation logic for downloading files 
+    - `Get-AzStorageFileContent`
+ 
 ## Version 6.1.3
 * Introduced secrets detection feature to safeguard sensitive data.
 * Upgraded Azure.Core to 1.37.0.

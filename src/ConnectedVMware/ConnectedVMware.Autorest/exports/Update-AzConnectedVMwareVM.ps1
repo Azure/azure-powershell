@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to update a virtual machine instance.
+The operation to Update a virtual machine instance.
 .Description
-The operation to update a virtual machine instance.
+The operation to Update a virtual machine instance.
 .Example
 Update-AzConnectedVMwareVM -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine" -HardwareProfileMemorySizeMb 2048
 
@@ -82,7 +82,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.INetworkInterfaceUpdate[]]
     # Gets or sets the list of network interfaces associated with the virtual machine.
-    # To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
     ${NetworkProfileNetworkInterface},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -90,7 +89,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVirtualDiskUpdate[]]
     # Gets or sets the list of virtual disks associated with the virtual machine.
-    # To construct, see NOTES section for STORAGEPROFILEDISK properties and create a hash table.
     ${StorageProfileDisk},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]

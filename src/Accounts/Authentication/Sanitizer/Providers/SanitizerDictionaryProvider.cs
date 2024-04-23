@@ -43,12 +43,17 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
                             if (Service.TrySanitizeData(dictItemValue as string, out string sanitizedData))
                             {
                                 // Sanitize dictionary item value
-                                telemetry.DetectedProperties.Add(ResolvePropertyPath(property));
+                                telemetry.SecretsDetected = true;
+                                var propertyPath = ResolvePropertyPath(property);
+                                if (!string.IsNullOrEmpty(propertyPath))
+                                {
+                                    telemetry.DetectedProperties.Add(propertyPath);
+                                }
                             }
                         }
                         else
                         {
-                            if (!dicItemValueType.IsValueType && !sanitizingStack.Contains(dictItemValue))
+                            if (!dicItemValueType.IsValueType && !sanitizingStack.Contains(dictItemValue) && !ExceedsMaxDepth(property, telemetry))
                             {
                                 var provider = resolver.ResolveProvider(dicItemValueType);
                                 provider?.SanitizeValue(dictItemValue, sanitizingStack, resolver, property, telemetry);

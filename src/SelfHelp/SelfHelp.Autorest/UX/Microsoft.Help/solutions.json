@@ -1,6 +1,6 @@
 {
   "resourceType": "solutions",
-  "apiVersion": "2023-09-01-preview",
+  "apiVersion": "2024-03-01-preview",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.selfhelp"
   },
@@ -33,6 +33,39 @@
             {
               "name": "-Scope",
               "value": "[Path.scope]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzSelfHelpWarmSolutionUp",
+      "description": "Warm up the solution resource by preloading asynchronous diagnostics results into cache",
+      "path": "/{scope}/providers/Microsoft.Help/solutions/{solutionResourceName}/warmup",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.selfhelp/invoke-azselfhelpwarmsolutionup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Scope <String>",
+              "-SolutionResourceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Warm up the solution resource by preloading asynchronous diagnostics results into cache",
+          "parameters": [
+            {
+              "name": "-Scope",
+              "value": "[Path.scope]"
+            },
+            {
+              "name": "-SolutionResourceName",
+              "value": "[Path.solutionResourceName]"
             }
           ]
         }

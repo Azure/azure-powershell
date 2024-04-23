@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.BillingBenefits-help.xml
 Module Name: Az.BillingBenefits
 online version: https://learn.microsoft.com/powershell/module/az.billingbenefits/update-azbillingbenefitssavingsplan
 schema: 2.0.0
@@ -18,19 +18,15 @@ Update-AzBillingBenefitsSavingsPlan -Id <String> -OrderId <String> [-AppliedScop
  [-AppliedScopePropertyManagementGroupId <String>] [-AppliedScopePropertyResourceGroupId <String>]
  [-AppliedScopePropertySubscriptionId <String>] [-AppliedScopePropertyTenantId <String>]
  [-AppliedScopeType <AppliedScopeType>] [-DisplayName <String>] [-Renew] [-RenewProperty <IRenewProperties>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzBillingBenefitsSavingsPlan -Id <String> -OrderId <String> -Body <ISavingsPlanUpdateRequest>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzBillingBenefitsSavingsPlan -InputObject <IBillingBenefitsIdentity> -Body <ISavingsPlanUpdateRequest>
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -39,7 +35,14 @@ Update-AzBillingBenefitsSavingsPlan -InputObject <IBillingBenefitsIdentity>
  [-AppliedScopePropertyDisplayName <String>] [-AppliedScopePropertyManagementGroupId <String>]
  [-AppliedScopePropertyResourceGroupId <String>] [-AppliedScopePropertySubscriptionId <String>]
  [-AppliedScopePropertyTenantId <String>] [-AppliedScopeType <AppliedScopeType>] [-DisplayName <String>]
- [-Renew] [-RenewProperty <IRenewProperties>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+ [-Renew] [-RenewProperty <IRenewProperties>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaIdentity
+```
+Update-AzBillingBenefitsSavingsPlan -InputObject <IBillingBenefitsIdentity> -Body <ISavingsPlanUpdateRequest>
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -170,7 +173,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -204,7 +208,7 @@ ID of the savings plan
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases: SavingsPlanId
 
 Required: True
@@ -220,7 +224,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.BillingBenefits.Models.IBillingBenefitsIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded, UpdateViaIdentity
 Aliases:
 
 Required: True
@@ -235,7 +239,7 @@ Order ID of the savings plan
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded, Update
 Aliases: SavingsPlanOrderId
 
 Required: True
@@ -337,64 +341,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <ISavingsPlanUpdateRequest>`: Savings plan patch request
-  - `[AppliedScopePropertyDisplayName <String>]`: Display name
-  - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
-  - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
-  - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
-  - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the benefit is applied.
-  - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
-  - `[DisplayName <String>]`: Display name
-  - `[Renew <Boolean?>]`: Setting this to true will automatically purchase a new benefit on the expiration date time.
-  - `[RenewProperty <IRenewProperties>]`: 
-    - `[PurchaseProperty <IPurchaseRequest>]`: 
-      - `[AppliedScopePropertyDisplayName <String>]`: Display name
-      - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
-      - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
-      - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
-      - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the benefit is applied.
-      - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
-      - `[BillingPlan <BillingPlan?>]`: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
-      - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing the benefit
-      - `[CommitmentAmount <Double?>]`: 
-      - `[CommitmentCurrencyCode <String>]`: The ISO 4217 3-letter currency code for the currency used by this purchase record.
-      - `[CommitmentGrain <CommitmentGrain?>]`: Commitment grain.
-      - `[DisplayName <String>]`: Friendly name of the savings plan
-      - `[Renew <Boolean?>]`: Setting this to true will automatically purchase a new benefit on the expiration date time.
-      - `[SkuName <String>]`: Name of the SKU to be applied
-      - `[Term <Term?>]`: Represent benefit term in ISO 8601 format.
-
-`INPUTOBJECT <IBillingBenefitsIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ReservationOrderAliasName <String>]`: Name of the reservation order alias
-  - `[SavingsPlanId <String>]`: ID of the savings plan
-  - `[SavingsPlanOrderAliasName <String>]`: Name of the savings plan order alias
-  - `[SavingsPlanOrderId <String>]`: Order ID of the savings plan
-
-`RENEWPROPERTY <IRenewProperties>`: .
-  - `[PurchaseProperty <IPurchaseRequest>]`: 
-    - `[AppliedScopePropertyDisplayName <String>]`: Display name
-    - `[AppliedScopePropertyManagementGroupId <String>]`: Fully-qualified identifier of the management group where the benefit must be applied.
-    - `[AppliedScopePropertyResourceGroupId <String>]`: Fully-qualified identifier of the resource group.
-    - `[AppliedScopePropertySubscriptionId <String>]`: Fully-qualified identifier of the subscription.
-    - `[AppliedScopePropertyTenantId <String>]`: Tenant ID where the benefit is applied.
-    - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
-    - `[BillingPlan <BillingPlan?>]`: Represents the billing plan in ISO 8601 format. Required only for monthly billing plans.
-    - `[BillingScopeId <String>]`: Subscription that will be charged for purchasing the benefit
-    - `[CommitmentAmount <Double?>]`: 
-    - `[CommitmentCurrencyCode <String>]`: The ISO 4217 3-letter currency code for the currency used by this purchase record.
-    - `[CommitmentGrain <CommitmentGrain?>]`: Commitment grain.
-    - `[DisplayName <String>]`: Friendly name of the savings plan
-    - `[Renew <Boolean?>]`: Setting this to true will automatically purchase a new benefit on the expiration date time.
-    - `[SkuName <String>]`: Name of the SKU to be applied
-    - `[Term <Term?>]`: Represent benefit term in ISO 8601 format.
-
 ## RELATED LINKS
-

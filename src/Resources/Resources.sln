@@ -47,7 +47,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.MSGraph", "MSGraph.Autor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResourceManager", "ResourceManager\ResourceManager.csproj", "{F25C740F-1FC7-4536-A597-837DF0C611A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources.Sdk", "Resources.Sdk\Resources.Sdk.csproj", "{06D245AC-A806-40CB-AD44-459AA3F90E21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources.Management.Sdk", "Resources.Management.Sdk\Resources.Management.Sdk.csproj", "{06D245AC-A806-40CB-AD44-459AA3F90E21}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources.Test", "Resources.Test\Resources.Test.csproj", "{79B1C27E-AB8F-458C-B872-A5DC5041BE08}"
 EndProject

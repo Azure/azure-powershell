@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SelfHelp-help.xml
 Module Name: Az.SelfHelp
 online version: https://learn.microsoft.com/powershell/module/az.selfhelp/invoke-azselfhelpcontinuetroubleshooter
 schema: 2.0.0
@@ -8,7 +8,7 @@ schema: 2.0.0
 # Invoke-AzSelfHelpContinueTroubleshooter
 
 ## SYNOPSIS
-Uses ‘stepId’ and ‘responses’ as the trigger to continue the troubleshooting steps for the respective troubleshooter resource name.
+Uses 'stepId' and 'responses' as the trigger to continue the troubleshooting steps for the respective troubleshooter resource name.
 \<br/\>Continue API is used to provide inputs that are required for the specific troubleshooter to progress into the next step in the process.
 This API is used after the Troubleshooter has been created using the Create API.
 
@@ -18,32 +18,32 @@ This API is used after the Troubleshooter has been created using the Create API.
 ```
 Invoke-AzSelfHelpContinueTroubleshooter -Scope <String> -TroubleshooterName <String>
  [-Response <ITroubleshooterResponse[]>] [-StepId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Continue
 ```
 Invoke-AzSelfHelpContinueTroubleshooter -Scope <String> -TroubleshooterName <String>
- -ContinueRequestBody <IContinueRequestBody> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ContinueViaIdentity
-```
-Invoke-AzSelfHelpContinueTroubleshooter -InputObject <ISelfHelpIdentity>
- -ContinueRequestBody <IContinueRequestBody> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ContinueRequestBody <IContinueRequestBody> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ContinueViaIdentityExpanded
 ```
 Invoke-AzSelfHelpContinueTroubleshooter -InputObject <ISelfHelpIdentity>
  [-Response <ITroubleshooterResponse[]>] [-StepId <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ContinueViaIdentity
+```
+Invoke-AzSelfHelpContinueTroubleshooter -InputObject <ISelfHelpIdentity>
+ -ContinueRequestBody <IContinueRequestBody> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Uses ‘stepId’ and ‘responses’ as the trigger to continue the troubleshooting steps for the respective troubleshooter resource name.
+Uses 'stepId' and 'responses' as the trigger to continue the troubleshooting steps for the respective troubleshooter resource name.
 \<br/\>Continue API is used to provide inputs that are required for the specific troubleshooter to progress into the next step in the process.
 This API is used after the Troubleshooter has been created using the Create API.
 
@@ -55,7 +55,7 @@ $continueRequest = [ordered]@{
     "StepId" ="15ebac6c-96a1-4a67-ae9d-b06011d232ff" 
 } 
 
-Invoke-AzSelfHelpContinueTroubleshooter  -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba"  -TroubleshooterName  "02d59989-f8a9-4b69-9919-1ef51df4eff6" -ContinueRequestBody $continueRequest 
+Invoke-AzSelfHelpContinueTroubleshooter  -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba"  -TroubleshooterName  "02d59989-f8a9-4b69-9919-1ef51df4eff6" -ContinueRequestBody $continueRequest
 ```
 
 ```output
@@ -73,7 +73,7 @@ Troubleshooter ContinueRequest body.
 To construct, see NOTES section for CONTINUEREQUESTBODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IContinueRequestBody
+Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IContinueRequestBody
 Parameter Sets: Continue, ContinueViaIdentity
 Aliases:
 
@@ -106,7 +106,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
-Parameter Sets: ContinueViaIdentity, ContinueViaIdentityExpanded
+Parameter Sets: ContinueViaIdentityExpanded, ContinueViaIdentity
 Aliases:
 
 Required: True
@@ -136,7 +136,7 @@ Accept wildcard characters: False
 To construct, see NOTES section for RESPONSE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResponse[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITroubleshooterResponse[]
 Parameter Sets: ContinueExpanded, ContinueViaIdentityExpanded
 Aliases:
 
@@ -148,11 +148,11 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-This is an extension resource provider and only resource level extension is supported at the moment.
+scope = resourceUri of affected resource.\<br/\> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
 
 ```yaml
 Type: System.String
-Parameter Sets: Continue, ContinueExpanded
+Parameter Sets: ContinueExpanded, Continue
 Aliases:
 
 Required: True
@@ -182,7 +182,7 @@ Troubleshooter resource Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Continue, ContinueExpanded
+Parameter Sets: ContinueExpanded, Continue
 Aliases:
 
 Required: True
@@ -228,7 +228,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IContinueRequestBody
+### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IContinueRequestBody
 
 ### Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
 
@@ -239,4 +239,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

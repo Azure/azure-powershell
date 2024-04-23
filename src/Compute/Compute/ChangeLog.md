@@ -22,6 +22,8 @@
 ## Upcoming Release
 * Added `Etag` property to PSVirtualMachine and PSVirtualMachineScaleSet objects.   
 * Added parameters `-IfMatch` and `-IfNoneMatch` to `Update-AzVM`, `Update-AzVmss`, `New-AzVm`, `New-AzVmss`, `New-AzVmConfig`, and `New-AzVmssConfig` cmdlets.
+* Added cmdlet `Invoke-AzSpotPlacementRecommender`.
+* Fixed `Update-AzCapacityReservationGroup` to remove Subscriptions from SharingProfile.
 
 ## Version 7.2.0
 * Added parameters `-scriptUriManagedIdentity`, `-outputBlobManagedIdentity`, `-errorBlobMangedIdentity`, and `-TreatFailureAsDeploymentFailure` to cmdlets `Set-AzVmRunCommand` and `Set-AzVmssRunCommand`. 
@@ -36,6 +38,7 @@
   `Get-AzVmss` will no longer allow empty values to `ResourceGroupName` and `VMScaleSetName` to avoid a bug where it will just return nothing.
 * Added a new parameter `-SharingProfile` to `New-AzCapacityReservationGroup` and `Update-AzCapacityReservationGroup`.
 * Added the new parameter `SourceImageVMId` to the `New-AzGalleryImageVersion` cmdlet. Also added some error messages for this new parameter and the existing parameter `SourceImageId`. 
+* Updated parameter `-TargetRegion` in `New-AzGalleryImageVersion` and `Update-AzGalleryImageVersion` to accept `ExcludeFromLatest` field. 
 
 ## Version 7.1.2
 * Fixed `New-AzVM` when a source image is specified to avoid an error on the `Version` value.
