@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Cmdlets;
     using System;
 
-    /// <summary>List FleetListtrategy resources by Fleet</summary>
+    /// <summary>List FleetUpdateStrategy resources by Fleet</summary>
     /// <remarks>
     /// [OpenAPI] ListByFleet=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzFleetUpdateStrategy_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetUpdateStrategy))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"List FleetListtrategy resources by Fleet")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"List FleetUpdateStrategy resources by Fleet")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies", ApiVersion = "2023-10-15")]
     public partial class GetAzFleetUpdateStrategy_List : global::System.Management.Automation.PSCmdlet,

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Get a GetRun
+Get a UpdateRun
 .Description
-Get a GetRun
+Get a UpdateRun
 .Example
 Get-AzFleetUpdateRun -FleetName testfleet01 -ResourceGroupName K8sFleet-Test
 .Example

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Delete a FleetDeletetrategy
+Delete a FleetUpdateStrategy
 .Description
-Delete a FleetDeletetrategy
+Delete a FleetUpdateStrategy
 .Example
 $f = Get-AzFleet -Name testfleet01 -ResourceGroupName K8sFleet-Test
 Remove-AzFleetUpdateStrategy -FleetInputObject $f -Name strategy3

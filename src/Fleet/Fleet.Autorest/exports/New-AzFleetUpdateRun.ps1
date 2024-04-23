@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a CreateRun
+Create a UpdateRun
 .Description
-Create a CreateRun
+Create a UpdateRun
 .Example
 New-AzFleetUpdateRun -FleetName testfleet01 -Name run1 -ResourceGroupName K8sFleet-Test -UpgradeType Full -UpgradeKubernetesVersion "1.26.1" -NodeImageSelectionType Latest
 

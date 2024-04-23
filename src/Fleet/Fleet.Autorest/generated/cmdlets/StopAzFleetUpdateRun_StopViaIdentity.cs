@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Stops an StopRun.</summary>
+    /// <summary>Stops an UpdateRun.</summary>
     /// <remarks>
     /// [OpenAPI] Stop=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}/stop"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Stop, @"AzFleetUpdateRun_StopViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRun))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Stops an StopRun.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Stops an UpdateRun.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}/stop", ApiVersion = "2023-10-15")]
     public partial class StopAzFleetUpdateRun_StopViaIdentity : global::System.Management.Automation.PSCmdlet,

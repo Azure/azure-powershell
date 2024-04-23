@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Get a FleetGettrategy
+Get a FleetUpdateStrategy
 .Description
-Get a FleetGettrategy
+Get a FleetUpdateStrategy
 .Example
 Get-AzFleetUpdateStrategy -FleetName testfleet01 -ResourceGroupName K8sFleet-Test
 .Example

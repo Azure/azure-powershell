@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Delete a DeleteRun
+Delete a UpdateRun
 .Description
-Delete a DeleteRun
+Delete a UpdateRun
 .Example
 Remove-AzFleetUpdateRun -FleetName testfleet01 -Name run2 -ResourceGroupName K8sFleet-Test
 
