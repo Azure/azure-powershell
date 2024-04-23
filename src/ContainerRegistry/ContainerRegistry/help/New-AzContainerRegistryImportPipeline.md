@@ -18,7 +18,7 @@ New-AzContainerRegistryImportPipeline -Name <String> -RegistryName <String> -Res
  [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
  [-Option <PipelineOptions[]>] [-SourceKeyVaultUri <String>] [-SourceTriggerStatus <TriggerStatus>]
  [-SourceType <PipelineSourceType>] [-SourceUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -193,6 +193,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RegistryName
 The name of the container registry.
 
@@ -341,7 +356,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IImportPipeline
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

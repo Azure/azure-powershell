@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ServiceLinker-help.xml
 Module Name: Az.ServiceLinker
 online version: https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerazureresourceobject
 schema: 2.0.0
@@ -14,7 +14,7 @@ Create an in-memory object for AzureResource.
 
 ```
 New-AzServiceLinkerAzureResourceObject -Id <String> [-ConnectAsKubernetesCsiDriver <Boolean>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,8 +30,7 @@ New-AzServiceLinkerAzureResourceObject -Id /subscriptions/00000000-0000-0000-000
 ```output
 Id
 --
-/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/servicelinker-test-… 
-
+/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/servicelinker-test-…
 ```
 
 Create an AzureResourceObject as the param of `-TargetService`
@@ -69,6 +68,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -80,7 +94,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ImportExport-help.xml
 Module Name: Az.ImportExport
 online version: https://learn.microsoft.com/powershell/module/az.importexport/new-AzImportExportDriveListObject
 schema: 2.0.0
@@ -16,7 +16,7 @@ Create a DriverList Object for ImportExport.
 New-AzImportExportDriveListObject [-BitLockerKey <String>] [-BytesSucceeded <Int64>] [-CopyStatus <String>]
  [-DriveHeaderHash <String>] [-DriveId <String>] [-ErrorLogUri <String>] [-ManifestFile <String>]
  [-ManifestHash <String>] [-ManifestUri <String>] [-PercentComplete <Int32>] [-State <DriveState>]
- [-VerboseLogUri <String>] [<CommonParameters>]
+ [-VerboseLogUri <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -191,6 +191,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -State
 The drive's current state.
 
@@ -232,7 +247,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

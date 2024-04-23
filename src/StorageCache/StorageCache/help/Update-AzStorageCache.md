@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StorageCache-help.xml
 Module Name: Az.StorageCache
 online version: https://learn.microsoft.com/powershell/module/az.storagecache/update-azstoragecache
 schema: 2.0.0
@@ -22,7 +22,7 @@ Update-AzStorageCache -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-NetworkSettingNtpServer <String>] [-SecuritySettingAccessPolicy <INfsAccessPolicy[]>] [-SkuName <String>]
  [-SourceVaultId <String>] [-Subnet <String>] [-Tag <Hashtable>] [-UpgradeSettingScheduledTime <DateTime>]
  [-UpgradeSettingUpgradeScheduleEnabled] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -35,7 +35,7 @@ Update-AzStorageCache -InputObject <IStorageCacheIdentity> [-CacheSizeGb <Int32>
  [-SecuritySettingAccessPolicy <INfsAccessPolicy[]>] [-SkuName <String>] [-SourceVaultId <String>]
  [-Subnet <String>] [-Tag <Hashtable>] [-UpgradeSettingScheduledTime <DateTime>]
  [-UpgradeSettingUpgradeScheduleEnabled] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -317,6 +317,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -516,55 +531,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`DIRECTORYSERVICESSETTING <ICacheDirectorySettings>`: Specifies Directory Services settings of the cache.
-  - `[ActiveDirectoryCacheNetBiosName <String>]`: The NetBIOS name to assign to the HPC Cache when it joins the Active Directory domain as a server. Length must 1-15 characters from the class [-0-9a-zA-Z].
-  - `[ActiveDirectoryDomainName <String>]`: The fully qualified domain name of the Active Directory domain controller.
-  - `[ActiveDirectoryDomainNetBiosName <String>]`: The Active Directory domain's NetBIOS name.
-  - `[ActiveDirectoryPrimaryDnsIPAddress <String>]`: Primary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
-  - `[ActiveDirectorySecondaryDnsIPAddress <String>]`: Secondary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
-  - `[CredentialsBindDn <String>]`: The Bind Distinguished Name identity to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
-  - `[CredentialsBindPassword <String>]`: The Bind password to be used in the secure LDAP connection. This value is stored encrypted and not returned on response.
-  - `[CredentialsPassword <String>]`: Plain text password of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
-  - `[CredentialsUsername <String>]`: Username of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
-  - `[UsernameDownloadAutoDownloadCertificate <Boolean?>]`: Determines if the certificate should be automatically downloaded. This applies to 'caCertificateURI' only if 'requireValidCertificate' is true.
-  - `[UsernameDownloadCaCertificateUri <String>]`: The URI of the CA certificate to validate the LDAP secure connection. This field must be populated when 'requireValidCertificate' is set to true.
-  - `[UsernameDownloadEncryptLdapConnection <Boolean?>]`: Whether or not the LDAP connection should be encrypted.
-  - `[UsernameDownloadExtendedGroup <Boolean?>]`: Whether or not Extended Groups is enabled.
-  - `[UsernameDownloadGroupFileUri <String>]`: The URI of the file containing group information (in /etc/group file format). This field must be populated when 'usernameSource' is set to 'File'.
-  - `[UsernameDownloadLdapBaseDn <String>]`: The base distinguished name for the LDAP domain.
-  - `[UsernameDownloadLdapServer <String>]`: The fully qualified domain name or IP address of the LDAP server to use.
-  - `[UsernameDownloadRequireValidCertificate <Boolean?>]`: Determines if the certificates must be validated by a certificate authority. When true, caCertificateURI must be provided.
-  - `[UsernameDownloadUserFileUri <String>]`: The URI of the file containing user information (in /etc/passwd file format). This field must be populated when 'usernameSource' is set to 'File'.
-  - `[UsernameDownloadUsernameSource <UsernameSource?>]`: This setting determines how the cache gets username and group names for clients.
-
-`INPUTOBJECT <IStorageCacheIdentity>`: Identity Parameter
-  - `[AmlFilesystemName <String>]`: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  - `[CacheName <String>]`: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[OperationId <String>]`: The ID of an ongoing async operation.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[StorageTargetName <String>]`: Name of Storage Target.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-`SECURITYSETTINGACCESSPOLICY <INfsAccessPolicy[]>`: NFS access policies defined for this cache.
-  - `AccessRule <INfsAccessRule[]>`: The set of rules describing client accesses allowed under this policy.
-    - `Access <NfsAccessRuleAccess>`: Access allowed by this rule.
-    - `Scope <NfsAccessRuleScope>`: Scope for this rule. The scope and filter determine which clients match the rule.
-    - `[AnonymousGid <String>]`: GID value that replaces 0 when rootSquash is true. This will use the value of anonymousUID if not provided.
-    - `[AnonymousUid <String>]`: UID value that replaces 0 when rootSquash is true. 65534 will be used if not provided.
-    - `[Filter <String>]`: Filter applied to the scope for this rule. The filter's format depends on its scope. 'default' scope matches all clients and has no filter value. 'network' scope takes a filter in CIDR format (for example, 10.99.1.0/24). 'host' takes an IP address or fully qualified domain name as filter. If a client does not match any filter rule and there is no default rule, access is denied.
-    - `[RootSquash <Boolean?>]`: Map root accesses to anonymousUID and anonymousGID.
-    - `[SubmountAccess <Boolean?>]`: For the default policy, allow access to subdirectories under the root export. If this is set to no, clients can only mount the path '/'. If set to yes, clients can mount a deeper path, like '/a/b'.
-    - `[Suid <Boolean?>]`: Allow SUID semantics.
-  - `Name <String>`: Name identifying this policy. Access Policy names are not case sensitive.
-
 ## RELATED LINKS
-

@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
-online version: https://learn.microsoft.com/powershell/module/az.Peering/new-AzPeeringDirectConnectionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringDirectConnectionObject
 schema: 2.0.0
 ---
 
@@ -19,7 +19,7 @@ New-AzPeeringDirectConnectionObject [-BandwidthInMbps <Int32>] [-BgpSessionMaxPr
  [-BgpSessionPeerSessionIPv4Address <String>] [-BgpSessionPeerSessionIPv6Address <String>]
  [-BgpSessionPrefixV4 <String>] [-BgpSessionPrefixV6 <String>] [-ConnectionIdentifier <String>]
  [-PeeringDbFacilityId <Int32>] [-SessionAddressProvider <SessionAddressProvider>]
- [-UseForPeeringService <Boolean>] [<CommonParameters>]
+ [-UseForPeeringService <Boolean>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +38,6 @@ New-AzPeeringDirectConnectionObject -BandwidthInMbps 10000 -BgpSessionMaxPrefixe
 BandwidthInMbps ConnectionIdentifier ConnectionState ErrorMessage MicrosoftTrackingId PeeringDbFacilityId ProvisionedBandwidthInMbps
 --------------- -------------------- --------------- ------------ ------------------- ------------------- --------------------------
 10000           c111111111111        PendingApproval                                  82
-
 ```
 
 Creates an in-memory direct connection object
@@ -225,6 +224,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SessionAddressProvider
 The field indicating if Microsoft provides session ip addresses.
 
@@ -266,7 +280,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

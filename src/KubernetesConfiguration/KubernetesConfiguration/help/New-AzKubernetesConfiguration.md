@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.KubernetesConfiguration-help.xml
 Module Name: Az.KubernetesConfiguration
 online version: https://learn.microsoft.com/powershell/module/az.kubernetesconfiguration/new-azkubernetesconfiguration
 schema: 2.0.0
@@ -14,12 +14,12 @@ Create a new Kubernetes Source Control Configuration.
 
 ```
 New-AzKubernetesConfiguration -ClusterName <String> -ClusterType <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-ClusterScoped]
- [-ConfigurationProtectedSetting <Hashtable>] [-EnableHelmOperator] [-HelmOperatorChartValue <String>]
- [-HelmOperatorChartVersion <String>] [-OperatorInstanceName <String>] [-OperatorNamespace <String>]
- [-OperatorParam <String>] [-OperatorScope <OperatorScopeType>] [-OperatorType <OperatorType>]
- [-RepositoryUrl <String>] [-SshKnownHost <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-ConfigurationProtectedSetting <Hashtable>]
+ [-EnableHelmOperator] [-HelmOperatorChartValue <String>] [-HelmOperatorChartVersion <String>]
+ [-OperatorInstanceName <String>] [-OperatorNamespace <String>] [-OperatorParam <String>]
+ [-OperatorScope <OperatorScopeType>] [-OperatorType <OperatorType>] [-ClusterScoped] [-RepositoryUrl <String>]
+ [-SshKnownHost <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -271,6 +271,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RepositoryUrl
 Url of the SourceControl Repository.
 
@@ -379,4 +394,3 @@ ALIASES
 New-AzK8sConfiguration
 
 ## RELATED LINKS
-

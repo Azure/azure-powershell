@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Quantum-help.xml
 Module Name: Az.Quantum
 online version: https://learn.microsoft.com/powershell/module/az.quantum/new-azquantumworkspace
 schema: 2.0.0
@@ -13,10 +13,10 @@ Creates or updates a workspace resource.
 ## SYNTAX
 
 ```
-New-AzQuantumWorkspace -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-IdentityType <ResourceIdentityType>] [-Provider <IProvider[]>]
- [-StorageAccount <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzQuantumWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+ [-IdentityType <ResourceIdentityType>] [-Provider <IProvider[]>] [-StorageAccount <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -123,6 +123,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -249,20 +264,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PROVIDER <IProvider[]>`: List of Providers selected for this Workspace
-  - `[ApplicationName <String>]`: The provider's marketplace application display name.
-  - `[Id <String>]`: Unique id of this provider.
-  - `[InstanceUri <String>]`: A Uri identifying the specific instance of this provider.
-  - `[ProvisioningState <Status?>]`: Provisioning status field
-  - `[ResourceUsageId <String>]`: Id to track resource usage for the provider.
-  - `[Sku <String>]`: The sku associated with pricing information for this provider.
-
 ## RELATED LINKS
-

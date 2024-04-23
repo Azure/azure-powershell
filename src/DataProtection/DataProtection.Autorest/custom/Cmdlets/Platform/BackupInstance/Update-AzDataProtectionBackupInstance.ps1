@@ -2,7 +2,7 @@
 
 function Update-AzDataProtectionBackupInstance
 {
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBackupInstanceResource')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates a given backup instance')]
 
@@ -116,7 +116,7 @@ function Update-AzDataProtectionBackupInstance
                 $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList[0].ContainersList = $VaultedBackupContainer
             }
             elseif($datasourceParam -eq $null){
-                $backupConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.BlobBackupDatasourceParameters]::new()
+                $backupConfiguration = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.BlobBackupDatasourceParameters]::new()
                 $backupConfiguration.ObjectType = "BlobBackupDatasourceParameters"
                 $backupConfiguration.ContainersList = $VaultedBackupContainer
 

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Kusto-help.xml
 Module Name: Az.Kusto
 online version: https://learn.microsoft.com/powershell/module/az.kusto/new-azkustocluster
 schema: 2.0.0
@@ -13,22 +13,22 @@ Create or update a Kusto cluster.
 ## SYNTAX
 
 ```
-New-AzKustoCluster -Name <String> -ResourceGroupName <String> -Location <String> -SkuName <AzureSkuName>
- -SkuTier <AzureSkuTier> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
+New-AzKustoCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
+ [-IfNoneMatch <String>] -Location <String> -SkuName <AzureSkuName> -SkuTier <AzureSkuTier>
  [-AcceptedAudience <IAcceptedAudiences[]>] [-AllowedFqdnList <String[]>] [-AllowedIPRangeList <String[]>]
  [-EnableAutoStop] [-EnableDiskEncryption] [-EnableDoubleEncryption] [-EnablePurge] [-EnableStreamingIngest]
  [-EngineType <EngineType>] [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
  [-KeyVaultPropertyKeyVersion <String>] [-KeyVaultPropertyUserIdentity <String>]
  [-LanguageExtensionValue <ILanguageExtension[]>] [-OptimizedAutoscaleIsEnabled]
- [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>]
- [-OptimizedAutoscaleVersion <Int32>] [-PublicIPType <PublicIPType>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-RestrictOutboundNetworkAccess <ClusterNetworkAccessFlag>]
- [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-TrustedExternalTenant <ITrustedExternalTenant[]>]
- [-VirtualClusterGraduationProperty <String>] [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
+ [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>] [-OptimizedAutoscaleVersion <Int32>]
+ [-PublicIPType <PublicIPType>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-RestrictOutboundNetworkAccess <ClusterNetworkAccessFlag>] [-SkuCapacity <Int32>] [-Tag <Hashtable>]
+ [-TrustedExternalTenant <ITrustedExternalTenant[]>] [-VirtualClusterGraduationProperty <String>]
+ [-VirtualNetworkConfigurationDataManagementPublicIPId <String>]
  [-VirtualNetworkConfigurationEnginePublicIPId <String>] [-VirtualNetworkConfigurationState <VnetState>]
  [-VirtualNetworkConfigurationSubnetId <String>] [-Zone <String[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -465,6 +465,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicIPType
 Indicates what public IP type to create - IPv4 (default), or DualStack (both IPv4 and IPv6)
 
@@ -752,4 +767,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

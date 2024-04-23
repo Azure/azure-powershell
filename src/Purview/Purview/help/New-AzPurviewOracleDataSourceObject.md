@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewOracleDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewOracleDataSourceObject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Create an in-memory object for OracleDataSource.
 
 ```
 New-AzPurviewOracleDataSourceObject -Kind <DataSourceType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-Host <String>] [-Port <String>] [-Service <String>] [<CommonParameters>]
+ [-CollectionType <String>] [-Host <String>] [-Port <String>] [-Service <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,6 +117,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Service
 
 ```yaml
@@ -140,7 +156,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OracleDataSource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

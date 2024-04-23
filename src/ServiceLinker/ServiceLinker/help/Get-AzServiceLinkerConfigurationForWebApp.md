@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ServiceLinker-help.xml
 Module Name: Az.ServiceLinker
 online version: https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfigurationforwebapp
 schema: 2.0.0
@@ -13,9 +13,9 @@ list source configurations for a linker in webapp.
 ## SYNTAX
 
 ```
-Get-AzServiceLinkerConfigurationForWebApp -LinkerName <String> -ResourceGroupName <String> -WebApp <String>
- [-ResourceUri <String>] [-DefaultProfile <PSObject>] [-SubscriptionId <String>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzServiceLinkerConfigurationForWebApp -LinkerName <String> [-ResourceUri <String>]
+ [-DefaultProfile <PSObject>] -WebApp <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,8 +31,7 @@ Get-AzServiceLinkerConfigurationForWebApp -WebApp servicelinker-webapp -Resource
 ```output
 Name  : AZURE_POSTGRESQL_POSTGRESQL_NOVNET_CONNECTIONSTRING
 Value : Server=test.postgres.database.azure.com;Database=testdb;Port=543 
-        2;Ssl Mode=Require;User Id=testuser@test;Password=password;   
-
+        2;Ssl Mode=Require;User Id=testuser@test;Password=password;
 ```
 
 Get Linker's configuration list
@@ -63,6 +62,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -172,7 +186,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

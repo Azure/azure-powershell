@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Orbital-help.xml
 Module Name: Az.Orbital
 online version: https://learn.microsoft.com/powershell/module/az.orbital/new-azorbitalcontactprofile
 schema: 2.0.0
@@ -13,12 +13,12 @@ Creates or updates a contact profile.
 ## SYNTAX
 
 ```
-New-AzOrbitalContactProfile -Name <String> -ResourceGroupName <String> -Link <IContactProfileLink[]>
- -Location <String> -NetworkConfigurationSubnetId <String> [-SubscriptionId <String>]
+New-AzOrbitalContactProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Link <IContactProfileLink[]> -Location <String> -NetworkConfigurationSubnetId <String>
  [-AutoTrackingConfiguration <AutoTrackingConfiguration>] [-EventHubUri <String>]
  [-MinimumElevationDegree <Single>] [-MinimumViableContactDuration <String>] [-Tag <Hashtable>]
  [-ThirdPartyConfiguration <IContactProfileThirdPartyConfiguration[]>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -217,6 +217,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -322,35 +337,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`LINK <IContactProfileLink[]>`: Links of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
-  - `Channel <IContactProfileLinkChannel[]>`: Contact Profile Link Channel.
-    - `BandwidthMHz <Single>`: Bandwidth in MHz.
-    - `CenterFrequencyMHz <Single>`: Center Frequency in MHz.
-    - `EndPointIPAddress <String>`: IP Address (IPv4).
-    - `EndPointName <String>`: Name of an end point.
-    - `EndPointPort <String>`: TCP port to listen on to receive data.
-    - `EndPointProtocol <Protocol>`: Protocol either UDP or TCP.
-    - `Name <String>`: Channel name.
-    - `[DecodingConfiguration <String>]`: Currently unused.
-    - `[DemodulationConfiguration <String>]`: Copy of the modem configuration file such as Kratos QRadio or Kratos QuantumRx. Only valid for downlink directions. If provided, the modem connects to the customer endpoint and sends demodulated data instead of a VITA.49 stream.
-    - `[EncodingConfiguration <String>]`: Currently unused.
-    - `[ModulationConfiguration <String>]`: Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
-  - `Direction <Direction>`: Direction (Uplink or Downlink).
-  - `Name <String>`: Link name.
-  - `Polarization <Polarization>`: Polarization. e.g. (RHCP, LHCP).
-  - `[EirpdBw <Single?>]`: Effective Isotropic Radiated Power (EIRP) in dBW. It is the required EIRP by the customer. Not used yet.
-  - `[GainOverTemperature <Single?>]`: Gain to noise temperature in db/K. It is the required G/T by the customer. Not used yet.
-
-`THIRDPARTYCONFIGURATION <IContactProfileThirdPartyConfiguration[]>`: Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
-  - `MissionConfiguration <String>`: Name of string referencing the configuration describing contact set-up for a particular mission. Expected values are those which have been created in collaboration with the partner network.
-  - `ProviderName <String>`: Name of the third-party provider.
-
 ## RELATED LINKS
-

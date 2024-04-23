@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MixedReality-help.xml
 Module Name: Az.MixedReality
 online version: https://learn.microsoft.com/powershell/module/az.mixedreality/new-azmixedrealityspatialanchorsaccount
 schema: 2.0.0
@@ -13,12 +13,12 @@ Creating or Updating a Spatial Anchors Account.
 ## SYNTAX
 
 ```
-New-AzMixedRealitySpatialAnchorsAccount -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-IdentityType <ResourceIdentityType>] [-KindCapacity <Int32>]
- [-KindFamily <String>] [-KindName <String>] [-KindSize <String>] [-KindTier <SkuTier>]
- [-PlanType <ResourceIdentityType>] [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>]
- [-SkuSize <String>] [-SkuTier <SkuTier>] [-StorageAccountName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzMixedRealitySpatialAnchorsAccount -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-IdentityType <ResourceIdentityType>] [-KindCapacity <Int32>] [-KindFamily <String>]
+ [-KindName <String>] [-KindSize <String>] [-KindTier <SkuTier>] [-PlanType <ResourceIdentityType>]
+ [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
+ [-StorageAccountName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,8 @@ Creating or Updating a Spatial Anchors Account.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -187,6 +188,21 @@ The identity type.
 Type: Microsoft.Azure.PowerShell.Cmdlets.MixedReality.Support.ResourceIdentityType
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -378,7 +394,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

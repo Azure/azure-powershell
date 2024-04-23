@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Portal-help.xml
 Module Name: Az.Portal
 online version: https://learn.microsoft.com/powershell/module/az.portal/set-azportaldashboard
 schema: 2.0.0
@@ -13,8 +13,9 @@ Creates or updates a Dashboard.
 ## SYNTAX
 
 ```
-Set-AzPortalDashboard -Name <String> -ResourceGroupName <String> -DashboardPath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -DashboardPath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +56,6 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 
-
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
@@ -70,7 +70,6 @@ Accept wildcard characters: False
 
 ### -Name
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -83,8 +82,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
 
 ```yaml
 Type: System.String
@@ -99,7 +112,6 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-
 
 ```yaml
 Type: System.String
@@ -155,7 +167,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

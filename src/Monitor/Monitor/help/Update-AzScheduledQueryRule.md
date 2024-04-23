@@ -20,7 +20,7 @@ Update-AzScheduledQueryRule -Name <String> -ResourceGroupName <String> [-Subscri
  [-DisplayName <String>] [-Enabled] [-EvaluationFrequency <TimeSpan>] [-MuteActionsDuration <TimeSpan>]
  [-OverrideQueryTimeRange <TimeSpan>] [-Scope <String[]>] [-Severity <Int64>] [-SkipQueryValidation]
  [-Tag <Hashtable>] [-TargetResourceType <String[]>] [-WindowSize <TimeSpan>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -31,7 +31,7 @@ Update-AzScheduledQueryRule -InputObject <IScheduledQueryRuleIdentity> [-ActionC
  [-EvaluationFrequency <TimeSpan>] [-MuteActionsDuration <TimeSpan>] [-OverrideQueryTimeRange <TimeSpan>]
  [-Scope <String[]>] [-Severity <Int64>] [-SkipQueryValidation] [-Tag <Hashtable>]
  [-TargetResourceType <String[]>] [-WindowSize <TimeSpan>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -262,6 +262,21 @@ Relevant only for rules of the kind LogAlert.
 Type: System.TimeSpan
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -54,13 +54,15 @@ New-AzSqlVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>
  [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a SQL virtual machine. 
+Creates or updates a SQL virtual machine.
 
-If you are updating an existing SQL virtual machine and a parameter such as -Tag is omitted, then the previously defined values may be removed. For this reason, it is recommended to use [Update-AzSqlVM](https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azsqlvm) to prevent overwriting of unintended parameters.
+If you are updating an existing SQL virtual machine and a parameter such as -Tag is omitted, then the previously defined values may be removed.
+For this reason, it is recommended to use [Update-AzSqlVM](https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/update-azsqlvm) to prevent overwriting of unintended parameters.
 
 ## EXAMPLES
 
@@ -558,7 +560,7 @@ Accept wildcard characters: False
 
 ### -IdentityType
 The identity type.
-Set this to 'SystemAssigned' in order to automatically create and assign a Microsoft Entra principal for the resource.
+Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Support.IdentityType
@@ -730,6 +732,21 @@ Examples include SQL2016-WS2016, SQL2017-WS2016.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -1475,7 +1492,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

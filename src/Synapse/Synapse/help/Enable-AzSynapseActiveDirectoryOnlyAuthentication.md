@@ -15,19 +15,22 @@ Enables Microsoft Entra-only authentication for a specific Synapse workspace.
 ### EnableByNameParameterSet (Default)
 ```
 Enable-AzSynapseActiveDirectoryOnlyAuthentication [-ResourceGroupName <String>] -WorkspaceName <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### EnableByParentObjectParameterSet
 ```
 Enable-AzSynapseActiveDirectoryOnlyAuthentication -WorkspaceObject <PSSynapseWorkspace>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### EnableByResourceIdParameterSet
 ```
 Enable-AzSynapseActiveDirectoryOnlyAuthentication -ResourceId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,11 +42,13 @@ The **Enable-AzSynapseActiveDirectoryOnlyAuthentication** cmdlet enables Microso
 ```powershell
 Enable-AzSynapseActiveDirectoryOnlyAuthentication -WorkspaceName ContosoWorkspace
 ```
+
 ```output
 WorkspaceName     AzureADOnlyAuthenticationProperty State      CreationDate
 -------------     --------------------------------- -----      ------------
 ContosoWorkspace                               True Consistent 3/23/2022 8:27:47 AM
 ```
+
 This command enables Microsoft Entra-only authentication for workspace ContosoWorkspace.
 
 ### Example 2
@@ -51,22 +56,26 @@ This command enables Microsoft Entra-only authentication for workspace ContosoWo
 $ws = Get-AzSynapseWorkspace -WorkspaceName ContosoWorkspace
 $ws | Enable-AzSynapseActiveDirectoryOnlyAuthentication
 ```
+
 ```output
 WorkspaceName     AzureADOnlyAuthenticationProperty State      CreationDate
 -------------     --------------------------------- -----      ------------
 ContosoWorkspace                               True Consistent 3/23/2022 8:27:47 AM
 ```
+
 This command enables Microsoft Entra-only authentication for workspace ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
 Enable-AzSynapseActiveDirectoryOnlyAuthentication -ResourceId /subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace
 ```
+
 ```output
 WorkspaceName     AzureADOnlyAuthenticationProperty State      CreationDate
 -------------     --------------------------------- -----      ------------
 ContosoWorkspace                               True Consistent 3/23/2022 8:27:47 AM
 ```
+
 This command enables Microsoft Entra-only authentication for workspace ContosoWorkspace by ResourceId.
 
 ## PARAMETERS
@@ -78,6 +87,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

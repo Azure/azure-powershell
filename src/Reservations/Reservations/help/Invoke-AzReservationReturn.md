@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Reservations-help.xml
 Module Name: Az.Reservations
 online version: https://learn.microsoft.com/powershell/module/az.reservations/invoke-azreservationreturn
 schema: 2.0.0
@@ -14,28 +14,28 @@ Return a Reservation.
 
 ### PostExpanded (Default)
 ```
-Invoke-AzReservationReturn -ReservationOrderId <String> -ReservationToReturnQuantity <Int32>
- -ReservationToReturnReservationId <String> -ReturnReason <String> -Scope <String> -SessionId <String>
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Post
-```
-Invoke-AzReservationReturn -Body <IRefundRequest> -ReservationOrderId <String> [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Invoke-AzReservationReturn -ReservationOrderId <String> -ReservationToReturnReservationId <String>
+ -ReservationToReturnQuantity <Int32> -SessionId <String> -Scope <String> -ReturnReason <String>
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PostViaIdentity
 ```
-Invoke-AzReservationReturn -InputObject <IReservationsIdentity> -Body <IRefundRequest> [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Invoke-AzReservationReturn -InputObject <IReservationsIdentity> -Body <IRefundRequest>
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PostViaIdentityExpanded
 ```
-Invoke-AzReservationReturn -InputObject <IReservationsIdentity> -ReservationToReturnQuantity <Int32>
- -ReservationToReturnReservationId <String> -ReturnReason <String> -Scope <String> -SessionId <String>
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzReservationReturn -InputObject <IReservationsIdentity> -ReservationToReturnReservationId <String>
+ -ReservationToReturnQuantity <Int32> -SessionId <String> -Scope <String> -ReturnReason <String>
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Post
+```
+Invoke-AzReservationReturn -ReservationOrderId <String> -Body <IRefundRequest>
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,7 +68,7 @@ To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundRequest
-Parameter Sets: Post, PostViaIdentity
+Parameter Sets: PostViaIdentity, Post
 Aliases:
 
 Required: True
@@ -94,12 +94,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ReservationOrderId
 Reservation Order Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Post, PostExpanded
+Parameter Sets: PostExpanded, Post
 Aliases:
 
 Required: True
@@ -229,25 +244,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <IRefundRequest>`: The return request body.
-  - `[ReservationToReturnQuantity <Int32?>]`: Quantity to be returned. Must be greater than zero.
-  - `[ReservationToReturnReservationId <String>]`: Fully qualified identifier of the reservation being returned
-  - `[ReturnReason <String>]`: The reason of returning the reservation
-  - `[Scope <String>]`: The scope of the refund, e.g. Reservation
-  - `[SessionId <String>]`: SessionId that was returned by CalculateRefund API.
-
-`INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ReservationId <String>]`: Id of the reservation item
-  - `[ReservationOrderId <String>]`: Order Id of the reservation
-  - `[SubscriptionId <String>]`: Id of the subscription
-
 ## RELATED LINKS
-

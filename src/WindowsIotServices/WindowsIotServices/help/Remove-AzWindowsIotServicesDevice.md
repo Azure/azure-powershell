@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.WindowsIotServices-help.xml
 Module Name: Az.WindowsIotServices
 online version: https://learn.microsoft.com/powershell/module/az.windowsiotservices/remove-azwindowsiotservicesdevice
 schema: 2.0.0
@@ -15,13 +15,13 @@ Delete a Windows IoT Device Service.
 ### Delete (Default)
 ```
 Remove-AzWindowsIotServicesDevice -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzWindowsIotServicesDevice -InputObject <IWindowsIotServicesIdentity> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +32,6 @@ Delete a Windows IoT Device Service.
 ### Example 1: Remove a Windows IoT services by name
 ```powershell
 Remove-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test
-
 ```
 
 This command removes a Windows IoT services by name.
@@ -40,8 +39,6 @@ This command removes a Windows IoT services by name.
 ### Example 2: Remove a Windows IoT services by pipeline
 ```powershell
 Get-AzWindowsIotServicesDevice -ResourceGroupName azure-rg-test -Name wsi-t01 | Remove-AzWindowsIotServicesDevice
-
-
 ```
 
 This command removes a Windows IoT services by pipeline.
@@ -49,7 +46,8 @@ This command removes a Windows IoT services by pipeline.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -88,6 +86,21 @@ Parameter Sets: Delete
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -168,18 +181,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IWindowsIotServicesIdentity>`: Identity Parameter
-  - `[DeviceName <String>]`: The name of the Windows IoT Device Service.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group that contains the Windows IoT Device Service.
-  - `[SubscriptionId <String>]`: The subscription identifier.
-
 ## RELATED LINKS
-

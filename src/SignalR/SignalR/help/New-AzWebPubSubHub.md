@@ -15,7 +15,8 @@ Create or update a hub setting.
 ```
 New-AzWebPubSubHub -Name <String> -ResourceGroupName <String> -ResourceName <String> [-SubscriptionId <String>]
  [-AnonymousConnectPolicy <String>] [-EventHandler <IEventHandler[]>] [-EventListener <IEventListener[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -176,6 +177,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group that contains the resource.
 You can obtain this value from the Azure Resource Manager API or the portal.
@@ -264,23 +280,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.IWebPubSubHub
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`EVENTHANDLER <IEventHandler[]>`: Event handler of a hub.
-  - `UrlTemplate <String>`: Gets or sets the EventHandler URL template. You can use a predefined parameter {hub} and {event} inside the template, the value of the EventHandler URL is dynamically calculated when the client request comes in.         For example, UrlTemplate can be `http://example.com/api/{hub}/{event}`. The host part can't contains parameters.
-  - `[AuthType <UpstreamAuthType?>]`: Upstream auth type enum.
-  - `[ManagedIdentityResource <String>]`: The Resource indicating the App ID URI of the target resource.         It also appears in the aud (audience) claim of the issued token.
-  - `[SystemEvent <String[]>]`: Gets ot sets the list of system events. Valid values contain: 'connect', 'connected', 'disconnected'.
-  - `[UserEventPattern <String>]`: Gets or sets the matching pattern for event names.         There are 3 kinds of patterns supported:             1. "*", it matches any event name             2. Combine multiple events with ",", for example "event1,event2", it matches event "event1" and "event2"             3. A single event name, for example, "event1", it matches "event1"
-
-`EVENTLISTENER <IEventListener[]>`: Event listener settings for forwarding your client events to listeners.Event listener is transparent to Web PubSub clients, and it doesn't return any result to clients nor interrupt the lifetime of clients.One event can be sent to multiple listeners, as long as it matches the filters in those listeners. The order of the array elements doesn't matter.Maximum count of event listeners among all hubs is 10.
-  - `Endpoint <IEventListenerEndpoint>`: An endpoint specifying where Web PubSub should send events to.
-  - `Filter <IEventListenerFilter>`: A base class for event filter which determines whether an event should be sent to an event listener.
 
 ## RELATED LINKS

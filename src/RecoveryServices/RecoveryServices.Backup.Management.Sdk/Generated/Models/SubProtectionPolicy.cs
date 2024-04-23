@@ -34,9 +34,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="retentionPolicy">Retention policy with the details on backup copy retention ranges.
         /// </param>
 
-        /// <param name="tieringPolicy">Tiering policy to automatically move RPs to another tier.
-        /// Key is Target Tier, defined in RecoveryPointTierType enum.
-        /// Tiering policy specifies the criteria to move RP to the target tier.
+        /// <param name="tieringPolicy">Tiering policy to automatically move RPs to another tier. Key is Target
+        /// Tier, defined in RecoveryPointTierType enum. Tiering policy specifies the
+        /// criteria to move RP to the target tier.
         /// </param>
 
         /// <param name="snapshotBackupAdditionalDetails">Snapshot Backup related fields for WorkloadType SaPHanaSystem
@@ -78,9 +78,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public RetentionPolicy RetentionPolicy {get; set; }
 
         /// <summary>
-        /// Gets or sets tiering policy to automatically move RPs to another tier.
-        /// Key is Target Tier, defined in RecoveryPointTierType enum.
-        /// Tiering policy specifies the criteria to move RP to the target tier.
+        /// Gets or sets tiering policy to automatically move RPs to another tier. Key
+        /// is Target Tier, defined in RecoveryPointTierType enum. Tiering policy
+        /// specifies the criteria to move RP to the target tier.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tieringPolicy")]
         public System.Collections.Generic.IDictionary<string, TieringPolicy> TieringPolicy {get; set; }

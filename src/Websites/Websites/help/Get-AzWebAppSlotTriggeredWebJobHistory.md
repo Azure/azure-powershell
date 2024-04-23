@@ -15,20 +15,21 @@ Get or list triggered web job's history for a deployment slot.
 ### List (Default)
 ```
 Get-AzWebAppSlotTriggeredWebJobHistory -AppName <String> -Name <String> -ResourceGroupName <String>
- -SlotName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ -SlotName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzWebAppSlotTriggeredWebJobHistory -AppName <String> -Id <String> -Name <String>
  -ResourceGroupName <String> -SlotName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [-PassThru] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzWebAppSlotTriggeredWebJobHistory -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -162,6 +163,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

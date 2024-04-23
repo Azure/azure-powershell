@@ -91,18 +91,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -151,6 +145,12 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CreationTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>TimestampPropertyName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -160,6 +160,12 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreationTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TimestampPropertyName</PropertyName>
               </TableColumnItem>
@@ -291,9 +297,6 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Kind</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -305,9 +308,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Kind</PropertyName>
@@ -325,6 +325,12 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CreationTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DataAccessFqdn</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -334,6 +340,12 @@
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreationTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>DataAccessFqdn</PropertyName>
               </TableColumnItem>
@@ -403,7 +415,13 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CreationTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EventSourceResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TimestampPropertyName</Label>
@@ -425,7 +443,13 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>CreationTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>EventSourceResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TimestampPropertyName</PropertyName>
@@ -498,6 +522,9 @@
             <Label>ConsumerGroupName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>CreationTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EventHubName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -505,6 +532,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>KeyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ServiceBusNamespace</Label>
@@ -523,6 +553,9 @@
                 <PropertyName>ConsumerGroupName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>CreationTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>EventHubName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -530,6 +563,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>KeyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ServiceBusNamespace</PropertyName>
@@ -596,6 +632,9 @@
             <Label>ConsumerGroupName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>CreationTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EventHubName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -603,6 +642,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>KeyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>ServiceBusNamespace</Label>
@@ -618,6 +660,9 @@
                 <PropertyName>ConsumerGroupName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>CreationTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>EventHubName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -625,6 +670,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>KeyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ServiceBusNamespace</PropertyName>
@@ -645,12 +693,24 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CreationTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>TimestampPropertyName</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>CreationTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TimestampPropertyName</PropertyName>
               </TableColumnItem>
@@ -723,9 +783,6 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Kind</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -737,9 +794,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Kind</PropertyName>
@@ -863,6 +917,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CreationTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DataAccessFqdn</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -873,6 +930,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PropertyUsageState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>StateDetailCode</Label>
@@ -894,6 +954,9 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>CreationTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>DataAccessFqdn</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -904,6 +967,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PropertyUsageState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>StateDetailCode</PropertyName>
@@ -973,6 +1039,9 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CreationTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DataAccessFqdn</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -983,6 +1052,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>PropertyUsageState</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>StateDetailCode</Label>
@@ -1001,6 +1073,9 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>CreationTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>DataAccessFqdn</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1011,6 +1086,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>PropertyUsageState</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>StateDetailCode</PropertyName>
@@ -1131,7 +1209,13 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CreationTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EventSourceResourceId</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TimestampPropertyName</Label>
@@ -1150,7 +1234,13 @@
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>CreationTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>EventSourceResourceId</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TimestampPropertyName</PropertyName>
@@ -1220,6 +1310,9 @@
             <Label>ConsumerGroupName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>CreationTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EventSourceResourceId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1227,6 +1320,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>KeyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TimestampPropertyName</Label>
@@ -1242,6 +1338,9 @@
                 <PropertyName>ConsumerGroupName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>CreationTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>EventSourceResourceId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1249,6 +1348,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>KeyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TimestampPropertyName</PropertyName>
@@ -1312,6 +1414,9 @@
             <Label>ConsumerGroupName</Label>
           </TableColumnHeader>
           <TableColumnHeader>
+            <Label>CreationTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>EventSourceResourceId</Label>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -1319,6 +1424,9 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>KeyName</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
           <TableColumnHeader>
             <Label>TimestampPropertyName</Label>
@@ -1331,6 +1439,9 @@
                 <PropertyName>ConsumerGroupName</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
+                <PropertyName>CreationTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>EventSourceResourceId</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
@@ -1338,6 +1449,9 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>KeyName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>TimestampPropertyName</PropertyName>
@@ -1529,18 +1643,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1560,9 +1668,6 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -1572,9 +1677,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1589,14 +1691,26 @@
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
+            <Label>CreationTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
             <Label>DataStringComparisonBehavior</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
           </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
+                <PropertyName>CreationTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
                 <PropertyName>DataStringComparisonBehavior</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1635,9 +1749,6 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -1645,8 +1756,33 @@
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
               </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ResourceProperties</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ResourceProperties</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>CreationTime</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
               <TableColumnItem>
-                <PropertyName>Type</PropertyName>
+                <PropertyName>CreationTime</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ProvisioningState</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1691,18 +1827,12 @@
           <TableColumnHeader>
             <Label>Name</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -1720,9 +1850,6 @@
             <Label>Name</Label>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Type</Label>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>Location</Label>
           </TableColumnHeader>
         </TableHeaders>
@@ -1731,9 +1858,6 @@
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>Type</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>

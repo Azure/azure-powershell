@@ -1,8 +1,9 @@
 ### Example 1: Get-AzConnectedNetworkDevice via Resource Group and Resource name
 ```powershell
 Get-AzConnectedNetworkDevice -ResourceGroupName myResources -Name myMecDevice
+```
 
-
+```output
 DeviceType                   : AzureStackEdge
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/myMecDevice
 Location                     : westcentralus
@@ -28,8 +29,9 @@ Getting information about the NFM device in resource group myResources with name
 ```powershell
 $mecDevice = @{ DeviceName = "myMecDevice1"; Location = "eastus"; ResourceGroupName = "myResources"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
 Get-AzConnectedNetworkDevice -InputObject $mecDevice
+```
 
-
+```output
 DeviceType                   : AzureStackEdge
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/myMecDevice1
 Location                     : eastus

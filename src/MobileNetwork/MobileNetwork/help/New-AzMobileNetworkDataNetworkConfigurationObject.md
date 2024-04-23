@@ -18,7 +18,7 @@ New-AzMobileNetworkDataNetworkConfigurationObject -AllowedService <IServiceResou
  [-AdditionalAllowedSessionType <PduSessionType[]>] [-AllocationAndRetentionPriorityLevel <Int32>]
  [-DefaultSessionType <PduSessionType>] [-FiveQi <Int32>] [-MaximumNumberOfBufferedPacket <Int32>]
  [-PreemptionCapability <PreemptionCapability>] [-PreemptionVulnerability <PreemptionVulnerability>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -188,6 +188,21 @@ See 3GPP TS23.501 section 5.7.2.2 for a full description of the ARP parameters.
 Type: Microsoft.Azure.PowerShell.Cmdlets.MobileNetwork.Support.PreemptionVulnerability
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

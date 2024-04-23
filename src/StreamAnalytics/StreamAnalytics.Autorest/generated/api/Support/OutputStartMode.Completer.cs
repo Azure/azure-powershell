@@ -32,15 +32,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "JobStartTime".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("JobStartTime", "JobStartTime", global::System.Management.Automation.CompletionResultType.ParameterValue, "JobStartTime");
+                yield return new global::System.Management.Automation.CompletionResult("'JobStartTime'", "JobStartTime", global::System.Management.Automation.CompletionResultType.ParameterValue, "JobStartTime");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CustomTime".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CustomTime", "CustomTime", global::System.Management.Automation.CompletionResultType.ParameterValue, "CustomTime");
+                yield return new global::System.Management.Automation.CompletionResult("'CustomTime'", "CustomTime", global::System.Management.Automation.CompletionResultType.ParameterValue, "CustomTime");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LastOutputEventTime".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LastOutputEventTime", "LastOutputEventTime", global::System.Management.Automation.CompletionResultType.ParameterValue, "LastOutputEventTime");
+                yield return new global::System.Management.Automation.CompletionResult("'LastOutputEventTime'", "LastOutputEventTime", global::System.Management.Automation.CompletionResultType.ParameterValue, "LastOutputEventTime");
             }
         }
     }

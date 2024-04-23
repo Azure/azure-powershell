@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DynatraceObservability-help.xml
 Module Name: Az.DynatraceObservability
 online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/update-azdynatracemonitor
 schema: 2.0.0
@@ -23,7 +23,8 @@ Update-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> [-Subscript
  [-SingleSignOnAadDomain <String[]>] [-SingleSignOnEnterpriseAppId <String>]
  [-SingleSignOnState <SingleSignOnStates>] [-SingleSignOnUrl <String>] [-Tag <Hashtable>]
  [-UserCountry <String>] [-UserEmailAddress <String>] [-UserFirstName <String>] [-UserLastName <String>]
- [-UserPhoneNumber <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UserPhoneNumber <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -36,7 +37,8 @@ Update-AzDynatraceMonitor -InputObject <IDynatraceObservabilityIdentity> [-Accou
  [-SingleSignOnAadDomain <String[]>] [-SingleSignOnEnterpriseAppId <String>]
  [-SingleSignOnState <SingleSignOnStates>] [-SingleSignOnUrl <String>] [-Tag <Hashtable>]
  [-UserCountry <String>] [-UserEmailAddress <String>] [-UserFirstName <String>] [-UserLastName <String>]
- [-UserPhoneNumber <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UserPhoneNumber <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -316,6 +318,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -333,7 +350,7 @@ Accept wildcard characters: False
 ```
 
 ### -SingleSignOnAadDomain
-array of Microsoft Entra domains
+array of Aad(azure active directory) domains
 
 ```yaml
 Type: System.String[]
@@ -540,20 +557,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDynatraceObservabilityIdentity>`: Identity Parameter
-  - `[ConfigurationName <String>]`: Single Sign On Configuration Name
-  - `[Id <String>]`: Resource identity path
-  - `[MonitorName <String>]`: Monitor resource name
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RuleSetName <String>]`: Monitor resource name
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS

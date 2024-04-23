@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.ManagedServices-help.xml
 Module Name: Az.ManagedServices
-online version: https://learn.microsoft.com/powershell/module/az.ManagedServices/new-AzManagedServicesEligibleApproverObject
+online version: https://learn.microsoft.com/powershell/module/Az.ManagedServices/new-AzManagedServicesEligibleApproverObject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,7 @@ Create an in-memory object for EligibleApprover.
 
 ```
 New-AzManagedServicesEligibleApproverObject -PrincipalId <String> [-PrincipalIdDisplayName <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +38,7 @@ Creates Azure Lighthouse eligible authorization approver object.
 ## PARAMETERS
 
 ### -PrincipalId
-The identifier of the Microsoft Entra principal.
+The identifier of the Azure Active Directory principal.
 
 ```yaml
 Type: System.String
@@ -53,12 +53,27 @@ Accept wildcard characters: False
 ```
 
 ### -PrincipalIdDisplayName
-The display name of the Microsoft Entra principal.
+The display name of the Azure Active Directory principal.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -77,7 +92,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Models.Api20200201Preview.EligibleApprover
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

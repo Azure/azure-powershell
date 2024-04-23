@@ -28,67 +28,67 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSpecified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotSpecified", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
+                yield return new global::System.Management.Automation.CompletionResult("'NotSpecified'", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResourceCreationValidate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ResourceCreationValidate", "ResourceCreationValidate", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceCreationValidate");
+                yield return new global::System.Management.Automation.CompletionResult("'ResourceCreationValidate'", "ResourceCreationValidate", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceCreationValidate");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResourceCreationBegin".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ResourceCreationBegin", "ResourceCreationBegin", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceCreationBegin");
+                yield return new global::System.Management.Automation.CompletionResult("'ResourceCreationBegin'", "ResourceCreationBegin", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceCreationBegin");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResourceCreationCompleted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ResourceCreationCompleted", "ResourceCreationCompleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceCreationCompleted");
+                yield return new global::System.Management.Automation.CompletionResult("'ResourceCreationCompleted'", "ResourceCreationCompleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceCreationCompleted");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResourceReadValidate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ResourceReadValidate", "ResourceReadValidate", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceReadValidate");
+                yield return new global::System.Management.Automation.CompletionResult("'ResourceReadValidate'", "ResourceReadValidate", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceReadValidate");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResourceReadBegin".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ResourceReadBegin", "ResourceReadBegin", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceReadBegin");
+                yield return new global::System.Management.Automation.CompletionResult("'ResourceReadBegin'", "ResourceReadBegin", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceReadBegin");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResourcePatchValidate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ResourcePatchValidate", "ResourcePatchValidate", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourcePatchValidate");
+                yield return new global::System.Management.Automation.CompletionResult("'ResourcePatchValidate'", "ResourcePatchValidate", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourcePatchValidate");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResourcePatchCompleted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ResourcePatchCompleted", "ResourcePatchCompleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourcePatchCompleted");
+                yield return new global::System.Management.Automation.CompletionResult("'ResourcePatchCompleted'", "ResourcePatchCompleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourcePatchCompleted");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResourceDeletionValidate".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ResourceDeletionValidate", "ResourceDeletionValidate", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceDeletionValidate");
+                yield return new global::System.Management.Automation.CompletionResult("'ResourceDeletionValidate'", "ResourceDeletionValidate", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceDeletionValidate");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResourceDeletionBegin".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ResourceDeletionBegin", "ResourceDeletionBegin", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceDeletionBegin");
+                yield return new global::System.Management.Automation.CompletionResult("'ResourceDeletionBegin'", "ResourceDeletionBegin", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceDeletionBegin");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResourceDeletionCompleted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ResourceDeletionCompleted", "ResourceDeletionCompleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceDeletionCompleted");
+                yield return new global::System.Management.Automation.CompletionResult("'ResourceDeletionCompleted'", "ResourceDeletionCompleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceDeletionCompleted");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResourcePostAction".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ResourcePostAction", "ResourcePostAction", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourcePostAction");
+                yield return new global::System.Management.Automation.CompletionResult("'ResourcePostAction'", "ResourcePostAction", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourcePostAction");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SubscriptionLifecycleNotification".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SubscriptionLifecycleNotification", "SubscriptionLifecycleNotification", global::System.Management.Automation.CompletionResultType.ParameterValue, "SubscriptionLifecycleNotification");
+                yield return new global::System.Management.Automation.CompletionResult("'SubscriptionLifecycleNotification'", "SubscriptionLifecycleNotification", global::System.Management.Automation.CompletionResultType.ParameterValue, "SubscriptionLifecycleNotification");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResourcePatchBegin".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ResourcePatchBegin", "ResourcePatchBegin", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourcePatchBegin");
+                yield return new global::System.Management.Automation.CompletionResult("'ResourcePatchBegin'", "ResourcePatchBegin", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourcePatchBegin");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResourceMoveBegin".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ResourceMoveBegin", "ResourceMoveBegin", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceMoveBegin");
+                yield return new global::System.Management.Automation.CompletionResult("'ResourceMoveBegin'", "ResourceMoveBegin", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceMoveBegin");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "ResourceMoveCompleted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("ResourceMoveCompleted", "ResourceMoveCompleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceMoveCompleted");
+                yield return new global::System.Management.Automation.CompletionResult("'ResourceMoveCompleted'", "ResourceMoveCompleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "ResourceMoveCompleted");
             }
         }
     }

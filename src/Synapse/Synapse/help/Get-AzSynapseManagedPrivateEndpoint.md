@@ -15,13 +15,14 @@ Gets information about mananged private endpoints in a workspace
 ### GetByName (Default)
 ```
 Get-AzSynapseManagedPrivateEndpoint -WorkspaceName <String> [-Name <String>] [-VirtualNetworkName <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByObject
 ```
 Get-AzSynapseManagedPrivateEndpoint -WorkspaceObject <PSSynapseWorkspace> [-Name <String>]
- [-VirtualNetworkName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VirtualNetworkName <String>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,6 +76,21 @@ The Synapse Managed Private Endpoint Name.
 Type: System.String
 Parameter Sets: (All)
 Aliases: ManagedPrivateEndpointName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

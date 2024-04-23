@@ -14,7 +14,7 @@ Create an in-memory object for WorkbookTemplateGallery.
 
 ```
 New-AzApplicationInsightsWorkbookTemplateGalleryObject [-Category <String>] [-Name <String>] [-Order <Int32>]
- [-ResourceType <String>] [-Type <String>] [<CommonParameters>]
+ [-ResourceType <String>] [-Type <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,6 +74,21 @@ Order of the template within the gallery.
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

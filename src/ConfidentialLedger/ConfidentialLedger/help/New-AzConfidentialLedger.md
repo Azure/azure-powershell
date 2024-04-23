@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConfidentialLedger-help.xml
 Module Name: Az.ConfidentialLedger
 online version: https://learn.microsoft.com/powershell/module/az.confidentialledger/new-azconfidentialledger
 schema: 2.0.0
@@ -16,7 +16,8 @@ Creates a  Confidential Ledger with the specified ledger parameters.
 New-AzConfidentialLedger -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AadBasedSecurityPrincipal <IAadBasedSecurityPrincipal[]>]
  [-CertBasedSecurityPrincipal <ICertBasedSecurityPrincipal[]>] [-LedgerType <LedgerType>] [-Location <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,13 +33,13 @@ New-AzConfidentialLedger `
   -SubscriptionId 00000000-0000-0000-0000-000000000000 `
   -AadBasedSecurityPrincipal `
       @{
-          LedgerRoleName="Administrator";
-          PrincipalId="34621747-6fc8-4771-a2eb-72f31c461f2e";
+          LedgerRoleName="Administrator"; 
+          PrincipalId="34621747-6fc8-4771-a2eb-72f31c461f2e"; 
           TenantId="bce123b9-2b7b-4975-8360-5ca0b9b1cd08"
       } `
   -CertBasedSecurityPrincipal `
       @{
-          Cert="-----BEGIN CERTIFICATE-----********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************-----END CERTIFICATE-----";
+          Cert="-----BEGIN CERTIFICATE-----********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************-----END CERTIFICATE-----"; 
           LedgerRoleName="Reader"
       } `
   -LedgerType Public `
@@ -132,7 +133,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -198,6 +200,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -295,21 +312,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-AADBASEDSECURITYPRINCIPAL <IAadBasedSecurityPrincipal[]>: Array of all AAD based Security Principals.
-  - `[LedgerRoleName <LedgerRoleName?>]`: LedgerRole associated with the Security Principal of Ledger
-  - `[PrincipalId <String>]`: UUID/GUID based Principal Id of the Security Principal
-  - `[TenantId <String>]`: UUID/GUID based Tenant Id of the Security Principal
-
-CERTBASEDSECURITYPRINCIPAL <ICertBasedSecurityPrincipal[]>: Array of all cert based Security Principals.
-  - `[Cert <String>]`: Public key of the user cert (.pem or .cer)
-  - `[LedgerRoleName <LedgerRoleName?>]`: LedgerRole associated with the Security Principal of Ledger
-
 ## RELATED LINKS
-

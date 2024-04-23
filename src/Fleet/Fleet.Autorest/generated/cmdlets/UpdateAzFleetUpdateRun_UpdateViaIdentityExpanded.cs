@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a UpdateRun</summary>
+    /// <summary>Update a UpdateRun</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzFleetUpdateRun_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRun))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Create a UpdateRun")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Update a UpdateRun")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Generated]
     public partial class UpdateAzFleetUpdateRun_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IEventListener,
@@ -314,11 +314,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Fleet.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
                 telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
                 telemetryInfo.TryGetValue("InvocationName", out var invocationName);
-                if (!string.IsNullOrEmpty(sanitizedProperties))
+                if (showSecretsWarning == "true")
                 {
-                    WriteWarning($"The output of cmdlet {invocationName ?? "Unknown"} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
                 }
             }
         }
@@ -512,7 +520,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
                     {
                         _resourceBody = await this.Client.UpdateRunsGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
                         this.Update_resourceBody();
-                        await this.Client.UpdateRunsCreateOrUpdateViaIdentity(InputObject.Id, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.UpdateRunsCreateOrUpdateViaIdentity(InputObject.Id, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -535,7 +543,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
                         }
                         _resourceBody = await this.Client.UpdateRunsGetWithResult(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.FleetName ?? null, InputObject.UpdateRunName ?? null, this, Pipeline);
                         this.Update_resourceBody();
-                        await this.Client.UpdateRunsCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.FleetName ?? null, InputObject.UpdateRunName ?? null, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.UpdateRunsCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.FleetName ?? null, InputObject.UpdateRunName ?? null, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

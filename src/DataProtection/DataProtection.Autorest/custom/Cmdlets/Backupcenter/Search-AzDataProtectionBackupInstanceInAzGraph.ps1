@@ -102,7 +102,7 @@
         foreach($argResponse in $argInstanceResponse)
         {
             $jsonStringResponse = $argResponse | ConvertTo-Json -Depth 100
-            $backupInstances += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.BackupInstanceResource]::FromJsonString($jsonStringResponse)
+            $backupInstances += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.BackupInstanceResource]::FromJsonString($jsonStringResponse)
         }
         return $backupInstances
     }

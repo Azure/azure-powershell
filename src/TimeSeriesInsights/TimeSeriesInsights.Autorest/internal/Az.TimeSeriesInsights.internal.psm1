@@ -1,6 +1,6 @@
 # region Generated 
   # Load the private module dll
-  $null = Import-Module -PassThru -Name (Join-Path $PSScriptRoot '../bin/Az.TimeSeriesInsights.private.dll')
+  $null = Import-Module -PassThru -Name (Join-Path $PSScriptRoot '..\bin\Az.TimeSeriesInsights.private.dll')
 
   # Get the private module's instance
   $instance = [Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Module]::Instance
@@ -24,12 +24,12 @@
     # Load the last folder if no profile is selected
     $profileDirectory = $directories | Select-Object -Last 1
   }
-  
+
   if($profileDirectory) {
     Write-Information "Loaded Azure profile '$($profileDirectory.Name)' for module '$($instance.Name)'"
     $exportsPath = $profileDirectory.FullName
   }
-  
+
   if($exportsPath) {
     Get-ChildItem -Path $exportsPath -Recurse -Include '*.ps1' -File | ForEach-Object { . $_.FullName }
     $cmdletNames = Get-ScriptCmdlet -ScriptFolder $exportsPath

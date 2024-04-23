@@ -322,6 +322,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             HelpMessage = ParamHelpMsgs.RestoreVM.EdgeZone)]
         public SwitchParameter RestoreToEdgeZone { get; set; }
 
+        /// <summary>
+        /// Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = ParamHelpMsgs.ResourceGuard.AuxiliaryAccessToken, ValueFromPipeline = false)]        
+        public string Token;
+
         public override void ExecuteCmdlet()
         {
             ExecutionBlock(() =>
@@ -409,6 +415,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 providerParameters.Add(RestoreVMBackupItemParams.TargetSubnetName, TargetSubnetName);
                 providerParameters.Add(RestoreVMBackupItemParams.TargetSubscriptionId, TargetSubscriptionId);
                 providerParameters.Add(RestoreVMBackupItemParams.RestoreToEdgeZone, RestoreToEdgeZone.IsPresent);
+                providerParameters.Add(ResourceGuardParams.Token, Token);
+                providerParameters.Add(ResourceGuardParams.IsMUAOperation, true);
 
                 if (DiskEncryptionSetId != null)
                 {

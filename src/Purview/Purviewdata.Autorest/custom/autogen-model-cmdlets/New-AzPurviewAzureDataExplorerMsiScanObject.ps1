@@ -23,7 +23,7 @@ Create an in-memory object for AzureDataExplorerMsiScan.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerMsiScan
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureDataExplorerMsiScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureDataExplorerMsiScanObject
 #>
 function New-AzPurviewAzureDataExplorerMsiScanObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureDataExplorerMsiScan')]

@@ -26,13 +26,14 @@ Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Descripti
  [-ScheduleReccurenceDaysOfMonth <String>] [-ScheduleReccurence2DaysOfMonth <String>]
  [-ScheduleReccurenceStartTime <String>] [-ScheduleReccurence2StartTime <String>]
  [-ScheduleReccurenceEndTime <String>] [-ScheduleReccurence2EndTime <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
 Set-AzAlertProcessingRule -InputObject <PSAlertProcessingRule> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### BySimplifiedFormatActionGroupActionRule
@@ -49,7 +50,8 @@ Set-AzAlertProcessingRule -ResourceGroupName <String> -Name <String> [-Descripti
  [-ScheduleReccurenceDaysOfMonth <String>] [-ScheduleReccurence2DaysOfMonth <String>]
  [-ScheduleReccurenceStartTime <String>] [-ScheduleReccurence2StartTime <String>]
  [-ScheduleReccurenceEndTime <String>] [-ScheduleReccurence2EndTime <String>] -ActionGroupId <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -362,6 +364,21 @@ Parameter Sets: BySimplifiedFormatSuppressionActionRule, BySimplifiedFormatActio
 Aliases: ResourceId
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

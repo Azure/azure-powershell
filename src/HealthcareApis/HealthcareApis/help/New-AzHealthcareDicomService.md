@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HealthcareApis-help.xml
 Module Name: Az.HealthcareApis
 online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcaredicomservice
 schema: 2.0.0
@@ -14,9 +14,10 @@ Creates or updates a DICOM Service resource with the specified parameters.
 
 ```
 New-AzHealthcareDicomService -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- -Location <String> [-SubscriptionId <String>] [-Etag <String>] [-IdentityType <ServiceManagedIdentityType>]
+ [-SubscriptionId <String>] -Location <String> [-Etag <String>] [-IdentityType <ServiceManagedIdentityType>]
  [-IdentityUserAssignedIdentity <Hashtable>] [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,6 +162,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 Control permission for data plane traffic coming from public networks while private endpoint is enabled.
 
@@ -278,7 +294,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ImportExport-help.xml
 Module Name: Az.ImportExport
 online version: https://learn.microsoft.com/powershell/module/az.importexport/new-azimportexport
 schema: 2.0.0
@@ -32,7 +32,8 @@ New-AzImportExport -Name <String> -ResourceGroupName <String> [-SubscriptionId <
  [-ShippingInformationPostalCode <String>] [-ShippingInformationRecipientName <String>]
  [-ShippingInformationStateOrProvince <String>] [-ShippingInformationStreetAddress1 <String>]
  [-ShippingInformationStreetAddress2 <String>] [-State <String>] [-StorageAccountId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -148,7 +149,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -399,6 +401,21 @@ Overall percentage completed for the job.
 Type: System.Int64
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -884,26 +901,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`DRIVELIST <IDriveStatus[]>`: List of up to ten drives that comprise the job. The drive list is a required element for an import job; it is not specified for export jobs.
-  - `[BitLockerKey <String>]`: The BitLocker key used to encrypt the drive.
-  - `[BytesSucceeded <Int64?>]`: Bytes successfully transferred for the drive.
-  - `[CopyStatus <String>]`: Detailed status about the data transfer process. This field is not returned in the response until the drive is in the Transferring state.
-  - `[DriveHeaderHash <String>]`: The drive header hash value.
-  - `[DriveId <String>]`: The drive's hardware serial number, without spaces.
-  - `[ErrorLogUri <String>]`: A URI that points to the blob containing the error log for the data transfer operation.
-  - `[ManifestFile <String>]`: The relative path of the manifest file on the drive. 
-  - `[ManifestHash <String>]`: The Base16-encoded MD5 hash of the manifest file on the drive.
-  - `[ManifestUri <String>]`: A URI that points to the blob containing the drive manifest file. 
-  - `[PercentComplete <Int64?>]`: Percentage completed for the drive. 
-  - `[State <DriveState?>]`: The drive's current state. 
-  - `[VerboseLogUri <String>]`: A URI that points to the blob containing the verbose log for the data transfer operation. 
-
 ## RELATED LINKS
-

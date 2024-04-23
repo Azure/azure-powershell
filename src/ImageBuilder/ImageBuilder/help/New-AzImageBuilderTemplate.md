@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ImageBuilder-help.xml
 Module Name: Az.ImageBuilder
 online version: https://learn.microsoft.com/powershell/module/az.imagebuilder/new-azimagebuildertemplate
 schema: 2.0.0
@@ -14,29 +14,29 @@ Create or update a virtual machine image template
 
 ### CreateExpanded (Default)
 ```
-New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -Customize <IImageTemplateCustomizer[]>
- -Distribute <IImageTemplateDistributor[]> -Location <String> -Source <IImageTemplateSource>
- -UserAssignedIdentityId <String> [-SubscriptionId <String>] [-BuildTimeoutInMinute <Int32>]
- [-StagingResourceGroup <String>] [-Tag <Hashtable>] [-ValidateContinueDistributeOnFailure]
- [-ValidateSourceValidationOnly] [-Validator <IImageTemplateInVMValidator[]>]
- [-VMBootState <VMBootOptimizationState>] [-VMProfileOsdiskSizeGb <Int32>]
- [-VMProfileUserAssignedIdentity <String[]>] [-VMProfileVmsize <String>] [-VnetConfigProxyVMSize <String>]
- [-VnetConfigSubnetId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaJsonString
-```
-New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> -Customize <IImageTemplateCustomizer[]> -Distribute <IImageTemplateDistributor[]>
+ -Source <IImageTemplateSource> -UserAssignedIdentityId <String> [-BuildTimeoutInMinute <Int32>]
+ [-StagingResourceGroup <String>] [-Tag <Hashtable>] [-VMBootState <VMBootOptimizationState>]
+ [-VMProfileOsdiskSizeGb <Int32>] [-VMProfileUserAssignedIdentity <String[]>] [-VMProfileVmsize <String>]
+ [-ValidateContinueDistributeOnFailure] [-ValidateSourceValidationOnly]
+ [-Validator <IImageTemplateInVMValidator[]>] [-VnetConfigProxyVMSize <String>] [-VnetConfigSubnetId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### JsonTemplatePath
 ```
-New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -JsonTemplatePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -JsonTemplatePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaJsonString
+```
+New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] -JsonString <String> [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -186,7 +186,6 @@ Accept wildcard characters: False
 
 ### -BuildTimeoutInMinute
 
-
 ```yaml
 Type: System.Int32
 Parameter Sets: CreateExpanded
@@ -261,7 +260,6 @@ Accept wildcard characters: False
 
 ### -JsonTemplatePath
 
-
 ```yaml
 Type: System.String
 Parameter Sets: JsonTemplatePath
@@ -275,7 +273,6 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-
 
 ```yaml
 Type: System.String
@@ -319,6 +316,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
@@ -351,7 +363,6 @@ Accept wildcard characters: False
 
 ### -StagingResourceGroup
 
-
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded
@@ -382,7 +393,6 @@ Accept wildcard characters: False
 
 ### -Tag
 
-
 ```yaml
 Type: System.Collections.Hashtable
 Parameter Sets: CreateExpanded
@@ -396,7 +406,6 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentityId
-
 
 ```yaml
 Type: System.String
@@ -412,7 +421,6 @@ Accept wildcard characters: False
 
 ### -ValidateContinueDistributeOnFailure
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CreateExpanded
@@ -426,7 +434,6 @@ Accept wildcard characters: False
 ```
 
 ### -ValidateSourceValidationOnly
-
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -457,7 +464,6 @@ Accept wildcard characters: False
 
 ### -VMBootState
 
-
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.VMBootOptimizationState
 Parameter Sets: CreateExpanded
@@ -471,7 +477,6 @@ Accept wildcard characters: False
 ```
 
 ### -VMProfileOsdiskSizeGb
-
 
 ```yaml
 Type: System.Int32
@@ -487,7 +492,6 @@ Accept wildcard characters: False
 
 ### -VMProfileUserAssignedIdentity
 
-
 ```yaml
 Type: System.String[]
 Parameter Sets: CreateExpanded
@@ -501,7 +505,6 @@ Accept wildcard characters: False
 ```
 
 ### -VMProfileVmsize
-
 
 ```yaml
 Type: System.String
@@ -517,7 +520,6 @@ Accept wildcard characters: False
 
 ### -VnetConfigProxyVMSize
 
-
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded
@@ -531,7 +533,6 @@ Accept wildcard characters: False
 ```
 
 ### -VnetConfigSubnetId
-
 
 ```yaml
 Type: System.String
@@ -587,29 +588,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`CUSTOMIZE <IImageTemplateCustomizer[]>`: 
-  - `Type <String>`: The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
-  - `[Name <String>]`: Friendly Name to provide context on what this customization step does
-
-`DISTRIBUTE <IImageTemplateDistributor[]>`: 
-  - `RunOutputName <String>`: The name to be used for the associated RunOutput.
-  - `Type <String>`: Type of distribution.
-  - `[ArtifactTag <IImageTemplateDistributorArtifactTags>]`: Tags that will be applied to the artifact once it has been created/updated by the distributor.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-`SOURCE <IImageTemplateSource>`: 
-  - `Type <String>`: Specifies the type of source image you want to start with.
-
-`VALIDATOR <IImageTemplateInVMValidator[]>`: 
-  - `Type <String>`: The type of validation you want to use on the Image. For example, "Shell" can be shell validation
-  - `[Name <String>]`: Friendly Name to provide context on what this validation step does
-
 ## RELATED LINKS
-

@@ -14,12 +14,14 @@ Get the current usage of a resource.
 
 ### List (Default)
 ```
-Get-AzQuotaUsage -Scope <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzQuotaUsage -Scope <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzQuotaUsage -Scope <String> -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzQuotaUsage -Scope <String> -Name <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,23 +35,13 @@ Get-AzQuotaUsage -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/prov
 ```
 
 ```output
-Name                                                ResourceGroupName UsageUsagesType UsageValue ETag
-----                                                ----------------- --------------- ---------- ----
-VirtualNetworks                                                                       0
-StaticPublicIPAddresses                                                               0
-NetworkSecurityGroups                                                                 0
-PublicIPAddresses                                                                     0
-CustomIpPrefixes                                                                      0
-PublicIpPrefixes                                                                      0
-NatGateways                                                                           0
-NetworkInterfaces                                                                     0
-PrivateEndpoints                                                                      0
-PrivateEndpointRedirectMaps                                                           0
-LoadBalancers                                                                         0
-PrivateLinkServices                                                                   0
-ApplicationGateways                                                                   0
-RouteTables                                                                           0
-RouteFilters                                                                          0
+Name              NameLocalizedValue  UsageUsagesType UsageValue ETag
+----              ------------------  --------------- ---------- ----
+VirtualNetworks   Virtual Networks    Individual      2
+CustomIpPrefixes  Custom Ip Prefixes  Individual      0
+PublicIpPrefixes  Public Ip Prefixes  Individual      0
+PublicIPAddresses Public IP Addresses Individual      4
+......
 ```
 
 This command lists the currents usage of a resource
@@ -62,7 +54,7 @@ Get-AzQuotaUsage -Scope "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/prov
 ```output
 Name                                NameLocalizedValue        UsageUsagesType UsageValue ETag
 ----                                ------------------        --------------- ---------- ----
-MinPublicIpInterNetworkPrefixLength Public IPv4 Prefix Length                 0
+MinPublicIpInterNetworkPrefixLength Public IPv4 Prefix Length Individual      0
 ```
 
 This command lists the currents usage of a resource.
@@ -70,7 +62,8 @@ This command lists the currents usage of a resource.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -103,6 +96,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Scope
 The target Azure resource URI.
 For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
@@ -128,10 +136,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.Api20210315Preview.ICurrentUsagesBase
+### Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentUsagesBase
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

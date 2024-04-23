@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StorageCache-help.xml
 Module Name: Az.StorageCache
 online version: https://learn.microsoft.com/powershell/module/Az.StorageCache/new-AzStorageCacheDirectorySettingObject
 schema: 2.0.0
@@ -22,7 +22,7 @@ New-AzStorageCacheDirectorySettingObject [-ActiveDirectoryCacheNetBiosName <Stri
  [-UsernameDownloadExtendedGroup <Boolean>] [-UsernameDownloadGroupFileUri <String>]
  [-UsernameDownloadLdapBaseDn <String>] [-UsernameDownloadLdapServer <String>]
  [-UsernameDownloadRequireValidCertificate <Boolean>] [-UsernameDownloadUserFileUri <String>]
- [-UsernameDownloadUsernameSource <UsernameSource>] [<CommonParameters>]
+ [-UsernameDownloadUsernameSource <UsernameSource>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -203,6 +203,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -UsernameDownloadAutoDownloadCertificate
 Determines if the certificate should be automatically downloaded.
 This applies to 'caCertificateURI' only if 'requireValidCertificate' is true.
@@ -369,7 +384,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

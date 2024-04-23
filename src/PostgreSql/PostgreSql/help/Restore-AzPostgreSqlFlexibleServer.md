@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.PostgreSql-help.xml
 Module Name: Az.PostgreSql
 online version: https://learn.microsoft.com/powershell/module/az.postgresql/restore-azpostgresqlflexibleserver
 schema: 2.0.0
@@ -14,8 +14,9 @@ Restore a server from an existing backup
 
 ```
 Restore-AzPostgreSqlFlexibleServer -Name <String> -ResourceGroupName <String> -SourceServerName <String>
- -RestorePointInTime <DateTime> [-SubscriptionId <String>] [-PrivateDnsZone <String>] [-Subnet <String>]
- [-Zone <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -RestorePointInTime <DateTime> [-Zone <String>] [-Subnet <String>]
+ [-PrivateDnsZone <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,7 +27,7 @@ Restore a server from an existing backup
 ### Example 1: Restore PostgreSql server using PointInTime Restore
 ```powershell
 $restorePointInTime = (Get-Date).AddMinutes(-10)
-Restore-AzPostgreSqlFlexibleServer -Name pg-restore -ResourceGroupName PowershellPostgreSqlTest -SourceServerName postgresql-test -RestorePointInTime $restorePointInTime 
+Restore-AzPostgreSqlFlexibleServer -Name pg-restore -ResourceGroupName PowershellPostgreSqlTest -SourceServerName postgresql-test -RestorePointInTime $restorePointInTime
 ```
 
 ```output
@@ -39,7 +40,6 @@ These cmdlets restore PostgreSql server using PointInTime Restore.
 
 ### Example 1: Restore PostgreSql server using PointInTime Restore with different network resource
 ```powershell
-
 $Subnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/subnetname'
 $DnsZone = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/postgresqltest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com'
 $restorePointInTime = (Get-Date).AddMinutes(-10)
@@ -127,6 +127,21 @@ The suffix of dns zone has to be same as that of fully qualified domain of the s
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -269,7 +284,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

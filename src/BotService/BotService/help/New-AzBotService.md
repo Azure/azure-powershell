@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.BotService-help.xml
 Module Name: Az.BotService
 online version: https://learn.microsoft.com/powershell/module/az.botservice/new-azbotservice
 schema: 2.0.0
@@ -14,18 +14,18 @@ Returns a BotService specified by the parameters.
 
 ### Registration (Default)
 ```
-New-AzBotService -ApplicationId <String> -ResourceGroupName <String> -Sku <String> [-BotTemplateType <String>]
- [-Description <String>] [-DisplayName <String>] [-Endpoint <String>] [-Language <String>]
- [-Location <String>] [-Name <String>] [-Registration] [-ServerFarmLocation <String>]
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzBotService -ResourceGroupName <String> -ApplicationId <String> [-Name <String>] [-DisplayName <String>]
+ [-Endpoint <String>] [-Description <String>] [-Registration] [-Location <String>]
+ [-ServerFarmLocation <String>] [-Language <String>] [-BotTemplateType <String>] [-SubscriptionId <String[]>]
+ -Sku <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### WebApp
 ```
-New-AzBotService -ApplicationId <String> -ApplicationSecret <SecureString> -ResourceGroupName <String>
- -Sku <String> [-BotTemplateType <String>] [-Description <String>] [-ExistingServerFarmId <String>]
- [-Language <String>] [-Location <String>] [-Name <String>] [-ServerFarmLocation <String>]
- [-SubscriptionId <String[]>] [-Webapp] [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzBotService -ResourceGroupName <String> -ApplicationId <String> [-Name <String>] [-Description <String>]
+ [-Location <String>] [-ServerFarmLocation <String>] [-Language <String>] [-BotTemplateType <String>]
+ [-SubscriptionId <String[]>] -ApplicationSecret <SecureString> [-Webapp] [-ExistingServerFarmId <String>]
+ -Sku <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,7 +92,6 @@ Accept wildcard characters: False
 ```
 
 ### -BotTemplateType
-
 
 ```yaml
 Type: System.String
@@ -183,7 +182,6 @@ Accept wildcard characters: False
 
 ### -Language
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -218,6 +216,21 @@ The name of the Bot resource.
 Type: System.String
 Parameter Sets: (All)
 Aliases: BotName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -303,7 +316,6 @@ Accept wildcard characters: False
 
 ### -Webapp
 
-
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: WebApp
@@ -327,7 +339,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

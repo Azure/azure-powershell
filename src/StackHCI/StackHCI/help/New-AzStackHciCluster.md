@@ -21,7 +21,7 @@ New-AzStackHciCluster -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-SoftwareAssurancePropertySoftwareAssuranceIntent <SoftwareAssuranceIntent>]
  [-SoftwareAssurancePropertySoftwareAssuranceStatus <SoftwareAssuranceStatus>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -235,6 +235,21 @@ Parameter Sets: (All)
 Aliases: ClusterName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

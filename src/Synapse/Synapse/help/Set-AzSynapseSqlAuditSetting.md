@@ -19,7 +19,8 @@ Set-AzSynapseSqlAuditSetting [-AuditActionGroup <AuditActionGroups[]>] [-Predica
  [-StorageAccountResourceId <String>] [-EventHubTargetState <String>] [-EventHubName <String>]
  [-EventHubAuthorizationRuleResourceId <String>] [-LogAnalyticsTargetState <String>]
  [-WorkspaceResourceId <String>] [-PassThru] [[-ResourceGroupName] <String>] [-WorkspaceName] <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### WorkspaceObjectParameterSet
@@ -29,7 +30,8 @@ Set-AzSynapseSqlAuditSetting [-AuditActionGroup <AuditActionGroups[]>] [-Predica
  [-StorageAccountResourceId <String>] [-EventHubTargetState <String>] [-EventHubName <String>]
  [-EventHubAuthorizationRuleResourceId <String>] [-LogAnalyticsTargetState <String>]
  [-WorkspaceResourceId <String>] [-PassThru] -WorkspaceObject <PSSynapseWorkspace> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### WorkspaceResourceIdParameterSetName
@@ -39,7 +41,8 @@ Set-AzSynapseSqlAuditSetting [-AuditActionGroup <AuditActionGroups[]>] [-Predica
  [-StorageAccountResourceId <String>] [-EventHubTargetState <String>] [-EventHubName <String>]
  [-EventHubAuthorizationRuleResourceId <String>] [-LogAnalyticsTargetState <String>]
  [-WorkspaceResourceId <String>] [-PassThru] -ResourceId <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -287,6 +290,21 @@ The T-SQL predicate (WHERE clause) used to filter audit logs.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

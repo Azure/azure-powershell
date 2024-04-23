@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStackHCIVMNetworkInterface
 
 ## SYNOPSIS
-The operation to update a network interface.
+The operation to Update a network interface.
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ Update-AzStackHCIVMNetworkInterface -Name <String> -ResourceGroupName <String> -
 ```
 
 ## DESCRIPTION
-The operation to update a network interface.
+The operation to Update a network interface.
 
 ## EXAMPLES
 

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.BotService-help.xml
 Module Name: Az.BotService
 online version: https://learn.microsoft.com/powershell/module/az.botservice/export-azbotserviceapp
 schema: 2.0.0
@@ -13,8 +13,9 @@ Returns a BotService specified by the parameters.
 ## SYNTAX
 
 ```
-Export-AzBotServiceApp [-Name <String>] [-ResourceGroupName <String>] [-SavePath <String>]
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Export-AzBotServiceApp [-ResourceGroupName <String>] [-Name <String>] [-SavePath <String>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +72,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the Bot resource group in the user subscription.
 
@@ -87,7 +103,6 @@ Accept wildcard characters: False
 ```
 
 ### -SavePath
-
 
 ```yaml
 Type: System.String
@@ -127,7 +142,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -49,8 +49,8 @@ LastUpdatedTime              : 2023-08-29T07:23:05.1111730Z
 Name                         : DppResourceGuardProxy
 ResourceGuardId              : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/hiaga-rg/providers/Microsoft.DataProtection/resourceGuard
                                s/mua-pstest-resguard
-ResourceGuardOperationDetail : {Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.ResourceGuardOperationDetail,
-                               Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.ResourceGuardOperationDetail}
+ResourceGuardOperationDetail : {Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ResourceGuardOperationDetail,
+                               Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ResourceGuardOperationDetail}
 SystemData                   : Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api40.SystemData
 Type                         : Microsoft.DataProtection/vaults/backupResourceGuardProxies
 ```
@@ -148,7 +148,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IResourceGuardProxyBaseResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IResourceGuardProxyBaseResource
 
 ## NOTES
 

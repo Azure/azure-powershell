@@ -16,14 +16,14 @@ Encrypt credential in linked service with specified integration runtime.
 ```
 New-AzSynapseLinkedServiceEncryptedCredential [-ResourceGroupName <String>] -WorkspaceName <String>
  -IntegrationRuntimeName <String> -DefinitionFile <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByObject
 ```
 New-AzSynapseLinkedServiceEncryptedCredential -WorkspaceObject <PSSynapseWorkspace>
  -IntegrationRuntimeName <String> -DefinitionFile <String> [-Force] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,6 +106,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

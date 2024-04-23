@@ -792,9 +792,9 @@ end {
 
 <#
 .Synopsis
-The operation to update a logical network.
+The operation to Update a logical network.
 .Description
-The operation to update a logical network.
+The operation to Update a logical network.
 .Example
 Update-AzStackHCIVMLogicalNetwork  -Name "testLnet" -ResourceGroupName "test-rg" -Tag  @{"tagname" = "tagvalue"}
 
@@ -1053,9 +1053,9 @@ end {
 
 <#
 .Synopsis
-The operation to update a network interface.
+The operation to Update a network interface.
 .Description
-The operation to update a network interface.
+The operation to Update a network interface.
 .Example
 Update-AzStackHCIVMNetworkInterface  -Name "testNic" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
 
@@ -1314,9 +1314,9 @@ end {
 
 <#
 .Synopsis
-The operation to update a storage container.
+The operation to Update a storage container.
 .Description
-The operation to update a storage container.
+The operation to Update a storage container.
 .Example
 Update-AzStackHCIVMStoragePath  -Name "testVhd" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
 
@@ -1575,9 +1575,9 @@ end {
 
 <#
 .Synopsis
-The operation to update a virtual hard disk.
+The operation to Update a virtual hard disk.
 .Description
-The operation to update a virtual hard disk.
+The operation to Update a virtual hard disk.
 .Example
 Update-AzStackHCIVMVirtualHardDisk  -Name "testVhd" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
 
