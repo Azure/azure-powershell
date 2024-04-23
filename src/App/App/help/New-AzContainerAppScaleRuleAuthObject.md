@@ -13,7 +13,8 @@ Create an in-memory object for ScaleRuleAuth.
 ## SYNTAX
 
 ```
-New-AzContainerAppScaleRuleAuthObject [-SecretRef <String>] [-TriggerParameter <String>] [<CommonParameters>]
+New-AzContainerAppScaleRuleAuthObject [-SecretRef <String>] [-TriggerParameter <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +36,21 @@ redis-secret TriggerParameter
 Create a ScaleRuleAuth object for ScaleRule.
 
 ## PARAMETERS
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -SecretRef
 Name of the secret from which to pull the auth params.

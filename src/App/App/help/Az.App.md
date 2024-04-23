@@ -273,23 +273,23 @@ Checks if resource connectedEnvironmentName is available.
 Checks if resource name is available.
 
 ### [Update-AzContainerApp](Update-AzContainerApp.md)
-Patches a Container App using JSON Merge Patch
+Update a Container App.
 
 ### [Update-AzContainerAppAuthConfig](Update-AzContainerAppAuthConfig.md)
-Create the AuthConfig for a Container App.
+Update the AuthConfig for a Container App.
 
 ### [Update-AzContainerAppConnectedEnvCert](Update-AzContainerAppConnectedEnvCert.md)
 Patches a certificate.
 Currently only patching of tags is supported
 
 ### [Update-AzContainerAppConnectedEnvDapr](Update-AzContainerAppConnectedEnvDapr.md)
-Create a Dapr Component in a connected environment.
+Update a Dapr Component in a connected environment.
 
 ### [Update-AzContainerAppConnectedEnvStorage](Update-AzContainerAppConnectedEnvStorage.md)
-Create storage for a connectedEnvironment.
+Update storage for a connectedEnvironment.
 
 ### [Update-AzContainerAppJob](Update-AzContainerAppJob.md)
-Patches a Container Apps Job using JSON Merge Patch
+Update a Container Apps Job.
 
 ### [Update-AzContainerAppManagedCert](Update-AzContainerAppManagedCert.md)
 Patches a managed certificate.
@@ -303,11 +303,11 @@ Patches a certificate.
 Currently only patching of tags is supported
 
 ### [Update-AzContainerAppManagedEnvDapr](Update-AzContainerAppManagedEnvDapr.md)
-Create a Dapr Component in a Managed Environment.
+Update a Dapr Component in a Managed Environment.
 
 ### [Update-AzContainerAppManagedEnvStorage](Update-AzContainerAppManagedEnvStorage.md)
-Create storage for a managedEnvironment.
+Update storage for a managedEnvironment.
 
 ### [Update-AzContainerAppSourceControl](Update-AzContainerAppSourceControl.md)
-Create the SourceControl for a Container App.
+Update the SourceControl for a Container App.
 
