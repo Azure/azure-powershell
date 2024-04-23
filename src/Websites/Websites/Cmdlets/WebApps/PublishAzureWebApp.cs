@@ -120,20 +120,17 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 {
                     paramValues["type"] = Type;
                 }
-
                 else if (!string.IsNullOrEmpty(fileExtention))
                 {
                     if (validTypes.Contains(fileExtention.Substring(1)))
                     {
                         paramValues["type"] = fileExtention.Substring(1);
                     }
-
                     else
                     {
                         paramValues["type"] = "static";
                     }
                 }
-
                 else
                 {
                     throw new Exception("Unknown artifact type.");
@@ -146,7 +143,6 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                 {
                     paramValues.Add("async", Async.ToString());
                 }
-
                 else
                 {
                     paramValues.Add("async", "true");
