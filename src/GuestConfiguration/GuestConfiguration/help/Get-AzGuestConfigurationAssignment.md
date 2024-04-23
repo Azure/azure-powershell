@@ -15,49 +15,49 @@ Get information about a guest configuration assignment
 ### List (Default)
 ```
 Get-AzGuestConfigurationAssignment [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Get2
 ```
 Get-AzGuestConfigurationAssignment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -VmssName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ -VmssName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
 Get-AzGuestConfigurationAssignment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -MachineName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ -MachineName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzGuestConfigurationAssignment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -VMName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ -VMName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List4
 ```
 Get-AzGuestConfigurationAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>] -VmssName <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List3
 ```
 Get-AzGuestConfigurationAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -MachineName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ -MachineName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List2
 ```
 Get-AzGuestConfigurationAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>] -VMName <String>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzGuestConfigurationAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -200,21 +200,6 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: List, List1
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

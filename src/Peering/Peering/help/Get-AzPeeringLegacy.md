@@ -15,7 +15,7 @@ Lists all of the legacy peerings under the given subscription matching the speci
 ```
 Get-AzPeeringLegacy [-SubscriptionId <String[]>] -Kind <LegacyPeeringsKind> -PeeringLocation <String>
  [-Asn <Int32>] [-DirectPeeringType <DirectPeeringType>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,21 +110,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

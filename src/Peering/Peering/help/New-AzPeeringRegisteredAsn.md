@@ -14,7 +14,7 @@ Creates a new registered ASN with the specified name under the given subscriptio
 
 ```
 New-AzPeeringRegisteredAsn -Name <String> -PeeringName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Asn <Int32>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-SubscriptionId <String>] [-Asn <Int32>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -93,21 +93,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

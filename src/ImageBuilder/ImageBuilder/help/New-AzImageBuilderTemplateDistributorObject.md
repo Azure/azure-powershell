@@ -16,14 +16,14 @@ Create an in-memory object for ImageTemplateDistributor.
 ```
 New-AzImageBuilderTemplateDistributorObject -RunOutputName <String>
  [-ArtifactTag <IImageTemplateDistributorArtifactTags>] [-VhdDistributor] [-Uri <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### ManagedImageDistributor
 ```
 New-AzImageBuilderTemplateDistributorObject -RunOutputName <String> -ImageId <String> -Location <String>
  [-ManagedImageDistributor] [-ArtifactTag <IImageTemplateDistributorArtifactTags>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### SharedImageDistributor
@@ -32,7 +32,7 @@ New-AzImageBuilderTemplateDistributorObject -RunOutputName <String>
  [-ArtifactTag <IImageTemplateDistributorArtifactTags>] -GalleryImageId <String> [-SharedImageDistributor]
  [-ExcludeFromLatest <Boolean>] [-ReplicationRegion <String[]>]
  [-StorageAccountType <SharedImageStorageAccountType>] [-TargetRegion <ITargetRegion[]>]
- [-Versioning <IDistributeVersioner>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Versioning <IDistributeVersioner>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -167,21 +167,6 @@ Parameter Sets: ManagedImageDistributor
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

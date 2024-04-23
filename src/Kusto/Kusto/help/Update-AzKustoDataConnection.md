@@ -19,7 +19,7 @@ Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name 
  -EventHubResourceId <String> -ConsumerGroup <String> [-DataFormat <String>] [-EventSystemProperty <String[]>]
  [-MappingRuleName <String>] [-Compression <Compression>] [-ManagedIdentityResourceId <String>]
  [-DatabaseRouting <DatabaseRouting>] [-RetrievalStartDate <DateTime>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpandedEventGrid
@@ -29,7 +29,7 @@ Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name 
  -EventHubResourceId <String> -ConsumerGroup <String> [-DataFormat <String>] [-MappingRuleName <String>]
  [-ManagedIdentityResourceId <String>] [-DatabaseRouting <DatabaseRouting>] -StorageAccountResourceId <String>
  [-BlobStorageEventType <BlobStorageEventType>] [-IgnoreFirstRecord] [-EventGridResourceId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name 
  -ConsumerGroup <String> [-DataFormat <String>] [-EventSystemProperty <String[]>] [-MappingRuleName <String>]
  [-DatabaseRouting <DatabaseRouting>] [-RetrievalStartDate <DateTime>] -IotHubResourceId <String>
  -SharedAccessPolicyName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateExpandedCosmosDb
@@ -49,7 +49,7 @@ Update-AzKustoDataConnection -ClusterName <String> -DatabaseName <String> -Name 
  -ResourceGroupName <String> [-SubscriptionId <String>] -Kind <Kind> -Location <String> [-TableName <String>]
  [-MappingRuleName <String>] -ManagedIdentityResourceId <String> [-RetrievalStartDate <DateTime>]
  -CosmosDbAccountResourceId <String> -CosmosDbDatabase <String> -CosmosDbContainer <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -59,7 +59,7 @@ Update-AzKustoDataConnection -InputObject <IKustoIdentity> -Kind <Kind> -Locatio
  [-TableName <String>] -EventHubResourceId <String> -ConsumerGroup <String> [-DataFormat <String>]
  [-EventSystemProperty <String[]>] [-MappingRuleName <String>] [-Compression <Compression>]
  [-ManagedIdentityResourceId <String>] [-DatabaseRouting <DatabaseRouting>] [-RetrievalStartDate <DateTime>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -70,7 +70,7 @@ Update-AzKustoDataConnection -InputObject <IKustoIdentity> -Kind <Kind> -Locatio
  [-MappingRuleName <String>] [-ManagedIdentityResourceId <String>] [-DatabaseRouting <DatabaseRouting>]
  -StorageAccountResourceId <String> [-BlobStorageEventType <BlobStorageEventType>] [-IgnoreFirstRecord]
  [-EventGridResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedIotHub
@@ -79,7 +79,7 @@ Update-AzKustoDataConnection -InputObject <IKustoIdentity> -Kind <Kind> -Locatio
  [-TableName <String>] -ConsumerGroup <String> [-DataFormat <String>] [-EventSystemProperty <String[]>]
  [-MappingRuleName <String>] [-DatabaseRouting <DatabaseRouting>] [-RetrievalStartDate <DateTime>]
  -IotHubResourceId <String> -SharedAccessPolicyName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedCosmosDb
@@ -88,7 +88,7 @@ Update-AzKustoDataConnection -InputObject <IKustoIdentity> -Kind <Kind> -Locatio
  [-TableName <String>] [-MappingRuleName <String>] -ManagedIdentityResourceId <String>
  [-RetrievalStartDate <DateTime>] -CosmosDbAccountResourceId <String> -CosmosDbDatabase <String>
  -CosmosDbContainer <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -546,21 +546,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

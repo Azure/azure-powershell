@@ -17,7 +17,7 @@ Requests the headers and status of the given resource.
 Test-AzAppConfigurationKeyValue -Endpoint <String> -Key <String> [-Label <String>]
  [-Select <System.Collections.Generic.List`1[System.String]>] [-AcceptDatetime <String>] [-IfMatch <String>]
  [-IfNoneMatch <String>] [-SyncToken <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
@@ -25,7 +25,7 @@ Test-AzAppConfigurationKeyValue -Endpoint <String> -Key <String> [-Label <String
 Test-AzAppConfigurationKeyValue -Endpoint <String> -InputObject <IAppConfigurationdataIdentity>
  [-Label <String>] [-Select <System.Collections.Generic.List`1[System.String]>] [-AcceptDatetime <String>]
  [-IfMatch <String>] [-IfNoneMatch <String>] [-SyncToken <String>] [-DefaultProfile <PSObject>] [-PassThru]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -188,21 +188,6 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

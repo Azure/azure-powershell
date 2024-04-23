@@ -13,7 +13,7 @@ Create an in-memory object for DistributeVersionerLatest.
 ## SYNTAX
 
 ```
-New-AzImageBuilderTemplateDistributeVersionerLatestObject [-Major <Int32>] [-ProgressAction <ActionPreference>]
+New-AzImageBuilderTemplateDistributeVersionerLatestObject [-Major <Int32>]
  [<CommonParameters>]
 ```
 
@@ -46,21 +46,6 @@ Determine what is "latest" based on versions with this value as the major versio
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

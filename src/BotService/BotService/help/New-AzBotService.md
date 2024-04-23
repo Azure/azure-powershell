@@ -17,7 +17,7 @@ Returns a BotService specified by the parameters.
 New-AzBotService -ResourceGroupName <String> -ApplicationId <String> [-Name <String>] [-DisplayName <String>]
  [-Endpoint <String>] [-Description <String>] [-Registration] [-Location <String>]
  [-ServerFarmLocation <String>] [-Language <String>] [-BotTemplateType <String>] [-SubscriptionId <String[]>]
- -Sku <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ -Sku <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### WebApp
@@ -25,7 +25,7 @@ New-AzBotService -ResourceGroupName <String> -ApplicationId <String> [-Name <Str
 New-AzBotService -ResourceGroupName <String> -ApplicationId <String> [-Name <String>] [-Description <String>]
  [-Location <String>] [-ServerFarmLocation <String>] [-Language <String>] [-BotTemplateType <String>]
  [-SubscriptionId <String[]>] -ApplicationSecret <SecureString> [-Webapp] [-ExistingServerFarmId <String>]
- -Sku <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ -Sku <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -216,21 +216,6 @@ The name of the Bot resource.
 Type: System.String
 Parameter Sets: (All)
 Aliases: BotName
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

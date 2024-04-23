@@ -16,13 +16,13 @@ Create an in-memory object for ImageTemplateValidator.
 ```
 New-AzImageBuilderTemplateValidatorObject [-PowerShellValidator] [-Inline <String[]>] [-RunAsSystem <Boolean>]
  [-RunElevated <Boolean>] [-ScriptUri <String>] [-Sha256Checksum <String>] [-ValidExitCode <Int32[]>]
- [-Name <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Name <String>] [<CommonParameters>]
 ```
 
 ### ShellValidator
 ```
 New-AzImageBuilderTemplateValidatorObject [-Inline <String[]>] [-ScriptUri <String>] [-Sha256Checksum <String>]
- [-Name <String>] [-ShellValidator] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Name <String>] [-ShellValidator] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -99,21 +99,6 @@ Parameter Sets: PowerShellValidator
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

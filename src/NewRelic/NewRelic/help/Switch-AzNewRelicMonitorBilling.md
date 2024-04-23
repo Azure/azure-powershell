@@ -17,7 +17,7 @@ Switches the billing for NewRelic monitor resource.
 Switch-AzNewRelicMonitorBilling -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -UserEmail <String> [-AzureResourceId <String>] [-OrganizationId <String>]
  [-PlanDataBillingCycle <BillingCycle>] [-PlanDataEffectiveDate <DateTime>] [-PlanDataPlanDetail <String>]
- [-PlanDataUsageType <UsageType>] [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>]
+ [-PlanDataUsageType <UsageType>] [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Switch-AzNewRelicMonitorBilling -MonitorName <String> -ResourceGroupName <String
 Switch-AzNewRelicMonitorBilling -InputObject <INewRelicIdentity> -UserEmail <String>
  [-AzureResourceId <String>] [-OrganizationId <String>] [-PlanDataBillingCycle <BillingCycle>]
  [-PlanDataEffectiveDate <DateTime>] [-PlanDataPlanDetail <String>] [-PlanDataUsageType <UsageType>]
- [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -190,21 +190,6 @@ this could be enum
 Type: Microsoft.Azure.PowerShell.Cmdlets.NewRelic.Support.UsageType
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -18,7 +18,7 @@ New-AzContainerRegistryImportPipeline -Name <String> -RegistryName <String> -Res
  [-IdentityType <ResourceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
  [-Option <PipelineOptions[]>] [-SourceKeyVaultUri <String>] [-SourceTriggerStatus <TriggerStatus>]
  [-SourceType <PipelineSourceType>] [-SourceUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -185,21 +185,6 @@ The list of all options configured for the pipeline.
 Type: Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Support.PipelineOptions[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

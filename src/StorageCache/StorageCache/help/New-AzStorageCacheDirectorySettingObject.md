@@ -22,7 +22,7 @@ New-AzStorageCacheDirectorySettingObject [-ActiveDirectoryCacheNetBiosName <Stri
  [-UsernameDownloadExtendedGroup <Boolean>] [-UsernameDownloadGroupFileUri <String>]
  [-UsernameDownloadLdapBaseDn <String>] [-UsernameDownloadLdapServer <String>]
  [-UsernameDownloadRequireValidCertificate <Boolean>] [-UsernameDownloadUserFileUri <String>]
- [-UsernameDownloadUsernameSource <UsernameSource>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-UsernameDownloadUsernameSource <UsernameSource>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -195,21 +195,6 @@ This value is stored encrypted and not returned on response.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

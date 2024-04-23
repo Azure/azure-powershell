@@ -16,7 +16,7 @@ Create a DriverList Object for ImportExport.
 New-AzImportExportDriveListObject [-BitLockerKey <String>] [-BytesSucceeded <Int64>] [-CopyStatus <String>]
  [-DriveHeaderHash <String>] [-DriveId <String>] [-ErrorLogUri <String>] [-ManifestFile <String>]
  [-ManifestHash <String>] [-ManifestUri <String>] [-PercentComplete <Int32>] [-State <DriveState>]
- [-VerboseLogUri <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-VerboseLogUri <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -183,21 +183,6 @@ Percentage completed for the drive.
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

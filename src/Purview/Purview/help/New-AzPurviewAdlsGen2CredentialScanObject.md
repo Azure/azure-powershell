@@ -16,7 +16,7 @@ Create an in-memory object for AdlsGen2CredentialScan.
 New-AzPurviewAdlsGen2CredentialScanObject -Kind <ScanAuthorizationType> [-CollectionReferenceName <String>]
  [-CollectionType <String>] [-ConnectedViaReferenceName <String>] [-CredentialReferenceName <String>]
  [-CredentialType <CredentialType>] [-ScanRulesetName <String>] [-ScanRulesetType <ScanRulesetType>]
- [-Worker <Int32>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Worker <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,21 +129,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

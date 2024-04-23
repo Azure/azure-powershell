@@ -14,7 +14,7 @@ Create a in-memory object for NetworkInterface
 
 ```
 New-AzConnectedNetworkInterfaceObject [-IPConfiguration <INetworkInterfaceIPConfiguration[]>]
- [-MacAddress <String>] [-Name <String>] [-VMSwitchType <VMSwitchType>] [-ProgressAction <ActionPreference>]
+ [-MacAddress <String>] [-Name <String>] [-VMSwitchType <VMSwitchType>]
  [<CommonParameters>]
 ```
 
@@ -76,21 +76,6 @@ The name of the network interface.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

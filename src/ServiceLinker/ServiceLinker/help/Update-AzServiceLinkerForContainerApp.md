@@ -17,7 +17,7 @@ Operation to update an existing link in container app.
 Update-AzServiceLinkerForContainerApp -Name <String> [-ResourceUri <String>] -AuthInfo <IAuthInfoBase>
  -ClientType <ClientType> -Scope <String> -TargetService <ITargetServiceBase> [-SecretStoreKeyVaultId <String>]
  [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] -ContainerApp <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update-AzServiceLinkerForContainerApp -Name <String> [-ResourceUri <String>] -Au
 Update-AzServiceLinkerForContainerApp -InputObject <IServiceLinkerIdentity> -AuthInfo <IAuthInfoBase>
  -ClientType <ClientType> -Scope <String> -TargetService <ITargetServiceBase> [-SecretStoreKeyVaultId <String>]
  [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>] [-SubscriptionId <String>] [-AsJob]
- [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -165,21 +165,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named
