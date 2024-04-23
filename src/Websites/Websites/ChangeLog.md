@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Allow certain parameters to be toggled off for `Publish-AzWebApp``
 
 ## Version 3.2.0
 * Fixed Ambiguous Positional Argument for `New-AzWebAppSlot`
