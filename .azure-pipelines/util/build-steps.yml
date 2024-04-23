@@ -93,7 +93,7 @@ steps:
       }
 - task: PowerShell@2
   displayName: 'Analyze Pull Request'
-  condition: eq($(TriggerType), 'PullRequest')
+  condition: eq(variables.TriggerType, 'PullRequest')
   inputs:
     targetType: inline
     pwsh: true
@@ -157,7 +157,6 @@ steps:
       } else {
         . $buildScript -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -CIPlan
       }
-      
 - task: PowerShell@2
   displayName: 'Write pipeline result'
   inputs:
