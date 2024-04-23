@@ -14239,7 +14239,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != version  && version.Length > 0 ? "version=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(version, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != version  && version.Length > 0 ? "version=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(version, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -14288,7 +14288,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != version  && version.Length > 0 ? "version=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(version, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != version  && version.Length > 0 ? "version=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(version, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -14345,7 +14345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != version  && version.Length > 0 ? "version=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(version, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != version  && version.Length > 0 ? "version=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(version, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
@@ -14478,7 +14478,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud
                         + "?"
                         + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
                         + "&"
-                        + (null != version  && version.Length > 0 ? "version=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(version, (current, each) => current + "," + ( global::System.Uri.EscapeDataString(null == each ? global::System.String.Empty : each.ToString()) ))) : global::System.String.Empty)
+                        + (null != version  && version.Length > 0 ? "version=" + global::System.Uri.EscapeDataString(global::System.Linq.Enumerable.Aggregate(version, (current, each) => current + "," + ( null == each ? global::System.String.Empty : each.ToString()) )) : global::System.String.Empty)
                         ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
