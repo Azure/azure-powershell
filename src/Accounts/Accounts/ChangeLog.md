@@ -19,7 +19,8 @@
 -->
 
 ## Upcoming Release
-* Logging in by Web Account Manager (WAM) will be enabled by default when login interactively at 5/21.
+> [!IMPORTANT]
+> Preannouncement: The default interactive login experience will change from browser based to `Web Account Manager` (WAM) based on supported platforms, [learn more](https://learn.microsoft.com/en-us/entra/msal/dotnet/acquiring-tokens/desktop-mobile/wam). Nothing changes of user operations. This will take effect from the release of **May 21st**.
 * Fixed secrets detection issues.
 
 ## Version 2.17.0
