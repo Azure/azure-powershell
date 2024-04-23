@@ -15,7 +15,7 @@ Create a in-memory object for NetworkFunctionVendorConfiguration
 ```
 New-AzConnectedNetworkFunctionVendorConfigurationObject [-NetworkInterface <INetworkInterface[]>]
  [-OSProfileAdminUsername <String>] [-OSProfileCustomData <String>] [-OSProfileCustomDataRequired <Boolean>]
- [-RoleName <String>] [-SshPublicKey <ISshPublicKey[]>] [-ProgressAction <ActionPreference>]
+ [-RoleName <String>] [-SshPublicKey <ISshPublicKey[]>]
  [<CommonParameters>]
 ```
 
@@ -123,21 +123,6 @@ Indicates if custom data is required to deploy this role.
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

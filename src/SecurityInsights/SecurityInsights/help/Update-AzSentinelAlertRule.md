@@ -24,14 +24,14 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -
  [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>] [-QueryFrequency <TimeSpan>]
  [-QueryPeriod <TimeSpan>] [-TriggerOperator <TriggerOperator>] [-TriggerThreshold <Int32>]
  [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>] [-DefaultProfile <PSObject>]
- [-Scheduled] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Scheduled] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateFusionMLTI
 ```
 Update-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -RuleId <String>
  [-SubscriptionId <String>] [-AlertRuleTemplateName <String>] [-Enabled] [-Disabled]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-FusionMLorTI] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-FusionMLorTI] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -42,7 +42,7 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -
  [-DisplayNamesFilter <String[]>] [-DisplayNamesExcludeFilter <String[]>]
  [-ProductFilter <MicrosoftSecurityProductName>] [-SeveritiesFilter <AlertSeverity[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-MicrosoftSecurityIncidentCreation]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateNRT
@@ -55,14 +55,14 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -WorkspaceName <String> -
  [-GroupByAlertDetail <AlertDetail[]>] [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType[]>]
  [-EntityMapping <EntityMapping[]>] [-AlertDescriptionFormat <String>] [-AlertDisplayNameFormat <String>]
  [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-NRT] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-NRT] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityFusionMLTI
 ```
 Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> [-AlertRuleTemplateName <String>]
  [-Enabled] [-Disabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-FusionMLorTI]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityMicrosoftSecurityIncidentCreation
@@ -71,7 +71,7 @@ Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> [-AlertRuleT
  [-Enabled] [-Disabled] [-Description <String>] [-DisplayNamesFilter <String[]>]
  [-DisplayNamesExcludeFilter <String[]>] [-ProductFilter <MicrosoftSecurityProductName>]
  [-SeveritiesFilter <AlertSeverity[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-MicrosoftSecurityIncidentCreation] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-MicrosoftSecurityIncidentCreation] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -84,7 +84,7 @@ Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> [-AlertRuleT
  [-MatchingMethod <String>] [-GroupByAlertDetail <AlertDetail[]>] [-GroupByCustomDetail <String[]>]
  [-GroupByEntity <EntityMappingType[]>] [-EntityMapping <EntityMapping[]>] [-AlertDescriptionFormat <String>]
  [-AlertDisplayNameFormat <String>] [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-NRT] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-NRT] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -99,7 +99,7 @@ Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> [-AlertRuleT
  [-AlertDisplayNameFormat <String>] [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>]
  [-QueryFrequency <TimeSpan>] [-QueryPeriod <TimeSpan>] [-TriggerOperator <TriggerOperator>]
  [-TriggerThreshold <Int32>] [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>]
- [-DefaultProfile <PSObject>] [-Scheduled] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-Scheduled] [-AsJob] [-NoWait] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -508,21 +508,6 @@ Accept wildcard characters: False
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.MicrosoftSecurityProductName
 Parameter Sets: UpdateMicrosoftSecurityIncidentCreation, UpdateViaIdentityMicrosoftSecurityIncidentCreation
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

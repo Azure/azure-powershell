@@ -18,13 +18,13 @@ Gets the Move Resource.
 ```
 Get-AzResourceMoverMoveResource -MoveCollectionName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-Filter <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzResourceMoverMoveResource -MoveCollectionName <String> -ResourceGroupName <String> -Name <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -347,21 +347,6 @@ Parameter Sets: Get
 Aliases: MoveResourceName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

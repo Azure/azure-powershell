@@ -18,7 +18,7 @@ In the absence of the 'Parameters' it is likely that some of the simplified Solu
 
 ```
 New-AzSelfHelpSimplifiedSolution -SResourceName <String> -Scope <String> [-Parameter <Hashtable>]
- [-SolutionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-SolutionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -105,21 +105,6 @@ Client input parameters to run Simplified Solutions
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

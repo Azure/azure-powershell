@@ -14,7 +14,7 @@ Tests whether an output's datasource is reachable and usable by the Azure Stream
 
 ```
 Test-AzStreamAnalyticsOutput -JobName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-ProgressAction <ActionPreference>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -92,21 +92,6 @@ Parameter Sets: (All)
 Aliases: OutputName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -15,7 +15,7 @@ Creates a new prefix with the specified name under the given subscription, resou
 ```
 New-AzPeeringServicePrefix -Name <String> -PeeringServiceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-PeeringServicePrefixKey <String>] [-Prefix <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,21 +106,6 @@ The prefix from which your traffic originates.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

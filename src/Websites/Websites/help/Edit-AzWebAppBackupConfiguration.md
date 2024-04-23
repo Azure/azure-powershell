@@ -18,7 +18,7 @@ Edits the current configuration backup for an Azure Web App
 Edit-AzWebAppBackupConfiguration [-FrequencyInterval] <Int32> [-FrequencyUnit] <String>
  [-RetentionPeriodInDays] <Int32> [[-StartTime] <DateTime>] [-KeepAtLeastOneBackup] [-Enabled]
  [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>]
- [-StorageAccountUrl] <String> [[-Databases] <DatabaseBackupSetting[]>] [-ProgressAction <ActionPreference>]
+ [-StorageAccountUrl] <String> [[-Databases] <DatabaseBackupSetting[]>]
  [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Edit-AzWebAppBackupConfiguration [-FrequencyInterval] <Int32> [-FrequencyUnit] <
 Edit-AzWebAppBackupConfiguration [-FrequencyInterval] <Int32> [-FrequencyUnit] <String>
  [-RetentionPeriodInDays] <Int32> [[-StartTime] <DateTime>] [-KeepAtLeastOneBackup] [-Enabled]
  [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [-StorageAccountUrl] <String>
- [[-Databases] <DatabaseBackupSetting[]>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [[-Databases] <DatabaseBackupSetting[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,21 +153,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 Resource Group Name
 
@@ -284,5 +269,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzWebAppBackupConfiguration](./Get-AzWebAppBackupConfiguration.md)
-
-

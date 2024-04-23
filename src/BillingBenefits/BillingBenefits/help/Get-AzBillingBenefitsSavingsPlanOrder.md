@@ -14,20 +14,20 @@ Get a savings plan order.
 
 ### List (Default)
 ```
-Get-AzBillingBenefitsSavingsPlanOrder [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+Get-AzBillingBenefitsSavingsPlanOrder [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzBillingBenefitsSavingsPlanOrder -Id <String> [-Expand <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzBillingBenefitsSavingsPlanOrder -InputObject <IBillingBenefitsIdentity> [-Expand <String>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,21 +125,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

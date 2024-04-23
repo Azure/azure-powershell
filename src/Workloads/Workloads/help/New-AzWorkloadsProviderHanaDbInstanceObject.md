@@ -16,7 +16,7 @@ Create an in-memory object for HanaDbProviderInstanceProperties.
 New-AzWorkloadsProviderHanaDbInstanceObject [-Name <String>] [-Password <String>] [-PasswordUri <String>]
  [-Username <String>] [-Hostname <String>] [-InstanceNumber <String>] [-SapSid <String>] [-SqlPort <String>]
  [-SslCertificateUri <String>] [-SslHostNameInCertificate <String>] [-SslPreference <SslPreference>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,21 +107,6 @@ Gets or sets the key vault URI to secret with the database password.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -18,7 +18,7 @@ New-AzPeeringExchangeConnectionObject [-BgpSessionMaxPrefixesAdvertisedV4 <Int32
  [-BgpSessionMicrosoftSessionIPv4Address <String>] [-BgpSessionMicrosoftSessionIPv6Address <String>]
  [-BgpSessionPeerSessionIPv4Address <String>] [-BgpSessionPeerSessionIPv6Address <String>]
  [-BgpSessionPrefixV4 <String>] [-BgpSessionPrefixV6 <String>] [-ConnectionIdentifier <String>]
- [-PeeringDbFacilityId <Int32>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-PeeringDbFacilityId <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -200,21 +200,6 @@ The PeeringDB.com ID of the facility at which the connection has to be set up.
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

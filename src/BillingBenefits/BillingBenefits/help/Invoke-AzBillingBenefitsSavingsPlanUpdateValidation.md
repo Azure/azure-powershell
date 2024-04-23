@@ -16,13 +16,13 @@ Validate savings plan patch.
 ```
 Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -SavingsPlanId <String> -SavingsPlanOrderId <String>
  [-Benefit <ISavingsPlanUpdateRequestProperties[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Validate
 ```
 Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -SavingsPlanId <String> -SavingsPlanOrderId <String>
- -Body <ISavingsPlanUpdateValidateRequest> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -Body <ISavingsPlanUpdateValidateRequest> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -30,13 +30,13 @@ Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -SavingsPlanId <String> -Sav
 ```
 Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -InputObject <IBillingBenefitsIdentity>
  [-Benefit <ISavingsPlanUpdateRequestProperties[]>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ValidateViaIdentity
 ```
 Invoke-AzBillingBenefitsSavingsPlanUpdateValidation -InputObject <IBillingBenefitsIdentity>
- -Body <ISavingsPlanUpdateValidateRequest> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -Body <ISavingsPlanUpdateValidateRequest> [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -128,21 +128,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

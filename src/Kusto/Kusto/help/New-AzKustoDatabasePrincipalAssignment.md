@@ -16,7 +16,7 @@ Creates a Kusto cluster database principalAssignment.
 New-AzKustoDatabasePrincipalAssignment -ClusterName <String> -DatabaseName <String>
  -PrincipalAssignmentName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-PrincipalId <String>] [-PrincipalType <PrincipalType>] [-Role <DatabasePrincipalRole>] [-TenantId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -154,21 +154,6 @@ Principal type.
 Type: Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support.PrincipalType
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

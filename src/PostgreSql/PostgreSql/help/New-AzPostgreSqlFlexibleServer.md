@@ -18,7 +18,7 @@ New-AzPostgreSqlFlexibleServer [-Name <String>] [-ResourceGroupName <String>] [-
  [-AdministratorLoginPassword <SecureString>] [-Sku <String>] [-SkuTier <String>] [-BackupRetentionDay <Int32>]
  [-StorageInMb <Int32>] [-HaEnabled <String>] [-Tag <Hashtable>] [-Version <ServerVersion>]
  [-PrivateDnsZone <String>] [-SubnetPrefix <String>] [-Subnet <String>] [-VnetPrefix <String>] [-Vnet <String>]
- [-PublicAccess <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-PublicAccess <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -328,21 +328,6 @@ The suffix of dns zone has to be same as that of fully qualified domain of the s
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

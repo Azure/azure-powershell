@@ -14,14 +14,14 @@ Get a data source
 
 ### List (Default)
 ```
-Get-AzPurviewDataSource -Endpoint <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+Get-AzPurviewDataSource -Endpoint <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzPurviewDataSource -Endpoint <String> -Name <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -135,21 +135,6 @@ Parameter Sets: Get
 Aliases: DataSourceName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

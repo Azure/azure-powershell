@@ -15,25 +15,25 @@ Get specific `Reservation` details.
 ### List1 (Default)
 ```
 Get-AzReservation [-Filter <String>] [-Orderby <String>] [-SelectedState <String>] [-First <UInt64>]
- [-Skip <UInt64>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzReservation -Id <String> -OrderId <String> [-Expand <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### List
 ```
-Get-AzReservation -OrderId <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+Get-AzReservation -OrderId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzReservation -InputObject <IReservationsIdentity> [-Expand <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -181,21 +181,6 @@ Parameter Sets: Get, List
 Aliases: ReservationOrderId
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
