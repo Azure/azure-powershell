@@ -196,7 +196,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 FederatedClientId = model.Database.FederatedClientId,
                 EncryptionProtectorAutoRotation = model.Database.EncryptionProtectorAutoRotation,
                 UseFreeLimit = model.Database.UseFreeLimit,
-                FreeLimitExhaustionBehavior = model.Database.FreeLimitExhaustionBehavior
+                FreeLimitExhaustionBehavior = model.Database.FreeLimitExhaustionBehavior,
+                ManualCutover = model.Database.ManualCutover,
+                PerformCutover = model.Database.PerformCutover
             });
 
             return CreateDatabaseModelFromResponse(resourceGroup, serverName, resp);

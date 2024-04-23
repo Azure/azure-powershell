@@ -264,6 +264,18 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         public string FreeLimitExhaustionBehavior { get; set; }
 
         /// <summary>
+        /// Gets or sets whether or not customer controlled manual cutover needs to be
+        /// done during Update Database operation to Hyperscale tier. 
+        /// </summary>
+        public bool? ManualCutover { get; set; }
+
+        /// <summary>
+        /// Gets or sets to trigger customer controlled manual cutover during the wait
+        /// state while Scaling operation is in progress.
+        /// </summary>
+        public bool? PerformCutover { get; set; }
+
+        /// <summary>
         /// Construct AzureSqlDatabaseModel
         /// </summary>
         public AzureSqlDatabaseModel()
