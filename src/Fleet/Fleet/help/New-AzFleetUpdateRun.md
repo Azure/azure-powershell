@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFleetUpdateRun
 
 ## SYNOPSIS
-Create a CreateRun
+Create a UpdateRun
 
 ## SYNTAX
 
@@ -53,7 +53,7 @@ New-AzFleetUpdateRun -InputObject <IFleetIdentity> [-IfMatch <String>] [-IfNoneM
 ```
 
 ## DESCRIPTION
-Create a CreateRun
+Create a UpdateRun
 
 ## EXAMPLES
 

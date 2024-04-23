@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzFleetUpdateStrategy
 
 ## SYNOPSIS
-Get a FleetGettrategy
+Get a FleetUpdateStrategy
 
 ## SYNTAX
 
@@ -38,7 +38,7 @@ Get-AzFleetUpdateStrategy -InputObject <IFleetIdentity> [-DefaultProfile <PSObje
 ```
 
 ## DESCRIPTION
-Get a FleetGettrategy
+Get a FleetUpdateStrategy
 
 ## EXAMPLES
 

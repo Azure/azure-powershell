@@ -8,7 +8,7 @@ schema: 2.0.0
 # Start-AzFleetUpdateRun
 
 ## SYNOPSIS
-Starts an StartRun.
+Starts an UpdateRun.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Start-AzFleetUpdateRun -FleetInputObject <IFleetIdentity> -Name <String> [-IfMat
 ```
 
 ## DESCRIPTION
-Starts an StartRun.
+Starts an UpdateRun.
 
 ## EXAMPLES
 

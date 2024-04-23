@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Stops an StopRun.
+Stops an UpdateRun.
 .Description
-Stops an StopRun.
+Stops an UpdateRun.
 .Example
 Stop-AzFleetUpdateRun -FleetName testfleet01 -Name run1 -ResourceGroupName K8sFleet-Test
 

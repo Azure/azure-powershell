@@ -7,7 +7,7 @@
   "commands": [
     {
       "name": "Get-AzFleetUpdateRun",
-      "description": "Get a GetRun",
+      "description": "Get a UpdateRun",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}",
       "help": {
         "learnMore": {
@@ -26,7 +26,7 @@
       },
       "examples": [
         {
-          "description": "Get a GetRun",
+          "description": "Get a UpdateRun",
           "parameters": [
             {
               "name": "-FleetName",
@@ -50,7 +50,7 @@
     },
     {
       "name": "Remove-AzFleetUpdateRun",
-      "description": "Delete a DeleteRun",
+      "description": "Delete a UpdateRun",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}",
       "help": {
         "learnMore": {
@@ -69,7 +69,7 @@
       },
       "examples": [
         {
-          "description": "Delete a DeleteRun",
+          "description": "Delete a UpdateRun",
           "parameters": [
             {
               "name": "-FleetName",
@@ -93,7 +93,7 @@
     },
     {
       "name": "Start-AzFleetUpdateRun",
-      "description": "Starts an StartRun.",
+      "description": "Starts an UpdateRun.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}/start",
       "help": {
         "learnMore": {
@@ -112,7 +112,7 @@
       },
       "examples": [
         {
-          "description": "Starts an StartRun.",
+          "description": "Starts an UpdateRun.",
           "parameters": [
             {
               "name": "-FleetName",
@@ -136,7 +136,7 @@
     },
     {
       "name": "Stop-AzFleetUpdateRun",
-      "description": "Stops an StopRun.",
+      "description": "Stops an UpdateRun.",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}/stop",
       "help": {
         "learnMore": {
@@ -155,7 +155,7 @@
       },
       "examples": [
         {
-          "description": "Stops an StopRun.",
+          "description": "Stops an UpdateRun.",
           "parameters": [
             {
               "name": "-FleetName",

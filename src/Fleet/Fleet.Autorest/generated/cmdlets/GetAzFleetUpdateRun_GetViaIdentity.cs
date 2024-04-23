@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Get a GetRun</summary>
+    /// <summary>Get a UpdateRun</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzFleetUpdateRun_GetViaIdentity")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRun))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Get a GetRun")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Get a UpdateRun")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}", ApiVersion = "2023-10-15")]
     public partial class GetAzFleetUpdateRun_GetViaIdentity : global::System.Management.Automation.PSCmdlet,

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a FleetCreatetrategy
+Create a FleetUpdateStrategy
 .Description
-Create a FleetCreatetrategy
+Create a FleetUpdateStrategy
 .Example
 $stage = New-AzFleetUpdateStageObject -Name stag1 -Group @{name='group-a'} -AfterStageWaitInSecond 3600
 New-AzFleetUpdateStrategy -FleetName testfleet01 -ResourceGroupName K8sFleet-Test -Name strategy1 -StrategyStage $stage

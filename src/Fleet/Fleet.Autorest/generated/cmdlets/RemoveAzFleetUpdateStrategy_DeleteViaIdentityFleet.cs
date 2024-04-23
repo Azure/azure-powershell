@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Delete a FleetDeletetrategy</summary>
+    /// <summary>Delete a FleetUpdateStrategy</summary>
     /// <remarks>
     /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzFleetUpdateStrategy_DeleteViaIdentityFleet", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Delete a FleetDeletetrategy")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Delete a FleetUpdateStrategy")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}", ApiVersion = "2023-10-15")]
     public partial class RemoveAzFleetUpdateStrategy_DeleteViaIdentityFleet : global::System.Management.Automation.PSCmdlet,
