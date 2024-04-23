@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ResourceMover-help.xml
 Module Name: Az.ResourceMover
 online version: https://learn.microsoft.com/powershell/module/az.resourcemover/get-azresourcemoverunresolveddependency
 schema: 2.0.0
@@ -20,7 +20,7 @@ Please refer to 'Resolve-AzResourceMoverMoveCollectionDependency' command docume
 ```
 Get-AzResourceMoverUnresolvedDependency -MoveCollectionName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DependencyLevel <DependencyLevel>] [-Filter <String>] [-Orderby <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,6 +129,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The Resource Group Name.
 
@@ -170,7 +185,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

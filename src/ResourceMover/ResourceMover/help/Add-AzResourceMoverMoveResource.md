@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ResourceMover-help.xml
 Module Name: Az.ResourceMover
 online version: https://learn.microsoft.com/powershell/module/az.resourcemover/add-azresourcemovermoveresource
 schema: 2.0.0
@@ -18,7 +18,8 @@ Creates or updates a Move Resource in the move collection.
 Add-AzResourceMoverMoveResource -MoveCollectionName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DependsOnOverride <IMoveResourceDependencyOverride[]>]
  [-ExistingTargetId <String>] [-ResourceSetting <IResourceSettings>] [-SourceId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +67,7 @@ SystemDataLastModifiedAt          :
 SystemDataLastModifiedBy          :
 SystemDataLastModifiedByType      :
 TargetId                          : 
-Type                              : 
+Type                              :
 ```
 
 Add a resource to 'RegionToRegion' type Move Collection.
@@ -156,7 +157,7 @@ SystemDataLastModifiedAt          :
 SystemDataLastModifiedBy          :
 SystemDataLastModifiedByType      :
 TargetId                          : 
-Type                              : 
+Type                              :
 ```
 
 Add a resource to 'RegionToRegion' type Move Collection that has existing target resource.
@@ -239,7 +240,7 @@ SystemDataLastModifiedAt          :
 SystemDataLastModifiedBy          :
 SystemDataLastModifiedByType      :
 TargetId                          : 
-Type                              : 
+Type                              :
 ```
 
 Update target resource settings after the Move Resource has been added to 'RegionToRegion' type Move Collection.
@@ -401,6 +402,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The Resource Group Name.
 
@@ -508,19 +524,4 @@ ALIASES
 
 Update-AzResourceMoverMoveResource
 
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`DEPENDSONOVERRIDE <IMoveResourceDependencyOverride[]>`: Gets or sets the move resource dependencies overrides.
-  - `[Id <String>]`: Gets or sets the ARM ID of the dependent resource.
-  - `[TargetId <String>]`: Gets or sets the resource ARM id of either the MoveResource or the resource ARM ID of         the dependent resource.
-
-`RESOURCESETTING <IResourceSettings>`: Gets or sets the resource settings.
-  - `ResourceType <String>`: The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
-  - `[TargetResourceGroupName <String>]`: Gets or sets the target resource group name.
-  - `[TargetResourceName <String>]`: Gets or sets the target Resource name.
-
 ## RELATED LINKS
-

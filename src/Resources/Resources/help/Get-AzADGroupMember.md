@@ -16,21 +16,21 @@ Lists members from group.
 ```
 Get-AzADGroupMember -GroupObjectId <String> [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>]
  [-Search <String>] [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### DisplayNameParameterSet
 ```
 Get-AzADGroupMember [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
  [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] -GroupDisplayName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GroupObjectParameterSet
 ```
 Get-AzADGroupMember [-Expand <String[]>] [-Filter <String>] [-Orderby <String[]>] [-Search <String>]
  [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] -GroupObject <IMicrosoftGraphGroup>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -160,6 +160,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Search
 Search items by search phrases
 
@@ -240,7 +255,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-GROUPOBJECT `<IMicrosoftGraphGroup>`: The target group object, could be used as pipeline input.
+GROUPOBJECT <IMicrosoftGraphGroup>: The target group object, could be used as pipeline input.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory

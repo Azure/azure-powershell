@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Reservations-help.xml
 Module Name: Az.Reservations
 online version: https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationhistory
 schema: 2.0.0
@@ -14,7 +14,7 @@ List of all the revisions for the `Reservation`.
 
 ```
 Get-AzReservationHistory -ReservationId <String> -ReservationOrderId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +38,7 @@ westus   2b9b9372-24e1-4a07-a354-2078fe347cf9/2ef560a7-f469-4b62-87b7-5312d588ce
 westus   2b9b9372-24e1-4a07-a354-2078fe347cf9/2ef560a7-f469-4b62-87b7-5312d588ce2a/4 Standard_B1ls PendingCapacity                                               6/24/2022 10:03:34 PM Reserved VM Instance, Standard_B1ls, US West,… 
 westus   2b9b9372-24e1-4a07-a354-2078fe347cf9/2ef560a7-f469-4b62-87b7-5312d588ce2a/3 Standard_B1ls Creating                                                      6/24/2022 10:03:17 PM Reserved VM Instance, Standard_B1ls, US West,… 
 westus   2b9b9372-24e1-4a07-a354-2078fe347cf9/2ef560a7-f469-4b62-87b7-5312d588ce2a/2 Standard_B1ls Creating                                                      6/24/2022 10:03:04 PM Reserved VM Instance, Standard_B1ls, US West,… 
-westus   2b9b9372-24e1-4a07-a354-2078fe347cf9/2ef560a7-f469-4b62-87b7-5312d588ce2a/1 Standard_B1ls Creating                                                      6/24/2022 10:02:52 PM Reserved VM Instance, Standard_B1ls, US West,… 
+westus   2b9b9372-24e1-4a07-a354-2078fe347cf9/2ef560a7-f469-4b62-87b7-5312d588ce2a/1 Standard_B1ls Creating                                                      6/24/2022 10:02:52 PM Reserved VM Instance, Standard_B1ls, US West,…
 ```
 
 Get the revision of a reservation.
@@ -54,6 +54,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -103,7 +118,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
