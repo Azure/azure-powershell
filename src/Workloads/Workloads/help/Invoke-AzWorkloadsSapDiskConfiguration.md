@@ -16,16 +16,16 @@ Get the SAP Disk Configuration Layout prod/non-prod SAP System.
 ```
 Invoke-AzWorkloadsSapDiskConfiguration -Location <String> [-SubscriptionId <String>] -AppLocation <String>
  -DatabaseType <SapDatabaseType> -DbVMSku <String> -DeploymentType <SapDeploymentType>
- -Environment <SapEnvironmentType> -SapProduct <SapProductType> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -Environment <SapEnvironmentType> -SapProduct <SapProductType> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SapViaIdentityExpanded
 ```
 Invoke-AzWorkloadsSapDiskConfiguration -InputObject <IWorkloadsIdentity> -AppLocation <String>
  -DatabaseType <SapDatabaseType> -DbVMSku <String> -DeploymentType <SapDeploymentType>
- -Environment <SapEnvironmentType> -SapProduct <SapProductType> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -Environment <SapEnvironmentType> -SapProduct <SapProductType> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -193,6 +193,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SapProduct
 Defines the SAP Product type.
 
@@ -263,27 +278,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapDiskConfigurationsResultVolumeConfigurations
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapDiskConfigurationsResultVolumeConfigurations
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
-  - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.
-  - `[CentralInstanceName <String>]`: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
-  - `[DatabaseInstanceName <String>]`: Database resource name string modeled as parameter for auto generation to work correctly.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[MonitorName <String>]`: Name of the SAP monitor resource.
-  - `[ProviderInstanceName <String>]`: Name of the provider instance.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SapVirtualInstanceName <String>]`: The name of the Virtual Instances for SAP solutions resource
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
