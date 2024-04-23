@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Synapse-help.xml
 Module Name: Az.Synapse
 online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopooldatabaseprincipalassignment
 schema: 2.0.0
@@ -17,7 +17,7 @@ New-AzSynapseKustoPoolDatabasePrincipalAssignment -DatabaseName <String> -KustoP
  -PrincipalAssignmentName <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] [-PrincipalId <String>] [-PrincipalType <PrincipalType>]
  [-Role <DatabasePrincipalRole>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +71,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -279,7 +280,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

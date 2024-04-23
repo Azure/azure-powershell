@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStackHCIVMVirtualHardDisk
 
 ## SYNOPSIS
-The operation to update a virtual hard disk.
+The operation to Update a virtual hard disk.
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ Update-AzStackHCIVMVirtualHardDisk -Name <String> -ResourceGroupName <String> -J
 ```
 
 ## DESCRIPTION
-The operation to update a virtual hard disk.
+The operation to Update a virtual hard disk.
 
 ## EXAMPLES
 

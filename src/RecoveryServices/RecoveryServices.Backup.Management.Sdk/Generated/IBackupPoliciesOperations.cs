@@ -15,13 +15,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Lists of backup policies associated with Recovery Services Vault. API
-        /// provides pagination parameters to fetch
-        /// scoped results.
+        /// provides pagination parameters to fetch scoped results.
         /// </summary>
         /// <remarks>
         /// Lists of backup policies associated with Recovery Services Vault. API
-        /// provides pagination parameters to fetch
-        /// scoped results.
+        /// provides pagination parameters to fetch scoped results.
         /// </remarks>
         /// <param name='odataQuery'>
         /// 
@@ -49,13 +47,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Lists of backup policies associated with Recovery Services Vault. API
-        /// provides pagination parameters to fetch
-        /// scoped results.
+        /// provides pagination parameters to fetch scoped results.
         /// </summary>
         /// <remarks>
         /// Lists of backup policies associated with Recovery Services Vault. API
-        /// provides pagination parameters to fetch
-        /// scoped results.
+        /// provides pagination parameters to fetch scoped results.
         /// </remarks>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a global reach connection in a private cloud
+Update a global reach connection in a private cloud
 .Description
-Create a global reach connection in a private cloud
+Update a global reach connection in a private cloud
 .Example
 Update-AzVMwareGlobalReachConnection -Name azps_test_grc -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 

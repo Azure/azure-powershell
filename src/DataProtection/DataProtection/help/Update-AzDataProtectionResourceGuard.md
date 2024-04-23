@@ -15,7 +15,7 @@ Updates a resource guard belonging to a resource group
 ```
 Update-AzDataProtectionResourceGuard -ResourceGroupName <String> -Name <String> [-SubscriptionId <String>]
  [-ETag <String>] [-IdentityType <String>] [-Tag <Hashtable>] [-CriticalOperationExclusionList <String[]>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +46,7 @@ The fourth command is used to exclude some critical operations from the resource
 
 ### -CriticalOperationExclusionList
 List of critical operations which are not protected by this resourceGuard.
-Supported values are DeleteProtection, UpdateProtection, UpdatePolicy, GetSecurityPin, DeleteBackupInstance
+Supported values are DeleteProtection, UpdateProtection, UpdatePolicy, GetSecurityPin, DeleteBackupInstance, RecoveryServicesDisableImmutability, DataProtectionDisableImmutability, RecoveryServicesModifyEncryptionSettings, DataProtectionModifyEncryptionSettings
 
 ```yaml
 Type: System.String[]
@@ -113,21 +113,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -217,7 +202,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IResourceGuardResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IResourceGuardResource
 
 ## NOTES
 

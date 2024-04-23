@@ -54,15 +54,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Provides the information of the backed up data identified using
-        /// RecoveryPointID. This is an asynchronous operation.
-        /// To know the status of the operation, call the
-        /// GetProtectedItemOperationResult API.
+        /// RecoveryPointID. This is an asynchronous operation. To know the status of
+        /// the operation, call the GetProtectedItemOperationResult API.
         /// </summary>
         /// <remarks>
         /// Provides the information of the backed up data identified using
-        /// RecoveryPointID. This is an asynchronous operation.
-        /// To know the status of the operation, call the
-        /// GetProtectedItemOperationResult API.
+        /// RecoveryPointID. This is an asynchronous operation. To know the status of
+        /// the operation, call the GetProtectedItemOperationResult API.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.

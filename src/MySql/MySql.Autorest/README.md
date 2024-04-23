@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the MySql service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -45,9 +44,9 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 7af6056c5682b12ccfc2bb358b290158e9fce917
+commit: 7af6056c5682b12ccfc2bb358b290158e9fce917
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/mysql.json
   - $(repo)/specification/mysql/resource-manager/Microsoft.DBforMySQL/stable/2017-12-01/ServerSecurityAlertPolicies.json
@@ -55,6 +54,10 @@ input-file:
 module-version: 0.1.0
 title: MySQL
 subject-prefix: 'MySQL'
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document

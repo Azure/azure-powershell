@@ -37,13 +37,13 @@ Regenerate CommunicationService access key.
 PrimaryKey and SecondaryKey cannot be regenerated at the same time.
 
 ### [New-AzEmailService](New-AzEmailService.md)
-Create a new EmailService or update an existing EmailService.
+Create a new EmailService or Create an existing EmailService.
 
 ### [New-AzEmailServiceDomain](New-AzEmailServiceDomain.md)
-Add a new Domains resource under the parent EmailService resource or update an existing Domains resource.
+Add a new Domains resource under the parent EmailService resource or Create an existing Domains resource.
 
 ### [New-AzEmailServiceSenderUsername](New-AzEmailServiceSenderUsername.md)
-Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
+Add a new SenderUsername resource under the parent Domains resource or Create an existing SenderUsername resource.
 
 ### [Remove-AzCommunicationService](Remove-AzCommunicationService.md)
 Operation to delete a CommunicationService.
@@ -70,11 +70,11 @@ Checks that the CommunicationService name is valid and is not already in use.
 Operation to update an existing CommunicationService.
 
 ### [Update-AzEmailService](Update-AzEmailService.md)
-Operation to update an existing EmailService.
+Operation to Update an existing EmailService.
 
 ### [Update-AzEmailServiceDomain](Update-AzEmailServiceDomain.md)
-Operation to update an existing Domains resource.
+Operation to Update an existing Domains resource.
 
 ### [Update-AzEmailServiceSenderUsername](Update-AzEmailServiceSenderUsername.md)
-Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
+Add a new SenderUsername resource under the parent Domains resource or Update an existing SenderUsername resource.
 

@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the NetworkCloud service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -30,16 +29,17 @@ For information on how to develop for `Az.NetworkCloud`, see [how-to.md](how-to.
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
 # the 2023-05-01-preview in main: 64efc48302878a07d1d1231eaed0ca9cadfaf037
-# the 2023-07-01 stable in a temp branch: f7ab2a992ff6a3a51a8f0bc82f2d7beebf61d90b
-branch: f7ab2a992ff6a3a51a8f0bc82f2d7beebf61d90b
+# the 2023-07-01 stable in a temp commit: f7ab2a992ff6a3a51a8f0bc82f2d7beebf61d90b
+commit: f7ab2a992ff6a3a51a8f0bc82f2d7beebf61d90b
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/networkcloud/resource-manager/readme.md
 input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/networkcloud/resource-manager/Microsoft.NetworkCloud/stable/2023-07-01/networkcloud.json
 
+# For new RP, the version is 0.1.0
 module-version: 0.1.0
 # Normally, title is the service name
 title: NetworkCloud
@@ -51,6 +51,10 @@ subject-prefix: NetworkCloud
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

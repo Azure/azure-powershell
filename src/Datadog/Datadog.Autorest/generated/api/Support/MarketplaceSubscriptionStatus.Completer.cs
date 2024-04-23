@@ -31,19 +31,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Datadog.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Provisioning".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Provisioning", "Provisioning", global::System.Management.Automation.CompletionResultType.ParameterValue, "Provisioning");
+                yield return new global::System.Management.Automation.CompletionResult("'Provisioning'", "Provisioning", global::System.Management.Automation.CompletionResultType.ParameterValue, "Provisioning");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Active".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Active", "Active", global::System.Management.Automation.CompletionResultType.ParameterValue, "Active");
+                yield return new global::System.Management.Automation.CompletionResult("'Active'", "Active", global::System.Management.Automation.CompletionResultType.ParameterValue, "Active");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Suspended".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Suspended", "Suspended", global::System.Management.Automation.CompletionResultType.ParameterValue, "Suspended");
+                yield return new global::System.Management.Automation.CompletionResult("'Suspended'", "Suspended", global::System.Management.Automation.CompletionResultType.ParameterValue, "Suspended");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unsubscribed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unsubscribed", "Unsubscribed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unsubscribed");
+                yield return new global::System.Management.Automation.CompletionResult("'Unsubscribed'", "Unsubscribed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unsubscribed");
             }
         }
     }

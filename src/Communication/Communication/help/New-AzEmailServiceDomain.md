@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEmailServiceDomain
 
 ## SYNOPSIS
-Add a new Domains resource under the parent EmailService resource or update an existing Domains resource.
+Add a new Domains resource under the parent EmailService resource or Create an existing Domains resource.
 
 ## SYNTAX
 
@@ -50,7 +50,7 @@ New-AzEmailServiceDomain -Name <String> -EmailServiceInputObject <IEmailServiceI
 ```
 
 ## DESCRIPTION
-Add a new Domains resource under the parent EmailService resource or update an existing Domains resource.
+Add a new Domains resource under the parent EmailService resource or Create an existing Domains resource.
 
 ## EXAMPLES
 

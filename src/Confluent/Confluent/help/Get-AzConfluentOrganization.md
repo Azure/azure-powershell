@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Confluent-help.xml
 Module Name: Az.Confluent
 online version: https://learn.microsoft.com/powershell/module/az.confluent/get-azconfluentorganization
 schema: 2.0.0
@@ -14,7 +14,8 @@ Get the properties of a specific Organization resource.
 
 ### List (Default)
 ```
-Get-AzConfluentOrganization [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConfluentOrganization [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -23,16 +24,16 @@ Get-AzConfluentOrganization -Name <String> -ResourceGroupName <String> [-Subscri
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzConfluentOrganization -InputObject <IConfluentIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzConfluentOrganization -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzConfluentOrganization -InputObject <IConfluentIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,7 +106,8 @@ This command gets a confluent organization by pipeline.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -170,7 +172,7 @@ Microsoft Azure subscription id
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -193,18 +195,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IConfluentIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[OrganizationName <String>]`: Organization resource name
-  - `[ResourceGroupName <String>]`: Resource group name
-  - `[SubscriptionId <String>]`: Microsoft Azure subscription id
-
 ## RELATED LINKS
-

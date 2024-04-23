@@ -14,8 +14,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Provides a pageable list of protectable objects within your subscription
-        /// according to the query filter and the
-        /// pagination parameters.
+        /// according to the query filter and the pagination parameters.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -40,8 +39,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Provides a pageable list of protectable objects within your subscription
-        /// according to the query filter and the
-        /// pagination parameters.
+        /// according to the query filter and the pagination parameters.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -71,8 +69,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
         /// <summary>
         /// Provides a pageable list of protectable objects within your subscription
-        /// according to the query filter and the
-        /// pagination parameters.
+        /// according to the query filter and the pagination parameters.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -87,8 +84,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Provides a pageable list of protectable objects within your subscription
-        /// according to the query filter and the
-        /// pagination parameters.
+        /// according to the query filter and the pagination parameters.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

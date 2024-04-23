@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Elastic-help.xml
 Module Name: Az.Elastic
 online version: https://learn.microsoft.com/powershell/module/az.elastic/new-azelasticmonitor
 schema: 2.0.0
@@ -13,12 +13,13 @@ Create a monitor resource.
 ## SYNTAX
 
 ```
-New-AzElasticMonitor -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+New-AzElasticMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-CompanyInfoBusiness <String>] [-CompanyInfoCountry <String>] [-CompanyInfoDomain <String>]
  [-CompanyInfoEmployeesNumber <String>] [-CompanyInfoState <String>] [-IdentityType <ManagedIdentityTypes>]
  [-MonitoringStatus <MonitoringStatus>] [-Sku <String>] [-Tag <Hashtable>] [-UserInfoCompanyName <String>]
  [-UserInfoEmailAddress <String>] [-UserInfoFirstName <String>] [-UserInfoLastName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,13 +29,13 @@ Create a monitor resource.
 
 ### Example 1: Create a monitor resource
 ```powershell
-New-AzElasticMonitor -ResourceGroupName azps-elastic-test -Name elastic-pwsh02 -Location "westus2" -Sku "ess-monthly-consumption_Monthly" -UserInfoEmailAddress 'xxx@microsoft.com'
+New-AzElasticMonitor -ResourceGroupName azps-elastic-test -Name elastic-pwsh02 -Location "westus2" -Sku "ess-consumption-2024_Monthly" -UserInfoEmailAddress 'xxx@microsoft.com'
 ```
 
 ```output
 Name           SkuName                         MonitoringStatus Location ResourceGroupName
 ----           -------                         ---------------- -------- -----------------
-elastic-pwsh02 ess-monthly-consumption_Monthly Enabled          westus2  azure-elastic-test
+elastic-pwsh02 ess-consumption-2024_Monthly Enabled          westus2  azure-elastic-test
 ```
 
 This command creates a monitor resource.
@@ -132,7 +133,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -237,7 +239,11 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-Name of the SKU.
+The SKU depends on the Elasticsearch Plans available for your account and is a combination of PlanID_Term.
+\
+For instance, if the plan ID is "planXYZ" and term is "Yearly", the SKU will be "planXYZ_Yearly".
+\
+You may find your eligible plans [here](https://portal.azure.com/#view/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/elastic.ec-azure-pp/selectionMode~/false/resourceGroupId//resourceGroupLocation//dontDiscardJourney~/false/selectedMenuId/home/launchingContext~/%7B%22galleryItemId%22%3A%22elastic.ec-azure-ppess-consumption-2024%22%2C%22source%22%3A%5B%22GalleryFeaturedMenuItemPart%22%2C%22VirtualizedTileDetails%22%5D%2C%22menuItemId%22%3A%22home%22%2C%22subMenuItemId%22%3A%22Search%20results%22%2C%22telemetryId%22%3A%2262f8ce76-e5e4-4983-9d3e-5c608a0b2bff%22%7D/searchTelemetryId/cca0a8d3-f232-4156-948f-701a5d74a729) or in the online documentation [here](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/elastic.ec-azure-pp) for more details or in case of any issues with the SKU.
 
 ```yaml
 Type: System.String
@@ -385,7 +391,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

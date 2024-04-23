@@ -20,8 +20,8 @@ Update-AzSynapseWorkspace [-ResourceGroupName <String>] -Name <String> [-Tag <Ha
  [-UseSystemAssignedIdentityInEncryption <Object>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
  [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
@@ -32,8 +32,8 @@ Update-AzSynapseWorkspace -InputObject <PSSynapseWorkspace> [-Tag <Hashtable>]
  [-UseSystemAssignedIdentityInEncryption <Object>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
  [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
@@ -44,8 +44,8 @@ Update-AzSynapseWorkspace -ResourceId <String> [-Tag <Hashtable>]
  [-UseSystemAssignedIdentityInEncryption <Object>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
  [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
- [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -131,7 +131,6 @@ This commands updates workspace with user assigned managed identites $uamilist t
 
 ### Example 9
 ```powershell
-
 ##Add a temp key to the workspace
 New-AzSynapseWorkspaceKey -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name TempKey -EncryptionKeyIdentifier https://contosoKeyVault.vault.azure.net/keys/TempKey
 
@@ -145,7 +144,6 @@ Update-AzSynapseWorkspace -WorkspaceName ContosoWorkspace -EncryptionKeyName def
 
 ##Remove the temp key
 Remove-AzSynapseWorkspaceKey -WorkspaceName ContosoWorkspace -Name TempKey
-
 ```
 
 This commands demonstrate how to rotate the encryption key of a Synapse workspace, and it is using System Assigned Managed Identity to access the Azure Key Vault.

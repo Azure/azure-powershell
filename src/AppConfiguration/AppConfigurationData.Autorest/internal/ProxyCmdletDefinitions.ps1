@@ -62,7 +62,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Models.IAppConfigurationdataIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Get')]
@@ -79,6 +78,7 @@ param(
 
     [Parameter()]
     [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.PSArgumentCompleterAttribute("key", "label", "content_type", "value", "last_modified", "tags", "locked", "etag")]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Category('Query')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfigurationdata.Runtime.Info(PossibleTypes=([System.String]))]
     [System.Collections.Generic.List[System.String]]

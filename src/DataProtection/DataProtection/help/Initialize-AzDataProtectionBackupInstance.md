@@ -16,7 +16,7 @@ Initializes Backup instance Request object for configuring backup
 Initialize-AzDataProtectionBackupInstance -DatasourceType <DatasourceTypes> -DatasourceLocation <String>
  [-PolicyId <String>] [-DatasourceId <String>] [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>]
  [-SnapshotResourceGroupId <String>] [-FriendlyName <String>]
- [-BackupConfiguration <IBackupDatasourceParameters>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-BackupConfiguration <IBackupDatasourceParameters>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -96,7 +96,7 @@ Use this parameter to configure protection for AzureKubernetesService,AzureBlob.
 To construct, see NOTES section for BACKUPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBackupDatasourceParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupDatasourceParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -183,21 +183,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SecretStoreType
 Secret store type for secret store authentication of data source.
 This parameter is only supported for AzureDatabaseForPostgreSQL currently.
@@ -253,7 +238,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
 
 ## NOTES
 

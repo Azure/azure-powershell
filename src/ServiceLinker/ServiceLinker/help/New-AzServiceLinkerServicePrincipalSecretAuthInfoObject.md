@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ServiceLinker-help.xml
 Module Name: Az.ServiceLinker
 online version: https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerserviceprincipalsecretauthinfoobject
 schema: 2.0.0
@@ -28,11 +28,9 @@ New-AzServiceLinkerServicePrincipalSecretAuthInfoObject -ClientId 00000000-0000-
 ```
 
 ```output
-
 AuthType               ClientId                             PrincipalId
 --------               --------                             -----------
 servicePrincipalSecret 00000000-0000-0000-0000-000000000000 00000000-0000-0000-0000-00…
-
 ```
 
 Create AuthInfo of service principal secret type
@@ -95,7 +93,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

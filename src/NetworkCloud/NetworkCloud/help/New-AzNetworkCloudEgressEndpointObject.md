@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
 online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudEgressEndpointObject
 schema: 2.0.0
@@ -83,16 +83,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ENDPOINT <IEndpointDependency[]>`: The list of endpoint dependencies.
-  - `DomainName <String>`: The domain name of the dependency.
-  - `[Port <Int64?>]`: The port of this endpoint.
-
 ## RELATED LINKS
-

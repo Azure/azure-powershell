@@ -40,11 +40,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Fetches the status of a triggered validate operation. The status can be in
-        /// progress, completed
-        /// or failed. You can refer to the OperationStatus enum for all the possible
-        /// states of the operation.
-        /// If operation has completed, this method returns the list of errors obtained
-        /// while validating the operation.
+        /// progress, completed or failed. You can refer to the OperationStatus enum
+        /// for all the possible states of the operation. If operation has completed,
+        /// this method returns the list of errors obtained while validating the
+        /// operation.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.

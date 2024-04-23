@@ -23,7 +23,8 @@ Get-AzAlert [-TargetResourceType <String>] [-TargetResourceGroup <String>] [-Mon
 
 ### AlertById
 ```
-Get-AzAlert -AlertId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAlert -AlertId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### AlertsListByTargetResourceIdFilter

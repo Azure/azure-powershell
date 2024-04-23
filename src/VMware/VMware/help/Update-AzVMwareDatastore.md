@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareDatastore
 
 ## SYNOPSIS
-Create a datastore in a private cloud cluster
+Update a datastore in a private cloud cluster
 
 ## SYNTAX
 
@@ -46,7 +46,7 @@ Update-AzVMwareDatastore -InputObject <IVMwareIdentity> [-DiskPoolVolumeLunName 
 ```
 
 ## DESCRIPTION
-Create a datastore in a private cloud cluster
+Update a datastore in a private cloud cluster
 
 ## EXAMPLES
 

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Synapse-help.xml
 Module Name: Az.Synapse
 online version: https://learn.microsoft.com/powershell/module/az.synapse/new-azsynapsekustopool
 schema: 2.0.0
@@ -13,11 +13,12 @@ Create or update a Kusto pool.
 ## SYNTAX
 
 ```
-New-AzSynapseKustoPool -Name <String> -ResourceGroupName <String> -WorkspaceName <String> -Location <String>
- -SkuName <SkuName> -SkuSize <SkuSize> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-EnablePurge] [-EnableStreamingIngest] [-OptimizedAutoscaleIsEnabled] [-OptimizedAutoscaleMaximum <Int32>]
- [-OptimizedAutoscaleMinimum <Int32>] [-OptimizedAutoscaleVersion <Int32>] [-SkuCapacity <Int32>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSynapseKustoPool -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
+ [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] -Location <String> -SkuName <SkuName>
+ -SkuSize <SkuSize> [-EnablePurge] [-EnableStreamingIngest] [-OptimizedAutoscaleIsEnabled]
+ [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>] [-OptimizedAutoscaleVersion <Int32>]
+ [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +34,7 @@ New-AzSynapseKustoPool -ResourceGroupName testrg -WorkspaceName testws -Name tes
 ```output
 Location  Name                    Type                                    Etag
 --------  ----                    ----                                    ----
-East US 2 testws/testnewkustopool Microsoft.Synapse/workspaces/kustoPools 
+East US 2 testws/testnewkustopool Microsoft.Synapse/workspaces/kustoPools
 ```
 
 The above command creates a new Kusto pool named "testnewkustopool" in the workspace "testws".
@@ -386,7 +387,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

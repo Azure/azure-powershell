@@ -11,15 +11,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
     using System;
 
     /// <summary>
-    /// Updates a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription
-    /// and Custom Location name.
+    /// Update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and
+    /// Custom Location name.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{resourceName}/resourceSyncRules/{childResourceName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzCustomLocationResourceSyncRule_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.IResourceSyncRule))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Description(@"Updates a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and Custom Location name.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Description(@"Update a Resource Sync Rule with the specified Resource Sync Rule name in the specified Resource Group, Subscription and Custom Location name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.HttpPath(Path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{resourceName}/resourceSyncRules/{childResourceName}", ApiVersion = "2021-08-31-preview")]
     public partial class UpdateAzCustomLocationResourceSyncRule_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -344,11 +344,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Cmdlets
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
                 telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
                 telemetryInfo.TryGetValue("InvocationName", out var invocationName);
-                if (!string.IsNullOrEmpty(sanitizedProperties))
+                if (showSecretsWarning == "true")
                 {
-                    WriteWarning($"The output of cmdlet {invocationName ?? "Unknown"} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
                 }
             }
         }

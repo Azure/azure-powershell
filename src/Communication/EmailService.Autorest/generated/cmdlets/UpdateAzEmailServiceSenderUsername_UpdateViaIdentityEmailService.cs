@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
     using System;
 
     /// <summary>
-    /// Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
+    /// Add a new SenderUsername resource under the parent Domains resource or Update an existing SenderUsername resource.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames/{senderUsername}"
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzEmailServiceSenderUsername_UpdateViaIdentityEmailService", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.ISenderUsernameResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Description(@"Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Description(@"Add a new SenderUsername resource under the parent Domains resource or Update an existing SenderUsername resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Generated]
     public partial class UpdateAzEmailServiceSenderUsername_UpdateViaIdentityEmailService : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener,
@@ -231,6 +231,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
                 // Flush buffer
                 WriteObject(_firstResponse);
             }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.EmailService.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -377,7 +395,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
                         this.EmailServiceInputObject.Id += $"/domains/{(global::System.Uri.EscapeDataString(this.DomainName.ToString()))}/senderUsernames/{(global::System.Uri.EscapeDataString(this.SenderUsername.ToString()))}";
                         Parameter = await this.Client.SenderUsernamesGetViaIdentityWithResult(EmailServiceInputObject.Id, this, Pipeline);
                         this.UpdateParameter();
-                        await this.Client.SenderUsernamesCreateOrUpdateViaIdentity(EmailServiceInputObject.Id, Parameter, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.SenderUsernamesCreateOrUpdateViaIdentity(EmailServiceInputObject.Id, Parameter, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -396,7 +414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
                         }
                         Parameter = await this.Client.SenderUsernamesGetWithResult(EmailServiceInputObject.SubscriptionId ?? null, EmailServiceInputObject.ResourceGroupName ?? null, EmailServiceInputObject.EmailServiceName ?? null, DomainName, SenderUsername, this, Pipeline);
                         this.UpdateParameter();
-                        await this.Client.SenderUsernamesCreateOrUpdate(EmailServiceInputObject.SubscriptionId ?? null, EmailServiceInputObject.ResourceGroupName ?? null, EmailServiceInputObject.EmailServiceName ?? null, DomainName, SenderUsername, Parameter, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.SenderUsernamesCreateOrUpdate(EmailServiceInputObject.SubscriptionId ?? null, EmailServiceInputObject.ResourceGroupName ?? null, EmailServiceInputObject.EmailServiceName ?? null, DomainName, SenderUsername, Parameter, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -436,6 +454,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
             {
                 this.Parameter = (Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.ISenderUsernameResource)(this.MyInvocation?.BoundParameters["Parameter"]);
             }
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.EmailService.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.EmailService.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>

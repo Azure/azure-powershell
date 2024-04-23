@@ -17,10 +17,10 @@
 <#
 .Synopsis
 Create a security connector.
-If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
+If a security connector is already Created and a subsequent request is issued for the same security connector id, then it will be Created.
 .Description
 Create a security connector.
-If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
+If a security connector is already Created and a subsequent request is issued for the same security connector id, then it will be Created.
 .Example
 $account = "891376984375"
 $arnPrefix = "arn:aws:iam::$($account):role"

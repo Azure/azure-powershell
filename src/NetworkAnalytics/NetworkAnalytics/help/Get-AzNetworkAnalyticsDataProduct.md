@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkAnalytics-help.xml
 Module Name: Az.NetworkAnalytics
 online version: https://learn.microsoft.com/powershell/module/az.networkanalytics/get-aznetworkanalyticsdataproduct
 schema: 2.0.0
@@ -24,16 +24,16 @@ Get-AzNetworkAnalyticsDataProduct -Name <String> -ResourceGroupName <String> [-S
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzNetworkAnalyticsDataProduct -InputObject <INetworkAnalyticsIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzNetworkAnalyticsDataProduct -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzNetworkAnalyticsDataProduct -InputObject <INetworkAnalyticsIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -160,7 +160,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -184,4 +184,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

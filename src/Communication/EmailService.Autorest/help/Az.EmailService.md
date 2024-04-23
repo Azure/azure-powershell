@@ -24,13 +24,13 @@ Get a valid sender username for a domains resource.
 Initiate verification of DNS record.
 
 ### [New-AzEmailService](New-AzEmailService.md)
-Create a new EmailService or update an existing EmailService.
+Create a new EmailService or Create an existing EmailService.
 
 ### [New-AzEmailServiceDomain](New-AzEmailServiceDomain.md)
-Add a new Domains resource under the parent EmailService resource or update an existing Domains resource.
+Add a new Domains resource under the parent EmailService resource or Create an existing Domains resource.
 
 ### [New-AzEmailServiceSenderUsername](New-AzEmailServiceSenderUsername.md)
-Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
+Add a new SenderUsername resource under the parent Domains resource or Create an existing SenderUsername resource.
 
 ### [Remove-AzEmailService](Remove-AzEmailService.md)
 Operation to delete a EmailService.
@@ -45,11 +45,11 @@ Operation to delete a SenderUsernames resource.
 Cancel verification of DNS record.
 
 ### [Update-AzEmailService](Update-AzEmailService.md)
-Operation to update an existing EmailService.
+Operation to Update an existing EmailService.
 
 ### [Update-AzEmailServiceDomain](Update-AzEmailServiceDomain.md)
-Operation to update an existing Domains resource.
+Operation to Update an existing Domains resource.
 
 ### [Update-AzEmailServiceSenderUsername](Update-AzEmailServiceSenderUsername.md)
-Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
+Add a new SenderUsername resource under the parent Domains resource or Update an existing SenderUsername resource.
 

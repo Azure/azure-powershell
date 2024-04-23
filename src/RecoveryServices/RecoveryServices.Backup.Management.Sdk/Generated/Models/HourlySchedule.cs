@@ -21,8 +21,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the HourlySchedule class.
         /// </summary>
 
-        /// <param name="interval">Interval at which backup needs to be triggered. For hourly the value
-        /// can be 4/6/8/12
+        /// <param name="interval">Interval at which backup needs to be triggered. For hourly the value  can
+        /// be 4/6/8/12
         /// </param>
 
         /// <param name="scheduleWindowStartTime">To specify start time of the backup window
@@ -47,8 +47,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <summary>
         /// Gets or sets interval at which backup needs to be triggered. For hourly the
-        /// value
-        /// can be 4/6/8/12
+        /// value  can be 4/6/8/12
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "interval")]
         public int? Interval {get; set; }

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ServiceLinker-help.xml
 Module Name: Az.ServiceLinker
 online version: https://learn.microsoft.com/powershell/module/az.servicelinker/get-azservicelinkerconfigurationforcontainerapp
 schema: 2.0.0
@@ -13,9 +13,9 @@ list source configurations for a linker in container app.
 ## SYNTAX
 
 ```
-Get-AzServiceLinkerConfigurationForContainerApp -LinkerName <String> -ContainerApp <String>
- -ResourceGroupName <String> [-ResourceUri <String>] [-DefaultProfile <PSObject>] [-SubscriptionId <String>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzServiceLinkerConfigurationForContainerApp -LinkerName <String> [-ResourceUri <String>]
+ [-DefaultProfile <PSObject>] -ContainerApp <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,8 +31,7 @@ Get-AzServiceLinkerConfigurationForContainerApp -ContainerApp servicelinker-cont
 ```output
 Name  : AZURE_POSTGRESQL_POSTGRESQL_NOVNET_CONNECTIONSTRING
 Value : Server=test.postgres.database.azure.com;Database=testdb;Port=543 
-        2;Ssl Mode=Require;User Id=testuser@test;Password=password;   
-
+        2;Ssl Mode=Require;User Id=testuser@test;Password=password;
 ```
 
 Get Linker's configuration list
@@ -172,7 +171,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
