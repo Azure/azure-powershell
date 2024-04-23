@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatastorecredentialobject
+online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceDatastoreCredentialObject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,9 @@ Create an in-memory object for CertificateDatastoreCredentials.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceDatastoreCredentialObject -Certificate <String> -ClientId <String> -TenantId <String>
- -Thumbprint <String> [-AuthorityUrl <String>] [-ResourceUrl <String>] [<CommonParameters>]
+New-AzMLWorkspaceDatastoreCredentialObject -ClientId <String> -TenantId <String> -Thumbprint <String>
+ -Certificate <String> [-AuthorityUrl <String>] [-ResourceUrl <String>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,6 +71,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -132,7 +148,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

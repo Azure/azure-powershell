@@ -95,10 +95,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeploymentInternal)this).XmsAsyncOperationTimeout = (global::System.TimeSpan?) content.GetValueForProperty("XmsAsyncOperationTimeout",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeploymentInternal)this).XmsAsyncOperationTimeout, (v) => v is global::System.TimeSpan _v ? _v : global::System.Xml.XmlConvert.ToTimeSpan( v.ToString() ));
             }
-            if (content.Contains("AzureAsyncOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeploymentInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeploymentInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
-            }
             if (content.Contains("SystemDataCreatedBy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api30.IResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api30.IResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
@@ -315,10 +311,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
             if (content.Contains("XmsAsyncOperationTimeout"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeploymentInternal)this).XmsAsyncOperationTimeout = (global::System.TimeSpan?) content.GetValueForProperty("XmsAsyncOperationTimeout",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeploymentInternal)this).XmsAsyncOperationTimeout, (v) => v is global::System.TimeSpan _v ? _v : global::System.Xml.XmlConvert.ToTimeSpan( v.ToString() ));
-            }
-            if (content.Contains("AzureAsyncOperation"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeploymentInternal)this).AzureAsyncOperation = (string) content.GetValueForProperty("AzureAsyncOperation",((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IBatchDeploymentInternal)this).AzureAsyncOperation, global::System.Convert.ToString);
             }
             if (content.Contains("SystemDataCreatedBy"))
             {

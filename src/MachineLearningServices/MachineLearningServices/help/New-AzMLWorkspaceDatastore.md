@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
 online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatastore
 schema: 2.0.0
@@ -14,8 +14,8 @@ Create or update datastore.
 
 ```
 New-AzMLWorkspaceDatastore -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
- -Datastore <IDatastoreProperties> [-SubscriptionId <String>] [-SkipValidation] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-SkipValidation] -Datastore <IDatastoreProperties> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -70,7 +70,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -93,6 +94,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -202,22 +218,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-DATASTORE `<IDatastoreProperties>`: [Required] Additional attributes of the entity.
-  - `Credentials <IDatastoreCredentials>`: [Required] Account credentials.
-    - `CredentialsType <CredentialsType>`: [Required] Credential type used to authentication with storage.
-  - `DatastoreType <DatastoreType>`: [Required] Storage type backing the datastore.
-  - `[Description <String>]`: The asset description text.
-  - `[Property <IResourceBaseProperties>]`: The asset property dictionary.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Tag <IResourceBaseTags>]`: Tag dictionary. Tags can be added, removed, and updated.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-
 ## RELATED LINKS
-

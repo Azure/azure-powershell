@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacedatastoreserviceprincipalcredentialobject
+online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceDatastoreServicePrincipalCredentialObject
 schema: 2.0.0
 ---
 
@@ -13,8 +13,9 @@ Create an in-memory object for ServicePrincipalDatastoreCredentials.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceDatastoreServicePrincipalCredentialObject -ClientId <String> -ClientSecret <String>
- -TenantId <String> [-AuthorityUrl <String>] [-ResourceUrl <String>] [<CommonParameters>]
+New-AzMLWorkspaceDatastoreServicePrincipalCredentialObject -ClientId <String> -TenantId <String>
+ -ClientSecret <String> [-AuthorityUrl <String>] [-ResourceUrl <String>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,6 +77,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceUrl
 Resource the service principal has access to.
 
@@ -117,7 +133,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

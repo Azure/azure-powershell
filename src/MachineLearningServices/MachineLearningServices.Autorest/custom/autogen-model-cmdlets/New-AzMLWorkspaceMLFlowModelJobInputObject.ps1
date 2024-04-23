@@ -23,7 +23,7 @@ Create an in-memory object for MLFlowModelJobInput.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.MLFlowModelJobInput
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceMLFlowModelJobInputObject
+https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceMLFlowModelJobInputObject
 #>
 function New-AzMLWorkspaceMLFlowModelJobInputObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.MLFlowModelJobInput')]

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkFabricInternalNetwork
 
 ## SYNOPSIS
-Creates InternalNetwork PUT method.
+Create InternalNetwork PUT method.
 
 ## SYNTAX
 
@@ -62,7 +62,7 @@ New-AzNetworkFabricInternalNetwork -L3IsolationDomainName <String> -Name <String
 ```
 
 ## DESCRIPTION
-Creates InternalNetwork PUT method.
+Create InternalNetwork PUT method.
 
 ## EXAMPLES
 

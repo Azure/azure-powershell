@@ -51,16 +51,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
 
         /// <summary>Location for the underlying compute</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
-        public string Location { get => this._location; }
+        public string Location { get => this._location; set => this._location = value; }
 
         /// <summary>Internal Acessors for CreatedOn</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeInternal.CreatedOn { get => this._createdOn; set { {_createdOn = value;} } }
 
         /// <summary>Internal Acessors for IsAttachedCompute</summary>
         bool? Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeInternal.IsAttachedCompute { get => this._isAttachedCompute; set { {_isAttachedCompute = value;} } }
-
-        /// <summary>Internal Acessors for Location</summary>
-        string Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeInternal.Location { get => this._location; set { {_location = value;} } }
 
         /// <summary>Internal Acessors for ModifiedOn</summary>
         global::System.DateTime? Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComputeInternal.ModifiedOn { get => this._modifiedOn; set { {_modifiedOn = value;} } }
@@ -158,11 +155,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         /// <summary>Location for the underlying compute</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,
-        ReadOnly = true,
+        ReadOnly = false,
         Description = @"Location for the underlying compute",
         SerializedName = @"computeLocation",
         PossibleTypes = new [] { typeof(string) })]
-        string Location { get;  }
+        string Location { get; set; }
         /// <summary>The time at which the compute was last modified.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
         Required = false,

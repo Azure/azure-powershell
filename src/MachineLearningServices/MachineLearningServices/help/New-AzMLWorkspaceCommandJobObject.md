@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecommandjobobject
+online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceCommandJobObject
 schema: 2.0.0
 ---
 
@@ -14,13 +14,14 @@ Create an in-memory object for CommandJob.
 
 ```
 New-AzMLWorkspaceCommandJobObject -Command <String> -EnvironmentId <String> [-CodeId <String>]
- [-ComputeId <String>] [-Description <String>] [-DisplayName <String>] [-DistributionType <DistributionType>]
- [-EnvironmentVariable <Hashtable>] [-ExperimentName <String>] [-IdentityType <IdentityConfigurationType>]
- [-IsArchived <Boolean>] [-JobInput <ICommandJobInputs>] [-JobOutput <ICommandJobOutputs>]
- [-LimitTimeout <TimeSpan>] [-Property <IResourceBaseProperties>] [-ResourceInstanceCount <Int32>]
- [-ResourceInstanceType <String>] [-ResourceProperty <IResourceConfigurationProperties>]
- [-ServiceEndpoint <String>] [-ServicePort <Int32>] [-ServiceProperty <IJobServiceProperties>]
- [-ServiceType <String>] [-Tag <IResourceBaseTags>] [<CommonParameters>]
+ [-DistributionType <DistributionType>] [-EnvironmentVariable <Hashtable>] [-JobInput <ICommandJobInputs>]
+ [-LimitTimeout <TimeSpan>] [-JobOutput <ICommandJobOutputs>] [-ResourceInstanceCount <Int32>]
+ [-ResourceInstanceType <String>] [-ResourceProperty <IResourceConfigurationProperties>] [-ComputeId <String>]
+ [-DisplayName <String>] [-ExperimentName <String>] [-IdentityType <IdentityConfigurationType>]
+ [-IsArchived <Boolean>] [-ServiceEndpoint <String>] [-ServicePort <Int32>]
+ [-ServiceProperty <IJobServiceProperties>] [-ServiceType <String>] [-Description <String>]
+ [-Property <IResourceBaseProperties>] [-Tag <IResourceBaseTags>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -273,6 +274,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Property
 The asset property dictionary.
 To construct, see NOTES section for PROPERTY properties and create a hash table.
@@ -424,30 +440,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-JOBINPUT `<ICommandJobInputs>`: Mapping of input data bindings used in the job.
-  - `[(Any) <IJobInput>]`: This indicates any property can be added to this object.
-
-JOBOUTPUT `<ICommandJobOutputs>`: Mapping of output data bindings used in the job.
-  - `[(Any) <IJobOutput>]`: This indicates any property can be added to this object.
-
-PROPERTY `<IResourceBaseProperties>`: The asset property dictionary.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-RESOURCEPROPERTY `<IResourceConfigurationProperties>`: Additional properties bag.
-  - `[(Any) <Object>]`: This indicates any property can be added to this object.
-
-SERVICEPROPERTY `<IJobServiceProperties>`: Additional properties to set on the endpoint.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-TAG `<IResourceBaseTags>`: Tag dictionary. Tags can be added, removed, and updated.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
 ## RELATED LINKS
-

@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecomputeinstanceobject
+online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceComputeInstanceObject
 schema: 2.0.0
 ---
 
@@ -13,17 +13,17 @@ Create an in-memory object for ComputeInstance.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceComputeInstanceObject [-ApplicationSharingPolicy <ApplicationSharingPolicy>]
- [-AssignedUserObjectId <String>] [-AssignedUserTenantId <String>]
- [-AuthorizationType <ComputeInstanceAuthorizationType>] [-CreationScriptArgument <String>]
- [-CreationScriptData <String>] [-CreationScriptSource <String>] [-CreationScriptTimeout <String>]
- [-Description <String>] [-DisableLocalAuth <Boolean>] [-EnableNodePublicIP <Boolean>]
- [-LastOperationName <OperationName>] [-LastOperationStatus <OperationStatus>] [-LastOperationTime <DateTime>]
- [-LastOperationTrigger <OperationTrigger>] [-ResourceId <String>]
- [-ScheduleComputeStartStop <IComputeStartStopSchedule[]>] [-SshSettingAdminPublicKey <String>]
- [-SshSettingSshPublicAccess <SshPublicAccess>] [-StartupScriptArgument <String>]
- [-StartupScriptData <String>] [-StartupScriptSource <String>] [-StartupScriptTimeout <String>]
- [-SubnetId <String>] [-VersionRuntime <String>] [-VMSize <String>] [<CommonParameters>]
+New-AzMLWorkspaceComputeInstanceObject [-Description <String>] [-DisableLocalAuth <Boolean>]
+ [-ResourceId <String>] [-ApplicationSharingPolicy <ApplicationSharingPolicy>] [-AssignedUserObjectId <String>]
+ [-AssignedUserTenantId <String>] [-AuthorizationType <ComputeInstanceAuthorizationType>]
+ [-CreationScriptArgument <String>] [-CreationScriptData <String>] [-CreationScriptSource <String>]
+ [-CreationScriptTimeout <String>] [-EnableNodePublicIP <Boolean>] [-LastOperationName <OperationName>]
+ [-LastOperationStatus <OperationStatus>] [-LastOperationTime <DateTime>]
+ [-LastOperationTrigger <OperationTrigger>] [-ScheduleComputeStartStop <IComputeStartStopSchedule[]>]
+ [-SshSettingAdminPublicKey <String>] [-SshSettingSshPublicAccess <SshPublicAccess>]
+ [-StartupScriptArgument <String>] [-StartupScriptData <String>] [-StartupScriptSource <String>]
+ [-StartupScriptTimeout <String>] [-SubnetId <String>] [-VMSize <String>] [-VersionRuntime <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignedUserObjectId
-User’s AAD Object Id.
+User's AAD Object Id.
 
 ```yaml
 Type: System.String
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 ```
 
 ### -AssignedUserTenantId
-User’s AAD Tenant Id.
+User's AAD Tenant Id.
 
 ```yaml
 Type: System.String
@@ -270,6 +270,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 ARM resource id of the underlying compute.
 
@@ -450,18 +465,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-SCHEDULECOMPUTESTARTSTOP <IComputeStartStopSchedule[]>: The list of compute start stop schedules to be applied.
-  - `[Action <ComputePowerAction?>]`: The compute power action.
-  - `[ScheduleId <String>]`: 
-  - `[ScheduleProvisioningStatus <ScheduleProvisioningState?>]`: 
-  - `[ScheduleStatus <ScheduleStatus?>]`: 
-
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
 online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspace
 schema: 2.0.0
@@ -23,7 +23,8 @@ New-AzMLWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <S
  [-PrimaryUserAssignedIdentity <String>] [-PublicNetworkAccess <PublicNetworkAccess>]
  [-SharedPrivateLinkResource <ISharedPrivateLinkResource[]>] [-SkuCapacity <Int32>] [-SkuFamily <String>]
  [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-StorageAccountId <String>] [-Tag <Hashtable>]
- [-V1LegacyMode] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-V1LegacyMode] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -122,7 +123,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -395,6 +397,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 Whether requests from Public Network are allowed.
 
@@ -624,19 +641,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-SHAREDPRIVATELINKRESOURCE <ISharedPrivateLinkResource[]>: The list of shared private link resources in this workspace.
-  - `[GroupId <String>]`: The private link resource group id.
-  - `[Name <String>]`: Unique name of the private link.
-  - `[PrivateLinkResourceId <String>]`: The resource id that private link links to.
-  - `[RequestMessage <String>]`: Request message.
-  - `[Status <PrivateEndpointServiceConnectionStatus?>]`: Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-
 ## RELATED LINKS
-

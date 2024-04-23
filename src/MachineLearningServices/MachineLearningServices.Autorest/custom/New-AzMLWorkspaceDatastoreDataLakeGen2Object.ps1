@@ -23,7 +23,7 @@ Create an in-memory object for AzureDataLakeGen2Datastore.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AzureDataLakeGen2Datastore
 .Link
-https://learn.microsoft.com/powershell/module/az.MLWorkspace/new-AzMLWorkspaceDatastoreDataLakeGen2Object
+https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceDatastoreDataLakeGen2Object
 #>
 function New-AzMLWorkspaceDatastoreDataLakeGen2Object {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.AzureDataLakeGen2Datastore')]
