@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedNetwork-help.xml
 Module Name: Az.ConnectedNetwork
 online version: https://learn.microsoft.com/powershell/module/az.connectednetwork/get-azconnectednetworkdevice
 schema: 2.0.0
@@ -14,25 +14,26 @@ Gets information about the specified device.
 
 ### List (Default)
 ```
-Get-AzConnectedNetworkDevice [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedNetworkDevice [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzConnectedNetworkDevice -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzConnectedNetworkDevice -InputObject <IConnectedNetworkIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzConnectedNetworkDevice -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzConnectedNetworkDevice -InputObject <IConnectedNetworkIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +63,6 @@ SystemDataLastModifiedBy     : xxxxx-11111-xxxxx-11111
 SystemDataLastModifiedByType : Application
 Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.TrackedResourceTags
 Type                         : Microsoft.HybridNetwork/devices
-
 ```
 
 Getting information about the NFM device in resource group myResources with name myMecDevice.
@@ -90,7 +90,6 @@ SystemDataLastModifiedBy     : xxxxx-11111-xxxxx-11111
 SystemDataLastModifiedByType : Application
 Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.TrackedResourceTags
 Type                         : microsoft.hybridnetwork/devices
-
 ```
 
 Creating an identity with device name myMecDevice1, resource group myResources and the given subscription.
@@ -99,7 +98,8 @@ Getting the information about the device using this identity.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -144,6 +144,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -165,7 +180,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -188,26 +203,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IConnectedNetworkIdentity>`: Identity Parameter
-  - `[DeviceName <String>]`: The name of the device resource.
-  - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.
-  - `[NetworkFunctionName <String>]`: The name of the network function.
-  - `[PreviewSubscription <String>]`: Preview subscription ID.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RoleInstanceName <String>]`: The name of the role instance of the vendor network function.
-  - `[ServiceKey <String>]`: The GUID for the vendor network function.
-  - `[SkuName <String>]`: The name of the sku.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VendorName <String>]`: The name of the vendor.
-  - `[VendorSkuName <String>]`: The name of the network function sku.
-
 ## RELATED LINKS
-

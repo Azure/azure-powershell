@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.CloudService-help.xml
 Module Name: Az.CloudService
 online version: https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudserviceroleinstanceview
 schema: 2.0.0
@@ -14,7 +14,8 @@ Retrieves information about the run-time state of a role instance in a cloud ser
 
 ```
 Get-AzCloudServiceRoleInstanceView -CloudServiceName <String> -ResourceGroupName <String>
- -RoleInstanceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -RoleInstanceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +61,21 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -125,7 +141,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
