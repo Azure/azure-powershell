@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
@@ -375,6 +376,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ResourceIdCreateParameterSet)]
         public string ReleasePolicyPath { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion(nameof(UseDefaultCVMPolicy), "12.0.0", "6.0.0", ChangeDescription = "The offline fallback policy will be removed. Key creation will fail if unable to get regional default CVM SKR policy from MAA Service Discovery API.")]
         [Parameter(Mandatory = false,
             ParameterSetName = HsmInteractiveCreateParameterSet,
             HelpMessage = "Specifies to use default policy under which the key can be exported for CVM disk encryption.")]
