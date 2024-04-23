@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Databricks-help.xml
 Module Name: Az.Databricks
 online version: https://learn.microsoft.com/powershell/module/az.databricks/update-azdatabricksworkspace
 schema: 2.0.0
@@ -15,32 +15,33 @@ Updates a workspace.
 ### UpdateExpanded (Default)
 ```
 Update-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AmlWorkspaceId <String>] [-Authorization <IWorkspaceProviderAuthorization[]>] [-EnableNoPublicIP]
- [-EncryptionKeyName <String>] [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>]
- [-EncryptionKeyVersion <String>] [-KeyVaultKeyName <String>] [-KeyVaultKeyVersion <String>]
- [-KeyVaultUri <String>] [-ManagedDiskKeyVaultPropertiesKeyName <String>]
+ [-PrepareEncryption] [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>]
+ [-EncryptionKeyName <String>] [-EncryptionKeyVersion <String>] [-KeyVaultKeyName <String>]
+ [-KeyVaultKeyVersion <String>] [-KeyVaultUri <String>] [-AmlWorkspaceId <String>] [-SkuTier <String>]
+ [-Authorization <IWorkspaceProviderAuthorization[]>] [-ManagedDiskKeyVaultPropertiesKeyName <String>]
  [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>] [-ManagedDiskKeyVaultPropertiesKeyVersion <String>]
  [-ManagedDiskRotationToLatestKeyVersionEnabled] [-ManagedServicesKeyVaultPropertiesKeyName <String>]
  [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
- [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-PrepareEncryption]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-RequiredNsgRule <RequiredNsgRules>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-UiDefinitionUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-UiDefinitionUri <String>] [-Tag <Hashtable>]
+ [-RequiredNsgRule <RequiredNsgRules>] [-PublicNetworkAccess <PublicNetworkAccess>] [-EnableNoPublicIP]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzDatabricksWorkspace -InputObject <IDatabricksIdentity> [-AmlWorkspaceId <String>]
- [-Authorization <IWorkspaceProviderAuthorization[]>] [-EnableNoPublicIP] [-EncryptionKeyName <String>]
- [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyVersion <String>]
- [-KeyVaultKeyName <String>] [-KeyVaultKeyVersion <String>] [-KeyVaultUri <String>]
- [-ManagedDiskKeyVaultPropertiesKeyName <String>] [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>]
- [-ManagedDiskKeyVaultPropertiesKeyVersion <String>] [-ManagedDiskRotationToLatestKeyVersionEnabled]
- [-ManagedServicesKeyVaultPropertiesKeyName <String>] [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
- [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-PrepareEncryption]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-RequiredNsgRule <RequiredNsgRules>] [-SkuTier <String>]
- [-Tag <Hashtable>] [-UiDefinitionUri <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzDatabricksWorkspace -InputObject <IDatabricksIdentity> [-PrepareEncryption]
+ [-EncryptionKeySource <KeySource>] [-EncryptionKeyVaultUri <String>] [-EncryptionKeyName <String>]
+ [-EncryptionKeyVersion <String>] [-KeyVaultKeyName <String>] [-KeyVaultKeyVersion <String>]
+ [-KeyVaultUri <String>] [-AmlWorkspaceId <String>] [-SkuTier <String>]
+ [-Authorization <IWorkspaceProviderAuthorization[]>] [-ManagedDiskKeyVaultPropertiesKeyName <String>]
+ [-ManagedDiskKeyVaultPropertiesKeyVaultUri <String>] [-ManagedDiskKeyVaultPropertiesKeyVersion <String>]
+ [-ManagedDiskRotationToLatestKeyVersionEnabled] [-ManagedServicesKeyVaultPropertiesKeyName <String>]
+ [-ManagedServicesKeyVaultPropertiesKeyVaultUri <String>]
+ [-ManagedServicesKeyVaultPropertiesKeyVersion <String>] [-UiDefinitionUri <String>] [-Tag <Hashtable>]
+ [-RequiredNsgRule <RequiredNsgRules>] [-PublicNetworkAccess <PublicNetworkAccess>] [-EnableNoPublicIP]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -462,6 +463,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 The network access type for accessing workspace.
 Set value to disabled to access workspace only via private link.
@@ -615,26 +631,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`AUTHORIZATION <IWorkspaceProviderAuthorization[]>`: The workspace provider authorizations.
-  - `PrincipalId <String>`: The provider's principal identifier. This is the identity that the provider will use to call ARM to manage the workspace resources.
-  - `RoleDefinitionId <String>`: The provider's role definition identifier. This role will define all the permissions that the provider must have on the workspace's container resource group. This role definition cannot have permission to delete the resource group.
-
-`INPUTOBJECT <IDatabricksIdentity>`: Identity parameter.
-  - `[ConnectorName <String>]`: The name of the azure databricks accessConnector.
-  - `[GroupId <String>]`: The name of the private link resource
-  - `[Id <String>]`: Resource identity path
-  - `[PeeringName <String>]`: The name of the workspace vNet peering.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WorkspaceName <String>]`: The name of the workspace.
-
 ## RELATED LINKS
-

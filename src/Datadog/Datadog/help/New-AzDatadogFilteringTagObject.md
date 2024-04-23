@@ -1,23 +1,24 @@
 ---
-external help file:
+external help file: Az.Datadog-help.xml
 Module Name: Az.Datadog
-online version: https://learn.microsoft.com/powershell/module/az.Datadog/new-AzDatadogFilteringTagObject
+online version: https://learn.microsoft.com/powershell/module/Az.Datadog/new-AzDatadogFilteringTagObject
 schema: 2.0.0
 ---
 
 # New-AzDatadogFilteringTagObject
 
 ## SYNOPSIS
-Create a in-memory object for FilteringTag
+Create an in-memory object for FilteringTag.
 
 ## SYNTAX
 
 ```
-New-AzDatadogFilteringTagObject [-Action <TagAction>] [-Name <String>] [-Value <String>] [<CommonParameters>]
+New-AzDatadogFilteringTagObject [-Action <TagAction>] [-Name <String>] [-Value <String>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for FilteringTag
+Create an in-memory object for FilteringTag.
 
 ## EXAMPLES
 
@@ -61,6 +62,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Value
 The value of the tag.
 
@@ -87,7 +103,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
