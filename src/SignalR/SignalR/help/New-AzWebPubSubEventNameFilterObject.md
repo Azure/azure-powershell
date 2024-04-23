@@ -14,7 +14,7 @@ Create an in-memory object for EventNameFilter.
 
 ```
 New-AzWebPubSubEventNameFilterObject [-SystemEvent <String[]>] [-UserEventPattern <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +35,21 @@ SystemEvent               UserEventPattern
 ```
 
 ## PARAMETERS
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -SystemEvent
 Gets or sets a list of system events.
@@ -85,7 +100,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.EventNameFilter
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
