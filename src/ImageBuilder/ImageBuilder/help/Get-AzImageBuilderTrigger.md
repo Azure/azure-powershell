@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ImageBuilder-help.xml
 Module Name: Az.ImageBuilder
 online version: https://learn.microsoft.com/powershell/module/az.imagebuilder/get-azimagebuildertrigger
 schema: 2.0.0
@@ -15,19 +15,20 @@ Get the specified trigger for the specified image template resource
 ### List (Default)
 ```
 Get-AzImageBuilderTrigger -ImageTemplateName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzImageBuilderTrigger -ImageTemplateName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzImageBuilderTrigger -InputObject <IImageBuilderIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +85,7 @@ The name of the image Template
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -125,12 +126,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -146,7 +162,7 @@ The subscription Id forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -169,20 +185,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IImageBuilderIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ImageTemplateName <String>]`: The name of the image Template
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[RunOutputName <String>]`: The name of the run output
-  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription Id forms part of the URI for every service call.
-  - `[TriggerName <String>]`: The name of the trigger
-
 ## RELATED LINKS
-
