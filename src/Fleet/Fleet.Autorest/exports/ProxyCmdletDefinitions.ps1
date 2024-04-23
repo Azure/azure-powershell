@@ -414,9 +414,9 @@ end {
 
 <#
 .Synopsis
-Get a GetRun
+Get a UpdateRun
 .Description
-Get a GetRun
+Get a UpdateRun
 .Example
 Get-AzFleetUpdateRun -FleetName testfleet01 -ResourceGroupName K8sFleet-Test
 .Example
@@ -639,9 +639,9 @@ end {
 
 <#
 .Synopsis
-Get a FleetGettrategy
+Get a FleetUpdateStrategy
 .Description
-Get a FleetGettrategy
+Get a FleetUpdateStrategy
 .Example
 Get-AzFleetUpdateStrategy -FleetName testfleet01 -ResourceGroupName K8sFleet-Test
 .Example
@@ -1349,9 +1349,9 @@ end {
 
 <#
 .Synopsis
-Create a CreateRun
+Create a UpdateRun
 .Description
-Create a CreateRun
+Create a UpdateRun
 .Example
 New-AzFleetUpdateRun -FleetName testfleet01 -Name run1 -ResourceGroupName K8sFleet-Test -UpgradeType Full -UpgradeKubernetesVersion "1.26.1" -NodeImageSelectionType Latest
 
@@ -1671,9 +1671,9 @@ end {
 
 <#
 .Synopsis
-Create a FleetCreatetrategy
+Create a FleetUpdateStrategy
 .Description
-Create a FleetCreatetrategy
+Create a FleetUpdateStrategy
 .Example
 $stage = New-AzFleetUpdateStageObject -Name stag1 -Group @{name='group-a'} -AfterStageWaitInSecond 3600
 New-AzFleetUpdateStrategy -FleetName testfleet01 -ResourceGroupName K8sFleet-Test -Name strategy1 -StrategyStage $stage
@@ -1961,6 +1961,11 @@ Create a Fleet.
 Create a Fleet.
 .Example
 New-AzFleet -Name sss -ResourceGroupName ps1-test -Location eastus
+.Example
+New-AzFleet -Name testfleet02 -ResourceGroupName joyer-test -Location eastus -Tag @{"456"="asd"} -EnableSystemAssignedIdentity
+.Example
+$mi = Get-AzUserAssignedIdentity -Name testUserAssignedMI -ResourceGroupName joyer-test
+New-AzFleet -Name testfleet03 -ResourceGroupName joyer-test -Location eastus -Tag @{"789"="asd"} -UserAssignedIdentity $mi.Id
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -2040,11 +2045,10 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
-    [System.String]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    [System.Management.Automation.SwitchParameter]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
@@ -2056,12 +2060,11 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -2475,9 +2478,9 @@ end {
 
 <#
 .Synopsis
-Delete a DeleteRun
+Delete a UpdateRun
 .Description
-Delete a DeleteRun
+Delete a UpdateRun
 .Example
 Remove-AzFleetUpdateRun -FleetName testfleet01 -Name run2 -ResourceGroupName K8sFleet-Test
 
@@ -2718,9 +2721,9 @@ end {
 
 <#
 .Synopsis
-Delete a FleetDeletetrategy
+Delete a FleetUpdateStrategy
 .Description
-Delete a FleetDeletetrategy
+Delete a FleetUpdateStrategy
 .Example
 $f = Get-AzFleet -Name testfleet01 -ResourceGroupName K8sFleet-Test
 Remove-AzFleetUpdateStrategy -FleetInputObject $f -Name strategy3
@@ -3186,9 +3189,9 @@ end {
 
 <#
 .Synopsis
-Starts an StartRun.
+Starts an UpdateRun.
 .Description
-Starts an StartRun.
+Starts an UpdateRun.
 .Example
 Start-AzFleetUpdateRun -FleetName testfleet01 -Name run1 -ResourceGroupName K8sFleet-Test
 
@@ -3423,9 +3426,9 @@ end {
 
 <#
 .Synopsis
-Stops an StopRun.
+Stops an UpdateRun.
 .Description
-Stops an StopRun.
+Stops an UpdateRun.
 .Example
 Stop-AzFleetUpdateRun -FleetName testfleet01 -Name run1 -ResourceGroupName K8sFleet-Test
 
@@ -4220,9 +4223,9 @@ end {
 
 <#
 .Synopsis
-Update a FleetUpdatetrategy
+Update a FleetUpdateStrategy
 .Description
-Update a FleetUpdatetrategy
+Update a FleetUpdateStrategy
 .Example
 $f = Get-AzFleet -Name testfleet01 -ResourceGroupName K8sFleet-Test
 $stage = New-AzFleetUpdateStageObject -Name stag1 -Group @{name='group-a'} -AfterStageWaitInSecond 3600
@@ -4481,11 +4484,13 @@ end {
 
 <#
 .Synopsis
-Update a Fleet
+Update a Fleet.
 .Description
-Update a Fleet
+Update a Fleet.
 .Example
 Update-AzFleet -Name testfleet01 -ResourceGroupName K8sFleet-Test -Tag @{"123"="abc"}
+.Example
+Update-AzFleet -ResourceGroupName joyer-test -Name testfleet03 -EnableSystemAssignedIdentity 0
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -4512,8 +4517,6 @@ function Update-AzFleet {
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Alias('FleetName')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [System.String]
@@ -4521,8 +4524,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -4530,8 +4531,6 @@ param(
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
-    [Parameter(ParameterSetName='UpdateViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -4550,43 +4549,32 @@ param(
     # The request should only proceed if an entity matches this string.
     ${IfMatch},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Header')]
     [System.String]
-    # Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-    ${IdentityType},
+    # The request should only proceed if no entity matches this string.
+    ${IfNoneMatch},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetPatchTags]))]
+    [System.Nullable[System.Boolean]]
+    # Decides if enable a system assigned identity for the resource.
+    ${EnableSystemAssignedIdentity},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Parameter()]
+    [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    # The set of user assigned identities associated with the resource.
-    # The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-    # The dictionary values can be empty objects ({}) in requests.
+    [System.String[]]
+    # The array of user assigned identities associated with the resource.
+    # The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
     ${UserAssignedIdentity},
-
-    [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
-    [System.String]
-    # Path of Json file supplied to the Update operation
-    ${JsonFilePath},
-
-    [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category('Body')]
-    [System.String]
-    # Json string supplied to the Update operation
-    ${JsonString},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -4677,10 +4665,8 @@ begin {
         $mapping = @{
             UpdateExpanded = 'Az.Fleet.private\Update-AzFleet_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.Fleet.private\Update-AzFleet_UpdateViaIdentityExpanded';
-            UpdateViaJsonFilePath = 'Az.Fleet.private\Update-AzFleet_UpdateViaJsonFilePath';
-            UpdateViaJsonString = 'Az.Fleet.private\Update-AzFleet_UpdateViaJsonString';
         }
-        if (('UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
             $testPlayback = $false
             $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
             if ($testPlayback) {

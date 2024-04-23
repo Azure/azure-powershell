@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzVMwareGlobalReachConnection
 
 ## SYNOPSIS
-Create a global reach connection in a private cloud
+Update a global reach connection in a private cloud
 
 ## SYNTAX
 
@@ -17,14 +17,14 @@ Create a global reach connection in a private cloud
 Update-AzVMwareGlobalReachConnection -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AuthorizationKey <String>] [-ExpressRouteId <String>]
  [-PeerExpressRouteCircuit <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityPrivateCloudExpanded
 ```
 Update-AzVMwareGlobalReachConnection -Name <String> -PrivateCloudInputObject <IVMwareIdentity>
  [-AuthorizationKey <String>] [-ExpressRouteId <String>] [-PeerExpressRouteCircuit <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -32,11 +32,11 @@ Update-AzVMwareGlobalReachConnection -Name <String> -PrivateCloudInputObject <IV
 ```
 Update-AzVMwareGlobalReachConnection -InputObject <IVMwareIdentity> [-AuthorizationKey <String>]
  [-ExpressRouteId <String>] [-PeerExpressRouteCircuit <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a global reach connection in a private cloud
+Update a global reach connection in a private cloud
 
 ## EXAMPLES
 
@@ -200,6 +200,21 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

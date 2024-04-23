@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Starts an StartRun.</summary>
+    /// <summary>Starts an UpdateRun.</summary>
     /// <remarks>
     /// [OpenAPI] Start=>POST:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}/start"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsLifecycle.Start, @"AzFleetUpdateRun_StartViaIdentity", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRun))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Starts an StartRun.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Starts an UpdateRun.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}/start", ApiVersion = "2023-10-15")]
     public partial class StartAzFleetUpdateRun_StartViaIdentity : global::System.Management.Automation.PSCmdlet,

@@ -15,42 +15,42 @@ Assigns the specified RBAC role to the specified principal, at the specified sco
 ### DefinitionNameSignInName (Default)
 ```
 New-AzKeyVaultRoleAssignment [-HsmName] <String> [-Scope <String>] -RoleDefinitionName <String>
- -SignInName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ -SignInName <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### DefinitionNameApplicationId
 ```
 New-AzKeyVaultRoleAssignment [-HsmName] <String> [-Scope <String>] -RoleDefinitionName <String>
- -ApplicationId <String> [-DefaultProfile <IAzureContextContainer>]
+ -ApplicationId <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DefinitionNameObjectId
 ```
 New-AzKeyVaultRoleAssignment [-HsmName] <String> [-Scope <String>] -RoleDefinitionName <String>
- -ObjectId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ -ObjectId <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### DefinitionIdApplicationId
 ```
 New-AzKeyVaultRoleAssignment [-HsmName] <String> [-Scope <String>] -RoleDefinitionId <String>
- -ApplicationId <String> [-DefaultProfile <IAzureContextContainer>]
+ -ApplicationId <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DefinitionIdObjectId
 ```
 New-AzKeyVaultRoleAssignment [-HsmName] <String> [-Scope <String>] -RoleDefinitionId <String>
- -ObjectId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ -ObjectId <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### DefinitionIdSignInName
 ```
 New-AzKeyVaultRoleAssignment [-HsmName] <String> [-Scope <String>] -RoleDefinitionId <String>
- -SignInName <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ -SignInName <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -149,6 +149,21 @@ Parameter Sets: DefinitionNameObjectId, DefinitionIdObjectId
 Aliases: Id, PrincipalId
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

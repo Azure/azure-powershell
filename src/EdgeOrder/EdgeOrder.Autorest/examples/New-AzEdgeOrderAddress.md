@@ -15,8 +15,10 @@ $DebugPreference = "Continue"
 #   }
 # } 
 $address = New-AzEdgeOrderAddress -Name "TestPwAddress" -ResourceGroupName "resourceGroupName" -ContactDetail $contactDetail -SubscriptionId SubscriptionId -ShippingAddress $ShippingDetails -Location "eastus"
-$address | fl
+$address | Format-List
+```
 
+```output
 AddressValidationStatus      : Valid
 ContactDetail                : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.ContactDetails
 Id                           : /subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/addresses/TestPwAddress

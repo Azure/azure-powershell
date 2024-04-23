@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
 online version: https://learn.microsoft.com/powershell/module/az.databox/update-azdataboxjob
 schema: 2.0.0
@@ -24,8 +24,8 @@ Update-AzDataBoxJob -Name <String> -ResourceGroupName <String> [-SubscriptionId 
  [-ReverseShippingDetail <IShippingAddress>] [-ReverseTransportPreferredShipmentType <TransportShipmentTypes>]
  [-ShippingAddress <IShippingAddress>] [-StorageAccountAccessTierPreference <StorageAccountAccessTier[]>]
  [-Tag <Hashtable>] [-TransportPreferredShipmentType <TransportShipmentTypes>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +33,7 @@ Updates the properties of an existing job.
 
 ## EXAMPLES
 
-### Example 1: Update databox job encryption from microsoft managed to customer managed with user assigned identities 
+### Example 1: Update databox job encryption from microsoft managed to customer managed with user assigned identities
 ```powershell
 $keyEncryptionDetails = New-AzDataBoxKeyEncryptionKeyObject -KekType "CustomerManaged" -IdentityProperty @{Type = "UserAssigned"; UserAssignedResourceId = "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityName"} -KekUrl "keyIdentifier" -KekVaultResourceId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.KeyVault/vaults/keyVaultName"
 
@@ -343,6 +343,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The Resource Group Name
 
@@ -568,58 +583,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`CONTACTDETAIL <IContactDetails>`: Contact details for notification and shipping.
-  - `ContactName <String>`: Contact name of the person.
-  - `EmailList <String[]>`: List of Email-ids to be notified about job progress.
-  - `Phone <String>`: Phone number of the contact person.
-  - `[Mobile <String>]`: Mobile number of the contact person.
-  - `[NotificationPreference <INotificationPreference[]>]`: Notification preference for a job stage.
-    - `SendNotification <Boolean>`: Notification is required or not.
-    - `StageName <NotificationStageName>`: Name of the stage.
-  - `[PhoneExtension <String>]`: Phone extension number of the contact person.
-
-`KEYENCRYPTIONKEY <IKeyEncryptionKey>`: Key encryption key for the job.
-  - `KekType <KekType>`: Type of encryption key used for key encryption.
-  - `[IdentityProperty <IIdentityProperties>]`: Managed identity properties used for key encryption.
-    - `[Type <String>]`: Managed service identity type.
-    - `[UserAssignedResourceId <String>]`: Arm resource id for user assigned identity to be used to fetch MSI token.
-  - `[KekUrl <String>]`: Key encryption key. It is required in case of Customer managed KekType.
-  - `[KekVaultResourceId <String>]`: Kek vault resource id. It is required in case of Customer managed KekType.
-
-`REVERSESHIPPINGDETAIL <IShippingAddress>`: Shipping address where customer wishes to receive the device.
-  - `Country <String>`: Name of the Country.
-  - `StreetAddress1 <String>`: Street Address line 1.
-  - `[AddressType <AddressType?>]`: Type of address.
-  - `[City <String>]`: Name of the City.
-  - `[CompanyName <String>]`: Name of the company.
-  - `[PostalCode <String>]`: Postal code.
-  - `[SkipAddressValidation <Boolean?>]`: Flag to indicate if customer has chosen to skip default address validation
-  - `[StateOrProvince <String>]`: Name of the State or Province.
-  - `[StreetAddress2 <String>]`: Street Address line 2.
-  - `[StreetAddress3 <String>]`: Street Address line 3.
-  - `[TaxIdentificationNumber <String>]`: Tax Identification Number
-  - `[ZipExtendedCode <String>]`: Extended Zip Code.
-
-`SHIPPINGADDRESS <IShippingAddress>`: Shipping address of the customer.
-  - `Country <String>`: Name of the Country.
-  - `StreetAddress1 <String>`: Street Address line 1.
-  - `[AddressType <AddressType?>]`: Type of address.
-  - `[City <String>]`: Name of the City.
-  - `[CompanyName <String>]`: Name of the company.
-  - `[PostalCode <String>]`: Postal code.
-  - `[SkipAddressValidation <Boolean?>]`: Flag to indicate if customer has chosen to skip default address validation
-  - `[StateOrProvince <String>]`: Name of the State or Province.
-  - `[StreetAddress2 <String>]`: Street Address line 2.
-  - `[StreetAddress3 <String>]`: Street Address line 3.
-  - `[TaxIdentificationNumber <String>]`: Tax Identification Number
-  - `[ZipExtendedCode <String>]`: Extended Zip Code.
-
 ## RELATED LINKS
-

@@ -15,21 +15,21 @@ Get managed HSMs.
 ### GetManagedHsm (Default)
 ```
 Get-AzKeyVaultManagedHsm [[-Name] <String>] [[-ResourceGroupName] <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
 ### GetDeletedManagedHsm
 ```
 Get-AzKeyVaultManagedHsm [-Name] <String> [-Location] <String> [-InRemovedState] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-SubscriptionId <String>]
  [<CommonParameters>]
 ```
 
 ### ListDeletedManagedHsms
 ```
 Get-AzKeyVaultManagedHsm [-InRemovedState] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -181,6 +181,21 @@ Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName

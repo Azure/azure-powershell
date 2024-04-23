@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Update a FleetUpdatetrategy
+Update a FleetUpdateStrategy
 .Description
-Update a FleetUpdatetrategy
+Update a FleetUpdateStrategy
 .Example
 $f = Get-AzFleet -Name testfleet01 -ResourceGroupName K8sFleet-Test
 $stage = New-AzFleetUpdateStageObject -Name stag1 -Group @{name='group-a'} -AfterStageWaitInSecond 3600

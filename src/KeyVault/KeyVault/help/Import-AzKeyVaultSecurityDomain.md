@@ -15,21 +15,21 @@ Imports previously exported security domain data to a managed HSM.
 ### ByName (Default)
 ```
 Import-AzKeyVaultSecurityDomain -Name <String> -Keys <KeyPath[]> -SecurityDomainPath <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### ByRestoredBlob
 ```
 Import-AzKeyVaultSecurityDomain -Name <String> -SecurityDomainPath <String> [-ImportRestoredBlob] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### GenerateExchangeKey
 ```
 Import-AzKeyVaultSecurityDomain -Name <String> -OutFile <String> [-Force] [-DownloadExchangeKey] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
@@ -37,14 +37,14 @@ Import-AzKeyVaultSecurityDomain -Name <String> -OutFile <String> [-Force] [-Down
 ```
 Import-AzKeyVaultSecurityDomain -InputObject <PSKeyVaultIdentityItem> -Keys <KeyPath[]>
  -SecurityDomainPath <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### DoRestoreBlob
 ```
 Import-AzKeyVaultSecurityDomain -Keys <KeyPath[]> -SecurityDomainPath <String> -OutFile <String>
  -ExchangeKeyPath <String> [-Force] [-RestoreBlob] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -220,6 +220,21 @@ When specified, a boolean will be returned when cmdlet succeeds.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

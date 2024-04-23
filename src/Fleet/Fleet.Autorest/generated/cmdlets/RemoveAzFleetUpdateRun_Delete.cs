@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Delete a DeleteRun</summary>
+    /// <summary>Delete a UpdateRun</summary>
     /// <remarks>
     /// [OpenAPI] Delete=>DELETE:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Remove, @"AzFleetUpdateRun_Delete", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(bool))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Delete a DeleteRun")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Delete a UpdateRun")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateRuns/{updateRunName}", ApiVersion = "2023-10-15")]
     public partial class RemoveAzFleetUpdateRun_Delete : global::System.Management.Automation.PSCmdlet,

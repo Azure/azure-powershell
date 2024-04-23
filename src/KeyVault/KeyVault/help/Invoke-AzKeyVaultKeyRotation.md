@@ -15,13 +15,13 @@ Creates a new key version in Key Vault, stores it, then returns the new key.
 ### ByVaultName (Default)
 ```
 Invoke-AzKeyVaultKeyRotation [-VaultName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByKeyInputObject
 ```
 Invoke-AzKeyVaultKeyRotation [-InputObject] <PSKeyVaultKeyIdentityItem>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -96,6 +96,21 @@ Aliases: KeyName
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

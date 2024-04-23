@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Get a FleetGettrategy</summary>
+    /// <summary>Get a FleetUpdateStrategy</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzFleetUpdateStrategy_GetViaIdentityFleet")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetUpdateStrategy))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Get a FleetGettrategy")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Get a FleetUpdateStrategy")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}", ApiVersion = "2023-10-15")]
     public partial class GetAzFleetUpdateStrategy_GetViaIdentityFleet : global::System.Management.Automation.PSCmdlet,
