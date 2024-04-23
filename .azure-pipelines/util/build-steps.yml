@@ -100,7 +100,7 @@ steps:
       $noGenerateInfo = @()
       $modules=Get-Content $(FilesChangedOutputPath) -OutVariable paths | foreach-object { if($_ -match "^src.*\.Autorest"){ Write-Output $Matches[0] } } | Select-Object -Unique
       foreach ($module in $modules) {
-        $pattern = "^$module.*generate-info.json"
+        $pattern = "^$module/generate-info.json"
         foreach ($path in $paths) {
           if ($path -match $pattern) {
             continue
@@ -109,8 +109,10 @@ steps:
         $noGenerateInfo += $module
       }
       if ($noGenerateInfo -and $noGenerateInfo.Count -gt 0) {
-        Write-Error
+        $noGenerateInfo | Foreach-Object { Write-Error "No generate-info.json detected for $_" }
+        exit 1
       }
+      Write-Host "##[endgroup]"
 - task: NodeTool@0
   displayName: Install Autorest
   inputs:
