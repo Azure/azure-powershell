@@ -3,6 +3,7 @@ parameters:
   configuration: ''
   powerShellPlatform: ''
   TargetModule: ''
+  ForceRegenerate: false
 
 steps:
 - template: get-github-pat-steps.yml
@@ -81,24 +82,25 @@ steps:
     script: |
       if (Test-Path $(SubTasksFilePath)) {
         Get-Content $(SubTasksFilePath) | ForEach-Object {
-        if ($_ && 'Predictor' -eq $_) {
-          Write-Host "##vso[task.setvariable variable=SubTaskPredictor]true"
-        } elseif ($_ && 'Installer' -eq $_) {
-          Write-Host "##vso[task.setvariable variable=SubTaskInstaller]true"
-        } elseif ($_ && 'all' -eq $_) {
-          Write-Host "##vso[task.setvariable variable=SubTaskAll]true"
+          if ($_ && 'Predictor' -eq $_) {
+            Write-Host "##vso[task.setvariable variable=SubTaskPredictor]true"
+          } elseif ($_ && 'Installer' -eq $_) {
+            Write-Host "##vso[task.setvariable variable=SubTaskInstaller]true"
+          } elseif ($_ && 'all' -eq $_) {
+            Write-Host "##vso[task.setvariable variable=SubTaskAll]true"
+          }
         }
       }
-      }
 - task: PowerShell@2
-  displayName: 'Analyze required files'
+  displayName: 'Analyze Pull Request'
+  condition: eq($(TriggerType), 'PullRequest')
   inputs:
     targetType: inline
     pwsh: true
     script: |
-      Write-Host "##[group]#1. Analyzing generation Id for autorest generated modules"
+      Write-Host "##[group]#1. Check generate-info.json for autorest generated modules"
       $noGenerateInfo = @()
-      $modules=Get-Content $(FilesChangedOutputPath) -OutVariable paths | foreach-object { if($_ -match "^src.*\.Autorest"){ Write-Output $Matches[0] } } | Select-Object -Unique
+      $modules=Get-Content $(FilesChangedOutputPath) -OutVariable paths | Foreach-Object { if($_ -match "^src.*\.Autorest"){ Write-Output $Matches[0] } } | Select-Object -Unique
       foreach ($module in $modules) {
         $pattern = "^$module/generate-info.json"
         foreach ($path in $paths) {
@@ -110,6 +112,14 @@ steps:
       }
       if ($noGenerateInfo -and $noGenerateInfo.Count -gt 0) {
         $noGenerateInfo | Foreach-Object { Write-Error "No generate-info.json detected for $_" }
+        exit 1
+      }
+      Write-Host "##[endgroup]"
+
+      Write-Host "##[group]#2. Check no changes from /generated folder"
+      $generatedFiles = Get-Content $(FilesChangedOutputPath) | Where-Object { $_ -match "^generated.*" }
+      if ($generatedFiles -and $generatedFiles.Count -gt 0) {
+        $generatedFiles | Foreach-Object { Write-Error "Changes detected in generated folder: $_" }
         exit 1
       }
       Write-Host "##[endgroup]"
@@ -135,15 +145,19 @@ steps:
   inputs:
     packageType: sdk
     version: 6.0.x
-- task: DotNetCoreCLI@2
-  displayName: Build
+- task: PowerShell@2
+  displayName: 'Build'
   inputs:
-    command: custom
-    custom: msbuild
-    arguments: 'build.proj /t:Build /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }}'
-  env:
-      OCTOKITPAT: $(GithubToken)
-      PowerShellPlatform: ${{ parameters.powerShellPlatform }}
+    targetType: inline
+    pwsh: true
+    script: |
+      $buildScript = Join-Path "$(Build.SourcesDirectory)" 'tools' 'BuildScripts' 'BuildModules.ps1'
+      if ('Manual' -eq $(Build.Reason)) {
+        . $buildScript -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -CIPlan -ForceRegenerate:${{ parameters.ForceRegenerate }}
+      } else {
+        . $buildScript -RepoRoot "$(Build.SourcesDirectory)" -Configuration ${{ parameters.configuration }} -CIPlan
+      }
+      
 - task: PowerShell@2
   displayName: 'Write pipeline result'
   inputs:

@@ -3,6 +3,10 @@ parameters:
   displayName: 'List of target modules, all modules if not provided'
   type: string
   default: ''
+- name: ForceRegenerate
+  displayName: 'Force regenerate autorest generated modules when pipeline triggered manually'
+  type: boolean
+  default: false
 
 variables:
   WindowsName: windows
@@ -52,6 +56,7 @@ jobs:
       testFramework: ${{ variables.TestFramework }}
       powerShellPlatform: ${{ variables.PowerShellPlatform }}
       TargetModule: ${{ parameters.TargetModule }}
+      ForceRegenerate: ${{ parameters.ForceRegenerate }}
 
 - job: Analyze
   displayName: Analyze

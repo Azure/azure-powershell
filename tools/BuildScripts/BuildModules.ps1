@@ -22,7 +22,7 @@ param (
     [switch]$CIPlan,
     [Parameter(ParameterSetName="ModifiedBuildSet", Mandatory=$true)]
     [switch]$ModifiedModuleBuild,
-	[Parameter(ParameterSetName="TargetModuleSet")]
+	[Parameter(ParameterSetName="TargetModuleSet", Mandatory=$true)]
     [string[]]$TargetModule,
     [switch]$ForceRegenerate,
     [switch]$GenerateDocumentationFile,
