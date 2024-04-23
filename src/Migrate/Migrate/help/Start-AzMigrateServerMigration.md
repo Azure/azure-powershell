@@ -15,14 +15,14 @@ Starts the migration for the replicating server.
 ### ByIDVMwareCbt (Default)
 ```
 Start-AzMigrateServerMigration -TargetObjectID <String> [-OsUpgradeVersion <String>] [-TurnOffSourceServer]
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### ByInputObjectVMwareCbt
 ```
 Start-AzMigrateServerMigration [-OsUpgradeVersion <String>] [-TurnOffSourceServer] [-SubscriptionId <String>]
- -InputObject <IMigrationItem> [-DefaultProfile <PSObject>]
+ -InputObject <IMigrationItem> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -103,6 +103,21 @@ The valid values can be selected from SupportedOSVersions retrieved using Get-Az
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
