@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
 online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxShippingAddressObject
 schema: 2.0.0
@@ -16,7 +16,8 @@ Create an in-memory object for ShippingAddress.
 New-AzDataBoxShippingAddressObject -Country <String> -StreetAddress1 <String> [-AddressType <AddressType>]
  [-City <String>] [-CompanyName <String>] [-PostalCode <String>] [-SkipAddressValidation <Boolean>]
  [-StateOrProvince <String>] [-StreetAddress2 <String>] [-StreetAddress3 <String>]
- [-TaxIdentificationNumber <String>] [-ZipExtendedCode <String>] [<CommonParameters>]
+ [-TaxIdentificationNumber <String>] [-ZipExtendedCode <String>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +25,7 @@ Create an in-memory object for ShippingAddress.
 
 ## EXAMPLES
 
-### Example 1: Shipping Address object 
+### Example 1: Shipping Address object
 ```powershell
 New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
 ```
@@ -106,6 +107,21 @@ Postal code.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -230,7 +246,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-
