@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFleet
 
 ## SYNOPSIS
-Create a Fleet.
+Update a Fleet.
 
 ## SYNTAX
 
@@ -28,7 +28,7 @@ Update-AzFleet -InputObject <IFleetIdentity> [-IfMatch <String>] [-IfNoneMatch <
 ```
 
 ## DESCRIPTION
-Create a Fleet.
+Update a Fleet.
 
 ## EXAMPLES
 
