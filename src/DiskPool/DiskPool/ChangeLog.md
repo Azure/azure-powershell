@@ -19,7 +19,6 @@
 -->
 ## Upcoming Release
 * Introduced secrets detection feature to safeguard sensitive data.
-* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 0.3.0
 * Upgraded API version to 2021-08-01 and added two cmdlets: `Invoke-AzDiskPoolRedeployment` and `Get-AzDiskPoolResourceSku` 
