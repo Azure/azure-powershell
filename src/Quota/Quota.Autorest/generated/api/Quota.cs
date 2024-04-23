@@ -15,10 +15,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
     {
 
         /// <summary>
-        /// Create the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
+        /// Update the quota limit for the specified resource with the requested value. To Update the quota, follow these steps:
         /// 1. Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
-        /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
+        /// 2. Use this PUT operation to Update the quota limit. Please check the URI in location header for the detailed status of
         /// the request.
         /// </summary>
         /// <param name="scope">The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
@@ -72,10 +72,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         }
 
         /// <summary>
-        /// Create the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
+        /// Update the quota limit for the specified resource with the requested value. To Update the quota, follow these steps:
         /// 1. Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
-        /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
+        /// 2. Use this PUT operation to Update the quota limit. Please check the URI in location header for the detailed status of
         /// the request.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -134,10 +134,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         }
 
         /// <summary>
-        /// Create the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
+        /// Update the quota limit for the specified resource with the requested value. To Update the quota, follow these steps:
         /// 1. Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
-        /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
+        /// 2. Use this PUT operation to Update the quota limit. Please check the URI in location header for the detailed status of
         /// the request.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -194,10 +194,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         }
 
         /// <summary>
-        /// Create the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
+        /// Update the quota limit for the specified resource with the requested value. To Update the quota, follow these steps:
         /// 1. Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
-        /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
+        /// 2. Use this PUT operation to Update the quota limit. Please check the URI in location header for the detailed status of
         /// the request.
         /// </summary>
         /// <param name="scope">The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
@@ -250,10 +250,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         }
 
         /// <summary>
-        /// Create the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
+        /// Update the quota limit for the specified resource with the requested value. To Update the quota, follow these steps:
         /// 1. Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
-        /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
+        /// 2. Use this PUT operation to Update the quota limit. Please check the URI in location header for the detailed status of
         /// the request.
         /// </summary>
         /// <param name="scope">The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
@@ -304,10 +304,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         }
 
         /// <summary>
-        /// Create the quota limit for the specified resource with the requested value. To update the quota, follow these steps:
+        /// Update the quota limit for the specified resource with the requested value. To Update the quota, follow these steps:
         /// 1. Use the GET operation for quotas and usages to determine how much quota remains for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
-        /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
+        /// 2. Use this PUT operation to Update the quota limit. Please check the URI in location header for the detailed status of
         /// the request.
         /// </summary>
         /// <param name="scope">The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
@@ -1005,7 +1005,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
 
         /// <summary>
         /// Get a list of current quota limits of all resources for the specified scope. The response from this GET operation can
-        /// be leveraged to submit requests to update a quota.
+        /// be leveraged to submit requests to List a quota.
         /// </summary>
         /// <param name="scope">The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
         /// This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then
@@ -1048,7 +1048,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
 
         /// <summary>
         /// Get a list of current quota limits of all resources for the specified scope. The response from this GET operation can
-        /// be leveraged to submit requests to update a quota.
+        /// be leveraged to submit requests to List a quota.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -1099,7 +1099,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
 
         /// <summary>
         /// Get a list of current quota limits of all resources for the specified scope. The response from this GET operation can
-        /// be leveraged to submit requests to update a quota.
+        /// be leveraged to submit requests to List a quota.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -1148,7 +1148,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
 
         /// <summary>
         /// Get a list of current quota limits of all resources for the specified scope. The response from this GET operation can
-        /// be leveraged to submit requests to update a quota.
+        /// be leveraged to submit requests to List a quota.
         /// </summary>
         /// <param name="scope">The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
         /// This is the target Azure resource URI for the List GET operation. If a `{resourceName}` is added after `/quotas`, then
@@ -2320,7 +2320,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         /// Update the quota limit for a specific resource to the specified value:
         /// 1. Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
-        /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
+        /// 2. Use this PUT operation to Update the quota limit. Please check the URI in location header for the detailed status of
         /// the request.
         /// </summary>
         /// <param name="scope">The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
@@ -2377,7 +2377,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         /// Update the quota limit for a specific resource to the specified value:
         /// 1. Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
-        /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
+        /// 2. Use this PUT operation to Update the quota limit. Please check the URI in location header for the detailed status of
         /// the request.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -2439,7 +2439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         /// Update the quota limit for a specific resource to the specified value:
         /// 1. Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
-        /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
+        /// 2. Use this PUT operation to Update the quota limit. Please check the URI in location header for the detailed status of
         /// the request.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -2499,7 +2499,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         /// Update the quota limit for a specific resource to the specified value:
         /// 1. Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
-        /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
+        /// 2. Use this PUT operation to Update the quota limit. Please check the URI in location header for the detailed status of
         /// the request.
         /// </summary>
         /// <param name="scope">The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
@@ -2555,7 +2555,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         /// Update the quota limit for a specific resource to the specified value:
         /// 1. Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
-        /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
+        /// 2. Use this PUT operation to Update the quota limit. Please check the URI in location header for the detailed status of
         /// the request.
         /// </summary>
         /// <param name="scope">The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.
@@ -2609,7 +2609,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota
         /// Update the quota limit for a specific resource to the specified value:
         /// 1. Use the Usages-GET and Quota-GET operations to determine the remaining quota for the specific resource and to calculate
         /// the new quota limit. These steps are detailed in [this example](https://techcommunity.microsoft.com/t5/azure-governance-and-management/using-the-new-quota-rest-api/ba-p/2183670).
-        /// 2. Use this PUT operation to update the quota limit. Please check the URI in location header for the detailed status of
+        /// 2. Use this PUT operation to Update the quota limit. Please check the URI in location header for the detailed status of
         /// the request.
         /// </summary>
         /// <param name="scope">The target Azure resource URI. For example, `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/qms-test/providers/Microsoft.Batch/batchAccounts/testAccount/`.

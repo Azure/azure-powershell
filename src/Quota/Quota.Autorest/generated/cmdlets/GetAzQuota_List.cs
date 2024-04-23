@@ -12,14 +12,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
 
     /// <summary>
     /// Get a list of current quota limits of all resources for the specified scope. The response from this GET operation can
-    /// be leveraged to submit requests to update a quota.
+    /// be leveraged to submit requests to List a quota.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] List=>GET:"/{scope}/providers/Microsoft.Quota/quotas"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzQuota_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Quota.Models.ICurrentQuotaLimitBase))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Description(@"Get a list of current quota limits of all resources for the specified scope. The response from this GET operation can be leveraged to submit requests to update a quota.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Description(@"Get a list of current quota limits of all resources for the specified scope. The response from this GET operation can be leveraged to submit requests to List a quota.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Quota.HttpPath(Path = "/{scope}/providers/Microsoft.Quota/quotas", ApiVersion = "2023-02-01")]
     public partial class GetAzQuota_List : global::System.Management.Automation.PSCmdlet,
@@ -180,7 +180,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Quota.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Initializes a new instance of the <see cref="GetAzQuota_List" /> cmdlet class.</summary>
@@ -347,6 +364,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quota.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.Quota.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Quota.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Quota.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>
