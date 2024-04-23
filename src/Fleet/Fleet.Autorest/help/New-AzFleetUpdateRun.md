@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzFleetUpdateRun
 
 ## SYNOPSIS
-Create a UpdateRun
+Create a CreateRun
 
 ## SYNTAX
 
@@ -51,7 +51,7 @@ New-AzFleetUpdateRun -FleetName <String> -Name <String> -ResourceGroupName <Stri
 ```
 
 ## DESCRIPTION
-Create a UpdateRun
+Create a CreateRun
 
 ## EXAMPLES
 

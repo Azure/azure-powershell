@@ -21,10 +21,10 @@ Lists the user credentials of a Fleet.
 Get a FleetMember
 
 ### [Get-AzFleetUpdateRun](Get-AzFleetUpdateRun.md)
-Get a UpdateRun
+Get a GetRun
 
 ### [Get-AzFleetUpdateStrategy](Get-AzFleetUpdateStrategy.md)
-Get a FleetUpdateStrategy
+Get a FleetGettrategy
 
 ### [New-AzFleet](New-AzFleet.md)
 Create a Fleet.
@@ -36,13 +36,13 @@ Create a FleetMember
 Create an in-memory object for UpdateGroup.
 
 ### [New-AzFleetUpdateRun](New-AzFleetUpdateRun.md)
-Create a UpdateRun
+Create a CreateRun
 
 ### [New-AzFleetUpdateStageObject](New-AzFleetUpdateStageObject.md)
 Create an in-memory object for UpdateStage.
 
 ### [New-AzFleetUpdateStrategy](New-AzFleetUpdateStrategy.md)
-Create a FleetUpdateStrategy
+Create a FleetCreatetrategy
 
 ### [Remove-AzFleet](Remove-AzFleet.md)
 Delete a Fleet
@@ -51,16 +51,16 @@ Delete a Fleet
 Delete a FleetMember
 
 ### [Remove-AzFleetUpdateRun](Remove-AzFleetUpdateRun.md)
-Delete a UpdateRun
+Delete a DeleteRun
 
 ### [Remove-AzFleetUpdateStrategy](Remove-AzFleetUpdateStrategy.md)
-Delete a FleetUpdateStrategy
+Delete a FleetDeletetrategy
 
 ### [Start-AzFleetUpdateRun](Start-AzFleetUpdateRun.md)
-Starts an UpdateRun.
+Starts an StartRun.
 
 ### [Stop-AzFleetUpdateRun](Stop-AzFleetUpdateRun.md)
-Stops an UpdateRun.
+Stops an StopRun.
 
 ### [Update-AzFleet](Update-AzFleet.md)
 Update a Fleet
@@ -69,8 +69,8 @@ Update a Fleet
 Update a FleetMember
 
 ### [Update-AzFleetUpdateRun](Update-AzFleetUpdateRun.md)
-Create a UpdateRun
+Update a UpdateRun
 
 ### [Update-AzFleetUpdateStrategy](Update-AzFleetUpdateStrategy.md)
-Create a FleetUpdateStrategy
+Update a FleetUpdatetrategy
 

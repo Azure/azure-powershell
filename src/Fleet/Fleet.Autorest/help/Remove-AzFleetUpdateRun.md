@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzFleetUpdateRun
 
 ## SYNOPSIS
-Delete a UpdateRun
+Delete a DeleteRun
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Remove-AzFleetUpdateRun -FleetInputObject <IFleetIdentity> -Name <String> [-IfMa
 ```
 
 ## DESCRIPTION
-Delete a UpdateRun
+Delete a DeleteRun
 
 ## EXAMPLES
 

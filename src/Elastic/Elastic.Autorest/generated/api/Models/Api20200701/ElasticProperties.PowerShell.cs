@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -92,18 +94,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUser = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticCloudUser) content.GetValueForProperty("ElasticCloudUser",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUser, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudUserTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeployment = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticCloudDeployment) content.GetValueForProperty("ElasticCloudDeployment",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeployment, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudDeploymentTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserEmailAddress = (string) content.GetValueForProperty("ElasticCloudUserEmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserEmailAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserId = (string) content.GetValueForProperty("ElasticCloudUserId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentName = (string) content.GetValueForProperty("ElasticCloudDeploymentName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentElasticsearchRegion = (string) content.GetValueForProperty("ElasticCloudDeploymentElasticsearchRegion",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentElasticsearchRegion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserElasticCloudSsoDefaultUrl = (string) content.GetValueForProperty("ElasticCloudUserElasticCloudSsoDefaultUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserElasticCloudSsoDefaultUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentId = (string) content.GetValueForProperty("ElasticCloudDeploymentId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentAzureSubscriptionId = (string) content.GetValueForProperty("ElasticCloudDeploymentAzureSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentAzureSubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentElasticsearchServiceUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentElasticsearchServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentElasticsearchServiceUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentKibanaServiceUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentKibanaServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentKibanaServiceUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentKibanaSsoUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentKibanaSsoUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentKibanaSsoUrl, global::System.Convert.ToString);
+            if (content.Contains("ElasticCloudUser"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUser = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticCloudUser) content.GetValueForProperty("ElasticCloudUser",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUser, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudUserTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ElasticCloudDeployment"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeployment = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticCloudDeployment) content.GetValueForProperty("ElasticCloudDeployment",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeployment, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudDeploymentTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ElasticCloudUserEmailAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserEmailAddress = (string) content.GetValueForProperty("ElasticCloudUserEmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserEmailAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudUserId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserId = (string) content.GetValueForProperty("ElasticCloudUserId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentName = (string) content.GetValueForProperty("ElasticCloudDeploymentName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentElasticsearchRegion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentElasticsearchRegion = (string) content.GetValueForProperty("ElasticCloudDeploymentElasticsearchRegion",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentElasticsearchRegion, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudUserElasticCloudSsoDefaultUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserElasticCloudSsoDefaultUrl = (string) content.GetValueForProperty("ElasticCloudUserElasticCloudSsoDefaultUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserElasticCloudSsoDefaultUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentId = (string) content.GetValueForProperty("ElasticCloudDeploymentId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentAzureSubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentAzureSubscriptionId = (string) content.GetValueForProperty("ElasticCloudDeploymentAzureSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentAzureSubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentElasticsearchServiceUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentElasticsearchServiceUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentElasticsearchServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentElasticsearchServiceUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentKibanaServiceUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentKibanaServiceUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentKibanaServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentKibanaServiceUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentKibanaSsoUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentKibanaSsoUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentKibanaSsoUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentKibanaSsoUrl, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -121,18 +159,54 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUser = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticCloudUser) content.GetValueForProperty("ElasticCloudUser",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUser, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudUserTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeployment = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticCloudDeployment) content.GetValueForProperty("ElasticCloudDeployment",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeployment, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudDeploymentTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserEmailAddress = (string) content.GetValueForProperty("ElasticCloudUserEmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserEmailAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserId = (string) content.GetValueForProperty("ElasticCloudUserId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentName = (string) content.GetValueForProperty("ElasticCloudDeploymentName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentElasticsearchRegion = (string) content.GetValueForProperty("ElasticCloudDeploymentElasticsearchRegion",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentElasticsearchRegion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserElasticCloudSsoDefaultUrl = (string) content.GetValueForProperty("ElasticCloudUserElasticCloudSsoDefaultUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserElasticCloudSsoDefaultUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentId = (string) content.GetValueForProperty("ElasticCloudDeploymentId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentAzureSubscriptionId = (string) content.GetValueForProperty("ElasticCloudDeploymentAzureSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentAzureSubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentElasticsearchServiceUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentElasticsearchServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentElasticsearchServiceUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentKibanaServiceUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentKibanaServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentKibanaServiceUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentKibanaSsoUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentKibanaSsoUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentKibanaSsoUrl, global::System.Convert.ToString);
+            if (content.Contains("ElasticCloudUser"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUser = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticCloudUser) content.GetValueForProperty("ElasticCloudUser",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUser, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudUserTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ElasticCloudDeployment"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeployment = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticCloudDeployment) content.GetValueForProperty("ElasticCloudDeployment",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeployment, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudDeploymentTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ElasticCloudUserEmailAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserEmailAddress = (string) content.GetValueForProperty("ElasticCloudUserEmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserEmailAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudUserId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserId = (string) content.GetValueForProperty("ElasticCloudUserId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentName = (string) content.GetValueForProperty("ElasticCloudDeploymentName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentElasticsearchRegion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentElasticsearchRegion = (string) content.GetValueForProperty("ElasticCloudDeploymentElasticsearchRegion",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentElasticsearchRegion, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudUserElasticCloudSsoDefaultUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserElasticCloudSsoDefaultUrl = (string) content.GetValueForProperty("ElasticCloudUserElasticCloudSsoDefaultUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudUserElasticCloudSsoDefaultUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentId = (string) content.GetValueForProperty("ElasticCloudDeploymentId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentAzureSubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentAzureSubscriptionId = (string) content.GetValueForProperty("ElasticCloudDeploymentAzureSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentAzureSubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentElasticsearchServiceUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentElasticsearchServiceUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentElasticsearchServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentElasticsearchServiceUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentKibanaServiceUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentKibanaServiceUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentKibanaServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentKibanaServiceUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentKibanaSsoUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentKibanaSsoUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentKibanaSsoUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticPropertiesInternal)this).ElasticCloudDeploymentKibanaSsoUrl, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -140,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701
         /// Creates a new instance of <see cref="ElasticProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="ElasticProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

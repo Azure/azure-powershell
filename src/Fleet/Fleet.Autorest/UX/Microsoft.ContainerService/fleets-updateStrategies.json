@@ -7,7 +7,7 @@
   "commands": [
     {
       "name": "Get-AzFleetUpdateStrategy",
-      "description": "Get a FleetUpdateStrategy",
+      "description": "Get a FleetGettrategy",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}",
       "help": {
         "learnMore": {
@@ -26,7 +26,7 @@
       },
       "examples": [
         {
-          "description": "Get a FleetUpdateStrategy",
+          "description": "Get a FleetGettrategy",
           "parameters": [
             {
               "name": "-FleetName",
@@ -50,7 +50,7 @@
     },
     {
       "name": "Remove-AzFleetUpdateStrategy",
-      "description": "Delete a FleetUpdateStrategy",
+      "description": "Delete a FleetDeletetrategy",
       "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}",
       "help": {
         "learnMore": {
@@ -69,7 +69,7 @@
       },
       "examples": [
         {
-          "description": "Delete a FleetUpdateStrategy",
+          "description": "Delete a FleetDeletetrategy",
           "parameters": [
             {
               "name": "-FleetName",

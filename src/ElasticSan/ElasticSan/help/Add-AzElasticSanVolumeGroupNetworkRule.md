@@ -16,7 +16,7 @@ Add a list of virtual network rules to a VolumeGroup
 ```
 Add-AzElasticSanVolumeGroupNetworkRule -ElasticSanName <String> -VolumeGroupName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -NetworkAclsVirtualNetworkRule <IVirtualNetworkRule[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Add-AzElasticSanVolumeGroupNetworkRule -ElasticSanName <String> -VolumeGroupName
 ```
 Add-AzElasticSanVolumeGroupNetworkRule -ElasticSanName <String> -VolumeGroupName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -NetworkAclsVirtualNetworkResourceId <String[]>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -155,6 +155,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

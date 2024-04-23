@@ -8,7 +8,7 @@ schema: 2.0.0
 # Stop-AzFleetUpdateRun
 
 ## SYNOPSIS
-Stops an UpdateRun.
+Stops an StopRun.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Stop-AzFleetUpdateRun -FleetInputObject <IFleetIdentity> -Name <String> [-IfMatc
 ```
 
 ## DESCRIPTION
-Stops an UpdateRun.
+Stops an StopRun.
 
 ## EXAMPLES
 

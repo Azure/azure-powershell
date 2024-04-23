@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.GuestConfiguration-help.xml
 Module Name: Az.GuestConfiguration
 online version: https://learn.microsoft.com/powershell/module/az.guestconfiguration/get-azguestconfigurationassignment
 schema: 2.0.0
@@ -15,49 +15,49 @@ Get information about a guest configuration assignment
 ### List (Default)
 ```
 Get-AzGuestConfigurationAssignment [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-PassThru]
- [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzGuestConfigurationAssignment -Name <String> -ResourceGroupName <String> -VMName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get1
-```
-Get-AzGuestConfigurationAssignment -MachineName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get2
 ```
-Get-AzGuestConfigurationAssignment -Name <String> -ResourceGroupName <String> -VmssName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzGuestConfigurationAssignment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -VmssName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### Get1
+```
+Get-AzGuestConfigurationAssignment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -MachineName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzGuestConfigurationAssignment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -VMName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### List4
+```
+Get-AzGuestConfigurationAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>] -VmssName <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### List3
+```
+Get-AzGuestConfigurationAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -MachineName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### List2
+```
+Get-AzGuestConfigurationAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>] -VMName <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzGuestConfigurationAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
-```
-
-### List2
-```
-Get-AzGuestConfigurationAssignment -ResourceGroupName <String> -VMName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List3
-```
-Get-AzGuestConfigurationAssignment -MachineName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List4
-```
-Get-AzGuestConfigurationAssignment -ResourceGroupName <String> -VmssName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -148,7 +148,8 @@ List guest configuration assignments for a subscription
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -182,7 +183,7 @@ The guest configuration assignment name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1, Get2
+Parameter Sets: Get2, Get1, Get
 Aliases: GuestConfigurationAssignmentName
 
 Required: True
@@ -207,12 +208,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1, Get2, List1, List2, List3, List4
+Parameter Sets: Get2, Get1, Get, List4, List3, List2, List1
 Aliases:
 
 Required: True
@@ -279,7 +295,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

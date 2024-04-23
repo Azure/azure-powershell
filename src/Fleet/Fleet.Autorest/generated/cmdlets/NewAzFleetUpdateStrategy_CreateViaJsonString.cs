@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a FleetUpdateStrategy</summary>
+    /// <summary>Create a FleetCreatetrategy</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzFleetUpdateStrategy_CreateViaJsonString", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetUpdateStrategy))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Create a FleetUpdateStrategy")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Create a FleetCreatetrategy")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}/updateStrategies/{updateStrategyName}", ApiVersion = "2023-10-15")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.NotSuggestDefaultParameterSet]
@@ -313,11 +313,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Fleet.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
                 telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
                 telemetryInfo.TryGetValue("InvocationName", out var invocationName);
-                if (!string.IsNullOrEmpty(sanitizedProperties))
+                if (showSecretsWarning == "true")
                 {
-                    WriteWarning($"The output of cmdlet {invocationName ?? "Unknown"} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
                 }
             }
         }
