@@ -16,7 +16,7 @@ Create an in-memory object for ContactProfileLinkChannel.
 New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz <Single> -CenterFrequencyMHz <Single>
  -EndPointIPAddress <String> -EndPointName <String> -EndPointPort <String> -EndPointProtocol <Protocol>
  -Name <String> [-DecodingConfiguration <String>] [-DemodulationConfiguration <String>]
- [-EncodingConfiguration <String>] [-ModulationConfiguration <String>]
+ [-EncodingConfiguration <String>] [-ModulationConfiguration <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -199,6 +199,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

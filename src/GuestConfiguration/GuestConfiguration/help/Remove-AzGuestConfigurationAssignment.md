@@ -15,28 +15,28 @@ Delete a guest configuration assignment
 ### Delete (Default)
 ```
 Remove-AzGuestConfigurationAssignment -Name <String> -ResourceGroupName <String> -VMName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Delete1
 ```
 Remove-AzGuestConfigurationAssignment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -MachineName <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ -MachineName <String> [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### Delete2
 ```
 Remove-AzGuestConfigurationAssignment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -VmssName <String> [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
+ -VmssName <String> [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzGuestConfigurationAssignment -InputObject <IGuestConfigurationIdentity> [-DefaultProfile <PSObject>]
- [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -136,6 +136,21 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

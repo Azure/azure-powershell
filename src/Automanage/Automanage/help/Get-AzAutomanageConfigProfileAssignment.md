@@ -15,37 +15,37 @@ Get information about a configuration profile assignment
 ### List2 (Default)
 ```
 Get-AzAutomanageConfigProfileAssignment [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List4
 ```
 Get-AzAutomanageConfigProfileAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -ClusterName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ClusterName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List3
 ```
 Get-AzAutomanageConfigProfileAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -MachineName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -MachineName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzAutomanageConfigProfileAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzAutomanageConfigProfileAssignment -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -VMName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -VMName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzAutomanageConfigProfileAssignment -InputObject <IAutomanageIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,6 +151,21 @@ Parameter Sets: List3
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

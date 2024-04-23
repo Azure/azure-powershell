@@ -15,19 +15,19 @@ Gets an order item.
 ### List (Default)
 ```
 Get-AzEdgeOrderItem [-SubscriptionId <String[]>] [-Expand <String>] [-Filter <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzEdgeOrderItem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzEdgeOrderItem -ResourceGroupName <String> [-SubscriptionId <String[]>] [-Expand <String>]
- [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Filter <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -121,6 +121,21 @@ Parameter Sets: Get
 Aliases: OrderItemName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

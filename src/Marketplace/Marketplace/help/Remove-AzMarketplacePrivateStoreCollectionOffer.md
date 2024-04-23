@@ -15,7 +15,7 @@ Deletes an offer from the given collection of private store.
 ### Delete (Default)
 ```
 Remove-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String>
- -PrivateStoreId <String> [-DefaultProfile <PSObject>] [-PassThru]
+ -PrivateStoreId <String> [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,20 +23,20 @@ Remove-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId 
 ```
 Remove-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -OfferId <String>
  -PrivateStoreInputObject <IMarketplaceIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentityCollection
 ```
 Remove-AzMarketplacePrivateStoreCollectionOffer -OfferId <String> -CollectionInputObject <IMarketplaceIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzMarketplacePrivateStoreCollectionOffer -InputObject <IMarketplaceIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -172,6 +172,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

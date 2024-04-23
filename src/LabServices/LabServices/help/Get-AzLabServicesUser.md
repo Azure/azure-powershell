@@ -15,25 +15,25 @@ Returns the properties of a lab user.
 ### ResourceId (Default)
 ```
 Get-AzLabServicesUser [-SubscriptionId <String[]>] -ResourceId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzLabServicesUser -LabName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Filter <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzLabServicesUser -LabName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Lab
 ```
 Get-AzLabServicesUser [-Name <String>] [-SubscriptionId <String[]>] -Lab <Lab> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,6 +151,21 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: Lab
 Aliases: UserName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -16,20 +16,20 @@ Creates or updates a Dashboard.
 ```
 New-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-Lens <Hashtable>] [-Metadata <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Dashboard <IDashboard> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -Dashboard <IDashboard> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CreateByFile
 ```
 New-AzPortalDashboard -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -DashboardPath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -DashboardPath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -155,6 +155,21 @@ Parameter Sets: (All)
 Aliases: DashboardName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

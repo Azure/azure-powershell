@@ -15,27 +15,27 @@ Accept or reject terms for a given publisher id(Publisher), offer id(Product) an
 ### TermsAccept (Default)
 ```
 Set-AzMarketplaceTerms -Product <String> -Name <String> -Publisher <String> [-SubscriptionId <String>]
- [-Accept] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-Accept] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### TermsReject
 ```
 Set-AzMarketplaceTerms -Product <String> -Name <String> -Publisher <String> [-SubscriptionId <String>]
- [-Reject] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-Reject] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### TermsAcceptViaIdentity
 ```
 Set-AzMarketplaceTerms [-Accept] -Terms <IAgreementTerms> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TermsRejectViaIdentity
 ```
 Set-AzMarketplaceTerms [-Reject] -Terms <IAgreementTerms> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,6 +151,21 @@ Parameter Sets: TermsAccept, TermsReject
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

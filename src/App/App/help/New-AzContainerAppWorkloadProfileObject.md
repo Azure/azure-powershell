@@ -14,7 +14,7 @@ Create an in-memory object for WorkloadProfile.
 
 ```
 New-AzContainerAppWorkloadProfileObject -Name <String> -Type <String> [-MaximumCount <Int32>]
- [-MinimumCount <Int32>] [<CommonParameters>]
+ [-MinimumCount <Int32>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,6 +76,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

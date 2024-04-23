@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* test
 * Added cmdlet `Invoke-AzSpotPlacementRecommender`.
 * Fixed `Update-AzCapacityReservationGroup` to remove Subscriptions from SharingProfile.
 

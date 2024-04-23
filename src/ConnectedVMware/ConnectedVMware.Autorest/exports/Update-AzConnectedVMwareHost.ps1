@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-API to Update certain properties of the host resource.
+API to update certain properties of the host resource.
 .Description
-API to Update certain properties of the host resource.
+API to update certain properties of the host resource.
 .Example
 Update-AzConnectedVMwareHost -Name "test-host" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -Tag @{"host"="test"}
 

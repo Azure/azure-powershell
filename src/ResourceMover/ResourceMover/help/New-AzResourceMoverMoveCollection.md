@@ -23,7 +23,7 @@ RegionToZone** (Moving virtual machines into a zone within the same region)
 New-AzResourceMoverMoveCollection -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IdentityPrincipalId <String>] [-IdentityTenantId <String>] [-IdentityType <ResourceIdentityType>]
  [-Location <String>] [-MoveRegion <String>] [-MoveType <MoveType>] [-SourceRegion <String>] [-Tag <Hashtable>]
- [-TargetRegion <String>] [-Version <String>] [-DefaultProfile <PSObject>]
+ [-TargetRegion <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -186,6 +186,21 @@ Parameter Sets: (All)
 Aliases: MoveCollectionName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

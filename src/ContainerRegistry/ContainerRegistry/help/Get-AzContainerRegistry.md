@@ -15,26 +15,26 @@ Gets the properties of the specified container registry.
 ### List2 (Default)
 ```
 Get-AzContainerRegistry [-SubscriptionId <String[]>] [-IncludeDetail] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzContainerRegistry [-SubscriptionId <String[]>] [-IncludeDetail] -ResourceGroupName <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzContainerRegistry [-SubscriptionId <String[]>] [-IncludeDetail] -Name <String>
- -ResourceGroupName <String> [-DefaultProfile <PSObject>]
+ -ResourceGroupName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzContainerRegistry [-IncludeDetail] -InputObject <IContainerRegistryIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,6 +140,21 @@ Parameter Sets: Get
 Aliases: RegistryName, ResourceName, ContainerRegistryName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -26,12 +26,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EndpointAuthMode AuthMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEndpointPropertiesBaseInternal)Property).AuthMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IEndpointPropertiesBaseInternal)Property).AuthMode = value ; }
 
-        /// <summary>Backing field for <see cref="AzureAsyncOperation" /> property.</summary>
-        private string _azureAsyncOperation;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.PropertyOrigin.Owned)]
-        public string AzureAsyncOperation { get => this._azureAsyncOperation; set => this._azureAsyncOperation = value; }
-
         /// <summary>
         /// ARM resource ID of the compute if it exists.
         /// optional
@@ -269,10 +263,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpointInternal)this).XmsAsyncOperationTimeout = System.Linq.Enumerable.FirstOrDefault(__xMSAsyncOperationTimeoutHeader0) is string __headerXMSAsyncOperationTimeoutHeader0 ? global::System.TimeSpan.TryParse( __headerXMSAsyncOperationTimeoutHeader0, out global::System.TimeSpan __headerXMSAsyncOperationTimeoutHeader0Value ) ? __headerXMSAsyncOperationTimeoutHeader0Value : default(global::System.TimeSpan?) : default(global::System.TimeSpan?);
             }
-            if (headers.TryGetValues("Azure-AsyncOperation", out var __azureAsyncOperationHeader1))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IOnlineEndpointInternal)this).AzureAsyncOperation = System.Linq.Enumerable.FirstOrDefault(__azureAsyncOperationHeader1) is string __headerAzureAsyncOperationHeader1 ? __headerAzureAsyncOperationHeader1 : (string)null;
-            }
         }
 
         /// <summary>Creates an new <see cref="OnlineEndpoint" /> instance.</summary>
@@ -308,14 +298,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         SerializedName = @"authMode",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EndpointAuthMode) })]
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EndpointAuthMode AuthMode { get; set; }
-
-        [Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"",
-        SerializedName = @"Azure-AsyncOperation",
-        PossibleTypes = new [] { typeof(string) })]
-        string AzureAsyncOperation { get; set; }
         /// <summary>
         /// ARM resource ID of the compute if it exists.
         /// optional
@@ -514,8 +496,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         /// 'Key' doesn't expire but 'AMLToken' does.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.EndpointAuthMode AuthMode { get; set; }
-
-        string AzureAsyncOperation { get; set; }
         /// <summary>
         /// ARM resource ID of the compute if it exists.
         /// optional

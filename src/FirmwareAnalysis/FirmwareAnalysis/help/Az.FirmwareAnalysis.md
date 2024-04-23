@@ -42,7 +42,7 @@ Get firmware analysis workspace.
 The operation to create a firmware.
 
 ### [New-AzFirmwareAnalysisWorkspace](New-AzFirmwareAnalysisWorkspace.md)
-The operation to Create a firmware analysis workspace.
+The operation to create or update a firmware analysis workspace.
 
 ### [New-AzFirmwareAnalysisWorkspaceUploadUrl](New-AzFirmwareAnalysisWorkspaceUploadUrl.md)
 The operation to get a url for file upload.

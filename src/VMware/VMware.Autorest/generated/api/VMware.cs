@@ -17691,7 +17691,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         }
 
         /// <summary>
-        /// List script cmdlet resources available for a private cloud to List a script execution resource on a private cloud
+        /// List script cmdlet resources available for a private cloud to create a script execution resource on a private cloud
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -17740,7 +17740,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         }
 
         /// <summary>
-        /// List script cmdlet resources available for a private cloud to List a script execution resource on a private cloud
+        /// List script cmdlet resources available for a private cloud to create a script execution resource on a private cloud
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -17799,7 +17799,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         }
 
         /// <summary>
-        /// List script cmdlet resources available for a private cloud to List a script execution resource on a private cloud
+        /// List script cmdlet resources available for a private cloud to create a script execution resource on a private cloud
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17856,7 +17856,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware
         }
 
         /// <summary>
-        /// List script cmdlet resources available for a private cloud to List a script execution resource on a private cloud
+        /// List script cmdlet resources available for a private cloud to create a script execution resource on a private cloud
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>

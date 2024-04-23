@@ -16,7 +16,7 @@ Create an in-memory object for ShippingAddress.
 New-AzDataBoxShippingAddressObject -Country <String> -StreetAddress1 <String> [-AddressType <AddressType>]
  [-City <String>] [-CompanyName <String>] [-PostalCode <String>] [-SkipAddressValidation <Boolean>]
  [-StateOrProvince <String>] [-StreetAddress2 <String>] [-StreetAddress3 <String>]
- [-TaxIdentificationNumber <String>] [-ZipExtendedCode <String>]
+ [-TaxIdentificationNumber <String>] [-ZipExtendedCode <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -107,6 +107,21 @@ Postal code.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

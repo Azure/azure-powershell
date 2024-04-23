@@ -21,7 +21,7 @@ Update-AzSynapseWorkspace [-ResourceGroupName <String>] -Name <String> [-Tag <Ha
  [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
  [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
@@ -33,7 +33,7 @@ Update-AzSynapseWorkspace -InputObject <PSSynapseWorkspace> [-Tag <Hashtable>]
  [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
  [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
@@ -45,7 +45,7 @@ Update-AzSynapseWorkspace -ResourceId <String> [-Tag <Hashtable>]
  [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
  [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>]
  [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -293,6 +293,21 @@ Parameter Sets: SetByNameParameterSet
 Aliases: WorkspaceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

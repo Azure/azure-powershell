@@ -18,7 +18,7 @@ New-AzTimeSeriesInsightsEventSource -EnvironmentName <String> -Name <String> -Re
  [-SubscriptionId <String>] -Kind <Kind> -Location <String> -ConsumerGroupName <String> -KeyName <String>
  -EventSourceResourceId <String> -SharedAccessKey <SecureString> -EventHubName <String>
  -ServiceBusNameSpace <String> [-Tag <Hashtable>] [-TimeStampPropertyName <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### iothub
@@ -27,7 +27,7 @@ New-AzTimeSeriesInsightsEventSource -EnvironmentName <String> -Name <String> -Re
  [-SubscriptionId <String>] -Kind <Kind> -Location <String> -ConsumerGroupName <String> -KeyName <String>
  -EventSourceResourceId <String> -SharedAccessKey <SecureString> [-Tag <Hashtable>]
  [-TimeStampPropertyName <String>] -IoTHubName <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -214,6 +214,21 @@ Parameter Sets: (All)
 Aliases: EventSourceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

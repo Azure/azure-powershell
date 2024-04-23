@@ -17,7 +17,7 @@ New-AzPurviewAzureMySqlCredentialScanObject -Kind <ScanAuthorizationType> [-Coll
  [-CollectionType <String>] [-ConnectedViaReferenceName <String>] [-CredentialReferenceName <String>]
  [-CredentialType <CredentialType>] [-DatabaseName <String>] [-Port <Int32>] [-ScanRulesetName <String>]
  [-ScanRulesetType <ScanRulesetType>] [-ServerEndpoint <String>] [-Worker <Int32>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -159,6 +159,21 @@ Accept wildcard characters: False
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

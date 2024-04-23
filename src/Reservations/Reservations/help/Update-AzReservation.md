@@ -20,13 +20,13 @@ Update-AzReservation -Id <String> -OrderId <String> [-AppliedScope <String[]>]
  [-AppliedScopePropertyTenantId <String>] [-AppliedScopeType <AppliedScopeType>]
  [-InstanceFlexibility <InstanceFlexibility>] [-Name <String>] [-Renew]
  [-RenewProperty <IPatchPropertiesRenewProperties>] [-ReviewDateTime <DateTime>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Update
 ```
 Update-AzReservation -Id <String> -OrderId <String> -Reservation <IPatch> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -37,13 +37,13 @@ Update-AzReservation -InputObject <IReservationsIdentity> [-AppliedScope <String
  [-AppliedScopePropertyTenantId <String>] [-AppliedScopeType <AppliedScopeType>]
  [-InstanceFlexibility <InstanceFlexibility>] [-Name <String>] [-Renew]
  [-RenewProperty <IPatchPropertiesRenewProperties>] [-ReviewDateTime <DateTime>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
 Update-AzReservation -InputObject <IReservationsIdentity> -Reservation <IPatch> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -310,6 +310,21 @@ Parameter Sets: UpdateExpanded, Update
 Aliases: ReservationOrderId
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

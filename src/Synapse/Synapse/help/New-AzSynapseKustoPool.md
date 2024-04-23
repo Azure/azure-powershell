@@ -18,7 +18,7 @@ New-AzSynapseKustoPool -Name <String> -ResourceGroupName <String> -WorkspaceName
  -SkuSize <SkuSize> [-EnablePurge] [-EnableStreamingIngest] [-OptimizedAutoscaleIsEnabled]
  [-OptimizedAutoscaleMaximum <Int32>] [-OptimizedAutoscaleMinimum <Int32>] [-OptimizedAutoscaleVersion <Int32>]
  [-SkuCapacity <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -231,6 +231,21 @@ The version of the template defined, for instance 1.
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

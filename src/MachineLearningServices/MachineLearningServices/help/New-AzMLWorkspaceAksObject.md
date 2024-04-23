@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspaceaksobject
+online version: https://learn.microsoft.com/powershell/module/az.MachineLearningServices/new-AzMLWorkspaceAksObject
 schema: 2.0.0
 ---
 
@@ -13,13 +13,13 @@ Create an in-memory object for Aks.
 ## SYNTAX
 
 ```
-New-AzMLWorkspaceAksObject [-AgentCount <Int32>] [-AgentVMSize <String>] [-AkNetworkingDnsServiceIP <String>]
+New-AzMLWorkspaceAksObject [-Description <String>] [-DisableLocalAuth <Boolean>] [-ResourceId <String>]
+ [-AgentCount <Int32>] [-AgentVMSize <String>] [-AkNetworkingDnsServiceIP <String>]
  [-AkNetworkingDockerBridgeCidr <String>] [-AkNetworkingServiceCidr <String>] [-AkNetworkingSubnetId <String>]
- [-ClusterFqdn <String>] [-ClusterPurpose <ClusterPurpose>] [-Description <String>]
- [-DisableLocalAuth <Boolean>] [-LoadBalancerSubnet <String>] [-LoadBalancerType <LoadBalancerType>]
- [-ResourceId <String>] [-SslCert <String>] [-SslCname <String>] [-SslKey <String>]
+ [-ClusterFqdn <String>] [-ClusterPurpose <ClusterPurpose>] [-LoadBalancerSubnet <String>]
+ [-LoadBalancerType <LoadBalancerType>] [-SslCert <String>] [-SslCname <String>] [-SslKey <String>]
  [-SslLeafDomainLabel <String>] [-SslOverwriteExistingDomain <Boolean>] [-SslStatus <SslConfigStatus>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -219,6 +219,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 ARM resource id of the underlying compute.
 
@@ -335,7 +350,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

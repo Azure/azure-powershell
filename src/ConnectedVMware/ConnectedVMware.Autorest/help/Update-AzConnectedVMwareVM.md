@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedVMwareVM
 
 ## SYNOPSIS
-The operation to Update a virtual machine instance.
+The operation to update a virtual machine instance.
 
 ## SYNTAX
 
@@ -33,7 +33,7 @@ Update-AzConnectedVMwareVM -MachineId <String> -JsonString <String> [-DefaultPro
 ```
 
 ## DESCRIPTION
-The operation to Update a virtual machine instance.
+The operation to update a virtual machine instance.
 
 ## EXAMPLES
 

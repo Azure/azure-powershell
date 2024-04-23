@@ -16,7 +16,7 @@ Adds a certificate to a key vault.
 ### EnrollCertWithPolicyPath (Default)
 ```
 Add-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-PolicyPath] <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Add-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-PolicyPath] <
 ```
 Add-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String>
  [-CertificatePolicy] <PSKeyVaultCertificatePolicy> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -156,6 +156,21 @@ Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

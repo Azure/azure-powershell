@@ -15,26 +15,26 @@ Returns the properties of a lab Schedule.
 ### LabObject (Default)
 ```
 Get-AzLabServicesSchedule [-SubscriptionId <String[]>] -ResourceId <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzLabServicesSchedule -LabName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Filter <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzLabServicesSchedule -LabName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### Lab
 ```
 Get-AzLabServicesSchedule [-Name <String>] [-SubscriptionId <String[]>] -Lab <Lab> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,6 +140,21 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: Lab
 Aliases: ScheduleName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

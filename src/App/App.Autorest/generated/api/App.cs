@@ -637,7 +637,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Certificate.</summary>
+        /// <summary>Update a Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -689,7 +689,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Certificate.</summary>
+        /// <summary>Update a Certificate.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Certificate to be created or updated</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Certificate.</summary>
+        /// <summary>Update a Certificate.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Certificate to be created or updated</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -811,7 +811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Certificate.</summary>
+        /// <summary>Update a Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -862,7 +862,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Certificate.</summary>
+        /// <summary>Update a Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -911,7 +911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Certificate.</summary>
+        /// <summary>Update a Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -2414,7 +2414,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Certificate.</summary>
+        /// <summary>Update a Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the Connected Environment.</param>
@@ -2466,7 +2466,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Certificate.</summary>
+        /// <summary>Update a Certificate.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Certificate to be created or updated</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2528,7 +2528,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Certificate.</summary>
+        /// <summary>Update a Certificate.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Certificate to be created or updated</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2588,7 +2588,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Certificate.</summary>
+        /// <summary>Update a Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the Connected Environment.</param>
@@ -2639,7 +2639,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Certificate.</summary>
+        /// <summary>Update a Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the Connected Environment.</param>
@@ -2688,7 +2688,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Certificate.</summary>
+        /// <summary>Update a Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the Connected Environment.</param>
@@ -4660,7 +4660,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create an connectedEnvironment.</summary>
+        /// <summary>Update an connectedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the connectedEnvironment.</param>
@@ -4709,7 +4709,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create an connectedEnvironment.</summary>
+        /// <summary>Update an connectedEnvironment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of the connectedEnvironment.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4768,7 +4768,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create an connectedEnvironment.</summary>
+        /// <summary>Update an connectedEnvironment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of the connectedEnvironment.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4825,7 +4825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create an connectedEnvironment.</summary>
+        /// <summary>Update an connectedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the connectedEnvironment.</param>
@@ -4873,7 +4873,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create an connectedEnvironment.</summary>
+        /// <summary>Update an connectedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the connectedEnvironment.</param>
@@ -4919,7 +4919,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create an connectedEnvironment.</summary>
+        /// <summary>Update an connectedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the connectedEnvironment.</param>
@@ -5283,7 +5283,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Dapr Component in a connected environment.</summary>
+        /// <summary>Update a Dapr Component in a connected environment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the connected environment.</param>
@@ -5335,7 +5335,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Dapr Component in a connected environment.</summary>
+        /// <summary>Update a Dapr Component in a connected environment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of the Dapr Component.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -5397,7 +5397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Dapr Component in a connected environment.</summary>
+        /// <summary>Update a Dapr Component in a connected environment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of the Dapr Component.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -5457,7 +5457,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Dapr Component in a connected environment.</summary>
+        /// <summary>Update a Dapr Component in a connected environment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the connected environment.</param>
@@ -5508,7 +5508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Dapr Component in a connected environment.</summary>
+        /// <summary>Update a Dapr Component in a connected environment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the connected environment.</param>
@@ -5557,7 +5557,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Dapr Component in a connected environment.</summary>
+        /// <summary>Update a Dapr Component in a connected environment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the connected environment.</param>
@@ -8159,7 +8159,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create storage for a connectedEnvironment.</summary>
+        /// <summary>Update storage for a connectedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the Environment.</param>
@@ -8211,7 +8211,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create storage for a connectedEnvironment.</summary>
+        /// <summary>Update storage for a connectedEnvironment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of storage.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8273,7 +8273,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create storage for a connectedEnvironment.</summary>
+        /// <summary>Update storage for a connectedEnvironment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of storage.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8333,7 +8333,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create storage for a connectedEnvironment.</summary>
+        /// <summary>Update storage for a connectedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the Environment.</param>
@@ -8384,7 +8384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create storage for a connectedEnvironment.</summary>
+        /// <summary>Update storage for a connectedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the Environment.</param>
@@ -8433,7 +8433,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create storage for a connectedEnvironment.</summary>
+        /// <summary>Update storage for a connectedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="connectedEnvironmentName">Name of the Environment.</param>
@@ -9805,7 +9805,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create the AuthConfig for a Container App.</summary>
+        /// <summary>Update the AuthConfig for a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -9857,7 +9857,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create the AuthConfig for a Container App.</summary>
+        /// <summary>Update the AuthConfig for a Container App.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Properties used to create a Container App AuthConfig</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -9919,7 +9919,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create the AuthConfig for a Container App.</summary>
+        /// <summary>Update the AuthConfig for a Container App.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Properties used to create a Container App AuthConfig</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9979,7 +9979,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create the AuthConfig for a Container App.</summary>
+        /// <summary>Update the AuthConfig for a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -10030,7 +10030,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create the AuthConfig for a Container App.</summary>
+        /// <summary>Update the AuthConfig for a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -10079,7 +10079,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create the AuthConfig for a Container App.</summary>
+        /// <summary>Update the AuthConfig for a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -11127,7 +11127,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Container App.</summary>
+        /// <summary>Update a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -11176,7 +11176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Container App.</summary>
+        /// <summary>Update a Container App.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Properties used to create a container app</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -11235,7 +11235,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Container App.</summary>
+        /// <summary>Update a Container App.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Properties used to create a container app</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -11292,7 +11292,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Container App.</summary>
+        /// <summary>Update a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -11340,7 +11340,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Container App.</summary>
+        /// <summary>Update a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -11386,7 +11386,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Container App.</summary>
+        /// <summary>Update a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -12701,7 +12701,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12709,7 +12708,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContainerAppsDiagnosticsGetRoot(string subscriptionId, string resourceGroupName, string containerAppName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContainerAppsDiagnosticsGetRoot(string subscriptionId, string resourceGroupName, string containerAppName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-05-01";
             // Constant Parameters
@@ -12737,14 +12736,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ContainerAppsDiagnosticsGetRoot_Call (request, onOk,onNotFound,onDefault,eventListener,sender);
+                await this.ContainerAppsDiagnosticsGetRoot_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Get the properties of a Container App.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12752,7 +12750,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContainerAppsDiagnosticsGetRootViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContainerAppsDiagnosticsGetRootViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-05-01";
             // Constant Parameters
@@ -12792,7 +12790,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ContainerAppsDiagnosticsGetRoot_Call (request, onOk,onNotFound,onDefault,eventListener,sender);
+                await this.ContainerAppsDiagnosticsGetRoot_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -12922,11 +12920,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
                             var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerApp.FromJson(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Json.JsonNode.Parse(body.Result)) );
                             return await _result;
                         }
-                        case global::System.Net.HttpStatusCode.NotFound:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            throw new Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.UndeclaredResponseException(_response);
-                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -12960,7 +12953,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <summary>Actual wire call for <see cref= "ContainerAppsDiagnosticsGetRoot" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -12968,7 +12960,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContainerAppsDiagnosticsGetRoot_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ContainerAppsDiagnosticsGetRoot_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -12988,12 +12980,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerApp.FromJson(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        case global::System.Net.HttpStatusCode.NotFound:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onNotFound(_response);
                             break;
                         }
                         default:
@@ -13717,7 +13703,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -13725,7 +13710,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContainerAppsGet(string subscriptionId, string resourceGroupName, string containerAppName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContainerAppsGet(string subscriptionId, string resourceGroupName, string containerAppName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-05-01";
             // Constant Parameters
@@ -13752,7 +13737,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ContainerAppsGet_Call (request, onOk,onNotFound,onDefault,eventListener,sender);
+                await this.ContainerAppsGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -13761,7 +13746,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -13769,7 +13753,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContainerAppsGetAuthToken(string subscriptionId, string resourceGroupName, string containerAppName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppAuthToken>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContainerAppsGetAuthToken(string subscriptionId, string resourceGroupName, string containerAppName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppAuthToken>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-05-01";
             // Constant Parameters
@@ -13797,14 +13781,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ContainerAppsGetAuthToken_Call (request, onOk,onNotFound,onDefault,eventListener,sender);
+                await this.ContainerAppsGetAuthToken_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
         /// <summary>Get auth token for a container app</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -13812,7 +13795,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContainerAppsGetAuthTokenViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppAuthToken>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContainerAppsGetAuthTokenViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppAuthToken>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-05-01";
             // Constant Parameters
@@ -13852,7 +13835,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ContainerAppsGetAuthToken_Call (request, onOk,onNotFound,onDefault,eventListener,sender);
+                await this.ContainerAppsGetAuthToken_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -13982,11 +13965,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
                             var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppAuthToken.FromJson(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Json.JsonNode.Parse(body.Result)) );
                             return await _result;
                         }
-                        case global::System.Net.HttpStatusCode.NotFound:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            throw new Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.UndeclaredResponseException(_response);
-                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -14020,7 +13998,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <summary>Actual wire call for <see cref= "ContainerAppsGetAuthToken" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14028,7 +14005,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContainerAppsGetAuthToken_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppAuthToken>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ContainerAppsGetAuthToken_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppAuthToken>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -14048,12 +14025,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerAppAuthToken.FromJson(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        case global::System.Net.HttpStatusCode.NotFound:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onNotFound(_response);
                             break;
                         }
                         default:
@@ -14101,7 +14072,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <summary>Get the properties of a Container App.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14109,7 +14079,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ContainerAppsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ContainerAppsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-05-01";
             // Constant Parameters
@@ -14148,7 +14118,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ContainerAppsGet_Call (request, onOk,onNotFound,onDefault,eventListener,sender);
+                await this.ContainerAppsGet_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
@@ -14274,11 +14244,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
                             var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerApp.FromJson(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Json.JsonNode.Parse(body.Result)) );
                             return await _result;
                         }
-                        case global::System.Net.HttpStatusCode.NotFound:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            throw new Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.UndeclaredResponseException(_response);
-                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -14312,7 +14277,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <summary>Actual wire call for <see cref= "ContainerAppsGet" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onNotFound">a delegate that is called when the remote service returns 404 (NotFound).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14320,7 +14284,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ContainerAppsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNotFound, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ContainerAppsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerApp>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -14340,12 +14304,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.App.Models.ContainerApp.FromJson(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        case global::System.Net.HttpStatusCode.NotFound:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onNotFound(_response);
                             break;
                         }
                         default:
@@ -17598,7 +17556,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create the SourceControl for a Container App.</summary>
+        /// <summary>Update the SourceControl for a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -17650,7 +17608,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create the SourceControl for a Container App.</summary>
+        /// <summary>Update the SourceControl for a Container App.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Properties used to create a Container App SourceControl</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -17712,7 +17670,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create the SourceControl for a Container App.</summary>
+        /// <summary>Update the SourceControl for a Container App.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Properties used to create a Container App SourceControl</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -17772,7 +17730,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create the SourceControl for a Container App.</summary>
+        /// <summary>Update the SourceControl for a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -17823,7 +17781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create the SourceControl for a Container App.</summary>
+        /// <summary>Update the SourceControl for a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -17872,7 +17830,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create the SourceControl for a Container App.</summary>
+        /// <summary>Update the SourceControl for a Container App.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="containerAppName">Name of the Container App.</param>
@@ -20829,7 +20787,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Dapr Component in a Managed Environment.</summary>
+        /// <summary>Update a Dapr Component in a Managed Environment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -20881,7 +20839,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Dapr Component in a Managed Environment.</summary>
+        /// <summary>Update a Dapr Component in a Managed Environment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of the Dapr Component.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -20943,7 +20901,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Dapr Component in a Managed Environment.</summary>
+        /// <summary>Update a Dapr Component in a Managed Environment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of the Dapr Component.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -21003,7 +20961,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Dapr Component in a Managed Environment.</summary>
+        /// <summary>Update a Dapr Component in a Managed Environment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -21054,7 +21012,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Dapr Component in a Managed Environment.</summary>
+        /// <summary>Update a Dapr Component in a Managed Environment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -21103,7 +21061,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Dapr Component in a Managed Environment.</summary>
+        /// <summary>Update a Dapr Component in a Managed Environment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -22823,7 +22781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Container Apps Job.</summary>
+        /// <summary>Update a Container Apps Job.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="jobName">Job Name</param>
@@ -22872,7 +22830,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Container Apps Job.</summary>
+        /// <summary>Update a Container Apps Job.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Properties used to create a container apps job</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -22931,7 +22889,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Container Apps Job.</summary>
+        /// <summary>Update a Container Apps Job.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Properties used to create a container apps job</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -22988,7 +22946,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Container Apps Job.</summary>
+        /// <summary>Update a Container Apps Job.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="jobName">Job Name</param>
@@ -23036,7 +22994,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Container Apps Job.</summary>
+        /// <summary>Update a Container Apps Job.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="jobName">Job Name</param>
@@ -23082,7 +23040,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Container Apps Job.</summary>
+        /// <summary>Update a Container Apps Job.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="jobName">Job Name</param>
@@ -27343,14 +27301,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Managed Certificate.</summary>
+        /// <summary>Update a Managed Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
         /// <param name="managedCertificateName">Name of the Managed Certificate.</param>
         /// <param name="body">Managed Certificate to be created or updated</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onBadRequest">a delegate that is called when the remote service returns 400 (BadRequest).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -27359,7 +27316,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedCertificatesCreateOrUpdate(string subscriptionId, string resourceGroupName, string environmentName, string managedCertificateName, Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedCertificate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onBadRequest, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task ManagedCertificatesCreateOrUpdate(string subscriptionId, string resourceGroupName, string environmentName, string managedCertificateName, Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedCertificate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-05-01";
             // Constant Parameters
@@ -27392,15 +27349,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ManagedCertificatesCreateOrUpdate_Call (request, onOk,onBadRequest,onDefault,eventListener,sender);
+                await this.ManagedCertificatesCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Create a Managed Certificate.</summary>
+        /// <summary>Update a Managed Certificate.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Managed Certificate to be created or updated</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onBadRequest">a delegate that is called when the remote service returns 400 (BadRequest).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -27409,7 +27365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedCertificatesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedCertificate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onBadRequest, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeUpdate)
+        public async global::System.Threading.Tasks.Task ManagedCertificatesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedCertificate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode serializationMode = Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.SerializationMode.IncludeUpdate)
         {
             var apiVersion = @"2023-05-01";
             // Constant Parameters
@@ -27455,11 +27411,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ManagedCertificatesCreateOrUpdate_Call (request, onOk,onBadRequest,onDefault,eventListener,sender);
+                await this.ManagedCertificatesCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Create a Managed Certificate.</summary>
+        /// <summary>Update a Managed Certificate.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Managed Certificate to be created or updated</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -27519,14 +27475,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Managed Certificate.</summary>
+        /// <summary>Update a Managed Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
         /// <param name="managedCertificateName">Name of the Managed Certificate.</param>
         /// <param name="jsonString">Json string supplied to the ManagedCertificatesCreateOrUpdate operation</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onBadRequest">a delegate that is called when the remote service returns 400 (BadRequest).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -27534,7 +27489,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ManagedCertificatesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string environmentName, string managedCertificateName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onBadRequest, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ManagedCertificatesCreateOrUpdateViaJsonString(string subscriptionId, string resourceGroupName, string environmentName, string managedCertificateName, global::System.String jsonString, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2023-05-01";
             // Constant Parameters
@@ -27567,11 +27522,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
-                await this.ManagedCertificatesCreateOrUpdate_Call (request, onOk,onBadRequest,onDefault,eventListener,sender);
+                await this.ManagedCertificatesCreateOrUpdate_Call (request, onOk,onDefault,eventListener,sender);
             }
         }
 
-        /// <summary>Create a Managed Certificate.</summary>
+        /// <summary>Update a Managed Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -27620,7 +27575,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Managed Certificate.</summary>
+        /// <summary>Update a Managed Certificate.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Managed Environment.</param>
@@ -27790,11 +27745,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
                             var _result = _response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedCertificate.FromJson(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Json.JsonNode.Parse(body.Result)) );
                             return await _result;
                         }
-                        case global::System.Net.HttpStatusCode.BadRequest:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
-                            throw new Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.UndeclaredResponseException(_response);
-                        }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return null; }
@@ -27828,7 +27778,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <summary>Actual wire call for <see cref= "ManagedCertificatesCreateOrUpdate" /> method.</summary>
         /// <param name="request">the prepared HttpRequestMessage to send.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
-        /// <param name="onBadRequest">a delegate that is called when the remote service returns 400 (BadRequest).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -27836,7 +27785,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ManagedCertificatesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onBadRequest, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ManagedCertificatesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IManagedCertificate>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.App.Models.IDefaultErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -27944,12 +27893,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.App.Models.ManagedCertificate.FromJson(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Json.JsonNode.Parse(body.Result)) ));
-                            break;
-                        }
-                        case global::System.Net.HttpStatusCode.BadRequest:
-                        {
-                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onBadRequest(_response);
                             break;
                         }
                         default:
@@ -29991,7 +29934,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Managed Environment used to host container apps.</summary>
+        /// <summary>Update a Managed Environment used to host container apps.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Environment.</param>
@@ -30040,7 +29983,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Managed Environment used to host container apps.</summary>
+        /// <summary>Update a Managed Environment used to host container apps.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of the Environment.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -30099,7 +30042,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Managed Environment used to host container apps.</summary>
+        /// <summary>Update a Managed Environment used to host container apps.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of the Environment.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -30156,7 +30099,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Managed Environment used to host container apps.</summary>
+        /// <summary>Update a Managed Environment used to host container apps.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Environment.</param>
@@ -30204,7 +30147,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Managed Environment used to host container apps.</summary>
+        /// <summary>Update a Managed Environment used to host container apps.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Environment.</param>
@@ -30250,7 +30193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create a Managed Environment used to host container apps.</summary>
+        /// <summary>Update a Managed Environment used to host container apps.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Environment.</param>
@@ -32815,7 +32758,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create storage for a managedEnvironment.</summary>
+        /// <summary>Update storage for a managedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Environment.</param>
@@ -32867,7 +32810,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create storage for a managedEnvironment.</summary>
+        /// <summary>Update storage for a managedEnvironment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of storage.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -32929,7 +32872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create storage for a managedEnvironment.</summary>
+        /// <summary>Update storage for a managedEnvironment.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Configuration details of storage.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.App.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -32989,7 +32932,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create storage for a managedEnvironment.</summary>
+        /// <summary>Update storage for a managedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Environment.</param>
@@ -33040,7 +32983,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create storage for a managedEnvironment.</summary>
+        /// <summary>Update storage for a managedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Environment.</param>
@@ -33089,7 +33032,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.App
             }
         }
 
-        /// <summary>Create storage for a managedEnvironment.</summary>
+        /// <summary>Update storage for a managedEnvironment.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="environmentName">Name of the Environment.</param>

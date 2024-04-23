@@ -16,7 +16,7 @@ Use '.unassigned' or '.default' for the device group and product names when a de
 ### List (Default)
 ```
 Get-AzSphereDevice -CatalogName <String> -GroupName <String> -ProductName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -24,32 +24,32 @@ Get-AzSphereDevice -CatalogName <String> -GroupName <String> -ProductName <Strin
 ```
 Get-AzSphereDevice -CatalogName <String> -GroupName <String> -Name <String> -ProductName <String>
  -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityProduct
 ```
 Get-AzSphereDevice -GroupName <String> -Name <String> -ProductInputObject <ISphereIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentityCatalog
 ```
 Get-AzSphereDevice -GroupName <String> -Name <String> -ProductName <String>
- -CatalogInputObject <ISphereIdentity> [-DefaultProfile <PSObject>]
+ -CatalogInputObject <ISphereIdentity> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityDeviceGroup
 ```
 Get-AzSphereDevice -Name <String> -DeviceGroupInputObject <ISphereIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzSphereDevice -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -236,6 +236,21 @@ Parameter Sets: List, Get, GetViaIdentityCatalog
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

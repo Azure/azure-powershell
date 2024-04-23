@@ -15,14 +15,14 @@ Swaps VIPs between two cloud service (extended support) load balancers.
 ### CloudServiceName (Default)
 ```
 Switch-AzCloudService -ResourceGroupName <String> -CloudServiceName <String> [-SubscriptionId <String>]
- [-Async] [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [-Async] [-DefaultProfile <PSObject>] [-AsJob] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CloudService
 ```
 Switch-AzCloudService [-SubscriptionId <String>] -CloudService <CloudService> [-Async]
- [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -115,6 +115,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

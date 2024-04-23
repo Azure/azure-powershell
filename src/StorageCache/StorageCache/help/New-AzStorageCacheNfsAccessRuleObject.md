@@ -15,7 +15,7 @@ Create an in-memory object for NfsAccessRule.
 ```
 New-AzStorageCacheNfsAccessRuleObject -Access <NfsAccessRuleAccess> -Scope <NfsAccessRuleScope>
  [-AnonymousGid <String>] [-AnonymousUid <String>] [-Filter <String>] [-RootSquash <Boolean>]
- [-SubmountAccess <Boolean>] [-Suid <Boolean>] [<CommonParameters>]
+ [-SubmountAccess <Boolean>] [-Suid <Boolean>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,6 +97,21 @@ If a client does not match any filter rule and there is no default rule, access 
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

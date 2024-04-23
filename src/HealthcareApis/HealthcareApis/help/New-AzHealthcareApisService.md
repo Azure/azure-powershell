@@ -21,7 +21,7 @@ New-AzHealthcareApisService -Name <String> -ResourceGroupName <String> [-Subscri
  [-EnableSmartProxy] [-Etag <String>] [-ExportStorageAccountName <String>]
  [-IdentityType <ManagedServiceIdentityType>] [-PrivateEndpointConnection <IPrivateEndpointConnection[]>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -384,6 +384,21 @@ To construct, see NOTES section for PRIVATEENDPOINTCONNECTION properties and cre
 Type: Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api10.IPrivateEndpointConnection[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -15,46 +15,46 @@ Authorization rule for a namespace by name.
 ### List (Default)
 ```
 Get-AzRelayAuthorizationRule -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzRelayAuthorizationRule -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -HybridConnection <String> [-DefaultProfile <PSObject>]
+ -HybridConnection <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### List2
 ```
 Get-AzRelayAuthorizationRule -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -WcfRelay <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -WcfRelay <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzRelayAuthorizationRule -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -Name <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -Name <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
 Get-AzRelayAuthorizationRule -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -Name <String> -HybridConnection <String> [-DefaultProfile <PSObject>]
+ -Name <String> -HybridConnection <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### Get2
 ```
 Get-AzRelayAuthorizationRule -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -Name <String> -WcfRelay <String> [-DefaultProfile <PSObject>]
+ -Name <String> -WcfRelay <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzRelayAuthorizationRule -InputObject <IRelayIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -257,6 +257,21 @@ Parameter Sets: List, List1, List2, Get, Get1, Get2
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

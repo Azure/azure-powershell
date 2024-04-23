@@ -16,20 +16,20 @@ Gets status of link tables under a link connection.
 ```
 Get-AzSynapseLinkConnectionLinkTableStatus -WorkspaceName <String> -LinkConnectionName <String>
  -MaxSegmentCount <Int32> [-ContinuationToken <Object>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByObject
 ```
 Get-AzSynapseLinkConnectionLinkTableStatus -WorkspaceObject <PSSynapseWorkspace> -LinkConnectionName <String>
  -MaxSegmentCount <Int32> [-ContinuationToken <Object>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByInputObject
 ```
 Get-AzSynapseLinkConnectionLinkTableStatus -MaxSegmentCount <Int32> -InputObject <PSLinkConnectionResource>
- [-ContinuationToken <Object>] [-DefaultProfile <IAzureContextContainer>]
+ [-ContinuationToken <Object>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -132,6 +132,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -15,21 +15,21 @@ Returns Linker resource for a given name in webapp.
 ### List (Default)
 ```
 Get-AzServiceLinkerForWebApp [-ResourceUri <String>] [-DefaultProfile <PSObject>] -WebApp <String>
- -ResourceGroupName <String> [-SubscriptionId <String>]
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzServiceLinkerForWebApp [-ResourceUri <String>] -Name <String> [-DefaultProfile <PSObject>]
- -WebApp <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -WebApp <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzServiceLinkerForWebApp -InputObject <IServiceLinkerIdentity> [-DefaultProfile <PSObject>]
- [-SubscriptionId <String>] [<CommonParameters>]
+ [-SubscriptionId <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -161,6 +161,21 @@ Parameter Sets: Get
 Aliases: LinkerName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

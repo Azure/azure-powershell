@@ -17,7 +17,7 @@ New-AzScheduledQueryRuleConditionObject [-Dimension <IDimension[]>]
  [-FailingPeriodMinFailingPeriodsToAlert <Int64>] [-FailingPeriodNumberOfEvaluationPeriod <Int64>]
  [-MetricMeasureColumn <String>] [-MetricName <String>] [-Operator <ConditionOperator>] [-Query <String>]
  [-ResourceIdColumn <String>] [-Threshold <Double>] [-TimeAggregation <TimeAggregation>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,6 +125,21 @@ Relevant and required only for rules of the kind LogAlert.
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Support.ConditionOperator
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

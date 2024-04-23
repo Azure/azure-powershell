@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-API to Update certain properties of the cluster resource.
+API to update certain properties of the cluster resource.
 .Description
-API to Update certain properties of the cluster resource.
+API to update certain properties of the cluster resource.
 .Example
 Update-AzConnectedVMwareCluster -Name "test-cluster" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -Tag @{"cluster"="test"}
 

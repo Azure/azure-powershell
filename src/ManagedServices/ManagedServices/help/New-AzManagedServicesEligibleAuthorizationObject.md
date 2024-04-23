@@ -17,7 +17,7 @@ New-AzManagedServicesEligibleAuthorizationObject -PrincipalId <String> -RoleDefi
  [-JustInTimeAccessPolicyManagedByTenantApprover <IEligibleApprover[]>]
  [-JustInTimeAccessPolicyMaximumActivationDuration <TimeSpan>]
  [-JustInTimeAccessPolicyMultiFactorAuthProvider <MultiFactorAuthProvider>] [-PrincipalIdDisplayName <String>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -128,6 +128,21 @@ The display name of the Azure Active Directory principal.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

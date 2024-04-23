@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* test
 * `-Location` parameter was removed from `Update-AzActionGroup` and `Update-AzDataCollectionRule` because they do not support updating the location.
 * Introduced secrets detection feature to safeguard sensitive data.
 

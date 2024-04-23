@@ -17,14 +17,14 @@ Assign role to the data product.
 Add-AzNetworkAnalyticsDataProductUserRole -DataProductName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -DataTypeScope <String[]> -PrincipalId <String> -PrincipalType <String>
  -Role <DataProductUserRole> -RoleId <String> -UserName <String> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AddViaIdentityExpanded
 ```
 Add-AzNetworkAnalyticsDataProductUserRole -InputObject <INetworkAnalyticsIdentity> -DataTypeScope <String[]>
  -PrincipalId <String> -PrincipalType <String> -Role <DataProductUserRole> -RoleId <String> -UserName <String>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -133,6 +133,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

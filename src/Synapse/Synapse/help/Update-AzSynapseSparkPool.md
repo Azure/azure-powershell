@@ -22,7 +22,7 @@ Update-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> 
  [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
  [-SparkConfiguration <PSSparkConfigurationResource>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
- [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -36,7 +36,7 @@ Update-AzSynapseSparkPool -Name <String> -WorkspaceObject <PSSynapseWorkspace> [
  [-LibraryRequirementsFilePath <String>] [-SparkConfiguration <PSSparkConfigurationResource>]
  [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
- [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,7 +49,7 @@ Update-AzSynapseSparkPool -InputObject <PSSynapseSparkPool> [-Tag <Hashtable>] [
  [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
  [-SparkConfiguration <PSSparkConfigurationResource>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
- [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ Update-AzSynapseSparkPool -ResourceId <String> [-Tag <Hashtable>] [-EnableAutoSc
  [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
  [-SparkConfiguration <PSSparkConfigurationResource>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
- [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -498,6 +498,21 @@ Type: Microsoft.Azure.Commands.Synapse.Models.SynapseConstants+PackageActionType
 Parameter Sets: (All)
 Aliases:
 Accepted values: Add, Remove, Set
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

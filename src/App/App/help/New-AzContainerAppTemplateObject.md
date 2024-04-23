@@ -15,7 +15,8 @@ Create an in-memory object for Container.
 ```
 New-AzContainerAppTemplateObject [-Probe <IContainerAppProbe[]>] [-Arg <String[]>] [-Command <String[]>]
  [-Env <IEnvironmentVar[]>] [-Image <String>] [-Name <String>] [-ResourceCpu <Double>]
- [-ResourceMemory <String>] [-VolumeMount <IVolumeMount[]>] [<CommonParameters>]
+ [-ResourceMemory <String>] [-VolumeMount <IVolumeMount[]>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,7 +74,6 @@ Accept wildcard characters: False
 
 ### -Env
 Container environment variables.
-To construct, see NOTES section for ENV properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IEnvironmentVar[]
@@ -119,12 +119,26 @@ Accept wildcard characters: False
 
 ### -Probe
 List of probes for the container.
-To construct, see NOTES section for PROBE properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbe[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
@@ -167,7 +181,6 @@ Accept wildcard characters: False
 
 ### -VolumeMount
 Container volume mounts.
-To construct, see NOTES section for VOLUMEMOUNT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.App.Models.IVolumeMount[]

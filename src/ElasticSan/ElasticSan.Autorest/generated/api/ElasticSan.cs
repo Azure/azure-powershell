@@ -4372,7 +4372,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Gets the private link resources that need to be Listd for a elastic San.</summary>
+        /// <summary>Gets the private link resources that need to be created for a elastic San.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>
@@ -4416,7 +4416,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Gets the private link resources that need to be Listd for a elastic San.</summary>
+        /// <summary>Gets the private link resources that need to be created for a elastic San.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4470,7 +4470,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Gets the private link resources that need to be Listd for a elastic San.</summary>
+        /// <summary>Gets the private link resources that need to be created for a elastic San.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -4522,7 +4522,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan
             }
         }
 
-        /// <summary>Gets the private link resources that need to be Listd for a elastic San.</summary>
+        /// <summary>Gets the private link resources that need to be created for a elastic San.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="elasticSanName">The name of the ElasticSan.</param>

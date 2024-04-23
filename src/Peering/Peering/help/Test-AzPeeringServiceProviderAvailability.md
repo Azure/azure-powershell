@@ -15,7 +15,7 @@ Checks if the peering service provider is present within 1000 miles of customer'
 ### CheckExpanded (Default)
 ```
 Test-AzPeeringServiceProviderAvailability [-SubscriptionId <String>] [-PeeringServiceLocation <String>]
- [-PeeringServiceProvider <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-PeeringServiceProvider <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,13 +23,13 @@ Test-AzPeeringServiceProviderAvailability [-SubscriptionId <String>] [-PeeringSe
 ```
 Test-AzPeeringServiceProviderAvailability [-SubscriptionId <String>]
  -CheckServiceProviderAvailabilityInput <ICheckServiceProviderAvailabilityInput> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded
 ```
 Test-AzPeeringServiceProviderAvailability -InputObject <IPeeringIdentity> [-PeeringServiceLocation <String>]
- [-PeeringServiceProvider <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-PeeringServiceProvider <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Test-AzPeeringServiceProviderAvailability -InputObject <IPeeringIdentity> [-Peer
 ```
 Test-AzPeeringServiceProviderAvailability -InputObject <IPeeringIdentity>
  -CheckServiceProviderAvailabilityInput <ICheckServiceProviderAvailabilityInput> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -129,6 +129,21 @@ Gets or sets the peering service provider.
 Type: System.String
 Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

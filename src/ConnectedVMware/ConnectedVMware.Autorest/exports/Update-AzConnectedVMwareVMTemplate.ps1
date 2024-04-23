@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-API to Update certain properties of the virtual machine template resource.
+API to update certain properties of the virtual machine template resource.
 .Description
-API to Update certain properties of the virtual machine template resource.
+API to update certain properties of the virtual machine template resource.
 .Example
 Update-AzConnectedVMwareVMTemplate -Name "test-vmtmpl" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -Tag @{"vmtmpl"="test"}
 

@@ -18,7 +18,7 @@ New-AzDigitalTwinsPrivateEndpointConnection -Name <String> -ResourceGroupName <S
  [-SubscriptionId <String>] [-GroupId <String[]>] [-PrivateLinkServiceConnectionStateActionsRequired <String>]
  [-PrivateLinkServiceConnectionStateDescription <String>]
  [-PrivateLinkServiceConnectionStateStatus <PrivateLinkServiceConnectionStatus>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
@@ -27,7 +27,7 @@ New-AzDigitalTwinsPrivateEndpointConnection -InputObject <IDigitalTwinsIdentity>
  [-PrivateLinkServiceConnectionStateActionsRequired <String>]
  [-PrivateLinkServiceConnectionStateDescription <String>]
  [-PrivateLinkServiceConnectionStateStatus <PrivateLinkServiceConnectionStatus>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -180,6 +180,21 @@ The status of a private endpoint connection.
 Type: Microsoft.Azure.PowerShell.Cmdlets.DigitalTwins.Support.PrivateLinkServiceConnectionStatus
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

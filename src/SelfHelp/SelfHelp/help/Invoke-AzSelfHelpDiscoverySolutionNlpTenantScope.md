@@ -15,14 +15,14 @@ Solution discovery using natural language processing.
 ### PostExpanded (Default)
 ```
 Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope [-AdditionalContext <String>] [-IssueSummary <String>]
- [-ResourceId <String>] [-ServiceId <String>] [-DefaultProfile <PSObject>]
+ [-ResourceId <String>] [-ServiceId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Post
 ```
 Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope -DiscoverSolutionRequest <IDiscoveryNlpRequest>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -97,6 +97,21 @@ Describe the issue with the affected resource.
 Type: System.String
 Parameter Sets: PostExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

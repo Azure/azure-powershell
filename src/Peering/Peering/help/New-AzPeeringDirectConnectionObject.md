@@ -19,7 +19,7 @@ New-AzPeeringDirectConnectionObject [-BandwidthInMbps <Int32>] [-BgpSessionMaxPr
  [-BgpSessionPeerSessionIPv4Address <String>] [-BgpSessionPeerSessionIPv6Address <String>]
  [-BgpSessionPrefixV4 <String>] [-BgpSessionPrefixV6 <String>] [-ConnectionIdentifier <String>]
  [-PeeringDbFacilityId <Int32>] [-SessionAddressProvider <SessionAddressProvider>]
- [-UseForPeeringService <Boolean>] [<CommonParameters>]
+ [-UseForPeeringService <Boolean>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -216,6 +216,21 @@ The PeeringDB.com ID of the facility at which the connection has to be set up.
 Type: System.Int32
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

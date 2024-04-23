@@ -16,20 +16,20 @@ transferring offers (copy or move) from source collection to target collection(s
 ```
 Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateStoreId <String>
  [-OfferIdList <String[]>] [-Operation <String>] [-TargetCollection <String[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TransferViaJsonString
 ```
 Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateStoreId <String>
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### TransferViaJsonFilePath
 ```
 Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateStoreId <String>
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateSto
 ```
 Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String>
  -PrivateStoreInputObject <IMarketplaceIdentity> [-OfferIdList <String[]>] [-Operation <String>]
- [-TargetCollection <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-TargetCollection <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -45,13 +45,13 @@ Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String>
 ```
 Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String>
  -PrivateStoreInputObject <IMarketplaceIdentity> -Payload <ITransferOffersProperties>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Transfer
 ```
 Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateStoreId <String>
- -Payload <ITransferOffersProperties> [-DefaultProfile <PSObject>]
+ -Payload <ITransferOffersProperties> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -59,13 +59,13 @@ Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateSto
 ```
 Copy-AzMarketplacePrivateStoreCollectionOffer -InputObject <IMarketplaceIdentity> [-OfferIdList <String[]>]
  [-Operation <String>] [-TargetCollection <String[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TransferViaIdentity
 ```
 Copy-AzMarketplacePrivateStoreCollectionOffer -InputObject <IMarketplaceIdentity>
- -Payload <ITransferOffersProperties> [-DefaultProfile <PSObject>]
+ -Payload <ITransferOffersProperties> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -238,6 +238,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

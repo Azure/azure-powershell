@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-API to Update certain properties of the vCenter resource.
+API to update certain properties of the vCenter resource.
 .Description
-API to Update certain properties of the vCenter resource.
+API to update certain properties of the vCenter resource.
 .Example
 Update-AzConnectedVMwareVCenter -Name "test-vc" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -Tag @{"vc"="test"}
 

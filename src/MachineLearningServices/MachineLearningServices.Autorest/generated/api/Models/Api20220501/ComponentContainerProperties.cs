@@ -9,7 +9,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
 
     /// <summary>
     /// Component container definition.
-    /// <see href="https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
+    /// <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
     /// </summary>
     public partial class ComponentContainerProperties :
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IComponentContainerProperties,
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
         }
     }
     /// Component container definition.
-    /// <see href="https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
+    /// <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
     public partial interface IComponentContainerProperties :
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Runtime.IJsonSerializable,
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IAssetContainer
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api2
 
     }
     /// Component container definition.
-    /// <see href="https://learn.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
+    /// <see href="https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-component-command" />
     internal partial interface IComponentContainerPropertiesInternal :
         Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Models.Api20220501.IAssetContainerInternal
     {

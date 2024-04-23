@@ -16,7 +16,7 @@ Update NetworkRuleSet for a Namespace.
 ```
 Set-AzRelayNamespaceNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultAction <DefaultAction>] [-IPRule <INwRuleSetIPRules[]>]
- [-PublicNetworkAccess <PublicNetworkAccess>] [-DefaultProfile <PSObject>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Set-AzRelayNamespaceNetworkRuleSet -NamespaceName <String> -ResourceGroupName <S
 ```
 Set-AzRelayNamespaceNetworkRuleSet -InputObject <IRelayIdentity> [-DefaultAction <DefaultAction>]
  [-IPRule <INwRuleSetIPRules[]>] [-PublicNetworkAccess <PublicNetworkAccess>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -181,6 +181,21 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

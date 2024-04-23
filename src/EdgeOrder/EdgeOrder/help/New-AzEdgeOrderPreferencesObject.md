@@ -16,7 +16,7 @@ Create an in-memory object for Preferences.
 New-AzEdgeOrderPreferencesObject [-EncryptionPreference <IEncryptionPreferences>]
  [-ManagementResourcePreference <IManagementResourcePreferences>]
  [-NotificationPreference <INotificationPreference[]>] [-TransportPreference <ITransportPreferences>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -73,6 +73,21 @@ To construct, see NOTES section for NOTIFICATIONPREFERENCE properties and create
 Type: Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.INotificationPreference[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

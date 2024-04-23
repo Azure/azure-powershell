@@ -16,19 +16,19 @@ Create an in-memory object for ImageTemplateSource.
 ```
 New-AzImageBuilderTemplateSourceObject [-PlatformImageSource] [-Offer <String>] [-PlanInfoPlanName <String>]
  [-PlanInfoPlanProduct <String>] [-PlanInfoPlanPublisher <String>] [-Publisher <String>] [-Sku <String>]
- [-Version <String>] [<CommonParameters>]
+ [-Version <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ManagedImageSource
 ```
 New-AzImageBuilderTemplateSourceObject -ImageId <String> [-ManagedImageSource]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### SharedImageVersionSource
 ```
 New-AzImageBuilderTemplateSourceObject -ImageVersionId <String> [-SharedImageVersionSource]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -193,6 +193,21 @@ Parameter Sets: PlatformImageSource
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -15,7 +15,7 @@ Creates a new Attestation Provider.
 ```
 New-AzAttestationProvider -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Location <String> [-PolicySigningCertificateKeyPath <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,6 +106,21 @@ To construct, see NOTES section for POLICYSIGNINGCERTIFICATEKEY properties and c
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

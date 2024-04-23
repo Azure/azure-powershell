@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
 online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacebatchdeployment
 schema: 2.0.0
@@ -14,7 +14,7 @@ Creates/updates a batch inference deployment (asynchronous).
 
 ```
 New-AzMLWorkspaceBatchDeployment -EndpointName <String> -Name <String> -ResourceGroupName <String>
- -WorkspaceName <String> -Location <String> [-SubscriptionId <String>] [-CodeId <String>]
+ -WorkspaceName <String> [-SubscriptionId <String>] -Location <String> [-CodeId <String>]
  [-CodeScoringScript <String>] [-ComputeId <String>] [-Description <String>]
  [-EndpointDeploymentProperties <Hashtable>] [-EnvironmentId <String>] [-EnvironmentVariable <Hashtable>]
  [-ErrorThreshold <Int32>] [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssigned <Hashtable>]
@@ -23,7 +23,8 @@ New-AzMLWorkspaceBatchDeployment -EndpointName <String> -Name <String> -Resource
  [-OutputFileName <String>] [-ResourceInstanceCount <Int32>] [-ResourceInstanceType <String>]
  [-ResourceProperty <Hashtable>] [-RetryMax <Int32>] [-RetryTimeout <TimeSpan>] [-SkuCapacity <Int32>]
  [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -113,7 +114,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -401,6 +403,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -658,7 +675,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

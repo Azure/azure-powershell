@@ -20,7 +20,7 @@ New-AzNetworkFabricNni -Name <String> -NetworkFabricName <String> -ResourceGroup
  [-IngressAclId <String>] [-IsManagementType <String>] [-Layer2Configuration <ILayer2Configuration>]
  [-NniType <String>] [-NpbStaticRouteConfiguration <INpbStaticRouteConfiguration>]
  [-OptionBLayer3Configuration <INetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -28,14 +28,14 @@ New-AzNetworkFabricNni -Name <String> -NetworkFabricName <String> -ResourceGroup
 ```
 New-AzNetworkFabricNni -Name <String> -NetworkFabricName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzNetworkFabricNni -Name <String> -NetworkFabricName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityNetworkFabricExpanded
@@ -46,7 +46,7 @@ New-AzNetworkFabricNni -Name <String> -NetworkFabricInputObject <IManagedNetwork
  [-Layer2Configuration <ILayer2Configuration>] [-NniType <String>]
  [-NpbStaticRouteConfiguration <INpbStaticRouteConfiguration>]
  [-OptionBLayer3Configuration <INetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -54,7 +54,7 @@ New-AzNetworkFabricNni -Name <String> -NetworkFabricInputObject <IManagedNetwork
 ```
 New-AzNetworkFabricNni -Name <String> -NetworkFabricInputObject <IManagedNetworkFabricIdentity>
  -Body <INetworkToNetworkInterconnect> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -363,6 +363,21 @@ Common properties for Layer3Configuration.
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.INetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration
 Parameter Sets: CreateExpanded, CreateViaIdentityNetworkFabricExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

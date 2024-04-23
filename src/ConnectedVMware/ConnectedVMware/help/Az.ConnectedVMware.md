@@ -57,7 +57,7 @@ Create resourcePool.
 Create vCenter.
 
 ### [New-AzConnectedVMwareVM](New-AzConnectedVMwareVM.md)
-The operation to Create a virtual machine instance.
+The operation to create or update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 
 ### [New-AzConnectedVMwareVMGuestAgent](New-AzConnectedVMwareVMGuestAgent.md)

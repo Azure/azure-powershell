@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* test
 * Introduced secrets detection feature to safeguard sensitive data.
 * Migrated SDK generation from autorest csharp to autorest powershell.
 

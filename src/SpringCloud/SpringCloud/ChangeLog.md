@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* test
 
 ## Version 0.3.1
 * Added rename notification for Az.SpringCloud module.

@@ -11,15 +11,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security.Cmdlets
     using System;
 
     /// <summary>
-    /// Create a security connector. If a security connector is already Created and a subsequent request is issued for the same
-    /// security connector id, then it will be Created.
+    /// Create a security connector. If a security connector is already created and a subsequent request is issued for the same
+    /// security connector id, then it will be updated.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzSecurityConnector_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityConnector))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Description(@"Create a security connector. If a security connector is already Created and a subsequent request is issued for the same security connector id, then it will be Created.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Description(@"Create a security connector. If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Security.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Security.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}", ApiVersion = "2023-10-01-preview")]
     public partial class NewAzSecurityConnector_CreateExpanded : global::System.Management.Automation.PSCmdlet,

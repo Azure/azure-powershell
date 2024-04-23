@@ -15,7 +15,7 @@ Execute Insights for an entity.
 ```
 Get-AzSentinelEntityInsight -EntityId <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String[]>] -EndTime <DateTime> -StartTime <DateTime> [-AddDefaultExtendedTimeRange]
- [-InsightQueryId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-InsightQueryId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -131,6 +131,21 @@ If empty, default value is all insights of this entity
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

@@ -14,13 +14,13 @@ Get information about a Automanage best practice
 
 ### List (Default)
 ```
-Get-AzAutomanageBestPractice [-DefaultProfile <PSObject>]
+Get-AzAutomanageBestPractice [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzAutomanageBestPractice -Name <String> [-DefaultProfile <PSObject>]
+Get-AzAutomanageBestPractice -Name <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -83,6 +83,21 @@ Parameter Sets: Get
 Aliases: BestPracticeName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

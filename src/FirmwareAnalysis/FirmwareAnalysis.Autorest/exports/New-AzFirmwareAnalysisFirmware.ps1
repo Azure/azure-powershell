@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to Create a firmware.
+The operation to create a firmware.
 .Description
-The operation to Create a firmware.
+The operation to create a firmware.
 .Example
 New-AzFirmwareAnalysisFirmware -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -Description description -FileSize 1  -FileName fileName -Vendor vendor -Model model -Version version
 .Example

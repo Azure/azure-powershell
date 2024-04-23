@@ -25,7 +25,7 @@ Update-AzImportExport -Name <String> -ResourceGroupName <String> [-SubscriptionI
  [-ReturnAddressStateOrProvince <String>] [-ReturnAddressStreetAddress1 <String>]
  [-ReturnAddressStreetAddress2 <String>] [-ReturnShippingCarrierAccountNumber <String>]
  [-ReturnShippingCarrierName <String>] [-State <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -38,7 +38,7 @@ Update-AzImportExport -InputObject <IImportExportIdentity> [-AcceptLanguage <Str
  [-ReturnAddressRecipientName <String>] [-ReturnAddressStateOrProvince <String>]
  [-ReturnAddressStreetAddress1 <String>] [-ReturnAddressStreetAddress2 <String>]
  [-ReturnShippingCarrierAccountNumber <String>] [-ReturnShippingCarrierName <String>] [-State <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -255,6 +255,21 @@ Parameter Sets: UpdateExpanded
 Aliases: JobName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

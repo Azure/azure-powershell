@@ -15,14 +15,14 @@ Regenerate specified Key of a Spatial Anchors Account
 ### RegenerateExpanded (Default)
 ```
 New-AzMixedRealitySpatialAnchorsAccountKey -AccountName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Serial <Int32>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String>] [-Serial <Int32>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RegenerateViaIdentityExpanded
 ```
 New-AzMixedRealitySpatialAnchorsAccountKey -InputObject <IMixedRealityIdentity> [-Serial <Int32>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -89,6 +89,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

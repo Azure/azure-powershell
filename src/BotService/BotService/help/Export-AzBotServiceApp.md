@@ -14,7 +14,7 @@ Returns a BotService specified by the parameters.
 
 ```
 Export-AzBotServiceApp [-ResourceGroupName <String>] [-Name <String>] [-SavePath <String>]
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -64,6 +64,21 @@ The name of the Bot resource.
 Type: System.String
 Parameter Sets: (All)
 Aliases: BotName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

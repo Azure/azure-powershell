@@ -16,7 +16,7 @@ Creates or updates an IoT Connector FHIR destination resource with the specified
 New-AzHealthcareIotConnectorFhirDestination -FhirDestinationName <String> -IotConnectorName <String>
  -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>] -FhirServiceResourceId <String>
  -ResourceIdentityResolutionType <IotIdentityResolutionType> -FhirMappingContent <Hashtable> -Location <String>
- [-Etag <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Etag <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -168,6 +168,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

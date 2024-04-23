@@ -1767,9 +1767,9 @@ end {
 
 <#
 .Synopsis
-The operation to Create a firmware.
+The operation to create a firmware.
 .Description
-The operation to Create a firmware.
+The operation to create a firmware.
 .Example
 New-AzFirmwareAnalysisFirmware -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -Description description -FileSize 1  -FileName fileName -Vendor vendor -Model model -Version version
 .Example
@@ -2252,9 +2252,9 @@ end {
 
 <#
 .Synopsis
-The operation to Create a firmware analysis workspace.
+The operation to create or update a firmware analysis workspace.
 .Description
-The operation to Create a firmware analysis workspace.
+The operation to create or update a firmware analysis workspace.
 .Example
 New-AzFirmwareAnalysisWorkspace -ResourceGroupName resourceGroupName -Name name -Location location
 
@@ -2866,9 +2866,9 @@ end {
 
 <#
 .Synopsis
-The operation to Update firmware.
+The operation to update firmware.
 .Description
-The operation to Update firmware.
+The operation to update firmware.
 .Example
 Update-AzFirmwareAnalysisFirmware -FirmwareId firmwareId -ResourceGroupName resourceGroupName -WorkspaceName workspaceName -Description description -FileSize 1  -FileName fileName -Vendor vendor -Model model -Version version
 
@@ -3138,9 +3138,9 @@ end {
 
 <#
 .Synopsis
-The operation to Update a firmware analysis workspaces.
+The operation to update a firmware analysis workspaces.
 .Description
-The operation to Update a firmware analysis workspaces.
+The operation to update a firmware analysis workspaces.
 .Example
 Update-AzFirmwareAnalysisWorkspace -ResourceGroupName resourceGroupName -Name workspaceName
 

@@ -19,7 +19,7 @@ Update-AzNginxDeployment -Name <String> -ResourceGroupName <String> [-Subscripti
  [-Location <String>] [-ScalingPropertyCapacity <Int32>] [-SkuName <String>]
  [-StorageAccountContainerName <String>] [-StorageAccountName <String>] [-Tag <Hashtable>]
  [-UserProfilePreferredEmail <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -28,7 +28,7 @@ Update-AzNginxDeployment -InputObject <INginxIdentity> [-EnableDiagnosticsSuppor
  [-IdentityType <IdentityType>] [-IdentityUserAssignedIdentity <Hashtable>] [-Location <String>]
  [-ScalingPropertyCapacity <Int32>] [-SkuName <String>] [-StorageAccountContainerName <String>]
  [-StorageAccountName <String>] [-Tag <Hashtable>] [-UserProfilePreferredEmail <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -194,6 +194,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

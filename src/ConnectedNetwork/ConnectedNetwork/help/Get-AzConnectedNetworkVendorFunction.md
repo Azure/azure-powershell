@@ -15,19 +15,19 @@ Gets information about the specified vendor network function.
 ### List (Default)
 ```
 Get-AzConnectedNetworkVendorFunction -LocationName <String> [-SubscriptionId <String[]>] -VendorName <String>
- [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Filter <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzConnectedNetworkVendorFunction -LocationName <String> -ServiceKey <String> [-SubscriptionId <String[]>]
- -VendorName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -VendorName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzConnectedNetworkVendorFunction -InputObject <IConnectedNetworkIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,6 +149,21 @@ Parameter Sets: List, Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -21,7 +21,7 @@ New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> [-Subscrip
  [-VMProfileOsdiskSizeGb <Int32>] [-VMProfileUserAssignedIdentity <String[]>] [-VMProfileVmsize <String>]
  [-ValidateContinueDistributeOnFailure] [-ValidateSourceValidationOnly]
  [-Validator <IImageTemplateInVMValidator[]>] [-VnetConfigProxyVMSize <String>] [-VnetConfigSubnetId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -29,13 +29,13 @@ New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> [-Subscrip
 ```
 New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -JsonTemplatePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] -JsonString <String> [-AsJob] [-NoWait]
+ [-DefaultProfile <PSObject>] -JsonString <String> [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -308,6 +308,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

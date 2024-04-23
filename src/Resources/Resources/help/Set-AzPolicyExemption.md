@@ -17,7 +17,7 @@ Modifies a policy exemption.
 Set-AzPolicyExemption -Name <String> [-Scope <String>] [-DisplayName <String>] [-Description <String>]
  [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>] [-ExpiresOn <DateTime>]
  [-ClearExpiration] [-Metadata <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Set-AzPolicyExemption -Name <String> [-Scope <String>] [-DisplayName <String>] [
 Set-AzPolicyExemption -Id <String> [-DisplayName <String>] [-Description <String>]
  [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>] [-ExpiresOn <DateTime>]
  [-ClearExpiration] [-Metadata <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Set-AzPolicyExemption -Id <String> [-DisplayName <String>] [-Description <String
 Set-AzPolicyExemption [-DisplayName <String>] [-Description <String>] [-ExemptionCategory <String>]
  [-PolicyDefinitionReferenceId <String[]>] [-ExpiresOn <DateTime>] [-ClearExpiration] [-Metadata <String>]
  -InputObject <PsPolicyExemption> [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -286,6 +286,21 @@ When set, indicates that the cmdlet should use pre-release API versions when aut
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

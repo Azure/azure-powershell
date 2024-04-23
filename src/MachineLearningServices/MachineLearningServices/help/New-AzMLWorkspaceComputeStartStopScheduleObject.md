@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.MachineLearningServices-help.xml
 Module Name: Az.MachineLearningServices
-online version: https://learn.microsoft.com/powershell/module/az.machinelearningservices/new-azmlworkspacecomputestartstopscheduleobject
+online version: https://learn.microsoft.com/powershell/module/Az.MachineLearningServices/new-AzMLWorkspaceComputeStartStopScheduleObject
 schema: 2.0.0
 ---
 
@@ -15,7 +15,7 @@ Create an in-memory object for ComputeStartStopSchedule.
 ```
 New-AzMLWorkspaceComputeStartStopScheduleObject [-Action <ComputePowerAction>] [-ScheduleId <String>]
  [-ScheduleProvisioningStatus <ScheduleProvisioningState>] [-ScheduleStatus <ScheduleStatus>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,8 +47,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ScheduleId
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScheduleId
 
 ```yaml
 Type: System.String
@@ -64,7 +78,6 @@ Accept wildcard characters: False
 
 ### -ScheduleProvisioningStatus
 
-
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleProvisioningState
 Parameter Sets: (All)
@@ -78,7 +91,6 @@ Accept wildcard characters: False
 ```
 
 ### -ScheduleStatus
-
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ScheduleStatus
@@ -103,7 +115,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

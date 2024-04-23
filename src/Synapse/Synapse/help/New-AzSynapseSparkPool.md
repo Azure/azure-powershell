@@ -19,7 +19,7 @@ New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Na
  [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>] [-EnableDynamicExecutorAllocation]
  [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>] -SparkVersion <String>
  [-SparkConfiguration <PSSparkConfigurationResource>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByNameAndDisableAutoScaleParameterSet
@@ -28,7 +28,7 @@ New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Na
  -NodeCount <Int32> [-EnableIsolatedCompute] -NodeSize <String> [-EnableAutoPause]
  [-AutoPauseDelayInMinute <Int32>] [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>]
  [-MaxExecutorCount <Int32>] -SparkVersion <String> [-SparkConfiguration <PSSparkConfigurationResource>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Ta
  [-EnableAutoPause] [-AutoPauseDelayInMinute <Int32>] [-EnableDynamicExecutorAllocation]
  [-MinExecutorCount <Int32>] [-MaxExecutorCount <Int32>] -SparkVersion <String>
  [-SparkConfiguration <PSSparkConfigurationResource>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByParentObjectAndDisableAutoScaleParameterSet
@@ -48,7 +48,7 @@ New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Ta
  -NodeCount <Int32> [-EnableIsolatedCompute] -NodeSize <String> [-EnableAutoPause]
  [-AutoPauseDelayInMinute <Int32>] [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>]
  [-MaxExecutorCount <Int32>] -SparkVersion <String> [-SparkConfiguration <PSSparkConfigurationResource>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -305,6 +305,21 @@ Aliases:
 Accepted values: Small, Medium, Large, XLarge, XXLarge, XXXLarge
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

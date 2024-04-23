@@ -16,13 +16,13 @@ Get metric status
 ```
 Get-AzNewRelicMonitorMetricStatus -MonitorName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -UserEmail <String> [-AzureResourceId <String[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### GetViaIdentityExpanded
 ```
 Get-AzNewRelicMonitorMetricStatus -InputObject <INewRelicIdentity> -UserEmail <String>
- [-AzureResourceId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-AzureResourceId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -100,6 +100,21 @@ Parameter Sets: GetExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

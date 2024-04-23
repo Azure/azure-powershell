@@ -20,7 +20,7 @@ This operation is only supported for Email or SMS receivers.
 Get an action group.
 
 ### [New-AzActionGroup](New-AzActionGroup.md)
-Create a new action group or Create an existing one.
+Create a new action group or update an existing one.
 
 ### [New-AzActionGroupArmRoleReceiverObject](New-AzActionGroupArmRoleReceiverObject.md)
 Create an in-memory object for ArmRoleReceiver.
@@ -62,5 +62,5 @@ Delete an action group.
 Send test notifications to a set of provided receivers
 
 ### [Update-AzActionGroup](Update-AzActionGroup.md)
-Update a new action group or Update an existing one.
+Update a new action group or update an existing one.
 

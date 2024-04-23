@@ -16,7 +16,7 @@ Get the regions and skus that are available for RI purchase for the specified Az
 ```
 Get-AzReservationCatalog [-SubscriptionId <String[]>] [-Filter <String>] [-Location <String>]
  [-OfferId <String>] [-PlanId <String>] [-PublisherId <String>] [-ReservedResourceType <String>]
- [-Skip <Single>] [-Take <Single>] [-DefaultProfile <PSObject>]
+ [-Skip <Single>] [-Take <Single>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Get-AzReservationCatalog [-SubscriptionId <String[]>] [-Filter <String>] [-Locat
 ```
 Get-AzReservationCatalog -InputObject <IReservationsIdentity> [-Filter <String>] [-Location <String>]
  [-OfferId <String>] [-PlanId <String>] [-PublisherId <String>] [-ReservedResourceType <String>]
- [-Skip <Single>] [-Take <Single>] [-DefaultProfile <PSObject>]
+ [-Skip <Single>] [-Take <Single>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -193,6 +193,21 @@ Plan id used to get the third party products
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

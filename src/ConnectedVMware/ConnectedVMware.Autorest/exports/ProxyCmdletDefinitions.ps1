@@ -3728,10 +3728,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a virtual machine instance.
+The operation to create or update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Description
-The operation to Create a virtual machine instance.
+The operation to create or update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Example
 New-AzConnectedVMwareVM -ExtendedLocationName "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl" -ExtendedLocationType "CustomLocation" -InfrastructureProfileTemplateId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/test-vmtmpl" -InfrastructureProfileVCenterId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/test-vc" -PlacementProfileResourcePoolId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/resourcepools/test-rp" -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine"
@@ -6597,9 +6597,9 @@ end {
 
 <#
 .Synopsis
-API to Update certain properties of the cluster resource.
+API to update certain properties of the cluster resource.
 .Description
-API to Update certain properties of the cluster resource.
+API to update certain properties of the cluster resource.
 .Example
 Update-AzConnectedVMwareCluster -Name "test-cluster" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -Tag @{"cluster"="test"}
 
@@ -6825,9 +6825,9 @@ end {
 
 <#
 .Synopsis
-API to Update certain properties of the datastore resource.
+API to update certain properties of the datastore resource.
 .Description
-API to Update certain properties of the datastore resource.
+API to update certain properties of the datastore resource.
 .Example
 Update-AzConnectedVMwareDatastore -Name "test-datastore" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -Tag @{"datastore"="test"}
 
@@ -7053,9 +7053,9 @@ end {
 
 <#
 .Synopsis
-API to Update certain properties of the host resource.
+API to update certain properties of the host resource.
 .Description
-API to Update certain properties of the host resource.
+API to update certain properties of the host resource.
 .Example
 Update-AzConnectedVMwareHost -Name "test-host" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -Tag @{"host"="test"}
 
@@ -7281,9 +7281,9 @@ end {
 
 <#
 .Synopsis
-API to Update certain properties of the resourcePool resource.
+API to update certain properties of the resourcePool resource.
 .Description
-API to Update certain properties of the resourcePool resource.
+API to update certain properties of the resourcePool resource.
 .Example
 Update-AzConnectedVMwareResourcePool -Name "test-rp" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -Tag @{"rp"="test"}
 
@@ -7509,9 +7509,9 @@ end {
 
 <#
 .Synopsis
-API to Update certain properties of the vCenter resource.
+API to update certain properties of the vCenter resource.
 .Description
-API to Update certain properties of the vCenter resource.
+API to update certain properties of the vCenter resource.
 .Example
 Update-AzConnectedVMwareVCenter -Name "test-vc" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -Tag @{"vc"="test"}
 
@@ -7737,9 +7737,9 @@ end {
 
 <#
 .Synopsis
-API to Update certain properties of the virtual machine template resource.
+API to update certain properties of the virtual machine template resource.
 .Description
-API to Update certain properties of the virtual machine template resource.
+API to update certain properties of the virtual machine template resource.
 .Example
 Update-AzConnectedVMwareVMTemplate -Name "test-vmtmpl" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -Tag @{"vmtmpl"="test"}
 
@@ -7965,9 +7965,9 @@ end {
 
 <#
 .Synopsis
-The operation to Update a virtual machine instance.
+The operation to update a virtual machine instance.
 .Description
-The operation to Update a virtual machine instance.
+The operation to update a virtual machine instance.
 .Example
 Update-AzConnectedVMwareVM -MachineId "/subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/test-machine" -HardwareProfileMemorySizeMb 2048
 
@@ -8195,9 +8195,9 @@ end {
 
 <#
 .Synopsis
-API to Update certain properties of the virtual network resource.
+API to update certain properties of the virtual network resource.
 .Description
-API to Update certain properties of the virtual network resource.
+API to update certain properties of the virtual network resource.
 .Example
 Update-AzConnectedVMwareVNet -Name "test-vnet" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -Tag @{"vnet"="test"}
 

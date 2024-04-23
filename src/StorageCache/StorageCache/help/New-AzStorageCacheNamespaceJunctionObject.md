@@ -14,7 +14,7 @@ Create an in-memory object for NamespaceJunction.
 
 ```
 New-AzStorageCacheNamespaceJunctionObject [-NamespacePath <String>] [-NfsAccessPolicy <String>]
- [-NfsExport <String>] [-TargetPath <String>] [<CommonParameters>]
+ [-NfsExport <String>] [-TargetPath <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,6 +74,21 @@ NFS export where targetPath exists.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

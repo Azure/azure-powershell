@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* test
 * Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 4.2.1

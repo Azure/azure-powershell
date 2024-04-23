@@ -15,25 +15,25 @@ Checks ADU resource name availability.
 ### CheckExpanded (Default)
 ```
 Test-AzDeviceUpdateNameAvailability [-SubscriptionId <String>] [-Name <String>] [-Type <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Check
 ```
 Test-AzDeviceUpdateNameAvailability [-SubscriptionId <String>] -Request <ICheckNameAvailabilityRequest>
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded
 ```
 Test-AzDeviceUpdateNameAvailability -InputObject <IDeviceUpdateIdentity> [-Name <String>] [-Type <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaIdentity
 ```
 Test-AzDeviceUpdateNameAvailability -InputObject <IDeviceUpdateIdentity>
- -Request <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>]
+ -Request <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -110,6 +110,21 @@ The name of the resource for which availability needs to be checked.
 Type: System.String
 Parameter Sets: CheckExpanded, CheckViaIdentityExpanded
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

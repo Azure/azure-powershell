@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to Create a firmware analysis workspace.
+The operation to create or update a firmware analysis workspace.
 .Description
-The operation to Create a firmware analysis workspace.
+The operation to create or update a firmware analysis workspace.
 .Example
 New-AzFirmwareAnalysisWorkspace -ResourceGroupName resourceGroupName -Name name -Location location
 

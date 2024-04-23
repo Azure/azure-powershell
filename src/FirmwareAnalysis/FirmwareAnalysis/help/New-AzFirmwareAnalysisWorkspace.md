@@ -8,18 +8,18 @@ schema: 2.0.0
 # New-AzFirmwareAnalysisWorkspace
 
 ## SYNOPSIS
-The operation to Create a firmware analysis workspace.
+The operation to create or update a firmware analysis workspace.
 
 ## SYNTAX
 
 ```
 New-AzFirmwareAnalysisWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -Location <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ -Location <String> [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to Create a firmware analysis workspace.
+The operation to create or update a firmware analysis workspace.
 
 ## EXAMPLES
 
@@ -88,6 +88,21 @@ Parameter Sets: (All)
 Aliases: WorkspaceName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

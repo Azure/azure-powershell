@@ -295,7 +295,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyContainerGroupPoolResource</summary>
+        /// <summary>Update a StandbyContainerGroupPoolResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyContainerGroupPoolName">Name of the standby container group pool</param>
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyContainerGroupPoolResource</summary>
+        /// <summary>Update a StandbyContainerGroupPoolResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -403,7 +403,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyContainerGroupPoolResource</summary>
+        /// <summary>Update a StandbyContainerGroupPoolResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -460,7 +460,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyContainerGroupPoolResource</summary>
+        /// <summary>Update a StandbyContainerGroupPoolResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyContainerGroupPoolName">Name of the standby container group pool</param>
@@ -508,7 +508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyContainerGroupPoolResource</summary>
+        /// <summary>Update a StandbyContainerGroupPoolResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyContainerGroupPoolName">Name of the standby container group pool</param>
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyContainerGroupPoolResource</summary>
+        /// <summary>Update a StandbyContainerGroupPoolResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyContainerGroupPoolName">Name of the standby container group pool</param>
@@ -2566,7 +2566,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyVirtualMachinePoolResource</summary>
+        /// <summary>Update a StandbyVirtualMachinePoolResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyVirtualMachinePoolName">Name of the standby virtual machine pool</param>
@@ -2615,7 +2615,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyVirtualMachinePoolResource</summary>
+        /// <summary>Update a StandbyVirtualMachinePoolResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2674,7 +2674,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyVirtualMachinePoolResource</summary>
+        /// <summary>Update a StandbyVirtualMachinePoolResource</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.StandbyPool.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2731,7 +2731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyVirtualMachinePoolResource</summary>
+        /// <summary>Update a StandbyVirtualMachinePoolResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyVirtualMachinePoolName">Name of the standby virtual machine pool</param>
@@ -2779,7 +2779,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyVirtualMachinePoolResource</summary>
+        /// <summary>Update a StandbyVirtualMachinePoolResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyVirtualMachinePoolName">Name of the standby virtual machine pool</param>
@@ -2825,7 +2825,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StandbyPool
             }
         }
 
-        /// <summary>Create a StandbyVirtualMachinePoolResource</summary>
+        /// <summary>Update a StandbyVirtualMachinePoolResource</summary>
         /// <param name="subscriptionId">The ID of the target subscription. The value must be an UUID.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="standbyVirtualMachinePoolName">Name of the standby virtual machine pool</param>

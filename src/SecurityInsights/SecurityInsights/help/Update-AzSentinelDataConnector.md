@@ -16,7 +16,7 @@ Updates the data connector.
 ```
 Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
  [-SubscriptionId <String>] [-TenantId <String>] [-Alerts <String>] [-DefaultProfile <PSObject>]
- [-AzureADorAATP] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-AzureADorAATP] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <Strin
 ```
 Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
  [-SubscriptionId <String>] [-AWSRoleArn <String>] [-Log <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-AWSCloudTrail] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-AWSCloudTrail] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateAmazonWebServicesS3
@@ -32,14 +32,14 @@ Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <Strin
 Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
  [-SubscriptionId <String>] [-AWSRoleArn <String>] [-Log <String>] [-SQSURL <String[]>]
  [-DetinationTable <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-AWSS3]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateAzureSecurityCenter
 ```
 Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
  [-SubscriptionId <String>] [-Alerts <String>] [-ASCSubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-AzureSecurityCenter] [-WhatIf] [-Confirm]
+ [-AsJob] [-NoWait] [-AzureSecurityCenter] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -47,7 +47,7 @@ Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <Strin
 ```
 Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
  [-SubscriptionId <String>] [-TenantId <String>] [-CommonDataServiceActivity <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Dynamics365] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Dynamics365] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -55,7 +55,7 @@ Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <Strin
 ```
 Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
  [-SubscriptionId <String>] [-TenantId <String>] [-Alerts <String>] [-DiscoveryLog <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-CloudAppSecurity]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-CloudAppSecurity] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -63,7 +63,7 @@ Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <Strin
 ```
 Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
  [-SubscriptionId <String>] [-TenantId <String>] [-Alerts <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-DefenderATP] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-DefenderATP] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateMicrosoftThreatIntelligence
@@ -72,14 +72,14 @@ Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <Strin
  [-SubscriptionId <String>] [-TenantId <String>] [-BingSafetyPhishinURL <String>]
  [-BingSafetyPhishingUrlLookbackPeriod <String>] [-MicrosoftEmergingThreatFeed <String>]
  [-MicrosoftEmergingThreatFeedLookbackPeriod <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-MicrosoftTI] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-MicrosoftTI] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateMicrosoftThreatProtection
 ```
 Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
  [-SubscriptionId <String>] [-TenantId <String>] [-Incident <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-MicrosoftThreatProtection] [-WhatIf] [-Confirm]
+ [-NoWait] [-MicrosoftThreatProtection] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -87,7 +87,7 @@ Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <Strin
 ```
 Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
  [-SubscriptionId <String>] [-TenantId <String>] [-Exchange <String>] [-SharePoint <String>] [-Teams <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Office365] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Office365] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -95,21 +95,21 @@ Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <Strin
 ```
 Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
  [-SubscriptionId <String>] [-TenantId <String>] [-Alerts <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-OfficeATP] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-OfficeATP] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateOfficeIRM
 ```
 Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
  [-SubscriptionId <String>] [-TenantId <String>] [-Alerts <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-OfficeIRM] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-OfficeIRM] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateThreatIntelligence
 ```
 Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Id <String>
  [-SubscriptionId <String>] [-TenantId <String>] [-Indicator <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-ThreatIntelligence] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ThreatIntelligence] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateThreatIntelligenceTaxii
@@ -118,7 +118,7 @@ Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <Strin
  [-SubscriptionId <String>] [-TenantId <String>] -APIRootURL <String> [-WorkspaceId <String>]
  [-FriendlyName <String>] [-CollectionId <String>] [-UserName <String>] [-Password <String>]
  [-TaxiiLookbackPeriod <String>] [-PollingFrequency <PollingFrequency>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-ThreatIntelligenceTaxii] [-WhatIf] [-Confirm]
+ [-NoWait] [-ThreatIntelligenceTaxii] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -126,21 +126,21 @@ Update-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <Strin
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-TenantId <String>]
  [-AWSRoleArn <String>] [-Log <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-AWSCloudTrail]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityAmazonWebServicesS3
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-TenantId <String>]
  [-AWSRoleArn <String>] [-Log <String>] [-SQSURL <String[]>] [-DetinationTable <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-AWSS3] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-AWSS3] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityAADAATP
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-TenantId <String>] [-Alerts <String>]
- [-DefaultProfile <PSObject>] [-AzureADorAATP] [-AsJob] [-NoWait]
+ [-DefaultProfile <PSObject>] [-AzureADorAATP] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -148,27 +148,27 @@ Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Tenant
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-TenantId <String>] [-Alerts <String>]
  [-ASCSubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-AzureSecurityCenter]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityDynamics365
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-TenantId <String>]
  [-CommonDataServiceActivity <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Dynamics365]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityMicrosoftCloudAppSecurity
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-TenantId <String>] [-Alerts <String>]
  [-DiscoveryLog <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-CloudAppSecurity]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-TenantId <String>] [-Alerts <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-DefenderATP] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-DefenderATP] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -177,7 +177,7 @@ Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Tenant
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-TenantId <String>]
  [-BingSafetyPhishinURL <String>] [-BingSafetyPhishingUrlLookbackPeriod <String>]
  [-MicrosoftEmergingThreatFeed <String>] [-MicrosoftEmergingThreatFeedLookbackPeriod <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-MicrosoftTI] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-MicrosoftTI] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -185,27 +185,27 @@ Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Tenant
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-TenantId <String>]
  [-Incident <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-MicrosoftThreatProtection]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityOffice365
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-TenantId <String>]
  [-Exchange <String>] [-SharePoint <String>] [-Teams <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Office365] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Office365] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityOfficeATP
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-TenantId <String>] [-Alerts <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-OfficeATP] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-OfficeATP] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityOfficeIRM
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-TenantId <String>] [-Alerts <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-OfficeIRM] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-OfficeIRM] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -213,7 +213,7 @@ Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Tenant
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-TenantId <String>]
  [-Indicator <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ThreatIntelligence]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityThreatIntelligenceTaxii
@@ -222,7 +222,7 @@ Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> [-Tenant
  [-WorkspaceId <String>] [-FriendlyName <String>] [-CollectionId <String>] [-UserName <String>]
  [-Password <String>] [-TaxiiLookbackPeriod <String>] [-PollingFrequency <PollingFrequency>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ThreatIntelligenceTaxii]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateGenericUI
@@ -234,7 +234,7 @@ Update-AzSentinelDataConnector [-UiConfigTitle <String>] [-UiConfigPublisher <St
  [-UiConfigConnectivityCriterion <ConnectivityCriteria[]>] [-AvailabilityIsPreview <Boolean>]
  [-AvailabilityStatus <Int32>] [-PermissionResourceProvider <PermissionsResourceProviderItem[]>]
  [-PermissionCustom <PermissionsCustomsItem[]>] [-UiConfigInstructionStep <InstructionSteps[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -247,7 +247,7 @@ Update-AzSentinelDataConnector [-UiConfigTitle <String>] [-UiConfigPublisher <St
  [-UiConfigConnectivityCriterion <ConnectivityCriteria[]>] [-AvailabilityIsPreview <Boolean>]
  [-AvailabilityStatus <Int32>] [-PermissionResourceProvider <PermissionsResourceProviderItem[]>]
  [-PermissionCustom <PermissionsCustomsItem[]>] [-UiConfigInstructionStep <InstructionSteps[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -834,6 +834,21 @@ Accept wildcard characters: False
 Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.PollingFrequency
 Parameter Sets: UpdateThreatIntelligenceTaxii, UpdateViaIdentityThreatIntelligenceTaxii
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

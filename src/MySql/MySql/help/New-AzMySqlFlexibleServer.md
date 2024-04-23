@@ -1,6 +1,6 @@
 ---
 external help file: Az.MySql-help.xml
-Module Name: Az.Mysql
+Module Name: Az.MySql
 online version: https://learn.microsoft.com/powershell/module/az.mysql/new-azmysqlflexibleserver
 schema: 2.0.0
 ---
@@ -19,7 +19,7 @@ New-AzMySqlFlexibleServer [-Name <String>] [-ResourceGroupName <String>] [-Subsc
  [-StorageInMb <Int32>] [-StorageAutogrow <StorageAutogrow>] [-Iops <Int32>] [-Tag <Hashtable>]
  [-Version <ServerVersion>] [-SubnetPrefix <String>] [-Subnet <String>] [-VnetPrefix <String>] [-Vnet <String>]
  [-PrivateDnsZone <String>] [-PublicAccess <String>] [-HighAvailability <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -349,6 +349,21 @@ The suffix of dns zone has to be same as that of fully qualified domain of the s
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

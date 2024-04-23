@@ -62,7 +62,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.App.Models.IContainerAppProbeHttpGetHttpHeadersItem[]]
     # Custom headers to set in the request.
     # HTTP allows repeated headers.
-    # To construct, see NOTES section for HTTPGETHTTPHEADER properties and create a hash table.
     ${HttpGetHttpHeader},
 
     [Parameter()]

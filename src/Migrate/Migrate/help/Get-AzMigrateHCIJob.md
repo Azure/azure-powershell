@@ -15,31 +15,31 @@ Retrieves the status of an Azure Migrate job.
 ### ListByName (Default)
 ```
 Get-AzMigrateHCIJob -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByName
 ```
 Get-AzMigrateHCIJob -ResourceGroupName <String> -ProjectName <String> [-SubscriptionId <String>] -Name <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetById
 ```
 Get-AzMigrateHCIJob [-SubscriptionId <String>] -ID <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetByInputObject
 ```
 Get-AzMigrateHCIJob [-SubscriptionId <String>] -InputObject <IMigrateIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListById
 ```
 Get-AzMigrateHCIJob [-SubscriptionId <String>] -ResourceGroupID <String> -ProjectID <String>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -370,6 +370,21 @@ Parameter Sets: GetByName
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

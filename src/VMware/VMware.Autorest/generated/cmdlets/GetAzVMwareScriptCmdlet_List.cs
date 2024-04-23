@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using System;
 
     /// <summary>
-    /// List script cmdlet resources available for a private cloud to List a script execution resource on a private cloud
+    /// List script cmdlet resources available for a private cloud to create a script execution resource on a private cloud
     /// </summary>
     /// <remarks>
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}/scriptCmdlets"
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzVMwareScriptCmdlet_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdlet))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"List script cmdlet resources available for a private cloud to List a script execution resource on a private cloud")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"List script cmdlet resources available for a private cloud to create a script execution resource on a private cloud")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}/scriptCmdlets", ApiVersion = "2023-03-01")]
     public partial class GetAzVMwareScriptCmdlet_List : global::System.Management.Automation.PSCmdlet,

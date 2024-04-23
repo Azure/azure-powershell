@@ -23,7 +23,7 @@ Update-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> [-Subscript
  [-SingleSignOnAadDomain <String[]>] [-SingleSignOnEnterpriseAppId <String>]
  [-SingleSignOnState <SingleSignOnStates>] [-SingleSignOnUrl <String>] [-Tag <Hashtable>]
  [-UserCountry <String>] [-UserEmailAddress <String>] [-UserFirstName <String>] [-UserLastName <String>]
- [-UserPhoneNumber <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-UserPhoneNumber <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ Update-AzDynatraceMonitor -InputObject <IDynatraceObservabilityIdentity> [-Accou
  [-SingleSignOnAadDomain <String[]>] [-SingleSignOnEnterpriseAppId <String>]
  [-SingleSignOnState <SingleSignOnStates>] [-SingleSignOnUrl <String>] [-Tag <Hashtable>]
  [-UserCountry <String>] [-UserEmailAddress <String>] [-UserFirstName <String>] [-UserLastName <String>]
- [-UserPhoneNumber <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-UserPhoneNumber <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -310,6 +310,21 @@ this could be enum
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

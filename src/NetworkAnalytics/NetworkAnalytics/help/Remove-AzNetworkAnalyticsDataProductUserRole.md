@@ -17,7 +17,7 @@ Remove role from the data product.
 Remove-AzNetworkAnalyticsDataProductUserRole -DataProductName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -DataTypeScope <String[]> -PrincipalId <String> -PrincipalType <String>
  -Role <DataProductUserRole> -RoleAssignmentId <String> -RoleId <String> -UserName <String>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Remove-AzNetworkAnalyticsDataProductUserRole -DataProductName <String> -Resource
 Remove-AzNetworkAnalyticsDataProductUserRole -InputObject <INetworkAnalyticsIdentity> -DataTypeScope <String[]>
  -PrincipalId <String> -PrincipalType <String> -Role <DataProductUserRole> -RoleAssignmentId <String>
  -RoleId <String> -UserName <String> [-DefaultProfile <PSObject>] [-PassThru]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,6 +144,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

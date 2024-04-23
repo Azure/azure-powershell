@@ -16,7 +16,7 @@ Create a in-memory object for Diagnostics Extension
 New-AzCloudServiceDiagnosticsExtension [[-Subscription] <String>] [-Name] <String>
  [-ResourceGroupName] <String> [-CloudServiceName] <String> [-DiagnosticsConfigurationPath] <String>
  [-StorageAccountName] <String> [-StorageAccountKey] <String> [[-TypeHandlerVersion] <String>]
- [[-RolesAppliedTo] <String[]>] [[-AutoUpgradeMinorVersion] <Boolean>]
+ [[-RolesAppliedTo] <String[]>] [[-AutoUpgradeMinorVersion] <Boolean>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -93,6 +93,21 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

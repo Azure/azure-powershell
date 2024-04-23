@@ -16,20 +16,20 @@ For query on a single resource, customer data is masked if the user doesn't have
 ### List2 (Default)
 ```
 Get-AzChangeAnalysis [-SubscriptionId <String[]>] -EndTime <DateTime> -StartTime <DateTime>
- [-SkipToken <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-SkipToken <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzChangeAnalysis -ResourceId <String> -EndTime <DateTime> -StartTime <DateTime> [-SkipToken <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzChangeAnalysis -ResourceGroupName <String> [-SubscriptionId <String[]>] -EndTime <DateTime>
- -StartTime <DateTime> [-SkipToken <String>] [-DefaultProfile <PSObject>]
+ -StartTime <DateTime> [-SkipToken <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -143,6 +143,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

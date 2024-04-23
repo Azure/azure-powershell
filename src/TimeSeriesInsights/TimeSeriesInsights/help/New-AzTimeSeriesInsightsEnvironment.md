@@ -17,7 +17,7 @@ Create an environment in the specified subscription and resource group.
 New-AzTimeSeriesInsightsEnvironment -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Kind <Kind> -Location <String> -Sku <SkuName> -Capacity <Int32> -DataRetentionTime <TimeSpan>
  [-PartitionKeyProperty <ITimeSeriesIdProperty[]>] [-StorageLimitExceededBehavior <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ New-AzTimeSeriesInsightsEnvironment -Name <String> -ResourceGroupName <String> [
  -Kind <Kind> -Location <String> -Sku <SkuName> [-Tag <Hashtable>]
  -TimeSeriesIdProperty <ITimeSeriesIdProperty[]> -StorageAccountName <String> -StorageAccountKey <SecureString>
  [-WarmStoreDataRetentionTime <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -195,6 +195,21 @@ To construct, see NOTES section for PARTITIONKEYPROPERTY properties and create a
 Type: Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Models.Api20200515.ITimeSeriesIdProperty[]
 Parameter Sets: Gen1
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

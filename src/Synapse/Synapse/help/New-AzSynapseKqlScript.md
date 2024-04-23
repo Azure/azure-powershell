@@ -15,7 +15,7 @@ Creates or updates a KQL script in a workspace.
 ### SetByName (Default)
 ```
 New-AzSynapseKqlScript -WorkspaceName <String> [-Name <String>] -DefinitionFile <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -23,13 +23,13 @@ New-AzSynapseKqlScript -WorkspaceName <String> [-Name <String>] -DefinitionFile 
 ```
 New-AzSynapseKqlScript -WorkspaceName <String> [-Name <String>] -KustoPoolName <String>
  -KustoPoolDatabaseName <String> -DefinitionFile <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByObject
 ```
 New-AzSynapseKqlScript -WorkspaceObject <PSSynapseWorkspace> [-Name <String>] -DefinitionFile <String> [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -37,7 +37,7 @@ New-AzSynapseKqlScript -WorkspaceObject <PSSynapseWorkspace> [-Name <String>] -D
 ```
 New-AzSynapseKqlScript -WorkspaceObject <PSSynapseWorkspace> [-Name <String>] -KustoPoolName <String>
  -KustoPoolDatabaseName <String> -DefinitionFile <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,6 +151,21 @@ KQL script name.
 Type: System.String
 Parameter Sets: (All)
 Aliases: KqlScriptName
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

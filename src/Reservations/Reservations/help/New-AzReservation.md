@@ -21,14 +21,14 @@ New-AzReservation -ReservationOrderId <String> [-AppliedScope <String[]>]
  [-BillingPlan <ReservationBillingPlan>] [-BillingScopeId <String>] [-DisplayName <String>]
  [-InstanceFlexibility <InstanceFlexibility>] [-Location <String>] [-Quantity <Int32>] [-Renew]
  [-ReservedResourceType <ReservedResourceType>] [-ReviewDateTime <DateTime>] [-Sku <String>]
- [-Term <ReservationTerm>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Term <ReservationTerm>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Purchase
 ```
 New-AzReservation -ReservationOrderId <String> -Body <IPurchaseRequest> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PurchaseViaIdentityExpanded
@@ -40,14 +40,14 @@ New-AzReservation -InputObject <IReservationsIdentity> [-AppliedScope <String[]>
  [-BillingPlan <ReservationBillingPlan>] [-BillingScopeId <String>] [-DisplayName <String>]
  [-InstanceFlexibility <InstanceFlexibility>] [-Location <String>] [-Quantity <Int32>] [-Renew]
  [-ReservedResourceType <ReservedResourceType>] [-ReviewDateTime <DateTime>] [-Sku <String>]
- [-Term <ReservationTerm>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Term <ReservationTerm>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PurchaseViaIdentity
 ```
 New-AzReservation -InputObject <IReservationsIdentity> -Body <IPurchaseRequest> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -324,6 +324,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

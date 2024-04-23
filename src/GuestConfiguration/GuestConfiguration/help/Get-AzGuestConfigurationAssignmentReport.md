@@ -16,41 +16,41 @@ Get a report for the guest configuration assignment, by reportId.
 ```
 Get-AzGuestConfigurationAssignmentReport -ResourceGroupName <String> -GuestConfigurationAssignmentName <String>
  [-SubscriptionId <String[]>] -VMName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List1
 ```
 Get-AzGuestConfigurationAssignmentReport -ResourceGroupName <String> -GuestConfigurationAssignmentName <String>
  [-SubscriptionId <String[]>] -MachineName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
 Get-AzGuestConfigurationAssignmentReport -ResourceGroupName <String> -GuestConfigurationAssignmentName <String>
  -ReportId <String> [-SubscriptionId <String[]>] -MachineName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzGuestConfigurationAssignmentReport -ResourceGroupName <String> -GuestConfigurationAssignmentName <String>
  -ReportId <String> [-SubscriptionId <String[]>] -VMName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get2
 ```
 Get-AzGuestConfigurationAssignmentReport -ResourceGroupName <String> -ReportId <String>
  [-SubscriptionId <String[]>] -Name <String> -VmssName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### List2
 ```
 Get-AzGuestConfigurationAssignmentReport -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -Name <String> -VmssName <String> [-DefaultProfile <PSObject>]
+ -Name <String> -VmssName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
  [<CommonParameters>]
 ```
 
@@ -130,6 +130,21 @@ Parameter Sets: Get2, List2
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

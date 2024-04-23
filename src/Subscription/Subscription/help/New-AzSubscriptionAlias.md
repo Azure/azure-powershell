@@ -15,7 +15,7 @@ Create Alias Subscription.
 ### CreateExpanded (Default)
 ```
 New-AzSubscriptionAlias -AliasName <String> -SubscriptionId <String> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ New-AzSubscriptionAlias -AliasName <String> -SubscriptionId <String> [-Tag <Hash
 New-AzSubscriptionAlias -AliasName <String> [-Tag <Hashtable>] -BillingScope <String>
  -SubscriptionName <String> -Workload <Workload> [-ManagementGroupId <String>] [-ResellerId <String>]
  [-SubscriptionOwnerId <String>] [-SubscriptionTenantId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,6 +144,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
