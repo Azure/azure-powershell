@@ -16,14 +16,14 @@ Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 ```
 New-AzServiceBusKey -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -KeyType <KeyType> [-KeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### NewExpandedTopic
 ```
 New-AzServiceBusKey -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -TopicName <String> -KeyType <KeyType> [-KeyValue <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -31,7 +31,7 @@ New-AzServiceBusKey -Name <String> -NamespaceName <String> -ResourceGroupName <S
 ```
 New-AzServiceBusKey -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -QueueName <String> -KeyType <KeyType> [-KeyValue <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -184,6 +184,21 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
