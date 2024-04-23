@@ -23,7 +23,7 @@ Create an in-memory object for SqlServerDatabaseCredentialScan.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSqlServerDatabaseCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewSqlServerDatabaseCredentialScanObject
 #>
 function New-AzPurviewSqlServerDatabaseCredentialScanObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SqlServerDatabaseCredentialScan')]

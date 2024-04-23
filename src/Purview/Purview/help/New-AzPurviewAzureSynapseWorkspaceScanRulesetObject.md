@@ -15,7 +15,7 @@ Create an in-memory object for AzureSynapseWorkspaceScanRuleset.
 ```
 New-AzPurviewAzureSynapseWorkspaceScanRulesetObject -Kind <DataSourceType> [-Description <String>]
  [-ExcludedSystemClassification <String[]>] [-IncludedCustomClassificationRuleName <String[]>]
- [-Type <ScanRulesetType>] [<CommonParameters>]
+ [-Type <ScanRulesetType>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -102,6 +102,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Type
 
 ```yaml
@@ -126,7 +141,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceScanRuleset
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
