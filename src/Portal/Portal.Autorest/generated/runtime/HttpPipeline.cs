@@ -47,7 +47,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Portal.Runtime
     {
         /// <summary>
         /// This translates a generic-defined delegate for a listener into one that fits our ISendAsync pattern.
-        /// (Provided to support out-of-module delgation for Azure Cmdlets)
+        /// (Provided to support out-of-module delegation for Azure Cmdlets)
         /// </summary>
         /// <param name="step">The Pipeline Step as a delegate</param>
         public SendAsyncFactory(SendAsyncStepDelegate step) => this.implementation = (request, listener, next) => 
