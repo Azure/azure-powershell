@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HealthcareApis-help.xml
 Module Name: Az.HealthcareApis
 online version: https://learn.microsoft.com/powershell/module/az.healthcareapis/new-azhealthcareapisworkspace
 schema: 2.0.0
@@ -13,9 +13,10 @@ Creates or updates a workspace resource with the specified parameters.
 ## SYNTAX
 
 ```
-New-AzHealthcareApisWorkspace -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Etag <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzHealthcareApisWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-Etag <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -128,6 +129,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicNetworkAccess
 Control permission for data plane traffic coming from public networks while private endpoint is enabled.
 
@@ -230,7 +246,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

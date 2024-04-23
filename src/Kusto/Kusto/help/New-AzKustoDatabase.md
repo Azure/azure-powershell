@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Kusto-help.xml
 Module Name: Az.Kusto
 online version: https://learn.microsoft.com/powershell/module/az.kusto/new-azkustodatabase
 schema: 2.0.0
@@ -13,11 +13,11 @@ Creates or updates a database.
 ## SYNTAX
 
 ```
-New-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String> -Kind <Kind>
- [-SubscriptionId <String>] [-CallerRole <CallerRole>] [-HotCachePeriod <TimeSpan>]
+New-AzKustoDatabase -ClusterName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-CallerRole <CallerRole>] -Kind <Kind> [-HotCachePeriod <TimeSpan>] [-SoftDeletePeriod <TimeSpan>]
  [-KeyVaultPropertyKeyName <String>] [-KeyVaultPropertyKeyVaultUri <String>]
  [-KeyVaultPropertyKeyVersion <String>] [-KeyVaultPropertyUserIdentity <String>] [-Location <String>]
- [-SoftDeletePeriod <TimeSpan>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -237,6 +237,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group containing the Kusto cluster.
 
@@ -326,4 +341,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -15,21 +15,21 @@ Check the availability of the resource name.
 ### CheckExpanded (Default)
 ```
 Test-AzHdInsightOnAksLocationNameAvailability -Location <String> [-SubscriptionId <String>] [-Name <String>]
- [-Type <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-Type <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CheckViaJsonString
 ```
 Test-AzHdInsightOnAksLocationNameAvailability -Location <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### CheckViaJsonFilePath
 ```
 Test-AzHdInsightOnAksLocationNameAvailability -Location <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -37,13 +37,13 @@ Test-AzHdInsightOnAksLocationNameAvailability -Location <String> [-SubscriptionI
 ```
 Test-AzHdInsightOnAksLocationNameAvailability -Location <String> [-SubscriptionId <String>]
  -NameAvailabilityParameter <INameAvailabilityParameters> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded
 ```
 Test-AzHdInsightOnAksLocationNameAvailability -InputObject <IHdInsightOnAksIdentity> [-Name <String>]
- [-Type <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [-Type <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -51,7 +51,7 @@ Test-AzHdInsightOnAksLocationNameAvailability -InputObject <IHdInsightOnAksIdent
 ```
 Test-AzHdInsightOnAksLocationNameAvailability -InputObject <IHdInsightOnAksIdentity>
  -NameAvailabilityParameter <INameAvailabilityParameters> [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -179,6 +179,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
