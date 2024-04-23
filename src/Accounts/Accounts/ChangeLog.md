@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Logging in by Web Account Manager (WAM) will be enabled by default when login interactively at 5/21.
 * Fixed secrets detection issues.
 
 ## Version 2.17.0
