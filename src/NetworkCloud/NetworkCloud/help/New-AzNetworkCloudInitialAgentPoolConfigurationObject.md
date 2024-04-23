@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
 online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudInitialAgentPoolConfigurationObject
 schema: 2.0.0
@@ -21,7 +21,7 @@ New-AzNetworkCloudInitialAgentPoolConfigurationObject -Count <Int64> -Mode <Agen
  [-AttachedNetworkConfigurationL3Network <IL3NetworkAttachmentConfiguration[]>]
  [-AttachedNetworkConfigurationTrunkedNetwork <ITrunkedNetworkAttachmentConfiguration[]>]
  [-AvailabilityZone <String[]>] [-Label <IKubernetesLabel[]>] [-Taint <IKubernetesLabel[]>]
- [-UpgradeSettingMaxSurge <String>] [<CommonParameters>]
+ [-UpgradeSettingMaxSurge <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -228,6 +228,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Taint
 The taints applied to the nodes in this agent pool.
 To construct, see NOTES section for TAINT properties and create a hash table.
@@ -291,36 +306,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ADMINISTRATORCONFIGURATIONSSHPUBLICKEY <ISshPublicKey[]>`: The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.
-  - `KeyData <String>`: The SSH public key data.
-
-`ATTACHEDNETWORKCONFIGURATIONL2NETWORK <IL2NetworkAttachmentConfiguration[]>`: The list of Layer 2 Networks and related configuration for attachment.
-  - `NetworkId <String>`: The resource ID of the network that is being configured for attachment.
-  - `[PluginType <KubernetesPluginType?>]`: The indicator of how this network will be utilized by the Kubernetes cluster.
-
-`ATTACHEDNETWORKCONFIGURATIONL3NETWORK <IL3NetworkAttachmentConfiguration[]>`: The list of Layer 3 Networks and related configuration for attachment.
-  - `NetworkId <String>`: The resource ID of the network that is being configured for attachment.
-  - `[IpamEnabled <L3NetworkConfigurationIpamEnabled?>]`: The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
-  - `[PluginType <KubernetesPluginType?>]`: The indicator of how this network will be utilized by the Kubernetes cluster.
-
-`ATTACHEDNETWORKCONFIGURATIONTRUNKEDNETWORK <ITrunkedNetworkAttachmentConfiguration[]>`: The list of Trunked Networks and related configuration for attachment.
-  - `NetworkId <String>`: The resource ID of the network that is being configured for attachment.
-  - `[PluginType <KubernetesPluginType?>]`: The indicator of how this network will be utilized by the Kubernetes cluster.
-
-`LABEL <IKubernetesLabel[]>`: The labels applied to the nodes in this agent pool.
-  - `Key <String>`: The name of the label or taint.
-  - `Value <String>`: The value of the label or taint.
-
-`TAINT <IKubernetesLabel[]>`: The taints applied to the nodes in this agent pool.
-  - `Key <String>`: The name of the label or taint.
-  - `Value <String>`: The value of the label or taint.
-
 ## RELATED LINKS
-

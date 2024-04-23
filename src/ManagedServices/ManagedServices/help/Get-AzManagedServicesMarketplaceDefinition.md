@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ManagedServices-help.xml
 Module Name: Az.ManagedServices
 online version: https://learn.microsoft.com/powershell/module/az.managedservices/get-azmanagedservicesmarketplacedefinition
 schema: 2.0.0
@@ -15,31 +15,31 @@ Get the marketplace registration definition for the marketplace identifier.
 ### ListWithScope (Default)
 ```
 Get-AzManagedServicesMarketplaceDefinition [-Scope <String>] [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzManagedServicesMarketplaceDefinition -InputObject <IManagedServicesIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetWithoutScope
-```
-Get-AzManagedServicesMarketplaceDefinition -MarketplaceIdentifier <String> -Tenant
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetWithScope
 ```
-Get-AzManagedServicesMarketplaceDefinition -MarketplaceIdentifier <String> [-Scope <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzManagedServicesMarketplaceDefinition [-Scope <String>] -MarketplaceIdentifier <String>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetWithoutScope
+```
+Get-AzManagedServicesMarketplaceDefinition -MarketplaceIdentifier <String> [-Tenant]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzManagedServicesMarketplaceDefinition -InputObject <IManagedServicesIdentity> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ListWithoutScope
 ```
-Get-AzManagedServicesMarketplaceDefinition -Tenant [-Filter <String>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzManagedServicesMarketplaceDefinition [-Filter <String>] [-Tenant] [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +84,7 @@ The filter query parameter to filter marketplace registration definitions by pla
 
 ```yaml
 Type: System.String
-Parameter Sets: ListWithoutScope, ListWithScope
+Parameter Sets: ListWithScope, ListWithoutScope
 Aliases:
 
 Required: False
@@ -116,10 +116,25 @@ Expected formats: {publisher}.{product[-preview]}.{planName}.{version} or {publi
 
 ```yaml
 Type: System.String
-Parameter Sets: GetWithoutScope, GetWithScope
+Parameter Sets: GetWithScope, GetWithoutScope
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -131,7 +146,7 @@ The scope of the resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetWithScope, ListWithScope
+Parameter Sets: ListWithScope, GetWithScope
 Aliases:
 
 Required: False
@@ -169,19 +184,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IManagedServicesIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[MarketplaceIdentifier <String>]`: The Azure Marketplace identifier. Expected formats: {publisher}.{product[-preview]}.{planName}.{version} or {publisher}.{product[-preview]}.{planName} or {publisher}.{product[-preview]} or {publisher}).
-  - `[RegistrationAssignmentId <String>]`: The GUID of the registration assignment.
-  - `[RegistrationDefinitionId <String>]`: The GUID of the registration definition.
-  - `[Scope <String>]`: The scope of the resource.
-
 ## RELATED LINKS
-

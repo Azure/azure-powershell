@@ -16,7 +16,7 @@ Upsert an offer with multiple context details.
 ```
 New-AzMarketplacePrivateStoreCollectionOfferMultiContext -OfferId <String> -CollectionId <String>
  -PrivateStoreId <String> [-ETag <String>] [-PlansContext <IContextAndPlansDetails[]>]
- [-PropertiesOfferId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-PropertiesOfferId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ New-AzMarketplacePrivateStoreCollectionOfferMultiContext -OfferId <String> -Coll
 ```
 New-AzMarketplacePrivateStoreCollectionOfferMultiContext -OfferId <String> -CollectionId <String>
  -PrivateStoreInputObject <IMarketplaceIdentity> [-ETag <String>] [-PlansContext <IContextAndPlansDetails[]>]
- [-PropertiesOfferId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-PropertiesOfferId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ New-AzMarketplacePrivateStoreCollectionOfferMultiContext -OfferId <String> -Coll
 ```
 New-AzMarketplacePrivateStoreCollectionOfferMultiContext -OfferId <String>
  -CollectionInputObject <IMarketplaceIdentity> [-ETag <String>] [-PlansContext <IContextAndPlansDetails[]>]
- [-PropertiesOfferId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-PropertiesOfferId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -40,7 +40,7 @@ New-AzMarketplacePrivateStoreCollectionOfferMultiContext -OfferId <String>
 ```
 New-AzMarketplacePrivateStoreCollectionOfferMultiContext -OfferId <String> -InputObject <IMarketplaceIdentity>
  [-ETag <String>] [-PlansContext <IContextAndPlansDetails[]>] [-DefaultProfile <PSObject>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -202,6 +202,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

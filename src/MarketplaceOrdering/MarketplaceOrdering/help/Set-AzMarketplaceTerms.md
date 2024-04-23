@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MarketplaceOrdering-help.xml
 Module Name: Az.MarketplaceOrdering
 online version: https://learn.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms
 schema: 2.0.0
@@ -14,26 +14,28 @@ Accept or reject terms for a given publisher id(Publisher), offer id(Product) an
 
 ### TermsAccept (Default)
 ```
-Set-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> -Accept [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### TermsAcceptViaIdentity
-```
-Set-AzMarketplaceTerms -Accept -Terms <IAgreementTerms> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Set-AzMarketplaceTerms -Product <String> -Name <String> -Publisher <String> [-SubscriptionId <String>]
+ [-Accept] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### TermsReject
 ```
-Set-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> -Reject [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzMarketplaceTerms -Product <String> -Name <String> -Publisher <String> [-SubscriptionId <String>]
+ [-Reject] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### TermsAcceptViaIdentity
+```
+Set-AzMarketplaceTerms [-Accept] -Terms <IAgreementTerms> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TermsRejectViaIdentity
 ```
-Set-AzMarketplaceTerms -Reject -Terms <IAgreementTerms> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzMarketplaceTerms [-Reject] -Terms <IAgreementTerms> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -155,6 +157,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Publisher
 Publisher identifier string of image being deployed.
 
@@ -193,7 +210,7 @@ Type: System.String
 Parameter Sets: TermsAccept, TermsReject
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
@@ -261,29 +278,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`TERMS <IAgreementTerms>`: Terms properties for provided Publisher/Offer/Plan tuple To construct, see NOTES section for PARAMETER properties and create a hash table.
-  - `[Accepted <Boolean?>]`: If any version of the terms have been accepted, otherwise false.
-  - `[LicenseTextLink <String>]`: Link to HTML with Microsoft and Publisher terms.
-  - `[MarketplaceTermsLink <String>]`: Link to HTML with Azure Marketplace terms.
-  - `[Plan <String>]`: Plan identifier string of image being deployed.
-  - `[PrivacyPolicyLink <String>]`: Link to the privacy policy of the publisher.
-  - `[Product <String>]`: Offer identifier string of image being deployed.
-  - `[Publisher <String>]`: Publisher identifier string of image being deployed.
-  - `[RetrieveDatetime <DateTime?>]`: Date and time in UTC of when the terms were accepted. This is empty if Accepted is false.
-  - `[Signature <String>]`: Terms signature.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-
 ## RELATED LINKS
-
