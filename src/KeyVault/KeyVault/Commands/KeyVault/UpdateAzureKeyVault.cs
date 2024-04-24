@@ -52,9 +52,8 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false, HelpMessage = "Enable the purge protection functionality for this key vault. Once enabled it cannot be disabled. It requires soft-delete to be turned on.")]
         public SwitchParameter EnablePurgeProtection { get; set; }
 
-        [CmdletParameterBreakingChangeWithVersion(nameof(EnableRbacAuthorization), "12.0.0", "6.0.0", ReplaceMentCmdletParameterName = "DisableRbacAuthorization", ChangeDescription = "RBAC will be enabled by default during the process of key vault creation. To disable RBAC authorization, please use parameter 'DisableRbacAuthorization'.")]
-        [Parameter(Mandatory = false, HelpMessage = "Enable or disable this key vault to authorize data actions by Role Based Access Control (RBAC).")]
-        public bool? EnableRbacAuthorization { get; set; }
+        [Parameter(Mandatory = false, HelpMessage = "Disable or enable this key vault to authorize data actions by Role Based Access Control (RBAC).")]
+        public bool? DisableRbacAuthorization { get; set; }
 
         [Parameter(Mandatory = false,
             HelpMessage = "Specifies whether the vault will accept traffic from public internet. If set to 'disabled' all traffic except private endpoint traffic and that originates from trusted services will be blocked. This will override the set firewall rules, meaning that even if the firewall rules are present we will not honor the rules.")]
@@ -105,7 +104,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     updatedParamater: new VaultCreationOrUpdateParameters
                     {
                         EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? (true as bool?) : null,
-                        EnableRbacAuthorization = this.EnableRbacAuthorization,
+                        EnableRbacAuthorization = this.DisableRbacAuthorization == null ? null : !this.DisableRbacAuthorization,
                         PublicNetworkAccess = this.PublicNetworkAccess,
                         Tags = this.Tag
                     }
