@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Maps.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "primary".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("primary", "primary", global::System.Management.Automation.CompletionResultType.ParameterValue, "primary");
+                yield return new global::System.Management.Automation.CompletionResult("'primary'", "primary", global::System.Management.Automation.CompletionResultType.ParameterValue, "primary");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "secondary".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("secondary", "secondary", global::System.Management.Automation.CompletionResultType.ParameterValue, "secondary");
+                yield return new global::System.Management.Automation.CompletionResult("'secondary'", "secondary", global::System.Management.Automation.CompletionResultType.ParameterValue, "secondary");
             }
         }
     }

@@ -146,11 +146,11 @@ function InvokeRest($Uri, $Method, $Body, $params) {
 
     if ($params) { $fullUri += '&' + $params }
 
-    if ($body) { Write-Verbose $body }    
+    if ($body) { Write-Verbose $body }
     $result = Invoke-WebRequest -Uri $FullUri -Method $Method -Headers $authHeaders -Body $Body -UseBasicParsing
     #Write-Host $result
     $resObj = $result.Content | ConvertFrom-Json
-    
+
     # Happens with Post commands ...
     if (-not $resObj) { return $resObj }
 
@@ -178,7 +178,7 @@ function WaitProvisioning($uri, $delaySec, $retryCount, $params) {
         if (-not ($tries -lt $retryCount)) {
             throw ("$retryCount retries of retrieving $uri with ProvisioningState = Succeeded failed")
         }
-        Start-Sleep -Seconds $delaySec
+        Start-TestSleep -Seconds $delaySec
         $res = InvokeRest -Uri $uri -Method 'Get' -params $params
         $tries += 1
     }
@@ -186,7 +186,7 @@ function WaitProvisioning($uri, $delaySec, $retryCount, $params) {
 }
 
 function CheckExists($uri){
-    try {        
+    try {
         $authHeaders = GetHeaderWithAuthToken
         if ($Uri.Contains("?api-version"))
         {
@@ -194,7 +194,7 @@ function CheckExists($uri){
         } else {
             $fullUri = $uri + '?' + $ApiVersion
         }
-    
+
         $result = Invoke-WebRequest -Uri $fullUri -Method 'Get' -Headers $authHeaders -UseBasicParsing | Select-Object -Expand StatusCode
 
         if ($result -eq 200){

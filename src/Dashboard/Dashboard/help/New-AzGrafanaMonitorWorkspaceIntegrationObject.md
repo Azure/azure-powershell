@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Dashboard-help.xml
 Module Name: Az.Dashboard
 online version: https://learn.microsoft.com/powershell/module/az.dashboard/new-azgrafanamonitorworkspaceintegrationobject
 schema: 2.0.0
@@ -63,7 +63,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

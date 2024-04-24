@@ -15,7 +15,7 @@ Grants required permissions to the backup vault and other resources for configur
 ### SetPermissionsForBackup (Default)
 ```
 Set-AzDataProtectionMSIPermission -VaultResourceGroup <String> -VaultName <String> -PermissionsScope <String>
- -BackupInstance <IBackupInstanceResource> [-KeyVaultId <String>] [-ProgressAction <ActionPreference>]
+ -BackupInstance <IBackupInstanceResource> [-KeyVaultId <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -23,7 +23,7 @@ Set-AzDataProtectionMSIPermission -VaultResourceGroup <String> -VaultName <Strin
 ```
 Set-AzDataProtectionMSIPermission -VaultResourceGroup <String> -VaultName <String> -PermissionsScope <String>
  -RestoreRequest <IAzureBackupRestoreRequest> [-SubscriptionId <String>] [-DatasourceType <DatasourceTypes>]
- [-SnapshotResourceGroupId <String>] [-StorageAccountARMId <String>] [-ProgressAction <ActionPreference>]
+ [-SnapshotResourceGroupId <String>] [-StorageAccountARMId <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -106,7 +106,7 @@ Backup instance request object which will be used to configure backup
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
 Parameter Sets: SetPermissionsForBackup
 Aliases:
 
@@ -163,27 +163,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RestoreRequest
 Restore request object which will be used for restore
 To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest
 Parameter Sets: SetPermissionsForRestore
 Aliases:
 

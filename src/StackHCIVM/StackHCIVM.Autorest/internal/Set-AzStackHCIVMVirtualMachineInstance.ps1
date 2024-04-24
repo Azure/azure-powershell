@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-The operation to Create a virtual machine instance.
+The operation to Update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Description
-The operation to Create a virtual machine instance.
+The operation to Update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Example
 {{ Add code here }}

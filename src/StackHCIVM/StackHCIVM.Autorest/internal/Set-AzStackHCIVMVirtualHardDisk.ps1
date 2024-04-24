@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-The operation to Create a virtual hard disk.
+The operation to Update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 .Description
-The operation to Create a virtual hard disk.
+The operation to Update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 .Example
 {{ Add code here }}

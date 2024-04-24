@@ -1,7 +1,9 @@
 ### Example 1: Get all versions of system scanruleset available for a data source
 ```powershell
 Get-AzPurviewSystemScanRulesetVersion -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceType 'AzureStorage'
+```
 
+```output
 Id                : systemscanrulesets/AzureStorage
 Kind              : AzureStorage
 Name              : AzureStorage

@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-The operation to Create a marketplace gallery image.
+The operation to Update a marketplace gallery image.
 Please note some properties can be set only during marketplace gallery image creation.
 .Description
-The operation to Create a marketplace gallery image.
+The operation to Update a marketplace gallery image.
 Please note some properties can be set only during marketplace gallery image creation.
 .Example
 {{ Add code here }}

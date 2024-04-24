@@ -14949,7 +14949,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.510\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
+                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.518\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call
@@ -15008,7 +15008,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights
 
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // set body content
-                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.510\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
+                request.Content = null /* serializeToContent doesn't support 'application/json' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.518\node_modules\@autorest\powershell\dist\llcsharp\schema\string.js*/;
                 request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                 await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
                 // make the call

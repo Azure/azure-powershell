@@ -3,8 +3,6 @@
 Remove-AzConfidentialLedger `
   -Name test-ledger `
   -ResourceGroupName rg-000
-
-# No output
 ```
 
 Deletes the specified Confidential Ledger.

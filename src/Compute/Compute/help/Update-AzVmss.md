@@ -35,7 +35,7 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-EncryptionAtHost <Boolean>] [-UserData <String>] [-BaseRegularPriorityCount <Int32>]
  [-RegularPriorityPercentage <Int32>] [-SharedGalleryImageId <String>] [-OSImageScheduledEventEnabled]
  [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
- [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,7 +62,7 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-EncryptionAtHost <Boolean>] [-UserData <String>] [-BaseRegularPriorityCount <Int32>]
  [-RegularPriorityPercentage <Int32>] [-SharedGalleryImageId <String>] [-OSImageScheduledEventEnabled]
  [-OSImageScheduledEventNotBeforeTimeoutInMinutes <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
- [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+ [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -736,21 +736,6 @@ Specifies the plan publisher.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

@@ -15,13 +15,15 @@ Stops a data flow debug session in a workspace.
 ### StopByName (Default)
 ```
 Stop-AzSynapseDataFlowDebugSession -WorkspaceName <String> -SessionId <String> [-PassThru] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### StoptByObject
 ```
 Stop-AzSynapseDataFlowDebugSession -WorkspaceObject <PSSynapseWorkspace> -SessionId <String> [-PassThru]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

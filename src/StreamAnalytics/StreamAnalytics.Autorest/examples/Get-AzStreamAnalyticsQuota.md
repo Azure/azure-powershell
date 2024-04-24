@@ -1,7 +1,8 @@
 ### Example 1: Get information about the Streaming Unit quota for a region
 ```powershell
 Get-AzStreamAnalyticsQuota -Location 'WestCentralUS'
-
+```
+```output
 Name              Type
 ----              ----
 StreamingUnits    Microsoft.StreamAnalytics/quotas

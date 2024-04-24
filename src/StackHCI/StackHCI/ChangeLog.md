@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 2.3.1
 * Updated `Set-AzStackHCI` to use HTTP PATCH for updating cluster resource instead of HTTP PUT and to only send updated properties.

@@ -20,7 +20,8 @@ Get-AzWebAppBackupList [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <
 
 ### FromWebApp
 ```
-Get-AzWebAppBackupList [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzWebAppBackupList [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -11,8 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131
     public partial class TestLine :
         Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLine,
         Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IValidates,
-        Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IHeaderSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IValidates
     {
         /// <summary>
         /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.ITrackedResource"
@@ -75,12 +74,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131
         [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => (new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Success ? new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(this.Id).Groups["resourceGroupName"].Value : null); }
 
-        /// <summary>Backing field for <see cref="RetryAfter" /> property.</summary>
-        private int? _retryAfter;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.PropertyOrigin.Owned)]
-        public int? RetryAfter { get => this._retryAfter; set => this._retryAfter = value; }
-
         /// <summary>
         /// Azure Resource Manager metadata containing createdBy and modifiedBy information.
         /// </summary>
@@ -120,15 +113,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Origin(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.PropertyOrigin.Inherited)]
         public string Type { get => ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api30.IResourceInternal)__trackedResource).Type; }
-
-        /// <param name="headers"></param>
-        void Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
-        {
-            if (headers.TryGetValues("Retry-After", out var __retryAfterHeader0))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131.ITestLineInternal)this).RetryAfter = System.Linq.Enumerable.FirstOrDefault(__retryAfterHeader0) is string __headerRetryAfterHeader0 ? int.TryParse( __headerRetryAfterHeader0, out int __headerRetryAfterHeader0Value ) ? __headerRetryAfterHeader0Value : default(int?) : default(int?);
-            }
-        }
 
         /// <summary>Creates an new <see cref="TestLine" /> instance.</summary>
         public TestLine()
@@ -178,14 +162,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.TestLinePurpose) })]
         Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.TestLinePurpose? Purpose { get; set; }
 
-        [Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"",
-        SerializedName = @"Retry-After",
-        PossibleTypes = new [] { typeof(int) })]
-        int? RetryAfter { get; set; }
-
     }
     /// A TestLine resource
     internal partial interface ITestLineInternal :
@@ -199,8 +175,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Models.Api20230131
         Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.ProvisioningState? ProvisioningState { get; set; }
         /// <summary>Purpose of this test line, e.g. automated or manual testing</summary>
         Microsoft.Azure.PowerShell.Cmdlets.VoiceServices.Support.TestLinePurpose? Purpose { get; set; }
-
-        int? RetryAfter { get; set; }
 
     }
 }

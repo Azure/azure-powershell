@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-The operation to Create a logical network.
+The operation to Update a logical network.
 Please note some properties can be set only during logical network creation.
 .Description
-The operation to Create a logical network.
+The operation to Update a logical network.
 Please note some properties can be set only during logical network creation.
 .Example
 {{ Add code here }}

@@ -340,22 +340,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PARAMETER <IImportImageParameters>`: .
-  - `SourceImage <String>`: Repository name of the source image.         Specify an image by repository ('hello-world'). This will use the 'latest' tag.         Specify an image by tag ('hello-world:latest').         Specify an image by sha256-based manifest digest ('hello-world@sha256:abc123').
-  - `[CredentialsPassword <String>]`: The password used to authenticate with the source registry.
-  - `[CredentialsUsername <String>]`: The username to authenticate with the source registry.
-  - `[Mode <ImportMode?>]`: When Force, any existing target tags will be overwritten. When NoForce, any existing target tags will fail the operation before any copying begins.
-  - `[SourceRegistryUri <String>]`: The address of the source registry (e.g. 'mcr.microsoft.com').
-  - `[SourceResourceId <String>]`: The resource identifier of the source Azure Container Registry.
-  - `[TargetTag <String[]>]`: List of strings of the form repo[:tag]. When tag is omitted the source will be used (or 'latest' if source tag is also omitted).
-  - `[UntaggedTargetRepository <String[]>]`: List of strings of repository names to do a manifest only copy. No tag will be created.
-
 ## RELATED LINKS
 

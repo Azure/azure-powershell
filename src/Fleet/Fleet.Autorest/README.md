@@ -33,20 +33,12 @@ require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/containerservice/resource-manager/Microsoft.ContainerService/fleet/readme.md
-
+  
 title: Fleet
 module-version: 0.1.0
 subject-prefix: $(service-name)
-disable-transform-identity-type: true
-flatten-userassignedidentity: false
 
 directive:
-# #   # Following is two common directive which are normally required in all the RPs
-# #   # 1. Remove the unexpanded parameter set
-# #   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
-  - where:
-      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
-    remove: true
   # Fix required parameter missing
   - from: swagger-document
     where: $.definitions.FleetMember
@@ -74,15 +66,17 @@ directive:
   - from: swagger-document
     where: $.definitions.NodeImageSelection.properties.type
     transform: $['x-ms-mutability'] = ["read", "update", "create"]
+# #   # Following is two common directive which are normally required in all the RPs
+# #   # 1. Remove the unexpanded parameter set
+# #   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
+  - where:
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
+    remove: true
   # Hide set cmdlet
   - where:
       verb: Set
     remove: true
-  # Rename IdentityUserAssignedIdentity, UpdateStrategyName
-  - where:
-      parameter-name: IdentityUserAssignedIdentity
-    set:
-      parameter-name: UserAssignedIdentity
+  # Rename UpdateStrategyName
   - where:
       parameter-name: UpdateStrategyName
       subject: FleetUpdateStrategy

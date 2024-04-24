@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Providers
                         }
                         else
                         {
-                            if (!collItemType.IsValueType && !sanitizingStack.Contains(collItem) && !ExceedsMaxDepth(property))
+                            if (!collItemType.IsValueType && !sanitizingStack.Contains(collItem) && !ExceedsMaxDepth(property, telemetry))
                             {
                                 var provider = resolver.ResolveProvider(collItem.GetType());
                                 provider?.SanitizeValue(collItem, sanitizingStack, resolver, property, telemetry);

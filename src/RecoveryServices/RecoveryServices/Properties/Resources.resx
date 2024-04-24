@@ -334,4 +334,7 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="PublicNetworkAccessEnabledByDefault" xml:space="preserve">
     <value>Public Network Access is by default enabled for this vault and can be updated using Update-AzRecoveryServicesVault cmdlet</value>
   </data>
+  <data name="UnexpectedParameterToken" xml:space="preserve">
+    <value>{0} is not protected via MUA, either protect or try without the Token parameter</value>
+  </data>
 </root>

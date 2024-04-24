@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to update a virtual hard disk.
+The operation to Update a virtual hard disk.
 .Description
-The operation to update a virtual hard disk.
+The operation to Update a virtual hard disk.
 .Example
 Update-AzStackHCIVMVirtualHardDisk  -Name "testVhd" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
 

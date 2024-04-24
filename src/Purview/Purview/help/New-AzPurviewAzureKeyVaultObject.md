@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureKeyVaultObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureKeyVaultObject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Create an in-memory object for AzureKeyVault.
 ## SYNTAX
 
 ```
-New-AzPurviewAzureKeyVaultObject [-BaseUrl <String>] [-Description <String>] [<CommonParameters>]
+New-AzPurviewAzureKeyVaultObject [-BaseUrl <String>] [-Description <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -75,7 +76,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureKeyVault
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

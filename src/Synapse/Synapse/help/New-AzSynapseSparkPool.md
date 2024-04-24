@@ -28,7 +28,8 @@ New-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> -Na
  -NodeCount <Int32> [-EnableIsolatedCompute] -NodeSize <String> [-EnableAutoPause]
  [-AutoPauseDelayInMinute <Int32>] [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>]
  [-MaxExecutorCount <Int32>] -SparkVersion <String> [-SparkConfiguration <PSSparkConfigurationResource>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateByParentObjectAndEnableAutoScaleParameterSet
@@ -47,7 +48,8 @@ New-AzSynapseSparkPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Ta
  -NodeCount <Int32> [-EnableIsolatedCompute] -NodeSize <String> [-EnableAutoPause]
  [-AutoPauseDelayInMinute <Int32>] [-EnableDynamicExecutorAllocation] [-MinExecutorCount <Int32>]
  [-MaxExecutorCount <Int32>] -SparkVersion <String> [-SparkConfiguration <PSSparkConfigurationResource>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
