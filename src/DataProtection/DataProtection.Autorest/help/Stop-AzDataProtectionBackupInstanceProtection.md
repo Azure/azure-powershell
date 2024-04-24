@@ -15,14 +15,16 @@ This operation will stop protection of a backup instance and data will be held f
 ### Stop (Default)
 ```
 Stop-AzDataProtectionBackupInstanceProtection -BackupInstanceName <String> -ResourceGroupName <String>
- -VaultName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>] [-NoWait] [-PassThru]
+ [-ResourceGuardOperationRequest <String[]>] [-SubscriptionId <String>] [-Token <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### StopViaIdentity
 ```
-Stop-AzDataProtectionBackupInstanceProtection -InputObject <IDataProtectionIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzDataProtectionBackupInstanceProtection -InputObject <IDataProtectionIdentity> [-AsJob]
+ [-DefaultProfile <PSObject>] [-NoWait] [-PassThru] [-ResourceGuardOperationRequest <String[]>]
+ [-Token <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -55,7 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### -BackupInstanceName
-The name of the backup instance.
+The name of the backup instance
 
 ```yaml
 Type: System.String
@@ -70,8 +72,7 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
+
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -132,8 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+The name of the resource group where the backup vault is present
 
 ```yaml
 Type: System.String
@@ -147,9 +147,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceGuardOperationRequest
+Resource guard operation request in the format similar to \<ResourceGuard-ARMID\>/dppDisableStopProtectionRequests/default.
+Use this parameter when the operation is MUA protected.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
-The ID of the target subscription.
-The value must be an UUID.
+Subscription Id of the backup vault
 
 ```yaml
 Type: System.String
@@ -158,13 +173,29 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Token
+Parameter to authorize operations protected by cross tenant resource guard.
+Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -VaultName
-The name of the backup vault.
+The name of the backup vault
 
 ```yaml
 Type: System.String

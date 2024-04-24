@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the Orbital service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -28,9 +27,9 @@ For information on how to develop for `Az.Orbital`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 8725e0700974d2c8cba436b5696728ebc5a80f1b
+commit: 8725e0700974d2c8cba436b5696728ebc5a80f1b
 require:
-  - $(this-folder)/../readme.azure.noprofile.md 
+  - $(this-folder)/../../readme.azure.noprofile.md 
 input-file:
   - $(repo)/specification/orbital/resource-manager/Microsoft.Orbital/stable/2022-11-01/orbital.json
 
@@ -41,6 +40,10 @@ subject-prefix: $(service-name)
 resourcegroup-append: true
 identity-correction-for-post: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document 

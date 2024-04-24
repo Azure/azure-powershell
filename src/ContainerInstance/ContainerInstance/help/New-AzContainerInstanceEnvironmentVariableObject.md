@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ContainerInstance-help.xml
 Module Name: Az.ContainerInstance
 online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceEnvironmentVariableObject
 schema: 2.0.0
@@ -13,8 +13,8 @@ Create a in-memory object for EnvironmentVariable
 ## SYNTAX
 
 ```
-New-AzContainerInstanceEnvironmentVariableObject -Name <String> [-SecureValue <SecureString>]
- [-Value <String>] [<CommonParameters>]
+New-AzContainerInstanceEnvironmentVariableObject -Name <String> [-SecureValue <SecureString>] [-Value <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -106,7 +106,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

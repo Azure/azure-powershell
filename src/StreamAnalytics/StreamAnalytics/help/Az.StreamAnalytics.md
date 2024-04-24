@@ -84,10 +84,10 @@ Tests if the information provided for a function is valid.
 This can range from testing the connection to the underlying web service behind the function or making sure the function code provided is syntactically correct.
 
 ### [Test-AzStreamAnalyticsInput](Test-AzStreamAnalyticsInput.md)
-Tests whether an input’s datasource is reachable and usable by the Azure Stream Analytics service.
+Tests whether an input's datasource is reachable and usable by the Azure Stream Analytics service.
 
 ### [Test-AzStreamAnalyticsOutput](Test-AzStreamAnalyticsOutput.md)
-Tests whether an output’s datasource is reachable and usable by the Azure Stream Analytics service.
+Tests whether an output's datasource is reachable and usable by the Azure Stream Analytics service.
 
 ### [Update-AzStreamAnalyticsCluster](Update-AzStreamAnalyticsCluster.md)
 Updates an existing cluster.

@@ -6,7 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
 {
 
-    /// <summary>Argument completer implementation for SkuName.</summary>
+    /// <summary>The name of this SKU.</summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.SkuNameTypeConverter))]
     public partial struct SkuName :
         System.Management.Automation.IArgumentCompleter
@@ -28,19 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "S1".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("S1", "S1", global::System.Management.Automation.CompletionResultType.ParameterValue, "S1");
+                yield return new global::System.Management.Automation.CompletionResult("'S1'", "S1", global::System.Management.Automation.CompletionResultType.ParameterValue, "S1");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "S2".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("S2", "S2", global::System.Management.Automation.CompletionResultType.ParameterValue, "S2");
+                yield return new global::System.Management.Automation.CompletionResult("'S2'", "S2", global::System.Management.Automation.CompletionResultType.ParameterValue, "S2");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "P1".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("P1", "P1", global::System.Management.Automation.CompletionResultType.ParameterValue, "P1");
+                yield return new global::System.Management.Automation.CompletionResult("'P1'", "P1", global::System.Management.Automation.CompletionResultType.ParameterValue, "P1");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "L1".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("L1", "L1", global::System.Management.Automation.CompletionResultType.ParameterValue, "L1");
+                yield return new global::System.Management.Automation.CompletionResult("'L1'", "L1", global::System.Management.Automation.CompletionResultType.ParameterValue, "L1");
             }
         }
     }

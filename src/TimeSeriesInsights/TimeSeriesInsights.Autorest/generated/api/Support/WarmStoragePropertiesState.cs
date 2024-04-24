@@ -6,6 +6,9 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
 {
 
+    /// <summary>
+    /// This string represents the state of warm storage properties usage. It can be "Ok", "Error", "Unknown".
+    /// </summary>
     public partial struct WarmStoragePropertiesState :
         System.IEquatable<WarmStoragePropertiesState>
     {
@@ -24,7 +27,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         /// <param name="value">the value to convert to an instance of <see cref="WarmStoragePropertiesState" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new WarmStoragePropertiesState(System.Convert.ToString(value));
+            return new WarmStoragePropertiesState(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type WarmStoragePropertiesState</summary>
@@ -57,7 +60,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
             return this._value;
         }
 
-        /// <summary>Creates an instance of the <see cref="WarmStoragePropertiesState" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="WarmStoragePropertiesState"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private WarmStoragePropertiesState(string underlyingValue)
         {
@@ -81,8 +84,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         }
 
         /// <summary>Overriding != operator for enum WarmStoragePropertiesState</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.WarmStoragePropertiesState e1, Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.WarmStoragePropertiesState e2)
         {
@@ -90,8 +93,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support
         }
 
         /// <summary>Overriding == operator for enum WarmStoragePropertiesState</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.WarmStoragePropertiesState e1, Microsoft.Azure.PowerShell.Cmdlets.TimeSeriesInsights.Support.WarmStoragePropertiesState e2)
         {

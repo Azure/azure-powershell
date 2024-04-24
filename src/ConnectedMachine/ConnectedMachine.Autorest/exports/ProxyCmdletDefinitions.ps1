@@ -2483,10 +2483,10 @@ end {
 
 <#
 .Synopsis
-Creates (or updates) a Azure Arc PrivateLinkScope.
+Create (or Create) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Description
-Creates (or updates) a Azure Arc PrivateLinkScope.
+Create (or Create) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Example
 New-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Enabled" -Location $location
@@ -3739,9 +3739,9 @@ end {
 
 <#
 .Synopsis
-The operation to Create the extension.
+The operation to Update the extension.
 .Description
-The operation to Create the extension.
+The operation to Update the extension.
 .Example
 $Settings = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
 Set-AzConnectedMachineExtension -Name custom -ResourceGroupName ContosoTest -MachineName win-eastus1 -Location eastus -Publisher "Microsoft.Compute" -TypeHandlerVersion 1.10 -Settings $Settings -ExtensionType CustomScriptExtension
@@ -4101,10 +4101,10 @@ end {
 
 <#
 .Synopsis
-Creates (or updates) a Azure Arc PrivateLinkScope.
+Update (or Update) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Description
-Creates (or updates) a Azure Arc PrivateLinkScope.
+Update (or Update) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Example
 Set-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Disabled" -Tag $tags -Location $location
@@ -5028,9 +5028,9 @@ end {
 
 <#
 .Synopsis
-The operation to Create a run command.
+The operation to Update a run command.
 .Description
-The operation to Create a run command.
+The operation to Update a run command.
 .Example
 Update-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -RunCommandName "myRunCommand3" -MachineName "testmachine" -SubscriptionId "e6fe6705-4c9c-4b54-81d2-e455780e20b8" -Tag @{Tag1="tag1"; Tag2="tag2"}
 
@@ -5499,9 +5499,9 @@ end {
 
 <#
 .Synopsis
-The operation to update a hybrid machine.
+The operation to Update a hybrid machine.
 .Description
-The operation to update a hybrid machine.
+The operation to Update a hybrid machine.
 .Example
 Update-AzConnectedMachine -Name surface -ResourceGroupName rg -PrivateLinkScopeResourceId privateLinkScopeId -WindowsConfigurationPatchSettingsAssessmentMode AutomaticByOS -Tag @{"key"="value"}
 .Example
@@ -5885,11 +5885,11 @@ end {
 
 <#
 .Synopsis
-Updates an existing PrivateLinkScope's tags.
-To update other fields use the CreateOrUpdate method.
+Update an existing PrivateLinkScope's tags.
+To Update other fields use the UpdateOrUpdate method.
 .Description
-Updates an existing PrivateLinkScope's tags.
-To update other fields use the CreateOrUpdate method.
+Update an existing PrivateLinkScope's tags.
+To Update other fields use the UpdateOrUpdate method.
 .Example
 $tag = @{ "Tag1" = "Value1" }
 Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName "az-sdk-test" -ScopeName "scope-test" -Tag $tag

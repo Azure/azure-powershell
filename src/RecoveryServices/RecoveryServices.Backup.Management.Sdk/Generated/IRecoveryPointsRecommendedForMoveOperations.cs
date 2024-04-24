@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <param name='objectType'>
         /// Gets the class type.
         /// </param>
-        /// <param name='excludedRpList'>
+        /// <param name='excludedRPList'>
         /// List of Recovery Points excluded from Move
         /// </param>
         /// <param name='customHeaders'>
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecoveryPointResource>>> ListWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string objectType = default(string), System.Collections.Generic.IList<string> excludedRpList = default(System.Collections.Generic.IList<string>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecoveryPointResource>>> ListWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string objectType = default(string), System.Collections.Generic.IList<string> excludedRPList = default(System.Collections.Generic.IList<string>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Lists the recovery points recommended for move to another tier

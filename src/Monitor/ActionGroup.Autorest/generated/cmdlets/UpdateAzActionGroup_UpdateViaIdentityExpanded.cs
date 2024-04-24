@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a new action group or update an existing one.</summary>
+    /// <summary>Update a new action group or Update an existing one.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/actionGroups/{actionGroupName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzActionGroup_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IActionGroupResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Description(@"Create a new action group or update an existing one.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Description(@"Update a new action group or Update an existing one.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Generated]
     public partial class UpdateAzActionGroup_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener,
@@ -212,17 +212,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IItsmReceiver) })]
         public Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IItsmReceiver[] ItsmReceiver { get => _actionGroupBody.ItsmReceiver?.ToArray() ?? null /* fixedArrayOf */; set => _actionGroupBody.ItsmReceiver = (value != null ? new System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IItsmReceiver>(value) : null); }
 
-        /// <summary>Resource location</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource location")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Resource location",
-        SerializedName = @"location",
-        PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => _actionGroupBody.Location ?? null; set => _actionGroupBody.Location = value; }
-
         /// <summary>The list of logic app receivers that are part of this action group.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The list of logic app receivers that are part of this action group.")]
@@ -374,6 +363,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
                 // Flush buffer
                 WriteObject(_firstResponse);
             }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -519,7 +526,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
                     {
                         _actionGroupBody = await this.Client.ActionGroupsGetViaIdentityWithResult(InputObject.Id, this, Pipeline);
                         this.Update_actionGroupBody();
-                        await this.Client.ActionGroupsCreateOrUpdateViaIdentity(InputObject.Id, _actionGroupBody, onOk, onCreated, onDefault, this, Pipeline);
+                        await this.Client.ActionGroupsCreateOrUpdateViaIdentity(InputObject.Id, _actionGroupBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -538,7 +545,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
                         }
                         _actionGroupBody = await this.Client.ActionGroupsGetWithResult(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ActionGroupName ?? null, this, Pipeline);
                         this.Update_actionGroupBody();
-                        await this.Client.ActionGroupsCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ActionGroupName ?? null, _actionGroupBody, onOk, onCreated, onDefault, this, Pipeline);
+                        await this.Client.ActionGroupsCreateOrUpdate(InputObject.SubscriptionId ?? null, InputObject.ResourceGroupName ?? null, InputObject.ActionGroupName ?? null, _actionGroupBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
@@ -573,10 +580,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
 
         private void Update_actionGroupBody()
         {
-            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Location")))
-            {
-                this.Location = (string)(this.MyInvocation?.BoundParameters["Location"]);
-            }
             if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
             {
                 this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IAzureResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
@@ -633,6 +636,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Cmdlets
             {
                 this.EventHubReceiver = (Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Models.IEventHubReceiver[])(this.MyInvocation?.BoundParameters["EventHubReceiver"]);
             }
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActionGroup.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>

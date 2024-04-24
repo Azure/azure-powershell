@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNginxCertificate
 
 ## SYNOPSIS
-Get a certificate of given Nginx deployment
+Get a certificate of given NGINX deployment
 
 ## SYNTAX
 
@@ -21,16 +21,18 @@ Get-AzNginxCertificate -DeploymentName <String> -ResourceGroupName <String> [-Su
 ### Get
 ```
 Get-AzNginxCertificate -DeploymentName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzNginxCertificate -InputObject <INginxIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzNginxCertificate -InputObject <INginxIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a certificate of given Nginx deployment
+Get a certificate of given NGINX deployment
 
 ## EXAMPLES
 
@@ -64,7 +66,8 @@ This command gets a certificate.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -79,7 +82,7 @@ Accept wildcard characters: False
 ```
 
 ### -DeploymentName
-The name of targeted Nginx deployment
+The name of targeted NGINX deployment
 
 ```yaml
 Type: System.String
@@ -164,23 +167,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.INginxCertificate
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.INginxCertificate
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <INginxIdentity>`: Identity Parameter
-  - `[CertificateName <String>]`: The name of certificate
-  - `[ConfigurationName <String>]`: The name of configuration, only 'default' is supported value due to the singleton of Nginx conf
-  - `[DeploymentName <String>]`: The name of targeted Nginx deployment
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS

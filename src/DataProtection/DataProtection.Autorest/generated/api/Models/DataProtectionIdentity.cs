@@ -87,6 +87,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
         public string ResourceGuardsName { get => this._resourceGuardsName; set => this._resourceGuardsName = value; }
 
+        /// <summary>Backing field for <see cref="ResourceId" /> property.</summary>
+        private string _resourceId;
+
+        /// <summary>ARM path of the resource to be protected using Microsoft.DataProtection</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataProtection.PropertyOrigin.Owned)]
+        public string ResourceId { get => this._resourceId; set => this._resourceId = value; }
+
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
 
@@ -200,6 +207,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         SerializedName = @"resourceGuardsName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGuardsName { get; set; }
+        /// <summary>ARM path of the resource to be protected using Microsoft.DataProtection</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"ARM path of the resource to be protected using Microsoft.DataProtection",
+        SerializedName = @"resourceId",
+        PossibleTypes = new [] { typeof(string) })]
+        string ResourceId { get; set; }
         /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(
         Required = false,
@@ -245,6 +260,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models
         string ResourceGuardProxyName { get; set; }
         /// <summary>The name of ResourceGuard</summary>
         string ResourceGuardsName { get; set; }
+        /// <summary>ARM path of the resource to be protected using Microsoft.DataProtection</summary>
+        string ResourceId { get; set; }
         /// <summary>The ID of the target subscription. The value must be an UUID.</summary>
         string SubscriptionId { get; set; }
         /// <summary>The name of the backup vault.</summary>

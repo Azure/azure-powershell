@@ -20,6 +20,9 @@
 ## Upcoming Release
 * [Breaking Change] Replaced parameter `EnableRbacAuthorization` by `DisableRbacAuthorization` in `New-AzKeyVault` and `Update-AzKeyVault`.
     - RBAC will be enabled by default during the process of key vault creation. 
+* Introduced secrets detection feature to safeguard sensitive data.
+* [Upcoming Breaking Change] Added breaking change warning message for parameter `UseDefaultCVMPolicy` of `Add-AzKeyVaultKey`.
+    - The offline fallback policy will be removed. Key creation will fail if unable to get regional default CVM SKR policy from MAA Service Discovery API.
 * Added parameter `PolicyPath` in `Add-AzKeyVaultCertificate` to support custom policy in the process of certificate enrollment. 
 * Upgraded the API version of merging certificate to 7.5. [#24323]
 

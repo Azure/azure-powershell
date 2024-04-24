@@ -516,9 +516,185 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 DateTimeKind.Utc);
         }
 
-        public bool checkMUAForSchedulePolicy(ProtectionPolicyResource existingPolicy, ProtectionPolicyResource newPolicy)
+        public bool checkMUAForSchedulePolicy(ProtectionPolicyResource oldPolicy, ProtectionPolicyResource newPolicy)
         {
+            long oldRPO = calculateRPO(oldPolicy);
+            long newRPO = calculateRPO(newPolicy);
+
+            if(newRPO > oldRPO)
+            {
+                return true;
+            }
+
             return false;
+        }
+
+        public long GetRpoForWeeklySchedule(IList<ServiceClientModel.DayOfWeek?> combinedDaysOfWeek)
+        {
+            long rpoTime = 0;
+            const int daysInOneWeek = 7;
+                        
+            IList<ServiceClientModel.DayOfWeek?> sortedSchedule = combinedDaysOfWeek.OrderBy(dow => dow).GroupBy(dow => dow).Select(dow => dow.First()).ToList();
+            
+            if (sortedSchedule.Count == 1)
+            {
+                rpoTime = (TimeSpan.FromDays(daysInOneWeek)).Ticks;
+            }
+            else
+            {
+                int diff = 0;
+                int maxDiff = 0;
+                for (int i = 1; i < sortedSchedule.Count; i++)
+                {
+                    diff = (int)sortedSchedule[i] - (int)sortedSchedule[i - 1];
+                    if (diff > maxDiff)
+                    {
+                        maxDiff = diff;
+                    }
+                }
+                
+                diff = daysInOneWeek - ((int)sortedSchedule.Last() - (int)sortedSchedule.First());
+
+                if (diff > maxDiff)
+                {
+                    maxDiff = diff;
+                }
+
+                rpoTime = (TimeSpan.FromDays(maxDiff)).Ticks;
+            }
+
+            return rpoTime;
+        }
+
+        public long calculateRPO(ProtectionPolicyResource policy)
+        {
+            long rpoTime = 0;
+            const int hoursInOneDay = 24;
+            if (policy == null || policy.Properties == null)
+            {
+                return rpoTime;
+            }
+
+            if (policy.Properties.GetType() == typeof(ServiceClientModel.AzureIaaSVMProtectionPolicy))
+            {
+                var policyProperties = ((ServiceClientModel.AzureIaaSVMProtectionPolicy)policy.Properties);
+                
+                if (policyProperties.PolicyType != null && policyProperties.PolicyType.ToLower() == "v2")
+                {
+                    var schedulePolicyv2 = ((ServiceClientModel.SimpleSchedulePolicyV2)policyProperties.SchedulePolicy);
+                    if(schedulePolicyv2.ScheduleRunFrequency.ToLower() == "hourly")
+                    {
+                        if (schedulePolicyv2.HourlySchedule.ScheduleWindowDuration == hoursInOneDay)
+                        {
+                            rpoTime = (TimeSpan.FromHours((double)schedulePolicyv2.HourlySchedule.Interval)).Ticks;
+                        }
+                        else 
+                        {
+                            rpoTime = (TimeSpan.FromHours(hoursInOneDay) - TimeSpan.FromHours((double)schedulePolicyv2.HourlySchedule.ScheduleWindowDuration)).Ticks;
+                        }
+                    }
+                    else if(schedulePolicyv2.ScheduleRunFrequency.ToLower() == "daily")
+                    {
+                        rpoTime = (TimeSpan.FromHours(hoursInOneDay)).Ticks;
+                    }
+                    else if(schedulePolicyv2.ScheduleRunFrequency.ToLower() == "weekly")
+                    {
+                        rpoTime = GetRpoForWeeklySchedule(schedulePolicyv2.WeeklySchedule.ScheduleRunDays);                        
+                    }
+                }
+                else
+                {
+                    var schedulePolicyv1 = ((ServiceClientModel.SimpleSchedulePolicy)policyProperties.SchedulePolicy);
+                                        
+                    if(schedulePolicyv1.ScheduleRunFrequency.ToLower() == "daily")
+                    {
+                        rpoTime = (TimeSpan.FromHours(hoursInOneDay)).Ticks;
+                    }
+                    else if(schedulePolicyv1.ScheduleRunFrequency.ToLower() == "weekly")
+                    {
+                        rpoTime = GetRpoForWeeklySchedule(schedulePolicyv1.ScheduleRunDays);
+                    }
+                }
+            }            
+            else if (policy.Properties.GetType() == typeof(ServiceClientModel.AzureVmWorkloadProtectionPolicy))
+            {                
+                IList<SubProtectionPolicy> subProtectionPolicies = ((ServiceClientModel.AzureVmWorkloadProtectionPolicy)policy.Properties).SubProtectionPolicy;
+
+                List<SubProtectionPolicy> filteredSubProtectionPolicyLog = GetSubProtectionPolicyOfType(subProtectionPolicies, "Log");
+                List<SubProtectionPolicy> filteredSubProtectionPolicyDifferential = GetSubProtectionPolicyOfType(subProtectionPolicies, "Differential");
+                List<SubProtectionPolicy> filteredSubProtectionPolicyIncremental = GetSubProtectionPolicyOfType(subProtectionPolicies, "Incremental");
+                List<SubProtectionPolicy> filteredSubProtectionPolicyFull = GetSubProtectionPolicyOfType(subProtectionPolicies, "Full");
+
+                if (filteredSubProtectionPolicyLog != null && filteredSubProtectionPolicyLog[0] != null)
+                {
+                    ServiceClientModel.LogSchedulePolicy logPolicy = (ServiceClientModel.LogSchedulePolicy)(filteredSubProtectionPolicyLog[0].SchedulePolicy);
+                    
+                    if(logPolicy.ScheduleFrequencyInMins != 0 && logPolicy.ScheduleFrequencyInMins != null)
+                    {
+                        rpoTime = TimeSpan.FromMinutes((int)logPolicy.ScheduleFrequencyInMins).Ticks;
+                    }
+                }
+                else if (filteredSubProtectionPolicyFull != null && filteredSubProtectionPolicyFull[0] != null && ((ServiceClientModel.SimpleSchedulePolicy)(filteredSubProtectionPolicyFull[0].SchedulePolicy)).ScheduleRunFrequency.ToLower() == "daily")
+                {
+                    rpoTime = (TimeSpan.FromHours(hoursInOneDay)).Ticks;
+                }
+                else
+                {
+                    System.Collections.Generic.List<ServiceClientModel.DayOfWeek?> combinedScheduleRunDays = new List<ServiceClientModel.DayOfWeek?>();
+
+                    if(filteredSubProtectionPolicyFull != null && filteredSubProtectionPolicyFull[0] != null)
+                    {
+                        var scheduleRunDaysFull = ((ServiceClientModel.SimpleSchedulePolicy)(filteredSubProtectionPolicyFull[0].SchedulePolicy)).ScheduleRunDays;
+                        combinedScheduleRunDays.AddRange(scheduleRunDaysFull); 
+                    }
+                    if (filteredSubProtectionPolicyDifferential != null && filteredSubProtectionPolicyDifferential[0] != null)
+                    {
+                        var scheduleRunDaysDifferential = ((ServiceClientModel.SimpleSchedulePolicy)(filteredSubProtectionPolicyDifferential[0].SchedulePolicy)).ScheduleRunDays;
+                        combinedScheduleRunDays.AddRange(scheduleRunDaysDifferential);
+                    }
+                    if (filteredSubProtectionPolicyIncremental != null && filteredSubProtectionPolicyIncremental[0] != null)
+                    {
+                        var scheduleRunDaysIncremental = ((ServiceClientModel.SimpleSchedulePolicy)(filteredSubProtectionPolicyIncremental[0].SchedulePolicy)).ScheduleRunDays;
+                        combinedScheduleRunDays.AddRange(scheduleRunDaysIncremental);
+                    }
+                }
+            }
+            else if (policy.Properties.GetType() == typeof(ServiceClientModel.AzureFileShareProtectionPolicy))
+            {
+                // TODO: whenever service adds corner case - starts at 12AM for 21hours every 7 hours.
+
+                ServiceClientModel.AzureFileShareProtectionPolicy policyProperties = ((ServiceClientModel.AzureFileShareProtectionPolicy)policy.Properties);                
+                ServiceClientModel.SimpleSchedulePolicy schedulePolicyAFS = ((ServiceClientModel.SimpleSchedulePolicy)policyProperties.SchedulePolicy);
+
+                if(schedulePolicyAFS.ScheduleRunFrequency.ToLower() == "daily")
+                {
+                    rpoTime = (TimeSpan.FromHours(hoursInOneDay)).Ticks;
+                }
+                else if(schedulePolicyAFS.ScheduleRunFrequency.ToLower() == "hourly")
+                {
+                    // (Interval < ScheduleWindowDuration)
+                    // Interval can be { 4, 6, 8, 12 } only and schedule can be 4 to 23.
+                    // First calculate how many RPs will be created in the day. which will be schedule/Interval + 1. Only exception is when Interval == Schdule. there Number of RP in a day == 1.
+                    // eg schedule is 5 and interval is 4. then we will have 2 RP one at 00 and another at 04 hours.
+                    // Once we have RP count then we can calculate RPO.
+                    var hourlySchedule = schedulePolicyAFS.HourlySchedule;
+                    if (hourlySchedule == null)
+                    {
+                        // resx 
+                        throw new ArgumentException("AFS schedule policy ScheduleRunFrequency is Hourly but Hourly Schedule is null");
+                    }
+
+                    double rpCountInDay = Math.Floor((double)(hourlySchedule.ScheduleWindowDuration / hourlySchedule.Interval));
+                    if(hourlySchedule.ScheduleWindowDuration != hourlySchedule.Interval)
+                    {
+                        rpCountInDay++;
+                    }
+
+                    rpoTime = TimeSpan.FromHours((double)(hoursInOneDay - ((rpCountInDay - 1) * hourlySchedule.Interval))).Ticks;
+                }
+            }
+
+            return rpoTime;
         }
 
         public List<SubProtectionPolicy> GetSubProtectionPolicyOfType(IList<SubProtectionPolicy> newSubProtectionPolicies, string policyType)

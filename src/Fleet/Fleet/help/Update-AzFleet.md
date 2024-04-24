@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFleet
 
 ## SYNOPSIS
-Update a Fleet
+Update a Fleet.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Update-AzFleet -InputObject <IFleetIdentity> [-IfMatch <String>] [-IdentityType 
 ```
 
 ## DESCRIPTION
-Update a Fleet
+Update a Fleet.
 
 ## EXAMPLES
 
@@ -76,6 +76,38 @@ Type                         : Microsoft.ContainerService/fleets
 
 This command updates tag of a fleet.
 
+### Example 2: disable system assigned identity of specified fleet
+```powershell
+Update-AzFleet -ResourceGroupName joyer-test -Name testfleet03 -EnableSystemAssignedIdentity 0
+```
+
+```output
+ETag                         : "0a00e5cc-0000-0100-0000-661cea3b0000"
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.ContainerService/fleets/testflee 
+                               t02
+IdentityPrincipalId          : 
+IdentityTenantId             : 
+IdentityType                 : None
+IdentityUserAssignedIdentity : {
+                               }
+Location                     : eastus
+Name                         : testfleet02
+ProvisioningState            : Succeeded
+ResourceGroupName            : joyer-test
+SystemDataCreatedAt          : 4/15/2024 7:19:15 AM
+SystemDataCreatedBy          : v-jiaji@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 4/15/2024 8:50:01 AM
+SystemDataLastModifiedBy     : v-jiaji@microsoft.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                                 "456": "asd"
+                               }
+Type                         : Microsoft.ContainerService/fleets
+```
+
+This command updates EnableSystemAssignedIdentity of a fleet.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -109,12 +141,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -126,6 +158,21 @@ Accept wildcard characters: False
 
 ### -IfMatch
 The request should only proceed if an entity matches this string.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IfNoneMatch
+The request should only proceed if no entity matches this string.
 
 ```yaml
 Type: System.String
@@ -154,42 +201,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the Fleet resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases: FleetName
 
 Required: True
@@ -220,7 +237,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -235,7 +252,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -250,7 +267,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -261,13 +278,12 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False

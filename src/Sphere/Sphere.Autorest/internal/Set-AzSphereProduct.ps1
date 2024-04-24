@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Create a Product.
+Update a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 .Description
-Create a Product.
+Update a Product.
 '.default' and '.unassigned' are system defined values and cannot be used for product name.
 .Example
 {{ Add code here }}

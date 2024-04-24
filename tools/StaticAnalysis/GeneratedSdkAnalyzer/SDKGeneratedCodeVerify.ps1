@@ -196,7 +196,7 @@ try {
             # Prevent EOL changes detected
             git config --global core.safecrlf false
             git config --global core.autocrlf true
-            $diff = git diff
+            $diff = git diff ".\Generated"
             if($diff -ne $null){
                 $changes = $changes.replace("  ", "`n")
                 $ExceptionList += [GeneratedSdkIssue]@{
