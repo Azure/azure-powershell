@@ -21,6 +21,8 @@
 ## Upcoming Release
 * `-Location` parameter was removed from `Update-AzActionGroup` and `Update-AzDataCollectionRule` because they do not support updating the location.
 * Introduced secrets detection feature to safeguard sensitive data.
+* Removed Metric SDK
+* Added Metric management plane by auto rest
 
 ## Version 5.1.1
 * Added breaking change warning messages for Metric Management Plane
