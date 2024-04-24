@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
 
         /// <param name="crossSubscriptionRestoreState">
-        /// Possible values include: 'Enabled', 'Disabled', 'PermanentlyDisabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;, &#39;PermanentlyDisabled&#39;</param>
         public CrossSubscriptionRestoreSettings(string crossSubscriptionRestoreState = default(string))
 
         {

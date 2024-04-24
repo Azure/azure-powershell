@@ -16,8 +16,8 @@ This operation cannot be undone.
 ### Delete (Default)
 ```
 Remove-AzDnsDnssecConfig -ResourceGroupName <String> [-SubscriptionId <String>] -ZoneName <String>
- [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IfMatch <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity

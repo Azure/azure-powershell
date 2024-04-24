@@ -25,6 +25,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the IaasVMRestoreRequest class.
         /// </summary>
 
+        /// <param name="resourceGuardOperationRequests">ResourceGuardOperationRequests on which LAC check will be performed
+        /// </param>
+
         /// <param name="recoveryPointId">ID of the backup copy to be recovered.
         /// </param>
 
@@ -35,14 +38,13 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="sourceResourceId">Fully qualified ARM ID of the VM which is being recovered.
         /// </param>
 
-        /// <param name="targetVirtualMachineId">This is the complete ARM Id of the VM that will be created.
-        /// For e.g.
+        /// <param name="targetVirtualMachineId">This is the complete ARM Id of the VM that will be created. For e.g.
         /// /subscriptions/{subId}/resourcegroups/{rg}/provider/Microsoft.Compute/virtualmachines/{vm}
         /// </param>
 
         /// <param name="targetResourceGroupId">This is the ARM Id of the resource group that you want to create for this
-        /// Virtual machine and other artifacts.
-        /// For e.g. /subscriptions/{subId}/resourcegroups/{rg}
+        /// Virtual machine and other artifacts. For e.g.
+        /// /subscriptions/{subId}/resourcegroups/{rg}
         /// </param>
 
         /// <param name="storageAccountId">Fully qualified ARM ID of the storage account to which the VM has to be
@@ -50,20 +52,18 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="virtualNetworkId">This is the virtual network Id of the vnet that will be attached to the
-        /// virtual machine.
-        /// User will be validated for join action permissions in the linked access.
+        /// virtual machine. User will be validated for join action permissions in the
+        /// linked access.
         /// </param>
 
         /// <param name="subnetId">Subnet ID, is the subnet ID associated with the to be restored VM. For
-        /// Classic VMs it would be
-        /// {VnetID}/Subnet/{SubnetName} and, for the Azure Resource Manager VMs it
-        /// would be ARM resource ID used to represent
-        /// the subnet.
+        /// Classic VMs it would be {VnetID}/Subnet/{SubnetName} and, for the Azure
+        /// Resource Manager VMs it would be ARM resource ID used to represent the
+        /// subnet.
         /// </param>
 
         /// <param name="targetDomainNameId">Fully qualified ARM ID of the domain name to be associated to the VM being
-        /// restored. This applies only to Classic
-        /// Virtual Machines.
+        /// restored. This applies only to Classic Virtual Machines.
         /// </param>
 
         /// <param name="region">Region in which the virtual machine is restored.
@@ -74,8 +74,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="createNewCloudService">Should a new cloud service be created while restoring the VM. If this is
-        /// false, VM will be restored to the same
-        /// cloud service as it was at the time of backup.
+        /// false, VM will be restored to the same cloud service as it was at the time
+        /// of backup.
         /// </param>
 
         /// <param name="originalStorageAccountOption">Original Storage Account Option
@@ -105,8 +105,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// identity.
         /// </param>
 
-        /// <param name="extendedLocation">Target extended location where the VM should be restored,
-        /// should be null if restore is to be done in public cloud
+        /// <param name="extendedLocation">Target extended location where the VM should be restored, should be null if
+        /// restore is to be done in public cloud
         /// </param>
 
         /// <param name="securedVMDetails">Stores Secured VM Details
@@ -114,8 +114,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="targetDiskNetworkAccessSettings">Specifies target network access settings for disks of VM to be restored,
         /// </param>
-        public IaasVMRestoreRequest(string recoveryPointId = default(string), string recoveryType = default(string), string sourceResourceId = default(string), string targetVirtualMachineId = default(string), string targetResourceGroupId = default(string), string storageAccountId = default(string), string virtualNetworkId = default(string), string subnetId = default(string), string targetDomainNameId = default(string), string region = default(string), string affinityGroup = default(string), bool? createNewCloudService = default(bool?), bool? originalStorageAccountOption = default(bool?), EncryptionDetails encryptionDetails = default(EncryptionDetails), System.Collections.Generic.IList<int?> restoreDiskLunList = default(System.Collections.Generic.IList<int?>), bool? restoreWithManagedDisks = default(bool?), string diskEncryptionSetId = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), IdentityInfo identityInfo = default(IdentityInfo), IdentityBasedRestoreDetails identityBasedRestoreDetails = default(IdentityBasedRestoreDetails), ExtendedLocation extendedLocation = default(ExtendedLocation), SecuredVMDetails securedVMDetails = default(SecuredVMDetails), TargetDiskNetworkAccessSettings targetDiskNetworkAccessSettings = default(TargetDiskNetworkAccessSettings))
+        public IaasVMRestoreRequest(System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string recoveryPointId = default(string), string recoveryType = default(string), string sourceResourceId = default(string), string targetVirtualMachineId = default(string), string targetResourceGroupId = default(string), string storageAccountId = default(string), string virtualNetworkId = default(string), string subnetId = default(string), string targetDomainNameId = default(string), string region = default(string), string affinityGroup = default(string), bool? createNewCloudService = default(bool?), bool? originalStorageAccountOption = default(bool?), EncryptionDetails encryptionDetails = default(EncryptionDetails), System.Collections.Generic.IList<int?> restoreDiskLunList = default(System.Collections.Generic.IList<int?>), bool? restoreWithManagedDisks = default(bool?), string diskEncryptionSetId = default(string), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), IdentityInfo identityInfo = default(IdentityInfo), IdentityBasedRestoreDetails identityBasedRestoreDetails = default(IdentityBasedRestoreDetails), ExtendedLocation extendedLocation = default(ExtendedLocation), SecuredVMDetails securedVMDetails = default(SecuredVMDetails), TargetDiskNetworkAccessSettings targetDiskNetworkAccessSettings = default(TargetDiskNetworkAccessSettings))
 
+        : base(resourceGuardOperationRequests)
         {
             this.RecoveryPointId = recoveryPointId;
             this.RecoveryType = recoveryType;
@@ -177,8 +178,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <summary>
         /// Gets or sets this is the ARM Id of the resource group that you want to
-        /// create for this Virtual machine and other artifacts.
-        /// For e.g. /subscriptions/{subId}/resourcegroups/{rg}
+        /// create for this Virtual machine and other artifacts. For e.g.
+        /// /subscriptions/{subId}/resourcegroups/{rg}
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetResourceGroupId")]
         public string TargetResourceGroupId {get; set; }
@@ -192,17 +193,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <summary>
         /// Gets or sets this is the virtual network Id of the vnet that will be
-        /// attached to the virtual machine.
-        /// User will be validated for join action permissions in the linked access.
+        /// attached to the virtual machine. User will be validated for join action
+        /// permissions in the linked access.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "virtualNetworkId")]
         public string VirtualNetworkId {get; set; }
 
         /// <summary>
         /// Gets or sets subnet ID, is the subnet ID associated with the to be restored
-        /// VM. For Classic VMs it would be
-        /// {VnetID}/Subnet/{SubnetName} and, for the Azure Resource Manager VMs it
-        /// would be ARM resource ID used to represent
+        /// VM. For Classic VMs it would be {VnetID}/Subnet/{SubnetName} and, for the
+        /// Azure Resource Manager VMs it would be ARM resource ID used to represent
         /// the subnet.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "subnetId")]
@@ -210,8 +210,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <summary>
         /// Gets or sets fully qualified ARM ID of the domain name to be associated to
-        /// the VM being restored. This applies only to Classic
-        /// Virtual Machines.
+        /// the VM being restored. This applies only to Classic Virtual Machines.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "targetDomainNameId")]
         public string TargetDomainNameId {get; set; }
@@ -231,8 +230,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <summary>
         /// Gets or sets should a new cloud service be created while restoring the VM.
-        /// If this is false, VM will be restored to the same
-        /// cloud service as it was at the time of backup.
+        /// If this is false, VM will be restored to the same cloud service as it was
+        /// at the time of backup.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "createNewCloudService")]
         public bool? CreateNewCloudService {get; set; }

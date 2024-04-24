@@ -15,13 +15,15 @@ Gets a Synapse Analytics Spark session.
 ### GetByNameParameterSet (Default)
 ```
 Get-AzSynapseSparkSession -WorkspaceName <String> -SparkPoolName <String> [-LivyId <Int32>] [-Name <String>]
- [-ApplicationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ApplicationId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByParentObjectParameterSet
 ```
 Get-AzSynapseSparkSession -SparkPoolObject <PSSynapseSparkPool> [-LivyId <Int32>] [-Name <String>]
- [-ApplicationId <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ApplicationId <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewOracleDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewOracleDataSourceObject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Create an in-memory object for OracleDataSource.
 
 ```
 New-AzPurviewOracleDataSourceObject -Kind <DataSourceType> [-CollectionReferenceName <String>]
- [-CollectionType <String>] [-Host <String>] [-Port <String>] [-Service <String>] [<CommonParameters>]
+ [-CollectionType <String>] [-Host <String>] [-Port <String>] [-Service <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -140,7 +141,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.OracleDataSource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

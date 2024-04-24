@@ -51,7 +51,7 @@
                                                                                "nosniff"
                                                                            ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:55 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:38 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "202"
@@ -67,8 +67,8 @@
                         "StatusCode":  201
                     },
                     {
-                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzU/YXBpLXZlcnNpb249MjAyMy0wMi0wMQ==",
+                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35?api-version=2024-04-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzU/YXBpLXZlcnNpb249MjAyNC0wNC0wMQ==",
                         "RequestMethod":  "PUT",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -123,7 +123,7 @@
                                                                                   "max-age=31536000; includeSubDomains"
                                                                               ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:55 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:38 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "475"
@@ -139,8 +139,8 @@
                         "StatusCode":  201
                     },
                     {
-                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzU/YXBpLXZlcnNpb249MjAyMy0wMi0wMQ==",
+                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35?api-version=2024-04-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzU/YXBpLXZlcnNpb249MjAyNC0wNC0wMQ==",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -189,7 +189,7 @@
                                                                                   "max-age=31536000; includeSubDomains"
                                                                               ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:55 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:38 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "475"
@@ -205,8 +205,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/extendedInformation/vaultExtendedInfo?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDIzLTAyLTAx",
+                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/extendedInformation/vaultExtendedInfo?api-version=2024-04-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDI0LTA0LTAx",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -258,7 +258,7 @@
                                                                                   "max-age=31536000; includeSubDomains"
                                                                               ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:55 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:38 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "86"
@@ -274,8 +274,8 @@
                         "StatusCode":  404
                     },
                     {
-                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/extendedInformation/vaultExtendedInfo?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDIzLTAyLTAx",
+                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults/A2APowershellTest35/extendedInformation/vaultExtendedInfo?api-version=2024-04-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzL0EyQVBvd2Vyc2hlbGxUZXN0MzUvZXh0ZW5kZWRJbmZvcm1hdGlvbi92YXVsdEV4dGVuZGVkSW5mbz9hcGktdmVyc2lvbj0yMDI0LTA0LTAx",
                         "RequestMethod":  "PUT",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -333,7 +333,7 @@
                                                                                   "max-age=31536000; includeSubDomains"
                                                                               ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:55 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:38 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "465"
@@ -349,8 +349,8 @@
                         "StatusCode":  200
                     },
                     {
-                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults?api-version=2023-02-01",
-                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMjMtMDItMDE=",
+                        "RequestUri":  "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/A2APowershellTestRg35/providers/Microsoft.RecoveryServices/vaults?api-version=2024-04-01",
+                        "EncodedRequestUri":  "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL0EyQVBvd2Vyc2hlbGxUZXN0UmczNS9wcm92aWRlcnMvTWljcm9zb2Z0LlJlY292ZXJ5U2VydmljZXMvdmF1bHRzP2FwaS12ZXJzaW9uPTIwMjQtMDQtMDE=",
                         "RequestMethod":  "GET",
                         "RequestHeaders":  {
                                                "x-ms-client-request-id":  [
@@ -399,7 +399,7 @@
                                                                                   "max-age=31536000; includeSubDomains"
                                                                               ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:55 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:38 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "501"
@@ -484,7 +484,7 @@
                                                                                 "WESTUS:20221011T172114Z:eb8fafd4-16f9-4189-bac7-4ca96e132ed0"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:55 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:38 GMT"
                                                          ],
                                                 "Expires":  [
                                                                 "-1"
@@ -550,7 +550,7 @@
                                                                                 "WESTUS:20221011T172114Z:76ca5ad8-1ec1-4dcb-978c-fab489ce0a51"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:55 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:38 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1315"
@@ -619,7 +619,7 @@
                                                                                 "WESTUS:20221011T172115Z:37bbd044-e0e9-4b85-a6df-5a490514fdb1"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:55 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:38 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1315"
@@ -688,7 +688,7 @@
                                                                                 "WESTCENTRALUS:20221011T172135Z:73a207c5-40e0-4446-81a1-edfbf4303f2f"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:55 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:38 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1315"
@@ -757,7 +757,7 @@
                                                                                 "WESTCENTRALUS:20221011T172156Z:d76691c4-71b5-4b28-8a4b-620a2c12c3cc"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:55 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:38 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1315"
@@ -826,7 +826,7 @@
                                                                                 "WESTUS:20221011T172216Z:03ad4a2b-3807-40bd-865a-a48133c78e9d"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:55 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:38 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1315"
@@ -895,7 +895,7 @@
                                                                                 "WESTCENTRALUS:20221011T172236Z:74f1fcbf-64c5-43c5-9f3c-abe01b74e265"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:55 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:38 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "1353"
@@ -964,7 +964,7 @@
                                                                                 "WESTCENTRALUS:20221011T172237Z:03e0ddce-80ac-4b93-93a8-764acc87a030"
                                                                             ],
                                                 "Date":  [
-                                                             "Wed, 19 Apr 2023 09:40:55 GMT"
+                                                             "Mon, 22 Apr 2024 10:58:38 GMT"
                                                          ],
                                                 "Content-Length":  [
                                                                        "679"

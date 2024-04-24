@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the Dns service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -28,7 +27,7 @@ For information on how to develop for `Az.Dns`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: a3126a361b75f952ece050b2cf67c11d4e542ef8
+commit: a3126a361b75f952ece050b2cf67c11d4e542ef8
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
@@ -45,6 +44,10 @@ subject-prefix: $(service-name)
 # identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

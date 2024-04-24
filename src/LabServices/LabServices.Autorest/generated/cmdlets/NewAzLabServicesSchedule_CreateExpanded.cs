@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.LabServices.Description(@"Operation to create or update a lab schedule.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.LabServices.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.LabServices.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LabServices/labs/{labName}/schedules/{scheduleName}", ApiVersion = "2021-10-01-preview")]
     public partial class NewAzLabServicesSchedule_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener
     {
@@ -29,17 +30,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         private string __processRecordId;
 
         /// <summary>
+        /// Schedule for automatically turning virtual machines in a lab on and off at specified times.
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule _body = new Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Schedule();
+
+        /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
-
-        /// <summary>Backing field for <see cref="Body" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule _body= new Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.Schedule();
-
-        /// <summary>
-        /// Schedule for automatically turning virtual machines in a lab on and off at specified times.
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule Body { get => this._body; set => this._body = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -50,9 +48,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.LabServices.LabServices Client => Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.LabServices.Category(global::Microsoft.Azure.PowerShell.Cmdlets.LabServices.ParameterCategory.Azure)]
@@ -90,11 +89,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         public string LabName { get => this._labName; set => this._labName = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -123,7 +122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"Notes for this schedule.",
         SerializedName = @"notes",
         PossibleTypes = new [] { typeof(string) })]
-        public string Note { get => Body.Note ?? null; set => Body.Note = value; }
+        public string Note { get => _body.Note ?? null; set => _body.Note = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.HttpPipeline" /> that the remote call will use.
@@ -155,7 +154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"When the recurrence will expire. This date is inclusive.",
         SerializedName = @"expirationDate",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime RecurrencePatternExpirationDate { get => Body.RecurrencePatternExpirationDate ?? default(global::System.DateTime); set => Body.RecurrencePatternExpirationDate = value; }
+        public global::System.DateTime RecurrencePatternExpirationDate { get => _body.RecurrencePatternExpirationDate ?? default(global::System.DateTime); set => _body.RecurrencePatternExpirationDate = value; }
 
         /// <summary>The frequency of the recurrence.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The frequency of the recurrence.")]
@@ -167,7 +166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         SerializedName = @"frequency",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency))]
-        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency RecurrencePatternFrequency { get => Body.RecurrencePatternFrequency ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency)""); set => Body.RecurrencePatternFrequency = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency RecurrencePatternFrequency { get => _body.RecurrencePatternFrequency ?? ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.RecurrenceFrequency)""); set => _body.RecurrencePatternFrequency = value; }
 
         /// <summary>
         /// The interval to invoke the schedule on. For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days.
@@ -181,7 +180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The interval to invoke the schedule on. For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days. When no interval is supplied, an interval of 1 is used.",
         SerializedName = @"interval",
         PossibleTypes = new [] { typeof(int) })]
-        public int RecurrencePatternInterval { get => Body.RecurrencePatternInterval ?? default(int); set => Body.RecurrencePatternInterval = value; }
+        public int RecurrencePatternInterval { get => _body.RecurrencePatternInterval ?? default(int); set => _body.RecurrencePatternInterval = value; }
 
         /// <summary>The week days the schedule runs. Used for when the Frequency is set to Weekly.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -194,7 +193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         SerializedName = @"weekDays",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay))]
-        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay[] RecurrencePatternWeekDay { get => Body.RecurrencePatternWeekDay ?? null /* arrayOf */; set => Body.RecurrencePatternWeekDay = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.LabServices.Support.WeekDay[] RecurrencePatternWeekDay { get => _body.RecurrencePatternWeekDay ?? null /* arrayOf */; set => _body.RecurrencePatternWeekDay = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -221,7 +220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.",
         SerializedName = @"startAt",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime StartAt { get => Body.StartAt ?? default(global::System.DateTime); set => Body.StartAt = value; }
+        public global::System.DateTime StartAt { get => _body.StartAt ?? default(global::System.DateTime); set => _body.StartAt = value; }
 
         /// <summary>
         /// When lab user virtual machines will be stopped. Timestamp offsets will be ignored and timeZoneId is used instead.
@@ -234,7 +233,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"When lab user virtual machines will be stopped. Timestamp offsets will be ignored and timeZoneId is used instead.",
         SerializedName = @"stopAt",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime StopAt { get => Body.StopAt ?? default(global::System.DateTime); set => Body.StopAt = value; }
+        public global::System.DateTime StopAt { get => _body.StopAt ?? default(global::System.DateTime); set => _body.StopAt = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -263,15 +262,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         Description = @"The IANA timezone id for the schedule.",
         SerializedName = @"timeZoneId",
         PossibleTypes = new [] { typeof(string) })]
-        public string TimeZoneId { get => Body.TimeZoneId ?? null; set => Body.TimeZoneId = value; }
+        public string TimeZoneId { get => _body.TimeZoneId ?? null; set => _body.TimeZoneId = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule">Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -282,8 +281,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.IErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -294,8 +293,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule">Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -306,6 +305,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -317,7 +321,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -428,7 +449,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -443,12 +463,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.SchedulesCreateOrUpdate(SubscriptionId, ResourceGroupName, LabName, Name, Body, onOk, onCreated, onDefault, this, Pipeline);
+                    await this.Client.SchedulesCreateOrUpdate(SubscriptionId, ResourceGroupName, LabName, Name, _body, onOk, onCreated, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,LabName=LabName,Name=Name,body=Body})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,LabName=LabName,Name=Name,body=_body})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -467,10 +487,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
             base.StopProcessing();
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.LabServices.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule">Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -495,8 +530,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.IErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -518,14 +553,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.LabServices.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, LabName=LabName, Name=Name, body=Body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, LabName=LabName, Name=Name, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, LabName=LabName, Name=Name, body=Body })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, LabName=LabName, Name=Name, body=_body })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -535,8 +570,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.LabServices.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule">Microsoft.Azure.PowerShell.Cmdlets.LabServices.Models.Api20211001Preview.ISchedule</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkFabricController
 
 ## SYNOPSIS
-Creates a Network Fabric Controller.
+Create a Network Fabric Controller.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ New-AzNetworkFabricController -Name <String> -ResourceGroupName <String> [-Subsc
 ```
 
 ## DESCRIPTION
-Creates a Network Fabric Controller.
+Create a Network Fabric Controller.
 
 ## EXAMPLES
 

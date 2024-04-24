@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStackHCIVMStoragePath
 
 ## SYNOPSIS
-The operation to update a storage container.
+The operation to Update a storage container.
 
 ## SYNTAX
 
@@ -47,7 +47,7 @@ Update-AzStackHCIVMStoragePath -InputObject <IStackHcivmIdentity> [-Tag <Hashtab
 ```
 
 ## DESCRIPTION
-The operation to update a storage container.
+The operation to Update a storage container.
 
 ## EXAMPLES
 

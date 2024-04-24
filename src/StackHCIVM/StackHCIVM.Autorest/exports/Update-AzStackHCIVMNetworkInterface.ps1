@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to update a network interface.
+The operation to Update a network interface.
 .Description
-The operation to update a network interface.
+The operation to Update a network interface.
 .Example
 Update-AzStackHCIVMNetworkInterface  -Name "testNic" -ResourceGroupName "test-rg" -Tag @{"tagname" = "tagvalue"}
 

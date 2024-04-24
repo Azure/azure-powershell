@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to update a marketplace gallery image.
+The operation to Update a marketplace gallery image.
 .Description
-The operation to update a marketplace gallery image.
+The operation to Update a marketplace gallery image.
 .Example
 {{ Add code here }}
 .Example

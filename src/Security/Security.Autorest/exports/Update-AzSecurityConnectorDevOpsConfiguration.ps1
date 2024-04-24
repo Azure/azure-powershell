@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates a DevOps Configuration.
+Update a DevOps Configuration.
 .Description
-Updates a DevOps Configuration.
+Update a DevOps Configuration.
 .Example
 Update-AzSecurityConnectorDevOpsConfiguration -ResourceGroupName "securityConnectors-pwsh-tmp" -SecurityConnectorName "ado-sdk-pwsh-test03" -AutoDiscovery Enabled
 

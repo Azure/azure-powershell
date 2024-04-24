@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Updated ADF encryption client SDK version to 5.29.8499.2
 
 ## Version 1.18.3
 * Added ServiceNowV2, PostgreSqlV2, GoogleBigQuery in ADF

@@ -734,7 +734,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.generated.runtime.Prope
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Note :The change is expected to take effect from the version :  &apos;{0}&apos;
+        ///   Looks up a localized string similar to Note :The change is expected to take effect from version :  &apos;{0}&apos;
         ///
         ///.
         /// </summary>
@@ -743,6 +743,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.generated.runtime.Prope
             get
             {
                 return ResourceManager.GetString("BreakingChangesAttributesInEffectByVersion", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Note :The change is expected to take effect from az version :  &apos;{0}&apos;
+        ///
+        ///.
+        /// </summary>
+        public static string BreakingChangesAttributesInEffectByAzVersion
+        {
+            get
+            {
+                return ResourceManager.GetString("BreakingChangesAttributesInEffectByAzVersion", resourceCulture);
             }
         }
 
@@ -3122,7 +3135,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.generated.runtime.Prope
         }
 
         /// <summary>
-        /// Looks up a localized string similar to This cmdlet is in preview. The functionality may not be available in the selected subscription.
+        ///   Looks up a localized string similar to  The estimated generally available date is &apos;{0}&apos;..
+        /// </summary>
+        public static string PreviewCmdletETAMessage {
+            get {
+                return ResourceManager.GetString("PreviewCmdletETAMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Looks up a localized string similar to  This cmdlet is in preview. Its behavior is subject to change based on customer feedback..
         /// </summary>
         public static string PreviewCmdletMessage
         {

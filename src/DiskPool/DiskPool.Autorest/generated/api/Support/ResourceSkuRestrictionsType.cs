@@ -50,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support
         }
 
         /// <summary>
-        /// Creates an instance of the <see cref="ResourceSkuRestrictionsType" Enum class./>
+        /// Creates an instance of the <see cref="ResourceSkuRestrictionsType"/> Enum class.
         /// </summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private ResourceSkuRestrictionsType(string underlyingValue)
@@ -82,8 +82,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support
         }
 
         /// <summary>Overriding != operator for enum ResourceSkuRestrictionsType</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsType e1, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsType e2)
         {
@@ -91,8 +91,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support
         }
 
         /// <summary>Overriding == operator for enum ResourceSkuRestrictionsType</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsType e1, Microsoft.Azure.PowerShell.Cmdlets.DiskPool.Support.ResourceSkuRestrictionsType e2)
         {

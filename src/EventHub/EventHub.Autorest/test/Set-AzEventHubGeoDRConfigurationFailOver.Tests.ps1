@@ -53,7 +53,6 @@ Describe 'Set-AzEventHubGeoDRConfigurationFailOver' {
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
 
         $drConfig = Remove-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
-
         Start-TestSleep 180
 
         { Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace } | Should -Throw

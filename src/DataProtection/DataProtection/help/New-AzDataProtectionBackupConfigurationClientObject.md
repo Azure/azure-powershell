@@ -18,7 +18,7 @@ New-AzDataProtectionBackupConfigurationClientObject -DatasourceType <DatasourceT
  [-IncludedNamespace <String[]>] [-LabelSelector <String[]>] [-SnapshotVolume <Boolean>]
  [-IncludeClusterScopeResource <Boolean>] [-BackupHookReference <NamespacedNameResource[]>]
  [-VaultedBackupContainer <String[]>] [-IncludeAllContainer] [-StorageAccountName <String>]
- [-StorageAccountResourceGroupName <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-StorageAccountResourceGroupName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +62,7 @@ Hook reference to be executed during backup.
 To construct, see NOTES section for BACKUPHOOKREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.NamespacedNameResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.NamespacedNameResource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -188,21 +188,6 @@ List of labels for internal filtering for backup
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

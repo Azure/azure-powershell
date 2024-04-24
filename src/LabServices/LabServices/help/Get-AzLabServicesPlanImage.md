@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.LabServices-help.xml
 Module Name: Az.LabServices
 online version: https://learn.microsoft.com/powershell/module/az.labservices/get-azlabservicesplanimage
 schema: 2.0.0
@@ -14,20 +14,14 @@ Gets an image resource.
 
 ### ResourceId (Default)
 ```
-Get-AzLabServicesPlanImage -ResourceId <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzLabServicesPlanImage [-SubscriptionId <String[]>] -ResourceId <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### Get
+### ListByDisplayName
 ```
-Get-AzLabServicesPlanImage -LabPlanName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### LabPlan
-```
-Get-AzLabServicesPlanImage -LabPlan <LabPlan> [-Name <String>] [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLabServicesPlanImage -LabPlanName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -DisplayName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List
@@ -36,10 +30,17 @@ Get-AzLabServicesPlanImage -LabPlanName <String> -ResourceGroupName <String> [-S
  [-Filter <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### ListByDisplayName
+### Get
 ```
-Get-AzLabServicesPlanImage -DisplayName <String> -LabPlanName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzLabServicesPlanImage -LabPlanName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### LabPlan
+```
+Get-AzLabServicesPlanImage [-Name <String>] [-SubscriptionId <String[]>] -LabPlan <LabPlan>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,7 +92,8 @@ Returns the specific image with the display name.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -106,7 +108,6 @@ Accept wildcard characters: False
 ```
 
 ### -DisplayName
-
 
 ```yaml
 Type: System.String
@@ -156,7 +157,19 @@ Used in resource URIs and in UI.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, ListByDisplayName
+Parameter Sets: ListByDisplayName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -171,10 +184,22 @@ The image name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, LabPlan
+Parameter Sets: Get
 Aliases: ImageName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: LabPlan
+Aliases: ImageName
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -187,7 +212,19 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List, ListByDisplayName
+Parameter Sets: ListByDisplayName
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -198,7 +235,6 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-
 
 ```yaml
 Type: System.String
@@ -242,41 +278,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-LABPLAN `<LabPlan>`: 
-  - `Location <String>`: The geo-location where the resource lives
-  - `[AllowedRegion <String[]>]`: The allowed regions for the lab creator to use when creating labs using this lab plan.
-  - `[DefaultAutoShutdownProfileDisconnectDelay <TimeSpan?>]`: The amount of time a VM will stay running after a user disconnects if this behavior is enabled.
-  - `[DefaultAutoShutdownProfileIdleDelay <TimeSpan?>]`: The amount of time a VM will idle before it is shutdown if this behavior is enabled.
-  - `[DefaultAutoShutdownProfileNoConnectDelay <TimeSpan?>]`: The amount of time a VM will stay running before it is shutdown if no connection is made and this behavior is enabled.
-  - `[DefaultAutoShutdownProfileShutdownOnDisconnect <EnableState?>]`: Whether shutdown on disconnect is enabled
-  - `[DefaultAutoShutdownProfileShutdownOnIdle <ShutdownOnIdleMode?>]`: Whether a VM will get shutdown when it has idled for a period of time.
-  - `[DefaultAutoShutdownProfileShutdownWhenNotConnected <EnableState?>]`: Whether a VM will get shutdown when it hasn't been connected to after a period of time.
-  - `[DefaultConnectionProfileClientRdpAccess <ConnectionType?>]`: The enabled access level for Client Access over RDP.
-  - `[DefaultConnectionProfileClientSshAccess <ConnectionType?>]`: The enabled access level for Client Access over SSH.
-  - `[DefaultConnectionProfileWebRdpAccess <ConnectionType?>]`: The enabled access level for Web Access over RDP.
-  - `[DefaultConnectionProfileWebSshAccess <ConnectionType?>]`: The enabled access level for Web Access over SSH.
-  - `[DefaultNetworkProfileSubnetId <String>]`: The external subnet resource id
-  - `[LinkedLmsInstance <String>]`: Base Url of the lms instance this lab plan can link lab rosters against.
-  - `[SharedGalleryId <String>]`: Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
-  - `[SupportInfoEmail <String>]`: Support contact email address.
-  - `[SupportInfoInstruction <String>]`: Support instructions.
-  - `[SupportInfoPhone <String>]`: Support contact phone number.
-  - `[SupportInfoUrl <String>]`: Support web address.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[Tag <ITrackedResourceTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-
 ## RELATED LINKS
-

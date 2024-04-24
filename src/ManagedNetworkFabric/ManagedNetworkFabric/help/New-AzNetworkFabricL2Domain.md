@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkFabricL2Domain
 
 ## SYNOPSIS
-Creates layer 2 network connectivity between compute nodes within a rack and across racks.The configuration is applied on the devices only after the isolation domain is enabled.
+Create layer 2 network connectivity between compute nodes within a rack and across racks.The configuration is applied on the devices only after the isolation domain is enabled.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ New-AzNetworkFabricL2Domain -Name <String> -ResourceGroupName <String> [-Subscri
 ```
 
 ## DESCRIPTION
-Creates layer 2 network connectivity between compute nodes within a rack and across racks.The configuration is applied on the devices only after the isolation domain is enabled.
+Create layer 2 network connectivity between compute nodes within a rack and across racks.The configuration is applied on the devices only after the isolation domain is enabled.
 
 ## EXAMPLES
 
