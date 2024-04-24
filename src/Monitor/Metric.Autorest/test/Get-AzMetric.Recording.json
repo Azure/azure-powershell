@@ -1,0 +1,83 @@
+{
+  "Get-AzMetric+[NoContext]+List1+$GET+https://management.azure.com//subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-Metric/providers/Microsoft.Storage/storageAccounts/monitortestps01/blobServices/default/providers/Microsoft.Insights/metrics?timespan=2024-04-09T00%3A00%3A00.0000000Z%2F2024-04-10T12%3A00%3A00.0000000Z\u0026interval=PT6H\u0026metricnames=BlobCount%2CBlobCapacity\u0026aggregation=average%2Cminimum%2Cmaximum\u0026top=1\u0026orderby=average asc\u0026$filter=Tier eq %27%2A%27\u0026api-version=2023-10-01\u0026metricnamespace=Microsoft.Storage%2FstorageAccounts%2FblobServices\u0026AutoAdjustTimegrain=True+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com//subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-Metric/providers/Microsoft.Storage/storageAccounts/monitortestps01/blobServices/default/providers/Microsoft.Insights/metrics?timespan=2024-04-09T00%3A00%3A00.0000000Z%2F2024-04-10T12%3A00%3A00.0000000Z\u0026interval=PT6H\u0026metricnames=BlobCount%2CBlobCapacity\u0026aggregation=average%2Cminimum%2Cmaximum\u0026top=1\u0026orderby=average%20asc\u0026$filter=Tier%20eq%20%27%2A%27\u0026api-version=2023-10-01\u0026metricnamespace=Microsoft.Storage%2FstorageAccounts%2FblobServices\u0026AutoAdjustTimegrain=True",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "49dfa024-e43c-45f9-a724-d78903b8d493" ],
+        "CommandName": [ "Az.Metric.internal\\Get-AzMetric" ],
+        "FullCommandName": [ "Get-AzMetric_List2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.5.0", "PSVersion/v7.4.1", "Az.Metric/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-correlation-request-id": [ "36eb1adf-fbbb-4682-9579-de74a96fcac6" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "Request-Context": [ "appId=cid-v1:b021da79-5252-4375-9df5-2e17c1dcd822" ],
+        "x-ms-request-id": [ "{36eb1adf-fbbb-4682-9579-de74a96fcac6}" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240415T103323Z:36eb1adf-fbbb-4682-9579-de74a96fcac6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 64FE51A4E1A6473C9AE0099706B0525E Ref B: MAA201060514017 Ref C: 2024-04-15T10:33:22Z" ],
+        "Date": [ "Mon, 15 Apr 2024 10:33:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4319" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"cost\":4318,\"timespan\":\"2024-04-09T00:00:00Z/2024-04-10T12:00:00Z\",\"interval\":\"PT1H\",\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-Metric/providers/Microsoft.Storage/storageAccounts/monitortestps01/blobServices/default/providers/Microsoft.Insights/metrics/BlobCount\",\"type\":\"Microsoft.Insights/metrics\",\"name\":{\"value\":\"BlobCount\",\"localizedValue\":\"Blob Count\"},\"displayDescription\":\"The number of blob objects stored in the storage account.\",\"unit\":\"Count\",\"timeseries\":[{\"metadatavalues\":[{\"name\":{\"value\":\"tier\",\"localizedValue\":\"tier\"},\"value\":\"Archive\"}],\"data\":[{\"timeStamp\":\"2024-04-09T00:00:00Z\"},{\"timeStamp\":\"2024-04-09T01:00:00Z\"},{\"timeStamp\":\"2024-04-09T02:00:00Z\"},{\"timeStamp\":\"2024-04-09T03:00:00Z\"},{\"timeStamp\":\"2024-04-09T04:00:00Z\"},{\"timeStamp\":\"2024-04-09T05:00:00Z\"},{\"timeStamp\":\"2024-04-09T06:00:00Z\"},{\"timeStamp\":\"2024-04-09T07:00:00Z\"},{\"timeStamp\":\"2024-04-09T08:00:00Z\"},{\"timeStamp\":\"2024-04-09T09:00:00Z\"},{\"timeStamp\":\"2024-04-09T10:00:00Z\"},{\"timeStamp\":\"2024-04-09T11:00:00Z\"},{\"timeStamp\":\"2024-04-09T12:00:00Z\"},{\"timeStamp\":\"2024-04-09T13:00:00Z\"},{\"timeStamp\":\"2024-04-09T14:00:00Z\"},{\"timeStamp\":\"2024-04-09T15:00:00Z\",\"average\":0,\"minimum\":0,\"maximum\":0},{\"timeStamp\":\"2024-04-09T16:00:00Z\",\"average\":0,\"minimum\":0,\"maximum\":0},{\"timeStamp\":\"2024-04-09T17:00:00Z\",\"average\":0,\"minimum\":0,\"maximum\":0},{\"timeStamp\":\"2024-04-09T18:00:00Z\",\"average\":0,\"minimum\":0,\"maximum\":0},{\"timeStamp\":\"2024-04-09T19:00:00Z\",\"average\":0,\"minimum\":0,\"maximum\":0},{\"timeStamp\":\"2024-04-09T20:00:00Z\"},{\"timeStamp\":\"2024-04-09T21:00:00Z\"},{\"timeStamp\":\"2024-04-09T22:00:00Z\"},{\"timeStamp\":\"2024-04-09T23:00:00Z\"},{\"timeStamp\":\"2024-04-10T00:00:00Z\"},{\"timeStamp\":\"2024-04-10T01:00:00Z\"},{\"timeStamp\":\"2024-04-10T02:00:00Z\"},{\"timeStamp\":\"2024-04-10T03:00:00Z\"},{\"timeStamp\":\"2024-04-10T04:00:00Z\"},{\"timeStamp\":\"2024-04-10T05:00:00Z\"},{\"timeStamp\":\"2024-04-10T06:00:00Z\"},{\"timeStamp\":\"2024-04-10T07:00:00Z\"},{\"timeStamp\":\"2024-04-10T08:00:00Z\"},{\"timeStamp\":\"2024-04-10T09:00:00Z\"},{\"timeStamp\":\"2024-04-10T10:00:00Z\"},{\"timeStamp\":\"2024-04-10T11:00:00Z\"}]}],\"errorCode\":\"Success\"},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/Monitor-Metric/providers/Microsoft.Storage/storageAccounts/monitortestps01/blobServices/default/providers/Microsoft.Insights/metrics/BlobCapacity\",\"type\":\"Microsoft.Insights/metrics\",\"name\":{\"value\":\"BlobCapacity\",\"localizedValue\":\"Blob Capacity\"},\"displayDescription\":\"The amount of storage used by the storage account\u0027s Blob service in bytes.\",\"unit\":\"Bytes\",\"timeseries\":[{\"metadatavalues\":[{\"name\":{\"value\":\"tier\",\"localizedValue\":\"tier\"},\"value\":\"Hot\"}],\"data\":[{\"timeStamp\":\"2024-04-09T00:00:00Z\"},{\"timeStamp\":\"2024-04-09T01:00:00Z\"},{\"timeStamp\":\"2024-04-09T02:00:00Z\"},{\"timeStamp\":\"2024-04-09T03:00:00Z\"},{\"timeStamp\":\"2024-04-09T04:00:00Z\"},{\"timeStamp\":\"2024-04-09T05:00:00Z\"},{\"timeStamp\":\"2024-04-09T06:00:00Z\"},{\"timeStamp\":\"2024-04-09T07:00:00Z\"},{\"timeStamp\":\"2024-04-09T08:00:00Z\"},{\"timeStamp\":\"2024-04-09T09:00:00Z\"},{\"timeStamp\":\"2024-04-09T10:00:00Z\"},{\"timeStamp\":\"2024-04-09T11:00:00Z\"},{\"timeStamp\":\"2024-04-09T12:00:00Z\"},{\"timeStamp\":\"2024-04-09T13:00:00Z\"},{\"timeStamp\":\"2024-04-09T14:00:00Z\"},{\"timeStamp\":\"2024-04-09T15:00:00Z\",\"average\":0,\"minimum\":0,\"maximum\":0},{\"timeStamp\":\"2024-04-09T16:00:00Z\",\"average\":0,\"minimum\":0,\"maximum\":0},{\"timeStamp\":\"2024-04-09T17:00:00Z\",\"average\":0,\"minimum\":0,\"maximum\":0},{\"timeStamp\":\"2024-04-09T18:00:00Z\",\"average\":0,\"minimum\":0,\"maximum\":0},{\"timeStamp\":\"2024-04-09T19:00:00Z\",\"average\":0,\"minimum\":0,\"maximum\":0},{\"timeStamp\":\"2024-04-09T20:00:00Z\"},{\"timeStamp\":\"2024-04-09T21:00:00Z\"},{\"timeStamp\":\"2024-04-09T22:00:00Z\"},{\"timeStamp\":\"2024-04-09T23:00:00Z\"},{\"timeStamp\":\"2024-04-10T00:00:00Z\"},{\"timeStamp\":\"2024-04-10T01:00:00Z\"},{\"timeStamp\":\"2024-04-10T02:00:00Z\"},{\"timeStamp\":\"2024-04-10T03:00:00Z\"},{\"timeStamp\":\"2024-04-10T04:00:00Z\"},{\"timeStamp\":\"2024-04-10T05:00:00Z\"},{\"timeStamp\":\"2024-04-10T06:00:00Z\"},{\"timeStamp\":\"2024-04-10T07:00:00Z\"},{\"timeStamp\":\"2024-04-10T08:00:00Z\"},{\"timeStamp\":\"2024-04-10T09:00:00Z\"},{\"timeStamp\":\"2024-04-10T10:00:00Z\"},{\"timeStamp\":\"2024-04-10T11:00:00Z\"}]}],\"errorCode\":\"Success\"}],\"namespace\":\"Microsoft.Storage/storageAccounts/blobServices\",\"resourceregion\":\"eastus\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzMetric+[NoContext]+ListExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Insights/metrics?api-version=2023-10-01\u0026region=eastus+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Insights/metrics?api-version=2023-10-01\u0026region=eastus",
+      "Content": "{\r\n  \"timespan\": \"2024-04-01T18:00:00.0000000Z/2024-04-10T06:00:00.0000000Z\",\r\n  \"interval\": \"PT6H\",\r\n  \"metricNames\": \"Data Disk Max Burst IOPS\",\r\n  \"aggregation\": \"count\",\r\n  \"filter\": \"LUN eq \\u00270\\u0027 and Microsoft.ResourceId eq \\u0027*\\u0027\",\r\n  \"top\": 10,\r\n  \"orderBy\": \"count desc\",\r\n  \"rollUpBy\": \"LUN\",\r\n  \"metricNamespace\": \"microsoft.compute/virtualmachines\",\r\n  \"autoAdjustTimegrain\": true\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "409" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "cfdf248d-e50e-49ed-bb27-e1eba67a7f53" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "Request-Context": [ "appId=cid-v1:b021da79-5252-4375-9df5-2e17c1dcd822" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-correlation-request-id": [ "cfdf248d-e50e-49ed-bb27-e1eba67a7f53" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20240415T103324Z:cfdf248d-e50e-49ed-bb27-e1eba67a7f53" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 83D15278119148219E2B6B163B947FB7 Ref B: MAA201060514017 Ref C: 2024-04-15T10:33:23Z" ],
+        "Date": [ "Mon, 15 Apr 2024 10:33:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "542" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"cost\":12239,\"timespan\":\"2024-04-01T18:00:00Z/2024-04-10T06:00:00Z\",\"interval\":\"PT6H\",\"value\":[{\"id\":\"subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Insights/metrics/Data Disk Max Burst IOPS\",\"type\":\"Microsoft.Insights/metrics\",\"name\":{\"value\":\"Data Disk Max Burst IOPS\",\"localizedValue\":\"Data Disk Max Burst IOPS\"},\"displayDescription\":\"Maximum IOPS Data Disk can achieve with bursting\",\"unit\":\"Count\",\"timeseries\":[],\"errorCode\":\"Success\"}],\"namespace\":\"microsoft.compute/virtualmachines\",\"resourceregion\":\"eastus\"}",
+      "isContentBase64": false
+    }
+  }
+}

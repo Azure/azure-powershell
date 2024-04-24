@@ -1,7 +1,6 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+external help file: Az.Metric.psm1-help.xml
 Module Name: Az.Monitor
-ms.assetid: B5F2388E-0136-4F8A-8577-67CE2A45671E
 online version: https://learn.microsoft.com/powershell/module/az.monitor/new-azmetricfilter
 schema: 2.0.0
 ---
@@ -14,12 +13,12 @@ Creates a metric dimension filter that can be used to query metrics.
 ## SYNTAX
 
 ```
-New-AzMetricFilter [-Dimension] <String> [-Operator] <String> [-Value] <String[]>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzMetricFilter [-Dimension <String>] [-Operator <String>] [-Value <String[]>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **New-AzMetricFilter** cmdlet creates a metric dimension filter that can be used to query metrics.
+Creates a metric dimension filter that can be used to query metrics.
 
 ## EXAMPLES
 
@@ -28,17 +27,21 @@ The **New-AzMetricFilter** cmdlet creates a metric dimension filter that can be 
 New-AzMetricFilter -Dimension City -Operator eq -Value "Seattle","New York"
 ```
 
+```output
+City eq 'Seattle' or City eq 'New York'
+```
+
 This command creates metric dimension filter of the format "City eq 'Seattle' or City eq 'New York'".
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -Dimension
+The dimension name
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.String
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -47,48 +50,48 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Dimension
-The name of the metric dimension. 
+### -Operator
+The operator
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 0
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Operator
-Specifies the operator used to select the metric dimension.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
-Aliases:
+Aliases: proga
 
-Required: True
-Position: 1
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Value
-Specifies the array of metric dimension values.
+The list of values for the dimension
 
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
-Position: 2
+Required: False
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -97,10 +100,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.String[]
-
 ## OUTPUTS
 
 ### System.String
@@ -108,6 +107,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzMetric](./Get-AzMetric.md)
-[Get-AzMetricDefinition](./Get-AzMetricDefinition.md)

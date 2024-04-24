@@ -82,13 +82,13 @@ Get for private link scoped resource
 Gets a log profile.
 
 ### [Get-AzMetric](Get-AzMetric.md)
-Gets the metric values of a resource.
+**Lists the metric values for a resource**.
 
 ### [Get-AzMetricAlertRuleV2](Get-AzMetricAlertRuleV2.md)
 Gets V2 (non-classic) metric alert rules
 
 ### [Get-AzMetricDefinition](Get-AzMetricDefinition.md)
-Gets metric definitions.
+Lists the metric definitions for the subscription.
 
 ### [Get-AzMetricsBatch](Get-AzMetricsBatch.md)
 Lists the metric values for multiple resources.
@@ -103,7 +103,7 @@ Retrieve an scheduled query rule definition.
 Gets the active subscription diagnostic settings for the specified resource.
 
 ### [New-AzActionGroup](New-AzActionGroup.md)
-Create a new action group or Create an existing one.
+Create a new action group or update an existing one.
 
 ### [New-AzActionGroupArmRoleReceiverObject](New-AzActionGroupArmRoleReceiverObject.md)
 Create an in-memory object for ArmRoleReceiver.
@@ -322,7 +322,7 @@ Deletes existing subscription diagnostic settings for the specified resource.
 Send test notifications to a set of provided receivers
 
 ### [Update-AzActionGroup](Update-AzActionGroup.md)
-Update a new action group or Update an existing one.
+Update a new action group or update an existing one.
 
 ### [Update-AzActivityLogAlert](Update-AzActivityLogAlert.md)
 Updates 'tags' and 'enabled' fields in an existing Alert rule.

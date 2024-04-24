@@ -447,9 +447,9 @@ end {
 
 <#
 .Synopsis
-Create a new action group or Create an existing one.
+Create a new action group or update an existing one.
 .Description
-Create a new action group or Create an existing one.
+Create a new action group or update an existing one.
 .Example
 $email1 = New-AzActionGroupEmailReceiverObject -EmailAddress user@example.com -Name user1
 $sms1 = New-AzActionGroupSmsReceiverObject -CountryCode '{countrycode}' -Name user2 -PhoneNumber '{phonenumber}'
@@ -1056,9 +1056,9 @@ end {
 
 <#
 .Synopsis
-Update a new action group or Update an existing one.
+Update a new action group or update an existing one.
 .Description
-Update a new action group or Update an existing one.
+Update a new action group or update an existing one.
 .Example
 $enventhub = New-AzActionGroupEventHubReceiverObject -EventHubName "testEventHub" -EventHubNameSpace "actiongrouptest" -Name "sample eventhub" -SubscriptionId '{subid}'
 Update-AzActionGroup -Name actiongroup1 -ResourceGroupName monitor-action -EventHubReceiver $enventhub
