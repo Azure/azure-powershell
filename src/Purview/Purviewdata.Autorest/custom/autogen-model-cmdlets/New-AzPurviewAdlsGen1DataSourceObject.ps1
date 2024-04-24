@@ -23,7 +23,7 @@ Create an in-memory object for AdlsGen1DataSource.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1DataSource
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAdlsGen1DataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAdlsGen1DataSourceObject
 #>
 function New-AzPurviewAdlsGen1DataSourceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AdlsGen1DataSource')]

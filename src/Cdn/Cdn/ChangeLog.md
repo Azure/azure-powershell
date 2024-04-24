@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Introduced secrets detection feature to safeguard sensitive data.
 * Upgrade API version to 2024-02-01
 * Added support to configure rules to scrub PII values from the AFDx logs when new or update a AFDx resource.
   

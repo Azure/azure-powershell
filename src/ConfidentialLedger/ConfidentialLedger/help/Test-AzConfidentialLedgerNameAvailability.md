@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConfidentialLedger-help.xml
 Module Name: Az.ConfidentialLedger
 online version: https://learn.microsoft.com/powershell/module/az.confidentialledger/test-azconfidentialledgernameavailability
 schema: 2.0.0
@@ -14,7 +14,7 @@ To check whether a resource name is available.
 
 ```
 Test-AzConfidentialLedgerNameAvailability [-SubscriptionId <String>] [-Name <String>] [-Type <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -59,7 +59,8 @@ Confidential Ledger names must be globally unique.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -162,7 +163,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

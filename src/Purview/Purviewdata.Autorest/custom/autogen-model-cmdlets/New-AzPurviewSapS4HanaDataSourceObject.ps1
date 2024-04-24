@@ -23,7 +23,7 @@ Create an in-memory object for SapS4HanaDataSource.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaDataSource
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewSapS4HanaDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewSapS4HanaDataSourceObject
 #>
 function New-AzPurviewSapS4HanaDataSourceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.SapS4HanaDataSource')]

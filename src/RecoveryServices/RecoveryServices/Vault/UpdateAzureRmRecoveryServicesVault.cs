@@ -123,6 +123,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         public ImmutabilityState? ImmutabilityState { get; set; }
 
         /// <summary>
+        /// Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx").Token to fetch authorization token for different tenant.
+        /// </summary>
+        [Parameter(Mandatory = false, HelpMessage = "Parameter to authorize operations protected by cross tenant resource guard. Use command (Get-AzAccessToken -TenantId \"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\").Token to fetch authorization token for different tenant")]        
+        public string Token;
+
+        /// <summary>
         /// Enables or disables cross subscription restore state for RS vault. Allowed values are Enabled, Disabled, PermanentlyDisabled.
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Cross subscription restore state of the vault. Allowed values are \"Enabled\", \"Disabled\", \"PermanentlyDisabled\".")]
@@ -263,6 +269,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         }
                     }
 
+                    bool isMUAProtected = false;
                     PatchVault patchVault = new PatchVault();
 
                     #region patch vault                    
@@ -311,7 +318,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         if (patchVault.Properties.SecuritySettings.ImmutabilitySettings == null) { patchVault.Properties.SecuritySettings.ImmutabilitySettings = new ServiceClientModel.ImmutabilitySettings(); }
 
                         if (vault.Properties != null && vault.Properties.SecuritySettings != null && vault.Properties.SecuritySettings.ImmutabilitySettings != null )
-                        {
+                        {                            
+                            // check if MUA operation/MUA protected
+                            if (vault.Properties.SecuritySettings.ImmutabilitySettings.State == "Unlocked" && ImmutabilityState == cmdletModel.ImmutabilityState.Disabled)
+                            {
+                                isMUAProtected = true;
+                            }
+
+                            // set immutability
                             if (vault.Properties.SecuritySettings.ImmutabilitySettings.State == "Locked")
                             {
                                 if (ImmutabilityState != cmdletModel.ImmutabilityState.Locked)
@@ -322,8 +336,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 {
                                     patchVault.Properties.SecuritySettings.ImmutabilitySettings.State = "Locked";
                                 }
-                            }
-                            
+                            }                            
                             else if (ImmutabilityState == cmdletModel.ImmutabilityState.Locked) 
                             {
                                 if (vault.Properties.SecuritySettings.ImmutabilitySettings.State == "Disabled")
@@ -331,7 +344,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 else
                                     patchVault.Properties.SecuritySettings.ImmutabilitySettings.State = "Locked";
                             }
-
                             else patchVault.Properties.SecuritySettings.ImmutabilitySettings.State = ImmutabilityState.ToString();
                         }
                         else if (ImmutabilityState == cmdletModel.ImmutabilityState.Locked)
@@ -354,7 +366,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                     #endregion
 
-                    vault = RecoveryServicesClient.UpdateRSVault(this.ResourceGroupName, this.Name, patchVault);                                                         
+                    vault = RecoveryServicesClient.UpdateRSVault(this.ResourceGroupName, this.Name, patchVault, Token, isMUAProtected);                                                         
                     WriteObject(new ARSVault(vault));
                 }
                 catch (Exception exception)

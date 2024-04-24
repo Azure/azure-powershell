@@ -22,8 +22,8 @@ Update-AzSynapseSparkPool [-ResourceGroupName <String>] -WorkspaceName <String> 
  [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
  [-SparkConfiguration <PSSparkConfigurationResource>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
- [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByParentObjectParameterSet
@@ -36,8 +36,8 @@ Update-AzSynapseSparkPool -Name <String> -WorkspaceObject <PSSynapseWorkspace> [
  [-LibraryRequirementsFilePath <String>] [-SparkConfiguration <PSSparkConfigurationResource>]
  [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
- [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
@@ -49,8 +49,8 @@ Update-AzSynapseSparkPool -InputObject <PSSynapseSparkPool> [-Tag <Hashtable>] [
  [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
  [-SparkConfiguration <PSSparkConfigurationResource>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
- [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
@@ -62,8 +62,8 @@ Update-AzSynapseSparkPool -ResourceId <String> [-Tag <Hashtable>] [-EnableAutoSc
  [-SparkVersion <String>] [-LibraryRequirementsFilePath <String>]
  [-SparkConfiguration <PSSparkConfigurationResource>] [-PackageAction <PackageActionType>]
  [-Package <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Synapse.Models.WorkspacePackages.PSSynapseWorkspacePackage]>]
- [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ForceApplySetting] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -12,51 +12,55 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+# The generated excel will contains one sheet. The title is:
+# ModuleName, CmdletName, Description, Before, After, TeamMember, PR
+
+# .\tools\BreakingChanges\GenerateMigrationExcel.ps1 -ExcelPath (Join-Path $env:USERPROFILE "Documents" "2024-05-21-Az-12.0-Breaking-Change-Migration-Guide.xlsx")
+
 #Requires -Modules PSExcel
 [CmdletBinding()]
 Param(
     [Parameter()]
     [string]$ExcelPath
 )
-$ExcelPath = Resolve-Path -Path $ExcelPath
 If (Test-Path $ExcelPath) {
     Remove-Item $ExcelPath
 }
 $Path = [System.IO.Path]::Combine($PSScriptRoot, '..', '..')
 Set-Location -Path $Path
-Get-ChildItem -Path .\tools\StaticAnalysis\Exceptions\ -Filter BreakingChangeIssues.csv -Recurse
-dotnet msbuild /t:Clean
-dotnet msbuild /t:Build
-dotnet msbuild /t:StaticAnalysis
-$BreakingChangeItems = Import-Csv .\artifacts\StaticAnalysisResults\BreakingChangeIssues.csv
-$TotalTable = @{}
-foreach ($BreakingChangeItem in $BreakingChangeItems) {
-    $ModuleName = 'Az' + $BreakingChangeItem.AssemblyFileName.Replace("Microsoft.Azure.PowerShell.Cmdlets", "").Replace('.dll', '')
-    $CmdletName = $BreakingChangeItem.Target
-    $Description = $BreakingChangeItem.Description
-    if (-not $TotalTable.ContainsKey($ModuleName)) {
-        $TotalTable.Add($ModuleName, @{})
-    }
-    if (-not $TotalTable[$ModuleName].ContainsKey($CmdletName)) {
-        $TotalTable[$ModuleName].Add($CmdletName, "")
-    }
-    $TotalTable[$ModuleName][$CmdletName] = $TotalTable[$ModuleName][$CmdletName] + "$Description`n"
-}
+# dotnet msbuild /t:Clean
+# dotnet msbuild /t:Build
+# dotnet msbuild /t:StaticAnalysis
 
+Import-Module (Join-Path $PSScriptRoot "Get-BreakingChangeMetadata.ps1") -Force
+$ArtifactsPath = [System.IO.Path]::Combine($Path, "artifacts", "Debug")
+
+$AllModuleList = Get-ChildItem -Path $ArtifactsPath -Filter Az.* | ForEach-Object { $_.Name }
 $Data = New-Object System.Collections.ArrayList
-foreach ($ModuleName in $TotalTable.Keys) {
-    foreach ($CmdletName in $TotalTable[$ModuleName].Keys) {
-        $Tmp = New-Object -TypeName PSObject -Property @{
+ForEach ($ModuleName In $AllModuleList)
+{
+    Write-Host "Processing Module: $ModuleName"
+    $ModuleBreakingChangeInfo = Get-BreakingChangeMetadata -ArtifactsPath $ArtifactsPath -ModuleName $ModuleName
+    If ($ModuleBreakingChangeInfo.Count -eq 0)
+    {
+        Continue
+    }
+
+    ForEach ($CmdletName In ($ModuleBreakingChangeInfo.Keys | Sort-Object))
+    {
+        Write-Host "Processing Cmdlet: $ModuleName - $CmdletName"
+        $NewRow = New-Object -TypeName PSObject -Property @{
             ModuleName = $ModuleName
             CmdletName = $CmdletName
-            Description = $TotalTable[$ModuleName][$CmdletName]
+            Description = Export-BreakingChangeMessageOfCmdlet $ModuleBreakingChangeInfo[$CmdletName]
             Before = $Null
             After = $Null
             TeamMember = $Null
             PR = $Null
-        } | Select ModuleName, CmdletName, Description, Before, After, TeamMember, PR
-        $Null = $Data.Add($Tmp)
+        } | Select-Object ModuleName, CmdletName, Description, Before, After, TeamMember, PR
+        $Null = $Data.Add($NewRow)
     }
 }
+
 $Data | Export-XLSX -Path $ExcelPath
 Write-Host "Excel is generated at $ExcelPath. Please goto edit it."

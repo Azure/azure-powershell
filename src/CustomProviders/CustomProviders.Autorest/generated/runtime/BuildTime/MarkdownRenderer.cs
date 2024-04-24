@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.PowerShell
 {
     internal static class MarkdownRenderer
     {
-        public static void WriteMarkdowns(IEnumerable<VariantGroup> variantGroups, PsModuleHelpInfo moduleHelpInfo, string docsFolder, string examplesFolder)
+        public static void WriteMarkdowns(IEnumerable<VariantGroup> variantGroups, PsModuleHelpInfo moduleHelpInfo, string docsFolder, string examplesFolder, bool AddComplexInterfaceInfo = true)
         {
             Directory.CreateDirectory(docsFolder);
             var markdownInfos = variantGroups.Where(vg => !vg.IsInternal).Select(vg => new MarkdownHelpInfo(vg, examplesFolder)).OrderBy(mhi => mhi.CmdletName).ToArray();
@@ -53,13 +53,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.PowerShell
                         sb.Append(parameter.ToHelpParameterOutput());
                     }
                 }
-                if (markdownInfo.SupportsPaging)
-                {
-                    foreach (var parameter in SupportsPagingParameters)
-                    {
-                        sb.Append(parameter.ToHelpParameterOutput());
-                    }
-                }
 
                 sb.Append($"### CommonParameters{Environment.NewLine}This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).{Environment.NewLine}{Environment.NewLine}");
 
@@ -76,18 +69,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.PowerShell
                 }
 
                 sb.Append($"## NOTES{Environment.NewLine}{Environment.NewLine}");
-                sb.Append($"ALIASES{Environment.NewLine}{Environment.NewLine}");
+                if (markdownInfo.Aliases.Any())
+                {
+                    sb.Append($"ALIASES{Environment.NewLine}{Environment.NewLine}");
+                }
                 foreach (var alias in markdownInfo.Aliases)
                 {
-                    sb.Append($"### {alias}{Environment.NewLine}{Environment.NewLine}");
+                    sb.Append($"{alias}{Environment.NewLine}{Environment.NewLine}");
                 }
-                if (markdownInfo.ComplexInterfaceInfos.Any())
+
+                if (AddComplexInterfaceInfo)
                 {
-                    sb.Append($"{ComplexParameterHeader}{Environment.NewLine}");
-                }
-                foreach (var complexInterfaceInfo in markdownInfo.ComplexInterfaceInfos)
-                {
-                    sb.Append($"{complexInterfaceInfo.ToNoteOutput(includeDashes: true, includeBackticks: true)}{Environment.NewLine}{Environment.NewLine}");
+                    if (markdownInfo.ComplexInterfaceInfos.Any())
+                    {
+                        sb.Append($"{ComplexParameterHeader}{Environment.NewLine}");
+                    }
+                    foreach (var complexInterfaceInfo in markdownInfo.ComplexInterfaceInfos)
+                    {
+                        sb.Append($"{complexInterfaceInfo.ToNoteOutput(includeDashes: true, includeBackticks: true)}{Environment.NewLine}{Environment.NewLine}");
+                    }
+
                 }
 
                 sb.Append($"## RELATED LINKS{Environment.NewLine}{Environment.NewLine}");

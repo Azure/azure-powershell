@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StorageCache-help.xml
 Module Name: Az.StorageCache
 online version: https://learn.microsoft.com/powershell/module/Az.StorageCache/new-AzStorageCachePrimingJobObject
 schema: 2.0.0
@@ -13,7 +13,8 @@ Create an in-memory object for PrimingJob.
 ## SYNTAX
 
 ```
-New-AzStorageCachePrimingJobObject -Name <String> -PrimingManifestUrl <String> [<CommonParameters>]
+New-AzStorageCachePrimingJobObject -Name <String> -PrimingManifestUrl <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +80,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

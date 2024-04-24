@@ -94,6 +94,9 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
         /// <param name='vault'>
         /// Recovery Services Vault to be created.
         /// </param>
@@ -109,7 +112,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, Vault vault, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> CreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, Vault vault, string xMsAuthorizationAuxiliary = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes a vault.
@@ -146,6 +149,9 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
         /// <param name='vault'>
         /// Recovery Services Vault to be created.
         /// </param>
@@ -161,7 +167,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, PatchVault vault, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> UpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, PatchVault vault, string xMsAuthorizationAuxiliary = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Creates or updates a Recovery Services vault.
@@ -175,6 +181,9 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
         /// <param name='vault'>
         /// Recovery Services Vault to be created.
         /// </param>
@@ -190,7 +199,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, Vault vault, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> BeginCreateOrUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, Vault vault, string xMsAuthorizationAuxiliary = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Deletes a vault.
@@ -227,6 +236,9 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
         /// <param name='vault'>
         /// Recovery Services Vault to be created.
         /// </param>
@@ -242,7 +254,7 @@ namespace Microsoft.Azure.Management.RecoveryServices
         /// <exception cref="Microsoft.Rest.SerializationException">
         /// Thrown when unable to deserialize the response
         /// </exception>
-        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, PatchVault vault, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Vault>> BeginUpdateWithHttpMessagesAsync(string resourceGroupName, string vaultName, PatchVault vault, string xMsAuthorizationAuxiliary = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
         /// Fetches all the resources of the specified type in the subscription.

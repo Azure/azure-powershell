@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 3.0.6
 * Upgraded Azure.Core to 1.37.0.

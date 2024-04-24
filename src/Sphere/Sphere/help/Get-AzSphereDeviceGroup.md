@@ -17,32 +17,32 @@ Get a DeviceGroup.
 ```
 Get-AzSphereDeviceGroup -CatalogName <String> -ProductName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-Filter <String>] [-Maxpagesize <Int32>] [-Skip <Int32>] [-Top <Int32>]
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzSphereDeviceGroup -CatalogName <String> -Name <String> -ProductName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentityProduct
 ```
 Get-AzSphereDeviceGroup -Name <String> -ProductInputObject <ISphereIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityCatalog
 ```
 Get-AzSphereDeviceGroup -Name <String> -ProductName <String> -CatalogInputObject <ISphereIdentity>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzSphereDeviceGroup -InputObject <ISphereIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -239,21 +239,6 @@ Parameter Sets: List, Get, GetViaIdentityCatalog
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

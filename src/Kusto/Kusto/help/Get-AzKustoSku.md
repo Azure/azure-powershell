@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Kusto-help.xml
 Module Name: Az.Kusto
 online version: https://learn.microsoft.com/powershell/module/az.kusto/get-azkustosku
 schema: 2.0.0
@@ -22,7 +22,7 @@ Lists eligible region SKUs for Kusto resource provider by Azure region.
 
 ## EXAMPLES
 
-### Example 1: Lists eligible SKUs for Kusto resource provider by Azure region 
+### Example 1: Lists eligible SKUs for Kusto resource provider by Azure region
 ```powershell
 Get-AzKustoSku -SubscriptionId xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Location "East US"
 ```
@@ -137,4 +137,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

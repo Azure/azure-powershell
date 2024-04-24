@@ -75,7 +75,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// <param name="bcdrSecurityLevel">Security levels of Recovery Services Vault for business continuity and
         /// disaster recovery
         /// Possible values include: &#39;Poor&#39;, &#39;Fair&#39;, &#39;Good&#39;, &#39;Excellent&#39;</param>
-        public VaultProperties(string provisioningState = default(string), UpgradeDetails upgradeDetails = default(UpgradeDetails), System.Collections.Generic.IList<PrivateEndpointConnectionVaultProperties> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnectionVaultProperties>), string privateEndpointStateForBackup = default(string), string privateEndpointStateForSiteRecovery = default(string), VaultPropertiesEncryption encryption = default(VaultPropertiesEncryption), VaultPropertiesMoveDetails moveDetails = default(VaultPropertiesMoveDetails), string moveState = default(string), string backupStorageVersion = default(string), string publicNetworkAccess = default(string), MonitoringSettings monitoringSettings = default(MonitoringSettings), RestoreSettings restoreSettings = default(RestoreSettings), VaultPropertiesRedundancySettings redundancySettings = default(VaultPropertiesRedundancySettings), SecuritySettings securitySettings = default(SecuritySettings), string secureScore = default(string), string bcdrSecurityLevel = default(string))
+
+        /// <param name="resourceGuardOperationRequests">ResourceGuardOperationRequests on which LAC check will be performed
+        /// </param>
+        public VaultProperties(string provisioningState = default(string), UpgradeDetails upgradeDetails = default(UpgradeDetails), System.Collections.Generic.IList<PrivateEndpointConnectionVaultProperties> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnectionVaultProperties>), string privateEndpointStateForBackup = default(string), string privateEndpointStateForSiteRecovery = default(string), VaultPropertiesEncryption encryption = default(VaultPropertiesEncryption), VaultPropertiesMoveDetails moveDetails = default(VaultPropertiesMoveDetails), string moveState = default(string), string backupStorageVersion = default(string), string publicNetworkAccess = default(string), MonitoringSettings monitoringSettings = default(MonitoringSettings), RestoreSettings restoreSettings = default(RestoreSettings), VaultPropertiesRedundancySettings redundancySettings = default(VaultPropertiesRedundancySettings), SecuritySettings securitySettings = default(SecuritySettings), string secureScore = default(string), string bcdrSecurityLevel = default(string), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>))
 
         {
             this.ProvisioningState = provisioningState;
@@ -94,6 +97,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
             this.SecuritySettings = securitySettings;
             this.SecureScore = secureScore;
             this.BcdrSecurityLevel = bcdrSecurityLevel;
+            this.ResourceGuardOperationRequests = resourceGuardOperationRequests;
             CustomInit();
         }
 
@@ -201,5 +205,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "bcdrSecurityLevel")]
         public string BcdrSecurityLevel {get; private set; }
+
+        /// <summary>
+        /// Gets or sets resourceGuardOperationRequests on which LAC check will be
+        /// performed
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resourceGuardOperationRequests")]
+        public System.Collections.Generic.IList<string> ResourceGuardOperationRequests {get; set; }
     }
 }

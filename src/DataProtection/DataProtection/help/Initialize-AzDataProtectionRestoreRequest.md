@@ -18,7 +18,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
  [-RecoveryPoint <String>] [-PointInTime <DateTime>] [-RehydrationDuration <String>]
  [-RehydrationPriority <String>] [-RestoreConfiguration <KubernetesClusterRestoreCriteria>]
- [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>] [-ProgressAction <ActionPreference>]
+ [-SecretStoreURI <String>] [-SecretStoreType <SecretStoreTypes>]
  [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
 Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -SourceDataStore <DataStoreType>
  -RestoreLocation <String> -RestoreType <RestoreTargetType> -TargetResourceId <String>
  [-RecoveryPoint <String>] [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-ItemLevelRecovery]
- [-ContainersList <String[]>] [-PrefixMatch <Hashtable>] [-ProgressAction <ActionPreference>]
+ [-ContainersList <String[]>] [-PrefixMatch <Hashtable>]
  [<CommonParameters>]
 ```
 
@@ -38,7 +38,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  [-RehydrationDuration <String>] [-RehydrationPriority <String>]
  [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-SecretStoreURI <String>]
  [-SecretStoreType <SecretStoreTypes>] -BackupInstance <BackupInstanceResource>
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### OriginalLocationILR
@@ -49,7 +49,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  [-RestoreConfiguration <KubernetesClusterRestoreCriteria>] [-SecretStoreURI <String>]
  [-SecretStoreType <SecretStoreTypes>] [-ItemLevelRecovery] [-ContainersList <String[]>]
  -BackupInstance <BackupInstanceResource> [-FromPrefixPattern <String[]>] [-ToPrefixPattern <String[]>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### RestoreAsFiles
@@ -58,7 +58,7 @@ Initialize-AzDataProtectionRestoreRequest -DatasourceType <DatasourceTypes> -Sou
  -RestoreLocation <String> -RestoreType <RestoreTargetType> [-RecoveryPoint <String>]
  [-RehydrationDuration <String>] [-RehydrationPriority <String>] [-SecretStoreURI <String>]
  [-SecretStoreType <SecretStoreTypes>] -TargetContainerURI <String>
- [-TargetResourceIdForRestoreAsFile <String>] [-FileNamePrefix <String>] [-ProgressAction <ActionPreference>]
+ [-TargetResourceIdForRestoreAsFile <String>] [-FileNamePrefix <String>]
  [<CommonParameters>]
 ```
 
@@ -196,7 +196,7 @@ Backup Instance object to trigger original localtion restore.
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.BackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.BackupInstanceResource
 Parameter Sets: OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
@@ -317,21 +317,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -RecoveryPoint
 Id of the recovery point to be restored.
 
@@ -384,7 +369,7 @@ Use this parameter to restore with AzureKubernetesService.
 To construct, see NOTES section for RESTORECONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.KubernetesClusterRestoreCriteria
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.KubernetesClusterRestoreCriteria
 Parameter Sets: AlternateLocationFullRecovery, AlternateLocationILR, OriginalLocationFullRecovery, OriginalLocationILR
 Aliases:
 
@@ -546,7 +531,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest
 
 ## NOTES
 

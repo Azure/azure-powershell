@@ -47,7 +47,7 @@ Invoke-LiveTestScenario -Name "Update key vault" -Description "Test updating pro
     # Update EnableRbacAuthorization
     $vault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $vaultLocation
 
-    $vault = $vault | Update-AzKeyVault -EnableRbacAuthorization $false
+    $vault = $vault | Update-AzKeyVault -DisableRbacAuthorization $true
     Assert-False { $vault.EnableRbacAuthorization } "EnableRbacAuthorization should be false"
 
     # Update Tags

@@ -16,13 +16,15 @@ Removes an Azure Web App.
 ### S1
 ```
 Remove-AzWebApp [-DeleteAppServicePlan] [-Force] [-AsJob] [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### S2
 ```
 Remove-AzWebApp [-DeleteAppServicePlan] [-Force] [-AsJob] [-WebApp] <PSSite>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -203,5 +205,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Start-AzWebApp](./Start-AzWebApp.md)
 
 [Stop-AzWebApp](./Stop-AzWebApp.md)
-
-

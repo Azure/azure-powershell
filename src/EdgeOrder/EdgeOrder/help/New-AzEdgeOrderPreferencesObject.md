@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.EdgeOrder-help.xml
 Module Name: Az.EdgeOrder
-online version: https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderPreferencesObject
+online version: https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderPreferencesObject
 schema: 2.0.0
 ---
 
@@ -108,25 +108,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-ENCRYPTIONPREFERENCE `<IEncryptionPreferences>`: Preferences related to the Encryption.
-  - `[DoubleEncryptionStatus <DoubleEncryptionStatus?>]`: Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
-
-MANAGEMENTRESOURCEPREFERENCE `<IManagementResourcePreferences>`: Preferences related to the Management resource.
-  - `[PreferredManagementResourceId <String>]`: Customer preferred Management resource ARM ID
-
-NOTIFICATIONPREFERENCE <INotificationPreference[]>: Notification preferences.
-  - `SendNotification <Boolean>`: Notification is required or not.
-  - `StageName <NotificationStageName>`: Name of the stage.
-
-TRANSPORTPREFERENCE `<ITransportPreferences>`: Preferences related to the shipment logistics of the order.
-  - `PreferredShipmentType <TransportShipmentTypes>`: Indicates Shipment Logistics type that the customer preferred.
-
 ## RELATED LINKS
-

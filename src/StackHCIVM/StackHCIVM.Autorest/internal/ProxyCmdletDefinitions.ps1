@@ -6282,10 +6282,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a gallery image.
+The operation to Update a gallery image.
 Please note some properties can be set only during gallery image creation.
 .Description
-The operation to Create a gallery image.
+The operation to Update a gallery image.
 Please note some properties can be set only during gallery image creation.
 .Example
 {{ Add code here }}
@@ -6533,10 +6533,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a logical network.
+The operation to Update a logical network.
 Please note some properties can be set only during logical network creation.
 .Description
-The operation to Create a logical network.
+The operation to Update a logical network.
 Please note some properties can be set only during logical network creation.
 .Example
 {{ Add code here }}
@@ -6769,9 +6769,9 @@ end {
 
 <#
 .Synopsis
-The operation to Create the extension.
+The operation to Update the extension.
 .Description
-The operation to Create the extension.
+The operation to Update the extension.
 .Example
 {{ Add code here }}
 .Example
@@ -7053,10 +7053,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a hybrid machine.
+The operation to Update a hybrid machine.
 Please note some properties can be set only during machine creation.
 .Description
-The operation to Create a hybrid machine.
+The operation to Update a hybrid machine.
 Please note some properties can be set only during machine creation.
 .Example
 {{ Add code here }}
@@ -7387,10 +7387,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a marketplace gallery image.
+The operation to Update a marketplace gallery image.
 Please note some properties can be set only during marketplace gallery image creation.
 .Description
-The operation to Create a marketplace gallery image.
+The operation to Update a marketplace gallery image.
 Please note some properties can be set only during marketplace gallery image creation.
 .Example
 {{ Add code here }}
@@ -7632,10 +7632,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a network interface.
+The operation to Update a network interface.
 Please note some properties can be set only during network interface creation.
 .Description
-The operation to Create a network interface.
+The operation to Update a network interface.
 Please note some properties can be set only during network interface creation.
 .Example
 {{ Add code here }}
@@ -7855,10 +7855,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a storage container.
+The operation to Update a storage container.
 Please note some properties can be set only during storage container creation.
 .Description
-The operation to Create a storage container.
+The operation to Update a storage container.
 Please note some properties can be set only during storage container creation.
 .Example
 {{ Add code here }}
@@ -8055,10 +8055,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a virtual hard disk.
+The operation to Update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 .Description
-The operation to Create a virtual hard disk.
+The operation to Update a virtual hard disk.
 Please note some properties can be set only during virtual hard disk creation.
 .Example
 {{ Add code here }}
@@ -8299,10 +8299,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a virtual machine instance.
+The operation to Update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Description
-The operation to Create a virtual machine instance.
+The operation to Update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Example
 {{ Add code here }}
@@ -9176,9 +9176,9 @@ end {
 
 <#
 .Synopsis
-The operation to update a gallery image.
+The operation to Update a gallery image.
 .Description
-The operation to update a gallery image.
+The operation to Update a gallery image.
 .Example
 {{ Add code here }}
 .Example
@@ -9389,9 +9389,9 @@ end {
 
 <#
 .Synopsis
-Create GuestAgent.
+Update GuestAgent.
 .Description
-Create GuestAgent.
+Update GuestAgent.
 .Example
 {{ Add code here }}
 .Example
@@ -9877,9 +9877,9 @@ end {
 
 <#
 .Synopsis
-The operation to update a hybrid machine.
+The operation to Update a hybrid machine.
 .Description
-The operation to update a hybrid machine.
+The operation to Update a hybrid machine.
 .Example
 {{ Add code here }}
 .Example
@@ -10189,9 +10189,9 @@ end {
 
 <#
 .Synopsis
-The operation to update a marketplace gallery image.
+The operation to Update a marketplace gallery image.
 .Description
-The operation to update a marketplace gallery image.
+The operation to Update a marketplace gallery image.
 .Example
 {{ Add code here }}
 .Example
@@ -10402,10 +10402,10 @@ end {
 
 <#
 .Synopsis
-The operation to Create a virtual machine instance.
+The operation to Update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Description
-The operation to Create a virtual machine instance.
+The operation to Update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Example
 Update-AzStackHCIVMVirtualMachine  -Name "testVm" -ResourceGroupName "test-rg" -VmMemoryInMB "4"

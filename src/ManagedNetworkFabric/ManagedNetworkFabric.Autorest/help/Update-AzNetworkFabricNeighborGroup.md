@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNetworkFabricNeighborGroup
 
 ## SYNOPSIS
-Updates the Neighbor Group.
+Update the Neighbor Group.
 
 ## SYNTAX
 
@@ -41,7 +41,7 @@ Update-AzNetworkFabricNeighborGroup -Name <String> -ResourceGroupName <String> -
 ```
 
 ## DESCRIPTION
-Updates the Neighbor Group.
+Update the Neighbor Group.
 
 ## EXAMPLES
 

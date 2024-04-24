@@ -23,7 +23,7 @@ Create an in-memory object for FilterableProperty.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.FilterableProperty
 .Link
-https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderFilterablePropertyObject
+https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderFilterablePropertyObject
 #>
 function New-AzEdgeOrderFilterablePropertyObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.FilterableProperty')]

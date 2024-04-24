@@ -70,7 +70,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.Synapse/kustooperations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.Synapse/kustooperations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.Synapse/kustooperations'");
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/attachedDatabaseConfigurations/(?<attachedDatabaseConfigurationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/attachedDatabaseConfigurations/(?<attachedDatabaseConfigurationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/attachedDatabaseConfigurations/{attachedDatabaseConfigurationName}'");
@@ -398,6 +398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -529,7 +530,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/attachedDatabaseConfigurations/(?<attachedDatabaseConfigurationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/attachedDatabaseConfigurations/(?<attachedDatabaseConfigurationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/attachedDatabaseConfigurations/{attachedDatabaseConfigurationName}'");
@@ -690,6 +691,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -822,7 +824,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/attachedDatabaseConfigurations/(?<attachedDatabaseConfigurationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/attachedDatabaseConfigurations/(?<attachedDatabaseConfigurationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/attachedDatabaseConfigurations/{attachedDatabaseConfigurationName}'");
@@ -1007,7 +1009,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/attachedDatabaseConfigurations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/attachedDatabaseConfigurations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/attachedDatabaseConfigurations'");
@@ -1198,7 +1200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/checkNameAvailability'");
@@ -1395,7 +1397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}/checkNameAvailability'");
@@ -1599,7 +1601,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/DataConnections/(?<dataConnectionName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/DataConnections/(?<dataConnectionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}/DataConnections/{dataConnectionName}'");
@@ -1765,6 +1767,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -1903,7 +1906,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}/dataConnectionValidation'");
@@ -2066,6 +2069,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                         // make the final call
                         _response = await sender.SendAsync(request,  eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                         break;
                     }
                     var _contentType = _response.Content.Headers.ContentType?.MediaType;
@@ -2199,7 +2203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/DataConnections/(?<dataConnectionName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/DataConnections/(?<dataConnectionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}/DataConnections/{dataConnectionName}'");
@@ -2361,6 +2365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -2498,7 +2503,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/DataConnections/(?<dataConnectionName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/DataConnections/(?<dataConnectionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}/DataConnections/{dataConnectionName}'");
@@ -2689,7 +2694,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/dataConnections$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/dataConnections$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}/dataConnections'");
@@ -2886,7 +2891,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/DataConnections/(?<dataConnectionName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/DataConnections/(?<dataConnectionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}/DataConnections/{dataConnectionName}'");
@@ -3050,6 +3055,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -3192,7 +3198,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}/checkPrincipalAssignmentNameAvailability'");
@@ -3396,7 +3402,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/principalAssignments/(?<principalAssignmentName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/principalAssignments/(?<principalAssignmentName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}/principalAssignments/{principalAssignmentName}'");
@@ -3562,6 +3568,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -3698,7 +3705,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/principalAssignments/(?<principalAssignmentName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/principalAssignments/(?<principalAssignmentName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}/principalAssignments/{principalAssignmentName}'");
@@ -3862,6 +3869,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -3999,7 +4007,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/principalAssignments/(?<principalAssignmentName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/principalAssignments/(?<principalAssignmentName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}/principalAssignments/{principalAssignmentName}'");
@@ -4192,7 +4200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/principalAssignments$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)/principalAssignments$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}/principalAssignments'");
@@ -4386,7 +4394,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}'");
@@ -4547,6 +4555,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -4678,7 +4687,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}'");
@@ -4837,6 +4846,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -4969,7 +4979,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}'");
@@ -5152,7 +5162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/databases$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/databases$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/databases'");
@@ -5339,7 +5349,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/Databases/(?<databaseName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/Databases/{databaseName}'");
@@ -5500,6 +5510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -5618,7 +5629,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Synapse/skus$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Synapse/skus$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Synapse/skus'");
@@ -5786,7 +5797,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/checkPrincipalAssignmentNameAvailability'");
@@ -5982,7 +5993,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/principalAssignments/(?<principalAssignmentName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/principalAssignments/(?<principalAssignmentName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/principalAssignments/{principalAssignmentName}'");
@@ -6145,6 +6156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -6276,7 +6288,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/principalAssignments/(?<principalAssignmentName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/principalAssignments/(?<principalAssignmentName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/principalAssignments/{principalAssignmentName}'");
@@ -6435,6 +6447,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -6567,7 +6580,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/principalAssignments/(?<principalAssignmentName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/principalAssignments/(?<principalAssignmentName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/principalAssignments/{principalAssignmentName}'");
@@ -6750,7 +6763,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/principalAssignments$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/principalAssignments$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/principalAssignments'");
@@ -6935,7 +6948,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/addLanguageExtensions'");
@@ -7095,6 +7108,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -7220,7 +7234,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Synapse/locations/(?<location>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/providers/Microsoft.Synapse/locations/(?<location>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/providers/Microsoft.Synapse/locations/{location}/kustoPoolCheckNameAvailability'");
@@ -7418,7 +7432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}'");
@@ -7586,6 +7600,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -7718,7 +7733,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}'");
@@ -7874,6 +7889,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -8008,7 +8024,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/detachFollowerDatabases'");
@@ -8168,6 +8184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -8292,7 +8309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}'");
@@ -8467,7 +8484,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools'");
@@ -8645,7 +8662,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/listFollowerDatabases'");
@@ -8824,7 +8841,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/listLanguageExtensions'");
@@ -9003,7 +9020,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/skus$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)/skus$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/skus'");
@@ -9188,7 +9205,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/removeLanguageExtensions'");
@@ -9348,6 +9365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -9473,7 +9491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/start'");
@@ -9629,6 +9647,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -9751,7 +9770,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}/stop'");
@@ -9907,6 +9926,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -10044,7 +10064,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Synapse/workspaces/(?<workspaceName>[^/]+)/kustoPools/(?<kustoPoolName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Synapse/workspaces/{workspaceName}/kustoPools/{kustoPoolName}'");
@@ -10208,6 +10228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }

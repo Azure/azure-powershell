@@ -18,8 +18,8 @@ New-AzWvdMsixPackage -HostPoolName <String> -ResourceGroupName <String> -FullNam
  [-SubscriptionId <String>] [-DisplayName <String>] [-ImagePath <String>] [-IsActive] [-IsRegularRegistration]
  [-LastUpdated <DateTime>] [-PackageApplication <IMsixPackageApplications[]>]
  [-PackageDependency <IMsixPackageDependencies[]>] [-PackageFamilyName <String>] [-PackageName <String>]
- [-PackageRelativePath <String>] [-Version <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-PackageRelativePath <String>] [-Version <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PackageAlias
@@ -376,7 +376,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IMsixPackage
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IMsixPackage
 
 ## NOTES
 

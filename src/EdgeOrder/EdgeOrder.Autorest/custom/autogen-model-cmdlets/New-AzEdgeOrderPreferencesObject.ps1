@@ -23,7 +23,7 @@ Create an in-memory object for Preferences.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Preferences
 .Link
-https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderPreferencesObject
+https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderPreferencesObject
 #>
 function New-AzEdgeOrderPreferencesObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20211201.Preferences')]

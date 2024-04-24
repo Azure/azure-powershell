@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DynatraceObservability-help.xml
 Module Name: Az.DynatraceObservability
 online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitoredresource
 schema: 2.0.0
@@ -13,8 +13,8 @@ List the resources currently being monitored by the Dynatrace monitor resource.
 ## SYNTAX
 
 ```
-Get-AzDynatraceMonitoredResource -MonitorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDynatraceMonitoredResource -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,7 +104,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

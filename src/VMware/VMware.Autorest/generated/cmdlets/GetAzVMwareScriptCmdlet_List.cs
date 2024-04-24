@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using System;
 
     /// <summary>
-    /// List script cmdlet resources available for a private cloud to create a script execution resource on a private cloud
+    /// List script cmdlet resources available for a private cloud to List a script execution resource on a private cloud
     /// </summary>
     /// <remarks>
     /// [OpenAPI] List=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}/scriptCmdlets"
@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzVMwareScriptCmdlet_List")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IScriptCmdlet))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"List script cmdlet resources available for a private cloud to create a script execution resource on a private cloud")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"List script cmdlet resources available for a private cloud to List a script execution resource on a private cloud")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/scriptPackages/{scriptPackageName}/scriptCmdlets", ApiVersion = "2023-03-01")]
     public partial class GetAzVMwareScriptCmdlet_List : global::System.Management.Automation.PSCmdlet,
@@ -240,11 +240,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
                 telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
                 telemetryInfo.TryGetValue("InvocationName", out var invocationName);
-                if (!string.IsNullOrEmpty(sanitizedProperties))
+                if (showSecretsWarning == "true")
                 {
-                    WriteWarning($"The output of cmdlet {invocationName ?? "Unknown"} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
                 }
             }
         }
