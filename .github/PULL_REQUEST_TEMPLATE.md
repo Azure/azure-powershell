@@ -6,7 +6,7 @@
 
 ## Mandatory Checklist
 
-- Please choose the target release of Azure PowerShell. (⚠️**Target release** is a different concept from **API readyness**. Please click into the links for details.)
+- Please choose the target release of Azure PowerShell. (⚠️**Target release** is a different concept from **API readiness**. Please click below links for details.)
   - [ ] [General release](../blob/main/CONTRIBUTING.md#target-release-types)
   - [ ] [Public preview](../blob/main/CONTRIBUTING.md#target-release-types)
   - [ ] [Private preview](../blob/main/CONTRIBUTING.md#target-release-types)
