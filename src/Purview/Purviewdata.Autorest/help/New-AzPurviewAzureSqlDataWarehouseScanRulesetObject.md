@@ -25,8 +25,10 @@ Create an in-memory object for AzureSqlDataWarehouseScanRuleset.
 
 ### Example 1: Create Azure SQL Data Warehouse custom scanruleset object
 ```powershell
-{{ Add code here }}
+New-AzPurviewAzureSqlDataWarehouseScanRulesetObject -Kind 'AzureSqlDataWarehouse' -Description 'desc' -ExcludedSystemClassification @('MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER','MICROSOFT.SECURITY.COMMON_PASSWORDS') -IncludedCustomClassificationRuleName @('ClassificationRule2') -Type 'Custom'
+```
 
+```output
 CreatedAt                            :
 Description                          : desc
 ExcludedSystemClassification         : {MICROSOFT.FINANCIAL.CREDIT_CARD_NUMBER, MICROSOFT.SECURITY.COMMON_PASSWORDS}
@@ -129,8 +131,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSqlDataWarehouseScanRuleset
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

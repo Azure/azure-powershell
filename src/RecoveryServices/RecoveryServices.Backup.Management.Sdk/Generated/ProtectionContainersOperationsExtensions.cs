@@ -13,7 +13,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class ProtectionContainersOperationsExtensions
     {
         /// <summary>
-        /// Gets details of the specific container registered to your Recovery Services Vault.
+        /// Gets details of the specific container registered to your Recovery Services
+        /// Vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -22,7 +23,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Name of the fabric where the container belongs.
@@ -36,7 +38,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Gets details of the specific container registered to your Recovery Services Vault.
+        /// Gets details of the specific container registered to your Recovery Services
+        /// Vault.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -45,7 +48,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Name of the fabric where the container belongs.
@@ -64,9 +68,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             }
         }
         /// <summary>
-        /// Registers the container with Recovery Services vault.
-        /// This is an asynchronous operation. To track the operation status, use location header to call get latest status of
-        /// the operation.
+        /// Registers the container with Recovery Services vault. This is an
+        /// asynchronous operation. To track the operation status, use location header
+        /// to call get latest status of the operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -75,7 +79,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the container.
@@ -89,9 +94,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Registers the container with Recovery Services vault.
-        /// This is an asynchronous operation. To track the operation status, use location header to call get latest status of
-        /// the operation.
+        /// Registers the container with Recovery Services vault. This is an
+        /// asynchronous operation. To track the operation status, use location header
+        /// to call get latest status of the operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -100,7 +105,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the container.
@@ -119,8 +125,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             }
         }
         /// <summary>
-        /// Unregisters the given container from your Recovery Services Vault. This is an asynchronous operation. To determine
-        /// whether the backend service has finished processing the request, call Get Container Operation Result API.
+        /// Unregisters the given container from your Recovery Services Vault. This is
+        /// an asynchronous operation. To determine whether the backend service has
+        /// finished processing the request, call Get Container Operation Result API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -129,13 +136,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Name of the fabric where the container belongs.
         /// </param>
         /// <param name='containerName'>
-        /// Name of the container which needs to be unregistered from the Recovery Services Vault.
+        /// Name of the container which needs to be unregistered from the Recovery
+        /// Services Vault.
         /// </param>
         public static void Unregister(this IProtectionContainersOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName)
         {
@@ -143,8 +152,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Unregisters the given container from your Recovery Services Vault. This is an asynchronous operation. To determine
-        /// whether the backend service has finished processing the request, call Get Container Operation Result API.
+        /// Unregisters the given container from your Recovery Services Vault. This is
+        /// an asynchronous operation. To determine whether the backend service has
+        /// finished processing the request, call Get Container Operation Result API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -153,13 +163,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Name of the fabric where the container belongs.
         /// </param>
         /// <param name='containerName'>
-        /// Name of the container which needs to be unregistered from the Recovery Services Vault.
+        /// Name of the container which needs to be unregistered from the Recovery
+        /// Services Vault.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -169,7 +181,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             (await operations.UnregisterWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// This is an async operation and the results should be tracked using location header or Azure-async-url.
+        /// This is an async operation and the results should be tracked using location
+        /// header or Azure-async-url.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -181,7 +194,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric Name associated with the container.
@@ -195,7 +209,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// This is an async operation and the results should be tracked using location header or Azure-async-url.
+        /// This is an async operation and the results should be tracked using location
+        /// header or Azure-async-url.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -207,7 +222,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric Name associated with the container.
@@ -223,8 +239,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             (await operations.InquireWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, containerName, odataQuery, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Discovers all the containers in the subscription that can be backed up to Recovery Services Vault. This is an
-        /// asynchronous operation. To know the status of the operation, call GetRefreshOperationResult API.
+        /// Discovers all the containers in the subscription that can be backed up to
+        /// Recovery Services Vault. This is an asynchronous operation. To know the
+        /// status of the operation, call GetRefreshOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -236,7 +253,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated the container.
@@ -247,8 +265,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Discovers all the containers in the subscription that can be backed up to Recovery Services Vault. This is an
-        /// asynchronous operation. To know the status of the operation, call GetRefreshOperationResult API.
+        /// Discovers all the containers in the subscription that can be backed up to
+        /// Recovery Services Vault. This is an asynchronous operation. To know the
+        /// status of the operation, call GetRefreshOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -260,7 +279,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated the container.
@@ -273,9 +293,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
             (await operations.RefreshWithHttpMessagesAsync(vaultName, resourceGroupName, fabricName, odataQuery, null, cancellationToken).ConfigureAwait(false)).Dispose();
         }
         /// <summary>
-        /// Registers the container with Recovery Services vault.
-        /// This is an asynchronous operation. To track the operation status, use location header to call get latest status of
-        /// the operation.
+        /// Registers the container with Recovery Services vault. This is an
+        /// asynchronous operation. To track the operation status, use location header
+        /// to call get latest status of the operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -284,7 +304,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the container.
@@ -298,9 +319,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Registers the container with Recovery Services vault.
-        /// This is an asynchronous operation. To track the operation status, use location header to call get latest status of
-        /// the operation.
+        /// Registers the container with Recovery Services vault. This is an
+        /// asynchronous operation. To track the operation status, use location header
+        /// to call get latest status of the operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -309,7 +330,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the container.

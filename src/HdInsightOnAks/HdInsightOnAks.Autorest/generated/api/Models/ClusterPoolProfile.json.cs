@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_clusterPoolVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("clusterPoolVersion"), out var __jsonClusterPoolVersion) ? (string)__jsonClusterPoolVersion : (string)ClusterPoolVersion;}
+            {_clusterPoolVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonString>("clusterPoolVersion"), out var __jsonClusterPoolVersion) ? (string)__jsonClusterPoolVersion : (string)_clusterPoolVersion;}
             AfterFromJson(json);
         }
 

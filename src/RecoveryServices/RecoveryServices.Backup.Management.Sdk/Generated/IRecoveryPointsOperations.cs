@@ -26,7 +26,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the backed up item.
@@ -52,18 +53,21 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<Microsoft.Rest.Azure.IPage<RecoveryPointResource>>> ListWithHttpMessagesAsync(string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, Microsoft.Rest.Azure.OData.ODataQuery<BmsrpQueryObject> odataQuery = default(Microsoft.Rest.Azure.OData.ODataQuery<BmsrpQueryObject>), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Provides the information of the backed up data identified using RecoveryPointID. This is an asynchronous operation.
-        /// To know the status of the operation, call the GetProtectedItemOperationResult API.
+        /// Provides the information of the backed up data identified using
+        /// RecoveryPointID. This is an asynchronous operation. To know the status of
+        /// the operation, call the GetProtectedItemOperationResult API.
         /// </summary>
         /// <remarks>
-        /// Provides the information of the backed up data identified using RecoveryPointID. This is an asynchronous operation.
-        /// To know the status of the operation, call the GetProtectedItemOperationResult API.
+        /// Provides the information of the backed up data identified using
+        /// RecoveryPointID. This is an asynchronous operation. To know the status of
+        /// the operation, call the GetProtectedItemOperationResult API.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with backed up item.

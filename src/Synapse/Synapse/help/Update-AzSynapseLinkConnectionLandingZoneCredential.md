@@ -15,20 +15,22 @@ Updates the landing zone credential of a link connection.
 ### UpdateByName (Default)
 ```
 Update-AzSynapseLinkConnectionLandingZoneCredential -WorkspaceName <String> -LinkConnectionName <String>
- -SasToken <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SasToken <SecureString> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByObject
 ```
 Update-AzSynapseLinkConnectionLandingZoneCredential -WorkspaceObject <PSSynapseWorkspace>
- -LinkConnectionName <String> -SasToken <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -LinkConnectionName <String> -SasToken <SecureString> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByInputObject
 ```
 Update-AzSynapseLinkConnectionLandingZoneCredential -InputObject <PSLinkConnectionResource>
- -SasToken <SecureString> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -SasToken <SecureString> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -13,12 +13,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IHeaderSerializable
     {
 
-        /// <summary>Backing field for <see cref="AzureAsyncOperation" /> property.</summary>
-        private string _azureAsyncOperation;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
-        public string AzureAsyncOperation { get => this._azureAsyncOperation; set => this._azureAsyncOperation = value; }
-
         /// <summary>Backing field for <see cref="Location" /> property.</summary>
         private string _location;
 
@@ -40,23 +34,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClustersAbortLatestOperationAcceptedResponseHeadersInternal)this).Location = System.Linq.Enumerable.FirstOrDefault(__locationHeader0) is string __headerLocationHeader0 ? __headerLocationHeader0 : (string)null;
             }
-            if (headers.TryGetValues("Azure-AsyncOperation", out var __azureAsyncOperationHeader1))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.IManagedClustersAbortLatestOperationAcceptedResponseHeadersInternal)this).AzureAsyncOperation = System.Linq.Enumerable.FirstOrDefault(__azureAsyncOperationHeader1) is string __headerAzureAsyncOperationHeader1 ? __headerAzureAsyncOperationHeader1 : (string)null;
-            }
         }
     }
     public partial interface IManagedClustersAbortLatestOperationAcceptedResponseHeaders
 
     {
-        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"",
-        SerializedName = @"Azure-AsyncOperation",
-        PossibleTypes = new [] { typeof(string) })]
-        string AzureAsyncOperation { get; set; }
-
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
         Required = false,
         ReadOnly = false,
@@ -69,8 +51,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models
     internal partial interface IManagedClustersAbortLatestOperationAcceptedResponseHeadersInternal
 
     {
-        string AzureAsyncOperation { get; set; }
-
         string Location { get; set; }
 
     }

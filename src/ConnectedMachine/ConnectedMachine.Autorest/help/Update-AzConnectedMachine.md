@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedMachine
 
 ## SYNOPSIS
-The operation to update a hybrid machine.
+The operation to Update a hybrid machine.
 
 ## SYNTAX
 
@@ -63,7 +63,7 @@ Update-AzConnectedMachine -Name <String> -ResourceGroupName <String> -JsonString
 ```
 
 ## DESCRIPTION
-The operation to update a hybrid machine.
+The operation to Update a hybrid machine.
 
 ## EXAMPLES
 
@@ -173,7 +173,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -339,7 +338,6 @@ Accept wildcard characters: False
 
 ### -Parameter
 Describes a hybrid machine Update.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineUpdate

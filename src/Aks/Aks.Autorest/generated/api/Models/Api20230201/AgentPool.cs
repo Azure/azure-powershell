@@ -11,8 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201
     public partial class AgentPool :
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IAgentPool,
         Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IAgentPoolInternal,
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IValidates,
-        Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IHeaderSerializable
+        Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IValidates
     {
         /// <summary>
         /// Backing field for Inherited model <see cref= "Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.ISubResource"
@@ -25,12 +24,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Inlined)]
         public string[] AvailabilityZone { get => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IManagedClusterAgentPoolProfilePropertiesInternal)Property).AvailabilityZone; set => ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IManagedClusterAgentPoolProfilePropertiesInternal)Property).AvailabilityZone = value ?? null /* arrayOf */; }
-
-        /// <summary>Backing field for <see cref="AzureAsyncOperation" /> property.</summary>
-        private string _azureAsyncOperation;
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Origin(Microsoft.Azure.PowerShell.Cmdlets.Aks.PropertyOrigin.Owned)]
-        public string AzureAsyncOperation { get => this._azureAsyncOperation; set => this._azureAsyncOperation = value; }
 
         /// <summary>
         /// Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user
@@ -394,15 +387,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201
 
         }
 
-        /// <param name="headers"></param>
-        void Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IHeaderSerializable.ReadHeaders(global::System.Net.Http.Headers.HttpResponseHeaders headers)
-        {
-            if (headers.TryGetValues("Azure-AsyncOperation", out var __azureAsyncOperationHeader0))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.IAgentPoolInternal)this).AzureAsyncOperation = System.Linq.Enumerable.FirstOrDefault(__azureAsyncOperationHeader0) is string __headerAzureAsyncOperationHeader0 ? __headerAzureAsyncOperationHeader0 : (string)null;
-            }
-        }
-
         /// <summary>Validates that this object meets the validation criteria.</summary>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.IEventListener" /> instance that will receive validation
         /// events.</param>
@@ -430,14 +414,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201
         SerializedName = @"availabilityZones",
         PossibleTypes = new [] { typeof(string) })]
         string[] AvailabilityZone { get; set; }
-
-        [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"",
-        SerializedName = @"Azure-AsyncOperation",
-        PossibleTypes = new [] { typeof(string) })]
-        string AzureAsyncOperation { get; set; }
         /// <summary>
         /// Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user
         /// pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1.
@@ -959,8 +935,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201
         /// The list of Availability zones to use for nodes. This can only be specified if the AgentPoolType property is 'VirtualMachineScaleSets'.
         /// </summary>
         string[] AvailabilityZone { get; set; }
-
-        string AzureAsyncOperation { get; set; }
         /// <summary>
         /// Number of agents (VMs) to host docker containers. Allowed values must be in the range of 0 to 1000 (inclusive) for user
         /// pools and in the range of 1 to 1000 (inclusive) for system pools. The default value is 1.

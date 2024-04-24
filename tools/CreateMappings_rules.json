@@ -489,10 +489,6 @@
     "alias": "Blueprint"
   },
   {
-    "regex": "DeploymentManager",
-    "alias": "Deployment Manager"
-  },
-  {
     "regex": "Peering",
     "group": "Peering",
     "alias": "Peering"
@@ -863,5 +859,29 @@
   {
     "module": "Fleet",
     "alias": "Fleet"
+  },
+  {
+    "module": "ManagedNetworkFabric",
+    "alias": "Managed Network Fabric"
+  },
+  {
+    "module": "CodeSigning",
+    "alias": "Code Signing"
+  },
+  {
+    "module": "FirmwareAnalysis",
+    "alias": "FirmwareAnalysis"
+  },
+  {
+    "module": "EdgeZones",
+    "alias": "EdgeZones"
+  },
+  {
+    "alias": "Sphere",
+    "module": "Sphere"
+  },
+  {
+    "module": "StandbyPool",
+    "alias": "StandbyPool"
   }
 ]

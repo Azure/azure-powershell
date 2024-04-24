@@ -15,18 +15,21 @@ Gets the details of an EventHub schema group.
 ### List (Default)
 ```
 Get-AzEventHubSchemaGroup -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzEventHubSchemaGroup -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzEventHubSchemaGroup -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzEventHubSchemaGroup -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

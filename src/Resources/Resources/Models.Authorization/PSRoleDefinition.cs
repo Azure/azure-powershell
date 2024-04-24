@@ -35,5 +35,9 @@ namespace Microsoft.Azure.Commands.Resources.Models.Authorization
         public List<string> NotDataActions { get; set; }
 
         public List<string> AssignableScopes { get; set; }
+        
+        public string Condition { get; set; }
+
+        public string ConditionVersion { get; set; }
     }
 }

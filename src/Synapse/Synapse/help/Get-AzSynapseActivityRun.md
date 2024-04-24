@@ -16,14 +16,16 @@ Gets information about activity runs for a pipeline run.
 ```
 Get-AzSynapseActivityRun -WorkspaceName <String> -PipelineName <String> -PipelineRunId <String>
  -RunStartedAfter <DateTimeOffset> -RunStartedBefore <DateTimeOffset> [-ActivityName <String>]
- [-Status <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Status <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### GetByObject
 ```
 Get-AzSynapseActivityRun -WorkspaceObject <PSSynapseWorkspace> -PipelineName <String> -PipelineRunId <String>
  -RunStartedAfter <DateTimeOffset> -RunStartedBefore <DateTimeOffset> [-ActivityName <String>]
- [-Status <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Status <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

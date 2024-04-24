@@ -14,8 +14,8 @@ Register a Windows virtual desktop application group.
 
 ```
 Register-AzWvdApplicationGroup -ResourceGroupName <String> -WorkspaceName <String>
- -ApplicationGroupPath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -ApplicationGroupPath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -153,7 +153,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20231004Preview.IWorkspace
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20230905.IWorkspace
 
 ## NOTES
 

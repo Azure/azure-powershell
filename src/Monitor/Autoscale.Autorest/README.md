@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Autoscale service.
 
 ---
-## Status
-[![Az.Autoscale](https://img.shields.io/powershellgallery/v/Az.Autoscale.svg?style=flat-square&label=Az.Autoscale "Az.Autoscale")](https://www.powershellgallery.com/packages/Az.Autoscale/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -29,12 +26,13 @@ For information on how to develop for `Az.Autoscale`, see [how-to.md](how-to.md)
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
+commit: 9ae616c4a5447e9cae43752b68f089bff2e46398
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/9ae616c4a5447e9cae43752b68f089bff2e46398/specification/monitor/resource-manager/Microsoft.Insights/stable/2022-10-01/autoscale_API.json
+  - $(repo)/specification/monitor/resource-manager/Microsoft.Insights/stable/2022-10-01/autoscale_API.json
 
 root-module-name: $(prefix).Monitor
 title: Autoscale
@@ -46,6 +44,10 @@ nested-object-to-string: true
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

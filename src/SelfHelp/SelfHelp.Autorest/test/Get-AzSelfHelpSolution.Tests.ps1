@@ -14,17 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSelfHelpSolution'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzSelfHelpSolution' -Tag 'LiveOnly' {
+Describe 'Get-AzSelfHelpSolution' -Tag 'LiveOnly'{
     It 'Get' {
         $resourceName = RandomString -allChars $false -len 10
         $criteria = [ordered]@{ 
             "name" ="SolutionId" 
-            "value" = "keyvault-lostdeletedkeys-apollo-solution" 
+            "value" = "apollo-cognitve-search-custom-skill" 
         } 
         $parameters = [ordered]@{ 
         
-             "SearchText" = "Can not RDP" 
-            "vault_name" = "DemoKeyvault" 
+            "SearchText" = "Can not Search" 
         } 
         
         New-AzSelfHelpSolution -Scope $env.scope -ResourceName $resourceName -TriggerCriterion  $criteria -Parameter $parameters

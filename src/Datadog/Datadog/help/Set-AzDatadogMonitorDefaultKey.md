@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Datadog-help.xml
 Module Name: Az.Datadog
 online version: https://learn.microsoft.com/powershell/module/az.datadog/set-azdatadogmonitordefaultkey
 schema: 2.0.0
@@ -13,9 +13,9 @@ Set the default api key.
 ## SYNTAX
 
 ```
-Set-AzDatadogMonitorDefaultKey -MonitorName <String> -ResourceGroupName <String> -Key <String>
- [-SubscriptionId <String>] [-CreatedAt <String>] [-CreatedBy <String>] [-Name <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzDatadogMonitorDefaultKey -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Key <String> [-CreatedAt <String>] [-CreatedBy <String>] [-Name <String>] [-DefaultProfile <PSObject>]
+ [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -69,7 +69,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -216,7 +217,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

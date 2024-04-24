@@ -19,7 +19,9 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
+using Microsoft.Azure.Management.NetApp.Models;
 using System.Linq;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
 {
@@ -70,7 +72,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
 
         [Parameter(
             Mandatory = false,
+            ParameterSetName = FieldsParameterSet,
             HelpMessage = "The name of the ANF snapshot")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The name of the ANF volume",
+            ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("SnapshotName")]
         [ResourceNameCompleter(
@@ -116,16 +123,22 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Snapshot
                 PoolName = NameParts[1];
                 VolumeName = NameParts[2];
             }
-
-            if (Name != null)
+            try
             {
-                var anfSnapshot = AzureNetAppFilesManagementClient.Snapshots.Get(ResourceGroupName, AccountName, PoolName, VolumeName, Name);
-                WriteObject(anfSnapshot.ToPsNetAppFilesSnapshot());
+                if (Name != null)
+                {
+                    var anfSnapshot = AzureNetAppFilesManagementClient.Snapshots.Get(ResourceGroupName, AccountName, PoolName, VolumeName, Name);
+                    WriteObject(anfSnapshot.ToPsNetAppFilesSnapshot());
+                }
+                else
+                {
+                    var anfSnapshot = AzureNetAppFilesManagementClient.Snapshots.List(ResourceGroupName, AccountName, PoolName, VolumeName).Select(e => e.ToPsNetAppFilesSnapshot());
+                    WriteObject(anfSnapshot, true);
+                }
             }
-            else
+            catch (ErrorResponseException ex)
             {
-                var anfSnapshot = AzureNetAppFilesManagementClient.Snapshots.List(ResourceGroupName, AccountName, PoolName, VolumeName).Select(e => e.ToPsNetAppFilesSnapshot());
-                WriteObject(anfSnapshot, true);
+                throw new CloudException(ex.Body.Error.Message, ex);
             }
         }
     }

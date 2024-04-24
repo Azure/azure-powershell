@@ -219,14 +219,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create a hash table.
     ${ElasticSanInputObject},
 
     [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -280,7 +278,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVirtualNetworkRule[]]
     # The list of virtual network rules.
-    # To construct, see NOTES section for NETWORKACLSVIRTUALNETWORKRULE properties and create a hash table.
     ${NetworkAclsVirtualNetworkRule},
 
     [Parameter()]
@@ -365,7 +362,13 @@ begin {
             CreateViaIdentityExpanded = 'Az.ElasticSan.private\New-AzElasticSanVolumeGroup_CreateViaIdentityExpanded';
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
@@ -493,14 +496,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for ELASTICSANINPUTOBJECT properties and create a hash table.
     ${ElasticSanInputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IElasticSanIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]
@@ -554,7 +555,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVirtualNetworkRule[]]
     # The list of virtual network rules.
-    # To construct, see NOTES section for NETWORKACLSVIRTUALNETWORKRULE properties and create a hash table.
     ${NetworkAclsVirtualNetworkRule},
 
     [Parameter()]
@@ -639,7 +639,13 @@ begin {
             UpdateViaIdentityExpanded = 'Az.ElasticSan.private\Update-AzElasticSanVolumeGroup_UpdateViaIdentityExpanded';
         }
         if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         /// Creates a new instance of <see cref="KustoPoolProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="KustoPoolProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,21 +101,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscale = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IOptimizedAutoscale) content.GetValueForProperty("OptimizedAutoscale",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscale, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.OptimizedAutoscaleTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).LanguageExtension = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ILanguageExtensionsList) content.GetValueForProperty("LanguageExtension",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).LanguageExtension, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.LanguageExtensionsListTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.State?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.State.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).Uri = (string) content.GetValueForProperty("Uri",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).Uri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).DataIngestionUri = (string) content.GetValueForProperty("DataIngestionUri",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).DataIngestionUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).StateReason = (string) content.GetValueForProperty("StateReason",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).StateReason, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).EnableStreamingIngest = (bool?) content.GetValueForProperty("EnableStreamingIngest",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).EnableStreamingIngest, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).EnablePurge = (bool?) content.GetValueForProperty("EnablePurge",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).EnablePurge, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).WorkspaceUid = (string) content.GetValueForProperty("WorkspaceUid",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).WorkspaceUid, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleVersion = (int) content.GetValueForProperty("OptimizedAutoscaleVersion",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleVersion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleMinimum = (int) content.GetValueForProperty("OptimizedAutoscaleMinimum",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleMinimum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleMaximum = (int) content.GetValueForProperty("OptimizedAutoscaleMaximum",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleMaximum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleIsEnabled = (bool) content.GetValueForProperty("OptimizedAutoscaleIsEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleIsEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).LanguageExtensionValue = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ILanguageExtension[]) content.GetValueForProperty("LanguageExtensionValue",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).LanguageExtensionValue, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ILanguageExtension>(__y, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.LanguageExtensionTypeConverter.ConvertFrom));
+            if (content.Contains("OptimizedAutoscale"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscale = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IOptimizedAutoscale) content.GetValueForProperty("OptimizedAutoscale",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscale, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.OptimizedAutoscaleTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("LanguageExtension"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).LanguageExtension = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ILanguageExtensionsList) content.GetValueForProperty("LanguageExtension",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).LanguageExtension, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.LanguageExtensionsListTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.State?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.State.CreateFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState.CreateFrom);
+            }
+            if (content.Contains("Uri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).Uri = (string) content.GetValueForProperty("Uri",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).Uri, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataIngestionUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).DataIngestionUri = (string) content.GetValueForProperty("DataIngestionUri",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).DataIngestionUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("StateReason"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).StateReason = (string) content.GetValueForProperty("StateReason",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).StateReason, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnableStreamingIngest"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).EnableStreamingIngest = (bool?) content.GetValueForProperty("EnableStreamingIngest",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).EnableStreamingIngest, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("EnablePurge"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).EnablePurge = (bool?) content.GetValueForProperty("EnablePurge",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).EnablePurge, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("WorkspaceUid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).WorkspaceUid = (string) content.GetValueForProperty("WorkspaceUid",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).WorkspaceUid, global::System.Convert.ToString);
+            }
+            if (content.Contains("OptimizedAutoscaleVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleVersion = (int) content.GetValueForProperty("OptimizedAutoscaleVersion",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleVersion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("OptimizedAutoscaleMinimum"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleMinimum = (int) content.GetValueForProperty("OptimizedAutoscaleMinimum",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleMinimum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("OptimizedAutoscaleMaximum"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleMaximum = (int) content.GetValueForProperty("OptimizedAutoscaleMaximum",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleMaximum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("OptimizedAutoscaleIsEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleIsEnabled = (bool) content.GetValueForProperty("OptimizedAutoscaleIsEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleIsEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("LanguageExtensionValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).LanguageExtensionValue = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ILanguageExtension[]) content.GetValueForProperty("LanguageExtensionValue",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).LanguageExtensionValue, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ILanguageExtension>(__y, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.LanguageExtensionTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -131,21 +178,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscale = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IOptimizedAutoscale) content.GetValueForProperty("OptimizedAutoscale",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscale, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.OptimizedAutoscaleTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).LanguageExtension = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ILanguageExtensionsList) content.GetValueForProperty("LanguageExtension",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).LanguageExtension, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.LanguageExtensionsListTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.State?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.State.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).Uri = (string) content.GetValueForProperty("Uri",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).Uri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).DataIngestionUri = (string) content.GetValueForProperty("DataIngestionUri",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).DataIngestionUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).StateReason = (string) content.GetValueForProperty("StateReason",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).StateReason, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).EnableStreamingIngest = (bool?) content.GetValueForProperty("EnableStreamingIngest",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).EnableStreamingIngest, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).EnablePurge = (bool?) content.GetValueForProperty("EnablePurge",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).EnablePurge, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).WorkspaceUid = (string) content.GetValueForProperty("WorkspaceUid",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).WorkspaceUid, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleVersion = (int) content.GetValueForProperty("OptimizedAutoscaleVersion",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleVersion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleMinimum = (int) content.GetValueForProperty("OptimizedAutoscaleMinimum",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleMinimum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleMaximum = (int) content.GetValueForProperty("OptimizedAutoscaleMaximum",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleMaximum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleIsEnabled = (bool) content.GetValueForProperty("OptimizedAutoscaleIsEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleIsEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).LanguageExtensionValue = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ILanguageExtension[]) content.GetValueForProperty("LanguageExtensionValue",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).LanguageExtensionValue, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ILanguageExtension>(__y, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.LanguageExtensionTypeConverter.ConvertFrom));
+            if (content.Contains("OptimizedAutoscale"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscale = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IOptimizedAutoscale) content.GetValueForProperty("OptimizedAutoscale",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscale, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.OptimizedAutoscaleTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("LanguageExtension"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).LanguageExtension = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ILanguageExtensionsList) content.GetValueForProperty("LanguageExtension",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).LanguageExtension, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.LanguageExtensionsListTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).State = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.State?) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).State, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.State.CreateFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState.CreateFrom);
+            }
+            if (content.Contains("Uri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).Uri = (string) content.GetValueForProperty("Uri",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).Uri, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataIngestionUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).DataIngestionUri = (string) content.GetValueForProperty("DataIngestionUri",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).DataIngestionUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("StateReason"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).StateReason = (string) content.GetValueForProperty("StateReason",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).StateReason, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnableStreamingIngest"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).EnableStreamingIngest = (bool?) content.GetValueForProperty("EnableStreamingIngest",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).EnableStreamingIngest, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("EnablePurge"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).EnablePurge = (bool?) content.GetValueForProperty("EnablePurge",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).EnablePurge, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("WorkspaceUid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).WorkspaceUid = (string) content.GetValueForProperty("WorkspaceUid",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).WorkspaceUid, global::System.Convert.ToString);
+            }
+            if (content.Contains("OptimizedAutoscaleVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleVersion = (int) content.GetValueForProperty("OptimizedAutoscaleVersion",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleVersion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("OptimizedAutoscaleMinimum"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleMinimum = (int) content.GetValueForProperty("OptimizedAutoscaleMinimum",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleMinimum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("OptimizedAutoscaleMaximum"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleMaximum = (int) content.GetValueForProperty("OptimizedAutoscaleMaximum",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleMaximum, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("OptimizedAutoscaleIsEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleIsEnabled = (bool) content.GetValueForProperty("OptimizedAutoscaleIsEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).OptimizedAutoscaleIsEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("LanguageExtensionValue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).LanguageExtensionValue = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ILanguageExtension[]) content.GetValueForProperty("LanguageExtensionValue",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IKustoPoolPropertiesInternal)this).LanguageExtensionValue, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.ILanguageExtension>(__y, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.LanguageExtensionTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

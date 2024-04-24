@@ -163,6 +163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         Description = @".",
         SerializedName = @"schemaCompatibility",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaCompatibility) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChange("SchemaCompatibility", "12.0.0", "5.0.0", "2024/05/21", OldParamaterType="SchemaCompatibility", NewParameterType="String")]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaCompatibility))]
         public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaCompatibility SchemaCompatibility { get => _parametersBody.SchemaCompatibility ?? ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaCompatibility)""); set => _parametersBody.SchemaCompatibility = value; }
 
@@ -175,6 +176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         Description = @".",
         SerializedName = @"schemaType",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaType) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChange("SchemaType", "12.0.0", "5.0.0", "2024/05/21", OldParamaterType="SchemaType", NewParameterType="String")]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaType))]
         public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaType SchemaType { get => _parametersBody.SchemaType ?? ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.SchemaType)""); set => _parametersBody.SchemaType = value; }
 
@@ -244,7 +246,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.EventHub.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -391,6 +410,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.EventHub.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.EventHub.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

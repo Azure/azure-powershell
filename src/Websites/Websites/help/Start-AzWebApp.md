@@ -21,7 +21,8 @@ Start-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [-DefaultProfile <
 
 ### S2
 ```
-Start-AzWebApp [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Start-AzWebApp [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -124,5 +125,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Restart-AzWebApp](./Restart-AzWebApp.md)
 
 [Stop-AzWebApp](./Stop-AzWebApp.md)
-
-

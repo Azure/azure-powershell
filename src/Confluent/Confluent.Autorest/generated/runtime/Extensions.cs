@@ -5,9 +5,15 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime
 {
     using System.Linq;
+    using System;
 
     internal static partial class Extensions
     {
+        public static T[] SubArray<T>(this T[] array, int offset, int length)
+        {
+            return new ArraySegment<T>(array, offset, length)
+                        .ToArray();
+        }
 
         public static T ReadHeaders<T>(this T instance, global::System.Net.Http.Headers.HttpResponseHeaders headers) where T : class
         {

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StorageCache-help.xml
 Module Name: Az.StorageCache
 online version: https://learn.microsoft.com/powershell/module/az.storagecache/get-azstoragecache
 schema: 2.0.0
@@ -14,7 +14,8 @@ Returns a cache.
 
 ### List (Default)
 ```
-Get-AzStorageCache [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStorageCache [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -23,14 +24,15 @@ Get-AzStorageCache -Name <String> -ResourceGroupName <String> [-SubscriptionId <
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzStorageCache -InputObject <IStorageCacheIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzStorageCache -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzStorageCache -InputObject <IStorageCacheIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -149,7 +151,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -172,22 +174,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IStorageCacheIdentity>`: Identity Parameter
-  - `[AmlFilesystemName <String>]`: Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
-  - `[CacheName <String>]`: Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[OperationId <String>]`: The ID of an ongoing async operation.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[StorageTargetName <String>]`: Name of Storage Target.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
 ## RELATED LINKS
-

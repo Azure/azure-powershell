@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the PaloAltoNetworks service.
 
 ---
-## Status
-[![Az.PaloAltoNetworks](https://img.shields.io/powershellgallery/v/Az.PaloAltoNetworks.svg?style=flat-square&label=Az.PaloAltoNetworks "Az.PaloAltoNetworks")](https://www.powershellgallery.com/packages/Az.PaloAltoNetworks/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -39,9 +36,11 @@ input-file:
 title: PaloAltoNetworks
 module-version: 0.2.0
 subject-prefix: $(service-name)
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 directive:
-  - from: swagger-document 
+  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}/commit"].post.responses
     transform: >-
       return {
@@ -59,7 +58,7 @@ directive:
         }
       }
 
-  - from: swagger-document 
+  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/PaloAltoNetworks.Cloudngfw/localRulestacks/{localRulestackName}/revert"].post.responses
     transform: >-
       return {

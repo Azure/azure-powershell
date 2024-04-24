@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
 online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudServiceLoadBalancerBgpPeerObject
 schema: 2.0.0
@@ -15,7 +15,8 @@ Create an in-memory object for ServiceLoadBalancerBgpPeer.
 ```
 New-AzNetworkCloudServiceLoadBalancerBgpPeerObject -Name <String> -PeerAddress <String> -PeerAsn <Int64>
  [-BfdEnabled <BfdEnabled>] [-BgpMultiHop <BgpMultiHop>] [-HoldTime <String>] [-KeepAliveTime <String>]
- [-MyAsn <Int64>] [-Password <String>] [-PeerPort <Int64>] [<CommonParameters>]
+ [-MyAsn <Int64>] [-Password <String>] [-PeerPort <Int64>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -201,7 +202,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

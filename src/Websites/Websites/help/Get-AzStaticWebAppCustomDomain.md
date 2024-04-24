@@ -21,7 +21,8 @@ Get-AzStaticWebAppCustomDomain -Name <String> -ResourceGroupName <String> [-Subs
 ### Get
 ```
 Get-AzStaticWebAppCustomDomain -DomainName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity

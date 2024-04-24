@@ -28,43 +28,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Started".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Started", "Started", global::System.Management.Automation.CompletionResultType.ParameterValue, "Started");
+                yield return new global::System.Management.Automation.CompletionResult("'Started'", "Started", global::System.Management.Automation.CompletionResultType.ParameterValue, "Started");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "PendingFulfillmentStart".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("PendingFulfillmentStart", "PendingFulfillmentStart", global::System.Management.Automation.CompletionResultType.ParameterValue, "PendingFulfillmentStart");
+                yield return new global::System.Management.Automation.CompletionResult("'PendingFulfillmentStart'", "PendingFulfillmentStart", global::System.Management.Automation.CompletionResultType.ParameterValue, "PendingFulfillmentStart");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "InProgress".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("InProgress", "InProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InProgress");
+                yield return new global::System.Management.Automation.CompletionResult("'InProgress'", "InProgress", global::System.Management.Automation.CompletionResultType.ParameterValue, "InProgress");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Subscribed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Subscribed", "Subscribed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Subscribed");
+                yield return new global::System.Management.Automation.CompletionResult("'Subscribed'", "Subscribed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Subscribed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Suspended".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Suspended", "Suspended", global::System.Management.Automation.CompletionResultType.ParameterValue, "Suspended");
+                yield return new global::System.Management.Automation.CompletionResult("'Suspended'", "Suspended", global::System.Management.Automation.CompletionResultType.ParameterValue, "Suspended");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Reinstated".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Reinstated", "Reinstated", global::System.Management.Automation.CompletionResultType.ParameterValue, "Reinstated");
+                yield return new global::System.Management.Automation.CompletionResult("'Reinstated'", "Reinstated", global::System.Management.Automation.CompletionResultType.ParameterValue, "Reinstated");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Succeeded".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Succeeded", "Succeeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "Succeeded");
+                yield return new global::System.Management.Automation.CompletionResult("'Succeeded'", "Succeeded", global::System.Management.Automation.CompletionResultType.ParameterValue, "Succeeded");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Failed", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
+                yield return new global::System.Management.Automation.CompletionResult("'Failed'", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unsubscribed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unsubscribed", "Unsubscribed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unsubscribed");
+                yield return new global::System.Management.Automation.CompletionResult("'Unsubscribed'", "Unsubscribed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unsubscribed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Updating".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Updating", "Updating", global::System.Management.Automation.CompletionResultType.ParameterValue, "Updating");
+                yield return new global::System.Management.Automation.CompletionResult("'Updating'", "Updating", global::System.Management.Automation.CompletionResultType.ParameterValue, "Updating");
             }
         }
     }

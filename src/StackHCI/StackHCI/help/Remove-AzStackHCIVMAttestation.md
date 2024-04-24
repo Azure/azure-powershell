@@ -14,17 +14,20 @@ Remove-AzStackHCIVMAttestation removes guests from AzureStack HCI IMDS Attestati
 
 ### VMName (Default)
 ```
-Remove-AzStackHCIVMAttestation [-VMName] <String[]> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMAttestation [-VMName] <String[]> [-Force] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### VMObject
 ```
-Remove-AzStackHCIVMAttestation [-Force] [-VM] <Object[]> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMAttestation [-Force] [-VM] <Object[]> [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveAll
 ```
-Remove-AzStackHCIVMAttestation [-Force] [-RemoveAll] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzStackHCIVMAttestation [-Force] [-RemoveAll] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

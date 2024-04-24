@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.CostManagement-help.xml
 Module Name: Az.CostManagement
 online version: https://learn.microsoft.com/powershell/module/az.costmanagement/new-azcostmanagementdetailreport
 schema: 2.0.0
@@ -22,7 +22,8 @@ The details on the file(s) available for download will be available in the polli
 ```
 New-AzCostManagementDetailReport -Scope <String> [-BillingPeriod <String>] [-InvoiceId <String>]
  [-Metric <CostDetailsMetricType>] [-TimePeriodEnd <String>] [-TimePeriodStart <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -81,7 +82,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -235,7 +237,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

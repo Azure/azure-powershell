@@ -33,5 +33,13 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript(string.Format("Test-NetworkVirtualApplianceConnectionGet"));
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.nvadev)]
+        public void TestNetworkVirtualApplianceConnectionUpdate()
+        {
+            TestRunner.RunTestScript(string.Format("Test-NetworkVirtualApplianceConnectionUpdate"));
+        }
+
     }
 }

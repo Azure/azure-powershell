@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Default".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Default", "Default", global::System.Management.Automation.CompletionResultType.ParameterValue, "Default");
+                yield return new global::System.Management.Automation.CompletionResult("'Default'", "Default", global::System.Management.Automation.CompletionResultType.ParameterValue, "Default");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Preflight".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Preflight", "Preflight", global::System.Management.Automation.CompletionResultType.ParameterValue, "Preflight");
+                yield return new global::System.Management.Automation.CompletionResult("'Preflight'", "Preflight", global::System.Management.Automation.CompletionResultType.ParameterValue, "Preflight");
             }
         }
     }

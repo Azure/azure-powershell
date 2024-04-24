@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ApplicationInsights service.
 
 ---
-## Status
-[![Az.ApplicationInsights](https://img.shields.io/powershellgallery/v/Az.ApplicationInsights.svg?style=flat-square&label=Az.ApplicationInsights "Az.ApplicationInsights")](https://www.powershellgallery.com/packages/Az.ApplicationInsights/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

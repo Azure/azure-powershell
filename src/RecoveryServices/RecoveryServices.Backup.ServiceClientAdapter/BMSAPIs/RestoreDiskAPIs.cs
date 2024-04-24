@@ -34,6 +34,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// <param name="vaultName"></param>
         /// <param name="resourceGroupName"></param>
         /// <param name="vaultLocation"></param>
+        /// <param name="auxiliaryAccessToken"></param>
+        /// <param name="isMUAProtected"></param>
         /// <returns>Job created by this operation</returns>
         public RestAzureNS.AzureOperationResponse RestoreDisk(
             AzureRecoveryPoint rp,
@@ -41,7 +43,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             RestoreRequestResource triggerRestoreRequest,
             string vaultName = null,
             string resourceGroupName = null,
-            string vaultLocation = null)
+            string vaultLocation = null,
+            string auxiliaryAccessToken = "",
+            bool isMUAProtected = false)
         {
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
@@ -55,6 +59,48 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                     throw new Exception(Resources.TriggerRestoreIncorrectRegion);
                 }
             }
+
+            #region MUA 
+            Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();
+            string operationRequest = null;
+
+            if (isMUAProtected)
+            {
+                List<ResourceGuardProxyBaseResource> resourceGuardMapping = ListResourceGuardMapping(vaultName, resourceGroupName);
+
+                if (resourceGuardMapping != null && resourceGuardMapping.Count != 0)
+                {
+                    foreach (ResourceGuardOperationDetail operationDetail in resourceGuardMapping[0].Properties.ResourceGuardOperationDetails)
+                    {
+                        if (operationDetail.VaultCriticalOperation == "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/restore/action") operationRequest = operationDetail.DefaultResourceRequest;
+                    }
+
+                    if (operationRequest != null)
+                    {
+                        triggerRestoreRequest.Properties.ResourceGuardOperationRequests = new List<string>();
+                        triggerRestoreRequest.Properties.ResourceGuardOperationRequests.Add(operationRequest);
+                    }
+                }
+            }
+
+            if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
+            {
+                if (operationRequest != null)
+                {
+                    customHeaders.Add("x-ms-authorization-auxiliary", new List<string> { "Bearer " + auxiliaryAccessToken });
+                }
+                else if (!isMUAProtected)
+                {
+                    // resx                    
+                    throw new ArgumentException(String.Format("operation not critical. please try without the Token parameter"));
+                }
+                else
+                {
+                    throw new ArgumentException(String.Format(Resources.UnexpectedParameterToken, "Restore"));
+                }
+            }
+            #endregion
+
             var response = BmsAdapter.Client.Restores.TriggerWithHttpMessagesAsync(
                 vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
@@ -63,6 +109,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
                 protectedItemUri,
                 recoveryPointId,
                 triggerRestoreRequest,
+                null,
+                customHeaders,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
 
             return response;
@@ -91,8 +139,19 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             string recoveryPointId = rp.RecoveryPointId;
 
             CrrModel.AADPropertiesResource userInfo = GetAADProperties(secondaryRegion, backupManagementType);
+
+            if(userInfo == null || userInfo.Properties == null)
+            {
+                throw new Exception(Resources.AADPropertiesCouldNotBeFetchedException);
+            }
+
             var accessToken = CrrAdapter.Client.RecoveryPoints.GetAccessTokenWithHttpMessagesAsync(vaultName ?? BmsAdapter.GetResourceName(), resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 AzureFabricName, containerUri, protectedItemUri, recoveryPointId, userInfo).Result.Body; 
+
+            if(accessToken == null || accessToken.Properties == null)
+            {
+                throw new Exception(Resources.CRRAccessTokenCouldNotBeFetchedException);
+            }
 
             return accessToken.Properties; 
         }

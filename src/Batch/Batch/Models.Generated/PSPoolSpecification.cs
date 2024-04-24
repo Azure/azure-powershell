@@ -48,9 +48,13 @@ namespace Microsoft.Azure.Commands.Batch.Models
         
         private PSNetworkConfiguration networkConfiguration;
         
+        private IDictionary resourceTags;
+        
         private PSStartTask startTask;
         
         private PSTaskSchedulingPolicy taskSchedulingPolicy;
+        
+        private PSUpgradePolicy upgradePolicy;
         
         private IList<PSUserAccount> userAccounts;
         
@@ -367,6 +371,41 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
         }
         
+        public IDictionary ResourceTags
+        {
+            get
+            {
+                if (((this.resourceTags == null) 
+                            && (this.omObject.ResourceTags != null)))
+                {
+                    Dictionary<string, string> dict;
+                    dict = new Dictionary<string, string>();
+                    IEnumerator<KeyValuePair<System.String, System.String>> enumerator;
+                    enumerator = this.omObject.ResourceTags.GetEnumerator();
+                    for (
+                    ; enumerator.MoveNext(); 
+                    )
+                    {
+                        dict.Add(enumerator.Current.Key, enumerator.Current.Value);
+                    }
+                    this.resourceTags = dict;
+                }
+                return this.resourceTags;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.ResourceTags = null;
+                }
+                else
+                {
+                    this.omObject.ResourceTags = new Dictionary<System.String, System.String>();
+                }
+                this.resourceTags = value;
+            }
+        }
+        
         public PSStartTask StartTask
         {
             get
@@ -462,6 +501,31 @@ namespace Microsoft.Azure.Commands.Batch.Models
             set
             {
                 this.omObject.TaskSlotsPerNode = value;
+            }
+        }
+        
+        public PSUpgradePolicy UpgradePolicy
+        {
+            get
+            {
+                if (((this.upgradePolicy == null) 
+                            && (this.omObject.UpgradePolicy != null)))
+                {
+                    this.upgradePolicy = new PSUpgradePolicy(this.omObject.UpgradePolicy);
+                }
+                return this.upgradePolicy;
+            }
+            set
+            {
+                if ((value == null))
+                {
+                    this.omObject.UpgradePolicy = null;
+                }
+                else
+                {
+                    this.omObject.UpgradePolicy = value.omObject;
+                }
+                this.upgradePolicy = value;
             }
         }
         

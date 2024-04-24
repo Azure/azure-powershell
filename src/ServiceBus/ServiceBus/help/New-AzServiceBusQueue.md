@@ -20,8 +20,8 @@ New-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName 
  [-EnableBatchedOperations] [-EnableExpress] [-EnablePartitioning] [-ForwardDeadLetteredMessagesTo <String>]
  [-ForwardTo <String>] [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>]
  [-MaxMessageSizeInKilobytes <Int64>] [-MaxSizeInMegabytes <Int32>] [-RequiresDuplicateDetection]
- [-RequiresSession] [-Status <EntityStatus>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-RequiresSession] [-Status <EntityStatus>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -438,7 +438,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbQueue
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

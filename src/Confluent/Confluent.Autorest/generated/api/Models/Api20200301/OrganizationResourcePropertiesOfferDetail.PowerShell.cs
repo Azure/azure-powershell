@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -85,7 +87,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301
         /// string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>
+        /// an instance of the <see cref="OrganizationResourcePropertiesOfferDetail" /> model class.
+        /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOrganizationResourcePropertiesOfferDetail FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Confluent.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -102,12 +106,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PublisherId = (string) content.GetValueForProperty("PublisherId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PublisherId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PlanId = (string) content.GetValueForProperty("PlanId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PlanId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PlanName = (string) content.GetValueForProperty("PlanName",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PlanName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).TermUnit = (string) content.GetValueForProperty("TermUnit",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).TermUnit, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Support.SaaSOfferStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Support.SaaSOfferStatus.CreateFrom);
+            if (content.Contains("PublisherId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PublisherId = (string) content.GetValueForProperty("PublisherId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PublisherId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("PlanId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PlanId = (string) content.GetValueForProperty("PlanId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PlanId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PlanName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PlanName = (string) content.GetValueForProperty("PlanName",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PlanName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TermUnit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).TermUnit = (string) content.GetValueForProperty("TermUnit",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).TermUnit, global::System.Convert.ToString);
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Support.SaaSOfferStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Support.SaaSOfferStatus.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -125,12 +147,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PublisherId = (string) content.GetValueForProperty("PublisherId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PublisherId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PlanId = (string) content.GetValueForProperty("PlanId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PlanId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PlanName = (string) content.GetValueForProperty("PlanName",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PlanName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).TermUnit = (string) content.GetValueForProperty("TermUnit",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).TermUnit, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Support.SaaSOfferStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Support.SaaSOfferStatus.CreateFrom);
+            if (content.Contains("PublisherId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PublisherId = (string) content.GetValueForProperty("PublisherId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PublisherId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("PlanId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PlanId = (string) content.GetValueForProperty("PlanId",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PlanId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PlanName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PlanName = (string) content.GetValueForProperty("PlanName",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).PlanName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TermUnit"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).TermUnit = (string) content.GetValueForProperty("TermUnit",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).TermUnit, global::System.Convert.ToString);
+            }
+            if (content.Contains("Status"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).Status = (Microsoft.Azure.PowerShell.Cmdlets.Confluent.Support.SaaSOfferStatus?) content.GetValueForProperty("Status",((Microsoft.Azure.PowerShell.Cmdlets.Confluent.Models.Api20200301.IOfferDetailInternal)this).Status, Microsoft.Azure.PowerShell.Cmdlets.Confluent.Support.SaaSOfferStatus.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

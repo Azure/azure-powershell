@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
 
         /// <param name="state">
-        /// Possible values include: 'Disabled', 'Unlocked', 'Locked'</param>
+        /// Possible values include: &#39;Disabled&#39;, &#39;Unlocked&#39;, &#39;Locked&#39;</param>
         public ImmutabilitySettings(string state = default(string))
 
         {

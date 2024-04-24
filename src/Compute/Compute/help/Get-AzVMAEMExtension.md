@@ -15,7 +15,8 @@ Gets information about the AEM extension.
 
 ```
 Get-AzVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [[-Name] <String>] [-Status]
- [[-OSType] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-OSType] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -149,5 +150,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzVMAEMExtension](./Set-AzVMAEMExtension.md)
 
 [Test-AzVMAEMExtension](./Test-AzVMAEMExtension.md)
-
-

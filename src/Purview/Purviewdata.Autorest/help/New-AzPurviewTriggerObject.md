@@ -282,21 +282,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-SCHEDULEADDITIONALPROPERTY <IRecurrenceScheduleAdditionalProperties>: Dictionary of <any>.
-  - `[(Any) <Object>]`: This indicates any property can be added to this object.
-
-SCHEDULEMONTHLYOCCURRENCE <IRecurrenceScheduleOccurrence[]>: 
-  - `[AdditionalProperty <IRecurrenceScheduleOccurrenceAdditionalProperties>]`: Dictionary of <any>
-    - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[Day <DayOfWeek?>]`: 
-  - `[Occurrence <Int32?>]`: 
-
 ## RELATED LINKS
 

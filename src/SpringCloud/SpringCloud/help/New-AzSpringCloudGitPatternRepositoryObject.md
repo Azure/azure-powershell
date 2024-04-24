@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SpringCloud-help.xml
 Module Name: Az.SpringCloud
 online version: https://learn.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudGitPatternRepositoryObject
 schema: 2.0.0
@@ -218,4 +218,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

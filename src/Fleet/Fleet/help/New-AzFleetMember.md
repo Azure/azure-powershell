@@ -16,43 +16,36 @@ Create a FleetMember
 ```
 New-AzFleetMember -FleetName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IfMatch <String>] [-IfNoneMatch <String>] -ClusterResourceId <String> [-Group <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzFleetMember -FleetName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IfMatch <String>] [-IfNoneMatch <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait]
- [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzFleetMember -FleetName <String> -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IfMatch <String>] [-IfNoneMatch <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob]
- [-Break] [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait]
- [-Proxy <Uri>] [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityFleetExpanded
 ```
 New-AzFleetMember -Name <String> -FleetInputObject <IFleetIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
- -ClusterResourceId <String> [-Group <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ClusterResourceId <String> [-Group <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzFleetMember -InputObject <IFleetIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
- -ClusterResourceId <String> [-Group <String>] [-DefaultProfile <PSObject>] [-AsJob] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -ClusterResourceId <String> [-Group <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,10 +53,29 @@ Create a FleetMember
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create a FleetMember
+```powershell
 New-AzFleetMember -FleetName testfleet01 -Name testmember -ResourceGroupName K8sFleet-Test -ClusterResourceId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/K8sFleet-Test/providers/microsoft.containerservice/managedClusters/TestCluster01
 ```
+
+```output
+ClusterResourceId            : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/K8sFleet-Test/providers/microsoft.containerservice/managedClusters/TestCluster01
+ETag                         : "6205a537-0000-0100-0000-655430760000"
+Group                        : 
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/K8sFleet-Test/providers/Microsoft.ContainerService/fleets/testfleet01/members/testmember
+Name                         : testmember
+ProvisioningState            : Succeeded
+ResourceGroupName            : K8sFleet-Test
+SystemDataCreatedAt          : 11/15/2023 2:43:32 AM
+SystemDataCreatedBy          : user1@example.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 11/15/2023 2:43:32 AM
+SystemDataLastModifiedBy     : user1@example.com
+SystemDataLastModifiedByType : User
+Type                         : Microsoft.ContainerService/fleets/members
+```
+
+This command creates a fleet member with a long running operation.
 
 ## PARAMETERS
 
@@ -77,22 +89,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -132,7 +129,6 @@ Accept wildcard characters: False
 
 ### -FleetInputObject
 Identity Parameter
-To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -176,36 +172,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -IfMatch
 The request should only proceed if an entity matches this string.
 
@@ -238,7 +204,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -307,52 +272,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -383,7 +303,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -425,36 +345,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetMember
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-FLEETINPUTOBJECT \<IFleetIdentity\>: Identity Parameter
-  \[FleetMemberName \<String\>\]: The name of the Fleet member resource.
-  \[FleetName \<String\>\]: The name of the Fleet resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[UpdateRunName \<String\>\]: The name of the UpdateRun resource.
-  \[UpdateStrategyName \<String\>\]: The name of the UpdateStrategy resource.
-
-INPUTOBJECT \<IFleetIdentity\>: Identity Parameter
-  \[FleetMemberName \<String\>\]: The name of the Fleet member resource.
-  \[FleetName \<String\>\]: The name of the Fleet resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[UpdateRunName \<String\>\]: The name of the UpdateRun resource.
-  \[UpdateStrategyName \<String\>\]: The name of the UpdateStrategy resource.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.fleet/new-azfleetmember](https://learn.microsoft.com/powershell/module/az.fleet/new-azfleetmember)
-

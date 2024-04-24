@@ -15,31 +15,26 @@ Get a UpdateRun
 ### List (Default)
 ```
 Get-AzFleetUpdateRun -FleetName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzFleetUpdateRun -FleetName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentityFleet
 ```
-Get-AzFleetUpdateRun -Name <String> -FleetInputObject <IFleetIdentity> [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+Get-AzFleetUpdateRun -Name <String> -FleetInputObject <IFleetIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzFleetUpdateRun -InputObject <IFleetIdentity> [-DefaultProfile <PSObject>] [-Break]
- [-HttpPipelineAppend <SendAsyncStep[]>] [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>]
- [-ProxyCredential <PSCredential>] [-ProxyUseDefaultCredentials] [<CommonParameters>]
+Get-AzFleetUpdateRun -InputObject <IFleetIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,32 +42,95 @@ Get a UpdateRun
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Get a list of fleet update run with specified fleet
+```powershell
 Get-AzFleetUpdateRun -FleetName testfleet01 -ResourceGroupName K8sFleet-Test
 ```
 
-### EXAMPLE 2
+```output
+Name SystemDataCreatedAt    SystemDataCreatedBy   SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ETag                                   ResourceGroupN 
+                                                                                                                                                                                                ame
+---- -------------------    -------------------   ----------------------- ------------------------ ------------------------ ---------------------------- ----                                   -------------- 
+run1 11/21/2023 10:03:56 AM user1@example.com     User                    11/21/2023 10:03:56 AM   user1@example.com        User                         "cb064a93-0000-0100-0000-655c81950000" K8sFleet-Test  
+run2 11/21/2023 10:10:18 AM user1@example.com     User                    11/21/2023 10:10:18 AM   user1@example.com        User                         "cb0654a8-0000-0100-0000-655c820b0000" K8sFleet-Test
 ```
+
+This command gets a list of fleet update run with specified fleet.
+
+### Example 2: Get specific fleet update run with specified name
+```powershell
 Get-AzFleetUpdateRun -FleetName testfleet01 -Name run1 -ResourceGroupName K8sFleet-Test
 ```
 
-## PARAMETERS
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+```output
+AdditionalInfo                             : 
+Code                                       : 
+Detail                                     : 
+ETag                                       : "cb064a93-0000-0100-0000-655c81950000"
+Id                                         : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/K8sFleet-Test/providers/Microsoft.ContainerService/fleets/testfleet01/updateRuns/run1
+Message                                    : 
+Name                                       : run1
+NodeImageSelectionSelectedNodeImageVersion : 
+NodeImageSelectionType                     : Latest
+ProvisioningState                          : Succeeded
+ResourceGroupName                          : K8sFleet-Test
+StatusCompletedTime                        : 
+StatusStage                                : {{
+                                               "status": {
+                                                 "startTime": "2023-11-21T10:07:09.2665585Z",
+                                                 "state": "Stopping"
+                                               },
+                                               "name": "default",
+                                               "groups": [
+                                                 {
+                                                   "status": {
+                                                     "startTime": "2023-11-21T10:07:09.2665583Z",
+                                                     "state": "Stopping"
+                                                   },
+                                                   "name": "default",
+                                                   "members": [
+                                                     {
+                                                       "status": {
+                                                         "startTime": "2023-11-21T10:07:09.2665580Z",
+                                                         "state": "Running"
+                                                       },
+                                                       "name": "testmember",
+                                                       "clusterResourceId":
+                                             "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/K8sFleet-Test/providers/microsoft.containerservice/managedClusters/TestCluster01",
+                                                       "operationId": "50c4e26b-a391-4f7a-9d04-510bcbeda57d",
+                                                       "message": "all agent pools in managed cluster \"TestCluster01\" are already in the latest node image version"
+                                                     },
+                                                     {
+                                                       "status": {
+                                                         "state": "NotStarted"
+                                                       },
+                                                       "name": "testmember2",
+                                                       "clusterResourceId":
+                                             "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/K8sFleet-Test/providers/microsoft.containerservice/managedClusters/testCluster02"
+                                                     }
+                                                   ]
+                                                 }
+                                               ]
+                                             }}
+StatusStartTime                            : 11/21/2023 10:07:09 AM
+StatusState                                : Stopping
+StrategyStage                              : 
+SystemDataCreatedAt                        : 11/21/2023 10:03:56 AM
+SystemDataCreatedBy                        : user1@example.com
+SystemDataCreatedByType                    : User
+SystemDataLastModifiedAt                   : 11/21/2023 10:03:56 AM
+SystemDataLastModifiedBy                   : user1@example.com
+SystemDataLastModifiedByType               : User
+Target                                     : 
+Type                                       : Microsoft.ContainerService/fleets/updateRuns
+UpdateStrategyId                           : 
+UpgradeKubernetesVersion                   : 1.28.3
+UpgradeType                                : Full
 ```
+
+This command gets specific fleet update run with specified name.
+
+## PARAMETERS
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -92,7 +150,6 @@ Accept wildcard characters: False
 
 ### -FleetInputObject
 Identity Parameter
-To construct, see NOTES section for FLEETINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -121,39 +178,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
@@ -178,51 +204,6 @@ Aliases: UpdateRunName
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -253,7 +234,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -264,36 +245,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateRun
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-FLEETINPUTOBJECT \<IFleetIdentity\>: Identity Parameter
-  \[FleetMemberName \<String\>\]: The name of the Fleet member resource.
-  \[FleetName \<String\>\]: The name of the Fleet resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[UpdateRunName \<String\>\]: The name of the UpdateRun resource.
-  \[UpdateStrategyName \<String\>\]: The name of the UpdateStrategy resource.
-
-INPUTOBJECT \<IFleetIdentity\>: Identity Parameter
-  \[FleetMemberName \<String\>\]: The name of the Fleet member resource.
-  \[FleetName \<String\>\]: The name of the Fleet resource.
-  \[Id \<String\>\]: Resource identity path
-  \[ResourceGroupName \<String\>\]: The name of the resource group.
-The name is case insensitive.
-  \[SubscriptionId \<String\>\]: The ID of the target subscription.
-  \[UpdateRunName \<String\>\]: The name of the UpdateRun resource.
-  \[UpdateStrategyName \<String\>\]: The name of the UpdateStrategy resource.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.fleet/get-azfleetupdaterun](https://learn.microsoft.com/powershell/module/az.fleet/get-azfleetupdaterun)
-

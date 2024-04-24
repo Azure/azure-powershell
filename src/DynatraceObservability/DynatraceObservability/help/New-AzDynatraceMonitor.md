@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DynatraceObservability-help.xml
 Module Name: Az.DynatraceObservability
 online version: https://learn.microsoft.com/powershell/module/az.dynatraceobservability/new-azdynatracemonitor
 schema: 2.0.0
@@ -13,8 +13,8 @@ Create a MonitorResource
 ## SYNTAX
 
 ```
-New-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-AccountId <String>] [-AccountRegionId <String>] [-EnvironmentId <String>]
+New-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
+ [-AccountId <String>] [-AccountRegionId <String>] [-EnvironmentId <String>]
  [-EnvironmentIngestionKey <String>] [-EnvironmentLandingUrl <String>]
  [-EnvironmentLogsIngestionEndpoint <String>] [-EnvironmentUserId <String>]
  [-IdentityType <ManagedIdentityType>] [-MarketplaceSubscriptionStatus <MarketplaceSubscriptionStatus>]
@@ -23,7 +23,7 @@ New-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> -Location <Str
  [-SingleSignOnEnterpriseAppId <String>] [-SingleSignOnState <SingleSignOnStates>] [-SingleSignOnUrl <String>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-UserCountry <String>] [-UserEmailAddress <String>]
  [-UserFirstName <String>] [-UserLastName <String>] [-UserPhoneNumber <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -351,7 +351,7 @@ Accept wildcard characters: False
 ```
 
 ### -SingleSignOnAadDomain
-array of Microsoft Entra domains
+array of Aad(azure active directory) domains
 
 ```yaml
 Type: System.String[]
@@ -571,7 +571,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IMonitorResource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

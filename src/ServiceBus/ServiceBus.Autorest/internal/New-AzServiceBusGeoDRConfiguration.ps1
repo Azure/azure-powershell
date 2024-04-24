@@ -106,6 +106,12 @@ param(
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Runtime')]
     [System.Uri]

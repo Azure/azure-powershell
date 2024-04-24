@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to Create a run command.
+The operation to Update a run command.
 .Description
-The operation to Create a run command.
+The operation to Update a run command.
 .Example
 Update-AzConnectedMachineRunCommand -ResourceGroupName "az-sdk-test" -RunCommandName "myRunCommand3" -MachineName "testmachine" -SubscriptionId "e6fe6705-4c9c-4b54-81d2-e455780e20b8" -Tag @{Tag1="tag1"; Tag2="tag2"}
 
@@ -90,7 +90,7 @@ PROTECTEDPARAMETER <IRunCommandInputParameter[]>: The parameters used by the scr
 
 RUNCOMMANDPROPERTY <IMachineRunCommand>: Describes a Run Command
   Location <String>: The geo-location where the resource lives
-  [Tag <ITrackedResourceTags>]: Resource tags.
+  [Tags <ITrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
   [AsyncExecution <Boolean?>]: Optional. If set to true, provisioning will complete as soon as script starts and will not wait for script to complete.
   [ErrorBlobManagedIdentityClientId <String>]: Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
@@ -156,7 +156,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityMachine', Mandatory, ValueFromPipeline)]
@@ -164,7 +163,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
     ${MachineInputObject},
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
@@ -173,7 +171,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommand]
     # Describes a Run Command
-    # To construct, see NOTES section for RUNCOMMANDPROPERTY properties and create a hash table.
     ${RunCommandProperty},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -216,15 +213,6 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityMachineExpanded')]
-    [ArgumentCompleter({Get-AzLocation | Where-Object Providers -Contains "Microsoft.HybridCompute" | Select-Object -ExpandProperty Location})]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [System.String]
-    # The geo-location where the resource lives
-    ${Location},
-
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
-    [Parameter(ParameterSetName='UpdateViaIdentityMachineExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [System.String]
     # Client Id (GUID value) of the user-assigned managed identity.
@@ -257,7 +245,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandInputParameter[]]
     # The parameters used by the script.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -267,7 +254,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandInputParameter[]]
     # The parameters used by the script.
-    # To construct, see NOTES section for PROTECTEDPARAMETER properties and create a hash table.
     ${ProtectedParameter},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -441,7 +427,13 @@ begin {
             UpdateViaIdentityMachineExpanded = 'Az.ConnectedMachine.private\Update-AzConnectedMachineRunCommand_UpdateViaIdentityMachineExpanded';
         }
         if (('Update', 'UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

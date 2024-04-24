@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SqlVirtualMachine-help.xml
 Module Name: Az.SqlVirtualMachine
 online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/new-azavailabilitygrouplistener
 schema: 2.0.0
@@ -16,10 +16,10 @@ Creates or updates an availability group listener.
 New-AzAvailabilityGroupListener -Name <String> -ResourceGroupName <String> -SqlVMGroupName <String>
  [-SubscriptionId <String>] [-AvailabilityGroupConfigurationReplica <IAgReplica[]>]
  [-AvailabilityGroupName <String>] [-CreateDefaultAvailabilityGroupIfNotExist] [-IpAddress <String>]
- [-LoadBalancerResourceId <String>] [-MultiSubnetIPConfiguration <IMultiSubnetIPConfiguration[]>]
- [-Port <Int32>] [-ProbePort <Int32>] [-PublicIpAddressResourceId <String>] [-SqlVirtualMachineId <String[]>]
- [-SubnetId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-LoadBalancerResourceId <String>] [-ProbePort <Int32>] [-PublicIpAddressResourceId <String>]
+ [-SqlVirtualMachineId <String[]>] [-SubnetId <String>]
+ [-MultiSubnetIPConfiguration <IMultiSubnetIPConfiguration[]>] [-Port <Int32>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -373,24 +373,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`AVAILABILITYGROUPCONFIGURATIONREPLICA <IAgReplica[]>`: Replica configurations.
-  - `[Commit <Commit?>]`: Replica commit mode in availability group.
-  - `[Failover <Failover?>]`: Replica failover mode in availability group.
-  - `[ReadableSecondary <ReadableSecondary?>]`: Replica readable secondary mode in availability group.
-  - `[Role <Role?>]`: Replica Role in availability group.
-  - `[SqlVirtualMachineInstanceId <String>]`: Sql VirtualMachine Instance Id.
-
-`MULTISUBNETIPCONFIGURATION <IMultiSubnetIPConfiguration[]>`: List of multi subnet IP configurations for an AG listener.
-  - `SqlVirtualMachineInstance <String>`: SQL virtual machine instance resource id that are enrolled into the availability group listener.
-  - `[PrivateIPAddressIpaddress <String>]`: Private IP address bound to the availability group listener.
-  - `[PrivateIPAddressSubnetResourceId <String>]`: Subnet used to include private IP.
-
 ## RELATED LINKS
-

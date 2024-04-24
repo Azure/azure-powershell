@@ -27,8 +27,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="nodeName">Name of the node under a distributed container.
         /// </param>
 
-        /// <param name="status">Status of this Node.
-        /// Failed | Succeeded
+        /// <param name="status">Status of this Node. Failed | Succeeded
         /// </param>
 
         /// <param name="errorDetail">Error Details if the Status is non-success.
@@ -59,8 +58,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public string NodeName {get; set; }
 
         /// <summary>
-        /// Gets or sets status of this Node.
-        /// Failed | Succeeded
+        /// Gets or sets status of this Node. Failed | Succeeded
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "status")]
         public string Status {get; set; }

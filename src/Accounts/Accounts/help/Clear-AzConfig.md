@@ -22,9 +22,9 @@ Clear-AzConfig [-Force] [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
 ```
 Clear-AzConfig [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-CheckForUpgrade]
- [-DefaultSubscriptionForLogin] [-DisableErrorRecordsPersistence] [-DisplayBreakingChangeWarning]
- [-DisplayRegionIdentified] [-DisplaySurveyMessage] [-EnableDataCollection] [-EnableLoginByWam]
- [<CommonParameters>]
+ [-DefaultSubscriptionForLogin] [-DisableErrorRecordsPersistence] [-DisableInstanceDiscovery]
+ [-DisplayBreakingChangeWarning] [-DisplayRegionIdentified] [-DisplaySurveyMessage] [-EnableDataCollection]
+ [-EnableLoginByWam] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -131,6 +131,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableInstanceDiscovery
+Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. The process of instance discovery entails retrieving authority metadata from https://login.microsoft.com/ to validate the authority. By setting this to true, the validation of the authority is disabled. As a result, it is crucial to ensure that the configured authority host is valid and trustworthy.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DisplayBreakingChangeWarning
 Controls if warning messages for breaking changes are displayed or suppressed. When enabled, a breaking change warning is displayed when executing cmdlets with breaking changes in a future release.
 
@@ -148,6 +163,21 @@ Accept wildcard characters: False
 
 ### -DisplayRegionIdentified
 When enabled, Azure PowerShell displays recommendations on regions which may reduce your costs.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplaySecretsWarning
+When enabled, a warning message will be displayed when the cmdlet output contains secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

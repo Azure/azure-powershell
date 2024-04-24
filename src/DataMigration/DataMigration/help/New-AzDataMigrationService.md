@@ -14,7 +14,8 @@ Creates a new instance of the Azure Database Migration Service (classic).
 
 ```
 New-AzDataMigrationService -ResourceGroupName <String> -Name <String> -Location <String> -Sku <String>
- -VirtualSubnetId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -VirtualSubnetId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

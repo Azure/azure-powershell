@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DevCenterdata service.
 
 ---
-## Status
-[![Az.DevCenterdata](https://img.shields.io/powershellgallery/v/Az.DevCenterdata.svg?style=flat-square&label=Az.DevCenterdata "Az.DevCenterdata")](https://www.powershellgallery.com/packages/Az.DevCenterdata/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the NetworkAnalytics service.
 
 ---
-## Status
-[![Az.NetworkAnalytics](https://img.shields.io/powershellgallery/v/Az.NetworkAnalytics.svg?style=flat-square&label=Az.NetworkAnalytics "Az.NetworkAnalytics")](https://www.powershellgallery.com/packages/Az.NetworkAnalytics/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -31,10 +28,10 @@ For information on how to develop for `Az.NetworkAnalytics`, see [how-to.md](how
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: c364b64a6b412ffd7507dea71ae53251d35748c1
+commit: c364b64a6b412ffd7507dea71ae53251d35748c1
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/networkanalytics/resource-manager/readme.md
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-local-readme.md
@@ -53,6 +50,10 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

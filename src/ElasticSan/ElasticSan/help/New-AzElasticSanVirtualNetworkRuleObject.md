@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ElasticSan-help.xml
 Module Name: Az.ElasticSan
 online version: https://learn.microsoft.com/powershell/module/Az.ElasticSan/new-azelasticsanvirtualnetworkruleobject
 schema: 2.0.0
@@ -22,7 +22,7 @@ Create an in-memory object for VirtualNetworkRule.
 
 ## EXAMPLES
 
-### Example 1: Create a virtual network rule object 
+### Example 1: Create a virtual network rule object
 ```powershell
 New-AzElasticSanVirtualNetworkRuleObject -VirtualNetworkResourceId  "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myresourcegroup/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/subnet1" -Action Allow
 ```
@@ -79,4 +79,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -13,7 +13,8 @@ Returns the list of available operations.
 ## SYNTAX
 
 ```
-Get-AzDataProtectionOperation [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDataProtectionOperation [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -110,10 +111,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IClientDiscoveryValueForSingleApi
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IClientDiscoveryValueForSingleApi
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

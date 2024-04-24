@@ -15,26 +15,29 @@ Deletes an Azure NetApp Files (ANF) Volume Quota Rule.
 ### ByFieldsParameterSet (Default)
 ```
 Remove-AzNetAppFilesVolumeQuotaRule -ResourceGroupName <String> -AccountName <String> -PoolName <String>
- [-VolumeName <String>] [-Name <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-VolumeName <String>] [-Name <String>] [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
 ```
 Remove-AzNetAppFilesVolumeQuotaRule [-Name <String>] -ResourceId <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectParameterSet
 ```
 Remove-AzNetAppFilesVolumeQuotaRule [-Name <String>] -VolumeObject <PSNetAppFilesVolume> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Remove-AzNetAppFilesVolumeQuotaRule [-Name <String>] -InputObject <PSNetAppFilesBackupPolicy> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]//(Skip = "Test indicates Graph call is not recorded when it actually is, refer to https://github.com/Azure/azure-powershell/issues/14632 for more details, test passes in record mode")]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaByServicePrincipal()
         {
             TestRunner.RunTestScript("Test-RaByServicePrincipal");
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RaCreatedBySP()
         {
             TestRunner.RunTestScript("Test-RaCreatedBySP");

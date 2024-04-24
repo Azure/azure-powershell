@@ -63,3 +63,76 @@ function Test-NetworkVirtualApplianceConnectionGet
         Clean-ResourceGroup $rgname
 	}
 }
+
+function Test-NetworkVirtualApplianceConnectionUpdate
+{
+    $rgname = Get-ResourceGroupName
+
+    # The commands are not supported in all regions yet.
+    $location = "centraluseuap"
+    $nvaname = Get-ResourceName
+    $wanname = Get-ResourceName
+    $hubname = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/networkVirtualAppliance"
+    $vendor = "ciscosdwan"
+    $scaleunit = 2
+    $version = 'latest'
+    $asn = 65222
+    $prefix = "10.1.0.0/16"
+    $routeMapName = "testRouteMap"
+    try{
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+        $sku = New-AzVirtualApplianceSkuProperty -VendorName $vendor -BundledScaleUnit $scaleunit -MarketPlaceVersion $version
+        Assert-NotNull $sku
+
+        $wan = New-AzVirtualWan -ResourceGroupName $rgname -Name $wanname -Location $location
+        $hub = New-AzVirtualHub -ResourceGroupName $rgname -Name $hubname -Location $location -VirtualWan $wan -AddressPrefix $prefix
+
+        # Wait for Virtual Hub Routing State to become Provisioned or Failed
+        while ($hub.RoutingState -eq "Provisioning")
+        {
+            Start-TestSleep -Seconds 30
+            $hub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $hubname
+        }
+        Assert-AreEqual $hub.RoutingState "Provisioned"
+
+
+        $nva = New-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname -Location $location -VirtualApplianceAsn $asn -VirtualHubId $hub.Id -Sku $sku -CloudInitConfiguration "echo hi" 
+        Assert-NotNull $nva
+        
+        $getnva = Get-AzNetworkVirtualAppliance -ResourceGroupName $rgname -Name $nvaname
+        Assert-NotNull $getnva
+        $oldRoutingConfig = $getnva.RoutingConfiguration
+        
+        $getNvaConnection = Get-AzNetworkVirtualApplianceConnection -VirtualAppliance $getnva
+        Assert-NotNull $getNvaConnection 
+        
+        $rt = Get-AzVHubRouteTable -ResourceGroupName $rgname -VirtualHubName $hubname -Name "noneRouteTable"
+        
+        #RouteMAp
+        $routeMapMatchCriterion = New-AzRouteMapRuleCriterion -MatchCondition "Equals" -AsPath @("12345")
+		$routeMapAction = New-AzRouteMapRuleAction -Type "Drop"
+		$routeMapRule = New-AzRouteMapRule -Name "rule" -MatchCriteria @($routeMapMatchCriterion) -RouteMapRuleAction @($routeMapAction) -NextStepIfMatched "Terminate"
+
+		New-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $hubname -Name $routeMapName -RouteMapRule @($routeMapRule)
+		$routeMap = Get-AzRouteMap -ResourceGroupName $rgName -VirtualHubName $hubname -Name $routeMapName
+		Assert-AreEqual $routeMap.Rules.Count 1
+
+        $routingconfig = New-AzRoutingConfiguration -AssociatedRouteTable $rt.Id -Label @("none") -Id @($rt.Id) -InboundRouteMap $routeMap.Id
+
+        Update-AzNetworkVirtualApplianceConnection -ResourceGroupName $rgname -VirtualApplianceName $nvaname -Name defaultConnection -RoutingConfiguration $routingconfig
+        
+        $updatedNvaConnection = Get-AzNetworkVirtualApplianceConnection -VirtualAppliance $getnva
+        
+        Assert-AreNotEqual $updatedNvaConnection.RoutingConfiguration $oldRoutingConfig 
+        Assert-AreEqual $updatedNvaConnection.RoutingConfiguration.AssociatedRouteTable.Id $rt.Id
+        Assert-AreEqual $updatedNvaConnection.RoutingConfiguration.PropagatedRouteTables.Ids[0].Id $rt.Id
+        Assert-AreEqual $updatedNvaConnection.RoutingConfiguration.PropagatedRouteTables.Labels[0] "none"
+        Assert-AreEqual $updatedNvaConnection.RoutingConfiguration.InboundRouteMap.Id $routeMap.Id
+
+   	}   
+    finally{
+        # Clean up.
+        Clean-ResourceGroup $rgname
+	}
+}

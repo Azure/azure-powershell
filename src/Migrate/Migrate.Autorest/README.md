@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Migrate service.
 
 ---
-## Status
-[![Az.Migrate](https://img.shields.io/powershellgallery/v/Az.Migrate.svg?style=flat-square&label=Az.Migrate "Az.Migrate")](https://www.powershellgallery.com/packages/Az.Migrate/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -48,16 +45,21 @@ In this directory, run AutoRest:
 
 ``` yaml
 skip-semantics-validation: true
+commit: 0dd49a444195fef7f3555cad038cb7665cbd928c
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-    - $(repo)/specification/migrate/resource-manager/Microsoft.OffAzure/stable/2020-01-01/migrate.json
-    - $(repo)/specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
-    - $(repo)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-01-01/service.json
+  - $(repo)/specification/migrate/resource-manager/Microsoft.OffAzure/stable/2020-01-01/migrate.json
+  - $(repo)/specification/migrateprojects/resource-manager/Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+  - $(repo)/specification/recoveryservicessiterecovery/resource-manager/Microsoft.RecoveryServices/stable/2023-01-01/service.json
+  - $(repo)/specification/recoveryservicesdatareplication/resource-manager/Microsoft.DataReplication/preview/2021-02-16-preview/recoveryservicesdatareplication.json
 
 module-version: 1.0.1
 title: Migrate 
 subject-prefix: 'Migrate'
+
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Correct some swagger operationIds
@@ -101,6 +103,22 @@ directive:
     - ProtectionContainerMappingProviderSpecificDetails
     - MigrateProjectProperties
     - FabricProperties
+    - FabricModelProperties
+    - FabricModelCustomProperties
+    - AzStackHCIFabricModelCustomProperties
+    - HyperVMigrateFabricModelCustomProperties
+    - VMwareMigrateFabricModelCustomProperties
+    - PolicyModelProperties
+    - ReplicationExtensionModelProperties
+    - ProtectedItemModelProperties
+    - ProtectedItemModelCustomProperties
+    - HyperVToAzStackHCIProtectedItemModelCustomProperties
+    - VMwareToAzStackHCIProtectedItemModelCustomProperties
+    - PlannedFailoverModelProperties
+    - WorkflowModelProperties
+    - WorkflowModelCustomProperties
+    - TaskModel
+    - TaskModelCustomProperties
   # Remove variants not in scope
   - from: Microsoft.RecoveryServices/stable/2023-01-01/service.json
     where:
@@ -222,10 +240,6 @@ directive:
     remove: true
   - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
     where:
-      subject: ^HyperV
-    remove: true
-  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
-    where:
       subject: ^Job|^VMwareOperationsStatus
     remove: true
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
@@ -240,7 +254,12 @@ directive:
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
       verb: Set$|Remove$|Update$
-      subject: ^Solution|ProjectSummary$
+      subject: ProjectSummary$
+    remove: true
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      verb: Remove$|Update$
+      subject: ^Solution
     remove: true
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
@@ -257,7 +276,7 @@ directive:
     remove: true
   - from: Microsoft.RecoveryServices/stable/2023-01-01/service.json
     where:
-      subject: ^Commit|^Planned|^Renew|^Reprotect|^Unplanned|VaultHealth$|ComputeSize$|FabricConsistency$
+      subject: ^Commit|^Renew|^Reprotect|^Unplanned|VaultHealth$|ComputeSize$|FabricConsistency$
     remove: true
   - from: Microsoft.RecoveryServices/stable/2023-01-01/service.json
     where:
@@ -294,7 +313,74 @@ directive:
       verb: New
       subject: ^ReplicationVaultSetting|^SupportedOperatingSystem|^ReplicationProtectionIntent
     remove: true
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
+      verb: Get
+      subject: ^HyperV(Cluster|Host|Job|OperationsStatus)$
+    remove: true
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
+      verb: Set
+      subject: ^HyperV(Cluster|Host)$
+    remove: true
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
+      verb: New|Remove|Update
+      subject: ^HyperV
+    remove: true
+  - from: Microsoft.DataReplication/preview/2021-02-16-preview/recoveryservicesdatareplication.json
+    where:
+      verb: Test|Invoke
+      subject: NameAvailability$|DeploymentPreflight
+    remove: true
+  - from: Microsoft.DataReplication/preview/2021-02-16-preview/recoveryservicesdatareplication.json
+    where:
+      verb: Get|New
+      subject: ^EmailConfiguration
+    remove: true
+  - from: Microsoft.DataReplication/preview/2021-02-16-preview/recoveryservicesdatareplication.json
+    where:
+      verb: Get
+      subject: ^(Dra|ProtectedItem|Vault|Workflow)OperationStatus$
+    remove: true
+  - from: Microsoft.DataReplication/preview/2021-02-16-preview/recoveryservicesdatareplication.json
+    where:
+      verb: Get
+      subject: ^FabricOperationsStatus$
+    remove: true
+  - from: Microsoft.DataReplication/preview/2021-02-16-preview/recoveryservicesdatareplication.json
+    where:
+      verb: New
+      subject: ^(Dra|Vault)
+    remove: true
+  - from: Microsoft.DataReplication/preview/2021-02-16-preview/recoveryservicesdatareplication.json
+    where:
+      verb: Update
+      subject: ^Vault
+    remove: true
+  - from: Microsoft.RecoveryServices/stable/2023-01-01/service.json
+    where:
+      verb: Invoke
+      subject: ^PlannedReplication
+    remove: true
+  # Rename cmdlets for AzStackHCI
+  - from: Microsoft.DataReplication/preview/2021-02-16-preview/recoveryservicesdatareplication.json
+    where:
+      verb: Get
+      subject: ^Fabric$
+    set:
+      subject: HCIReplicationFabric
   # Hide cmldets used by custom
+  - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
+    where:
+      verb: Set$
+      subject: ^Solution
+    hide: true
+  - from: Microsoft.RecoveryServices/stable/2023-01-01/service.json
+    where:
+      verb: Get$
+      subject: ToAzureMigrate$
+    hide: true
   - from: Microsoft.RecoveryServices/stable/2023-01-01/service.json
     where:
       verb: Get$
@@ -340,6 +426,15 @@ directive:
       verb: Resume$
       subject: ^ReplicationMigrationItemReplication
     hide: true
+  - from: Microsoft.RecoveryServices/stable/2023-01-01/service.json
+    where:
+      subject: ^Planned
+    hide: true
+  - from: Microsoft.OffAzure/stable/2020-01-01/migrate.json
+    where:
+      verb: Get
+      subject: ^HyperV(Site|RunAsAccount)$
+    hide: true
   # Hide cmdlets not to be visible to user.
   - from: Microsoft.Migrate/preview/2018-09-01-preview/migrate.json
     where:
@@ -368,6 +463,11 @@ directive:
   - where:
       verb: New$
       variant: ^CreateViaIdentity
+    hide: true
+  - from: Microsoft.DataReplication/preview/2021-02-16-preview/recoveryservicesdatareplication.json
+    where:
+      verb: Get$|Invoke$|New$|Remove$|Test$|Update$
+      subject: ^Dra|^Fabric|^Policy|^EmailConfiguration|^ProtectedItem|^ReplicationExtension|^Vault|^Workflow
     hide: true
   - where:
       verb: New$|Set$|Update$

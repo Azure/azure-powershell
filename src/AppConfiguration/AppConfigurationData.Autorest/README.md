@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the AppConfigurationdata service.
 
 ---
-## Status
-[![Az.AppConfigurationdata](https://img.shields.io/powershellgallery/v/Az.AppConfigurationdata.svg?style=flat-square&label=Az.AppConfigurationdata "Az.AppConfigurationdata")](https://www.powershellgallery.com/packages/Az.AppConfigurationdata/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -47,7 +44,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 498ccf7ddf78ced8ef515f88b755b2eb3775de9e
+commit: 498ccf7ddf78ced8ef515f88b755b2eb3775de9e
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
@@ -64,8 +61,6 @@ identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
 endpoint-resource-id-key-name: AzureAppConfigurationEndpointResourceId
-use-extension:
-  "@autorest/powershell": "4.x"
 
 directive:
   # Remove the Etag and Last-Modified in headers from the response

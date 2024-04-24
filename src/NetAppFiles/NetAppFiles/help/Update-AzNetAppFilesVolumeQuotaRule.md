@@ -16,7 +16,8 @@ Updates an Azure NetApp Files (ANF) volume quota rule according to the optional 
 ```
 Update-AzNetAppFilesVolumeQuotaRule -ResourceGroupName <String> -AccountName <String> -PoolName <String>
  -VolumeName <String> -Name <String> [-Tag <Hashtable>] [-QuotaSize <Int32>] [-QuotaType <String>]
- [-QuotaTarget <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-QuotaTarget <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceIdParameterSet
@@ -30,14 +31,16 @@ Update-AzNetAppFilesVolumeQuotaRule -Name <String> [-Tag <Hashtable>] [-QuotaSiz
 ```
 Update-AzNetAppFilesVolumeQuotaRule -Name <String> [-Tag <Hashtable>] [-QuotaSize <Int32>]
  [-QuotaType <String>] [-QuotaTarget <String>] -VolumeObject <PSNetAppFilesVolume>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByObjectParameterSet
 ```
 Update-AzNetAppFilesVolumeQuotaRule -Name <String> [-Tag <Hashtable>] [-QuotaSize <Int32>]
  [-QuotaType <String>] [-QuotaTarget <String>] -InputObject <PSNetAppFilesBackup>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

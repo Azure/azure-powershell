@@ -91,6 +91,15 @@ $Jobs = Get-AzRecoveryServicesBackupJob -VaultId $vault.ID -Status Completed -Fr
 
 First cmdlet fetches the vault object. Second cmdlet stores all the AzureVM jobs in the given vault which completed in last 2 days to $jobs. Change the value of BackupManagementType parameter to MAB in order to fetch MAB agent jobs.
 
+### Example 5: Get jobs for cross region restore 
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$Jobs = Get-AzRecoveryServicesBackupJob -VaultId $vault.Id -From ((Get-Date).AddDays(-29)).ToUniversalTime() -Operation CrossRegionRestore
+```
+
+First cmdlet fetches the vault object. Second cmdlet fetches all Cross region restore jobs in last 29 days for a given recovery services vault.
+
 ## PARAMETERS
 
 ### -BackupManagementType

@@ -81,9 +81,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime
 
         internal static IEnumerable<KeyValuePair<string, JsonNode>> FilterHeaders(IEnumerable<KeyValuePair<string, IEnumerable<string>>> headers) => headers.Select(header => new KeyValuePair<string, JsonNode>(header.Key, Blacklist.Contains(header.Key) ? Removed : new XImmutableArray<string>(header.Value.ToArray())));
 
-        internal static JsonNode SerializeContent(HttpContent content) => content == null ? XNull.Instance : SerializeContent(content.ReadAsByteArrayAsync().Result);
+        internal static JsonNode SerializeContent(HttpContent content, ref bool isBase64) => content == null ? XNull.Instance : SerializeContent(content.ReadAsByteArrayAsync().Result, ref isBase64);
 
-        internal static JsonNode SerializeContent(byte[] content)
+        internal static JsonNode SerializeContent(byte[] content, ref bool isBase64)
         {
             if (null == content || content.Length == 0)
             {
@@ -102,14 +102,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime
             return new JsonString(System.Convert.ToBase64String(content));
         }
 
-        internal static byte[] DeserializeContent(string content)
+        internal static byte[] DeserializeContent(string content, bool isBase64)
         {
             if (string.IsNullOrWhiteSpace(content))
             {
                 return new byte[0];
             }
 
-            if (content.EndsWith("=="))
+            if (isBase64)
             {
                 try
                 {
@@ -126,11 +126,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime
         public void SaveMessage(string rqKey, HttpRequestMessage request, HttpResponseMessage response)
         {
             var messages = System.IO.File.Exists(this.recordingPath) ? Load() : new JsonObject() ?? new JsonObject();
+            bool isBase64Request = false;
+            bool isBase64Response = false;
             messages[rqKey] = new JsonObject {
               { "Request",new JsonObject {
                 { "Method", request.Method.Method },
                 { "RequestUri", request.RequestUri },
-                { "Content", SerializeContent( request.Content) },
+                { "Content", SerializeContent( request.Content, ref isBase64Request) },
+                { "isContentBase64", isBase64Request },
                 { "Headers", new JsonObject(FilterHeaders(request.Headers)) },
                 { "ContentHeaders", request.Content == null ? new JsonObject() : new JsonObject(FilterHeaders(request.Content.Headers))}
               } },
@@ -138,7 +141,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime
                 { "StatusCode", (int)response.StatusCode},
                 { "Headers", new JsonObject(FilterHeaders(response.Headers))},
                 { "ContentHeaders", new JsonObject(FilterHeaders(response.Content.Headers))},
-                { "Content", SerializeContent(response.Content) },
+                { "Content", SerializeContent(response.Content, ref isBase64Response) },
+                { "isContentBase64", isBase64Response },
               }}
             };
             System.IO.File.WriteAllText(this.recordingPath, messages.ToString());
@@ -176,10 +180,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime
             var respMessage = message.Property("Response");
 
             // --------------------------- deserialize response ----------------------------------------------------------------
+            bool isBase64Response = false;
+            respMessage.BooleanProperty("isContentBase64", ref isBase64Response);
             var response = new HttpResponseMessage
             {
                 StatusCode = (HttpStatusCode)respMessage.NumberProperty("StatusCode", ref sc),
-                Content = new System.Net.Http.ByteArrayContent(DeserializeContent(respMessage.StringProperty("Content")))
+                Content = new System.Net.Http.ByteArrayContent(DeserializeContent(respMessage.StringProperty("Content"), isBase64Response))
             };
 
             foreach (var each in respMessage.Property("Headers"))
@@ -199,11 +205,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime
             }
 
             // --------------------------- deserialize request ----------------------------------------------------------------
+            bool isBase64Request = false;
+            reqMessage.BooleanProperty("isContentBase64", ref isBase64Request);
             response.RequestMessage = new HttpRequestMessage
             {
                 Method = new HttpMethod(reqMessage.StringProperty("Method")),
                 RequestUri = new System.Uri(reqMessage.StringProperty("RequestUri")),
-                Content = new System.Net.Http.ByteArrayContent(DeserializeContent(reqMessage.StringProperty("Content")))
+                Content = new System.Net.Http.ByteArrayContent(DeserializeContent(reqMessage.StringProperty("Content"), isBase64Request))
             };
 
             foreach (var each in reqMessage.Property("Headers"))

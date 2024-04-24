@@ -15,7 +15,8 @@ Creates or updates an ApplicationGroup for a Namespace.
 ```
 New-AzEventHubApplicationGroup -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-ClientAppGroupIdentifier <String>] [-IsEnabled]
- [-Policy <IApplicationGroupPolicy[]>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Policy <IApplicationGroupPolicy[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

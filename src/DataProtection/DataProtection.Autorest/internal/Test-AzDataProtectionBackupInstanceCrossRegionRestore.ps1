@@ -25,11 +25,11 @@ Validates whether Cross Region Restore can be triggered for DataSource.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IValidateCrossRegionRestoreRequestObject
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IValidateCrossRegionRestoreRequestObject
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IOperationJobExtendedInfo
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -51,6 +51,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceGuardProxyName <String>]: name of the resource guard proxy
   [ResourceGuardsName <String>]: The name of ResourceGuard
+  [ResourceId <String>]: ARM path of the resource to be protected using Microsoft.DataProtection
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VaultName <String>]: The name of the backup vault.
 
@@ -66,6 +67,7 @@ PARAMETER <IValidateCrossRegionRestoreRequestObject>: Cross Region Restore Reque
     SourceDataStoreType <SourceDataStoreType>: Gets or sets the type of the source data store.
     [IdentityDetailUseSystemAssignedIdentity <Boolean?>]: Specifies if the BI is protected by System Identity.
     [IdentityDetailUserAssignedIdentityArmUrl <String>]: ARM URL for User Assigned Identity.
+    [ResourceGuardOperationRequest <String[]>]: ResourceGuardOperationRequests on which LAC check will be performed
     [SourceResourceId <String>]: Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
 
 RESTOREREQUESTOBJECT <IAzureBackupRestoreRequest>: Gets or sets the restore request object.
@@ -76,12 +78,13 @@ RESTOREREQUESTOBJECT <IAzureBackupRestoreRequest>: Gets or sets the restore requ
   SourceDataStoreType <SourceDataStoreType>: Gets or sets the type of the source data store.
   [IdentityDetailUseSystemAssignedIdentity <Boolean?>]: Specifies if the BI is protected by System Identity.
   [IdentityDetailUserAssignedIdentityArmUrl <String>]: ARM URL for User Assigned Identity.
+  [ResourceGuardOperationRequest <String[]>]: ResourceGuardOperationRequests on which LAC check will be performed
   [SourceResourceId <String>]: Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/test-azdataprotectionbackupinstancecrossregionrestore
 #>
 function Test-AzDataProtectionBackupInstanceCrossRegionRestore {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IOperationJobExtendedInfo])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IOperationJobExtendedInfo])]
 [CmdletBinding(DefaultParameterSetName='ValidateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Validate', Mandatory)]
@@ -119,7 +122,7 @@ param(
     [Parameter(ParameterSetName='Validate', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ValidateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IValidateCrossRegionRestoreRequestObject]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IValidateCrossRegionRestoreRequestObject]
     # Cross Region Restore Request Object
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -127,7 +130,7 @@ param(
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
     [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.ICrossRegionRestoreDetails]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.ICrossRegionRestoreDetails]
     # Cross region restore details.
     # To construct, see NOTES section for CROSSREGIONRESTOREDETAIL properties and create a hash table.
     ${CrossRegionRestoreDetail},
@@ -135,7 +138,7 @@ param(
     [Parameter(ParameterSetName='ValidateExpanded', Mandatory)]
     [Parameter(ParameterSetName='ValidateViaIdentityExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IAzureBackupRestoreRequest]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest]
     # Gets or sets the restore request object.
     # To construct, see NOTES section for RESTOREREQUESTOBJECT properties and create a hash table.
     ${RestoreRequestObject},
@@ -216,7 +219,13 @@ begin {
             ValidateViaIdentityExpanded = 'Az.DataProtection.private\Test-AzDataProtectionBackupInstanceCrossRegionRestore_ValidateViaIdentityExpanded';
         }
         if (('Validate', 'ValidateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

@@ -15,14 +15,14 @@ Creates a predefined Azure tag or adds values to an existing tag | Creates or up
 
 ### CreatePredefinedTagParameterSet
 ```
-New-AzTag [-Name] <String> [[-Value] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-AzTag [-Name] <String> [[-Value] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateByResourceIdParameterSet
 ```
-New-AzTag [-ResourceId] <String> [-Tag] <Hashtable> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+New-AzTag [-ResourceId] <String> [-Tag] <Hashtable> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

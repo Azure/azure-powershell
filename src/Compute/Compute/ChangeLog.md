@@ -20,6 +20,26 @@
 
 -->
 ## Upcoming Release
+* Added cmdlet `Invoke-AzSpotPlacementRecommender`.
+* Fixed `Update-AzCapacityReservationGroup` to remove Subscriptions from SharingProfile.
+
+## Version 7.2.0
+* Added parameters `-scriptUriManagedIdentity`, `-outputBlobManagedIdentity`, `-errorBlobMangedIdentity`, and `-TreatFailureAsDeploymentFailure` to cmdlets `Set-AzVmRunCommand` and `Set-AzVmssRunCommand`. 
+* Added new parameter `-EnableAutomaticOSUpgrade` to `New-AzVmss` cmdlet.
+* Renamed parameter `-AutoOSUpgrade` to `-EnableAutomaticOSUpgrade` in `New-AzVmssConfig` cmdlet for consistency. Using `-AutoOSUpgrade` as parameter name will continue to work as it is added as an alias.
+* Upgraded Azure.Core to 1.37.0.
+* Az.Compute is updated to use the 2023-07-03 GalleryRP, 2024-03-01 ComputeRP and 2023-10-02 DiskRP API.
+* Added new parameter `-TierOption` to `New-AzSnapshotConfig`.
+* Added breaking change warnings for the May 2024 release. The warnings are for:
+  `New-AzGalleryImageVersion` defaulting to turn on TrustedLaunchSupported and HyperVGeneration to V2.
+  `New-AzVM` and `New-AzVmss` will default to the image `Windows Server 2022 Azure Edition` instead of `Windows 2016 Datacenter` by default.
+  `Get-AzVmss` will no longer allow empty values to `ResourceGroupName` and `VMScaleSetName` to avoid a bug where it will just return nothing.
+* Added a new parameter `-SharingProfile` to `New-AzCapacityReservationGroup` and `Update-AzCapacityReservationGroup`.
+* Added the new parameter `SourceImageVMId` to the `New-AzGalleryImageVersion` cmdlet. Also added some error messages for this new parameter and the existing parameter `SourceImageId`. 
+* Updated parameter `-TargetRegion` in `New-AzGalleryImageVersion` and `Update-AzGalleryImageVersion` to accept `ExcludeFromLatest` field. 
+
+## Version 7.1.2
+* Fixed `New-AzVM` when a source image is specified to avoid an error on the `Version` value.
 
 ## Version 7.1.1
 * Fixed `New-AzVmss` to correctly work when using `-EdgeZone` by creating the Load Balancer in the correct edge zone.

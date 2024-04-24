@@ -102,7 +102,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for MACHINEINPUTOBJECT properties and create a hash table.
     ${MachineInputObject},
 
     [Parameter()]
@@ -170,7 +169,13 @@ begin {
             List1 = 'Az.StackHCIVM.private\Get-AzStackHCIVMHybridIdentityMetadata_List1';
         }
         if (('Get1', 'List1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

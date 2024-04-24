@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models
         /// Creates a new instance of <see cref="SynapseIdentity" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="SynapseIdentity" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -98,16 +100,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).KustoPoolName = (string) content.GetValueForProperty("KustoPoolName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).KustoPoolName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).AttachedDatabaseConfigurationName = (string) content.GetValueForProperty("AttachedDatabaseConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).AttachedDatabaseConfigurationName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).DatabaseName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).DataConnectionName = (string) content.GetValueForProperty("DataConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).DataConnectionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).PrincipalAssignmentName = (string) content.GetValueForProperty("PrincipalAssignmentName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).PrincipalAssignmentName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("WorkspaceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("KustoPoolName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).KustoPoolName = (string) content.GetValueForProperty("KustoPoolName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).KustoPoolName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AttachedDatabaseConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).AttachedDatabaseConfigurationName = (string) content.GetValueForProperty("AttachedDatabaseConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).AttachedDatabaseConfigurationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).DatabaseName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).DataConnectionName = (string) content.GetValueForProperty("DataConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).DataConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrincipalAssignmentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).PrincipalAssignmentName = (string) content.GetValueForProperty("PrincipalAssignmentName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).PrincipalAssignmentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -125,16 +157,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).KustoPoolName = (string) content.GetValueForProperty("KustoPoolName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).KustoPoolName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).AttachedDatabaseConfigurationName = (string) content.GetValueForProperty("AttachedDatabaseConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).AttachedDatabaseConfigurationName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).DatabaseName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).DataConnectionName = (string) content.GetValueForProperty("DataConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).DataConnectionName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).PrincipalAssignmentName = (string) content.GetValueForProperty("PrincipalAssignmentName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).PrincipalAssignmentName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("WorkspaceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).WorkspaceName = (string) content.GetValueForProperty("WorkspaceName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).WorkspaceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("KustoPoolName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).KustoPoolName = (string) content.GetValueForProperty("KustoPoolName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).KustoPoolName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AttachedDatabaseConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).AttachedDatabaseConfigurationName = (string) content.GetValueForProperty("AttachedDatabaseConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).AttachedDatabaseConfigurationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).DatabaseName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataConnectionName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).DataConnectionName = (string) content.GetValueForProperty("DataConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).DataConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrincipalAssignmentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).PrincipalAssignmentName = (string) content.GetValueForProperty("PrincipalAssignmentName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).PrincipalAssignmentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.ISynapseIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

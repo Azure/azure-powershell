@@ -18,7 +18,8 @@ Generates a SAS token for an Azure storage blob.
 New-AzStorageBlobSASToken [-Container] <String> [-Blob] <String> [-Permission <String>]
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
  [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### BlobPipelineWithPolicy
@@ -26,7 +27,8 @@ New-AzStorageBlobSASToken [-Container] <String> [-Blob] <String> [-Permission <S
 New-AzStorageBlobSASToken -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClient>] -Policy <String>
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
  [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### BlobPipelineWithPermission
@@ -34,7 +36,8 @@ New-AzStorageBlobSASToken -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClien
 New-AzStorageBlobSASToken -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClient>] [-Permission <String>]
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
  [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### BlobNameWithPolicy
@@ -42,7 +45,8 @@ New-AzStorageBlobSASToken -CloudBlob <CloudBlob> [-BlobBaseClient <BlobBaseClien
 New-AzStorageBlobSASToken [-Container] <String> [-Blob] <String> -Policy <String>
  [-Protocol <SharedAccessProtocol>] [-IPAddressOrRange <String>] [-StartTime <DateTime>]
  [-ExpiryTime <DateTime>] [-FullUri] [-EncryptionScope <String>] [-Context <IStorageContext>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

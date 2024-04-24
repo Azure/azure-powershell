@@ -1,0 +1,124 @@
+{
+  "New-AzNetworkFabricAcl+[NoContext]+Create+$PUT+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName?api-version=2023-06-15",
+      "Content": "{\n  \"location\": \"eastus\",\n  \"properties\": {\n    \"configurationType\": \"Inline\",\n    \"defaultAction\": \"Permit\",\n    \"matchConfigurations\": [\n      {\n        \"matchConfigurationName\": \"matchConfName\",\n        \"sequenceNumber\": 13,\n        \"ipAddressType\": \"IPv4\",\n        \"matchConditions\": [\n          {\n            \"vlanMatchCondition\": {\n              \"vlans\": [ \"20-30\" ],\n              \"innerVlans\": [ \"30\" ],\n              \"vlanGroupNames\": [ \"name\" ]\n            },\n            \"ipCondition\": {\n              \"type\": \"SourceIP\",\n              \"prefixType\": \"Prefix\",\n              \"ipPrefixValues\": [ \"10.20.20.20/12\" ],\n              \"ipGroupNames\": [ \"name\" ]\n            },\n            \"portCondition\": {\n              \"portType\": \"SourcePort\",\n              \"layer4Protocol\": \"TCP\",\n              \"portGroupNames\": [ \"portGroupName\" ],\n              \"flags\": [ \"established\" ]\n            },\n            \"etherTypes\": [ \"0x1\" ],\n            \"fragments\": [ \"0xff00-0xffff\" ],\n            \"ipLengths\": [ \"4094-9214\" ],\n            \"ttlValues\": [ \"23\" ],\n            \"dscpMarkings\": [ \"32\" ]\n          }\n        ],\n        \"actions\": [\n          {\n            \"type\": \"Count\",\n            \"counterName\": \"counterName\"\n          }\n        ]\n      }\n    ],\n    \"dynamicMatchConfigurations\": [\n      {\n        \"ipGroups\": [\n          {\n            \"name\": \"ipGroupName\",\n            \"ipAddressType\": \"IPv4\",\n            \"ipPrefixes\": [ \"10.20.3.1/20\" ]\n          }\n        ],\n        \"vlanGroups\": [\n          {\n            \"name\": \"valnGroupName\",\n            \"vlans\": [ \"20-30\" ]\n          }\n        ],\n        \"portGroups\": [\n          {\n            \"name\": \"portGroupName\",\n            \"ports\": [ \"100-200\" ]\n          }\n        ]\n      }\n    ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1756" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"b5008669-0000-0100-0000-650d49340000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "mise-correlation-id": [ "b2afb03f-bbea-4029-9179-3cd41ae8e1a3" ],
+        "x-ms-request-id": [ "e5458823-e4b8-4ee9-931e-c8013d6ba507" ],
+        "x-ms-correlation-request-id": [ "97c0458d-06c8-4e27-921f-97cbbcb43625" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/753537fa-c7f3-4bae-bf14-75f7dd15dc80*12F95A759FF8931F3228E0026CAA2B3A3F3D7EF398BC4E2E5982D251DBCB471C?api-version=2023-06-15" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T075844Z:97c0458d-06c8-4e27-921f-97cbbcb43625" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 22 Sep 2023 07:58:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1555" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName\",\"name\":\"aclName\",\"type\":\"microsoft.managednetworkfabric/accesscontrollists\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-22T07:54:28.5527489Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-22T07:58:44.3427616Z\"},\"properties\":{\"configurationState\":\"Succeeded\",\"provisioningState\":\"Accepted\",\"administrativeState\":\"Disabled\",\"configurationType\":\"Inline\",\"defaultAction\":\"Permit\",\"matchConfigurations\":[{\"matchConfigurationName\":\"matchConfName\",\"sequenceNumber\":13,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"etherTypes\":[\"0x1\"],\"fragments\":[\"0xff00-0xffff\"],\"ipLengths\":[\"4094-9214\"],\"ttlValues\":[\"23\"],\"dscpMarkings\":[\"32\"],\"portCondition\":{\"flags\":[\"established\"],\"portType\":\"SourcePort\",\"layer4Protocol\":\"TCP\",\"portGroupNames\":[\"portGroupName\"]},\"vlanMatchCondition\":{\"vlans\":[\"20-30\"],\"innerVlans\":[\"30\"],\"vlanGroupNames\":[\"name\"]},\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.20.20.20/12\"],\"ipGroupNames\":[\"name\"]}}],\"actions\":[{\"type\":\"Count\",\"counterName\":\"counterName\"}]}],\"dynamicMatchConfigurations\":[{\"ipGroups\":[{\"name\":\"ipGroupName\",\"ipAddressType\":\"IPv4\",\"ipPrefixes\":[\"10.20.3.1/20\"]}],\"vlanGroups\":[{\"name\":\"valnGroupName\",\"vlans\":[\"20-30\"]}],\"portGroups\":[{\"name\":\"portGroupName\",\"ports\":[\"100-200\"]}]}]}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkFabricAcl+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/753537fa-c7f3-4bae-bf14-75f7dd15dc80*12F95A759FF8931F3228E0026CAA2B3A3F3D7EF398BC4E2E5982D251DBCB471C?api-version=2023-06-15+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/753537fa-c7f3-4bae-bf14-75f7dd15dc80*12F95A759FF8931F3228E0026CAA2B3A3F3D7EF398BC4E2E5982D251DBCB471C?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "ed0629a2-ed2d-461c-b5df-80c3eb520265" ],
+        "CommandName": [ "New-AzNetworkFabricAcl" ],
+        "FullCommandName": [ "New-AzNetworkFabricAcl_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"a5010068-0000-0100-0000-650d49350000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "0cee958e-04fb-47d6-96bc-3bc39e0194ba" ],
+        "x-ms-correlation-request-id": [ "aef1e348-d43b-46a1-86c5-df7db4c7f40e" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T075916Z:aef1e348-d43b-46a1-86c5-df7db4c7f40e" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 22 Sep 2023 07:59:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "654" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/locations/EASTUS/operationStatuses/753537fa-c7f3-4bae-bf14-75f7dd15dc80*12F95A759FF8931F3228E0026CAA2B3A3F3D7EF398BC4E2E5982D251DBCB471C\",\"name\":\"753537fa-c7f3-4bae-bf14-75f7dd15dc80*12F95A759FF8931F3228E0026CAA2B3A3F3D7EF398BC4E2E5982D251DBCB471C\",\"resourceId\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName\",\"status\":\"Succeeded\",\"startTime\":\"2023-09-22T07:58:44.5994243Z\",\"endTime\":\"2023-09-22T07:58:45.0675928Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzNetworkFabricAcl+[NoContext]+Create+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName?api-version=2023-06-15+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "ed0629a2-ed2d-461c-b5df-80c3eb520265" ],
+        "CommandName": [ "New-AzNetworkFabricAcl" ],
+        "FullCommandName": [ "New-AzNetworkFabricAcl_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"b5008769-0000-0100-0000-650d49350000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "d538d49c-2abd-44b5-9df6-d1ee21e33d81" ],
+        "x-ms-correlation-request-id": [ "202bf642-fa08-4bb4-8f7d-c5b970c6e410" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T075916Z:202bf642-fa08-4bb4-8f7d-c5b970c6e410" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 22 Sep 2023 07:59:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1556" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName\",\"name\":\"aclName\",\"type\":\"microsoft.managednetworkfabric/accesscontrollists\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-22T07:54:28.5527489Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-22T07:58:44.3427616Z\"},\"properties\":{\"configurationState\":\"Succeeded\",\"provisioningState\":\"Succeeded\",\"administrativeState\":\"Disabled\",\"configurationType\":\"Inline\",\"defaultAction\":\"Permit\",\"matchConfigurations\":[{\"matchConfigurationName\":\"matchConfName\",\"sequenceNumber\":13,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"etherTypes\":[\"0x1\"],\"fragments\":[\"0xff00-0xffff\"],\"ipLengths\":[\"4094-9214\"],\"ttlValues\":[\"23\"],\"dscpMarkings\":[\"32\"],\"portCondition\":{\"flags\":[\"established\"],\"portType\":\"SourcePort\",\"layer4Protocol\":\"TCP\",\"portGroupNames\":[\"portGroupName\"]},\"vlanMatchCondition\":{\"vlans\":[\"20-30\"],\"innerVlans\":[\"30\"],\"vlanGroupNames\":[\"name\"]},\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.20.20.20/12\"],\"ipGroupNames\":[\"name\"]}}],\"actions\":[{\"type\":\"Count\",\"counterName\":\"counterName\"}]}],\"dynamicMatchConfigurations\":[{\"ipGroups\":[{\"name\":\"ipGroupName\",\"ipAddressType\":\"IPv4\",\"ipPrefixes\":[\"10.20.3.1/20\"]}],\"vlanGroups\":[{\"name\":\"valnGroupName\",\"vlans\":[\"20-30\"]}],\"portGroups\":[{\"name\":\"portGroupName\",\"ports\":[\"100-200\"]}]}]}}",
+      "isContentBase64": false
+    }
+  }
+}

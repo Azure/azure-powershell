@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MarketplaceOrdering-help.xml
 Module Name: Az.MarketplaceOrdering
 online version: https://learn.microsoft.com/powershell/module/az.marketplaceordering/get-azmarketplaceterms
 schema: 2.0.0
@@ -20,8 +20,8 @@ Get-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> [-Su
 
 ### Get
 ```
-Get-AzMarketplaceTerms -Name <String> -OfferType <OfferType> -Product <String> -Publisher <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> [-SubscriptionId <String[]>]
+ -OfferType <OfferType> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -160,7 +160,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

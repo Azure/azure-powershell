@@ -66,7 +66,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
                 return;
             }
             __trackedResource = new Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.TrackedResource(json);
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ElasticSanProperties.FromJson(__jsonProperties) : Property;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ElasticSanProperties.FromJson(__jsonProperties) : _property;}
             AfterFromJson(json);
         }
 

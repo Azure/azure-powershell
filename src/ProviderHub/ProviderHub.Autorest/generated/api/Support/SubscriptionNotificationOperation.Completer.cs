@@ -28,27 +28,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotDefined".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotDefined", "NotDefined", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotDefined");
+                yield return new global::System.Management.Automation.CompletionResult("'NotDefined'", "NotDefined", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotDefined");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DeleteAllResources".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DeleteAllResources", "DeleteAllResources", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeleteAllResources");
+                yield return new global::System.Management.Automation.CompletionResult("'DeleteAllResources'", "DeleteAllResources", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeleteAllResources");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SoftDeleteAllResources".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SoftDeleteAllResources", "SoftDeleteAllResources", global::System.Management.Automation.CompletionResultType.ParameterValue, "SoftDeleteAllResources");
+                yield return new global::System.Management.Automation.CompletionResult("'SoftDeleteAllResources'", "SoftDeleteAllResources", global::System.Management.Automation.CompletionResultType.ParameterValue, "SoftDeleteAllResources");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NoOp".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NoOp", "NoOp", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoOp");
+                yield return new global::System.Management.Automation.CompletionResult("'NoOp'", "NoOp", global::System.Management.Automation.CompletionResultType.ParameterValue, "NoOp");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "BillingCancellation".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("BillingCancellation", "BillingCancellation", global::System.Management.Automation.CompletionResultType.ParameterValue, "BillingCancellation");
+                yield return new global::System.Management.Automation.CompletionResult("'BillingCancellation'", "BillingCancellation", global::System.Management.Automation.CompletionResultType.ParameterValue, "BillingCancellation");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UndoSoftDelete".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UndoSoftDelete", "UndoSoftDelete", global::System.Management.Automation.CompletionResultType.ParameterValue, "UndoSoftDelete");
+                yield return new global::System.Management.Automation.CompletionResult("'UndoSoftDelete'", "UndoSoftDelete", global::System.Management.Automation.CompletionResultType.ParameterValue, "UndoSoftDelete");
             }
         }
     }

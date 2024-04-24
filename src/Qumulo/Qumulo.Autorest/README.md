@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Qumulo service.
 
 ---
-## Status
-[![Az.Qumulo](https://img.shields.io/powershellgallery/v/Az.Qumulo.svg?style=flat-square&label=Az.Qumulo "Az.Qumulo")](https://www.powershellgallery.com/packages/Az.Qumulo/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -31,11 +28,11 @@ For information on how to develop for `Az.Qumulo`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-branch: b56524cc505fc6605c9d62d913a974af63e43112
+commit: b56524cc505fc6605c9d62d913a974af63e43112
 tag: package-2022-10-12-preview
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/liftrqumulo/resource-manager/readme.md
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-local-readme.md
@@ -54,6 +51,10 @@ subject-prefix: $(service-name)
 # identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

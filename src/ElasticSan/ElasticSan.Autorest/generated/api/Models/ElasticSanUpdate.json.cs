@@ -65,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return;
             }
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ElasticSanUpdateProperties.FromJson(__jsonProperties) : Property;}
-            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ElasticSanUpdateTags.FromJson(__jsonTags) : Tag;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ElasticSanUpdateProperties.FromJson(__jsonProperties) : _property;}
+            {_tag = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("tags"), out var __jsonTags) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.ElasticSanUpdateTags.FromJson(__jsonTags) : _tag;}
             AfterFromJson(json);
         }
 

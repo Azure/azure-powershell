@@ -25,4 +25,3 @@ default 2022/7/1 3:41:45    *********@microsoft.com User                    2022
 ```
 
 Set existing Deployment under the app as active by pipeline.
-

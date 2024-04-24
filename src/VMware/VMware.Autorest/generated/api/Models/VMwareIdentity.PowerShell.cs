@@ -161,6 +161,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GlobalReachConnectionName = (string) content.GetValueForProperty("GlobalReachConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GlobalReachConnectionName, global::System.Convert.ToString);
             }
+            if (content.Contains("WorkloadNetworkName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).WorkloadNetworkName = (string) content.GetValueForProperty("WorkloadNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).WorkloadNetworkName, global::System.Convert.ToString);
+            }
             if (content.Contains("SegmentId"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).SegmentId = (string) content.GetValueForProperty("SegmentId",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).SegmentId, global::System.Convert.ToString);
@@ -277,6 +281,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Models
             if (content.Contains("GlobalReachConnectionName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GlobalReachConnectionName = (string) content.GetValueForProperty("GlobalReachConnectionName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).GlobalReachConnectionName, global::System.Convert.ToString);
+            }
+            if (content.Contains("WorkloadNetworkName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).WorkloadNetworkName = (string) content.GetValueForProperty("WorkloadNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentityInternal)this).WorkloadNetworkName, global::System.Convert.ToString);
             }
             if (content.Contains("SegmentId"))
             {

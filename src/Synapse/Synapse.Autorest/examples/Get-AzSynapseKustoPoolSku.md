@@ -1,7 +1,9 @@
 ### Example 1: Lists eligible SKUs
 ```powershell
 Get-AzSynapseKustoPoolSku
+```
 
+```output
 Location             Name              ResourceType          Size
 --------             ----              ------------          ----
 {australiacentral}   Compute optimized workspaces/kustoPools Extra small
@@ -17,7 +19,9 @@ The above command lists eligible SKUs.
 ### Example 2: Lists eligible SKUs for specific kusto pool
 ```powershell
 Get-AzSynapseKustoPoolSku -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testnewkustopool
+```
 
+```output
 ResourceType
 ------------
 Microsoft.Synapse/workspaces/kustoPools

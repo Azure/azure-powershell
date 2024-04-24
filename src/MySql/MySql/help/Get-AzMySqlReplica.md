@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.MySql
+external help file: Az.MySql-help.xml
+Module Name: Az.Mysql
 online version: https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlreplica
 schema: 2.0.0
 ---
@@ -110,7 +110,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

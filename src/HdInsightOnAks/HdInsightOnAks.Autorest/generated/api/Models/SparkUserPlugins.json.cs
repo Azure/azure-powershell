@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 return;
             }
-            {_plugin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("plugins"), out var __jsonPlugins) ? If( __jsonPlugins as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkUserPlugin>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkUserPlugin) (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SparkUserPlugin.FromJson(__u) )) ))() : null : Plugin;}
+            {_plugin = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray>("plugins"), out var __jsonPlugins) ? If( __jsonPlugins as Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkUserPlugin>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISparkUserPlugin) (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SparkUserPlugin.FromJson(__u) )) ))() : null : _plugin;}
             AfterFromJson(json);
         }
 

@@ -16,7 +16,8 @@ Specifies the image for a virtual machine.
 ### ImageReferenceSkuParameterSet (Default)
 ```
 Set-AzVMSourceImage [-VM] <PSVirtualMachine> [-PublisherName] <String> [-Offer] <String> [-Skus] <String>
- [-Version] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Version] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ImageReferenceIdParameterSet
@@ -183,5 +184,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMImageSku](./Get-AzVMImageSku.md)
 
 [New-AzVMConfig](./New-AzVMConfig.md)
-
-

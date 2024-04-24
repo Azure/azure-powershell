@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the AppConfiguration service.
 
 ---
-## Status
-[![Az.AppConfiguration](https://img.shields.io/powershellgallery/v/Az.AppConfiguration.svg?style=flat-square&label=Az.AppConfiguration "Az.AppConfiguration")](https://www.powershellgallery.com/packages/Az.AppConfiguration/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -47,7 +44,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 7d6b4765562b238310ea80d652ac08597fec0476
+commit: 7d6b4765562b238310ea80d652ac08597fec0476
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
@@ -62,6 +59,10 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Remove the unexpanded parameter set

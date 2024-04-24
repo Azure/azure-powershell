@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_policy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("policy"), out var __jsonPolicy) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ManagementPolicySchema.FromJson(__jsonPolicy) : Policy;}
-            {_lastModifiedTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("lastModifiedTime"), out var __jsonLastModifiedTime) ? global::System.DateTime.TryParse((string)__jsonLastModifiedTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastModifiedTimeValue) ? __jsonLastModifiedTimeValue : LastModifiedTime : LastModifiedTime;}
+            {_policy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("policy"), out var __jsonPolicy) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.ManagementPolicySchema.FromJson(__jsonPolicy) : _policy;}
+            {_lastModifiedTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("lastModifiedTime"), out var __jsonLastModifiedTime) ? global::System.DateTime.TryParse((string)__jsonLastModifiedTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastModifiedTimeValue) ? __jsonLastModifiedTimeValue : _lastModifiedTime : _lastModifiedTime;}
             AfterFromJson(json);
         }
 

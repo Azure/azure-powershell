@@ -102,6 +102,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("RunId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobPropertiesInternal)this).RunId = (string) content.GetValueForProperty("RunId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobPropertiesInternal)this).RunId, global::System.Convert.ToString);
+            }
             if (content.Contains("JobName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobPropertiesInternal)this).JobName = (string) content.GetValueForProperty("JobName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobPropertiesInternal)this).JobName, global::System.Convert.ToString);
@@ -175,6 +179,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
                 return;
             }
             // actually deserialize
+            if (content.Contains("RunId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobPropertiesInternal)this).RunId = (string) content.GetValueForProperty("RunId",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobPropertiesInternal)this).RunId, global::System.Convert.ToString);
+            }
             if (content.Contains("JobName"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobPropertiesInternal)this).JobName = (string) content.GetValueForProperty("JobName",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkJobPropertiesInternal)this).JobName, global::System.Convert.ToString);

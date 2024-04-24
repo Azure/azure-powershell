@@ -62,6 +62,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Queue.Cmdlet
         [ValidateNotNullOrEmpty]
         public string Permission { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion("Protocol", "12.0.0", "7.0.0", ChangeDescription = "The type of parameter Protocol will be changed from SharedAccessProtocol to string.")]
         [Parameter(Mandatory = false, HelpMessage = "Protocol can be used in the request with this SAS token.")]
         [ValidateNotNull]
         public SharedAccessProtocol? Protocol { get; set; }

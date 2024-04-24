@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(bool))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Description(@"Uses ‘stepId’ and ‘responses’ as the trigger to continue the troubleshooting steps for the respective troubleshooter resource name. <br/>Continue API is used to provide inputs that are required for the specific troubleshooter to progress into the next step in the process. This API is used after the Troubleshooter has been created using the Create API.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.HttpPath(Path = "/{scope}/providers/Microsoft.Help/troubleshooters/{troubleshooterName}/continue", ApiVersion = "2023-09-01-preview")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.HttpPath(Path = "/{scope}/providers/Microsoft.Help/troubleshooters/{troubleshooterName}/continue", ApiVersion = "2024-03-01-preview")]
     public partial class InvokeAzSelfHelpContinueTroubleshooter_ContinueViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener
     {
@@ -39,7 +39,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
         /// <summary>Troubleshooter ContinueRequest body.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IContinueRequestBody _continueRequestBody = new Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ContinueRequestBody();
+        private Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IContinueRequestBody _continueRequestBody = new Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ContinueRequestBody();
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -127,8 +127,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         ReadOnly = false,
         Description = @".",
         SerializedName = @"responses",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResponse) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResponse[] Response { get => _continueRequestBody.Response ?? null /* arrayOf */; set => _continueRequestBody.Response = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITroubleshooterResponse) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITroubleshooterResponse[] Response { get => _continueRequestBody.Response ?? null /* arrayOf */; set => _continueRequestBody.Response = value; }
 
         /// <summary>Unique id of the result.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Unique id of the result.")]
@@ -186,7 +186,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -350,6 +367,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

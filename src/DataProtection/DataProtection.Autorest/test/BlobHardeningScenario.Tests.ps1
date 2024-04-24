@@ -11,7 +11,54 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-Describe 'BlobHardeningScenario' {
+Describe 'BlobHardeningScenario' -Tag 'LiveOnly' {
+    It 'BlobVaultedILR' {        
+        $subId = $env.TestBlobHardeningScenario.SubscriptionId
+        $resourceGroupName = $env.TestBlobHardeningScenario.ResourceGroupName
+        $vaultName = $env.TestBlobHardeningScenario.VaultName
+        
+        $storageAccountName = $env.TestBlobHardeningScenario.StorageAccountName
+        $targetStorageAccId = $env.TestBlobHardeningScenario.TargetStorageAccId
+        $targetStorageAccountRGName = $env.TestBlobHardeningScenario.TargetStorageAccountRGName
+        $targetStorageAccountName = $env.TestBlobHardeningScenario.TargetStorageAccountName
+        
+        $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
+
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
+
+        $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
+
+        $backedUpContainers = $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList[0].ContainersList
+        
+        # remove containers in target storage account
+        Set-AzContext -SubscriptionId $subId
+        $targetStorageAccount = Get-AzStorageAccount -ResourceGroupName $targetStorageAccountRGName -Name $targetStorageAccountName
+        $targetContainers = Get-AzStorageContainer -Context $targetStorageAccount.Context | Where-Object { $_.Name -match "^con" }
+        foreach($containerName in $targetContainers.Name){
+            Remove-AzStorageContainer -Context $targetStorageAccount.Context -Name $containerName -Confirm:$false -Force
+        }
+
+        $prefMatch = @{
+            $backedUpContainers[0] = @("Su", "PS")
+            $backedUpContainers[1]= @("Su", "PS")
+        }
+
+        # Initialize Restore
+        $restoreReq = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore VaultStore -RestoreLocation $vault.Location -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetStorageAccId -ContainersList $backedUpContainers[0,1] -PrefixMatch $prefMatch
+               
+        $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instance[0].Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -RestoreRequest $restoreReq
+        $validateRestore.ObjectType | Should be "OperationJobExtendedInfo"
+
+        $restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $restoreReq
+
+        $jobid = $restoreJob.JobId.Split("/")[-1]
+        ($jobid -ne $null) | Should be $true
+
+        $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
+
+        ($currentjob.Status -in "InProgress", "Completed") | Should be $true
+    }
+
     It 'ConfigureBackup' -skip {
         $subId = $env.TestBlobHardeningScenario.SubscriptionId
         $location = $env.TestBlobHardeningScenario.Location
@@ -22,45 +69,45 @@ Describe 'BlobHardeningScenario' {
         $storageAccId = $env.TestBlobHardeningScenario.StorageAccId
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
-        $pol = Get-AzDataProtectionBackupPolicy -SubscriptionId $subId -VaultName $vaultName -ResourceGroupName $resourceGroupName | Where { $_.Name -match $policyName }
-        
-        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where { $_.Name -match $storageAcountName }
+        $pol = Get-AzDataProtectionBackupPolicy -SubscriptionId $subId -VaultName $vaultName -ResourceGroupName $resourceGroupName | Where-Object { $_.Name -match $policyName }
+
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
 
         # Remove-BI
         if($instance -ne $null){
             Remove-AzDataProtectionBackupInstance -Name $instance[0].Name -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
         }
 
-        Start-Sleep -Seconds 8
+        Start-TestSleep -Seconds 8
 
         # new backup config and initialize BI
-                        
-        $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName 
+
+        $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName
         $containers=Get-AzStorageContainer -Context $storageAccount.Context
-        
-        $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -VaultedBackupContainer $containers.Name        
+
+        $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -DatasourceType AzureBlob -VaultedBackupContainer $containers.Name
         $backupConfig.ContainersList = $backupConfig.ContainersList[1,3,4]
 
         $backupInstanceClientObject = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureBlob -DatasourceLocation $vault.Location -PolicyId $pol[0].Id -DatasourceId $storageAccId -BackupConfiguration $backupConfig
 
-        # assign permissions and validate 
+        # assign permissions and validate
         Set-AzDataProtectionMSIPermission -VaultResourceGroup $resourceGroupName -VaultName $vaultName -BackupInstance $backupInstanceClientObject -PermissionsScope ResourceGroup
 
         $operationResponse = Test-AzDataProtectionBackupInstanceReadiness -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId -BackupInstance $backupInstanceClientObject.Property -NoWait
         $operationId = $operationResponse.Target.Split("/")[-1].Split("?")[0]
-        
+
         While((Get-AzDataProtectionOperationStatus -OperationId $operationId -Location $vault.Location -SubscriptionId $subId).Status -eq "Inprogress"){
-	        Start-Sleep -Seconds 10
+	        Start-TestSleep -Seconds 10
         }
 
         # backup
         $backupnstanceCreate = New-AzDataProtectionBackupInstance -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId -BackupInstance $backupInstanceClientObject
 
-        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where { $_.Name -match $storageAcountName }
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
 
         while($instance.Property.CurrentProtectionState -ne "ProtectionConfigured"){
-            Start-Sleep -Seconds 10
-            $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where { $_.Name -match $storageAcountName }
+            Start-TestSleep -Seconds 10
+            $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
         }
 
         $instance[0].Name -match $storageAcountName | Should be $true
@@ -72,17 +119,17 @@ Describe 'BlobHardeningScenario' {
         $jobid -ne $null | Should be $true
 
         $jobstatus = "InProgress"
-        while($jobstatus -ne "Completed")
+        while($jobstatus -eq "InProgress")
         {
-            Start-Sleep -Seconds 10
+            Start-TestSleep -Seconds 10
             $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
             $jobstatus = $currentjob.Status
         }
-        $jobstatus | Should be "Completed"        
+        $jobstatus | Should be "Completed"
     }
 
     It 'TriggerRestore' -skip {
-        # TODO: OLR should throw an error in case of vaulted backups 
+        # TODO: OLR should throw an error in case of vaulted backups
 
         $subId = $env.TestBlobHardeningScenario.SubscriptionId
         $crossSubscriptionId = $env.TestBlobHardeningScenario.CrossSubscriptionId
@@ -100,7 +147,7 @@ Describe 'BlobHardeningScenario' {
         $targetCrossSubStorageAccountRGName = $env.TestBlobHardeningScenario.TargetCrossSubStorageAccountRGName
 
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName
-        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where { $_.Name -match $storageAcountName }
+        $instance = Get-AzDataProtectionBackupInstance -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName | Where-Object { $_.Name -match $storageAcountName }
         $rp = Get-AzDataProtectionRecoveryPoint -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.Name
 
         $backedUpContainers = $instance.Property.PolicyInfo.PolicyParameter.BackupDatasourceParametersList[0].ContainersList
@@ -108,15 +155,15 @@ Describe 'BlobHardeningScenario' {
         # remove containers in target cross sub storage account
         Set-AzContext -SubscriptionId $crossSubscriptionId
         $targetCrossSubStorageAccount = Get-AzStorageAccount -ResourceGroupName $targetCrossSubStorageAccountRGName -Name $targetCrossSubStorageAccountName
-        $targetCrossSubContainers = Get-AzStorageContainer -Context $targetCrossSubStorageAccount.Context | Where { $_.Name -match "con" }
+        $targetCrossSubContainers = Get-AzStorageContainer -Context $targetCrossSubStorageAccount.Context | Where-Object { $_.Name -match "con" }
         foreach($crossSubContainerName in $targetCrossSubContainers.Name){
             Remove-AzStorageContainer -Context $targetCrossSubStorageAccount.Context -Name $crossSubContainerName -Confirm:$false -Force
         }
-        
+
         # remove containers in target storage account
         Set-AzContext -SubscriptionId $subId
         $targetStorageAccount = Get-AzStorageAccount -ResourceGroupName $targetStorageAccountRGName -Name $targetStorageAccountName
-        $targetContainers = Get-AzStorageContainer -Context $targetStorageAccount.Context | Where { $_.Name -match "con" }
+        $targetContainers = Get-AzStorageContainer -Context $targetStorageAccount.Context | Where-Object { $_.Name -match "con" }
         foreach($containerName in $targetContainers.Name){
             Remove-AzStorageContainer -Context $targetStorageAccount.Context -Name $containerName -Confirm:$false -Force
         }
@@ -128,7 +175,7 @@ Describe 'BlobHardeningScenario' {
         $validateRestore.ObjectType | Should be "OperationJobExtendedInfo"
 
         $restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $subId -ResourceGroupName $resourceGroupName -VaultName $vaultName -BackupInstanceName $instance.BackupInstanceName -Parameter $restoreReq
-        
+
         $restoreReqCSR = Initialize-AzDataProtectionRestoreRequest -DatasourceType AzureBlob -SourceDataStore VaultStore -RestoreLocation $vault.Location -RecoveryPoint $rp[0].Name -ItemLevelRecovery -RestoreType AlternateLocation -TargetResourceId $targetCrossSubStorageAccId -ContainersList $backedUpContainers[0,1]
 
         $validateRestore = Test-AzDataProtectionBackupInstanceRestore -Name $instance[0].Name -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName -RestoreRequest $restoreReqCSR

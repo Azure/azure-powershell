@@ -15,18 +15,21 @@ Get particular Arc Extension of HCI Cluster.
 ### List (Default)
 ```
 Get-AzStackHciExtension -ArcSettingName <String> -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzStackHciExtension -ArcSettingName <String> -ClusterName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzStackHciExtension -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStackHciExtension -InputObject <IStackHciIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

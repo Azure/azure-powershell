@@ -60,11 +60,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(HelpMessage = "Set ExpiryTime as null for the policy")]
         public SwitchParameter NoExpiryTime { get; set; }
 
-        protected override bool UseTrack2Sdk()
-        {
-            return true;
-        }
-        
         // Overwrite the useless parameter
         public override string TagCondition { get; set; }
 

@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the HanaOn service.
 
 ---
-## Status
-[![Az.HanaOnAzure](https://img.shields.io/powershellgallery/v/Az.HanaOnAzure.svg?style=flat-square&label=Az.HanaOnAzure "Az.HanaOnAzure")](https://www.powershellgallery.com/packages/Az.HanaOnAzure/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -17,7 +14,7 @@ This directory contains the PowerShell module for the HanaOn service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,9 +44,11 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+commit: 5df8962f094d431b8f8e7cbe143e742d316e9141
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
-  - $(repo)/specification/hanaonazure/resource-manager/readme.md
+  - $(this-folder)/../../readme.azure.noprofile.md
+input-file:
+  - $(repo)/specification/hanaonazure/resource-manager/Microsoft.HanaOnAzure/preview/2020-02-07-preview/hanaonazure.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
@@ -63,6 +62,10 @@ subject-prefix: SapMonitor
 # If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs
@@ -136,8 +139,8 @@ directive:
 # HELPERS
 # ManagedIdentity and KeyVault is required when creating provider instance
 require:
-  - $(this-folder)/../helpers/ManagedIdentity/readme.noprofile.md
-  - $(this-folder)/../helpers/KeyVault/readme.noprofile.md
+  - $(this-folder)/../../helpers/ManagedIdentity/readme.noprofile.md
+  - $(this-folder)/../../helpers/KeyVault/readme.noprofile.md
 
 directive:
   #  remove unneeded cmdlets
