@@ -1,0 +1,89 @@
+CommandName,ParameterSetName,Parameters,SourceScript,LineNumber,StartDateTime,EndDateTime,IsSuccess
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location *** -Tag ***,KeyVaultManagementTests.ps1,102,2024-04-24T02:22:54,2024-04-24T02:22:54,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location *** -Sku *** -EnabledForDeployment ***,KeyVaultManagementTests.ps1,122,2024-04-24T02:22:54,2024-04-24T02:22:54,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location *** -Sku *** -EnablePurgeProtection *** -SoftDeleteRetentionInDays ***,KeyVaultManagementTests.ps1,131,2024-04-24T02:22:54,2024-04-24T02:22:54,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location ***,KeyVaultManagementTests.ps1,137,2024-04-24T02:22:54,2024-04-24T02:22:54,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location ***,KeyVaultManagementTests.ps1,141,2024-04-24T02:22:54,2024-04-24T02:22:54,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location ***,KeyVaultManagementTests.ps1,856,2024-04-24T02:22:55,2024-04-24T02:22:55,true
+Update-AzKeyVault,UpdateByInputObjectParameterSet,-PublicNetworkAccess ***,KeyVaultManagementTests.ps1,860,2024-04-24T02:22:55,2024-04-24T02:22:55,true
+Update-AzKeyVault,UpdateByInputObjectParameterSet,-Tag ***,KeyVaultManagementTests.ps1,864,2024-04-24T02:22:55,2024-04-24T02:22:55,true
+Update-AzKeyVault,UpdateByInputObjectParameterSet,-PublicNetworkAccess ***,KeyVaultManagementTests.ps1,868,2024-04-24T02:22:55,2024-04-24T02:22:55,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location ***,KeyVaultManagementTests.ps1,731,2024-04-24T02:22:56,2024-04-24T02:22:56,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location ***,KeyVaultManagementTests.ps1,170,2024-04-24T02:22:56,2024-04-24T02:22:56,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location *** -PublicNetworkAccess ***,KeyVaultManagementTests.ps1,172,2024-04-24T02:22:56,2024-04-24T02:22:56,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location *** -PublicNetworkAccess ***,KeyVaultManagementTests.ps1,174,2024-04-24T02:22:56,2024-04-24T02:22:56,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location ***,KeyVaultManagementTests.ps1,276,2024-04-24T02:22:57,2024-04-24T02:22:57,true
+Get-AzKeyVault,GetVaultByName,-VaultName *** -ResourceGroupName ***,KeyVaultManagementTests.ps1,277,2024-04-24T02:22:57,2024-04-24T02:22:57,true
+Get-AzKeyVault,GetVaultByName,-VaultName ***,KeyVaultManagementTests.ps1,284,2024-04-24T02:22:57,2024-04-24T02:22:57,true
+Get-AzKeyVault,GetVaultByName,-VaultName ***,KeyVaultManagementTests.ps1,291,2024-04-24T02:22:57,2024-04-24T02:22:57,true
+Get-AzKeyVault,GetVaultByName,-VaultName *** -ResourceGroupName ***,KeyVaultManagementTests.ps1,301,2024-04-24T02:22:57,2024-04-24T02:22:57,true
+Get-AzKeyVault,GetVaultByName,-VaultName *** -ResourceGroupName ***,KeyVaultManagementTests.ps1,304,2024-04-24T02:22:57,2024-04-24T02:22:57,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location ***,KeyVaultManagementTests.ps1,324,2024-04-24T02:22:58,2024-04-24T02:22:58,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location *** -Tag ***,KeyVaultManagementTests.ps1,325,2024-04-24T02:22:58,2024-04-24T02:22:58,true
+Get-AzKeyVault,GetVaultByName,,KeyVaultManagementTests.ps1,327,2024-04-24T02:22:58,2024-04-24T02:22:58,true
+Get-AzKeyVault,GetVaultByName,-ResourceGroupName ***,KeyVaultManagementTests.ps1,335,2024-04-24T02:22:58,2024-04-24T02:22:58,true
+Get-AzKeyVault,GetVaultByName,-ResourceGroupName *** -VaultName ***,KeyVaultManagementTests.ps1,344,2024-04-24T02:22:58,2024-04-24T02:22:58,true
+Get-AzKeyVault,GetVaultByName,-ResourceGroupName *** -VaultName ***,KeyVaultManagementTests.ps1,353,2024-04-24T02:22:58,2024-04-24T02:22:58,true
+Get-AzKeyVault,GetVaultByName,-ResourceGroupName *** -VaultName ***,KeyVaultManagementTests.ps1,361,2024-04-24T02:22:58,2024-04-24T02:22:58,true
+Get-AzKeyVault,GetVaultByName,-VaultName ***,KeyVaultManagementTests.ps1,370,2024-04-24T02:22:58,2024-04-24T02:22:58,true
+Get-AzKeyVault,GetVaultByName,-Tag ***,KeyVaultManagementTests.ps1,378,2024-04-24T02:22:58,2024-04-24T02:22:58,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location ***,KeyVaultManagementTests.ps1,808,2024-04-24T02:22:58,2024-04-24T02:22:58,true
+Update-AzKeyVault,UpdateByInputObjectParameterSet,-EnablePurgeProtection ***,KeyVaultManagementTests.ps1,814,2024-04-24T02:22:58,2024-04-24T02:22:58,true
+Update-AzKeyVault,UpdateByInputObjectParameterSet,-DisableRbacAuthorization ***,KeyVaultManagementTests.ps1,826,2024-04-24T02:22:58,2024-04-24T02:22:59,true
+Update-AzKeyVault,UpdateByInputObjectParameterSet,-DisableRbacAuthorization ***,KeyVaultManagementTests.ps1,830,2024-04-24T02:22:59,2024-04-24T02:22:59,true
+Update-AzKeyVault,UpdateByInputObjectParameterSet,-Tag ***,KeyVaultManagementTests.ps1,834,2024-04-24T02:22:59,2024-04-24T02:22:59,true
+Update-AzKeyVault,UpdateByInputObjectParameterSet,-Tag ***,KeyVaultManagementTests.ps1,840,2024-04-24T02:22:59,2024-04-24T02:22:59,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location ***,KeyVaultManagementTests.ps1,406,2024-04-24T02:22:59,2024-04-24T02:22:59,true
+Remove-AzKeyVault,ByAvailableVault,-VaultName *** -Force ***,KeyVaultManagementTests.ps1,408,2024-04-24T02:22:59,2024-04-24T02:22:59,true
+Get-AzKeyVault,GetVaultByName,-VaultName *** -ResourceGroupName ***,KeyVaultManagementTests.ps1,410,2024-04-24T02:22:59,2024-04-24T02:22:59,true
+Remove-AzKeyVault,ByDeletedVault,-VaultName *** -Location *** -InRemovedState *** -Force ***,KeyVaultManagementTests.ps1,414,2024-04-24T02:22:59,2024-04-24T02:22:59,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location ***,KeyVaultManagementTests.ps1,417,2024-04-24T02:22:59,2024-04-24T02:22:59,true
+Get-AzKeyVault,GetVaultByName,-VaultName ***,KeyVaultManagementTests.ps1,419,2024-04-24T02:22:59,2024-04-24T02:22:59,true
+Remove-AzKeyVault,InputObjectByAvailableVault,-Force ***,KeyVaultManagementTests.ps1,419,2024-04-24T02:22:59,2024-04-24T02:22:59,true
+Get-AzKeyVault,GetVaultByName,-VaultName *** -ResourceGroupName ***,KeyVaultManagementTests.ps1,421,2024-04-24T02:22:59,2024-04-24T02:22:59,true
+Remove-AzKeyVault,ByAvailableVault,-VaultName *** -AsJob ***,KeyVaultManagementTests.ps1,425,2024-04-24T02:22:59,2024-04-24T02:22:59,true
+New-AzKeyVaultManagedHsm,__AllParameterSets,-Name *** -ResourceGroupName *** -Location *** -Administrator *** -SoftDeleteRetentionInDays ***,ManagedHsmManagementTests.ps1,116,2024-04-24T02:23:00,2024-04-24T02:23:00,true
+Update-AzKeyVaultManagedHsm,UpdateByNameParameterSet,-Name *** -ResourceGroupName *** -Tag ***,ManagedHsmManagementTests.ps1,120,2024-04-24T02:23:00,2024-04-24T02:23:00,true
+New-AzKeyVaultManagedHsm,__AllParameterSets,-Name *** -ResourceGroupName *** -Location *** -Administrator *** -PublicNetworkAccess *** -SoftDeleteRetentionInDays ***,ManagedHsmManagementTests.ps1,124,2024-04-24T02:23:00,2024-04-24T02:23:00,true
+Update-AzKeyVaultManagedHsm,UpdateByNameParameterSet,-Name *** -ResourceGroupName *** -PublicNetworkAccess ***,ManagedHsmManagementTests.ps1,128,2024-04-24T02:23:00,2024-04-24T02:23:00,true
+New-AzKeyVaultManagedHsm,__AllParameterSets,-Name *** -ResourceGroupName *** -Location *** -Administrator *** -PublicNetworkAccess *** -SoftDeleteRetentionInDays ***,ManagedHsmManagementTests.ps1,132,2024-04-24T02:23:00,2024-04-24T02:23:00,true
+Update-AzKeyVaultManagedHsm,UpdateByNameParameterSet,-Name *** -ResourceGroupName *** -PublicNetworkAccess ***,ManagedHsmManagementTests.ps1,136,2024-04-24T02:23:00,2024-04-24T02:23:00,true
+Remove-AzKeyVaultManagedHsm,RemoveDeletedManagedHsmByName,-Name *** -Location *** -InRemovedState *** -Force ***,ManagedHsmManagementTests.ps1,140,2024-04-24T02:23:00,2024-04-24T02:23:01,true
+Remove-AzKeyVaultManagedHsm,RemoveDeletedManagedHsmByName,-Name *** -Location *** -InRemovedState *** -Force ***,ManagedHsmManagementTests.ps1,141,2024-04-24T02:23:01,2024-04-24T02:23:01,true
+Remove-AzKeyVaultManagedHsm,RemoveDeletedManagedHsmByName,-Name *** -Location *** -InRemovedState *** -Force ***,ManagedHsmManagementTests.ps1,142,2024-04-24T02:23:01,2024-04-24T02:23:01,true
+New-AzKeyVaultManagedHsm,__AllParameterSets,-Name *** -ResourceGroupName *** -Location *** -Administrator *** -SoftDeleteRetentionInDays ***,ManagedHsmManagementTests.ps1,29,2024-04-24T02:23:01,2024-04-24T02:23:01,true
+Get-AzKeyVaultManagedHsm,GetManagedHsm,-Name ***,ManagedHsmManagementTests.ps1,39,2024-04-24T02:23:01,2024-04-24T02:23:01,true
+Remove-AzKeyVaultManagedHsm,RemoveManagedHsmByInputObject,-InputObject *** -Force ***,ManagedHsmManagementTests.ps1,50,2024-04-24T02:23:01,2024-04-24T02:23:01,true
+Get-AzKeyVaultManagedHsm,GetManagedHsm,-Name *** -ResourceGroupName ***,ManagedHsmManagementTests.ps1,51,2024-04-24T02:23:01,2024-04-24T02:23:01,true
+Remove-AzKeyVaultManagedHsm,RemoveDeletedManagedHsmByName,-Name *** -Location *** -InRemovedState *** -Force ***,ManagedHsmManagementTests.ps1,61,2024-04-24T02:23:01,2024-04-24T02:23:01,true
+New-AzKeyVaultManagedHsm,__AllParameterSets,-Name *** -ResourceGroupName *** -Location *** -Administrator *** -SoftDeleteRetentionInDays *** -UserAssignedIdentity ***,ManagedHsmManagementTests.ps1,84,2024-04-24T02:23:02,2024-04-24T02:23:02,true
+New-AzKeyVaultManagedHsm,__AllParameterSets,-Name *** -ResourceGroupName *** -Location *** -Administrator *** -SoftDeleteRetentionInDays ***,ManagedHsmManagementTests.ps1,87,2024-04-24T02:23:02,2024-04-24T02:23:02,true
+Update-AzKeyVaultManagedHsm,UpdateByInputObjectParameterSet,-UserAssignedIdentity ***,ManagedHsmManagementTests.ps1,88,2024-04-24T02:23:02,2024-04-24T02:23:02,true
+Remove-AzKeyVaultManagedHsm,RemoveDeletedManagedHsmByName,-Name *** -Location *** -InRemovedState *** -Force ***,ManagedHsmManagementTests.ps1,93,2024-04-24T02:23:02,2024-04-24T02:23:02,true
+Remove-AzKeyVaultManagedHsm,RemoveDeletedManagedHsmByName,-Name *** -Location *** -InRemovedState *** -Force ***,ManagedHsmManagementTests.ps1,94,2024-04-24T02:23:02,2024-04-24T02:23:02,true
+New-AzKeyVaultManagedHsm,__AllParameterSets,-Name *** -ResourceGroupName *** -Location *** -Administrator *** -EnablePurgeProtection *** -SoftDeleteRetentionInDays ***,ManagedHsmManagementTests.ps1,191,2024-04-24T02:23:02,2024-04-24T02:23:03,true
+Remove-AzKeyVaultManagedHsm,RemoveManagedHsmByInputObject,-InputObject *** -Force ***,ManagedHsmManagementTests.ps1,195,2024-04-24T02:23:03,2024-04-24T02:23:03,true
+New-AzKeyVaultManagedHsm,__AllParameterSets,-Name *** -ResourceGroupName *** -Location *** -Administrator *** -SoftDeleteRetentionInDays ***,ManagedHsmManagementTests.ps1,214,2024-04-24T02:23:03,2024-04-24T02:23:03,true
+Remove-AzKeyVaultManagedHsm,RemoveManagedHsmByInputObject,-InputObject *** -Force ***,ManagedHsmManagementTests.ps1,216,2024-04-24T02:23:03,2024-04-24T02:23:03,true
+Get-AzKeyVaultManagedHsm,GetDeletedManagedHsm,-Name *** -Location *** -InRemovedState ***,ManagedHsmManagementTests.ps1,219,2024-04-24T02:23:03,2024-04-24T02:23:03,true
+Undo-AzKeyVaultManagedHsmRemoval,InputObject,-InputObject ***,ManagedHsmManagementTests.ps1,223,2024-04-24T02:23:03,2024-04-24T02:23:03,true
+Get-AzKeyVaultManagedHsm,GetManagedHsm,-Name *** -ResourceGroupName ***,ManagedHsmManagementTests.ps1,224,2024-04-24T02:23:03,2024-04-24T02:23:03,true
+New-AzKeyVaultManagedHsm,__AllParameterSets,-Name *** -ResourceGroupName *** -Location *** -Administrator *** -SoftDeleteRetentionInDays ***,ManagedHsmManagementTests.ps1,160,2024-04-24T02:23:04,2024-04-24T02:23:04,true
+Remove-AzKeyVaultManagedHsm,RemoveManagedHsmByInputObject,-InputObject *** -Force ***,ManagedHsmManagementTests.ps1,163,2024-04-24T02:23:04,2024-04-24T02:23:04,true
+Get-AzKeyVaultManagedHsm,GetDeletedManagedHsm,-Name *** -Location *** -InRemovedState ***,ManagedHsmManagementTests.ps1,166,2024-04-24T02:23:04,2024-04-24T02:23:04,true
+Remove-AzKeyVaultManagedHsm,RemoveDeletedManagedHsmByInputObject,-InputObject *** -InRemovedState *** -Force ***,ManagedHsmManagementTests.ps1,170,2024-04-24T02:23:04,2024-04-24T02:23:04,true
+New-AzKeyVaultNetworkRuleSetObject,__AllParameterSets,-IpAddressRange *** -VirtualNetworkResourceId *** -Bypass *** -DefaultAction ***,NetworkRuleTests.ps1,17,2024-04-24T02:23:06,2024-04-24T02:23:06,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location *** -NetworkRuleSet ***,NetworkRuleTests.ps1,18,2024-04-24T02:23:06,2024-04-24T02:23:07,true
+New-AzKeyVaultNetworkRuleSetObject,__AllParameterSets,-Bypass *** -DefaultAction ***,NetworkRuleTests.ps1,28,2024-04-24T02:23:07,2024-04-24T02:23:07,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location *** -NetworkRuleSet ***,NetworkRuleTests.ps1,29,2024-04-24T02:23:07,2024-04-24T02:23:07,true
+New-AzKeyVault,__AllParameterSets,-Name *** -ResourceGroupName *** -Location ***,NetworkRuleTests.ps1,48,2024-04-24T02:23:07,2024-04-24T02:23:07,true
+Add-AzKeyVaultNetworkRule,ByVaultName,-VaultName *** -IpAddressRange *** -VirtualNetworkResourceId ***,NetworkRuleTests.ps1,54,2024-04-24T02:23:07,2024-04-24T02:23:07,true
+Get-AzKeyVault,GetVaultByName,-ResourceGroupName *** -VaultName ***,NetworkRuleTests.ps1,55,2024-04-24T02:23:07,2024-04-24T02:23:07,true
+Update-AzKeyVaultNetworkRuleSet,ByVaultName,-VaultName *** -ResourceGroupName *** -Bypass *** -DefaultAction *** -PassThru ***,NetworkRuleTests.ps1,63,2024-04-24T02:23:07,2024-04-24T02:23:07,true
+Get-AzKeyVault,GetVaultByName,-ResourceGroupName *** -VaultName ***,NetworkRuleTests.ps1,66,2024-04-24T02:23:07,2024-04-24T02:23:07,true
+Remove-AzKeyVaultNetworkRule,ByVaultName,-VaultName *** -ResourceGroupName *** -IpAddressRange *** -VirtualNetworkResourceId ***,NetworkRuleTests.ps1,70,2024-04-24T02:23:07,2024-04-24T02:23:07,true
+Get-AzKeyVault,GetVaultByName,-ResourceGroupName *** -VaultName ***,NetworkRuleTests.ps1,71,2024-04-24T02:23:07,2024-04-24T02:23:07,true
+New-AzKeyVault,__AllParameterSets,-ResourceGroupName *** -Name *** -Location ***,PrivateEndpointTests.ps1,10,2024-04-24T02:23:08,2024-04-24T02:23:08,true
+New-AzKeyVault,__AllParameterSets,-ResourceGroupName *** -Name *** -Location ***,AccessPolicyTests.ps1,11,2024-04-24T02:23:09,2024-04-24T02:23:09,true
+Set-AzKeyVaultAccessPolicy,ByObjectId,-VaultName *** -ObjectId *** -PermissionsToCertificates *** -PermissionsToKeys *** -PermissionsToSecrets *** -PermissionsToStorage *** -BypassObjectIdValidation ***,AccessPolicyTests.ps1,12,2024-04-24T02:23:09,2024-04-24T02:23:09,true
+Get-AzKeyVault,GetVaultByName,-ResourceGroupName *** -VaultName ***,AccessPolicyTests.ps1,13,2024-04-24T02:23:09,2024-04-24T02:23:09,true
