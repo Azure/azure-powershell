@@ -15,19 +15,19 @@ The response can be used to determine the remaining quota to calculate a new quo
 
 ### List (Default)
 ```
-Get-AzQuota -Scope <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+Get-AzQuota -Scope <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzQuota -ResourceName <String> -Scope <String> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzQuota -InputObject <IQuotaIdentity> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+Get-AzQuota -InputObject <IQuotaIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -98,21 +98,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
