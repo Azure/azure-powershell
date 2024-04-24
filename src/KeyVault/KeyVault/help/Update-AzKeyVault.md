@@ -48,7 +48,7 @@ Enables purge protection using piping syntax.
 
 ### Example 2: Enable RBAC Authorization
 ```powershell
-Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName | Update-AzKeyVault -EnableRbacAuthorization $true
+Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $resourceGroupName | Update-AzKeyVault -DisableRbacAuthorization $false
 ```
 
 Enables RBAC Authorization using piping syntax.
