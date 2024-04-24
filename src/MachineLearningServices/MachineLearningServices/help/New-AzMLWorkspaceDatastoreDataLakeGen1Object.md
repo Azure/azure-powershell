@@ -15,7 +15,7 @@ Create an in-memory object for AzureDataLakeGen1Datastore.
 ```
 New-AzMLWorkspaceDatastoreDataLakeGen1Object -StoreName <String> -Credentials <IDatastoreCredentials>
  [-ServiceDataAccessAuthIdentity <ServiceDataAccessAuthIdentity>] [-Description <String>]
- [-Property <IResourceBaseProperties>] [-Tag <IResourceBaseTags>] [-ProgressAction <ActionPreference>]
+ [-Property <IResourceBaseProperties>] [-Tag <IResourceBaseTags>]
  [<CommonParameters>]
 ```
 
@@ -56,21 +56,6 @@ The asset description text.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

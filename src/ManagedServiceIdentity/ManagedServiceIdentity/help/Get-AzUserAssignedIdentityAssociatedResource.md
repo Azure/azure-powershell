@@ -15,7 +15,7 @@ Lists the associated resources for this identity.
 ```
 Get-AzUserAssignedIdentityAssociatedResource -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-Filter <String>] [-Orderby <String>] [-Skip <Int32>] [-Skiptoken <String>]
- [-Top <Int32>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-Top <Int32>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -107,21 +107,6 @@ OData orderBy expression to apply to the query.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

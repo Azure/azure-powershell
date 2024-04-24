@@ -18,7 +18,7 @@ Set-AzVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [-EnableWA
  [[-WADStorageAccountName] <String>] [[-OSType] <String>] [-SkipStorage] [-NoWait]
  [-SetAccessToIndividualResources] [-InstallNewExtension] [[-ProxyURI] <String>] [-DebugExtension]
  [-PathUserIdentity <String>] [-SkipIdentity] [-IsTest] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -154,21 +154,6 @@ You can use the -PathUserIdentity parameter along with -SkipIdentity, in this ca
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

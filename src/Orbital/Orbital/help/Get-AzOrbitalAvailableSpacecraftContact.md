@@ -17,7 +17,7 @@ A contact is available if the spacecraft is visible from the ground station for 
 ```
 Get-AzOrbitalAvailableSpacecraftContact -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  -ContactProfileId <String> -EndTime <DateTime> -GroundStationName <String> -StartTime <DateTime>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -25,7 +25,7 @@ Get-AzOrbitalAvailableSpacecraftContact -Name <String> -ResourceGroupName <Strin
 ```
 Get-AzOrbitalAvailableSpacecraftContact -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  -Parameter <IContactParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -181,21 +181,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

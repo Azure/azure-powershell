@@ -17,14 +17,14 @@ Detaches all followers of a database owned by this Kusto Pool.
 Invoke-AzSynapseDetachKustoPoolFollowerDatabase -KustoPoolName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] -WorkspaceName <String> -AttachedDatabaseConfigurationName <String>
  -KustoPoolResourceId <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DetachViaIdentityExpanded
 ```
 Invoke-AzSynapseDetachKustoPoolFollowerDatabase -InputObject <ISynapseIdentity>
  -AttachedDatabaseConfigurationName <String> -KustoPoolResourceId <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -155,21 +155,6 @@ Returns true when the command succeeds
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

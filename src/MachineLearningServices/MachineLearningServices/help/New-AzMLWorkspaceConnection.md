@@ -16,7 +16,7 @@ Creating or updating a new workspace connection
 New-AzMLWorkspaceConnection -Name <String> -ResourceGroupName <String> -WorkspaceName <String>
  [-SubscriptionId <String>] -AuthType <ConnectionAuthType> [-Category <ConnectionCategory>] [-Target <String>]
  [-Value <String>] [-ValueFormat <ValueFormat>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,21 +94,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

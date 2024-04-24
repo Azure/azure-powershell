@@ -17,19 +17,19 @@ Get Online Endpoint.
 Get-AzMLWorkspaceOnlineEndpoint [-Name <String>] -ResourceGroupName <String> [-SubscriptionId <String[]>]
  -WorkspaceName <String> [-ComputeType <EndpointComputeType>] [-Count <Int32>] [-OrderBy <OrderString>]
  [-Property <String>] [-Skip <String>] [-Tag <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMLWorkspaceOnlineEndpoint -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -WorkspaceName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ -WorkspaceName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzMLWorkspaceOnlineEndpoint -InputObject <IMachineLearningServicesIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -163,21 +163,6 @@ The option to order the response.
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OrderString
 Parameter Sets: List
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

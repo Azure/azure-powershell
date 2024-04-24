@@ -19,7 +19,7 @@ New-AzMLWorkspaceEnvironmentVersion -Name <String> -ResourceGroupName <String> -
  [-LivenessRoutePath <String>] [-LivenessRoutePort <Int32>] [-OSType <OperatingSystemType>]
  [-ReadinessRoutePath <String>] [-ReadinessRoutePort <Int32>] [-ResourceBaseProperty <Hashtable>]
  [-ScoringRoutePath <String>] [-ScoringRoutePort <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -217,21 +217,6 @@ The OS type of the environment.
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OperatingSystemType
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

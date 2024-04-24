@@ -18,7 +18,7 @@ Update-AzServiceLinkerForSpringCloud -Name <String> [-ResourceUri <String>] -Aut
  -ClientType <ClientType> -TargetService <ITargetServiceBase> [-Scope <String>]
  [-SecretStoreKeyVaultId <String>] [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>]
  -ServiceName <String> -AppName <String> [-DeploymentName <String>] -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Update-AzServiceLinkerForSpringCloud -Name <String> [-ResourceUri <String>] -Aut
 Update-AzServiceLinkerForSpringCloud -InputObject <IServiceLinkerIdentity> -AuthInfo <IAuthInfoBase>
  -ClientType <ClientType> -TargetService <ITargetServiceBase> [-Scope <String>]
  [-SecretStoreKeyVaultId <String>] [-VNetSolutionType <VNetSolutionType>] [-DefaultProfile <PSObject>]
- [-SubscriptionId <String>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -182,21 +182,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

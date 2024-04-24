@@ -15,7 +15,7 @@ API to add additional user quota.
 ### User (Default)
 ```
 Add-AzLabServicesUserQuota [-SubscriptionId <String>] -UsageQuotaToAddToExisting <TimeSpan> -User <User>
- [-DefaultProfile <PSObject>] [-AsJob] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -23,7 +23,7 @@ Add-AzLabServicesUserQuota [-SubscriptionId <String>] -UsageQuotaToAddToExisting
 ```
 Add-AzLabServicesUserQuota -ResourceGroupName <String> -LabName <String> -Email <String>
  [-SubscriptionId <String>] -UsageQuotaToAddToExisting <TimeSpan> [-DefaultProfile <PSObject>] [-AsJob]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,21 +114,6 @@ Parameter Sets: Email
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -32,7 +32,7 @@ New-AzImportExport -Name <String> -ResourceGroupName <String> [-SubscriptionId <
  [-ShippingInformationPostalCode <String>] [-ShippingInformationRecipientName <String>]
  [-ShippingInformationStateOrProvince <String>] [-ShippingInformationStreetAddress1 <String>]
  [-ShippingInformationStreetAddress2 <String>] [-State <String>] [-StorageAccountId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -401,21 +401,6 @@ Overall percentage completed for the job.
 Type: System.Int64
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

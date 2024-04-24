@@ -14,7 +14,7 @@ Create an in-memory object for LoadedCertificate.
 
 ```
 New-AzSpringCloudAppLoadedCertificateObject -ResourceId <String> [-LoadTrustStore <Boolean>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,21 +44,6 @@ Indicate whether the certificate will be loaded into default trust store, only w
 Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

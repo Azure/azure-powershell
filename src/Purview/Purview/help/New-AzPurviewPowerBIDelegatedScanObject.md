@@ -17,7 +17,7 @@ New-AzPurviewPowerBIDelegatedScanObject -Kind <ScanAuthorizationType> [-Authenti
  [-ClientId <String>] [-CollectionReferenceName <String>] [-CollectionType <String>]
  [-ConnectedViaReferenceName <String>] [-IncludePersonalWorkspace <Boolean>] [-Password <String>]
  [-ScanRulesetName <String>] [-ScanRulesetType <ScanRulesetType>] [-Tenant <String>] [-UserName <String>]
- [-Worker <Int32>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Worker <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -160,21 +160,6 @@ Accept wildcard characters: False
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

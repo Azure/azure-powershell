@@ -18,12 +18,12 @@ Get-AzAlert [-TargetResourceType <String>] [-TargetResourceGroup <String>] [-Mon
  [-MonitorCondition <String>] [-Severity <String>] [-State <String>] [-AlertRuleId <String>]
  [-SmartGroupId <String>] [-IncludeContext <Boolean>] [-IncludeEgressConfig <Boolean>] [-PageCount <Int32>]
  [-SortBy <String>] [-SortOrder <String>] [-TimeRange <String>] [-CustomTimeRange <String>] [-Select <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### AlertById
 ```
-Get-AzAlert -AlertId <String> [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>]
+Get-AzAlert -AlertId <String> [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ Get-AzAlert [-TargetResourceId <String>] [-MonitorService <String>] [-MonitorCon
  [-Severity <String>] [-State <String>] [-AlertRuleId <String>] [-SmartGroupId <String>]
  [-IncludeContext <Boolean>] [-IncludeEgressConfig <Boolean>] [-PageCount <Int32>] [-SortBy <String>]
  [-SortOrder <String>] [-TimeRange <String>] [-CustomTimeRange <String>] [-Select <String>]
- [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -196,21 +196,6 @@ Number of alerts to be fetched in a page.
 Type: System.Int32
 Parameter Sets: AlertsListByFilter, AlertsListByTargetResourceIdFilter
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

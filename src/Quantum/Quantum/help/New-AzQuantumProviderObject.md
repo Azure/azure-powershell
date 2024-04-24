@@ -14,7 +14,7 @@ Create an in-memory object for Provider.
 
 ```
 New-AzQuantumProviderObject [-ApplicationName <String>] [-Id <String>] [-InstanceUri <String>]
- [-ProvisioningState <Status>] [-ResourceUsageId <String>] [-Sku <String>] [-ProgressAction <ActionPreference>]
+ [-ProvisioningState <Status>] [-ResourceUsageId <String>] [-Sku <String>]
  [<CommonParameters>]
 ```
 
@@ -75,21 +75,6 @@ A Uri identifying the specific instance of this provider.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

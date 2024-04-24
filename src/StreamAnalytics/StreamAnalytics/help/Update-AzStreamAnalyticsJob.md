@@ -18,7 +18,7 @@ Update-AzStreamAnalyticsJob -Name <String> -ResourceGroupName <String> [-Subscri
  [-IfMatch <String>] [-IfNoneMatch <String>] [-DataLocale <String>]
  [-EventsLateArrivalMaxDelayInSecond <Int32>] [-EventsOutOfOrderMaxDelayInSecond <Int32>]
  [-EventsOutOfOrderPolicy <EventsOutOfOrderPolicy>] [-OutputErrorPolicy <OutputErrorPolicy>] [-Tag <Hashtable>]
- [-ClusterId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-ClusterId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ Update-AzStreamAnalyticsJob -InputObject <IStreamAnalyticsIdentity> [-IfMatch <S
  [-DataLocale <String>] [-EventsLateArrivalMaxDelayInSecond <Int32>]
  [-EventsOutOfOrderMaxDelayInSecond <Int32>] [-EventsOutOfOrderPolicy <EventsOutOfOrderPolicy>]
  [-OutputErrorPolicy <OutputErrorPolicy>] [-Tag <Hashtable>] [-ClusterId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -259,21 +259,6 @@ Indicates the policy to apply to events that arrive at the output and cannot be 
 Type: Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support.OutputErrorPolicy
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

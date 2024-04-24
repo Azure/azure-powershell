@@ -14,7 +14,7 @@ Create an in-memory object for MLTableJobOutput.
 
 ```
 New-AzMLWorkspaceMLTableJobOutputObject -Type <JobOutputType> [-Mode <OutputDeliveryMode>] [-Uri <String>]
- [-Description <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-Description <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,21 +53,6 @@ Output Asset Delivery Mode.
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.OutputDeliveryMode
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

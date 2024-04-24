@@ -15,7 +15,7 @@ Create an in-memory object for ComputeStartStopSchedule.
 ```
 New-AzMLWorkspaceComputeStartStopScheduleObject [-Action <ComputePowerAction>] [-ScheduleId <String>]
  [-ScheduleProvisioningStatus <ScheduleProvisioningState>] [-ScheduleStatus <ScheduleStatus>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -39,21 +39,6 @@ The compute power action.
 Type: Microsoft.Azure.PowerShell.Cmdlets.MachineLearningServices.Support.ComputePowerAction
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

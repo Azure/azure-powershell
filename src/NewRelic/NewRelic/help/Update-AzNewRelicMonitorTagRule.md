@@ -18,7 +18,7 @@ Update-AzNewRelicMonitorTagRule -MonitorName <String> -ResourceGroupName <String
  [-SubscriptionId <String>] [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog <SendAadLogsStatus>]
  [-LogRuleSendActivityLog <SendActivityLogsStatus>] [-LogRuleSendSubscriptionLog <SendSubscriptionLogsStatus>]
  [-MetricRuleFilteringTag <IFilteringTag[]>] [-MetricRuleSendMetric <SendMetricsStatus>]
- [-MetricRuleUserEmail <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-MetricRuleUserEmail <String>] [-DefaultProfile <PSObject>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ Update-AzNewRelicMonitorTagRule -InputObject <INewRelicIdentity> [-LogRuleFilter
  [-LogRuleSendAadLog <SendAadLogsStatus>] [-LogRuleSendActivityLog <SendActivityLogsStatus>]
  [-LogRuleSendSubscriptionLog <SendSubscriptionLogsStatus>] [-MetricRuleFilteringTag <IFilteringTag[]>]
  [-MetricRuleSendMetric <SendMetricsStatus>] [-MetricRuleUserEmail <String>] [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -202,21 +202,6 @@ Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

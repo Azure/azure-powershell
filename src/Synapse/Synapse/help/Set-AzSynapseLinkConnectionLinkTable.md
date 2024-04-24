@@ -16,20 +16,20 @@ Edits link tables under a link connection.
 ```
 Set-AzSynapseLinkConnectionLinkTable -WorkspaceName <String> -EditTablesRequestFile <String>
  -LinkConnectionName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByObject
 ```
 Set-AzSynapseLinkConnectionLinkTable -WorkspaceObject <PSSynapseWorkspace> -EditTablesRequestFile <String>
  -LinkConnectionName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObject
 ```
 Set-AzSynapseLinkConnectionLinkTable -EditTablesRequestFile <String> -InputObject <PSLinkConnectionResource>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -161,21 +161,6 @@ Parameter Sets: SetByName, SetByObject
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

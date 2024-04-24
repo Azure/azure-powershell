@@ -20,7 +20,7 @@ New-AzCloudService -Name <String> -ResourceGroupName <String> [-SubscriptionId <
  [-ExtensionProfile <ICloudServiceExtensionProfile>] [-NetworkProfile <ICloudServiceNetworkProfile>]
  [-OSProfile <ICloudServiceOSProfile>] [-PackageUrl <String>] [-RoleProfile <ICloudServiceRoleProfile>]
  [-StartCloudService] [-Tag <Hashtable>] [-UpgradeMode <CloudServiceUpgradeMode>] [-Zone <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -29,7 +29,7 @@ New-AzCloudService -Name <String> -ResourceGroupName <String> [-SubscriptionId <
 New-AzCloudService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-ExtensionProfile <ICloudServiceExtensionProfile>] -PackageUrl <String> [-StartCloudService]
  [-Tag <Hashtable>] [-UpgradeMode <CloudServiceUpgradeMode>] -ConfigurationFile <String>
- -DefinitionFile <String> [-DnsName <String>] [-KeyVaultName <String>] [-ProgressAction <ActionPreference>]
+ -DefinitionFile <String> [-DnsName <String>] [-KeyVaultName <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -39,7 +39,7 @@ New-AzCloudService -Name <String> -ResourceGroupName <String> [-SubscriptionId <
  [-ExtensionProfile <ICloudServiceExtensionProfile>] [-StartCloudService] [-Tag <Hashtable>]
  [-UpgradeMode <CloudServiceUpgradeMode>] -ConfigurationFile <String> -DefinitionFile <String>
  -PackageFile <String> -StorageAccount <String> [-DnsName <String>] [-KeyVaultName <String>]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -513,21 +513,6 @@ Parameter Sets: quickCreateParameterSetWithoutStorage
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

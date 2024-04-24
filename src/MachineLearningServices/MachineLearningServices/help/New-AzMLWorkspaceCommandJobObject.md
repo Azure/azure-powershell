@@ -20,7 +20,7 @@ New-AzMLWorkspaceCommandJobObject -Command <String> -EnvironmentId <String> [-Co
  [-DisplayName <String>] [-ExperimentName <String>] [-IdentityType <IdentityConfigurationType>]
  [-IsArchived <Boolean>] [-ServiceEndpoint <String>] [-ServicePort <Int32>]
  [-ServiceProperty <IJobServiceProperties>] [-ServiceType <String>] [-Description <String>]
- [-Property <IResourceBaseProperties>] [-Tag <IResourceBaseTags>] [-ProgressAction <ActionPreference>]
+ [-Property <IResourceBaseProperties>] [-Tag <IResourceBaseTags>]
  [<CommonParameters>]
 ```
 
@@ -266,21 +266,6 @@ Only supports duration with precision as low as Seconds.
 Type: System.TimeSpan
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

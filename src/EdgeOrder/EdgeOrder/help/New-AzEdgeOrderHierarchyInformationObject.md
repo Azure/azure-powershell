@@ -14,7 +14,7 @@ Create an in-memory object for HierarchyInformation.
 
 ```
 New-AzEdgeOrderHierarchyInformationObject [-ConfigurationName <String>] [-ProductFamilyName <String>]
- [-ProductLineName <String>] [-ProductName <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-ProductLineName <String>] [-ProductName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,21 +91,6 @@ Represents product name that uniquely identifies product.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

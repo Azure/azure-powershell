@@ -16,7 +16,7 @@ Create an in-memory object for PrometheusRule.
 New-AzPrometheusRuleObject -Expression <String> [-Action <IPrometheusRuleGroupAction[]>] [-Alert <String>]
  [-Annotation <IPrometheusRuleAnnotations>] [-Enabled <Boolean>] [-For <TimeSpan>]
  [-Label <IPrometheusRuleLabels>] [-Record <String>] [-ResolveConfigurationAutoResolved <Boolean>]
- [-ResolveConfigurationTimeToResolve <TimeSpan>] [-Severity <Int32>] [-ProgressAction <ActionPreference>]
+ [-ResolveConfigurationTimeToResolve <TimeSpan>] [-Severity <Int32>]
  [<CommonParameters>]
 ```
 
@@ -143,21 +143,6 @@ To construct, see NOTES section for LABEL properties and create a hash table.
 Type: Microsoft.Azure.PowerShell.Cmdlets.PrometheusRuleGroups.Models.Api20230301.IPrometheusRuleLabels
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

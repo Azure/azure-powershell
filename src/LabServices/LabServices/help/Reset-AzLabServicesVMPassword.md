@@ -16,21 +16,21 @@ Resets a lab virtual machine password.
 ```
 Reset-AzLabServicesVMPassword [-SubscriptionId <String>] -Password <SecureString> -Username <String>
  -ResourceId <String> [-DefaultProfile <PSObject>] [-PassThru] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Reset
 ```
 Reset-AzLabServicesVMPassword -LabName <String> -ResourceGroupName <String> -VirtualMachineName <String>
  [-SubscriptionId <String>] -Password <SecureString> -Username <String> [-DefaultProfile <PSObject>]
- [-PassThru] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VM
 ```
 Reset-AzLabServicesVMPassword [-SubscriptionId <String>] -Password <SecureString> -Username <String>
  -VM <VirtualMachine> [-DefaultProfile <PSObject>] [-PassThru] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,21 +132,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

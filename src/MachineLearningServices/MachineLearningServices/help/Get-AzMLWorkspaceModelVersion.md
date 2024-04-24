@@ -17,21 +17,21 @@ Get version.
 Get-AzMLWorkspaceModelVersion -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-Version <String>] -WorkspaceName <String> [-Description <String>] [-Feed <String>]
  [-ListViewType <ListViewType>] [-Offset <Int32>] [-OrderBy <String>] [-Property <String>] [-Skip <String>]
- [-Tag <String>] [-Top <Int32>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-Tag <String>] [-Top <Int32>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMLWorkspaceModelVersion -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -Version <String> -WorkspaceName <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ -Version <String> -WorkspaceName <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzMLWorkspaceModelVersion -InputObject <IMachineLearningServicesIdentity> [-DefaultProfile <PSObject>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -170,21 +170,6 @@ Ordering of list.
 Type: System.String
 Parameter Sets: List
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

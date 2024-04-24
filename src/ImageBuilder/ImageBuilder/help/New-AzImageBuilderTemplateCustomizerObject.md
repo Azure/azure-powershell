@@ -15,33 +15,33 @@ Create an in-memory object for ImageTemplateCustomizer.
 ### FileCustomizer (Default)
 ```
 New-AzImageBuilderTemplateCustomizerObject [-FileCustomizer] [-Destination <String>] [-Sha256Checksum <String>]
- [-SourceUri <String>] [-Name <String>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-SourceUri <String>] [-Name <String>] [<CommonParameters>]
 ```
 
 ### ShellCustomizer
 ```
 New-AzImageBuilderTemplateCustomizerObject [-Sha256Checksum <String>] [-Name <String>] [-Inline <String[]>]
- [-ScriptUri <String>] [-ShellCustomizer] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-ScriptUri <String>] [-ShellCustomizer] [<CommonParameters>]
 ```
 
 ### PowerShellCustomizer
 ```
 New-AzImageBuilderTemplateCustomizerObject [-Sha256Checksum <String>] [-Name <String>] [-PowerShellCustomizer]
  [-Inline <String[]>] [-RunAsSystem <Boolean>] [-RunElevated <Boolean>] [-ScriptUri <String>]
- [-ValidExitCode <Int32[]>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-ValidExitCode <Int32[]>] [<CommonParameters>]
 ```
 
 ### RestartCustomizer
 ```
 New-AzImageBuilderTemplateCustomizerObject [-Name <String>] [-RestartCustomizer]
  [-RestartCheckCommand <String>] [-RestartCommand <String>] [-RestartTimeout <String>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [<CommonParameters>]
 ```
 
 ### WindowsUpdateCustomizer
 ```
 New-AzImageBuilderTemplateCustomizerObject [-Name <String>] [-WindowsUpdateCustomizer] [-Filter <String[]>]
- [-SearchCriterion <String>] [-UpdateLimit <Int32>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+ [-SearchCriterion <String>] [-UpdateLimit <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -205,21 +205,6 @@ Parameter Sets: PowerShellCustomizer
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
