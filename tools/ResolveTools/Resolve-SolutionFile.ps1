@@ -14,7 +14,7 @@
 
 # This will resolve all the solution files under the src folder
 # ```powershell
-# ./tools/Resolve-SolutionFile.ps1
+# ./tools/ResolveTools/Resolve-SolutionFile.ps1
 # ```
 
 function Resolve($solutionFilePath) {
@@ -84,5 +84,5 @@ function Resolve($solutionFilePath) {
     Set-Location $saveLocation
 }
 
-$srcFolder = "$PSScriptRoot/../src"
+$srcFolder = "$PSScriptRoot/../../src"
 Get-ChildItem -Recurse -Filter *.sln -Path $srcFolder -Exclude Accounts.sln -Depth 2 | Foreach-Object { Resolve $_.FullName }
