@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DeviceUpdate-help.xml
 Module Name: Az.DeviceUpdate
 online version: https://learn.microsoft.com/powershell/module/az.deviceupdate/test-azdeviceupdatenameavailability
 schema: 2.0.0
@@ -15,26 +15,26 @@ Checks ADU resource name availability.
 ### CheckExpanded (Default)
 ```
 Test-AzDeviceUpdateNameAvailability [-SubscriptionId <String>] [-Name <String>] [-Type <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Check
 ```
-Test-AzDeviceUpdateNameAvailability -Request <ICheckNameAvailabilityRequest> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CheckViaIdentity
-```
-Test-AzDeviceUpdateNameAvailability -InputObject <IDeviceUpdateIdentity>
- -Request <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Test-AzDeviceUpdateNameAvailability [-SubscriptionId <String>] -Request <ICheckNameAvailabilityRequest>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded
 ```
 Test-AzDeviceUpdateNameAvailability -InputObject <IDeviceUpdateIdentity> [-Name <String>] [-Type <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CheckViaIdentity
+```
+Test-AzDeviceUpdateNameAvailability -InputObject <IDeviceUpdateIdentity>
+ -Request <ICheckNameAvailabilityRequest> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -72,7 +72,8 @@ Checks ADU resource name availability.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -92,7 +93,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.IDeviceUpdateIdentity
-Parameter Sets: CheckViaIdentity, CheckViaIdentityExpanded
+Parameter Sets: CheckViaIdentityExpanded, CheckViaIdentity
 Aliases:
 
 Required: True
@@ -138,7 +139,7 @@ The Azure subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Check, CheckExpanded
+Parameter Sets: CheckExpanded, Check
 Aliases:
 
 Required: False
@@ -209,26 +210,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDeviceUpdateIdentity>`: Identity Parameter
-  - `[AccountName <String>]`: Account name.
-  - `[GroupId <String>]`: The group ID of the private link resource.
-  - `[Id <String>]`: Resource identity path
-  - `[InstanceName <String>]`: Instance name.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
-  - `[PrivateEndpointConnectionProxyId <String>]`: The ID of the private endpoint connection proxy object.
-  - `[ResourceGroupName <String>]`: The resource group name.
-  - `[SubscriptionId <String>]`: The Azure subscription ID.
-
-`REQUEST <ICheckNameAvailabilityRequest>`: The check availability request body.
-  - `[Name <String>]`: The name of the resource for which availability needs to be checked.
-  - `[Type <String>]`: The resource type.
-
 ## RELATED LINKS
-

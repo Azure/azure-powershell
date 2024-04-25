@@ -36,7 +36,7 @@ Creates a new firewall rule or updates an existing firewall rule.
 Creates a replica of a MariaDB server.
 
 ### [New-AzMariaDbServer](New-AzMariaDbServer.md)
-Creates a new MariaDB.
+Create a new MariaDB.
 
 ### [New-AzMariaDbVirtualNetworkRule](New-AzMariaDbVirtualNetworkRule.md)
 Creates or updates an existing virtual network rule.

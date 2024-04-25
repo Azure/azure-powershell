@@ -32,13 +32,13 @@ Updates a graph query that has already been added.
 
 ### Example 1: Update the parameter query and tag by name
 ```powershell
- Update-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t05 -Query "project id, name, type, location, tags"  -Tag @{'key1'=1;'key2'=2}
+Update-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t05 -Query "project id, name, type, location, tags"  -Tag @{'key1'=1;'key2'=2}
 ```
 
 ```output
 Location Name      Type
 -------- ----      ----
-     global   query-t05 microsoft.resourcegraph/queries
+global   query-t05 microsoft.resourcegraph/queries
 ```
 
 This command updates the parameter query and tag by name.
@@ -52,7 +52,7 @@ Update-AzResourceGraphQuery -InputObject $query -File './Query.kql'
 ```output
 Location Name      Type
 -------- ----      ----
-     global   query-t05 microsoft.resourcegraph/queries
+global   query-t05 microsoft.resourcegraph/queries
 ```
 
 This command updates the parameter query and tag by object.
@@ -238,19 +238,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ResourceGraph.Models.Api20180901Preview.IGraphQueryResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT <IResourceGraphIdentity>: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourceName <String>]`: The name of the Graph Query resource.
-  - `[SubscriptionId <String>]`: The Azure subscription Id.
 
 ## RELATED LINKS
 

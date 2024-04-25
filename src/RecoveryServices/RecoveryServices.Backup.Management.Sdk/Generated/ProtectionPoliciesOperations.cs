@@ -40,9 +40,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Provides the details of the backup policies associated to Recovery Services
-        /// Vault. This is an asynchronous
-        /// operation. Status of the operation can be fetched using
-        /// GetPolicyOperationResult API.
+        /// Vault. This is an asynchronous operation. Status of the operation can be
+        /// fetched using GetPolicyOperationResult API.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
@@ -267,8 +266,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
         /// <summary>
         /// Creates or modifies a backup policy. This is an asynchronous operation.
-        /// Status of the operation can be fetched
-        /// using GetPolicyOperationResult API.
+        /// Status of the operation can be fetched using GetPolicyOperationResult API.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
@@ -279,6 +277,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// </param>
         /// <param name='policyName'>
         /// Backup policy to be created.
+        /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
         /// </param>
         /// <param name='parameters'>
         /// resource backup policy
@@ -304,7 +305,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource>> CreateOrUpdateWithHttpMessagesAsync(string vaultName, string resourceGroupName, string policyName, ProtectionPolicyResource parameters, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ProtectionPolicyResource>> CreateOrUpdateWithHttpMessagesAsync(string vaultName, string resourceGroupName, string policyName, ProtectionPolicyResource parameters, string xMsAuthorizationAuxiliary = default(string), System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
@@ -340,6 +341,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "policyName");
             }
 
+
             // Tracing
             bool _shouldTrace = Microsoft.Rest.ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -350,6 +352,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
                 tracingParameters.Add("vaultName", vaultName);
                 tracingParameters.Add("resourceGroupName", resourceGroupName);
                 tracingParameters.Add("policyName", policyName);
+                tracingParameters.Add("xMsAuthorizationAuxiliary", xMsAuthorizationAuxiliary);
 
                 tracingParameters.Add("parameters", parameters);
 
@@ -391,6 +394,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
                     _httpRequest.Headers.Remove("accept-language");
                 }
                 _httpRequest.Headers.TryAddWithoutValidation("accept-language", this.Client.AcceptLanguage);
+            }
+            if (xMsAuthorizationAuxiliary != null)
+            {
+                if (_httpRequest.Headers.Contains("x-ms-authorization-auxiliary"))
+                {
+                    _httpRequest.Headers.Remove("x-ms-authorization-auxiliary");
+                }
+                _httpRequest.Headers.TryAddWithoutValidation("x-ms-authorization-auxiliary", xMsAuthorizationAuxiliary);
             }
 
             if (customHeaders != null)
@@ -507,8 +518,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         }
         /// <summary>
-        /// Deletes specified backup policy from your Recovery Services Vault. This is an asynchronous operation. Status of the
-        /// operation can be fetched using GetProtectionPolicyOperationResult API.
+        /// Deletes specified backup policy from your Recovery Services Vault. This is an asynchronous operation. Status of the operation can be fetched using GetProtectionPolicyOperationResult API.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
@@ -535,8 +545,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Deletes specified backup policy from your Recovery Services Vault. This is
-        /// an asynchronous operation. Status of the
-        /// operation can be fetched using GetProtectionPolicyOperationResult API.
+        /// an asynchronous operation. Status of the operation can be fetched using
+        /// GetProtectionPolicyOperationResult API.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.

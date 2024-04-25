@@ -2688,7 +2688,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Update encryption scope properties as specified in the request body. Update fails if the specified encryption scope does
+        /// Patch encryption scope properties as specified in the request body. Patch fails if the specified encryption scope does
         /// not already exist.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -2746,7 +2746,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Update encryption scope properties as specified in the request body. Update fails if the specified encryption scope does
+        /// Patch encryption scope properties as specified in the request body. Patch fails if the specified encryption scope does
         /// not already exist.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -2811,7 +2811,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Update encryption scope properties as specified in the request body. Update fails if the specified encryption scope does
+        /// Patch encryption scope properties as specified in the request body. Patch fails if the specified encryption scope does
         /// not already exist.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -2874,7 +2874,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Update encryption scope properties as specified in the request body. Update fails if the specified encryption scope does
+        /// Patch encryption scope properties as specified in the request body. Patch fails if the specified encryption scope does
         /// not already exist.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -2931,7 +2931,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Update encryption scope properties as specified in the request body. Update fails if the specified encryption scope does
+        /// Patch encryption scope properties as specified in the request body. Patch fails if the specified encryption scope does
         /// not already exist.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -2986,7 +2986,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Update encryption scope properties as specified in the request body. Update fails if the specified encryption scope does
+        /// Patch encryption scope properties as specified in the request body. Patch fails if the specified encryption scope does
         /// not already exist.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -3190,8 +3190,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Synchronously Put an encryption scope under the specified storage account. If an encryption scope is already created and
-        /// a subsequent request is issued with different properties, the encryption scope properties will be updated per the specified
+        /// Synchronously Put an encryption scope under the specified storage account. If an encryption scope is already Putd and
+        /// a subsequent request is issued with different properties, the encryption scope properties will be Putd per the specified
         /// request.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -3250,8 +3250,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Synchronously Put an encryption scope under the specified storage account. If an encryption scope is already created and
-        /// a subsequent request is issued with different properties, the encryption scope properties will be updated per the specified
+        /// Synchronously Put an encryption scope under the specified storage account. If an encryption scope is already Putd and
+        /// a subsequent request is issued with different properties, the encryption scope properties will be Putd per the specified
         /// request.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -3317,8 +3317,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Synchronously Put an encryption scope under the specified storage account. If an encryption scope is already created and
-        /// a subsequent request is issued with different properties, the encryption scope properties will be updated per the specified
+        /// Synchronously Put an encryption scope under the specified storage account. If an encryption scope is already Putd and
+        /// a subsequent request is issued with different properties, the encryption scope properties will be Putd per the specified
         /// request.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -3381,8 +3381,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Synchronously Put an encryption scope under the specified storage account. If an encryption scope is already created and
-        /// a subsequent request is issued with different properties, the encryption scope properties will be updated per the specified
+        /// Synchronously Put an encryption scope under the specified storage account. If an encryption scope is already Putd and
+        /// a subsequent request is issued with different properties, the encryption scope properties will be Putd per the specified
         /// request.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -3440,8 +3440,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Synchronously Put an encryption scope under the specified storage account. If an encryption scope is already created and
-        /// a subsequent request is issued with different properties, the encryption scope properties will be updated per the specified
+        /// Synchronously Put an encryption scope under the specified storage account. If an encryption scope is already Putd and
+        /// a subsequent request is issued with different properties, the encryption scope properties will be Putd per the specified
         /// request.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -3496,8 +3496,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Synchronously Put an encryption scope under the specified storage account. If an encryption scope is already created and
-        /// a subsequent request is issued with different properties, the encryption scope properties will be updated per the specified
+        /// Synchronously Put an encryption scope under the specified storage account. If an encryption scope is already Putd and
+        /// a subsequent request is issued with different properties, the encryption scope properties will be Putd per the specified
         /// request.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -3713,7 +3713,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Create the properties of a local user associated with the storage account</summary>
+        /// <summary>Update the properties of a local user associated with the storage account</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -3767,7 +3767,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Create the properties of a local user associated with the storage account</summary>
+        /// <summary>Update the properties of a local user associated with the storage account</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The local user associated with a storage account.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3829,7 +3829,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Create the properties of a local user associated with the storage account</summary>
+        /// <summary>Update the properties of a local user associated with the storage account</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The local user associated with a storage account.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3889,7 +3889,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Create the properties of a local user associated with the storage account</summary>
+        /// <summary>Update the properties of a local user associated with the storage account</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -3942,7 +3942,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Create the properties of a local user associated with the storage account</summary>
+        /// <summary>Update the properties of a local user associated with the storage account</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -3993,7 +3993,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Create the properties of a local user associated with the storage account</summary>
+        /// <summary>Update the properties of a local user associated with the storage account</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -6726,7 +6726,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Create the object replication policy of the storage account.</summary>
+        /// <summary>Update the object replication policy of the storage account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -6781,7 +6781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Create the object replication policy of the storage account.</summary>
+        /// <summary>Update the object replication policy of the storage account.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The object replication policy set to a storage account. A unique policy ID will be created if absent.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6843,7 +6843,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Create the object replication policy of the storage account.</summary>
+        /// <summary>Update the object replication policy of the storage account.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The object replication policy set to a storage account. A unique policy ID will be created if absent.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6903,7 +6903,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Create the object replication policy of the storage account.</summary>
+        /// <summary>Update the object replication policy of the storage account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -6957,7 +6957,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Create the object replication policy of the storage account.</summary>
+        /// <summary>Update the object replication policy of the storage account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -7009,7 +7009,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Create the object replication policy of the storage account.</summary>
+        /// <summary>Update the object replication policy of the storage account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -9226,7 +9226,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the storage account.
+        /// Put the state of specified private endpoint connection associated with the storage account.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
@@ -9281,7 +9281,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the storage account.
+        /// Put the state of specified private endpoint connection associated with the storage account.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The private endpoint connection properties.</param>
@@ -9345,7 +9345,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the storage account.
+        /// Put the state of specified private endpoint connection associated with the storage account.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The private endpoint connection properties.</param>
@@ -9407,7 +9407,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the storage account.
+        /// Put the state of specified private endpoint connection associated with the storage account.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
@@ -9461,7 +9461,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the storage account.
+        /// Put the state of specified private endpoint connection associated with the storage account.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
@@ -9513,7 +9513,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Update the state of specified private endpoint connection associated with the storage account.
+        /// Put the state of specified private endpoint connection associated with the storage account.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
@@ -9711,7 +9711,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Gets the private link resources that need to be created for a storage account.</summary>
+        /// <summary>Gets the private link resources that need to be Listd for a storage account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -9754,7 +9754,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Gets the private link resources that need to be created for a storage account.</summary>
+        /// <summary>Gets the private link resources that need to be Listd for a storage account.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -9806,7 +9806,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Gets the private link resources that need to be created for a storage account.</summary>
+        /// <summary>Gets the private link resources that need to be Listd for a storage account.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.ISendAsync pipeline to use to make the request.</param>
@@ -9858,7 +9858,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
             }
         }
 
-        /// <summary>Gets the private link resources that need to be created for a storage account.</summary>
+        /// <summary>Gets the private link resources that need to be Listd for a storage account.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="accountName">The name of the storage account within the specified resource group. Storage account names must
@@ -10962,8 +10962,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Asynchronously creates a new storage account with the specified parameters. If an account is already created and a subsequent
-        /// create request is issued with different properties, the account properties will be updated. If an account is already created
+        /// Asynchronously Create a new storage account with the specified parameters. If an account is already Created and a subsequent
+        /// Create request is issued with different properties, the account properties will be Created. If an account is already Created
         /// and a subsequent Create request is issued with the exact same set of properties, the request will succeed.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -11014,8 +11014,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Asynchronously creates a new storage account with the specified parameters. If an account is already created and a subsequent
-        /// create request is issued with different properties, the account properties will be updated. If an account is already created
+        /// Asynchronously Create a new storage account with the specified parameters. If an account is already Created and a subsequent
+        /// Create request is issued with different properties, the account properties will be Created. If an account is already Created
         /// and a subsequent Create request is issued with the exact same set of properties, the request will succeed.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -11075,8 +11075,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Asynchronously creates a new storage account with the specified parameters. If an account is already created and a subsequent
-        /// create request is issued with different properties, the account properties will be updated. If an account is already created
+        /// Asynchronously Create a new storage account with the specified parameters. If an account is already Created and a subsequent
+        /// Create request is issued with different properties, the account properties will be Created. If an account is already Created
         /// and a subsequent Create request is issued with the exact same set of properties, the request will succeed.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -11136,8 +11136,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Asynchronously creates a new storage account with the specified parameters. If an account is already created and a subsequent
-        /// create request is issued with different properties, the account properties will be updated. If an account is already created
+        /// Asynchronously Create a new storage account with the specified parameters. If an account is already Created and a subsequent
+        /// Create request is issued with different properties, the account properties will be Created. If an account is already Created
         /// and a subsequent Create request is issued with the exact same set of properties, the request will succeed.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -11187,8 +11187,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Asynchronously creates a new storage account with the specified parameters. If an account is already created and a subsequent
-        /// create request is issued with different properties, the account properties will be updated. If an account is already created
+        /// Asynchronously Create a new storage account with the specified parameters. If an account is already Created and a subsequent
+        /// Create request is issued with different properties, the account properties will be Created. If an account is already Created
         /// and a subsequent Create request is issued with the exact same set of properties, the request will succeed.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -11238,8 +11238,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Asynchronously creates a new storage account with the specified parameters. If an account is already created and a subsequent
-        /// create request is issued with different properties, the account properties will be updated. If an account is already created
+        /// Asynchronously Create a new storage account with the specified parameters. If an account is already Created and a subsequent
+        /// Create request is issued with different properties, the account properties will be Created. If an account is already Created
         /// and a subsequent Create request is issued with the exact same set of properties, the request will succeed.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -11596,7 +11596,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Account Migration request can be triggered for a storage account to change its redundancy level. The migration updates
+        /// Account Migration request can be triggered for a storage account to change its redundancy level. The migration Customer
         /// the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability
         /// and availability. Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability
         /// zones in the primary region.
@@ -11652,7 +11652,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Account Migration request can be triggered for a storage account to change its redundancy level. The migration updates
+        /// Account Migration request can be triggered for a storage account to change its redundancy level. The migration Customer
         /// the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability
         /// and availability. Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability
         /// zones in the primary region.
@@ -11717,7 +11717,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// Account Migration request can be triggered for a storage account to change its redundancy level. The migration updates
+        /// Account Migration request can be triggered for a storage account to change its redundancy level. The migration Customer
         /// the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability
         /// and availability. Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability
         /// zones in the primary region.
@@ -16402,10 +16402,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// The update operation can be used to update the SKU, encryption, access tier, or tags for a storage account. It can also
+        /// The Update operation can be used to Update the SKU, encryption, access tier, or tags for a storage account. It can also
         /// be used to map the account to a custom domain. Only one custom domain is supported per storage account; the replacement/change
         /// of custom domain is not supported. In order to replace an old custom domain, the old value must be cleared/unregistered
-        /// before a new value can be set. The update of multiple properties is supported. This call does not change the storage keys
+        /// before a new value can be set. The Update of multiple properties is supported. This call does not change the storage keys
         /// for the account. If you want to change the storage account keys, use the regenerate keys operation. The location and name
         /// of the storage account cannot be changed after creation.
         /// </summary>
@@ -16457,10 +16457,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// The update operation can be used to update the SKU, encryption, access tier, or tags for a storage account. It can also
+        /// The Update operation can be used to Update the SKU, encryption, access tier, or tags for a storage account. It can also
         /// be used to map the account to a custom domain. Only one custom domain is supported per storage account; the replacement/change
         /// of custom domain is not supported. In order to replace an old custom domain, the old value must be cleared/unregistered
-        /// before a new value can be set. The update of multiple properties is supported. This call does not change the storage keys
+        /// before a new value can be set. The Update of multiple properties is supported. This call does not change the storage keys
         /// for the account. If you want to change the storage account keys, use the regenerate keys operation. The location and name
         /// of the storage account cannot be changed after creation.
         /// </summary>
@@ -16521,10 +16521,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// The update operation can be used to update the SKU, encryption, access tier, or tags for a storage account. It can also
+        /// The Update operation can be used to Update the SKU, encryption, access tier, or tags for a storage account. It can also
         /// be used to map the account to a custom domain. Only one custom domain is supported per storage account; the replacement/change
         /// of custom domain is not supported. In order to replace an old custom domain, the old value must be cleared/unregistered
-        /// before a new value can be set. The update of multiple properties is supported. This call does not change the storage keys
+        /// before a new value can be set. The Update of multiple properties is supported. This call does not change the storage keys
         /// for the account. If you want to change the storage account keys, use the regenerate keys operation. The location and name
         /// of the storage account cannot be changed after creation.
         /// </summary>
@@ -16585,10 +16585,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// The update operation can be used to update the SKU, encryption, access tier, or tags for a storage account. It can also
+        /// The Update operation can be used to Update the SKU, encryption, access tier, or tags for a storage account. It can also
         /// be used to map the account to a custom domain. Only one custom domain is supported per storage account; the replacement/change
         /// of custom domain is not supported. In order to replace an old custom domain, the old value must be cleared/unregistered
-        /// before a new value can be set. The update of multiple properties is supported. This call does not change the storage keys
+        /// before a new value can be set. The Update of multiple properties is supported. This call does not change the storage keys
         /// for the account. If you want to change the storage account keys, use the regenerate keys operation. The location and name
         /// of the storage account cannot be changed after creation.
         /// </summary>
@@ -16639,10 +16639,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// The update operation can be used to update the SKU, encryption, access tier, or tags for a storage account. It can also
+        /// The Update operation can be used to Update the SKU, encryption, access tier, or tags for a storage account. It can also
         /// be used to map the account to a custom domain. Only one custom domain is supported per storage account; the replacement/change
         /// of custom domain is not supported. In order to replace an old custom domain, the old value must be cleared/unregistered
-        /// before a new value can be set. The update of multiple properties is supported. This call does not change the storage keys
+        /// before a new value can be set. The Update of multiple properties is supported. This call does not change the storage keys
         /// for the account. If you want to change the storage account keys, use the regenerate keys operation. The location and name
         /// of the storage account cannot be changed after creation.
         /// </summary>
@@ -16693,10 +16693,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage
         }
 
         /// <summary>
-        /// The update operation can be used to update the SKU, encryption, access tier, or tags for a storage account. It can also
+        /// The Update operation can be used to Update the SKU, encryption, access tier, or tags for a storage account. It can also
         /// be used to map the account to a custom domain. Only one custom domain is supported per storage account; the replacement/change
         /// of custom domain is not supported. In order to replace an old custom domain, the old value must be cleared/unregistered
-        /// before a new value can be set. The update of multiple properties is supported. This call does not change the storage keys
+        /// before a new value can be set. The Update of multiple properties is supported. This call does not change the storage keys
         /// for the account. If you want to change the storage account keys, use the regenerate keys operation. The location and name
         /// of the storage account cannot be changed after creation.
         /// </summary>

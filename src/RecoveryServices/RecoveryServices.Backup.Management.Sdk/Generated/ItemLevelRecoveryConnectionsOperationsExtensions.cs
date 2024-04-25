@@ -14,9 +14,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Provisions a script which invokes an iSCSI connection to the backup data.
-        /// Executing this script opens a file
-        /// explorer displaying all the recoverable files and folders. This is an
-        /// asynchronous operation. To know the status of
+        /// Executing this script opens a file explorer displaying all the recoverable
+        /// files and folders. This is an asynchronous operation. To know the status of
         /// provisioning, call GetProtectedItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
@@ -40,8 +39,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// </param>
         /// <param name='recoveryPointId'>
         /// Recovery point ID which represents backed up data. iSCSI connection will be
-        /// provisioned
-        /// for this backed up data.
+        /// provisioned for this backed up data.
         /// </param>
         public static void Provision(this IItemLevelRecoveryConnectionsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId, ILRRequestResource parameters)
         {
@@ -50,9 +48,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Provisions a script which invokes an iSCSI connection to the backup data.
-        /// Executing this script opens a file
-        /// explorer displaying all the recoverable files and folders. This is an
-        /// asynchronous operation. To know the status of
+        /// Executing this script opens a file explorer displaying all the recoverable
+        /// files and folders. This is an asynchronous operation. To know the status of
         /// provisioning, call GetProtectedItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
@@ -76,8 +73,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// </param>
         /// <param name='recoveryPointId'>
         /// Recovery point ID which represents backed up data. iSCSI connection will be
-        /// provisioned
-        /// for this backed up data.
+        /// provisioned for this backed up data.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
@@ -88,9 +84,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
         /// <summary>
         /// Revokes an iSCSI connection which can be used to download a script.
-        /// Executing this script opens a file explorer
-        /// displaying all recoverable files and folders. This is an asynchronous
-        /// operation.
+        /// Executing this script opens a file explorer displaying all recoverable
+        /// files and folders. This is an asynchronous operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -113,8 +108,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// </param>
         /// <param name='recoveryPointId'>
         /// Recovery point ID which represents backed up data. iSCSI connection will be
-        /// revoked for
-        /// this backed up data.
+        /// revoked for this backed up data.
         /// </param>
         public static void Revoke(this IItemLevelRecoveryConnectionsOperations operations, string vaultName, string resourceGroupName, string fabricName, string containerName, string protectedItemName, string recoveryPointId)
         {
@@ -123,9 +117,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Revokes an iSCSI connection which can be used to download a script.
-        /// Executing this script opens a file explorer
-        /// displaying all recoverable files and folders. This is an asynchronous
-        /// operation.
+        /// Executing this script opens a file explorer displaying all recoverable
+        /// files and folders. This is an asynchronous operation.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -148,8 +141,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// </param>
         /// <param name='recoveryPointId'>
         /// Recovery point ID which represents backed up data. iSCSI connection will be
-        /// revoked for
-        /// this backed up data.
+        /// revoked for this backed up data.
         /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.

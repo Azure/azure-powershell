@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
 online version: https://learn.microsoft.com/powershell/module/az.networkcloud/new-aznetworkcloudclustermanager
 schema: 2.0.0
@@ -13,10 +13,11 @@ Create a new cluster manager or update properties of the cluster manager if it e
 ## SYNTAX
 
 ```
-New-AzNetworkCloudClusterManager -Name <String> -ResourceGroupName <String> -FabricControllerId <String>
- -Location <String> [-SubscriptionId <String>] [-AnalyticsWorkspaceId <String>] [-AvailabilityZone <String[]>]
- [-ManagedResourceGroupConfigurationLocation <String>] [-ManagedResourceGroupConfigurationName <String>]
- [-Tag <Hashtable>] [-VMSize <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzNetworkCloudClusterManager -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -FabricControllerId <String> -Location <String> [-AnalyticsWorkspaceId <String>]
+ [-AvailabilityZone <String[]>] [-ManagedResourceGroupConfigurationLocation <String>]
+ [-ManagedResourceGroupConfigurationName <String>] [-Tag <Hashtable>] [-VMSize <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -39,7 +40,6 @@ New-AzNetworkCloudClusterManager -Name cnName -Location location -ResourceGroupN
 Location Name   SystemDataCreatedAt SystemDataCreatedBy    SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
 -------- ----   ------------------- -------------------    ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
 eastus   cmName 07/31/2023 17:38:44 <identity>             User                    07/31/2023 17:38:44      <identity>               User                         resourceGroupName
-
 ```
 
 This command creates a cluster manager.
@@ -305,7 +305,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

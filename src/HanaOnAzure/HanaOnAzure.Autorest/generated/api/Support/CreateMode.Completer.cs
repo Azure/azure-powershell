@@ -30,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "recover".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("recover", "recover", global::System.Management.Automation.CompletionResultType.ParameterValue, "recover");
+                yield return new global::System.Management.Automation.CompletionResult("'recover'", "recover", global::System.Management.Automation.CompletionResultType.ParameterValue, "recover");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "default".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("default", "default", global::System.Management.Automation.CompletionResultType.ParameterValue, "default");
+                yield return new global::System.Management.Automation.CompletionResult("'default'", "default", global::System.Management.Automation.CompletionResultType.ParameterValue, "default");
             }
         }
     }

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ServiceLinker-help.xml
 Module Name: Az.ServiceLinker
 online version: https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkerconfluentschemaregistryobject
 schema: 2.0.0
@@ -13,7 +13,8 @@ Create an in-memory object for ConfluentSchemaRegistry.
 ## SYNTAX
 
 ```
-New-AzServiceLinkerConfluentSchemaRegistryObject -Endpoint <String> [<CommonParameters>]
+New-AzServiceLinkerConfluentSchemaRegistryObject -Endpoint <String>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +63,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

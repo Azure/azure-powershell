@@ -61,7 +61,7 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         Remove-AzDataProtectionBackupPolicy -Name $newPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
 
         # TODO: uncomment later
-        # $pol = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where { $_.Name -match $newPolicyName }
+        # $pol = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where-Object { $_.Name -match $newPolicyName }
         # $pol | Should be $null
     }
 
@@ -114,7 +114,7 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         Remove-AzDataProtectionBackupPolicy -Name $newPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
 
         # TODO: uncomment later
-        # $pol = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where { $_.Name -match $newPolicyName }
+        # $pol = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where-Object { $_.Name -match $newPolicyName }
         # $pol | Should be $null
     }
 
@@ -161,11 +161,11 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         $newPolicy = New-AzDataProtectionBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName -Policy $pol -SubscriptionId $sub
 
         # this Policy should be there - then delete it and then this policy shouldn't be there
-        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | where {$_.Name -eq $newPolicyName}
+        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | Where-Object {$_.Name -eq $newPolicyName}
         $policy.Name | Should be $newPolicyName
         
         Remove-AzDataProtectionBackupPolicy -Name $newPolicyName -ResourceGroupName $rgName -SubscriptionId $sub -VaultName $vaultName
-        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | where {$_.Name -eq $newPolicyName}
+        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | Where-Object {$_.Name -eq $newPolicyName}
         $policy | Should be $null
     }
 
@@ -202,7 +202,7 @@ Describe 'New-AzDataProtectionBackupPolicy' {
         $newPolicy = New-AzDataProtectionBackupPolicy -ResourceGroupName $rgName -VaultName $vaultName -Name $newPolicyName -Policy $pol -SubscriptionId $sub
 
         # this Policy should be there - then delete it and then this policy shouldn't be there
-        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | where {$_.Name -eq $newPolicyName}
+        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | Where-Object {$_.Name -eq $newPolicyName}
         
         # verify policy
         $policy.Name | Should be $newPolicyName
@@ -212,7 +212,7 @@ Describe 'New-AzDataProtectionBackupPolicy' {
 
         # remove policy
         Remove-AzDataProtectionBackupPolicy -Name $newPolicyName -ResourceGroupName $rgName -SubscriptionId $sub -VaultName $vaultName
-        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | where {$_.Name -eq $newPolicyName}
+        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | Where-Object {$_.Name -eq $newPolicyName}
         $policy | Should be $null
     }
 
@@ -243,7 +243,7 @@ Describe 'New-AzDataProtectionBackupPolicy' {
 
         #Remove policy
         Remove-AzDataProtectionBackupPolicy -Name $operationalPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
-        $opPolicy = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where { $_.Name -match $operationalPolicyName }
+        $opPolicy = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where-Object { $_.Name -match $operationalPolicyName }
         $opPolicy | Should be $null
     }
 
@@ -274,7 +274,7 @@ Describe 'New-AzDataProtectionBackupPolicy' {
 
         #Remove policy
         Remove-AzDataProtectionBackupPolicy -Name $vaultedPolicyName -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
-        $pol = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where { $_.Name -match $vaultedPolicyName }
+        $pol = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where-Object { $_.Name -match $vaultedPolicyName }
         $pol | Should be $null
     }
 
@@ -333,7 +333,7 @@ Describe 'New-AzDataProtectionBackupPolicy' {
 
         #Remove policy
         Remove-AzDataProtectionBackupPolicy -Name $operationalVaultedPolicy -ResourceGroupName $resourceGroupName -SubscriptionId $subId -VaultName $vaultName
-        $pol = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where { $_.Name -match $operationalVaultedPolicy }
+        $pol = Get-AzDataProtectionBackupPolicy -ResourceGroupName $resourceGroupName -VaultName $vaultName -SubscriptionId $subId | Where-Object { $_.Name -match $operationalVaultedPolicy }
         $pol | Should be $null
     }
 }

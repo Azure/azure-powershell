@@ -33,8 +33,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// <param name="type">The type of managed identity used. The type &#39;SystemAssigned, UserAssigned&#39;
         /// includes both an implicitly created identity and a set of user-assigned
         /// identities. The type &#39;None&#39; will remove any identities.
-        /// Possible values include: 'SystemAssigned', 'None', 'UserAssigned',
-        /// 'SystemAssigned, UserAssigned'</param>
+        /// Possible values include: &#39;SystemAssigned&#39;, &#39;None&#39;, &#39;UserAssigned&#39;,
+        /// &#39;SystemAssigned, UserAssigned&#39;</param>
 
         /// <param name="userAssignedIdentities">The list of user-assigned identities associated with the resource. The
         /// user-assigned identity dictionary keys will be ARM resource ids in the

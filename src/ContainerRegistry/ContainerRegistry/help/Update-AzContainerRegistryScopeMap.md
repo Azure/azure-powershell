@@ -22,8 +22,8 @@ Update-AzContainerRegistryScopeMap -Name <String> -RegistryName <String> -Resour
 ### UpdateViaIdentityExpanded
 ```
 Update-AzContainerRegistryScopeMap -InputObject <IContainerRegistryIdentity> [-Action <String[]>]
- [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -245,34 +245,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ContainerRegistry.Models.Api202301Preview.IScopeMap
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IContainerRegistryIdentity>`: Identity Parameter
-  - `[AgentPoolName <String>]`: The name of the agent pool.
-  - `[CacheRuleName <String>]`: The name of the cache rule.
-  - `[ConnectedRegistryName <String>]`: The name of the connected registry.
-  - `[CredentialSetName <String>]`: The name of the credential set.
-  - `[ExportPipelineName <String>]`: The name of the export pipeline.
-  - `[GroupName <String>]`: The name of the private link resource.
-  - `[Id <String>]`: Resource identity path
-  - `[ImportPipelineName <String>]`: The name of the import pipeline.
-  - `[PipelineRunName <String>]`: The name of the pipeline run.
-  - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection.
-  - `[RegistryName <String>]`: The name of the container registry.
-  - `[ReplicationName <String>]`: The name of the replication.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[RunId <String>]`: The run ID.
-  - `[ScopeMapName <String>]`: The name of the scope map.
-  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
-  - `[TaskName <String>]`: The name of the container registry task.
-  - `[TaskRunName <String>]`: The name of the task run.
-  - `[TokenName <String>]`: The name of the token.
-  - `[WebhookName <String>]`: The name of the webhook.
 
 ## RELATED LINKS

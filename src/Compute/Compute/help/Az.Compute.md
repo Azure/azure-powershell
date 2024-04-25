@@ -248,6 +248,9 @@ Grants an access to a disk.
 ### [Grant-AzSnapshotAccess](Grant-AzSnapshotAccess.md)
 Grants an access to a snapshot.
 
+### [Invoke-AzSpotPlacementRecommender](Invoke-AzSpotPlacementRecommender.md)
+Generates placement scores for Spot VM skus.
+
 ### [Invoke-AzVMInstallPatch](Invoke-AzVMInstallPatch.md)
 Installs patches on the VM
 

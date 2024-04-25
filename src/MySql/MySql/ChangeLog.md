@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed for various docs erroneously pointing to Postgres instead of MySQL
 
 ## Version 1.1.1
 * Fixed iops and high availability parameters issue

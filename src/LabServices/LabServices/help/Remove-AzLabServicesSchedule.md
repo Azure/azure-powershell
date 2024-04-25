@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.LabServices-help.xml
 Module Name: Az.LabServices
 online version: https://learn.microsoft.com/powershell/module/az.labservices/remove-azlabservicesschedule
 schema: 2.0.0
@@ -14,21 +14,21 @@ Operation to delete a schedule resource.
 
 ### ResourceId (Default)
 ```
-Remove-AzLabServicesSchedule -ResourceId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzLabServicesSchedule [-SubscriptionId <String>] -ResourceId <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Delete
 ```
 Remove-AzLabServicesSchedule -LabName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Schedule
 ```
-Remove-AzLabServicesSchedule -Schedule <Schedule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzLabServicesSchedule [-SubscriptionId <String>] -Schedule <Schedule> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,7 +61,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -155,7 +156,6 @@ Accept wildcard characters: False
 
 ### -ResourceId
 
-
 ```yaml
 Type: System.String
 Parameter Sets: ResourceId
@@ -242,28 +242,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-SCHEDULE `<Schedule>`: 
-  - `[Note <String>]`: Notes for this schedule.
-  - `[RecurrencePatternExpirationDate <DateTime?>]`: When the recurrence will expire. This date is inclusive.
-  - `[RecurrencePatternFrequency <RecurrenceFrequency?>]`: The frequency of the recurrence.
-  - `[RecurrencePatternInterval <Int32?>]`: The interval to invoke the schedule on. For example, interval = 2 and RecurrenceFrequency.Daily will run every 2 days. When no interval is supplied, an interval of 1 is used.
-  - `[RecurrencePatternWeekDay <WeekDay[]>]`: The week days the schedule runs. Used for when the Frequency is set to Weekly.
-  - `[StartAt <DateTime?>]`: When lab user virtual machines will be started. Timestamp offsets will be ignored and timeZoneId is used instead.
-  - `[StopAt <DateTime?>]`: When lab user virtual machines will be stopped. Timestamp offsets will be ignored and timeZoneId is used instead.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[TimeZoneId <String>]`: The IANA timezone id for the schedule.
-
 ## RELATED LINKS
-

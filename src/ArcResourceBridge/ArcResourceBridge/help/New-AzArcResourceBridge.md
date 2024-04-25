@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ArcResourceBridge-help.xml
 Module Name: Az.ArcResourceBridge
 online version: https://learn.microsoft.com/powershell/module/az.arcresourcebridge/new-azarcresourcebridge
 schema: 2.0.0
@@ -13,10 +13,11 @@ Creates or updates an Appliance in the specified Subscription and Resource Group
 ## SYNTAX
 
 ```
-New-AzArcResourceBridge -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Distro <Distro>] [-IdentityType <ResourceIdentityType>]
+New-AzArcResourceBridge -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-Distro <Distro>] [-IdentityType <ResourceIdentityType>]
  [-InfrastructureConfigProvider <Provider>] [-PublicKey <String>] [-Tag <Hashtable>] [-Version <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -280,7 +281,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ImportExport-help.xml
 Module Name: Az.ImportExport
 online version: https://learn.microsoft.com/powershell/module/az.importexport/new-AzImportExportDriveListObject
 schema: 2.0.0
@@ -232,7 +232,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

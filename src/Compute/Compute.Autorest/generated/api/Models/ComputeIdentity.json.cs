@@ -77,6 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
             {_runCommandName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("runCommandName"), out var __jsonRunCommandName) ? (string)__jsonRunCommandName : (string)RunCommandName;}
             {_vMScaleSetName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("vmScaleSetName"), out var __jsonVMScaleSetName) ? (string)__jsonVMScaleSetName : (string)VMScaleSetName;}
             {_instanceId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("instanceId"), out var __jsonInstanceId) ? (string)__jsonInstanceId : (string)InstanceId;}
+            {_operationId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("operationId"), out var __jsonOperationId) ? (string)__jsonOperationId : (string)OperationId;}
             {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
             AfterFromJson(json);
         }
@@ -125,6 +126,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models
             AddIf( null != (((object)this._runCommandName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString(this._runCommandName.ToString()) : null, "runCommandName" ,container.Add );
             AddIf( null != (((object)this._vMScaleSetName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString(this._vMScaleSetName.ToString()) : null, "vmScaleSetName" ,container.Add );
             AddIf( null != (((object)this._instanceId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString(this._instanceId.ToString()) : null, "instanceId" ,container.Add );
+            AddIf( null != (((object)this._operationId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString(this._operationId.ToString()) : null, "operationId" ,container.Add );
             AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;
