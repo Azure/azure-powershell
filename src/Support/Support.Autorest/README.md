@@ -31,14 +31,14 @@ For information on how to develop for `Az.Support`, see [how-to.md](how-to.md).
 
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
-commit: 138bfbe2562a56cc9c84e003229b9440beaf419c
+commit: 791ef5476e10bb15ab9ad46e2c2d8835ac24ac24
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-local-readme.md
 input-file:
-  - $(repo)/specification/support/resource-manager/Microsoft.Support/preview/2022-09-01-preview/support.json
+  - $(repo)/specification/support/resource-manager/Microsoft.Support/stable/2024-04-01/support.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
@@ -199,32 +199,6 @@ directive:
       verb: Update
       subject: CommunicationsNoSubscription
     remove: true
-  - from: swagger-document
-    where: $.definitions.CommunicationDetails
-    transform: $.required = ['properties']
-  - from: swagger-document
-    where: $.definitions.SupportTicketDetails
-    transform: $.required = ['properties']
-  - from: swagger-document 
-    where: $.definitions.SupportTicketDetailsProperties.properties.enrollmentId
-    transform: >-
-      return {
-          "description": "Enrollment Id associated with the support ticket.",
-          "type": "string",
-        }
-  # only needed for 2022 preview version, should be able to remove for GA
-  - from: swagger-document
-    where: $.definitions.SupportTicketDetailsProperties
-    transform: $.required = ['serviceId','title','description','problemClassificationId','severity','contactDetails', 'advancedDiagnosticConsent']
-    
-  - from: swagger-document 
-    where: $.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts"].get.operationId
-    transform: >-
-      return "ChatTranscriptsNoSubscription_List"
-  - from: swagger-document 
-    where: $.paths["/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications"].get.operationId
-    transform: >-
-      return "CommunicationsNoSubscription_List"
   - from: GetAzSupportTicket_List.cs
     where: $
     transform: $ = $.replace("!String.IsNullOrEmpty(_nextLink)" ,"!String.IsNullOrEmpty(_nextLink) && this._top <= 0");
