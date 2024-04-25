@@ -30,6 +30,8 @@
 * Added a new AuxiliaryMode value `AuxiliaryMode.Floating`
 * Added support for AzureFirewallPacketCapture
 * Added support of `UserAssignedIdentityId` Property in New-AzNetworkWatcherFlowLog and Set-AzNetworkWatcherFlowLog commands
+* Updated cmdlet to add the property of JSChallengeCookieExpirationInMins
+    - `New-AzApplicationGatewayFirewallPolicySetting`
 
 ## Version 7.3.0
 * Fixed a few minor issues
