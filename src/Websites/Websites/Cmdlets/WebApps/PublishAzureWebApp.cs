@@ -66,6 +66,9 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
         [Parameter(Mandatory = false, HelpMessage = "Reset Java web apps to default parking page")]
         public SwitchParameter Reset { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Deploy using the ZipDeploy API")]
+        public SwitchParameter UseZipDeploy { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Deploy the web app without prompting for confirmation.")]
         public SwitchParameter Force { get; set; }
 
@@ -86,73 +89,88 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             string apiPath = "/api/publish";
             var scmUrl = new Uri(user.ScmUri);
-            var deployUri = new Uri(scmUrl, apiPath);
+            string deployUrl;
 
-            var uriBuilder = new UriBuilder(deployUri);
-            var paramValues = HttpUtility.ParseQueryString(uriBuilder.Query);
+            var appKind = WebsitesClient.GetWebApp(ResourceGroupName, Name, null).Kind;
 
-            string fileExtention = Path.GetExtension(ArchivePath);
-            string[] validTypes = { "war", "jar", "ear", "zip", "static" };
-
-            if (!string.IsNullOrEmpty(Type))
+            // Use ZipDeploy for function apps or if toggled
+            if (appKind == "functionapp" || UseZipDeploy.IsPresent)
             {
-                paramValues["type"] = Type;
+                apiPath = "/api/zipdeploy";
+                var deployUri = new Uri(scmUrl, apiPath);
+                var uriBuilder = new UriBuilder(deployUri);
+
+                var paramValues = HttpUtility.ParseQueryString(uriBuilder.Query);
+
+                paramValues.Add("isAsync", "true");
+                uriBuilder.Query = paramValues.ToString();
+                deployUrl = uriBuilder.Uri.ToString();
             }
-
-            else if (!string.IsNullOrEmpty(fileExtention))
+            else
             {
-                if (validTypes.Contains(fileExtention.Substring(1)))
-                {
-                    paramValues["type"] = fileExtention.Substring(1);
-                }
+                var deployUri = new Uri(scmUrl, apiPath);
+                var uriBuilder = new UriBuilder(deployUri);
 
+                var paramValues = HttpUtility.ParseQueryString(uriBuilder.Query);
+
+                string fileExtention = Path.GetExtension(ArchivePath);
+                string[] validTypes = { "war", "jar", "ear", "zip", "static" };
+
+                if (!string.IsNullOrEmpty(Type))
+                {
+                    paramValues["type"] = Type;
+                }
+                else if (!string.IsNullOrEmpty(fileExtention))
+                {
+                    if (validTypes.Contains(fileExtention.Substring(1)))
+                    {
+                        paramValues["type"] = fileExtention.Substring(1);
+                    }
+                    else
+                    {
+                        paramValues["type"] = "static";
+                    }
+                }
                 else
                 {
-                    paramValues["type"] = "static";
+                    throw new Exception("Unknown artifact type.");
                 }
+
+                paramValues.Add("path", TargetPath);
+
+                // default async to true if not provided to match old behavior
+                if (Async.IsPresent)
+                {
+                    paramValues.Add("async", Async.ToString());
+                }
+                else
+                {
+                    paramValues.Add("async", "true");
+                }
+
+                if (Restart.IsPresent)
+                {
+                    paramValues.Add("restart", Restart.ToString());
+                }
+
+                if (Clean.IsPresent)
+                {
+                    paramValues.Add("clean", Clean.ToString());
+                }
+
+                if (IgnoreStack.IsPresent)
+                {
+                    paramValues.Add("ignorestack", IgnoreStack.ToString());
+                }
+
+                if (Reset.IsPresent)
+                {
+                    paramValues.Add("reset", Reset.ToString());
+                }
+
+                uriBuilder.Query = paramValues.ToString();
+                deployUrl = uriBuilder.Uri.ToString();
             }
-
-            else
-            {
-                throw new Exception("Unknown artifact type.");
-            }
-
-            paramValues.Add("path", TargetPath);
-
-            // default async to true if not provided to match old behavior
-            if (Async.IsPresent)
-            {
-                paramValues.Add("async", Async.ToString());
-            }
-
-            else
-            {
-                paramValues.Add("async", "true");
-            }
-
-            if (Restart.IsPresent)
-            {
-                paramValues.Add("restart", Restart.ToString());
-            }
-
-            if (Clean.IsPresent)
-            {
-                paramValues.Add("clean", Clean.ToString());
-            }
-
-            if (IgnoreStack.IsPresent)
-            {
-                paramValues.Add("ignorestack", IgnoreStack.ToString());
-            }
-
-            if (Reset.IsPresent)
-            {
-                paramValues.Add("reset", Reset.ToString());
-            }
-
-            uriBuilder.Query = paramValues.ToString();
-
-            string deployUrl = uriBuilder.Uri.ToString();
 
             Action zipDeployAction = () =>
             {

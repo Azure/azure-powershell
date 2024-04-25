@@ -15,17 +15,15 @@ Deploys an Azure Web App from a ZIP, JAR, or WAR file using zipdeploy.
 ### FromWebApp (Default)
 ```
 Publish-AzWebApp -ArchivePath <String> [-Type <String>] [-Clean] [-Async] [-Restart] [-TargetPath <String>]
- [-IgnoreStack] [-Reset] [-Force] [-AsJob] [-Timeout <Double>] [-WebApp] <PSSite>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IgnoreStack] [-Reset] [-UseZipDeploy] [-Force] [-AsJob] [-Timeout <Double>] [-WebApp] <PSSite>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FromResourceName
 ```
 Publish-AzWebApp -ArchivePath <String> [-Type <String>] [-Clean] [-Async] [-Restart] [-TargetPath <String>]
- [-IgnoreStack] [-Reset] [-Force] [-AsJob] [-Timeout <Double>] [-ResourceGroupName] <String> [-Name] <String>
- [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-IgnoreStack] [-Reset] [-UseZipDeploy] [-Force] [-AsJob] [-Timeout <Double>] [-ResourceGroupName] <String>
+ [-Name] <String> [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -297,6 +295,21 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: war, jar, ear, zip, static
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseZipDeploy
+Deploy using the ZipDeploy API
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
