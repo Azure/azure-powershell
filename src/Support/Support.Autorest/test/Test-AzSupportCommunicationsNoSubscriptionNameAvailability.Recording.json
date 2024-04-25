@@ -1,9 +1,9 @@
 {
-  "Test-AzSupportCommunicationsNoSubscriptionNameAvailability+[NoContext]+CheckExpandedTrue+$POST+https://management.azure.com/providers/Microsoft.Support/supportTickets/test-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1/checkNameAvailability?api-version=2022-09-01-preview+1": {
+  "Test-AzSupportCommunicationsNoSubscriptionNameAvailability+[NoContext]+CheckExpandedTrue+$POST+https://management.azure.com/providers/Microsoft.Support/supportTickets/test-e4014af3-5709-42f6-b4a4-0678c08f02d6/checkNameAvailability?api-version=2024-04-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/supportTickets/test-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1/checkNameAvailability?api-version=2022-09-01-preview",
-      "Content": "{\r\n  \"name\": \"test-for-check-msg-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1\",\r\n  \"type\": \"Microsoft.Support/communications\"\r\n}",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/supportTickets/test-e4014af3-5709-42f6-b4a4-0678c08f02d6/checkNameAvailability?api-version=2024-04-01",
+      "Content": "{\r\n  \"name\": \"test-for-check-msg-e4014af3-5709-42f6-b4a4-0678c08f02d6\",\r\n  \"type\": \"Microsoft.Support/communications\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -19,13 +19,14 @@
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
-        "x-ms-request-id": [ "dfaf43cc-378d-4fa8-b6ae-f817fdf20cd3" ],
-        "x-ms-correlation-request-id": [ "dfaf43cc-378d-4fa8-b6ae-f817fdf20cd3" ],
-        "x-ms-routing-request-id": [ "EASTUS:20240308T172426Z:dfaf43cc-378d-4fa8-b6ae-f817fdf20cd3" ],
+        "x-ms-request-id": [ "7e2c2bf2-93cc-4346-9ac3-b7fea66e7b0e" ],
+        "x-ms-correlation-request-id": [ "7e2c2bf2-93cc-4346-9ac3-b7fea66e7b0e" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240423T181654Z:7e2c2bf2-93cc-4346-9ac3-b7fea66e7b0e" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: AD4B48391F814EFDB0A441A40F01CDDB Ref B: MNZ221060609009 Ref C: 2024-03-08T17:24:25Z" ],
-        "Date": [ "Fri, 08 Mar 2024 17:24:25 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D9F988286AAD4417BD5D8D009BA96DAF Ref B: MNZ221060608031 Ref C: 2024-04-23T18:16:54Z" ],
+        "Date": [ "Tue, 23 Apr 2024 18:16:53 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "22" ],

@@ -20,4 +20,16 @@ Describe 'New-AzSupportFileAndUploadNoSubscription' {
         $file = New-AzSupportFileAndUploadNoSubscription -WorkspaceName $env.FileWorkspaceNameNoSubscription -FilePath $testFilePath
         $file.Name | Should -Be "test.txt"
     }
+
+    It 'CreateWithFileTwoChunks' {
+        $testFilePath = Join-Path $PSScriptRoot files "3mb-testfile.txt"
+        Write-Host "file path: " $testFilePath
+        $file = New-AzSupportFileAndUploadNoSubscription -WorkspaceName $env.FileWorkspaceNameNoSubscription -FilePath $testFilePath
+        $file.Name | Should -Be "3mb-testfile.txt"
+    }
+
+    It 'CreateWithFileOver5Mb' {
+        $testFilePath = Join-Path $PSScriptRoot files "over5mb-testfile.txt"
+        { New-AzSupportFileAndUpload -WorkspaceName $env.FileWorkspaceNameNoSubscription -FilePath $testFilePath } | Should -Throw -ExpectedMessage "File size is greater than the maximum file size of 5 MB"
+    }
 }

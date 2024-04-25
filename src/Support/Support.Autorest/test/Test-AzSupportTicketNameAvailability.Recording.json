@@ -1,9 +1,9 @@
 {
-  "Test-AzSupportTicketNameAvailability+[NoContext]+CheckExpandedSupportTicketTrue+$POST+https://management.azure.com/subscriptions/4df09db9-7a7e-450b-8f88-00fb97c277bd/providers/Microsoft.Support/checkNameAvailability?api-version=2022-09-01-preview+1": {
+  "Test-AzSupportTicketNameAvailability+[NoContext]+CheckExpandedSupportTicketTrue+$POST+https://management.azure.com/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/checkNameAvailability?api-version=2024-04-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/4df09db9-7a7e-450b-8f88-00fb97c277bd/providers/Microsoft.Support/checkNameAvailability?api-version=2022-09-01-preview",
-      "Content": "{\r\n  \"name\": \"test-for-check-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1\",\r\n  \"type\": \"Microsoft.Support/supportTickets\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/checkNameAvailability?api-version=2024-04-01",
+      "Content": "{\r\n  \"name\": \"test-for-check-e4014af3-5709-42f6-b4a4-0678c08f02d6\",\r\n  \"type\": \"Microsoft.Support/supportTickets\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -19,13 +19,14 @@
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-request-id": [ "9333ad73-fcbe-4d20-8932-6dd7d1cc8b8a" ],
-        "x-ms-correlation-request-id": [ "9333ad73-fcbe-4d20-8932-6dd7d1cc8b8a" ],
-        "x-ms-routing-request-id": [ "EASTUS:20240308T171909Z:9333ad73-fcbe-4d20-8932-6dd7d1cc8b8a" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "1b07f9b3-9a7b-4869-a0bc-380e91130037" ],
+        "x-ms-correlation-request-id": [ "1b07f9b3-9a7b-4869-a0bc-380e91130037" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240423T180805Z:1b07f9b3-9a7b-4869-a0bc-380e91130037" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CE0C0980D56B4631802B3723E8059CE1 Ref B: BL2AA2030101017 Ref C: 2024-03-08T17:19:09Z" ],
-        "Date": [ "Fri, 08 Mar 2024 17:19:09 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: DA61C0852FC94C1988BCDA1E394B5593 Ref B: MNZ221060619009 Ref C: 2024-04-23T18:08:05Z" ],
+        "Date": [ "Tue, 23 Apr 2024 18:08:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "22" ],
@@ -36,11 +37,11 @@
       "isContentBase64": false
     }
   },
-  "Test-AzSupportTicketNameAvailability+[NoContext]+CheckExpandedSupportTicketFalse+$POST+https://management.azure.com/subscriptions/4df09db9-7a7e-450b-8f88-00fb97c277bd/providers/Microsoft.Support/checkNameAvailability?api-version=2022-09-01-preview+1": {
+  "Test-AzSupportTicketNameAvailability+[NoContext]+CheckExpandedSupportTicketFalse+$POST+https://management.azure.com/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/checkNameAvailability?api-version=2024-04-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/4df09db9-7a7e-450b-8f88-00fb97c277bd/providers/Microsoft.Support/checkNameAvailability?api-version=2022-09-01-preview",
-      "Content": "{\r\n  \"name\": \"test-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1\",\r\n  \"type\": \"Microsoft.Support/supportTickets\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/checkNameAvailability?api-version=2024-04-01",
+      "Content": "{\r\n  \"name\": \"test-e4014af3-5709-42f6-b4a4-0678c08f02d6\",\r\n  \"type\": \"Microsoft.Support/supportTickets\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -56,13 +57,14 @@
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-request-id": [ "36413976-82a1-4782-bc91-9814bbb6d10f" ],
-        "x-ms-correlation-request-id": [ "36413976-82a1-4782-bc91-9814bbb6d10f" ],
-        "x-ms-routing-request-id": [ "EASTUS:20240308T171910Z:36413976-82a1-4782-bc91-9814bbb6d10f" ],
+        "x-ms-request-id": [ "2ecf6a85-2766-4aa8-a1b6-547cf7857ad2" ],
+        "x-ms-correlation-request-id": [ "2ecf6a85-2766-4aa8-a1b6-547cf7857ad2" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240423T180805Z:2ecf6a85-2766-4aa8-a1b6-547cf7857ad2" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 94874AD7D9FD4EF1BCD947ADAC59A2E7 Ref B: BL2AA2030101017 Ref C: 2024-03-08T17:19:09Z" ],
-        "Date": [ "Fri, 08 Mar 2024 17:19:09 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 31CC0F90174246D69AF00BDEB905B353 Ref B: MNZ221060619009 Ref C: 2024-04-23T18:08:05Z" ],
+        "Date": [ "Tue, 23 Apr 2024 18:08:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "113" ],
@@ -73,11 +75,11 @@
       "isContentBase64": false
     }
   },
-  "Test-AzSupportTicketNameAvailability+[NoContext]+CheckExpandedFileWorkspaceTrue+$POST+https://management.azure.com/subscriptions/4df09db9-7a7e-450b-8f88-00fb97c277bd/providers/Microsoft.Support/checkNameAvailability?api-version=2022-09-01-preview+1": {
+  "Test-AzSupportTicketNameAvailability+[NoContext]+CheckExpandedFileWorkspaceTrue+$POST+https://management.azure.com/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/checkNameAvailability?api-version=2024-04-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/4df09db9-7a7e-450b-8f88-00fb97c277bd/providers/Microsoft.Support/checkNameAvailability?api-version=2022-09-01-preview",
-      "Content": "{\r\n  \"name\": \"test-for-check-ps-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1\",\r\n  \"type\": \"Microsoft.Support/fileWorkspaces\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/checkNameAvailability?api-version=2024-04-01",
+      "Content": "{\r\n  \"name\": \"test-for-check-ps-e4014af3-5709-42f6-b4a4-0678c08f02d6\",\r\n  \"type\": \"Microsoft.Support/fileWorkspaces\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -93,13 +95,14 @@
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-request-id": [ "1e68a5a7-3b7e-41d7-9d3d-7cfafcdd4374" ],
-        "x-ms-correlation-request-id": [ "1e68a5a7-3b7e-41d7-9d3d-7cfafcdd4374" ],
-        "x-ms-routing-request-id": [ "EASTUS:20240308T171910Z:1e68a5a7-3b7e-41d7-9d3d-7cfafcdd4374" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "dda419eb-5a9f-40ec-8546-e647dcf7a74a" ],
+        "x-ms-correlation-request-id": [ "dda419eb-5a9f-40ec-8546-e647dcf7a74a" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240423T180805Z:dda419eb-5a9f-40ec-8546-e647dcf7a74a" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 1681840F72764237B9F03320D51F6AF8 Ref B: BL2AA2030101017 Ref C: 2024-03-08T17:19:10Z" ],
-        "Date": [ "Fri, 08 Mar 2024 17:19:09 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: BFE27CB146374E9DAB4EAC611F54477D Ref B: MNZ221060619009 Ref C: 2024-04-23T18:08:05Z" ],
+        "Date": [ "Tue, 23 Apr 2024 18:08:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "22" ],
@@ -110,11 +113,11 @@
       "isContentBase64": false
     }
   },
-  "Test-AzSupportTicketNameAvailability+[NoContext]+CheckExpandedFileWorkspaceFalse+$POST+https://management.azure.com/subscriptions/4df09db9-7a7e-450b-8f88-00fb97c277bd/providers/Microsoft.Support/checkNameAvailability?api-version=2022-09-01-preview+1": {
+  "Test-AzSupportTicketNameAvailability+[NoContext]+CheckExpandedFileWorkspaceFalse+$POST+https://management.azure.com/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/checkNameAvailability?api-version=2024-04-01+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/4df09db9-7a7e-450b-8f88-00fb97c277bd/providers/Microsoft.Support/checkNameAvailability?api-version=2022-09-01-preview",
-      "Content": "{\r\n  \"name\": \"test-ps-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1\",\r\n  \"type\": \"Microsoft.Support/fileWorkspaces\"\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/checkNameAvailability?api-version=2024-04-01",
+      "Content": "{\r\n  \"name\": \"test-ps-e4014af3-5709-42f6-b4a4-0678c08f02d6\",\r\n  \"type\": \"Microsoft.Support/fileWorkspaces\"\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -130,13 +133,14 @@
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-request-id": [ "13b6e22b-3c75-4991-afa8-50c9cb98f8a1" ],
-        "x-ms-correlation-request-id": [ "13b6e22b-3c75-4991-afa8-50c9cb98f8a1" ],
-        "x-ms-routing-request-id": [ "EASTUS:20240308T171910Z:13b6e22b-3c75-4991-afa8-50c9cb98f8a1" ],
+        "x-ms-request-id": [ "b0450f34-d431-4d15-bb19-f4a79f95e073" ],
+        "x-ms-correlation-request-id": [ "b0450f34-d431-4d15-bb19-f4a79f95e073" ],
+        "x-ms-routing-request-id": [ "EASTUS:20240423T180805Z:b0450f34-d431-4d15-bb19-f4a79f95e073" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4B0CFE4BFDA64E638D6790AA3CC6CDC2 Ref B: BL2AA2030101017 Ref C: 2024-03-08T17:19:10Z" ],
-        "Date": [ "Fri, 08 Mar 2024 17:19:10 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: D6186DAF7123450AAB8AC1A70392297F Ref B: MNZ221060619009 Ref C: 2024-04-23T18:08:05Z" ],
+        "Date": [ "Tue, 23 Apr 2024 18:08:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "113" ],
