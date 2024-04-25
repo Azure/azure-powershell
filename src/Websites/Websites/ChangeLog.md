@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* New parameter `UseZipDeploy` in cmdlet `Publish-AzWebApp` to deploy using the ZipDeploy API
 * `Publish-AzWebApp` now uses ZipDeploy to publish Function Apps
 * Introduced secrets detection feature to safeguard sensitive data.
 
