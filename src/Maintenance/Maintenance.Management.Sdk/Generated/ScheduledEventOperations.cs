@@ -11,12 +11,12 @@ namespace Microsoft.Azure.Management.Maintenance
     using Models;
 
     /// <summary>
-    /// ConfigurationAssignmentsWithinSubscriptionOperations operations.
+    /// ScheduledEventOperations operations.
     /// </summary>
-    internal partial class ConfigurationAssignmentsWithinSubscriptionOperations : Microsoft.Rest.IServiceOperations<MaintenanceManagementClient>, IConfigurationAssignmentsWithinSubscriptionOperations
+    internal partial class ScheduledEventOperations : Microsoft.Rest.IServiceOperations<MaintenanceManagementClient>, IScheduledEventOperations
     {
         /// <summary>
-        /// Initializes a new instance of the ConfigurationAssignmentsWithinSubscriptionOperations class.
+        /// Initializes a new instance of the ScheduledEventOperations class.
         /// </summary>
         /// <param name='client'>
         /// Reference to the service client.
@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <exception cref="System.ArgumentNullException">
         /// Thrown when a required parameter is null
         /// </exception>
-        internal ConfigurationAssignmentsWithinSubscriptionOperations (MaintenanceManagementClient client)
+        internal ScheduledEventOperations (MaintenanceManagementClient client)
         {
             if (client == null) 
             {
@@ -39,8 +39,21 @@ namespace Microsoft.Azure.Management.Maintenance
         public MaintenanceManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Get configuration assignment within a subscription
+        /// Post Scheduled Event Acknowledgement
         /// </summary>
+        /// <param name='resourceGroupName'>
+        /// The name of the resource group. The name is case insensitive.
+        /// </param>
+        /// <param name='resourceType'>
+        /// Resource type
+        /// </param>
+        /// <param name='resourceName'>
+        /// Resource Name
+        /// </param>
+        /// <param name='scheduledEventId'>
+        /// Scheduled Event Id. This is a GUID-formatted string (e.g.
+        /// 00000000-0000-0000-0000-000000000000)
+        /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
         /// </param>
@@ -62,12 +75,42 @@ namespace Microsoft.Azure.Management.Maintenance
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<ConfigurationAssignment>>> ListWithHttpMessagesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public async System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ScheduledEventApproveResponse>> AcknowledgeWithHttpMessagesAsync(string resourceGroupName, string resourceType, string resourceName, string scheduledEventId, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
 
 
 
  
+
+            if (resourceGroupName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");
+            }
+            if (resourceGroupName != null)
+            {
+                if (resourceGroupName.Length > 90)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MaxLength, "resourceGroupName", 90);
+                }
+                if (resourceGroupName.Length < 1)
+                {
+                    throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.MinLength, "resourceGroupName", 1);
+                }
+            }
+            if (resourceType == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceType");
+            }
+
+            if (resourceName == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceName");
+            }
+
+            if (scheduledEventId == null)
+            {
+                throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "scheduledEventId");
+            }
 
             if (this.Client.ApiVersion == null)
             {
@@ -81,16 +124,24 @@ namespace Microsoft.Azure.Management.Maintenance
             {
                 _invocationId = Microsoft.Rest.ServiceClientTracing.NextInvocationId.ToString();
                 System.Collections.Generic.Dictionary<string, object> tracingParameters = new System.Collections.Generic.Dictionary<string, object>();
+                tracingParameters.Add("resourceGroupName", resourceGroupName);
+                tracingParameters.Add("resourceType", resourceType);
+                tracingParameters.Add("resourceName", resourceName);
+                tracingParameters.Add("scheduledEventId", scheduledEventId);
 
 
                 tracingParameters.Add("cancellationToken", cancellationToken);
-                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "List", tracingParameters);
+                Microsoft.Rest.ServiceClientTracing.Enter(_invocationId, this, "Acknowledge", tracingParameters);
             }
             // Construct URL
 
             var _baseUrl = this.Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Compute/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/scheduledevents/{scheduledEventId}/acknowledge").ToString();
             _url = _url.Replace("{subscriptionId}", System.Uri.EscapeDataString(Microsoft.Rest.Serialization.SafeJsonConvert.SerializeObject(this.Client.SubscriptionId, this.Client.SerializationSettings).Trim('"')));
+            _url = _url.Replace("{resourceGroupName}", System.Uri.EscapeDataString(resourceGroupName));
+            _url = _url.Replace("{resourceType}", System.Uri.EscapeDataString(resourceType));
+            _url = _url.Replace("{resourceName}", System.Uri.EscapeDataString(resourceName));
+            _url = _url.Replace("{scheduledEventId}", System.Uri.EscapeDataString(scheduledEventId));
 
             System.Collections.Generic.List<string> _queryParameters = new System.Collections.Generic.List<string>();
             if (this.Client.ApiVersion != null)
@@ -104,7 +155,7 @@ namespace Microsoft.Azure.Management.Maintenance
             // Create HTTP transport objects
             var _httpRequest = new System.Net.Http.HttpRequestMessage();
             System.Net.Http.HttpResponseMessage _httpResponse = null;
-            _httpRequest.Method = new System.Net.Http.HttpMethod("GET");
+            _httpRequest.Method = new System.Net.Http.HttpMethod("POST");
             _httpRequest.RequestUri = new System.Uri(_url);
             // Set Headers
             if (this.Client.GenerateClientRequestId != null && this.Client.GenerateClientRequestId.Value)
@@ -185,7 +236,7 @@ namespace Microsoft.Azure.Management.Maintenance
                 throw ex;
             }
             // Create Result
-            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<System.Collections.Generic.IEnumerable<ConfigurationAssignment>>();
+            var _result = new Microsoft.Rest.Azure.AzureOperationResponse<ScheduledEventApproveResponse>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             
@@ -199,7 +250,7 @@ namespace Microsoft.Azure.Management.Maintenance
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<Page<ConfigurationAssignment>>(_responseContent, this.Client.DeserializationSettings);
+                    _result.Body = Microsoft.Rest.Serialization.SafeJsonConvert.DeserializeObject<ScheduledEventApproveResponse>(_responseContent, this.Client.DeserializationSettings);
                 }
                 catch (Newtonsoft.Json.JsonException ex)
                 {

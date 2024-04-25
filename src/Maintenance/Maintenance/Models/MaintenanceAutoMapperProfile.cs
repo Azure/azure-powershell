@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
                 cfg.CreateMap<FROM.ConfigurationAssignment, TO.PSConfigurationAssignment>()
                     .ForMember(dest => dest.FilterResourceGroup, src => src.MapFrom(o => o.Filter.ResourceGroups))
                     .ForMember(dest => dest.FilterLocation, src => src.MapFrom(o => o.Filter.Locations))
-                    .ForMember(dest => dest.FilterOsType, src => src.MapFrom(o => o.Filter.OsTypes))
+                    .ForMember(dest => dest.FilterOsType, src => src.MapFrom(o => o.Filter.OSTypes))
                     .ForMember(dest => dest.FilterTag, src => src.MapFrom(o => o.Filter.TagSettings.Tags))
                     .ForMember(dest => dest.FilterOperator, src => src.MapFrom(o => o.Filter.TagSettings.FilterOperator))
                     .ForMember(dest => dest.FilterResourceType, src => src.MapFrom(o => o.Filter.ResourceTypes))
@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Maintenance.Models
                     .ForMember(src => src.SystemData, s => s.Ignore())
                     .ForPath(dest => dest.Filter.ResourceGroups, src => src.MapFrom(o => o.FilterResourceGroup))
                     .ForPath(dest => dest.Filter.Locations, src => src.MapFrom(o => o.FilterLocation))
-                    .ForPath(dest => dest.Filter.OsTypes, src => src.MapFrom(o => o.FilterOsType))
+                    .ForPath(dest => dest.Filter.OSTypes, src => src.MapFrom(o => o.FilterOsType))
                     .ForPath(dest => dest.Filter.TagSettings.Tags, src => src.MapFrom(o => o.FilterTag))
                     .ForPath(dest => dest.Filter.TagSettings.FilterOperator, src => src.MapFrom(o => o.FilterOperator))
                     .ForPath(dest => dest.Filter.ResourceTypes, src => src.MapFrom(o => o.FilterResourceType));

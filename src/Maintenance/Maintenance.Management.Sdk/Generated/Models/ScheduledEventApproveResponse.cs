@@ -8,28 +8,28 @@ namespace Microsoft.Azure.Management.Maintenance.Models
     using System.Linq;
 
     /// <summary>
-    /// An error response received from the Azure Maintenance service.
+    /// Response of scheduled event acknowledge
     /// </summary>
-    public partial class MaintenanceError
+    public partial class ScheduledEventApproveResponse
     {
         /// <summary>
-        /// Initializes a new instance of the MaintenanceError class.
+        /// Initializes a new instance of the ScheduledEventApproveResponse class.
         /// </summary>
-        public MaintenanceError()
+        public ScheduledEventApproveResponse()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the MaintenanceError class.
+        /// Initializes a new instance of the ScheduledEventApproveResponse class.
         /// </summary>
 
-        /// <param name="error">Details of the error
+        /// <param name="value">Successfully Approved
         /// </param>
-        public MaintenanceError(ErrorDetails error = default(ErrorDetails))
+        public ScheduledEventApproveResponse(string value = default(string))
 
         {
-            this.Error = error;
+            this.Value = value;
             CustomInit();
         }
 
@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Management.Maintenance.Models
 
 
         /// <summary>
-        /// Gets or sets details of the error
+        /// Gets or sets successfully Approved
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "error")]
-        public ErrorDetails Error {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "value")]
+        public string Value {get; set; }
     }
 }
