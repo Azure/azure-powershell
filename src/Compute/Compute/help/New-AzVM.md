@@ -28,8 +28,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
  [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DiskControllerType <String>]
  [-SharedGalleryImageId <String>] [-SecurityType <String>] [-EnableVtpm <Boolean>]
- [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-EnableSecureBoot <Boolean>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
@@ -37,8 +37,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
 New-AzVM [-ResourceGroupName] <String> [-Location] <String> [-EdgeZone <String>] [-VM] <PSVirtualMachine>
  [[-Zone] <String[]>] [-DisableBginfoExtension] [-Tag <Hashtable>] [-LicenseType <String>] [-AsJob]
  [-OSDiskDeleteOption <String>] [-DataDiskDeleteOption <String>] [-SshKeyName <String>] [-GenerateSshKey]
- [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DiskFileParameterSet
@@ -54,7 +54,8 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
  [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +77,7 @@ See [Quickstart: Create a Windows virtual machine in Azure with PowerShell](http
 
 ### Example 1: Create a virtual machine
 ```powershell
-New-AzVM -Name MyVm -Credential (Get-Credential) -SecurityType "Standard"
+New-AzVM -Name MyVm -Credential (Get-Credential)
 ```
 
 ```output
@@ -179,8 +180,7 @@ $NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroupNa
 
 $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
 
-$securityTypeStnd = "Standard"
-$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize -SecurityType $securityTypeStnd
+$VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
 $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
 $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2022-datacenter-azure-edition-core' -Version latest
@@ -201,7 +201,6 @@ $LocationName = "eastus";
 $ResourceGroupName = "MyResourceGroup";
 
 # VM Profile & Hardware
-$securityTypeStnd = "Standard";
 $VMName = 'v' + $ResourceGroupName;
 $domainNameLabel = "d1" + $ResourceGroupName;
 $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
@@ -212,7 +211,7 @@ $bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
 $userData = [Convert]::ToBase64String($bytes);
 
 # Create VM
-New-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Credential $Credential -DomainNameLabel $domainNameLabel -UserData $userData -SecurityType $securityTypeStnd;
+New-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -Credential $Credential -DomainNameLabel $domainNameLabel -UserData $userData;
 $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName -UserData;
 ```
 
@@ -223,13 +222,12 @@ The UserData value must always be Base64 encoded.
 $UserName = "User"
 $Password = ConvertTo-SecureString "############" -AsPlainText -Force
 $psCred = New-Object System.Management.Automation.PSCredential($UserName, $Password)
-$securityTypeStnd = "Standard";
 
 $Vnet = $(Get-AzVirtualNetwork -ResourceGroupName ResourceGroup2 -Name VnetName)
 $PIP = (Get-AzPublicIpAddress -ResourceGroupName ResourceGroup2 -Name PublicIPName)
 
 $NIC = New-AzNetworkInterface -Name NICname -ResourceGroupName ResourceGroup2 -Location SouthCentralUS -SubnetId $Vnet.Subnets[1].Id -PublicIpAddressId $PIP.Id
-$VirtualMachine = New-AzVMConfig -VMName VirtualMachineName -VMSize Standard_D4s_v3 -SecurityType $securityTypeStnd
+$VirtualMachine = New-AzVMConfig -VMName VirtualMachineName -VMSize Standard_D4s_v3
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName computerName -Credential $psCred -ProvisionVMAgent -EnableAutoUpdate
 $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
 $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2022-datacenter-azure-edition-core' -Version latest
@@ -243,7 +241,6 @@ This example deploys a Windows VM from the marketplace in one resource group wit
 $resourceGroupName= "ResourceGroupName";
 $loc = 'eastus';
 New-AzResourceGroup -Name $resourceGroupName -Location $loc -Force;
-$securityTypeStnd = "Standard";
 
 $domainNameLabel = "d1" + $resourceGroupName;
 $vmname = "vm" + $resourceGroupName;
@@ -254,7 +251,7 @@ $user = <USERNAME>;
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 $vmssName = "vmss" + $resourceGroupName;
 
-$vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $vmssFaultDomain -SecurityType $securityTypeStnd;
+$vmssConfig = New-AzVmssConfig -Location $loc -PlatformFaultDomainCount $vmssFaultDomain;
 $vmss = New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -VirtualMachineScaleSet $vmssConfig;
 
 $vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -PlatformFaultDomain $platformFaultDomainVMDefaultSet -VmssId $vmss.Id;
@@ -271,14 +268,13 @@ $vmname = "<Virtual Machine Name>"
 $securePassword = "<Password>" | ConvertTo-SecureString -AsPlainText -Force
 $user = "<Username>"
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
-$securityTypeStnd = "Standard"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $loc -Force
 
 # Create a VM using an Image alias.
 $vmname = 'v' + $resourceGroupName
 $domainNameLabel = "d" + $resourceGroupName
-$vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -Image OpenSuseLeap154Gen2 -DomainNameLabel $domainNameLabel -SecurityType $securityTypeStnd
+$vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -Image OpenSuseLeap154Gen2 -DomainNameLabel $domainNameLabel
 
 $vm = Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmname
 ```
@@ -314,7 +310,8 @@ $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
 #$vm1.SecurityProfile.UefiSettings.VTpmEnabled $true;
 #$vm1.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 ```
-This example Creates a new VM with the TrustedLaunch Security Type and sets flags EnableSecureBoot and EnableVtpm as True by default. A Trusted Launch VM requires a Gen2 image. Please check [the Trusted Launch feature page](aka.ms/trustedlaunch) for more information.
+
+This example Creates a new VM with the TrustedLaunch Security Type and sets flags EnableSecureBoot and EnableVtpm as True by default. A Trusted Launch VM requires a Gen2 image. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
 ### Example 9: Create a VM with Trusted Launch turned on by defualt using New-AzVMConfig.
 ```powershell
@@ -354,9 +351,10 @@ New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
 $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
 # Verify $vm.SecurityProfile.SecurityType is TrustedLaunch
 # Verify $vm.SecurityProfile.UefiSettings.SecureBootEnabled is true.
-# Verify $vm.SecurityProfile.UefiSettings.VTpmEnabled is true. 
+# Verify $vm.SecurityProfile.UefiSettings.VTpmEnabled is true.
 ```
-This example shows how to create a VM with a valid Gen2 image, allowing the VM to default to TrustedLaunch which requires Gen2 images. Please check [the Trusted Launch feature page](aka.ms/trustedlaunch) for more information.
+
+This example shows how to create a VM with a valid Gen2 image, allowing the VM to default to TrustedLaunch which requires Gen2 images. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
 
 ### Example 10: Creates a VM with TrustedLaunch turned on by default.
 ```powershell
@@ -374,8 +372,10 @@ $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
 # Verify $vm.SecurityProfile.SecurityType is TrustedLaunch.
 # Verify the $vm.StorageProfile.ImageReference.Sku has defaulted to "2022-datacenter-azure-edition", a Gen2 image.
 ```
-This example shows how the simple cmdlet call with minimal parameters will result in a TrustedLaunch enabled VM with a Gen2 image. Please check [the Trusted Launch feature page](aka.ms/trustedlaunch) for more information.
 
+This example shows how the simple cmdlet call with minimal parameters will result in a TrustedLaunch enabled VM with a Gen2 image. Please check [the Trusted Launch feature page](https://aka.ms/trustedlaunch) for more information.
+
+=======
 
 ## PARAMETERS
 
@@ -1365,5 +1365,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Set-AzVMSourceImage](./Set-AzVMSourceImage.md)
 
 [Set-AzVMOSDisk](./Set-AzVMOSDisk.md)
-
-

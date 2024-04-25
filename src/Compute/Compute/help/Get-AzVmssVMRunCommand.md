@@ -14,7 +14,8 @@ The operation to get the VMSS VM run command.
 
 ```
 Get-AzVmssVMRunCommand -ResourceGroupName <String> -VMScaleSetName <String> -InstanceId <String>
- [-RunCommandName <String>] [-Expand <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-RunCommandName <String>] [-Expand <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -20,7 +20,9 @@ Describe 'Set-AzServiceBusGeoDRConfigurationBreakPair' {
 
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
-            Start-TestSleep 10
+            if ($TestMode -ne 'playback') {
+                Start-TestSleep 10
+            }
         }
 
         $drConfig.Name | Should -Be $env.alias
@@ -32,7 +34,9 @@ Describe 'Set-AzServiceBusGeoDRConfigurationBreakPair' {
 
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
-            Start-TestSleep 10
+            if ($TestMode -ne 'playback') {
+                Start-TestSleep 10
+            }
         }
     }
 
@@ -43,7 +47,9 @@ Describe 'Set-AzServiceBusGeoDRConfigurationBreakPair' {
 
         do{
             $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
-            Start-TestSleep 10
+            if ($TestMode -ne 'playback') {
+                Start-TestSleep 10
+            }
         } while($drConfig.ProvisioningState -ne "Succeeded")
 
         $drConfig.Name | Should -Be $env.alias
@@ -55,7 +61,9 @@ Describe 'Set-AzServiceBusGeoDRConfigurationBreakPair' {
 
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
-            Start-TestSleep 10
+            if ($TestMode -ne 'playback') {
+                Start-TestSleep 10
+            }
         }
     }
 }

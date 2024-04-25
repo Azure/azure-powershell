@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Functions-help.xml
 Module Name: Az.Functions
 online version: https://learn.microsoft.com/powershell/module/az.functions/get-azfunctionappplan
 schema: 2.0.0
@@ -14,24 +14,25 @@ Get function apps plans in a subscription.
 
 ### GetAll (Default)
 ```
-Get-AzFunctionAppPlan [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzFunctionAppPlan [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### ByLocation
 ```
-Get-AzFunctionAppPlan -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzFunctionAppPlan [-SubscriptionId <String[]>] -Location <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzFunctionAppPlan -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzFunctionAppPlan [-SubscriptionId <String[]>] -ResourceGroupName <String> -Name <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### ByResourceGroupName
 ```
-Get-AzFunctionAppPlan [-ResourceGroupName <String>] [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzFunctionAppPlan [-SubscriptionId <String[]>] [-ResourceGroupName <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -152,10 +153,22 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName, ByResourceGroupName
+Parameter Sets: ByName
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ByResourceGroupName
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -189,4 +202,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

@@ -18,8 +18,8 @@ Add-AzVmssRunCommand [-ResourceGroupName] <String> [-VMScaleSetName] <String> [-
  [-CommandId <String>] -Name <String> [-ScriptPath <String>] [-ScriptUri <String>] [-Script <String>]
  [-TimeOutInSeconds <String>] [-ErrorBlobUri <String>] [-OutputBlobUri <String>] [-RunAsUser <String>]
  [-RunAsPassword <SecureString>] [-Parameter <Hashtable>] [-ProtectedParameter <Hashtable>]
- [-AsyncExecution <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AsyncExecution <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectParameter

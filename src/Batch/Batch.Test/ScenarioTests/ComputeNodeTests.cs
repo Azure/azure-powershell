@@ -12,7 +12,9 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Batch;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using System;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
@@ -33,12 +35,28 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         {
             BatchAccountContext context = null;
             string removeNodePoolId = "removenodepool";
+            UpgradePolicy upgradePolicy = new UpgradePolicy(Azure.Batch.Common.UpgradeMode.Automatic);
+            upgradePolicy.AutomaticOSUpgradePolicy = new AutomaticOSUpgradePolicy();
+            upgradePolicy.AutomaticOSUpgradePolicy.DisableAutomaticRollback = true;
+            upgradePolicy.AutomaticOSUpgradePolicy.EnableAutomaticOSUpgrade = true;
+            upgradePolicy.AutomaticOSUpgradePolicy.UseRollingUpgradePolicy = true;
+            upgradePolicy.AutomaticOSUpgradePolicy.OsRollingUpgradeDeferral = true;
+
+            upgradePolicy.RollingUpgradePolicy = new RollingUpgradePolicy();
+            upgradePolicy.RollingUpgradePolicy.EnableCrossZoneUpgrade = true;
+            upgradePolicy.RollingUpgradePolicy.MaxBatchInstancePercent = 20;
+            upgradePolicy.RollingUpgradePolicy.MaxUnhealthyUpgradedInstancePercent = 20;
+            upgradePolicy.RollingUpgradePolicy.MaxUnhealthyInstancePercent = 20;
+            upgradePolicy.RollingUpgradePolicy.PauseTimeBetweenBatches = TimeSpan.FromSeconds(5);
+            upgradePolicy.RollingUpgradePolicy.PrioritizeUnhealthyInstances = false;
+            upgradePolicy.RollingUpgradePolicy.RollbackFailedInstancesOnPolicyBreach = false;
+
             TestRunner.RunTestScript(
                 null,
                 mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateTestPool(this, context, removeNodePoolId, targetDedicated: 2, targetLowPriority: 0);
+                    ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, removeNodePoolId, targetDedicated: 2, targetLowPriority: 0, upgradePolicy: upgradePolicy);
                     ScenarioTestHelpers.WaitForSteadyPoolAllocation(this, context, removeNodePoolId);
                 },
                 () =>
@@ -53,10 +71,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRebootAndReimageComputeNode()
         {
+            BatchAccountContext context = null;
+            string poolId = "rebootandreimagenodepool";
+
             TestRunner.RunTestScript(
                 mockContext =>
                 {
-                    _ = new ScenarioTestContext();
+                    context = new ScenarioTestContext();
+                    ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, poolId, targetDedicated: 2, targetLowPriority: 0);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(this, context, poolId);
                 },
                 $"Test-RebootAndReimageComputeNode '{poolId}'"
             );
@@ -66,10 +89,15 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDisableAndEnableComputeNodeScheduling()
         {
+            BatchAccountContext context = null;
+            string poolId = "disableandenablenodepool";
+
             TestRunner.RunTestScript(
                 mockContext =>
                 {
-                    _ = new ScenarioTestContext();
+                    context = new ScenarioTestContext();
+                    ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, poolId, targetDedicated: 2, targetLowPriority: 0);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(this, context, poolId);
                 },
                 $"Test-DisableAndEnableComputeNodeScheduling '{poolId}'"
             );
@@ -79,12 +107,17 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetComputeNodeRemoteLoginSettings()
         {
+            BatchAccountContext context = null;
+            string poolId = "noderemoteloginpool";
+
             TestRunner.RunTestScript(
                 mockContext =>
                 {
-                    _ = new ScenarioTestContext();
+                    context = new ScenarioTestContext();
+                    ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, poolId, targetDedicated: 2, targetLowPriority: 0);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(this, context, poolId);
                 },
-                $"Test-GetRemoteLoginSettings '{iaasPoolId}'"
+                $"Test-GetRemoteLoginSettings '{poolId}'"
             );
         }
     }

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Marketplace-help.xml
 Module Name: Az.Marketplace
 online version: https://learn.microsoft.com/powershell/module/az.marketplace/copy-azmarketplaceprivatestorecollectionoffer
 schema: 2.0.0
@@ -16,26 +16,57 @@ transferring offers (copy or move) from source collection to target collection(s
 ```
 Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateStoreId <String>
  [-OfferIdList <String[]>] [-Operation <String>] [-TargetCollection <String[]>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TransferViaJsonString
+```
+Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateStoreId <String>
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### TransferViaJsonFilePath
+```
+Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateStoreId <String>
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### TransferViaIdentityPrivateStoreExpanded
+```
+Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String>
+ -PrivateStoreInputObject <IMarketplaceIdentity> [-OfferIdList <String[]>] [-Operation <String>]
+ [-TargetCollection <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
+### TransferViaIdentityPrivateStore
+```
+Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String>
+ -PrivateStoreInputObject <IMarketplaceIdentity> -Payload <ITransferOffersProperties>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Transfer
 ```
 Copy-AzMarketplacePrivateStoreCollectionOffer -CollectionId <String> -PrivateStoreId <String>
- -Payload <ITransferOffersProperties> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### TransferViaIdentity
-```
-Copy-AzMarketplacePrivateStoreCollectionOffer -InputObject <IMarketplaceIdentity>
- -Payload <ITransferOffersProperties> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -Payload <ITransferOffersProperties> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### TransferViaIdentityExpanded
 ```
 Copy-AzMarketplacePrivateStoreCollectionOffer -InputObject <IMarketplaceIdentity> [-OfferIdList <String[]>]
- [-Operation <String>] [-TargetCollection <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Operation <String>] [-TargetCollection <String[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### TransferViaIdentity
+```
+Copy-AzMarketplacePrivateStoreCollectionOffer -InputObject <IMarketplaceIdentity>
+ -Payload <ITransferOffersProperties> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -64,7 +95,7 @@ The collection ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Transfer, TransferExpanded
+Parameter Sets: TransferExpanded, TransferViaJsonString, TransferViaJsonFilePath, TransferViaIdentityPrivateStoreExpanded, TransferViaIdentityPrivateStore, Transfer
 Aliases:
 
 Required: True
@@ -75,7 +106,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -91,11 +123,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
-Parameter Sets: TransferViaIdentity, TransferViaIdentityExpanded
+Parameter Sets: TransferViaIdentityExpanded, TransferViaIdentity
 Aliases:
 
 Required: True
@@ -105,12 +136,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -JsonFilePath
+Path of Json file supplied to the Transfer operation
+
+```yaml
+Type: System.String
+Parameter Sets: TransferViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the Transfer operation
+
+```yaml
+Type: System.String
+Parameter Sets: TransferViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -OfferIdList
 Offers ids list to transfer from source collection to target collection(s)
 
 ```yaml
 Type: System.String[]
-Parameter Sets: TransferExpanded, TransferViaIdentityExpanded
+Parameter Sets: TransferExpanded, TransferViaIdentityPrivateStoreExpanded, TransferViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -125,7 +186,7 @@ Operation to perform (For example: Copy or Move)
 
 ```yaml
 Type: System.String
-Parameter Sets: TransferExpanded, TransferViaIdentityExpanded
+Parameter Sets: TransferExpanded, TransferViaIdentityPrivateStoreExpanded, TransferViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -137,11 +198,10 @@ Accept wildcard characters: False
 
 ### -Payload
 Transfer offers properties
-To construct, see NOTES section for PAYLOAD properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersProperties
-Parameter Sets: Transfer, TransferViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ITransferOffersProperties
+Parameter Sets: TransferViaIdentityPrivateStore, Transfer, TransferViaIdentity
 Aliases:
 
 Required: True
@@ -156,7 +216,7 @@ The store ID - must use the tenant ID
 
 ```yaml
 Type: System.String
-Parameter Sets: Transfer, TransferExpanded
+Parameter Sets: TransferExpanded, TransferViaJsonString, TransferViaJsonFilePath, Transfer
 Aliases:
 
 Required: True
@@ -166,12 +226,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrivateStoreInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+Parameter Sets: TransferViaIdentityPrivateStoreExpanded, TransferViaIdentityPrivateStore
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -TargetCollection
 Target collections ids
 
 ```yaml
 Type: System.String[]
-Parameter Sets: TransferExpanded, TransferViaIdentityExpanded
+Parameter Sets: TransferExpanded, TransferViaIdentityPrivateStoreExpanded, TransferViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -217,35 +292,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersProperties
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IMarketplaceIdentity
+
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ITransferOffersProperties
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.Api20210601.ITransferOffersResponse
+### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ITransferOffersResponse
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<IMarketplaceIdentity>`: Identity Parameter
-  - `[AdminRequestApprovalId <String>]`: The admin request approval ID to get create or update
-  - `[CollectionId <String>]`: The collection ID
-  - `[Id <String>]`: Resource identity path
-  - `[OfferId <String>]`: The offer ID to update or delete
-  - `[PrivateStoreId <String>]`: The store ID - must use the tenant ID
-  - `[RequestApprovalId <String>]`: The request approval ID to get create or update
-
-PAYLOAD `<ITransferOffersProperties>`: Transfer offers properties
-  - `[OfferIdsList <String[]>]`: Offers ids list to transfer from source collection to target collection(s)
-  - `[Operation <String>]`: Operation to perform (For example: Copy or Move)
-  - `[TargetCollection <String[]>]`: Target collections ids
-
 ## RELATED LINKS
-

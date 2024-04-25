@@ -8,68 +8,93 @@ schema: 2.0.0
 # Update-AzConnectedVMwareVCenter
 
 ## SYNOPSIS
-API to update certain properties of the vCenter resource.
+API to Update certain properties of the vCenter resource.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzConnectedVMwareVCenter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzConnectedVMwareVCenter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzConnectedVMwareVCenter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzConnectedVMwareVCenter -InputObject <IConnectedVMwareIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-API to update certain properties of the vCenter resource.
+API to Update certain properties of the vCenter resource.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Update VCenter
+```powershell
 Update-AzConnectedVMwareVCenter -Name "test-vc" -ResourceGroupName "test-rg" -SubscriptionId "204898ee-cd13-4332-b9d4-55ca5c25496d" -Tag @{"vc"="test"}
 ```
 
-## PARAMETERS
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
+```output
+ConnectionStatus             : Connected
+CredentialsPassword          :
+CredentialsUsername          : abc
+CustomResourceName           : e6048b2a-ba86-4334-adff-ba3d617d12ef
+ExtendedLocationName         : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourcegroups/test-rg/providers/microsoft.extendedlocation/customlocations/test-cl
+ExtendedLocationType         : CustomLocation
+Fqdn                         : idclab-vcen67.fareast.corp.microsoft.com
+Id                           : /subscriptions/204898ee-cd13-4332-b9d4-55ca5c25496d/resourceGroups/test-rg/providers/Microsoft.ConnectedVMwarevSphere/vcenters/test-vc
+InstanceUuid                 : db73f8f2-624c-4a0f-905b-8c6f34442cbc
+Kind                         : VMware
+Location                     : eastus
+Name                         : test-vc
+Port                         : 443
+ProvisioningState            : Succeeded
+ResourceGroupName            : test-rg
+Statuses                     : {{
+                                 "type": "Connected",
+                                 "status": "True",
+                                 "lastUpdatedAt": "2023-09-18T08:04:35.0000000Z"
+                               }, {
+                                 "type": "Ready",
+                                 "status": "True",
+                                 "lastUpdatedAt": "2023-08-01T05:26:07.8798425Z"
+                               }, {
+                                 "type": "Idle",
+                                 "status": "True",
+                                 "lastUpdatedAt": "2023-08-01T05:26:07.8798425Z"
+                               }}
+SystemDataCreatedAt          : 2/16/2023 3:53:39 PM
+SystemDataCreatedBy          : xyz
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 10/6/2023 2:30:18 PM
+SystemDataLastModifiedBy     : xyz
+SystemDataLastModifiedByType : User
+Tag                          : {
+                                 "vc": "test"
+                               }
+Type                         : microsoft.connectedvmwarevsphere/vcenters
+Uuid                         : e6048b2a-ba86-4334-adff-ba3d617d12ef
+Version                      : 6.7.0
 ```
+
+This command update tag of a VCenter named `test-vc` in a resource group named `test-rg`.
+
+## PARAMETERS
 
 ### -DefaultProfile
 The DefaultProfile parameter is not functional.
@@ -87,39 +112,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
@@ -178,51 +172,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The Resource Group Name.
 
@@ -248,7 +197,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -305,30 +254,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IVCenter
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-INPUTOBJECT \<IConnectedVMwareIdentity\>: Identity Parameter
-  \[ClusterName \<String\>\]: Name of the cluster.
-  \[DatastoreName \<String\>\]: Name of the datastore.
-  \[HostName \<String\>\]: Name of the host.
-  \[Id \<String\>\]: Resource identity path
-  \[InventoryItemName \<String\>\]: Name of the inventoryItem.
-  \[ResourceGroupName \<String\>\]: The Resource Group Name.
-  \[ResourcePoolName \<String\>\]: Name of the resourcePool.
-  \[ResourceUri \<String\>\]: The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-  \[SubscriptionId \<String\>\]: The Subscription ID.
-  \[VcenterName \<String\>\]: Name of the vCenter.
-  \[VirtualMachineTemplateName \<String\>\]: Name of the virtual machine template resource.
-  \[VirtualNetworkName \<String\>\]: Name of the virtual network resource.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.connectedvmware/update-azconnectedvmwarevcenter](https://learn.microsoft.com/powershell/module/az.connectedvmware/update-azconnectedvmwarevcenter)
-

@@ -16,6 +16,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
 {
     internal static class Constants
     {
+
+        public const string DeprecateByAzVersion12 = "12.0.0";
+        public const string DeprecateByVersion2 = "2.0.0";
+
         public const string ResourceGroupNameHelpMessage = "Name of resource group.";
         public const string ResourceIdHelpMessage = "ResourceId of the resource.";
 

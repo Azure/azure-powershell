@@ -14,7 +14,8 @@ Create an in-memory object for LogSettings.
 
 ```
 New-AzDiagnosticSettingLogSettingsObject -Enabled <Boolean> [-Category <String>] [-CategoryGroup <String>]
- [-RetentionPolicyDay <Int32>] [-RetentionPolicyEnabled <Boolean>] [<CommonParameters>]
+ [-RetentionPolicyDay <Int32>] [-RetentionPolicyEnabled <Boolean>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

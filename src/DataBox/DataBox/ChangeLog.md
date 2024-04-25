@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 0.3.0
 * Generated powershell cmdlets from latest swagger

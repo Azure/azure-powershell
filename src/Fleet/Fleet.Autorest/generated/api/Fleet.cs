@@ -2395,7 +2395,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a FleetUpdateStrategy</summary>
+        /// <summary>Update a FleetUpdateStrategy</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="fleetName">The name of the Fleet resource.</param>
@@ -2459,7 +2459,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a FleetUpdateStrategy</summary>
+        /// <summary>Update a FleetUpdateStrategy</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="ifMatch">The request should only proceed if an entity matches this string.</param>
         /// <param name="ifNoneMatch">The request should only proceed if no entity matches this string.</param>
@@ -2533,7 +2533,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a FleetUpdateStrategy</summary>
+        /// <summary>Update a FleetUpdateStrategy</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="ifMatch">The request should only proceed if an entity matches this string.</param>
         /// <param name="ifNoneMatch">The request should only proceed if no entity matches this string.</param>
@@ -2605,7 +2605,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a FleetUpdateStrategy</summary>
+        /// <summary>Update a FleetUpdateStrategy</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="fleetName">The name of the Fleet resource.</param>
@@ -2668,7 +2668,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a FleetUpdateStrategy</summary>
+        /// <summary>Update a FleetUpdateStrategy</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="fleetName">The name of the Fleet resource.</param>
@@ -2729,7 +2729,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a FleetUpdateStrategy</summary>
+        /// <summary>Update a FleetUpdateStrategy</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="fleetName">The name of the Fleet resource.</param>
@@ -4091,7 +4091,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a Fleet.</summary>
+        /// <summary>Update a Fleet.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="fleetName">The name of the Fleet resource.</param>
@@ -4152,7 +4152,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a Fleet.</summary>
+        /// <summary>Update a Fleet.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="ifMatch">The request should only proceed if an entity matches this string.</param>
         /// <param name="ifNoneMatch">The request should only proceed if no entity matches this string.</param>
@@ -4223,7 +4223,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a Fleet.</summary>
+        /// <summary>Update a Fleet.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="ifMatch">The request should only proceed if an entity matches this string.</param>
         /// <param name="ifNoneMatch">The request should only proceed if no entity matches this string.</param>
@@ -4292,7 +4292,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a Fleet.</summary>
+        /// <summary>Update a Fleet.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="fleetName">The name of the Fleet resource.</param>
@@ -4352,7 +4352,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a Fleet.</summary>
+        /// <summary>Update a Fleet.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="fleetName">The name of the Fleet resource.</param>
@@ -4410,7 +4410,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a Fleet.</summary>
+        /// <summary>Update a Fleet.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="fleetName">The name of the Fleet resource.</param>
@@ -7290,7 +7290,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a UpdateRun</summary>
+        /// <summary>Update a UpdateRun</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="fleetName">The name of the Fleet resource.</param>
@@ -7354,7 +7354,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a UpdateRun</summary>
+        /// <summary>Update a UpdateRun</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="ifMatch">The request should only proceed if an entity matches this string.</param>
         /// <param name="ifNoneMatch">The request should only proceed if no entity matches this string.</param>
@@ -7428,7 +7428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a UpdateRun</summary>
+        /// <summary>Update a UpdateRun</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="ifMatch">The request should only proceed if an entity matches this string.</param>
         /// <param name="ifNoneMatch">The request should only proceed if no entity matches this string.</param>
@@ -7500,7 +7500,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a UpdateRun</summary>
+        /// <summary>Update a UpdateRun</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="fleetName">The name of the Fleet resource.</param>
@@ -7563,7 +7563,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a UpdateRun</summary>
+        /// <summary>Update a UpdateRun</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="fleetName">The name of the Fleet resource.</param>
@@ -7624,7 +7624,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet
             }
         }
 
-        /// <summary>Create a UpdateRun</summary>
+        /// <summary>Update a UpdateRun</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="fleetName">The name of the Fleet resource.</param>

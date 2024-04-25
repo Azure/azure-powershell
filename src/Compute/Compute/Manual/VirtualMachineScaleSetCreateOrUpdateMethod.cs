@@ -34,6 +34,7 @@ using Microsoft.Azure.Management.Compute;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
+    [GenericBreakingChangeWithVersionAttribute("Starting in May 2024 the \"New-AzVmss\" cmdlet will deploy with the image 'Windows Server 2022 Azure Edition' by default. This will make migrating to Trusted Launch easier in the future. To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch", "12.0.0", "8.0.0")]
     public partial class NewAzureRmVmss : ComputeAutomationBaseCmdlet
     {
         private const string flexibleOrchestrationMode = "Flexible", uniformOrchestrationMode = "Uniform";
@@ -51,7 +52,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "Ubuntu2204", 
             "FlatcarLinuxFreeGen2", 
             "Win2022Datacenter", 
-            "Win2022AzureEditionCore", 
+            "Win2022AzureEditionCore",
+            "Win2022AzureEdition",
             "Win2019Datacenter", 
             "Win2016Datacenter", 
             "Win2012R2Datacenter", 
@@ -462,7 +464,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     sharedImageGalleryId: _cmdlet.IsParameterBound(c => c.SharedGalleryImageId) ? _cmdlet.SharedGalleryImageId : null,
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
-                    enableSecureBoot: _cmdlet.EnableSecureBoot
+                    enableSecureBoot: _cmdlet.EnableSecureBoot,
+                    enableAutomaticOSUpgradePolicy:  _cmdlet.EnableAutomaticOSUpgrade == true ? true : (bool?)null
                     );
             }
 
@@ -587,7 +590,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     capacityReservationId: _cmdlet.IsParameterBound(c => c.CapacityReservationGroupId) ? _cmdlet.CapacityReservationGroupId : null,
                     securityType: _cmdlet.SecurityType,
                     enableVtpm: _cmdlet.EnableVtpm,
-                    enableSecureBoot: _cmdlet.EnableSecureBoot
+                    enableSecureBoot: _cmdlet.EnableSecureBoot,
+                    enableAutomaticOSUpgradePolicy: _cmdlet.EnableAutomaticOSUpgrade == true ? true : (bool?)null
                     );
             }
         }

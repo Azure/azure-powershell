@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Management.RedisCache.Models
         /// </param>
 
         /// <param name="serverRole">Role of the linked server.
-        /// Possible values include: 'Primary', 'Secondary'</param>
+        /// Possible values include: &#39;Primary&#39;, &#39;Secondary&#39;</param>
 
         /// <param name="geoReplicatedPrimaryHostName">The unchanging DNS name which will always point to current geo-primary
         /// cache among the linked redis caches for seamless Geo Failover experience.

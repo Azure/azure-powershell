@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Kusto service.
 
 ---
-## Status
-[![Az.Kusto](https://img.shields.io/powershellgallery/v/Az.Kusto.svg?style=flat-square&label=Az.Kusto "Az.Kusto")](https://www.powershellgallery.com/packages/Az.Kusto/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -50,11 +47,11 @@ In this directory, run AutoRest:
 > Values
 ``` yaml
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 # lock the commit
 input-file:
   - $(repo)/specification/azure-kusto/resource-manager/Microsoft.Kusto/stable/2023-08-15/kusto.json
-branch: 4c38cb9966cd6afbb03c7e9b14997720a728baee
+commit: 4c38cb9966cd6afbb03c7e9b14997720a728baee
 
 ```
 
@@ -74,6 +71,10 @@ output-folder: .
 > Directives
 ``` yaml
 identity-correction-for-post: true
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   # Fix the error in swagger, RP actually returns 200 when deletion succeeds
   - from: swagger-document

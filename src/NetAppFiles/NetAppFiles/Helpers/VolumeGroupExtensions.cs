@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Helpers
             {                
                 ApplicationIdentifier = volumeGroupMetaData.ApplicationIdentifier,
                 ApplicationType = volumeGroupMetaData.ApplicationType,
-                DeploymentSpecId = volumeGroupMetaData.DeploymentSpecId,
+                //DeploymentSpecId = volumeGroupMetaData.DeploymentSpecId,
                 GlobalPlacementRules = volumeGroupMetaData.GlobalPlacementRules,
                 GroupDescription = volumeGroupMetaData.GroupDescription,
                 VolumesCount = volumeGroupMetaData.VolumesCount

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SecurityInsights-help.xml
 Module Name: Az.SecurityInsights
 online version: https://learn.microsoft.com/powershell/module/az.securityinsights/get-azsentinelincidententity
 schema: 2.0.0
@@ -14,7 +14,8 @@ Gets all incident related entities.
 
 ```
 Get-AzSentinelIncidentEntity -IncidentId <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +25,7 @@ Gets all incident related entities.
 
 ### Example 1: List all Entities for a given Incident
 ```powershell
- Get-AzSentinelIncidentEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "0ddb580f-efd0-4076-bb77-77e9aef8a187"
+Get-AzSentinelIncidentEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "0ddb580f-efd0-4076-bb77-77e9aef8a187"
 ```
 
 ```output
@@ -156,7 +157,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

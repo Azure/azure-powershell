@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Alb service.
 
 ---
-## Status
-[![Az.Alb](https://img.shields.io/powershellgallery/v/Az.Alb.svg?style=flat-square&label=Az.Alb "Az.Alb")](https://www.powershellgallery.com/packages/Az.Alb/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

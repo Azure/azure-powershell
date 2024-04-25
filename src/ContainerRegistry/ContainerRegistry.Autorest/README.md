@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the ContainerRegistry service.
 
 ---
-## Status
-[![Az.ContainerRegistry](https://img.shields.io/powershellgallery/v/Az.ContainerRegistry.svg?style=flat-square&label=Az.ContainerRegistry "Az.ContainerRegistry")](https://www.powershellgallery.com/packages/Az.ContainerRegistry/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -47,7 +44,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 66174681c09b101de03fd35399080cfbccc93e8f
+commit: 66174681c09b101de03fd35399080cfbccc93e8f
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
   - $(repo)/specification/containerregistry/resource-manager/readme.md
@@ -60,6 +57,10 @@ subject-prefix: $(service-name)
 inlining-threshold: 100
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
 # Remove cmdlet, Private link related resource should be ignored. 
@@ -321,4 +322,5 @@ directive:
 - where:
     subject: (.*)AgentPool(.*)|(.*)Pipeline|(.*)ScopeMap|(.*)Token|(.*)WebhookCallbackConfig
   set:
-    preview-message: This is a preview version of ContainerRegistry. Let us know if you run into any issues.
+    preview-announcement:
+      preview-message: This is a preview version of ContainerRegistry. Let us know if you run into any issues.

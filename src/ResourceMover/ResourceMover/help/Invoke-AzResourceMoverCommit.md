@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ResourceMover-help.xml
 Module Name: Az.ResourceMover
 online version: https://learn.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemovercommit
 schema: 2.0.0
@@ -17,9 +17,10 @@ To aid the user to prerequisite the operation the client can call operation with
 ## SYNTAX
 
 ```
-Invoke-AzResourceMoverCommit -MoveCollectionName <String> -ResourceGroupName <String> -MoveResource <String[]>
- [-SubscriptionId <String>] [-MoveResourceInputType <MoveResourceInputType>] [-ValidateOnly]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzResourceMoverCommit -MoveCollectionName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -MoveResource <String[]> [-MoveResourceInputType <MoveResourceInputType>]
+ [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +49,6 @@ Name           : c194298b-b2eb-4aab-80b4-129d1473b75c
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/10/2021 12:38:25 PM
 Status         : Succeeded
-
 ```
 
 Validate the dependencies before commit of the resources.
@@ -71,8 +71,6 @@ Name           : 80c04850-7f3f-4e9c-aa68-b868978b59f3
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/10/2021 12:41:05 PM
 Status         : Succeeded
-
-
 ```
 
 Commit the set of resources in 'RegionToRegion' type Move Collection using "MoveResource Name" as input.
@@ -93,7 +91,6 @@ Name           : 804a7a40-dd8a-4c55-aba1-4a68978b59f9
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 9/5/2023 12:02:33 PM
 Status         : Succeeded
-
 ```
 
 Commit the set of resources in 'RegionToZone' type Move Collection using "MoveResource Name" as input.
@@ -115,7 +112,6 @@ Name           : d36ca519-8ced-48c9-a968-cb5e9c4db731
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/10/2021 12:42:41 PM
 Status         : Succeeded
-
 ```
 
 Commit the set of resources in 'RegionToRegion' type Move Collection using "SourceARMID" as input.
@@ -136,7 +132,6 @@ Name           : 48c9f452-10c6-a519-888b-d46cb5e9c4db
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 9/5/2023 12:04:28 PM
 Status         : Succeeded
-
 ```
 
 Commit the set of resources in 'RegionToZone' type Move Collection using "SourceARMID" as input.
@@ -321,7 +316,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

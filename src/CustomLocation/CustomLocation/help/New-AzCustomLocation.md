@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCustomLocation
 
 ## SYNOPSIS
-Creates or updates a Custom Location in the specified Subscription and Resource Group
+Create a Custom Location in the specified Subscription and Resource Group
 
 ## SYNTAX
 
@@ -17,39 +17,43 @@ Creates or updates a Custom Location in the specified Subscription and Resource 
 New-AzCustomLocation -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  -ClusterExtensionId <String[]> -HostResourceId <String> -Namespace <String> [-AuthenticationType <String>]
  [-AuthenticationValue <String>] [-DisplayName <String>] [-IdentityType <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzCustomLocation -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzCustomLocation -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates or updates a Custom Location in the specified Subscription and Resource Group
+Create a Custom Location in the specified Subscription and Resource Group
 
 ## EXAMPLES
 
-### Example 1: Creates or updates a Custom Location in the specified Subscription and Resource Group
+### Example 1: Creates or updates a Custom Location in the specified Subscription and Resource Group.
 ```powershell
-New-AzCustomLocation -ResourceGroupName azps_test_group -Name azps_test_cluster -Location eastus -ClusterExtensionId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster/providers/Microsoft.KubernetesConfiguration/extensions/azps_test_extension" -HostResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/azps_test_group/providers/Microsoft.Kubernetes/connectedClusters/azps_test_cluster" -Namespace arc
+$HostResourceId = (Get-AzConnectedKubernetes -ClusterName azps-connect -ResourceGroupName azps_test_cluster).Id
+$ClusterExtensionId = (Get-AzKubernetesExtension -ClusterName azps-connect -ClusterType ConnectedClusters -ResourceGroupName azps_test_cluster -Name azps-extension).Id
+New-AzCustomLocation -ResourceGroupName azps_test_cluster -Name azps-customlocation -Location eastus -ClusterExtensionId $ClusterExtensionId -HostResourceId $HostResourceId -Namespace azps-namespace
 ```
 
 ```output
-Location Name              Namespace
--------- ----              ----
-eastus   azps_test_cluster arc
+Location Name                Namespace      ResourceGroupName
+-------- ----                ---------      -----------------
+eastus   azps-customlocation azps-namespace azps_test_cluster
 ```
 
-Creates or updates a Custom Location in the specified Subscription and Resource Group
+Creates or updates a Custom Location in the specified Subscription and Resource Group.
 
 ## PARAMETERS
 
@@ -114,7 +118,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -346,12 +351,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.Api20210815.ICustomLocation
+### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocation
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

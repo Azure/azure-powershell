@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DataCollectionRule service.
 
 ---
-## Status
-[![Az.DataCollectionRule](https://img.shields.io/powershellgallery/v/Az.DataCollectionRule.svg?style=flat-square&label=Az.DataCollectionRule "Az.DataCollectionRule")](https://www.powershellgallery.com/packages/Az.DataCollectionRule/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -34,7 +31,7 @@ For information on how to develop for `Az.DataCollectionRule`, see [how-to.md](h
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
-branch: 4f4044394791773e6e7e82a9bd90d3935caaca1b
+commit: 4f4044394791773e6e7e82a9bd90d3935caaca1b
 
 input-file:
     - $(repo)/specification/monitor/resource-manager/Microsoft.Insights/stable/2022-06-01/dataCollectionEndpoints_API.json
@@ -46,17 +43,68 @@ title: DataCollectionRule
 module-version: 0.1.0
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection
 subject-prefix: ''
-resourcegroup-append: true
-nested-object-to-string: true
-
-use-extension:
-  "@autorest/powershell": "4.x"
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 directive:
+  # custom required body
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dataCollectionRuleName}"].put.parameters
+    transform: >-
+      return [
+          {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/4f4044394791773e6e7e82a9bd90d3935caaca1b/specification/common-types/resource-management/v2/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/4f4044394791773e6e7e82a9bd90d3935caaca1b/specification/common-types/resource-management/v2/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/DataCollectionRuleNameParameter"
+          },
+          {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/4f4044394791773e6e7e82a9bd90d3935caaca1b/specification/common-types/resource-management/v2/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "The payload",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/DataCollectionRuleResource"
+            }
+          }
+        ]
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionEndpoints/{dataCollectionEndpointName}"].put.parameters
+    transform: >-
+      return [
+        {
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/4f4044394791773e6e7e82a9bd90d3935caaca1b/specification/common-types/resource-management/v2/types.json#/parameters/SubscriptionIdParameter"
+        },
+        {
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/4f4044394791773e6e7e82a9bd90d3935caaca1b/specification/common-types/resource-management/v2/types.json#/parameters/ResourceGroupNameParameter"
+        },
+        {
+          "$ref": "#/parameters/DataCollectionEndpointNameParameter"
+        },
+        {
+          "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/4f4044394791773e6e7e82a9bd90d3935caaca1b/specification/common-types/resource-management/v2/types.json#/parameters/ApiVersionParameter"
+        },
+        {
+          "in": "body",
+          "name": "body",
+          "description": "The payload",
+          "required": true,
+          "schema": {
+            "$ref": "#/definitions/DataCollectionEndpointResource"
+          }
+        }
+      ]
+  # remove tag patch, add resource put by autorest
   - remove-operation: DataCollectionRules_Update
-#   # Following is two common directive which are normally required in all the RPs
-#   # 1. Remove the unexpanded parameter set
-#   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
+  # Following is two common directive which are normally required in all the RPs
+  # 1. Remove the unexpanded parameter set
+  # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^UpdateViaJsonFilePath$|^UpdateViaJsonString$
     remove: true
@@ -101,7 +149,7 @@ directive:
     set:
       alias: EndpointName
   # model cmdlet
-  - from: dataCollectionRules_API.json
+  - from: swagger-document
     where: $.definitions.ExtensionDataSource.properties.extensionSettings
     transform: >-
       return {

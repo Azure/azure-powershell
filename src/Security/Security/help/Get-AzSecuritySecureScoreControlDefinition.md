@@ -14,7 +14,8 @@ Gets security secure score control definitions on a subscription
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecuritySecureScoreControlDefinition [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecuritySecureScoreControlDefinition [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource

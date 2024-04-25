@@ -35,7 +35,9 @@ namespace Microsoft.Azure.Commands.Shared.Config
         //Use DisableErrorRecordsPersistence as opt-out for now, will replace it with EnableErrorRecordsPersistence as opt-in at next major release (November 2023)
         public const string DisableErrorRecordsPersistence = "DisableErrorRecordsPersistence";
         public const string EnableErrorRecordsPersistence = "EnableErrorRecordsPersistence";
+        public const string DisableInstanceDiscovery = "DisableInstanceDiscovery";
         public const string CheckForUpgrade = "CheckForUpgrade";
         public const string EnvCheckForUpgrade = "AZUREPS_CHECK_FOR_UPGRADE";
+        public const string DisplaySecretsWarning = "DisplaySecretsWarning";
     }
 }

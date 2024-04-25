@@ -35,14 +35,14 @@ Describe 'Remove-AzConnectedPrivateLinkScope' {
         $privateLinkScope = Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName
         $privateLinkScope.Name | Should -Be $scopeName
         $privateLinkScope.PublicNetworkAccess | Should -Be "Disabled"
-        $privateLinkScope.Tag.AdditionalProperties["Tag1"] | Should -Be "tag1"
+        $privateLinkScope.Tags.AdditionalProperties["Tag1"] | Should -Be "tag1"
 
         Update-AzConnectedPrivateLinkScopeTag -ResourceGroupName $resourceGroupName -ScopeName $scopeName -Tag $tags2
 
         $privateLinkScope = Get-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName        
         $privateLinkScope.Name | Should -Be $scopeName
         $privateLinkScope.PublicNetworkAccess | Should -Be "Disabled"
-        $privateLinkScope.Tag.AdditionalProperties["hello"] | Should -Be "hello"
+        $privateLinkScope.Tags.AdditionalProperties["hello"] | Should -Be "hello"
 
         Remove-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName
 

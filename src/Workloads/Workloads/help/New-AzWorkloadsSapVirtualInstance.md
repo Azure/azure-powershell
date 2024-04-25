@@ -18,7 +18,8 @@ New-AzWorkloadsSapVirtualInstance -Name <String> -ResourceGroupName <String> [-S
  -Environment <SapEnvironmentType> -Location <String> -SapProduct <SapProductType> -CentralServerVmId <String>
  [-ManagedRgStorageAccountName <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-ManagedResourceGroupName <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateWithJsonTemplatePath
@@ -387,10 +388,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.ISapVirtualInstance
+### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.ISapVirtualInstance
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

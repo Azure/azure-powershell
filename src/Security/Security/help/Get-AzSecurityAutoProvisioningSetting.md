@@ -14,7 +14,8 @@ Gets the security automatic provisioning settings
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecurityAutoProvisioningSetting [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityAutoProvisioningSetting [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource

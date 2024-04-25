@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models
         /// Creates a new instance of <see cref="MariaDbIdentity" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="MariaDbIdentity" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -98,16 +100,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ServerName = (string) content.GetValueForProperty("ServerName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ServerName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).FirewallRuleName = (string) content.GetValueForProperty("FirewallRuleName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).FirewallRuleName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).VirtualNetworkRuleName = (string) content.GetValueForProperty("VirtualNetworkRuleName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).VirtualNetworkRuleName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).DatabaseName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ConfigurationName = (string) content.GetValueForProperty("ConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ConfigurationName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).LocationName = (string) content.GetValueForProperty("LocationName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).LocationName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).SecurityAlertPolicyName = (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName?) content.GetValueForProperty("SecurityAlertPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).SecurityAlertPolicyName, Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ServerName = (string) content.GetValueForProperty("ServerName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ServerName, global::System.Convert.ToString);
+            }
+            if (content.Contains("FirewallRuleName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).FirewallRuleName = (string) content.GetValueForProperty("FirewallRuleName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).FirewallRuleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("VirtualNetworkRuleName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).VirtualNetworkRuleName = (string) content.GetValueForProperty("VirtualNetworkRuleName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).VirtualNetworkRuleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).DatabaseName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ConfigurationName = (string) content.GetValueForProperty("ConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ConfigurationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("LocationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).LocationName = (string) content.GetValueForProperty("LocationName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).LocationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecurityAlertPolicyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).SecurityAlertPolicyName = (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName?) content.GetValueForProperty("SecurityAlertPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).SecurityAlertPolicyName, Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName.CreateFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -125,16 +157,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ServerName = (string) content.GetValueForProperty("ServerName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ServerName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).FirewallRuleName = (string) content.GetValueForProperty("FirewallRuleName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).FirewallRuleName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).VirtualNetworkRuleName = (string) content.GetValueForProperty("VirtualNetworkRuleName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).VirtualNetworkRuleName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).DatabaseName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ConfigurationName = (string) content.GetValueForProperty("ConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ConfigurationName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).LocationName = (string) content.GetValueForProperty("LocationName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).LocationName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).SecurityAlertPolicyName = (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName?) content.GetValueForProperty("SecurityAlertPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).SecurityAlertPolicyName, Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ServerName = (string) content.GetValueForProperty("ServerName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ServerName, global::System.Convert.ToString);
+            }
+            if (content.Contains("FirewallRuleName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).FirewallRuleName = (string) content.GetValueForProperty("FirewallRuleName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).FirewallRuleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("VirtualNetworkRuleName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).VirtualNetworkRuleName = (string) content.GetValueForProperty("VirtualNetworkRuleName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).VirtualNetworkRuleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatabaseName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).DatabaseName = (string) content.GetValueForProperty("DatabaseName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).DatabaseName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConfigurationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ConfigurationName = (string) content.GetValueForProperty("ConfigurationName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).ConfigurationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("LocationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).LocationName = (string) content.GetValueForProperty("LocationName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).LocationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SecurityAlertPolicyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).SecurityAlertPolicyName = (Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName?) content.GetValueForProperty("SecurityAlertPolicyName",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).SecurityAlertPolicyName, Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Support.SecurityAlertPolicyName.CreateFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.MariaDb.Models.IMariaDbIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

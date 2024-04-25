@@ -27,6 +27,7 @@ using System.Collections.Generic;
 using Microsoft.Azure.Management.NetApp.Models;
 using System.Security;
 using Microsoft.WindowsAzure.Commands.Common;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
 {
@@ -289,9 +290,16 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 {
                     ActiveDirectories = anfAccount.ActiveDirectories                    
                 };
-                var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.Update(ResourceGroupName, AccountName, netAppAccountBody);
-                var updatedActiveDirectory = updatedAnfAccount.ActiveDirectories.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.ActiveDirectoryId == ActiveDirectoryId);
-                WriteObject(updatedActiveDirectory.ConvertToPs(ResourceGroupName, AccountName));
+                try
+                { 
+                    var updatedAnfAccount = AzureNetAppFilesManagementClient.Accounts.Update(ResourceGroupName, AccountName, netAppAccountBody);
+                    var updatedActiveDirectory = updatedAnfAccount.ActiveDirectories.FirstOrDefault<Management.NetApp.Models.ActiveDirectory>(e => e.ActiveDirectoryId == ActiveDirectoryId);
+                    WriteObject(updatedActiveDirectory.ConvertToPs(ResourceGroupName, AccountName));
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

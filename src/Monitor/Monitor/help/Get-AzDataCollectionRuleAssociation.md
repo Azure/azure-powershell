@@ -14,7 +14,8 @@ Returns the specified association.
 
 ### List (Default)
 ```
-Get-AzDataCollectionRuleAssociation -ResourceUri <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDataCollectionRuleAssociation -ResourceUri <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -32,13 +33,15 @@ Get-AzDataCollectionRuleAssociation -InputObject <IDataCollectionRuleIdentity> [
 ### List1
 ```
 Get-AzDataCollectionRuleAssociation -DataCollectionRuleName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### List2
 ```
 Get-AzDataCollectionRuleAssociation -ResourceGroupName <String> [-SubscriptionId <String[]>]
- -DataCollectionEndpointName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+ -DataCollectionEndpointName <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -198,7 +201,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity

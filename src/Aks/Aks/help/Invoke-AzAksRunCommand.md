@@ -16,23 +16,23 @@ Run a shell command (with kubectl, helm) on your aks cluster, support attaching 
 ```
 Invoke-AzAksRunCommand [-ResourceGroupName] <String> [-Name] <String> -Command <String>
  [-CommandContextAttachment <String[]>] [-CommandContextAttachmentZip <String>] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Invoke-AzAksRunCommand -InputObject <PSKubernetesCluster> -Command <String>
  [-CommandContextAttachment <String[]>] [-CommandContextAttachmentZip <String>] [-AsJob] [-Force]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
 Invoke-AzAksRunCommand [-Id] <String> -Command <String> [-CommandContextAttachment <String[]>]
- [-CommandContextAttachmentZip <String>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-CommandContextAttachmentZip <String>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

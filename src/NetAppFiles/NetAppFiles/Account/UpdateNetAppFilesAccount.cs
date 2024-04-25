@@ -24,6 +24,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Account
 {
@@ -186,7 +187,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             if (IdentityType != null)
             {
                 var userAssingedIdentitiesDict = new Dictionary<string, UserAssignedIdentity>();
-                userAssingedIdentitiesDict.Add(UserAssignedIdentity, null);
+                userAssingedIdentitiesDict.Add(UserAssignedIdentity, new Management.NetApp.Models.UserAssignedIdentity());
                 netAppAccountBody.Identity = new ManagedServiceIdentity()
                 {
                     Type = IdentityType,
@@ -195,8 +196,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
             }
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
-                var anfAccount = AzureNetAppFilesManagementClient.Accounts.Update(ResourceGroupName, Name, netAppAccountBody);
-                WriteObject(anfAccount.ConvertToPs());
+                try 
+                { 
+                    var anfAccount = AzureNetAppFilesManagementClient.Accounts.Update(ResourceGroupName, Name, netAppAccountBody);
+                    WriteObject(anfAccount.ConvertToPs());
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

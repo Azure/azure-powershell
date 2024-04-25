@@ -1,0 +1,126 @@
+{
+  "Get-AzNetworkFabricAcl+[NoContext]+ListBySubscription+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/accessControlLists?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/providers/Microsoft.ManagedNetworkFabric/accessControlLists?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "6a331ce7-152e-4597-ace7-a25ba6bd4bdd" ],
+        "CommandName": [ "Get-AzNetworkFabricAcl" ],
+        "FullCommandName": [ "Get-AzNetworkFabricAcl_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "1c0a1ebf-bffa-469c-bb6f-61908168d3be", "d6a096c0-612b-4e5f-91a3-012669d895f4", "f9e0f76c-60c5-4bd9-9c5c-59a0a9776b1f", "e8585bf5-adcc-4bbb-9f2c-3fe265627616" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "5410e8de-bc26-4445-b635-a2db101f8867" ],
+        "x-ms-correlation-request-id": [ "5410e8de-bc26-4445-b635-a2db101f8867" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T081403Z:5410e8de-bc26-4445-b635-a2db101f8867" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 22 Sep 2023 08:14:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "12087" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/Fab3LabNFC-4-1/providers/Microsoft.ManagedNetworkFabric/accessControlLists/L3ISd-optA-Ingress-acl-patch\",\"name\":\"L3ISd-optA-Ingress-acl-patch\",\"type\":\"microsoft.managednetworkfabric/accesscontrollists\",\"location\":\"eastus2euap\",\"systemData\":{\"createdBy\":\"guptaarushi@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-22T06:51:09.174186Z\",\"lastModifiedBy\":\"d1bd24c7-b27f-477e-86dd-939e107873d7\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-09-22T08:02:58.4010354Z\"},\"properties\":{\"annotation\":\"annotation\",\"configurationType\":\"Inline\",\"configurationState\":\"Succeeded\",\"provisioningState\":\"Succeeded\",\"administrativeState\":\"Disabled\",\"defaultAction\":\"Deny\",\"matchConfigurations\":[{\"matchConfigurationName\":\"L3ISD_EXT_OPTA_INGRESS_ACL_IPV4_CE_PE\",\"sequenceNumber\":1110,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.18.0.124/30\",\"10.18.0.128/30\",\"10.18.30.16/30\",\"10.18.30.20/30\"]}},{\"ipCondition\":{\"type\":\"DestinationIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.18.0.124/30\",\"10.18.0.128/30\",\"10.18.30.16/30\",\"10.18.30.20/30\"]}}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"L3ISD_EXT_OPTA_INGRESS_ACL_IPV4_BG_ICMP\",\"sequenceNumber\":1120,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"172.16.1.19/32\"]}},{\"protocolTypes\":[\"1\"]}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"L3ISD_EXT_OPTA_INGRESS_ACL_IPV4_BG_SSH_TCP_TELNET\",\"sequenceNumber\":1130,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"172.16.1.19/32\"]}},{\"portCondition\":{\"portType\":\"DestinationPort\",\"layer4Protocol\":\"TCP\",\"ports\":[\"22-23\"]}}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"L3ISD_EXT_OPTA_INGRESS_ACL_IPV4_BG_SSH_UDP_TELNET\",\"sequenceNumber\":1140,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"172.16.1.19/32\"]}},{\"portCondition\":{\"portType\":\"DestinationPort\",\"layer4Protocol\":\"UDP\",\"ports\":[\"22-23\"]}}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"L3ISD_EXT_OPTA_INGRESS_ACL_IPV4_NFC_TO_NF\",\"sequenceNumber\":1150,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.248.32.0/19\"]}},{\"ipCondition\":{\"type\":\"DestinationIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.18.0.0/19\",\"10.18.32.0/24\",\"10.18.128.0/24\"]}}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"L3ISD_EXT_OPTA_INGRESS_ACL_IPV6_BG_ICMP\",\"sequenceNumber\":1160,\"ipAddressType\":\"IPv6\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"fda0:d59c:db00:1::5/128\"]}},{\"protocolTypes\":[\"58\"]}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"L3ISD_EXT_OPTA_INGRESS_ACL_IPV6_BG_SSH_TCP_TELNET\",\"sequenceNumber\":1170,\"ipAddressType\":\"IPv6\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"fda0:d59c:db00:1::5/128\"]}},{\"portCondition\":{\"portType\":\"DestinationPort\",\"layer4Protocol\":\"TCP\",\"ports\":[\"22-23\"]}}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"L3ISD_EXT_OPTA_INGRESS_ACL_IPV6_BG_SSH_UDP_TELNET\",\"sequenceNumber\":1180,\"ipAddressType\":\"IPv6\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"fda0:d59c:db00:1::5/128\"]}},{\"portCondition\":{\"portType\":\"DestinationPort\",\"layer4Protocol\":\"UDP\",\"ports\":[\"22-23\"]}}],\"actions\":[{\"type\":\"Count\"}]}]}},{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/Fab3LabNFC-4-1/providers/microsoft.managednetworkfabric/accessControlLists/egress-acl-1\",\"name\":\"egress-acl-1\",\"type\":\"microsoft.managednetworkfabric/accesscontrollists\",\"location\":\"eastus2euap\",\"systemData\":{\"createdBy\":\"97fdd529-68de-4ba5-aa3c-adf86bd564bf\",\"createdByType\":\"Application\",\"createdAt\":\"2023-09-21T10:41:14.567202Z\",\"lastModifiedBy\":\"d1bd24c7-b27f-477e-86dd-939e107873d7\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-09-21T10:58:51.9725698Z\"},\"properties\":{\"annotation\":\"annotation\",\"configurationType\":\"Inline\",\"configurationState\":\"Succeeded\",\"provisioningState\":\"Succeeded\",\"administrativeState\":\"Enabled\",\"defaultAction\":\"Permit\",\"matchConfigurations\":[{\"matchConfigurationName\":\"NNI_EGRESS_ACL_IPV4_CE_PE\",\"sequenceNumber\":1110,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.18.0.124/30\",\"10.18.0.128/30\"]}},{\"ipCondition\":{\"type\":\"DestinationIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.18.0.124/30\",\"10.18.0.128/30\"]}}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"NNI_EGRESS_ACL_IPV4_BG_ICMP\",\"sequenceNumber\":1120,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"DestinationIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"172.16.1.19/32\"]}},{\"protocolTypes\":[\"1\"]}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"NNI_EGRESS_ACL_IPV4_BG_SSH_TCP_TELNET\",\"sequenceNumber\":1130,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"DestinationIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"172.16.1.19/32\"]}},{\"portCondition\":{\"portType\":\"SourcePort\",\"layer4Protocol\":\"TCP\",\"ports\":[\"22-23\"]}}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"NNI_EGRESS_ACL_IPV4_BG_SSH_UDP_TELNET\",\"sequenceNumber\":1140,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"DestinationIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"172.16.1.19/32\"]}},{\"portCondition\":{\"portType\":\"SourcePort\",\"layer4Protocol\":\"UDP\",\"ports\":[\"22-23\"]}}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"NNI_EGRESS_ACL_IPV4_NFC_TO_NF\",\"sequenceNumber\":1150,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"DestinationIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.245.160.0/19\"]}},{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.18.0.0/19\"]}}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"NNI_EGRESS_ACL_IPV6_BG_ICMP\",\"sequenceNumber\":1160,\"ipAddressType\":\"IPv6\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"DestinationIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"fda0:d59c:db00:1::5/128\"]}},{\"protocolTypes\":[\"58\"]}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"NNI_EGRESS_ACL_IPV6_BG_SSH_TCP_TELNET\",\"sequenceNumber\":1170,\"ipAddressType\":\"IPv6\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"DestinationIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"fda0:d59c:db00:1::5/128\"]}},{\"portCondition\":{\"portType\":\"SourcePort\",\"layer4Protocol\":\"TCP\",\"ports\":[\"22-23\"]}}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"NNI_EGRESS_ACL_IPV6_BG_SSH_UDP_TELNET\",\"sequenceNumber\":1180,\"ipAddressType\":\"IPv6\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"DestinationIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"fda0:d59c:db00:1::5/128\"]}},{\"portCondition\":{\"portType\":\"SourcePort\",\"layer4Protocol\":\"UDP\",\"ports\":[\"22-23\"]}}],\"actions\":[{\"type\":\"Count\"}]}]}},{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/Fab3LabNFC-4-1/providers/microsoft.managednetworkfabric/accessControlLists/ingress-acl-1\",\"name\":\"ingress-acl-1\",\"type\":\"microsoft.managednetworkfabric/accesscontrollists\",\"location\":\"eastus2euap\",\"systemData\":{\"createdBy\":\"97fdd529-68de-4ba5-aa3c-adf86bd564bf\",\"createdByType\":\"Application\",\"createdAt\":\"2023-09-21T10:41:31.8953625Z\",\"lastModifiedBy\":\"d1bd24c7-b27f-477e-86dd-939e107873d7\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2023-09-21T10:58:51.644446Z\"},\"properties\":{\"annotation\":\"annotation\",\"configurationType\":\"Inline\",\"configurationState\":\"Succeeded\",\"provisioningState\":\"Succeeded\",\"administrativeState\":\"Enabled\",\"defaultAction\":\"Permit\",\"matchConfigurations\":[{\"matchConfigurationName\":\"NNI_INGRESS_ACL_IPV4_CE_PE\",\"sequenceNumber\":1110,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.18.0.124/30\",\"10.18.0.128/30\"]}},{\"ipCondition\":{\"type\":\"DestinationIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.18.0.124/30\",\"10.18.0.128/30\"]}}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"NNI_INGRESS_ACL_IPV4_BG_ICMP\",\"sequenceNumber\":1120,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"172.16.1.19/32\"]}},{\"protocolTypes\":[\"1\"]}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"NNI_INGRESS_ACL_IPV4_BG_SSH_TCP_TELNET\",\"sequenceNumber\":1130,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"172.16.1.19/32\"]}},{\"portCondition\":{\"portType\":\"DestinationPort\",\"layer4Protocol\":\"TCP\",\"ports\":[\"22-23\"]}}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"NNI_INGRESS_ACL_IPV4_BG_SSH_UDP_TELNET\",\"sequenceNumber\":1140,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"172.16.1.19/32\"]}},{\"portCondition\":{\"portType\":\"DestinationPort\",\"layer4Protocol\":\"UDP\",\"ports\":[\"22-23\"]}}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"NNI_INGRESS_ACL_IPV4_NFC_TO_NF\",\"sequenceNumber\":1150,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.245.160.0/19\"]}},{\"ipCondition\":{\"type\":\"DestinationIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.18.0.0/19\"]}}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"NNI_INGRESS_ACL_IPV6_BG_ICMP\",\"sequenceNumber\":1160,\"ipAddressType\":\"IPv6\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"fda0:d59c:db00:1::5/128\"]}},{\"protocolTypes\":[\"58\"]}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"NNI_INGRESS_ACL_IPV6_BG_SSH_TCP_TELNET\",\"sequenceNumber\":1170,\"ipAddressType\":\"IPv6\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"fda0:d59c:db00:1::5/128\"]}},{\"portCondition\":{\"portType\":\"DestinationPort\",\"layer4Protocol\":\"TCP\",\"ports\":[\"22-23\"]}}],\"actions\":[{\"type\":\"Count\"}]},{\"matchConfigurationName\":\"NNI_INGRESS_ACL_IPV6_BG_SSH_UDP_TELNET\",\"sequenceNumber\":1180,\"ipAddressType\":\"IPv6\",\"matchConditions\":[{\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"fda0:d59c:db00:1::5/128\"]}},{\"portCondition\":{\"portType\":\"DestinationPort\",\"layer4Protocol\":\"UDP\",\"ports\":[\"22-23\"]}}],\"actions\":[{\"type\":\"Count\"}]}]}},{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName\",\"name\":\"aclName\",\"type\":\"microsoft.managednetworkfabric/accesscontrollists\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-22T07:54:28.5527489Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-22T07:58:44.3427616Z\"},\"properties\":{\"configurationState\":\"Succeeded\",\"provisioningState\":\"Succeeded\",\"administrativeState\":\"Disabled\",\"configurationType\":\"Inline\",\"defaultAction\":\"Permit\",\"matchConfigurations\":[{\"matchConfigurationName\":\"matchConfName\",\"sequenceNumber\":13,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"etherTypes\":[\"0x1\"],\"fragments\":[\"0xff00-0xffff\"],\"ipLengths\":[\"4094-9214\"],\"ttlValues\":[\"23\"],\"dscpMarkings\":[\"32\"],\"portCondition\":{\"flags\":[\"established\"],\"portType\":\"SourcePort\",\"layer4Protocol\":\"TCP\",\"portGroupNames\":[\"portGroupName\"]},\"vlanMatchCondition\":{\"vlans\":[\"20-30\"],\"innerVlans\":[\"30\"],\"vlanGroupNames\":[\"name\"]},\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.20.20.20/12\"],\"ipGroupNames\":[\"name\"]}}],\"actions\":[{\"type\":\"Count\",\"counterName\":\"counterName\"}]}],\"dynamicMatchConfigurations\":[{\"ipGroups\":[{\"name\":\"ipGroupName\",\"ipAddressType\":\"IPv4\",\"ipPrefixes\":[\"10.20.3.1/20\"]}],\"vlanGroups\":[{\"name\":\"valnGroupName\",\"vlans\":[\"20-30\"]}],\"portGroups\":[{\"name\":\"portGroupName\",\"ports\":[\"100-200\"]}]}]}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkFabricAcl+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "cdaf82e9-dec0-4f05-907c-88a4393aa9af" ],
+        "CommandName": [ "Get-AzNetworkFabricAcl" ],
+        "FullCommandName": [ "Get-AzNetworkFabricAcl_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"b5008769-0000-0100-0000-650d49350000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "04a77873-f726-4df5-a5ca-436deca3446d" ],
+        "x-ms-correlation-request-id": [ "7b3d87a5-d5b0-4466-9eff-82fdf9c39e60" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T081403Z:7b3d87a5-d5b0-4466-9eff-82fdf9c39e60" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 22 Sep 2023 08:14:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1556" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName\",\"name\":\"aclName\",\"type\":\"microsoft.managednetworkfabric/accesscontrollists\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-22T07:54:28.5527489Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-22T07:58:44.3427616Z\"},\"properties\":{\"configurationState\":\"Succeeded\",\"provisioningState\":\"Succeeded\",\"administrativeState\":\"Disabled\",\"configurationType\":\"Inline\",\"defaultAction\":\"Permit\",\"matchConfigurations\":[{\"matchConfigurationName\":\"matchConfName\",\"sequenceNumber\":13,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"etherTypes\":[\"0x1\"],\"fragments\":[\"0xff00-0xffff\"],\"ipLengths\":[\"4094-9214\"],\"ttlValues\":[\"23\"],\"dscpMarkings\":[\"32\"],\"portCondition\":{\"flags\":[\"established\"],\"portType\":\"SourcePort\",\"layer4Protocol\":\"TCP\",\"portGroupNames\":[\"portGroupName\"]},\"vlanMatchCondition\":{\"vlans\":[\"20-30\"],\"innerVlans\":[\"30\"],\"vlanGroupNames\":[\"name\"]},\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.20.20.20/12\"],\"ipGroupNames\":[\"name\"]}}],\"actions\":[{\"type\":\"Count\",\"counterName\":\"counterName\"}]}],\"dynamicMatchConfigurations\":[{\"ipGroups\":[{\"name\":\"ipGroupName\",\"ipAddressType\":\"IPv4\",\"ipPrefixes\":[\"10.20.3.1/20\"]}],\"vlanGroups\":[{\"name\":\"valnGroupName\",\"vlans\":[\"20-30\"]}],\"portGroups\":[{\"name\":\"portGroupName\",\"ports\":[\"100-200\"]}]}]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkFabricAcl+[NoContext]+ListByResourceGroup+$GET+https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists?api-version=2023-06-15+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists?api-version=2023-06-15",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "45ac2c8f-ddcc-419e-bf79-27b548d2dbe1" ],
+        "CommandName": [ "Get-AzNetworkFabricAcl" ],
+        "FullCommandName": [ "Get-AzNetworkFabricAcl_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.3.6", "Az.ManagedNetworkFabric/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-original-request-ids": [ "e23a23ed-6720-40a4-8273-cef370ed4e37", "2520ffd4-9ee0-4fd4-a969-c6115db40b89", "72812390-3eef-480c-ab19-5c0990a72b2f", "42d8c6f3-35c5-4278-a5c8-324c3308d51f" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "e22ca419-48b0-488a-b550-a5bace85d57b" ],
+        "x-ms-correlation-request-id": [ "e22ca419-48b0-488a-b550-a5bace85d57b" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20230922T081404Z:e22ca419-48b0-488a-b550-a5bace85d57b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 22 Sep 2023 08:14:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ],
+        "Content-Length": [ "1568" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9531faa8-8c39-4165-b033-48697fe943db/resourceGroups/nfa-tool-ts-powershell-rg092123/providers/Microsoft.ManagedNetworkFabric/accessControlLists/aclName\",\"name\":\"aclName\",\"type\":\"microsoft.managednetworkfabric/accesscontrollists\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"v-rmarimuthu@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2023-09-22T07:54:28.5527489Z\",\"lastModifiedBy\":\"v-rmarimuthu@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2023-09-22T07:58:44.3427616Z\"},\"properties\":{\"configurationState\":\"Succeeded\",\"provisioningState\":\"Succeeded\",\"administrativeState\":\"Disabled\",\"configurationType\":\"Inline\",\"defaultAction\":\"Permit\",\"matchConfigurations\":[{\"matchConfigurationName\":\"matchConfName\",\"sequenceNumber\":13,\"ipAddressType\":\"IPv4\",\"matchConditions\":[{\"etherTypes\":[\"0x1\"],\"fragments\":[\"0xff00-0xffff\"],\"ipLengths\":[\"4094-9214\"],\"ttlValues\":[\"23\"],\"dscpMarkings\":[\"32\"],\"portCondition\":{\"flags\":[\"established\"],\"portType\":\"SourcePort\",\"layer4Protocol\":\"TCP\",\"portGroupNames\":[\"portGroupName\"]},\"vlanMatchCondition\":{\"vlans\":[\"20-30\"],\"innerVlans\":[\"30\"],\"vlanGroupNames\":[\"name\"]},\"ipCondition\":{\"type\":\"SourceIP\",\"prefixType\":\"Prefix\",\"ipPrefixValues\":[\"10.20.20.20/12\"],\"ipGroupNames\":[\"name\"]}}],\"actions\":[{\"type\":\"Count\",\"counterName\":\"counterName\"}]}],\"dynamicMatchConfigurations\":[{\"ipGroups\":[{\"name\":\"ipGroupName\",\"ipAddressType\":\"IPv4\",\"ipPrefixes\":[\"10.20.3.1/20\"]}],\"vlanGroups\":[{\"name\":\"valnGroupName\",\"vlans\":[\"20-30\"]}],\"portGroups\":[{\"name\":\"portGroupName\",\"ports\":[\"100-200\"]}]}]}}]}",
+      "isContentBase64": false
+    }
+  }
+}

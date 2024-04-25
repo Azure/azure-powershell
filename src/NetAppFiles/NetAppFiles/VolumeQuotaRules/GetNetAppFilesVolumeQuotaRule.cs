@@ -23,6 +23,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -77,7 +78,12 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The name of the ANF Subvolume")]
+            ParameterSetName = FieldsParameterSet,
+            HelpMessage = "The name of the ANF QuotaRule")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The name of the ANF volume",
+            ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("SubvolumeName")]
         [ResourceNameCompleter(
@@ -125,16 +131,23 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
                 VolumeName = NameParts[2];
             }
 
-            if (Name != null)
+            try
             {
-                var anfVolumeQuotaRule = AzureNetAppFilesManagementClient.VolumeQuotaRules.Get(ResourceGroupName, AccountName, PoolName, VolumeName, Name);
-                WriteObject(anfVolumeQuotaRule.ConvertToPs());
-            }
-            else
-            {                
-                List<VolumeQuotaRule> volumeQuotaRules = AzureNetAppFilesManagementClient.VolumeQuotaRules.ListByVolume(ResourceGroupName, AccountName, PoolName, VolumeName).ToList();
+                if (Name != null)
+                {
+                    var anfVolumeQuotaRule = AzureNetAppFilesManagementClient.VolumeQuotaRules.Get(ResourceGroupName, AccountName, PoolName, VolumeName, Name);
+                    WriteObject(anfVolumeQuotaRule.ConvertToPs());
+                }
+                else
+                {
+                    List<VolumeQuotaRule> volumeQuotaRules = AzureNetAppFilesManagementClient.VolumeQuotaRules.ListByVolume(ResourceGroupName, AccountName, PoolName, VolumeName).ToList();
 
-                WriteObject(volumeQuotaRules.ConvertToPS(), true);
+                    WriteObject(volumeQuotaRules.ConvertToPS(), true);
+                }
+            }
+            catch (ErrorResponseException ex)
+            {
+                throw new CloudException(ex.Body.Error.Message, ex);
             }
         }
     }

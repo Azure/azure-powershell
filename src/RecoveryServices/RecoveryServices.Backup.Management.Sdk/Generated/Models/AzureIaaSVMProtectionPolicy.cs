@@ -40,9 +40,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="retentionPolicy">Retention policy with the details on backup copy retention ranges.
         /// </param>
 
-        /// <param name="tieringPolicy">Tiering policy to automatically move RPs to another tier
-        /// Key is Target Tier, defined in RecoveryPointTierType enum.
-        /// Tiering policy specifies the criteria to move RP to the target tier.
+        /// <param name="tieringPolicy">Tiering policy to automatically move RPs to another tier Key is Target
+        /// Tier, defined in RecoveryPointTierType enum. Tiering policy specifies the
+        /// criteria to move RP to the target tier.
         /// </param>
 
         /// <param name="instantRpRetentionRangeInDays">Instant RP retention policy range in days
@@ -53,8 +53,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="policyType">
-        /// Possible values include: 'Invalid', 'V1', 'V2'</param>
-        public AzureIaaSVMProtectionPolicy(int? protectedItemsCount = default(int?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), InstantRPAdditionalDetails instantRpDetails = default(InstantRPAdditionalDetails), SchedulePolicy schedulePolicy = default(SchedulePolicy), RetentionPolicy retentionPolicy = default(RetentionPolicy), System.Collections.Generic.IDictionary<string, TieringPolicy> tieringPolicy = default(System.Collections.Generic.IDictionary<string, TieringPolicy>), int? instantRpRetentionRangeInDays = default(int?), string timeZone = default(string), string policyType = default(string))
+        /// Possible values include: &#39;Invalid&#39;, &#39;V1&#39;, &#39;V2&#39;</param>
+
+        /// <param name="snapshotConsistencyType">
+        /// Possible values include: &#39;OnlyCrashConsistent&#39;</param>
+        public AzureIaaSVMProtectionPolicy(int? protectedItemsCount = default(int?), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), InstantRPAdditionalDetails instantRpDetails = default(InstantRPAdditionalDetails), SchedulePolicy schedulePolicy = default(SchedulePolicy), RetentionPolicy retentionPolicy = default(RetentionPolicy), System.Collections.Generic.IDictionary<string, TieringPolicy> tieringPolicy = default(System.Collections.Generic.IDictionary<string, TieringPolicy>), int? instantRpRetentionRangeInDays = default(int?), string timeZone = default(string), string policyType = default(string), string snapshotConsistencyType = default(string))
 
         : base(protectedItemsCount, resourceGuardOperationRequests)
         {
@@ -65,6 +68,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
             this.InstantRpRetentionRangeInDays = instantRpRetentionRangeInDays;
             this.TimeZone = timeZone;
             this.PolicyType = policyType;
+            this.SnapshotConsistencyType = snapshotConsistencyType;
             CustomInit();
         }
 
@@ -94,9 +98,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         public RetentionPolicy RetentionPolicy {get; set; }
 
         /// <summary>
-        /// Gets or sets tiering policy to automatically move RPs to another tier
-        /// Key is Target Tier, defined in RecoveryPointTierType enum.
-        /// Tiering policy specifies the criteria to move RP to the target tier.
+        /// Gets or sets tiering policy to automatically move RPs to another tier Key
+        /// is Target Tier, defined in RecoveryPointTierType enum. Tiering policy
+        /// specifies the criteria to move RP to the target tier.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "tieringPolicy")]
         public System.Collections.Generic.IDictionary<string, TieringPolicy> TieringPolicy {get; set; }
@@ -119,5 +123,11 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "policyType")]
         public string PolicyType {get; set; }
+
+        /// <summary>
+        /// Gets or sets Possible values include: &#39;OnlyCrashConsistent&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "snapshotConsistencyType")]
+        public string SnapshotConsistencyType {get; set; }
     }
 }

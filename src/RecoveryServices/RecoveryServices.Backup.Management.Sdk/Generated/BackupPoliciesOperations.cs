@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         public RecoveryServicesBackupClient Client { get; private set; }
 
         /// <summary>
-        /// Lists of backup policies associated with Recovery Services Vault. API provides pagination parameters to fetch
-        /// scoped results.
+        /// Lists of backup policies associated with Recovery Services Vault. API
+        /// provides pagination parameters to fetch scoped results.
         /// </summary>
         /// <param name='odataQuery'>
         /// 
@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -266,8 +267,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         }
         /// <summary>
-        /// Lists of backup policies associated with Recovery Services Vault. API provides pagination parameters to fetch
-        /// scoped results.
+        /// Lists of backup policies associated with Recovery Services Vault. API
+        /// provides pagination parameters to fetch scoped results.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

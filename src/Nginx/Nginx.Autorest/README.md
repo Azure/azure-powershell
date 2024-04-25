@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Nginx service.
 
 ---
-## Status
-[![Az.Nginx](https://img.shields.io/powershellgallery/v/Az.Nginx.svg?style=flat-square&label=Az.Nginx "Az.Nginx")](https://www.powershellgallery.com/packages/Az.Nginx/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

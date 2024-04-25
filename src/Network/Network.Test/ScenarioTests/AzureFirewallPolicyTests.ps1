@@ -2028,3 +2028,64 @@ function Test-AzureFirewallPolicyRuleCollectionGroupSizeProperty {
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Tests function Test-AzureFirewallPolicyIDPSProfiles.
+#>
+function Test-AzureFirewallPolicyIDPSProfiles {
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $azureFirewallPolicyName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/FirewallPolicies"
+    $location = "westus2"
+    $tier = "Premium"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Intrusion Detection Settings
+        $sigOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
+        $intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -Profile "Advanced" -SignatureOverride $sigOverride -PrivateRange @("10.0.0.0/8", "172.16.0.0/12")
+
+        # Create AzureFirewallPolicy
+        $azureFirewallPolicy = New-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname -Location $location -SkuTier $tier -IntrusionDetection $intrusionDetection
+
+        # Get AzureFirewallPolicy
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgname
+
+        # verification
+        Assert-AreEqual $rgName $getAzureFirewallPolicy.ResourceGroupName
+        Assert-AreEqual $azureFirewallPolicyName $getAzureFirewallPolicy.Name
+        Assert-NotNull $getAzureFirewallPolicy.Location
+        Assert-AreEqual (Normalize-Location $location) $getAzureFirewallPolicy.Location
+        Assert-AreEqual $tier $getAzureFirewallPolicy.Sku.Tier
+
+        # IntrusionDetection verification
+        Assert-NotNull $getAzureFirewallPolicy.IntrusionDetection
+        Assert-AreEqual "Alert" $getAzureFirewallPolicy.IntrusionDetection.Mode
+        Assert-NotNull $getAzureFirewallPolicy.IntrusionDetection.Configuration.SignatureOverrides
+        Assert-AreEqual "123456798" $getAzureFirewallPolicy.IntrusionDetection.Configuration.SignatureOverrides[0].Id
+        Assert-AreEqual "Deny" $getAzureFirewallPolicy.IntrusionDetection.Configuration.SignatureOverrides[0].Mode
+        Assert-AreEqual "Advanced" $getAzureFirewallPolicy.IntrusionDetection.Profile
+        
+        # Set AzureFirewallPolicy with Standard Profile
+        $azureFirewallPolicy.IntrusionDetection.Profile = "Standard"
+        Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
+        
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgName
+        Assert-AreEqual "Standard" $getAzureFirewallPolicy.IntrusionDetection.Profile
+
+        # Set AzureFirewallPolicy with Standard Profile
+        $azureFirewallPolicy.IntrusionDetection.Profile = "Basic"
+        Set-AzFirewallPolicy -InputObject $azureFirewallPolicy
+        
+        $getAzureFirewallPolicy = Get-AzFirewallPolicy -Name $azureFirewallPolicyName -ResourceGroupName $rgName
+        Assert-AreEqual "Basic" $getAzureFirewallPolicy.IntrusionDetection.Profile
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
 online version: https://learn.microsoft.com/powershell/module/az.peering/get-azpeeringcdnprefix
 schema: 2.0.0
@@ -13,7 +13,7 @@ Lists all of the advertised prefixes for the specified peering location
 ## SYNTAX
 
 ```
-Get-AzPeeringCdnPrefix -PeeringLocation <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzPeeringCdnPrefix [-SubscriptionId <String[]>] -PeeringLocation <String> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -45,7 +45,8 @@ Get all cdn prefixes for subscription
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -100,7 +101,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

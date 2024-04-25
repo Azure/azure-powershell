@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ResourceMover-help.xml
 Module Name: Az.ResourceMover
 online version: https://learn.microsoft.com/powershell/module/az.resourcemover/invoke-azresourcemoverbulkremove
 schema: 2.0.0
@@ -19,7 +19,8 @@ To aid the user to prerequisite the operation the client can call operation with
 ```
 Invoke-AzResourceMoverBulkRemove -MoveCollectionName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-MoveResource <String[]>] [-MoveResourceInputType <MoveResourceInputType>]
- [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ValidateOnly] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +49,6 @@ Name           : b4e3f140-b36b-4fd5-a507-b1e663ecf7a3
 Property       : Microsoft.Azure.PowerShell.Cmdlets.ResourceMover.Models.Any
 StartTime      : 2/10/2021 12:52:28 PM
 Status         : Succeeded
-
 ```
 
 Validate the dependecies before remove of the move resources from Move Collection.
@@ -275,7 +275,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

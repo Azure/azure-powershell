@@ -15,8 +15,8 @@ Creates an AzStorageContainer endpoint resource, which represents a data transfe
 ```
 New-AzStorageMoverAzStorageContainerEndpoint -Name <String> -ResourceGroupName <String>
  -StorageMoverName <String> [-SubscriptionId <String>] -BlobContainerName <String>
- -StorageAccountResourceId <String> [-Description <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -StorageAccountResourceId <String> [-Description <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

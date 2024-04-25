@@ -13,5 +13,5 @@ Microsoft Azure PowerShell: ChangeAnalysis cmdlets
 ## Az.ChangeAnalysis Cmdlets
 ### [Get-AzChangeAnalysis](Get-AzChangeAnalysis.md)
 Customer data is always masked if query at subscription or resource group level.
-For query on a single resource, customer data is masked if the user doesn’t have access.
+For query on a single resource, customer data is masked if the user doesn't have access.
 

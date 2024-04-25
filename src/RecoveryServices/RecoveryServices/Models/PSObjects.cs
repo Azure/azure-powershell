@@ -134,12 +134,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 if (vault.Properties.MonitoringSettings.AzureMonitorAlertSettings != null)
                 {
                     this.Properties.AlertSettings.AzureMonitorAlertsForAllJobFailure = vault.Properties.MonitoringSettings.AzureMonitorAlertSettings.AlertsForAllJobFailures;
+                    this.Properties.AlertSettings.AzureMonitorAlertsForAllReplicationIssues = vault.Properties.MonitoringSettings.AzureMonitorAlertSettings.AlertsForAllReplicationIssues;
+                    this.Properties.AlertSettings.AzureMonitorAlertsForAllFailoverIssues = vault.Properties.MonitoringSettings.AzureMonitorAlertSettings.AlertsForAllFailoverIssues;
                 }
 
                 if (vault.Properties.MonitoringSettings.ClassicAlertSettings != null)
                 {
                     this.Properties.AlertSettings.ClassicAlertsForCriticalOperations = vault.Properties.MonitoringSettings.ClassicAlertSettings.AlertsForCriticalOperations;
-                }                
+                    this.Properties.AlertSettings.EmailNotificationsForSiteRecovery = vault.Properties.MonitoringSettings.ClassicAlertSettings.EmailNotificationsForSiteRecovery;
+                }
             }
 
             if(vault.Properties.SecuritySettings != null && vault.Properties.SecuritySettings.ImmutabilitySettings != null)
@@ -321,9 +324,24 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         #region Properties
 
         /// <summary>
-        /// Gets or sets the monitor alerts.
+        /// Gets or sets the monitor alerts for all job failures.
         /// </summary>
         public string AzureMonitorAlertsForAllJobFailure { get; set; }
+
+        /// <summary>
+        /// Gets or sets the monitor alerts for replication issues.
+        /// </summary>
+        public string AzureMonitorAlertsForAllReplicationIssues { get; set; }
+
+        /// <summary>
+        /// Gets or sets the monitor alerts for failover issues.
+        /// </summary>
+        public string AzureMonitorAlertsForAllFailoverIssues { get; set; }
+
+        /// <summary>
+        /// Gets or sets the email notifications for site recovery.
+        /// </summary>
+        public string EmailNotificationsForSiteRecovery { get; set; }
 
         /// <summary>
         /// Gets or sets AlertsForCriticalOperations.
@@ -333,22 +351,35 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         #endregion
 
         public override string ToString()
-        {            
-            if(AzureMonitorAlertsForAllJobFailure != null)
+        {
+            string alerts = string.Empty;
+
+            if (AzureMonitorAlertsForAllJobFailure != null)
             {
-                string alerts = string.Format("AzureMonitorAlertsForAllJobFailure: {0}", AzureMonitorAlertsForAllJobFailure.ToString());
-                if (ClassicAlertsForCriticalOperations != null)
-                {
-                    alerts += string.Format(", ClassicAlertsForCriticalOperations: {0}", ClassicAlertsForCriticalOperations.ToString());
-                }
-                return alerts;
+                alerts += string.Format("AzureMonitorAlertsForAllJobFailure: {0}", AzureMonitorAlertsForAllJobFailure.ToString());
             }
-            else if (ClassicAlertsForCriticalOperations != null)
+
+            if (ClassicAlertsForCriticalOperations != null)
             {
-                return string.Format("ClassicAlertsForCriticalOperations: {0}", ClassicAlertsForCriticalOperations.ToString());
+                alerts += string.Format("ClassicAlertsForCriticalOperations: {0}", ClassicAlertsForCriticalOperations.ToString());
             }
-            
-            return null;
+
+            if (AzureMonitorAlertsForAllReplicationIssues != null)
+            {
+                alerts += string.Format("AzureMonitorAlertsForAllReplicationIssues: {0}", AzureMonitorAlertsForAllReplicationIssues.ToString());
+            }
+
+            if (AzureMonitorAlertsForAllFailoverIssues != null)
+            {
+                alerts += string.Format("AzureMonitorAlertsForAllFailoverIssues: {0}", AzureMonitorAlertsForAllFailoverIssues.ToString());
+            }
+
+            if (EmailNotificationsForSiteRecovery != null)
+            {
+                alerts += string.Format("EmailNotificationsForSiteRecovery: {0}", EmailNotificationsForSiteRecovery.ToString());
+            }
+
+            return alerts;
         }
     }
 

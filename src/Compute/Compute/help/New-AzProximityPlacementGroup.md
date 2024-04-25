@@ -15,8 +15,8 @@ Create Proximity Placement Group resource.
 ```
 New-AzProximityPlacementGroup [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [-ProximityPlacementGroupType <String>] [-Tag <Hashtable>] [-AsJob] [-Zone <String[]>]
- [-IntentVMSizeList <String[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IntentVMSizeList <String[]>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

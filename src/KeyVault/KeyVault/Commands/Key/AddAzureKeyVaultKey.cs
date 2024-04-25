@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.KeyVault.WebKey;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
@@ -252,7 +253,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// Key expires time in UTC time
         /// </summary>
         [Parameter(Mandatory = false,
-            HelpMessage = "Specifies the expiration time of the key in UTC. If not specified, key will not expire.")]
+            HelpMessage = "Specifies the expiration time of the key in UTC, as a DateTime object, for the key that this cmdlet adds. If not specified, key will not expire. To obtain a DateTime object, use the Get-Date cmdlet. For more information, type Get-Help Get-Date. Please notice that expirys is ignored for Key Exchange Key used in BYOK process.")]
         public DateTime? Expires { get; set; }
 
         /// <summary>
@@ -375,6 +376,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = ResourceIdCreateParameterSet)]
         public string ReleasePolicyPath { get; set; }
 
+        [CmdletParameterBreakingChangeWithVersion(nameof(UseDefaultCVMPolicy), "12.0.0", "6.0.0", ChangeDescription = "The offline fallback policy will be removed. Key creation will fail if unable to get regional default CVM SKR policy from MAA Service Discovery API.")]
         [Parameter(Mandatory = false,
             ParameterSetName = HsmInteractiveCreateParameterSet,
             HelpMessage = "Specifies to use default policy under which the key can be exported for CVM disk encryption.")]

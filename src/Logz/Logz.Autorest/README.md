@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Logz service.
 
 ---
-## Status
-[![Az.Logz](https://img.shields.io/powershellgallery/v/Az.Logz.svg?style=flat-square&label=Az.Logz "Az.Logz")](https://www.powershellgallery.com/packages/Az.Logz/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -17,7 +14,7 @@ This directory contains the PowerShell module for the Logz service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -31,9 +28,9 @@ For information on how to develop for `Az.Logz`, see [how-to.md](how-to.md).
 
 ``` yaml
 # lock the commit
-branch: b4f133f7c44af4189d61d35e34c5ed05fd9fa72b
+commit: b4f133f7c44af4189d61d35e34c5ed05fd9fa72b
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/logz/resource-manager/Microsoft.Logz/preview/2020-10-01-preview/logz.json
 
@@ -43,6 +40,10 @@ subject-prefix: $(service-name)
 
 identity-correction-for-post: true
 resourcegroup-append: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Remove cmdlets

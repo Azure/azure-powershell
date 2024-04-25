@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         public RecoveryServicesBackupClient Client { get; private set; }
 
         /// <summary>
-        /// Provides a pageable list of protectable objects within your subscription according to the query filter and the
-        /// pagination parameters.
+        /// Provides a pageable list of protectable objects within your subscription
+        /// according to the query filter and the pagination parameters.
         /// </summary>
         /// <param name='odataQuery'>
         /// 
@@ -49,7 +49,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='skipToken'>
         /// skipToken Filter.
@@ -275,8 +276,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         }
         /// <summary>
-        /// Provides a pageable list of protectable objects within your subscription according to the query filter and the
-        /// pagination parameters.
+        /// Provides a pageable list of protectable objects within your subscription
+        /// according to the query filter and the pagination parameters.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

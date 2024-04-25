@@ -76,6 +76,7 @@ $StartingArcAgentMessage = "Enabling Azure Arc integration on every clustered no
 $VerifyingArcMessage = "Verifying Azure Arc for Servers registration"
 $WaitingUnregisterMessage = "Disabling Azure Arc integration on every clustered node"
 $CleanArcMessage = "Cleaning up Azure Arc integration"
+$NonCloudDeploymentFor23H2DevicesErrorMessage = "Azure stack HCI version 23H2 and higher cannot be registered using this method. See details: https://learn.microsoft.com/en-us/azure-stack/hci/deploy/deploy-via-portal"
 
 $MissingDependentModulesError = "Can't find PowerShell module(s): {0}. Please install the missing module(s) using 'Install-Module -Name <Module_Name>' and try again."
 $ArcAlreadyEnabledInADifferentResourceError = "Below mentioned cluster node(s) are already Arc enabled with a different ARM Resource Id:`n{0}`nDisconnect Arc agent on these nodes and run Register-AzStackHCI again."
@@ -204,6 +205,7 @@ $HCIArcInstanceName = "/arcSettings/default"
 $HCIArcExtensions = "/Extensions"
 
 $OutputPropertyResult = "Result"
+$OutputPropertyWacResult = "WacResult"
 $OutputPropertyResourceId = "AzureResourceId"
 $OutputPropertyPortalResourceURL = "AzurePortalResourceURL"
 $OutputPropertyDetails = "Details"
@@ -212,8 +214,11 @@ $OutputPropertyEndpointTested = "EndpointTested"
 $OutputPropertyIsRequired = "IsRequired"
 $OutputPropertyFailedNodes = "FailedNodes"
 $OutputPropertyErrorDetail = "ErrorDetail"
+$OutputPropertyWacErrorDetail = "WacErrorDetail"
 $OutputPropertyClusterAgentStatus = "ClusterAgentStatus"
 $OutputPropertyClusterAgentError = "ClusterAgentError"
+$OutputPropertyWacErrorCode = "WacErrorCode"
+$OutputPropertyWacExceptionMessage = "WacExceptionMessage"
 
 $ConnectionTestToAzureHCIServiceName = "Connect to Azure Stack HCI Service"
 
@@ -265,6 +270,19 @@ enum AttestationVersion
     Unknown;
     V1;
     V2;
+}
+
+Function Set-WacOutputProperty {
+    param(
+        [bool] $IsWAC,        # Determines if it is WAC or not
+        [string] $PropertyName,   # Determines the property name to write
+        [string] $PropertyValue,  # Determines the value of the property
+        [object] $Output        # The output object to which the property has to be added
+    )
+
+    if ($IsWAC -eq $true) {
+        $Output | Add-Member -MemberType NoteProperty -Name $PropertyName -Value $PropertyValue -Force
+    }
 }
 
 Function Write-Log {
@@ -2861,6 +2879,37 @@ param(
         $msg = Print-FunctionParameters -Message "Register-AzStackHCI" -Parameters $PSBoundParameters
         Write-NodeEventLog -Message $msg  -EventID 9009 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
 
+# Check if OS version is 22H2 or newer
+        $osVersionDetectoid       = { $displayVersion = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").DisplayVersion; $buildNumber = (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber; New-Object -TypeName PSObject -Property @{'DisplayVersion'=$displayVersion; 'BuildNumber'=$buildNumber} }
+        $cloudManagementDetectoid = { $cloudManagementSvc = Get-Item -Path ("{0}\System32\azshci\{1}.exe" -f $env:SystemRoot, $Using:ClusterAgentServiceName) -ErrorAction SilentlyContinue; $cloudManagementSvc -ne $null }
+        $cloudManagementInfraDetectoid = { $cloudManagementInfraSvc = Get-Item -Path ("{0}\System32\azshci\cloudmanagement\{1}.exe" -f $env:SystemRoot, $Using:CloudManagementInfraServiceName) -ErrorAction SilentlyContinue; $cloudManagementInfraSvc -ne $null }
+
+        $osVersionInfo                  = Invoke-Command -Session $clusterNodeSession -ScriptBlock $osVersionDetectoid
+        $cloudManagementCapable         = Invoke-Command -Session $clusterNodeSession -ScriptBlock $cloudManagementDetectoid
+        $cloudManagementInfraCapable    = Invoke-Command -Session $clusterNodeSession -ScriptBlock $cloudManagementInfraDetectoid
+        Write-VerboseLog ("Display Version: {0}, Build Number: {1}, Cloud Management capable: {2}" -f $osVersionInfo.DisplayVersion, $osVersionInfo.BuildNumber, $cloudManagementCapable)
+
+        $isCloudManagementSupported = ([Int]::Parse($osVersionInfo.BuildNumber) -ge $22H2BuildNumber) -and ($cloudManagementCapable -eq $true)
+        $isCloudManagementInfraSupported = ([Int]::Parse($osVersionInfo.BuildNumber) -ge $23H2BuildNumber) -and ($cloudManagementInfraCapable -eq $true)
+        $isDefaultExtensionSupported = ([Int]::Parse($osVersionInfo.BuildNumber) -ge $22H2BuildNumber)
+        Write-VerboseLog ("Cloud Management supported: {0}" -f $isCloudManagementSupported)
+        Write-VerboseLog ("Cloud Management Infra supported: {0}" -f $isCloudManagementInfraSupported)
+        Write-VerboseLog ("Installing Mandatory extensions supported: {0}" -f $isDefaultExtensionSupported)
+        
+        $allowFor23H2Devices = Verify-23H2VanillaRegistration -clusterNodeSession $clusterNodeSession
+        if(([Int]::Parse($osVersionInfo.BuildNumber) -ge $23H2BuildNumber) -and !($allowFor23H2Devices))
+        {
+            #error message
+            Write-ErrorLog -Message $NonCloudDeploymentFor23H2DevicesErrorMessage -Category OperationStopped
+            $resultValue = [OperationStatus]::Failed
+            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed -ErrorAction Continue
+            $NonCloudDeploymentFor23H2DevicesErrorCode = 9132
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $NonCloudDeploymentFor23H2DevicesErrorCode -Output $registrationOutput
+            Write-Output $registrationOutput | Format-List
+            Write-NodeEventLog -Message $NonCloudDeploymentFor23H2DevicesErrorMessage -EventID 9132 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Error
+            throw
+        }
 
             if(-Not ([string]::IsNullOrEmpty($RegContext.AzureResourceUri)))
             {
@@ -2872,7 +2921,11 @@ param(
                 elseif ($ResourceName -ne $RegContext.AzureResourceUri.Split('/')[8]) 
                 {
                     Write-ErrorLog -Message ($HCIResourceNameDifferentErrorMessage -f $RegContext.AzureResourceUri.Split('/')[8]) -ErrorAction Continue
-                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                    $resultValue = [OperationStatus]::Failed
+                    $HCIResourceNameDifferentWacErrorCode = 9127
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $HCIResourceNameDifferentWacErrorCode -Output $registrationOutput
                     Write-Output $registrationOutput | Format-List
                     Write-NodeEventLog -Message ($HCIResourceNameDifferentErrorMessage -f $RegContext.AzureResourceUri.Split('/')[8]) -EventID 9127 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                     throw
@@ -2886,7 +2939,11 @@ param(
                 elseif ($ResourceGroupName -ne $RegContext.AzureResourceUri.Split('/')[4]) 
                 {
                     Write-ErrorLog -Message ($HCIResourceGroupNameDifferentErrorMessage -f $RegContext.AzureResourceUri.Split('/')[4]) -Category OperationStopped -ErrorAction Continue
-                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                    $resultValue = [OperationStatus]::Failed
+                    $HCIResourceGroupNameDifferentWacErrorCode = 9125
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $HCIResourceGroupNameDifferentWacErrorCode -Output $registrationOutput
                     Write-Output $registrationOutput | Format-List
                     Write-NodeEventLog -Message ($HCIResourceGroupNameDifferentErrorMessage -f $RegContext.AzureResourceUri.Split('/')[4]) -EventID 9125 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                     throw
@@ -2895,7 +2952,11 @@ param(
                 if($SubscriptionId -ne $RegContext.AzureResourceUri.Split('/')[2])
                 {
                     Write-ErrorLog -Message ($HCISubscriptionDifferentErrorMessage -f $RegContext.AzureResourceUri.Split('/')[2]) -ErrorAction Continue
-                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                    $resultValue = [OperationStatus]::Failed
+                    $HCISubscriptionDifferentWacErrorCode = 9128
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $HCISubscriptionDifferentWacErrorCode -Output $registrationOutput
                     Write-Output $registrationOutput | Format-List
                     Write-NodeEventLog -Message ($HCISubscriptionDifferentErrorMessage -f $RegContext.AzureResourceUri.Split('/')[2]) -EventID 9128 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                     throw
@@ -2904,7 +2965,11 @@ param(
         elseif ($RepairRegistration -eq $true)
         {
             Write-ErrorLog -Message $NoExistingRegistrationExistsErrorMessage -Category OperationStopped -ErrorAction Continue
-            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+            $resultValue = [OperationStatus]::Failed
+            $NoExistingRegistrationExistsWacErrorCode = 9101
+            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $NoExistingRegistrationExistsWacErrorCode -Output $registrationOutput
             Write-Output $registrationOutput | Format-List
             Write-NodeEventLog -Message $NoExistingRegistrationExistsErrorMessage -EventID 9101 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
             throw
@@ -2943,7 +3008,11 @@ param(
             {
                 $NoClusterErrorMessage = $NoClusterError -f $ComputerName
                 Write-ErrorLog -Message $NoClusterErrorMessage -Category OperationStopped -ErrorAction Continue
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                $resultValue = [OperationStatus]::Failed
+                $NoClusterWacErrorCode = 9102
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $NoClusterWacErrorCode -Output $registrationOutput
                 Write-Output $registrationOutput | Format-List
                 Write-NodeEventLog -Message $NoClusterErrorMessage -EventID 9102 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                 throw
@@ -3002,8 +3071,12 @@ param(
                 {
                     $ArcAlreadyRegisteredInDifferentResourceGroupErrorMessage = $ArcAlreadyRegisteredInDifferentResourceGroupError -f $arcres.Properties.arcInstanceResourceGroup
                     Write-ErrorLog -Message $ArcAlreadyRegisteredInDifferentResourceGroupErrorMessage -ErrorAction Continue
-                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                    $resultValue = [OperationStatus]::Failed
+                    $ArcAlredyRegisteredInDifferentResourceGroupWacErrorCode = 9129
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
                     $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyDetails -Value $ArcAlreadyRegisteredInDifferentResourceGroupErrorMessage
+Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $ArcAlredyRegisteredInDifferentResourceGroupWacErrorCode -Output $registrationOutput
                     Write-Output $registrationOutput | Format-List
                     Write-NodeEventLog -Message $ArcAlreadyRegisteredInDifferentResourceGroupErrorMessage -EventID 9129 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning 
                     throw
@@ -3016,33 +3089,20 @@ param(
             {
                 $ResourceExistsInDifferentRegionErrorMessage = $ResourceExistsInDifferentRegionError -f $resourceLocation, $Region
                 Write-ErrorLog -Message $ResourceExistsInDifferentRegionErrorMessage -Category OperationStopped -ErrorAction Continue
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                $resultValue = [OperationStatus]::Failed
+                $ResourceExistsInDifferentRegionWacErrorCode = 9104
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $ResourceExistsInDifferentRegionWacErrorCode -Output $registrationOutput
                 Write-Output $registrationOutput | Format-List
                 Write-NodeEventLog -Message $ResourceExistsInDifferentRegionErrorMessage -EventID 9104 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                 throw
             }
         }
-        
-        # Check if OS version is 22H2 or newer
-        $osVersionDetectoid       = { $displayVersion = (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").DisplayVersion; $buildNumber = (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber; New-Object -TypeName PSObject -Property @{'DisplayVersion'=$displayVersion; 'BuildNumber'=$buildNumber} }
-        $cloudManagementDetectoid = { $cloudManagementSvc = Get-Item -Path ("{0}\System32\azshci\{1}.exe" -f $env:SystemRoot, $Using:ClusterAgentServiceName) -ErrorAction SilentlyContinue; $cloudManagementSvc -ne $null }
-        $cloudManagementInfraDetectoid = { $cloudManagementInfraSvc = Get-Item -Path ("{0}\System32\azshci\cloudmanagement\{1}.exe" -f $env:SystemRoot, $Using:CloudManagementInfraServiceName) -ErrorAction SilentlyContinue; $cloudManagementInfraSvc -ne $null }
-
-        $osVersionInfo                  = Invoke-Command -Session $clusterNodeSession -ScriptBlock $osVersionDetectoid
-        $cloudManagementCapable         = Invoke-Command -Session $clusterNodeSession -ScriptBlock $cloudManagementDetectoid
-        $cloudManagementInfraCapable    = Invoke-Command -Session $clusterNodeSession -ScriptBlock $cloudManagementInfraDetectoid
-        Write-VerboseLog ("Display Version: {0}, Build Number: {1}, Cloud Management capable: {2}" -f $osVersionInfo.DisplayVersion, $osVersionInfo.BuildNumber, $cloudManagementCapable)
-
-        $isCloudManagementSupported = ([Int]::Parse($osVersionInfo.BuildNumber) -ge $22H2BuildNumber) -and ($cloudManagementCapable -eq $true)
-        $isCloudManagementInfraSupported = ([Int]::Parse($osVersionInfo.BuildNumber) -ge $23H2BuildNumber) -and ($cloudManagementInfraCapable -eq $true)
-        $isDefaultExtensionSupported = ([Int]::Parse($osVersionInfo.BuildNumber) -ge $22H2BuildNumber)
-        Write-VerboseLog ("Cloud Management supported: {0}" -f $isCloudManagementSupported)
-        Write-VerboseLog ("Cloud Management Infra supported: {0}" -f $isCloudManagementInfraSupported)
-        Write-VerboseLog ("Installing Mandatory extensions supported: {0}" -f $isDefaultExtensionSupported)
-        
+                
         if(($isDefaultExtensionSupported) -and (($null -eq $arcres) -or ($null -eq $arcres.Properties.DefaultExtensions.ConsentTime)))
         {
-            Write-Output $MandatoryExtensionInfoMessage
+            Write-Warning $MandatoryExtensionInfoMessage
             Write-InfoLog ($MandatoryExtensionInfoMessage)
         }
 
@@ -3060,7 +3120,12 @@ param(
         catch
         {
             Write-ErrorLog $_.Exception.Message -Category OperationStopped
-            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+            $resultValue = [OperationStatus]::Failed
+            $VerifyNodesArcRegistrationStateWACErrorCode = 2
+            $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacExceptionMessage -PropertyValue $_.Exception.Message.ToString()  -Output $registrationOutput
+            Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $VerifyNodesArcRegistrationStateWACErrorCode  -Output $registrationOutput
             Write-Output $registrationOutput | Format-List
             throw
         }
@@ -3137,8 +3202,12 @@ param(
                 $sameNodeNamesAsList = $sameNodeNames -join ","
                 $ArcMachineAlreadyExistsInResourceGroupErrorMessage = $ArcMachineAlreadyExistsInResourceGroupError -f $sameNodeNamesAsList, $ArcServerResourceGroupName
                 Write-ErrorLog -Message $ArcMachineAlreadyExistsInResourceGroupErrorMessage -ErrorAction Continue
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                $resultValue = [OperationStatus]::Failed
+                $ArcMachineAlreadyExistsInResourceGroupWacErrorCode = 9105
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
                 $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyDetails -Value $ArcMachineAlreadyExistsInResourceGroupErrorMessage 
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $ArcMachineAlreadyExistsInResourceGroupWacErrorCode -Output $registrationOutput
                 Write-Output $registrationOutput | Format-List
                 Write-NodeEventLog -Message $ArcMachineAlreadyExistsInResourceGroupErrorMessage -EventID 9105 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                 throw
@@ -3184,7 +3253,11 @@ param(
                     # Already registered with same resource Id and resource does not exists
                     $AlreadyRegisteredErrorMessage = $CloudResourceDoesNotExist -f $resourceId
                     Write-ErrorLog -Message $AlreadyRegisteredErrorMessage -Category OperationStopped -ErrorAction Continue
-                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                    $resultValue = [OperationStatus]::Failed
+                    $CloudResourceDoesNotExistWacErrorCode = 9106
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $CloudResourceDoesNotExistWacErrorCode -Output $registrationOutput
                     Write-Output $registrationOutput | Format-List
                     Write-NodeEventLog -Message $AlreadyRegisteredErrorMessage -EventID 9106 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                     throw
@@ -3195,7 +3268,11 @@ param(
                 Write-VerboseLog ("Cluster is already registered and cloud resource does not match.")
                 $AlreadyRegisteredErrorMessage = $RegisteredWithDifferentResourceId -f $RegContext.AzureResourceUri
                 Write-ErrorLog -Message $AlreadyRegisteredErrorMessage -Category OperationStopped -ErrorAction Continue
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                $resultValue = [OperationStatus]::Failed
+                $RegisteredWithDifferentResourceIdWacErrorCode = 9107
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $RegisteredWithDifferentResourceIdWacErrorCode -Output $registrationOutput
                 Write-Output $registrationOutput | Format-List
                 Write-NodeEventLog -Message $AlreadyRegisteredErrorMessage -EventID 9107 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                 throw
@@ -3214,7 +3291,11 @@ param(
             {
                 $RegionNotSupportedMessage = $RegionNotSupported -f $Region, $supportedRegions
                 Write-ErrorLog -Message $RegionNotSupportedMessage -Category OperationStopped -ErrorAction Continue
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                $resultValue = [OperationStatus]::Failed
+                $regionNotSupportedWacErrorCode = 9108
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $regionNotSupportedWacErrorCode -Output $registrationOutput
                 Write-Output $registrationOutput | Format-List
                 Write-NodeEventLog -Message $RegionNotSupportedMessage -EventID 9108 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                 throw
@@ -3248,7 +3329,11 @@ param(
                 if($clusterResult -eq $false) 
                 {
                     Write-ErrorLog -Message $ClusterCreationFailureMessage -ErrorAction Continue
-                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                    $resultValue = [OperationStatus]::Failed
+                    $clusterCreationFailureWacErrorCode = 9130
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $clusterCreationFailureWacErrorCode -Output $registrationOutput
                     Write-Output $registrationOutput | Format-List
                     Write-NodeEventLog -Message $ClusterCreationFailureMessage -EventID 9130 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                     throw
@@ -3308,8 +3393,15 @@ param(
             {
                 Write-VerboseLog("Resource Provider Object Id is Null. Can't assign roles to HCI RP for ARC Onboarding")
                 Write-ErrorLog -Message $rpObjectIdNullError -Category OperationStopped
-                $operationStatus = [OperationStatus]::ArcFailed
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value [ErrorDetail]::ArcPermissionsMissing
+                $resultValue = [OperationStatus]::ArcFailed
+                $errorValue = [ErrorDetail]::ArcPermissionsMissing
+                $rpObjectIdNullWacErrorCode = 9131
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $errorValue
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorDetail -PropertyValue $errorValue.ToString() -Output $registrationOutput
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $rpObjectIdNullWacErrorCode -Output $registrationOutput
+                Write-Output $registrationOutput | Format-List
                 Write-NodeEventLog -Message $rpObjectIdNullError -EventID 9131 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Error
                 throw
             }
@@ -3327,8 +3419,15 @@ param(
                 {
                     Write-VerboseLog("Failed to assign Arc roles to HCI Resource Provider")
                     Write-ErrorLog -Message $roleAssignmentHCIRPFailError -Category OperationStopped
-                    $operationStatus = [OperationStatus]::ArcFailed
-                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $setRolesResult
+                    $resultValue = [OperationStatus]::ArcFailed
+                    $errorValue = $setRolesResult
+                    $roleAssignmentHCIRPFailWacErrorCode = 9132
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $errorValue
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorDetail -PropertyValue $errorValue.ToString() -Output $registrationOutput
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $roleAssignmentHCIRPFailWacErrorCode -Output $registrationOutput
+                    Write-Output $registrationOutput | Format-List
                     Write-NodeEventLog -Message $rpObjectIdNullError -EventID 9132 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Error
                     throw
                 }
@@ -3365,7 +3464,11 @@ param(
             {
                 Write-VerboseLog ("Setup-Certificates has failed")
                 Write-ErrorLog -Message $setupCertsError -Category OperationStopped
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                $resultValue = [OperationStatus]::Failed
+                $setupCertificatesFailedWacErrorCode = 9109
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $setupCertificatesFailedWacErrorCode -Output $registrationOutput
                 Write-Output $registrationOutput | Format-List
                 Write-NodeEventLog -Message $setupCertsError -EventID 9109 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                 throw
@@ -3376,7 +3479,11 @@ param(
                 Write-VerboseLog ("Setup-Certificates failed on atleast one node")
                 $SettingCertificateFailedMessage = $SettingCertificateFailed -f ($NewCertificateFailedNodes -join ","),($SetCertificateFailedNodes -join ",")
                 Write-ErrorLog -Message $SettingCertificateFailedMessage -Category OperationStopped -ErrorAction Continue
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                $resultValue = [OperationStatus]::Failed
+                $SettingCertificateFailedWacErrorCode = 9110
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $SettingCertificateFailedWacErrorCode -Output $registrationOutput
                 Write-Output $registrationOutput | Format-List
                 Write-NodeEventLog -Message $SettingCertificateFailedMessage -EventID 9110 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                 throw
@@ -3386,7 +3493,11 @@ param(
             {
                 $NotAllTheNodesInClusterAreGAError = $NotAllTheNodesInClusterAreGA -f ($OSNotLatestOnNodes -join ",")
                 Write-ErrorLog -Message $NotAllTheNodesInClusterAreGAError -Category OperationStopped -ErrorAction Continue
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                $resultValue = [OperationStatus]::Failed
+                $NotAllTheNodesInClusterAreGAErrorWacErrorCode = 9111
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $NotAllTheNodesInClusterAreGAErrorWacErrorCode -Output $registrationOutput
                 Write-Output $registrationOutput | Format-List
                 Write-NodeEventLog -Message $NotAllTheNodesInClusterAreGAError -EventID 9111 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                 throw
@@ -3426,7 +3537,12 @@ param(
                 $errorMessage = $_.Exception.Message.ToString()
                 Write-VerboseLog ($SetAzureStackHCIRegistrationErrorMessage -f $errorMessage)
                 Write-ErrorLog ($SetAzureStackHCIRegistrationErrorMessage -f $errorMessage) -Category OperationStopped -Exception $_ -ErrorAction Continue
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                $resultValue = [OperationStatus]::Failed
+                $SetAzureStackHCIRegistrationnWacErrorCode = 1
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacExceptionMessage -PropertyValue $errorMessage -Output $registrationOutput
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $SetAzureStackHCIRegistrationnWacErrorCode -Output $registrationOutput
                 Write-Output $registrationOutput | Format-List
                 throw
             }
@@ -3667,7 +3783,11 @@ param(
             {
                 $ArcCmdletsNotAvailableErrorMsg = $ArcCmdletsNotAvailableError -f ($ArcCmdletsAbsentOnNodes -join ",")
                 Write-ErrorLog -Message $ArcCmdletsNotAvailableErrorMsg -Category OperationStopped -ErrorAction Continue
-                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                $resultValue = [OperationStatus]::Failed
+                $ArcCmdletsNotAvailableWacErrorCode = 9112
+                $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $ArcCmdletsNotAvailableWacErrorCode -Output $registrationOutput
                 Write-Output $registrationOutput | Format-List
                 Write-NodeEventLog -Message $ArcCmdletsNotAvailableErrorMsg -EventID 9112 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                 throw
@@ -3690,7 +3810,11 @@ param(
                     if ($arcres.Properties.aggregateState -eq $ArcSettingsDisableInProgressState)
                     {
                         Write-ErrorLog -Message $ArcRegistrationDisableInProgressError -Category OperationStopped -ErrorAction Continue
-                        $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                        $resultValue = [OperationStatus]::Failed
+                        $ArcRegistrationDisableInProgressWacErrorCode = 9113
+                        $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                        Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                        Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $ArcRegistrationDisableInProgressWacErrorCode -Output $registrationOutput
                         Write-Output $registrationOutput | Format-List
                         Write-NodeEventLog -Message $ArcRegistrationDisableInProgressError  -EventID 9113 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                         throw
@@ -3709,8 +3833,12 @@ param(
                     $arcResult = Register-ArcForServers -IsManagementNode $IsManagementNode -ComputerName $ComputerName -Credential $Credential -TenantId $TenantId -SubscriptionId $SubscriptionId -ResourceGroup $ArcServerResourceGroupName -Region $Region -ArcSpnCredential $ArcSpnCredential -ClusterDNSSuffix $clusterDNSSuffix -IsWAC:$IsWAC -Environment:$EnvironmentName -ArcResource $arcres
                 }
                 catch {
-                    $operationStatus = [OperationStatus]::ArcFailed
-                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $operationStatus
+                    $resultValue = [OperationStatus]::ArcFailed
+                    $RegisterArcForServersWacErrorCode = 3
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $resultValue
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $registrationOutput
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacExceptionMessage -PropertyValue $_.Exception.Message.toString() -Output $registrationOutput
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode  -PropertyValue $RegisterArcForServersWacErrorCode  -Output $registrationOutput
                     Write-Output $registrationOutput | Format-List
                     throw $_.Exception.Message
                 }
@@ -3718,7 +3846,9 @@ param(
                 if($arcResult -ne [ErrorDetail]::Success)
                 {
                     $operationStatus = [OperationStatus]::RegisterSucceededButArcFailed
-                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $arcResult
+                    $errorValue = $arcResult
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyErrorDetail -Value $errorValue
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorDetail -PropertyValue $errorValue.ToString() -Output $registrationOutput
                 }
             }
         }
@@ -3726,6 +3856,7 @@ param(
         Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -Completed
 
         $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $operationStatus
+Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $operationStatus.ToString() -Output $registrationOutput
         $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyPortalResourceURL -Value $portalResourceUrl
         $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResourceId -Value $resourceId
         $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyDetails -Value $RegistrationSuccessDetailsMessage
@@ -3755,6 +3886,18 @@ param(
             try{ Stop-Transcript | Out-Null }catch{}
         }
     }
+}
+
+function Verify-23H2VanillaRegistration {
+    [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
+    param(
+        [System.Management.Automation.Runspaces.PSSession] $clusterNodeSession
+    )
+
+    $detectRegKeyfor23H2 = { $lcmRegKey = Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\LCMAzureStackStampInformation" -Name "InitializationComplete" -ErrorAction SilentlyContinue; $lcmRegKey -ne $null }
+    $allowFor23H2Devices = Invoke-Command -Session $clusterNodeSession -ScriptBlock $detectRegKeyfor23H2
+
+    return $allowFor23H2Devices
 }
 
 function Set-ArcRoleforRPSpn {
@@ -3961,6 +4104,9 @@ param(
     [Switch]$DisableOnlyAzureArcServer = $false,
 
     [Parameter(Mandatory = $false)]
+    [Switch]$IsWAC,
+
+    [Parameter(Mandatory = $false)]
     [System.Management.Automation.PSCredential] $Credential,
 
     [Parameter(Mandatory = $false)]
@@ -4017,7 +4163,11 @@ param(
             if($RegContext.RegistrationStatus -ne [RegistrationStatus]::Registered)
             {
                 Write-ErrorLog -Message $RegistrationInfoNotFound -Category OperationStopped -ErrorAction Continue
-                $unregistrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                $resultValue = [OperationStatus]::Failed
+                $RegistrationInfoNotFoundWacErrorCode = 9115
+                $unregistrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $unregistrationOutput
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $RegistrationInfoNotFoundWacErrorCode -Output $unregistrationOutput
                 Write-Output $unregistrationOutput | Format-List
                 Write-NodeEventLog -Message $RegistrationInfoNotFound -EventID 9115 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                 throw
@@ -4063,7 +4213,11 @@ param(
 
             if($arcUnregisterRes -eq $false)
             {
-                $unregistrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Failed
+                $resultValue = [OperationStatus]::Failed
+                $unregisterArcForServersWacErrorCode = 9117
+                $unregistrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $unregistrationOutput
+                Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacErrorCode -PropertyValue $unregisterArcForServersWacErrorCode -Output $unregistrationOutput
                 Write-Output $unregistrationOutput | Format-List
                 Write-NodeEventLog -Message "ARC unregistration failed" -EventID 9117 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
                 return
@@ -4072,7 +4226,9 @@ param(
             {
                 if ($DisableOnlyAzureArcServer -eq $true)
                 {
-                    $unregistrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value [OperationStatus]::Success
+                    $resultValue = [OperationStatus]::Success
+                    $unregistrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $resultValue
+                    Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $resultValue.ToString() -Output $unregistrationOutput
                     Write-Output $unregistrationOutput | Format-List
                     Write-NodeEventLog -Message "Disabling only ARC for Servers. UnRegistration completed successfully" -EventID 9008 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
                     return
@@ -4165,6 +4321,7 @@ param(
         Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -Completed
 
         $unregistrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyResult -Value $operationStatus
+        Set-WacOutputProperty -IsWAC $IsWAC -PropertyName $OutputPropertyWacResult -PropertyValue $operationStatus.ToString() -Output $unregistrationOutput
 
         if ($operationStatus -eq [OperationStatus]::Success)
         {
@@ -4566,7 +4723,6 @@ param(
     $nodeSessionParams  = @{}
     $subscriptionId     = [string]::Empty
     $armResourceId      = [string]::Empty
-    $armResource        = $null
 
     $successMessage     = New-Object -TypeName System.Text.StringBuilder
 
@@ -4688,42 +4844,28 @@ param(
             $TenantId = Azure-Login @azureLoginParameters
         }
 
-        $armResource = Get-AzResource -ResourceId $armResourceId -ExpandProperties -ApiVersion $RPAPIVersion -ErrorAction Stop
-
         $properties = [PSCustomObject]@{
-            desiredProperties = $armResource.Properties.desiredProperties
-            aadClientId = $armResource.Properties.aadClientId
-            aadTenantId = $armResource.Properties.aadTenantId
-            aadServicePrincipalObjectId = $armResource.Properties.aadServicePrincipalObjectId
-            aadApplicationObjectId = $armResource.Properties.aadApplicationObjectId
-        }
-
-        if ($properties.desiredProperties -eq $null)
-        {
-            #
-            # Create desiredProperties object with default values
-            #
-            $desiredProperties = New-Object -TypeName PSObject
-            $desiredProperties | Add-Member -MemberType NoteProperty -Name 'windowsServerSubscription' -Value 'Disabled'
-            $desiredProperties | Add-Member -MemberType NoteProperty -Name 'diagnosticLevel' -Value 'Basic'
-
-            $properties | Add-Member -MemberType NoteProperty -Name 'desiredProperties' -Value $desiredProperties
+            desiredProperties = New-Object -TypeName PSObject
         }
 
         if ($PSBoundParameters.ContainsKey('EnableWSSubscription'))
         {
+            $windowsServerSubscriptionValue = $Null
+
             if ($EnableWSSubscription -eq $true)
             {
-                $properties.desiredProperties.windowsServerSubscription = 'Enabled';
+                $windowsServerSubscriptionValue = 'Enabled';
 
                 $successMessage.Append($SetAzResourceSuccessWSSE) | Out-Null;
             }
             else
             {
-                $properties.desiredProperties.windowsServerSubscription = 'Disabled';
+                $windowsServerSubscriptionValue = 'Disabled';
 
                 $successMessage.Append($SetAzResourceSuccessWSSD) | Out-Null;
             }
+
+            $properties.desiredProperties | Add-Member -MemberType NoteProperty -Name 'windowsServerSubscription' -Value $windowsServerSubscriptionValue
 
             $doSetResource      = $true
             $needShouldContinue = $true
@@ -4731,7 +4873,7 @@ param(
 
         if ($PSBoundParameters.ContainsKey('DiagnosticLevel'))
         {
-            $properties.desiredProperties.diagnosticLevel = $DiagnosticLevel.ToString()
+            $properties.desiredProperties | Add-Member -MemberType NoteProperty -Name 'diagnosticLevel' -Value $($DiagnosticLevel.ToString())
 
             if ($successMessage.Length -gt 0)
             {
@@ -4760,12 +4902,12 @@ param(
                 Write-Progress -Id $MainProgressBarId -Activity $SetProgressActivityName -Status $SetProgressStatusUpdatingProps -PercentComplete 60
 
                 $setAzResourceParameters = @{
-                                            'ResourceId'  = $armResource.Id;
+                                            'ResourceId'  = $armResourceId;
                                             'Properties'  = $properties;
                                             'ApiVersion'  = $RPAPIVersion
                                             }
 
-                $localResult = Set-AzResource @setAzResourceParameters -Confirm:$false -Force -ErrorAction Stop
+                $localResult = Set-AzResource @setAzResourceParameters -UsePatchSemantics -Confirm:$false -Force -ErrorAction Stop
 
                 if ($PSBoundParameters.ContainsKey('EnableWSSubscription') -and ($EnableWSSubscription -eq $false))
                 {

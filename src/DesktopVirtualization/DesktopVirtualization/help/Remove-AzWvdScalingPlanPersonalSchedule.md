@@ -22,7 +22,8 @@ Remove-AzWvdScalingPlanPersonalSchedule -ResourceGroupName <String> -ScalingPlan
 ### DeleteViaIdentity
 ```
 Remove-AzWvdScalingPlanPersonalSchedule -InputObject <IDesktopVirtualizationIdentity>
- [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </summary>
 
         /// <param name="retentionScheduleFormatType">Retention schedule format for yearly retention policy.
-        /// Possible values include: 'Invalid', 'Daily', 'Weekly'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Daily&#39;, &#39;Weekly&#39;</param>
 
         /// <param name="monthsOfYear">List of months of year of yearly retention policy.
         /// </param>

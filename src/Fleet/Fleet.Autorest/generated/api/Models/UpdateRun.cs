@@ -342,7 +342,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The node image upgrade type.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
@@ -413,7 +413,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The list of stages that compose this update run. Min size: 1.",
         SerializedName = @"stages",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUpdateStage) })]
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The resource id of the FleetUpdateStrategy resource to reference.
 
         When creating a new run, there are three ways to define a strategy for the run:
@@ -469,7 +469,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The Kubernetes version to upgrade the member clusters to.",
         SerializedName = @"kubernetesVersion",
         PossibleTypes = new [] { typeof(string) })]
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models
         ReadOnly = false,
         Read = true,
         Create = true,
-        Update = false,
+        Update = true,
         Description = @"The upgrade type.
         Full requires the KubernetesVersion property to be set.
         NodeImageOnly requires the KubernetesVersion property not to be set.",

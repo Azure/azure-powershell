@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DataBox service.
 
 ---
-## Status
-[![Az.DataBox](https://img.shields.io/powershellgallery/v/Az.DataBox.svg?style=flat-square&label=Az.DataBox "Az.DataBox")](https://www.powershellgallery.com/packages/Az.DataBox/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -30,9 +27,10 @@ For information on how to develop for `Az.DataBox`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
+commit: 0dd49a444195fef7f3555cad038cb7665cbd928c
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/databox/resource-manager/Microsoft.DataBox/stable/2022-12-01/databox.json
@@ -49,6 +47,10 @@ inlining-threshold: 50
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

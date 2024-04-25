@@ -14,7 +14,8 @@ Gets security automations
 
 ### SubscriptionScope (Default)
 ```
-Get-AzSecurityAutomation [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityAutomation [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupScope
@@ -31,7 +32,8 @@ Get-AzSecurityAutomation -ResourceGroupName <String> -Name <String> [-DefaultPro
 
 ### ResourceId
 ```
-Get-AzSecurityAutomation -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityAutomation -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

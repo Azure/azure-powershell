@@ -15,8 +15,8 @@ Invokes GEO DR failover and reconfigure the alias to point to the secondary name
 ### Fail (Default)
 ```
 Set-AzEventHubGeoDRConfigurationFailOver -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FailViaIdentity

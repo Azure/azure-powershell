@@ -1,0 +1,46 @@
+{
+  "Get-AzSelfHelpSolutionSelfHelp+[NoContext]+Get+$GET+https://management.azure.com/providers/Microsoft.Help/selfHelp/apollo-48996ff7-002f-47c1-85b2-df138843d5d5?api-version=2024-03-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Help/selfHelp/apollo-48996ff7-002f-47c1-85b2-df138843d5d5?api-version=2024-03-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "d260ea5e-d9db-4157-8c77-89fa73ac7f99" ],
+        "CommandName": [ "Get-AzSelfHelpSolutionSelfHelp" ],
+        "FullCommandName": [ "Get-AzSelfHelpSolutionSelfHelp_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.12", "Az.SelfHelp/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "49ba1612-83b4-4d26-8918-07e22bc03f05" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-correlation-request-id": [ "49ba1612-83b4-4d26-8918-07e22bc03f05" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240405T204446Z:49ba1612-83b4-4d26-8918-07e22bc03f05" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 95EC19717038493692F401AEEA955637 Ref B: BN1AA2051015017 Ref C: 2024-04-05T20:44:46Z" ],
+        "Date": [ "Fri, 05 Apr 2024 20:44:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2212" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.Help/selfHelp/apollo-48996ff7-002f-47c1-85b2-df138843d5d5\",\"name\":\"apollo-48996ff7-002f-47c1-85b2-df138843d5d5\",\"type\":\"Microsoft.Help/selfHelp\",\"properties\":{\"title\":\"Durable Functions/Creation\",\"content\":\"\u003ch2\u003eResolve issues with creating Durable Functions\u003c/h2\u003e\\n\u003cp\u003eDurable Functions is an extension of Azure Functions that lets you write stateful functions in a serverless environment. The extension manages state, checkpoints, and restarts for you.\u003c/p\u003e\\n\u003ch3\u003eRecommended steps\u003c/h3\u003e\\n\u003cul\u003e\\n\u003cli\u003eIf you\u0027re using the \u003ca href=\\\"https://docs.microsoft.com/azure/azure-functions/durable/durable-functions-storage-providers#mssql\\\"\u003eMicrosoft SQL Server storage provider\u003c/a\u003e, multitenancy mode is enabled by default, in which case the TaskHub name will be the SQL login username (for example, \u003cstrong\u003edbo\u003c/strong\u003e). If you want to disable multitenancy mode, run the following T-SQL command:\u003c/li\u003e\\n\u003c/ul\u003e\\n\u003cpre class=\\\"ext-code\\\"\u003e\u003ccode\u003e EXECUTE dt.SetGlobalSetting @Name=\u0027TaskHubMode\u0027, @Value=0\\n\u003c/code\u003e\u003c/pre\u003e\\n\u003cp\u003eWhen multitenancy mode is disabled, the \u003ccode\u003eTaskHub\u003c/code\u003e name is the one that you specify in the \u003ca href=\\\"https://docs.microsoft.com/azure/azure-functions/durable/durable-functions-task-hubs?tabs=csharp#task-hub-names\\\"\u003ehost.json or Function binding\u003c/a\u003e.\u003c/p\u003e\\n\u003cp\u003eFor more information, see \u003ca href=\\\"https://microsoft.github.io/durabletask-mssql/#/multitenancy?id=enabling-multitenancy\\\"\u003eMultitenancy\u003c/a\u003e.\u003c/p\u003e\\n\u003ch3\u003eResources\u003c/h3\u003e\\n\u003cul\u003e\\n\u003cli\u003e\u003ca href=\\\"https://docs.microsoft.com/azure/azure-functions/durable/durable-functions-create-first-csharp\\\"\u003eCreate your first durable function in C#\u003c/a\u003e\u003c/li\u003e\\n\u003cli\u003e\u003ca href=\\\"https://docs.microsoft.com/azure/azure-functions/durable/quickstart-js-vscode\\\"\u003eCreate your first durable function in JavaScript\u003c/a\u003e\u003c/li\u003e\\n\u003cli\u003e\u003ca href=\\\"https://docs.microsoft.com/azure/azure-functions/durable/durable-functions-storage-providers\\\"\u003eDurable Functions storage providers\u003c/a\u003e\u003c/li\u003e\\n\u003c/ul\u003e\\n\u003ch3\u003eRelevant results from the web\u003c/h3\u003e\\n\u003c!--ecc4cc50-08a2-493c-98d8-4d55e420f0a7--\u003e\\n\",\"replacementMaps\":{\"webResults\":[{\"replacementKey\":\"\u003c!--ecc4cc50-08a2-493c-98d8-4d55e420f0a7--\u003e\"}]},\"sections\":[],\"solutionId\":\"apollo-48996ff7-002f-47c1-85b2-df138843d5d5\"}}",
+      "isContentBase64": false
+    }
+  }
+}

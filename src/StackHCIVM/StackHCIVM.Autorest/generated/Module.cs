@@ -17,6 +17,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
     using SignalDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>;
     using EventListenerDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Management.Automation.InvocationInfo, string, string, string, global::System.Exception, global::System.Threading.Tasks.Task>;
     using NextDelegate = global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>;
+    using SanitizerDelegate = global::System.Action<object, string>;
+    using GetTelemetryInfoDelegate = global::System.Func<string, global::System.Collections.Generic.Dictionary<global::System.String,global::System.String>>;
 
     /// <summary>A class that contains the module-common code and data.</summary>
     public partial class Module
@@ -26,11 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
 
         public global::System.Net.Http.HttpClientHandler _handler = new global::System.Net.Http.HttpClientHandler();
 
+        private static bool _init = false;
+
+        private static readonly global::System.Object _initLock = new global::System.Object();
+
+        private static Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Module _instance;
+
         /// <summary>the ISendAsync pipeline instance</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.HttpPipeline _pipeline;
 
         /// <summary>the ISendAsync pipeline instance (when proxy is enabled)</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Runtime.HttpPipeline _pipelineWithProxy;
+
+        private static readonly global::System.Object _singletonLock = new global::System.Object();
 
         public bool _useProxy = false;
 
@@ -51,11 +61,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// <summary>The delegate to get the telemetry Id.</summary>
         public GetTelemetryIdDelegate GetTelemetryId { get; set; }
 
-        /// <summary>Backing field for <see cref="Instance" /> property.</summary>
-        private static Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Module _instance;
+        /// <summary>The delegate to get the telemetry info.</summary>
+        public GetTelemetryInfoDelegate GetTelemetryInfo { get; set; }
 
         /// <summary>the singleton of this module class</summary>
-        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Module Instance => Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Module._instance?? (Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Module._instance = new Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Module());
+        public static Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Module Instance { get { if (_instance == null) { lock (_singletonLock) { if (_instance == null) { _instance = new Module(); }}} return _instance; } }
 
         /// <summary>The Name of this module</summary>
         public string Name => @"Az.StackHCIVM";
@@ -71,6 +81,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
 
         /// <summary>The ResourceID for this module (azure arm).</summary>
         public string ResourceId => @"Az.StackHCIVM";
+
+        /// <summary>The delegate to call in WriteObject to sanitize the output object.</summary>
+        public SanitizerDelegate SanitizeOutput { get; set; }
 
         /// <summary>The delegate for creating a telemetry.</summary>
         public TelemetryDelegate Telemetry { get; set; }
@@ -117,9 +130,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM
         /// <summary>Initialization steps performed after the module is loaded.</summary>
         public void Init()
         {
-            OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipeline.Prepend(step); } , (step)=> { _pipeline.Append(step); } );
-            OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipelineWithProxy.Prepend(step); } , (step)=> { _pipelineWithProxy.Append(step); } );
-            CustomInit();
+            if (_init == false)
+            {
+                lock (_initLock) {
+                    if (_init == false) {
+                        OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipeline.Prepend(step); } , (step)=> { _pipeline.Append(step); } );
+                        OnModuleLoad?.Invoke( ResourceId, Name ,(step)=> { _pipelineWithProxy.Prepend(step); } , (step)=> { _pipelineWithProxy.Append(step); } );
+                        CustomInit();
+                        _init = true;
+                    }
+                }
+            }
         }
 
         /// <summary>Creates the module instance.</summary>

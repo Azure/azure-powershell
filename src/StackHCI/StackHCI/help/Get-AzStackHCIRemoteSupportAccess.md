@@ -13,7 +13,8 @@ Gets Remote Support Access.
 ## SYNTAX
 
 ```
-Get-AzStackHCIRemoteSupportAccess [-Cluster] [-IncludeExpired] [<CommonParameters>]
+Get-AzStackHCIRemoteSupportAccess [-Cluster] [-IncludeExpired]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

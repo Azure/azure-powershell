@@ -786,7 +786,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             return outputBlobPath;
         }
 
-        public PSKeyVaultCertificate MergeCertificate(string vaultName, string name, byte[] certBytes, Dictionary<string, string> tags)
+        public PSKeyVaultCertificate MergeCertificate(string vaultName, string name, IEnumerable<byte[]> certBytes, Dictionary<string, string> tags)
         {
             throw new NotImplementedException();
         }

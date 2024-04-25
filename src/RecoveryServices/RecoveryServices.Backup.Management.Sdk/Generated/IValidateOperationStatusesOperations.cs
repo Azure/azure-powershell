@@ -14,20 +14,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public partial interface IValidateOperationStatusesOperations
     {
         /// <summary>
-        /// Fetches the status of a triggered validate operation. The status can be in progress, completed
-        /// or failed. You can refer to the OperationStatus enum for all the possible states of the operation.
-        /// If operation has completed, this method returns the list of errors obtained while validating the operation.
+        /// Fetches the status of a triggered validate operation. The status can be in
+        /// progress, completed or failed. You can refer to the OperationStatus enum
+        /// for all the possible states of the operation. If operation has completed,
+        /// this method returns the list of errors obtained while validating the
+        /// operation.
         /// </summary>
         /// <remarks>
-        /// Fetches the status of a triggered validate operation. The status can be in progress, completed
-        /// or failed. You can refer to the OperationStatus enum for all the possible states of the operation.
-        /// If operation has completed, this method returns the list of errors obtained while validating the operation.
+        /// Fetches the status of a triggered validate operation. The status can be in
+        /// progress, completed or failed. You can refer to the OperationStatus enum
+        /// for all the possible states of the operation. If operation has completed,
+        /// this method returns the list of errors obtained while validating the
+        /// operation.
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='operationId'>
         /// OperationID represents the operation whose status needs to be fetched.

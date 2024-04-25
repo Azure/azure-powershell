@@ -1,6 +1,6 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
-Module Name: Az.WebSites
+Module Name: Az.Websites
 ms.assetid: BFC38930-DBB4-4EBB-8E29-73B901FAF486
 online version: https://learn.microsoft.com/powershell/module/az.websites/edit-azwebappbackupconfiguration
 schema: 2.0.0
@@ -18,7 +18,8 @@ Edits the current configuration backup for an Azure Web App
 Edit-AzWebAppBackupConfiguration [-FrequencyInterval] <Int32> [-FrequencyUnit] <String>
  [-RetentionPeriodInDays] <Int32> [[-StartTime] <DateTime>] [-KeepAtLeastOneBackup] [-Enabled]
  [-ResourceGroupName] <String> [-Name] <String> [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>]
- [-StorageAccountUrl] <String> [[-Databases] <DatabaseBackupSetting[]>] [<CommonParameters>]
+ [-StorageAccountUrl] <String> [[-Databases] <DatabaseBackupSetting[]>]
+ [<CommonParameters>]
 ```
 
 ### FromWebApp
@@ -268,5 +269,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzWebAppBackupConfiguration](./Get-AzWebAppBackupConfiguration.md)
-
-

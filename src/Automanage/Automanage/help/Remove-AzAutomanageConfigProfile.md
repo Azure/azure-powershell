@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Automanage-help.xml
 Module Name: Az.Automanage
 online version: https://learn.microsoft.com/powershell/module/az.automanage/remove-azautomanageconfigprofile
 schema: 2.0.0
@@ -15,13 +15,14 @@ Delete a configuration profile
 ### Delete (Default)
 ```
 Remove-AzAutomanageConfigProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzAutomanageConfigProfile -InputObject <IAutomanageIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +47,8 @@ This command delete a configuration profile by pipeline.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -181,25 +183,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IAutomanageIdentity>`: Identity Parameter
-  - `[BestPracticeName <String>]`: The Automanage best practice name.
-  - `[ClusterName <String>]`: The name of the Arc machine.
-  - `[ConfigurationProfileAssignmentName <String>]`: Name of the configuration profile assignment. Only default is supported.
-  - `[ConfigurationProfileName <String>]`: Name of the configuration profile.
-  - `[Id <String>]`: Resource identity path
-  - `[MachineName <String>]`: The name of the Arc machine.
-  - `[ReportName <String>]`: The report name.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VMName <String>]`: The name of the virtual machine.
-  - `[VersionName <String>]`: The Automanage best practice version name.
-
 ## RELATED LINKS
-

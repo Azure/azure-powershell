@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject
 schema: 2.0.0
@@ -18,7 +18,8 @@ New-AzFrontDoorCdnRuleRouteConfigurationOverrideActionObject -Name <DeliveryRule
  [-CacheConfigurationIsCompressionEnabled <RuleIsCompressionEnabled>]
  [-CacheConfigurationQueryParameter <String>]
  [-CacheConfigurationQueryStringCachingBehavior <RuleQueryStringCachingBehavior>] [-OriginGroupId <String>]
- [-OriginGroupOverrideForwardingProtocol <ForwardingProtocol>] [<CommonParameters>]
+ [-OriginGroupOverrideForwardingProtocol <ForwardingProtocol>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -173,11 +174,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleRouteConfigurationOverrideAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleRouteConfigurationOverrideAction
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -44,6 +44,10 @@
     <!-- Flags -->
     <CodeSign Condition ="'$(CodeSign)' == ''">false</CodeSign>
     <SkipHelp Condition ="'$(SkipHelp)' != 'true'">false</SkipHelp>
+    <TargetBuild Condition="'$(TargetModule)' != ''">true</TargetBuild>
+    <TargetBuild Condition="'$(TargetModule)' == ''">false</TargetBuild>
+
+
     <!-- Set this true only if you want to test the CodeSign workflow locally -->
     <DelaySign Condition ="'$(DelaySign)' == ''">false</DelaySign>
     <NetCore Condition="'$(NetCore)' != 'false'">true</NetCore>
@@ -51,8 +55,8 @@
 
     <!-- Folders -->
     <SignedOutputRootDir>$(RepoRoot)signed</SignedOutputRootDir>
-    <TestOutputDirectory>$(RepoArtifacts)/TestResults</TestOutputDirectory>
-    <StaticAnalysisOutputDirectory>$(RepoArtifacts)/StaticAnalysisResults</StaticAnalysisOutputDirectory>
+    <TestOutputDirectory>$(RepoArtifacts)TestResults</TestOutputDirectory>
+    <StaticAnalysisOutputDirectory>$(RepoArtifacts)StaticAnalysisResults</StaticAnalysisOutputDirectory>
     <NuGetPublishingSource Condition="'$(NuGetPublishingSource)' == ''">$(RepoSrc)</NuGetPublishingSource>
 
     <!-- Misc -->
@@ -128,13 +132,13 @@
     <Exec Command="dotnet publish $(RepoTools)BuildPackagesTask/Microsoft.Azure.Build.Tasks/Microsoft.Azure.Build.Tasks.csproj -c $(Configuration)" />
 
     <!-- Get all of the files changed in the given pull request -->
-    <FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)"  OutputFile="$(RepoArtifacts)/FilesChanged.txt">
+    <FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)"  OutputFile="$(RepoArtifacts)FilesChanged.txt">
       <Output TaskParameter="FilesChanged" ItemName="FilesChanged" />
     </FilesChangedTask>
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)PrepareAutorestModule.ps1&quot;" Condition="'$(IsGenerateBased)' == 'true'"/>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)/CreateFilterMappings.ps1&quot;" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)/PrepareForSecurityCheck.ps1&quot;" Condition="'$(IsSecurityCheck)' == 'true'"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)CreateFilterMappings.ps1&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;$(RepoTools)PrepareForSecurityCheck.ps1&quot;" Condition="'$(IsSecurityCheck)' == 'true'"/>
 
     <CIFilterTask FilesChanged="@(FilesChanged)" Mode="$(Configuration)" CsprojMapFilePath="./CsprojMappings.json">
       <Output TaskParameter="BuildCsprojList" ItemName="BuildCsprojList" />
@@ -160,39 +164,32 @@
 
   <Target Name="BuildNormalModules">
     <Exec Condition="$(PullRequestNumber) == '' AND $(TargetModule) == '' AND $(ModifiedModuleBuild) == 'false'"
-      Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\BuildScripts\BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration) -TestsToRun $(TestsToRun) -CoreTests $(CoreTests) -RepoArtifacts $(RepoArtifacts) &quot;"
+      Command="$(PowerShellCoreCommandPrefix) &quot;./tools/BuildScripts/BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration) -TestsToRun $(TestsToRun) -CoreTests $(CoreTests) -RepoArtifacts $(RepoArtifacts) &quot;"
     />
     <Exec Condition="$(PullRequestNumber) != ''"
-      Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\BuildScripts\BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration) -TestsToRun $(TestsToRun) -CoreTests $(CoreTests) -RepoArtifacts $(RepoArtifacts) -BuildCsprojList '@(BuildCsprojList)' -TestCsprojList '@(TestCsprojList)'&quot;"
+      Command="$(PowerShellCoreCommandPrefix) &quot;./tools/BuildScripts/BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration) -TestsToRun $(TestsToRun) -CoreTests $(CoreTests) -RepoArtifacts $(RepoArtifacts) -BuildCsprojList '@(BuildCsprojList)' -TestCsprojList '@(TestCsprojList)'&quot;"
     />
     <Exec Condition="$(ModifiedModuleBuild) != 'false'"
-      Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\BuildScripts\BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration) -TestsToRun $(TestsToRun) -CoreTests $(CoreTests) -RepoArtifacts $(RepoArtifacts) -ModifiedModuleBuild $(ModifiedModuleBuild) &quot;"
+      Command="$(PowerShellCoreCommandPrefix) &quot;./tools/BuildScripts/BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration) -TestsToRun $(TestsToRun) -CoreTests $(CoreTests) -RepoArtifacts $(RepoArtifacts) -ModifiedModuleBuild $(ModifiedModuleBuild) &quot;"
     />
     <Exec Condition="$(TargetModule) != ''"
-      Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\BuildScripts\BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration) -TestsToRun $(TestsToRun) -CoreTests $(CoreTests) -RepoArtifacts $(RepoArtifacts) -TargetModule $(TargetModule)&quot;"
+      Command="$(PowerShellCoreCommandPrefix) &quot;./tools/BuildScripts/BuildModules.ps1 -RepoRoot $(RepoRoot) -Configuration $(Configuration) -TestsToRun $(TestsToRun) -CoreTests $(CoreTests) -RepoArtifacts $(RepoArtifacts) -TargetModule $(TargetModule)&quot;"
     />
     <PropertyGroup>
       <BuildAction Condition="'$(Configuration)' != 'Release'">build</BuildAction>
       <BuildAction Condition="'$(Configuration)' == 'Release'">publish</BuildAction>
     </PropertyGroup>
 
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\ExecuteCIStep.ps1 -Build -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -GenerateDocumentationFile $(GenerateDocumentationFile) -EnableTestCoverage $(TurnOnTestCoverage) -BuildAction $(BuildAction)&quot;" Condition="$(PullRequestNumber) == ''"/>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\ExecuteCIStep.ps1 -Build -PullRequestNumber $(PullRequestNumber) -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -GenerateDocumentationFile $(GenerateDocumentationFile) -EnableTestCoverage $(TurnOnTestCoverage) -BuildAction $(BuildAction)&quot;" Condition="$(PullRequestNumber) != ''"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;./tools/ExecuteCIStep.ps1 -Build -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -GenerateDocumentationFile $(GenerateDocumentationFile) -EnableTestCoverage $(TurnOnTestCoverage) -BuildAction $(BuildAction)&quot;" Condition="$(PullRequestNumber) == ''"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;./tools/ExecuteCIStep.ps1 -Build -PullRequestNumber $(PullRequestNumber) -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -GenerateDocumentationFile $(GenerateDocumentationFile) -EnableTestCoverage $(TurnOnTestCoverage) -BuildAction $(BuildAction)&quot;" Condition="$(PullRequestNumber) != ''"/>
 
     <!-- Build version controller -->
     <Exec Command="dotnet build $(RepoTools)VersionController/VersionController.Netcore.csproj -c $(Configuration)" />
 
-    <!-- Delete powershell runtime files -->
-    <PropertyGroup>
-      <RuntimeDllsIncludeList>Microsoft.Powershell.*.dll,System*.dll,Microsoft.VisualBasic.dll,Microsoft.CSharp.dll,Microsoft.CodeAnalysis.dll,Microsoft.CodeAnalysis.CSharp.dll</RuntimeDllsIncludeList>
-      <RuntimeDllsExcludeList>System.Security.Cryptography.ProtectedData.dll,System.Configuration.ConfigurationManager.dll,System.Runtime.CompilerServices.Unsafe.dll,System.IO.FileSystem.AccessControl.dll,System.Buffers.dll,System.Text.Encodings.Web.dll,System.CodeDom.dll,System.Management.dll,System.Text.Json.dll,System.Threading.Tasks.Extensions.dll,System.IO.Hashing.dll</RuntimeDllsExcludeList>
-    </PropertyGroup>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts)/$(Configuration) -Recurse -Include $(RuntimeDllsIncludeList) -Exclude $(RuntimeDllsExcludeList) | Where-Object {$_.FullName -notlike '*Accounts*lib*' -and $_.FullName -notlike '*ModuleAlcAssemblies*'} | Remove-Item -Force&quot;"/>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts)/$(Configuration) -Recurse -Include 'runtimes' | Remove-Item -Recurse -Force&quot;" Condition="'$(CodeSign)' == 'true'" />
+    <!-- Delete powershell runtime files & .deps.json files -->
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)BuildScripts/RemoveUnwantedFiles.ps1 -RootPath $(RepoArtifacts)$(Configuration) -CodeSign $(CodeSign)&quot;"/>
 
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;"/>
-    <!-- Delete .deps.json files -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts) -Recurse | Where-Object { $_.Name -Like '*Az.*.deps.json' -or $_.Name -Like 'Microsoft.Azure.*.deps.json' } | Remove-Item -Recurse -Force&quot; "/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)UpdateModules.ps1 -BuildConfig $(Configuration) -Scope $(Scope)&quot;"/>
   </Target>
 
   <Target Name="OnPremChecks" Condition="'$(OnPremiseBuild)'">
@@ -209,14 +206,14 @@
   <!-- Copy about topics to culture folders -->
   <Target Name="CopyAboutTopics" Condition="'$(SkipHelp)' == 'false'">
     <Message Importance="high" Text="Copying about topics to culture folders..." />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(RepoTools)/Docs/CopyAboutTopics.ps1 -BuildConfig $(Configuration)&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(RepoTools)Docs/CopyAboutTopics.ps1 -BuildConfig $(Configuration)&quot;" />
   </Target>
 
   <Target Name="GenerateHelp" Condition="'$(SkipHelp)' == 'false'">
     <Message Importance="high" Text="Running help generation..." />
     <MakeDir Directories="$(StaticAnalysisOutputDirectory)" />
 
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(RepoTools)/GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration)&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Set-Variable -Name ProgressPreference -Value 'SilentlyContinue';. $(RepoTools)GenerateHelp.ps1 -ValidateMarkdownHelp -GenerateMamlHelp -BuildConfig $(Configuration)&quot;" />
   </Target>
 
   <!-- Everything except Publish -->
@@ -224,20 +221,20 @@
 
   <Target Name="StaticAnalysisExample" Condition="'$(RunStaticAnalysis)' == 'true'" AfterTargets="StaticAnalysisHelp">
     <Message Importance="high" Text="Running static analysis for PowerShell examples..." />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/StaticAnalysis/ExampleAnalyzer/Measure-MarkdownOrScript.ps1 -MarkdownPaths $(RepoArtifacts)/FilesChanged.txt -RulePaths $(RepoTools)/StaticAnalysis/ExampleAnalyzer/AnalyzeRules/*.psm1 &quot;"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)StaticAnalysis/ExampleAnalyzer/Measure-MarkdownOrScript.ps1 -MarkdownPaths $(RepoArtifacts)FilesChanged.txt -RulePaths $(RepoTools)StaticAnalysis/ExampleAnalyzer/AnalyzeRules/*.psm1 -NotCleanScripts &quot;"/>
   </Target>
 
   <Target Name="StaticAnalysisFileChange" Condition="'$(RunStaticAnalysis)' == 'true'">
     <Message Importance="high" Text="Running static analysis for file changes..." />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\StaticAnalysis\FileChangeAnalyzer\Test-FileChange.ps1 &quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;./tools/StaticAnalysis/FileChangeAnalyzer/Test-FileChange.ps1 &quot;" />
   </Target>
 
   <Target Name="StaticAnalysis" DependsOnTargets="StaticAnalysisExample;StaticAnalysisFileChange">
     <Message Importance="high" Text="Running static analysis..." />
 
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\ExecuteCIStep.ps1 -StaticAnalysis -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -StaticAnalysisOutputDirectory $(StaticAnalysisOutputDirectory)&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;./tools/ExecuteCIStep.ps1 -StaticAnalysis -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -StaticAnalysisOutputDirectory $(StaticAnalysisOutputDirectory)&quot;" />
 
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/StaticAnalysis/CollectStaticAnalysisPipelineResult.ps1 -StaticAnalysisOutputDirectory $(StaticAnalysisOutputDirectory) &quot;"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)StaticAnalysis/CollectStaticAnalysisPipelineResult.ps1 -StaticAnalysisOutputDirectory $(StaticAnalysisOutputDirectory) &quot;"/>
     <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers check-error" />
     <OnError ExecuteTargets="StaticAnalysisErrorMessage" />
   </Target>
@@ -247,28 +244,19 @@
   </Target>
 
   <Target Name="AzToolsInstaller">
-    <Exec Command='dotnet msbuild $(RepoTools)/Az.Tools.Installer/build.proj /t:"clean;build;test"' />
+    <Exec Command='dotnet msbuild $(RepoTools)Az.Tools.Installer/build.proj /t:"clean;build;test"' />
   </Target>
 
   <Target Name="AzToolsPredictor">
-    <Exec Command='dotnet msbuild $(RepoTools)/Az.Tools.Predictor/build.proj /t:"clean;build;test"' />
+    <Exec Command='dotnet msbuild $(RepoTools)Az.Tools.Predictor/build.proj /t:"clean;build;test"' />
   </Target>
 
   <Target Name="Publish" Condition="'$(Configuration)' == 'Release'">
     <Message Importance="high" Text="Publishing Cmdlets using $(Scope) scope" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/NewOutputTypeIndex.ps1 -OutputFile $(RepoArtifacts)/outputtypes.json -BuildConfig $(Configuration)&quot;"/>
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/NewHelpIndex.ps1 -OutputFile $(RepoArtifacts)/index.json -BuildConfig $(Configuration)&quot;"/>
-
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CleanupBuild.ps1 -BuildConfig $(Configuration) -GenerateDocumentationFile $(GenerateDocumentationFile) &quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)CleanupBuild.ps1 -BuildConfig $(Configuration) -GenerateDocumentationFile $(GenerateDocumentationFile) &quot;" />
 
     <Error Condition="'$(NuGetKey)' == ''" Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/PublishModules.ps1 -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope $(Scope) -ApiKey $(NuGetKey) -RepositoryLocation \&quot;$(NuGetPublishingSource)\&quot;&quot; -NugetExe $(NuGetCommand)" />
-  </Target>
-
-  <Target Name="BuildInstaller" AfterTargets="Publish" Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore')">
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. Register-PSRepository -Name MSIcreationrepository -SourceLocation $(RepoArtifacts) -InstallationPolicy Trusted &quot;" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoRoot)/setup/generate.ps1 -repository MSIcreationrepository &quot;" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. Unregister-PSRepository -Name MSIcreationrepository &quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)PublishModules.ps1 -TargetBuild $(TargetBuild) -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope $(Scope) -ApiKey $(NuGetKey) -RepositoryLocation &quot;$(NuGetPublishingSource)&quot;&quot; -NugetExe $(NuGetCommand)" />
   </Target>
 
   <Target Name="BuildImages">
@@ -282,7 +270,7 @@
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->
     <!-- https://github.com/xunit/xunit/issues/1154#issuecomment-405366373 -->
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;.\tools\ExecuteCIStep.ps1 -Test -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -TestFramework $(TestFramework) -TestOutputDirectory $(TestOutputDirectory)&quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;./tools/ExecuteCIStep.ps1 -Test -RepoArtifacts $(RepoArtifacts) -Configuration $(Configuration) -TestFramework $(TestFramework) -TestOutputDirectory $(TestOutputDirectory)&quot;" />
     <Message Importance="high" Text="Finish running tests..." />
     <OnError ExecuteTargets="TestFailureErrorMessage" />
   </Target>
@@ -298,25 +286,25 @@
     <!-- Azure -->
     <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
       <DelaySignedAssembliesToSign Include="
-$(RepoArtifacts)/$(Configuration)/**/Microsoft*Azure*PowerShell*Cmdlets*.dll;
-$(RepoArtifacts)/$(Configuration)/**/Microsoft.Azure.PowerShell.Authentication.dll;
-$(RepoArtifacts)/$(Configuration)/**/Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll;
-$(RepoArtifacts)/$(Configuration)/**/Microsoft.Azure.PowerShell.Authenticators.dll" Exclude="$(RepoArtifacts)/$(Configuration)/**/Microsoft*Azure*PowerShell*Cmdlets*.Test.dll" />
+$(RepoArtifacts)$(Configuration)/**/Microsoft*Azure*PowerShell*Cmdlets*.dll;
+$(RepoArtifacts)$(Configuration)/**/Microsoft.Azure.PowerShell.Authentication.dll;
+$(RepoArtifacts)$(Configuration)/**/Microsoft.Azure.PowerShell.Authentication.ResourceManager.dll;
+$(RepoArtifacts)$(Configuration)/**/Microsoft.Azure.PowerShell.Authenticators.dll" Exclude="$(RepoArtifacts)$(Configuration)/**/Microsoft*Azure*PowerShell*Cmdlets*.Test.dll" />
     </ItemGroup>
 
-    <Message Importance="high" Text="$(RepoArtifacts)/$(Configuration) does not contains any files to sign. Code sign will skip." Condition="'@(DelaySignedAssembliesToSign)' == ''" />
+    <Message Importance="high" Text="$(RepoArtifacts)$(Configuration) does not contains any files to sign. Code sign will skip." Condition="'@(DelaySignedAssembliesToSign)' == ''" />
     <ESRPSignTask CopyBackSignedFilesToOriginalLocation="true" UnsignedFileList="@(DelaySignedAssembliesToSign)" SignLogDirPath="$(RepoRoot)dlls-signing.log"  Condition="!$(DelaySign) and '@(DelaySignedAssembliesToSign)' != ''" />
 
     <!-- Copying shortcut to be signed -->
-    <Copy SourceFiles="$(RepoRoot)tools/Az/Az.psm1" DestinationFolder="$(RepoArtifacts)/$(Configuration)" Condition="'$(Scope)' == 'Netcore'" />
+    <Copy SourceFiles="$(RepoRoot)tools/Az/Az.psm1" DestinationFolder="$(RepoArtifacts)$(Configuration)" Condition="'$(Scope)' == 'Netcore'" />
 
     <Message Text="variables.Scripts signing section" Importance="high" />
     <!-- Azure -->
     <ItemGroup Condition="'$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore'">
-      <ScriptsToSign Include="$(RepoArtifacts)/$(Configuration)/**/*.ps1" />
-      <ScriptsToSign Include="$(RepoArtifacts)/$(Configuration)/**/*.psm1" />
-      <ScriptsToSign Include="$(RepoArtifacts)/$(Configuration)/**/*.ps1xml" />
-      <ScriptsToSign Include="$(RepoArtifacts)/$(Configuration)/**/*.js" />
+      <ScriptsToSign Include="$(RepoArtifacts)$(Configuration)/**/*.ps1" />
+      <ScriptsToSign Include="$(RepoArtifacts)$(Configuration)/**/*.psm1" />
+      <ScriptsToSign Include="$(RepoArtifacts)$(Configuration)/**/*.ps1xml" />
+      <ScriptsToSign Include="$(RepoArtifacts)$(Configuration)/**/*.js" />
     </ItemGroup>
 
     <ESRPSignTask CopyBackSignedFilesToOriginalLocation="true" UnsignedFileList="@(ScriptsToSign)" SignLogDirPath="$(RepoRoot)scripts-signing.log"  Condition="!$(DelaySign) and '@(ScriptsToSign)' != ''" />
@@ -327,10 +315,10 @@ $(RepoArtifacts)/$(Configuration)/**/Microsoft.Azure.PowerShell.Authenticators.d
 
     <!-- CheckSignature.ps1 -->
     <Message Text="variables.CheckSignature section" Importance="high" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CheckSignature.ps1 -CustomPath $(RepoArtifacts)/$(Configuration)&quot;" Condition="'$(Scope)' != 'Stack'" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)CheckSignature.ps1 -CustomPath $(RepoArtifacts)$(Configuration)&quot;" Condition="'$(Scope)' != 'Stack'" />
 
     <!-- Copy files back after signing -->
-    <Copy SourceFiles="$(RepoArtifacts)/$(Configuration)/Az.psm1" DestinationFolder="$(RepoRoot)tools/Az" Condition="'$(Scope)' == 'Netcore'" />
+    <Copy SourceFiles="$(RepoArtifacts)$(Configuration)/Az.psm1" DestinationFolder="$(RepoRoot)tools/Az" Condition="'$(Scope)' == 'Netcore'" />
   </Target>
 
   <Target Name="CodeSignInstaller" AfterTargets="BuildInstaller" Condition="'$(CodeSign)' == 'true'">

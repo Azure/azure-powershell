@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DnsResolver-help.xml
 Module Name: Az.DnsResolver
 online version: https://learn.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolvertargetdnsserverobject
 schema: 2.0.0
@@ -13,7 +13,8 @@ Create a in-memory object for Target DNS server
 ## SYNTAX
 
 ```
-New-AzDnsResolverTargetDnsServerObject [-IPAddress <String>] [-Port <Int32>] [<CommonParameters>]
+New-AzDnsResolverTargetDnsServerObject [-IPAddress <String>] [-Port <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +78,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates an existing Cluster Pool Tags.
+Update an existing Cluster Pool Tags.
 .Description
-Updates an existing Cluster Pool Tags.
+Update an existing Cluster Pool Tags.
 .Example
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "your-clusterpool"
@@ -93,7 +93,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
@@ -101,7 +100,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITagsObject]
     # Tags object for patch operations.
-    # To construct, see NOTES section for CLUSTERPOOLTAG properties and create a hash table.
     ${ClusterPoolTag},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -219,7 +217,13 @@ begin {
             UpdateViaJsonString = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksClusterPoolTag_UpdateViaJsonString';
         }
         if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

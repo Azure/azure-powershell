@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleUrlFileExtensionConditionObject
 schema: 2.0.0
@@ -13,9 +13,9 @@ Create an in-memory object for DeliveryRuleUrlFileExtensionCondition.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject -Name <MatchVariable>
- -ParameterOperator <UrlFileExtensionOperator> [-ParameterMatchValue <String[]>]
- [-ParameterNegateCondition <Boolean>] [-ParameterTransform <Transform[]>] [<CommonParameters>]
+New-AzFrontDoorCdnRuleUrlFileExtensionConditionObject -ParameterOperator <UrlFileExtensionOperator>
+ -Name <MatchVariable> [-ParameterMatchValue <String[]>] [-ParameterNegateCondition <Boolean>]
+ [-ParameterTransform <Transform[]>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,11 +120,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleUrlFileExtensionCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleUrlFileExtensionCondition
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -15,14 +15,16 @@ Grants required permissions to the backup vault and other resources for configur
 ### SetPermissionsForBackup (Default)
 ```
 Set-AzDataProtectionMSIPermission -VaultResourceGroup <String> -VaultName <String> -PermissionsScope <String>
- -BackupInstance <IBackupInstanceResource> [-KeyVaultId <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -BackupInstance <IBackupInstanceResource> [-KeyVaultId <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetPermissionsForRestore
 ```
 Set-AzDataProtectionMSIPermission -VaultResourceGroup <String> -VaultName <String> -PermissionsScope <String>
- -RestoreRequest <IAzureBackupRestoreRequest> -SnapshotResourceGroupId <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -RestoreRequest <IAzureBackupRestoreRequest> [-SubscriptionId <String>] [-DatasourceType <DatasourceTypes>]
+ [-SnapshotResourceGroupId <String>] [-StorageAccountARMId <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,11 +106,27 @@ Backup instance request object which will be used to configure backup
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IBackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
 Parameter Sets: SetPermissionsForBackup
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DatasourceType
+Datasource Type
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
+Parameter Sets: SetPermissionsForRestore
+Aliases:
+Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -150,7 +168,7 @@ Restore request object which will be used for restore
 To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest
 Parameter Sets: SetPermissionsForRestore
 Aliases:
 
@@ -169,7 +187,38 @@ Type: System.String
 Parameter Sets: SetPermissionsForRestore
 Aliases:
 
-Required: True
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageAccountARMId
+Target storage account ARM Id.
+Use this parameter for DatasourceType AzureDatabaseForMySQL, AzureDatabaseForPGFlexServer.
+
+```yaml
+Type: System.String
+Parameter Sets: SetPermissionsForRestore
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription Id of the backup vault
+
+```yaml
+Type: System.String
+Parameter Sets: SetPermissionsForRestore
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -197,7 +246,7 @@ Resource group of the backup vault
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: ResourceGroupName
 
 Required: True
 Position: Named
@@ -247,59 +296,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Object
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BACKUPINSTANCE <IBackupInstanceResource>`: Backup instance request object which will be used to configure backup
-  - `[Tag <IDppProxyResourceTags>]`: Proxy Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[Property <IBackupInstance>]`: BackupInstanceResource properties
-    - `DataSourceInfo <IDatasource>`: Gets or sets the data source information.
-      - `ResourceId <String>`: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
-      - `[ObjectType <String>]`: Type of Datasource object, used to initialize the right inherited type
-      - `[ResourceLocation <String>]`: Location of datasource.
-      - `[ResourceName <String>]`: Unique identifier of the resource in the context of parent.
-      - `[ResourceType <String>]`: Resource Type of Datasource.
-      - `[ResourceUri <String>]`: Uri of the resource.
-      - `[Type <String>]`: DatasourceType of the resource.
-    - `ObjectType <String>`: 
-    - `PolicyInfo <IPolicyInfo>`: Gets or sets the policy information.
-      - `PolicyId <String>`: 
-      - `[PolicyParameter <IPolicyParameters>]`: Policy parameters for the backup instance
-        - `[BackupDatasourceParametersList <IBackupDatasourceParameters[]>]`: Gets or sets the Backup Data Source Parameters
-          - `ObjectType <String>`: Type of the specific object - used for deserializing
-        - `[DataStoreParametersList <IDataStoreParameters[]>]`: Gets or sets the DataStore Parameters
-          - `DataStoreType <DataStoreTypes>`: type of datastore; Operational/Vault/Archive
-          - `ObjectType <String>`: Type of the specific object - used for deserializing
-    - `[DataSourceSetInfo <IDatasourceSet>]`: Gets or sets the data source set information.
-      - `ResourceId <String>`: Full ARM ID of the resource. For azure resources, this is ARM ID. For non azure resources, this will be the ID created by backup service via Fabric/Vault.
-      - `[DatasourceType <String>]`: DatasourceType of the resource.
-      - `[ObjectType <String>]`: Type of Datasource object, used to initialize the right inherited type
-      - `[ResourceLocation <String>]`: Location of datasource.
-      - `[ResourceName <String>]`: Unique identifier of the resource in the context of parent.
-      - `[ResourceType <String>]`: Resource Type of Datasource.
-      - `[ResourceUri <String>]`: Uri of the resource.
-    - `[DatasourceAuthCredentials <IAuthCredentials>]`: Credentials to use to authenticate with data source provider.
-      - `ObjectType <String>`: Type of the specific object - used for deserializing
-    - `[FriendlyName <String>]`: Gets or sets the Backup Instance friendly name.
-    - `[IdentityDetail <IIdentityDetails>]`: Contains information of the Identity Details for the BI.         If it is null, default will be considered as System Assigned.
-      - `[UseSystemAssignedIdentity <Boolean?>]`: Specifies if the BI is protected by System Identity.
-      - `[UserAssignedIdentityArmUrl <String>]`: ARM URL for User Assigned Identity.
-    - `[ValidationType <ValidationType?>]`: Specifies the type of validation. In case of DeepValidation, all validations from /validateForBackup API will run again.
-
-`RESTOREREQUEST <IAzureBackupRestoreRequest>`: Restore request object which will be used for restore
-  - `ObjectType <String>`: 
-  - `RestoreTargetInfo <IRestoreTargetInfoBase>`: Gets or sets the restore target information.
-    - `ObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
-    - `[RestoreLocation <String>]`: Target Restore region
-  - `SourceDataStoreType <SourceDataStoreType>`: Gets or sets the type of the source data store.
-  - `[IdentityDetailUseSystemAssignedIdentity <Boolean?>]`: Specifies if the BI is protected by System Identity.
-  - `[IdentityDetailUserAssignedIdentityArmUrl <String>]`: ARM URL for User Assigned Identity.
-  - `[SourceResourceId <String>]`: Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
 
 ## RELATED LINKS

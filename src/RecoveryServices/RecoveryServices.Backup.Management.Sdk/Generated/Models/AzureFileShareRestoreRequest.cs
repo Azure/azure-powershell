@@ -25,19 +25,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the AzureFileShareRestoreRequest class.
         /// </summary>
 
+        /// <param name="resourceGuardOperationRequests">ResourceGuardOperationRequests on which LAC check will be performed
+        /// </param>
+
         /// <param name="recoveryType">Type of this recovery.
-        /// Possible values include: 'Invalid', 'OriginalLocation',
-        /// 'AlternateLocation', 'RestoreDisks', 'Offline'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;OriginalLocation&#39;,
+        /// &#39;AlternateLocation&#39;, &#39;RestoreDisks&#39;, &#39;Offline&#39;</param>
 
         /// <param name="sourceResourceId">Source storage account ARM Id
         /// </param>
 
         /// <param name="copyOptions">Options to resolve copy conflicts.
-        /// Possible values include: 'Invalid', 'CreateCopy', 'Skip', 'Overwrite',
-        /// 'FailOnConflict'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;CreateCopy&#39;, &#39;Skip&#39;, &#39;Overwrite&#39;,
+        /// &#39;FailOnConflict&#39;</param>
 
         /// <param name="restoreRequestType">Restore Type (FullShareRestore or ItemLevelRestore)
-        /// Possible values include: 'Invalid', 'FullShareRestore', 'ItemLevelRestore'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;FullShareRestore&#39;, &#39;ItemLevelRestore&#39;</param>
 
         /// <param name="restoreFileSpecs">List of Source Files/Folders(which need to recover) and TargetFolderPath
         /// details
@@ -45,8 +48,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="targetDetails">Target File Share Details
         /// </param>
-        public AzureFileShareRestoreRequest(string recoveryType = default(string), string sourceResourceId = default(string), string copyOptions = default(string), string restoreRequestType = default(string), System.Collections.Generic.IList<RestoreFileSpecs> restoreFileSpecs = default(System.Collections.Generic.IList<RestoreFileSpecs>), TargetAFSRestoreInfo targetDetails = default(TargetAFSRestoreInfo))
+        public AzureFileShareRestoreRequest(System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string recoveryType = default(string), string sourceResourceId = default(string), string copyOptions = default(string), string restoreRequestType = default(string), System.Collections.Generic.IList<RestoreFileSpecs> restoreFileSpecs = default(System.Collections.Generic.IList<RestoreFileSpecs>), TargetAFSRestoreInfo targetDetails = default(TargetAFSRestoreInfo))
 
+        : base(resourceGuardOperationRequests)
         {
             this.RecoveryType = recoveryType;
             this.SourceResourceId = sourceResourceId;

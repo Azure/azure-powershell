@@ -14,16 +14,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public partial interface IResourceGuardProxyOperations
     {
         /// <summary>
-        /// Returns ResourceGuardProxy under vault and with the name referenced in request
+        /// Returns ResourceGuardProxy under vault and with the name referenced in
+        /// request
         /// </summary>
         /// <remarks>
-        /// Returns ResourceGuardProxy under vault and with the name referenced in request
+        /// Returns ResourceGuardProxy under vault and with the name referenced in
+        /// request
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -43,18 +46,19 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         System.Threading.Tasks.Task<Microsoft.Rest.Azure.AzureOperationResponse<ResourceGuardProxyBaseResource>> GetWithHttpMessagesAsync(string vaultName, string resourceGroupName, string resourceGuardProxyName, System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>> customHeaders = null, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
 
         /// <summary>
-        /// Add or Update ResourceGuardProxy under vault
-        /// Secures vault critical operations
+        /// Add or Update ResourceGuardProxy under vault Secures vault critical
+        /// operations
         /// </summary>
         /// <remarks>
-        /// Add or Update ResourceGuardProxy under vault
-        /// Secures vault critical operations
+        /// Add or Update ResourceGuardProxy under vault Secures vault critical
+        /// operations
         /// </remarks>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -86,7 +90,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 
@@ -112,7 +117,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='resourceGuardProxyName'>
         /// 

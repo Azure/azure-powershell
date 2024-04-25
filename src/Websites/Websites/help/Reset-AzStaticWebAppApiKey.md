@@ -22,7 +22,8 @@ Reset-AzStaticWebAppApiKey -Name <String> -ResourceGroupName <String> [-Subscrip
 ### ResetViaIdentityExpanded
 ```
 Reset-AzStaticWebAppApiKey -InputObject <IWebsitesIdentity> [-Kind <String>] [-RepositoryToken <String>]
- [-ShouldUpdateRepository] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ShouldUpdateRepository] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

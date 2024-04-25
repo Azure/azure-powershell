@@ -15,6 +15,7 @@
 
 using Microsoft.WindowsAzure.Commands.Common.Attributes;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Network.Models
@@ -26,6 +27,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Label = "Policy Name", Target = ViewControl.Table, ScriptBlock = "$_.SslPolicy.PolicyName")]
         public PSApplicationGatewaySslPolicy SslPolicy { get; set; }
+
+        public PSApplicationGatewayGlobalConfiguration GlobalConfiguration { get; set; }
 
         public List<PSApplicationGatewayIPConfiguration> GatewayIPConfigurations { get; set; }
 
@@ -82,6 +85,46 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? EnableFips { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableRequestBuffering
+        {
+            get
+            {
+                if (this.GlobalConfiguration == null && !string.Equals(this.Sku.Tier, "Standard", StringComparison.OrdinalIgnoreCase) && !string.Equals(this.Sku.Tier, "WAF", StringComparison.OrdinalIgnoreCase))
+                {
+                    this.GlobalConfiguration = new PSApplicationGatewayGlobalConfiguration();
+                    this.GlobalConfiguration.EnableRequestBuffering = true;
+                }
+                return this.GlobalConfiguration?.EnableRequestBuffering;
+            }
+
+            set
+            {
+                this.GlobalConfiguration.EnableRequestBuffering = value;
+            }
+
+        }
+
+        [Ps1Xml(Target = ViewControl.Table)]
+        public bool? EnableResponseBuffering 
+        {
+            get
+            {
+                if (this.GlobalConfiguration == null && !string.Equals(this.Sku.Tier, "Standard", StringComparison.OrdinalIgnoreCase) && !string.Equals(this.Sku.Tier, "WAF", StringComparison.OrdinalIgnoreCase))
+                {
+                    this.GlobalConfiguration = new PSApplicationGatewayGlobalConfiguration();
+                    this.GlobalConfiguration.EnableResponseBuffering = true;
+                }
+                return this.GlobalConfiguration?.EnableResponseBuffering;
+            }
+                
+            set
+            {
+                this.GlobalConfiguration.EnableResponseBuffering = value;
+            }
+        
+        }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? ForceFirewallPolicyAssociation { get; set; }

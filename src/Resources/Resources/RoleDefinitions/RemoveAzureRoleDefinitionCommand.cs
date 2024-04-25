@@ -50,6 +50,9 @@ namespace Microsoft.Azure.Commands.Resources
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ParameterSet.RoleDefinitionId, HelpMessage = "Scope of the existing role definition.")]
         public string Scope { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "If specified, skip client side scope validation.")]
+        public SwitchParameter SkipClientSideScopeValidation { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter Force { get; set; }
 
@@ -98,7 +101,10 @@ namespace Microsoft.Azure.Commands.Resources
                 WriteTerminatingError(ProjectResources.ScopeAndSubscriptionNeitherProvided);
             }
 
-            AuthorizationClient.ValidateScope(options.Scope, true);
+            if (!SkipClientSideScopeValidation.IsPresent)
+            {
+                AuthorizationClient.ValidateScope(options.Scope, true);
+            }
 
             ConfirmAction(
                 Force.IsPresent,

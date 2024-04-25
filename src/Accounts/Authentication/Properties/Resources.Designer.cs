@@ -223,6 +223,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. It is crucial to ensure that the configured authority host is valid and trustworthy..
+        /// </summary>
+        public static string DisableInstanceDiscoveryWarning {
+            get {
+                return ResourceManager.GetString("DisableInstanceDiscoveryWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Environment name needs to be specified.
         /// </summary>
         public static string EnvironmentNameNeedsToBeSpecified {
@@ -268,6 +277,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to INITIALIZATION: Failed to migrate MSAL token cache of the legacy name with error : {0}.
+        /// </summary>
+        public static string FailedToMigrateMsalCacheWithLegayName {
+            get {
+                return ResourceManager.GetString("FailedToMigrateMsalCacheWithLegayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to File path is not valid.
         /// </summary>
         public static string FilePathIsNotValid {
@@ -304,6 +322,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. The process of instance discovery entails retrieving authority metadata from https://login.microsoft.com/ to validate the authority. By setting this to true, the validation of the authority is disabled. As a result, it is crucial to ensure that the configured authority host is valid and trustwo [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string HelpMessageOfDisableInstanceDiscovery {
+            get {
+                return ResourceManager.GetString("HelpMessageOfDisableInstanceDiscovery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Controls if warning messages for breaking changes are displayed or suppressed. When enabled, a breaking change warning is displayed when executing cmdlets with breaking changes in a future release..
         /// </summary>
         public static string HelpMessageOfDisplayBreakingChangeWarnings {
@@ -318,6 +345,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Properties {
         public static string HelpMessageOfDisplayRegionIdentified {
             get {
                 return ResourceManager.GetString("HelpMessageOfDisplayRegionIdentified", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When enabled, a warning message will be displayed when the cmdlet output contains secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844.
+        /// </summary>
+        public static string HelpMessageOfDisplaySecretsWarning {
+            get {
+                return ResourceManager.GetString("HelpMessageOfDisplaySecretsWarning", resourceCulture);
             }
         }
         

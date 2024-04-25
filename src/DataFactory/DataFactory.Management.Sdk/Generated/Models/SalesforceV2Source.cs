@@ -52,15 +52,15 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         /// <param name="soqlQuery">Database query. Type: string (or Expression with resultType string).
         /// </param>
 
-        /// <param name="readBehavior">The read behavior for the operation. Default is query. Allowed values:
-        /// query/queryAll. Type: string (or Expression with resultType string).
+        /// <param name="includeDeletedObjects">This property control whether query result contains Deleted objects.
+        /// Default is false. Type: boolean (or Expression with resultType boolean).
         /// </param>
-        public SalesforceV2Source(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object soqlQuery = default(object), object readBehavior = default(object))
+        public SalesforceV2Source(object sourceRetryCount = default(object), object sourceRetryWait = default(object), object maxConcurrentConnections = default(object), object disableMetricsCollection = default(object), object queryTimeout = default(object), object additionalColumns = default(object), object soqlQuery = default(object), object includeDeletedObjects = default(object))
 
         : base(sourceRetryCount, sourceRetryWait, maxConcurrentConnections, disableMetricsCollection, queryTimeout, additionalColumns)
         {
             this.SoqlQuery = soqlQuery;
-            this.ReadBehavior = readBehavior;
+            this.IncludeDeletedObjects = includeDeletedObjects;
             CustomInit();
         }
 
@@ -78,11 +78,11 @@ namespace Microsoft.Azure.Management.DataFactory.Models
         public object SoqlQuery {get; set; }
 
         /// <summary>
-        /// Gets or sets the read behavior for the operation. Default is query. Allowed
-        /// values: query/queryAll. Type: string (or Expression with resultType
-        /// string).
+        /// Gets or sets this property control whether query result contains Deleted
+        /// objects. Default is false. Type: boolean (or Expression with resultType
+        /// boolean).
         /// </summary>
-        [Newtonsoft.Json.JsonProperty(PropertyName = "readBehavior")]
-        public object ReadBehavior {get; set; }
+        [Newtonsoft.Json.JsonProperty(PropertyName = "includeDeletedObjects")]
+        public object IncludeDeletedObjects {get; set; }
     }
 }

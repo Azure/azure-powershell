@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_metricSpecification = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("metricSpecifications"), out var __jsonMetricSpecifications) ? If( __jsonMetricSpecifications as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IMetricSpecification>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IMetricSpecification) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.MetricSpecification.FromJson(__u) )) ))() : null : MetricSpecification;}
+            {_metricSpecification = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray>("metricSpecifications"), out var __jsonMetricSpecifications) ? If( __jsonMetricSpecifications as Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IMetricSpecification>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IMetricSpecification) (Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.MetricSpecification.FromJson(__u) )) ))() : null : _metricSpecification;}
             AfterFromJson(json);
         }
 
