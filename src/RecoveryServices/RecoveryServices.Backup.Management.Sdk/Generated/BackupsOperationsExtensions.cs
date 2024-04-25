@@ -14,8 +14,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     {
         /// <summary>
         /// Triggers backup for specified backed up item. This is an asynchronous
-        /// operation. To know the status of the
-        /// operation, call GetProtectedItemOperationResult API.
+        /// operation. To know the status of the operation, call
+        /// GetProtectedItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Triggers backup for specified backed up item. This is an asynchronous
-        /// operation. To know the status of the
-        /// operation, call GetProtectedItemOperationResult API.
+        /// operation. To know the status of the operation, call
+        /// GetProtectedItemOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

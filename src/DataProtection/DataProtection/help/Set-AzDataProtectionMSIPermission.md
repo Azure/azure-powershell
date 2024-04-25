@@ -106,7 +106,7 @@ Backup instance request object which will be used to configure backup
 To construct, see NOTES section for BACKUPINSTANCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBackupInstanceResource
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
 Parameter Sets: SetPermissionsForBackup
 Aliases:
 
@@ -168,7 +168,7 @@ Restore request object which will be used for restore
 To construct, see NOTES section for RESTOREREQUEST properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupRestoreRequest
 Parameter Sets: SetPermissionsForRestore
 Aliases:
 

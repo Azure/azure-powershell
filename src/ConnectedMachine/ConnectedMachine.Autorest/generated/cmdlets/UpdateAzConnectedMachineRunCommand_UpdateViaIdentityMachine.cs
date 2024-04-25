@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Cmdlets;
     using System;
 
-    /// <summary>The operation to Create a run command.</summary>
+    /// <summary>The operation to Update a run command.</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/runCommands/{runCommandName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzConnectedMachineRunCommand_UpdateViaIdentityMachine", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommand))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"The operation to Create a run command.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Description(@"The operation to Update a run command.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Generated]
     public partial class UpdateAzConnectedMachineRunCommand_UpdateViaIdentityMachine : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener,
@@ -243,11 +243,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
                 telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
                 telemetryInfo.TryGetValue("InvocationName", out var invocationName);
-                if (!string.IsNullOrEmpty(sanitizedProperties))
+                if (showSecretsWarning == "true")
                 {
-                    WriteWarning($"The output of cmdlet {invocationName ?? "Unknown"} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
                 }
             }
         }
@@ -442,7 +450,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                         this.MachineInputObject.Id += $"/runCommands/{(global::System.Uri.EscapeDataString(this.RunCommandName.ToString()))}";
                         RunCommandProperty = await this.Client.MachineRunCommandsGetViaIdentityWithResult(MachineInputObject.Id, this, Pipeline);
                         this.UpdateRunCommandProperty();
-                        await this.Client.MachineRunCommandsCreateOrUpdateViaIdentity(MachineInputObject.Id, RunCommandProperty, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.MachineRunCommandsCreateOrUpdateViaIdentity(MachineInputObject.Id, RunCommandProperty, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -461,7 +469,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Cmdlets
                         }
                         RunCommandProperty = await this.Client.MachineRunCommandsGetWithResult(MachineInputObject.SubscriptionId ?? null, MachineInputObject.ResourceGroupName ?? null, MachineInputObject.MachineName ?? null, RunCommandName, this, Pipeline);
                         this.UpdateRunCommandProperty();
-                        await this.Client.MachineRunCommandsCreateOrUpdate(MachineInputObject.SubscriptionId ?? null, MachineInputObject.ResourceGroupName ?? null, MachineInputObject.MachineName ?? null, RunCommandName, RunCommandProperty, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.MachineRunCommandsCreateOrUpdate(MachineInputObject.SubscriptionId ?? null, MachineInputObject.ResourceGroupName ?? null, MachineInputObject.MachineName ?? null, RunCommandName, RunCommandProperty, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

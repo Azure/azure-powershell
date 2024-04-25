@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -94,15 +96,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).StorageAccountResourceId = (string) content.GetValueForProperty("StorageAccountResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).StorageAccountResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).EventHubResourceId = (string) content.GetValueForProperty("EventHubResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).EventHubResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).ConsumerGroup = (string) content.GetValueForProperty("ConsumerGroup",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).ConsumerGroup, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).TableName = (string) content.GetValueForProperty("TableName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).TableName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).MappingRuleName = (string) content.GetValueForProperty("MappingRuleName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).MappingRuleName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).DataFormat = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.EventGridDataFormat?) content.GetValueForProperty("DataFormat",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).DataFormat, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.EventGridDataFormat.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).IgnoreFirstRecord = (bool?) content.GetValueForProperty("IgnoreFirstRecord",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).IgnoreFirstRecord, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).BlobStorageEventType = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.BlobStorageEventType?) content.GetValueForProperty("BlobStorageEventType",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).BlobStorageEventType, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.BlobStorageEventType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState.CreateFrom);
+            if (content.Contains("StorageAccountResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).StorageAccountResourceId = (string) content.GetValueForProperty("StorageAccountResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).StorageAccountResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("EventHubResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).EventHubResourceId = (string) content.GetValueForProperty("EventHubResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).EventHubResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConsumerGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).ConsumerGroup = (string) content.GetValueForProperty("ConsumerGroup",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).ConsumerGroup, global::System.Convert.ToString);
+            }
+            if (content.Contains("TableName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).TableName = (string) content.GetValueForProperty("TableName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).TableName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MappingRuleName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).MappingRuleName = (string) content.GetValueForProperty("MappingRuleName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).MappingRuleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataFormat"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).DataFormat = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.EventGridDataFormat?) content.GetValueForProperty("DataFormat",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).DataFormat, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.EventGridDataFormat.CreateFrom);
+            }
+            if (content.Contains("IgnoreFirstRecord"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).IgnoreFirstRecord = (bool?) content.GetValueForProperty("IgnoreFirstRecord",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).IgnoreFirstRecord, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("BlobStorageEventType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).BlobStorageEventType = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.BlobStorageEventType?) content.GetValueForProperty("BlobStorageEventType",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).BlobStorageEventType, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.BlobStorageEventType.CreateFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,15 +149,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).StorageAccountResourceId = (string) content.GetValueForProperty("StorageAccountResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).StorageAccountResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).EventHubResourceId = (string) content.GetValueForProperty("EventHubResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).EventHubResourceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).ConsumerGroup = (string) content.GetValueForProperty("ConsumerGroup",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).ConsumerGroup, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).TableName = (string) content.GetValueForProperty("TableName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).TableName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).MappingRuleName = (string) content.GetValueForProperty("MappingRuleName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).MappingRuleName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).DataFormat = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.EventGridDataFormat?) content.GetValueForProperty("DataFormat",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).DataFormat, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.EventGridDataFormat.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).IgnoreFirstRecord = (bool?) content.GetValueForProperty("IgnoreFirstRecord",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).IgnoreFirstRecord, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).BlobStorageEventType = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.BlobStorageEventType?) content.GetValueForProperty("BlobStorageEventType",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).BlobStorageEventType, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.BlobStorageEventType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState.CreateFrom);
+            if (content.Contains("StorageAccountResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).StorageAccountResourceId = (string) content.GetValueForProperty("StorageAccountResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).StorageAccountResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("EventHubResourceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).EventHubResourceId = (string) content.GetValueForProperty("EventHubResourceId",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).EventHubResourceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConsumerGroup"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).ConsumerGroup = (string) content.GetValueForProperty("ConsumerGroup",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).ConsumerGroup, global::System.Convert.ToString);
+            }
+            if (content.Contains("TableName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).TableName = (string) content.GetValueForProperty("TableName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).TableName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MappingRuleName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).MappingRuleName = (string) content.GetValueForProperty("MappingRuleName",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).MappingRuleName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataFormat"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).DataFormat = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.EventGridDataFormat?) content.GetValueForProperty("DataFormat",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).DataFormat, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.EventGridDataFormat.CreateFrom);
+            }
+            if (content.Contains("IgnoreFirstRecord"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).IgnoreFirstRecord = (bool?) content.GetValueForProperty("IgnoreFirstRecord",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).IgnoreFirstRecord, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("BlobStorageEventType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).BlobStorageEventType = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.BlobStorageEventType?) content.GetValueForProperty("BlobStorageEventType",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).BlobStorageEventType, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.BlobStorageEventType.CreateFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionPropertiesInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Synapse.Support.ResourceProvisioningState.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -136,7 +192,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview
         /// Creates a new instance of <see cref="EventGridConnectionProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="EventGridConnectionProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Synapse.Models.Api20210601Preview.IEventGridConnectionProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Synapse.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

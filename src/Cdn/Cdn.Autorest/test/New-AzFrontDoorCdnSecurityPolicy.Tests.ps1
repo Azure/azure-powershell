@@ -19,7 +19,7 @@ Describe 'New-AzFrontDoorCdnSecurityPolicy'  {
         $subId = $env.SubscriptionId
         Write-Host -ForegroundColor Green "Use subscriptionId : $($subId)"
 
-        $endpointName = 'end-pstest060'
+        $endpointName = 'e-clipstest060'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
         $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 

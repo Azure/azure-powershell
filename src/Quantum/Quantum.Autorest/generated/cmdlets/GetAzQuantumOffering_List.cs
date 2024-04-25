@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quantum.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Quantum.Models.Api20220110Preview.IProviderDescription))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Quantum.Description(@"Returns the list of all provider offerings available for the given location.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Quantum.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Quantum.HttpPath(Path = "/subscriptions/{subscriptionId}/providers/Microsoft.Quantum/locations/{locationName}/offerings", ApiVersion = "2022-01-10-preview")]
     public partial class GetAzQuantumOffering_List : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.IEventListener
     {
@@ -178,7 +179,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quantum.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Quantum.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>
@@ -325,6 +343,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Quantum.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.Quantum.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Quantum.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Quantum.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

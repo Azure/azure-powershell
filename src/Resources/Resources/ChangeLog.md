@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+* Introduced secrets detection feature to safeguard sensitive data.
+* Migrated SDK generation from autorest csharp to autorest powershell.
 
 ## Version 6.16.1
 * Added null check to the permissions object in the ToPSRoleDefinition method.

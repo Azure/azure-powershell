@@ -857,6 +857,7 @@ function Test-GalleryVersionWithSourceImageVMId
         
         # Setup Image Version
         $imageVersionName = "1.0.0";
+        $targetRegions = @(@{Name=$loc;ReplicaCount=1;});
         $paramNewAzImageVer = @{
             ResourceGroupName   = $rgname
             GalleryName         = $galleryName
@@ -866,11 +867,25 @@ function Test-GalleryVersionWithSourceImageVMId
             SourceImageVMId       = $vm.Id
             ErrorAction         = 'Stop'
             StorageAccountType  = $storageAccountSku
+            TargetRegion        = $targetRegions
         }
         $galversion = New-AzGalleryImageVersion @paramNewAzImageVer;
         
         # Assert VMId in version was set to the vm.Id value and was created. 
         Assert-AreEqual $galversion.StorageProfile.Source.VirtualMachineId $vm.Id;
+        Assert-Null $galversion.PublishingProfile.TargetRegion ExcludeFromLatest;
+
+        $targetRegions = @{Name=$loc;ReplicaCount=1; ExcludeFromLatest=$true}
+
+        Update-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+										  -GalleryImageDefinitionName $definitionName -Name $imageVersionName `
+										  -TargetRegion $targetRegions;
+
+        $galversion = Get-AzGalleryImageVersion -ResourceGroupName $rgname -GalleryName $galleryName `
+												  -GalleryImageDefinitionName $definitionName -Name $imageVersionName;
+
+        Assert-AreEqual $galversion.PublishingProfile.TargetRegions.ExcludeFromLatest $true;
+
     }
     finally 
     {

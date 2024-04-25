@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Introduced secrets detection feature to safeguard sensitive data.
 
 ## Version 0.4.0
 * Supports API Version 2022-10-01 stable

@@ -15,7 +15,8 @@ Get-AzWebAppContainerContinuousDeploymentUrl will return container continuous de
 ### S1 (Default)
 ```
 Get-AzWebAppContainerContinuousDeploymentUrl [[-SlotName] <String>] [-ResourceGroupName] <String>
- [-Name] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### S2

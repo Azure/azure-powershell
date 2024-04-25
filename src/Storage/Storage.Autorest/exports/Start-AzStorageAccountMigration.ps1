@@ -17,11 +17,11 @@
 <#
 .Synopsis
 Account Migration request can be triggered for a storage account to change its redundancy level.
-The migration updates the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
+The migration Customer the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
 Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.
 .Description
 Account Migration request can be triggered for a storage account to change its redundancy level.
-The migration updates the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
+The migration Customer the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
 Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.
 .Example
 Start-AzStorageAccountMigration -AccountName myaccount -ResourceGroupName myresourcegroup -TargetSku Standard_LRS -Name migration1 -AsJob

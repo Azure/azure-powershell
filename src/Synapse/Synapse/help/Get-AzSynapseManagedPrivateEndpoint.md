@@ -21,7 +21,8 @@ Get-AzSynapseManagedPrivateEndpoint -WorkspaceName <String> [-Name <String>] [-V
 ### GetByObject
 ```
 Get-AzSynapseManagedPrivateEndpoint -WorkspaceObject <PSSynapseWorkspace> [-Name <String>]
- [-VirtualNetworkName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-VirtualNetworkName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

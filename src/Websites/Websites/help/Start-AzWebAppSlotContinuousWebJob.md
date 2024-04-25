@@ -15,8 +15,8 @@ Start a continuous web job for a deployment slot.
 ### Start (Default)
 ```
 Start-AzWebAppSlotContinuousWebJob -AppName <String> -Name <String> -ResourceGroupName <String>
- -SlotName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ -SlotName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### StartViaIdentity

@@ -26,6 +26,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the AzureWorkloadSAPHanaRestoreWithRehydrateRequest class.
         /// </summary>
 
+        /// <param name="resourceGuardOperationRequests">ResourceGuardOperationRequests on which LAC check will be performed
+        /// </param>
+
         /// <param name="recoveryType">Type of this recovery.
         /// Possible values include: &#39;Invalid&#39;, &#39;OriginalLocation&#39;,
         /// &#39;AlternateLocation&#39;, &#39;RestoreDisks&#39;, &#39;Offline&#39;</param>
@@ -48,24 +51,22 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// <param name="targetResourceGroupName">Defines the Resource group of the Target VM
         /// </param>
 
-        /// <param name="userAssignedManagedIdentityDetails">User Assigned managed identity details
-        /// Currently used for snapshot.
+        /// <param name="userAssignedManagedIdentityDetails">User Assigned managed identity details Currently used for snapshot.
         /// </param>
 
-        /// <param name="snapshotRestoreParameters">Additional details for snapshot recovery
-        /// Currently used for snapshot for SAP Hana.
+        /// <param name="snapshotRestoreParameters">Additional details for snapshot recovery Currently used for snapshot for
+        /// SAP Hana.
         /// </param>
 
-        /// <param name="targetVirtualMachineId">This is the complete ARM Id of the target VM
-        /// For e.g.
+        /// <param name="targetVirtualMachineId">This is the complete ARM Id of the target VM For e.g.
         /// /subscriptions/{subId}/resourcegroups/{rg}/provider/Microsoft.Compute/virtualmachines/{vm}
         /// </param>
 
         /// <param name="recoveryPointRehydrationInfo">RP Rehydration Info
         /// </param>
-        public AzureWorkloadSAPHanaRestoreWithRehydrateRequest(string recoveryType = default(string), string sourceResourceId = default(string), System.Collections.Generic.IDictionary<string, string> propertyBag = default(System.Collections.Generic.IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), string targetResourceGroupName = default(string), UserAssignedManagedIdentityDetails userAssignedManagedIdentityDetails = default(UserAssignedManagedIdentityDetails), SnapshotRestoreParameters snapshotRestoreParameters = default(SnapshotRestoreParameters), string targetVirtualMachineId = default(string), RecoveryPointRehydrationInfo recoveryPointRehydrationInfo = default(RecoveryPointRehydrationInfo))
+        public AzureWorkloadSAPHanaRestoreWithRehydrateRequest(System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string recoveryType = default(string), string sourceResourceId = default(string), System.Collections.Generic.IDictionary<string, string> propertyBag = default(System.Collections.Generic.IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), string targetResourceGroupName = default(string), UserAssignedManagedIdentityDetails userAssignedManagedIdentityDetails = default(UserAssignedManagedIdentityDetails), SnapshotRestoreParameters snapshotRestoreParameters = default(SnapshotRestoreParameters), string targetVirtualMachineId = default(string), RecoveryPointRehydrationInfo recoveryPointRehydrationInfo = default(RecoveryPointRehydrationInfo))
 
-        : base(recoveryType, sourceResourceId, propertyBag, targetInfo, recoveryMode, targetResourceGroupName, userAssignedManagedIdentityDetails, snapshotRestoreParameters, targetVirtualMachineId)
+        : base(resourceGuardOperationRequests, recoveryType, sourceResourceId, propertyBag, targetInfo, recoveryMode, targetResourceGroupName, userAssignedManagedIdentityDetails, snapshotRestoreParameters, targetVirtualMachineId)
         {
             this.RecoveryPointRehydrationInfo = recoveryPointRehydrationInfo;
             CustomInit();

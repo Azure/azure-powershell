@@ -23,12 +23,12 @@ Checks the quota and actual usage of endpoints under the given Azure Front Door 
 Get-AzFrontDoorCdnProfileResourceUsage -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsage
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUsage
 .Link
 https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdnprofileresourceusage
 #>
 function Get-AzFrontDoorCdnProfileResourceUsage {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IUsage])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IUsage])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

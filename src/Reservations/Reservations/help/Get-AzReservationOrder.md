@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Reservations-help.xml
 Module Name: Az.Reservations
 online version: https://learn.microsoft.com/powershell/module/az.reservations/get-azreservationorder
 schema: 2.0.0
@@ -19,7 +19,8 @@ Get-AzReservationOrder [-DefaultProfile <PSObject>] [<CommonParameters>]
 
 ### Get
 ```
-Get-AzReservationOrder -Id <String> [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzReservationOrder -Id <String> [-Expand <String>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -141,18 +142,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ReservationId <String>]`: Id of the reservation item
-  - `[ReservationOrderId <String>]`: Order Id of the reservation
-  - `[SubscriptionId <String>]`: Id of the subscription
-
 ## RELATED LINKS
-

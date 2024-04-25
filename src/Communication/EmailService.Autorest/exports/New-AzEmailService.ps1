@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a new EmailService or update an existing EmailService.
+Create a new EmailService or Create an existing EmailService.
 .Description
-Create a new EmailService or update an existing EmailService.
+Create a new EmailService or Create an existing EmailService.
 .Example
 New-AzEmailService -Name ContosoAcsResource1 -ResourceGroupName ContosoResourceProvider1 -DataLocation "United States"
 
@@ -177,7 +177,13 @@ begin {
             CreateViaJsonString = 'Az.EmailService.private\New-AzEmailService_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Location') ) {
             $PSBoundParameters['Location'] = "global"

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create an association.
+Update an association.
 .Description
-Create an association.
+Update an association.
 .Example
 Update-AzDataCollectionRuleAssociation -AssociationName configurationAccessEndpoint -DataCollectionEndpointId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AMCS-TEST/providers/Microsoft.Insights/dataCollectionEndpoints/myCollectionEndpoint -ResourceUri /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/amcs-test/providers/Microsoft.Compute/virtualMachines/MonitorTestVM01 -Description "monitor test VM endpoint association"
 .Example
@@ -67,7 +67,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionRuleIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter()]

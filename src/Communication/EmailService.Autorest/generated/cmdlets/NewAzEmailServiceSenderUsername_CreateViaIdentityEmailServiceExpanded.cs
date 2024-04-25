@@ -11,14 +11,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
     using System;
 
     /// <summary>
-    /// Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
+    /// Add a new SenderUsername resource under the parent Domains resource or Create an existing SenderUsername resource.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames/{senderUsername}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzEmailServiceSenderUsername_CreateViaIdentityEmailServiceExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.EmailService.Models.ISenderUsernameResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Description(@"Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Description(@"Add a new SenderUsername resource under the parent Domains resource or Create an existing SenderUsername resource.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.EmailService.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames/{senderUsername}", ApiVersion = "2023-06-01-preview")]
     public partial class NewAzEmailServiceSenderUsername_CreateViaIdentityEmailServiceExpanded : global::System.Management.Automation.PSCmdlet,
@@ -242,6 +242,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
                 // Flush buffer
                 WriteObject(_firstResponse);
             }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.EmailService.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -435,6 +453,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EmailService.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.EmailService.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.EmailService.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.EmailService.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>

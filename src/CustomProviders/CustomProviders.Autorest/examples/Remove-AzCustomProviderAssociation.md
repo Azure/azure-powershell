@@ -8,7 +8,9 @@ Remove a custom provider association.
 ### Example 2: Remove a custom provider association with Piping
 ```powershell
 Get-AzCustomProviderAssociation | Remove-AzCustomProviderAssociation -PassThru
+```
 
+```output
 True
 ```
 

@@ -605,15 +605,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`NETWORKRULESETIPRULE <IIPRule[]>`: The IP ACL rules.
-  - `IPAddressOrRange <String>`: Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
-  - `[Action <Action?>]`: The action of IP ACL rule.
-
 ## RELATED LINKS

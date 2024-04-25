@@ -1142,7 +1142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecommendationsGenerate(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationsGenerateAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IArmErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecommendationsGenerate(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IArmErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-01-01";
             // Constant Parameters
@@ -1183,7 +1183,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task RecommendationsGenerateViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationsGenerateAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IArmErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task RecommendationsGenerateViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IArmErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.ISendAsync sender)
         {
             var apiVersion = @"2020-01-01";
             // Constant Parameters
@@ -1231,7 +1231,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task RecommendationsGenerate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IRecommendationsGenerateAcceptedResponseHeaders>, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IArmErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task RecommendationsGenerate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onAccepted, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.Api202001.IArmErrorResponse>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1249,7 +1249,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Advisor
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Advisor.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\cloudtest\.autorest\@autorest_powershell@3.0.494\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response);
                             break;
                         }
                         default:

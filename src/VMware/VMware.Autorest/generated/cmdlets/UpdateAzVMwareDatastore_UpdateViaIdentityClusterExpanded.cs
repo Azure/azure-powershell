@@ -10,14 +10,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Create a datastore in a private cloud cluster</summary>
+    /// <summary>Update a datastore in a private cloud cluster</summary>
     /// <remarks>
     /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}"
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}/clusters/{clusterName}/datastores/{datastoreName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzVMwareDatastore_UpdateViaIdentityClusterExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IDatastore))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Create a datastore in a private cloud cluster")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Description(@"Update a datastore in a private cloud cluster")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.VMware.Generated]
     public partial class UpdateAzVMwareDatastore_UpdateViaIdentityClusterExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener,
@@ -280,11 +280,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.VMware.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
                 telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
                 telemetryInfo.TryGetValue("InvocationName", out var invocationName);
-                if (!string.IsNullOrEmpty(sanitizedProperties))
+                if (showSecretsWarning == "true")
                 {
-                    WriteWarning($"The output of cmdlet {invocationName ?? "Unknown"} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
                 }
             }
         }
@@ -479,7 +487,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                         this.ClusterInputObject.Id += $"/datastores/{(global::System.Uri.EscapeDataString(this.Name.ToString()))}";
                         _datastoreBody = await this.Client.DatastoresGetViaIdentityWithResult(ClusterInputObject.Id, this, Pipeline);
                         this.Update_datastoreBody();
-                        await this.Client.DatastoresCreateOrUpdateViaIdentity(ClusterInputObject.Id, _datastoreBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.DatastoresCreateOrUpdateViaIdentity(ClusterInputObject.Id, _datastoreBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -502,7 +510,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Cmdlets
                         }
                         _datastoreBody = await this.Client.DatastoresGetWithResult(ClusterInputObject.SubscriptionId ?? null, ClusterInputObject.ResourceGroupName ?? null, ClusterInputObject.PrivateCloudName ?? null, ClusterInputObject.ClusterName ?? null, Name, this, Pipeline);
                         this.Update_datastoreBody();
-                        await this.Client.DatastoresCreateOrUpdate(ClusterInputObject.SubscriptionId ?? null, ClusterInputObject.ResourceGroupName ?? null, ClusterInputObject.PrivateCloudName ?? null, ClusterInputObject.ClusterName ?? null, Name, _datastoreBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.DatastoresCreateOrUpdate(ClusterInputObject.SubscriptionId ?? null, ClusterInputObject.ResourceGroupName ?? null, ClusterInputObject.PrivateCloudName ?? null, ClusterInputObject.ClusterName ?? null, Name, _datastoreBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.VMware.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

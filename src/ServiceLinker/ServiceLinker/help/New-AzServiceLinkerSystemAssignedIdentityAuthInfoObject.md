@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ServiceLinker-help.xml
 Module Name: Az.ServiceLinker
 online version: https://learn.microsoft.com/powershell/module/az.ServiceLinker/new-azservicelinkersystemassignedidentityauthinfoobject
 schema: 2.0.0
@@ -13,7 +13,8 @@ Create an in-memory object for SystemAssignedIdentityAuthInfo.
 ## SYNTAX
 
 ```
-New-AzServiceLinkerSystemAssignedIdentityAuthInfoObject [<CommonParameters>]
+New-AzServiceLinkerSystemAssignedIdentityAuthInfoObject
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +24,7 @@ Create an in-memory object for SystemAssignedIdentityAuthInfo.
 
 ### Example 1: Create linker's auth info with system assigned identity
 ```powershell
-New-AzServiceLinkerSystemAssignedIdentityAuthInfoObject  
+New-AzServiceLinkerSystemAssignedIdentityAuthInfoObject
 ```
 
 ```output
@@ -47,7 +48,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

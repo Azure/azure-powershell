@@ -6,15 +6,17 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Extensions;
+    using System;
 
     /// <summary>Create or update an association.</summary>
     /// <remarks>
-    /// [OpenAPI] Associations_CreateOrUpdate=>PUT:"/{scope}/providers/Microsoft.CustomProviders/associations/{associationName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/{scope}/providers/Microsoft.CustomProviders/associations/{associationName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzCustomProviderAssociation_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IAssociation))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Description(@"Create or update an association.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.HttpPath(Path = "/{scope}/providers/Microsoft.CustomProviders/associations/{associationName}", ApiVersion = "2018-09-01-preview")]
     public partial class NewAzCustomProviderAssociation_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.IEventListener
     {
@@ -27,6 +29,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
+        /// <summary>The resource definition of this association.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IAssociation _associationBody = new Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.Association();
+
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
@@ -37,12 +42,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.ParameterCategory.Runtime)]
         public global::System.Management.Automation.SwitchParameter AsJob { get; set; }
 
-        /// <summary>Backing field for <see cref="AssociationBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IAssociation _associationBody= new Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.Association();
-
-        /// <summary>The resource definition of this association.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IAssociation AssociationBody { get => this._associationBody; set => this._associationBody = value; }
-
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.ParameterCategory.Runtime)]
@@ -52,9 +51,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.CustomProviders Client => Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Module.Instance.ClientAPI;
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Category(global::Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.ParameterCategory.Azure)]
@@ -76,11 +76,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -153,15 +153,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Cmdlets
         Description = @"The REST resource instance of the target resource for this association.",
         SerializedName = @"targetResourceId",
         PossibleTypes = new [] { typeof(string) })]
-        public string TargetResourceId { get => AssociationBody.TargetResourceId ?? null; set => AssociationBody.TargetResourceId = value; }
+        public string TargetResourceId { get => _associationBody.TargetResourceId ?? null; set => _associationBody.TargetResourceId = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IErrorResponse</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -172,8 +172,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IAssociation"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IAssociation">Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IAssociation</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -184,6 +184,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -209,7 +214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.AssociationBody = this.AssociationBody;
+            clone._associationBody = this._associationBody;
             clone.Scope = this.Scope;
             clone.Name = this.Name;
             return clone;
@@ -218,7 +223,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -359,7 +381,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -374,12 +395,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.AssociationsCreateOrUpdate(Scope, Name, AssociationBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.AssociationsCreateOrUpdate(Scope, Name, _associationBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Scope=Scope,Name=Name,body=AssociationBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  Scope=Scope,Name=Name,body=_associationBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -398,12 +419,27 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Cmdlets
             base.StopProcessing();
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IErrorResponse"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IErrorResponse">Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IErrorResponse</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -425,14 +461,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Name=Name, body=AssociationBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Name=Name, body=_associationBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Name=Name, body=AssociationBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { Scope=Scope, Name=Name, body=_associationBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -442,8 +478,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IAssociation"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IAssociation">Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.Api20180901Preview.IAssociation</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
