@@ -171,6 +171,7 @@ CmdletsToExport = 'Add-AzLogProfile', 'Add-AzMetricAlertRule',
                'New-AzInsightsPrivateLinkScopedResource', 
                'New-AzMetricAlertRuleV2Criteria', 
                'New-AzMetricAlertRuleV2DimensionSelection', 'Remove-AzAlertRule', 
+               'Remove-AzInsightsPrivateLinkScope', 
                'Remove-AzInsightsPrivateLinkScopedResource', 'Remove-AzLogProfile', 
                'Remove-AzMetricAlertRuleV2', 'Update-AzInsightsPrivateLinkScope'
 
