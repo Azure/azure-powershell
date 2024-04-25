@@ -1,8 +1,8 @@
 {
-  "Update-AzSupportTicket+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/4df09db9-7a7e-450b-8f88-00fb97c277bd/providers/Microsoft.Support/supportTickets/test-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1?api-version=2022-09-01-preview+1": {
+  "Update-AzSupportTicket+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/supportTickets/test-e4014af3-5709-42f6-b4a4-0678c08f02d6?api-version=2024-04-01+1": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/4df09db9-7a7e-450b-8f88-00fb97c277bd/providers/Microsoft.Support/supportTickets/test-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1?api-version=2022-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/supportTickets/test-e4014af3-5709-42f6-b4a4-0678c08f02d6?api-version=2024-04-01",
       "Content": "{\r\n  \"advancedDiagnosticConsent\": \"Yes\"\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -19,20 +19,21 @@
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-request-id": [ "741ae189-d344-4679-9e39-e564b5c8ebf2" ],
-        "x-ms-correlation-request-id": [ "741ae189-d344-4679-9e39-e564b5c8ebf2" ],
-        "x-ms-routing-request-id": [ "EASTUS:20240308T171913Z:741ae189-d344-4679-9e39-e564b5c8ebf2" ],
+        "x-ms-request-id": [ "660699ef-bd2d-4076-8d64-213b36f32a43" ],
+        "x-ms-correlation-request-id": [ "660699ef-bd2d-4076-8d64-213b36f32a43" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240423T180808Z:660699ef-bd2d-4076-8d64-213b36f32a43" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D0BF0D4015124D25BCBFE2579DE45870 Ref B: BL2AA2030101017 Ref C: 2024-03-08T17:19:10Z" ],
-        "Date": [ "Fri, 08 Mar 2024 17:19:13 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 907F8D6DE38545198D6FC7678FBBBB60 Ref B: MNZ221060619009 Ref C: 2024-04-23T18:08:06Z" ],
+        "Date": [ "Tue, 23 Apr 2024 18:08:08 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1634" ],
+        "Content-Length": [ "1638" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/4df09db9-7a7e-450b-8f88-00fb97c277bd/providers/Microsoft.Support/supportTickets/test-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1\",\"name\":\"test-bc3ec8b6-a7c1-416f-9f2d-354c2a66d4b1\",\"type\":\"Microsoft.Support/supportTickets\",\"properties\":{\"description\":\"test ticket - please ignore and close\",\"problemClassificationId\":\"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc/problemClassifications/3ec1a070-f242-9ecf-5a7c-e1a88ce029ef\",\"problemClassificationDisplayName\":\"Add or update VAT, tax id, PO number or profile information\",\"severity\":\"Minimal\",\"require24X7Response\":false,\"enrollmentId\":\"\",\"contactDetails\":{\"firstName\":\"test\",\"lastName\":\"test\",\"preferredContactMethod\":\"Email\",\"primaryEmailAddress\":\"test@test.com\",\"preferredTimeZone\":\"Pacific Standard Time\",\"country\":\"USA\",\"preferredSupportLanguage\":\"en-US\"},\"serviceLevelAgreement\":{\"startTime\":\"2024-03-08T17:16:18Z\",\"expirationTime\":\"2024-03-09T01:16:18Z\",\"slaMinutes\":480},\"supportEngineer\":{},\"supportPlanType\":\"Standard\",\"supportPlanDisplayName\":\"Azure Support Plan - Standard\",\"advancedDiagnosticConsent\":\"Yes\",\"isTemporaryTicket\":\"No\",\"supportPlanId\":\"U291cmNlOkVBLFN1YnNjcmlwdGlvbklkOjRERjA5REI5LTdBN0UtNDUwQi04Rjg4LTAwRkI5N0MyNzdCRCxPZmZlcklkOk1TLUFaUi0wMDQxUCxTb3ZlcmVpZ25DbG91ZDpQdWJsaWMs\",\"fileWorkspaceName\":\"2403080040008665\",\"supportTicketId\":\"2403080040008665\",\"title\":\"test ticket - please ignore and close\",\"serviceId\":\"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc\",\"serviceDisplayName\":\"Billing\",\"status\":\"Open\",\"createdDate\":\"2024-03-08T17:16:18Z\",\"modifiedDate\":\"2024-03-08T17:17:46Z\"}}",
+      "Content": "{\"id\":\"/subscriptions/cca0326c-4c31-46d8-8fcb-c67023a46f4b/providers/Microsoft.Support/supportTickets/test-e4014af3-5709-42f6-b4a4-0678c08f02d6\",\"name\":\"test-e4014af3-5709-42f6-b4a4-0678c08f02d6\",\"type\":\"Microsoft.Support/supportTickets\",\"properties\":{\"description\":\"test ticket - please ignore and close\",\"problemClassificationId\":\"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc/problemClassifications/3ec1a070-f242-9ecf-5a7c-e1a88ce029ef\",\"problemClassificationDisplayName\":\"Add or update VAT, tax id, PO number or profile information\",\"severity\":\"Minimal\",\"require24X7Response\":false,\"enrollmentId\":\"\",\"contactDetails\":{\"firstName\":\"test\",\"lastName\":\"test\",\"preferredContactMethod\":\"Email\",\"primaryEmailAddress\":\"test@test.com\",\"preferredTimeZone\":\"Pacific Standard Time\",\"country\":\"USA\",\"preferredSupportLanguage\":\"en-US\"},\"serviceLevelAgreement\":{\"startTime\":\"2024-04-23T18:03:21Z\",\"expirationTime\":\"2024-04-23T22:03:21Z\",\"slaMinutes\":240},\"supportEngineer\":{},\"supportPlanType\":\"ProDirect\",\"supportPlanDisplayName\":\"Azure Support Plan – ProDirect\",\"advancedDiagnosticConsent\":\"Yes\",\"isTemporaryTicket\":\"No\",\"supportPlanId\":\"U291cmNlOkVBLFN1YnNjcmlwdGlvbklkOmNjYTAzMjZjLTRjMzEtNDZkOC04ZmNiLWM2NzAyM2E0NmY0YixPZmZlcklkOk1TLUFaUi0wMDQyUCxTb3ZlcmVpZ25DbG91ZDpQdWJsaWMs\",\"fileWorkspaceName\":\"2404230040010595\",\"supportTicketId\":\"2404230040010595\",\"title\":\"test ticket - please ignore and close\",\"serviceId\":\"/providers/Microsoft.Support/services/517f2da6-78fd-0498-4e22-ad26996b1dfc\",\"serviceDisplayName\":\"Billing\",\"status\":\"Open\",\"createdDate\":\"2024-04-23T18:03:21Z\",\"modifiedDate\":\"2024-04-23T18:06:17Z\"}}",
       "isContentBase64": false
     }
   }

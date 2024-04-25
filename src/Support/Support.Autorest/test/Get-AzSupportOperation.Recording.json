@@ -1,17 +1,17 @@
 {
-  "Get-AzSupportOperation+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Support/operations?api-version=2022-09-01-preview+1": {
+  "Get-AzSupportOperation+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Support/operations?api-version=2024-04-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/operations?api-version=2022-09-01-preview",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/operations?api-version=2024-04-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "15" ],
-        "x-ms-client-request-id": [ "eeb57a77-8539-4a9e-b34a-915d61b54fb8" ],
+        "x-ms-client-request-id": [ "78961111-fd61-4c58-bb73-5dd7dede60dc" ],
         "CommandName": [ "Get-AzSupportOperation" ],
         "FullCommandName": [ "Get-AzSupportOperation_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.1", "Az.Support/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.2", "Az.Support/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -24,13 +24,14 @@
         "Pragma": [ "no-cache" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
-        "x-ms-request-id": [ "022a55ac-9fab-40b4-a7de-4ad38e854dfc" ],
-        "x-ms-correlation-request-id": [ "022a55ac-9fab-40b4-a7de-4ad38e854dfc" ],
-        "x-ms-routing-request-id": [ "EASTUS:20240308T172252Z:022a55ac-9fab-40b4-a7de-4ad38e854dfc" ],
+        "x-ms-request-id": [ "c6d8083d-9ec7-417e-81e4-dcf876693f4a" ],
+        "x-ms-correlation-request-id": [ "c6d8083d-9ec7-417e-81e4-dcf876693f4a" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240423T181428Z:c6d8083d-9ec7-417e-81e4-dcf876693f4a" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E96314752A2D439398CC165615FAE35C Ref B: MNZ221060609009 Ref C: 2024-03-08T17:22:52Z" ],
-        "Date": [ "Fri, 08 Mar 2024 17:22:51 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 1FD714A6BE734632ABDC7F49969BCDB1 Ref B: MNZ221060608031 Ref C: 2024-04-23T18:14:28Z" ],
+        "Date": [ "Tue, 23 Apr 2024 18:14:28 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2284" ],
