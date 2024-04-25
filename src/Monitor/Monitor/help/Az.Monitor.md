@@ -82,13 +82,13 @@ Get for private link scoped resource
 Gets a log profile.
 
 ### [Get-AzMetric](Get-AzMetric.md)
-Gets the metric values of a resource.
+**Lists the metric values for a resource**.
 
 ### [Get-AzMetricAlertRuleV2](Get-AzMetricAlertRuleV2.md)
 Gets V2 (non-classic) metric alert rules
 
 ### [Get-AzMetricDefinition](Get-AzMetricDefinition.md)
-Gets metric definitions.
+Lists the metric definitions for the subscription.
 
 ### [Get-AzMetricsBatch](Get-AzMetricsBatch.md)
 Lists the metric values for multiple resources.
