@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "It lets you capture and rewrite a specific value of header specified in 'HeaderName' when multiple values of the same header exists.")]
+            HelpMessage = "An optional field under 'Rewrite Action'. It lets you capture and modify the value(s) of a specific header when multiple headers with the same name exist. Currently supported for Set-Cookie Response header only. For more details, visit https://aka.ms/appgwheadercrud")]
         public PSApplicationGatewayHeaderValueMatcher HeaderValueMatcher { get; set; }
 
         public override void ExecuteCmdlet()
