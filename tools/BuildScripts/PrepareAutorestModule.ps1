@@ -227,7 +227,6 @@ function Add-SubModuleToParentModule {
 <#
     TODO: add comment, add log
 #>
-$hadFailed = $false
 $sourceDirectory = Join-Path $RepoRoot "src"
 $generatedDirectory = Join-Path $RepoRoot "generated"
 if (-not (Test-Path $sourceDirectory)) {
@@ -238,33 +237,27 @@ if (-not (Test-Path $sourceDirectory)) {
 
 $AutorestOutputDir = Join-Path $RepoRoot "artifacts" "autorest"
 New-Item -ItemType Directory -Force -Path $AutorestOutputDir
-$outdatedModuleMap = @{}
 $moduleRootSource = Join-Path $sourceDirectory $ModuleRootName
 $moduleRootGenerated = Join-Path $generatedDirectory $ModuleRootName
 $outdatedSubModule = Get-OutdatedSubModule -SourceDirectory $moduleRootSource -GeneratedDirectory $moduleRootGenerated
 # TODO: make this asynchronous
 foreach ($subModuleName in $outdatedSubModule) {
-    $outdatedModuleMap[$ModuleRootName] += $subModuleName
     $subModuleSourceDirectory = Join-Path $sourceDirectory $ModuleRootName $subModuleName
-    $generatedLog = Join-Path $AutorestOutputDir $ModuleRootName $subModuleName
+    $generatedLog = Join-Path $AutorestOutputDir $ModuleRootName "$subModuleName.log"
     $generated = Invoke-SubModuleGeneration -GenerateDirectory $subModuleSourceDirectory -GeneratedLog $generatedLog
     if (-not $generated) {
         $hadFailed = $true
         Write-Error "Failed to generate code for module: $ModuleRootName, $subModuleName"
         Write-Error "========= Start of error log for $ModuleRootName, $subModuleName ========="
         Write-Error "log can be found at $generatedLog"
-        Get-Content $generateLogDirectory | Foreach-Object { Write-Error $_ }
+        Get-Content $generatedLog | Foreach-Object { Write-Error $_ }
         Write-Error "========= End of error log for $ModuleRootName, $subModuleName"
-    } else {
-        $subModuleGeneratedDirectory = Join-Path $generatedDirectory $ModuleRootName $subModuleName
-        if (-not (Test-Path $subModuleGeneratedDirectory)) {
-            New-Item -ItemType Directory -Force -Path $subModuleGeneratedDirectory
-        }
-        Add-SubModuleToParentModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory
-        Update-GeneratedSubModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory
+        exit 1
     }
-}
-
-if ($hadFailed) {
-    exit 1
+    $subModuleGeneratedDirectory = Join-Path $generatedDirectory $ModuleRootName $subModuleName
+    if (-not (Test-Path $subModuleGeneratedDirectory)) {
+        New-Item -ItemType Directory -Force -Path $subModuleGeneratedDirectory
+    }
+    Add-SubModuleToParentModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory
+    Update-GeneratedSubModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory
 }
