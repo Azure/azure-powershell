@@ -137,3 +137,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzApplicationGatewayRewriteRule](./New-AzApplicationGatewayRewriteRule.md)
 
 [New-AzApplicationGatewayRewriteRuleActionSet](./New-AzApplicationGatewayRewriteRuleActionSet.md)
+
+[Rewrite HTTP headers and URL with Application Gateway](https://aka.ms/appgwheadercrud)
