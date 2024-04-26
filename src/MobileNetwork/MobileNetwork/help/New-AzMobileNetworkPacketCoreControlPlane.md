@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MobileNetwork-help.xml
 Module Name: Az.MobileNetwork
 online version: https://learn.microsoft.com/powershell/module/az.mobilenetwork/new-azmobilenetworkpacketcorecontrolplane
 schema: 2.0.0
@@ -13,16 +13,17 @@ Creates or updates a packet core control plane.
 ## SYNTAX
 
 ```
-New-AzMobileNetworkPacketCoreControlPlane -Name <String> -ResourceGroupName <String>
+New-AzMobileNetworkPacketCoreControlPlane -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -LocalDiagnosticAccessAuthenticationType <AuthenticationType> -Location <String> -PlatformType <PlatformType>
- -Site <ISiteResourceId[]> -Sku <BillingSku> [-SubscriptionId <String>] [-AzureStackEdgeDeviceId <String>]
+ -Site <ISiteResourceId[]> -Sku <BillingSku> [-AzureStackEdgeDeviceId <String>]
  [-AzureStackHciClusterId <String>] [-ConnectedClusterId <String>]
  [-ControlPlaneAccessInterfaceIpv4Address <String>] [-ControlPlaneAccessInterfaceIpv4Gateway <String>]
  [-ControlPlaneAccessInterfaceIpv4Subnet <String>] [-ControlPlaneAccessInterfaceName <String>]
  [-CoreNetworkTechnology <CoreNetworkType>] [-CustomLocationId <String>] [-HttpsServerCertificateUrl <String>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
  [-InteropSetting <Hashtable>] [-Tag <Hashtable>] [-UeMtu <Int32>] [-Version <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -505,15 +506,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`SITE <ISiteResourceId[]>`: Site(s) under which this packet core control plane should be deployed. The sites must be in the same location as the packet core control plane.
-  - `Id <String>`: Site resource ID.
-
 ## RELATED LINKS
-

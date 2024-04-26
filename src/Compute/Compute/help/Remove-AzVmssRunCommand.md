@@ -14,7 +14,8 @@ Remove VMSS RunCommand
 
 ```
 Remove-AzVmssRunCommand [-ResourceGroupName] <String> [-VMScaleSetName] <String> -RunCommandName <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -43,7 +43,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IGcpOrganizationalData]
     # The Gcp project's organizational data.
-    # .
     ${OrganizationalData},
 
     [Parameter()]

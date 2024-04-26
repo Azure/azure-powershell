@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ChangeAnalysis-help.xml
 Module Name: Az.ChangeAnalysis
 online version: https://learn.microsoft.com/powershell/module/az.changeanalysis/get-azchangeanalysis
 schema: 2.0.0
@@ -9,31 +9,33 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Customer data is always masked if query at subscription or resource group level.
-For query on a single resource, customer data is masked if the user doesn’t have access.
+For query on a single resource, customer data is masked if the user doesn't have access.
 
 ## SYNTAX
 
 ### List2 (Default)
 ```
-Get-AzChangeAnalysis -EndTime <DateTime> -StartTime <DateTime> [-SubscriptionId <String[]>]
- [-SkipToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzChangeAnalysis [-SubscriptionId <String[]>] -EndTime <DateTime> -StartTime <DateTime>
+ [-SkipToken <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzChangeAnalysis -ResourceId <String> -EndTime <DateTime> -StartTime <DateTime> [-SkipToken <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzChangeAnalysis -ResourceGroupName <String> -EndTime <DateTime> -StartTime <DateTime>
- [-SubscriptionId <String[]>] [-SkipToken <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzChangeAnalysis -ResourceGroupName <String> [-SubscriptionId <String[]>] -EndTime <DateTime>
+ -StartTime <DateTime> [-SkipToken <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 Customer data is always masked if query at subscription or resource group level.
-For query on a single resource, customer data is masked if the user doesn’t have access.
+For query on a single resource, customer data is masked if the user doesn't have access.
 
 ## EXAMPLES
 
@@ -44,7 +46,7 @@ $end = Get-Date -Date "2021-07-18T12:09:03.141Z" -AsUTC
 Get-AzChangeAnalysis -StartTime $start -EndTime $end
 ```
 
-```Output
+```output
 Name                                                                                                                Type
 ----                                                                                                                ----
 ARG_96668df8-baa3-443a-b65e-e473b73a7df0_3671a03a-262c-4470-8abf-0691873f2e20_132709991319090106_132710115679840000 Microsoft.ChangeAnalysis/changes
@@ -89,7 +91,7 @@ $end = Get-Date -Date "2021-07-18T12:09:03.141Z" -AsUTC
 Get-AzChangeAnalysis -StartTime $start -EndTime $end -ResourceGroupName azpssmokerg1268133cx4
 ```
 
-```Output
+```output
 Name                                                                                                                Type
 ----                                                                                                                ----
 ARG_3dd199c6-cfec-421a-bcd3-797c08de63bc_0ee1aacb-523b-40bd-96a0-00fed2f47380_132711384626690000_132712151317657566 Microsoft.ChangeAnalysis/changes
@@ -105,7 +107,7 @@ $end = Get-Date -Date "2021-07-18T12:09:03.141Z" -AsUTC
 Get-AzChangeAnalysis -StartTime $start -EndTime $end -ResourceId '/subscriptions/xxxxxx-xxxxx-xxxx-xxxx-xxxxxxf/resourceGroups/azpssmokerg1268133cx4/providers/Microsoft.Storage/storageAccounts/azpssmokesa1268133cx4'
 ```
 
-```Output
+```output
 Name                                                                                                                Type
 ----                                                                                                                ----
 ARG_3dd199c6-cfec-421a-bcd3-797c08de63bc_0ee1aacb-523b-40bd-96a0-00fed2f47380_132711384626690000_132712151317657566 Microsoft.ChangeAnalysis/changes
@@ -117,7 +119,8 @@ This command lists the changes of a resource within the specified time range.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -213,7 +216,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: List1, List2
+Parameter Sets: List2, List1
 Aliases:
 
 Required: False
@@ -265,7 +268,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

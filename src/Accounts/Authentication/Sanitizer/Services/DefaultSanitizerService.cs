@@ -19,25 +19,25 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
 {
     internal class DefaultSanitizerService : ISanitizerService
     {
-        public string SanitizedValue => "******";
-
-        public Dictionary<string, IEnumerable<string>> IgnoredProperties => BuildIgnoredProperties();
-
-        private Dictionary<string, IEnumerable<string>> BuildIgnoredProperties()
+        public Dictionary<string, IEnumerable<string>> IgnoredProperties => new Dictionary<string, IEnumerable<string>>()
         {
             /*
              * This dictionary is used to store the properties that should be ignored during sanitization.
              * The key is the full name of the object type that contains the properties to be ignored.
              * The value is the list of property names that should be ignored.
              */
-            return new Dictionary<string, IEnumerable<string>>
-            {
-                // Skip lazy load properties
-                { "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount", new[] { "Context" } },
-                { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageContainer", new[] { "CloudBlobContainer", "Permission" } },
-                { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob", new[] { "BlobProperties" } }
-            };
-        }
+
+            // Skip lazy load properties
+            { "Microsoft.Azure.Commands.Management.Storage.Models.PSStorageAccount", new[] { "Context" } },
+            { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageContainer", new[] { "CloudBlobContainer", "Permission" } },
+            { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageBlob", new[] { "BlobProperties" } },
+            { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFile", new[] { "FileProperties" } },
+            { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFileShare", new[] { "ShareProperties" } },
+            { "Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel.AzureStorageFileDirectory", new[] { "ShareDirectoryProperties" } },
+
+            // Skip infinite recursion properties
+            { "Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.InnerError", new[] { "EmbeddedInnerError" } },
+        };
 
         private static readonly IEnumerable<string> SensitiveDataPatterns = new List<string>()
         {
@@ -89,19 +89,19 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Sanitizer.Services
 
         public bool TrySanitizeData(string data, out string sanitizedData)
         {
+            sanitizedData = string.Empty;
+
             if (!string.IsNullOrWhiteSpace(data))
             {
                 foreach (var pattern in SensitiveDataPatterns)
                 {
                     if (Regex.IsMatch(data, pattern))
                     {
-                        sanitizedData = Regex.Replace(data, pattern, SanitizedValue);
                         return true;
                     }
                 }
             }
 
-            sanitizedData = string.Empty;
             return false;
         }
     }

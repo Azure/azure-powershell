@@ -52,7 +52,8 @@ Remove-AzDnsRecordConfig -RecordSet <DnsRecordSet> -Value <String> [-DefaultProf
 ### SRV
 ```
 Remove-AzDnsRecordConfig -RecordSet <DnsRecordSet> -Priority <UInt16> -Target <String> -Port <UInt16>
- -Weight <UInt16> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -Weight <UInt16> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### CNAME
@@ -70,13 +71,15 @@ Remove-AzDnsRecordConfig -RecordSet <DnsRecordSet> -CaaFlags <Byte> -CaaTag <Str
 ### DS
 ```
 Remove-AzDnsRecordConfig -RecordSet <DnsRecordSet> -KeyTag <Int32> -Algorithm <Int32> -DigestType <Int32>
- -Digest <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -Digest <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### TLSA
 ```
 Remove-AzDnsRecordConfig -RecordSet <DnsRecordSet> -Usage <Int32> -Selector <Int32> -MatchingType <Int32>
- -CertificateAssociationData <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ -CertificateAssociationData <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

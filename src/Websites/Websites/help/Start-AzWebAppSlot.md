@@ -21,7 +21,8 @@ Start-AzWebAppSlot [-ResourceGroupName] <String> [-Name] <String> [-Slot] <Strin
 
 ### S2
 ```
-Start-AzWebAppSlot [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Start-AzWebAppSlot [-WebApp] <PSSite> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -68,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_lastNDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("lastNDays"), out var __jsonLastNDays) ? (int?)__jsonLastNDays : LastNDay;}
+            {_lastNDay = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonNumber>("lastNDays"), out var __jsonLastNDays) ? (int?)__jsonLastNDays : _lastNDay;}
             AfterFromJson(json);
         }
 

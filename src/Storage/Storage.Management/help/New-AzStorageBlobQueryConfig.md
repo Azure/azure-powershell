@@ -15,12 +15,14 @@ Creates a blob query configuration object, which can be used in Get-AzStorageBlo
 ### Csv (Default)
 ```
 New-AzStorageBlobQueryConfig [-AsCsv] [-RecordSeparator <String>] [-ColumnSeparator <String>]
- [-QuotationCharacter <Char>] [-EscapeCharacter <Char>] [-HasHeader] [-AsJob] [<CommonParameters>]
+ [-QuotationCharacter <Char>] [-EscapeCharacter <Char>] [-HasHeader] [-AsJob]
+ [<CommonParameters>]
 ```
 
 ### Json
 ```
-New-AzStorageBlobQueryConfig [-AsJson] [-RecordSeparator <String>] [-AsJob] [<CommonParameters>]
+New-AzStorageBlobQueryConfig [-AsJson] [-RecordSeparator <String>] [-AsJob]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

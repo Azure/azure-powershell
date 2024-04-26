@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+> [!IMPORTANT]
+> Preannouncement: The default interactive login experience will change from browser based to `Web Account Manager` (WAM) based on supported platforms, [learn more](https://learn.microsoft.com/en-us/entra/msal/dotnet/acquiring-tokens/desktop-mobile/wam). Only interactive login flow is influeced by WAM. This will take effect from the release of **May 21st**.
+* Fixed secrets detection issues.
+
+## Version 2.17.0
 * Enabled globally disabling instance discovery before token acquisition [#22535].
 * Implemented secrets detection feature for autorest modules.
 * Added `AsSecureString` to `Get-AzAccessToken` to convert the returned token to SecureString [#24190].

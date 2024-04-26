@@ -1,7 +1,9 @@
 ### Example 1: Delete a scan instance by name
 ```powershell
 Remove-AzPurviewScan -Endpoint 'https://parv-brs-2.purview.azure.com/' -DataSourceName 'DataScanTestData-Parv' -Name 'ScanTest'
+```
 
+```output
 CollectionLastModifiedAt  : 2/15/2022 3:49:23 PM
 CollectionReferenceName   : parv-brs-2
 CollectionType            : CollectionReference

@@ -20,7 +20,8 @@ Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String
  [-TombstoneRetentionTimeInHour <Int32>] [-Status <EntityStatus>] [-DestinationName <String>]
  [-IdentityType <ManagedServiceIdentityType>] [-UserAssignedIdentityId <String>] [-PartitionCount <Int64>]
  [-StorageAccountResourceId <String>] [-ArchiveNameFormat <String>] [-BlobContainer <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
@@ -30,7 +31,8 @@ Set-AzEventHub -InputObject <IEventHubIdentity> [-CaptureEnabled] [-Encoding <En
  [-TombstoneRetentionTimeInHour <Int32>] [-Status <EntityStatus>] [-DestinationName <String>]
  [-IdentityType <ManagedServiceIdentityType>] [-UserAssignedIdentityId <String>] [-PartitionCount <Int64>]
  [-StorageAccountResourceId <String>] [-ArchiveNameFormat <String>] [-BlobContainer <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

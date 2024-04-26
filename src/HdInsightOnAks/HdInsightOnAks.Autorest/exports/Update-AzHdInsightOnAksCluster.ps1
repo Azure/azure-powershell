@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Updates an existing Cluster.
+Update an existing Cluster.
 .Description
-Updates an existing Cluster.
+Update an existing Cluster.
 .Example
 $clusterResourceGroupName = "Group"
 $clusterpoolName = "ps-test-pool"
@@ -28,9 +28,17 @@ $yarnComponentConfig = New-AzHdInsightOnAksClusterServiceConfigObject -Component
 $yarnServiceConfigProfile = New-AzHdInsightOnAksClusterServiceConfigsProfileObject -ServiceName "yarn-service" -Config $yarnComponentConfig
 
 Update-AzHdInsightOnAksCluster -ResourceGroupName $clusterResourceGroupName -PoolName $clusterpoolName -Name $clusterName -ClusterProfileServiceConfigsProfile $yarnServiceConfigProfile
+.Example
+$clusterResourceGroupName = "Group"
+$clusterpoolName = "ps-test-pool"
+$clusterName = "flinkcluster"
+$hotfixObj = New-AzHdInsightOnAksClusterHotfixUpgradeObject -ComponentName Webssh -TargetBuildNumber 7 -TargetClusterVersion "1.1.1" -TargetOssVersion "0.4.2"
+Update-AzHdInsightOnAksCluster -ResourceGroupName $clusterResourceGroupName -ClusterName $clusterName -ClusterPoolName $clusterpoolName -ClusterUpgradeRequest $hotfixObj
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatch
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
 .Outputs
@@ -41,9 +49,6 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
-  Location <String>: The geo-location where the resource lives
-  [Tag <ITrackedResourceTags>]: Resource tags.
-    [(Any) <String>]: This indicates any property can be added to this object.
   [ApplicationLogStdErrorEnabled <Boolean?>]: True if stderror is enabled, otherwise false.
   [ApplicationLogStdOutEnabled <Boolean?>]: True if stdout is enabled, otherwise false.
   [AuthorizationProfileGroupId <List<String>>]: AAD group Ids authorized for data plane access.
@@ -70,6 +75,10 @@ CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
         [Value <IClusterConfigFileValues>]: List of key value pairs         where key represents a valid service configuration name and value represents the value of the config.
           [(Any) <String>]: This indicates any property can be added to this object.
     ServiceName <String>: Name of the service the configurations should apply to.
+  [DatabaseHost <String>]: The database URL
+  [DatabaseName <String>]: The database name
+  [DatabasePasswordSecretRef <String>]: Reference for the database password
+  [DatabaseUsername <String>]: The name of the database user
   [LoadBasedConfigCooldownPeriod <Int32?>]: This is a cool down period, this is a time period in seconds, which determines the amount of time that must elapse between a scaling activity started by a rule and the start of the next scaling activity, regardless of the rule that triggers it. The default value is 300 seconds.
   [LoadBasedConfigMaxNode <Int32?>]: User needs to set the maximum number of nodes for load based scaling, the load based scaling will use this to scale up and scale down between minimum and maximum number of nodes.
   [LoadBasedConfigMinNode <Int32?>]: User needs to set the minimum number of nodes for load based scaling, the load based scaling will use this to scale up and scale down between minimum and maximum number of nodes.
@@ -83,6 +92,14 @@ CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
   [LogAnalyticProfileEnabled <Boolean?>]: True if log analytics is enabled for the cluster, otherwise false.
   [LogAnalyticProfileMetricsEnabled <Boolean?>]: True if metrics are enabled, otherwise false.
   [PrometheuProfileEnabled <Boolean?>]: Enable Prometheus for cluster or not.
+  [RangerAdmin <List<String>>]: List of usernames that should be marked as ranger admins. These usernames should match the user principal name (UPN) of the respective AAD users.
+  [RangerAuditStorageAccount <String>]: Azure storage location of the blobs. MSI should have read/write access to this Storage account.
+  [RangerPluginProfileEnabled <Boolean?>]: Enable Ranger for cluster or not.
+  [RangerUsersyncEnabled <Boolean?>]: Denotes whether usersync service should be enabled
+  [RangerUsersyncGroup <List<String>>]: List of groups that should be synced. These group names should match the object id of the respective AAD groups.
+  [RangerUsersyncMode <String>]: User & groups can be synced automatically or via a static list that's refreshed.
+  [RangerUsersyncUser <List<String>>]: List of user names that should be synced. These usernames should match the User principal name of the respective AAD users.
+  [RangerUsersyncUserMappingLocation <String>]: Azure storage location of a mapping file that lists user & group associations.
   [ScheduleBasedConfigDefaultCount <Int32?>]: Setting default node count of current schedule configuration. Default node count specifies the number of nodes which are default when an specified scaling operation is executed (scale up/scale down)
   [ScheduleBasedConfigSchedule <List<ISchedule>>]: This specifies the schedules where scheduled based Autoscale to be enabled, the user has a choice to set multiple rules within the schedule across days and times (start/end).
     Count <Int32>: User has to set the node count anticipated at end of the scaling operation of the set current schedule configuration, format is integer.
@@ -91,6 +108,8 @@ CLUSTERPATCHREQUEST <IClusterPatch>: The patch for a cluster.
     StartTime <String>: User has to set the start time of current schedule configuration, format like 10:30 (HH:MM).
   [ScheduleBasedConfigTimeZone <String>]: User has to specify the timezone on which the schedule has to be set for schedule based autoscale configuration.
   [SshProfileCount <Int32?>]: Number of ssh pods per cluster.
+  [Tag <IClusterPatchTags>]: Resource tags.
+    [(Any) <String>]: This indicates any property can be added to this object.
 
 CLUSTERPOOLINPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the HDInsight cluster.
@@ -120,6 +139,9 @@ CLUSTERPROFILESERVICECONFIGSPROFILE <IClusterServiceConfigsProfile[]>: The servi
       [Value <IClusterConfigFileValues>]: List of key value pairs         where key represents a valid service configuration name and value represents the value of the config.
         [(Any) <String>]: This indicates any property can be added to this object.
   ServiceName <String>: Name of the service the configurations should apply to.
+
+CLUSTERUPGRADEREQUEST <IClusterUpgrade>: Cluster Upgrade.
+  UpgradeType <String>: Type of upgrade.
 
 INPUTOBJECT <IHdInsightOnAksIdentity>: Identity Parameter
   [ClusterName <String>]: The name of the HDInsight cluster.
@@ -154,6 +176,12 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='Upgrade', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpool', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpoolExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
     [Alias('ClusterName')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [System.String]
@@ -164,6 +192,10 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='Upgrade', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
     [Alias('ClusterPoolName')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [System.String]
@@ -174,6 +206,10 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='Upgrade', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [System.String]
     # The name of the resource group.
@@ -184,6 +220,10 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaJsonFilePath')]
     [Parameter(ParameterSetName='UpdateViaJsonString')]
+    [Parameter(ParameterSetName='Upgrade')]
+    [Parameter(ParameterSetName='UpgradeExpanded')]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath')]
+    [Parameter(ParameterSetName='UpgradeViaJsonString')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -193,18 +233,20 @@ param(
 
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpoolExpanded', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for CLUSTERPOOLINPUTOBJECT properties and create a hash table.
     ${ClusterpoolInputObject},
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
@@ -213,7 +255,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatch]
     # The patch for a cluster.
-    # To construct, see NOTES section for CLUSTERPATCHREQUEST properties and create a hash table.
     ${ClusterPatchRequest},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -285,7 +326,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScriptActionProfile[]]
     # The script action profile list.
-    # To construct, see NOTES section for CLUSTERPROFILESCRIPTACTIONPROFILE properties and create a hash table.
     ${ClusterProfileScriptActionProfile},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -295,8 +335,39 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterServiceConfigsProfile[]]
     # The service configs profiles.
-    # To construct, see NOTES section for CLUSTERPROFILESERVICECONFIGSPROFILE properties and create a hash table.
     ${ClusterProfileServiceConfigsProfile},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The database URL
+    ${DatabaseHost},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The database name
+    ${DatabaseName},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Reference for the database password
+    ${DatabasePasswordSecretRef},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # The name of the database user
+    ${DatabaseUsername},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
@@ -338,7 +409,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScalingRule[]]
     # The scaling rules.
-    # To construct, see NOTES section for LOADBASEDCONFIGSCALINGRULE properties and create a hash table.
     ${LoadBasedConfigScalingRule},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -368,6 +438,78 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String[]]
+    # List of usernames that should be marked as ranger admins.
+    # These usernames should match the user principal name (UPN) of the respective AAD users.
+    ${RangerAdmin},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Azure storage location of the blobs.
+    # MSI should have read/write access to this Storage account.
+    ${RangerAuditStorageAccount},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Enable Ranger for cluster or not.
+    ${RangerPluginProfileEnabled},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Denotes whether usersync service should be enabled
+    ${RangerUsersyncEnabled},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String[]]
+    # List of groups that should be synced.
+    # These group names should match the object id of the respective AAD groups.
+    ${RangerUsersyncGroup},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("static", "automatic")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # User & groups can be synced automatically or via a static list that's refreshed.
+    ${RangerUsersyncMode},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String[]]
+    # List of user names that should be synced.
+    # These usernames should match the User principal name of the respective AAD users.
+    ${RangerUsersyncUser},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Azure storage location of a mapping file that lists user & group associations.
+    ${RangerUsersyncUserMappingLocation},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.Int32]
     # Setting default node count of current schedule configuration.
@@ -381,7 +523,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISchedule[]]
     # This specifies the schedules where scheduled based Autoscale to be enabled, the user has a choice to set multiple rules within the schedule across days and times (start/end).
-    # To construct, see NOTES section for SCHEDULEBASEDCONFIGSCHEDULE properties and create a hash table.
     ${ScheduleBasedConfigSchedule},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -404,22 +545,41 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityClusterpoolExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ITrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPatchTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonFilePath', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
     # Path of Json file supplied to the Update operation
     ${JsonFilePath},
 
     [Parameter(ParameterSetName='UpdateViaJsonString', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaJsonString', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
     [System.String]
     # Json string supplied to the Update operation
     ${JsonString},
+
+    [Parameter(ParameterSetName='Upgrade', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpool', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterUpgrade]
+    # Cluster Upgrade.
+    ${ClusterUpgradeRequest},
+
+    [Parameter(ParameterSetName='UpgradeExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityClusterpoolExpanded', Mandatory)]
+    [Parameter(ParameterSetName='UpgradeViaIdentityExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("AKSPatchUpgrade", "HotfixUpgrade")]
+    [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Category('Body')]
+    [System.String]
+    # Type of upgrade.
+    ${UpgradeType},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -516,9 +676,23 @@ begin {
             UpdateViaIdentityExpanded = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpdateViaIdentityExpanded';
             UpdateViaJsonFilePath = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpdateViaJsonFilePath';
             UpdateViaJsonString = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpdateViaJsonString';
+            Upgrade = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_Upgrade';
+            UpgradeExpanded = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeExpanded';
+            UpgradeViaIdentity = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaIdentity';
+            UpgradeViaIdentityClusterpool = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaIdentityClusterpool';
+            UpgradeViaIdentityClusterpoolExpanded = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaIdentityClusterpoolExpanded';
+            UpgradeViaIdentityExpanded = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaIdentityExpanded';
+            UpgradeViaJsonFilePath = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaJsonFilePath';
+            UpgradeViaJsonString = 'Az.HdInsightOnAks.private\Update-AzHdInsightOnAksCluster_UpgradeViaJsonString';
         }
-        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('Update', 'UpdateExpanded', 'UpdateViaJsonFilePath', 'UpdateViaJsonString', 'Upgrade', 'UpgradeExpanded', 'UpgradeViaJsonFilePath', 'UpgradeViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

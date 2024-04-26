@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.EdgeOrder-help.xml
 Module Name: Az.EdgeOrder
-online version: https://learn.microsoft.com/powershell/module/az.EdgeOrder/new-AzEdgeOrderOrderItemDetailsObject
+online version: https://learn.microsoft.com/powershell/module/Az.EdgeOrder/new-AzEdgeOrderOrderItemDetailsObject
 schema: 2.0.0
 ---
 
@@ -14,7 +14,8 @@ Create an in-memory object for OrderItemDetails.
 
 ```
 New-AzEdgeOrderOrderItemDetailsObject -OrderItemType <OrderItemType> -ProductDetail <IProductDetails>
- [-NotificationEmailList <String[]>] [-Preference <IPreferences>] [<CommonParameters>]
+ [-NotificationEmailList <String[]>] [-Preference <IPreferences>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,30 +106,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-PREFERENCE `<IPreferences>`: Customer notification Preferences.
-  - `[EncryptionPreference <IEncryptionPreferences>]`: Preferences related to the Encryption.
-    - `[DoubleEncryptionStatus <DoubleEncryptionStatus?>]`: Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
-  - `[ManagementResourcePreference <IManagementResourcePreferences>]`: Preferences related to the Management resource.
-    - `[PreferredManagementResourceId <String>]`: Customer preferred Management resource ARM ID
-  - `[NotificationPreference <INotificationPreference[]>]`: Notification preferences.
-    - `SendNotification <Boolean>`: Notification is required or not.
-    - `StageName <NotificationStageName>`: Name of the stage.
-  - `[TransportPreference <ITransportPreferences>]`: Preferences related to the shipment logistics of the order.
-    - `PreferredShipmentType <TransportShipmentTypes>`: Indicates Shipment Logistics type that the customer preferred.
-
-PRODUCTDETAIL `<IProductDetails>`: Unique identifier for configuration.
-  - `HierarchyInformation <IHierarchyInformation>`: Hierarchy of the product which uniquely identifies the product
-    - `[ConfigurationName <String>]`: Represents configuration name that uniquely identifies configuration
-    - `[ProductFamilyName <String>]`: Represents product family name that uniquely identifies product family
-    - `[ProductLineName <String>]`: Represents product line name that uniquely identifies product line
-    - `[ProductName <String>]`: Represents product name that uniquely identifies product
-
 ## RELATED LINKS
-

@@ -184,7 +184,6 @@ Accept wildcard characters: False
 ```
 
 ### -IsWAC
-{{ Fill IsWAC Description }}
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -193,7 +192,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

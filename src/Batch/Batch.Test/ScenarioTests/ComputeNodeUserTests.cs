@@ -30,10 +30,20 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestComputeNodeUserEndToEnd()
         {
+            BatchAccountContext context = null;
+            string poolId = "computenodeuserendtoendpool";
+
             TestRunner.RunTestScript(
+                null,
                 mockContext =>
                 {
-                    _ = new ScenarioTestContext();
+                    context = new ScenarioTestContext();
+                    ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, poolId, targetDedicated: 2, targetLowPriority: 0);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(this, context, poolId);
+                }, 
+                () =>
+                {
+                    ScenarioTestHelpers.DeletePool(this, context, poolId);
                 },
                 $"Test-ComputeNodeUserEndToEnd '{poolId}'"
             );

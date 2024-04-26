@@ -69,6 +69,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 mockContext =>
                 {
                     context = new ScenarioTestContext();
+                    ScenarioTestHelpers.CreateTestPoolVirtualMachine(this, context, poolId, targetDedicated: 2, targetLowPriority: 0);
+                    ScenarioTestHelpers.WaitForSteadyPoolAllocation(this, context, poolId);
+
                 },
                 () =>
                 {

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
 online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxManagedDiskDetailsObject
 schema: 2.0.0
@@ -13,8 +13,9 @@ Create an in-memory object for ManagedDiskDetails.
 ## SYNTAX
 
 ```
-New-AzDataBoxManagedDiskDetailsObject -DataAccountType <DataAccountType> -ResourceGroupId <String>
- -StagingStorageAccountId <String> [-SharePassword <String>] [<CommonParameters>]
+New-AzDataBoxManagedDiskDetailsObject -ResourceGroupId <String> -StagingStorageAccountId <String>
+ -DataAccountType <DataAccountType> [-SharePassword <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,7 +23,7 @@ Create an in-memory object for ManagedDiskDetails.
 
 ## EXAMPLES
 
-### Example 1: ManagedDisk object 
+### Example 1: ManagedDisk object
 ```powershell
 New-AzDataBoxManagedDiskDetailsObject -ResourceGroupId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName" -StagingStorageAccountId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.Storage/storageAccounts/stagingAccountName" -DataAccountType "ManagedDisk"
 ```
@@ -114,7 +115,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

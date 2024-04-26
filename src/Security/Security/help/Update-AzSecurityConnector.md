@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSecurityConnector
 
 ## SYNOPSIS
-Updates a security connector
+Update a security connector
 
 ## SYNTAX
 
@@ -30,13 +30,41 @@ Update-AzSecurityConnector -InputObject <ISecurityIdentity> [-EnvironmentData <I
 ```
 
 ## DESCRIPTION
-Updates a security connector
+Update a security connector
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Update security connector
 ```powershell
 Update-AzSecurityConnector -ResourceGroupName "securityConnectors-pwsh-tmp" -Name "ado-sdk-pwsh-test03" -Tag @{myTag="v1"}
+```
+
+```output
+EnvironmentData                 : {
+                                    "environmentType": "AzureDevOpsScope"
+                                  }
+EnvironmentName                 : AzureDevOps
+Etag                            : 
+HierarchyIdentifier             : 9dd01e19-8aaf-43a2-8dd4-1c5992f4df35
+HierarchyIdentifierTrialEndDate : 
+Id                              : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/securityconnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/ado-sdk-pwsh-test03
+Kind                            : 
+Location                        : CentralUS
+Name                            : ado-sdk-pwsh-test03
+Offering                        : {{
+                                    "offeringType": "CspmMonitorAzureDevOps"
+                                  }}
+ResourceGroupName               : securityconnectors-pwsh-tmp
+SystemDataCreatedAt             : 2/24/2024 12:13:11 AM
+SystemDataCreatedBy             : c3d82ccb-fee1-430c-949e-6c0a217c00a8
+SystemDataCreatedByType         : Application
+SystemDataLastModifiedAt        : 2/24/2024 12:24:02 AM
+SystemDataLastModifiedBy        : c3d82ccb-fee1-430c-949e-6c0a217c00a8
+SystemDataLastModifiedByType    : Application
+Tag                             : {
+                                    "myTag": "v1"
+                                  }
+Type                            : Microsoft.Security/securityconnectors
 ```
 
 ## PARAMETERS
@@ -46,7 +74,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -59,10 +87,9 @@ Accept wildcard characters: False
 
 ### -EnvironmentData
 The security connector environment data.
-.
 
 ```yaml
-Type: ISecurityConnectorEnvironment
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityConnectorEnvironment
 Parameter Sets: (All)
 Aliases:
 
@@ -77,7 +104,7 @@ Accept wildcard characters: False
 The multi cloud resource's cloud name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -92,7 +119,7 @@ Accept wildcard characters: False
 Entity tag is used for comparing two or more entities from the same requested resource.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +134,7 @@ Accept wildcard characters: False
 The multi cloud resource identifier (account id in case of AWS connector, project number in case of GCP connector).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,10 +147,9 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-.
 
 ```yaml
-Type: ISecurityIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -138,7 +164,7 @@ Accept wildcard characters: False
 Kind of the resource
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -153,7 +179,7 @@ Accept wildcard characters: False
 Location where the resource is stored
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +194,7 @@ Accept wildcard characters: False
 The security connector name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases: SecurityConnectorName
 
@@ -181,10 +207,9 @@ Accept wildcard characters: False
 
 ### -Offering
 A collection of offerings for the security connector.
-.
 
 ```yaml
-Type: ICloudOffering[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOffering[]
 Parameter Sets: (All)
 Aliases:
 
@@ -200,7 +225,7 @@ The name of the resource group within the user's subscription.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
@@ -215,13 +240,13 @@ Accept wildcard characters: False
 Azure subscription ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -230,7 +255,7 @@ Accept wildcard characters: False
 A list of key value pairs that describe the resource.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -245,7 +270,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -261,7 +286,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -278,38 +303,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityConnector
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-ENVIRONMENTDATA \<ISecurityConnectorEnvironment\>: The security connector environment data.
-  EnvironmentType \<String\>: The type of the environment data.
-
-INPUTOBJECT \<ISecurityIdentity\>: Identity Parameter
-  \[ApiId \<String\>\]: API revision identifier.
-Must be unique in the API Management service instance.
-Non-current revision has ;rev=n as a suffix where n is the revision number.
-  \[GroupFqName \<String\>\]: The GitLab group fully-qualified name.
-  \[Id \<String\>\]: Resource identity path
-  \[OperationResultId \<String\>\]: The operation result Id.
-  \[OrgName \<String\>\]: The Azure DevOps organization name.
-  \[OwnerName \<String\>\]: The GitHub owner name.
-  \[ProjectName \<String\>\]: The project name.
-  \[RepoName \<String\>\]: The repository name.
-  \[ResourceGroupName \<String\>\]: The name of the resource group within the user's subscription.
-The name is case insensitive.
-  \[SecurityConnectorName \<String\>\]: The security connector name.
-  \[ServiceName \<String\>\]: The name of the API Management service.
-  \[SubscriptionId \<String\>\]: Azure subscription ID
-
-OFFERING \<ICloudOffering\[\]\>: A collection of offerings for the security connector.
-  OfferingType \<String\>: The type of the security offering.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.security/update-azsecurityconnector](https://learn.microsoft.com/powershell/module/az.security/update-azsecurityconnector)

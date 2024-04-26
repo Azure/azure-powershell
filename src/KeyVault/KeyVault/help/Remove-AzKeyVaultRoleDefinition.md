@@ -15,13 +15,15 @@ Removes a custom role definition from an HSM.
 ### ByName (Default)
 ```
 Remove-AzKeyVaultRoleDefinition [-HsmName] <String> [-Scope <String>] -RoleName <String> [-Force] [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObject
 ```
 Remove-AzKeyVaultRoleDefinition [-HsmName] <String> [-Scope <String>] -InputObject <PSKeyVaultRoleDefinition>
- [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Force] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

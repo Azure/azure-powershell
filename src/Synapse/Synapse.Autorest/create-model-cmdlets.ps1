@@ -23,9 +23,13 @@ function CreateModelCmdlet {
     }
 
     $ModelCsPath = Join-Path (Join-Path $PSScriptRoot 'generated\api') 'Models'
-    $ModuleName = 'Az.Synapse'.Split(".")[1]
     $OutputDir = Join-Path $PSScriptRoot 'custom\autogen-model-cmdlets'
     $null = New-Item -ItemType Directory -Force -Path $OutputDir
+    if (''.length -gt 0) {
+        $ModuleName = ''
+    } else {
+        $ModuleName = 'Az.Synapse'
+    }
 
     $CsFiles = Get-ChildItem -Path $ModelCsPath -Recurse -Filter *.cs
     $Content = ''
@@ -64,10 +68,10 @@ function CreateModelCmdlet {
         $ObjectType = $Model
         $ObjectTypeWithNamespace = "${Namespace}.${ObjectType}"
         # remove duplicated module name
-        if ($ObjectType.StartsWith($ModuleName)) {
+        if ($ObjectType.StartsWith('Synapse')) {
             $ModulePrefix = ''
         } else {
-            $ModulePrefix = $ModuleName
+            $ModulePrefix = 'Synapse'
         }
         $OutputPath = Join-Path -ChildPath "New-Az${ModulePrefix}${ObjectType}Object.ps1" -Path $OutputDir
 
@@ -112,13 +116,22 @@ function CreateModelCmdlet {
                     $ParameterDefinePropertyList.Add("HelpMessage=`"${Description}.`"")
                 }
                 $ParameterDefineProperty = [System.String]::Join(", ", $ParameterDefinePropertyList)
+                # check whether completer is needed
+                $completer = '';
+                if($Type.Split('.').Split('.')[-2] -eq 'Support') {
+                    # If Type is an array, need to strip []
+                    $strippedType = $Type.Replace('[]', '')
+                    $completer += "`n        [ArgumentCompleter([${strippedType}])]"
+                }
                 $ParameterDefineScript = "
-        [Parameter($ParameterDefineProperty)]
+        [Parameter($ParameterDefineProperty)]${completer}
         [${Type}]
         `$${Identifier}"
                 $ParameterDefineScriptList.Add($ParameterDefineScript)
                 $ParameterAssignScriptList.Add("
-        `$Object.${Identifier} = `$${Identifier}")
+        if (`$PSBoundParameters.ContainsKey('${Identifier}')) {
+            `$Object.${Identifier} = `$${Identifier}
+        }")
             }
         }
         $ParameterDefineScript = $ParameterDefineScriptList | Join-String -Separator ","
@@ -142,14 +155,14 @@ function CreateModelCmdlet {
 
 <#
 .Synopsis
-Create a in-memory object for ${ObjectType}
+Create an in-memory object for ${ObjectType}.
 .Description
-Create a in-memory object for ${ObjectType}
+Create an in-memory object for ${ObjectType}.
 
 .Outputs
 ${ObjectTypeWithNamespace}
 .Link
-https://learn.microsoft.com/powershell/module/az.${ModuleName}/new-Az${ModulePrefix}${ObjectType}Object
+https://learn.microsoft.com/powershell/module/${ModuleName}/new-Az${ModulePrefix}${ObjectType}Object
 #>
 function New-Az${ModulePrefix}${ObjectType}Object {
     [OutputType('${ObjectTypeWithNamespace}')]

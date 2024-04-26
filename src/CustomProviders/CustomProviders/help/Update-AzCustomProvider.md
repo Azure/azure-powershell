@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.CustomProviders-help.xml
 Module Name: Az.CustomProviders
 online version: https://learn.microsoft.com/powershell/module/az.customproviders/update-azcustomprovider
 schema: 2.0.0
@@ -16,13 +16,14 @@ The only value that can be updated via PATCH currently is the tags.
 ### UpdateExpanded (Default)
 ```
 Update-AzCustomProvider -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzCustomProvider -InputObject <ICustomProvidersIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzCustomProvider -InputObject <ICustomProvidersIdentity> [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -66,7 +67,8 @@ Update a custom provider using piping.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -202,20 +204,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-INPUTOBJECT `<ICustomProvidersIdentity>`: Identity Parameter
-  - `[AssociationName <String>]`: The name of the association.
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourceProviderName <String>]`: The name of the resource provider.
-  - `[Scope <String>]`: The scope of the association.
-  - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
-
 ## RELATED LINKS
-

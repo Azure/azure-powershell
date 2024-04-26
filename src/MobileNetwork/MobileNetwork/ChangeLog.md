@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 0.4.0
+* Three cmdlets were added: `Remove-AzMobileNetworkBulkSimDelete`, `Update-AzMobileNetworkBulkSimUpload`, `Update-AzMobileNetworkBulkSimUploadEncrypted`.
 
 ## Version 0.3.0
 * Three cmdlets were added: `Deploy-AzMobileNetworkReinstallPacketCoreControlPlane`, `Deploy-AzMobileNetworkRollbackPacketCoreControlPlane`, `Trace-AzMobileNetworkCollectPacketCoreControlPlaneDiagnosticPackage`.

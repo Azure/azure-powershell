@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Subscription-help.xml
 Module Name: Az.Subscription
 online version: https://learn.microsoft.com/powershell/module/az.subscription/new-azsubscriptionalias
 schema: 2.0.0
@@ -15,15 +15,16 @@ Create Alias Subscription.
 ### CreateExpanded (Default)
 ```
 New-AzSubscriptionAlias -AliasName <String> -SubscriptionId <String> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### WorkloadCreateExpanded
 ```
-New-AzSubscriptionAlias -AliasName <String> -BillingScope <String> -SubscriptionName <String>
- -Workload <Workload> [-ManagementGroupId <String>] [-ResellerId <String>] [-SubscriptionOwnerId <String>]
- [-SubscriptionTenantId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSubscriptionAlias -AliasName <String> [-Tag <Hashtable>] -BillingScope <String>
+ -SubscriptionName <String> -Workload <Workload> [-ManagementGroupId <String>] [-ResellerId <String>]
+ [-SubscriptionOwnerId <String>] [-SubscriptionTenantId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +47,7 @@ Create Alias Subscription.
 
 ### Example 2: Create Alias Subscription.
 ```powershell
-New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionName "createSub" -BillingScope "/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}" -Workload 'Production' 
+New-AzSubscriptionAlias -AliasName test-subscription -SubscriptionName "createSub" -BillingScope "/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/invoiceSections/{invoiceSectionName}" -Workload 'Production'
 ```
 
 ```output
@@ -61,7 +62,7 @@ Create Alias Subscription.
 
 ### -AliasName
 AliasName is the name for the subscription creation request.
-Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
+Note that this is not the same as subscription name and this doesn't have any other lifecycle need beyond the request for subscription creation.
 
 ```yaml
 Type: System.String
@@ -300,4 +301,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

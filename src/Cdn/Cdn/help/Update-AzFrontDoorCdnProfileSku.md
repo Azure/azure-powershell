@@ -15,7 +15,7 @@ Upgrade a profile from Standard_AzureFrontDoor to Premium_AzureFrontDoor.
 ```
 Update-AzFrontDoorCdnProfileSku -ProfileName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -ProfileUpgradeParameter <IProfileUpgradeParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -156,7 +156,7 @@ Parameters required for profile upgrade.
 To construct, see NOTES section for PROFILEUPGRADEPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileUpgradeParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpgradeParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -164,21 +164,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -248,24 +233,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfileUpgradeParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileUpgradeParameters
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PROFILEUPGRADEPARAMETER <IProfileUpgradeParameters>`: Parameters required for profile upgrade.
-  - `WafMappingList <IProfileChangeSkuWafMapping[]>`: Web Application Firewall (WAF) and security policy mapping for the profile upgrade
-    - `SecurityPolicyName <String>`: The security policy name.
-    - `[ChangeToWafPolicyId <String>]`: Resource ID.
 
 ## RELATED LINKS

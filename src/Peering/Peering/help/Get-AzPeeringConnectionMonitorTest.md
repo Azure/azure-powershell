@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
 online version: https://learn.microsoft.com/powershell/module/az.peering/get-azpeeringconnectionmonitortest
 schema: 2.0.0
@@ -15,13 +15,15 @@ Gets an existing connection monitor test with the specified name under the given
 ### List (Default)
 ```
 Get-AzPeeringConnectionMonitorTest -PeeringServiceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzPeeringConnectionMonitorTest -Name <String> -PeeringServiceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -37,7 +39,7 @@ Gets an existing connection monitor test with the specified name under the given
 
 ### Example 1: Lists all connection monitor tests
 ```powershell
- Get-AzPeeringConnectionMonitorTest -ResourceGroupName DemoRG -PeeringServiceName DRTest
+Get-AzPeeringConnectionMonitorTest -ResourceGroupName DemoRG -PeeringServiceName DRTest
 ```
 
 ```output
@@ -51,7 +53,7 @@ Lists all connection monitor test objects
 
 ### Example 2: Get single connection monitor test
 ```powershell
- Get-AzPeeringConnectionMonitorTest -ResourceGroupName DemoRG -PeeringServiceName DRTest -Name TestName
+Get-AzPeeringConnectionMonitorTest -ResourceGroupName DemoRG -PeeringServiceName DRTest -Name TestName
 ```
 
 ```output
@@ -65,7 +67,8 @@ Gets a single connection monitor test
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -115,7 +118,7 @@ The name of the peering service.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -130,7 +133,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -145,7 +148,7 @@ The Azure subscription ID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -168,24 +171,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IPeeringIdentity>`: Identity Parameter
-  - `[ConnectionMonitorTestName <String>]`: The name of the connection monitor test
-  - `[Id <String>]`: Resource identity path
-  - `[PeerAsnName <String>]`: The peer ASN name.
-  - `[PeeringName <String>]`: The name of the peering.
-  - `[PeeringServiceName <String>]`: The name of the peering service.
-  - `[PrefixName <String>]`: The name of the prefix.
-  - `[RegisteredAsnName <String>]`: The name of the registered ASN.
-  - `[RegisteredPrefixName <String>]`: The name of the registered prefix.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubscriptionId <String>]`: The Azure subscription ID.
-
 ## RELATED LINKS
-

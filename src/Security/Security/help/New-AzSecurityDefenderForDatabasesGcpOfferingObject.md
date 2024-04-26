@@ -25,12 +25,22 @@ Create an in-memory object for DefenderForDatabasesGcpOffering.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new DefenderForDatabasesGcpOffering object
 ```powershell
 $emailSuffix = "myproject.iam.gserviceaccount.com"
 New-AzSecurityDefenderForDatabasesGcpOfferingObject `
     -ArcAutoProvisioningEnabled $true `
     -DefenderForDatabaseArcAutoProvisioningServiceAccountEmailAddress "microsoft-databases-arc-ap@" -DefenderForDatabaseArcAutoProvisioningWorkloadIdentityProviderId "defender-for-databases-arc-ap"
+```
+
+```output
+ArcAutoProvisioningEnabled                                       : True
+ConfigurationPrivateLinkScope                                    : 
+ConfigurationProxy                                               : 
+DefenderForDatabaseArcAutoProvisioningServiceAccountEmailAddress : microsoft-databases-arc-ap@
+DefenderForDatabaseArcAutoProvisioningWorkloadIdentityProviderId : defender-for-databases-arc-ap
+Description                                                      : 
+OfferingType                                                     : DefenderForDatabasesGcp
 ```
 
 ## PARAMETERS
@@ -39,13 +49,13 @@ New-AzSecurityDefenderForDatabasesGcpOfferingObject `
 Is arc auto provisioning enabled.
 
 ```yaml
-Type: Boolean
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -54,7 +64,7 @@ Accept wildcard characters: False
 Optional Arc private link scope resource id to link the Arc agent.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -69,7 +79,7 @@ Accept wildcard characters: False
 Optional http proxy endpoint to use for the Arc agent.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +94,7 @@ Accept wildcard characters: False
 The service account email address in GCP for this offering.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +109,7 @@ Accept wildcard characters: False
 The GCP workload identity provider id for this offering.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -118,8 +128,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.DefenderForDatabasesGcpOffering
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderfordatabasesgcpofferingobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritydefenderfordatabasesgcpofferingobject)

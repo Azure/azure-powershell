@@ -10,10 +10,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support
     public partial struct SolutionProvisioningState :
         System.IEquatable<SolutionProvisioningState>
     {
+        /// <summary>When Solutions request gets canceled.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionProvisioningState Canceled = @"Canceled";
 
+        /// <summary>All Solutions failed to run.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionProvisioningState Failed = @"Failed";
 
+        /// <summary>Some Solutions are still running or failed.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionProvisioningState PartialComplete = @"PartialComplete";
+
+        /// <summary>All Solutions are still running.</summary>
+        public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionProvisioningState Running = @"Running";
+
+        /// <summary>All Solutions in the Batch succeeded.</summary>
         public static Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Support.SolutionProvisioningState Succeeded = @"Succeeded";
 
         /// <summary>the value for an instance of the <see cref="SolutionProvisioningState" /> Enum.</summary>

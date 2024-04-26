@@ -18,8 +18,9 @@ New-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
  [-GalleryImageDefinitionName] <String> [-Name] <String> [-AsJob] -Location <String>
  [-DataDiskImage <GalleryDataDiskImage[]>] [-OSDiskImage <GalleryOSDiskImage>]
  [-PublishingProfileEndOfLifeDate <DateTime>] [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>]
- [-SourceImageId <String>] [-StorageAccountType <String>] [-Tag <Hashtable>] [-TargetRegion <Hashtable[]>]
- [-TargetExtendedLocation <Hashtable[]>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-SourceImageId <String>] [-SourceImageVMId <String>] [-StorageAccountType <String>] [-Tag <Hashtable>]
+ [-TargetRegion <Hashtable[]>] [-TargetExtendedLocation <Hashtable[]>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -480,6 +481,22 @@ Accept wildcard characters: False
 ### -SourceImageId
 
 The ID of the source image from which the Image Version is going to be created.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SourceImageVMId
+
+The resource Id of the source virtual machine.  Only required when capturing a virtual machine to source this Gallery Image Version.
 
 ```yaml
 Type: System.String

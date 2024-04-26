@@ -8,28 +8,40 @@ schema: 2.0.0
 # Update-AzFleet
 
 ## SYNOPSIS
-Create a Fleet.
+Update a Fleet.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzFleet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
- [-IfNoneMatch <String>] [-EnableSystemAssignedIdentity <Boolean>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-IdentityType <String>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonString
+```
+Update-AzFleet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### UpdateViaJsonFilePath
+```
+Update-AzFleet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-IfMatch <String>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzFleet -InputObject <IFleetIdentity> [-IfMatch <String>] [-IfNoneMatch <String>]
- [-EnableSystemAssignedIdentity <Boolean>] [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzFleet -InputObject <IFleetIdentity> [-IfMatch <String>] [-IdentityType <String>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a Fleet.
+Update a Fleet.
 
 ## EXAMPLES
 
@@ -63,6 +75,38 @@ Type                         : Microsoft.ContainerService/fleets
 ```
 
 This command updates tag of a fleet.
+
+### Example 2: disable system assigned identity of specified fleet
+```powershell
+Update-AzFleet -ResourceGroupName joyer-test -Name testfleet03 -EnableSystemAssignedIdentity 0
+```
+
+```output
+ETag                         : "0a00e5cc-0000-0100-0000-661cea3b0000"
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.ContainerService/fleets/testflee 
+                               t02
+IdentityPrincipalId          : 
+IdentityTenantId             : 
+IdentityType                 : None
+IdentityUserAssignedIdentity : {
+                               }
+Location                     : eastus
+Name                         : testfleet02
+ProvisioningState            : Succeeded
+ResourceGroupName            : joyer-test
+SystemDataCreatedAt          : 4/15/2024 7:19:15 AM
+SystemDataCreatedBy          : v-jiaji@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 4/15/2024 8:50:01 AM
+SystemDataLastModifiedBy     : v-jiaji@microsoft.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                                 "456": "asd"
+                               }
+Type                         : Microsoft.ContainerService/fleets
+```
+
+This command updates EnableSystemAssignedIdentity of a fleet.
 
 ## PARAMETERS
 
@@ -179,21 +223,6 @@ Run the command asynchronously
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
 
 Required: False
 Position: Named

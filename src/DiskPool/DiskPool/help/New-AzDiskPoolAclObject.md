@@ -1,23 +1,24 @@
 ---
-external help file:
+external help file: Az.DiskPool-help.xml
 Module Name: Az.DiskPool
-online version: https://learn.microsoft.com/powershell/module/az.DiskPool/new-AzDiskPoolAclObject
+online version: https://learn.microsoft.com/powershell/module/Az.DiskPool/new-AzDiskPoolAclObject
 schema: 2.0.0
 ---
 
 # New-AzDiskPoolAclObject
 
 ## SYNOPSIS
-Create a in-memory object for Acl
+Create an in-memory object for Acl.
 
 ## SYNTAX
 
 ```
-New-AzDiskPoolAclObject -InitiatorIqn <String> -MappedLun <String[]> [<CommonParameters>]
+New-AzDiskPoolAclObject -InitiatorIqn <String> -MappedLun <String[]>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create a in-memory object for Acl
+Create an in-memory object for Acl.
 
 ## EXAMPLES
 
@@ -77,7 +78,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             this.ResourceName = asrVaultCreds.ResourceName;
             this.ResourceGroupName = asrVaultCreds.ResourceGroupName;
             this.ResourceNamespace = asrVaultCreds.ResourceNamespace;
-            this.ResouceType = asrVaultCreds.ARMResourceType;
+            this.ResourceType = asrVaultCreds.ARMResourceType;
         }
 
         #region Properties
@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets or sets Resource Type.
         /// </summary>
-        public string ResouceType { get; set; }
+        public string ResourceType { get; set; }
 
         #endregion Properties
     }

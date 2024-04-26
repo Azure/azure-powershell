@@ -65,8 +65,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_encryptionUserAssignedIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("userAssignedIdentity"), out var __jsonUserAssignedIdentity) ? (string)__jsonUserAssignedIdentity : (string)EncryptionUserAssignedIdentity;}
-            {_encryptionFederatedIdentityClientId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("federatedIdentityClientId"), out var __jsonFederatedIdentityClientId) ? (string)__jsonFederatedIdentityClientId : (string)EncryptionFederatedIdentityClientId;}
+            {_encryptionUserAssignedIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("userAssignedIdentity"), out var __jsonUserAssignedIdentity) ? (string)__jsonUserAssignedIdentity : (string)_encryptionUserAssignedIdentity;}
+            {_encryptionFederatedIdentityClientId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("federatedIdentityClientId"), out var __jsonFederatedIdentityClientId) ? (string)__jsonFederatedIdentityClientId : (string)_encryptionFederatedIdentityClientId;}
             AfterFromJson(json);
         }
 

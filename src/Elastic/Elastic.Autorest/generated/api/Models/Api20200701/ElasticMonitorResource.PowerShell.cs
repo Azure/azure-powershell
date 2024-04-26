@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -92,53 +94,194 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IResourceSku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ResourceSkuTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitorProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.MonitorPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IIdentityProperties) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IdentityPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20.SystemDataTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticMonitorResourceTagsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticProperty = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticProperties) content.GetValueForProperty("ElasticProperty",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticProperty, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfo = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IUserInfo) content.GetValueForProperty("UserInfo",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfo, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.UserInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).MonitoringStatus = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.MonitoringStatus?) content.GetValueForProperty("MonitoringStatus",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).MonitoringStatus, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.MonitoringStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SkuName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).LiftrResourceCategory = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.LiftrResourceCategories?) content.GetValueForProperty("LiftrResourceCategory",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).LiftrResourceCategory, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.LiftrResourceCategories.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).LiftrResourcePreference = (int?) content.GetValueForProperty("LiftrResourcePreference",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).LiftrResourcePreference, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoCompanyInfo = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ICompanyInfo) content.GetValueForProperty("UserInfoCompanyInfo",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoCompanyInfo, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.CompanyInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoFirstName = (string) content.GetValueForProperty("UserInfoFirstName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoFirstName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoLastName = (string) content.GetValueForProperty("UserInfoLastName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoLastName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoCompanyName = (string) content.GetValueForProperty("UserInfoCompanyName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoCompanyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoEmailAddress = (string) content.GetValueForProperty("UserInfoEmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoEmailAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityType = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ManagedIdentityTypes?) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityType, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ManagedIdentityTypes.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.CreatedByType?) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedByType, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.CreatedByType?) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticPropertyElasticCloudUser = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticCloudUser) content.GetValueForProperty("ElasticPropertyElasticCloudUser",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticPropertyElasticCloudUser, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudUserTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticPropertyElasticCloudDeployment = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticCloudDeployment) content.GetValueForProperty("ElasticPropertyElasticCloudDeployment",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticPropertyElasticCloudDeployment, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudDeploymentTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserEmailAddress = (string) content.GetValueForProperty("ElasticCloudUserEmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserEmailAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserId = (string) content.GetValueForProperty("ElasticCloudUserId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentName = (string) content.GetValueForProperty("ElasticCloudDeploymentName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentElasticsearchRegion = (string) content.GetValueForProperty("ElasticCloudDeploymentElasticsearchRegion",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentElasticsearchRegion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoDomain = (string) content.GetValueForProperty("CompanyInfoDomain",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoDomain, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoBusiness = (string) content.GetValueForProperty("CompanyInfoBusiness",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoBusiness, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoEmployeesNumber = (string) content.GetValueForProperty("CompanyInfoEmployeesNumber",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoEmployeesNumber, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoState = (string) content.GetValueForProperty("CompanyInfoState",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoCountry = (string) content.GetValueForProperty("CompanyInfoCountry",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoCountry, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserElasticCloudSsoDefaultUrl = (string) content.GetValueForProperty("ElasticCloudUserElasticCloudSsoDefaultUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserElasticCloudSsoDefaultUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentId = (string) content.GetValueForProperty("ElasticCloudDeploymentId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentAzureSubscriptionId = (string) content.GetValueForProperty("ElasticCloudDeploymentAzureSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentAzureSubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentElasticsearchServiceUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentElasticsearchServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentElasticsearchServiceUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentKibanaServiceUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentKibanaServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentKibanaServiceUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentKibanaSsoUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentKibanaSsoUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentKibanaSsoUrl, global::System.Convert.ToString);
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IResourceSku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ResourceSkuTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitorProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.MonitorPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IIdentityProperties) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IdentityPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20.SystemDataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticMonitorResourceTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticProperty = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticProperties) content.GetValueForProperty("ElasticProperty",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticProperty, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("UserInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfo = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IUserInfo) content.GetValueForProperty("UserInfo",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfo, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.UserInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ProvisioningState.CreateFrom);
+            }
+            if (content.Contains("MonitoringStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).MonitoringStatus = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.MonitoringStatus?) content.GetValueForProperty("MonitoringStatus",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).MonitoringStatus, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.MonitoringStatus.CreateFrom);
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SkuName, global::System.Convert.ToString);
+            }
+            if (content.Contains("LiftrResourceCategory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).LiftrResourceCategory = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.LiftrResourceCategories?) content.GetValueForProperty("LiftrResourceCategory",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).LiftrResourceCategory, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.LiftrResourceCategories.CreateFrom);
+            }
+            if (content.Contains("LiftrResourcePreference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).LiftrResourcePreference = (int?) content.GetValueForProperty("LiftrResourcePreference",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).LiftrResourcePreference, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("UserInfoCompanyInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoCompanyInfo = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ICompanyInfo) content.GetValueForProperty("UserInfoCompanyInfo",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoCompanyInfo, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.CompanyInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("UserInfoFirstName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoFirstName = (string) content.GetValueForProperty("UserInfoFirstName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoFirstName, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserInfoLastName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoLastName = (string) content.GetValueForProperty("UserInfoLastName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoLastName, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserInfoCompanyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoCompanyName = (string) content.GetValueForProperty("UserInfoCompanyName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoCompanyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserInfoEmailAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoEmailAddress = (string) content.GetValueForProperty("UserInfoEmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoEmailAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityType = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ManagedIdentityTypes?) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityType, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ManagedIdentityTypes.CreateFrom);
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.CreatedByType?) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedByType, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.CreatedByType?) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ElasticPropertyElasticCloudUser"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticPropertyElasticCloudUser = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticCloudUser) content.GetValueForProperty("ElasticPropertyElasticCloudUser",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticPropertyElasticCloudUser, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudUserTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ElasticPropertyElasticCloudDeployment"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticPropertyElasticCloudDeployment = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticCloudDeployment) content.GetValueForProperty("ElasticPropertyElasticCloudDeployment",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticPropertyElasticCloudDeployment, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudDeploymentTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ElasticCloudUserEmailAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserEmailAddress = (string) content.GetValueForProperty("ElasticCloudUserEmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserEmailAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudUserId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserId = (string) content.GetValueForProperty("ElasticCloudUserId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentName = (string) content.GetValueForProperty("ElasticCloudDeploymentName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentElasticsearchRegion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentElasticsearchRegion = (string) content.GetValueForProperty("ElasticCloudDeploymentElasticsearchRegion",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentElasticsearchRegion, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompanyInfoDomain"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoDomain = (string) content.GetValueForProperty("CompanyInfoDomain",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoDomain, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompanyInfoBusiness"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoBusiness = (string) content.GetValueForProperty("CompanyInfoBusiness",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoBusiness, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompanyInfoEmployeesNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoEmployeesNumber = (string) content.GetValueForProperty("CompanyInfoEmployeesNumber",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoEmployeesNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompanyInfoState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoState = (string) content.GetValueForProperty("CompanyInfoState",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoState, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompanyInfoCountry"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoCountry = (string) content.GetValueForProperty("CompanyInfoCountry",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoCountry, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudUserElasticCloudSsoDefaultUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserElasticCloudSsoDefaultUrl = (string) content.GetValueForProperty("ElasticCloudUserElasticCloudSsoDefaultUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserElasticCloudSsoDefaultUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentId = (string) content.GetValueForProperty("ElasticCloudDeploymentId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentAzureSubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentAzureSubscriptionId = (string) content.GetValueForProperty("ElasticCloudDeploymentAzureSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentAzureSubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentElasticsearchServiceUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentElasticsearchServiceUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentElasticsearchServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentElasticsearchServiceUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentKibanaServiceUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentKibanaServiceUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentKibanaServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentKibanaServiceUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentKibanaSsoUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentKibanaSsoUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentKibanaSsoUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentKibanaSsoUrl, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -156,53 +299,194 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IResourceSku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ResourceSkuTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitorProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.MonitorPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IIdentityProperties) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IdentityPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20.SystemDataTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticMonitorResourceTagsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticProperty = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticProperties) content.GetValueForProperty("ElasticProperty",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticProperty, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfo = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IUserInfo) content.GetValueForProperty("UserInfo",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfo, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.UserInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ProvisioningState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).MonitoringStatus = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.MonitoringStatus?) content.GetValueForProperty("MonitoringStatus",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).MonitoringStatus, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.MonitoringStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SkuName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).LiftrResourceCategory = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.LiftrResourceCategories?) content.GetValueForProperty("LiftrResourceCategory",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).LiftrResourceCategory, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.LiftrResourceCategories.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).LiftrResourcePreference = (int?) content.GetValueForProperty("LiftrResourcePreference",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).LiftrResourcePreference, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoCompanyInfo = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ICompanyInfo) content.GetValueForProperty("UserInfoCompanyInfo",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoCompanyInfo, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.CompanyInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoFirstName = (string) content.GetValueForProperty("UserInfoFirstName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoFirstName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoLastName = (string) content.GetValueForProperty("UserInfoLastName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoLastName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoCompanyName = (string) content.GetValueForProperty("UserInfoCompanyName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoCompanyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoEmailAddress = (string) content.GetValueForProperty("UserInfoEmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoEmailAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityType = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ManagedIdentityTypes?) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityType, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ManagedIdentityTypes.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.CreatedByType?) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedByType, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.CreatedByType?) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.CreatedByType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticPropertyElasticCloudUser = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticCloudUser) content.GetValueForProperty("ElasticPropertyElasticCloudUser",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticPropertyElasticCloudUser, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudUserTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticPropertyElasticCloudDeployment = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticCloudDeployment) content.GetValueForProperty("ElasticPropertyElasticCloudDeployment",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticPropertyElasticCloudDeployment, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudDeploymentTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserEmailAddress = (string) content.GetValueForProperty("ElasticCloudUserEmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserEmailAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserId = (string) content.GetValueForProperty("ElasticCloudUserId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentName = (string) content.GetValueForProperty("ElasticCloudDeploymentName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentElasticsearchRegion = (string) content.GetValueForProperty("ElasticCloudDeploymentElasticsearchRegion",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentElasticsearchRegion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoDomain = (string) content.GetValueForProperty("CompanyInfoDomain",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoDomain, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoBusiness = (string) content.GetValueForProperty("CompanyInfoBusiness",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoBusiness, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoEmployeesNumber = (string) content.GetValueForProperty("CompanyInfoEmployeesNumber",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoEmployeesNumber, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoState = (string) content.GetValueForProperty("CompanyInfoState",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoCountry = (string) content.GetValueForProperty("CompanyInfoCountry",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoCountry, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserElasticCloudSsoDefaultUrl = (string) content.GetValueForProperty("ElasticCloudUserElasticCloudSsoDefaultUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserElasticCloudSsoDefaultUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentId = (string) content.GetValueForProperty("ElasticCloudDeploymentId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentAzureSubscriptionId = (string) content.GetValueForProperty("ElasticCloudDeploymentAzureSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentAzureSubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentElasticsearchServiceUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentElasticsearchServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentElasticsearchServiceUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentKibanaServiceUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentKibanaServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentKibanaServiceUrl, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentKibanaSsoUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentKibanaSsoUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentKibanaSsoUrl, global::System.Convert.ToString);
+            if (content.Contains("Sku"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Sku = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IResourceSku) content.GetValueForProperty("Sku",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Sku, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ResourceSkuTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IMonitorProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.MonitorPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Identity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Identity = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IIdentityProperties) content.GetValueForProperty("Identity",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Identity, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IdentityPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SystemData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemData = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20.ISystemData) content.GetValueForProperty("SystemData",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemData, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20.SystemDataTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Tag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Tag = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceTags) content.GetValueForProperty("Tag",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Tag, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticMonitorResourceTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticProperty"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticProperty = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticProperties) content.GetValueForProperty("ElasticProperty",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticProperty, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("UserInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfo = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IUserInfo) content.GetValueForProperty("UserInfo",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfo, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.UserInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProvisioningState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ProvisioningState = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ProvisioningState?) content.GetValueForProperty("ProvisioningState",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ProvisioningState, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ProvisioningState.CreateFrom);
+            }
+            if (content.Contains("MonitoringStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).MonitoringStatus = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.MonitoringStatus?) content.GetValueForProperty("MonitoringStatus",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).MonitoringStatus, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.MonitoringStatus.CreateFrom);
+            }
+            if (content.Contains("SystemDataCreatedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedBy = (string) content.GetValueForProperty("SystemDataCreatedBy",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataCreatedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataCreatedAt",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SkuName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SkuName = (string) content.GetValueForProperty("SkuName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SkuName, global::System.Convert.ToString);
+            }
+            if (content.Contains("LiftrResourceCategory"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).LiftrResourceCategory = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.LiftrResourceCategories?) content.GetValueForProperty("LiftrResourceCategory",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).LiftrResourceCategory, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.LiftrResourceCategories.CreateFrom);
+            }
+            if (content.Contains("LiftrResourcePreference"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).LiftrResourcePreference = (int?) content.GetValueForProperty("LiftrResourcePreference",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).LiftrResourcePreference, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("UserInfoCompanyInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoCompanyInfo = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ICompanyInfo) content.GetValueForProperty("UserInfoCompanyInfo",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoCompanyInfo, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.CompanyInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("UserInfoFirstName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoFirstName = (string) content.GetValueForProperty("UserInfoFirstName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoFirstName, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserInfoLastName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoLastName = (string) content.GetValueForProperty("UserInfoLastName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoLastName, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserInfoCompanyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoCompanyName = (string) content.GetValueForProperty("UserInfoCompanyName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoCompanyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("UserInfoEmailAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoEmailAddress = (string) content.GetValueForProperty("UserInfoEmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).UserInfoEmailAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityPrincipalId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityPrincipalId = (string) content.GetValueForProperty("IdentityPrincipalId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityPrincipalId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityTenantId = (string) content.GetValueForProperty("IdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IdentityType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityType = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ManagedIdentityTypes?) content.GetValueForProperty("IdentityType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).IdentityType, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.ManagedIdentityTypes.CreateFrom);
+            }
+            if (content.Contains("SystemDataCreatedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedByType = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.CreatedByType?) content.GetValueForProperty("SystemDataCreatedByType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataCreatedByType, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("SystemDataLastModifiedBy"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedBy = (string) content.GetValueForProperty("SystemDataLastModifiedBy",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedBy, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemDataLastModifiedByType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedByType = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.CreatedByType?) content.GetValueForProperty("SystemDataLastModifiedByType",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedByType, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Support.CreatedByType.CreateFrom);
+            }
+            if (content.Contains("SystemDataLastModifiedAt"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedAt = (global::System.DateTime?) content.GetValueForProperty("SystemDataLastModifiedAt",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).SystemDataLastModifiedAt, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ElasticPropertyElasticCloudUser"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticPropertyElasticCloudUser = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticCloudUser) content.GetValueForProperty("ElasticPropertyElasticCloudUser",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticPropertyElasticCloudUser, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudUserTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ElasticPropertyElasticCloudDeployment"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticPropertyElasticCloudDeployment = (Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticCloudDeployment) content.GetValueForProperty("ElasticPropertyElasticCloudDeployment",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticPropertyElasticCloudDeployment, Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.ElasticCloudDeploymentTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ElasticCloudUserEmailAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserEmailAddress = (string) content.GetValueForProperty("ElasticCloudUserEmailAddress",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserEmailAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudUserId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserId = (string) content.GetValueForProperty("ElasticCloudUserId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentName = (string) content.GetValueForProperty("ElasticCloudDeploymentName",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentElasticsearchRegion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentElasticsearchRegion = (string) content.GetValueForProperty("ElasticCloudDeploymentElasticsearchRegion",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentElasticsearchRegion, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompanyInfoDomain"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoDomain = (string) content.GetValueForProperty("CompanyInfoDomain",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoDomain, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompanyInfoBusiness"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoBusiness = (string) content.GetValueForProperty("CompanyInfoBusiness",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoBusiness, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompanyInfoEmployeesNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoEmployeesNumber = (string) content.GetValueForProperty("CompanyInfoEmployeesNumber",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoEmployeesNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompanyInfoState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoState = (string) content.GetValueForProperty("CompanyInfoState",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoState, global::System.Convert.ToString);
+            }
+            if (content.Contains("CompanyInfoCountry"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoCountry = (string) content.GetValueForProperty("CompanyInfoCountry",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).CompanyInfoCountry, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudUserElasticCloudSsoDefaultUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserElasticCloudSsoDefaultUrl = (string) content.GetValueForProperty("ElasticCloudUserElasticCloudSsoDefaultUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudUserElasticCloudSsoDefaultUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentId = (string) content.GetValueForProperty("ElasticCloudDeploymentId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentAzureSubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentAzureSubscriptionId = (string) content.GetValueForProperty("ElasticCloudDeploymentAzureSubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentAzureSubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentElasticsearchServiceUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentElasticsearchServiceUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentElasticsearchServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentElasticsearchServiceUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentKibanaServiceUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentKibanaServiceUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentKibanaServiceUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentKibanaServiceUrl, global::System.Convert.ToString);
+            }
+            if (content.Contains("ElasticCloudDeploymentKibanaSsoUrl"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentKibanaSsoUrl = (string) content.GetValueForProperty("ElasticCloudDeploymentKibanaSsoUrl",((Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResourceInternal)this).ElasticCloudDeploymentKibanaSsoUrl, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -210,7 +494,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701
         /// Creates a new instance of <see cref="ElasticMonitorResource" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="ElasticMonitorResource" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Elastic.Models.Api20200701.IElasticMonitorResource FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Elastic.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

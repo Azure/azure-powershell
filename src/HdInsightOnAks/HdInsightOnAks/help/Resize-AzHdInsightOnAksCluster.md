@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.HdInsightOnAks-help.xml
 Module Name: Az.HdInsightOnAks
 online version: https://learn.microsoft.com/powershell/module/az.hdinsightonaks/resize-azhdinsightonakscluster
 schema: 2.0.0
@@ -15,57 +15,58 @@ Resize an existing Cluster.
 ### ResizeExpanded (Default)
 ```
 Resize-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
- -Location <String> [-SubscriptionId <String>] [-Tag <Hashtable>] [-TargetWorkerNodeCount <Int32>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Resize
-```
-Resize-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
- -ClusterResizeRequest <IClusterResizeData> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ResizeViaIdentity
-```
-Resize-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity>
- -ClusterResizeRequest <IClusterResizeData> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### ResizeViaIdentityClusterpool
-```
-Resize-AzHdInsightOnAksCluster -ClusterpoolInputObject <IHdInsightOnAksIdentity> -Name <String>
- -ClusterResizeRequest <IClusterResizeData> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### ResizeViaIdentityClusterpoolExpanded
-```
-Resize-AzHdInsightOnAksCluster -ClusterpoolInputObject <IHdInsightOnAksIdentity> -Name <String>
- -Location <String> [-Tag <Hashtable>] [-TargetWorkerNodeCount <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### ResizeViaIdentityExpanded
-```
-Resize-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> -Location <String> [-Tag <Hashtable>]
- [-TargetWorkerNodeCount <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-SubscriptionId <String>] -Location <String> [-Tag <Hashtable>] [-TargetWorkerNodeCount <Int32>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
-```
-
-### ResizeViaJsonFilePath
-```
-Resize-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
- -JsonFilePath <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ### ResizeViaJsonString
 ```
 Resize-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
- -JsonString <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResizeViaJsonFilePath
+```
+Resize-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResizeViaIdentityClusterpoolExpanded
+```
+Resize-AzHdInsightOnAksCluster -Name <String> -ClusterpoolInputObject <IHdInsightOnAksIdentity>
+ -Location <String> [-Tag <Hashtable>] [-TargetWorkerNodeCount <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResizeViaIdentityClusterpool
+```
+Resize-AzHdInsightOnAksCluster -Name <String> -ClusterpoolInputObject <IHdInsightOnAksIdentity>
+ -ClusterResizeRequest <IClusterResizeData> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Resize
+```
+Resize-AzHdInsightOnAksCluster -Name <String> -PoolName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] -ClusterResizeRequest <IClusterResizeData> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResizeViaIdentityExpanded
+```
+Resize-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity> -Location <String> [-Tag <Hashtable>]
+ [-TargetWorkerNodeCount <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ResizeViaIdentity
+```
+Resize-AzHdInsightOnAksCluster -InputObject <IHdInsightOnAksIdentity>
+ -ClusterResizeRequest <IClusterResizeData> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -132,11 +133,10 @@ Accept wildcard characters: False
 
 ### -ClusterpoolInputObject
 Identity Parameter
-To construct, see NOTES section for CLUSTERPOOLINPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
-Parameter Sets: ResizeViaIdentityClusterpool, ResizeViaIdentityClusterpoolExpanded
+Parameter Sets: ResizeViaIdentityClusterpoolExpanded, ResizeViaIdentityClusterpool
 Aliases:
 
 Required: True
@@ -148,11 +148,10 @@ Accept wildcard characters: False
 
 ### -ClusterResizeRequest
 The parameters for resizing a cluster.
-To construct, see NOTES section for CLUSTERRESIZEREQUEST properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterResizeData
-Parameter Sets: Resize, ResizeViaIdentity, ResizeViaIdentityClusterpool
+Parameter Sets: ResizeViaIdentityClusterpool, Resize, ResizeViaIdentity
 Aliases:
 
 Required: True
@@ -180,11 +179,10 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IHdInsightOnAksIdentity
-Parameter Sets: ResizeViaIdentity, ResizeViaIdentityExpanded
+Parameter Sets: ResizeViaIdentityExpanded, ResizeViaIdentity
 Aliases:
 
 Required: True
@@ -244,7 +242,7 @@ The name of the HDInsight cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Resize, ResizeExpanded, ResizeViaIdentityClusterpool, ResizeViaIdentityClusterpoolExpanded, ResizeViaJsonFilePath, ResizeViaJsonString
+Parameter Sets: ResizeExpanded, ResizeViaJsonString, ResizeViaJsonFilePath, ResizeViaIdentityClusterpoolExpanded, ResizeViaIdentityClusterpool, Resize
 Aliases: ClusterName
 
 Required: True
@@ -274,7 +272,7 @@ The name of the cluster pool.
 
 ```yaml
 Type: System.String
-Parameter Sets: Resize, ResizeExpanded, ResizeViaJsonFilePath, ResizeViaJsonString
+Parameter Sets: ResizeExpanded, ResizeViaJsonString, ResizeViaJsonFilePath, Resize
 Aliases: ClusterPoolName
 
 Required: True
@@ -290,7 +288,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Resize, ResizeExpanded, ResizeViaJsonFilePath, ResizeViaJsonString
+Parameter Sets: ResizeExpanded, ResizeViaJsonString, ResizeViaJsonFilePath, Resize
 Aliases:
 
 Required: True
@@ -306,7 +304,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Resize, ResizeExpanded, ResizeViaJsonFilePath, ResizeViaJsonString
+Parameter Sets: ResizeExpanded, ResizeViaJsonString, ResizeViaJsonFilePath, Resize
 Aliases:
 
 Required: False
@@ -393,4 +391,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
