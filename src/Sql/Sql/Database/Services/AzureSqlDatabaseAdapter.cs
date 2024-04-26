@@ -26,6 +26,8 @@ using System.Linq;
 using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Sql.Models;
 using Microsoft.Rest.Azure.OData;
+using Microsoft.Azure.Management.Sql;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.Sql.Database.Services
 {
@@ -325,6 +327,7 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                 var response = Communicator.ListOperations(resourceGroupName, serverName, databaseName);
                 IEnumerable<AzureSqlDatabaseActivityModel> list = response.Select((r) =>
                 {
+
                     return new AzureSqlDatabaseActivityModel()
                     {
                         DatabaseName = r.DatabaseName,
@@ -344,7 +347,9 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                         },
                         EstimatedCompletionTime = r.EstimatedCompletionTime,
                         Description = r.Description,
-                        IsCancellable = r.IsCancellable
+                        IsCancellable = r.IsCancellable,
+                        OperationPhaseDetails = r.OperationPhaseDetails,
+                        OperationPhaseDetailsDescription = JsonConvert.SerializeObject(r.OperationPhaseDetails)
                     };
                 });
 
