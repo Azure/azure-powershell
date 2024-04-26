@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DesktopVirtualization service.
 
 ---
-## Status
-[![Az.DesktopVirtualization](https://img.shields.io/powershellgallery/v/Az.DesktopVirtualization.svg?style=flat-square&label=Az.DesktopVirtualization "Az.DesktopVirtualization")](https://www.powershellgallery.com/packages/Az.DesktopVirtualization/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -53,7 +50,7 @@ require:
 sanitize-names: true
 subject-prefix: 'Wvd'
 input-file:
-- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/preview/2023-10-04-preview/desktopvirtualization.json
+- $(repo)/specification/desktopvirtualization/resource-manager/Microsoft.DesktopVirtualization/stable/2023-09-05/desktopvirtualization.json
 
 module-version: 2.1.0
 title: DesktopVirtualizationClient
@@ -103,39 +100,4 @@ directive:
       parameter-name: Force
     set:
       parameter-description: 'Specify to force userSession deletion.'
-  - where:
-      verb: Get
-      subject: AppAttachPackage
-    set:
-      preview-announcement:
-        preview-message: This cmdlet is currently in preview, behavior is subject to change.
-        estimated-ga-date: 2024-04-01
-  - where:
-      verb: Import
-      subject: AppAttachPackageInfo
-    set:
-      preview-announcement:
-        preview-message: This cmdlet is currently in preview, behavior is subject to change.
-        estimated-ga-date: 2024-04-01
-  - where:
-      verb: New
-      subject: AppAttachPackage
-    set:
-      preview-announcement:
-        preview-message: This cmdlet is currently in preview, behavior is subject to change.
-        estimated-ga-date: 2024-04-01
-  - where:
-      verb: Remove
-      subject: AppAttachPackage
-    set:
-      preview-announcement:
-        preview-message: This cmdlet is currently in preview, behavior is subject to change.
-        estimated-ga-date: 2024-04-01
-  - where:
-      verb: Update
-      subject: AppAttachPackage
-    set:
-      preview-announcement:
-        preview-message: This cmdlet is currently in preview, behavior is subject to change.
-        estimated-ga-date: 2024-04-01
 ```

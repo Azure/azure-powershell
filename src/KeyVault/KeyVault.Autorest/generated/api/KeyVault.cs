@@ -427,7 +427,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Create a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -477,7 +477,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Create a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to create or update the managed HSM Pool</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -536,7 +536,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Create a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to create or update the managed HSM Pool</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -593,7 +593,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Create a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -642,7 +642,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Create a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -689,7 +689,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Create a managed HSM Pool in the specified subscription.</summary>
+        /// <summary>Update a managed HSM Pool in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the managed HSM pool.</param>
@@ -5062,7 +5062,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Updates the specified private endpoint connection associated with the managed hsm pool.
+        /// Put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -5117,7 +5117,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Updates the specified private endpoint connection associated with the managed hsm pool.
+        /// Put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The intended state of private endpoint connection.</param>
@@ -5181,7 +5181,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Updates the specified private endpoint connection associated with the managed hsm pool.
+        /// Put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The intended state of private endpoint connection.</param>
@@ -5243,7 +5243,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Updates the specified private endpoint connection associated with the managed hsm pool.
+        /// Put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -5297,7 +5297,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Updates the specified private endpoint connection associated with the managed hsm pool.
+        /// Put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -5349,7 +5349,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
         }
 
         /// <summary>
-        /// Updates the specified private endpoint connection associated with the managed hsm pool.
+        /// Put the specified private endpoint connection associated with the managed hsm pool.
         /// </summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
@@ -7443,9 +7443,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>
-        /// Updates the specified private endpoint connection associated with the key vault.
-        /// </summary>
+        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the key vault.</param>
@@ -7498,9 +7496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>
-        /// Updates the specified private endpoint connection associated with the key vault.
-        /// </summary>
+        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The intended state of private endpoint connection.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7562,9 +7558,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>
-        /// Updates the specified private endpoint connection associated with the key vault.
-        /// </summary>
+        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The intended state of private endpoint connection.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7624,9 +7618,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>
-        /// Updates the specified private endpoint connection associated with the key vault.
-        /// </summary>
+        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the key vault.</param>
@@ -7678,9 +7670,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>
-        /// Updates the specified private endpoint connection associated with the key vault.
-        /// </summary>
+        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the key vault.</param>
@@ -7730,9 +7720,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>
-        /// Updates the specified private endpoint connection associated with the key vault.
-        /// </summary>
+        /// <summary>Put the specified private endpoint connection associated with the key vault.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">Name of the resource group that contains the key vault.</param>
@@ -8665,7 +8653,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Create a key vault in the specified subscription.</summary>
+        /// <summary>Update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -8715,7 +8703,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Create a key vault in the specified subscription.</summary>
+        /// <summary>Update a key vault in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to create or update the vault</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8774,7 +8762,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Create a key vault in the specified subscription.</summary>
+        /// <summary>Update a key vault in the specified subscription.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Parameters to create or update the vault</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.KeyVault.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8831,7 +8819,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Create a key vault in the specified subscription.</summary>
+        /// <summary>Update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -8880,7 +8868,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Create a key vault in the specified subscription.</summary>
+        /// <summary>Update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>
@@ -8927,7 +8915,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.KeyVault
             }
         }
 
-        /// <summary>Create a key vault in the specified subscription.</summary>
+        /// <summary>Update a key vault in the specified subscription.</summary>
         /// <param name="subscriptionId">Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription
         /// ID forms part of the URI for every service call.</param>
         /// <param name="resourceGroupName">The name of the Resource Group to which the server belongs.</param>

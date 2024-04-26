@@ -53,7 +53,7 @@ Get a data source named 'NewDataSource'
 
 ### Example 2: Get all data sources
 ```powershell
- Get-AzPurviewDataSource -Endpoint 'https://brs-2.purview.azure.com/'
+Get-AzPurviewDataSource -Endpoint 'https://brs-2.purview.azure.com/'
 ```
 
 ```output
@@ -93,7 +93,8 @@ Get all data sources
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -148,8 +149,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.IDataSource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

@@ -14,7 +14,8 @@ Create an in-memory object for PerfCounterDataSource.
 
 ```
 New-AzPerfCounterDataSourceObject [-CounterSpecifier <String[]>] [-Name <String>]
- [-SamplingFrequencyInSecond <Int32>] [-Stream <String[]>] [<CommonParameters>]
+ [-SamplingFrequencyInSecond <Int32>] [-Stream <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

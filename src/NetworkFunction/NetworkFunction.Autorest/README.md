@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the NetworkFunction service.
 
 ---
-## Status
-[![Az.NetworkFunction](https://img.shields.io/powershellgallery/v/Az.NetworkFunction.svg?style=flat-square&label=Az.NetworkFunction "Az.NetworkFunction")](https://www.powershellgallery.com/packages/Az.NetworkFunction/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -30,9 +27,9 @@ For information on how to develop for `Az.NetworkFunction`, see [how-to.md](how-
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 5ef93469c04983e472e57ca227fc5159d13a172a
+commit: 5ef93469c04983e472e57ca227fc5159d13a172a
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/networkfunction/resource-manager/Microsoft.NetworkFunction/stable/2022-11-01/AzureTrafficCollector.json
 module-version: 0.1.0
@@ -41,6 +38,10 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:
@@ -58,5 +59,9 @@ directive:
     hide: true
   - where:
       verb: Set
+    hide: true
+  - where:
+      verb: New
+      subject: ^CollectorPolicy(.*)
     hide: true
 ```

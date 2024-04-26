@@ -28,10 +28,10 @@ namespace Microsoft.Azure.Management.NetApp.Models
         /// </param>
 
         /// <param name="type">Resource type used for verification.
-        /// Possible values include: 'Microsoft.NetApp/netAppAccounts',
-        /// 'Microsoft.NetApp/netAppAccounts/capacityPools',
-        /// 'Microsoft.NetApp/netAppAccounts/capacityPools/volumes',
-        /// 'Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots'</param>
+        /// Possible values include: &#39;Microsoft.NetApp/netAppAccounts&#39;,
+        /// &#39;Microsoft.NetApp/netAppAccounts/capacityPools&#39;,
+        /// &#39;Microsoft.NetApp/netAppAccounts/capacityPools/volumes&#39;,
+        /// &#39;Microsoft.NetApp/netAppAccounts/capacityPools/volumes/snapshots&#39;</param>
 
         /// <param name="resourceGroup">Resource group name.
         /// </param>

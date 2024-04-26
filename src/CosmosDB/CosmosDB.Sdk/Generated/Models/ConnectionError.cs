@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// </summary>
 
         /// <param name="connectionState">The kind of connection error that occurred.
-        /// Possible values include: 'Unknown', 'OK',
-        /// 'OperatorToDataCenterNetworkError', 'DatacenterToDatacenterNetworkError',
-        /// 'InternalOperatorToDataCenterCertificateError', 'InternalError'</param>
+        /// Possible values include: &#39;Unknown&#39;, &#39;OK&#39;,
+        /// &#39;OperatorToDataCenterNetworkError&#39;, &#39;DatacenterToDatacenterNetworkError&#39;,
+        /// &#39;InternalOperatorToDataCenterCertificateError&#39;, &#39;InternalError&#39;</param>
 
         /// <param name="ipFrom">The IP of host that originated the failed connection.
         /// </param>

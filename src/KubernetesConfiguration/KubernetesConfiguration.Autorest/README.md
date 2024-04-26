@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the KubernetesConfiguration service.
 
 ---
-## Status
-[![Az.KubernetesConfiguration](https://img.shields.io/powershellgallery/v/Az.KubernetesConfiguration.svg?style=flat-square&label=Az.KubernetesConfiguration "Az.KubernetesConfiguration")](https://www.powershellgallery.com/packages/Az.KubernetesConfiguration/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -47,9 +44,9 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: d11245bcaa06b6d87db179c903ba4b049adf1bf2
+commit: d11245bcaa06b6d87db179c903ba4b049adf1bf2
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-11-01/extensions.json
   - $(repo)/specification/kubernetesconfiguration/resource-manager/Microsoft.KubernetesConfiguration/stable/2022-11-01/fluxconfiguration.json
@@ -63,6 +60,10 @@ subject-prefix: ''
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document 

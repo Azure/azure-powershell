@@ -15,7 +15,8 @@ Gets the history of classic alert rules.
 
 ```
 Get-AzAlertHistory [-ResourceId <String>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Status <String>]
- [-Caller <String>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Caller <String>] [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -403,5 +404,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzAlertRule](./Get-AzAlertRule.md)
 
 [Remove-AzAlertRule](./Remove-AzAlertRule.md)
-
-

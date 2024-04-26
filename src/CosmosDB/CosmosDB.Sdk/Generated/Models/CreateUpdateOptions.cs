@@ -29,7 +29,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         /// <param name="throughput">Request Units per second. For example, &#34;throughput&#34;: 10000.
         /// </param>
 
-        /// <param name="autoscaleSettings">Specifies the Autoscale settings.
+        /// <param name="autoscaleSettings">Specifies the Autoscale settings. Note: Either throughput or
+        /// autoscaleSettings is required, but not both.
         /// </param>
         public CreateUpdateOptions(int? throughput = default(int?), AutoscaleSettings autoscaleSettings = default(AutoscaleSettings))
 
@@ -52,7 +53,8 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         public int? Throughput {get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the Autoscale settings.
+        /// Gets or sets specifies the Autoscale settings. Note: Either throughput or
+        /// autoscaleSettings is required, but not both.
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "autoscaleSettings")]
         public AutoscaleSettings AutoscaleSettings {get; set; }

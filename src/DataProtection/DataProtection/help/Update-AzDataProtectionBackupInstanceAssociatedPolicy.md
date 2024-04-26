@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/update-azdataprotectionbackupinstanceassociatedpolicy
 schema: 2.0.0
@@ -13,9 +13,9 @@ Updates associated policy for a given backup instance
 ## SYNTAX
 
 ```
-Update-AzDataProtectionBackupInstanceAssociatedPolicy -BackupInstanceName <String> -PolicyId <String>
- -ResourceGroupName <String> -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>] [-NoWait]
- [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzDataProtectionBackupInstanceAssociatedPolicy -ResourceGroupName <String> -VaultName <String>
+ -BackupInstanceName <String> -PolicyId <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -42,7 +42,6 @@ This command updates the associated policy of a backup instance
 ## PARAMETERS
 
 ### -AsJob
-
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -73,7 +72,6 @@ Accept wildcard characters: False
 
 ### -DefaultProfile
 
-
 ```yaml
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
@@ -87,7 +85,6 @@ Accept wildcard characters: False
 ```
 
 ### -NoWait
-
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -199,11 +196,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupInstanceResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupInstanceResource
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

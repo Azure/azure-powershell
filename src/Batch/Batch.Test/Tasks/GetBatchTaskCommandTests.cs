@@ -18,6 +18,7 @@ using Microsoft.Azure.Batch.Protocol;
 using Microsoft.Azure.Commands.Batch.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ using ProxyModels = Microsoft.Azure.Batch.Protocol.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.Tasks
 {
-    public class GetBatchTaskCommandTests
+    public class GetBatchTaskCommandTests : RMTestBase
     {
         private GetBatchTaskCommand cmdlet;
         private Mock<BatchClient> batchClientMock;

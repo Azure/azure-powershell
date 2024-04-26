@@ -121,7 +121,8 @@ namespace Microsoft.Azure.Management.NetApp
             }
         }
         /// <summary>
-        /// Creates a subvolume in the path or clones the subvolume mentioned in the parentPath
+        /// Creates a subvolume in the path or clones the subvolume mentioned in the
+        /// parentPath
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -147,7 +148,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Creates a subvolume in the path or clones the subvolume mentioned in the parentPath
+        /// Creates a subvolume in the path or clones the subvolume mentioned in the
+        /// parentPath
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -346,7 +348,8 @@ namespace Microsoft.Azure.Management.NetApp
             }
         }
         /// <summary>
-        /// Creates a subvolume in the path or clones the subvolume mentioned in the parentPath
+        /// Creates a subvolume in the path or clones the subvolume mentioned in the
+        /// parentPath
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -372,7 +375,8 @@ namespace Microsoft.Azure.Management.NetApp
         }
 
         /// <summary>
-        /// Creates a subvolume in the path or clones the subvolume mentioned in the parentPath
+        /// Creates a subvolume in the path or clones the subvolume mentioned in the
+        /// parentPath
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.

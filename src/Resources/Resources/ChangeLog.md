@@ -19,8 +19,39 @@
 -->
 
 ## Upcoming Release
+* Introduced secrets detection feature to safeguard sensitive data.
+* Migrated SDK generation from autorest csharp to autorest powershell.
+
+## Version 6.16.1
+* Added null check to the permissions object in the ToPSRoleDefinition method.
+* Added dynamic parameters to stack New/Set cmdlets.
+* Used correct JSON serializer settings for all templates-related deserialization.
+
+## Version 6.16.0
+* Added breaking change warnings for Azure Policy cmdlets.
+* Added `AuxTenant` parameter in `New-AzResourceGroupDeployment`to support cross-tenant deployment.
+* Fixed bug with custom types and deployments whatif. [#13245]
+* Fixed bug with nullable array parameters & outputs.
+* Fixed bug with TemplateParameterUri not downloading parameters correctly.
+
+## Version 6.15.1
+* Fixed deadlock in Bicep CLI execution. [#24133]
+
+## Version 6.15.0
+* Supported `-SkipClientSideScopeValidation` in RoleAssignment and RoleDefinition related commands. [#22473]
+* Updated Bicep build logic to use --stdout flag instead of creating a temporary file on disk.
+* Fixed exception when `-ApiVersion` is specified for `Get-AzResource`, affected by some resource types.
+* Refactored deployment base cmdlet.
+
+## Version 6.14.0
+* Fixed ABAC condition not included in role definition payload. Get-AzRoleDefinition will now contain ABAC Condition and ConditionVersion info when applicable.
+
+## Version 6.13.0
+* Added AppRoleAssigment related commands for service principal. [#18412]
 * Added `-WithSource` parameter to `Publish-AzBicepModule` for publishing source with a module (currently experimental)
 * Supported nullable Bicep parameters in Deployment cmdlets
+* Updated Get-AzRoleDefinition to api-version "2022-05-01-preview" and returns ABAC condition information
+* Added a couple missing validators and completers to Deployment Stack cmdlets.
 
 ## Version 6.12.1
 * Used utf8 encoding for reading stdout & stderr when invoking Bicep. [#23246]

@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Management.Sql.Models
         /// </summary>
 
         /// <param name="failoverPolicy">Failover policy of the read-only endpoint for the failover group.
-        /// Possible values include: 'Disabled', 'Enabled'</param>
+        /// Possible values include: &#39;Disabled&#39;, &#39;Enabled&#39;</param>
 
         /// <param name="targetServer">The target partner server where the read-only endpoint points to.
         /// </param>

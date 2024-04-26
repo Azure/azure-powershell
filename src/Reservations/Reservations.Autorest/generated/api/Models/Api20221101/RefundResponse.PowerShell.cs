@@ -117,10 +117,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundResponseInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundResponseInternal)this).Id, global::System.Convert.ToString);
             }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundResponseInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundResponseInternal)this).Location, global::System.Convert.ToString);
-            }
             if (content.Contains("PolicyResult"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundResponseInternal)this).PolicyResult = (Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundPolicyResult) content.GetValueForProperty("PolicyResult",((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundResponseInternal)this).PolicyResult, Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.RefundPolicyResultTypeConverter.ConvertFrom);
@@ -209,10 +205,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101
             if (content.Contains("Id"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundResponseInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundResponseInternal)this).Id, global::System.Convert.ToString);
-            }
-            if (content.Contains("Location"))
-            {
-                ((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundResponseInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20221101.IRefundResponseInternal)this).Location, global::System.Convert.ToString);
             }
             if (content.Contains("PolicyResult"))
             {

@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Authorization service.
 
 ---
-## Status
-[![Az.Authorization](https://img.shields.io/powershellgallery/v/Az.Authorization.svg?style=flat-square&label=Az.Authorization "Az.Authorization")](https://www.powershellgallery.com/packages/Az.Authorization/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -30,21 +27,22 @@ For information on how to develop for `Az.Authorization`, see [how-to.md](how-to
 > see https://aka.ms/autorest
 
 ``` yaml
+commit: 0023223a23b7a8c1693f7d88678787e50fee6c96
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/0023223a23b7a8c1693f7d88678787e50fee6c96/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/EligibleChildResources.json
+  - $(repo)/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/EligibleChildResources.json
 
-  - https://github.com/Azure/azure-rest-api-specs/blob/0023223a23b7a8c1693f7d88678787e50fee6c96/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleAssignmentSchedule.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/0023223a23b7a8c1693f7d88678787e50fee6c96/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleAssignmentScheduleInstance.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/0023223a23b7a8c1693f7d88678787e50fee6c96/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleAssignmentScheduleRequest.json
+  - $(repo)/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleAssignmentSchedule.json
+  - $(repo)/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleAssignmentScheduleInstance.json
+  - $(repo)/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleAssignmentScheduleRequest.json
 
-  - https://github.com/Azure/azure-rest-api-specs/blob/0023223a23b7a8c1693f7d88678787e50fee6c96/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleEligibilitySchedule.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/0023223a23b7a8c1693f7d88678787e50fee6c96/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleEligibilityScheduleInstance.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/0023223a23b7a8c1693f7d88678787e50fee6c96/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleEligibilityScheduleRequest.json
+  - $(repo)/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleEligibilitySchedule.json
+  - $(repo)/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleEligibilityScheduleInstance.json
+  - $(repo)/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleEligibilityScheduleRequest.json
 
-  - https://github.com/Azure/azure-rest-api-specs/blob/0023223a23b7a8c1693f7d88678787e50fee6c96/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleManagementPolicy.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/23800927d61999e655f6fd7fd054deaa80385683/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleManagementPolicyAssignment.json
+  - $(repo)/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleManagementPolicy.json
+  - $(repo)/specification/authorization/resource-manager/Microsoft.Authorization/preview/2020-10-01-preview/RoleManagementPolicyAssignment.json
 
 root-module-name: $(prefix).Resources
 title: Authorization
@@ -54,6 +52,10 @@ subject-prefix: ''
 identity-correction-for-post: true
 resourcegroup-append: true
 default-exclude-tableview-properties: false
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Swaager bug: The scope should be readonly according to the server response.

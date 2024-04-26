@@ -26,11 +26,17 @@ Gets details of an Azure NetApp Files (ANF) Backup.
 ### [Get-AzNetAppFilesBackupPolicy](Get-AzNetAppFilesBackupPolicy.md)
 Gets details of an Azure NetApp Files (ANF) Backup Policy.
 
+### [Get-AzNetAppFilesNetworkSiblingSet](Get-AzNetAppFilesNetworkSiblingSet.md)
+Get details of a network sibling set
+
 ### [Get-AzNetAppFilesPool](Get-AzNetAppFilesPool.md)
 Gets details of an Azure NetApp Files (ANF) pool.
 
 ### [Get-AzNetAppFilesQuotaLimit](Get-AzNetAppFilesQuotaLimit.md)
 Get quota limits
+
+### [Get-AzNetAppFilesRegionInfo](Get-AzNetAppFilesRegionInfo.md)
+Describes region specific information
 
 ### [Get-AzNetAppFilesReplicationStatus](Get-AzNetAppFilesReplicationStatus.md)
 Get the status of the replication
@@ -55,6 +61,9 @@ Get volume's backup status
 
 ### [Get-AzNetAppFilesVolumeGroup](Get-AzNetAppFilesVolumeGroup.md)
 Gets details of an Azure NetApp Files (ANF) VolumeGroup.
+
+### [Get-AzNetAppFilesVolumeGroupIdListForLDAPUser](Get-AzNetAppFilesVolumeGroupIdListForLDAPUser.md)
+Get Group Id List for LDAP User
 
 ### [Get-AzNetAppFilesVolumeQuotaRule](Get-AzNetAppFilesVolumeQuotaRule.md)
 Gets details of an Azure NetApp Files (ANF) Volume Quouta Rule.
@@ -197,6 +206,9 @@ Updates an Azure NetApp Files (ANF) backup to the optional modifiers provided.
 
 ### [Update-AzNetAppFilesBackupPolicy](Update-AzNetAppFilesBackupPolicy.md)
 Updates an Azure NetApp Files (ANF) backup policy to the optional modifiers provided.
+
+### [Update-AzNetAppFilesNetworkSiblingSet](Update-AzNetAppFilesNetworkSiblingSet.md)
+Update the network features of a network sibling set
 
 ### [Update-AzNetAppFilesPool](Update-AzNetAppFilesPool.md)
 Updates an Azure NetApp Files (ANF) pool according to the optional modifiers provided.

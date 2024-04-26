@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Quantum service.
 
 ---
-## Status
-[![Az.Quantum](https://img.shields.io/powershellgallery/v/Az.Quantum.svg?style=flat-square&label=Az.Quantum "Az.Quantum")](https://www.powershellgallery.com/packages/Az.Quantum/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -30,9 +27,9 @@ For information on how to develop for `Az.Quantum`, see [how-to.md](how-to.md).
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: b9b3dc975efbc8d25b5c7d84febb710cc889b6bf
+commit: b9b3dc975efbc8d25b5c7d84febb710cc889b6bf
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/quantum/resource-manager/Microsoft.Quantum/preview/2022-01-10-preview/quantum.json
 
@@ -43,6 +40,10 @@ subject-prefix: $(service-name)
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - where:

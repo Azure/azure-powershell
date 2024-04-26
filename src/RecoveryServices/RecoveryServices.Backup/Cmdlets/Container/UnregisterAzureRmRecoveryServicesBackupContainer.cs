@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Unregisters container from the recovery services vault.
     /// </summary>
-    [Cmdlet("Unregister", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupContainer", SupportsShouldProcess = true), OutputType(typeof(ContainerBase))]
+    [Cmdlet("Unregister", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesBackupContainer", SupportsShouldProcess = true), OutputType(typeof(ContainerBase), typeof(JobBase))]
     public class UnregisterAzureRmRecoveryServicesBackupContainer
         : RSBackupVaultCmdletBase
     {
@@ -95,7 +95,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         vaultName: vaultName,
                         resourceGroupName: resourceGroupName);
 
-                        var operationStatus = TrackingHelpers.GetOperationResult(
+                        if(!(PassThru.IsPresent))
+                        {
+                            HandleCreatedJob(
+                            unRegisterResponse,
+                            Resources.UnregisterContainer,
+                            vaultName: vaultName,
+                            resourceGroupName: resourceGroupName);
+                        }
+                        else // we don't output the job when PassThru is given to prevent breaking change
+                        {
+                            var operationStatus = TrackingHelpers.GetOperationResult(
                             unRegisterResponse,
                             operationId =>
                                 ServiceClientAdapter.GetContainerRefreshOrInquiryOperationResult(
@@ -103,14 +113,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                     vaultName: vaultName,
                                     resourceGroupName: resourceGroupName));
 
-                        //Now wait for the operation to Complete
-                        if (unRegisterResponse.Response.StatusCode
-                                != SystemNet.HttpStatusCode.NoContent)
-                        {
-                            string errorMessage = string.Format(Resources.UnRegisterFailureErrorCode,
-                                unRegisterResponse.Response.StatusCode);
-                            Logger.Instance.WriteDebug(errorMessage);
+                            //Now wait for the operation to Complete
+                            if (unRegisterResponse.Response.StatusCode
+                                    != SystemNet.HttpStatusCode.NoContent)
+                            {
+                                string errorMessage = string.Format(Resources.UnRegisterFailureErrorCode,
+                                    unRegisterResponse.Response.StatusCode);
+                                Logger.Instance.WriteDebug(errorMessage);
+                            }
                         }
+
                     }
                     else
                     {

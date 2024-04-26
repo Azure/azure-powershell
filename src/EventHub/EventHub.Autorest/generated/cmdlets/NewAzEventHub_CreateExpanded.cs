@@ -87,6 +87,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         Description = @"Enumerates the possible values for cleanup policy",
         SerializedName = @"cleanupPolicy",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CleanupPolicyRetentionDescription) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChange("CleanupPolicy", "12.0.0", "5.0.0", "2024/05/21", OldParamaterType="CleanupPolicyRetentionDescription", NewParameterType="String")]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CleanupPolicyRetentionDescription))]
         public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CleanupPolicyRetentionDescription CleanupPolicy { get => _parametersBody.CleanupPolicy ?? ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CleanupPolicyRetentionDescription)""); set => _parametersBody.CleanupPolicy = value; }
 
@@ -162,6 +163,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         Description = @"Enumerates the possible values for the encoding format of capture description. Note: 'AvroDeflate' will be deprecated in New API Version",
         SerializedName = @"encoding",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EncodingCaptureDescription) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChange("Encoding", "12.0.0", "5.0.0", "2024/05/21", OldParamaterType="EncodingCaptureDescription", NewParameterType="String")]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EncodingCaptureDescription))]
         public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EncodingCaptureDescription Encoding { get => _parametersBody.Encoding ?? ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EncodingCaptureDescription)""); set => _parametersBody.Encoding = value; }
 
@@ -186,6 +188,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         Description = @"Type of Azure Active Directory Managed Identity.",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CaptureIdentityType) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChange("IdentityType", "12.0.0", "5.0.0", "2024/05/21", OldParamaterType="CaptureIdentityType", NewParameterType="String")]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CaptureIdentityType))]
         public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CaptureIdentityType IdentityType { get => _parametersBody.IdentityType ?? ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.CaptureIdentityType)""); set => _parametersBody.IdentityType = value; }
 
@@ -353,6 +356,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         Description = @"Enumerates the possible values for the status of the Event Hub.",
         SerializedName = @"status",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EntityStatus) })]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChange("Status", "12.0.0", "5.0.0", "2024/05/21", OldParamaterType="EntityStatus", NewParameterType="String")]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EntityStatus))]
         public Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EntityStatus Status { get => _parametersBody.Status ?? ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EntityStatus)""); set => _parametersBody.Status = value; }
 
@@ -463,7 +467,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.EventHub.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -610,6 +631,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.EventHub.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.EventHub.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

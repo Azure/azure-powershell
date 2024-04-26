@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DedicatedHsm service.
 
 ---
-## Status
-[![Az.DedicatedHsm](https://img.shields.io/powershellgallery/v/Az.DedicatedHsm.svg?style=flat-square&label=Az.DedicatedHsm "Az.DedicatedHsm")](https://www.powershellgallery.com/packages/Az.DedicatedHsm/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -48,8 +45,8 @@ In this directory, run AutoRest:
 
 ``` yaml
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
-branch: f203c1b73639b7e2f85aa96902cfe36c6dd2ffad
+  - $(this-folder)/../../readme.azure.noprofile.md
+commit: f203c1b73639b7e2f85aa96902cfe36c6dd2ffad
 input-file:
   - $(repo)/specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/stable/2021-11-30/dedicatedhsm.json
 
@@ -62,6 +59,10 @@ subject-prefix: $(service-name)
 # If there are post APIs for some kinds of actions in the RP, you may need to
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

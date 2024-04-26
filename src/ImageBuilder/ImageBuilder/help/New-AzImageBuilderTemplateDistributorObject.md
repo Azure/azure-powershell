@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ImageBuilder-help.xml
 Module Name: Az.ImageBuilder
 online version: https://learn.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatedistributorobject
 schema: 2.0.0
@@ -14,22 +14,25 @@ Create an in-memory object for ImageTemplateDistributor.
 
 ### VhdDistributor (Default)
 ```
-New-AzImageBuilderTemplateDistributorObject -RunOutputName <String> -VhdDistributor
- [-ArtifactTag <IImageTemplateDistributorArtifactTags>] [-Uri <String>] [<CommonParameters>]
+New-AzImageBuilderTemplateDistributorObject -RunOutputName <String>
+ [-ArtifactTag <IImageTemplateDistributorArtifactTags>] [-VhdDistributor] [-Uri <String>]
+ [<CommonParameters>]
 ```
 
 ### ManagedImageDistributor
 ```
-New-AzImageBuilderTemplateDistributorObject -ImageId <String> -Location <String> -ManagedImageDistributor
- -RunOutputName <String> [-ArtifactTag <IImageTemplateDistributorArtifactTags>] [<CommonParameters>]
+New-AzImageBuilderTemplateDistributorObject -RunOutputName <String> -ImageId <String> -Location <String>
+ [-ManagedImageDistributor] [-ArtifactTag <IImageTemplateDistributorArtifactTags>]
+ [<CommonParameters>]
 ```
 
 ### SharedImageDistributor
 ```
-New-AzImageBuilderTemplateDistributorObject -GalleryImageId <String> -RunOutputName <String>
- -SharedImageDistributor [-ArtifactTag <IImageTemplateDistributorArtifactTags>] [-ExcludeFromLatest <Boolean>]
- [-ReplicationRegion <String[]>] [-StorageAccountType <SharedImageStorageAccountType>]
- [-TargetRegion <ITargetRegion[]>] [-Versioning <IDistributeVersioner>] [<CommonParameters>]
+New-AzImageBuilderTemplateDistributorObject -RunOutputName <String>
+ [-ArtifactTag <IImageTemplateDistributorArtifactTags>] -GalleryImageId <String> [-SharedImageDistributor]
+ [-ExcludeFromLatest <Boolean>] [-ReplicationRegion <String[]>]
+ [-StorageAccountType <SharedImageStorageAccountType>] [-TargetRegion <ITargetRegion[]>]
+ [-Versioning <IDistributeVersioner>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -314,23 +317,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ARTIFACTTAG <IImageTemplateDistributorArtifactTags>`: Tags that will be applied to the artifact once it has been created/updated by the distributor.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-`TARGETREGION <ITargetRegion[]>`: The target regions where the distributed Image Version is going to be replicated to. This object supersedes replicationRegions and can be specified only if replicationRegions is not specified.
-  - `Name <String>`: The name of the region.
-  - `[ReplicaCount <Int32?>]`: The number of replicas of the Image Version to be created in this region. Omit to use the default (1).
-  - `[StorageAccountType <SharedImageStorageAccountType?>]`: Specifies the storage account type to be used to store the image in this region. Omit to use the default (Standard_LRS).
-
-`VERSIONING <IDistributeVersioner>`: Describes how to generate new x.y.z version number for distribution.
-  - `Scheme <String>`: Version numbering scheme to be used.
-
 ## RELATED LINKS
-

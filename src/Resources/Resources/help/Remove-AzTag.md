@@ -21,8 +21,8 @@ Remove-AzTag [-Name] <String> [[-Value] <String[]>] [-PassThru] [-DefaultProfile
 
 ### RemoveByResourceIdParameterSet
 ```
-Remove-AzTag [-PassThru] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Remove-AzTag [-PassThru] -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.Nginx-help.xml
 Module Name: Az.Nginx
-online version: https://learn.microsoft.com/powershell/module/az.Nginx/new-AzNginxConfigurationFileObject
+online version: https://learn.microsoft.com/powershell/module/Az.Nginx/new-AzNginxConfigurationFileObject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Create an in-memory object for NginxConfigurationFile.
 ## SYNTAX
 
 ```
-New-AzNginxConfigurationFileObject [-Content <String>] [-VirtualPath <String>] [<CommonParameters>]
+New-AzNginxConfigurationFileObject [-Content <String>] [-VirtualPath <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +39,6 @@ Create an in-memory object for NginxConfigurationFile.
 
 ### -Content
 
-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
@@ -52,7 +52,6 @@ Accept wildcard characters: False
 ```
 
 ### -VirtualPath
-
 
 ```yaml
 Type: System.String
@@ -73,11 +72,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20220801.NginxConfigurationFile
+### Microsoft.Azure.PowerShell.Cmdlets.Nginx.Models.Api20230401.NginxConfigurationFile
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

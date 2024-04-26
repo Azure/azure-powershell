@@ -216,4 +216,37 @@
   <data name="UpdateRedisCache" xml:space="preserve">
     <value>Updating redis cache '{0}' ...</value>
   </data>
+  <data name="FlushingRedisCache" xml:space="preserve">
+    <value>Are you sure you want to flush all keys present in redis cache '{0}'?</value>
+  </data>
+  <data name="FlushRedisCache" xml:space="preserve">
+    <value>Flushing redis cache '{0}' ...</value>
+  </data>
+  <data name="AccessPolicyCreationFailed" xml:space="preserve">
+    <value>Operation to create Access Policy failed.</value>
+  </data>
+  <data name="AccessPolicyNotFound" xml:space="preserve">
+    <value>Cache '{0}' does not have Access Policy with name '{1}'.</value>
+  </data>
+  <data name="CreateAccessPolicy" xml:space="preserve">
+    <value>Updating Access Policy '{0}' with specified name and permissions for cache '{1}'</value>
+  </data>
+  <data name="RemoveAccessPolicy" xml:space="preserve">
+    <value>Removing Access Policy '{0}' from Redis Cache '{1}'...</value>
+  </data>
+  <data name="AccessPolicyAssignmentCreationFailed" xml:space="preserve">
+    <value>Operation to create Access Policy Assignment failed.</value>
+  </data>
+  <data name="AccessPolicyAssignmentNotFound" xml:space="preserve">
+    <value>Cache '{0}' does not have Access Policy Assignment with name '{1}'.</value>
+  </data>
+  <data name="CreateAccessPolicyAssignment" xml:space="preserve">
+    <value>Creating access policy assignment '{0}' for Redis Cache '{1}'...</value>
+  </data>
+  <data name="RemoveAccessPolicyAssignment" xml:space="preserve">
+    <value>Removing Access Policy Assignment '{0}' from Redis Cache '{1}'...</value>
+  </data>
+  <data name="InvalidRedisCacheChildResourceId" xml:space="preserve">
+    <value>Id '{0}'is not valid. Id should be of the form "/subscriptions/&lt;subscription id&gt;/resourceGroups/&lt;resource group name&gt;/providers/Microsoft.Cache/Redis/&lt;cache name&gt;/&lt;operation group&gt;/&lt;name&gt;".</value>
+  </data>
 </root>

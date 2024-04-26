@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionbackuppolicy
 schema: 2.0.0
@@ -14,14 +14,14 @@ Gets a backup policy belonging to a backup vault
 
 ### List (Default)
 ```
-Get-AzDataProtectionBackupPolicy -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String[]>]
+Get-AzDataProtectionBackupPolicy -ResourceGroupName <String> [-SubscriptionId <String[]>] -VaultName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDataProtectionBackupPolicy -Name <String> -ResourceGroupName <String> -VaultName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDataProtectionBackupPolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -VaultName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -117,7 +117,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -133,7 +133,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: False
@@ -148,7 +148,7 @@ The name of the backup vault.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -167,31 +167,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBaseBackupPolicyResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBaseBackupPolicyResource
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDataProtectionIdentity>`: Identity Parameter
-  - `[BackupInstanceName <String>]`: The name of the backup instance.
-  - `[BackupPolicyName <String>]`: 
-  - `[Id <String>]`: Resource identity path
-  - `[JobId <String>]`: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  - `[Location <String>]`: The location in which uniqueness will be verified.
-  - `[OperationId <String>]`: 
-  - `[RecoveryPointId <String>]`: 
-  - `[RequestName <String>]`: 
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceGuardProxyName <String>]`: name of the resource guard proxy
-  - `[ResourceGuardsName <String>]`: The name of ResourceGuard
-  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
-  - `[VaultName <String>]`: The name of the backup vault.
-
 ## RELATED LINKS
-

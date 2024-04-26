@@ -23,7 +23,7 @@ Create an in-memory object for DirectConnection.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.DirectConnection
 .Link
-https://learn.microsoft.com/powershell/module/az.Peering/new-AzPeeringDirectConnectionObject
+https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringDirectConnectionObject
 #>
 function New-AzPeeringDirectConnectionObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.DirectConnection')]

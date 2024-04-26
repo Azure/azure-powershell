@@ -26,7 +26,8 @@ Get-AzEventHubNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String>
 
 ### GetViaIdentity
 ```
-Get-AzEventHubNetworkRuleSet -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzEventHubNetworkRuleSet -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

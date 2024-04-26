@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ArcResourceBridge-help.xml
 Module Name: Az.ArcResourceBridge
 online version: https://learn.microsoft.com/powershell/module/az.arcresourcebridge/get-azarcresourcebridge
 schema: 2.0.0
@@ -14,7 +14,8 @@ Gets the details of an Appliance with a specified resource group and name.
 
 ### List (Default)
 ```
-Get-AzArcResourceBridge [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzArcResourceBridge [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -23,15 +24,15 @@ Get-AzArcResourceBridge -Name <String> -ResourceGroupName <String> [-Subscriptio
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzArcResourceBridge -InputObject <IArcResourceBridgeIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzArcResourceBridge -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzArcResourceBridge -InputObject <IArcResourceBridgeIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -149,7 +150,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -172,19 +173,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IArcResourceBridgeIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceName <String>]`: Appliances name.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[UpgradeGraph <String>]`: Upgrade graph version, ex - stable
-
 ## RELATED LINKS
-

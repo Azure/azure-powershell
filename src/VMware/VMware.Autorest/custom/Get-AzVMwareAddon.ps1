@@ -36,7 +36,7 @@ vr   Microsoft.AVS/privateClouds/addons azps_test_group
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon
+Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -72,7 +72,7 @@ INPUTOBJECT <IVMwareIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.vmware/get-azvmwareaddon
 #>
 function Get-AzVMwareAddon {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IAddon])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IAddon])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

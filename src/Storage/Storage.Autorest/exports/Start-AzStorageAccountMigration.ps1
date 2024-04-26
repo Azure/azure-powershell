@@ -17,11 +17,11 @@
 <#
 .Synopsis
 Account Migration request can be triggered for a storage account to change its redundancy level.
-The migration updates the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
+The migration Customer the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
 Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.
 .Description
 Account Migration request can be triggered for a storage account to change its redundancy level.
-The migration updates the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
+The migration Customer the non-zonal redundant storage account to a zonal redundant account or vice-versa in order to have better reliability and availability.
 Zone-redundant storage (ZRS) replicates your storage account synchronously across three Azure availability zones in the primary region.
 .Example
 Start-AzStorageAccountMigration -AccountName myaccount -ResourceGroupName myresourcegroup -TargetSku Standard_LRS -Name migration1 -AsJob
@@ -99,7 +99,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.IStorageIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(ParameterSetName='CustomerExpanded', Mandatory)]
@@ -235,7 +234,13 @@ begin {
             CustomerViaJsonString = 'Az.Storage.private\Start-AzStorageAccountMigration_CustomerViaJsonString';
         }
         if (('CustomerExpanded', 'CustomerViaJsonFilePath', 'CustomerViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

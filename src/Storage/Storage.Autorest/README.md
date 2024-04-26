@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Storage service.
 
 ---
-## Status
-[![Az.Storage](https://img.shields.io/powershellgallery/v/Az.Storage.svg?style=flat-square&label=Az.Storage "Az.Storage")](https://www.powershellgallery.com/packages/Az.Storage/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -31,7 +28,7 @@ For information on how to develop for `Az.Storage`, see [how-to.md](how-to.md).
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-branch: 3e6b4ddca225530c27273d0f816466a905c0151b
+commit: 3e6b4ddca225530c27273d0f816466a905c0151b
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -44,17 +41,15 @@ module-version: 5.9.1
 title: Storage
 subject-prefix: $(service-name)
 nested-object-to-string: true
-identity-correction-for-post: true 
-use-extension: 
-  "@autorest/powershell": "4.x"
+identity-correction-for-post: true
 
 directive:
-  - where:  
+  - where:
       subject: ^StorageAccountCustomerInitiatedMigration$
     set:
       subject: StorageAccountMigration
   - where:
-      verb: Invoke 
+      verb: Invoke
       subject: ^CustomerStorageAccountInitiatedMigration$
     set:
       verb: Start
@@ -66,7 +61,7 @@ directive:
       parameter-name: StorageAccountMigrationDetailTargetSkuName
     set:
       parameter-name: TargetSku
-  - where: 
+  - where:
       subject: ^StorageAccount$|^StorageAccountKey$|^StorageAccountProperty$|^StorageAccountSas$|^StorageAccountServiceSas$|BlobInventoryPolicy$|^DeletedAccount$|^EncryptionScope$|^LocalUser$|^LocalUserKey$|^ManagementPolicy$|^ObjectReplicationPolicy$|^Sku$|^Usage$|^LocalUserPassword$|^AccountUserDelegationKey$|^AbortStorageAccountHierarchicalNamespaceMigration$|^HierarchicalStorageAccountNamespaceMigration$|^StorageAccountBlobRange$|^StorageAccountUserDelegationKey$|^StorageAccountNameAvailability$
     remove: true
 ```

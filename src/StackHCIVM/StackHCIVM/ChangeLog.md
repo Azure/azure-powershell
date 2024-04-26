@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 1.0.2
+* Updated API to 2024-01-01 version.
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 1.0.1
+* Reported image download progress
+
+## Version 1.0.0
+* General availability for module Az.StackHCIVM
 
 ## Version 0.1.0
 * First preview release for module Az.StackHCIVM

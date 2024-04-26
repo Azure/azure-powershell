@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the BotService service.
 
 ---
-## Status
-[![Az.BotService](https://img.shields.io/powershellgallery/v/Az.BotService.svg?style=flat-square&label=Az.BotService "Az.BotService")](https://www.powershellgallery.com/packages/Az.BotService/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -72,15 +69,19 @@ In this directory, run AutoRest:
 ### AutoRest Configuration
 > see https://aka.ms/autorest
 ``` yaml
-branch: 827a487dc10fb666baa2d2b261c9264ea710f1b4 
+commit: 827a487dc10fb666baa2d2b261c9264ea710f1b4
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/botservice/resource-manager/Microsoft.BotService/preview/2022-06-15-preview/botservice.json
 title: BotService
 module-version: 0.1.0
 identity-correction-for-post: true
 subject-prefix: 'BotService'
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
+
 directive:
   - from: botservice.json
     where: $.definitions.EmailChannelAuthMethod

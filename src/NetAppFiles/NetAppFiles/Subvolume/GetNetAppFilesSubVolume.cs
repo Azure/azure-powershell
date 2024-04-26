@@ -19,8 +19,8 @@ using Microsoft.Azure.Commands.NetAppFiles.Common;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Commands.NetAppFiles.Models;
 using Microsoft.Azure.Management.NetApp;
-using System.Linq;
-using System.Collections.Generic;
+using Microsoft.Azure.Management.NetApp.Models;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 {
@@ -75,6 +75,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         [Parameter(
             Mandatory = false,
             HelpMessage = "The name of the ANF Subvolume")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The name of the ANF volume",
+            ParameterSetName = ParentObjectParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias("SubvolumeName")]
         [ResourceNameCompleter(
@@ -129,12 +133,17 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
             }
             else
             {
-                //List<PSNetAppFilesSubvolumeInfo> anfSubvolumes = null;
-                var volumes = AzureNetAppFilesManagementClient.Subvolumes.ListByVolume(ResourceGroupName, AccountName, PoolName, VolumeName);
-                // To get all subvolumes Get all subvolumes by polling on next page link
-                var subVolumeResponseList = ListNextLink<Management.NetApp.Models.SubvolumeInfo>.GetAllResourcesByPollingNextLink(volumes, AzureNetAppFilesManagementClient.Subvolumes.ListByVolumeNext).ConvertToPS();
-
-                WriteObject(subVolumeResponseList, true);
+                try
+                {
+                    var volumes = AzureNetAppFilesManagementClient.Subvolumes.ListByVolume(ResourceGroupName, AccountName, PoolName, VolumeName);
+                    // To get all subvolumes Get all subvolumes by polling on next page link
+                    var subVolumeResponseList = ListNextLink<Management.NetApp.Models.SubvolumeInfo>.GetAllResourcesByPollingNextLink(volumes, AzureNetAppFilesManagementClient.Subvolumes.ListByVolumeNext).ConvertToPS();
+                    WriteObject(subVolumeResponseList, true);
+                }
+                catch (ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
         }
     }

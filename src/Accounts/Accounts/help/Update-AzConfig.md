@@ -15,9 +15,10 @@ Updates the configs of Azure PowerShell.
 ```
 Update-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [-CheckForUpgrade <Boolean>] [-DefaultSubscriptionForLogin <String>]
- [-DisableErrorRecordsPersistence <Boolean>] [-DisplayBreakingChangeWarning <Boolean>]
- [-DisplayRegionIdentified <Boolean>] [-DisplaySurveyMessage <Boolean>] [-EnableDataCollection <Boolean>]
- [-EnableLoginByWam <Boolean>] [<CommonParameters>]
+ [-DisableErrorRecordsPersistence <Boolean>] [-DisableInstanceDiscovery <Boolean>]
+ [-DisplayBreakingChangeWarning <Boolean>] [-DisplayRegionIdentified <Boolean>]
+ [-DisplaySurveyMessage <Boolean>] [-EnableDataCollection <Boolean>] [-EnableLoginByWam <Boolean>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,6 +69,19 @@ EnableDataCollection True  Az         CurrentUser When enabled, Azure PowerShell
 
 Sets the "EnableDataCollection" config as "$true". This enables sending the telemetry data.
 Setting this config is equivalent to `Enable-AzDataCollection` and `Disable-AzDataCollection`.
+
+### Example 4
+```powershell
+Update-AzConfig -DisplaySecretsWarning $true
+```
+
+```output
+Key                   Value Applies To Scope       Help Message
+---                   ----- ---------- -----       ------------
+DisplaySecretsWarning True  Az         CurrentUser When enabled, a warning message for secrets redaction will be displ…
+```
+
+Sets the "DisplaySecretsWarning" config as "$true". This enables the secrets detection during the cmdlet execution and displays a warning message if any secrets are found in the output.
 
 ## PARAMETERS
 
@@ -154,6 +168,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -DisableInstanceDiscovery
+Set it to true to disable both instance discovery and authority validation. This functionality is intended for use in scenarios where the metadata endpoint cannot be reached, such as in private clouds or Azure Stack. The process of instance discovery entails retrieving authority metadata from https://login.microsoft.com/ to validate the authority. By setting this to true, the validation of the authority is disabled. As a result, it is crucial to ensure that the configured authority host is valid and trustworthy.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DisplayBreakingChangeWarning
 Controls if warning messages for breaking changes are displayed or suppressed. When enabled, a breaking change warning is displayed when executing cmdlets with breaking changes in a future release.
 
@@ -171,6 +200,21 @@ Accept wildcard characters: False
 
 ### -DisplayRegionIdentified
 When enabled, Azure PowerShell displays recommendations on regions which may reduce your costs.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -DisplaySecretsWarning
+When enabled, a warning message will be displayed when the cmdlet output contains secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844
 
 ```yaml
 Type: System.Boolean
@@ -286,9 +330,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
 ### System.Boolean
+
+### System.String
 
 ## OUTPUTS
 

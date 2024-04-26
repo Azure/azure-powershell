@@ -96,16 +96,16 @@ The operation to stop a virtual machine instance.
 The operation to update an image.
 
 ### [Update-AzStackHCIVMLogicalNetwork](Update-AzStackHCIVMLogicalNetwork.md)
-The operation to update a logical network.
+The operation to Update a logical network.
 
 ### [Update-AzStackHCIVMNetworkInterface](Update-AzStackHCIVMNetworkInterface.md)
-The operation to update a network interface.
+The operation to Update a network interface.
 
 ### [Update-AzStackHCIVMStoragePath](Update-AzStackHCIVMStoragePath.md)
-The operation to update a storage container.
+The operation to Update a storage container.
 
 ### [Update-AzStackHCIVMVirtualHardDisk](Update-AzStackHCIVMVirtualHardDisk.md)
-The operation to update a virtual hard disk.
+The operation to Update a virtual hard disk.
 
 ### [Update-AzStackHCIVMVirtualMachine](Update-AzStackHCIVMVirtualMachine.md)
 The operation to update a virtual machine instance.

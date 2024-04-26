@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models
         partial void AfterFromJson(Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonObject json);
 
         /// <summary>
-        /// <c>AfterToJson</c> will be called after the json erialization has finished, allowing customization of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonObject"
+        /// <c>AfterToJson</c> will be called after the json serialization has finished, allowing customization of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonObject"
         /// /> before it is returned. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="container">The JSON container that the serialization result will be placed in.</param>
@@ -29,7 +29,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models
         /// <summary>
         /// <c>BeforeFromJson</c> will be called before the json deserialization has commenced, allowing complete customization of
         /// the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name= "returnNow" />
+        /// output parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="json">The JsonNode that should be deserialized into this object.</param>
@@ -41,7 +42,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models
         /// <summary>
         /// <c>BeforeToJson</c> will be called before the json serialization has commenced, allowing complete customization of the
         /// object before it is serialized.
-        /// If you wish to disable the default serialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default serialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="container">The JSON container that the serialization result will be placed in.</param>
@@ -74,15 +76,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models
             {
                 return;
             }
-            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
+            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
+            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
+            {_solutionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("solutionName"), out var __jsonSolutionName) ? (string)__jsonSolutionName : (string)SolutionName;}
+            {_providerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("providerName"), out var __jsonProviderName) ? (string)__jsonProviderName : (string)ProviderName;}
+            {_resourceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("resourceType"), out var __jsonResourceType) ? (string)__jsonResourceType : (string)ResourceType;}
+            {_resourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("resourceName"), out var __jsonResourceName) ? (string)__jsonResourceName : (string)ResourceName;}
             {_managementAssociationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("managementAssociationName"), out var __jsonManagementAssociationName) ? (string)__jsonManagementAssociationName : (string)ManagementAssociationName;}
             {_managementConfigurationName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("managementConfigurationName"), out var __jsonManagementConfigurationName) ? (string)__jsonManagementConfigurationName : (string)ManagementConfigurationName;}
-            {_providerName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("providerName"), out var __jsonProviderName) ? (string)__jsonProviderName : (string)ProviderName;}
-            {_resourceGroupName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("resourceGroupName"), out var __jsonResourceGroupName) ? (string)__jsonResourceGroupName : (string)ResourceGroupName;}
-            {_resourceName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("resourceName"), out var __jsonResourceName) ? (string)__jsonResourceName : (string)ResourceName;}
-            {_resourceType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("resourceType"), out var __jsonResourceType) ? (string)__jsonResourceType : (string)ResourceType;}
-            {_solutionName = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("solutionName"), out var __jsonSolutionName) ? (string)__jsonSolutionName : (string)SolutionName;}
-            {_subscriptionId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("subscriptionId"), out var __jsonSubscriptionId) ? (string)__jsonSubscriptionId : (string)SubscriptionId;}
+            {_id = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString>("id"), out var __jsonId) ? (string)__jsonId : (string)Id;}
             AfterFromJson(json);
         }
 
@@ -105,15 +107,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models
             {
                 return container;
             }
-            AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
+            AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
+            AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
+            AddIf( null != (((object)this._solutionName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString(this._solutionName.ToString()) : null, "solutionName" ,container.Add );
+            AddIf( null != (((object)this._providerName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString(this._providerName.ToString()) : null, "providerName" ,container.Add );
+            AddIf( null != (((object)this._resourceType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString(this._resourceType.ToString()) : null, "resourceType" ,container.Add );
+            AddIf( null != (((object)this._resourceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString(this._resourceName.ToString()) : null, "resourceName" ,container.Add );
             AddIf( null != (((object)this._managementAssociationName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString(this._managementAssociationName.ToString()) : null, "managementAssociationName" ,container.Add );
             AddIf( null != (((object)this._managementConfigurationName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString(this._managementConfigurationName.ToString()) : null, "managementConfigurationName" ,container.Add );
-            AddIf( null != (((object)this._providerName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString(this._providerName.ToString()) : null, "providerName" ,container.Add );
-            AddIf( null != (((object)this._resourceGroupName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString(this._resourceGroupName.ToString()) : null, "resourceGroupName" ,container.Add );
-            AddIf( null != (((object)this._resourceName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString(this._resourceName.ToString()) : null, "resourceName" ,container.Add );
-            AddIf( null != (((object)this._resourceType)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString(this._resourceType.ToString()) : null, "resourceType" ,container.Add );
-            AddIf( null != (((object)this._solutionName)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString(this._solutionName.ToString()) : null, "solutionName" ,container.Add );
-            AddIf( null != (((object)this._subscriptionId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString(this._subscriptionId.ToString()) : null, "subscriptionId" ,container.Add );
+            AddIf( null != (((object)this._id)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Json.JsonString(this._id.ToString()) : null, "id" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

@@ -77,7 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return;
             }
-            {_virtualNetworkRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray>("virtualNetworkRules"), out var __jsonVirtualNetworkRules) ? If( __jsonVirtualNetworkRules as Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVirtualNetworkRule>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVirtualNetworkRule) (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.VirtualNetworkRule.FromJson(__u) )) ))() : null : VirtualNetworkRule;}
+            {_virtualNetworkRule = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray>("virtualNetworkRules"), out var __jsonVirtualNetworkRules) ? If( __jsonVirtualNetworkRules as Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<System.Collections.Generic.List<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVirtualNetworkRule>>(()=> global::System.Linq.Enumerable.ToList(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.IVirtualNetworkRule) (Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.VirtualNetworkRule.FromJson(__u) )) ))() : null : _virtualNetworkRule;}
             AfterFromJson(json);
         }
 

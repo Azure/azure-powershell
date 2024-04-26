@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupconfigurationclientobject
 schema: 2.0.0
@@ -14,11 +14,11 @@ Creates new backup configuration object
 
 ```
 New-AzDataProtectionBackupConfigurationClientObject -DatasourceType <DatasourceTypes>
- [-BackupHookReference <NamespacedNameResource[]>] [-ExcludedNamespace <String[]>]
- [-ExcludedResourceType <String[]>] [-IncludeAllContainer] [-IncludeClusterScopeResource <Boolean?>]
- [-IncludedNamespace <String[]>] [-IncludedResourceType <String[]>] [-LabelSelector <String[]>]
- [-SnapshotVolume <Boolean?>] [-StorageAccountName <String>] [-StorageAccountResourceGroupName <String>]
- [-VaultedBackupContainer <String[]>] [<CommonParameters>]
+ [-ExcludedResourceType <String[]>] [-IncludedResourceType <String[]>] [-ExcludedNamespace <String[]>]
+ [-IncludedNamespace <String[]>] [-LabelSelector <String[]>] [-SnapshotVolume <Boolean>]
+ [-IncludeClusterScopeResource <Boolean>] [-BackupHookReference <NamespacedNameResource[]>]
+ [-VaultedBackupContainer <String[]>] [-IncludeAllContainer] [-StorageAccountName <String>]
+ [-StorageAccountResourceGroupName <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ KubernetesClusterBackupDatasourceParameters {excludeNS1, excludeNS2}            
 This command can be used to create a backup configuration client object used for configuring backup for a Kubernetes cluster.
 BackupHookReferences is a list of references to BackupHooks that should be executed before and after the backup is executed.
 
-### Example 2: Create a BackupConfiguration to select specific containers for configuring vaulted backups for AzureBlob. 
+### Example 2: Create a BackupConfiguration to select specific containers for configuring vaulted backups for AzureBlob.
 ```powershell
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName 
 $containers=Get-AzStorageContainer -Context $storageAccount.Context        
@@ -62,7 +62,7 @@ Hook reference to be executed during backup.
 To construct, see NOTES section for BACKUPHOOKREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.NamespacedNameResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.NamespacedNameResource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -80,6 +80,7 @@ Datasource Type
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DatasourceTypes
 Parameter Sets: (All)
 Aliases:
+Accepted values: AzureDisk, AzureBlob, AzureDatabaseForPostgreSQL, AzureKubernetesService, AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL
 
 Required: True
 Position: Named
@@ -139,7 +140,7 @@ Boolean parameter to decide whether cluster scope resources are included for bac
 By default this is taken as true.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -200,7 +201,7 @@ Boolean parameter to decide whether snapshot volumes are included for backup.
 By default this is taken as true.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[System.Boolean]
 Parameter Sets: (All)
 Aliases:
 
@@ -270,16 +271,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BACKUPHOOKREFERENCE <NamespacedNameResource[]>`: Hook reference to be executed during backup.
-  - `[Name <String>]`: Name of the resource
-  - `[Namespace <String>]`: Namespace in which the resource exists
-
 ## RELATED LINKS
-

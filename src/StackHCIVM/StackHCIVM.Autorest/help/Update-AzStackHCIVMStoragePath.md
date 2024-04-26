@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStackHCIVMStoragePath
 
 ## SYNOPSIS
-The operation to update a storage container.
+The operation to Update a storage container.
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ Update-AzStackHCIVMStoragePath -Name <String> -ResourceGroupName <String> -JsonS
 ```
 
 ## DESCRIPTION
-The operation to update a storage container.
+The operation to Update a storage container.
 
 ## EXAMPLES
 
@@ -96,7 +96,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity

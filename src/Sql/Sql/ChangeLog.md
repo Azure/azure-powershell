@@ -18,7 +18,20 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Made 1.2 as default for MinimalTlsVersion when creating new Sql Server from Powershell
+* Fixed an existing issue with `Set-AzSqlInstanceActiveDirectoryAdministrator`
+
+## Version 4.14.0
+* Added `DatabaseFormat` and `PricingModel` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance`
+* Added breaking change message for `New-AzSqlDatabaseFailoverGroup` and `Set-AzSqlDatabaseFailoverGroup`
+    - The default value of `FailoverPolicy` parameter will be changed from `Automatic` to `Manual`
+* Added a new cmdlet for Azure SQL Managed Instance refresh external governance status
+  - 'Invoke-AzSqlInstanceExternalGovernanceStatusRefresh'
+* Updated `Get-AzSqlInstance` to support returning the `ExternalGovernanceStatus` property
+
+## Version 4.13.0
 * Fixed `Set-AzSqlDatabaseFailoverGroup` when going from multi-secondary to single secondary
+* Added `SecondaryComputeModel`, `AutoPauseDelayInMinutes` and `MinimumCapacity` parameters within `New-AzSqlDatabaseSecondary`
 
 ## Version 4.12.0
 * Added new parameters `MaintenanceConfigurationId`, `DnsZone` to `AzSqlInstancePool` cmdlets

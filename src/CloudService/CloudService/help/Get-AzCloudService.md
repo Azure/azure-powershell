@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.CloudService-help.xml
 Module Name: Az.CloudService
 online version: https://learn.microsoft.com/powershell/module/az.cloudservice/get-azcloudservice
 schema: 2.0.0
@@ -14,7 +14,8 @@ Display information about a cloud service.
 
 ### List (Default)
 ```
-Get-AzCloudService [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzCloudService [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -23,14 +24,15 @@ Get-AzCloudService -Name <String> -ResourceGroupName <String> [-SubscriptionId <
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzCloudService -InputObject <ICloudServiceIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzCloudService -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzCloudService -InputObject <ICloudServiceIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -153,7 +155,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -176,27 +178,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ICloudServiceIdentity>`: Identity Parameter
-  - `[CloudServiceName <String>]`: Name of the cloud service.
-  - `[IPConfigurationName <String>]`: The IP configuration name.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: Name of the location that the OS version pertains to.
-  - `[NetworkInterfaceName <String>]`: The name of the network interface.
-  - `[OSFamilyName <String>]`: Name of the OS family.
-  - `[OSVersionName <String>]`: Name of the OS version.
-  - `[PublicIPAddressName <String>]`: The name of the public IP Address.
-  - `[ResourceGroupName <String>]`: Name of the resource group.
-  - `[RoleInstanceName <String>]`: Name of the role instance.
-  - `[RoleName <String>]`: Name of the role.
-  - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
-  - `[UpdateDomain <Int32?>]`: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
-
 ## RELATED LINKS
-

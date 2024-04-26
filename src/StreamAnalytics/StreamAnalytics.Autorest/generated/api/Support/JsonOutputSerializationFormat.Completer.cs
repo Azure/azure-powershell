@@ -32,11 +32,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "LineSeparated".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("LineSeparated", "LineSeparated", global::System.Management.Automation.CompletionResultType.ParameterValue, "LineSeparated");
+                yield return new global::System.Management.Automation.CompletionResult("'LineSeparated'", "LineSeparated", global::System.Management.Automation.CompletionResultType.ParameterValue, "LineSeparated");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Array".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Array", "Array", global::System.Management.Automation.CompletionResultType.ParameterValue, "Array");
+                yield return new global::System.Management.Automation.CompletionResult("'Array'", "Array", global::System.Management.Automation.CompletionResultType.ParameterValue, "Array");
             }
         }
     }

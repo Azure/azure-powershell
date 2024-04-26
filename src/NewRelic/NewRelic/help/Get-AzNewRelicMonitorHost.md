@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NewRelic-help.xml
 Module Name: Az.NewRelic
 online version: https://learn.microsoft.com/powershell/module/az.newrelic/get-aznewrelicmonitorhost
 schema: 2.0.0
@@ -13,9 +13,9 @@ List the compute vm resources currently being monitored by the NewRelic resource
 ## SYNTAX
 
 ```
-Get-AzNewRelicMonitorHost -MonitorName <String> -ResourceGroupName <String> -UserEmail <String>
- [-SubscriptionId <String[]>] [-VMId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzNewRelicMonitorHost -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -UserEmail <String> [-VMId <String[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -166,7 +166,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -1,12 +1,12 @@
 ﻿function Edit-AzDataProtectionPolicyTriggerClientObject{
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupPolicy')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupPolicy')]
     [CmdletBinding(PositionalBinding=$false)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates Backup schedule of an existing backup policy.')]
 
     param (
         [Parameter(ParameterSetName='ModifyBackupSchedule', Mandatory, HelpMessage='Backup Policy object.')]
         [Parameter(ParameterSetName='RemoveBackupSchedule', Mandatory, HelpMessage='Backup Policy object.')]
-        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupPolicy]
+        [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IBackupPolicy]
         ${Policy},
 
         [Parameter(ParameterSetName='ModifyBackupSchedule', Mandatory, HelpMessage='Schedule to be associated to backup policy.')]
@@ -40,7 +40,7 @@
 
             if($index -ne -1) # $backupRuleIndex -ne -1
             {
-                # DppRef : can add a optional parameter TimeZone
+                # TODO : can add a optional parameter TimeZone
                 # set Local TimeZone for policy Schedule
                 $timezone = Get-TimeZone
                 $Policy.PolicyRule[$backupRuleIndex].Trigger.ScheduleTimeZone = $timezone.StandardName

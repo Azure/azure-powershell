@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -65,12 +67,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).AssociationName = (string) content.GetValueForProperty("AssociationName",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).AssociationName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).ResourceProviderName = (string) content.GetValueForProperty("ResourceProviderName",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).ResourceProviderName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).Scope = (string) content.GetValueForProperty("Scope",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).Scope, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceProviderName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).ResourceProviderName = (string) content.GetValueForProperty("ResourceProviderName",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).ResourceProviderName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Scope"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).Scope = (string) content.GetValueForProperty("Scope",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).Scope, global::System.Convert.ToString);
+            }
+            if (content.Contains("AssociationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).AssociationName = (string) content.GetValueForProperty("AssociationName",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).AssociationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -88,12 +108,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).AssociationName = (string) content.GetValueForProperty("AssociationName",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).AssociationName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).ResourceProviderName = (string) content.GetValueForProperty("ResourceProviderName",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).ResourceProviderName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).Scope = (string) content.GetValueForProperty("Scope",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).Scope, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceProviderName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).ResourceProviderName = (string) content.GetValueForProperty("ResourceProviderName",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).ResourceProviderName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Scope"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).Scope = (string) content.GetValueForProperty("Scope",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).Scope, global::System.Convert.ToString);
+            }
+            if (content.Contains("AssociationName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).AssociationName = (string) content.GetValueForProperty("AssociationName",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).AssociationName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -127,7 +165,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models
         /// Creates a new instance of <see cref="CustomProvidersIdentity" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="CustomProvidersIdentity" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Models.ICustomProvidersIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.CustomProviders.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

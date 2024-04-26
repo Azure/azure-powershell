@@ -511,7 +511,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     return ResourceManagementClient.Deployments.ValidateAtManagementGroupScope(parameters.ManagementGroupId, parameters.DeploymentName, scopedDeployment);
 
                 case DeploymentScopeType.ResourceGroup:
-                    return ResourceManagementClient.Deployments.Validate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+                    if (parameters.AuxTenantHeaders != null)
+                    {
+                        return ResourceManagementClient.Deployments.ValidateWithHttpMessagesAsync(parameters.ResourceGroupName, parameters.DeploymentName, deployment,
+                            customHeaders: ConvertAuxTenantDictionary(parameters.AuxTenantHeaders)).GetAwaiter().GetResult().Body;
+                    }
+                    else
+                    {
+                        return ResourceManagementClient.Deployments.Validate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+                    }
 
                 case DeploymentScopeType.Subscription:
                 default:
@@ -647,7 +655,15 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     break;
 
                 case DeploymentScopeType.ResourceGroup:
-                    ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+                    if (parameters.AuxTenantHeaders != null)
+                    {
+                        ResourceManagementClient.Deployments.BeginCreateOrUpdateWithHttpMessagesAsync(parameters.ResourceGroupName, parameters.DeploymentName, deployment,
+                            customHeaders: ConvertAuxTenantDictionary(parameters.AuxTenantHeaders)).GetAwaiter().GetResult();
+                    }
+                    else
+                    {
+                        ResourceManagementClient.Deployments.BeginCreateOrUpdate(parameters.ResourceGroupName, parameters.DeploymentName, deployment);
+                    }
                     break;
 
                 case DeploymentScopeType.Subscription:
@@ -655,6 +671,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient
                     ResourceManagementClient.Deployments.BeginCreateOrUpdateAtSubscriptionScope(parameters.DeploymentName, deployment);
                     break;
             }
+        }
+        /// <summary>
+        /// Conversion method for aux tenant dictionary to put it in correct format for passing as custom header object in sdk.
+        /// </summary>
+        /// <param name="auxTenants">Dictionary of tenant to tokens.</param>
+        private Dictionary<string, List<string>> ConvertAuxTenantDictionary(IDictionary<string, IList<string>> auxTenants)
+        {
+            if (auxTenants == null) return null;
+
+            var headers = new Dictionary<string, List<string>> ();
+            foreach (KeyValuePair<string, IList<string>> entry in auxTenants)
+            {
+                headers[entry.Key] = entry.Value.ToList();
+            }
+
+            return headers;
         }
 
         private void RunDeploymentValidation(PSDeploymentCmdletParameters parameters, Deployment deployment)

@@ -65,6 +65,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
         public int? AutoscaleProfileGracefulDecommissionTimeout { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)AutoscaleProfile).GracefulDecommissionTimeout; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IAutoscaleProfileInternal)AutoscaleProfile).GracefulDecommissionTimeout = value ?? default(int); }
 
+        /// <summary>The database URL</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string DatabaseHost { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabaseHost; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabaseHost = value ?? null; }
+
+        /// <summary>The database name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string DatabaseName { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabaseName; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabaseName = value ?? null; }
+
+        /// <summary>Reference for the database password</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string DatabasePasswordSecretRef { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabasePasswordSecretRef; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabasePasswordSecretRef = value ?? null; }
+
+        /// <summary>The name of the database user</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string DatabaseUsername { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabaseUsername; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).DatabaseUsername = value ?? null; }
+
         /// <summary>
         /// This is a cool down period, this is a time period in seconds, which determines the amount of time that must elapse between
         /// a scaling activity started by a rule and the start of the next scaling activity, regardless of the rule that triggers
@@ -134,6 +150,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>Internal Acessors for PrometheusProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPrometheusProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.PrometheusProfile { get => (this._prometheusProfile = this._prometheusProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPrometheusProfile()); set { {_prometheusProfile = value;} } }
 
+        /// <summary>Internal Acessors for RangerAdminDatabase</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpecDatabase Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.RangerAdminDatabase { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAdminDatabase; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAdminDatabase = value; }
+
+        /// <summary>Internal Acessors for RangerPluginProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterRangerPluginProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.RangerPluginProfile { get => (this._rangerPluginProfile = this._rangerPluginProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterRangerPluginProfile()); set { {_rangerPluginProfile = value;} } }
+
+        /// <summary>Internal Acessors for RangerProfile</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.RangerProfile { get => (this._rangerProfile = this._rangerProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerProfile()); set { {_rangerProfile = value;} } }
+
+        /// <summary>Internal Acessors for RangerProfileRangerAdmin</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpec Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.RangerProfileRangerAdmin { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAdmin; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAdmin = value; }
+
+        /// <summary>Internal Acessors for RangerProfileRangerAudit</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAuditSpec Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.RangerProfileRangerAudit { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAudit; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAudit = value; }
+
+        /// <summary>Internal Acessors for RangerProfileRangerUsersync</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerUsersyncSpec Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.RangerProfileRangerUsersync { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersync; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersync = value; }
+
         /// <summary>Internal Acessors for SshProfile</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ISshProfile Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IUpdatableClusterProfileInternal.SshProfile { get => (this._sshProfile = this._sshProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.SshProfile()); set { {_sshProfile = value;} } }
 
@@ -150,6 +184,63 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         /// <summary>Cluster Prometheus profile.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPrometheusProfile PrometheusProfile { get => (this._prometheusProfile = this._prometheusProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterPrometheusProfile()); set => this._prometheusProfile = value; }
+
+        /// <summary>
+        /// List of usernames that should be marked as ranger admins. These usernames should match the user principal name (UPN) of
+        /// the respective AAD users.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> RangerAdmin { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAdminAdmins; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAdminAdmins = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// Azure storage location of the blobs. MSI should have read/write access to this Storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string RangerAuditStorageAccount { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAuditStorageAccount; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerAuditStorageAccount = value ?? null; }
+
+        /// <summary>Backing field for <see cref="RangerPluginProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterRangerPluginProfile _rangerPluginProfile;
+
+        /// <summary>Cluster Ranger plugin profile.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterRangerPluginProfile RangerPluginProfile { get => (this._rangerPluginProfile = this._rangerPluginProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ClusterRangerPluginProfile()); set => this._rangerPluginProfile = value; }
+
+        /// <summary>Enable Ranger for cluster or not.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public bool? RangerPluginProfileEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterRangerPluginProfileInternal)RangerPluginProfile).Enabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterRangerPluginProfileInternal)RangerPluginProfile).Enabled = value ?? default(bool); }
+
+        /// <summary>Backing field for <see cref="RangerProfile" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfile _rangerProfile;
+
+        /// <summary>The ranger cluster profile.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfile RangerProfile { get => (this._rangerProfile = this._rangerProfile ?? new Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.RangerProfile()); set => this._rangerProfile = value; }
+
+        /// <summary>Denotes whether usersync service should be enabled</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public bool? RangerUsersyncEnabled { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncEnabled; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncEnabled = value ?? default(bool); }
+
+        /// <summary>
+        /// List of groups that should be synced. These group names should match the object id of the respective AAD groups.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> RangerUsersyncGroup { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncGroup; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncGroup = value ?? null /* arrayOf */; }
+
+        /// <summary>
+        /// User & groups can be synced automatically or via a static list that's refreshed.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string RangerUsersyncMode { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncMode; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncMode = value ?? null; }
+
+        /// <summary>
+        /// List of user names that should be synced. These usernames should match the User principal name of the respective AAD users.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public System.Collections.Generic.List<string> RangerUsersyncUser { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncUser; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncUser = value ?? null /* arrayOf */; }
+
+        /// <summary>Azure storage location of a mapping file that lists user & group associations.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Origin(Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PropertyOrigin.Inlined)]
+        public string RangerUsersyncUserMappingLocation { get => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncUserMappingLocation; set => ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfileInternal)RangerProfile).RangerUsersyncUserMappingLocation = value ?? null; }
 
         /// <summary>
         /// Setting default node count of current schedule configuration. Default node count specifies the number of nodes which are
@@ -297,6 +388,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"gracefulDecommissionTimeout",
         PossibleTypes = new [] { typeof(int) })]
         int? AutoscaleProfileGracefulDecommissionTimeout { get; set; }
+        /// <summary>The database URL</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The database URL",
+        SerializedName = @"host",
+        PossibleTypes = new [] { typeof(string) })]
+        string DatabaseHost { get; set; }
+        /// <summary>The database name</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The database name",
+        SerializedName = @"name",
+        PossibleTypes = new [] { typeof(string) })]
+        string DatabaseName { get; set; }
+        /// <summary>Reference for the database password</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Reference for the database password",
+        SerializedName = @"passwordSecretRef",
+        PossibleTypes = new [] { typeof(string) })]
+        string DatabasePasswordSecretRef { get; set; }
+        /// <summary>The name of the database user</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"The name of the database user",
+        SerializedName = @"username",
+        PossibleTypes = new [] { typeof(string) })]
+        string DatabaseUsername { get; set; }
         /// <summary>
         /// This is a cool down period, this is a time period in seconds, which determines the amount of time that must elapse between
         /// a scaling activity started by a rule and the start of the next scaling activity, regardless of the rule that triggers
@@ -398,6 +533,106 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         SerializedName = @"enabled",
         PossibleTypes = new [] { typeof(bool) })]
         bool? PrometheuProfileEnabled { get; set; }
+        /// <summary>
+        /// List of usernames that should be marked as ranger admins. These usernames should match the user principal name (UPN) of
+        /// the respective AAD users.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of usernames that should be marked as ranger admins. These usernames should match the user principal name (UPN) of the respective AAD users.",
+        SerializedName = @"admins",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> RangerAdmin { get; set; }
+        /// <summary>
+        /// Azure storage location of the blobs. MSI should have read/write access to this Storage account.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Azure storage location of the blobs. MSI should have read/write access to this Storage account.",
+        SerializedName = @"storageAccount",
+        PossibleTypes = new [] { typeof(string) })]
+        string RangerAuditStorageAccount { get; set; }
+        /// <summary>Enable Ranger for cluster or not.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Enable Ranger for cluster or not.",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? RangerPluginProfileEnabled { get; set; }
+        /// <summary>Denotes whether usersync service should be enabled</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Denotes whether usersync service should be enabled",
+        SerializedName = @"enabled",
+        PossibleTypes = new [] { typeof(bool) })]
+        bool? RangerUsersyncEnabled { get; set; }
+        /// <summary>
+        /// List of groups that should be synced. These group names should match the object id of the respective AAD groups.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of groups that should be synced. These group names should match the object id of the respective AAD groups.",
+        SerializedName = @"groups",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> RangerUsersyncGroup { get; set; }
+        /// <summary>
+        /// User & groups can be synced automatically or via a static list that's refreshed.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"User & groups can be synced automatically or via a static list that's refreshed.",
+        SerializedName = @"mode",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("static", "automatic")]
+        string RangerUsersyncMode { get; set; }
+        /// <summary>
+        /// List of user names that should be synced. These usernames should match the User principal name of the respective AAD users.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"List of user names that should be synced. These usernames should match the User principal name of the respective AAD users.",
+        SerializedName = @"users",
+        PossibleTypes = new [] { typeof(string) })]
+        System.Collections.Generic.List<string> RangerUsersyncUser { get; set; }
+        /// <summary>Azure storage location of a mapping file that lists user & group associations.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Read = true,
+        Create = true,
+        Update = true,
+        Description = @"Azure storage location of a mapping file that lists user & group associations.",
+        SerializedName = @"userMappingLocation",
+        PossibleTypes = new [] { typeof(string) })]
+        string RangerUsersyncUserMappingLocation { get; set; }
         /// <summary>
         /// Setting default node count of current schedule configuration. Default node count specifies the number of nodes which are
         /// default when an specified scaling operation is executed (scale up/scale down)
@@ -525,6 +760,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.ILoadBasedConfig AutoscaleProfileLoadBasedConfig { get; set; }
         /// <summary>Profiles of schedule based Autoscale.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IScheduleBasedConfig AutoscaleProfileScheduleBasedConfig { get; set; }
+        /// <summary>The database URL</summary>
+        string DatabaseHost { get; set; }
+        /// <summary>The database name</summary>
+        string DatabaseName { get; set; }
+        /// <summary>Reference for the database password</summary>
+        string DatabasePasswordSecretRef { get; set; }
+        /// <summary>The name of the database user</summary>
+        string DatabaseUsername { get; set; }
         /// <summary>
         /// This is a cool down period, this is a time period in seconds, which determines the amount of time that must elapse between
         /// a scaling activity started by a rule and the start of the next scaling activity, regardless of the rule that triggers
@@ -560,6 +803,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
         bool? PrometheuProfileEnabled { get; set; }
         /// <summary>Cluster Prometheus profile.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterPrometheusProfile PrometheusProfile { get; set; }
+        /// <summary>
+        /// List of usernames that should be marked as ranger admins. These usernames should match the user principal name (UPN) of
+        /// the respective AAD users.
+        /// </summary>
+        System.Collections.Generic.List<string> RangerAdmin { get; set; }
+
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpecDatabase RangerAdminDatabase { get; set; }
+        /// <summary>
+        /// Azure storage location of the blobs. MSI should have read/write access to this Storage account.
+        /// </summary>
+        string RangerAuditStorageAccount { get; set; }
+        /// <summary>Cluster Ranger plugin profile.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IClusterRangerPluginProfile RangerPluginProfile { get; set; }
+        /// <summary>Enable Ranger for cluster or not.</summary>
+        bool? RangerPluginProfileEnabled { get; set; }
+        /// <summary>The ranger cluster profile.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerProfile RangerProfile { get; set; }
+        /// <summary>Specification for the Ranger Admin service.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAdminSpec RangerProfileRangerAdmin { get; set; }
+        /// <summary>Properties required to describe audit log storage.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerAuditSpec RangerProfileRangerAudit { get; set; }
+        /// <summary>Specification for the Ranger Usersync service</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IRangerUsersyncSpec RangerProfileRangerUsersync { get; set; }
+        /// <summary>Denotes whether usersync service should be enabled</summary>
+        bool? RangerUsersyncEnabled { get; set; }
+        /// <summary>
+        /// List of groups that should be synced. These group names should match the object id of the respective AAD groups.
+        /// </summary>
+        System.Collections.Generic.List<string> RangerUsersyncGroup { get; set; }
+        /// <summary>
+        /// User & groups can be synced automatically or via a static list that's refreshed.
+        /// </summary>
+        [global::Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.PSArgumentCompleterAttribute("static", "automatic")]
+        string RangerUsersyncMode { get; set; }
+        /// <summary>
+        /// List of user names that should be synced. These usernames should match the User principal name of the respective AAD users.
+        /// </summary>
+        System.Collections.Generic.List<string> RangerUsersyncUser { get; set; }
+        /// <summary>Azure storage location of a mapping file that lists user & group associations.</summary>
+        string RangerUsersyncUserMappingLocation { get; set; }
         /// <summary>
         /// Setting default node count of current schedule configuration. Default node count specifies the number of nodes which are
         /// default when an specified scaling operation is executed (scale up/scale down)

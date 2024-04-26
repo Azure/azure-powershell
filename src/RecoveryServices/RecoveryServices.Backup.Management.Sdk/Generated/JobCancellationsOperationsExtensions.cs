@@ -13,8 +13,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
     public static partial class JobCancellationsOperationsExtensions
     {
         /// <summary>
-        /// Cancels a job. This is an asynchronous operation. To know the status of the cancellation, call
-        /// GetCancelOperationResult API.
+        /// Cancels a job. This is an asynchronous operation. To know the status of the
+        /// cancellation, call GetCancelOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -23,7 +23,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='jobName'>
         /// Name of the job to cancel.
@@ -34,8 +35,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Cancels a job. This is an asynchronous operation. To know the status of the cancellation, call
-        /// GetCancelOperationResult API.
+        /// Cancels a job. This is an asynchronous operation. To know the status of the
+        /// cancellation, call GetCancelOperationResult API.
         /// </summary>
         /// <param name='operations'>
         /// The operations group for this extension method.
@@ -44,7 +45,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='jobName'>
         /// Name of the job to cancel.

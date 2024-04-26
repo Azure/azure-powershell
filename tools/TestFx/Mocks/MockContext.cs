@@ -106,7 +106,7 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
                     $"Unable to create Service Client because {nameof(T)} authentication token was not acquired during Login.");
             }
 
-            return GetServiceClientWithCredentials<T>(currentEnvironment, currentEnvironment.TokenInfo[TokenAudience.Management], internalBaseUri, handlers);
+            return GetServiceClientWithCredentials<T>(currentEnvironment, currentEnvironment.BaseUri, currentEnvironment.TokenInfo[TokenAudience.Management], internalBaseUri, handlers);
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
                     "Unable to create Graph Client because Graph authentication token was not acquired during Login.");
             }
 
-            return GetServiceClientWithCredentials<T>(currentEnvironment, currentEnvironment.TokenInfo[TokenAudience.Graph], internalBaseUri, handlers);
+            return GetServiceClientWithCredentials<T>(currentEnvironment, currentEnvironment.Endpoints.GraphUri, currentEnvironment.TokenInfo[TokenAudience.Graph], internalBaseUri, handlers);
         }
 
         /// <summary>
@@ -146,14 +146,15 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
         /// <param name="baseUri">Base Uri</param>
         /// <param name="handlers">Delegating existingHandlers</param>
         /// <returns></returns>
-        public T GetServiceClientWithCredentials<T>(TestEnvironment currentEnvironment, object credentials, bool internalBaseUri = false, params DelegatingHandler[] handlers) where T : class
+        public T GetServiceClientWithCredentials<T>(TestEnvironment currentEnvironment, Uri baseUri, object credentials, bool internalBaseUri, params DelegatingHandler[] handlers) where T : class
         {
             T client;
             handlers = AddHandlers(currentEnvironment, handlers);
             var constructors = typeof(T).GetConstructors(BindingFlags.Public | BindingFlags.Static | BindingFlags.Instance | BindingFlags.NonPublic);
 
+            Uri uri = baseUri ?? currentEnvironment.BaseUri;
             ConstructorInfo constructor = null;
-            if (!internalBaseUri && currentEnvironment.BaseUri != null)
+            if (!internalBaseUri && uri != null)
             {
                 foreach (var c in constructors)
                 {
@@ -173,7 +174,7 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
                 }
                 client = constructor.Invoke(new object[]
                 {
-                    currentEnvironment.BaseUri,
+                    uri,
                     credentials,
                     handlers
                 }) as T;

@@ -17,7 +17,8 @@ Creates a new Template Spec.
 New-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <String> [-Description <String>]
  [-DisplayName <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateJson <String>
  [-VersionDescription <String>] [-Force] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### FromJsonFileParameterSet
@@ -25,7 +26,8 @@ New-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <Stri
 New-AzTemplateSpec [-ResourceGroupName] <String> [-Name] <String> -Version <String> [-Description <String>]
  [-DisplayName <String>] [-Location <String>] [-Tag <Hashtable>] -TemplateFile <String>
  [-VersionDescription <String>] [-Force] [-UIFormDefinitionFile <String>] [-UIFormDefinitionString <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

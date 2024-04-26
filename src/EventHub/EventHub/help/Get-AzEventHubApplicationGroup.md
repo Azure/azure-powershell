@@ -21,7 +21,8 @@ Get-AzEventHubApplicationGroup -NamespaceName <String> -ResourceGroupName <Strin
 ### Get
 ```
 Get-AzEventHubApplicationGroup -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity

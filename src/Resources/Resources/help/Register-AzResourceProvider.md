@@ -15,8 +15,8 @@ Registers a resource provider.
 
 ```
 Register-AzResourceProvider -ProviderNamespace <String> [-ConsentToPermissions <Boolean>] [-AsJob]
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -173,5 +173,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzResourceProvider](./Get-AzResourceProvider.md)
 
 [Unregister-AzResourceProvider](./Unregister-AzResourceProvider.md)
-
-

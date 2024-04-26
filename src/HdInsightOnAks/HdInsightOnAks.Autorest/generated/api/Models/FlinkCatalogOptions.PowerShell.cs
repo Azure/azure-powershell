@@ -106,6 +106,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptionsInternal)this).Hive = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkHiveCatalogOption) content.GetValueForProperty("Hive",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptionsInternal)this).Hive, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkHiveCatalogOptionTypeConverter.ConvertFrom);
             }
+            if (content.Contains("HiveMetastoreDbConnectionAuthenticationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptionsInternal)this).HiveMetastoreDbConnectionAuthenticationMode = (string) content.GetValueForProperty("HiveMetastoreDbConnectionAuthenticationMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptionsInternal)this).HiveMetastoreDbConnectionAuthenticationMode, global::System.Convert.ToString);
+            }
             if (content.Contains("HiveMetastoreDbConnectionPasswordSecret"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptionsInternal)this).HiveMetastoreDbConnectionPasswordSecret = (string) content.GetValueForProperty("HiveMetastoreDbConnectionPasswordSecret",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptionsInternal)this).HiveMetastoreDbConnectionPasswordSecret, global::System.Convert.ToString);
@@ -138,6 +142,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models
             if (content.Contains("Hive"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptionsInternal)this).Hive = (Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkHiveCatalogOption) content.GetValueForProperty("Hive",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptionsInternal)this).Hive, Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.FlinkHiveCatalogOptionTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("HiveMetastoreDbConnectionAuthenticationMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptionsInternal)this).HiveMetastoreDbConnectionAuthenticationMode = (string) content.GetValueForProperty("HiveMetastoreDbConnectionAuthenticationMode",((Microsoft.Azure.PowerShell.Cmdlets.HdInsightOnAks.Models.IFlinkCatalogOptionsInternal)this).HiveMetastoreDbConnectionAuthenticationMode, global::System.Convert.ToString);
             }
             if (content.Contains("HiveMetastoreDbConnectionPasswordSecret"))
             {

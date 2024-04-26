@@ -1,6 +1,6 @@
 ---
 external help file: Az.ApplicationInsights-help.xml
-Module Name: Az.Applicationinsights
+Module Name: Az.ApplicationInsights
 online version: https://learn.microsoft.com/powershell/module/az.applicationinsights/remove-azapplicationinsightscontinuousexport
 schema: 2.0.0
 ---
@@ -15,7 +15,8 @@ Delete a Continuous Export configuration of an Application Insights component.
 ### Delete (Default)
 ```
 Remove-AzApplicationInsightsContinuousExport -ExportId <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -39,7 +40,8 @@ Remove a continuous export configuration in an application insights resource
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -174,26 +176,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20150501.IApplicationInsightsComponentExportConfiguration
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IApplicationInsightsIdentity>`: Identity Parameter
-  - `[AnnotationId <String>]`: The unique annotation ID. This is unique within a Application Insights component.
-  - `[ComponentName <String>]`: The name of the Application Insights component resource.
-  - `[ExportId <String>]`: The Continuous Export configuration ID. This is unique within a Application Insights component.
-  - `[Id <String>]`: Resource identity path
-  - `[KeyId <String>]`: The API Key ID. This is unique within a Application Insights component.
-  - `[PurgeId <String>]`: In a purge status request, this is the Id of the operation the status of which is returned.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceName <String>]`: The name of the Application Insights component resource.
-  - `[RevisionId <String>]`: The id of the workbook's revision.
-  - `[StorageType <StorageType?>]`: The type of the Application Insights component data source for the linked storage account.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[WebTestName <String>]`: The name of the Application Insights WebTest resource.
 
 ## RELATED LINKS

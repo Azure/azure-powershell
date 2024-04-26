@@ -183,6 +183,11 @@ namespace Microsoft.Azure.Management.Compute
         /// <param name='sshPublicKeyName'>
         /// The name of the SSH public key.
         /// </param>
+        /// <param name='encryptionType'>
+        /// The encryption type of the SSH keys to be generated. See
+        /// SshEncryptionTypes for possible set of values. If not provided,
+        /// will default to RSA. Possible values include: 'RSA', 'Ed25519'
+        /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
         /// </param>
@@ -198,7 +203,7 @@ namespace Microsoft.Azure.Management.Compute
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<SshPublicKeyGenerateKeyPairResult>> GenerateKeyPairWithHttpMessagesAsync(string resourceGroupName, string sshPublicKeyName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse<SshPublicKeyGenerateKeyPairResult>> GenerateKeyPairWithHttpMessagesAsync(string resourceGroupName, string sshPublicKeyName, string encryptionType = default(string), Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Lists all of the SSH public keys in the subscription. Use the
         /// nextLink property in the response to get the next page of SSH

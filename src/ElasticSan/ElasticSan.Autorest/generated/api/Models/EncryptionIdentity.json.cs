@@ -65,7 +65,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return;
             }
-            {_encryptionUserAssignedIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("userAssignedIdentity"), out var __jsonUserAssignedIdentity) ? (string)__jsonUserAssignedIdentity : (string)EncryptionUserAssignedIdentity;}
+            {_encryptionUserAssignedIdentity = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("userAssignedIdentity"), out var __jsonUserAssignedIdentity) ? (string)__jsonUserAssignedIdentity : (string)_encryptionUserAssignedIdentity;}
             AfterFromJson(json);
         }
 

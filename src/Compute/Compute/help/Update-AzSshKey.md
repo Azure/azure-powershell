@@ -15,19 +15,21 @@ Update a SSH Public Key resource.
 ### DefaultParameterSet (Default)
 ```
 Update-AzSshKey -ResourceGroupName <String> -Name <String> -PublicKey <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ResourceIDParameterSet
 ```
-Update-AzSshKey -ResourceId <String> -PublicKey <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Update-AzSshKey -ResourceId <String> -PublicKey <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Update-AzSshKey -InputObject <PSSshPublicKeyResource> -PublicKey <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

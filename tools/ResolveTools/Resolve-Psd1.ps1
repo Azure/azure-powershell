@@ -14,16 +14,18 @@
 
 # This will resolve the issues in root module psd1 file of every Az module
 # ```powershell
-# ./tools/ResolveTools/Resolve-Psd1.ps1 -Module ManagedServiceIdentity -Psd1Folder src/ManagedServiceIdentity/ManagedServiceIdentity
+# ./tools/ResolveTools/Resolve-Psd1.ps1 -Module ManagedServiceIdentity -ArtifactFolder ./artifacts -Psd1Folder src/ManagedServiceIdentity/ManagedServiceIdentity
 # ```
 
 Param(
     [Parameter(Mandatory = $true)]
     [string] $ModuleName,
     [Parameter(Mandatory = $true)]
+    [string] $ArtifactFolder,
+    [Parameter(Mandatory = $true)]
     [string] $Psd1Folder
 )
-Import-Module "$PSScriptRoot/../../artifacts/Debug/Az.$ModuleName/Az.$ModuleName.psd1" -Force
+Import-Module "$ArtifactFolder/Debug/Az.$ModuleName/Az.$ModuleName.psd1" -Force
 $HelpFolder = "$Psd1Folder/help"
 $ModuleMatadata = Get-Module "Az.$ModuleName"
 

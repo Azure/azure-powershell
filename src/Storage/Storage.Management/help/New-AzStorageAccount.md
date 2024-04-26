@@ -29,7 +29,8 @@ New-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-SkuName] <
  [-AllowCrossTenantReplication <Boolean>] [-DefaultSharePermission <String>] [-EdgeZone <String>]
  [-PublicNetworkAccess <String>] [-EnableAccountLevelImmutability] [-ImmutabilityPeriod <Int32>]
  [-ImmutabilityPolicyState <String>] [-AllowedCopyScope <String>] [-DnsEndpointType <String>]
- [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [<CommonParameters>]
 ```
 
 ### AzureActiveDirectoryKerberosForFile
@@ -188,7 +189,7 @@ $a.AllowSharedKeyAccess
 False
 ```
 
-The command create account with MinimumTlsVersion, AllowBlobPublicAccess, and disable SharedKey access to the account, and then show the the 3 properties of the created account 
+The command create account with MinimumTlsVersion, AllowBlobPublicAccess, and disable SharedKey access to the account, and then show the 3 properties of the created account 
 
 ### Example 10: Create a Storage account with RoutingPreference setting
 <!-- Skip: Output cannot be splitted from code -->
@@ -524,7 +525,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowBlobPublicAccess
-Allow public access to all blobs or containers in the storage account. The default interpretation is true for this property.
+Allow anonymous access to all blobs or containers in the storage account. The default interpretation is false for this property.
 
 ```yaml
 Type: System.Boolean
@@ -539,7 +540,7 @@ Accept wildcard characters: False
 ```
 
 ### -AllowCrossTenantReplication
-Gets or sets allow or disallow cross Microsoft Entra tenant object replication. The default interpretation is true for this property.
+Gets or sets allow or disallow cross Microsoft Entra tenant object replication. The default interpretation is false for this property.
 
 ```yaml
 Type: System.Boolean
@@ -1252,7 +1253,7 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentityId
-Set resource ids for the the new Storage Account user assigned Identity, the identity will be used with key management services like Azure KeyVault.
+Set resource ids for the new Storage Account user assigned Identity, the identity will be used with key management services like Azure KeyVault.
 
 ```yaml
 Type: System.String

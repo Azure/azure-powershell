@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Workloads-help.xml
 Module Name: Az.Workloads
 online version: https://learn.microsoft.com/powershell/module/az.workloads/update-azworkloadssaplandscapemonitor
 schema: 2.0.0
@@ -17,8 +17,8 @@ Patches the SAP Landscape Monitor Dashboard for the specified subscription, reso
 Update-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-GroupingLandscape <ISapLandscapeMonitorSidMapping[]>]
  [-GroupingSapApplication <ISapLandscapeMonitorSidMapping[]>]
- [-TopMetricsThreshold <ISapLandscapeMonitorMetricThresholds[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-TopMetricsThreshold <ISapLandscapeMonitorMetricThresholds[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -26,8 +26,8 @@ Update-AzWorkloadsSapLandscapeMonitor -MonitorName <String> -ResourceGroupName <
 Update-AzWorkloadsSapLandscapeMonitor -InputObject <IWorkloadsIdentity>
  [-GroupingLandscape <ISapLandscapeMonitorSidMapping[]>]
  [-GroupingSapApplication <ISapLandscapeMonitorSidMapping[]>]
- [-TopMetricsThreshold <ISapLandscapeMonitorMetricThresholds[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-TopMetricsThreshold <ISapLandscapeMonitorMetricThresholds[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -251,38 +251,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`GROUPINGLANDSCAPE <ISapLandscapeMonitorSidMapping[]>`: Gets or sets the list of landscape to SID mappings.
-  - `[Name <String>]`: Gets or sets the name of the grouping.
-  - `[TopSid <String[]>]`: Gets or sets the list of SID's.
-
-`GROUPINGSAPAPPLICATION <ISapLandscapeMonitorSidMapping[]>`: Gets or sets the list of Sap Applications to SID mappings.
-  - `[Name <String>]`: Gets or sets the name of the grouping.
-  - `[TopSid <String[]>]`: Gets or sets the list of SID's.
-
-`INPUTOBJECT <IWorkloadsIdentity>`: Identity Parameter
-  - `[ApplicationInstanceName <String>]`: The name of SAP Application Server instance resource.
-  - `[CentralInstanceName <String>]`: Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
-  - `[DatabaseInstanceName <String>]`: Database resource name string modeled as parameter for auto generation to work correctly.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The name of Azure region.
-  - `[MonitorName <String>]`: Name of the SAP monitor resource.
-  - `[ProviderInstanceName <String>]`: Name of the provider instance.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SapVirtualInstanceName <String>]`: The name of the Virtual Instances for SAP solutions resource
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-
-`TOPMETRICSTHRESHOLD <ISapLandscapeMonitorMetricThresholds[]>`: Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
-  - `[Green <Single?>]`: Gets or sets the threshold value for Green.
-  - `[Name <String>]`: Gets or sets the name of the threshold.
-  - `[Red <Single?>]`: Gets or sets the threshold value for Red.
-  - `[Yellow <Single?>]`: Gets or sets the threshold value for Yellow.
-
 ## RELATED LINKS
-

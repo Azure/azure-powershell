@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionpolicytagcriteriaclientobject
 schema: 2.0.0
@@ -14,20 +14,22 @@ Creates a new criteria object
 
 ### ScheduleCriteria (Default)
 ```
-New-AzDataProtectionPolicyTagCriteriaClientObject [-DaysOfWeek <DaysOfWeek[]>]
- [-MonthsOfYear <MonthsOfYear[]>] [-ScheduleTimes <DateTime[]>] [-WeeksOfMonth <WeeksOfMonth[]>]
+New-AzDataProtectionPolicyTagCriteriaClientObject [-DaysOfWeek <DaysOfWeek[]>] [-WeeksOfMonth <WeeksOfMonth[]>]
+ [-MonthsOfYear <MonthsOfYear[]>] [-ScheduleTimes <DateTime[]>]
  [<CommonParameters>]
 ```
 
 ### AbsoluteCriteria
 ```
-New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria <AbsoluteTagCriteria> [<CommonParameters>]
+New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria <AbsoluteTagCriteria>
+ [<CommonParameters>]
 ```
 
 ### MonthlyCriteria
 ```
-New-AzDataProtectionPolicyTagCriteriaClientObject -DaysOfMonth <String[]> [-MonthsOfYear <MonthsOfYear[]>]
- [-ScheduleTimes <DateTime[]>] [<CommonParameters>]
+New-AzDataProtectionPolicyTagCriteriaClientObject [-MonthsOfYear <MonthsOfYear[]>]
+ [-ScheduleTimes <DateTime[]>] -DaysOfMonth <String[]>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,7 +37,7 @@ Creates a new criteria object
 
 ## EXAMPLES
 
-### Example 1: Create a tag with absolute criteria 
+### Example 1: Create a tag with absolute criteria
 ```powershell
 New-AzDataProtectionPolicyTagCriteriaClientObject -AbsoluteCriteria FirstOfDay
 ```
@@ -70,6 +72,7 @@ Absolute criteria
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AbsoluteTagCriteria
 Parameter Sets: AbsoluteCriteria
 Aliases:
+Accepted values: AllBackup, FirstOfDay, FirstOfMonth, FirstOfWeek, FirstOfYear
 
 Required: True
 Position: Named
@@ -101,6 +104,7 @@ Days of the week
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DaysOfWeek[]
 Parameter Sets: ScheduleCriteria
 Aliases:
+Accepted values: Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday
 
 Required: False
 Position: Named
@@ -114,8 +118,9 @@ Months of the year.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.MonthsOfYear[]
-Parameter Sets: MonthlyCriteria, ScheduleCriteria
+Parameter Sets: ScheduleCriteria, MonthlyCriteria
 Aliases:
+Accepted values: January, February, March, April, May, June, July, August, September, October, November, December
 
 Required: False
 Position: Named
@@ -129,7 +134,7 @@ Schedule times.
 
 ```yaml
 Type: System.DateTime[]
-Parameter Sets: MonthlyCriteria, ScheduleCriteria
+Parameter Sets: ScheduleCriteria, MonthlyCriteria
 Aliases:
 
 Required: False
@@ -146,6 +151,7 @@ Weeks of the month.
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.WeeksOfMonth[]
 Parameter Sets: ScheduleCriteria
 Aliases:
+Accepted values: First, Second, Third, Fourth, Last
 
 Required: False
 Position: Named
@@ -161,11 +167,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IScheduleBasedBackupCriteria
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IScheduleBasedBackupCriteria
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

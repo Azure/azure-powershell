@@ -16,21 +16,22 @@ Removes a Management Group scoped Deployment Stack.
 ```
 Remove-AzManagementGroupDeploymentStack [-Name] <String> [-ManagementGroupId] <String> [-DeleteAll]
  [-DeleteResources] [-DeleteResourceGroups] [-PassThru] [-Force] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### RemoveByResourceId
 ```
 Remove-AzManagementGroupDeploymentStack -ResourceId <String> [-DeleteAll] [-DeleteResources]
- [-DeleteResourceGroups] [-PassThru] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DeleteResourceGroups] [-PassThru] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RemoveByStackObject
 ```
 Remove-AzManagementGroupDeploymentStack [-InputObjet] <PSDeploymentStack> [-DeleteAll] [-DeleteResources]
- [-DeleteResourceGroups] [-PassThru] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-DeleteResourceGroups] [-PassThru] [-Force] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

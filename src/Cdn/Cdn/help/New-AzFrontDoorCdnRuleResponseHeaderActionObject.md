@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Cdn-help.xml
 Module Name: Az.Cdn
 online version: https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnRuleResponseHeaderActionObject
 schema: 2.0.0
@@ -13,8 +13,8 @@ Create an in-memory object for DeliveryRuleResponseHeaderAction.
 ## SYNTAX
 
 ```
-New-AzFrontDoorCdnRuleResponseHeaderActionObject -Name <DeliveryRuleAction>
- -ParameterHeaderAction <HeaderAction> -ParameterHeaderName <String> [-ParameterValue <String>]
+New-AzFrontDoorCdnRuleResponseHeaderActionObject -ParameterHeaderAction <HeaderAction>
+ -ParameterHeaderName <String> -Name <DeliveryRuleAction> [-ParameterValue <String>]
  [<CommonParameters>]
 ```
 
@@ -105,11 +105,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.DeliveryRuleResponseHeaderAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.DeliveryRuleResponseHeaderAction
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

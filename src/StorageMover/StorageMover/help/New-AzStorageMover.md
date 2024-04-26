@@ -15,14 +15,15 @@ Creates or updates a top-level Storage Mover resource.
 ### CreateExpanded (Default)
 ```
 New-AzStorageMover -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
- [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Description <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzStorageMover -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -StorageMover <IStorageMover> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -StorageMover <IStorageMover> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

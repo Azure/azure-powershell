@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Workloads-help.xml
 Module Name: Az.Workloads
 online version: https://learn.microsoft.com/powershell/module/Az.Workloads/new-AzWorkloadsSapLandscapeMonitorSidMappingObject
 schema: 2.0.0
@@ -13,7 +13,8 @@ Create an in-memory object for SapLandscapeMonitorSidMapping.
 ## SYNTAX
 
 ```
-New-AzWorkloadsSapLandscapeMonitorSidMappingObject [-Name <String>] [-TopSid <String[]>] [<CommonParameters>]
+New-AzWorkloadsSapLandscapeMonitorSidMappingObject [-Name <String>] [-TopSid <String[]>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +78,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

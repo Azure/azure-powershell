@@ -1,4 +1,3 @@
-
     # ----------------------------------------------------------------------------------
     #
     # Copyright Microsoft Corporation
@@ -20,12 +19,12 @@
     Create a in-memory object for AddonSrmProperties
 
     .Outputs
-    Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonSrmProperties
+    Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AddonSrmProperties
     .Link
     https://learn.microsoft.com/powershell/module/az.VMware/new-AzVMwareAddonSrmPropertiesObject
     #>
     function New-AzVMwareAddonSrmPropertiesObject {
-        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonSrmProperties')]
+        [OutputType('Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AddonSrmProperties')]
         [CmdletBinding(PositionalBinding=$false)]
         Param(
     
@@ -35,7 +34,7 @@
         )
 
         process {
-            $Object = [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.AddonSrmProperties]::New()
+            $Object = [Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.AddonSrmProperties]::New()
     
             $Object.LicenseKey = $LicenseKey
             $Object.AddonType = "SRM"

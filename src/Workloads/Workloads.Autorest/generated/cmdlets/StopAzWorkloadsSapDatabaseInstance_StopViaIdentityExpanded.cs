@@ -16,6 +16,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api30.IOperationStatusResult))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Description(@"Stops the database instance of the SAP system.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}/stop", ApiVersion = "2023-10-01-preview")]
     public partial class StopAzWorkloadsSapDatabaseInstance_StopViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener
     {
@@ -29,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
         private string __processRecordId;
 
         /// <summary>Stop SAP instance(s) request body.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IStopRequest _body = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.StopRequest();
+        private Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.IStopRequest _body = new Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20231001Preview.StopRequest();
 
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
@@ -48,6 +49,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Workloads.WorkloadsClient Client => Microsoft.Azure.PowerShell.Cmdlets.Workloads.Module.Instance.ClientAPI;
+
+        /// <summary>
+        /// The boolean value indicates whether to Stop and deallocate the virtual machines along with the SAP instances.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The boolean value indicates whether to Stop and deallocate the virtual machines along with the SAP instances.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Workloads.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The boolean value indicates whether to Stop and deallocate the virtual machines along with the SAP instances.",
+        SerializedName = @"deallocateVm",
+        PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
+        public global::System.Management.Automation.SwitchParameter DeallocateVM { get => _body.DeallocateVM ?? default(global::System.Management.Automation.SwitchParameter); set => _body.DeallocateVM = value; }
 
         /// <summary>
         /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
@@ -202,7 +216,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Workloads.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -403,6 +434,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Workloads.Cmdlets
         {
             ((Microsoft.Azure.PowerShell.Cmdlets.Workloads.Runtime.IEventListener)this).Cancel();
             base.StopProcessing();
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Workloads.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Workloads.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

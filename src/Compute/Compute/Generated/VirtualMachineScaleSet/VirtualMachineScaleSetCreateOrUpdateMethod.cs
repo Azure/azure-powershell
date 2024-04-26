@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 var res = VirtualMachineScaleSetsClient.CreateOrUpdateWithHttpMessagesAsync(
                                         resourceGroupName,
                                         vmScaleSetName,
-                                        parameters,
+                                        parameters,null,null,
                                         auxAuthHeader).GetAwaiter().GetResult();
 
                                 result = res.Body;
@@ -395,5 +395,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "UserData for the Vmss, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipelineByPropertyName = true)]
         public string UserData { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Whether OS upgrades should automatically be applied to scale set instances in a rolling fashion when a newer version of the image becomes available.")]
+        public SwitchParameter EnableAutomaticOSUpgrade{ get; set; }
     }
 }

@@ -35,7 +35,7 @@ if(-not $hasProfiles) {
 
 $docsFolder = Join-Path $PSScriptRoot 'docs'
 if(Test-Path $docsFolder) {
-  $null = Get-ChildItem -Path $docsFolder -Recurse -Exclude 'readme.md' | Remove-Item -Recurse -ErrorAction SilentlyContinue
+  $null = Get-ChildItem -Path $docsFolder -Recurse -Exclude 'README.md' | Remove-Item -Recurse -ErrorAction SilentlyContinue
 }
 $null = New-Item -ItemType Directory -Force -Path $docsFolder -ErrorAction SilentlyContinue
 $examplesFolder = Join-Path $PSScriptRoot 'examples'
@@ -66,8 +66,8 @@ foreach($directory in $directories)
   $docsPath = Join-Path $docsFolder $directory.Name
   $null = New-Item -ItemType Directory -Force -Path $docsPath -ErrorAction SilentlyContinue
   $examplesPath = Join-Path $examplesFolder $directory.Name
-
-  Export-HelpMarkdown -ModuleInfo $moduleInfo -FunctionInfo $cmdletFunctionInfo -HelpInfo $cmdletHelpInfo -DocsFolder $docsPath -ExamplesFolder $examplesPath
+  $addComplexInterfaceInfo = ![System.Convert]::ToBoolean('true')
+  Export-HelpMarkdown -ModuleInfo $moduleInfo -FunctionInfo $cmdletFunctionInfo -HelpInfo $cmdletHelpInfo -DocsFolder $docsPath -ExamplesFolder $examplesPath -AddComplexInterfaceInfo:$addComplexInterfaceInfo
   Write-Host -ForegroundColor Green "Created documentation in '$docsPath'"
 }
 

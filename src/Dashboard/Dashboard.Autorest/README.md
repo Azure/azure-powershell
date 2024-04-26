@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the Dashboard service.
 
 ---
-## Status
-[![Az.Dashboard](https://img.shields.io/powershellgallery/v/Az.Dashboard.svg?style=flat-square&label=Az.Dashboard "Az.Dashboard")](https://www.powershellgallery.com/packages/Az.Dashboard/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -30,9 +27,9 @@ For information on how to develop for `Az.Dashboard`, see [how-to.md](how-to.md)
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 02ed6d4aac29881364f8698b4fdac9c76cd0f538
+commit: 02ed6d4aac29881364f8698b4fdac9c76cd0f538
 require:
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
   - $(repo)/specification/dashboard/resource-manager/Microsoft.Dashboard/stable/2022-08-01/grafana.json
 
@@ -43,6 +40,10 @@ subject-prefix: Grafana
 identity-correction-for-post: true
 resourcegroup-append: true
 nested-object-to-string: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   - from: swagger-document 

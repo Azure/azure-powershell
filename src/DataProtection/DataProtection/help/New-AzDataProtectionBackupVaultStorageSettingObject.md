@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataProtection-help.xml
 Module Name: Az.DataProtection
 online version: https://learn.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvaultstoragesettingobject
 schema: 2.0.0
@@ -13,7 +13,7 @@ Get Backup Vault storage setting object
 ## SYNTAX
 
 ```
-New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType <DataStoreType> -Type <StorageSettingType>
+New-AzDataProtectionBackupVaultStorageSettingObject -Type <StorageSettingType> -DataStoreType <DataStoreType>
  [<CommonParameters>]
 ```
 
@@ -44,6 +44,7 @@ DataStore Type of the vault
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.DataStoreType
 Parameter Sets: (All)
 Aliases:
+Accepted values: ArchiveStore, OperationalStore, VaultStore
 
 Required: True
 Position: Named
@@ -59,6 +60,7 @@ Storage Type of the vault
 Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.StorageSettingType
 Parameter Sets: (All)
 Aliases:
+Accepted values: GeoRedundant, LocallyRedundant, ZoneRedundant
 
 Required: True
 Position: Named
@@ -78,7 +80,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

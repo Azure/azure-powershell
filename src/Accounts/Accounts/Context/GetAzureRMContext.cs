@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Management.Automation;
@@ -103,10 +104,8 @@ namespace Microsoft.Azure.Commands.Profile
                 var profile = DefaultProfile as AzureRmProfile;
                 if (profile != null && profile.Contexts != null)
                 {
-                    foreach (var context in profile.Contexts)
-                    {
-                        WriteContext(context.Value, context.Key);
-                    }
+                    WritePSAzureContext(profile.Contexts.Select(context => ToPSAzureContext(context.Value, context.Key)).
+                        OrderBy(context => context.Tenant.Id).ThenBy(context => context.Subscription.Name));
                 }
 
             }
@@ -130,7 +129,7 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
-        void WriteContext(IAzureContext azureContext, string name)
+        private PSAzureContext ToPSAzureContext(IAzureContext azureContext, string name)
         {
             var context = new PSAzureContext(azureContext);
             if (name != null)
@@ -138,16 +137,29 @@ namespace Microsoft.Azure.Commands.Profile
                 context.Name = name;
             }
 
+            return context;
+        }
+
+        private void WritePSAzureContext(IEnumerable<PSAzureContext> psAzureContext) => 
+            psAzureContext?.ForEach(context => WritePSAzureContext(context));
+        
+        private void WritePSAzureContext(PSAzureContext psAzureContext)
+        {
+            if (psAzureContext == null) return;
+
             // Don't write the default (empty) context to the output stream
-            if (context.Account == null &&
-                context.Environment == null &&
-                context.Subscription == null &&
-                context.Tenant == null)
+            if (psAzureContext.Account == null &&
+                psAzureContext.Environment == null &&
+                psAzureContext.Subscription == null &&
+                psAzureContext.Tenant == null)
             {
                 return;
             }
 
-            WriteObject(context);
+            WriteObject(psAzureContext);
         }
+
+        void WriteContext(IAzureContext azureContext, string name) =>
+            WritePSAzureContext(ToPSAzureContext(azureContext, name));
     }
 }

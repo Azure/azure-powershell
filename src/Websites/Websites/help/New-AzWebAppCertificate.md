@@ -15,7 +15,8 @@ Creates an App service managed certificate for an Azure Web App.
 ```
 New-AzWebAppCertificate [-ResourceGroupName] <String> [-WebAppName] <String> [-Name <String>]
  [[-Slot] <String>] [-HostName] <String> [-AddBinding] [-SslState <SslState>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

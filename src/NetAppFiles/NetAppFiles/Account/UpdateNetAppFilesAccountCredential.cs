@@ -22,6 +22,7 @@ using Microsoft.Azure.Management.NetApp.Models;
 using Microsoft.Azure.Commands.NetAppFiles.Helpers;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System.Collections.Generic;
+using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Account
 {
@@ -94,11 +95,18 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Account
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.UpdateResourceMessage, ResourceGroupName)))
             {
-                AzureNetAppFilesManagementClient.Accounts.RenewCredentials(ResourceGroupName, Name);
-                success = true;                
+                try
+                {
+                    AzureNetAppFilesManagementClient.Accounts.RenewCredentials(ResourceGroupName, Name);
+                    success = true;                
+                }
+                catch(ErrorResponseException ex)
+                {
+                    throw new CloudException(ex.Body.Error.Message, ex);
+                }
             }
 
-            if (PassThru)
+            if (PassThru.IsPresent)
             {
                 WriteObject(success);
             }
