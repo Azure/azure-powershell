@@ -1,0 +1,45 @@
+{
+  "Get-AzSupportOperation+[NoContext]+List+$GET+https://management.azure.com/providers/Microsoft.Support/operations?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Support/operations?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "78961111-fd61-4c58-bb73-5dd7dede60dc" ],
+        "CommandName": [ "Get-AzSupportOperation" ],
+        "FullCommandName": [ "Get-AzSupportOperation_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v11.2.0", "PSVersion/v7.4.2", "Az.Support/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11999" ],
+        "x-ms-request-id": [ "c6d8083d-9ec7-417e-81e4-dcf876693f4a" ],
+        "x-ms-correlation-request-id": [ "c6d8083d-9ec7-417e-81e4-dcf876693f4a" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20240423T181428Z:c6d8083d-9ec7-417e-81e4-dcf876693f4a" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 1FD714A6BE734632ABDC7F49969BCDB1 Ref B: MNZ221060608031 Ref C: 2024-04-23T18:14:28Z" ],
+        "Date": [ "Tue, 23 Apr 2024 18:14:28 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2284" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"name\":\"Microsoft.Support/register/action\",\"display\":{\"description\":\"Registers Support Resource Provider\",\"operation\":\"Registers Support Resource Provider\",\"provider\":\"Registers Support Resource Provider\",\"resource\":\"Support Registration\"}},{\"name\":\"Microsoft.Support/lookUpResourceId/action\",\"display\":{\"description\":\"Looks up resource Id for resource type\",\"operation\":\"Look Up Resource Id\",\"provider\":\"Microsoft Support\",\"resource\":\"Look Up Resource Id\"}},{\"name\":\"Microsoft.Support/checkNameAvailability/action\",\"display\":{\"description\":\"Checks that name is valid and not in use for resource type\",\"operation\":\"Check Name Availability\",\"provider\":\"Microsoft Support\",\"resource\":\"Name Availability\"}},{\"name\":\"Microsoft.Support/services/read\",\"display\":{\"description\":\"Lists one or all Azure services available for support\",\"operation\":\"Reads Services\",\"provider\":\"Microsoft Support\",\"resource\":\"Service\"}},{\"name\":\"Microsoft.Support/services/problemClassifications/read\",\"display\":{\"description\":\"Lists one or all problem classifications for an Azure service\",\"operation\":\"Reads Problem Classifications\",\"provider\":\"Microsoft Support\",\"resource\":\"Problem Classification\"}},{\"name\":\"Microsoft.Support/supportTickets/read\",\"display\":{\"description\":\"Lists one or all support tickets\",\"operation\":\"Reads Support Ticket\",\"provider\":\"Microsoft Support\",\"resource\":\"Support Ticket\"}},{\"name\":\"Microsoft.Support/supportTickets/write\",\"display\":{\"description\":\"Allows creating and updating a support ticket\",\"operation\":\"Writes Support Ticket\",\"provider\":\"Microsoft Support\",\"resource\":\"Support Ticket\"}},{\"name\":\"Microsoft.Support/operationresults/read\",\"display\":{\"description\":\"Gets the result of the asynchronous operation\",\"operation\":\"Get Operation Result\",\"provider\":\"Microsoft Support\",\"resource\":\"Operation Results\"}},{\"name\":\"Microsoft.Support/operationsstatus/read\",\"display\":{\"description\":\"Gets the status of the asynchronous operation\",\"operation\":\"Get Operation Status\",\"provider\":\"Microsoft Support\",\"resource\":\"Operation Status\"}},{\"name\":\"Microsoft.Support/operations/read\",\"display\":{\"description\":\"Lists all operations available on Microsoft.Support resource provider\",\"operation\":\"Lists operations\",\"provider\":\"Microsoft Support\",\"resource\":\"Operations\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

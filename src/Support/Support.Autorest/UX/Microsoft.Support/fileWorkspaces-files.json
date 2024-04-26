@@ -1,0 +1,80 @@
+{
+  "resourceType": "fileWorkspaces/files",
+  "apiVersion": "2024-04-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.support"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSupportFilesNoSubscription",
+      "description": "Returns details of a specific file in a work space.",
+      "path": "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.support/get-azsupportfilesnosubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FileName <String>",
+              "-FileWorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns details of a specific file in a work space.",
+          "parameters": [
+            {
+              "name": "-FileName",
+              "value": "[Path.fileName]"
+            },
+            {
+              "name": "-FileWorkspaceName",
+              "value": "[Path.fileWorkspaceName]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzSupportFile",
+      "description": "Returns details of a specific file in a work space.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.support/get-azsupportfile"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "[-SubscriptionId <String[]>]",
+              "-WorkspaceName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Returns details of a specific file in a work space.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.fileName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-WorkspaceName",
+              "value": "[Path.fileWorkspaceName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
