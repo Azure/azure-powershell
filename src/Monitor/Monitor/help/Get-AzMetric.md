@@ -1,7 +1,6 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+external help file: Az.Metric.psm1-help.xml
 Module Name: Az.Monitor
-ms.assetid: EAFB9C98-000C-4EAC-A32D-6B0F1939AA2F
 online version: https://learn.microsoft.com/powershell/module/az.monitor/get-azmetric
 schema: 2.0.0
 ---
@@ -9,229 +8,210 @@ schema: 2.0.0
 # Get-AzMetric
 
 ## SYNOPSIS
-Gets the metric values of a resource.
+**Lists the metric values for a resource**.
 
 ## SYNTAX
 
-### GetWithDefaultParameters (Default)
+### List2 (Default)
 ```
-Get-AzMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-StartTime <DateTime>] [-EndTime <DateTime>]
- [-MetricFilter <String>] [-Dimension <String[]>] [[-MetricName] <String[]>] [-DetailedOutput]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### GetWithFullParameters
-```
-Get-AzMetric [-ResourceId] <String> [-TimeGrain <TimeSpan>] [-AggregationType <AggregationType>]
- [-StartTime <DateTime>] [-EndTime <DateTime>] [-Top <Int32>] [-OrderBy <String>] [-MetricNamespace <String>]
- [-ResultType <ResultType>] [-MetricFilter <String>] [-Dimension <String[]>] [-MetricName] <String[]>
- [-DetailedOutput] [-DefaultProfile <IAzureContextContainer>]
+Get-AzMetric -ResourceUri <String> [-Aggregation <String>] [-AutoAdjustTimegrain] [-Filter <String>]
+ [-Interval <String>] [-MetricName <String>] [-MetricNamespace <String>] [-OrderBy <String>]
+ [-ResultType <String>] [-RollUpBy <String>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Top <Int32>]
+ [-ValidateDimension] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
+### ListExpanded
+```
+Get-AzMetric [-SubscriptionId <String[]>] [-Aggregation <String>] [-AutoAdjustTimegrain] [-Filter <String>]
+ [-Interval <String>] [-MetricName <String>] [-MetricNamespace <String>] [-OrderBy <String>]
+ [-ResultType <String>] [-RollUpBy <String>] [-StartTime <DateTime>] [-EndTime <DateTime>] [-Top <Int32>]
+ [-ValidateDimension] -Region <String> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ListViaJsonFilePath
+```
+Get-AzMetric [-SubscriptionId <String[]>] -Region <String> -JsonFilePath <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### ListViaJsonString
+```
+Get-AzMetric [-SubscriptionId <String[]>] -Region <String> -JsonString <String> [-DefaultProfile <PSObject>]
+ [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **Get-AzMetric** cmdlet gets the metric values for a specified resource.
+**Lists the metric values for a resource**.
 
 ## EXAMPLES
 
-### Example 1: Get a metric with summarized output
+### Example 1: List the metric data for a subscription
 ```powershell
-Get-AzMetric -ResourceId "/subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3" -TimeGrain 00:01:00
+Get-AzMetric -Region eastus -Aggregation count -AutoAdjustTimegrain -Filter "LUN eq '0' and Microsoft.ResourceId eq '*'" -Interval "PT6H" -MetricName "Data Disk Max Burst IOPS" -MetricNamespace "microsoft.compute/virtualmachines" -Orderby "count desc" -Rollupby "LUN" -StartTime "2023-12-08T19:00:00Z" -EndTime "2023-12-12T01:00:00Z" -Top 10
 ```
 
 ```output
-DimensionName  :
-DimensionValue :
-Name           : AverageResponseTime
-EndTime        : 3/20/2015 6:40:46 PM
-MetricValues   : {Microsoft.Azure.Insights.Models.MetricValue, Microsoft.Azure.Insights.Models.MetricValue,
-                 Microsoft.Azure.Insights.Models.MetricValue, Microsoft.Azure.Insights.Models.MetricValue...}
-Properties     : {}
-ResourceId     : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3
-StartTime      : 3/20/2015 5:40:00 PM
-TimeGrain      : 00:01:00
-Unit           : Seconds
-DimensionName  :
-DimensionValue :
-Name           : AverageMemoryWorkingSet
-EndTime        : 3/20/2015 6:40:46 PM
-MetricValues   : {Microsoft.Azure.Insights.Models.MetricValue, Microsoft.Azure.Insights.Models.MetricValue,
-                 Microsoft.Azure.Insights.Models.MetricValue, Microsoft.Azure.Insights.Models.MetricValue...}
-Properties     : {}
-ResourceId     : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3
-StartTime      : 3/20/2015 5:40:00 PM
-TimeGrain      : 00:01:00
-Unit           : Bytes
+Cost           : 2375
+Interval       : PT6H
+Namespace      : microsoft.compute/virtualmachines
+Resourceregion : eastus
+Timespan       : 2023-12-10T09:23:01Z/2023-12-12T01:00:00Z
+Value          : {{
+                   "name": {
+                     "value": "Data Disk Max Burst IOPS",
+                     "localizedValue": "Data Disk Max Burst IOPS"
+                   },
+                   "id": "subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Insights/metrics/Data Disk Max Burst IOPS",
+                   "type": "Microsoft.Insights/metrics",
+                   "displayDescription": "Maximum IOPS Data Disk can achieve with bursting",
+                   "errorCode": "Success",
+                   "unit": "Count",
+                   "timeseries": [ ]
+                 }}
 ```
 
-This command gets the metric values for website3 with a time grain of 1 minute.
+This command lists the metric data for a subscription.
 
-### Example 2: Get a metric with detailed output
+### Example 2: List the metric values for a specified resource URI
 ```powershell
-Get-AzMetric -ResourceId "/subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3" -TimeGrain 00:01:00 -DetailedOutput
+Get-AzMetric -ResourceUri /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.Storage/storageAccounts/storagetasktest202402281/blobServices/default -Aggregation "average,minimum,maximum" -AutoAdjustTimegrain -Filter "Tier eq '*'" -Interval "PT6H" -MetricName "BlobCount,BlobCapacity" -MetricNamespace "Microsoft.Storage/storageAccounts/blobServices" -Orderby "average asc" -StartTime "2024-03-10T09:00:00Z" -EndTime "2024-03-10T14:00:00Z" -Top 1
 ```
 
 ```output
-MetricValues   :
-                     Average    : 0
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:37:00 PM
-                     Total      : 0
-                     Average    : 0.106
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:39:00 PM
-                     Total      : 0.106
-                     Average    : 0.064
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:41:00 PM
-                     Total      : 0.064
-Properties     :
-DimensionName  :
-DimensionValue :
-Name           : AverageResponseTime
-EndTime        : 3/20/2015 6:43:33 PM
-ResourceId     : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3
-StartTime      : 3/20/2015 5:43:00 PM
-TimeGrain      : 00:01:00
-Unit           : Seconds
+Cost           : 598
+Interval       : PT1H
+Namespace      : Microsoft.Storage/storageAccounts/blobServices
+Resourceregion : eastus2euap
+Timespan       : 2024-03-10T09:00:00Z/2024-03-10T14:00:00Z
+Value          : {{
+                   "name": {
+                     "value": "BlobCount",
+                     "localizedValue": "Blob Count"
+                   },
+                   "id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.Storage/storageAccounts/storagetasktest202402281/blobServices/de 
+                 fault/providers/Microsoft.Insights/metrics/BlobCount",
+                   "type": "Microsoft.Insights/metrics",
+                   "displayDescription": "The number of blob objects stored in the storage account.",
+                   "errorCode": "Success",
+                   "unit": "Count",
+                   "timeseries": [
+                     {
+                       "metadatavalues": [
+                         {
+                           "name": {
+                             "value": "tier",
+                             "localizedValue": "tier"
+                           },
+                           "value": "Standard"
+                         }
+                       ],
+                       "data": [
+                         {
+                           "timeStamp": "2024-03-10T09:00:00.0000000Z",
+                           "average": 0,
+                           "minimum": 0,
+                           "maximum": 0
+                         },
+                         {
+                           "timeStamp": "2024-03-10T10:00:00.0000000Z",
+                           "average": 0,
+                           "minimum": 0,
+                           "maximum": 0
+                         },
+                         {
+                           "timeStamp": "2024-03-10T11:00:00.0000000Z",
+                           "average": 0,
+                           "minimum": 0,
+                           "maximum": 0
+                         },
+                         {
+                           "timeStamp": "2024-03-10T12:00:00.0000000Z",
+                           "average": 0,
+                           "minimum": 0,
+                           "maximum": 0
+                         },
+                         {
+                           "timeStamp": "2024-03-10T13:00:00.0000000Z",
+                           "average": 0,
+                           "minimum": 0,
+                           "maximum": 0
+                         }
+                       ]
+                     }
+                   ]
+                 }, {
+                   "name": {
+                     "value": "BlobCapacity",
+                     "localizedValue": "Blob Capacity"
+                   },
+                   "id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.Storage/storageAccounts/storagetasktest202402281/blobServices/de 
+                 fault/providers/Microsoft.Insights/metrics/BlobCapacity",
+                   "type": "Microsoft.Insights/metrics",
+                   "displayDescription": "The amount of storage used by the storage account\u0027s Blob service in bytes.",
+                   "errorCode": "Success",
+                   "unit": "Bytes",
+                   "timeseries": [
+                     {
+                       "metadatavalues": [
+                         {
+                           "name": {
+                             "value": "tier",
+                             "localizedValue": "tier"
+                           },
+                           "value": "Premium"
+                         }
+                       ],
+                       "data": [
+                         {
+                           "timeStamp": "2024-03-10T09:00:00.0000000Z",
+                           "average": 0,
+                           "minimum": 0,
+                           "maximum": 0
+                         },
+                         {
+                           "timeStamp": "2024-03-10T10:00:00.0000000Z",
+                           "average": 0,
+                           "minimum": 0,
+                           "maximum": 0
+                         },
+                         {
+                           "timeStamp": "2024-03-10T11:00:00.0000000Z",
+                           "average": 0,
+                           "minimum": 0,
+                           "maximum": 0
+                         },
+                         {
+                           "timeStamp": "2024-03-10T12:00:00.0000000Z",
+                           "average": 0,
+                           "minimum": 0,
+                           "maximum": 0
+                         },
+                         {
+                           "timeStamp": "2024-03-10T13:00:00.0000000Z",
+                           "average": 0,
+                           "minimum": 0,
+                           "maximum": 0
+                         }
+                       ]
+                     }
+                   ]
+                 }}
 ```
 
-This command gets the metric values for website3 with a time grain of 1 minute.
-The output is detailed.
-
-### Example 3: Get detailed output for a specified metric
-```powershell
-Get-AzMetric -ResourceId "/subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3" -MetricName "Requests" -TimeGrain 00:01:00 -DetailedOutput
-```
-
-```output
-MetricValues   :
-                     Average    : 1
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:39:00 PM
-                     Total      : 1
-                     Average    : 1
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:41:00 PM
-                     Total      : 1
-                     Average    : 0
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:43:00 PM
-                     Total      : 0
-                     Average    : 1
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:44:00 PM
-                     Total      : 1
-                     Average    : 0
-                     Count      : 1
-                     Last       :
-                     Maximum    :
-                     Minimum    :
-                     Properties :
-                     Timestamp  : 3/20/2015 6:45:00 PM
-                     Total      : 0
-Properties     :
-DimensionName  :
-DimensionValue :
-Name           : Requests
-EndTime        : 3/20/2015 6:47:56 PM
-ResourceId     : /subscriptions/e3f5b07d-3c39-4b0f-bf3b-40fdeba10f2a/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/website3
-StartTime      : 3/20/2015 5:47:00 PM
-TimeGrain      : 00:01:00
-Unit           : Count
-```
-
-This command gets detailed output for the Requests metric.
-
-### Example 4: Get summarized output for a specified metric with specified dimension filter
-```powershell
-$dimFilter = @((New-AzMetricFilter -Dimension City -Operator eq -Value "Seattle","Toronto"), (New-AzMetricFilter -Dimension AuthenticationType -Operator eq -Value User))
-
-Get-AzMetric -ResourceId <resourceId> -MetricName PageViews -TimeGrain 00:05:00 -MetricFilter $dimFilter -StartTime 2018-02-01T12:00:00Z -EndTime 2018-02-01T12:10:00Z -AggregationType Average
-```
-
-```output
-ResourceId	: [ResourceId]
-MetricNamespace	: Microsoft.Insights/ApplicationInsights
-Metric Name	:
-LocalizedValue	: Page Views
-Value		: PageViews
-Unit		: Seconds
-Timeseries	:
-City 		: Seattle
-AuthenticationType 	: User
-
-Timestamp	: 2018-02-01 12:00:00 PM
-Average		: 3518
-
-Timestamp	: 2018-02-01 12:05:00 PM
-Average		: 1984
-
-City 		: Toronto
-AuthenticationType 	: User
-
-Timestamp	: 2018-02-01 12:00:00 PM
-Average		: 894
-
-Timestamp	: 2018-02-01 12:05:00 PM
-Average		: 967
-```
-
-This command gets summarized output for the PageViews metric with specified dimension filter and aggregation type.
+This command lists the metric values for a specified resource URI.
 
 ## PARAMETERS
 
-### -AggregationType
-The aggregation type of the query
+### -Aggregation
+The list of aggregation types (comma separated) to retrieve.
+*Examples: average, minimum, maximum*
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.AggregationType]
-Parameter Sets: GetWithFullParameters
-Aliases:
-Accepted values: None, Average, Count, Minimum, Maximum, Total
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Type: System.String
+Parameter Sets: List2, ListExpanded
+Aliases: AggregationType
 
 Required: False
 Position: Named
@@ -240,153 +220,253 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DetailedOutput
-Indicates that this cmdlet displays detailed output.
-By default, output is summarized.
+### -AutoAdjustTimegrain
+When set to true, if the timespan passed in is not supported by this metric, the API will return the result using the closest supported timespan.
+When set to false, an error is returned for invalid timespan parameters.
+Defaults to false.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: List2, ListExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Dimension
-The metric dimensions to query metrics for
+### -DefaultProfile
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: System.String[]
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases:
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -EndTime
+[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.DefaultInfo(Script = 'DateTime.UtcNow')]
 Specifies the end time of the query in local time.
 The default is the current time.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: List2, ListExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MetricFilter
-Specifies the metric dimension filter to query metrics for.
+### -Filter
+The **$filter** is used to reduce the set of metric data returned.
+Example:
+Metric contains metadata A, B and C.
+- Return all time series of C where A = a1 and B = b1 or b2
+**$filter=A eq 'a1' and B eq 'b1' or B eq 'b2' and C eq '*'**
+- Invalid variant:
+**$filter=A eq 'a1' and B eq 'b1' and C eq '*' or B = 'b2'**
+This is invalid because the logical or operator cannot separate two different metadata names.
+- Return all time series where A = a1, B = b1 and C = c1:
+**$filter=A eq 'a1' and B eq 'b1' and C eq 'c1'**
+- Return all time series where A = a1
+**$filter=A eq 'a1' and B eq '*' and C eq '*'**.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: List2, ListExpanded
+Aliases: MetricFilter
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Interval
+The interval (i.e.
+timegrain) of the query in ISO 8601 duration format.
+Defaults to PT1M.
+Special case for 'FULL' value that returns single datapoint for entire time span requested.
+*Examples: PT15M, PT1H, P1D, FULL*
+
+```yaml
+Type: System.String
+Parameter Sets: List2, ListExpanded
+Aliases: TimeGrain
+
+Required: False
+Position: Named
+Default value: PT1M
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonFilePath
+Path of Json file supplied to the List operation
+
+```yaml
+Type: System.String
+Parameter Sets: ListViaJsonFilePath
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -JsonString
+Json string supplied to the List operation
+
+```yaml
+Type: System.String
+Parameter Sets: ListViaJsonString
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -MetricName
-Specifies an array of names of metrics.
+The names of the metrics (comma separated) to retrieve.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: GetWithDefaultParameters
-Aliases: MetricNames
+Type: System.String
+Parameter Sets: List2, ListExpanded
+Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String[]
-Parameter Sets: GetWithFullParameters
-Aliases: MetricNames
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -MetricNamespace
-Specifies the metric namespace to query metrics for.
+Metric namespace where the metrics you want reside.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetWithFullParameters
+Parameter Sets: List2, ListExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -OrderBy
-Specifies the aggregation to use for sorting results and the direction of the sort (Example: sum asc).
+The aggregation to use for sorting results and the direction of the sort.
+Only one order can be specified.
+*Examples: sum asc*
 
 ```yaml
 Type: System.String
-Parameter Sets: GetWithFullParameters
+Parameter Sets: List2, ListExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-Specifies the resource ID of the metric.
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Region
+The region where the metrics you want reside.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: ListExpanded, ListViaJsonFilePath, ListViaJsonString
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceUri
+The identifier of the resource.
+
+```yaml
+Type: System.String
+Parameter Sets: List2
+Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResultType
-Specifies the result type to be returned (metadata or data).
+Reduces the set of data collected.
+The syntax allowed depends on the operation.
+See the operation's description for details.
 
 ```yaml
-Type: System.Nullable`1[Microsoft.Azure.Management.Monitor.Models.ResultType]
-Parameter Sets: GetWithFullParameters
+Type: System.String
+Parameter Sets: List2, ListExpanded
 Aliases:
-Accepted values: Data, Metadata
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RollUpBy
+Dimension name(s) to rollup results by.
+For example if you only want to see metric values with a filter like 'City eq Seattle or City eq Tacoma' but don't want to see separate values for each city, you can specify 'RollUpBy=City' to see the results for Seattle and Tacoma rolled up into one timeseries.
+
+```yaml
+Type: System.String
+Parameter Sets: List2, ListExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -396,43 +476,93 @@ The default is the current local time minus one hour.
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: (All)
+Parameter Sets: List2, ListExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TimeGrain
-Specifies the time grain of the metric as a **TimeSpan** object in the format hh:mm:ss.
+### -SubscriptionId
+The ID of the target subscription.
 
 ```yaml
-Type: System.TimeSpan
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: ListExpanded, ListViaJsonFilePath, ListViaJsonString
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Top
-Specifies the maximum number of records to retrieve (default:10), to be specified with $filter.
+The maximum number of records to retrieve per resource ID in the request.
+Valid only if filter is specified.
+Defaults to 10.
 
 ```yaml
-Type: System.Nullable`1[System.Int32]
-Parameter Sets: GetWithFullParameters
+Type: System.Int32
+Parameter Sets: List2, ListExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ValidateDimension
+When set to false, invalid filter parameter values will be ignored.
+When set to true, an error is returned for invalid filter parameters.
+Defaults to true.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List2, ListExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -441,32 +571,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### System.TimeSpan
-
-### System.Nullable`1[[Microsoft.Azure.Management.Monitor.Models.AggregationType, Microsoft.Azure.Management.Monitor, Version=0.21.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-
-### System.DateTime
-
-### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
-
-### System.Nullable`1[[Microsoft.Azure.Management.Monitor.Models.ResultType, Microsoft.Azure.Management.Monitor, Version=0.21.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]]
-
-### System.String[]
-
-### System.Management.Automation.SwitchParameter
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSMetric
+### Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IResponse
 
 ## NOTES
 
-More information about the supported metrics may be found at:
-https://learn.microsoft.com/azure/azure-monitor/platform/metrics-supported
-
 ## RELATED LINKS
-
-[Get-AzMetricDefinition](./Get-AzMetricDefinition.md)
-[New-AzMetricFilter](./New-AzMetricFilter.md)

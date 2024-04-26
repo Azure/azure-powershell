@@ -20,7 +20,7 @@ Update-AzAutoscaleSetting -Name <String> -ResourceGroupName <String> [-Subscript
  [-PredictiveAutoscalePolicyScaleLookAheadTime <TimeSpan>]
  [-PredictiveAutoscalePolicyScaleMode <PredictiveAutoscalePolicyScaleMode>] [-Profile <IAutoscaleProfile[]>]
  [-Tag <Hashtable>] [-TargetResourceLocation <String>] [-TargetResourceUri <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -29,7 +29,7 @@ Update-AzAutoscaleSetting -InputObject <IAutoscaleIdentity> [-Enabled <Boolean>]
  [-Notification <IAutoscaleNotification[]>] [-PredictiveAutoscalePolicyScaleLookAheadTime <TimeSpan>]
  [-PredictiveAutoscalePolicyScaleMode <PredictiveAutoscalePolicyScaleMode>] [-Profile <IAutoscaleProfile[]>]
  [-Tag <Hashtable>] [-TargetResourceLocation <String>] [-TargetResourceUri <String>]
- [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -166,6 +166,21 @@ To construct, see NOTES section for PROFILE properties and create a hash table.
 Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfile[]
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named
