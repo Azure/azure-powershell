@@ -5590,7 +5590,7 @@ function Test-ApplicationGatewayHeaderValueMatcher
         Assert-NotNull $rewriteRuleSet
         Assert-AreEqual $rewriteRuleSet.RewriteRules.Count 1
         Assert-NotNull $rewriteRuleSet.RewriteRules[0].ActionSet
-		Assert-Null $rewriteRuleSet.RewriteRules[0].ActionSet[0].RequestHeaderConfiguration.HeaderValueMatcher
+		Assert-AreEqual $rewriteRuleSet.RewriteRules[0].ActionSet[0].RequestHeaderConfiguration.HeaderValueMatcher $null
 	}
 	finally
 	{
