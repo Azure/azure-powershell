@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "[ToDo] Provide help message")]
+            HelpMessage = "It lets you capture and rewrite a specific value of header specified in 'HeaderName' when multiple values of the same header exists.")]
         public PSApplicationGatewayHeaderValueMatcher HeaderValueMatcher { get; set; }
 
         public override void ExecuteCmdlet()
