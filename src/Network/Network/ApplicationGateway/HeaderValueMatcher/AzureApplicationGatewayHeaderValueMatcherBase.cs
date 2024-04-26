@@ -22,18 +22,18 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = true,
-            HelpMessage = "Pattern to look for in the Header Values")]
+            HelpMessage = "Pattern to look for in the header values")]
         [AllowEmptyString()]
         public string Pattern { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Set this flag to ignore case on the pattern")]
+            HelpMessage = "Set this flag to ignore during pattern matching")]
         public SwitchParameter IgnoreCase { get; set; }
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Set this flag to negate the condition validation")]
+            HelpMessage = "Set this flag to negate the result of pattern matching against a header value")]
         public SwitchParameter Negate { get; set; }
 
         public override void ExecuteCmdlet()
