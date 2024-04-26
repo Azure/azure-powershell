@@ -29,6 +29,8 @@
 * Added the new cmdlet for supporting `InternetIngressIp` Property with Network Virtual Appliances -`New-AzVirtualApplianceInternetIngressIpsProperty`
 * Added a new AuxiliaryMode value `AuxiliaryMode.Floating`
 * Added support for AzureFirewallPacketCapture
+* Added optional `property HeaderValueMatcher` to `New-AzApplicationGatewayRewriteRuleHeaderConfiguration`
+* Added new cmdlet `New-AzApplicationGatewayHeaderValueMatcher` to support for the new property `HeaderValueMatcher`
 
 ## Version 7.3.0
 * Fixed a few minor issues
