@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Compute
         public const string SimpleParameterSet = "SimpleParameterSet";
         public const string DiskFileParameterSet = "DiskFileParameterSet";
         public bool ConfigAsyncVisited = false;
-
+        
         [Parameter(
             ParameterSetName = DefaultParameterSet,
             Mandatory = true,
@@ -124,14 +124,14 @@ namespace Microsoft.Azure.Commands.Compute
         public string[] Zone { get; set; }
 
         [Parameter(
-            ParameterSetName = SimpleParameterSet,
+            ParameterSetName = SimpleParameterSet, 
             Mandatory = false,
             HelpMessage = "Specify public IP sku name")]
         [Parameter(
             ParameterSetName = DiskFileParameterSet,
             Mandatory = false,
             HelpMessage = "Specify public IP sku name")]
-        [PSArgumentCompleter("Basic", "Standard")]
+        [PSArgumentCompleter("Basic","Standard")]
         public string PublicIpSku { get; set; }
 
         [Parameter(
@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = SimpleParameterSet,
             HelpMessage = "Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.")]
         public string SharedGalleryImageId { get; set; }
-
+        
         [Parameter(
            ParameterSetName = SimpleParameterSet,
            HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. By default, UefiSettings will not be enabled unless this property is set.",
@@ -441,18 +441,6 @@ namespace Microsoft.Azure.Commands.Compute
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
         public bool? EnableSecureBoot { get; set; } = null;
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The ETag of the transformation. Omit this value to always overwrite the current resource. Specify the last-seen ETag value to prevent accidentally overwriting concurrent changes.")]
-        public string IfMatch { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Set to '*' to allow a new record set to be created, but to prevent updating an existing record set. Other values will result in error from server as they are not supported.")]
-        public string IfNoneMatch { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -572,19 +560,17 @@ namespace Microsoft.Azure.Commands.Compute
 
                 //Override Zone logic if PublicIpSku is explicitly provided
                 PublicIPAddressStrategy.Sku publicIpSku;
-                if (_cmdlet.PublicIpSku != null)
-                {
+                if (_cmdlet.PublicIpSku != null) {
                     if (_cmdlet.PublicIpSku != "Basic" && _cmdlet.PublicIpSku != "Standard")
                     {
                         throw new InvalidDataException("Invalid PublicIpSku parameter entry. Acceptable values for PublicIpSku parameter are \"Basic\" or \"Standard\" only");
                     }
                     publicIpSku = _cmdlet.PublicIpSku == "Basic" ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard;
                 }
-                else
-                {
+                else {
                     publicIpSku = _cmdlet.Zone == null ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard;
                 }
-
+                
                 if (_cmdlet.IsParameterBound(c => c.SecurityType))
                 {
                     if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
@@ -596,7 +582,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 // Standard security type removing value since API does not support it.
-                if (_cmdlet.IsParameterBound(c => c.SecurityType)
+                if (_cmdlet.IsParameterBound(c => c.SecurityType)  
                     && _cmdlet.SecurityType != null
                     && _cmdlet.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
                 {
@@ -677,7 +663,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
 
                 if (_cmdlet.DiskFile == null)
-                {
+                { 
                     return resourceGroup.CreateVirtualMachineConfig(
                         name: _cmdlet.Name,
                         networkInterface: networkInterface,
@@ -698,13 +684,13 @@ namespace Microsoft.Azure.Commands.Compute
                         priority: _cmdlet.Priority,
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
-                        encryptionAtHostPresent: (_cmdlet.EncryptionAtHost.IsPresent == true) ? true : (bool?)null,
+                        encryptionAtHostPresent: (_cmdlet.EncryptionAtHost.IsPresent == true) ? true : (bool?) null ,
                         sshPublicKeys: sshPublicKeyList,
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
                         userData: _cmdlet.UserData,
-                        platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?)null,
+                        platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?) null,
                         additionalCapabilities: vAdditionalCapabilities,
                         vCPUsAvailable: _cmdlet.IsParameterBound(c => c.vCPUCountAvailable) ? _cmdlet.vCPUCountAvailable : (int?)null,
                         vCPUsPerCore: _cmdlet.IsParameterBound(c => c.vCPUCountPerCore) ? _cmdlet.vCPUCountPerCore : (int?)null,
@@ -715,12 +701,10 @@ namespace Microsoft.Azure.Commands.Compute
                         sharedGalleryImageId: _cmdlet.SharedGalleryImageId,
                         securityType: _cmdlet.SecurityType,
                         enableVtpm: _cmdlet.EnableVtpm,
-                        enableSecureBoot: _cmdlet.EnableSecureBoot,
-                        ifMatch: _cmdlet.IfMatch,
-                        ifNoneMatch: _cmdlet.IfNoneMatch
+                        enableSecureBoot: _cmdlet.EnableSecureBoot
                         );
                 }
-                else // does not get used. DiskFile parameter set is not supported.
+                else
                 {
                     var disk = resourceGroup.CreateManagedDiskConfig(
                         name: _cmdlet.Name,
@@ -787,14 +771,14 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     this.SecurityType = this.SecurityType;
                 }
-
+                
             }
             // Default TrustedLaunch values for SimpleParameterSet (no config)
             // imagerefid is specifically shared gallery id, so don't want it.
             else
             {
-                if (!this.IsParameterBound(c => c.Image)
-                    && !this.IsParameterBound(c => c.ImageReferenceId)
+                if (!this.IsParameterBound(c => c.Image) 
+                    && !this.IsParameterBound(c => c.ImageReferenceId) 
                     && !this.IsParameterBound(c => c.SharedGalleryImageId))
                 {
                     this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
@@ -808,14 +792,14 @@ namespace Microsoft.Azure.Commands.Compute
                         this.EnableVtpm = true;
                     }
                 }
-            }
+            } 
 
             var resourceClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(
                     DefaultProfile.DefaultContext,
                     AzureEnvironment.Endpoint.ResourceManager);
 
             var parameters = new Parameters(this, client, resourceClient);
-
+            
             // Information message if the default Size value is used. 
             if (!this.IsParameterBound(c => c.Size))
             {
@@ -905,7 +889,7 @@ namespace Microsoft.Azure.Commands.Compute
                 throw ex;
             }
 
-
+            
             if (result != null)
             {
                 var fqdn = PublicIPAddressStrategy.Fqdn(DomainNameLabel, Location);
@@ -1053,7 +1037,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             // SecureBootEnabled and VtpmEnabled defaulting scenario.
             if (this.VM.SecurityProfile?.SecurityType != null
-                && (this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType
+                && (this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType 
                 || this.VM.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType))
             {
                 if (this.VM?.SecurityProfile?.UefiSettings != null)
@@ -1146,7 +1130,7 @@ namespace Microsoft.Azure.Commands.Compute
                         result = this.VirtualMachineClient.CreateOrUpdateWithHttpMessagesAsync(
                         this.ResourceGroupName,
                         this.VM.Name,
-                        parameters, this.IfMatch, this.IfNoneMatch,
+                        parameters,null,null,
                         auxAuthHeader).GetAwaiter().GetResult();
                     }
                     catch (Exception ex)
@@ -1190,7 +1174,7 @@ namespace Microsoft.Azure.Commands.Compute
                 });
             }
         }
-
+        
         private void setTrustedLaunchImage()
         {
             if (this.VM.StorageProfile == null)
@@ -1206,7 +1190,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Sku = "2022-datacenter-azure-edition",
                     Version = "latest"
                 };
-            }
+            } 
         }
 
         /// <summary>
@@ -1250,7 +1234,7 @@ namespace Microsoft.Azure.Commands.Compute
                         this.VM.SecurityProfile = new SecurityProfile();
                     }
                     this.VM.SecurityProfile.SecurityType = ConstantValues.StandardSecurityType;
-
+                    
                 }
 
                 if (this.AsJobPresent() == false) // to avoid a failure when it is a job. Seems to fail when it is a job.
@@ -1300,12 +1284,12 @@ namespace Microsoft.Azure.Commands.Compute
                             orderby: "name desc").GetAwaiter().GetResult();
 
                 var parts = imgResponse.Body[0].Id.ToString().Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
-
+                
                 string imageVersion = parts[Array.IndexOf(parts, "Versions") + 1];
 
                 return imageVersion;
             }
-            else
+            else 
             {
                 return version;
             }
@@ -1448,7 +1432,7 @@ namespace Microsoft.Azure.Commands.Compute
 
             var storagePrimaryEndpointBlob = CreateStandardStorageAccount(storageClient);
             return storagePrimaryEndpointBlob;
-
+            
         }
 
         private string GetStorageAccountNameFromStorageProfile()
