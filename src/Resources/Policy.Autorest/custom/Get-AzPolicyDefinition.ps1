@@ -183,6 +183,8 @@ begin {
 }
 
 process {
+    $PSBoundParameters['ErrorAction'] = 'Stop'
+
     if ($writeln) {
         Write-Host -ForegroundColor Cyan "process:Get-AzPolicyDefinition(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }

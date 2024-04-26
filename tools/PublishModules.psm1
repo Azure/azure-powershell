@@ -267,6 +267,8 @@ function Get-AllModules {
         [ValidateNotNullOrEmpty()]
         [String]$Scope,
 
+        [String]$TargetBuild,
+
         [switch]$PublishLocal,
 
         [switch]$IsNetCore
@@ -275,7 +277,7 @@ function Get-AllModules {
     $clientModules = Get-ClientModules -BuildConfig $BuildConfig -Scope $Scope -PublishLocal:$PublishLocal -IsNetCore:$isNetCore
     Write-Host " "
     
-    if($clientModules.Length -le 2) {
+    if($clientModules.Length -le 2 -and  $TargetBuild -eq "true") {
         return @{
             ClientModules = $clientModules
         }
@@ -475,6 +477,10 @@ function Save-PackageLocally {
             # We try to download the package from the PsGallery as we are likely intending to use the existing version of the module.
             # If the module not found in psgallery, the following commnad would fail and hence publish to local repo process would fail as well
             Save-Package -Name $ModuleName -RequiredVersion $RequiredVersion -ProviderName Nuget -Path $TempRepoPath -Source https://www.powershellgallery.com/api/v2 | Out-Null
+            $NupkgFilePath = Join-Path -Path $TempRepoPath -ChildPath "$ModuleName.$RequiredVersion.nupkg"
+            $ModulePaths = $env:PSModulePath -split ';'
+            $DestinationModulePath = [System.IO.Path]::Combine($ModulePaths[0], $ModuleName, $RequiredVersion)
+            Expand-Archive -Path $NupkgFilePath -DestinationPath $DestinationModulePath -Force
             Write-Output "Downloaded the package sucessfully"
         }
     }
@@ -577,6 +583,27 @@ function Add-AllModules {
         # Add the modules to the local repository
         Add-Modules -TempRepo $TempRepo -TempRepoPath $TempRepoPath -ModulePath $modulePath -NugetExe $NugetExe
         Write-Output " "
+    }
+    Write-Output "Removing lower version Az.Accounts packages"
+    $packages = Get-ChildItem -Path "./artifacts" -Filter "Az.Accounts.*.nupkg"
+    $latestVersion = [version]"0.0.0"
+    $latestPackage = $null
+    
+    foreach ($package in $packages) {
+        $fileName = $package.Name
+        $versionString = $fileName.Replace('Az.Accounts.', '').Replace('.nupkg', '')
+        $version = [version]$versionString
+        
+        if ($version -gt $latestVersion) {
+            $latestVersion = $version
+            $latestPackage = $package
+        }
+    }
+    
+    foreach ($package in $packages) {
+        if ($package.FullName -ne $latestPackage.FullName) {
+            Remove-Item $package.FullName -Force
+        }
     }
     Write-Output " "
 }

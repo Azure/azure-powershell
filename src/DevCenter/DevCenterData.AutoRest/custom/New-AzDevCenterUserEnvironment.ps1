@@ -25,7 +25,7 @@ Creates or updates an environment.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironment
+Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironment
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.IDevCenterdataIdentity
 .Outputs
@@ -51,7 +51,7 @@ BODY <IEnvironment>: Properties of an environment.
   [Target <String>]: The target of the particular error. For example, the name of the property in error.
 
 INPUTOBJECT <IDevCenterdataIdentity>: Identity Parameter
-  [ActionName <String>]: The name of an action that will take place on a Dev Box.
+  [Name <String>]: The name of an action that will take place on a Dev Box.
   [CatalogName <String>]: The name of the catalog
   [DefinitionName <String>]: The name of the environment definition
   [DevBoxName <String>]: The name of a Dev Box.
@@ -78,9 +78,10 @@ function New-AzDevCenterUserEnvironment {
     [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter', Mandatory)]
     [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Uri')]
+    [Alias('DevCenter')]
     [System.String]
     # The DevCenter upon which to execute operations.
-    ${DevCenter},
+    ${DevCenterName},
   
     [Parameter(ParameterSetName = 'CreateExpanded', Mandatory)]
     [Parameter(ParameterSetName = 'CreateExpandedByDevCenter', Mandatory)]
@@ -146,10 +147,16 @@ function New-AzDevCenterUserEnvironment {
     [Parameter(ParameterSetName = 'CreateViaIdentityExpandedByDevCenter')]
     [Parameter(ParameterSetName = 'CreateExpandedByDevCenter')]
     [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20230401.IEnvironmentUpdatePropertiesParameters]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Models.Api20231001Preview.IEnvironmentUpdatePropertiesParameters]))]
     [System.Collections.Hashtable]
     # Parameters object for the environment.
     ${Parameter},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DevCenterdata.Category('Body')]
+    [System.DateTime]
+    # The time the expiration date will be triggered (UTC), after which the environment and associated resources will be deleted.
+    ${ExpirationDate},
   
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -214,9 +221,9 @@ function New-AzDevCenterUserEnvironment {
 
   process {
     if (-not $PSBoundParameters.ContainsKey('Endpoint')) {
-      $Endpoint = GetEndpointFromResourceGraph -DevCenter $DevCenter -Project $ProjectName
+      $Endpoint = GetEndpointFromResourceGraph -DevCenterName $DevCenterName -Project $ProjectName
       $null = $PSBoundParameters.Add("Endpoint", $Endpoint)
-      $null = $PSBoundParameters.Remove("DevCenter")
+      $null = $PSBoundParameters.Remove("DevCenterName")
 
     }
     else {

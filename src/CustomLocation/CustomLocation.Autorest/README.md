@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the CustomLocation service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -30,24 +30,22 @@ For information on how to develop for `Az.CustomLocation`, see [how-to.md](how-t
 > see https://aka.ms/autorest
 
 ``` yaml
-commit: c6c9e02ae4de78cd7357bc4a5a7be38e6f1909d0
+commit: f1180941e238bc99ac71f9535ecd126bb8b77d8f
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
-input-file: 
-  - $(repo)/specification/extendedlocation/resource-manager/Microsoft.ExtendedLocation/stable/2021-08-15/customlocations.json
+input-file:
+  - $(repo)/specification/extendedlocation/resource-manager/Microsoft.ExtendedLocation/preview/2021-08-31-preview/customlocations.json
 
 module-version: 0.1.0
 title: CustomLocation
 subject-prefix: $(service-name)
+disable-transform-identity-type: true
+flatten-userassignedidentity: false
 
 identity-correction-for-post: true
 
-# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
-use-extension:
-  "@autorest/powershell": "3.x"
-
 directive:
-  - from: swagger-document 
+  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ExtendedLocation/customLocations/{resourceName}"].delete.responses
     transform: >-
       return {
@@ -63,12 +61,12 @@ directive:
         "default": {
           "description": "Error response describing why the operation failed.",
           "schema": {
-            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/c6c9e02ae4de78cd7357bc4a5a7be38e6f1909d0/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/f1180941e238bc99ac71f9535ecd126bb8b77d8f/specification/common-types/resource-management/v2/types.json#/definitions/ErrorResponse"
           }
         }
       }
 
-  - from: swagger-document 
+  - from: swagger-document
     where: $.definitions.customLocationProperties.properties.provisioningState
     transform: >-
       return {
@@ -94,9 +92,15 @@ directive:
     transform: return $.replace(/\{resourceName\}\/enabledResourceTypes/g, "{resourceName}/enabledresourcetypes")
 
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
     remove: true
-
+  - where:
+      subject: CustomLocation
+      variant: ^CreateViaIdentityExpanded$
+    remove: true
+  - where:
+      variant: ^Find$|^FindViaIdentity$
+    remove: true
   - where:
       verb: Set
     remove: true
@@ -126,6 +130,18 @@ directive:
       parameter-name: Name
 
   - where:
+      subject: ^CustomLocationTargetResourceGroup$|^ResourceSyncRule$
+      parameter-name: ResourceName
+    set:
+      parameter-name: CustomLocationName
+
+  - where:
+      subject: ^CustomLocationTargetResourceGroup$|^ResourceSyncRule$
+      parameter-name: ChildResourceName
+    set:
+      parameter-name: Name
+
+  - where:
       model-name: CustomLocation
     set:
       format-table:
@@ -133,4 +149,17 @@ directive:
           - Location
           - Name
           - Namespace
+          - ResourceGroupName
+
+  - where:
+      model-name: EnabledResourceType
+    set:
+      format-table:
+        properties:
+          - Name
+          - ExtensionType
+
+  - model-cmdlet:
+    - model-name: MatchExpressionsProperties
+      cmdlet-name: New-AzCustomLocationMatchExpressionsObject
 ```

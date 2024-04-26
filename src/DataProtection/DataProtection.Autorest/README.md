@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the DataProtection service.
 
 ---
-## Status
-[![Az.DataProtection](https://img.shields.io/powershellgallery/v/Az.DataProtection.svg?style=flat-square&label=Az.DataProtection "Az.DataProtection")](https://www.powershellgallery.com/packages/Az.DataProtection/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -34,11 +31,11 @@ This file contains the configuration for generating My API from the OpenAPI spec
 
 ``` yaml
 # it's the same options as command line options, just drop the double-dash!
-commit: acf24167b5174d88f36302e243c883f2e63eec52
+commit: 41d1c179dc166b7f16b7e40ef4f2a1d9c85b10cc
 require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2023-05-01/dataprotection.json
+  - $(repo)/specification/dataprotection/resource-manager/Microsoft.DataProtection/stable/2023-12-01/dataprotection.json
 title: DataProtection
 # For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
 use-extension:
@@ -237,6 +234,10 @@ directive:
       subject: ExportJob
     remove: true
   - where:
+      verb: Start
+      subject: .*Restore$
+    hide: true
+  - where:
       verb: Get
       subject: OperationResultPatch
     remove: true
@@ -307,6 +308,23 @@ directive:
       variant: ^Validate1$|^ValidateExpanded1$|^ValidateViaIdentity1$|^ValidateViaIdentityExpanded1$
     hide: true
   - where:
+      verb: Test
+      subject: BackupInstanceCrossRegionRestore
+    hide: true
+  - where:
+      subject: FetchCrossRegionRestoreJob      
+    set:
+      subject: CrossRegionRestoreJob
+  - where:      
+      subject: CrossRegionRestoreJob
+      variant: ^Get.*
+    set:
+      subject: CrossRegionRestoreJobDetail
+  - where:
+      verb: Get
+      subject: ^Job$|^CrossRegionRestoreJob.*|FetchSecondaryRecoveryPoint
+    hide: true
+  - where:
       property-name: AzureMonitorAlertSettingAlertsForAllJobFailure
     set:
       property-name: AzureMonitorAlertsForAllJobFailure  
@@ -363,6 +381,8 @@ directive:
           - IdentityType
   - no-inline:
     - BackupInstance
+    - CrossRegionRestoreDetails
+    - CrossRegionRestoreRequestObject
     - DeletionInfo
     - InnerError
     - ItemLevelRestoreTargetInfo
@@ -374,19 +394,20 @@ directive:
     - SecretStoreResource    
     - SystemData
     - UserFacingError    
-    - ValidateRestoreRequestObject    
+    - ValidateRestoreRequestObject
+    - ValidateCrossRegionRestoreRequestObject
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBaseBackupPolicy Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBaseBackupPolicy Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBaseBackupPolicy Property');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.ITriggerContext Trigger');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.ITriggerContext Trigger', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.ITriggerContext Trigger');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IBackupParameters BackupParameter');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBackupParameters BackupParameter', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IBackupParameters BackupParameter');
   - from: source-file-csharp
     where: $
-    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IAzureBackupRecoveryPoint Property');
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IAzureBackupRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IAzureBackupRecoveryPoint Property');
 ```
 
 ## Alternate settings

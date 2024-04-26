@@ -40,8 +40,8 @@ Save-AzPaloAltoNetworksFirewallLogProfile -FirewallName <String> -ResourceGroupN
  [-DecryptLogDestinationMonitorConfigurationsWorkspace <String>]
  [-DecryptLogDestinationStorageConfigurationsAccountName <String>]
  [-DecryptLogDestinationStorageConfigurationsId <String>]
- [-DecryptLogDestinationStorageConfigurationsSubscriptionId <String>] [-LogOption <LogOption>]
- [-LogType <LogType>] [-ThreatLogDestinationEventHubConfigurationsId <String>]
+ [-DecryptLogDestinationStorageConfigurationsSubscriptionId <String>] [-LogOption <String>]
+ [-LogType <String>] [-ThreatLogDestinationEventHubConfigurationsId <String>]
  [-ThreatLogDestinationEventHubConfigurationsName <String>]
  [-ThreatLogDestinationEventHubConfigurationsNameSpace <String>]
  [-ThreatLogDestinationEventHubConfigurationsPolicyName <String>]
@@ -98,8 +98,8 @@ Save-AzPaloAltoNetworksFirewallLogProfile -InputObject <IPaloAltoNetworksIdentit
  [-DecryptLogDestinationMonitorConfigurationsWorkspace <String>]
  [-DecryptLogDestinationStorageConfigurationsAccountName <String>]
  [-DecryptLogDestinationStorageConfigurationsId <String>]
- [-DecryptLogDestinationStorageConfigurationsSubscriptionId <String>] [-LogOption <LogOption>]
- [-LogType <LogType>] [-ThreatLogDestinationEventHubConfigurationsId <String>]
+ [-DecryptLogDestinationStorageConfigurationsSubscriptionId <String>] [-LogOption <String>]
+ [-LogType <String>] [-ThreatLogDestinationEventHubConfigurationsId <String>]
  [-ThreatLogDestinationEventHubConfigurationsName <String>]
  [-ThreatLogDestinationEventHubConfigurationsNameSpace <String>]
  [-ThreatLogDestinationEventHubConfigurationsPolicyName <String>]
@@ -617,7 +617,7 @@ Accept wildcard characters: False
 Log option SAME/INDIVIDUAL
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.LogOption
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -632,7 +632,7 @@ Accept wildcard characters: False
 One of possible log type
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Support.LogType
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -1122,23 +1122,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Boolean
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IPaloAltoNetworksIdentity>`: Identity Parameter
-  - `[FirewallName <String>]`: Firewall resource name
-  - `[GlobalRulestackName <String>]`: GlobalRulestack resource name
-  - `[Id <String>]`: Resource identity path
-  - `[LocalRulestackName <String>]`: LocalRulestack resource name
-  - `[Name <String>]`: certificate name
-  - `[Priority <String>]`: Post Rule priority
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
 

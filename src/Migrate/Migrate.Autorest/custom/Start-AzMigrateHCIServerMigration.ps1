@@ -166,13 +166,13 @@ function Start-AzMigrateHCIServerMigration {
 
         if ($PSCmdlet.ShouldProcess($TargetObjectID, "Migrate VM.")) {
             $operation = Az.Migrate.Internal\Invoke-AzMigratePlannedProtectedItemFailover @PSBoundParameters
-            $jobName = $operation.Target.Split("/")[14].Split("?")[0]
-
+            $jobName = $operation.Target.Split("/")[-1].Split("?")[0]
+          
             $null = $PSBoundParameters.Remove('ProtectedItemName')  
             $null = $PSBoundParameters.Remove('NoWait')
             $null = $PSBoundParameters.Remove('Property')
-            $null = $PSBoundParameters.Add('JobName', $jobName)
 
+            $null = $PSBoundParameters.Add('JobName', $jobName)
             return Az.Migrate.Internal\Get-AzMigrateWorkflow @PSBoundParameters
         }
     }

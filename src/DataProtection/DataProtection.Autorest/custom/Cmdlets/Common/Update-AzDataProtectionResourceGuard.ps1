@@ -2,7 +2,7 @@
 
 function Update-AzDataProtectionResourceGuard
 {   
-	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IResourceGuardResource')]
+	[OutputType('Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IResourceGuardResource')]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Description('Updates a resource guard belonging to a resource group')]
 
@@ -113,7 +113,7 @@ function Update-AzDataProtectionResourceGuard
         if($PSBoundParameters.ContainsKey("IdentityType"))
         {
             $null = $PSBoundParameters.Remove("IdentityType")
-            # DppRef : need to move this to parameter level 
+            # TODO : need to move this to parameter level 
             Write-Warning "Parameter IdentityType is no longer in use and will be depricated in upcoming breaking change release"
         }
 

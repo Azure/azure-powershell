@@ -3,9 +3,9 @@
 New-AzVMwareScriptSecureStringExecutionParameterObject -Name azps_test_securevalue -SecureValue "passwordValue"
 ```
 ```output
-Name                  Type        SecureValue
-----                  ----        -----------
-azps_test_securevalue SecureValue passwordValue
+Name                  SecureValue   Type
+----                  -----------   ----
+azps_test_securevalue passwordValue SecureValue
 ```
 
 Create a local Script Secure String Execution object

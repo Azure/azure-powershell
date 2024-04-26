@@ -121,7 +121,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
     process {
         Import-Module $PSScriptRoot\Helper\AzStackHCICommonSettings.ps1
         Import-Module $PSScriptRoot\Helper\CommonHelper.ps1
-        
+
         CheckResourcesModuleDependency
         CheckStorageModuleDependency
         Import-Module Az.Resources
@@ -878,7 +878,7 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
 
         # Remove replication extension if does not match the selected Cache Storage Account
         if ($null -ne $replicationExtension -and $replicationExtension.Property.CustomProperty.StorageAccountId -ne $cacheStorageAccount.Id) {
-            Write-Host "Replication Extension '$($replicationExtensionName)' found but linked to a different Cache Storage Account '$($replicationExtension.Property.CustomProperty.StorageAccountId)'.`nRemoving Replication Extension..."
+            Write-Host "Replication Extension '$($replicationExtensionName)' found but linked to a different Cache Storage Account '$($replicationExtension.Property.CustomProperty.StorageAccountId)'."
         
             try {
                 Az.Migrate.Internal\Remove-AzMigrateReplicationExtension -InputObject $replicationExtension | Out-Null
@@ -889,7 +889,8 @@ function Initialize-AzMigrateHCIReplicationInfrastructure {
                 }
             }
 
-            Start-Sleep -Seconds 30
+            Write-Host "Removing Replication Extension and waiting for 2 minutes..."
+            Start-Sleep -Seconds 120
             $replicationExtension = Az.Migrate.Internal\Get-AzMigrateReplicationExtension `
                 -InputObject $replicationExtension `
                 -ErrorVariable notPresent `

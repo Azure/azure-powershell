@@ -29,6 +29,7 @@ function New-AzEventHubIPRuleConfig{
 
 		[Parameter(HelpMessage = "The IP Filter Action")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.NetworkRuleIPAction]
+		[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("Action","12.0.0", "5.0.0","2024-05-21" )]
 		# The IP Filter Action
         ${Action}
 	)

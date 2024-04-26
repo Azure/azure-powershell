@@ -5,6 +5,30 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
 
 $env = @{}
 if ($UsePreviousConfigForRecord) {
@@ -30,26 +54,26 @@ function setupEnv() {
     $OrderName = "powershellOrder" + (RandomString -allChars $false -len 4)
     $env.Add("ResourceGroup",$resourceGroup)
     $OrderId = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + $resourceGroup +"/providers/Microsoft.EdgeOrder/locations/eastus/orders/" + $OrderName
-    
+
     $contactDetail = New-AzEdgeOrderContactDetailsObject -ContactName "random" -EmailList @("dhja@microsoft.com") -Phone "1234567891"
     $ShippingDetails = New-AzEdgeOrderShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
 
     $HierarchyInformation=New-AzEdgeOrderHierarchyInformationObject -ProductFamilyName "azurestackedge" -ProductLineName "azurestackedge" -ProductName "azurestackedgegpu" -ConfigurationName "EdgeP_High"
 
     $details = New-AzEdgeOrderOrderItemDetailsObject -OrderItemType "Purchase"  -ProductDetail  @{"HierarchyInformation"=$HierarchyInformation}
-    
+
     $resource = New-AzEdgeOrderItem -Name $OrderItemName -ResourceGroupName $resourceGroup -ForwardAddressContactDetail $contactDetail -Location "eastus" -OrderId $OrderId -OrderItemDetail $details -SubscriptionId $subscriptionId -ForwardShippingAddress $ShippingDetails
 
-    Write-Host -ForegroundColor Green "Create completed" $AddressName 
+    Write-Host -ForegroundColor Green "Create completed" $AddressName
     Write-Host -ForegroundColor Green "Create completed" $resourceGroup
     Write-Host -ForegroundColor Green "Create completed" $contactDetail
     Write-Host -ForegroundColor Green "Create completed" $subscriptionId
-    
-  
+
+
     # $addressResource = New-AzEdgeOrderAddress -Name $AddressName -ResourceGroupName $resourceGroup -ContactDetail $contactDetail
     # -Location "eastus"  -SubscriptionId $subscriptionId -ShippingAddress $ShippingDetails -Debug
 
-    Write-Host -ForegroundColor Green "Create completed" 
+    Write-Host -ForegroundColor Green "Create completed"
 
     $AddressNameTest = "pwAddTest" + (RandomString -allChars $false -len 4)
     $OrderItemNameTest = "powershellItemTest" + (RandomString -allChars $false -len 4)

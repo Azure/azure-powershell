@@ -13,11 +13,10 @@ Creates or updates a policy exemption.
 ## SYNTAX
 
 ```
-New-AzPolicyExemption [-Name] <String> [-ExemptionCategory] <String> [-PolicyAssignment] <PSObject>
- [[-Scope] <String>] [[-AssignmentScopeValidation] <String>] [[-DisplayName] <String>]
- [[-Description] <String>] [[-PolicyDefinitionReferenceId] <String[]>] [[-ExpiresOn] <DateTime?>]
- [[-Metadata] <String>] [[-DefaultProfile] <PSObject>] [-BackwardCompatible] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzPolicyExemption -ExemptionCategory <String> -Name <String> -PolicyAssignment <PSObject>
+ [-PolicyDefinitionReferenceId <String[]>] [-Scope <String>] [-AssignmentScopeValidation <String>]
+ [-BackwardCompatible] [-Description <String>] [-DisplayName <String>] [-ExpiresOn <DateTime?>]
+ [-Metadata <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +57,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -89,7 +88,7 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: 10
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -104,7 +103,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -119,7 +118,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -134,7 +133,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 5
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -149,7 +148,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 8
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -165,7 +164,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 9
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -180,7 +179,7 @@ Parameter Sets: (All)
 Aliases: PolicyExemptionName
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -195,7 +194,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 6
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue, ByPropertyName)
 Accept wildcard characters: False
@@ -210,7 +209,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 7
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
@@ -226,7 +225,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

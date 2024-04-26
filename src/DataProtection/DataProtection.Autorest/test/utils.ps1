@@ -5,15 +5,40 @@ function RandomString([bool]$allChars, [int32]$len) {
         return -join ((48..57) + (97..122) | Get-Random -Count $len | % {[char]$_})
     }
 }
+function Start-TestSleep {
+    [CmdletBinding(DefaultParameterSetName = 'SleepBySeconds')]
+    param(
+        [parameter(Mandatory = $true, Position = 0, ParameterSetName = 'SleepBySeconds')]
+        [ValidateRange(0.0, 2147483.0)]
+        [double] $Seconds,
+
+        [parameter(Mandatory = $true, ParameterSetName = 'SleepByMilliseconds')]
+        [ValidateRange('NonNegative')]
+        [Alias('ms')]
+        [int] $Milliseconds
+    )
+
+    if ($TestMode -ne 'playback') {
+        switch ($PSCmdlet.ParameterSetName) {
+            'SleepBySeconds' {
+                Start-Sleep -Seconds $Seconds
+            }
+            'SleepByMilliseconds' {
+                Start-Sleep -Milliseconds $Milliseconds
+            }
+        }
+    }
+}
+
 $env = @{}
 function setupEnv() {
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.RecordDate = (Get-Date -Year 2023 -Month 08 -Day 28 -Hour 15 -Minute 11 -Second 11).ToString('dd-MM-yyyy-h-m-s')
+    $env.RecordDate = (Get-Date -Year 2024 -Month 03 -Day 25 -Hour 13 -Minute 11 -Second 11).ToString('dd-MM-yyyy-h-m-s')
     # For any resources you created for test, you should add it to $env here.
-        
+
     $BackupInstanceTestVariables = @{
         SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
         ResourceGroupName = "sarath-rg"
@@ -27,7 +52,7 @@ function setupEnv() {
         DiskNewPolicyName = "sarath-disk-generated-policy"
     }
 
-    $randomstring = RandomString -allChars $false -len 10    
+    $randomstring = RandomString -allChars $false -len 10
     $BackupVaultTestVariables = @{
         SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
         ResourceGroupName = "sarath-rg"
@@ -74,7 +99,7 @@ function setupEnv() {
         ResourceGroupName = "BlobBackup-BugBash"
         VaultName = "jecECYBlobVault"
     }
-    
+
     $OssVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         ResourceGroupName = "oss-pstest-rg"
@@ -83,7 +108,7 @@ function setupEnv() {
         OssDbName = "oss-pstest-db"
         OssDbId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/postgres"
         PolicyName = "oss-pstest-policy"
-        NewPolicyName = "oss-pstest-policy-archive"        
+        NewPolicyName = "oss-pstest-policy-archive"
         KeyVault = "oss-pstest-keyvault"
         SecretURI = "https://oss-pstest-keyvault.vault.azure.net/secrets/oss-pstest-secret"
         TargetResourceId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.DBforPostgreSQL/servers/oss-pstest-server/databases/oss-pstest-dbrestore"
@@ -102,8 +127,8 @@ function setupEnv() {
         VaultName = "TestBkpVault"
         VaultRG = "testBkpVaultRG"
         SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
-       
-        DiskId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Diskrg/providers/Microsoft.Compute/disks/Mydisk2" 
+
+        DiskId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Diskrg/providers/Microsoft.Compute/disks/Mydisk2"
         Diskrg = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Diskrg"
         Snapshotrg = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG"
         DiskPolicyName = "diskBkpPolicy"
@@ -116,7 +141,14 @@ function setupEnv() {
         OssId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Ossrg/providers/Microsoft.DBforPostgreSQL/servers/rishitserver3/databases/postgres"
         Ossrg = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Ossrg"
         KeyURI = "https://rishitkeyvault3.vault.azure.net/secrets/rishitnewsecret"
-        KeyVaultId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Sqlrg/providers/Microsoft.KeyVault/vaults/rishitkeyvault3" 
+        KeyVaultId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Sqlrg/providers/Microsoft.KeyVault/vaults/rishitkeyvault3"
+    }
+
+    $AksPolicyVariables = @{
+        SubscriptionId = "f0c630e0-2995-4853-b056-0b3c09cb673f"
+        ResourceGroupName = "AKS-ps-shasha-test-source"
+        VaultName = "ps-vault"
+        NewPolicyName = "pstest-aks-policy"       
     }
 
     $AksVariables = @{
@@ -129,20 +161,20 @@ function setupEnv() {
         SourceClusterId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksbackuptestrg-rajat/providers/Microsoft.ContainerService/managedClusters/aks-pstest-cluster"
         TargetClusterId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksbackuptestrg-rajat/providers/Microsoft.ContainerService/managedClusters/aks-clitest-cluster"
         SnapshotResourceGroupId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/aksbackuptestrg-rajat"
-        FriendlyName = "pstest-aks-cluster"        
+        FriendlyName = "pstest-aks-cluster"
     }
 
     $AksRestoreVariables = @{
         SubscriptionId = "f0c630e0-2995-4853-b056-0b3c09cb673f" #"62b829ee-7936-40c9-a1c9-47a93f9f3965"
-        ResourceGroupName = "araj-rg" #"aksbackuptestrg-rajat"
-        VaultName = "ecy-vault" #"demobackupvault"
+        ResourceGroupName = "azk8ssvcs-cluster-r-ecy" #"aksbackuptestrg-rajat"
+        VaultName = "azk8ssvcs-vault-ecy" #"demobackupvault"
         NewPolicyName = "" #"pstest-aks-policy"
-        PolicyName = "h4-w1"
+        PolicyName = "azk8ssvcs-ad-policy-backupecy"
         DataSourceLocation = "eastus2euap"
-        SourceClusterId = "/subscriptions/f0c630e0-2995-4853-b056-0b3c09cb673f/resourceGroups/araj-rg/providers/Microsoft.ContainerService/managedClusters/aksCluster3-ecy-araj"
-        SnapshotResourceGroupId = "/subscriptions/f0c630e0-2995-4853-b056-0b3c09cb673f/resourceGroups/araj-srg"
+        SourceClusterId = "/subscriptions/f0c630e0-2995-4853-b056-0b3c09cb673f/resourcegroups/azk8ssvcs-cluster-r-ecy/providers/Microsoft.ContainerService/managedClusters/azk8ssvcs-cluster-ecy"
+        SnapshotResourceGroupId = "/subscriptions/f0c630e0-2995-4853-b056-0b3c09cb673f/resourceGroups/MC_azk8ssvcs-cluster-r-ecy_azk8ssvcs-cluster-ecy_eastus2euap"
         FriendlyName = "aksCluster3-ecy-araj-BI"
-        ClusterName = "aksCluster3-ecy-araj"
+        ClusterName = "azk8ssvcs-bi-backupecy"
     }
 
     $BlobHardeningVariables = @{
@@ -180,6 +212,16 @@ function setupEnv() {
         FileNamePrefix = "oss-csr-pstest-restoreasfiles"
     }
 
+    $CrossRegionRestoreVariables = @{
+        ResourceGroupName =  "adigupt-rg"
+        VaultName = "crr-wala-ecy-vault"
+        SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        TargetResourceId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/DppCrrRG/providers/Microsoft.DBforPostgreSQL/servers/crr-ccy-1/databases/oss-pstestrun-crr-1"
+        SecretURI = "https://crr-ccy-kv.vault.azure.net/secrets/secret-for-crr-ccy-1"
+        TargetContainerURI = "https://zftccypod01otds1.blob.core.windows.net/oss-crr-pstest"
+        FileNamePrefix = "oss-pstest-crrasfiles-1"
+    }
+
     $MUAVariables = @{
         SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c"
         ResourceGroupName = "hiagarg"
@@ -190,6 +232,24 @@ function setupEnv() {
         ResourceGuardSubscription = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
         BackupInstanceName = "alrpstestvm-datadisk-000-20220808-115835" # "eacan-pstest-disk"
         ResourceGuardId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/hiaga-rg/providers/Microsoft.DataProtection/ResourceGuards/mua-pstest-dpp-ccy-resguard"
+    }
+
+    $PGFlexVariables = @{
+        SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        ResourceGroupName = "vdhingraRG"
+        VaultName = "vdhingraBackupVault"
+        NewPolicyName = "pstest-pgflex-policy"
+        PolicyName = "pgflexArchivePolicy1"
+        TargetContainerURI = "https://vdhingra1psa.blob.core.windows.net/powershellpgflexrestore"
+    }
+
+    $MySQLVariables = @{
+        SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        ResourceGroupName = "vdhingraRG"
+        VaultName = "vdhingraBackupVault"
+        NewPolicyName = "pstest-mysql-policy"
+        PolicyName = "pstest-simple-mysql"
+        TargetContainerURI = "https://vdhingra1psa.blob.core.windows.net/powershellpgflexrestore"
     }
 
     $env.add("TestBackupInstance", $BackupInstanceTestVariables) | Out-Null
@@ -203,12 +263,16 @@ function setupEnv() {
     $env.add("TestResourceGuard", $ResourceGuardVariables) | Out-Null
     $env.add("TestGrantPermission", $GrantPermissionVariables) | Out-Null
     $env.add("TestAksBackupScenario", $AksVariables) | Out-Null
-    $env.add("TestAksRestoreScenario", $AksRestoreVariables) | Out-Null    
+    $env.add("TestAksPolicyScenario", $AksPolicyVariables) | Out-Null
+    $env.add("TestAksRestoreScenario", $AksRestoreVariables) | Out-Null
     $env.add("TestBlobHardeningScenario", $BlobHardeningVariables) | Out-Null
     $env.add("TestCrossSubscriptionRestoreScenario", $CrossSubscriptionRestoreVariables) | Out-Null
+    $env.add("TestCrossRegionRestoreScenario", $CrossRegionRestoreVariables) | Out-Null
     $env.add("TestSoftDelete", $SoftDeleteVariables) | Out-Null
     $env.add("TestBackupConfig", $BackupConfigVariables) | Out-Null
     $env.add("TestMUA", $MUAVariables) | Out-Null
+    $env.add("TestPGFlex", $PGFlexVariables) | Out-Null
+    $env.add("TestMySQL", $MySQLVariables) | Out-Null
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

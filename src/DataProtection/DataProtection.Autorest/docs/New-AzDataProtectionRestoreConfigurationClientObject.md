@@ -109,7 +109,7 @@ Boolean parameter to decide whether cluster scope resources are included for res
 By default this is taken as true.
 
 ```yaml
-Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 Parameter Sets: (All)
 Aliases:
 
@@ -170,7 +170,7 @@ Namespaces mapping from source namespaces to target namespaces to resolve namesp
 To construct, see NOTES section for NAMESPACEMAPPING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.KubernetesClusterRestoreCriteriaNamespaceMappings
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.KubernetesClusterRestoreCriteriaNamespaceMappings
 Parameter Sets: (All)
 Aliases:
 
@@ -203,7 +203,7 @@ Hook reference to be executed during restore.
 To construct, see NOTES section for RESTOREHOOKREFERENCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.NamespacedNameResource[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.NamespacedNameResource[]
 Parameter Sets: (All)
 Aliases:
 
@@ -224,20 +224,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Management.Automation.PSObject
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`NAMESPACEMAPPING <KubernetesClusterRestoreCriteriaNamespaceMappings>`: Namespaces mapping from source namespaces to target namespaces to resolve namespace naming conflicts in the target cluster.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
-`RESTOREHOOKREFERENCE <NamespacedNameResource[]>`: Hook reference to be executed during restore.
-  - `[Name <String>]`: Name of the resource
-  - `[Namespace <String>]`: Namespace in which the resource exists
 
 ## RELATED LINKS
 

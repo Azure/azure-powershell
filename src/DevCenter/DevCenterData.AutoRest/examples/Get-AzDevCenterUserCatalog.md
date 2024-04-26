@@ -6,7 +6,7 @@ This command lists catalogs in the project "DevProject".
 
 ### Example 2: List catalogs by dev center
 ```powershell
-Get-AzDevCenterUserCatalog -DevCenter Contoso -ProjectName DevProject
+Get-AzDevCenterUserCatalog -DevCenterName Contoso -ProjectName DevProject
 ```
 This command lists catalogs in the project "DevProject".
 
@@ -18,7 +18,7 @@ This command gets a catalog named "CentralCatalog" in the project "DevProject".
 
 ### Example 4: Get a catalog by dev center
 ```powershell
-Get-AzDevCenterUserCatalog -DevCenter Contoso -ProjectName DevProject -CatalogName CentralCatalog 
+Get-AzDevCenterUserCatalog -DevCenterName Contoso -ProjectName DevProject -CatalogName CentralCatalog 
 ```
 This command gets a catalog named "CentralCatalog" in the project "DevProject".
 
@@ -32,6 +32,6 @@ This command gets a catalog named "CentralCatalog" in the project "DevProject".
 ### Example 6: Get a catalog by dev center and InputObject
 ```powershell
 $catalogInput = @{"CatalogName" = "CentralCatalog"; "ProjectName" = "DevProject" }
-Get-AzDevCenterUserCatalog -DevCenter Contoso -InputObject $catalogInput 
+Get-AzDevCenterUserCatalog -DevCenterName Contoso -InputObject $catalogInput 
 ```
 This command gets a catalog named "CentralCatalog" in the project "DevProject".

@@ -19,7 +19,7 @@ Describe 'Get-AzDevCenterUserCatalog' {
         $listOfCatalogs.Count | Should -Be 1
 
         if ($Record -or $Live) {
-            $listOfCatalogs = Get-AzDevCenterUserCatalog -DevCenter $env.devCenterName -ProjectName $env.projectName
+            $listOfCatalogs = Get-AzDevCenterUserCatalog -DevCenterName $env.devCenterName -ProjectName $env.projectName
             $listOfCatalogs.Count | Should -Be 1
         }
 
@@ -27,22 +27,22 @@ Describe 'Get-AzDevCenterUserCatalog' {
 
     It 'Get' {
         $catalog = Get-AzDevCenterUserCatalog -Endpoint $env.endpoint -ProjectName $env.projectName -CatalogName $env.catalogName 
-        $catalog | Should -Be $env.catalogName
+        $catalog.Name | Should -Be $env.catalogName
 
         if ($Record -or $Live) {
-            $catalog = Get-AzDevCenterUserCatalog -DevCenter $env.devCenterName -ProjectName $env.projectName -CatalogName $env.catalogName 
-            $catalog | Should -Be $env.catalogName
+            $catalog = Get-AzDevCenterUserCatalog -DevCenterName $env.devCenterName -ProjectName $env.projectName -CatalogName $env.catalogName 
+            $catalog.Name | Should -Be $env.catalogName
         }
     }
 
     It 'GetViaIdentity' {
         $catalogInput = @{"CatalogName" = $env.catalogName; "ProjectName" = $env.projectName }
         $catalog = Get-AzDevCenterUserCatalog -Endpoint $env.endpoint -InputObject $catalogInput 
-        $catalog | Should -Be $env.catalogName
+        $catalog.Name | Should -Be $env.catalogName
 
         if ($Record -or $Live) {
-            $catalog = Get-AzDevCenterUserCatalog -DevCenter $env.devCenterName -InputObject $catalogInput 
-            $catalog | Should -Be $env.catalogName
+            $catalog = Get-AzDevCenterUserCatalog -DevCenterName $env.devCenterName -InputObject $catalogInput 
+            $catalog.Name | Should -Be $env.catalogName
         }
 
     }
