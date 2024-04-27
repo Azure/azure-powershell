@@ -29,6 +29,14 @@ Update-AzPolicyExemption -Id <String> [-ExemptionCategory <String>] [-PolicyDefi
  [-WhatIf] [<CommonParameters>]
 ```
 
+### InputObject
+```
+Update-AzPolicyExemption -InputObject <IPolicyExemption> [-ExemptionCategory <String>]
+ [-PolicyDefinitionReferenceId <String[]>] [-AssignmentScopeValidation <String>] [-BackwardCompatible]
+ [-ClearExpiration] [-Description <String>] [-DisplayName <String>] [-ExpiresOn <DateTime?>]
+ [-Metadata <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 This operation updates a policy exemption with the given scope and name.
 
@@ -238,6 +246,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -InputObject
+
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue, ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Metadata
 The policy assignment metadata.
 Metadata is an open ended object and is typically a collection of key value pairs.
@@ -335,6 +358,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption
 
 ### System.Management.Automation.SwitchParameter
 
