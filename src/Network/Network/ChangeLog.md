@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added cmdlet `Restart-AzNetworkVirtualAppliance` for allowing a restart of Network Virtual Appliance instances from the customer subscription.
 * Added support for ApplicationGatewaySkuFamily
 * Fixed a few minor issues
 * Updated `New-AzApplicationGateway` to include `EnableRequestBuffering` and `EnableResponseBuffering` parameters
