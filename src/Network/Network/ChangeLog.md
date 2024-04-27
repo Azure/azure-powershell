@@ -19,13 +19,8 @@
 --->
 
 ## Upcoming Release
-* Added cmdlet `Convert-AzNetworkWatcherClassicConnectionMonitor` for converting a classic connection monitor to V2 connection monitor.
-
-## Version 7.4.1
-* Fixed a bug caused by the introduction of the new property `GlobalConfiguration` in `PSApplicationGateway`
-* Added support for Bring Your Own Public IP feature for Hub Firewalls
-
-## Version 7.4.0
+* Added cmdlet `Restart-AzNetworkVirtualAppliance` for allowing a restart of Network Virtual Appliance instances from the customer subscription.
+* Added support for ApplicationGatewaySkuFamily
 * Fixed a few minor issues
 * Updated `New-AzApplicationGateway` to include `EnableRequestBuffering` and `EnableResponseBuffering` parameters
 * Changed the Default Rule Set from CRS3.0 to DRS2.1 in `NewAzureApplicationGatewayFirewallPolicy`

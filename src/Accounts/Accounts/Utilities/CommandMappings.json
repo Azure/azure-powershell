@@ -4757,6 +4757,7 @@
       "Reset-AzVpnGateway": {},
       "Reset-AzVpnSiteLinkConnection": {},
       "Resize-AzVirtualNetworkGateway": {},
+      "Restart-AzNetworkVirtualAppliance": {},
       "Set-AzApplicationGateway": {},
       "Set-AzApplicationGatewayAuthenticationCertificate": {},
       "Set-AzApplicationGatewayAutoscaleConfiguration": {},
