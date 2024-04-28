@@ -20,7 +20,6 @@ using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Management.Network.Models;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
 using MNM = Microsoft.Azure.Management.Network.Models;
@@ -350,45 +349,6 @@ namespace Microsoft.Azure.Commands.Network
         public string FormatType { get; set; }
 
         [Parameter(
-          Mandatory = false,
-          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
-          ParameterSetName = SetByResource)]
-        [Parameter(
-          Mandatory = false,
-          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
-          ParameterSetName = SetByResourceWithTA)]
-        [Parameter(
-          Mandatory = false,
-          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
-          ParameterSetName = SetByName)]
-        [Parameter(
-          Mandatory = false,
-          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
-          ParameterSetName = SetByNameWithTA)]
-        [Parameter(
-          Mandatory = false,
-          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
-          ParameterSetName = SetByLocation)]
-        [Parameter(
-          Mandatory = false,
-          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
-          ParameterSetName = SetByLocationWithTA)]
-        [Parameter(
-          Mandatory = false,
-          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
-          ParameterSetName = SetByResourceId)]
-        [Parameter(
-          Mandatory = false,
-          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
-          ParameterSetName = SetByResourceIdWithTA)]
-        [Parameter(
-          Mandatory = false,
-          HelpMessage = "ResourceId of the user assigned identity to be assigned to Flowlog.",
-          ParameterSetName = SetByInputObject)]
-        [ValidateNotNullOrEmpty]
-        public string UserAssignedIdentityId { get; set; }
-
-        [Parameter(
             Mandatory = false,
             HelpMessage = "The version (revision) of the flow log.",
             ParameterSetName = SetByResource)]
@@ -618,7 +578,7 @@ namespace Microsoft.Azure.Commands.Network
         private PSFlowLogResource CreateFlowLog()
         {
             this.ValidateFlowLogParameters(this.TargetResourceId, this.StorageId, this.FormatVersion, this.FormatType, this.EnableTrafficAnalytics == true,
-                this.TrafficAnalyticsWorkspaceId, this.TrafficAnalyticsInterval, this.RetentionPolicyDays, this.UserAssignedIdentityId);
+                this.TrafficAnalyticsWorkspaceId, this.TrafficAnalyticsInterval, this.RetentionPolicyDays);
 
             MNM.FlowLog flowLogParameters = GetFlowLogParametersFromRequest();
 
@@ -646,28 +606,6 @@ namespace Microsoft.Azure.Commands.Network
                     Enabled = this.EnableRetention,
                     Days = this.RetentionPolicyDays
                 };
-            }
-
-            if (this.UserAssignedIdentityId != null)
-            {
-                if (string.Equals(this.UserAssignedIdentityId, "none", StringComparison.OrdinalIgnoreCase))
-                {
-                    flowLogParameters.Identity = new ManagedServiceIdentity
-                    {
-                        Type = MNM.ResourceIdentityType.None,
-                    };
-                }
-                else
-                {
-                    flowLogParameters.Identity = new ManagedServiceIdentity
-                    {
-                        Type = MNM.ResourceIdentityType.UserAssigned,
-                        UserAssignedIdentities = new Dictionary<string, ManagedServiceIdentityUserAssignedIdentitiesValue>
-                    {
-                        { this.UserAssignedIdentityId, new ManagedServiceIdentityUserAssignedIdentitiesValue() }
-                    }
-                    };
-                }
             }
 
             if (!string.IsNullOrWhiteSpace(this.FormatType) || this.FormatVersion != null)

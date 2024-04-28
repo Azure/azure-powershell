@@ -34,9 +34,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Target = ViewControl.Table)]
         public bool? Enabled { get; set; }
 
-        [Ps1Xml(Target = ViewControl.Table)]
-        public PSManagedServiceIdentity Identity { get; set; }
-
         public PSRetentionPolicyParameters RetentionPolicy { get; set; }
 
         public PSFlowLogFormatParameters Format { get; set; }
@@ -53,12 +50,6 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string FormatText
         {
             get { return JsonConvert.SerializeObject(this.Format, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
-        }
-
-        [JsonIgnore]
-        public string IdentityText
-        {
-            get { return JsonConvert.SerializeObject(Identity, Formatting.Indented, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore }); }
         }
 
         [JsonIgnore]
