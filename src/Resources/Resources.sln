@@ -59,6 +59,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestFx", "..\..\tools\TestF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authorization.Management.Sdk", "Authorization.Management.Sdk\Authorization.Management.Sdk.csproj", "{D3B4C59E-B382-4EE2-9A58-F69367A69741}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Metricdata", "..\Monitor\MetricData.Autorest\Az.Metricdata.csproj", "{C8338D4A-8D88-4805-B7C6-AAF154AB67B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -170,6 +172,10 @@ Global
 		{D3B4C59E-B382-4EE2-9A58-F69367A69741}.Powershell|Any CPU.Build.0 = Debug|Any CPU
 		{D3B4C59E-B382-4EE2-9A58-F69367A69741}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3B4C59E-B382-4EE2-9A58-F69367A69741}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8338D4A-8D88-4805-B7C6-AAF154AB67B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8338D4A-8D88-4805-B7C6-AAF154AB67B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8338D4A-8D88-4805-B7C6-AAF154AB67B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8338D4A-8D88-4805-B7C6-AAF154AB67B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5323D4CC-D4B7-44A7-B79A-F91C47AC9650} = {23F657BD-37C1-4E91-8548-5783E43D40B0}
@@ -191,5 +197,6 @@ Global
 		{9FF75C27-3C1B-41D5-8957-441DC32DA384} = {04F74FE3-C8B4-4E4D-8057-61533EDA2257}
 		{79B1C27E-AB8F-458C-B872-A5DC5041BE08} = {C7A81A90-F687-410D-90AB-49F378773E7E}
 		{B205E3EB-C341-465E-BA2E-C38C753A2528} = {C7A81A90-F687-410D-90AB-49F378773E7E}
+		{C8338D4A-8D88-4805-B7C6-AAF154AB67B9} = {04F74FE3-C8B4-4E4D-8057-61533EDA2257}
 	EndGlobalSection
 EndGlobal
