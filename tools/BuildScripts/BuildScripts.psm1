@@ -158,6 +158,7 @@ function New-GeneratedFileFromTemplate {
     Write-Host "Copying template: $TemplateName." -ForegroundColor Yellow
     $templateFile | Set-Content $GeneratedFile -force
 }
+
 function New-GenerateInfoJson {
     param (
         [string]$GeneratedDirectory,
