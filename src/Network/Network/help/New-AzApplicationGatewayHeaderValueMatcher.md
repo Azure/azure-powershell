@@ -24,7 +24,7 @@ New-AzApplicationGatewayHeaderValueMatcher -Pattern <String> [-IgnoreCase] [-Neg
 
 ### Example 1
 ```powershell
-PS C:\> $hvm = New-AzApplicationGatewayHeaderValueMatcher -Pattern ".*" -IgnoreCase -Negate
+$hvm = New-AzApplicationGatewayHeaderValueMatcher -Pattern ".*" -IgnoreCase -Negate
 PS C:\> $requestHeaderConfiguration01 = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Set-Cookie" -HeaderValue "val" -HeaderValueMatcher $headerValueMatcher
 ```
 
