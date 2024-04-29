@@ -58,7 +58,7 @@ foreach ($subModuleName in $outdatedSubModule) {
         Write-Error "log can be found at $generatedLog"
         Get-Content $generatedLog | Foreach-Object { Write-Error $_ }
         Write-Error "========= End of error log for $ModuleRootName, $subModuleName"
-        exit 1
+        Exit 1
     }
     $subModuleGeneratedDirectory = Join-Path $generatedDirectory $ModuleRootName $subModuleName
     if (-not (Test-Path $subModuleGeneratedDirectory)) {

@@ -27,7 +27,8 @@ if (($null -eq $ModuleRootName) -or ('' -eq $ModuleRootName) -or ('$(root-module
 } elseif ($ModuleRootName -match "^Az\.(?<ModuleRootName>\w+)") {
     $ModuleRootName = $Matches["ModuleRootName"]
 } else {
-    
+    Write-Error "Invalid ModuleRootName: $ModuleRootName"
+    Exit 1
 }
 
 $RepoRoot = ($PSScriptRoot | Split-Path -Parent | Split-Path -Parent)
@@ -42,10 +43,14 @@ $parentModuleName = $ModuleRootName
 if ($ModuleRootName -in $rootToParentMap.keys) {
     $parentModuleName = $rootToParentMap[$ModuleRootName]
 }
+
+$subModuleNameTrimmed = $SubModuleName
+$SubModuleName = "$SubModuleName.Autorest"
 $moduleRootPath = Join-Path $SourceDirectory $ModuleRootName
 $parentModulePath = Join-Path $moduleRootPath $parentModuleName
-$subModulePth = Join-Path $moduleRootPath $SubModuleName
-$subModuleNameTrimmed = $SubModuleName.split('.')[-2]
+$subModulePath = Join-Path $moduleRootPath $SubModuleName
+$slnPath = Join-Path $moduleRootPath "$ModuleRootName.sln"
+
 <#
     create parent module for new module
 #>
@@ -101,19 +106,75 @@ $parentModuleMetadata.AliasesToExport = $parentModuleMetadata.AliasesToExport | 
 New-ModuleManifest -Path $parentModulePsd1Path @parentModuleMetadata
 
 <#
-    merge sub module csproj to parent module sln
+    create module root sln for new module
 #>
-$slnPath = Join-Path $moduleRootPath "$ModuleRootName.sln"
 if (-not (Test-Path $slnPath)) {
     dotnet new sln -n $ModuleRootName -o $moduleRootPath
     Join-Path $SourceDirectory 'Accounts' | Get-ChildItem -Filter "*.csproj" -File -Recurse | Where-Object { $_.FullName -notmatch '^*.test.csproj$' } | Foreach-Object {
         dotnet sln $slnPath add $_.FullName --solution-folder 'Accounts'
     }
 }
-dotnet sln $slnPath add (Join-Path $GeneratedDirectory $ModuleRootName $SubModuleName "Az.$subModuleNameTrimmed.csproj")
+<#
+    merge temporary sub module csproj to parent module sln (for platyPS help markdown generation)
+        1. delete submodule csproj
+        2. create temporary submodule csproj pointing src/moduleroot/submodule
+        3. add temporary submodule csproj to src/moduleroot/sln
+        4. build src/moduleroot/sln
+        5. generate help
+        6. restore submodule csproj, delete temporary submodule csproj from src/moduleroot/sln
+#>
+$subModuleCsprojPath = Join-Path $subModulePath "Az.$subModuleNameTrimmed.csproj"
+Remove-Item $subModuleCsprojPath -Force
+New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName "Az.$subModuleNameTrimmed.csproj" -GeneratedDirectory $subModulePath -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed
+dotnet sln $slnPath add $subModuleCsprojPath
+dotnet build $slnPath
 <#
     generate help markdown by platyPS
 #>
+$job = start-job {
+    param(
+        [string]$RepoRoot,
+        [string]$ModuleRootName,
+        [string]$ParentModuleName,
+        [string]$SubModuleName
+    )
+    $resolveScriptPath = Join-Path $RepoRoot 'tools' 'BuildScripts' 'Resolve-Psd1.ps1'
+    $artifacts = Join-Path $RepoRoot 'artifacts'
+    $artifactPsd1Path = Join-Path $artifacts 'Debug' "Az.$ModuleRootName" "Az.$ModuleRootName.psd1"
+    $parentModulePath = Join-Path $RepoRoot 'src' $ModuleRootName $ParentModuleName
+
+    $assemblyToRemove = "YamlDotNet.dll"
+    $psd1Data = Import-PowerSHellDataFile -Path $artifactPsd1Path
+    if ($psd1Data.ContainsKey('RequiredAssemblies') -and $psd1Data.RequiredAssemblies -contains $assemblyToRemove) {
+        $psd1Data.RequiredAssemblies = $psd1Data.RequiredAssemblies | Where-Object { $_ -ne $assemblyToRemove }
+        Update-ModuleManifest -Path $artifactPsd1Path -RequiredAssemblies $psd1Data.RequiredAssemblies
+    }
+
+    Import-Module $artifactPsd1Path
+    Import-Module platyPS
+    $helpPath = Join-Path $parentModulePath 'help'
+    $subModuleHelpPath = Join-Path $RepoRoot 'src' $ModuleRootName $SubModuleName 'docs'
+
+    Copy-Item -Path $subModuleHelpPath -Destination $helpPath -Filter *-*.md -Recurse
+    # Clean up the help folder and remove the help files which are not exported by the module.
+    $moduleMetadata = Get-Module "Az.$ModuleRootName"
+    $exportedCommands = $moduleMetadata.ExportedCommands.Values | Where-Object {$_.CommandType -ne 'Alias'} | ForEach-Object { $_.Name}
+    Update-MarkdownHelpModule -Path $helpPath -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
+    foreach ($helpFile in (Get-ChildItem $helpPath -Recurse)) {
+        $cmdeltName = $helpFile.Name.Replace(".md", "")
+        if ($exportedCommands -notcontains $cmdeltName)
+        {
+            Remove-Item $helpFile.FullName
+        }
+    }
+    & $resolveScriptPath -ModuleName $ModuleRootName -ArtifactFolder $artifacts -Psd1Folder $parentModulePath
+} -ArgumentList $RepoRoot, $ModuleRootName, $parentModuleName, $SubModuleName
+$job | Wait-Job | Receive-Job
+
 <#
-    move help from submodule to module root
+    merge actual sub module csproj to parent module sln
 #>
+dotnet sln $slnPath remove $subModuleCsprojPath
+git restore $subModuleCsprojPath
+$subModuleCsprojPath = Join-Path $GeneratedDirectory $ModuleRootName $SubModuleName "Az.$subModuleNameTrimmed.csproj"
+dotnet sln $slnPath add $subModuleCsprojPath

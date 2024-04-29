@@ -70,7 +70,7 @@
         <ModuleCustomFiles Include="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\$(PsRootModuleName)\$(PsModuleFolder)\custom\**\*.*"/>
         <ModuleTestFiles Include="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\$(PsRootModuleName)\$(PsModuleFolder)\test\**\*.*"/>
         <UtilsFiles Include="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\$(PsRootModuleName)\$(PsModuleFolder)\utils\**\*.*"/>
-        <ModuleGeneratedFiles Include="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\generated\$(PsRootModuleName)\$(PsModuleFolder)\generated\**\*.*"/>
+        <ModuleGeneratedFiles Include="generated\**\*.*"/>
   </ItemGroup>
 
   <Target Name="CopyFiles" AfterTargets="Build">
