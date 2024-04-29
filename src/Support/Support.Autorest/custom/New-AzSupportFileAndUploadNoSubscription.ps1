@@ -27,7 +27,7 @@ Creates and uploads a new file under a workspace for the specified subscription.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IFileDetails
 .Link
-https://learn.microsoft.com/powershell/module/az.support/new-azsupportfile
+https://learn.microsoft.com/powershell/module/az.support/new-azsupportfileanduploadnosubscription
 #>
 function New-AzSupportFileAndUploadNoSubscription {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Support.Models.IFileDetails])]

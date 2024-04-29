@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.Support
-online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportfile
+online version: https://learn.microsoft.com/powershell/module/az.support/new-azsupportfileanduploadnosubscription
 schema: 2.0.0
 ---
 
