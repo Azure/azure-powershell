@@ -1838,7 +1838,7 @@ function Test-DiskGrantAccessGetSASWithTL
 
 	try
     {
-        $rgname = "adsandsrc7";
+        $rgname = "adsandsrc11";
         $loc = "eastus2euap";
 		New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
@@ -1850,6 +1850,9 @@ function Test-DiskGrantAccessGetSASWithTL
         $diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
 
         $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image.Id;
+
+        # securitytype set
+        $diskConfig = Set-AzDiskSecurityProfile -Disk $diskconfig -SecurityType "Standard";
 
         $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
 
@@ -1890,9 +1893,11 @@ function Test-DiskGrantAccessGetSASWithTL
         Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential $cred;
         Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version $version ;
         Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
-        Add-AzVMDataDisk -VM $vmconfig -Name $datadiskname -Caching 'ReadOnly' -DiskSizeInGB 10 -Lun 0 -CreateOption Copy -SourceResourceId $disk.Id -SecurityEncryptionType "TrustedLaunch";
+        Add-AzVMDataDisk -VM $vmconfig -Name $datadiskname -Caching 'ReadOnly' -DiskSizeInGB 127 -Lun 0 -CreateOption Copy -SourceResourceId $disk.Id# -SecurityEncryptionType "TrustedLaunch";
 
         $vm = New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig;
+
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname;
 	}
     finally 
     {
