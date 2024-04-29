@@ -158,3 +158,24 @@ function New-GeneratedFileFromTemplate {
     Write-Host "Copying template: $TemplateName." -ForegroundColor Yellow
     $templateFile | Set-Content $GeneratedFile -force
 }
+
+function New-GenerateInfoJson {
+    param (
+        [string]$GeneratedDirectory,
+        [string]$GenerateId = (New-Guid).ToString()
+    )
+    $generateInfoJsonPath = Join-Path $GeneratedDirectory "/generate-info.json"
+    $generateInfoJson = @{
+        generate_Id = $GenerateId
+    } | ConvertTo-Json
+    if (Test-Path $generateInfoJsonPath -PathType Leaf) {
+        Write-Host "Refreshing generate-info.json file..."
+        $generateInfoJson = Get-Content $generateInfoJsonPath | ConvertFrom-Json -AsHashtable
+        $generateInfoJson["generate_Id"] = $GenerateId
+        $generateInfoJson | ConvertTo-Json | Set-Content -Path $generateInfoJsonPath -Force
+    }
+    else{
+        Write-Host "Generating generate-info.json file..."
+        $generateInfoJson | Set-Content -Path $generateInfoJsonPath -Force
+    }
+}
