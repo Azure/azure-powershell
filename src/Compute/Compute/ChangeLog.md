@@ -23,6 +23,10 @@
 * Added cmdlet `Invoke-AzSpotPlacementRecommender`.
 * Fixed `Update-AzCapacityReservationGroup` to remove Subscriptions from SharingProfile.
 * Added new optional parameter `SecureVMGuestStateSAS` to cmdlet `Grant-AzDiskAccess`.
+* Added new business logic to `New-AzVmss` cmdlet. When the user explicitly sets the `SecurityType` to `Standard`, the Image alias is set to `Win2022AzureEdition`.
+    - This change affects all parameter sets on the `New-AzVmss` cmdlet.
+    - Link to diff between markdown help files: `{ ENTER LINK HERE }`
+    - Link to API tests for this feature: `{ ENTER LINK HERE }`
 
 ## Version 7.2.0
 * Added parameters `-scriptUriManagedIdentity`, `-outputBlobManagedIdentity`, `-errorBlobMangedIdentity`, and `-TreatFailureAsDeploymentFailure` to cmdlets `Set-AzVmRunCommand` and `Set-AzVmssRunCommand`. 

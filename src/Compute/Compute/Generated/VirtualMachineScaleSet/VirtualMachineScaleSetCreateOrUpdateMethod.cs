@@ -170,6 +170,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 }
                             }
 
+                            if (parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == "standard")
+                            {
+                                parameters.VirtualMachineProfile.StorageProfile.ImageReference = new ImageReference
+                                {
+                                    Publisher = "MicrosoftWindowsServer",
+                                    Offer = "WindowsServer",
+                                    Sku = "2022-Datacenter-Azure-Edition",
+                                    Version = "latest"
+                                };
+                            }
+
                             VirtualMachineScaleSet result;
                             if (auxAuthHeader != null)
                             {
