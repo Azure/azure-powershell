@@ -164,9 +164,18 @@ function New-GenerateInfoJson {
         [string]$GeneratedDirectory,
         [string]$GenerateId = (New-Guid).ToString()
     )
+    $generateInfoJsonPath = Join-Path $GeneratedDirectory "/generate-info.json"
     $generateInfoJson = @{
         generate_Id = $GenerateId
     } | ConvertTo-Json
-    $generateInfoJsonPath = Join-Path $GeneratedDirectory "generate-info.json"
-    $generateInfoJson | Set-Content -Path $generateInfoJsonPath -Force
+    if (Test-Path $generateInfoJsonPath -PathType Leaf) {
+        Write-Host "Refreshing generate-info.json file..."
+        $generateInfoJson = Get-Content $generateInfoJsonPath | ConvertFrom-Json -AsHashtable
+        $generateInfoJson["generate_Id"] = $GenerateId
+        $generateInfoJson | ConvertTo-Json | Set-Content -Path $generateInfoJsonPath -Force
+    }
+    else{
+        Write-Host "Generating generate-info.json file..."
+        $generateInfoJson | Set-Content -Path $generateInfoJsonPath -Force
+    }
 }
