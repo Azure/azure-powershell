@@ -29,74 +29,12 @@ param (
     [switch]$EnableTestCoverage
 
 )
-function Get-CsprojFromModule {
-    param (
-        [string[]]$BuildModuleList,
-        [string[]]$TestModuleList,
-        [string]$SourceDirectory,
-        [string]$GeneratedDirectory,
-        [string]$Configuration
-    )
-
-    $modulePath = @()
-    Write-Host "----------Start finding modules under /src and /generated----------" -ForegroundColor DarkYellow
-    foreach ($moduleName in $BuildModuleList) {
-        $src = Join-Path $SourceDirectory $moduleName
-        $gen = Join-Path $GeneratedDirectory $moduleName
-        if (Test-Path $src) {
-            $modulePath += $src
-            Write-Host "find $moduleName under $src" -ForegroundColor Cyan
-        }
-        if (Test-Path $gen) {
-            $modulePath += $gen
-            Write-Host "find $moduleName under $gen" -ForegroundColor Cyan
-        }
-    }
-
-    $testCsprojPattern = @()
-    foreach ($testModule in $TestModuleList) {
-        if ($testModule -in $renamedModules) {
-            foreach ($renamedTestModule in $renamedModules[$testModule]) {
-                $testCsprojPattern += "^*.$renamedTestModule.Test.csproj$"
-            }
-        } else {
-            $testCsprojPattern += "^*.$testModule.Test.csproj$"
-        }
-    }
-    $testCsprojPattern = ($testCsprojPattern | Join-String -Separator '|')
-
-    Write-Host "----------Start finding projects to include----------" -ForegroundColor DarkYellow
-    $result = @()
-    foreach ($module in $modulePath) {
-        foreach ($csproj in (Get-ChildItem -Path $module -Recurse -Filter *.csproj)) {
-            $csprojPath = $csproj.FullName
-            # Release do not need test, exclude all test projects
-            $releaseReturnCondition = ("Release" -eq $Configuration) -and ($csprojPath -match ".*Test.csproj$")
-            # Debug only include: 1. not test project 2. is test projects and only in calculated test project list 
-            $debugReturnCondition = ("Debug" -eq $Configuration) -and ($csprojPath -match ".*Test.csproj$") -and ($csprojPath -notmatch $testCsprojPattern)
-            $uniqueNameReturnCondition = $csprojPath -in $result
-            if ($uniqueNameReturnCondition -or $releaseReturnCondition -or $debugReturnCondition) {
-                continue
-            }
-            $result += $csprojPath
-            Write-Host "Including project: $($csprojPath)" -ForegroundColor Cyan
-        }
-    }
-
-    if ('Debug' -eq $Configuration -and $TestModuleList -and $TestModuleList.Length -ne 0) {
-        $testFxCsprojpath =  Join-Path $RepoRoot "tools" "TestFx" "TestFx.csproj"
-        $result += $testFxCsprojpath
-        Write-Host "Including project: $($testFxCsprojpath)" -ForegroundColor Cyan
-    }
-    return $result
-}
-
-<################################################
-#  Main
-#################################################>
 <#
     TODO: add comments
 #>
+$BuildScriptsModulePath = Join-Path $PSScriptRoot "BuildScripts.psm1"
+Import-Module $BuildScriptsModulePath
+
 $notModules = @('lib', 'shared')
 $coreTestModules = @('Compute', 'Network', 'Resources', 'Sql', 'Websites')
 $renamedModules = @{
