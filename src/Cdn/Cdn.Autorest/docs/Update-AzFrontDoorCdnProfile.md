@@ -16,6 +16,7 @@ Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN
 ```
 Update-AzFrontDoorCdnProfile -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-LogScrubbingRule <IProfileScrubbingRules[]>] [-LogScrubbingState <ProfileScrubbingState>]
  [-OriginResponseTimeoutSecond <Int32>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,7 +24,8 @@ Update-AzFrontDoorCdnProfile -Name <String> -ResourceGroupName <String> [-Subscr
 ### UpdateViaIdentityExpanded
 ```
 Update-AzFrontDoorCdnProfile -InputObject <ICdnIdentity> [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-OriginResponseTimeoutSecond <Int32>] [-Tag <Hashtable>]
+ [-IdentityUserAssignedIdentity <Hashtable>] [-LogScrubbingRule <IProfileScrubbingRules[]>]
+ [-LogScrubbingState <ProfileScrubbingState>] [-OriginResponseTimeoutSecond <Int32>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -92,6 +94,51 @@ Global   fdp-v542q6 frontdoor testps-rg-da16jm
 ```
 
 Enable managed identity using UserAssigned type to an AzureFrontDoor profile
+
+### Example 5: Enable the Profile Logscrub to an AzureFrontDoor profile, only contains one LogScrubbingRule
+```powershell
+$rule = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -LogScrubbingRule $rule -LogScrubbingState Enabled
+```
+
+```output
+Location Name       Kind      ResourceGroupName
+-------- ----       ----      -----------------
+Global   fdp-v542q6 frontdoor testps-rg-da16jm
+```
+
+Enable the Profile Logscrub to an AzureFrontDoor profile, only contains one LogScrubbingRule
+
+### Example 6: Enable the Profile Logscrub to an AzureFrontDoor profile, contains more than one LogScrubbingRule
+```powershell
+$rule1 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Enabled 
+$rule2 = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable QueryStringArgNames -State Enabled
+$rules = New-AzFrontDoorCdnProfileLogScrubbingObject -ScrubbingRule @($rule1, $rule2) -State Enabled
+
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -LogScrubbingRule $rules.ScrubbingRule -LogScrubbingState Enabled
+```
+
+```output
+Location Name       Kind      ResourceGroupName
+-------- ----       ----      -----------------
+Global   fdp-v542q6 frontdoor testps-rg-da16jm
+```
+
+Enable the Profile Logscrub to an AzureFrontDoor profile, contains more than one LogScrubbingRule
+
+### Example 7: Disable the Profile Logscrub to an AzureFrontDoor profile
+```powershell
+$rule = New-AzFrontDoorCdnProfileScrubbingRulesObject -MatchVariable RequestIPAddress -State Disabled
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -LogScrubbingRule $rule -LogScrubbingState Disabled
+```
+
+```output
+Location Name       Kind      ResourceGroupName
+-------- ----       ----      -----------------
+Global   fdp-v542q6 frontdoor testps-rg-da16jm
+```
+
+Disable the Profile Logscrub to an AzureFrontDoor profile
 
 ## PARAMETERS
 
@@ -170,6 +217,38 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -LogScrubbingRule
+List of log scrubbing rules applied to the Azure Front Door profile logs.
+To construct, see NOTES section for LOGSCRUBBINGRULE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfileScrubbingRules[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LogScrubbingState
+State of the log scrubbing config.
+Default value is Enabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.ProfileScrubbingState
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -304,31 +383,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IProfile
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IProfile
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <ICdnIdentity>`: Identity Parameter
-  - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
-  - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
-  - `[Id <String>]`: Resource identity path
-  - `[OriginGroupName <String>]`: Name of the origin group which is unique within the endpoint.
-  - `[OriginName <String>]`: Name of the origin which is unique within the profile.
-  - `[ProfileName <String>]`: Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
-  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
-  - `[RouteName <String>]`: Name of the routing rule.
-  - `[RuleName <String>]`: Name of the delivery rule which is unique within the endpoint.
-  - `[RuleSetName <String>]`: Name of the rule set under the profile which is unique globally.
-  - `[SecretName <String>]`: Name of the Secret under the profile.
-  - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
-  - `[SubscriptionId <String>]`: Azure Subscription ID.
 
 ## RELATED LINKS
 

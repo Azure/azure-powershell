@@ -14,17 +14,47 @@ Microsoft Azure PowerShell: Marketplace cmdlets
 ### [Copy-AzMarketplacePrivateStoreCollectionOffer](Copy-AzMarketplacePrivateStoreCollectionOffer.md)
 transferring offers (copy or move) from source collection to target collection(s)
 
+### [Disable-AzMarketplacePrivateStoreCollectionAllItem](Disable-AzMarketplacePrivateStoreCollectionAllItem.md)
+Disable approve all items for the collection.
+
+### [Enable-AzMarketplacePrivateStoreCollectionAllItem](Enable-AzMarketplacePrivateStoreCollectionAllItem.md)
+Delete all existing offers from the collection and enable approve all items.
+
 ### [Get-AzMarketplaceBillingPrivateStoreAccount](Get-AzMarketplaceBillingPrivateStoreAccount.md)
 Tenant billing accounts names
 
 ### [Get-AzMarketplaceCollectionToSubscriptionMapping](Get-AzMarketplaceCollectionToSubscriptionMapping.md)
 For a given subscriptions list, the API will return a map of collections and the related subscriptions from the supplied list.
 
+### [Get-AzMarketplacePrivateStoreAllSubscriptionInTenant](Get-AzMarketplacePrivateStoreAllSubscriptionInTenant.md)
+Fetch all subscriptions in tenant, only for marketplace admin
+
 ### [Get-AzMarketplacePrivateStoreCollection](Get-AzMarketplacePrivateStoreCollection.md)
 Gets private store collection
 
+### [Get-AzMarketplacePrivateStoreCollectionMapOffersToContext](Get-AzMarketplacePrivateStoreCollectionMapOffersToContext.md)
+Get a list of all offers in the given collection according to the required contexts.
+
 ### [Get-AzMarketplacePrivateStoreCollectionOffer](Get-AzMarketplacePrivateStoreCollectionOffer.md)
 Gets information about a specific offer.
+
+### [Get-AzMarketplacePrivateStoreCollectionRule](Get-AzMarketplacePrivateStoreCollectionRule.md)
+Get a list of all private store rules in the given private store and collection
+
+### [Get-AzMarketplacePrivateStoreNewPlanNotification](Get-AzMarketplacePrivateStoreNewPlanNotification.md)
+List new plans notifications
+
+### [Get-AzMarketplacePrivateStoreStopSellOfferPlanNotification](Get-AzMarketplacePrivateStoreStopSellOfferPlanNotification.md)
+List stop sell notifications for both stop sell offers and stop sell plans
+
+### [Get-AzMarketplacePrivateStoreSubscription](Get-AzMarketplacePrivateStoreSubscription.md)
+List all the subscriptions in the private store context
+
+### [Get-AzMarketplacePrivateStoreUserOffer](Get-AzMarketplacePrivateStoreUserOffer.md)
+List of user's approved offers for the provided offers and subscriptions
+
+### [Get-AzMarketplacePrivateStoreUserRule](Get-AzMarketplacePrivateStoreUserRule.md)
+All rules approved in the private store that are relevant for user subscriptions
 
 ### [Get-AzMarketplacePrivateStoreV1](Get-AzMarketplacePrivateStoreV1.md)
 Get information about the private store
@@ -36,10 +66,16 @@ List of offers, regardless the collections
 Changes private store properties
 
 ### [New-AzMarketplacePrivateStoreCollection](New-AzMarketplacePrivateStoreCollection.md)
-Create or update private store collection
+Create private store collection
 
 ### [New-AzMarketplacePrivateStoreCollectionOffer](New-AzMarketplacePrivateStoreCollectionOffer.md)
 Update or add an offer to a specific collection of the private store.
+
+### [New-AzMarketplacePrivateStoreCollectionOfferMultiContext](New-AzMarketplacePrivateStoreCollectionOfferMultiContext.md)
+Upsert an offer with multiple context details.
+
+### [New-AzMarketplacePrivateStoreCollectionRule](New-AzMarketplacePrivateStoreCollectionRule.md)
+Set rule for specific private store and collection
 
 ### [Remove-AzMarketplacePrivateStoreCollection](Remove-AzMarketplacePrivateStoreCollection.md)
 Delete a collection from the given private store.
@@ -54,8 +90,17 @@ Perform an action on bulk collections
 Changes private store properties
 
 ### [Set-AzMarketplacePrivateStoreCollection](Set-AzMarketplacePrivateStoreCollection.md)
-Create or update private store collection
+Create private store collection
 
 ### [Set-AzMarketplacePrivateStoreCollectionOffer](Set-AzMarketplacePrivateStoreCollectionOffer.md)
+Update or add an offer to a specific collection of the private store.
+
+### [Test-AzMarketplacePrivateStoreAnyExistingOffer](Test-AzMarketplacePrivateStoreAnyExistingOffer.md)
+Query whether exists any offer in the collections.
+
+### [Update-AzMarketplacePrivateStoreCollection](Update-AzMarketplacePrivateStoreCollection.md)
+Create private store collection
+
+### [Update-AzMarketplacePrivateStoreCollectionOffer](Update-AzMarketplacePrivateStoreCollectionOffer.md)
 Update or add an offer to a specific collection of the private store.
 

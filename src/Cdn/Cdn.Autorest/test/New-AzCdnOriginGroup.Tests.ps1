@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnOriginGroup'))
 Describe 'New-AzCdnOriginGroup'  {
     It 'CreateExpanded' {
         $subId = $env.SubscriptionId
-        $endpointName = 'end-pstest030'
+        $endpointName = 'e-clipstest030'
         Write-Host -ForegroundColor Green "Create endpointName : $($endpointName)"
         
         $location = "westus"

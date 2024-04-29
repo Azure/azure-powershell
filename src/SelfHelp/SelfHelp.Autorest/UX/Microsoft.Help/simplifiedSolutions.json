@@ -1,0 +1,42 @@
+{
+  "resourceType": "simplifiedSolutions",
+  "apiVersion": "2024-03-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.selfhelp"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSelfHelpSimplifiedSolution",
+      "description": "Get the simplified Solutions using the applicable solutionResourceName while creating the simplified Solutions.",
+      "path": "/{scope}/providers/Microsoft.Help/simplifiedSolutions/{simplifiedSolutionsResourceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpsimplifiedsolution"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-SResourceName <String>",
+              "-Scope <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the simplified Solutions using the applicable solutionResourceName while creating the simplified Solutions.",
+          "parameters": [
+            {
+              "name": "-SResourceName",
+              "value": "[Path.simplifiedSolutionsResourceName]"
+            },
+            {
+              "name": "-Scope",
+              "value": "[Path.scope]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

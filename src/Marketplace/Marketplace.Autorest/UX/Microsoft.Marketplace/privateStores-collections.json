@@ -1,17 +1,17 @@
 {
   "resourceType": "privateStores/collections",
-  "apiVersion": "2021-06-01",
+  "apiVersion": "2023-01-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.marketplace"
   },
   "commands": [
     {
-      "name": "Copy-AzMarketplacePrivateStoreCollectionOffer",
-      "description": "transferring offers (copy or move) from source collection to target collection(s)",
-      "path": "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/transferOffers",
+      "name": "Disable-AzMarketplacePrivateStoreCollectionAllItem",
+      "description": "Disable approve all items for the collection.",
+      "path": "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/disableApproveAllItems",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.marketplace/copy-azmarketplaceprivatestorecollectionoffer"
+          "url": "https://learn.microsoft.com/powershell/module/az.marketplace/disable-azmarketplaceprivatestorecollectionallitem"
         },
         "parameterSets": [
           {
@@ -24,7 +24,73 @@
       },
       "examples": [
         {
-          "description": "transferring offers (copy or move) from source collection to target collection(s)",
+          "description": "Disable approve all items for the collection.",
+          "parameters": [
+            {
+              "name": "-CollectionId",
+              "value": "[Path.collectionId]"
+            },
+            {
+              "name": "-PrivateStoreId",
+              "value": "[Path.privateStoreId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Enable-AzMarketplacePrivateStoreCollectionAllItem",
+      "description": "Delete all existing offers from the collection and enable approve all items.",
+      "path": "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/approveAllItems",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.marketplace/enable-azmarketplaceprivatestorecollectionallitem"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CollectionId <String>",
+              "-PrivateStoreId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete all existing offers from the collection and enable approve all items.",
+          "parameters": [
+            {
+              "name": "-CollectionId",
+              "value": "[Path.collectionId]"
+            },
+            {
+              "name": "-PrivateStoreId",
+              "value": "[Path.privateStoreId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzMarketplacePrivateStoreCollectionRule",
+      "description": "Get a list of all private store rules in the given private store and collection",
+      "path": "/providers/Microsoft.Marketplace/privateStores/{privateStoreId}/collections/{collectionId}/queryRules",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestorecollectionrule"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CollectionId <String>",
+              "-PrivateStoreId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a list of all private store rules in the given private store and collection",
           "parameters": [
             {
               "name": "-CollectionId",

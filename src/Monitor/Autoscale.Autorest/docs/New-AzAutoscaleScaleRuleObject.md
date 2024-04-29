@@ -302,17 +302,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`METRICTRIGGERDIMENSION <IScaleRuleMetricDimension[]>`: List of dimension conditions. For example: [{"DimensionName":"AppName","Operator":"Equals","Values":["App1"]},{"DimensionName":"Deployment","Operator":"Equals","Values":["default"]}].
-  - `DimensionName <String>`: Name of the dimension.
-  - `Operator <ScaleRuleMetricDimensionOperationType>`: the dimension operator. Only 'Equals' and 'NotEquals' are supported. 'Equals' being equal to any of the values. 'NotEquals' being not equal to all of the values
-  - `Value <String[]>`: list of dimension values. For example: ["App1","App2"].
-
 ## RELATED LINKS
 

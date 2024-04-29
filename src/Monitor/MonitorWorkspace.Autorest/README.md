@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the MonitorWorkspace service.
 
 ---
-## Status
-[![Az.MonitorWorkspace](https://img.shields.io/powershellgallery/v/Az.MonitorWorkspace.svg?style=flat-square&label=Az.MonitorWorkspace "Az.MonitorWorkspace")](https://www.powershellgallery.com/packages/Az.MonitorWorkspace/)
-
 ## Info
 - Modifiable: yes
 - Generated: all

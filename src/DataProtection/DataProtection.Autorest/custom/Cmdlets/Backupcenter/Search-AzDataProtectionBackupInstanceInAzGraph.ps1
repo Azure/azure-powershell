@@ -7,7 +7,7 @@
     param (
         [Parameter(Mandatory, HelpMessage='Subscription of Vault')]
         [System.String[]]
-        ${Subscription},
+        ${Subscription}, # TODO: add alias to all ARG command params
 
         [Parameter(Mandatory=$false, HelpMessage='Resource Group of Vault')]
         [System.String[]]
@@ -102,7 +102,7 @@
         foreach($argResponse in $argInstanceResponse)
         {
             $jsonStringResponse = $argResponse | ConvertTo-Json -Depth 100
-            $backupInstances += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.BackupInstanceResource]::FromJsonString($jsonStringResponse)
+            $backupInstances += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.BackupInstanceResource]::FromJsonString($jsonStringResponse)
         }
         return $backupInstances
     }
