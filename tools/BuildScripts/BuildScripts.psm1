@@ -158,3 +158,14 @@ function New-GeneratedFileFromTemplate {
     Write-Host "Copying template: $TemplateName." -ForegroundColor Yellow
     $templateFile | Set-Content $GeneratedFile -force
 }
+function New-GenerateInfoJson {
+    param (
+        [string]$GeneratedDirectory,
+        [string]$GenerateId = (New-Guid).ToString()
+    )
+    $generateInfoJson = @{
+        generate_Id = $GenerateId
+    } | ConvertTo-Json
+    $generateInfoJsonPath = Join-Path $GeneratedDirectory "generate-info.json"
+    $generateInfoJson | Set-Content -Path $generateInfoJsonPath -Force
+}
