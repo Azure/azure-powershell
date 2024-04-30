@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the CustomLocation service.
 
 ---
-## Status
-[![Az.CustomLocation](https://img.shields.io/powershellgallery/v/Az.CustomLocation.svg?style=flat-square&label=Az.CustomLocation "Az.CustomLocation")](https://www.powershellgallery.com/packages/Az.CustomLocation/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -39,8 +36,6 @@ input-file:
 module-version: 0.1.0
 title: CustomLocation
 subject-prefix: $(service-name)
-disable-transform-identity-type: true
-flatten-userassignedidentity: false
 
 identity-correction-for-post: true
 
@@ -65,7 +60,6 @@ directive:
           }
         }
       }
-
   - from: swagger-document
     where: $.definitions.customLocationProperties.properties.provisioningState
     transform: >-
@@ -90,6 +84,14 @@ directive:
   - from: swagger-document
     where: $
     transform: return $.replace(/\{resourceName\}\/enabledResourceTypes/g, "{resourceName}/enabledresourcetypes")
+
+  - from: swagger-document
+    where: $.definitions.customLocation
+    transform: $['required'] = ['properties']
+
+  - from: swagger-document
+    where: $.definitions.customLocationProperties
+    transform: $['required'] = ['clusterExtensionIds', 'hostResourceId', 'namespace']
 
   - where:
       variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
@@ -116,11 +118,6 @@ directive:
 
   - where:
       subject: CustomLocationOperation
-    hide: true
-
-  - where:
-      verb: New|Update
-      subject: CustomLocation
     hide: true
 
   - where:
