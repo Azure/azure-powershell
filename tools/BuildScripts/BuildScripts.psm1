@@ -170,13 +170,13 @@ function New-GenerateInfoJson {
         generate_Id = $GenerateId
     } | ConvertTo-Json
     if (Test-Path $generateInfoJsonPath -PathType Leaf) {
-        Write-Host "Refreshing generate-info.json file..."
+        Write-Host "Refreshing generate-info.json file: $generateInfoJsonPath"
         $generateInfoJson = Get-Content $generateInfoJsonPath | ConvertFrom-Json -AsHashtable
         $generateInfoJson["generate_Id"] = $GenerateId
         $generateInfoJson | ConvertTo-Json | Set-Content -Path $generateInfoJsonPath -Force
     }
     else{
-        Write-Host "Generating generate-info.json file..."
+        Write-Host "Generating generate-info.json file: $generateInfoJsonPath"
         $generateInfoJson | Set-Content -Path $generateInfoJsonPath -Force
     }
 }
