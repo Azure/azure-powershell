@@ -33,6 +33,7 @@ param (
 $BuildScriptsModulePath = Join-Path $PSScriptRoot "BuildScripts.psm1"
 Import-Module $BuildScriptsModulePath
 
+$succeeded = $true
 $sourceDirectory = Join-Path $RepoRoot "src"
 $generatedDirectory = Join-Path $RepoRoot "generated"
 if (-not (Test-Path $sourceDirectory)) {
@@ -47,7 +48,6 @@ $moduleRootSource = Join-Path $sourceDirectory $ModuleRootName
 $moduleRootGenerated = Join-Path $generatedDirectory $ModuleRootName
 $outdatedSubModule = Get-OutdatedSubModule -SourceDirectory $moduleRootSource -GeneratedDirectory $moduleRootGenerated -ForceRegenerate:$ForceRegenerate
 $jobs = @()
-$hadFailed = $false
 foreach ($subModuleName in $outdatedSubModule) {
     $jobs += (Start-Job {
         param(
@@ -56,30 +56,28 @@ foreach ($subModuleName in $outdatedSubModule) {
             [string]$ModuleRootName,
             [string]$SubModuleName
         )
-        $subModuleSourceDirectory = Join-Path $sourceDirectory $ModuleRootName $subModuleName
-        $generatedLog = Join-Path $AutorestOutputDir $ModuleRootName "$subModuleName.log"
+        $subModuleSourceDirectory = Join-Path $SourceDirectory $ModuleRootName $SubModuleName
+        $generatedLog = Join-Path $AutorestOutputDir $ModuleRootName "$SubModuleName.log"
         if (-not (Invoke-SubModuleGeneration -GenerateDirectory $subModuleSourceDirectory -GeneratedLog $generatedLog)) {
             Write-Error "Failed to generate code for module: $ModuleRootName, $subModuleName"
             Write-Error "========= Start of error log for $ModuleRootName, $subModuleName ========="
             Write-Error "log can be found at $generatedLog"
             Get-Content $generatedLog | Foreach-Object { Write-Error $_ }
-            Write-Error "========= End of error log for $ModuleRootName, $subModuleName"
+            Write-Error "========= End of error log for $ModuleRootName, $SubModuleName"
             return $false
         }
-        $subModuleGeneratedDirectory = Join-Path $generatedDirectory $ModuleRootName $subModuleName
+        $subModuleGeneratedDirectory = Join-Path $GeneratedDirectory $ModuleRootName $SubModuleName
         if (-not (Test-Path $subModuleGeneratedDirectory)) {
             New-Item -ItemType Directory -Force -Path $subModuleGeneratedDirectory
         }
-        Update-GeneratedSubModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory
+        Update-GeneratedSubModule -ModuleRootName $ModuleRootName -SubModuleName $SubModuleName -SourceDirectory $SourceDirectory -GeneratedDirectory $GeneratedDirectory
         return $true
     } -ArgumentList $sourceDirectory, $generatedDirectory, $ModuleRootName, $subModuleName)
 }
 $jobs | Foreach-Object -Parallel {
     if (-not ($_ | Wait-Job | Receive-Job)) {
-        $hadFailed = $true
+        $succeeded = $false
     }
     $_ | Remove-Job
 }
-if ($hadFailed) {
-    Exit 1
-}
+return $succeeded

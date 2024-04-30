@@ -112,11 +112,23 @@ switch ($PSCmdlet.ParameterSetName) {
 $csprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -TestModuleList $testModules -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory -Configuration $Configuration
 
 # Prepare autorest based modules
+$succeeded = $true
+$jobs = @()
+$prepareScriptPath = Join-Path $toolDirectory "PrepareAutorestModule.ps1"
 foreach ($moduleRootName in $TargetModule) {
-    . "$toolDirectory/PrepareAutorestModule.ps1" -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -ForceRegenerate:$ForceRegenerate
+    $jobs += (. $prepareScriptPath -ModuleRootName $moduleRootName -RepoRoot $RepoRoot -ForceRegenerate:$ForceRegenerate &)
+}
+$jobs | Foreach-Object -Parallel {
+    if (-not ($_ | Wait-Job | Receive-Job)) {
+        $succeeded = $false
+    }
+    $_ | Remove-Job
+}
+if (-not $succeeded) {
+    Write-Error "----------Parepare autorest modules failed, exit----------"
+    Exit 1
 }
 
-#Yabo: Do we really need to add all csproj in on sln and build the sln? Why not build each csproj individually?
 & dotnet --version
 & dotnet new sln -n Azure.PowerShell -o $RepoArtifacts --force
 $sln = Join-Path $RepoArtifacts "Azure.PowerShell.sln"
