@@ -14,9 +14,9 @@ Create virtual network.
 
 ### CreateExpanded (Default)
 ```
-New-AzConnectedVMwareVNet -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
- [-InventoryItemId <String>] [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>]
+New-AzConnectedVMwareVNet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-InventoryItemId <String>]
+ [-Kind <String>] [-Location <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -214,7 +214,7 @@ Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

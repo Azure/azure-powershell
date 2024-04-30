@@ -14,26 +14,30 @@ Update the Capacity Reservation Group.
 
 ### DefaultParameter (Default)
 ```
-Update-AzCapacityReservationGroup [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzCapacityReservationGroup [-SharingProfile <String[]>] [-AsJob] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
 ```
-Update-AzCapacityReservationGroup -ResourceGroupName <String> -Name <String> [-AsJob] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzCapacityReservationGroup -ResourceGroupName <String> -Name <String> [-SharingProfile <String[]>]
+ [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
-Update-AzCapacityReservationGroup -CapacityReservationGroup <PSCapacityReservationGroup> [-AsJob]
- [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzCapacityReservationGroup -CapacityReservationGroup <PSCapacityReservationGroup>
+ [-SharingProfile <String[]>] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIDParameterSet
 ```
-Update-AzCapacityReservationGroup -ResourceId <String> [-AsJob] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzCapacityReservationGroup -ResourceId <String> [-SharingProfile <String[]>] [-AsJob] [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,6 +148,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SharingProfile
+Allows a Capacity Reservation Group to be shared across subscriptions. Pass "" to unshare all subscriptions.  It is an array of strings; Contains an array of Arm resource ids of subscriptions
+eg : "/subscriptions/{subscriptionId1}", "/subscriptions/{subscriptionId2}"
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

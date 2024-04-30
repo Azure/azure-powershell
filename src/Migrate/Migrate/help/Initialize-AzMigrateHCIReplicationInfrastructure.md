@@ -15,7 +15,8 @@ Initializes the infrastructure for the migrate project.
 ```
 Initialize-AzMigrateHCIReplicationInfrastructure -ResourceGroupName <String> -ProjectName <String>
  -SourceApplianceName <String> -TargetApplianceName <String> [-CacheStorageAccountId <String>]
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,17 +24,31 @@ The Initialize-AzMigrateHCIReplicationInfrastructure cmdlet initializes the infr
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Initialize AzStackHCI replication infrastructure
+```powershell
 Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThru:$true
 ```
 
-### EXAMPLE 2
-```
-$cacheStorageAccountId = "/subscriptions/xxx-xxx-xxxx/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/testSa"
+```output
+$true
 ```
 
+Initialize AzStackHCI replication infrastructure.
+Cache storage account, replication policy, and replication extension will be created automatically.
+
+### Example 2: Initialize AzStackHCI replication infrastructure with custom cache storage account
+```powershell
+$cacheStorageAccountId = "/subscriptions/xxx-xxx-xxxx/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/testSa"
+
 Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -ResourceGroupName "test-rg" -CacheStorageAccountId $cacheStorageAccountId -SourceApplianceName "testsrcapp" -TargetApplianceName "testtgtapp" -PassThru:$true
+```
+
+```output
+$true
+```
+
+Initialize AzStackHCI replication infrastructure with custom cache storage account.
+Replication policy and replication extension will be created automatically.
 
 ## PARAMETERS
 
@@ -41,7 +56,7 @@ Initialize-AzMigrateHCIReplicationInfrastructure -ProjectName "testproj" -Resour
 Specifies the Storage Account ARM Id to be used for private endpoint scenario.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -56,7 +71,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -71,13 +86,13 @@ Accept wildcard characters: False
 Returns true when the command succeeds
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -86,7 +101,7 @@ Accept wildcard characters: False
 Specifies the name of the Azure Migrate project to be used for server migration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +116,7 @@ Accept wildcard characters: False
 Specifies the Resource Group of the Azure Migrate Project in the current subscription.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +131,7 @@ Accept wildcard characters: False
 Specifies the source appliance name for the AzStackHCI scenario.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -131,13 +146,13 @@ Accept wildcard characters: False
 Azure Subscription ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -146,7 +161,7 @@ Accept wildcard characters: False
 Specifies the target appliance name for the AzStackHCI scenario.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -161,7 +176,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -177,7 +192,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -196,9 +211,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### System.Boolean
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.migrate/initialize-azmigratehcireplicationinfrastructure](https://learn.microsoft.com/powershell/module/az.migrate/initialize-azmigratehcireplicationinfrastructure)
-

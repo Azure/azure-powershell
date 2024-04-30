@@ -63,14 +63,14 @@ Starts an UpdateRun.
 Stops an UpdateRun.
 
 ### [Update-AzFleet](Update-AzFleet.md)
-Update a Fleet
+Update a Fleet.
 
 ### [Update-AzFleetMember](Update-AzFleetMember.md)
 Update a FleetMember
 
 ### [Update-AzFleetUpdateRun](Update-AzFleetUpdateRun.md)
-Create a UpdateRun
+Update a UpdateRun
 
 ### [Update-AzFleetUpdateStrategy](Update-AzFleetUpdateStrategy.md)
-Create a FleetUpdateStrategy
+Update a FleetUpdateStrategy
 

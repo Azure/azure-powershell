@@ -15,29 +15,29 @@ Create new navigation property to appRoleAssignments for servicePrincipals
 ### ObjectIdWithResourceIdParameterSet (Default)
 ```
 New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId <String> -ResourceId <String>
- [-AdditionalProperties <Hashtable>] [-AppRoleId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AdditionalProperties <Hashtable>] [-AppRoleId <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ObjectIdWithResourceDisplayNameParameterSet
 ```
 New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId <String> [-AdditionalProperties <Hashtable>]
- [-AppRoleId <String>] -ResourceDisplayName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AppRoleId <String>] -ResourceDisplayName <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithResourceIdParameterSet
 ```
 New-AzADServicePrincipalAppRoleAssignment -ResourceId <String> [-AdditionalProperties <Hashtable>]
- [-AppRoleId <String>] -ServicePrincipalDisplayName <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-AppRoleId <String>] -ServicePrincipalDisplayName <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SPNWithResourceDisplayNameParameterSet
 ```
 New-AzADServicePrincipalAppRoleAssignment [-AdditionalProperties <Hashtable>] [-AppRoleId <String>]
- -ResourceDisplayName <String> -ServicePrincipalDisplayName <String> [-DefaultProfile <PSObject>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -ResourceDisplayName <String> -ServicePrincipalDisplayName <String> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,24 +45,40 @@ Create new navigation property to appRoleAssignments for servicePrincipals
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: ObjectIdWithResourceIdParameterSet
+```powershell
 New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalId 71beb965-8347-495d-a589-c21cdde7a722 -ResourceId 351fa797-c81a-4998-9720-4c2ecb6c7abc -AppRoleId 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83
 ```
 
-### EXAMPLE 2
+```output
+Id                                          AppRoleId                            PrincipalDisplayName PrincipalId                          CreatedDateTime
+--                                          ---------                            -------------------- -----------                          ---------------
+Zbm-cUeDXUmlicIc3eenIkgIm8kv9kJPj4MFhepACNE 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83 funapp1214           71beb965-8347-495d-a589-c21cdde7a722 12/14/2023 7:04:28 AM
 ```
+
+Create an appRoleAssignment using ServicePrincipalId and ResourceId.
+
+### Example 2: SPNWithResourceDisplayNameParameterSet
+```powershell
 New-AzADServicePrincipalAppRoleAssignment -ServicePrincipalDisplayName funapp1214 -ResourceDisplayName nori-sp -AppRoleId 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83
 ```
+
+```output
+Id                                          AppRoleId                            PrincipalDisplayName PrincipalId                          CreatedDateTime
+--                                          ---------                            -------------------- -----------                          ---------------
+Zbm-cUeDXUmlicIc3eenIlqgWRlWp2hFrXIJiqP2j78 649ae968-bdf9-4f22-bb2c-2aa1b4af0a83 funapp1214           71beb965-8347-495d-a589-c21cdde7a722 12/14/2023 7:07:16 AM
+```
+
+Create an appRoleAssignment for service principal using ServicePrincipal DisplayName and Resource DisplayName.
 
 ## PARAMETERS
 
 ### -AdditionalProperties
-ParameterSetName='CreateExpanded')\]
+ParameterSetName='CreateExpanded')]
 Additional Parameters
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -80,7 +96,7 @@ If the resource application has not declared any app roles, a default app role I
 Required on create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -95,7 +111,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -110,7 +126,7 @@ Accept wildcard characters: False
 The display name of the resource app's service principal to which the assignment is made.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ObjectIdWithResourceDisplayNameParameterSet, SPNWithResourceDisplayNameParameterSet
 Aliases:
 
@@ -127,7 +143,7 @@ Required on create.
 Supports $filter (eq only).
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ObjectIdWithResourceIdParameterSet, SPNWithResourceIdParameterSet
 Aliases:
 
@@ -142,7 +158,7 @@ Accept wildcard characters: False
 The name displayed in directory
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SPNWithResourceIdParameterSet, SPNWithResourceDisplayNameParameterSet
 Aliases:
 
@@ -158,7 +174,7 @@ The unique identifier (id) for the user, group or service principal being grante
 Required on create.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ObjectIdWithResourceIdParameterSet, ObjectIdWithResourceDisplayNameParameterSet
 Aliases:
 
@@ -173,7 +189,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -189,7 +205,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -206,12 +222,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphAppRoleAssignment
+
 ## NOTES
 
+ALIASES
+
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.resources/new-azadserviceprincipalapproleassignment](https://learn.microsoft.com/powershell/module/az.resources/new-azadserviceprincipalapproleassignment)
-

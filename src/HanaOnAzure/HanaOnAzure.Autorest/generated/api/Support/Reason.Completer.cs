@@ -30,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HanaOnAzure.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AccountNameInvalid".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AccountNameInvalid", "AccountNameInvalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "AccountNameInvalid");
+                yield return new global::System.Management.Automation.CompletionResult("'AccountNameInvalid'", "AccountNameInvalid", global::System.Management.Automation.CompletionResultType.ParameterValue, "AccountNameInvalid");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AlreadyExists".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AlreadyExists", "AlreadyExists", global::System.Management.Automation.CompletionResultType.ParameterValue, "AlreadyExists");
+                yield return new global::System.Management.Automation.CompletionResult("'AlreadyExists'", "AlreadyExists", global::System.Management.Automation.CompletionResultType.ParameterValue, "AlreadyExists");
             }
         }
     }

@@ -35,16 +35,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="protectionState">State of the back up item.
-        /// Possible values include: 'Invalid', 'NotProtected', 'Protecting',
-        /// 'Protected', 'ProtectionFailed'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;NotProtected&#39;, &#39;Protecting&#39;,
+        /// &#39;Protected&#39;, &#39;ProtectionFailed&#39;</param>
 
         /// <param name="parentName">Name for instance or AG
         /// </param>
 
         /// <param name="parentUniqueName">Parent Unique Name is added to provide the service formatted URI Name of
-        /// the Parent
-        /// Only Applicable for data bases where the parent would be either Instance or
-        /// a SQL AG.
+        /// the Parent Only Applicable for data bases where the parent would be either
+        /// Instance or a SQL AG.
         /// </param>
 
         /// <param name="serverName">Host/Cluster Name for instance or AG

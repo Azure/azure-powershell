@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 0.14.5
+* Changed the Login Migration Console App source to NuGet.org and added versioning support for updating the console app.
 
 ## Version 0.14.4
 * Added versioning to login migration console app.

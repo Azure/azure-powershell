@@ -22,7 +22,8 @@ Get-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <Strin
 ### GetViaIdentity
 ```
 Get-AzDataMigrationToSqlDb -InputObject <IDataMigrationIdentity> [-Expand <String>]
- [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
+ [-MigrationOperationId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

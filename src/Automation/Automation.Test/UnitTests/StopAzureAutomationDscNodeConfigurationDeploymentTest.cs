@@ -19,10 +19,11 @@ using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
 using Xunit;
 using System;
+using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 {
-    public class StopAzureAutomationDscNodeConfigurationDeploymentTest
+    public class StopAzureAutomationDscNodeConfigurationDeploymentTest : RMTestBase
     {
         private readonly Mock<IAutomationPSClient> mockAutomationClient;
 

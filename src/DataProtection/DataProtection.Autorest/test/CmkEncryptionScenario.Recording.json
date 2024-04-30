@@ -1,0 +1,246 @@
+{
+  "CmkEncryptionScenario+[NoContext]+Get-AzDataProtectionBackupVault+$GET+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "df87f606-f6c5-475f-a682-62ff7f024974" ],
+        "CommandName": [ "Get-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupVault_Get2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.2.0", "PSVersion/v7.4.1", "Az.DataProtection/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "499" ],
+        "x-ms-request-id": [ "7bbbc74f-7d31-4fe6-b4fe-6617ab0b0c5c" ],
+        "x-ms-correlation-request-id": [ "7bbbc74f-7d31-4fe6-b4fe-6617ab0b0c5c" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20240422T041236Z:7bbbc74f-7d31-4fe6-b4fe-6617ab0b0c5c" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Mon, 22 Apr 2024 04:12:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1376" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastasia\",\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\":{\"clientId\":\"3ffad3da-29a4-4823-8f7b-e174994e01af\",\"principalId\":\"fef4c24f-c831-4909-bb46-c3b1eaef110d\"}},\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"On\",\"retentionDurationInDays\":14.0},\"encryptionSettings\":{\"state\":\"Enabled\",\"keyVaultProperties\":{\"keyUri\":\"https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1\"},\"kekIdentity\":{\"identityType\":\"UserAssigned\",\"identityId\":\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\"},\"infrastructureEncryption\":\"Enabled\"}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[]},\"id\":\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated\",\"name\":\"pstestvault-automated\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "CmkEncryptionScenario+[NoContext]+New-AzDataProtectionBackupVault+$PUT+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01",
+      "Content": "{\r\n  \"location\": \"eastasia\",\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\": {\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"securitySettings\": {\r\n      \"encryptionSettings\": {\r\n        \"state\": \"Enabled\",\r\n        \"keyVaultProperties\": {\r\n          \"keyUri\": \"https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1\"\r\n        },\r\n        \"kekIdentity\": {\r\n          \"identityType\": \"UserAssigned\",\r\n          \"identityId\": \"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\"\r\n        },\r\n        \"infrastructureEncryption\": \"Enabled\"\r\n      }\r\n    },\r\n    \"storageSettings\": [\r\n      {\r\n        \"datastoreType\": \"VaultStore\",\r\n        \"type\": \"LocallyRedundant\"\r\n      }\r\n    ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "1023" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-arm-resource-system-data": [ "{\"lastModifiedBy\":\"karmahajan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-04-22T04:12:37.0625743Z\"}" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "99" ],
+        "x-ms-request-id": [ "28a65c6c-10a6-435c-9915-0df72dc385aa" ],
+        "x-ms-correlation-request-id": [ "28a65c6c-10a6-435c-9915-0df72dc385aa" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20240422T041238Z:28a65c6c-10a6-435c-9915-0df72dc385aa" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Mon, 22 Apr 2024 04:12:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1376" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastasia\",\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\":{\"clientId\":\"3ffad3da-29a4-4823-8f7b-e174994e01af\",\"principalId\":\"fef4c24f-c831-4909-bb46-c3b1eaef110d\"}},\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"On\",\"retentionDurationInDays\":14.0},\"encryptionSettings\":{\"state\":\"Enabled\",\"keyVaultProperties\":{\"keyUri\":\"https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1\"},\"kekIdentity\":{\"identityType\":\"UserAssigned\",\"identityId\":\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\"},\"infrastructureEncryption\":\"Enabled\"}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[]},\"id\":\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated\",\"name\":\"pstestvault-automated\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "CmkEncryptionScenario+[NoContext]+New-AzDataProtectionBackupVault+$GET+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "c4124ad5-78b3-48f6-ba2f-9e1b7ac0e24d" ],
+        "CommandName": [ "Az.DataProtection.Internal\\New-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "New-AzDataProtectionBackupVault_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.2.0", "PSVersion/v7.4.1", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "498" ],
+        "x-ms-request-id": [ "dbceb4d8-ec34-41e7-8741-c352d80ec4db" ],
+        "x-ms-correlation-request-id": [ "dbceb4d8-ec34-41e7-8741-c352d80ec4db" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20240422T041309Z:dbceb4d8-ec34-41e7-8741-c352d80ec4db" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Mon, 22 Apr 2024 04:13:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1376" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastasia\",\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\":{\"clientId\":\"3ffad3da-29a4-4823-8f7b-e174994e01af\",\"principalId\":\"fef4c24f-c831-4909-bb46-c3b1eaef110d\"}},\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"On\",\"retentionDurationInDays\":14.0},\"encryptionSettings\":{\"state\":\"Enabled\",\"keyVaultProperties\":{\"keyUri\":\"https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1\"},\"kekIdentity\":{\"identityType\":\"UserAssigned\",\"identityId\":\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\"},\"infrastructureEncryption\":\"Enabled\"}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[]},\"id\":\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated\",\"name\":\"pstestvault-automated\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "CmkEncryptionScenario+[NoContext]+New-AzDataProtectionBackupVault+$GET+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "c4124ad5-78b3-48f6-ba2f-9e1b7ac0e24d" ],
+        "CommandName": [ "Az.DataProtection.Internal\\New-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "New-AzDataProtectionBackupVault_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.2.0", "PSVersion/v7.4.1", "Az.DataProtection/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "497" ],
+        "x-ms-request-id": [ "a3f98f7d-b590-4bb0-9066-70804b6bf018" ],
+        "x-ms-correlation-request-id": [ "a3f98f7d-b590-4bb0-9066-70804b6bf018" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20240422T041309Z:a3f98f7d-b590-4bb0-9066-70804b6bf018" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Mon, 22 Apr 2024 04:13:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1376" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastasia\",\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\":{\"clientId\":\"3ffad3da-29a4-4823-8f7b-e174994e01af\",\"principalId\":\"fef4c24f-c831-4909-bb46-c3b1eaef110d\"}},\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"On\",\"retentionDurationInDays\":14.0},\"encryptionSettings\":{\"state\":\"Enabled\",\"keyVaultProperties\":{\"keyUri\":\"https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1\"},\"kekIdentity\":{\"identityType\":\"UserAssigned\",\"identityId\":\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\"},\"infrastructureEncryption\":\"Enabled\"}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[]},\"id\":\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated\",\"name\":\"pstestvault-automated\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "CmkEncryptionScenario+[NoContext]+Update-AzDataProtectionBackupVault+$GET+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "30879aec-f316-4da3-a853-8b777d199987" ],
+        "CommandName": [ "Az.DataProtection\\Get-AzDataProtectionBackupVault" ],
+        "FullCommandName": [ "Get-AzDataProtectionBackupVault_Get2" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v10.2.0", "PSVersion/v7.4.1", "Az.DataProtection/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "496" ],
+        "x-ms-request-id": [ "3057b474-573c-4f1c-b37a-1fed389105f1" ],
+        "x-ms-correlation-request-id": [ "3057b474-573c-4f1c-b37a-1fed389105f1" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20240422T041310Z:3057b474-573c-4f1c-b37a-1fed389105f1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Mon, 22 Apr 2024 04:13:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1376" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastasia\",\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\":{\"clientId\":\"3ffad3da-29a4-4823-8f7b-e174994e01af\",\"principalId\":\"fef4c24f-c831-4909-bb46-c3b1eaef110d\"}},\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"On\",\"retentionDurationInDays\":14.0},\"encryptionSettings\":{\"state\":\"Enabled\",\"keyVaultProperties\":{\"keyUri\":\"https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1\"},\"kekIdentity\":{\"identityType\":\"UserAssigned\",\"identityId\":\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\"},\"infrastructureEncryption\":\"Enabled\"}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[]},\"id\":\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated\",\"name\":\"pstestvault-automated\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  },
+  "CmkEncryptionScenario+[NoContext]+Update-AzDataProtectionBackupVault+$PATCH+https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01+2": {
+    "Request": {
+      "Method": "PATCH",
+      "RequestUri": "https://management.azure.com/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated?api-version=2024-04-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"securitySettings\": {\r\n      \"encryptionSettings\": {\r\n        \"state\": \"Enabled\",\r\n        \"keyVaultProperties\": {\r\n          \"keyUri\": \"https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1\"\r\n        },\r\n        \"kekIdentity\": {\r\n          \"identityType\": \"UserAssigned\",\r\n          \"identityId\": \"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\"\r\n        },\r\n        \"infrastructureEncryption\": \"Enabled\"\r\n      }\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "600" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-arm-resource-system-data": [ "{\"lastModifiedBy\":\"karmahajan@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-04-22T04:13:10.6559453Z\"}" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "98" ],
+        "x-ms-request-id": [ "ddba63b3-ad38-4460-bf38-7f57c7503930" ],
+        "x-ms-correlation-request-id": [ "ddba63b3-ad38-4460-bf38-7f57c7503930" ],
+        "x-ms-routing-request-id": [ "WESTEUROPE:20240422T041310Z:ddba63b3-ad38-4460-bf38-7f57c7503930" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Mon, 22 Apr 2024 04:13:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1376" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"location\":\"eastasia\",\"identity\":{\"type\":\"UserAssigned\",\"userAssignedIdentities\":{\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\":{\"clientId\":\"3ffad3da-29a4-4823-8f7b-e174994e01af\",\"principalId\":\"fef4c24f-c831-4909-bb46-c3b1eaef110d\"}},\"tenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"storageSettings\":[{\"datastoreType\":\"VaultStore\",\"type\":\"LocallyRedundant\"}],\"isVaultProtectedByResourceGuard\":false,\"securitySettings\":{\"softDeleteSettings\":{\"state\":\"On\",\"retentionDurationInDays\":14.0},\"encryptionSettings\":{\"state\":\"Enabled\",\"keyVaultProperties\":{\"keyUri\":\"https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1\"},\"kekIdentity\":{\"identityType\":\"UserAssigned\",\"identityId\":\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest\"},\"infrastructureEncryption\":\"Enabled\"}},\"secureScore\":\"None\",\"bcdrSecurityLevel\":\"Poor\",\"replicatedRegions\":[]},\"id\":\"/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourceGroups/jeevan-wrk-vms/providers/Microsoft.DataProtection/backupVaults/pstestvault-automated\",\"name\":\"pstestvault-automated\",\"type\":\"Microsoft.DataProtection/backupVaults\"}",
+      "isContentBase64": false
+    }
+  }
+}

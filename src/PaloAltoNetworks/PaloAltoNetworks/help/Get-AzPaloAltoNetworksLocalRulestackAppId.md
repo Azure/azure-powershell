@@ -201,10 +201,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.PaloAltoNetworks.Models.Api20220829.IListAppIdResponse
+### System.String
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

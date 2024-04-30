@@ -21,7 +21,8 @@ Get-AzMigrateReplicationPolicy -ResourceGroupName <String> -ResourceName <String
 ### Get
 ```
 Get-AzMigrateReplicationPolicy -ResourceGroupName <String> -ResourceName <String> -PolicyName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -146,7 +147,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202301.IPolicy
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

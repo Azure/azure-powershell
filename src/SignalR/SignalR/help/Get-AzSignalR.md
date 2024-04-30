@@ -14,7 +14,8 @@ Get a specific SignalR service or all the SignalR services in a resource group o
 
 ### ListSignalRServiceParameterSet (Default)
 ```
-Get-AzSignalR [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSignalR [-ResourceGroupName <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ResourceGroupParameterSet
@@ -25,7 +26,8 @@ Get-AzSignalR [-ResourceGroupName <String>] [-Name] <String> [-DefaultProfile <I
 
 ### ResourceIdParameterSet
 ```
-Get-AzSignalR -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSignalR -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

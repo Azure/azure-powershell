@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.SecurityInsights-help.xml
 Module Name: Az.SecurityInsights
 online version: https://learn.microsoft.com/powershell/module/az.securityinsights/new-azsentinelautomationrule
 schema: 2.0.0
@@ -17,14 +17,15 @@ Creates or updates the automation rule.
 New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
  [-SubscriptionId <String>] [-Action <IAutomationRuleAction[]>] [-DisplayName <String>] [-Order <Int32>]
  [-TriggeringLogicCondition <IAutomationRuleCondition[]>] [-TriggeringLogicExpirationTimeUtc <DateTime>]
- [-TriggeringLogicIsEnabled] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-TriggeringLogicIsEnabled] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### Create
 ```
-New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String>
- -AutomationRule <IAutomationRule> [-Id <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
+ [-SubscriptionId <String>] -AutomationRule <IAutomationRule> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -34,7 +35,7 @@ Creates or updates the automation rule.
 
 ### Example 1: Create an Automation Rule using Run Playbook
 ```powershell
- $LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "myResourceGroup" -Name "Reset-AADPassword"
+$LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "myResourceGroup" -Name "Reset-AADPassword"
  $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()
  $automationRuleAction.Order = 1
  $automationRuleAction.ActionType = "RunPlaybook"
@@ -47,7 +48,7 @@ This command creates an Automation Rule that has an Action of Run Playbook.
 
 ### Example 2: Creates an Automation Rule that has an Action of changing the severity
 ```powershell
- $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleModifyPropertiesAction]::new()
+$automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleModifyPropertiesAction]::new()
  $automationRuleAction.Order = 1
  $automationRuleAction.ActionType = "ModifyProperties"
  $automationRuleAction.ActionConfigurationSeverity = "Low"
@@ -286,41 +287,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`ACTION <IAutomationRuleAction[]>`: The actions to execute when the automation rule is triggered
-  - `ActionType <AutomationRuleActionType>`: The type of the automation rule action
-  - `Order <Int32>`: The order of execution of the automation rule action
-
-`AUTOMATIONRULE <IAutomationRule>`: Represents an automation rule.
-  - `[Etag <String>]`: Etag of the azure resource
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[Action <IAutomationRuleAction[]>]`: The actions to execute when the automation rule is triggered
-    - `ActionType <AutomationRuleActionType>`: The type of the automation rule action
-    - `Order <Int32>`: The order of execution of the automation rule action
-  - `[CreatedByEmail <String>]`: The email of the client.
-  - `[CreatedByName <String>]`: The name of the client.
-  - `[CreatedByObjectId <String>]`: The object id of the client.
-  - `[CreatedByUserPrincipalName <String>]`: The user principal name of the client.
-  - `[DisplayName <String>]`: The display name of the automation  rule
-  - `[LastModifiedByEmail <String>]`: The email of the client.
-  - `[LastModifiedByName <String>]`: The name of the client.
-  - `[LastModifiedByObjectId <String>]`: The object id of the client.
-  - `[LastModifiedByUserPrincipalName <String>]`: The user principal name of the client.
-  - `[Order <Int32?>]`: The order of execution of the automation rule
-  - `[TriggeringLogicCondition <IAutomationRuleCondition[]>]`: The conditions to evaluate to determine if the automation rule should be triggered on a given object
-  - `[TriggeringLogicExpirationTimeUtc <DateTime?>]`: Determines when the automation rule should automatically expire and be disabled.
-  - `[TriggeringLogicIsEnabled <Boolean?>]`: Determines whether the automation rule is enabled or disabled.
-
 ## RELATED LINKS
-

@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureMySqlCredentialScanObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureMySqlCredentialScanObject
 schema: 2.0.0
 ---
 
@@ -16,7 +16,8 @@ Create an in-memory object for AzureMySqlCredentialScan.
 New-AzPurviewAzureMySqlCredentialScanObject -Kind <ScanAuthorizationType> [-CollectionReferenceName <String>]
  [-CollectionType <String>] [-ConnectedViaReferenceName <String>] [-CredentialReferenceName <String>]
  [-CredentialType <CredentialType>] [-DatabaseName <String>] [-Port <Int32>] [-ScanRulesetName <String>]
- [-ScanRulesetType <ScanRulesetType>] [-ServerEndpoint <String>] [-Worker <Int32>] [<CommonParameters>]
+ [-ScanRulesetType <ScanRulesetType>] [-ServerEndpoint <String>] [-Worker <Int32>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -232,7 +233,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureMySqlCredentialScan
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

@@ -134,7 +134,6 @@ Accept wildcard characters: False
 
 ### -Payload
 Bulk collections action properties
-To construct, see NOTES section for PAYLOAD properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.IBulkCollectionsPayload

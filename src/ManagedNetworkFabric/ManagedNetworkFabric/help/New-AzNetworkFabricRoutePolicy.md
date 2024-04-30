@@ -17,25 +17,22 @@ Implements Route Policy PUT method.
 New-AzNetworkFabricRoutePolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  -Location <String> -NetworkFabricId <String> [-AddressFamilyType <String>] [-Annotation <String>]
  [-DefaultAction <String>] [-Statement <IRoutePolicyStatementProperties[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
 ```
 New-AzNetworkFabricRoutePolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonFilePath <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CreateViaJsonString
 ```
 New-AzNetworkFabricRoutePolicy -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-Break] [-HttpPipelineAppend <SendAsyncStep[]>]
- [-HttpPipelinePrepend <SendAsyncStep[]>] [-NoWait] [-Proxy <Uri>] [-ProxyCredential <PSCredential>]
- [-ProxyUseDefaultCredentials] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -JsonString <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,8 +40,8 @@ Implements Route Policy PUT method.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create the Route Policy Resource
+```powershell
 $statements = @(@{
     ActionType = "Permit"
     SequenceNumber = 12345
@@ -54,12 +51,20 @@ $statements = @(@{
     ConditionType = "Or"
     IPCommunityPropertyAddIpcommunityId = "/subscriptions/subscriptionId/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipCommunities/ipCommunityName"
 })
-```
 
 New-AzNetworkFabricRoutePolicy -Name $name -ResourceGroupName $resourceGroupName -Location $location -NetworkFabricId $nfId -AddressFamilyType "IPv4" -DefaultAction "Permit" -Statement $statements
-
-### EXAMPLE 2
 ```
+
+```output
+AddressFamilyType AdministrativeState Annotation ConfigurationState DefaultAction Id
+----------------- ------------------- ---------- ------------------ ------------- --
+IPv4                                                                Permit        /subscriptions/<identity>/resourceGrou...
+```
+
+This command creates the Route Policy resource with IPCommunity.
+
+### Example 2: Create the Route Policy Resource
+```powershell
 $statements = @(@{
     ActionType = "Permit"
     SequenceNumber = 12345
@@ -69,9 +74,17 @@ $statements = @(@{
     ConditionType = "Or"
     IPExtendedCommunityPropertyAddIpextendedCommunityId = "/subscriptions/subscriptionId/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/ipExtendedCommunities/ipExtCommName"
 })
-```
 
 New-AzNetworkFabricRoutePolicy -Name $name -ResourceGroupName $resourceGroupName -Location $location -NetworkFabricId $nfId -AddressFamilyType "IPv4" -DefaultAction "Permit" -Statement $statements
+```
+
+```output
+AddressFamilyType AdministrativeState Annotation ConfigurationState DefaultAction Id
+----------------- ------------------- ---------- ------------------ ------------- --
+IPv4                                                                Permit        /subscriptions/<identity>/resourceGrou…
+```
+
+This command creates the Route Policy resource with IPExtendedCommunity.
 
 ## PARAMETERS
 
@@ -116,22 +129,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Break
-Wait for .NET debugger to attach
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -160,36 +158,6 @@ Use the SubscriptionId parameter when available if executing the cmdlet against 
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelineAppend
-SendAsync Pipeline Steps to be appended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HttpPipelinePrepend
-SendAsync Pipeline Steps to be prepended to the front of the pipeline
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.SendAsyncStep[]
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
@@ -283,52 +251,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Proxy
-The URI for the proxy server to use
-
-```yaml
-Type: System.Uri
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyCredential
-Credentials for a proxy server to use for the remote call
-
-```yaml
-Type: System.Management.Automation.PSCredential
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProxyUseDefaultCredentials
-Use the default credentials for the proxy
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -351,7 +274,6 @@ Accept wildcard characters: False
 
 ### -Statement
 Route Policy statements.
-To construct, see NOTES section for STATEMENT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicyStatementProperties[]
@@ -376,7 +298,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -435,30 +357,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IRoutePolicy
+
 ## NOTES
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties.
-For information on hash tables, run Get-Help about_Hash_Tables.
-
-STATEMENT \<IRoutePolicyStatementProperties\[\]\>: Route Policy statements.
-  ActionType \<String\>: Action type.
-Example: Permit | Deny | Continue.
-  SequenceNumber \<Int64\>: Sequence to insert to/delete from existing route.
-  \[Annotation \<String\>\]: Switch configuration description.
-  \[ActionLocalPreference \<Int64?\>\]: Local Preference of the route policy.
-  \[ConditionIPCommunityId \<List\<String\>\>\]: List of IP Community resource IDs.
-  \[ConditionIPExtendedCommunityId \<List\<String\>\>\]: List of IP Extended Community resource IDs.
-  \[ConditionIPPrefixId \<String\>\]: Arm Resource Id of IpPrefix.
-  \[ConditionType \<String\>\]: Type of the condition used.
-  \[IPCommunityPropertyAddIpcommunityId \<List\<String\>\>\]: List of IP Community resource IDs.
-  \[IPCommunityPropertyDeleteIpcommunityId \<List\<String\>\>\]: List of IP Community resource IDs.
-  \[IPCommunityPropertySetIpcommunityId \<List\<String\>\>\]: List of IP Community resource IDs.
-  \[IPExtendedCommunityPropertyAddIpextendedCommunityId \<List\<String\>\>\]: List of IP Extended Community resource IDs.
-  \[IPExtendedCommunityPropertyDeleteIpextendedCommunityId \<List\<String\>\>\]: List of IP Extended Community resource IDs.
-  \[IPExtendedCommunityPropertySetIpextendedCommunityId \<List\<String\>\>\]: List of IP Extended Community resource IDs.
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabricroutepolicy](https://learn.microsoft.com/powershell/module/az.managednetworkfabric/new-aznetworkfabricroutepolicy)
-

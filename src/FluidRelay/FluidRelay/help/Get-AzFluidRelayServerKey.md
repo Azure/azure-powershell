@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.FluidRelay-help.xml
 Module Name: Az.FluidRelay
 online version: https://learn.microsoft.com/powershell/module/az.fluidrelay/get-azfluidrelayserverkey
 schema: 2.0.0
@@ -14,7 +14,7 @@ Get primary and secondary key for this server.
 
 ```
 Get-AzFluidRelayServerKey -FluidRelayServerName <String> -ResourceGroup <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +28,7 @@ Get-AzFluidRelayServerKey -FluidRelayServerName azps-fluidrelay -ResourceGroup a
 ```
 
 ```output
-                        Key1                         Key2
+Key1                         Key2
                         ----                         ----
 System.Security.SecureString System.Security.SecureString
 ```
@@ -38,7 +38,8 @@ Get primary and secondary key for this server.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -139,7 +140,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

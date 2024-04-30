@@ -15,21 +15,21 @@ Performs operation like "Encrypt", "Decrypt", "Wrap" or "Unwrap" using a specifi
 ### ByVaultName (Default)
 ```
 Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String>
- [-Value <SecureString>] [-ByteArrayValue <Byte[]>] [-Name] <String> [-VaultName] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ByteArrayValue <Byte[]>] [-Name] <String> [-VaultName] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByHsmName
 ```
 Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String>
- [-Value <SecureString>] [-ByteArrayValue <Byte[]>] [-HsmName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ByteArrayValue <Byte[]>] [-HsmName] <String> [-Name] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByKeyInputObject
 ```
 Invoke-AzKeyVaultKeyOperation [-Version <String>] -Operation <String> -Algorithm <String>
- [-Value <SecureString>] [-ByteArrayValue <Byte[]>] [-InputObject] <PSKeyVaultKeyIdentityItem>
+ [-ByteArrayValue <Byte[]>] [-InputObject] <PSKeyVaultKeyIdentityItem>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -41,6 +41,7 @@ Invoke-AzKeyVaultKeyOperation cmdlet supports
 4. Unwrapping a symmetric key using the specified key that was initially used for wrapping that key.
 
 ## EXAMPLES
+
 ### Example 1: Encrypts byte array using an encryption key
 ```powershell
 $byteArray = [Byte[]]@(58, 219)
@@ -72,7 +73,9 @@ Decrypts `$encryptedData.RawResult` using test-key stored in test-kv. The `$decr
 
 ### Example 3: Encrypts plain text using an encryption key
 ```powershell
-$encryptedData = Invoke-AzKeyVaultKeyOperation -Operation Encrypt -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String "test" -AsPlainText -Force)
+$plainText = "test"
+$byteArray = [system.Text.Encoding]::UTF8.GetBytes($plainText)
+$encryptedData = Invoke-AzKeyVaultKeyOperation -Operation Encrypt -Algorithm RSA1_5 -VaultName test-kv -Name test-key -ByteArrayValue $byteArray
 $encryptedData
 ```
 
@@ -82,26 +85,26 @@ RawResult : {58, 219, 6, 236…}
 Algorithm : RSA1_5
 ```
 
-Encrypts string "test" using test-key stored in test-kv. The `RawResult` is the encrypted result in byte array format, where [System.Convert]::ToBase64String($encryptedData.RawResult) equals $encryptedData.Result.
+Encrypts string "test" using test-key stored in test-kv. The `RawResult` is the encrypted result in byte array format.
 
 ### Example 4: Decrypt encrypted data to plain text
 ```powershell
 $decryptedData = Invoke-AzKeyVaultKeyOperation -Operation Decrypt -Algorithm RSA1_5 -VaultName test-kv -Name test-key -ByteArrayValue $encryptedData.RawResult
-$decryptedData
+$plainText = [system.Text.Encoding]::UTF8.GetString($decryptedData.RawResult)
+$plainText
 ```
 
 ```output
-KeyId     : https://bez-kv.vault.azure.net/keys/bez-key/c96ce0fb18de446c9f4b911b686988af
-RawResult : $byteArray
-Algorithm : RSA1_5
+test
 ```
 
-Decrypts encrypted data that is encrypted using test-key stored in test-kv. The `$decryptedData.Result` is `test`. The `RawResult` is the decrypted result in byte array format, where [System.Text.UTF8Encoding]::UTF8.GetString($decryptedData.RawResult) equals $decryptedData.Result.
+Decrypts encrypted data that is encrypted using test-key stored in test-kv. The `RawResult` is the decrypted result in byte array format.
 
 ### Example 5: Wraps a symmetric key using a specified key
 ```powershell
-$wrappedResult = Invoke-AzKeyVaultKeyOperation -Operation Wrap -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String "ovQIlbB0DgWhZA7sgkPxbg9H-Ly-VlNGPSgGrrZvlIo" -AsPlainText -Force) 
-
+$key = "ovQIlbB0DgWhZA7sgkPxbg9H-Ly-VlNGPSgGrrZvlIo"
+$byteArray = [system.Text.Encoding]::UTF8.GetBytes($key)
+$wrappedResult = Invoke-AzKeyVaultKeyOperation -Operation Wrap -Algorithm RSA1_5 -VaultName test-kv -Name test-key -ByteArrayValue $byteArray
 $wrappedResult | Format-List
 ```
 
@@ -111,20 +114,20 @@ RawResult : {58, 219, 6, 236…}
 Algorithm : RSA1_5
 ```
 
-Wraps a symmetric key using key named test-key stored in test-kv. The `Result` is wrapped result in Base64 string format.
+Wraps a symmetric key using key named test-key stored in test-kv. The `RawResult` is wrapped result in byte array format.
 
 ### Example 6: Unwraps a symmetric key using a specified key
 ```powershell
-Invoke-AzKeyVaultKeyOperation -Operation Unwrap -Algorithm RSA1_5 -VaultName test-kv -Name test-key -Value (ConvertTo-SecureString -String $result.Result -AsPlainText -Force)
+$unwrappedResult = Invoke-AzKeyVaultKeyOperation -Operation Unwrap -Algorithm RSA1_5 -VaultName test-kv -Name test-key -ByteArrayValue $wrappedResult.RawResult
+$key = [system.Text.Encoding]::UTF8.GetString($unwrappedResult.RawResult)
+$key
 ```
 
 ```output
-KeyId     : https://test-kv.vault.azure.net/keys/test-key/375cdf20252043b79c8ca0c57b6c7679
-RawResult : {58, 219, 6, 236…}
-Algorithm : RSA1_5
+ovQIlbB0DgWhZA7sgkPxbg9H-Ly-VlNGPSgGrrZvlIo
 ```
 
-Unwraps a symmetric key using a specified key test-key stored in test-kv. The `Result` is a plain string.
+Unwraps a symmetric key using a specified key test-key stored in test-kv. The `RawResult` is unwrapped result in byte array format.
 
 ## PARAMETERS
 
@@ -132,7 +135,7 @@ Unwraps a symmetric key using a specified key test-key stored in test-kv. The `R
 Algorithm identifier
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: EncryptionAlgorithm, WrapAlgorithm
 
@@ -147,24 +150,9 @@ Accept wildcard characters: False
 The value to be operated in byte array format.
 
 ```yaml
-Type: Byte[]
+Type: System.Byte[]
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -177,7 +165,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -192,7 +180,7 @@ Accept wildcard characters: False
 HSM name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByHsmName
 Aliases:
 
@@ -207,7 +195,7 @@ Accept wildcard characters: False
 Key object
 
 ```yaml
-Type: PSKeyVaultKeyIdentityItem
+Type: Microsoft.Azure.Commands.KeyVault.Models.PSKeyVaultKeyIdentityItem
 Parameter Sets: ByKeyInputObject
 Aliases: Key
 
@@ -222,7 +210,7 @@ Accept wildcard characters: False
 Key name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultName, ByHsmName
 Aliases: KeyName
 
@@ -237,7 +225,7 @@ Accept wildcard characters: False
 Algorithm identifier
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -248,26 +236,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Value
-The value to be operated. This parameter will be converted to byte array in UTF-8 encoding way. If your value can't be encoded by UTF-8, please use parameter ByteArrayValue as its alternative.
-
-```yaml
-Type: SecureString
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -VaultName
 Vault name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByVaultName
 Aliases:
 
@@ -282,9 +255,24 @@ Accept wildcard characters: False
 Key version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: KeyVersion
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
 
 Required: False
 Position: Named
@@ -298,7 +286,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

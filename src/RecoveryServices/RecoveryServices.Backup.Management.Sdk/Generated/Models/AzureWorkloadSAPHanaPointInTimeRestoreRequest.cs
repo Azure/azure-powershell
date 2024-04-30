@@ -26,9 +26,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// Initializes a new instance of the AzureWorkloadSAPHanaPointInTimeRestoreRequest class.
         /// </summary>
 
+        /// <param name="resourceGuardOperationRequests">ResourceGuardOperationRequests on which LAC check will be performed
+        /// </param>
+
         /// <param name="recoveryType">Type of this recovery.
-        /// Possible values include: 'Invalid', 'OriginalLocation',
-        /// 'AlternateLocation', 'RestoreDisks', 'Offline'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;OriginalLocation&#39;,
+        /// &#39;AlternateLocation&#39;, &#39;RestoreDisks&#39;, &#39;Offline&#39;</param>
 
         /// <param name="sourceResourceId">Fully qualified ARM ID of the VM on which workload that was running is
         /// being recovered.
@@ -42,18 +45,28 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
         /// <param name="recoveryMode">Defines whether the current recovery mode is file restore or database
         /// restore
-        /// Possible values include: 'Invalid', 'FileRecovery', 'WorkloadRecovery'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;FileRecovery&#39;, &#39;WorkloadRecovery&#39;,
+        /// &#39;SnapshotAttach&#39;, &#39;RecoveryUsingSnapshot&#39;, &#39;SnapshotAttachAndRecover&#39;</param>
 
-        /// <param name="targetVirtualMachineId">This is the complete ARM Id of the target VM
-        /// For e.g.
+        /// <param name="targetResourceGroupName">Defines the Resource group of the Target VM
+        /// </param>
+
+        /// <param name="userAssignedManagedIdentityDetails">User Assigned managed identity details Currently used for snapshot.
+        /// </param>
+
+        /// <param name="snapshotRestoreParameters">Additional details for snapshot recovery Currently used for snapshot for
+        /// SAP Hana.
+        /// </param>
+
+        /// <param name="targetVirtualMachineId">This is the complete ARM Id of the target VM For e.g.
         /// /subscriptions/{subId}/resourcegroups/{rg}/provider/Microsoft.Compute/virtualmachines/{vm}
         /// </param>
 
         /// <param name="pointInTime">PointInTime value
         /// </param>
-        public AzureWorkloadSAPHanaPointInTimeRestoreRequest(string recoveryType = default(string), string sourceResourceId = default(string), System.Collections.Generic.IDictionary<string, string> propertyBag = default(System.Collections.Generic.IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), string targetVirtualMachineId = default(string), System.DateTime? pointInTime = default(System.DateTime?))
+        public AzureWorkloadSAPHanaPointInTimeRestoreRequest(System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>), string recoveryType = default(string), string sourceResourceId = default(string), System.Collections.Generic.IDictionary<string, string> propertyBag = default(System.Collections.Generic.IDictionary<string, string>), TargetRestoreInfo targetInfo = default(TargetRestoreInfo), string recoveryMode = default(string), string targetResourceGroupName = default(string), UserAssignedManagedIdentityDetails userAssignedManagedIdentityDetails = default(UserAssignedManagedIdentityDetails), SnapshotRestoreParameters snapshotRestoreParameters = default(SnapshotRestoreParameters), string targetVirtualMachineId = default(string), System.DateTime? pointInTime = default(System.DateTime?))
 
-        : base(recoveryType, sourceResourceId, propertyBag, targetInfo, recoveryMode, targetVirtualMachineId)
+        : base(resourceGuardOperationRequests, recoveryType, sourceResourceId, propertyBag, targetInfo, recoveryMode, targetResourceGroupName, userAssignedManagedIdentityDetails, snapshotRestoreParameters, targetVirtualMachineId)
         {
             this.PointInTime = pointInTime;
             CustomInit();

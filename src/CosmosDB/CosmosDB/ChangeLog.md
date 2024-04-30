@@ -19,6 +19,19 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.14.2
+* Upgraded Azure.Core to 1.37.0.
+
+## Version 1.14.1
+* Fixed validation issues in same-account collection/container/graph and database/table/Gremlin restores, affecting the following cmdlets:
+- Restore-AzCosmosDBSqlDatabase
+- Restore-AzCosmosDBSqlContainer
+- Restore-AzCosmosDBMongoDBDatabase
+- Restore-AzCosmosDBMongoDBCollection
+- Restore-AzCosmosDBGremlinDatabase
+- Restore-AzCosmosDBGremlinGraph
+- Restore-AzCosmosDBTable
 * Upgraded SDK `Azure.Security.KeyVault.Keys` TO 4.6.0-beta.1.
 * Added breaking change message for ListConnectionStrings changes
 

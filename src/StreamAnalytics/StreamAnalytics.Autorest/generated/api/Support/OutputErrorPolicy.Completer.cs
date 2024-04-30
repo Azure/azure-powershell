@@ -31,11 +31,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Stop".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Stop", "Stop", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stop");
+                yield return new global::System.Management.Automation.CompletionResult("'Stop'", "Stop", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stop");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Drop".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Drop", "Drop", global::System.Management.Automation.CompletionResultType.ParameterValue, "Drop");
+                yield return new global::System.Management.Automation.CompletionResult("'Drop'", "Drop", global::System.Management.Automation.CompletionResultType.ParameterValue, "Drop");
             }
         }
     }

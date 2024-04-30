@@ -14,8 +14,8 @@ Deletes an alerts suppression rule.
 
 ### SubscriptionLevelResource (Default)
 ```
-Remove-AzAlertsSuppressionRule -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Remove-AzAlertsSuppressionRule -Name <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceId
@@ -27,7 +27,8 @@ Remove-AzAlertsSuppressionRule -ResourceId <String> [-PassThru] [-DefaultProfile
 ### InputObject
 ```
 Remove-AzAlertsSuppressionRule -InputObject <PSAlertsSuppressionRule> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

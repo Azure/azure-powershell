@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.Implementation;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkClient;
 using Microsoft.Azure.Commands.ResourceManager.Cmdlets.SdkModels;
@@ -321,7 +322,7 @@ namespace Microsoft.Azure.Commands.Resources.Test
                 : templateFile; // Windows based (already valid)
 
             var templateContentForTest = File.ReadAllText(normalizedTemplateFilePath);
-            var template = JsonConvert.DeserializeObject<TemplateFile>(templateContentForTest);
+            var template = templateContentForTest.FromJson<TemplateFile>();
 
             templateSpecsVersionOperationsMock.Setup(f => f.GetWithHttpMessagesAsync(
                     templateSpecRGName,

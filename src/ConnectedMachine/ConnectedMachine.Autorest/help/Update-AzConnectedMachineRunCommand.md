@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedMachineRunCommand
 
 ## SYNOPSIS
-The operation to Create a run command.
+The operation to Update a run command.
 
 ## SYNTAX
 
@@ -74,7 +74,7 @@ Update-AzConnectedMachineRunCommand -MachineInputObject <IConnectedMachineIdenti
 ```
 
 ## DESCRIPTION
-The operation to Create a run command.
+The operation to Update a run command.
 
 ## EXAMPLES
 
@@ -231,7 +231,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -247,7 +246,6 @@ Accept wildcard characters: False
 
 ### -MachineInputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
@@ -342,7 +340,6 @@ Accept wildcard characters: False
 
 ### -Parameter
 The parameters used by the script.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandInputParameter[]
@@ -358,7 +355,6 @@ Accept wildcard characters: False
 
 ### -ProtectedParameter
 The parameters used by the script.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IRunCommandInputParameter[]
@@ -435,7 +431,6 @@ Accept wildcard characters: False
 
 ### -RunCommandProperty
 Describes a Run Command
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IMachineRunCommand

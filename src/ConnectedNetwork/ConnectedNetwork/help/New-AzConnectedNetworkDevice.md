@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ConnectedNetwork-help.xml
 Module Name: Az.ConnectedNetwork
 online version: https://learn.microsoft.com/powershell/module/az.connectednetwork/new-azconnectednetworkdevice
 schema: 2.0.0
@@ -13,9 +13,9 @@ Creates or updates a device.
 ## SYNTAX
 
 ```
-New-AzConnectedNetworkDevice -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Property <IDevicePropertiesFormat>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzConnectedNetworkDevice -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Location <String> [-Property <IDevicePropertiesFormat>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,7 +46,6 @@ SystemDataLastModifiedBy     : xxxxx-11111-xxxxx-11111
 SystemDataLastModifiedByType : Application
 Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.TrackedResourceTags
 Type                         : microsoft.hybridnetwork/devices
-
 ```
 
 Create a device with Device Name with resource myMecDevice name in Resource Group myResources, Location eastus with Ase Device Id /subscriptions/xxxxx-00000-xxxxx-00000/resourcegroups/myResources/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/myAse.
@@ -74,7 +73,6 @@ SystemDataLastModifiedBy     : xxxxx-11111-xxxxx-11111
 SystemDataLastModifiedByType : Application
 Tag                          : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20.TrackedResourceTags
 Type                         : microsoft.hybridnetwork/devices
-
 ```
 
 Create a device with Device Name myMecDevice1 in Resource Group myResources, Location eastus2euap, SubscriptionId and Ase Device Id /subscriptions/xxxxx-00000-xxxxx-00000/resourcegroups/myResources/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/myAse1.
@@ -97,7 +95,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -260,15 +259,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-PROPERTY `<IDevicePropertiesFormat>`: Device properties.
-  - `DeviceType <DeviceType>`: The type of the device.
-
 ## RELATED LINKS
-

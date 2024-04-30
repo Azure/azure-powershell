@@ -111,7 +111,7 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
 
         /// <summary>
         /// Gets or sets the dimension parameter of the cmdlet
-        /// </summary>
+        /// </summary>]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The metric dimensions to query metrics for")]
         public string[] Dimension { get; set; }
 

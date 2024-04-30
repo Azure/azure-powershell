@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Support.Models;
 using Microsoft.Azure.Management.Support;
 using Microsoft.Azure.Management.Support.Models;
 using Microsoft.Rest.Azure;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,17 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Support.SupportTickets
 {
+    [GenericBreakingChangeWithVersion("Input parameter 'Skip' will be removed", "12.0.0", "2.0.0")]
+    [GenericBreakingChangeWithVersion("Input parameter 'IncludeTotalCount' will be removed", "12.0.0", "2.0.0")]
+    [GenericBreakingChangeWithVersion("Parameter 'First' will be renamed to 'Top'", "12.0.0", "2.0.0")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSSupportTicket), "12.0.0", "2.0.0", ChangeDescription = "The child output property ContactDetail will be deprecated. Use properties ContactDetailAdditionalEmailAddress," +
+        "ContactDetailCountry, ContactDetailFirstName, ContactDetailLastName, ContactDetailPhoneNumber, ContactDetailPreferredContactMethod, ContactDetailPreferredSupportLanguage, ContactDetailPreferredTimeZone, " +
+        "and ContactDetailPrimaryEmailAddress instead" )]
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSSupportTicket), "12.0.0", "2.0.0", ChangeDescription = "The child output property SupportEngineer will be deprecated. Use property SupportEngineerEmailAddress instead")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSSupportTicket), "12.0.0", "2.0.0", ChangeDescription = "The child output property QuotaTicketDetail will be deprecated. Use properties QuotaTicketDetailQuotaChangeRequest," +
+        "QuotaTicketDetailQuotaChangeRequestSubType, QuotaTicketDetailQuotaChangeRequestVersion instead")]
+    [CmdletOutputBreakingChangeWithVersion(typeof(PSSupportTicket), "12.0.0", "2.0.0", ChangeDescription = "The output property TechnicalTicketResourceId will be changed to TechnicalTicketDetailResourceId")]
+    [GenericBreakingChangeWithVersion("If no parameters are specified, Get-AzSupportTicket will return support tickets from the last week be default", "12.0.0", "2.0.0")]
     [Cmdlet(VerbsCommon.Get, AzureRMConstants.AzureRMPrefix + "SupportTicket", DefaultParameterSetName = ListParameterSet, SupportsPaging = true), 
         OutputType(typeof(PSSupportTicket))]
     public class GetAzSupportTicket : AzSupportCmdletBase

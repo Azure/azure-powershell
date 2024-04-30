@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Insights.Alerts;
+using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Moq;
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.Insights.Test.Alerts
         public RemoveAzureRmAlertRuleTests(Xunit.Abstractions.ITestOutputHelper output)
         {
             ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(new ServiceManagement.Common.Models.XunitTracingInterceptor(output));
+            TestExecutionHelpers.SetUpSessionAndProfile();
             insightsAlertRuleOperationsMock = new Mock<IAlertRulesOperations>();
             insightsManagementClientMock = new Mock<MonitorManagementClient>() { CallBase = true };
             commandRuntimeMock = new Mock<ICommandRuntime>();

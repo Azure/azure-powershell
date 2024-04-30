@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Creates ExternalNetwork PUT method.
+Create ExternalNetwork PUT method.
 .Description
-Creates ExternalNetwork PUT method.
+Create ExternalNetwork PUT method.
 .Example
 $exportRoutePolicy = @{
     ExportIpv4RoutePolicyId = "/subscriptions/subscriptionId/resourceGroups/example-rg/providers/Microsoft.ManagedNetworkFabric/routePolicies/RoutePolicyName"
@@ -184,7 +184,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for L3ISOLATIONDOMAININPUTOBJECT properties and create a hash table.
     ${L3IsolationDomainInputObject},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
@@ -207,7 +206,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExportRoutePolicy]
     # Export Route Policy either IPv4 or IPv6.
-    # To construct, see NOTES section for EXPORTROUTEPOLICY properties and create a hash table.
     ${ExportRoutePolicy},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -223,7 +221,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IImportRoutePolicy]
     # Import Route Policy either IPv4 or IPv6.
-    # To construct, see NOTES section for IMPORTROUTEPOLICY properties and create a hash table.
     ${ImportRoutePolicy},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -239,7 +236,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration]
     # BFD configuration properties
-    # To construct, see NOTES section for OPTIONAPROPERTYBFDCONFIGURATION properties and create a hash table.
     ${OptionAPropertyBfdConfiguration},
 
     [Parameter(ParameterSetName='CreateExpanded')]
@@ -313,14 +309,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionBProperties]
     # option B properties object
-    # To construct, see NOTES section for OPTIONBPROPERTY properties and create a hash table.
     ${OptionBProperty},
 
     [Parameter(ParameterSetName='CreateViaIdentityL3IsolationDomain', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetwork]
     # Defines the External Network resource.
-    # To construct, see NOTES section for BODY properties and create a hash table.
     ${Body},
 
     [Parameter(ParameterSetName='CreateViaJsonFilePath', Mandatory)]
@@ -429,7 +423,13 @@ begin {
             CreateViaJsonString = 'Az.ManagedNetworkFabric.private\New-AzNetworkFabricExternalNetwork_CreateViaJsonString';
         }
         if (('CreateExpanded', 'CreateViaJsonFilePath', 'CreateViaJsonString') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

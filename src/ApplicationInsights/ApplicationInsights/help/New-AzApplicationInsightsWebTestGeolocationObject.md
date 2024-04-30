@@ -1,7 +1,7 @@
 ---
 external help file: Az.ApplicationInsights-help.xml
-Module Name: Az.Applicationinsights
-online version: https://learn.microsoft.com/powershell/module/az.ApplicationInsights/new-AzApplicationInsightsWebTestGeolocationObject
+Module Name: Az.ApplicationInsights
+online version: https://learn.microsoft.com/powershell/module/Az.ApplicationInsights/new-AzApplicationInsightsWebTestGeolocationObject
 schema: 2.0.0
 ---
 
@@ -13,7 +13,8 @@ Create an in-memory object for WebTestGeolocation.
 ## SYNTAX
 
 ```
-New-AzApplicationInsightsWebTestGeolocationObject [-Location <String>] [<CommonParameters>]
+New-AzApplicationInsightsWebTestGeolocationObject [-Location <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -62,7 +63,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Api20220615.WebTestGeolocation
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

@@ -16,14 +16,16 @@ Creates a Synapse Analytics SQL pool.
 ```
 New-AzSynapseSqlPool [-ResourceGroupName <String>] -WorkspaceName <String> -Name <String> [-Version <Int32>]
  [-Tag <Hashtable>] -PerformanceLevel <String> [-Collation <String>] [-StorageAccountType <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### CreateByParentObjectParameterSet
 ```
 New-AzSynapseSqlPool -WorkspaceObject <PSSynapseWorkspace> -Name <String> [-Version <Int32>] [-Tag <Hashtable>]
  -PerformanceLevel <String> [-Collation <String>] [-StorageAccountType <String>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -146,6 +148,7 @@ The storage account type used to store backups for the sql pool. Possible values
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: GRS, LRS
 
 Required: False
 Position: Named

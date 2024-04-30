@@ -14,7 +14,8 @@ Creates new Schedule object
 
 ```
 New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays <DateTime[]>
- -IntervalType <BackupFrequency> -IntervalCount <Int32> [<CommonParameters>]
+ -IntervalType <BackupFrequency> -IntervalCount <Int32>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -104,7 +105,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.String[]
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

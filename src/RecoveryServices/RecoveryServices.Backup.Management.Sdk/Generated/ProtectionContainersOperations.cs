@@ -39,13 +39,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         public RecoveryServicesBackupClient Client { get; private set; }
 
         /// <summary>
-        /// Gets details of the specific container registered to your Recovery Services Vault.
+        /// Gets details of the specific container registered to your Recovery Services
+        /// Vault.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Name of the fabric where the container belongs.
@@ -272,15 +274,14 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         }
         /// <summary>
-        /// Registers the container with Recovery Services vault.
-        /// This is an asynchronous operation. To track the operation status, use location header to call get latest status of
-        /// the operation.
+        /// Registers the container with Recovery Services vault. This is an asynchronous operation. To track the operation status, use location header to call get latest status of the operation.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the container.
@@ -305,20 +306,23 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
 
         /// <summary>
-        /// Unregisters the given container from your Recovery Services Vault. This is an asynchronous operation. To determine
-        /// whether the backend service has finished processing the request, call Get Container Operation Result API.
+        /// Unregisters the given container from your Recovery Services Vault. This is
+        /// an asynchronous operation. To determine whether the backend service has
+        /// finished processing the request, call Get Container Operation Result API.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Name of the fabric where the container belongs.
         /// </param>
         /// <param name='containerName'>
-        /// Name of the container which needs to be unregistered from the Recovery Services Vault.
+        /// Name of the container which needs to be unregistered from the Recovery
+        /// Services Vault.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -518,7 +522,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         }
         /// <summary>
-        /// This is an async operation and the results should be tracked using location header or Azure-async-url.
+        /// This is an async operation and the results should be tracked using location
+        /// header or Azure-async-url.
         /// </summary>
         /// <param name='odataQuery'>
         /// 
@@ -527,7 +532,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric Name associated with the container.
@@ -743,8 +749,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         }
         /// <summary>
-        /// Discovers all the containers in the subscription that can be backed up to Recovery Services Vault. This is an
-        /// asynchronous operation. To know the status of the operation, call GetRefreshOperationResult API.
+        /// Discovers all the containers in the subscription that can be backed up to
+        /// Recovery Services Vault. This is an asynchronous operation. To know the
+        /// status of the operation, call GetRefreshOperationResult API.
         /// </summary>
         /// <param name='odataQuery'>
         /// 
@@ -753,7 +760,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated the container.
@@ -959,15 +967,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         }
         /// <summary>
-        /// Registers the container with Recovery Services vault.
-        /// This is an asynchronous operation. To track the operation status, use location header to call get latest status of
-        /// the operation.
+        /// Registers the container with Recovery Services vault. This is an
+        /// asynchronous operation. To track the operation status, use location header
+        /// to call get latest status of the operation.
         /// </summary>
         /// <param name='vaultName'>
         /// The name of the recovery services vault.
         /// </param>
         /// <param name='resourceGroupName'>
-        /// The name of the resource group where the recovery services vault is present.
+        /// The name of the resource group where the recovery services vault is
+        /// present.
         /// </param>
         /// <param name='fabricName'>
         /// Fabric name associated with the container.

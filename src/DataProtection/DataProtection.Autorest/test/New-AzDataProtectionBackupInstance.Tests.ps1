@@ -16,17 +16,17 @@ Describe 'New-AzDataProtectionBackupInstance' {
         $sub = $env.TestOssBackupScenario.SubscriptionId
         $rgName = $env.TestOssBackupScenario.ResourceGroupName
         $vaultName = $env.TestOssBackupScenario.VaultName
-        $policyName = $env.TestOssBackupScenario.PolicyName   
+        $policyName = $env.TestOssBackupScenario.PolicyName
         $dataSourceId = $env.TestOssBackupScenario.OssDbId
         $serverName = $env.TestOssBackupScenario.OssServerName
         $keyVault = $env.TestOssBackupScenario.KeyVault
         $secretURI = $env.TestOssBackupScenario.SecretURI
-        
+
         $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName $rgName  -VaultName  $vaultName
-        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | where {$_.Name -eq $policyName}
-        
+        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | Where-Object {$_.Name -eq $policyName}
+
         $instance  = Get-AzDataProtectionBackupInstance -Subscription $sub -ResourceGroup $rgName -Vault $vaultName | Where-Object {($_.Property.DataSourceInfo.Type -eq "Microsoft.DBforPostgreSQL/servers/databases") -and ($_.Property.DataSourceInfo.ResourceId -match $serverName)}
-        
+
         if($instance -eq $null){
             # will come here only if the instance is not protected (ideally won't come here')
             # remove command for backup instance below
@@ -38,7 +38,7 @@ Describe 'New-AzDataProtectionBackupInstance' {
         }
 
         $instance  = Get-AzDataProtectionBackupInstance -Subscription $sub -ResourceGroup $rgName -Vault $vaultName | Where-Object {($_.Property.DataSourceInfo.Type -eq "Microsoft.DBforPostgreSQL/servers/databases") -and ($_.Property.DataSourceInfo.ResourceId -match $serverName)}
-        
+
         ($instance -ne $null) | Should be $true
     }
 
@@ -53,57 +53,57 @@ Describe 'New-AzDataProtectionBackupInstance' {
         $snapshotResourceGroupId = $env.TestAksRestoreScenario.SnapshotResourceGroupId
         $friendlyName = $env.TestAksRestoreScenario.FriendlyName
         $clusterName = $env.TestAksRestoreScenario.ClusterName
-        
-        $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName        
-        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where { $_.Name -match $clusterName }        
-        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | where {$_.Name -eq $policyName}
+
+        $vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
+        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName }
+        $policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -VaultName $vaultName -ResourceGroupName $rgName | Where-Object {$_.Name -eq $policyName}
 
         # remove permissions
         #
         # if($backupInstance -ne $null){
         #    Remove-azdataProtectionBackupInstance -ResourceGroupName $rgName -VaultName $vaultName -SubscriptionId $sub -Name $backupInstance.BackupInstanceName
         # }
-        # 
+        #
         # $roles = Get-AzRoleAssignment -ObjectId $vault.Identity.PrincipalId
         # foreach ($role in $roles){
         #    Remove-AzRoleAssignment -ObjectId $vault.Identity.PrincipalId -RoleDefinitionName $role.RoleDefinitionName -Scope $role.Scope
         # }
-        # 
-        # $aksCluster = Get-AzAksCluster -Id $backupInstance.Property.DataSourceInfo.ResourceId -SubscriptionId $sub        
+        #
+        # $aksCluster = Get-AzAksCluster -Id $backupInstance.Property.DataSourceInfo.ResourceId -SubscriptionId $sub
         # $dataSourceMSIRoles = Az.Resources\Get-AzRoleAssignment -ObjectId $aksCluster.Identity.PrincipalId
         # Remove-AzRoleAssignment -ObjectId $aksCluster.Identity.PrincipalId -RoleDefinitionName "Contributor" -Scope $snapshotResourceGroupId
 
-        # configure backup        
+        # configure backup
         # if($backupInstance -eq $null){
             # $backupConfig = New-AzDataProtectionBackupConfigurationClientObject -SnapshotVolume $true -IncludeClusterScopeResource $true -DatasourceType AzureKubernetesService # -LabelSelector "x=y","foo=bar"
 
             # $backupInstance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureKubernetesService  -DatasourceLocation $dataSourceLocation -PolicyId $policy.Id -DatasourceId $sourceClusterId -SnapshotResourceGroupId $snapshotResourceGroupId -FriendlyName $friendlyName -BackupConfiguration $backupConfig
-                        
+
             ## set MSI permissions
             # Set-AzDataProtectionMSIPermission -BackupInstance $backupInstance -VaultResourceGroup $rgName -VaultName $vaultName -PermissionsScope "ResourceGroup"
 
             ## enable protection
             # $tag= @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="06-2027"}
-            # $biCreate = New-AzDataProtectionBackupInstance -ResourceGroupName $rgName -VaultName $vaultName -BackupInstance $backupInstance -SubscriptionId $sub -Tag $tag        
+            # $biCreate = New-AzDataProtectionBackupInstance -ResourceGroupName $rgName -VaultName $vaultName -BackupInstance $backupInstance -SubscriptionId $sub -Tag $tag
         # }
-        
+
         # validate bi created
-        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where { $_.Name -match $clusterName }
+        $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName }
         ($backupInstance -ne $null) | Should be $true
-                
+
         while($backupInstance.Property.ProtectionStatus.Status -ne "ProtectionConfigured")
         {
-            Start-Sleep -Seconds 10
-            $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where { $_.Name -match $clusterName }
+            Start-TestSleep -Seconds 10
+            $backupInstance = Get-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName | Where-Object { $_.Name -match $clusterName }
         }
 
         # adhoc backup
         Backup-AzDataProtectionBackupInstanceAdhoc -BackupInstanceName $backupInstance.BackupInstanceName -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName -BackupRuleOptionRuleName  $policy.Property.PolicyRule[0].Name -TriggerOptionRetentionTagOverride $policy.Property.PolicyRule[0].Trigger.TaggingCriterion[0].TagInfoTagName
-         
-        Start-Sleep -Seconds 30
+
+        Start-TestSleep -Seconds 30
 
         # get recovery point
-        $rps = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $backupInstance.BackupInstanceName -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName 
+        $rps = Get-AzDataProtectionRecoveryPoint -BackupInstanceName $backupInstance.BackupInstanceName -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
 
         # restore
         if($rps -ne $null){
@@ -116,21 +116,22 @@ Describe 'New-AzDataProtectionBackupInstance' {
             $validateRestore = Test-AzDataProtectionBackupInstanceRestore -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName -RestoreRequest $aksRestoreRequest -Name $backupInstance.BackupInstanceName
 
             $validateRestore.ObjectType | Should be "OperationJobExtendedInfo"
-            
+
             $restoreJob = Start-AzDataProtectionBackupInstanceRestore -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName -BackupInstanceName $backupInstance.BackupInstanceName -Parameter $aksRestoreRequest
 
-            Start-Sleep -Seconds 10
-                
+            Start-TestSleep -Seconds 10
+
             $jobid = $restoreJob.JobId.Split("/")[-1]
             ($jobid -ne $null) | Should be $true
 
             $jobstatus = "InProgress"
-            while($jobstatus -ne "Completed")
+            while($jobstatus -eq "InProgress")
             {
-                Start-Sleep -Seconds 10
+                Start-TestSleep -Seconds 10
                 $currentjob = Get-AzDataProtectionJob -Id $jobid -SubscriptionId $sub -ResourceGroupName $rgName -VaultName $vaultName
                 $jobstatus = $currentjob.Status
             }
+            $jobstatus | Should be "Completed"
         }
     }
 }

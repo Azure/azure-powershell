@@ -1,8 +1,9 @@
 ### Example 1: Get-AzConnectedNetworkVendor using vendor name
 ```powershell
 Get-AzConnectedNetworkVendor -Name myVendor
+```
 
-
+```output
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/myVendor
 Name                         : myVendor
 ProvisioningState            : Succeeded
@@ -24,8 +25,9 @@ Getting information about the vendor with vendor name myVendor.
 ```powershell
 $vendor = @{ VendorName = "myVendor1"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
 Get-AzConnectedNetworkVendor -InputObject $vendor
+```
 
-
+```output
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/providers/Microsoft.HybridNetwork/vendors/myVendor1
 Name                         : myVendor1
 ProvisioningState            : Succeeded

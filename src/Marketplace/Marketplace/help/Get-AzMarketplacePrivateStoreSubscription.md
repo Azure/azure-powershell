@@ -22,10 +22,12 @@ List all the subscriptions in the private store context
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: List all subscriptions
+```powershell
 Get-AzMarketplacePrivateStoreSubscription -PrivateStoreId a260d38c-96cf-492d-a340-404d0c4b3ad6
 ```
+
+List all subscriptions in the private store context.
 
 ## PARAMETERS
 
@@ -34,7 +36,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -49,7 +51,7 @@ Accept wildcard characters: False
 The store ID - must use the tenant ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -64,7 +66,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -80,7 +82,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -99,9 +101,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Marketplace.Models.ISubscriptionsContextList
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestoresubscription](https://learn.microsoft.com/powershell/module/az.marketplace/get-azmarketplaceprivatestoresubscription)
-

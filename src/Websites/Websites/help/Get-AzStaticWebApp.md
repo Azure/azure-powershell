@@ -14,7 +14,8 @@ Description for Gets the details of a static site.
 
 ### List (Default)
 ```
-Get-AzStaticWebApp [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStaticWebApp [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -31,7 +32,8 @@ Get-AzStaticWebApp -ResourceGroupName <String> [-SubscriptionId <String[]>] [-De
 
 ### GetViaIdentity
 ```
-Get-AzStaticWebApp -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzStaticWebApp -InputObject <IWebsitesIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

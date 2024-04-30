@@ -29,8 +29,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="type">Type of restore point
-        /// Possible values include: 'Invalid', 'Full', 'Log', 'Differential',
-        /// 'Incremental', 'SnapshotFull', 'SnapshotCopyOnlyFull'</param>
+        /// Possible values include: &#39;Invalid&#39;, &#39;Full&#39;, &#39;Log&#39;, &#39;Differential&#39;,
+        /// &#39;Incremental&#39;, &#39;SnapshotFull&#39;, &#39;SnapshotCopyOnlyFull&#39;</param>
 
         /// <param name="recoveryPointTierDetails">Recovery point tier information.
         /// </param>
@@ -42,10 +42,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
         /// </param>
 
         /// <param name="extendedInfo">Extended Info that provides data directory details. Will be populated in
-        /// two cases:
-        /// When a specific recovery point is accessed using GetRecoveryPoint
-        /// Or when ListRecoveryPoints is called for Log RP only with ExtendedInfo
-        /// query filter
+        /// two cases: When a specific recovery point is accessed using
+        /// GetRecoveryPoint Or when ListRecoveryPoints is called for Log RP only with
+        /// ExtendedInfo query filter
         /// </param>
 
         /// <param name="timeRanges">List of log ranges

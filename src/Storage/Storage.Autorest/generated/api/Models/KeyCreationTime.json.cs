@@ -77,8 +77,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_key1 = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("key1"), out var __jsonKey1) ? global::System.DateTime.TryParse((string)__jsonKey1, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonKey1Value) ? __jsonKey1Value : Key1 : Key1;}
-            {_key2 = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("key2"), out var __jsonKey2) ? global::System.DateTime.TryParse((string)__jsonKey2, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonKey2Value) ? __jsonKey2Value : Key2 : Key2;}
+            {_key1 = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("key1"), out var __jsonKey1) ? global::System.DateTime.TryParse((string)__jsonKey1, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonKey1Value) ? __jsonKey1Value : _key1 : _key1;}
+            {_key2 = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("key2"), out var __jsonKey2) ? global::System.DateTime.TryParse((string)__jsonKey2, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonKey2Value) ? __jsonKey2Value : _key2 : _key2;}
             AfterFromJson(json);
         }
 

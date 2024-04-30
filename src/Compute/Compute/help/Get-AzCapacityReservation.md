@@ -14,7 +14,8 @@ Gets the properties of Capacity Reservation resources from a Capacity Reservatio
 
 ```
 Get-AzCapacityReservation -ResourceGroupName <String> -ReservationGroupName <String> [-Name <String>]
- [-InstanceView] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-InstanceView] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

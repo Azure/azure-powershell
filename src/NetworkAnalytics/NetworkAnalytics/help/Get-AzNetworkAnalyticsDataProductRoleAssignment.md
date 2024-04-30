@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkAnalytics-help.xml
 Module Name: Az.NetworkAnalytics
 online version: https://learn.microsoft.com/powershell/module/az.networkanalytics/get-aznetworkanalyticsdataproductroleassignment
 schema: 2.0.0
@@ -15,14 +15,15 @@ List user roles associated with the data product.
 ### ListExpanded (Default)
 ```
 Get-AzNetworkAnalyticsDataProductRoleAssignment -DataProductName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### List
 ```
 Get-AzNetworkAnalyticsDataProductRoleAssignment -DataProductName <String> -ResourceGroupName <String>
- -Body <IAny> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String[]>] -Body <IAny> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +33,7 @@ List user roles associated with the data product.
 
 ### Example 1: List user role associated with the data product.
 ```powershell
- $UserRoles=Get-AzNetworkAnalyticsDataProductRoleAssignment -ResourceGroupName "ResourceGroupName" -DataProductName "pwshdp01"
+$UserRoles=Get-AzNetworkAnalyticsDataProductRoleAssignment -ResourceGroupName "ResourceGroupName" -DataProductName "pwshdp01"
 
  $UserRoles.RoleAssignmentResponse| select PrincipalId,PrincipalType,RoleId,Role
 ```
@@ -170,4 +171,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-
