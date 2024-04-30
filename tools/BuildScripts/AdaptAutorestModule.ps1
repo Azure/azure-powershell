@@ -138,7 +138,7 @@ $job = start-job {
         [string]$ParentModuleName,
         [string]$SubModuleName
     )
-    $resolveScriptPath = Join-Path $RepoRoot 'tools' 'BuildScripts' 'Resolve-Psd1.ps1'
+    $resolveScriptPath = Join-Path $RepoRoot 'tools' 'ResolveTools' 'Resolve-Psd1.ps1'
     $artifacts = Join-Path $RepoRoot 'artifacts'
     $artifactPsd1Path = Join-Path $artifacts 'Debug' "Az.$ModuleRootName" "Az.$ModuleRootName.psd1"
     $parentModulePath = Join-Path $RepoRoot 'src' $ModuleRootName $ParentModuleName
