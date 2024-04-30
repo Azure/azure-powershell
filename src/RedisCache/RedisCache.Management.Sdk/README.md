@@ -30,4 +30,28 @@ input-file:
 output-folder: Generated
 
 namespace: Microsoft.Azure.Management.RedisCache
+
+directive:
+- from: swagger-document 
+  where: $.definitions.RedisCacheAccessPolicyAssignmentProperties.properties.accessPolicyName
+  transform: >-
+    return {
+      "type": "string",
+      "description": "The name of the access policy that is being assigned",
+      "pattern": "^([a-zA-Z0-9][a-zA-Z0-9- ]*[a-zA-Z0-9]|[a-zA-Z0-9])$"
+    }
+- from: swagger-document
+  where: $.parameters.AccessPolicyNameParameter
+  transform: >-
+    return {
+      "name": "accessPolicyName",
+      "in": "path",
+      "required": true,
+      "type": "string",
+      "description": "The name of the access policy that is being added to the Redis cache.",
+      "x-ms-parameter-location": "method",
+      "pattern": "^([a-zA-Z0-9][a-zA-Z0-9- ]*[a-zA-Z0-9]|[a-zA-Z0-9])$",
+      "minLength": 3,
+      "maxLength": 63
+    }
 ```
