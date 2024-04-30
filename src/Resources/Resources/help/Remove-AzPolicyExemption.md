@@ -130,7 +130,7 @@ Use the format '{scope}/providers/Microsoft.Authorization/policyExemptions/{poli
 ```yaml
 Type: System.String
 Parameter Sets: Id
-Aliases: PolicyExemptionId
+Aliases: ResourceId, PolicyExemptionId
 
 Required: True
 Position: Named

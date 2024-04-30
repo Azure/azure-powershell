@@ -154,7 +154,12 @@ param(
     # To construct, see NOTES section for NONCOMPLIANCEMESSAGE properties and create a hash table.
     ${NonComplianceMessage},
 
+    [Parameter(ParameterSetName = 'InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment]
+    ${InputObject},
+
     [Parameter()]
+    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
     [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible} = $false,
@@ -225,8 +230,9 @@ process {
     # Id can be a parameter or from the input object
     if ($Id) {
         $thisId = $Id
-    } else {
-        $thisId = $_.Id
+    }
+    else {
+        $thisId = $InputObject.Id
     }
 
     # client side parameter validation
@@ -266,13 +272,30 @@ process {
         throw "[PolicyAssignmentNotFound] : The policy assignment '$($resolved.ResourceId)' is not found."
     }
 
-    # supply properties for New- from $existing
-    $calledParameters = $PSBoundParameters
-    if ($thisId) {
-        $calledParameters.Name = $resolved.Name
-        $calledParameters.Scope = $resolved.FullScope
-        $null = $calledParameters.Remove('Id')
+    $calledParameters = @{}
+    # populate called parameters from input object if present (these will be overridden by command-line values below)
+    if ($InputObject) {
+        foreach ($parameterName in $InputObject.Keys) {
+            $value = $InputObject.($parameterName)
+            if ($value -or ($value -is [array])) {
+                $calledParameters.($parameterName) = $value
+            }
+        }
     }
+
+    # skip $null and empty values to avoid validation failures on pipeline input
+    foreach ($parameterName in $PSBoundParameters.Keys) {
+        $value = $PSBoundParameters.($parameterName)
+        if ($value -or ($value -is [array])) {
+            $calledParameters.($parameterName) = $value
+        }
+    }
+
+    # supply required parameters and remove custom parameters
+    $calledParameters.Name = $resolved.Name
+    $calledParameters.Scope = $resolved.FullScope
+    $null = $calledParameters.Remove('Id')
+    $null = $calledParameters.Remove('InputObject')
 
     # policy definition can't be updated, so make it from existing Id
     $calledParameters.PolicyDefinition = [PSCustomObject]@{ Id = $existing.PolicyDefinitionId }

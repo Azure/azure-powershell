@@ -63,7 +63,7 @@ param(
 
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Custom', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='BuiltIn', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Builtin', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The ID of the target subscription.
@@ -71,7 +71,7 @@ param(
 
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Custom', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='BuiltIn', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Builtin', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The name of the management group.
@@ -92,7 +92,7 @@ param(
     # If $filter is not provided, no filtering is performed.
     # If $filter=atExactScope() is provided, the returned list only includes all policy set definitions that at the given scope.
     # If $filter='policyType -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}.
-    # Possible policyType values are NotSpecified, BuiltIn, Custom, and Static.
+    # Possible policyType values are NotSpecified, Builtin, Custom, and Static.
     # If $filter='category -eq {value}' is provided, the returned list only includes all policy set definitions whose category match the {value}.
     ${Filter},
 
@@ -102,11 +102,11 @@ param(
     # Causes cmdlet to return only custom policy definitions.
     ${Custom},
 
-    [Parameter(ParameterSetName='BuiltIn', Mandatory, ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Builtin', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return only built-in policy definitions.
-    ${BuiltIn},
+    ${Builtin},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
@@ -194,7 +194,7 @@ begin {
             ManagementGroupName = 'Az.Policy.custom\Get-AzPolicySetDefinition';
             Id = 'Az.Policy.custom\Get-AzPolicySetDefinition';
             Custom = 'Az.Policy.custom\Get-AzPolicySetDefinition';
-            BuiltIn = 'Az.Policy.custom\Get-AzPolicySetDefinition';
+            Builtin = 'Az.Policy.custom\Get-AzPolicySetDefinition';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

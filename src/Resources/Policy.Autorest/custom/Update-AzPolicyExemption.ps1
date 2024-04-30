@@ -103,7 +103,12 @@ param(
     # Metadata is an open ended object and is typically a collection of key value pairs.
     ${Metadata},
 
+    [Parameter(ParameterSetName = 'InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption]
+    ${InputObject},
+
     [Parameter()]
+    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
     [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible} = $false,
@@ -182,7 +187,7 @@ process {
     if ($Id) {
         $thisId = $Id
     } else {
-        $thisId = $_.Id
+        $thisId = $InputObject.Id
     }
 
     # construct id for exemption to update
@@ -220,7 +225,7 @@ process {
         }
     }
 
-    # remomve $null and empty values to avoid validation failures on pipeline input
+    # skip $null and empty values to avoid validation failures on pipeline input
     foreach ($parameterName in $PSBoundParameters.Keys) {
         $value = $PSBoundParameters.($parameterName)
         if ($value -or ($value -is [array])) {
@@ -229,11 +234,10 @@ process {
     }
 
     # supply required parameters and remove custom parameters
-    if ($thisId) {
-        $calledParameters.Name = $resolved.Name
-        $calledParameters.Scope = $resolved.FullScope
-        $null = $calledParameters.Remove('Id')
-    }
+    $calledParameters.Name = $resolved.Name
+    $calledParameters.Scope = $resolved.FullScope
+    $null = $calledParameters.Remove('Id')
+    $null = $calledParameters.Remove('InputObject')
 
     $calledParameters.PolicyAssignment = [PSCustomObject]@{ Id = $existing.PolicyAssignmentId }
 

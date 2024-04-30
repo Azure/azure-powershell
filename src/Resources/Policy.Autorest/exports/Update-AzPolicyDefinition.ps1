@@ -30,9 +30,29 @@ Update-AzPolicyDefinition -Name 'VMPolicyDefinition' -Metadata '{"category":"Vir
 Set-AzPolicyDefinition -Name 'VMPolicyDefinition' -Mode 'All'
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition
+.Inputs
 System.String
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IPolicyDefinition>: 
+  [Description <String>]: The policy definition description.
+  [DisplayName <String>]: The display name of the policy definition.
+  [Metadata <IPolicyDefinitionPropertiesMetadata>]: The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [Mode <String>]: The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
+  [Parameter <IParameterDefinitions>]: The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [PolicyRule <IPolicyDefinitionPropertiesPolicyRule>]: The policy rule.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [PolicyType <String>]: The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+  [Version <String>]: The policy definition version in #.#.# format.
+  [Versions <List<String>>]: A list of available versions for this policy definition.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/update-azpolicydefinition
 #>
@@ -116,6 +136,12 @@ param(
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible},
 
+    [Parameter(ParameterSetName='InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition]
+    # 
+    ${InputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -195,6 +221,7 @@ begin {
             ManagementGroupName = 'Az.Policy.custom\Update-AzPolicyDefinition';
             SubscriptionId = 'Az.Policy.custom\Update-AzPolicyDefinition';
             Id = 'Az.Policy.custom\Update-AzPolicyDefinition';
+            InputObject = 'Az.Policy.custom\Update-AzPolicyDefinition';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

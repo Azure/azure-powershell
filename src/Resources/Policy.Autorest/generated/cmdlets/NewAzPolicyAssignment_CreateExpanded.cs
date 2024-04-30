@@ -11,9 +11,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     using System;
 
     /// <summary>
-    /// This operation Create a policy assignment with the given scope and name. Policy assignments apply to all resources contained
-    /// within their scope. For example, when you assign a policy at resource group scope, that policy applies to all resources
-    /// in the group.
+    /// This operation creates or updates a policy assignment with the given scope and name. Policy assignments apply to all resources
+    /// contained within their scope. For example, when you assign a policy at resource group scope, that policy applies to all
+    /// resources in the group.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] Create=>PUT:"/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}"
@@ -21,7 +21,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzPolicyAssignment_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@" This operation Create a policy assignment with the given scope and name. Policy assignments apply to all resources contained within their scope. For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@" This operation creates or updates a policy assignment with the given scope and name. Policy assignments apply to all resources contained within their scope. For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.HttpPath(Path = "/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}", ApiVersion = "2023-04-01")]
     public partial class NewAzPolicyAssignment_CreateExpanded : global::System.Management.Automation.PSCmdlet,

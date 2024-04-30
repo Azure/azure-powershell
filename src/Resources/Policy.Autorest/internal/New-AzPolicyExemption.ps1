@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-This operation Create a policy exemption with the given scope and name.
+This operation creates or updates a policy exemption with the given scope and name.
 Policy exemptions apply to all resources contained within their scope.
 For example, when you create a policy exemption at resource group scope for a policy assignment at the same or above level, the exemption exempts to all applicable resources in the resource group.
 .Description
-This operation Create a policy exemption with the given scope and name.
+This operation creates or updates a policy exemption with the given scope and name.
 Policy exemptions apply to all resources contained within their scope.
 For example, when you create a policy exemption at resource group scope for a policy assignment at the same or above level, the exemption exempts to all applicable resources in the resource group.
 .Example
