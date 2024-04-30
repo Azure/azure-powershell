@@ -3,13 +3,13 @@
     "Request": {
       "Method": "POST",
       "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/providers/Microsoft.ServiceBus/CheckNameAvailability?api-version=2022-10-01-preview",
-      "Content": "{\n  \"name\": \"namespaceV24j3ycq\"\n}",
+      "Content": "{\n  \"name\": \"namespaceNamep0j7ix\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json" ],
-        "Content-Length": [ "33" ]
+        "Content-Length": [ "35" ]
       }
     },
     "Response": {
@@ -17,16 +17,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "cb08c4e6-86d5-4f9e-8243-9f884681880c_M1SN1_M1SN1" ],
+        "x-ms-request-id": [ "daa1d506-5b84-4d4b-a2c0-3aa6e4844f0e_M2SN1_M2SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "e1964918-e837-4b7c-b747-d728f2c0260b" ],
-        "x-ms-routing-request-id": [ "EASTASIA:20240221T183837Z:e1964918-e837-4b7c-b747-d728f2c0260b" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-correlation-request-id": [ "86c8d115-40d4-4707-a8cd-9bc766aa4aeb" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240430T062902Z:86c8d115-40d4-4707-a8cd-9bc766aa4aeb" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: DB24D9C458574939B5902DC17F7225C3 Ref B: SEL221051504045 Ref C: 2024-02-21T18:38:37Z" ],
-        "Date": [ "Wed, 21 Feb 2024 18:38:36 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C5E6E582D9D245CB957D117E785A67D2 Ref B: SEL221051503009 Ref C: 2024-04-30T06:29:02Z" ],
+        "Date": [ "Tue, 30 Apr 2024 06:29:02 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "159" ],
@@ -37,11 +38,11 @@
       "isContentBase64": false
     }
   },
-  "Test-AzServiceBusName+[NoContext]+AliasAvailability+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/namespaceName1exh3q/disasterRecoveryConfigs/CheckNameAvailability?api-version=2022-10-01-preview+1": {
+  "Test-AzServiceBusName+[NoContext]+AliasAvailability+$POST+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-ServiceBus-2n3eh9/providers/Microsoft.ServiceBus/namespaces/namespaceNameg2d9np/disasterRecoveryConfigs/CheckNameAvailability?api-version=2022-10-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestbrcty3/providers/Microsoft.ServiceBus/namespaces/namespaceName1exh3q/disasterRecoveryConfigs/CheckNameAvailability?api-version=2022-10-01-preview",
-      "Content": "{\n  \"name\": \"alias4znl53\"\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-ServiceBus-2n3eh9/providers/Microsoft.ServiceBus/namespaces/namespaceNameg2d9np/disasterRecoveryConfigs/CheckNameAvailability?api-version=2022-10-01-preview",
+      "Content": "{\n  \"name\": \"aliastkildm\"\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -55,16 +56,17 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "8e6fd053-0930-4993-ae66-c3dacbf32c7b_M10SN1_M10SN1" ],
+        "x-ms-request-id": [ "8f351814-7181-480e-a9c0-a4c0f667ccfa_M8SN1_M8SN1" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-correlation-request-id": [ "1505d4d2-932f-499f-b8d6-db10abe5da8a" ],
-        "x-ms-routing-request-id": [ "EASTASIA:20240221T183838Z:1505d4d2-932f-499f-b8d6-db10abe5da8a" ],
+        "x-ms-correlation-request-id": [ "43b545ae-56b3-4ded-b4e9-ddba34e24bbf" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240430T062904Z:43b545ae-56b3-4ded-b4e9-ddba34e24bbf" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 6A46D7D8BCDE4B788A1C359E3038BBE4 Ref B: SEL221051504045 Ref C: 2024-02-21T18:38:37Z" ],
-        "Date": [ "Wed, 21 Feb 2024 18:38:38 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 43D6A02C79E84E2FBCFA17AEA3B82343 Ref B: SEL221051503009 Ref C: 2024-04-30T06:29:02Z" ],
+        "Date": [ "Tue, 30 Apr 2024 06:29:03 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "38" ],

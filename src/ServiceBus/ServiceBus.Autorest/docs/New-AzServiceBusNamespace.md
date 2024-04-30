@@ -275,7 +275,6 @@ Accept wildcard characters: False
 
 ### -KeyVaultProperty
 Properties of KeyVault
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IKeyVaultProperties[]

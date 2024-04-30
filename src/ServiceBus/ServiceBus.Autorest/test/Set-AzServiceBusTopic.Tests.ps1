@@ -94,6 +94,6 @@ Describe 'Set-AzServiceBusTopic' {
         AssertTopicUpdates $currentTopic $updatedTopic
         $currentTopic = $updatedTopic
 
-        { Set-AzServiceBusTopic -InputObject $currentTopic } | Should -Throw 'Please specify the property you want to update on the -InputObject'
+        { Set-AzServiceBusTopic -InputObject $currentTopic -ErrorAction Stop } | Should -Throw 'Please specify the property you want to update on the -InputObject'
     }
 }

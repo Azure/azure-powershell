@@ -145,7 +145,6 @@ function Set-AzServiceBusRule{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.String]
         # Filter type that is evaluated against a BrokeredMessage.
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ParameterBreakingChangeAttribute("FilterType","12.0.0", "4.0.0","2024-05-21" )]
         ${FilterType},
 
         [Parameter(HelpMessage = "Value that indicates whether the rule action requires preprocessing.")]

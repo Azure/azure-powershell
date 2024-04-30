@@ -325,7 +325,6 @@ Accept wildcard characters: False
 
 ### -NamespaceInputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -356,7 +355,6 @@ Accept wildcard characters: False
 
 ### -Parameter
 Description of queue Resource.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue

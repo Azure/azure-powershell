@@ -96,7 +96,7 @@ Describe 'Set-AzServiceBusNamespaceV2' {
         assertNamespaceUpdates $serviceBusNamespace $namespace
         
         # Create a namespace with UserAssignedIdentity and use Set-Az cmdlet to set IdentityType to None
-        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -SkuName Premium -Location northeurope -IdentityType UserAssigned -UserAssignedIdentityId $env.msi1, $env.msi2
+        $serviceBusNamespace = New-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -SkuName Premium -Location $env.location -IdentityType UserAssigned -UserAssignedIdentityId $env.msi1, $env.msi2
         $serviceBusNamespace.UserAssignedIdentity.Count | Should -Be 2
 
         $serviceBusNamespace = Set-AzServiceBusNamespaceV2 -ResourceGroupName $env.resourceGroup -Name $env.namespaceV6 -IdentityType None -UserAssignedIdentityId:$null

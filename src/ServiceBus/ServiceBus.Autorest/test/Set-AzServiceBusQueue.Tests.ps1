@@ -119,6 +119,6 @@ Describe 'Set-AzServiceBusQueue' {
         AssertQueueUpdates $currentQueue $updatedQueue
         $currentQueue = $updatedQueue
 
-        { Set-AzServiceBusQueue -InputObject $currentQueue } | Should -Throw 'Please specify the property you want to update on the -InputObject'
+        { Set-AzServiceBusQueue -InputObject $currentQueue -ErrorAction Stop } | Should -Throw 'Please specify the property you want to update on the -InputObject'
     }
 }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceBusRule
 
 ## SYNOPSIS
-Creates a new rule and updates an existing rule
+Create a new rule and updates an existing rule
 
 ## SYNTAX
 
@@ -75,7 +75,7 @@ New-AzServiceBusRule -Name <String> -SubscriptionName <String> -TopicInputObject
 ```
 
 ## DESCRIPTION
-Creates a new rule and updates an existing rule
+Create a new rule and updates an existing rule
 
 ## EXAMPLES
 
@@ -314,7 +314,6 @@ Accept wildcard characters: False
 
 ### -NamespaceInputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -345,7 +344,6 @@ Accept wildcard characters: False
 
 ### -Parameter
 Description of Rule Resource.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule
@@ -469,7 +467,6 @@ Accept wildcard characters: False
 
 ### -SubscriptionInputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -515,7 +512,6 @@ Accept wildcard characters: False
 
 ### -TopicInputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity

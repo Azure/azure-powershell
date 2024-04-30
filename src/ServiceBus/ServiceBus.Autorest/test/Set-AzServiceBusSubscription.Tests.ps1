@@ -98,6 +98,6 @@ Describe 'Set-AzServiceBusSubscription' {
         AssertSubscriptionUpdates $currentSub $updatedSub
         $currentSub = $updatedSub
 
-        { Set-AzServiceBusSubscription -InputObject $currentSub } | Should -Throw 'Please specify the property you want to update on the -InputObject'
+        { Set-AzServiceBusSubscription -InputObject $currentSub -ErrorAction Stop } | Should -Throw 'Please specify the property you want to update on the -InputObject'
     }
 }

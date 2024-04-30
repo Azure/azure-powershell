@@ -30,8 +30,7 @@ function New-AzServiceBusIPRuleConfig{
 		[Parameter(HelpMessage = "The IP Filter Action")]
         [System.String]
 		# The IP Filter Action
-		[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ParameterBreakingChangeAttribute("Action","12.0.0", "4.0.0","2024-05-21" )]
-        ${Action}
+		${Action}
 	)
 
 	process{

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceBusSubscription
 
 ## SYNOPSIS
-Creates a topic subscription.
+Create a topic subscription.
 
 ## SYNTAX
 
@@ -58,7 +58,7 @@ New-AzServiceBusSubscription -Name <String> -TopicInputObject <IServiceBusIdenti
 ```
 
 ## DESCRIPTION
-Creates a topic subscription.
+Create a topic subscription.
 
 ## EXAMPLES
 
@@ -350,7 +350,6 @@ Accept wildcard characters: False
 
 ### -NamespaceInputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -381,7 +380,6 @@ Accept wildcard characters: False
 
 ### -Parameter
 Description of subscription resource.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription
@@ -458,7 +456,6 @@ Accept wildcard characters: False
 
 ### -TopicInputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity

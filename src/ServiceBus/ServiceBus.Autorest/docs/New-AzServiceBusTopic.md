@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceBusTopic
 
 ## SYNOPSIS
-Creates a topic in the specified namespace.
+Create a topic in the specified namespace.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ New-AzServiceBusTopic -Name <String> -NamespaceInputObject <IServiceBusIdentity>
 ```
 
 ## DESCRIPTION
-Creates a topic in the specified namespace.
+Create a topic in the specified namespace.
 
 ## EXAMPLES
 
@@ -238,7 +238,6 @@ Accept wildcard characters: False
 
 ### -NamespaceInputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -269,7 +268,6 @@ Accept wildcard characters: False
 
 ### -Parameter
 Description of topic resource.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic

@@ -62,6 +62,6 @@ Describe 'Set-AzServiceBusNetworkRuleSet' {
         $networkRuleSet.PublicNetworkAccess | Should -Be "Disabled"
         $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $false
 
-        { Set-AzServiceBusNetworkRuleSet -InputObject $networkRuleSet } | Should -Throw 'Please specify the property you want to update on the -InputObject'
+        { Set-AzServiceBusNetworkRuleSet -InputObject $networkRuleSet -ErrorAction Stop } | Should -Throw 'Please specify the property you want to update on the -InputObject'
     }
 }
