@@ -19,10 +19,10 @@
 -->
 
 ## Upcoming Release
+* Added null check to the permissions object in the ToPSRoleDefinition method to return if the whole permissions object array is null.
 * Introduced secrets detection feature to safeguard sensitive data.
 * Migrated SDK generation from autorest csharp to autorest powershell.
 * Fixed deployment and deployment stack New/Set cmdlets to fail if template/parameter uri fails to downloads.
-* Added null check to the permissions object in the ToPSRoleDefinition method to return if the whole permissions object array is null.
 
 ## Version 6.16.1
 * Added null check to the permissions object in the ToPSRoleDefinition method.
