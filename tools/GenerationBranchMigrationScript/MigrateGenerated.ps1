@@ -3,6 +3,9 @@ param (
     [string]$RepoRoot = (Resolve-Path ("$PSScriptRoot/../../"))
 )
 
+$BuildScriptsModulePath = Join-Path $RepoRoot 'tools' 'BuildScripts' "BuildScripts.psm1"
+Import-Module $BuildScriptsModulePath
+
 $rootToParentMap = @{
     'Storage' = @('Storage.Management')
 }
@@ -53,6 +56,12 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
             dotnet sln $slnPath add $toPath
         }
     }
+
+    $generateInfoPath = Join-Path $sourceSubModulePath 'generate-info.json'
+    if (Test-Path $generateInfoPath) {
+        Remove-Item $generateInfoPath -Force
+    }
+    New-GenerateInfoJson -GeneratedDirectory $sourceSubModulePath
 }
 
 # <#
@@ -86,6 +95,3 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
 # #copy build.proj from eng/archive-test to current branch
 # $buildProjPath = Join-Path $RepoRoot 'build.proj'
 # (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/build.proj").Content > $buildProjPath
-
-# #copy build pipeline ymls from eng/archive-test to current branch
-# # TODO
