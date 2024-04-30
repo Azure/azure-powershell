@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.CustomLocation.private.dll'
   FormatsToProcess = './Az.CustomLocation.format.ps1xml'
-  FunctionsToExport = 'Find-AzCustomLocationTargetResourceGroup', 'Get-AzCustomLocation', 'Get-AzCustomLocationEnabledResourceType', 'Get-AzCustomLocationResourceSyncRule', 'New-AzCustomLocation', 'New-AzCustomLocationMatchExpressionsObject', 'New-AzCustomLocationResourceSyncRule', 'Remove-AzCustomLocation', 'Remove-AzCustomLocationResourceSyncRule', 'Update-AzCustomLocation', 'Update-AzCustomLocationResourceSyncRule'
+  FunctionsToExport = 'Find-AzCustomLocationTargetResourceGroup', 'Get-AzCustomLocation', 'Get-AzCustomLocationEnabledResourceType', 'Get-AzCustomLocationResourceSyncRule', 'New-AzCustomLocationMatchExpressionsObject', 'New-AzCustomLocationResourceSyncRule', 'Remove-AzCustomLocation', 'Remove-AzCustomLocationResourceSyncRule', 'Update-AzCustomLocationResourceSyncRule'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'CustomLocation'

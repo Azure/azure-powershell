@@ -17,8 +17,24 @@ Create a Custom Location in the specified Subscription and Resource Group
 New-AzCustomLocation -Name <String> -ResourceGroupName <String> -ClusterExtensionId <String[]>
  -HostResourceId <String> -Location <String> -Namespace <String> [-SubscriptionId <String>]
  [-AuthenticationType <String>] [-AuthenticationValue <String>] [-DisplayName <String>]
+ [-EnableSystemAssignedIdentity] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### CreateExpanded (Default)
+```
+New-AzCustomLocation -Name <String> -ResourceGroupName <String> -ClusterExtensionId <String[]>
+ -HostResourceId <String> -Location <String> -Namespace <String> [-SubscriptionId <String>]
+ [-AuthenticationType <String>] [-AuthenticationValue <String>] [-DisplayName <String>]
  [-IdentityType <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
+```
+
+### CreateViaJsonFilePath
+```
+New-AzCustomLocation -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -35,12 +51,19 @@ New-AzCustomLocation -Name <String> -ResourceGroupName <String> -JsonString <Str
  [<CommonParameters>]
 ```
 
+### CreateViaJsonString
+```
+New-AzCustomLocation -Name <String> -ResourceGroupName <String> -JsonString <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Create a Custom Location in the specified Subscription and Resource Group
 
 ## EXAMPLES
 
-### Example 1: Creates or updates a Custom Location in the specified Subscription and Resource Group.
+### Example 1: Creates or updates a Custom Location in the specified Subscription and Resource Group
 ```powershell
 $HostResourceId = (Get-AzConnectedKubernetes -ClusterName azps-connect -ResourceGroupName azps_test_cluster).Id
 $ClusterExtensionId = (Get-AzKubernetesExtension -ClusterName azps-connect -ClusterType ConnectedClusters -ResourceGroupName azps_test_cluster -Name azps-extension).Id
@@ -54,6 +77,45 @@ eastus   azps-customlocation azps-namespace azps_test_cluster
 ```
 
 Creates or updates a Custom Location in the specified Subscription and Resource Group.
+
+### Example 2: Creates or updates a Custom Location that enable system assigned identity
+```powershell
+$HostResourceId = (Get-AzConnectedKubernetes -ClusterName azps-connect -ResourceGroupName joyer-test).Id
+$ClusterExtensionId = (Get-AzKubernetesExtension -ClusterName azps-connect -ClusterType ConnectedClusters -ResourceGroupName joyer-test -Name azps-extension).Id
+New-AzCustomLocation -ResourceGroupName joyer-test -Name azps-customlocation -Location eastus -ClusterExtensionId $ClusterExtensionId -HostResourceId $HostResourceId -Namespace azps-namespace -EnableSystemAssignedIdentity
+```
+
+```output
+AuthenticationType           : 
+AuthenticationValue          : 
+ClusterExtensionId           : {/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.Kubernetes/ConnectedClusters/azps- 
+                               connect/providers/Microsoft.KubernetesConfiguration/extensions/azps-extension}
+DisplayName                  : 
+HostResourceId               : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.Kubernetes/connectedClusters/azps-c 
+                               onnect
+HostType                     : Kubernetes
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/joyer-test/providers/microsoft.extendedlocation/customlocations/az 
+                               ps-customlocation
+IdentityPrincipalId          : 2c00f896-3cf8-42d2-b902-660cbcc51005
+IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
+IdentityType                 : SystemAssigned
+Location                     : eastus
+Name                         : azps-customlocation
+Namespace                    : azps-namespace
+ProvisioningState            : Succeeded
+ResourceGroupName            : joyer-test
+SystemDataCreatedAt          : 4/30/2024 7:57:50 AM
+SystemDataCreatedBy          : v-jiaji@microsoft.com
+SystemDataCreatedByType      : User
+SystemDataLastModifiedAt     : 4/30/2024 7:57:50 AM
+SystemDataLastModifiedBy     : v-jiaji@microsoft.com
+SystemDataLastModifiedByType : User
+Tag                          : {
+                               }
+Type                         : Microsoft.ExtendedLocation/customLocations
+```
+
+The third command creates or updates a Custom Location that enable system assigned identity.
 
 ## PARAMETERS
 
@@ -77,7 +139,7 @@ The type of the Custom Locations authentication
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -92,7 +154,7 @@ The kubeconfig value.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -107,7 +169,7 @@ Contains the reference to the add-on that contains charts to deploy CRDs and ope
 
 ```yaml
 Type: System.String[]
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded
 Aliases:
 
 Required: True
@@ -138,6 +200,21 @@ Display name for the Custom Locations location.
 
 ```yaml
 Type: System.String
+Parameter Sets: CreateExpanded, CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -154,7 +231,7 @@ The Custom Locations RP will perform a checkAccess API for listAdminCredentials 
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded
 Aliases:
 
 Required: True
@@ -184,7 +261,7 @@ Path of Json file supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonFilePath
+Parameter Sets: CreateViaJsonFilePath, CreateViaJsonFilePath
 Aliases:
 
 Required: True
@@ -199,7 +276,7 @@ Json string supplied to the Create operation
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateViaJsonString
+Parameter Sets: CreateViaJsonString, CreateViaJsonString
 Aliases:
 
 Required: True
@@ -214,7 +291,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded
 Aliases:
 
 Required: True
@@ -244,7 +321,7 @@ Kubernetes namespace that will be created on the specified cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded
 Aliases:
 
 Required: True
@@ -305,7 +382,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded
+Parameter Sets: CreateExpanded, CreateExpanded
 Aliases:
 
 Required: False
@@ -350,8 +427,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.CustomLocation.Models.ICustomLocationIdentity
 
 ## OUTPUTS
 
