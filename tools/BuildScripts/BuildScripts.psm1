@@ -2,11 +2,12 @@ function Get-CsprojFromModule {
     param (
         [string[]]$BuildModuleList,
         [string[]]$TestModuleList,
-        [string]$SourceDirectory,
-        [string]$GeneratedDirectory,
+        [string]$RepoRoot,
         [string]$Configuration
     )
 
+    $SourceDirectory = Join-Path $RepoRoot 'src'
+    $GeneratedDirectory = Join-Path $RepoRoot 'generated'
     $modulePath = @()
     Write-Host "----------Start finding modules under /src and /generated----------" -ForegroundColor DarkYellow
     foreach ($moduleName in $BuildModuleList) {

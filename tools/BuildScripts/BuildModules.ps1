@@ -109,7 +109,7 @@ switch ($PSCmdlet.ParameterSetName) {
     }
 }
 
-$csprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -TestModuleList $testModules -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory -Configuration $Configuration
+$csprojFiles = Get-CsprojFromModule -BuildModuleList $TargetModule -TestModuleList $testModules -RepoRoot $RepoRoot -Configuration $Configuration
 
 # Prepare autorest based modules
 $succeeded = $true
