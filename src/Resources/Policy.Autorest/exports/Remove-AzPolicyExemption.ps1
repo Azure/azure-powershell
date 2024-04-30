@@ -84,7 +84,7 @@ param(
     ${Scope},
 
     [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
-    [Alias('PolicyExemptionId')]
+    [Alias('ResourceId', 'PolicyExemptionId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The ID of the policy exemption to delete.

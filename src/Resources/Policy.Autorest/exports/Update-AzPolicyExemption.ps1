@@ -38,6 +38,8 @@ $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
 Set-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption
+.Inputs
 System.Management.Automation.SwitchParameter
 .Inputs
 System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
@@ -47,6 +49,27 @@ System.String
 System.String[]
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IPolicyExemption>: 
+  ExemptionCategory <String>: The policy exemption category. Possible values are Waiver and Mitigated.
+  PolicyAssignmentId <String>: The ID of the policy assignment that is being exempted.
+  [AssignmentScopeValidation <String>]: The option whether validate the exemption is at or under the assignment scope.
+  [Description <String>]: The description of the policy exemption.
+  [DisplayName <String>]: The display name of the policy exemption.
+  [ExpiresOn <DateTime?>]: The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the policy exemption.
+  [Metadata <IPolicyExemptionPropertiesMetadata>]: The policy exemption metadata. Metadata is an open ended object and is typically a collection of key value pairs.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [PolicyDefinitionReferenceId <List<String>>]: The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
+  [ResourceSelector <List<IResourceSelector>>]: The resource selector list to filter policies by resource properties.
+    [Name <String>]: The name of the resource selector.
+    [Selector <List<ISelector>>]: The list of the selector expressions.
+      [In <List<String>>]: The list of values to filter in.
+      [Kind <String>]: The selector kind.
+      [NotIn <List<String>>]: The list of values to filter out.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/update-azpolicyexemption
 #>
@@ -133,6 +156,12 @@ param(
     # The option whether validate the exemption is at or under the assignment scope.
     ${AssignmentScopeValidation},
 
+    [Parameter(ParameterSetName='InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption]
+    # 
+    ${InputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -210,6 +239,7 @@ begin {
         $mapping = @{
             Name = 'Az.Policy.custom\Update-AzPolicyExemption';
             Id = 'Az.Policy.custom\Update-AzPolicyExemption';
+            InputObject = 'Az.Policy.custom\Update-AzPolicyExemption';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

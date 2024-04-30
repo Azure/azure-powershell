@@ -291,7 +291,7 @@ param(
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Static', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Custom', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='BuiltIn', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Builtin', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The ID of the target subscription.
@@ -300,7 +300,7 @@ param(
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Static', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Custom', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='BuiltIn', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Builtin', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The name of the management group.
@@ -321,7 +321,7 @@ param(
     # If $filter is not provided, no filtering is performed.
     # If $filter=atExactScope() is provided, the returned list only includes all policy definitions that at the given scope.
     # If $filter='policyType -eq {value}' is provided, the returned list only includes all policy definitions whose type match the {value}.
-    # Possible policyType values are NotSpecified, BuiltIn, Custom, and Static.
+    # Possible policyType values are NotSpecified, Builtin, Custom, and Static.
     # If $filter='category -eq {value}' is provided, the returned list only includes all policy definitions whose category match the {value}.
     ${Filter},
 
@@ -337,11 +337,11 @@ param(
     # Causes cmdlet to return only custom policy definitions.
     ${Custom},
 
-    [Parameter(ParameterSetName='BuiltIn', Mandatory, ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Builtin', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return only built-in policy definitions.
-    ${BuiltIn},
+    ${Builtin},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
@@ -429,7 +429,7 @@ begin {
             Id = 'Az.Policy.custom\Get-AzPolicyDefinition';
             Static = 'Az.Policy.custom\Get-AzPolicyDefinition';
             Custom = 'Az.Policy.custom\Get-AzPolicyDefinition';
-            BuiltIn = 'Az.Policy.custom\Get-AzPolicyDefinition';
+            Builtin = 'Az.Policy.custom\Get-AzPolicyDefinition';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -748,7 +748,7 @@ param(
 
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Custom', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='BuiltIn', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Builtin', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The ID of the target subscription.
@@ -756,7 +756,7 @@ param(
 
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Custom', ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='BuiltIn', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Builtin', ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The name of the management group.
@@ -777,7 +777,7 @@ param(
     # If $filter is not provided, no filtering is performed.
     # If $filter=atExactScope() is provided, the returned list only includes all policy set definitions that at the given scope.
     # If $filter='policyType -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}.
-    # Possible policyType values are NotSpecified, BuiltIn, Custom, and Static.
+    # Possible policyType values are NotSpecified, Builtin, Custom, and Static.
     # If $filter='category -eq {value}' is provided, the returned list only includes all policy set definitions whose category match the {value}.
     ${Filter},
 
@@ -787,11 +787,11 @@ param(
     # Causes cmdlet to return only custom policy definitions.
     ${Custom},
 
-    [Parameter(ParameterSetName='BuiltIn', Mandatory, ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Builtin', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return only built-in policy definitions.
-    ${BuiltIn},
+    ${Builtin},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
@@ -879,7 +879,7 @@ begin {
             ManagementGroupName = 'Az.Policy.custom\Get-AzPolicySetDefinition';
             Id = 'Az.Policy.custom\Get-AzPolicySetDefinition';
             Custom = 'Az.Policy.custom\Get-AzPolicySetDefinition';
-            BuiltIn = 'Az.Policy.custom\Get-AzPolicySetDefinition';
+            Builtin = 'Az.Policy.custom\Get-AzPolicySetDefinition';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2116,7 +2116,7 @@ param(
     ${Scope},
 
     [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
-    [Alias('PolicyAssignmentId')]
+    [Alias('ResourceId', 'PolicyAssignmentId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The ID of the policy assignment to delete.
@@ -2581,7 +2581,7 @@ param(
     ${Scope},
 
     [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
-    [Alias('PolicyExemptionId')]
+    [Alias('ResourceId', 'PolicyExemptionId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The ID of the policy exemption to delete.
@@ -3025,6 +3025,8 @@ $PolicyAssignment = Get-AzPolicyAssignment -Name 'PolicyAssignment' -Scope $Reso
 Set-AzPolicyAssignment -Id $PolicyAssignment.ResourceId -EnforcementMode Default
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment
+.Inputs
 System.Management.Automation.PSObject[]
 .Inputs
 System.String
@@ -3032,6 +3034,38 @@ System.String
 System.String[]
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IPolicyAssignment>: 
+  [Description <String>]: This message will be part of response in case of policy violation.
+  [DisplayName <String>]: The display name of the policy assignment.
+  [EnforcementMode <String>]: The policy assignment enforcement mode. Possible values are Default and DoNotEnforce.
+  [IdentityType <String>]: The identity type. This is the only required field when adding a system or user assigned identity to a resource.
+  [IdentityUserAssignedIdentity <IIdentityUserAssignedIdentities>]: The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+    [(Any) <IUserAssignedIdentitiesValue>]: This indicates any property can be added to this object.
+  [Location <String>]: The location of the policy assignment. Only required when utilizing managed identity.
+  [Metadata <IPolicyAssignmentPropertiesMetadata>]: The policy assignment metadata. Metadata is an open ended object and is typically a collection of key value pairs.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [NonComplianceMessage <List<INonComplianceMessage>>]: The messages that describe why a resource is non-compliant with the policy.
+    Message <String>: A message that describes why a resource is non-compliant with the policy. This is shown in 'deny' error messages and on resource's non-compliant compliance results.
+    [PolicyDefinitionReferenceId <String>]: The policy definition reference ID within a policy set definition the message is intended for. This is only applicable if the policy assignment assigns a policy set definition. If this is not provided the message applies to all policies assigned by this policy assignment.
+  [NotScope <List<String>>]: The policy's excluded scopes.
+  [Override <List<IOverride>>]: The policy property value override.
+    [Kind <String>]: The override kind.
+    [Selector <List<ISelector>>]: The list of the selector expressions.
+      [In <List<String>>]: The list of values to filter in.
+      [Kind <String>]: The selector kind.
+      [NotIn <List<String>>]: The list of values to filter out.
+    [Value <String>]: The value to override the policy property.
+  [Parameter <IParameterValues>]: The parameter values for the assigned policy rule. The keys are the parameter names.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [PolicyDefinitionId <String>]: The ID of the policy definition or policy set definition being assigned.
+  [ResourceSelector <List<IResourceSelector>>]: The resource selector list to filter policies by resource properties.
+    [Name <String>]: The name of the resource selector.
+    [Selector <List<ISelector>>]: The list of the selector expressions.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/update-azpolicyassignment
 #>
@@ -3155,6 +3189,12 @@ param(
     # The keys are the parameter names.
     ${PolicyParameterObject},
 
+    [Parameter(ParameterSetName='InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment]
+    # 
+    ${InputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -3236,6 +3276,7 @@ begin {
             IdParameterString = 'Az.Policy.custom\Update-AzPolicyAssignment';
             IdParameterObject = 'Az.Policy.custom\Update-AzPolicyAssignment';
             Id = 'Az.Policy.custom\Update-AzPolicyAssignment';
+            InputObject = 'Az.Policy.custom\Update-AzPolicyAssignment';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3303,9 +3344,29 @@ Update-AzPolicyDefinition -Name 'VMPolicyDefinition' -Metadata '{"category":"Vir
 Set-AzPolicyDefinition -Name 'VMPolicyDefinition' -Mode 'All'
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition
+.Inputs
 System.String
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IPolicyDefinition>: 
+  [Description <String>]: The policy definition description.
+  [DisplayName <String>]: The display name of the policy definition.
+  [Metadata <IPolicyDefinitionPropertiesMetadata>]: The policy definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [Mode <String>]: The policy definition mode. Some examples are All, Indexed, Microsoft.KeyVault.Data.
+  [Parameter <IParameterDefinitions>]: The parameter definitions for parameters used in the policy rule. The keys are the parameter names.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [PolicyRule <IPolicyDefinitionPropertiesPolicyRule>]: The policy rule.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [PolicyType <String>]: The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+  [Version <String>]: The policy definition version in #.#.# format.
+  [Versions <List<String>>]: A list of available versions for this policy definition.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/update-azpolicydefinition
 #>
@@ -3389,6 +3450,12 @@ param(
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible},
 
+    [Parameter(ParameterSetName='InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition]
+    # 
+    ${InputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -3468,6 +3535,7 @@ begin {
             ManagementGroupName = 'Az.Policy.custom\Update-AzPolicyDefinition';
             SubscriptionId = 'Az.Policy.custom\Update-AzPolicyDefinition';
             Id = 'Az.Policy.custom\Update-AzPolicyDefinition';
+            InputObject = 'Az.Policy.custom\Update-AzPolicyDefinition';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3543,6 +3611,8 @@ $PolicyExemption = Get-AzPolicyExemption -Name 'PolicyExemption07'
 Set-AzPolicyExemption -Id $PolicyExemption.ResourceId -ClearExpiration
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption
+.Inputs
 System.Management.Automation.SwitchParameter
 .Inputs
 System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
@@ -3552,6 +3622,27 @@ System.String
 System.String[]
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IPolicyExemption>: 
+  ExemptionCategory <String>: The policy exemption category. Possible values are Waiver and Mitigated.
+  PolicyAssignmentId <String>: The ID of the policy assignment that is being exempted.
+  [AssignmentScopeValidation <String>]: The option whether validate the exemption is at or under the assignment scope.
+  [Description <String>]: The description of the policy exemption.
+  [DisplayName <String>]: The display name of the policy exemption.
+  [ExpiresOn <DateTime?>]: The expiration date and time (in UTC ISO 8601 format yyyy-MM-ddTHH:mm:ssZ) of the policy exemption.
+  [Metadata <IPolicyExemptionPropertiesMetadata>]: The policy exemption metadata. Metadata is an open ended object and is typically a collection of key value pairs.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [PolicyDefinitionReferenceId <List<String>>]: The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
+  [ResourceSelector <List<IResourceSelector>>]: The resource selector list to filter policies by resource properties.
+    [Name <String>]: The name of the resource selector.
+    [Selector <List<ISelector>>]: The list of the selector expressions.
+      [In <List<String>>]: The list of values to filter in.
+      [Kind <String>]: The selector kind.
+      [NotIn <List<String>>]: The list of values to filter out.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/update-azpolicyexemption
 #>
@@ -3638,6 +3729,12 @@ param(
     # The option whether validate the exemption is at or under the assignment scope.
     ${AssignmentScopeValidation},
 
+    [Parameter(ParameterSetName='InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyExemption]
+    # 
+    ${InputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -3715,6 +3812,7 @@ begin {
         $mapping = @{
             Name = 'Az.Policy.custom\Update-AzPolicyExemption';
             Id = 'Az.Policy.custom\Update-AzPolicyExemption';
+            InputObject = 'Az.Policy.custom\Update-AzPolicyExemption';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -3785,9 +3883,38 @@ Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $gro
 Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}'
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition
+.Inputs
 System.String
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IPolicySetDefinition>: 
+  [Description <String>]: The policy set definition description.
+  [DisplayName <String>]: The display name of the policy set definition.
+  [Metadata <IPolicySetDefinitionPropertiesMetadata>]: The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [Parameter <IParameterDefinitions>]: The policy set definition parameters that can be used in policy definition references.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [PolicyDefinition <List<IPolicyDefinitionReference>>]: An array of policy definition references.
+    PolicyDefinitionId <String>: The ID of the policy definition or policy set definition.
+    [GroupName <List<String>>]: The name of the groups that this policy definition reference belongs to.
+    [Id <String>]: A unique id (within the policy set definition) for this policy definition reference.
+    [Parameter <IParameterValues>]: The parameter values for the referenced policy rule. The keys are the parameter names.
+      [(Any) <Object>]: This indicates any property can be added to this object.
+  [PolicyDefinitionGroup <List<IPolicyDefinitionGroup>>]: The metadata describing groups of policy definition references within the policy set definition.
+    Name <String>: The name of the group.
+    [AdditionalMetadataId <String>]: A resource ID of a resource that contains additional metadata about the group.
+    [Category <String>]: The group's category.
+    [Description <String>]: The group's description.
+    [DisplayName <String>]: The group's display name.
+  [PolicyType <String>]: The type of policy set definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+  [Version <String>]: The policy set definition version in #.#.# format.
+  [Versions <List<String>>]: A list of available versions for this policy set definition.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/update-azpolicysetdefinition
 #>
@@ -3874,6 +4001,12 @@ param(
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible},
 
+    [Parameter(ParameterSetName='InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition]
+    # 
+    ${InputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -3953,6 +4086,7 @@ begin {
             SubscriptionId = 'Az.Policy.custom\Update-AzPolicySetDefinition';
             ManagementGroupName = 'Az.Policy.custom\Update-AzPolicySetDefinition';
             Id = 'Az.Policy.custom\Update-AzPolicySetDefinition';
+            InputObject = 'Az.Policy.custom\Update-AzPolicySetDefinition';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

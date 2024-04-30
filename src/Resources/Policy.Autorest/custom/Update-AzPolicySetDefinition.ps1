@@ -112,7 +112,12 @@ param(
     # To construct, see NOTES section for POLICYDEFINITIONGROUP properties and create a hash table.
     ${PolicyDefinitionGroup},
 
+    [Parameter(ParameterSetName = 'InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition]
+    ${InputObject},
+
     [Parameter()]
+    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
     [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible} = $false,
@@ -184,7 +189,7 @@ process {
     if ($Id) {
         $thisId = $Id
     } else {
-        $thisId = $_.Id
+        $thisId = $InputObject.Id
     }
 
     # construct id for definition to update
@@ -211,16 +216,29 @@ process {
         throw "[PolicySetDefinitionNotFound] : The policy set definition '$($resolved.ResourceId)' is not found."
     }
 
-    $calledParameters = $PSBoundParameters
+    $calledParameters = @{}
+    # populate called parameters from input object if present (these will be overridden by command-line values below)
+    if ($InputObject) {
+        foreach ($parameterName in $InputObject.Keys) {
+            $value = $InputObject.($parameterName)
+            if ($value -or ($value -is [array])) {
+                $calledParameters.($parameterName) = $value
+            }
+        }
+    }
 
-    # populate calledParameters from input parameters and existing
-#        if (!$Description -and $existing.Description) {
-#            $calledParameters.Description = $existing.Description
-#        }
+    # skip $null and empty values to avoid validation failures on pipeline input
+    foreach ($parameterName in $PSBoundParameters.Keys) {
+        $value = $PSBoundParameters.($parameterName)
+        if ($value -or ($value -is [array])) {
+            $calledParameters.($parameterName) = $value
+        }
+    }
 
-#        if (!$DisplayName -and $existing.DisplayName) {
-#            $calledParameters.DisplayName = $existing.DisplayName
-#        }
+    # supply required parameters and remove custom parameters
+    $calledParameters.Name = $resolved.Name
+    $null = $calledParameters.Remove('Id')
+    $null = $calledParameters.Remove('InputObject')
 
     if (!$Metadata -and $existing.Metadata) {
         $calledParameters.Metadata = ConvertTo-Json -Depth 100 $existing.Metadata

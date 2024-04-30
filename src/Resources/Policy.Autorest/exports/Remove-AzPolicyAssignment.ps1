@@ -84,7 +84,7 @@ param(
     ${Scope},
 
     [Parameter(ParameterSetName='Id', Mandatory, ValueFromPipelineByPropertyName)]
-    [Alias('PolicyAssignmentId')]
+    [Alias('ResourceId', 'PolicyAssignmentId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
     [System.String]
     # The ID of the policy assignment to delete.

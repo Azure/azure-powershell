@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     using System;
 
     /// <summary>
-    /// This operation Create a policy set definition in the given management group with the given name.
+    /// This operation creates or updates a policy set definition in the given management group with the given name.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] GetAtManagementGroup=>GET:"/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policySetDefinitions/{policySetDefinitionName}"
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzPolicySetDefinition_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation Create a policy set definition in the given management group with the given name.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation creates or updates a policy set definition in the given management group with the given name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Generated]
     public partial class UpdateAzPolicySetDefinition_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener,
@@ -499,7 +499,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                     {
                         _parametersBody = await this.Client.PolicySetDefinitionsGetAtManagementGroupViaIdentityWithResult(InputObject.Id, this, Pipeline);
                         this.Update_parametersBody();
-                        await this.Client.PolicySetDefinitionsCreateOrUpdateAtManagementGroupViaIdentity(InputObject.Id, _parametersBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.PolicySetDefinitionsCreateOrUpdateAtManagementGroupViaIdentity(InputObject.Id, _parametersBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -514,7 +514,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                         }
                         _parametersBody = await this.Client.PolicySetDefinitionsGetAtManagementGroupWithResult(InputObject.ManagementGroupId ?? null, InputObject.PolicySetDefinitionName ?? null, this, Pipeline);
                         this.Update_parametersBody();
-                        await this.Client.PolicySetDefinitionsCreateOrUpdateAtManagementGroup(InputObject.ManagementGroupId ?? null, InputObject.PolicySetDefinitionName ?? null, _parametersBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.PolicySetDefinitionsCreateOrUpdateAtManagementGroup(InputObject.ManagementGroupId ?? null, InputObject.PolicySetDefinitionName ?? null, _parametersBody, onOk, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

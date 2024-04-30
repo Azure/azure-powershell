@@ -130,7 +130,7 @@ Use the format '{scope}/providers/Microsoft.Authorization/policyAssignments/{pol
 ```yaml
 Type: System.String
 Parameter Sets: Id
-Aliases: PolicyAssignmentId
+Aliases: ResourceId, PolicyAssignmentId
 
 Required: True
 Position: Named

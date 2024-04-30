@@ -11,9 +11,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     using System;
 
     /// <summary>
-    /// This operation Create the policy assignment with the given ID. Policy assignments made on a scope apply to all resources
-    /// contained in that scope. For example, when you assign a policy to a resource group that policy applies to all resources
-    /// in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
+    /// This operation creates or updates the policy assignment with the given ID. Policy assignments made on a scope apply to
+    /// all resources contained in that scope. For example, when you assign a policy to a resource group that policy applies to
+    /// all resources in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
     /// Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription
     /// (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}',
     /// or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzPolicyAssignment_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.Alias("Set-AzPolicyAssignment")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation Create the policy assignment with the given ID. Policy assignments made on a scope apply to all resources contained in that scope. For example, when you assign a policy to a resource group that policy applies to all resources in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation creates or updates the policy assignment with the given ID. Policy assignments made on a scope apply to all resources contained in that scope. For example, when you assign a policy to a resource group that policy applies to all resources in the group. Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Generated]
     public partial class UpdateAzPolicyAssignment_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener,
@@ -574,7 +574,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                     _parametersBody = await this.Client.PolicyAssignmentsGetByIdWithResult(Id, this, Pipeline);
                     this.PreProcessManagedIdentityParametersWithGetResult();
                     this.Update_parametersBody();
-                    await this.Client.PolicyAssignmentsCreateById(Id, _parametersBody, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate);
+                    await this.Client.PolicyAssignmentsCreateById(Id, _parametersBody, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.UndeclaredResponseException urexception)

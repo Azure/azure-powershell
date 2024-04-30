@@ -11,7 +11,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     using System;
 
     /// <summary>
-    /// This operation Create a policy definition in the given management group with the given name.
+    /// This operation creates or updates a policy definition in the given management group with the given name.
     /// </summary>
     /// <remarks>
     /// [OpenAPI] GetAtManagementGroup=>GET:"/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Authorization/policyDefinitions/{policyDefinitionName}"
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzPolicyDefinition_UpdateViaIdentityExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation Create a policy definition in the given management group with the given name.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Description(@"This operation creates or updates a policy definition in the given management group with the given name.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Policy.Generated]
     public partial class UpdateAzPolicyDefinition_UpdateViaIdentityExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener,
@@ -476,7 +476,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                     {
                         _parametersBody = await this.Client.PolicyDefinitionsGetAtManagementGroupViaIdentityWithResult(InputObject.Id, this, Pipeline);
                         this.Update_parametersBody();
-                        await this.Client.PolicyDefinitionsCreateOrUpdateAtManagementGroupViaIdentity(InputObject.Id, _parametersBody, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.PolicyDefinitionsCreateOrUpdateAtManagementGroupViaIdentity(InputObject.Id, _parametersBody, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate);
                     }
                     else
                     {
@@ -491,7 +491,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Policy.Cmdlets
                         }
                         _parametersBody = await this.Client.PolicyDefinitionsGetAtManagementGroupWithResult(InputObject.ManagementGroupId ?? null, InputObject.PolicyDefinitionName ?? null, this, Pipeline);
                         this.Update_parametersBody();
-                        await this.Client.PolicyDefinitionsCreateOrUpdateAtManagementGroup(InputObject.ManagementGroupId ?? null, InputObject.PolicyDefinitionName ?? null, _parametersBody, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate);
+                        await this.Client.PolicyDefinitionsCreateOrUpdateAtManagementGroup(InputObject.ManagementGroupId ?? null, InputObject.PolicyDefinitionName ?? null, _parametersBody, onCreated, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.SerializationMode.IncludeUpdate);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }

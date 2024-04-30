@@ -42,6 +42,14 @@ Update-AzPolicyDefinition -Id <String> [-DisplayName <String>] [-Description <St
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### InputObject
+```
+Update-AzPolicyDefinition [-DisplayName <String>] [-Description <String>] [-Policy <String>]
+ [-Metadata <String>] [-Parameter <String>] [-Mode <String>] [-BackwardCompatible]
+ -InputObject <IPolicyDefinition> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 This operation updates an existing policy definition in the given subscription or management group with the given name.
 
@@ -154,6 +162,20 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -InputObject
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
@@ -315,6 +337,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition
 
 ### System.String
 

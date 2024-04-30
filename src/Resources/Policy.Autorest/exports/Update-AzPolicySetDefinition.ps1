@@ -33,9 +33,38 @@ Update-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -GroupDefinition $gro
 Set-AzPolicySetDefinition -Name 'VMPolicySetDefinition' -Metadata '{"category":"Virtual Machine"}'
 
 .Inputs
+Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition
+.Inputs
 System.String
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+INPUTOBJECT <IPolicySetDefinition>: 
+  [Description <String>]: The policy set definition description.
+  [DisplayName <String>]: The display name of the policy set definition.
+  [Metadata <IPolicySetDefinitionPropertiesMetadata>]: The policy set definition metadata.  Metadata is an open ended object and is typically a collection of key value pairs.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [Parameter <IParameterDefinitions>]: The policy set definition parameters that can be used in policy definition references.
+    [(Any) <Object>]: This indicates any property can be added to this object.
+  [PolicyDefinition <List<IPolicyDefinitionReference>>]: An array of policy definition references.
+    PolicyDefinitionId <String>: The ID of the policy definition or policy set definition.
+    [GroupName <List<String>>]: The name of the groups that this policy definition reference belongs to.
+    [Id <String>]: A unique id (within the policy set definition) for this policy definition reference.
+    [Parameter <IParameterValues>]: The parameter values for the referenced policy rule. The keys are the parameter names.
+      [(Any) <Object>]: This indicates any property can be added to this object.
+  [PolicyDefinitionGroup <List<IPolicyDefinitionGroup>>]: The metadata describing groups of policy definition references within the policy set definition.
+    Name <String>: The name of the group.
+    [AdditionalMetadataId <String>]: A resource ID of a resource that contains additional metadata about the group.
+    [Category <String>]: The group's category.
+    [Description <String>]: The group's description.
+    [DisplayName <String>]: The group's display name.
+  [PolicyType <String>]: The type of policy set definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
+  [Version <String>]: The policy set definition version in #.#.# format.
+  [Versions <List<String>>]: A list of available versions for this policy set definition.
 .Link
 https://learn.microsoft.com/powershell/module/az.resources/update-azpolicysetdefinition
 #>
@@ -122,6 +151,12 @@ param(
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible},
 
+    [Parameter(ParameterSetName='InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicySetDefinition]
+    # 
+    ${InputObject},
+
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -201,6 +236,7 @@ begin {
             SubscriptionId = 'Az.Policy.custom\Update-AzPolicySetDefinition';
             ManagementGroupName = 'Az.Policy.custom\Update-AzPolicySetDefinition';
             Id = 'Az.Policy.custom\Update-AzPolicySetDefinition';
+            InputObject = 'Az.Policy.custom\Update-AzPolicySetDefinition';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

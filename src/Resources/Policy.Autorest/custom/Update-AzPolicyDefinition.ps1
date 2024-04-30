@@ -111,7 +111,12 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName = 'InputObject', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyDefinition]
+    ${InputObject},
+
     [Parameter()]
+    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
     [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible} = $false,
@@ -183,7 +188,7 @@ process {
     if ($Id) {
         $thisId = $Id
     } else {
-        $thisId = $_.Id
+        $thisId = $InputObject.Id
     }
 
     # construct id for definition to update
@@ -210,7 +215,30 @@ process {
         throw "[PolicyDefinitionNotFound] : The policy definition '$($resolved.ResourceId)' is not found."
     }
 
-    $calledParameters = $PSBoundParameters
+    $calledParameters = @{}
+    # populate called parameters from input object if present (these will be overridden by command-line values below)
+    if ($InputObject) {
+        foreach ($parameterName in $InputObject.Keys) {
+            $value = $InputObject.($parameterName)
+            if ($value -or ($value -is [array])) {
+                $calledParameters.($parameterName) = $value
+            }
+        }
+    }
+
+    # skip $null and empty values to avoid validation failures on pipeline input
+    foreach ($parameterName in $PSBoundParameters.Keys) {
+        $value = $PSBoundParameters.($parameterName)
+        if ($value -or ($value -is [array])) {
+            $calledParameters.($parameterName) = $value
+        }
+    }
+
+    # supply required parameters and remove custom parameters
+    $calledParameters.Name = $resolved.Name
+    $null = $calledParameters.Remove('Id')
+    $null = $calledParameters.Remove('InputObject')
+
 
     # convert input/legacy policy parameter to correct set of parameters and remove
     if ($Policy) {

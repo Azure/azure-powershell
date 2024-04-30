@@ -30,9 +30,9 @@ Get-AzPolicySetDefinition [-Name <String>] -SubscriptionId <String> [-BackwardCo
  [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
-### BuiltIn
+### Builtin
 ```
-Get-AzPolicySetDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-BuiltIn]
+Get-AzPolicySetDefinition [-SubscriptionId <String>] [-ManagementGroupName <String>] [-Builtin]
  [-BackwardCompatible] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
@@ -112,12 +112,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BuiltIn
+### -Builtin
 Causes cmdlet to return only built-in policy definitions.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: BuiltIn
+Parameter Sets: Builtin
 Aliases:
 
 Required: True
@@ -190,7 +190,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: BuiltIn, Custom
+Parameter Sets: Builtin, Custom
 Aliases:
 
 Required: False
@@ -247,7 +247,7 @@ Accept wildcard characters: False
 
 ```yaml
 Type: System.String
-Parameter Sets: BuiltIn, Custom
+Parameter Sets: Builtin, Custom
 Aliases:
 
 Required: False

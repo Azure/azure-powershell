@@ -18,9 +18,9 @@ Get-AzPolicyDefinition [-Name <String>] [-BackwardCompatible] [-DefaultProfile <
  [<CommonParameters>]
 ```
 
-### BuiltIn
+### Builtin
 ```
-Get-AzPolicyDefinition -BuiltIn [-ManagementGroupName <String>] [-SubscriptionId <String>]
+Get-AzPolicyDefinition -Builtin [-ManagementGroupName <String>] [-SubscriptionId <String>]
  [-BackwardCompatible] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -128,12 +128,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -BuiltIn
+### -Builtin
 Causes cmdlet to return only built-in policy definitions.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: BuiltIn
+Parameter Sets: Builtin
 Aliases:
 
 Required: True
@@ -193,7 +193,7 @@ The name of the management group.
 
 ```yaml
 Type: System.String
-Parameter Sets: BuiltIn, Custom, ManagementGroupName, Static
+Parameter Sets: Builtin, Custom, ManagementGroupName, Static
 Aliases:
 
 Required: True
@@ -238,7 +238,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: BuiltIn, Custom, Static, SubscriptionId
+Parameter Sets: Builtin, Custom, Static, SubscriptionId
 Aliases:
 
 Required: True

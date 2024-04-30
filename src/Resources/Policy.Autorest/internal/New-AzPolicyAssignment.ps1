@@ -16,11 +16,11 @@
 
 <#
 .Synopsis
-This operation Create a policy assignment with the given scope and name.
+This operation creates or updates a policy assignment with the given scope and name.
 Policy assignments apply to all resources contained within their scope.
 For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
 .Description
-This operation Create a policy assignment with the given scope and name.
+This operation creates or updates a policy assignment with the given scope and name.
 Policy assignments apply to all resources contained within their scope.
 For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
 .Example

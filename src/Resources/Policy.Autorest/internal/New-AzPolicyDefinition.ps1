@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-This operation Create a policy definition in the given subscription with the given name.
+This operation creates or updates a policy definition in the given subscription with the given name.
 .Description
-This operation Create a policy definition in the given subscription with the given name.
+This operation creates or updates a policy definition in the given subscription with the given name.
 .Example
 {
    "if": {

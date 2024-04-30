@@ -2004,11 +2004,11 @@ end {
 
 <#
 .Synopsis
-This operation Create a policy assignment with the given scope and name.
+This operation creates or updates a policy assignment with the given scope and name.
 Policy assignments apply to all resources contained within their scope.
 For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
 .Description
-This operation Create a policy assignment with the given scope and name.
+This operation creates or updates a policy assignment with the given scope and name.
 Policy assignments apply to all resources contained within their scope.
 For example, when you assign a policy at resource group scope, that policy applies to all resources in the group.
 .Example
@@ -2273,9 +2273,9 @@ end {
 
 <#
 .Synopsis
-This operation Create a policy definition in the given subscription with the given name.
+This operation creates or updates a policy definition in the given subscription with the given name.
 .Description
-This operation Create a policy definition in the given subscription with the given name.
+This operation creates or updates a policy definition in the given subscription with the given name.
 .Example
 {
    "if": {
@@ -2463,11 +2463,11 @@ end {
 
 <#
 .Synopsis
-This operation Create a policy exemption with the given scope and name.
+This operation creates or updates a policy exemption with the given scope and name.
 Policy exemptions apply to all resources contained within their scope.
 For example, when you create a policy exemption at resource group scope for a policy assignment at the same or above level, the exemption exempts to all applicable resources in the resource group.
 .Description
-This operation Create a policy exemption with the given scope and name.
+This operation creates or updates a policy exemption with the given scope and name.
 Policy exemptions apply to all resources contained within their scope.
 For example, when you create a policy exemption at resource group scope for a policy assignment at the same or above level, the exemption exempts to all applicable resources in the resource group.
 .Example
@@ -2646,9 +2646,9 @@ end {
 
 <#
 .Synopsis
-This operation Create a policy set definition in the given subscription with the given name.
+This operation creates or updates a policy set definition in the given subscription with the given name.
 .Description
-This operation Create a policy set definition in the given subscription with the given name.
+This operation creates or updates a policy set definition in the given subscription with the given name.
 .Example
 [
    {
@@ -3585,13 +3585,13 @@ end {
 
 <#
 .Synopsis
-This operation Create the policy assignment with the given ID.
+This operation creates or updates the policy assignment with the given ID.
 Policy assignments made on a scope apply to all resources contained in that scope.
 For example, when you assign a policy to a resource group that policy applies to all resources in the group.
 Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
 Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'.
 .Description
-This operation Create the policy assignment with the given ID.
+This operation creates or updates the policy assignment with the given ID.
 Policy assignments made on a scope apply to all resources contained in that scope.
 For example, when you assign a policy to a resource group that policy applies to all resources in the group.
 Policy assignment IDs have this format: '{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}'.
@@ -3819,9 +3819,9 @@ end {
 
 <#
 .Synopsis
-This operation Create a policy definition in the given management group with the given name.
+This operation creates or updates a policy definition in the given management group with the given name.
 .Description
-This operation Create a policy definition in the given management group with the given name.
+This operation creates or updates a policy definition in the given management group with the given name.
 .Example
 $PolicyDefinition = Get-AzPolicyDefinition -Name 'VMPolicyDefinition'
 Update-AzPolicyDefinition -Id $PolicyDefinition.ResourceId -Description 'Updated policy to not allow virtual machine creation'
@@ -4192,9 +4192,9 @@ end {
 
 <#
 .Synopsis
-This operation Create a policy set definition in the given management group with the given name.
+This operation creates or updates a policy set definition in the given management group with the given name.
 .Description
-This operation Create a policy set definition in the given management group with the given name.
+This operation creates or updates a policy set definition in the given management group with the given name.
 .Example
 $PolicySetDefinition = Get-AzPolicySetDefinition -ResourceId '/subscriptions/mySub/Microsoft.Authorization/policySetDefinitions/myPSSetDefinition'
 Update-AzPolicySetDefinition -Id $PolicySetDefinition.ResourceId -Description 'Updated policy to not allow virtual machine creation'

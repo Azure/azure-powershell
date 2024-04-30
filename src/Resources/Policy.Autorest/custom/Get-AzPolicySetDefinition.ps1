@@ -51,7 +51,7 @@ param(
     ${Id},
 
     [Parameter(ParameterSetName='ManagementGroupName', Mandatory, ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='BuiltIn', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Builtin', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Custom', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
@@ -60,7 +60,7 @@ param(
     ${ManagementGroupName},
 
     [Parameter(ParameterSetName='SubscriptionId', Mandatory, ValueFromPipelineByPropertyName)]
-    [Parameter(ParameterSetName='BuiltIn', ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Builtin', ValueFromPipelineByPropertyName)]
     [Parameter(ParameterSetName='Custom', ValueFromPipelineByPropertyName)]
     [ValidateNotNullOrEmpty()]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Path')]
@@ -68,11 +68,11 @@ param(
     # The ID of the target subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='BuiltIn', Mandatory, ValueFromPipelineByPropertyName)]
+    [Parameter(ParameterSetName='Builtin', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
     [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return only built-in policy definitions.
-    ${BuiltIn},
+    ${Builtin},
 
     [Parameter(ParameterSetName='Custom', Mandatory, ValueFromPipelineByPropertyName)]
     [Microsoft.Azure.PowerShell.Cmdlets.Policy.Category('Query')]
@@ -81,6 +81,7 @@ param(
     ${Custom},
 
     [Parameter()]
+    [Obsolete('This parameter is a temporary bridge to new types and formats and will be removed in a future release.')]
     [System.Management.Automation.SwitchParameter]
     # Causes cmdlet to return artifacts using legacy format placing policy-specific properties in a property bag object.
     ${BackwardCompatible} = $false,
@@ -100,7 +101,7 @@ param(
     # If $filter is not provided, no filtering is performed.
     # If $filter=atExactScope() is provided, the returned list only includes all policy set definitions that at the given scope.
     # If $filter='policyType -eq {value}' is provided, the returned list only includes all policy set definitions whose type match the {value}.
-    # Possible policyType values are NotSpecified, BuiltIn, Custom, and Static.
+    # Possible policyType values are NotSpecified, Builtin, Custom, and Static.
     # If $filter='category -eq {value}' is provided, the returned list only includes all policy set definitions whose category match the {value}.
     ${Filter},
 
@@ -169,9 +170,9 @@ begin {
         GetViaIdentity1 = 'Az.Policy.private\Get-AzPolicySetDefinition_GetViaIdentity1';
         List = 'Az.Policy.private\Get-AzPolicySetDefinition_List';
         List1 = 'Az.Policy.private\Get-AzPolicySetDefinition_List1';
-        BuiltInId='Az.Policy.private\Get-AzPolicySetDefinitionBuilt_GetViaIdentity';
-        BuiltInGet='Az.Policy.private\Get-AzPolicySetDefinitionBuilt_Get';
-        BuiltInList='Az.Policy.private\Get-AzPolicySetDefinitionBuilt_List';
+        BuiltinId='Az.Policy.private\Get-AzPolicySetDefinitionBuilt_GetViaIdentity';
+        BuiltinGet='Az.Policy.private\Get-AzPolicySetDefinitionBuilt_Get';
+        BuiltinList='Az.Policy.private\Get-AzPolicySetDefinitionBuilt_List';
     }
 }
 
@@ -179,6 +180,9 @@ process {
     if ($writeln) {
         Write-Host -ForegroundColor Cyan "process:Get-AzPolicySetDefinition(" $PSBoundParameters ") - (ParameterSet: $($PSCmdlet.ParameterSetName))"
     }
+
+    # ensure fallback try/catch is invoked if necessary
+    $PSBoundParameters['ErrorAction'] = 'Stop'
 
     # handle disallowed cases not handled by PS parameter attributes
     if ($PSBoundParameters['SubscriptionId'] -and $PSBoundParameters['ManagementGroupName']) {
@@ -190,8 +194,8 @@ process {
     $calledParameterSet = 'List'
 
     switch ($parameterSet) {
-        'BuiltIn' {
-            $PSBoundParameters.Add('Filter', "policyType eq 'BuiltIn'")
+        'Builtin' {
+            $PSBoundParameters.Add('Filter', "policyType eq 'Builtin'")
         }
         'Custom' {
             $PSBoundParameters.Add('Filter', "policyType eq 'Custom'")
@@ -213,7 +217,7 @@ process {
                     $calledParameterSet = 'Get1';
                 }
                 'builtin' {
-                    $calledParameterSet = 'BuiltInId'
+                    $calledParameterSet = 'BuiltinId'
                     $PSBoundParameters['InputObject'] = @{ 'Id' = $PSBoundParameters['Id'] }
                 }
             }
@@ -221,7 +225,7 @@ process {
     }
 
     # this check is needed because builtin Ids are special (no subId, no mgId)
-    if ($calledParameterSet -ne 'BuiltInId') {
+    if ($calledParameterSet -ne 'BuiltinId') {
         # determine parameter set for call to generated cmdlet
         if ($PSBoundParameters['SubscriptionId']) {
             if ($PSBoundParameters['Name']) {
@@ -252,7 +256,7 @@ process {
     $null = $PSBoundParameters.Remove('BackwardCompatible')
     $null = $PSBoundParameters.Remove('ManagementGroupName')
     $null = $PSBoundParameters.Remove('Id')
-    $null = $PSBoundParameters.Remove('BuiltIn')
+    $null = $PSBoundParameters.Remove('Builtin')
     $null = $PSBoundParameters.Remove('Custom')
 
     if ($writeln) {
@@ -276,13 +280,13 @@ process {
             $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Remove('SubscriptionId')
 
-            $cmdInfo = Get-Command -Name $mapping['BuiltInGet']
+            $cmdInfo = Get-Command -Name $mapping['BuiltinGet']
             [Microsoft.Azure.PowerShell.Cmdlets.Policy.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $calledParameterSet, $PSCmdlet)
-            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping['BuiltInGet']), [System.Management.Automation.CommandTypes]::Cmdlet)
+            $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping['BuiltinGet']), [System.Management.Automation.CommandTypes]::Cmdlet)
             $scriptCmd = {& $wrappedCmd @PSBoundParameters}
 
             if ($writeln) {
-                Write-Host -ForegroundColor Blue -> $mapping['BuiltInGet']'(' $PSBoundParameters ')'
+                Write-Host -ForegroundColor Blue -> $mapping['BuiltinGet']'(' $PSBoundParameters ')'
             }
 
             $output = Invoke-Command -ScriptBlock $scriptCmd

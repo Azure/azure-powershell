@@ -65,6 +65,15 @@ Update-AzPolicyAssignment -Id <String> [-NotScope <String[]>] [-DisplayName <Str
  [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
+### InputObject
+```
+Update-AzPolicyAssignment [-NotScope <String[]>] [-DisplayName <String>] [-Description <String>]
+ [-Metadata <String>] [-Location <String>] [-EnforcementMode <String>] [-IdentityType <String>]
+ [-IdentityId <String>] [-NonComplianceMessage <PSObject[]>] [-BackwardCompatible]
+ -InputObject <IPolicyAssignment> [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 This operation updates a policy assignment with the given scope and name.
 Policy assignments apply to all resources contained within their scope.
@@ -301,6 +310,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment
+Parameter Sets: InputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName, ByValue)
+Accept wildcard characters: False
+```
+
 ### -Location
 The location of the policy assignment.
 Only required when utilizing managed identity.
@@ -477,6 +500,8 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.Policy.Models.IPolicyAssignment
 
 ### System.Management.Automation.PSObject[]
 
