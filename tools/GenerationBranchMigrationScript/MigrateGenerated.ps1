@@ -55,37 +55,37 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
     }
 }
 
-<#
-    sync files from eng/archive-test branch to current branch
-#>
+# <#
+#     sync files from eng/archive-test branch to current branch
+# #>
 
-#update content of src/Az.autorest.props
-$propsPath = Join-Path $sourceFolderPath 'Az.autorest.props'
-(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/src/Az.autorest.props").Content > $propsPath
+# #update content of src/Az.autorest.props
+# $propsPath = Join-Path $sourceFolderPath 'Az.autorest.props'
+# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/src/Az.autorest.props").Content > $propsPath
 
-#copy src/.props from eng/archive-test branch to current branch
-$readmeAzurePath = Join-Path $sourceFolderPath 'readme.azure.md'
-$readmeAzureNoProfilePath = Join-Path $sourceFolderPath 'readme.azure.noprofile.md'
-(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/src/readme.azure.md").Content > $readmeAzurePath
-(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/src/readme.azure.noprofile.md").Content > $readmeAzureNoProfilePath
+# #copy src/.props from eng/archive-test branch to current branch
+# $readmeAzurePath = Join-Path $sourceFolderPath 'readme.azure.md'
+# $readmeAzureNoProfilePath = Join-Path $sourceFolderPath 'readme.azure.noprofile.md'
+# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/src/readme.azure.md").Content > $readmeAzurePath
+# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/src/readme.azure.noprofile.md").Content > $readmeAzureNoProfilePath
 
-#copy other scripts from eng/archive-test to current branch
-$ciFilterTaskPath = Join-Path $toolsFolderPath 'BuildPackagesTask' 'Microsoft.Azure.Build.Tasks' 'CIFilterTask.cs'
-(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/BuildPackagesTask/Microsoft.Azure.Build.Tasks/CIFilterTask.cs").Content > $ciFilterTaskPath
-$filesChangedTaskPath = Join-Path $toolsFolderPath 'BuildPackagesTask' 'Microsoft.Azure.Build.Tasks' 'FilesChangedTask.cs'
-(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/BuildPackagesTask/Microsoft.Azure.Build.Tasks/FilesChangedTask.cs").Content > $filesChangedTaskPath
-$buildModulesPath = Join-Path $toolsFolderPath 'BuildScripts' 'BuildModules.ps1'
-(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/BuildScripts/BuildModules.ps1").Content > $buildModulesPath
-$createFilterMappingsPath = Join-Path $toolsFolderPath 'CreateFilterMappings.ps1'
-(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/CreateFilterMappings.ps1").Content > $createFilterMappingsPath
-$executeCIStepPath = Join-Path $toolsFolderPath 'ExecuteCIStep.ps1'
-(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/ExecuteCIStep.ps1").Content > $executeCIStepPath
-$prepareAutorestModulePath = Join-Path $toolsFolderPath 'PrepareAutorestModule.ps1'
-(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/PrepareAutorestModule.ps1").Content > $prepareAutorestModulePath
+# #copy other scripts from eng/archive-test to current branch
+# $ciFilterTaskPath = Join-Path $toolsFolderPath 'BuildPackagesTask' 'Microsoft.Azure.Build.Tasks' 'CIFilterTask.cs'
+# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/BuildPackagesTask/Microsoft.Azure.Build.Tasks/CIFilterTask.cs").Content > $ciFilterTaskPath
+# $filesChangedTaskPath = Join-Path $toolsFolderPath 'BuildPackagesTask' 'Microsoft.Azure.Build.Tasks' 'FilesChangedTask.cs'
+# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/BuildPackagesTask/Microsoft.Azure.Build.Tasks/FilesChangedTask.cs").Content > $filesChangedTaskPath
+# $buildModulesPath = Join-Path $toolsFolderPath 'BuildScripts' 'BuildModules.ps1'
+# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/BuildScripts/BuildModules.ps1").Content > $buildModulesPath
+# $createFilterMappingsPath = Join-Path $toolsFolderPath 'CreateFilterMappings.ps1'
+# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/CreateFilterMappings.ps1").Content > $createFilterMappingsPath
+# $executeCIStepPath = Join-Path $toolsFolderPath 'ExecuteCIStep.ps1'
+# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/ExecuteCIStep.ps1").Content > $executeCIStepPath
+# $prepareAutorestModulePath = Join-Path $toolsFolderPath 'PrepareAutorestModule.ps1'
+# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/tools/PrepareAutorestModule.ps1").Content > $prepareAutorestModulePath
 
-#copy build.proj from eng/archive-test to current branch
-$buildProjPath = Join-Path $RepoRoot 'build.proj'
-(Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/build.proj").Content > $buildProjPath
+# #copy build.proj from eng/archive-test to current branch
+# $buildProjPath = Join-Path $RepoRoot 'build.proj'
+# (Invoke-WebRequest -Uri "https://raw.githubusercontent.com/Azure/azure-powershell/eng/archive-test/build.proj").Content > $buildProjPath
 
-#copy build pipeline ymls from eng/archive-test to current branch
-# TODO
+# #copy build pipeline ymls from eng/archive-test to current branch
+# # TODO
