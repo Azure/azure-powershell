@@ -63,7 +63,8 @@ function Get-CsprojFromModule {
 function Get-OutdatedSubModule {
     param (
         [string]$SourceDirectory,
-        [string]$GeneratedDirectory
+        [string]$GeneratedDirectory,
+        [switch]$ForceRegenerate
     )
     $outdatedSubModule = @()
     $subModuleSource = Get-ChildItem -Path $SourceDirectory -Directory | Foreach-Object { $_.Name } | Where-Object { $_ -match "^*.Autorest$" }
@@ -95,8 +96,8 @@ function Invoke-SubModuleGeneration {
     if ($lastexitcode -ne 0) {
         return $false
     } else {
-        #TODO: disable generation-info.json generated
-        ./build-module.ps1
+        #TODO: disable after build tasks
+        ./build-module.ps1 -DisableAfterBuildTasks
         return $true
     }
 }
@@ -142,7 +143,6 @@ function New-GeneratedFileFromTemplate {
         [string]
         $SubModuleName
     )
-    # TODO: replace this with actual template directory
     $TemplatePath = Join-Path $PSScriptRoot "Templates"
     $templateFile = Join-Path $TemplatePath $TemplateName
     $GeneratedFile = Join-Path $GeneratedDirectory $GeneratedFileName

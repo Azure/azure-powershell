@@ -170,6 +170,7 @@ $job = start-job {
     & $resolveScriptPath -ModuleName $ModuleRootName -ArtifactFolder $artifacts -Psd1Folder $parentModulePath
 } -ArgumentList $RepoRoot, $ModuleRootName, $parentModuleName, $SubModuleName
 $job | Wait-Job | Receive-Job
+$job | Remove-Job
 
 <#
     merge actual sub module csproj to parent module sln
@@ -178,3 +179,8 @@ dotnet sln $slnPath remove $subModuleCsprojPath
 git restore $subModuleCsprojPath
 $subModuleCsprojPath = Join-Path $GeneratedDirectory $ModuleRootName $SubModuleName "Az.$subModuleNameTrimmed.csproj"
 dotnet sln $slnPath add $subModuleCsprojPath
+
+<#
+    Create or refresh generate-info.json for submodule
+#>
+New-GenerateInfoJson -GeneratedDirectory $subModulePath

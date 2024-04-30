@@ -45,24 +45,41 @@ $AutorestOutputDir = Join-Path $RepoRoot "artifacts" "autorest"
 New-Item -ItemType Directory -Force -Path $AutorestOutputDir
 $moduleRootSource = Join-Path $sourceDirectory $ModuleRootName
 $moduleRootGenerated = Join-Path $generatedDirectory $ModuleRootName
-$outdatedSubModule = Get-OutdatedSubModule -SourceDirectory $moduleRootSource -GeneratedDirectory $moduleRootGenerated
-# TODO: make this asynchronous
+$outdatedSubModule = Get-OutdatedSubModule -SourceDirectory $moduleRootSource -GeneratedDirectory $moduleRootGenerated -ForceRegenerate:$ForceRegenerate
+$jobs = @()
+$hadFailed = $false
 foreach ($subModuleName in $outdatedSubModule) {
-    $subModuleSourceDirectory = Join-Path $sourceDirectory $ModuleRootName $subModuleName
-    $generatedLog = Join-Path $AutorestOutputDir $ModuleRootName "$subModuleName.log"
-    $generated = Invoke-SubModuleGeneration -GenerateDirectory $subModuleSourceDirectory -GeneratedLog $generatedLog
-    if (-not $generated) {
+    $jobs += (Start-Job {
+        param(
+            [string]$SourceDirectory,
+            [string]$GeneratedDirectory,
+            [string]$ModuleRootName,
+            [string]$SubModuleName
+        )
+        $subModuleSourceDirectory = Join-Path $sourceDirectory $ModuleRootName $subModuleName
+        $generatedLog = Join-Path $AutorestOutputDir $ModuleRootName "$subModuleName.log"
+        if (-not (Invoke-SubModuleGeneration -GenerateDirectory $subModuleSourceDirectory -GeneratedLog $generatedLog)) {
+            Write-Error "Failed to generate code for module: $ModuleRootName, $subModuleName"
+            Write-Error "========= Start of error log for $ModuleRootName, $subModuleName ========="
+            Write-Error "log can be found at $generatedLog"
+            Get-Content $generatedLog | Foreach-Object { Write-Error $_ }
+            Write-Error "========= End of error log for $ModuleRootName, $subModuleName"
+            return $false
+        }
+        $subModuleGeneratedDirectory = Join-Path $generatedDirectory $ModuleRootName $subModuleName
+        if (-not (Test-Path $subModuleGeneratedDirectory)) {
+            New-Item -ItemType Directory -Force -Path $subModuleGeneratedDirectory
+        }
+        Update-GeneratedSubModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory
+        return $true
+    } -ArgumentList $sourceDirectory, $generatedDirectory, $ModuleRootName, $subModuleName)
+}
+$jobs | Foreach-Object -Parallel {
+    if (-not ($_ | Wait-Job | Receive-Job)) {
         $hadFailed = $true
-        Write-Error "Failed to generate code for module: $ModuleRootName, $subModuleName"
-        Write-Error "========= Start of error log for $ModuleRootName, $subModuleName ========="
-        Write-Error "log can be found at $generatedLog"
-        Get-Content $generatedLog | Foreach-Object { Write-Error $_ }
-        Write-Error "========= End of error log for $ModuleRootName, $subModuleName"
-        Exit 1
     }
-    $subModuleGeneratedDirectory = Join-Path $generatedDirectory $ModuleRootName $subModuleName
-    if (-not (Test-Path $subModuleGeneratedDirectory)) {
-        New-Item -ItemType Directory -Force -Path $subModuleGeneratedDirectory
-    }
-    Update-GeneratedSubModule -ModuleRootName $ModuleRootName -SubModuleName $subModuleName -SourceDirectory $sourceDirectory -GeneratedDirectory $generatedDirectory
+    $_ | Remove-Job
+}
+if ($hadFailed) {
+    Exit 1
 }
