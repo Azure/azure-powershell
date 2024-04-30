@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.Network
     public class RestartNetworkVirtualApplianceCommand : NetworkVirtualApplianceBaseCmdlet
     {
         private const string ResourceNameParameterSet = "ResourceNameParameterSet";
+        private const string ResourceIdParameterSet = "ResourceIdParameterSet";
 
         [Parameter(
             Mandatory = true,
@@ -38,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNullOrEmpty]
         public string ResourceGroupName { get; set; }
 
-        [Alias("Name", "NvaName", "NetworkVirtualApplianceName")]
+        [Alias("VirtualApplianceName", "NvaName", "NetworkVirtualApplianceName")]
         [Parameter(
             Mandatory = true,
             ParameterSetName = ResourceNameParameterSet,
@@ -46,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "The Network Virtual Appliance name.")]
         [ResourceNameCompleter("Microsoft.Network/networkVirtualAppliances", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string VirtualApplianceName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -54,22 +55,50 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Network Virtual Appliance instance ids to be restarted")]
         public string[] InstanceId { get; set; }
 
+        [Parameter(
+           Mandatory = true,
+           ValueFromPipelineByPropertyName = true,
+           ParameterSetName = ResourceIdParameterSet,
+           HelpMessage = "The resource Id.")]
+        [ValidateNotNullOrEmpty]
+        public virtual string ResourceId { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
             base.Execute();
+            if (ParameterSetName.Equals(ResourceIdParameterSet))
+            {
+                this.ResourceGroupName = GetResourceGroup(this.ResourceId);
+                this.Name = GetResourceName(this.ResourceId, "Microsoft.Network/networkVirtualAppliances");
+            }
 
-            if (!this.IsNetworkVirtualAppliancePresent(this.ResourceGroupName, this.VirtualApplianceName))
+            if (!this.IsNetworkVirtualAppliancePresent(this.ResourceGroupName, this.Name))
             {
                 throw new ArgumentException(Properties.Resources.ResourceNotFound);
             }
 
-            if (!this.IsNetworkVirtualAppliancePresent(this.ResourceGroupName, this.VirtualApplianceName))
+            PSNetworkVirtualApplianceRestartOperationStatusResponse output = new PSNetworkVirtualApplianceRestartOperationStatusResponse()
             {
-                throw new ArgumentException(Properties.Resources.ResourceNotFound);
+                Name = this.Name,
+                InstancesRestarted = this.InstanceId
+            };
+
+            NetworkVirtualApplianceInstanceIds instanceIds = new NetworkVirtualApplianceInstanceIds()
+            {
+                InstanceIds = this.InstanceId
+            };
+
+            var result = this.NetworkVirtualAppliancesClient.RestartWithHttpMessagesAsync(resourceGroupName: this.ResourceGroupName, networkVirtualApplianceName: this.Name, networkVirtualApplianceInstanceIds: instanceIds).GetAwaiter().GetResult();
+
+            if(result != null && result.Request != null && result.Request.RequestUri != null)
+            {
+                output.OperationId = GetOperationIdFromUrlString(result.Request.RequestUri.ToString());
             }
+
+            WriteObject(output);
         }
     }
 }
