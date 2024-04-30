@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "41" ],
-        "x-ms-client-request-id": [ "24dfbfc6-b9db-4503-8da3-6ec60d28b9b2" ],
+        "x-ms-unique-id": [ "46" ],
+        "x-ms-client-request-id": [ "9874a02b-aee1-400c-bd70-bdb92e6c61f5" ],
         "CommandName": [ "Get-AzEventHubClusterNamespace" ],
         "FullCommandName": [ "Get-AzEventHubClusterNamespace_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,25 +22,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-correlation-request-id": [ "70b257e7-37f9-4c3f-bb65-656749d293e5" ],
-        "x-ms-client-request-id": [ "24dfbfc6-b9db-4503-8da3-6ec60d28b9b2_RP" ],
-        "x-ms-messaging-activity-id": [ "7cf541e9-de0d-4a6f-80b3-4fc0832a0f5e" ],
-        "x-ms-messaging-routing-id": [ "AUSTRALIAEAST|AUSTRALIAEAST|G6|2024-02-21T12:34:06" ],
+        "x-ms-correlation-request-id": [ "432cf1ce-6c89-432f-b7b1-a0f6cd786199" ],
+        "x-ms-client-request-id": [ "9874a02b-aee1-400c-bd70-bdb92e6c61f5_RP" ],
+        "x-ms-messaging-activity-id": [ "bd75c819-f751-4030-8e82-9152b32211bf" ],
+        "x-ms-messaging-routing-id": [ "AUSTRALIAEAST|AUSTRALIAEAST|G9|2024-04-29T12:45:32" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-request-id": [ "70b257e7-37f9-4c3f-bb65-656749d293e5" ],
-        "x-ms-routing-request-id": [ "EASTASIA:20240221T123406Z:70b257e7-37f9-4c3f-bb65-656749d293e5" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "432cf1ce-6c89-432f-b7b1-a0f6cd786199" ],
+        "x-ms-routing-request-id": [ "EASTASIA:20240429T124532Z:432cf1ce-6c89-432f-b7b1-a0f6cd786199" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2D099EA555BF4502A83CD4987CABFEC8 Ref B: SEL221051503027 Ref C: 2024-02-21T12:34:05Z" ],
-        "Date": [ "Wed, 21 Feb 2024 12:34:06 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6D9B1B396B874C039E494B6527CBE341 Ref B: SEL221051504047 Ref C: 2024-04-29T12:45:29Z" ],
+        "Date": [ "Mon, 29 Apr 2024 12:45:32 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "332" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/namespaces/clusterNamespace\"},{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/namespaces/clusterNamespace2\"}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/namespaces/clusterNamespace\"},{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/namespaces/clusterNamespace2\"}]}",
       "isContentBase64": false
     }
   }

@@ -1,13 +1,13 @@
 {
-  "Get-AzEventHubNetworkRuleSet+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceName0hiqkr/networkRuleSets/default?api-version=2023-01-01-preview+1": {
+  "Get-AzEventHubNetworkRuleSet+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/networkRuleSets/default?api-version=2023-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceName0hiqkr/networkRuleSets/default?api-version=2023-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/networkRuleSets/default?api-version=2023-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "53" ],
-        "x-ms-client-request-id": [ "00914663-2876-4837-8347-b5de85430c1f" ],
+        "x-ms-unique-id": [ "59" ],
+        "x-ms-client-request-id": [ "b2f04f72-be31-40df-8867-51d5f2134d3a" ],
         "CommandName": [ "Get-AzEventHubNetworkRuleSet" ],
         "FullCommandName": [ "Get-AzEventHubNetworkRuleSet_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,25 +22,26 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-correlation-request-id": [ "407e0820-262c-41e1-bbe4-d683986ee1b9" ],
-        "x-ms-client-request-id": [ "00914663-2876-4837-8347-b5de85430c1f_RP" ],
-        "x-ms-messaging-activity-id": [ "b5443c9c-bbad-4dd3-8455-42d45eb055f3" ],
-        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G7|2024-02-21T12:35:55" ],
+        "x-ms-correlation-request-id": [ "3c09efc4-8b05-4a49-a090-62c0f0d570b8" ],
+        "x-ms-client-request-id": [ "b2f04f72-be31-40df-8867-51d5f2134d3a_RP" ],
+        "x-ms-messaging-activity-id": [ "986e308c-51ea-4c4f-b5c7-9eb94bda32d5" ],
+        "x-ms-messaging-routing-id": [ "EASTUS|EASTUS|G6|2024-04-29T12:47:32" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-request-id": [ "407e0820-262c-41e1-bbe4-d683986ee1b9" ],
-        "x-ms-routing-request-id": [ "EASTASIA:20240221T123555Z:407e0820-262c-41e1-bbe4-d683986ee1b9" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "3c09efc4-8b05-4a49-a090-62c0f0d570b8" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20240429T124732Z:3c09efc4-8b05-4a49-a090-62c0f0d570b8" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7538E1994975474EAB24200A8AC388AB Ref B: SEL221051503027 Ref C: 2024-02-21T12:35:53Z" ],
-        "Date": [ "Wed, 21 Feb 2024 12:35:55 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 42280D38A59245F0AA3C753A152122DB Ref B: SEL221051504047 Ref C: 2024-04-29T12:47:30Z" ],
+        "Date": [ "Mon, 29 Apr 2024 12:47:32 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "424" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceName0hiqkr/networkrulesets/default\",\"name\":\"default\",\"type\":\"Microsoft.EventHub/Namespaces/NetworkRuleSets\",\"location\":\"eastus\",\"properties\":{\"publicNetworkAccess\":\"Enabled\",\"defaultAction\":\"Allow\",\"virtualNetworkRules\":[],\"ipRules\":[],\"trustedServiceAccessEnabled\":false}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w/networkrulesets/default\",\"name\":\"default\",\"type\":\"Microsoft.EventHub/Namespaces/NetworkRuleSets\",\"location\":\"eastus\",\"properties\":{\"publicNetworkAccess\":\"Enabled\",\"defaultAction\":\"Allow\",\"virtualNetworkRules\":[],\"ipRules\":[],\"trustedServiceAccessEnabled\":false}}",
       "isContentBase64": false
     }
   }

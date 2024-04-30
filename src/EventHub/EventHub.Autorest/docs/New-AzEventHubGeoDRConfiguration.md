@@ -107,7 +107,6 @@ Accept wildcard characters: False
 
 ### -NamespaceInputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
@@ -138,7 +137,6 @@ Accept wildcard characters: False
 
 ### -Parameter
 Single item in List or Get Alias(Disaster Recovery configuration) operation
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IArmDisasterRecovery

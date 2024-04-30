@@ -2,35 +2,50 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "secondaryLocation": {
+      "value": "southcentralus"
+    },
     "namespace_name": {
-      "value": "namespaceName0hiqkr"
+      "value": "namespaceNameeqpx5w"
     },
     "system_assigned_namespace_name": {
-      "value": "namespaceNamearyl1z"
+      "value": "namespaceName8avljz"
+    },
+    "primary_namespace_name": {
+      "value": "namespaceNameil6w7t"
+    },
+    "secondary_namespace_name": {
+      "value": "namespaceName7pzlta"
     },
     "namespace_auth_rule_name": {
-      "value": "auth-ruleaj2kzf"
+      "value": "auth-ruleudhoej"
     },
     "eventhub_auth_rule_name": {
-      "value": "auth-rule3eq8uw"
+      "value": "auth-rulevanqub"
     },
     "eventhub_name": {
-      "value": "eventHubktpb8h"
+      "value": "eventHub789hmt"
     },
     "schema_group_name": {
-      "value": "schemaGroupozkceh"
+      "value": "schemaGroup3yt1fv"
     },
     "appgroup_name": {
-      "value": "appGrouptxq3iy"
+      "value": "appGroup3iw8s2"
+    },
+    "subnet1Id": {
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.Network/virtualNetworks/eh-ps-vgt87w-vnet/subnets/default"
     },
     "peName1": {
-      "value": "privateEndpoint-478v1e"
+      "value": "privateEndpoint-i4bc1n"
     },
     "peName2": {
-      "value": "privateEndpoint-m82hy5"
+      "value": "privateEndpoint-2upkxh"
     },
     "namespaceResourceId": {
-      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestqy8fdg/providers/Microsoft.EventHub/namespaces/namespaceName0hiqkr"
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/Autorest-PS-EventHub-kchdmf/providers/Microsoft.EventHub/namespaces/namespaceNameeqpx5w"
+    },
+    "useZoneRedundancy": {
+      "value": true
     }
   }
 }

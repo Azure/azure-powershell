@@ -133,7 +133,6 @@ Accept wildcard characters: False
 
 ### -NamespaceInputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
@@ -164,7 +163,6 @@ Accept wildcard characters: False
 
 ### -Parameter
 The Application Group object
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroup
@@ -181,7 +179,6 @@ Accept wildcard characters: False
 ### -Policy
 List of group policies that define the behavior of application group.
 The policies can support resource governance scenarios such as limiting ingress or egress traffic.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IApplicationGroupPolicy[]
