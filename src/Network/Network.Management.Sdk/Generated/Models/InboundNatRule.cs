@@ -229,5 +229,25 @@ namespace Microsoft.Azure.Management.Network.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.backendAddressPool")]
         public SubResource BackendAddressPool {get; set; }
+        /// <summary>
+        /// Validate the object.
+        /// </summary>
+        /// <exception cref="Microsoft.Rest.ValidationException">
+        /// Thrown if validation fails
+        /// </exception>
+        public virtual void Validate()
+        {
+
+
+
+
+
+            if (this.BackendIPConfiguration != null)
+            {
+                this.BackendIPConfiguration.Validate();
+            }
+
+
+        }
     }
 }
