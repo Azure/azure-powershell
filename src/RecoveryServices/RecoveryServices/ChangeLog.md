@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Breaking Change] Renamed the property `ResouceType` of `ASRVaultSettings` to `ResourceType`. 
 
 ## Version 6.9.0
 * Added support for MUA for disabling vault Immutability, increasing RPO for policy schedule, restore, stop protection with retain data.
