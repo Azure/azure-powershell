@@ -44,3 +44,6 @@ Delete Configuration record
 ### [Update-AzMaintenanceConfiguration](Update-AzMaintenanceConfiguration.md)
 Patch configuration record
 
+### [Set-AzScheduledEvent](Set-AzScheduledEvent.md)
+Acknowledge ScheudledEvent
+

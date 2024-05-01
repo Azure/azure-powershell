@@ -5,7 +5,8 @@ This directory contains management plane service clients of Az.Maintenance modul
 In this directory, run AutoRest:
 ```
 autorest --reset
-autorest --use:@autorest/powershell@4.x
+autorest --use:@autorest/powershell@2.3.90
+autorest.cmd README.md --version=v2 
 ```
 
 ### AutoRest Configuration
