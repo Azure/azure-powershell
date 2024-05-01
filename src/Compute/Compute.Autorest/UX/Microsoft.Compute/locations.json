@@ -1,0 +1,42 @@
+{
+  "resourceType": "locations",
+  "apiVersion": "2021-06-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.compute"
+  },
+  "commands": [
+    {
+      "name": "Invoke-AzSpotPlacementRecommender",
+      "description": "Generates placement scores for Spot VM skus.",
+      "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/diagnostics/spotPlacementRecommender/generate",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.compute/invoke-azspotplacementrecommender"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Location <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Generates placement scores for Spot VM skus.",
+          "parameters": [
+            {
+              "name": "-Location",
+              "value": "[Path.location]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -27,6 +27,9 @@ function setupEnv() {
         New-AzResourceGroup -Name $resourceGroupCluster -Location eastus
     }
 
+    $createKubernetesVersion = '1.27.7'
+    # create default version 1.27.7, cluster upgrading will block the removation of memeber
+    $env.UpgradeKubernetesVersion = '1.27.7'
     $clusterName11 = 'FleetCluster11'
     $clusterName12 = 'FleetCluster12'
     $clusterName21 = 'FleetCluster21'
@@ -36,7 +39,7 @@ function setupEnv() {
         Write-Host "Cluster 11 created"
     } catch {
         Write-Host "Cluster 11 creating"
-        $cluster11 = New-AzAksCluster -ResourceGroupName $resourceGroupCluster -Name $clusterName11 -NodeVmSize "Standard_D2pls_v5" -EnableManagedIdentity
+        $cluster11 = New-AzAksCluster -ResourceGroupName $resourceGroupCluster -Name $clusterName11 -NodeVmSize "Standard_D2pls_v5" -EnableManagedIdentity -KubernetesVersion $createKubernetesVersion
     }
 
     try {
@@ -44,7 +47,7 @@ function setupEnv() {
         Write-Host "Cluster 12 created"
     } catch {
         Write-Host "Cluster 12 creating"
-        $cluster12 = New-AzAksCluster -ResourceGroupName $resourceGroupCluster -Name $clusterName12 -NodeVmSize "Standard_D2pls_v5" -EnableManagedIdentity
+        $cluster12 = New-AzAksCluster -ResourceGroupName $resourceGroupCluster -Name $clusterName12 -NodeVmSize "Standard_D2pls_v5" -EnableManagedIdentity -KubernetesVersion $createKubernetesVersion
     }
     
     try {
@@ -52,7 +55,7 @@ function setupEnv() {
         Write-Host "Cluster 21 created"
     } catch {
         Write-Host "Cluster 21 creating"
-        $cluster21 = New-AzAksCluster -ResourceGroupName $resourceGroupCluster -Name $clusterName21 -NodeVmSize "Standard_D2pls_v5" -EnableManagedIdentity
+        $cluster21 = New-AzAksCluster -ResourceGroupName $resourceGroupCluster -Name $clusterName21 -NodeVmSize "Standard_D2pls_v5" -EnableManagedIdentity -KubernetesVersion $createKubernetesVersion
     }
     
     try {
@@ -60,7 +63,7 @@ function setupEnv() {
         Write-Host "Cluster 22 created"
     } catch {
         Write-Host "Cluster 22 creating"
-        $cluster22 = New-AzAksCluster -ResourceGroupName $resourceGroupCluster -Name $clusterName22 -NodeVmSize "Standard_D2pls_v5" -EnableManagedIdentity
+        $cluster22 = New-AzAksCluster -ResourceGroupName $resourceGroupCluster -Name $clusterName22 -NodeVmSize "Standard_D2pls_v5" -EnableManagedIdentity -KubernetesVersion $createKubernetesVersion
     }
     # $env.clusterID11 = '/subscriptions/'+$env.SubscriptionId+'/resourceGroups/'+$resourceGroupCluster+'/providers/microsoft.containerservice/managedClusters/FleetCluster11'
     # $env.clusterID12 = '/subscriptions/'+$env.SubscriptionId+'/resourceGroups/'+$resourceGroupCluster+'/providers/microsoft.containerservice/managedClusters/FleetCluster12'
@@ -70,8 +73,6 @@ function setupEnv() {
     $env.clusterID12 = $cluster12.Id
     $env.clusterID21 = $cluster21.Id
     $env.clusterID22 = $cluster22.Id
-    # create default version 1.27.7, cluster upgrading will block the removation of memeber
-    $env.UpgradeKubernetesVersion = '1.27.7'
 
     $env.resourceGroup = 'FLEET-TEST'
     $env.resourceGroup2 = 'FLEET2-TEST'
@@ -106,6 +107,15 @@ function setupEnv() {
         New-AzResourceGroup -Name $env.resourceGroup2 -Location $env.Location
     }
 
+    $managementIdenetityName = 'fleetTestUserAssigned'
+    try {
+        $fleetTestUserAssigned = Get-AzUserAssignedIdentity -Name $managementIdenetityName -ResourceGroupName $env.resourceGroup2 -ErrorAction Stop
+    }
+    catch {
+        $fleetTestUserAssigned = New-AzUserAssignedIdentity -Name $managementIdenetityName -ResourceGroupName $env.resourceGroup2 -Location $env.Location
+    }
+    $env.managementIdenetityID = $fleetTestUserAssigned.Id
+
     # For any resources you created for test, you should add it to $env here.
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -115,6 +125,7 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzUserAssignedIdentity -Name $managementIdenetityName -ResourceGroupName $env.resourceGroup2
     Remove-AzResourceGroup -Name $env.resourceGroup
     Remove-AzResourceGroup -Name $env.resourceGroup2
 }

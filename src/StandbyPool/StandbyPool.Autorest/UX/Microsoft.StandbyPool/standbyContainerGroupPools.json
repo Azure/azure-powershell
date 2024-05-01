@@ -1,0 +1,85 @@
+{
+  "resourceType": "standbyContainerGroupPools",
+  "apiVersion": "2023-12-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.standbypool"
+  },
+  "commands": [
+    {
+      "name": "Get-AzStandbyContainerGroupPool",
+      "description": "Get a StandbyContainerGroupPoolResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.standbypool/get-azstandbycontainergrouppool"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a StandbyContainerGroupPoolResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.standbyContainerGroupPoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzStandbyContainerGroupPool",
+      "description": "Delete a StandbyContainerGroupPoolResource",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StandbyPool/standbyContainerGroupPools/{standbyContainerGroupPoolName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.standbypool/remove-azstandbycontainergrouppool"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a StandbyContainerGroupPoolResource",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.standbyContainerGroupPoolName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
