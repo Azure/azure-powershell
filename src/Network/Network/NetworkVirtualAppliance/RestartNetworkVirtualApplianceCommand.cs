@@ -24,7 +24,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Post", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkVirtualAppliance", DefaultParameterSetName = ResourceNameParameterSet), OutputType(typeof(PSNetworkVirtualApplianceRestartOperationStatusResponse))]
+    [Cmdlet("Restart", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkVirtualAppliance", DefaultParameterSetName = ResourceNameParameterSet), OutputType(typeof(PSNetworkVirtualApplianceRestartOperationStatusResponse))]
     public class RestartNetworkVirtualApplianceCommand : NetworkVirtualApplianceBaseCmdlet
     {
         private const string ResourceNameParameterSet = "ResourceNameParameterSet";
