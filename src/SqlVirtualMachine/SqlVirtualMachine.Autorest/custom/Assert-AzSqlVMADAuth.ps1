@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Validates a SQL virtual machine AD Authentication.
+Validates a SQL virtual machine Entra Authentication.
 .Description
-Validates a SQL virtual machine AD Authentication.
+Validates a SQL virtual machine Entra Authentication.
 .Example
 {{ Add code here }}
 .Example
@@ -46,30 +46,30 @@ https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/Assert-AzSqlV
 #>
 function Assert-AzSqlVMADAuth {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.Api20220801Preview.ISqlVirtualMachine])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='AssertExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AssertExpanded', Mandatory)]
     [Alias('SqlVirtualMachineName', 'SqlVMName')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [System.String]
     # Name of the SQL virtual machine.
     ${Name},
 
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='AssertExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [System.String]
     # Name of the resource group that contains the resource.
     # You can obtain this value from the Azure Resource Manager API or the portal.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='AssertExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # Subscription ID that identifies an Azure subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='AssertViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity]
     # Identity Parameter
@@ -165,14 +165,19 @@ process {
 		
         if ($hasAsJob) {
             $PSBoundParameters.Add('AsJob', $true)
-        }
+        }				
 		
-		if ($PSCmdlet.ShouldProcess("SQL virtual machine $($sqlvm.Name)", "Assert")) {
-			Assert-All -VmName $sqlvm.Name -ResourceGroup $sqlvm.ResourceGroupName -MsiClientId $AzureAdAuthenticationSettingClientId
+        if ($PSCmdlet.ShouldProcess("SQL virtual machine $($sqlvm.Name)", "Assert")) {
+           if ($AzureAdAuthenticationSettingClientId -eq '' -or $AzureAdAuthenticationSettingClientId -eq [string]::Empty) {
+		   Assert-All -VmName $sqlvm.Name -ResourceGroup $sqlvm.ResourceGroupName
+		   }
+		   else {
+           Assert-All -VmName $sqlvm.Name -ResourceGroup $sqlvm.ResourceGroupName -MsiClientId $AzureAdAuthenticationSettingClientId
+		   }
         }
-	} catch {
-		throw
-	}
+    } catch {
+        throw
+    }
 }
 }
 
@@ -192,15 +197,16 @@ process {
     .OUTPUTS
     bool if the validation passed or not
 #>
-function Assert-All {
-	[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
-    ([Parameter(Mandatory = $true)]
-    $VmName,
+function Assert-All {	
+	param(
+	[Parameter(Mandatory = $true)]
+    [string] $VmName,
     [Parameter(Mandatory = $true)]
-    $ResourceGroup,
+    [string] $ResourceGroup,
     [Parameter(Mandatory = $false)]
     [string] $MsiClientId)
-		
+	[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
+	
 		    # All validations go here
 			# validate the SQL VM supports Azure AD authentication, i.e. it is on Windows platform and is SQL 2022 or later
 			Assert-AzureADAuthenticationSupportedOnSqlVM -ResourceGroupName $ResourceGroup -SqlVirtualMachineName $VmName
@@ -225,16 +231,17 @@ function Assert-All {
     Name of the resource group
 #>
 function Assert-AzureADAuthenticationSupportedOnSqlVM {
-	[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
-    ([Parameter(Mandatory = $true)]
+    param(
+	    [Parameter(Mandatory = $true)]
         [string] $ResourceGroupName,
 
         [Parameter(Mandatory = $true)]
         [string] $SqlVirtualMachineName
-    )    
+    )
+	[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
 
-    try {		
-        # Get the SQL VM instance
+    try {        
+		# Get the SQL VM instance
         $sqlvm = Get-AzSqlVM -ResourceGroupName $ResourceGroupName -Name $SqlVirtualMachineName
     }
     catch {
@@ -290,27 +297,36 @@ function Assert-AzureADAuthenticationSupportedOnSqlVM {
     Msi Client Id
 #>
 function Assert-MsiValidOnVm {
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
-	([Parameter(Mandatory = $true)]
+	param(
+        [Parameter(Mandatory = $true)]
         [string] $ResourceGroupName,
-
         [Parameter(Mandatory = $true)]
         [string] $SqlVirtualMachineName,
-
         [Parameter(Mandatory = $false)]
         [string] $MsiClientId
-    )    
+    )
+	[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
 
     try {
-		Install-Module -Name Az.Compute -Scope CurrentUser -AllowClobber -Force
-		Import-Module Az.Compute
-
-		# Check Az.Compute version
-		$azComputeVersion = (Get-Module Az.Compute).Version
-
-		if (!$azComputeVersion) {
-			throw "No Az.Compute is installed"
+		
+		$accountmodule = Get-Module Az.Accounts 
+		if ($accountmodule -ne $null -and $accountmodule.Version -lt [System.Version]"2.19.0") 
+		{ 
+			Write-Error "This module requires Az.Accounts version 2.19.0. An earlier version of Az.Accounts is imported in the current PowerShell session. Please open a new session before importing this module. This error could indicate that multiple incompatible versions of the Azure PowerShell cmdlets are installed on your system. Please see https://aka.ms/azps-version-error for troubleshooting information." -ErrorAction Stop 
+		} 
+		elseif ($accountmodule -eq $null) 
+		{ 
+			Install-Module -Name Az.Accounts -Scope CurrentUser -AllowClobber -Force 
+			Import-Module Az.Accounts -MinimumVersion 2.19.0 -Scope Global 
 		}
+
+		$computemodule = Get-Module Az.Compute
+		if ($computemodule -eq $null) 
+		{ 
+			Install-Module -Name Az.Compute -Scope CurrentUser -AllowClobber -Force
+			Import-Module Az.Compute 
+		}
+
         # Get the VM instance
         $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $SqlVirtualMachineName
     }
@@ -359,11 +375,11 @@ function Assert-MsiValidOnVm {
     Msi Principal Id
 #>
 function Assert-MsiWithEnoughPermission {    
-    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
-	(
+	param(
         [Parameter(Mandatory = $true)]
         [string] $PrincipalId
     )
+	[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
     
 		# Install and connect to Microsoft Graph
 		Install-Module Microsoft.Graph.Authentication -Scope CurrentUser -AllowClobber -Force
@@ -419,14 +435,14 @@ function Connect-MgGraphViaCred {
       .EXAMPLE
       $cred = Get-Credential
       Connect-MgGraphViaCred -credential $cred
-      #>
-      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
-      (
+      #>      
+      param(
           [Parameter(Mandatory = $true)]
           [System.Management.Automation.PSCredential] $credential,
 
           [string] $tenant = $_tenantDomain
       )
+	  [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
 
 		try {
 			# Connect to Azure using credentials
@@ -449,6 +465,7 @@ function Connect-MgGraphViaCred {
 }
 
 function Find-RoleId {
+		[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
 		try {
 			$servicePrincipals = Get-MgServicePrincipal -Filter "displayName eq 'Microsoft Graph'"
 		}
@@ -486,12 +503,12 @@ function Find-RoleId {
 		return $appRoleIdMap
 }
 
-function Get-DirectoryRoleList {
-	    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
-		(
+function Get-DirectoryRoleList {	    
+		param(
 			[Parameter(Mandatory = $true)]
 			[string] $PrincipalId
 		)
+		[Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute]
 	
 		try {
 			$RoleList = Get-MgServicePrincipalTransitiveMemberOfAsDirectoryRole -ServicePrincipalId $PrincipalId
@@ -501,5 +518,3 @@ function Get-DirectoryRoleList {
 			throw "Microsoft Graph API Error: $_"
 		}
 }
-
-
