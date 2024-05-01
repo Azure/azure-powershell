@@ -33,35 +33,6 @@ The Restart-AzNetworkVirtualAppliance cmdlet restarts the virtual machine instan
 Restart-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva
 ```
 
-```output
-Name                   : default
-ProvisioningState      : Succeeded
-PropagateStaticRoutes  : False
-EnableInternetSecurity : False
-BgpPeerAddress         : []
-Asn                    : 65222
-TunnelIdentifier       : 0
-RoutingConfiguration   : {
-                           "AssociatedRouteTable": {
-                             "ResourceUri":"/subscriptions/{subid}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualHubs/{hub-name}//hubRouteTables/defaultRouteTable"
-                           },
-                           "PropagatedRouteTables": {
-                             "Labels": [],
-                             "Ids": [
-                               {
-                                 "ResourceUri": "/subscriptions/{subid}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualHubs/{hub-name}//hubRouteTables/defaultRouteTable"
-                               }
-                             ]
-                           },
-                           "InboundRouteMap": {
-                             "ResourceUri": ""
-                           },
-                           "OutboundRouteMap": {
-                             "ResourceUri": ""
-                           }
-                         }
-```
-
 This command restarts all the instances belonging to the NVA named nva that belongs to the resource group named testrg.
 
 
@@ -69,35 +40,6 @@ This command restarts all the instances belonging to the NVA named nva that belo
 
 ```powershell
 Restart-AzNetworkVirtualAppliance -ResourceGroupName testrg -Name nva -InstanceId "1"
-```
-
-```output
-Name                   : default
-ProvisioningState      : Succeeded
-PropagateStaticRoutes  : False
-EnableInternetSecurity : False
-BgpPeerAddress         : []
-Asn                    : 65222
-TunnelIdentifier       : 0
-RoutingConfiguration   : {
-                           "AssociatedRouteTable": {
-                             "ResourceUri":"/subscriptions/{subid}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualHubs/{hub-name}//hubRouteTables/defaultRouteTable"
-                           },
-                           "PropagatedRouteTables": {
-                             "Labels": [],
-                             "Ids": [
-                               {
-                                 "ResourceUri": "/subscriptions/{subid}/resourceGroups/{resource-group-name}/providers/Microsoft.Network/virtualHubs/{hub-name}//hubRouteTables/defaultRouteTable"
-                               }
-                             ]
-                           },
-                           "InboundRouteMap": {
-                             "ResourceUri": ""
-                           },
-                           "OutboundRouteMap": {
-                             "ResourceUri": ""
-                           }
-                         }
 ```
 
 This command restarts the instance with ID "1" of the NVA named nva that belongs to the resource group named testrg.
