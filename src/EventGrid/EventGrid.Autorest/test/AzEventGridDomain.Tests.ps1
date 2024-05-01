@@ -81,9 +81,9 @@ Describe 'AzEventGridDomain' {
         } | Should -Not -Throw
     }
 
-    It 'Get-AzEventGridDomainSharedAccessKey' {
+    It 'Get-AzEventGridDomainKey' {
         {
-            $config = Get-AzEventGridDomainSharedAccessKey -DomainName $env.domain -ResourceGroupName $env.resourceGroup
+            $config = Get-AzEventGridDomainKey -DomainName $env.domain -ResourceGroupName $env.resourceGroup
             $config.Key1 | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }

@@ -69,10 +69,10 @@ function setupEnv() {
     $env.Add("TopicEventSub", $TopicEventSub)
     $env.Add("topicSpace", $topicSpace)
     
-    $EndpointUrl = "https://azpssite.azurewebsites.net/api/updates"
+    $EndpointUrl = "https://azpssite04.azurewebsites.net/api/updates"
     $env.Add("EndpointUrl", $EndpointUrl)
 
-    $StorageAccount = "azpssa0123"
+    $StorageAccount = "azpssa0430"
     $env.Add("StorageAccount", $StorageAccount)
 
     $env.Add("location", "eastus")

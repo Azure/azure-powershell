@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridTopic
 
 ## SYNOPSIS
-Asynchronously creates a new topic with the specified parameters.
+Asynchronously Update a new topic with the specified parameters.
 
 ## SYNTAX
 
@@ -36,7 +36,7 @@ Update-AzEventGridTopic -InputObject <IEventGridIdentity> [-DataResidencyBoundar
 ```
 
 ## DESCRIPTION
-Asynchronously creates a new topic with the specified parameters.
+Asynchronously Update a new topic with the specified parameters.
 
 ## EXAMPLES
 
@@ -462,7 +462,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: IdentityId
 
 Required: False
 Position: Named

@@ -1,9 +1,9 @@
 {
-  "AzEventGridClient+[NoContext]+New-AzEventGridClient+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview+1": {
+  "AzEventGridClient+[NoContext]+New-AzEventGridClient+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"clientCertificateAuthentication\": {\r\n      \"validationScheme\": \"SubjectMatchesAuthenticationName\"\r\n    },\r\n    \"state\": \"Enabled\",\r\n    \"attributes\": {\r\n      \"room\": \"345\",\r\n      \"floor\": \"3\",\r\n      \"deviceTypes\": \"Fan\"\r\n    }\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"clientCertificateAuthentication\": {\r\n      \"validationScheme\": \"SubjectMatchesAuthenticationName\"\r\n    },\r\n    \"state\": \"Enabled\",\r\n    \"attributes\": {\r\n      \"floor\": \"3\",\r\n      \"room\": \"345\",\r\n      \"deviceTypes\": \"Fan\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -18,38 +18,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "335b260c-55ac-42d0-b4eb-530bb58e775a" ],
+        "x-ms-request-id": [ "40000cb6-0000-f400-b63f-84710c7967bb" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "999" ],
-        "x-ms-correlation-request-id": [ "323d788d-1c88-49b0-8d38-2dbf2e17858a" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091438Z:323d788d-1c88-49b0-8d38-2dbf2e17858a" ],
+        "x-ms-correlation-request-id": [ "ae3b199b-d3b2-408a-90ba-d86ced0f8350" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023132Z:ae3b199b-d3b2-408a-90ba-d86ced0f8350" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 47A273D5F4294544B94FC80E11BE09D3 Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:14:35Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:14:38 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: C360D25BCAC14920BFB5591BDD1AB389 Ref B: TYO201100117021 Ref C: 2024-05-01T02:31:29Z" ],
+        "Date": [ "Wed, 01 May 2024 02:31:31 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "514" ],
+        "Content-Length": [ "732" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"description\":null,\"authenticationName\":\"ajtxmbl\",\"clientCertificateAuthentication\":{\"validationScheme\":\"SubjectMatchesAuthenticationName\"},\"state\":\"Enabled\",\"attributes\":{\"room\":\"345\",\"floor\":\"3\",\"deviceTypes\":\"Fan\"},\"provisioningState\":\"Succeeded\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl\",\"name\":\"ajtxmbl\",\"type\":\"Microsoft.EventGrid/namespaces/clients\"}",
+      "Content": "{\"properties\":{\"description\":null,\"authenticationName\":\"abqlpv5\",\"clientCertificateAuthentication\":{\"validationScheme\":\"SubjectMatchesAuthenticationName\"},\"state\":\"Enabled\",\"attributes\":{\"floor\":\"3\",\"room\":\"345\",\"deviceTypes\":\"Fan\"},\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-01T02:31:29.4710958Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-01T02:31:29.4710958Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5\",\"name\":\"abqlpv5\",\"type\":\"Microsoft.EventGrid/namespaces/clients\"}",
       "isContentBase64": false
     }
   },
-  "AzEventGridClient+[NoContext]+New-AzEventGridClient+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview+2": {
+  "AzEventGridClient+[NoContext]+New-AzEventGridClient+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "9" ],
-        "x-ms-client-request-id": [ "8b7b7170-d80c-42c2-a94a-93704276474c" ],
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "ca2ea923-7119-4aee-8166-dbb90c07219e" ],
         "CommandName": [ "New-AzEventGridClient" ],
         "FullCommandName": [ "New-AzEventGridClient_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.1", "Az.EventGrid/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.EventGrid/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -60,38 +61,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "f6b16b8e-883c-4df5-bbb5-34fa1d859491" ],
+        "x-ms-request-id": [ "40001473-000b-fd00-b63f-84710c7967bb" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "999" ],
-        "x-ms-correlation-request-id": [ "6c5d35a7-8f74-4a89-9ae7-984cc9019b37" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091510Z:6c5d35a7-8f74-4a89-9ae7-984cc9019b37" ],
+        "x-ms-correlation-request-id": [ "26145c64-58c9-4dbc-8a78-55c85efaeab1" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023204Z:26145c64-58c9-4dbc-8a78-55c85efaeab1" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8CFEA7F041B1475D99E0E413BE8E6627 Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:15:08Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:15:10 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6B7C010BB29049D4B159F1FECA32671A Ref B: TYO201100117021 Ref C: 2024-05-01T02:32:02Z" ],
+        "Date": [ "Wed, 01 May 2024 02:32:03 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "514" ],
+        "Content-Length": [ "732" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"description\":null,\"authenticationName\":\"ajtxmbl\",\"clientCertificateAuthentication\":{\"validationScheme\":\"SubjectMatchesAuthenticationName\"},\"state\":\"Enabled\",\"attributes\":{\"room\":\"345\",\"floor\":\"3\",\"deviceTypes\":\"Fan\"},\"provisioningState\":\"Succeeded\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl\",\"name\":\"ajtxmbl\",\"type\":\"Microsoft.EventGrid/namespaces/clients\"}",
+      "Content": "{\"properties\":{\"description\":null,\"authenticationName\":\"abqlpv5\",\"clientCertificateAuthentication\":{\"validationScheme\":\"SubjectMatchesAuthenticationName\"},\"state\":\"Enabled\",\"attributes\":{\"floor\":\"3\",\"room\":\"345\",\"deviceTypes\":\"Fan\"},\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-01T02:31:29.4710958Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-01T02:31:29.4710958Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5\",\"name\":\"abqlpv5\",\"type\":\"Microsoft.EventGrid/namespaces/clients\"}",
       "isContentBase64": false
     }
   },
-  "AzEventGridClient+[NoContext]+New-AzEventGridClient+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview+3": {
+  "AzEventGridClient+[NoContext]+New-AzEventGridClient+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "8b7b7170-d80c-42c2-a94a-93704276474c" ],
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "ca2ea923-7119-4aee-8166-dbb90c07219e" ],
         "CommandName": [ "New-AzEventGridClient" ],
         "FullCommandName": [ "New-AzEventGridClient_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.1", "Az.EventGrid/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.EventGrid/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -102,28 +104,29 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "a0d261e3-4651-43fc-88f2-0b471f8aa21a" ],
+        "x-ms-request-id": [ "40000288-0005-f700-b63f-84710c7967bb" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "999" ],
-        "x-ms-correlation-request-id": [ "e66ed5e0-ea19-414c-98be-55dd7389a0e9" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091511Z:e66ed5e0-ea19-414c-98be-55dd7389a0e9" ],
+        "x-ms-correlation-request-id": [ "bcd723b0-28c5-47c4-b59f-6377827e4be0" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023206Z:bcd723b0-28c5-47c4-b59f-6377827e4be0" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 9BF15FFA9DBC484EB412469366B4D650 Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:15:10Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:15:11 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: CF4F89B62EC04532BBB293C885751797 Ref B: TYO201100117021 Ref C: 2024-05-01T02:32:04Z" ],
+        "Date": [ "Wed, 01 May 2024 02:32:05 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "514" ],
+        "Content-Length": [ "732" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"description\":null,\"authenticationName\":\"ajtxmbl\",\"clientCertificateAuthentication\":{\"validationScheme\":\"SubjectMatchesAuthenticationName\"},\"state\":\"Enabled\",\"attributes\":{\"room\":\"345\",\"floor\":\"3\",\"deviceTypes\":\"Fan\"},\"provisioningState\":\"Succeeded\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl\",\"name\":\"ajtxmbl\",\"type\":\"Microsoft.EventGrid/namespaces/clients\"}",
+      "Content": "{\"properties\":{\"description\":null,\"authenticationName\":\"abqlpv5\",\"clientCertificateAuthentication\":{\"validationScheme\":\"SubjectMatchesAuthenticationName\"},\"state\":\"Enabled\",\"attributes\":{\"floor\":\"3\",\"room\":\"345\",\"deviceTypes\":\"Fan\"},\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-01T02:31:29.4710958Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-01T02:31:29.4710958Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5\",\"name\":\"abqlpv5\",\"type\":\"Microsoft.EventGrid/namespaces/clients\"}",
       "isContentBase64": false
     }
   },
-  "AzEventGridClient+[NoContext]+New-AzEventGridClientGroup+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview+1": {
+  "AzEventGridClient+[NoContext]+New-AzEventGridClientGroup+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"query\": \"attributes.b IN [\\u0027a\\u0027, \\u0027b\\u0027, \\u0027c\\u0027]\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -139,38 +142,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "d9c395af-63e4-4b32-b5a9-042223e4824c" ],
+        "x-ms-request-id": [ "40002273-0000-fb00-b63f-84710c7967bb" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "db845422-aed2-4bd8-8701-fa8802e575b3" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091514Z:db845422-aed2-4bd8-8701-fa8802e575b3" ],
+        "x-ms-correlation-request-id": [ "3a8b1c2b-4e98-4f68-8653-5501e3c74652" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023208Z:3a8b1c2b-4e98-4f68-8653-5501e3c74652" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: EDCD44668828444B9B0B3A4DB631BAAC Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:15:12Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:15:14 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 24C97DADDB044639B0EDD6C27536BA81 Ref B: TYO201100117021 Ref C: 2024-05-01T02:32:06Z" ],
+        "Date": [ "Wed, 01 May 2024 02:32:07 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "367" ],
+        "Content-Length": [ "581" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"description\":null,\"query\":\"attributes.b IN [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027]\",\"provisioningState\":\"Succeeded\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj\",\"name\":\"ao2pryj\",\"type\":\"Microsoft.EventGrid/namespaces/clientGroups\"}",
+      "Content": "{\"properties\":{\"description\":null,\"query\":\"attributes.b IN [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027]\",\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-01T02:32:06.84682Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-01T02:32:06.84682Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6\",\"name\":\"acdhuj6\",\"type\":\"Microsoft.EventGrid/namespaces/clientGroups\"}",
       "isContentBase64": false
     }
   },
-  "AzEventGridClient+[NoContext]+New-AzEventGridClientGroup+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview+2": {
+  "AzEventGridClient+[NoContext]+New-AzEventGridClientGroup+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "4a9ffd62-25e2-42e2-9c1c-f4cbcc3c823c" ],
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "f4fd8361-1264-40ff-8911-0368ccebee34" ],
         "CommandName": [ "New-AzEventGridClientGroup" ],
         "FullCommandName": [ "New-AzEventGridClientGroup_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.1", "Az.EventGrid/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.EventGrid/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -181,38 +185,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "0705981a-e56e-4913-a539-daad4df9262b" ],
+        "x-ms-request-id": [ "4000122b-0006-fc00-b63f-84710c7967bb" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "6e493f1a-5e0c-4213-a551-f6dc3be1452b" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091545Z:6e493f1a-5e0c-4213-a551-f6dc3be1452b" ],
+        "x-ms-correlation-request-id": [ "a5dd8e3c-9a07-405b-bc66-c8354021e427" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023240Z:a5dd8e3c-9a07-405b-bc66-c8354021e427" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 8B847E36CF3148A4AA4BB6B69E55C1BC Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:15:44Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:15:45 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: FFF357AD89CF4C74A13E4904C13DF3FD Ref B: TYO201100117021 Ref C: 2024-05-01T02:32:38Z" ],
+        "Date": [ "Wed, 01 May 2024 02:32:39 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "367" ],
+        "Content-Length": [ "581" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"description\":null,\"query\":\"attributes.b IN [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027]\",\"provisioningState\":\"Succeeded\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj\",\"name\":\"ao2pryj\",\"type\":\"Microsoft.EventGrid/namespaces/clientGroups\"}",
+      "Content": "{\"properties\":{\"description\":null,\"query\":\"attributes.b IN [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027]\",\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-01T02:32:06.84682Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-01T02:32:06.84682Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6\",\"name\":\"acdhuj6\",\"type\":\"Microsoft.EventGrid/namespaces/clientGroups\"}",
       "isContentBase64": false
     }
   },
-  "AzEventGridClient+[NoContext]+New-AzEventGridClientGroup+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview+3": {
+  "AzEventGridClient+[NoContext]+New-AzEventGridClientGroup+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "13" ],
-        "x-ms-client-request-id": [ "4a9ffd62-25e2-42e2-9c1c-f4cbcc3c823c" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "f4fd8361-1264-40ff-8911-0368ccebee34" ],
         "CommandName": [ "New-AzEventGridClientGroup" ],
         "FullCommandName": [ "New-AzEventGridClientGroup_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.1", "Az.EventGrid/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.EventGrid/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -223,37 +228,38 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "6fba92c2-92ca-4df7-ba4b-f05addf5a0f1" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "eee70a6b-e989-4348-9f2b-0e41e757ba64" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091547Z:eee70a6b-e989-4348-9f2b-0e41e757ba64" ],
+        "x-ms-request-id": [ "40000e73-0002-f800-b63f-84710c7967bb" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "0ddef2e6-384b-49af-a479-97ba35453607" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023242Z:0ddef2e6-384b-49af-a479-97ba35453607" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 64BCB597367E419ABA764DF3C0EFAAB1 Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:15:46Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:15:47 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 9D5523A121DA45688BC2D84F6BB0D386 Ref B: TYO201100117021 Ref C: 2024-05-01T02:32:40Z" ],
+        "Date": [ "Wed, 01 May 2024 02:32:41 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "367" ],
+        "Content-Length": [ "581" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"description\":null,\"query\":\"attributes.b IN [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027]\",\"provisioningState\":\"Succeeded\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj\",\"name\":\"ao2pryj\",\"type\":\"Microsoft.EventGrid/namespaces/clientGroups\"}",
+      "Content": "{\"properties\":{\"description\":null,\"query\":\"attributes.b IN [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027]\",\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-01T02:32:06.84682Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-01T02:32:06.84682Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6\",\"name\":\"acdhuj6\",\"type\":\"Microsoft.EventGrid/namespaces/clientGroups\"}",
       "isContentBase64": false
     }
   },
-  "AzEventGridClient+[NoContext]+Get-AzEventGridClient+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview+1": {
+  "AzEventGridClient+[NoContext]+Get-AzEventGridClient+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "14" ],
-        "x-ms-client-request-id": [ "657c8024-68c3-45cc-bab6-2aac14148d5a" ],
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "e153a549-119a-4755-9b87-895c4957445e" ],
         "CommandName": [ "Get-AzEventGridClient" ],
         "FullCommandName": [ "Get-AzEventGridClient_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.1", "Az.EventGrid/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.EventGrid/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -265,37 +271,38 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "34b282bf-77c3-4880-8305-8cdeb7b4ffbc" ],
+        "x-ms-request-id": [ "400015fb-0008-f600-b63f-84710c7967bb" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "999" ],
-        "x-ms-correlation-request-id": [ "c364944a-d218-40d0-add9-fe37f0a88047" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091549Z:c364944a-d218-40d0-add9-fe37f0a88047" ],
+        "x-ms-correlation-request-id": [ "ab29a6aa-3225-418f-8f5f-f6bb2313c987" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023243Z:ab29a6aa-3225-418f-8f5f-f6bb2313c987" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5A3BF87B6A2B4E5E93E2D06FBC0CD51D Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:15:47Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:15:49 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8D0EC044BDDD408EB89C01CD5779FED4 Ref B: TYO201100117021 Ref C: 2024-05-01T02:32:42Z" ],
+        "Date": [ "Wed, 01 May 2024 02:32:43 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "514" ],
+        "Content-Length": [ "732" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"description\":null,\"authenticationName\":\"ajtxmbl\",\"clientCertificateAuthentication\":{\"validationScheme\":\"SubjectMatchesAuthenticationName\"},\"state\":\"Enabled\",\"attributes\":{\"room\":\"345\",\"floor\":\"3\",\"deviceTypes\":\"Fan\"},\"provisioningState\":\"Succeeded\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl\",\"name\":\"ajtxmbl\",\"type\":\"Microsoft.EventGrid/namespaces/clients\"}",
+      "Content": "{\"properties\":{\"description\":null,\"authenticationName\":\"abqlpv5\",\"clientCertificateAuthentication\":{\"validationScheme\":\"SubjectMatchesAuthenticationName\"},\"state\":\"Enabled\",\"attributes\":{\"floor\":\"3\",\"room\":\"345\",\"deviceTypes\":\"Fan\"},\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-01T02:31:29.4710958Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-01T02:31:29.4710958Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5\",\"name\":\"abqlpv5\",\"type\":\"Microsoft.EventGrid/namespaces/clients\"}",
       "isContentBase64": false
     }
   },
-  "AzEventGridClient+[NoContext]+Get-AzEventGridClientGroup+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview+1": {
+  "AzEventGridClient+[NoContext]+Get-AzEventGridClientGroup+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "15" ],
-        "x-ms-client-request-id": [ "f4b49dc0-59c5-4453-8e77-840d38f05b57" ],
+        "x-ms-unique-id": [ "12" ],
+        "x-ms-client-request-id": [ "d223f3d4-905d-4d12-a802-7bf1d5dbbf50" ],
         "CommandName": [ "Get-AzEventGridClientGroup" ],
         "FullCommandName": [ "Get-AzEventGridClientGroup_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.1", "Az.EventGrid/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.EventGrid/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -307,37 +314,38 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "42d7fcba-1b08-4bb5-8711-1ef9a7c5adfc" ],
+        "x-ms-request-id": [ "4000061a-000e-fb00-b63f-84710c7967bb" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "81e7b7b3-7a26-4c34-baae-8c1b2b44daa2" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091550Z:81e7b7b3-7a26-4c34-baae-8c1b2b44daa2" ],
+        "x-ms-correlation-request-id": [ "c0b34ac3-1143-4d76-a429-52e1059dc9ed" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023245Z:c0b34ac3-1143-4d76-a429-52e1059dc9ed" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 16D71B28A24A458B8D1A842B249A781C Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:15:49Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:15:50 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 0C372DBA4BB148A2976C364F7B737528 Ref B: TYO201100117021 Ref C: 2024-05-01T02:32:44Z" ],
+        "Date": [ "Wed, 01 May 2024 02:32:44 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "367" ],
+        "Content-Length": [ "581" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"description\":null,\"query\":\"attributes.b IN [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027]\",\"provisioningState\":\"Succeeded\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj\",\"name\":\"ao2pryj\",\"type\":\"Microsoft.EventGrid/namespaces/clientGroups\"}",
+      "Content": "{\"properties\":{\"description\":null,\"query\":\"attributes.b IN [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027]\",\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-01T02:32:06.84682Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-01T02:32:06.84682Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6\",\"name\":\"acdhuj6\",\"type\":\"Microsoft.EventGrid/namespaces/clientGroups\"}",
       "isContentBase64": false
     }
   },
-  "AzEventGridClient+[NoContext]+Update-AzEventGridClient+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview+1": {
+  "AzEventGridClient+[NoContext]+Update-AzEventGridClient+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "16" ],
-        "x-ms-client-request-id": [ "2e4a3dbe-8b5e-430b-9f4d-0e53eaff23da" ],
+        "x-ms-unique-id": [ "13" ],
+        "x-ms-client-request-id": [ "4ad7e44c-dc55-4fe1-8603-459b01df53da" ],
         "CommandName": [ "Update-AzEventGridClient" ],
         "FullCommandName": [ "Update-AzEventGridClient_UpdateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.1", "Az.EventGrid/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.EventGrid/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -349,29 +357,30 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "18add98c-df30-4d78-b66b-72ff8d8da5d8" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "998" ],
-        "x-ms-correlation-request-id": [ "c74d5309-f349-4d91-81e9-76b7138de33b" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091551Z:c74d5309-f349-4d91-81e9-76b7138de33b" ],
+        "x-ms-request-id": [ "40000e74-0002-f800-b63f-84710c7967bb" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "999" ],
+        "x-ms-correlation-request-id": [ "ed7709a5-37c6-47a8-98cf-3e2e7f5d1105" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023246Z:ed7709a5-37c6-47a8-98cf-3e2e7f5d1105" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4BD2742CA54C4855BB94581526FE9C51 Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:15:51Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:15:51 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 21A0A17BC54F4EEC98EB9F63F93E2956 Ref B: TYO201100117021 Ref C: 2024-05-01T02:32:45Z" ],
+        "Date": [ "Wed, 01 May 2024 02:32:45 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "514" ],
+        "Content-Length": [ "732" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"description\":null,\"authenticationName\":\"ajtxmbl\",\"clientCertificateAuthentication\":{\"validationScheme\":\"SubjectMatchesAuthenticationName\"},\"state\":\"Enabled\",\"attributes\":{\"room\":\"345\",\"floor\":\"3\",\"deviceTypes\":\"Fan\"},\"provisioningState\":\"Succeeded\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl\",\"name\":\"ajtxmbl\",\"type\":\"Microsoft.EventGrid/namespaces/clients\"}",
+      "Content": "{\"properties\":{\"description\":null,\"authenticationName\":\"abqlpv5\",\"clientCertificateAuthentication\":{\"validationScheme\":\"SubjectMatchesAuthenticationName\"},\"state\":\"Enabled\",\"attributes\":{\"floor\":\"3\",\"room\":\"345\",\"deviceTypes\":\"Fan\"},\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-01T02:31:29.4710958Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-01T02:31:29.4710958Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5\",\"name\":\"abqlpv5\",\"type\":\"Microsoft.EventGrid/namespaces/clients\"}",
       "isContentBase64": false
     }
   },
-  "AzEventGridClient+[NoContext]+Update-AzEventGridClient+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview+2": {
+  "AzEventGridClient+[NoContext]+Update-AzEventGridClient+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"clientCertificateAuthentication\": {\r\n      \"validationScheme\": \"SubjectMatchesAuthenticationName\"\r\n    },\r\n    \"description\": \"This is a test client\",\r\n    \"authenticationName\": \"ajtxmbl\",\r\n    \"state\": \"Enabled\",\r\n    \"attributes\": {\r\n      \"room\": \"345\",\r\n      \"floor\": \"3\",\r\n      \"deviceTypes\": \"AC\"\r\n    }\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"clientCertificateAuthentication\": {\r\n      \"validationScheme\": \"SubjectMatchesAuthenticationName\"\r\n    },\r\n    \"description\": \"This is a test client\",\r\n    \"authenticationName\": \"abqlpv5\",\r\n    \"state\": \"Enabled\",\r\n    \"attributes\": {\r\n      \"floor\": \"3\",\r\n      \"room\": \"345\",\r\n      \"deviceTypes\": \"AC\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -386,38 +395,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "81397c15-27db-4217-8c3d-f8c7df7ef741" ],
+        "x-ms-request-id": [ "400015fc-0008-f600-b63f-84710c7967bb" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "999" ],
-        "x-ms-correlation-request-id": [ "229f2b6a-42ca-477b-87df-7201f9b5d415" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091552Z:229f2b6a-42ca-477b-87df-7201f9b5d415" ],
+        "x-ms-correlation-request-id": [ "c73053b2-4d37-405a-b214-cfe57e17148e" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023247Z:c73053b2-4d37-405a-b214-cfe57e17148e" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D53C6F8BFCDE4E92855D886422B22E7B Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:15:51Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:15:52 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 92EE6B0C9B33422EB0230F10F97BD2A3 Ref B: TYO201100117021 Ref C: 2024-05-01T02:32:46Z" ],
+        "Date": [ "Wed, 01 May 2024 02:32:46 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "532" ],
+        "Content-Length": [ "750" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"description\":\"This is a test client\",\"authenticationName\":\"ajtxmbl\",\"clientCertificateAuthentication\":{\"validationScheme\":\"SubjectMatchesAuthenticationName\"},\"state\":\"Enabled\",\"attributes\":{\"room\":\"345\",\"floor\":\"3\",\"deviceTypes\":\"AC\"},\"provisioningState\":\"Succeeded\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl\",\"name\":\"ajtxmbl\",\"type\":\"Microsoft.EventGrid/namespaces/clients\"}",
+      "Content": "{\"properties\":{\"description\":\"This is a test client\",\"authenticationName\":\"abqlpv5\",\"clientCertificateAuthentication\":{\"validationScheme\":\"SubjectMatchesAuthenticationName\"},\"state\":\"Enabled\",\"attributes\":{\"floor\":\"3\",\"room\":\"345\",\"deviceTypes\":\"AC\"},\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-01T02:31:29.4710958Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-01T02:32:47.0613899Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5\",\"name\":\"abqlpv5\",\"type\":\"Microsoft.EventGrid/namespaces/clients\"}",
       "isContentBase64": false
     }
   },
-  "AzEventGridClient+[NoContext]+Update-AzEventGridClient+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview+3": {
+  "AzEventGridClient+[NoContext]+Update-AzEventGridClient+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "18" ],
-        "x-ms-client-request-id": [ "2e4a3dbe-8b5e-430b-9f4d-0e53eaff23da" ],
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "4ad7e44c-dc55-4fe1-8603-459b01df53da" ],
         "CommandName": [ "Update-AzEventGridClient" ],
         "FullCommandName": [ "Update-AzEventGridClient_UpdateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.1", "Az.EventGrid/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.EventGrid/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -428,38 +438,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "d8491db4-6f22-4d80-ba2e-d90c358c0924" ],
+        "x-ms-request-id": [ "4000167d-000c-fc00-b63f-84710c7967bb" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "999" ],
-        "x-ms-correlation-request-id": [ "8bb37328-9857-4c03-831f-435c466559a3" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091624Z:8bb37328-9857-4c03-831f-435c466559a3" ],
+        "x-ms-correlation-request-id": [ "4f4cb552-425f-4a38-b3cc-b0a811316123" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023319Z:4f4cb552-425f-4a38-b3cc-b0a811316123" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D8C0A03815AE43E29FE863C7D14BA0D8 Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:16:23Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:16:24 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8103DE4D8DEB4E3B910CA38A565A9E55 Ref B: TYO201100117021 Ref C: 2024-05-01T02:33:17Z" ],
+        "Date": [ "Wed, 01 May 2024 02:33:18 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "532" ],
+        "Content-Length": [ "750" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"description\":\"This is a test client\",\"authenticationName\":\"ajtxmbl\",\"clientCertificateAuthentication\":{\"validationScheme\":\"SubjectMatchesAuthenticationName\"},\"state\":\"Enabled\",\"attributes\":{\"room\":\"345\",\"floor\":\"3\",\"deviceTypes\":\"AC\"},\"provisioningState\":\"Succeeded\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl\",\"name\":\"ajtxmbl\",\"type\":\"Microsoft.EventGrid/namespaces/clients\"}",
+      "Content": "{\"properties\":{\"description\":\"This is a test client\",\"authenticationName\":\"abqlpv5\",\"clientCertificateAuthentication\":{\"validationScheme\":\"SubjectMatchesAuthenticationName\"},\"state\":\"Enabled\",\"attributes\":{\"floor\":\"3\",\"room\":\"345\",\"deviceTypes\":\"AC\"},\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-01T02:31:29.4710958Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-01T02:32:47.0613899Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5\",\"name\":\"abqlpv5\",\"type\":\"Microsoft.EventGrid/namespaces/clients\"}",
       "isContentBase64": false
     }
   },
-  "AzEventGridClient+[NoContext]+Update-AzEventGridClient+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview+4": {
+  "AzEventGridClient+[NoContext]+Update-AzEventGridClient+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "19" ],
-        "x-ms-client-request-id": [ "2e4a3dbe-8b5e-430b-9f4d-0e53eaff23da" ],
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "4ad7e44c-dc55-4fe1-8603-459b01df53da" ],
         "CommandName": [ "Update-AzEventGridClient" ],
         "FullCommandName": [ "Update-AzEventGridClient_UpdateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.1", "Az.EventGrid/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.EventGrid/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -470,37 +481,38 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "8849f4c0-f30a-4e90-a603-10fd782ef6c5" ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "999" ],
-        "x-ms-correlation-request-id": [ "c61518e8-56d2-4028-91fd-3678a436f28e" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091626Z:c61518e8-56d2-4028-91fd-3678a436f28e" ],
+        "x-ms-request-id": [ "4000167e-000c-fc00-b63f-84710c7967bb" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "998" ],
+        "x-ms-correlation-request-id": [ "db4d8b77-ae9a-4ca7-b69e-484abb90be7d" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023320Z:db4d8b77-ae9a-4ca7-b69e-484abb90be7d" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: E3F1B355F8C1425E96580061CFA4CA8E Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:16:24Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:16:26 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: BED1D57AEA694359BC9A573C5DA0BC0D Ref B: TYO201100117021 Ref C: 2024-05-01T02:33:19Z" ],
+        "Date": [ "Wed, 01 May 2024 02:33:19 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "532" ],
+        "Content-Length": [ "750" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"description\":\"This is a test client\",\"authenticationName\":\"ajtxmbl\",\"clientCertificateAuthentication\":{\"validationScheme\":\"SubjectMatchesAuthenticationName\"},\"state\":\"Enabled\",\"attributes\":{\"room\":\"345\",\"floor\":\"3\",\"deviceTypes\":\"AC\"},\"provisioningState\":\"Succeeded\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl\",\"name\":\"ajtxmbl\",\"type\":\"Microsoft.EventGrid/namespaces/clients\"}",
+      "Content": "{\"properties\":{\"description\":\"This is a test client\",\"authenticationName\":\"abqlpv5\",\"clientCertificateAuthentication\":{\"validationScheme\":\"SubjectMatchesAuthenticationName\"},\"state\":\"Enabled\",\"attributes\":{\"floor\":\"3\",\"room\":\"345\",\"deviceTypes\":\"AC\"},\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-01T02:31:29.4710958Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-01T02:32:47.0613899Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5\",\"name\":\"abqlpv5\",\"type\":\"Microsoft.EventGrid/namespaces/clients\"}",
       "isContentBase64": false
     }
   },
-  "AzEventGridClient+[NoContext]+Update-AzEventGridClientGroup+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview+1": {
+  "AzEventGridClient+[NoContext]+Update-AzEventGridClientGroup+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "101df2db-040f-4f72-bab3-8b694983de41" ],
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "52494c5c-8690-49ec-a086-c216f1cd7abc" ],
         "CommandName": [ "Update-AzEventGridClientGroup" ],
         "FullCommandName": [ "Update-AzEventGridClientGroup_UpdateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.1", "Az.EventGrid/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.EventGrid/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -512,28 +524,29 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "928693f4-40ca-4274-8a71-1884cddc2a7f" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
-        "x-ms-correlation-request-id": [ "230c7417-33c3-46c6-a8d5-138dd26007ef" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091626Z:230c7417-33c3-46c6-a8d5-138dd26007ef" ],
+        "x-ms-request-id": [ "400013aa-000c-fb00-b63f-84710c7967bb" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "158510d8-e2e5-41b5-a8af-a57504d1292a" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023321Z:158510d8-e2e5-41b5-a8af-a57504d1292a" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 3D099BFD914A40C9A88805DF2D971F1B Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:16:26Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:16:26 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 8C60F010B34A4A2BBD24AAF4EBA598FF Ref B: TYO201100117021 Ref C: 2024-05-01T02:33:20Z" ],
+        "Date": [ "Wed, 01 May 2024 02:33:21 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "367" ],
+        "Content-Length": [ "581" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"description\":null,\"query\":\"attributes.b IN [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027]\",\"provisioningState\":\"Succeeded\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj\",\"name\":\"ao2pryj\",\"type\":\"Microsoft.EventGrid/namespaces/clientGroups\"}",
+      "Content": "{\"properties\":{\"description\":null,\"query\":\"attributes.b IN [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027]\",\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-01T02:32:06.84682Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-01T02:32:06.84682Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6\",\"name\":\"acdhuj6\",\"type\":\"Microsoft.EventGrid/namespaces/clientGroups\"}",
       "isContentBase64": false
     }
   },
-  "AzEventGridClient+[NoContext]+Update-AzEventGridClientGroup+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview+2": {
+  "AzEventGridClient+[NoContext]+Update-AzEventGridClientGroup+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview+2": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"This is a test client group\",\r\n    \"query\": \"attributes.b IN [\\u0027a\\u0027, \\u0027b\\u0027, \\u0027c\\u0027, \\u0027d\\u0027]\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -549,38 +562,39 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "25a3233a-86cf-44ce-9895-c0e938c8031f" ],
+        "x-ms-request-id": [ "40000dfb-0003-f700-b63f-84710c7967bb" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-correlation-request-id": [ "7d32455d-49c1-4fc9-b63f-cc6579ae899a" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091628Z:7d32455d-49c1-4fc9-b63f-cc6579ae899a" ],
+        "x-ms-correlation-request-id": [ "f0960714-4318-4f83-becd-c31badadd3c5" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023324Z:f0960714-4318-4f83-becd-c31badadd3c5" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 53396D4ADC474E6DB645938161C90DD6 Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:16:26Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:16:28 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 5E0BF75004EE4E39A558D0FE121DA6DC Ref B: TYO201100117021 Ref C: 2024-05-01T02:33:22Z" ],
+        "Date": [ "Wed, 01 May 2024 02:33:23 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "397" ],
+        "Content-Length": [ "613" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"description\":\"This is a test client group\",\"query\":\"attributes.b IN [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027, \u0027d\u0027]\",\"provisioningState\":\"Succeeded\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj\",\"name\":\"ao2pryj\",\"type\":\"Microsoft.EventGrid/namespaces/clientGroups\"}",
+      "Content": "{\"properties\":{\"description\":\"This is a test client group\",\"query\":\"attributes.b IN [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027, \u0027d\u0027]\",\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-01T02:32:06.84682Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-01T02:33:22.6034478Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6\",\"name\":\"acdhuj6\",\"type\":\"Microsoft.EventGrid/namespaces/clientGroups\"}",
       "isContentBase64": false
     }
   },
-  "AzEventGridClient+[NoContext]+Update-AzEventGridClientGroup+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview+3": {
+  "AzEventGridClient+[NoContext]+Update-AzEventGridClientGroup+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "22" ],
-        "x-ms-client-request-id": [ "101df2db-040f-4f72-bab3-8b694983de41" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "52494c5c-8690-49ec-a086-c216f1cd7abc" ],
         "CommandName": [ "Update-AzEventGridClientGroup" ],
         "FullCommandName": [ "Update-AzEventGridClientGroup_UpdateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.1", "Az.EventGrid/0.1.0" ]
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.EventGrid/0.1.0" ]
       },
       "ContentHeaders": {
       }
@@ -591,79 +605,81 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "a7d68f7e-216c-4033-a3a7-31a7e466d9e6" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
-        "x-ms-correlation-request-id": [ "b06524bc-0375-4871-9231-f176ad987718" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091659Z:b06524bc-0375-4871-9231-f176ad987718" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F9D252A933AC43DBAE806FDF410E7837 Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:16:58Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:16:58 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "397" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"properties\":{\"description\":\"This is a test client group\",\"query\":\"attributes.b IN [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027, \u0027d\u0027]\",\"provisioningState\":\"Succeeded\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj\",\"name\":\"ao2pryj\",\"type\":\"Microsoft.EventGrid/namespaces/clientGroups\"}",
-      "isContentBase64": false
-    }
-  },
-  "AzEventGridClient+[NoContext]+Update-AzEventGridClientGroup+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "23" ],
-        "x-ms-client-request-id": [ "101df2db-040f-4f72-bab3-8b694983de41" ],
-        "CommandName": [ "Update-AzEventGridClientGroup" ],
-        "FullCommandName": [ "Update-AzEventGridClientGroup_UpdateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.1", "Az.EventGrid/0.1.0" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-request-id": [ "37af50a2-392b-4132-8941-ceff413bf740" ],
+        "x-ms-request-id": [ "400004fc-0003-ff00-b63f-84710c7967bb" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "cc239bd3-d12f-40dc-b2db-435e1972f584" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091659Z:cc239bd3-d12f-40dc-b2db-435e1972f584" ],
+        "x-ms-correlation-request-id": [ "c2fd472a-c591-4aa4-8d30-3325941cf002" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023356Z:c2fd472a-c591-4aa4-8d30-3325941cf002" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: CFD4271B2FC74B32BDAA9F9657C3A6A6 Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:16:59Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:16:59 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 6ED3FB1DE22D488B8F110972E108B882 Ref B: TYO201100117021 Ref C: 2024-05-01T02:33:54Z" ],
+        "Date": [ "Wed, 01 May 2024 02:33:55 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "397" ],
+        "Content-Length": [ "613" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"description\":\"This is a test client group\",\"query\":\"attributes.b IN [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027, \u0027d\u0027]\",\"provisioningState\":\"Succeeded\"},\"systemData\":null,\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj\",\"name\":\"ao2pryj\",\"type\":\"Microsoft.EventGrid/namespaces/clientGroups\"}",
+      "Content": "{\"properties\":{\"description\":\"This is a test client group\",\"query\":\"attributes.b IN [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027, \u0027d\u0027]\",\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-01T02:32:06.84682Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-01T02:33:22.6034478Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6\",\"name\":\"acdhuj6\",\"type\":\"Microsoft.EventGrid/namespaces/clientGroups\"}",
       "isContentBase64": false
     }
   },
-  "AzEventGridClient+[NoContext]+Remove-AzEventGridClientGroup+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview+1": {
+  "AzEventGridClient+[NoContext]+Update-AzEventGridClientGroup+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "52494c5c-8690-49ec-a086-c216f1cd7abc" ],
+        "CommandName": [ "Update-AzEventGridClientGroup" ],
+        "FullCommandName": [ "Update-AzEventGridClientGroup_UpdateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.EventGrid/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-request-id": [ "40001441-0006-f800-b63f-84710c7967bb" ],
+        "x-ms-throttling-version": [ "v1" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "9879af87-f3fc-4ad6-bb7a-a3f5632405ed" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023357Z:9879af87-f3fc-4ad6-bb7a-a3f5632405ed" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-Cache": [ "CONFIG_NOCACHE" ],
+        "X-MSEdge-Ref": [ "Ref A: 8D5A97BCEE6447C4BC2432A9F7189546 Ref B: TYO201100117021 Ref C: 2024-05-01T02:33:56Z" ],
+        "Date": [ "Wed, 01 May 2024 02:33:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "613" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"description\":\"This is a test client group\",\"query\":\"attributes.b IN [\u0027a\u0027, \u0027b\u0027, \u0027c\u0027, \u0027d\u0027]\",\"provisioningState\":\"Succeeded\"},\"systemData\":{\"createdBy\":\"v-jinpel@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2024-05-01T02:32:06.84682Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2024-05-01T02:33:22.6034478Z\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AZPS_TEST_GROUP_EVENTGRID/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6\",\"name\":\"acdhuj6\",\"type\":\"Microsoft.EventGrid/namespaces/clientGroups\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzEventGridClient+[NoContext]+Remove-AzEventGridClientGroup+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clientGroups/ao2pryj?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clientGroups/acdhuj6?api-version=2023-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "24" ],
-        "x-ms-client-request-id": [ "61396633-a50e-492b-aa9e-b021b4b23312" ],
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "848879b8-8e19-4596-9153-517a5750f161" ],
         "CommandName": [ "Remove-AzEventGridClientGroup" ],
         "FullCommandName": [ "Remove-AzEventGridClientGroup_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.1", "Az.EventGrid/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.EventGrid/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -675,14 +691,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-request-id": [ "3b9c7a68-0984-47bb-86be-34573236e7fc" ],
-        "x-ms-correlation-request-id": [ "3b9c7a68-0984-47bb-86be-34573236e7fc" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091700Z:3b9c7a68-0984-47bb-86be-34573236e7fc" ],
+        "x-ms-request-id": [ "a5345fb7-51c2-4fd6-bf11-4814bf7e6066" ],
+        "x-ms-correlation-request-id": [ "a5345fb7-51c2-4fd6-bf11-4814bf7e6066" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023359Z:a5345fb7-51c2-4fd6-bf11-4814bf7e6066" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 58EF2D41DF1947C0BA5A064B8528E867 Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:16:59Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:17:00 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 756CE52DBDF347F8AD8B02BB3F010477 Ref B: TYO201100117021 Ref C: 2024-05-01T02:33:57Z" ],
+        "Date": [ "Wed, 01 May 2024 02:33:58 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -692,19 +709,19 @@
       "isContentBase64": false
     }
   },
-  "AzEventGridClient+[NoContext]+Remove-AzEventGridClient+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview+1": {
+  "AzEventGridClient+[NoContext]+Remove-AzEventGridClient+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/avhyscn/clients/ajtxmbl?api-version=2023-06-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_eventgrid/providers/Microsoft.EventGrid/namespaces/a2fik5z/clients/abqlpv5?api-version=2023-06-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "25" ],
-        "x-ms-client-request-id": [ "47091b71-4d31-47f9-b78d-f9630d53ed48" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "57d93ff6-f6d3-4776-890a-c09657368ab1" ],
         "CommandName": [ "Remove-AzEventGridClient" ],
         "FullCommandName": [ "Remove-AzEventGridClient_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.1", "Az.EventGrid/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.4.2", "Az.EventGrid/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -716,14 +733,15 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-request-id": [ "888c2e64-c1c1-4642-a49b-0fdd2e2fc852" ],
-        "x-ms-correlation-request-id": [ "888c2e64-c1c1-4642-a49b-0fdd2e2fc852" ],
-        "x-ms-routing-request-id": [ "JAPANEAST:20240306T091703Z:888c2e64-c1c1-4642-a49b-0fdd2e2fc852" ],
+        "x-ms-request-id": [ "fda27ac1-012a-4974-a8d0-6e7f66f0f1e8" ],
+        "x-ms-correlation-request-id": [ "fda27ac1-012a-4974-a8d0-6e7f66f0f1e8" ],
+        "x-ms-routing-request-id": [ "JAPANEAST:20240501T023402Z:fda27ac1-012a-4974-a8d0-6e7f66f0f1e8" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7893EDE6A7444D11B6046E94B6DD7AD7 Ref B: TYO01EDGE1120 Ref C: 2024-03-06T09:17:01Z" ],
-        "Date": [ "Wed, 06 Mar 2024 09:17:03 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 63F0C403AF8E4A09875BE12012CB24D4 Ref B: TYO201100117021 Ref C: 2024-05-01T02:33:59Z" ],
+        "Date": [ "Wed, 01 May 2024 02:34:01 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

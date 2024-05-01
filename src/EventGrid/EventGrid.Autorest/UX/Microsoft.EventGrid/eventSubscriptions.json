@@ -6,12 +6,12 @@
   },
   "commands": [
     {
-      "name": "Get-AzEventGridEventSubscriptionDeliveryAttribute",
+      "name": "Get-AzEventGridSubscriptionDeliveryAttribute",
       "description": "Get all delivery attributes for an event subscription.",
       "path": "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgrideventsubscriptiondeliveryattribute"
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridsubscriptiondeliveryattribute"
         },
         "parameterSets": [
           {
@@ -39,12 +39,12 @@
       ]
     },
     {
-      "name": "Get-AzEventGridEventSubscriptionFullUrl",
+      "name": "Get-AzEventGridSubscriptionFullUrl",
       "description": "Get the full endpoint URL for an event subscription.",
       "path": "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgrideventsubscriptionfullurl"
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridsubscriptionfullurl"
         },
         "parameterSets": [
           {
@@ -72,12 +72,12 @@
       ]
     },
     {
-      "name": "Get-AzEventGridEventSubscription",
+      "name": "Get-AzEventGridSubscription",
       "description": "Get properties of an event subscription.",
       "path": "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgrideventsubscription"
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridsubscription"
         },
         "parameterSets": [
           {
@@ -105,12 +105,12 @@
       ]
     },
     {
-      "name": "Remove-AzEventGridEventSubscription",
+      "name": "Remove-AzEventGridSubscription",
       "description": "Delete an existing event subscription.",
       "path": "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/remove-azeventgrideventsubscription"
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/remove-azeventgridsubscription"
         },
         "parameterSets": [
           {

@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Asynchronously Create an event subscription of a namespace topic with the specified parameters.
-Existing event subscriptions will be updated with this API.
+Existing event subscriptions will be Created with this API.
 
 ## SYNTAX
 
@@ -72,7 +72,7 @@ New-AzEventGridNamespaceTopicEventSubscription -EventSubscriptionName <String> -
 
 ## DESCRIPTION
 Asynchronously Create an event subscription of a namespace topic with the specified parameters.
-Existing event subscriptions will be updated with this API.
+Existing event subscriptions will be Created with this API.
 
 ## EXAMPLES
 
@@ -433,7 +433,7 @@ The user identity associated with the resource.
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded, CreateViaIdentityNamespaceExpanded, CreateViaIdentityTopicExpanded
-Aliases:
+Aliases: IdentityId
 
 Required: False
 Position: Named

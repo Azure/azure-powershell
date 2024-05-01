@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzEventGridDomain
 
 ## SYNOPSIS
-Asynchronously Create a new domain with the specified parameters.
+Asynchronously Update a new domain with the specified parameters.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzEventGridDomain -InputObject <IEventGridIdentity> [-AutoCreateTopicWith
 ```
 
 ## DESCRIPTION
-Asynchronously Create a new domain with the specified parameters.
+Asynchronously Update a new domain with the specified parameters.
 
 ## EXAMPLES
 
@@ -439,7 +439,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 ```yaml
 Type: System.String[]
 Parameter Sets: (All)
-Aliases:
+Aliases: IdentityId
 
 Required: False
 Position: Named

@@ -60,9 +60,9 @@ Describe 'AzEventGridNamespace' {
         } | Should -Not -Throw
     }
 
-    It 'Get-AzEventGridNamespaceSharedAccessKey' {
+    It 'Get-AzEventGridNamespaceKey' {
         {
-            $config = Get-AzEventGridNamespaceSharedAccessKey -ResourceGroupName $env.resourceGroup -Name $env.namespace2
+            $config = Get-AzEventGridNamespaceKey -ResourceGroupName $env.resourceGroup -Name $env.namespace2
             $config.Key1 | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }
@@ -81,9 +81,9 @@ Describe 'AzEventGridNamespace' {
         } | Should -Not -Throw
     }
 
-    It 'Get-AzEventGridNamespaceTopicSharedAccessKey' {
+    It 'Get-AzEventGridNamespaceTopicKey' {
         {
-            $config = Get-AzEventGridNamespaceTopicSharedAccessKey -NamespaceName $env.namespace2 -ResourceGroupName $env.resourceGroup -TopicName $env.namespaceTopic
+            $config = Get-AzEventGridNamespaceTopicKey -NamespaceName $env.namespace2 -ResourceGroupName $env.resourceGroup -TopicName $env.namespaceTopic
             $config.Key1 | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }

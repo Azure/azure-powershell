@@ -6,12 +6,12 @@
   },
   "commands": [
     {
-      "name": "Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute",
-      "description": "Get all delivery attributes for an event subscription of a partner topic.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
+      "name": "Get-AzEventGridFullUrlForPartnerTopicEventSubscription",
+      "description": "Get the full endpoint URL for an event subscription of a partner topic.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridpartnertopiceventsubscriptiondeliveryattribute"
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridfullurlforpartnertopiceventsubscription"
         },
         "parameterSets": [
           {
@@ -26,7 +26,7 @@
       },
       "examples": [
         {
-          "description": "Get all delivery attributes for an event subscription of a partner topic.",
+          "description": "Get the full endpoint URL for an event subscription of a partner topic.",
           "parameters": [
             {
               "name": "-EventSubscriptionName",
@@ -49,12 +49,12 @@
       ]
     },
     {
-      "name": "Get-AzEventGridPartnerTopicEventSubscriptionFullUrl",
-      "description": "Get the full endpoint URL for an event subscription of a partner topic.",
-      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
+      "name": "Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute",
+      "description": "Get all delivery attributes for an event subscription of a partner topic.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerTopics/{partnerTopicName}/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
       "help": {
         "learnMore": {
-          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridpartnertopiceventsubscriptionfullurl"
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridpartnertopiceventsubscriptiondeliveryattribute"
         },
         "parameterSets": [
           {
@@ -69,7 +69,7 @@
       },
       "examples": [
         {
-          "description": "Get the full endpoint URL for an event subscription of a partner topic.",
+          "description": "Get all delivery attributes for an event subscription of a partner topic.",
           "parameters": [
             {
               "name": "-EventSubscriptionName",

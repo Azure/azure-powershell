@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Asynchronously Create an event subscription of a partner topic with the specified parameters.
-Existing event subscriptions will be updated with this API.
+Existing event subscriptions will be Created with this API.
 
 ## SYNTAX
 
@@ -73,7 +73,7 @@ New-AzEventGridPartnerTopicEventSubscription -EventSubscriptionName <String> -Pa
 
 ## DESCRIPTION
 Asynchronously Create an event subscription of a partner topic with the specified parameters.
-Existing event subscriptions will be updated with this API.
+Existing event subscriptions will be Created with this API.
 
 ## EXAMPLES
 

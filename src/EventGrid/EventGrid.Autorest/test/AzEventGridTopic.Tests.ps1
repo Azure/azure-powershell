@@ -90,9 +90,9 @@ Describe 'AzEventGridTopic' {
         } | Should -Not -Throw
     }
 
-    It 'Get-AzEventGridTopicSharedAccessKey'{
+    It 'Get-AzEventGridTopicKey'{
         {
-            $config = Get-AzEventGridTopicSharedAccessKey -ResourceGroupName $env.resourceGroup -TopicName $env.topic
+            $config = Get-AzEventGridTopicKey -ResourceGroupName $env.resourceGroup -TopicName $env.topic
             $config.key1 | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }
@@ -118,7 +118,7 @@ Describe 'AzEventGridTopic' {
         } | Should -Not -Throw
     }
 
-    It 'Get-AzEventGridTopicTypeEventType' {
+    It 'Get-AzEventGridPermissionBinding' {
         {
             $config = Get-AzEventGridPermissionBinding -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.permissionBind
             $config.Name | Should -Be $env.permissionBind
@@ -148,7 +148,7 @@ Describe 'AzEventGridTopic' {
         } | Should -Not -Throw
     }
 
-    It 'Update-AzEventGridTopicSpace' {
+    It 'Update-AzEventGridPermissionBinding' {
         {
             $config = Update-AzEventGridPermissionBinding -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.permissionBind -ClientGroupName $env.clientGroup -Permission Publisher -TopicSpaceName $env.topicSpace
             $config.Name | Should -Be $env.permissionBind

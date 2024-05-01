@@ -51,9 +51,9 @@ Describe 'AzEventGridSystemTopic' {
         } | Should -Not -Throw
     }
 
-    It 'Get-AzEventGridSystemTopicEventSubscriptionFullUrl' {
+    It 'Get-AzEventGridFullUrlForSystemTopicEventSubscription' {
         {
-            $config = Get-AzEventGridSystemTopicEventSubscriptionFullUrl -ResourceGroupName $env.resourceGroup -SystemTopicName $env.sysTopic -EventSubscriptionName $env.sysTopicEventSub
+            $config = Get-AzEventGridFullUrlForSystemTopicEventSubscription -ResourceGroupName $env.resourceGroup -SystemTopicName $env.sysTopic -EventSubscriptionName $env.sysTopicEventSub
             $config.EndpointUrl | Should -Be $env.EndpointUrl
         } | Should -Not -Throw
     }

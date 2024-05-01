@@ -548,7 +548,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 ```yaml
 Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: IdentityId
 
 Required: False
 Position: Named

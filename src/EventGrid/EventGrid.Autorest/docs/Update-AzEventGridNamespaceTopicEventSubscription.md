@@ -457,7 +457,7 @@ The user identity associated with the resource.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded, UpdateViaIdentityNamespaceExpanded, UpdateViaIdentityTopicExpanded
-Aliases:
+Aliases: IdentityId
 
 Required: False
 Position: Named

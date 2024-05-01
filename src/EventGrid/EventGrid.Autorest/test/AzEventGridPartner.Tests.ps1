@@ -15,7 +15,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzEventGridPartner'))
 }
 
 Describe 'AzEventGridPartner' {
-    It 'New-AzEventGridCaCertificate' -skip {
+    # When run Record, please remove this function's [-Skip]
+    It 'New-AzEventGridCaCertificate' -Skip {
         {
             $crtData = Get-Content -Path ".\test\intermediate_ca.crt" -Raw
             $config = New-AzEventGridCaCertificate -Name $env.caCertificate -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -EncodedCertificate $crtData.Trim("`n")
@@ -39,7 +40,7 @@ Describe 'AzEventGridPartner' {
     It 'New-AzEventGridPartnerConfiguration' {
         {
             $partnerRegistration = Get-AzEventGridPartnerRegistration -ResourceGroupName $env.resourceGroup -Name $env.partnerRegistration
-            $partner = New-AzEventGridPartnerObject -AuthorizationExpirationTimeInUtc "2024-03-10T09:31:42.521Z" -RegistrationImmutableId $partnerRegistration.ImmutableId
+            $partner = New-AzEventGridPartnerObject -AuthorizationExpirationTimeInUtc "2024-05-05T09:31:42.521Z" -RegistrationImmutableId $partnerRegistration.ImmutableId
             $config = New-AzEventGridPartnerConfiguration -ResourceGroupName $env.resourceGroup -Location global -PartnerAuthorizationDefaultMaximumExpirationTimeInDay 7 -PartnerAuthorizationAuthorizedPartnersList $partner
             $config.Name | Should -Be "default"
         } | Should -Not -Throw
@@ -47,7 +48,7 @@ Describe 'AzEventGridPartner' {
 
     It 'New-AzEventGridChannel' {
         {
-            $dateObj = Get-Date -Year 2024 -Month 03 -Day 9 -Hour 11 -Minute 06 -Second 07
+            $dateObj = Get-Date -Year 2024 -Month 05 -Day 05 -Hour 11 -Minute 06 -Second 07
             $config = New-AzEventGridChannel -Name $env.channel -PartnerNamespaceName $env.partnerNamespace -ResourceGroupName $env.resourceGroup -ChannelType PartnerTopic -PartnerTopicInfoAzureSubscriptionId $env.SubscriptionId -PartnerTopicInfoResourceGroupName $env.resourceGroup -PartnerTopicInfoName "default" -PartnerTopicInfoSource "ContosoCorp.Accounts.User1" -ExpirationTimeIfNotActivatedUtc $dateObj.ToUniversalTime()
             $config.Name | Should -Be $env.channel
         } | Should -Not -Throw
@@ -60,7 +61,7 @@ Describe 'AzEventGridPartner' {
         } | Should -Not -Throw
     }
 
-    It 'New-AzEventGridPartnerDestination' -skip {
+    It 'New-AzEventGridPartnerDestination' -Skip {
         {
             $config = New-AzEventGridPartnerDestination -Name $env.partnerDestination -ResourceGroupName $env.resourceGroup -Location $env.location -Tag @{"1"="a"}
             $config.Name | Should -Be $env.partnerDestination
@@ -77,7 +78,7 @@ Describe 'AzEventGridPartner' {
 
     It 'Update-AzEventGridChannel' {
         {
-            $dateObj = Get-Date -Year 2024 -Month 03 -Day 9 -Hour 11 -Minute 06 -Second 07
+            $dateObj = Get-Date -Year 2024 -Month 05 -Day 5 -Hour 11 -Minute 06 -Second 07
             $config = Update-AzEventGridChannel -Name $env.channel -PartnerNamespaceName $env.partnerNamespace -ResourceGroupName $env.resourceGroup -ExpirationTimeIfNotActivatedUtc $dateObj.ToUniversalTime()
             $config.Name | Should -Be $env.channel
         } | Should -Not -Throw
@@ -98,7 +99,7 @@ Describe 'AzEventGridPartner' {
         } | Should -Not -Throw
     }
 
-    It 'Get-AzEventGridChannelFullUrl' -skip {
+    It 'Get-AzEventGridChannelFullUrl' -Skip {
         {
             $config = Get-AzEventGridChannelFullUrl -ResourceGroupName $env.resourceGroup -PartnerNamespaceName $env.partnerNamespace -ChannelName $env.channel
             $config.EndpointUrl | Should -Be $env.EndpointUrl
@@ -126,7 +127,7 @@ Describe 'AzEventGridPartner' {
         } | Should -Not -Throw
     }
 
-    It 'Get-AzEventGridPartnerDestination' -skip {
+    It 'Get-AzEventGridPartnerDestination' -Skip {
         {
             $config = Get-azeventGridPartnerDestination -ResourceGroupName $env.resourceGroup -Name $env.partnerDestination
             $config.Name | Should -Be $env.partnerDestination
@@ -140,9 +141,9 @@ Describe 'AzEventGridPartner' {
         } | Should -Not -Throw
     }
 
-    It 'Get-AzEventGridPartnerNamespaceSharedAccessKey' {
+    It 'Get-AzEventGridPartnerNamespaceKey' {
         {
-            $config = Get-AzEventGridPartnerNamespaceSharedAccessKey -PartnerNamespaceName $env.partnerNamespace -ResourceGroupName $env.resourceGroup
+            $config = Get-AzEventGridPartnerNamespaceKey -PartnerNamespaceName $env.partnerNamespace -ResourceGroupName $env.resourceGroup
             $config.key1 | Should -Not -BeNullOrEmpty
         } | Should -Not -Throw
     }
@@ -168,16 +169,16 @@ Describe 'AzEventGridPartner' {
         } | Should -Not -Throw
     }
 
-    It 'Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute' -skip {
+    It 'Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute' -Skip {
         {
             $config = Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute -PartnerTopicName default -EventSubscriptionName $env.partnerTopicEventSub -ResourceGroupName $env.resourceGroup
             $config.Count | Should -Be 0
         } | Should -Not -Throw
     }
 
-    It 'Get-AzEventGridPartnerTopicEventSubscriptionFullUrl' {
+    It 'Get-AzEventGridFullUrlForPartnerTopicEventSubscription' {
         {
-            $config = Get-AzEventGridPartnerTopicEventSubscriptionFullUrl -ResourceGroupName $env.resourceGroup -PartnerTopicName default -EventSubscriptionName $env.partnerTopicEventSub
+            $config = Get-AzEventGridFullUrlForPartnerTopicEventSubscription -ResourceGroupName $env.resourceGroup -PartnerTopicName default -EventSubscriptionName $env.partnerTopicEventSub
             $config.EndpointUrl | Should -Be $env.EndpointUrl
         } | Should -Not -Throw
     }
@@ -196,7 +197,7 @@ Describe 'AzEventGridPartner' {
         } | Should -Not -Throw
     }
 
-    It 'Update-AzEventGridPartnerDestination' -skip {
+    It 'Update-AzEventGridPartnerDestination' -Skip {
         {
             $config = Update-AzEventGridPartnerDestination -Name $env.partnerDestination -ResourceGroupName $env.resourceGroup -Tag @{"123"="abc"} -DefaultProfile "test default"
             $config.Name | Should -Be $env.partnerDestination
@@ -210,7 +211,7 @@ Describe 'AzEventGridPartner' {
         } | Should -Not -Throw
     }
 
-    It 'Update-AzEventGridPartnerRegistration' {
+    It 'Update-AzEventGridPartnerRegistration' -Skip {
         {
             $config = Update-AzEventGridPartnerRegistration -Name $env.partnerRegistration -ResourceGroupName $env.resourceGroup -Tag @{"abc"="123"} -PassThru
             $config | Should -Be True

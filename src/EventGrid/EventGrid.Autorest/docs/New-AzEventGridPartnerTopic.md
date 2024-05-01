@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEventGridPartnerTopic
 
 ## SYNOPSIS
-Asynchronously creates a new partner topic with the specified parameters.
+Asynchronously Create a new partner topic with the specified parameters.
 
 ## SYNTAX
 
@@ -48,7 +48,7 @@ New-AzEventGridPartnerTopic -Name <String> -ResourceGroupName <String> -JsonStri
 ```
 
 ## DESCRIPTION
-Asynchronously creates a new partner topic with the specified parameters.
+Asynchronously Create a new partner topic with the specified parameters.
 
 ## EXAMPLES
 
@@ -396,7 +396,7 @@ The elements in array will be ARM resource ids in the form: '/subscriptions/{sub
 ```yaml
 Type: System.String[]
 Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
+Aliases: IdentityId
 
 Required: False
 Position: Named

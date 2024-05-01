@@ -455,15 +455,74 @@ directive:
       verb: Grant
       subject: PartnerConfigurationPartner
     set:
-      verb: Enable
       subject: PartnerConfiguration
 
   - where:
       verb: Invoke
       subject: PartnerConfigurationUnauthorize
     set:
-      verb: Disable
+      verb: Revoke
       subject: PartnerConfiguration
+
+  - where:
+      subject: PartnerTopicEventSubscriptionFullUrl
+    set:
+      subject: FullUrlForPartnerTopicEventSubscription
+
+  - where:
+      subject: SystemTopicEventSubscriptionFullUrl
+    set:
+      subject: FullUrlForSystemTopicEventSubscription
+
+  - where:
+      subject: EventSubscription
+    set:
+      subject: Subscription
+
+  - where:
+      subject: EventSubscriptionDeliveryAttribute
+    set:
+      subject: SubscriptionDeliveryAttribute
+
+  - where:
+      subject: EventSubscriptionFullUrl
+    set:
+      subject: SubscriptionFullUrl
+
+  - where:
+      subject: EventSubscriptionGlobal
+    set:
+      subject: SubscriptionGlobal
+
+  - where:
+      subject: EventSubscriptionRegional
+    set:
+      subject: SubscriptionRegional
+
+  - where:
+      subject: DomainSharedAccessKey
+    set:
+      subject: DomainKey
+
+  - where:
+      subject: PartnerNamespaceSharedAccessKey
+    set:
+      subject: PartnerNamespaceKey
+
+  - where:
+      subject: TopicSharedAccessKey
+    set:
+      subject: TopicKey
+
+  - where:
+      subject: NamespaceSharedAccessKey
+    set:
+      subject: NamespaceKey
+
+  - where:
+      subject: NamespaceTopicSharedAccessKey
+    set:
+      subject: NamespaceTopicKey
 
   - no-inline:
     - EventSubscriptionDestination
@@ -493,6 +552,11 @@ directive:
       subject: CaCertificate
     remove: true
 
+  - where:
+      verb: Update
+      subject: PartnerRegistration
+    remove: true
+
 # start: Modifications for disruptive changes
   - where:
       parameter-name: ResourceGroupName
@@ -506,8 +570,45 @@ directive:
       alias: Domain
 
   - where:
-      parameter-name: UserAssignedIdentity
+      subject: Domain
+      parameter-name: IdentityUserAssignedIdentity
     set:
+      parameter-name: UserAssignedIdentity
+      alias: IdentityId
+
+  - where:
+      subject: Namespace
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: UserAssignedIdentity
+      alias: IdentityId
+
+  - where:
+      subject: NamespaceTopicEventSubscription
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: UserAssignedIdentity
+      alias: IdentityId
+
+  - where:
+      subject: PartnerTopic
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: UserAssignedIdentity
+      alias: IdentityId
+
+  - where:
+      subject: SystemTopic
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: UserAssignedIdentity
+      alias: IdentityId
+
+  - where:
+      subject: Topic
+      parameter-name: IdentityUserAssignedIdentity
+    set:
+      parameter-name: UserAssignedIdentity
       alias: IdentityId
 
   - where:
@@ -543,16 +644,6 @@ directive:
       alias: InlineEvent
 
   - where:
-      verb: Enable
-      subject: PartnerConfiguration
-    set:
-      alias: Grant-AzEventGridPartnerConfiguration
-  - where:
-      verb: Disable
-      subject: PartnerConfiguration
-    set:
-      alias: Revoke-AzEventGridPartnerConfiguration
-  - where:
       subject: PartnerConfiguration
       parameter-name: AuthorizationExpirationTimeInUtc
     set:
@@ -568,11 +659,6 @@ directive:
     set:
       alias: AuthorizedPartner
 
-  - where:
-      verb: Get
-      subject: DomainSharedAccessKey
-    set:
-      alias: Get-AzEventGridDomainKey
   - where:
       verb: Get
       subject: DomainSharedAccessKey
@@ -645,22 +731,10 @@ directive:
 
   - where:
       verb: Get
-      subject: PartnerTopicEventSubscriptionFullUrl
+      subject: FullUrlForPartnerTopicEventSubscription
       parameter-name: EventSubscriptionName
     set:
       alias: Name
-
-  - where:
-      verb: Get
-      subject: PartnerTopicEventSubscriptionFullUrl
-    set:
-      alias: Get-AzEventGridFullUrlForPartnerTopicEventSubscription
-
-  - where:
-      verb: Get
-      subject: SystemTopicEventSubscriptionFullUrl
-    set:
-      alias: Get-AzEventGridFullUrlForSystemTopicEventSubscription
 
   - where:
       subject: SystemTopicEventSubscription
@@ -715,107 +789,73 @@ directive:
 
   - where:
       verb: Get
-      subject: PartnerNamespaceSharedAccessKey
-    set:
-      alias: Get-AzEventGridPartnerNamespaceKey
-
-  - where:
-      verb: Get
-      subject: NamespaceSharedAccessKey
+      subject: NamespaceKey
       parameter-name: NamespaceName
     set:
       alias: Name
 
   - where:
       verb: Get
-      subject: EventSubscription
-    set:
-      alias: Get-AzEventGridSubscription
-  - where:
-      verb: Get
-      subject: EventSubscription
+      subject: Subscription
       parameter-name: TopicName
     set:
       alias: DomainTopicName
   - where:
-      subject: EventSubscription
+      subject: Subscription
       parameter-name: FilterSubjectBeginsWith
     set:
       alias: SubjectBeginsWith
   - where:
-      subject: EventSubscription
+      subject: Subscription
       parameter-name: FilterSubjectEndsWith
     set:
       alias: SubjectEndsWith
   - where:
-      subject: EventSubscription
+      subject: Subscription
       parameter-name: FilterIsSubjectCaseSensitive
     set:
       alias: SubjectCaseSensitive
   - where:
-      subject: EventSubscription
+      subject: Subscription
       parameter-name: FilterIncludedEventType
     set:
       alias: IncludedEventType
   - where:
-      subject: EventSubscription
+      subject: Subscription
       parameter-name: RetryPolicyEventTimeToLiveInMinute
     set:
       alias: EventTtl
   - where:
-      subject: EventSubscription
+      subject: Subscription
       parameter-name: RetryPolicyMaxDeliveryAttempt
     set:
       alias: MaxDeliveryAttempt
   - where:
-      subject: EventSubscription
+      subject: Subscription
       parameter-name: EventDeliverySchema
     set:
       alias: DeliverySchema
   - where:
-      subject: EventSubscription
+      subject: Subscription
       parameter-name: ExpirationTimeUtc
     set:
       alias: ExpirationDate
   - where:
-      subject: EventSubscription
+      subject: Subscription
       parameter-name: FilterAdvancedFilter
     set:
       alias: AdvancedFilter
   - where:
-      subject: EventSubscription
+      subject: Subscription
       parameter-name: FilterEnableAdvancedFilteringOnArray
     set:
       alias: AdvancedFilteringOnArray
 
   - where:
       verb: Get
-      subject: TopicSharedAccessKey
-    set:
-      alias: Get-AzEventGridTopicKey
-  - where:
-      verb: Get
-      subject: TopicSharedAccessKey
+      subject: TopicKey
       parameter-name: TopicName
     set:
       alias: Name
-
-  - where:
-      verb: New
-      subject: EventSubscription
-    set:
-      alias: New-AzEventGridSubscription
-
-  - where:
-      verb: Remove
-      subject: EventSubscription
-    set:
-      alias: Remove-AzEventGridSubscription
-
-  - where:
-      verb: Update
-      subject: EventSubscription
-    set:
-      alias: Update-AzEventGridSubscription
 # end: Modifications for disruptive changes
 ```
