@@ -5272,3 +5272,48 @@ function Test-VirtualMachineScaleSetSecurityTypeAndFlexDefaults
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set securityType TrustedLaunch is default
+and also defaults in Vmss Flex.
+#>
+function Test-VirtualMachineScaleSetDefaultImgWhenStandard
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        #$rgname = "adsandstnd2";
+        #$loc = "eastus";
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssName = 'vs' + $rgname;
+
+        $domainNameLabel1 = "d1" + $rgname;
+        $enable = $true;
+        $securityTypeST = "Standard";
+        $adminUsername = Get-ComputeTestResourceName;
+        $password = Get-PasswordForVM;
+        $adminPassword = $password | ConvertTo-SecureString -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+        # Requirements for the TrustedLaunch default behavior.
+        $vmss = New-AzVmss -ResourceGroupName $rgname -Credential $cred -VMScaleSetName $vmssName -SecurityType $securityTypeST -DomainNameLabel $domainNameLabel1;
+
+        #Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.SecurityType $securityTypeST;
+        #Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $enable;
+        #Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $enable;
+        Assert-AreEqual $vmss.OrchestrationMode "Flexible";
+        Assert-Null $vmss.SecurityProfile;
+        Assert-AreEqual $vmss.VirtualMachineProfile.StorageProfile.ImageReference.Sku "2022-datacenter-azure-edition";
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

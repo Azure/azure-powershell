@@ -74,15 +74,29 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             {
                                 // TL defaulting for default param set, config object.
                                 // if security type not set, 
-                                // if parameters.VirtualMachineProfile.StorageProfile.ImageReference.SharedGalleryImageId == null
-                                // if parameters.VirtualMachineProfile.StorageProfile.ImageReference.Id == null
-                                // if parameters.VirtualMachineProfile.StorageProfile.OsDisk == null
+
                                 if (this.VirtualMachineScaleSet.VirtualMachineProfile?.SecurityProfile?.SecurityType == null
                                     && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.ImageReference == null
                                     && this.VirtualMachineScaleSet.VirtualMachineProfile?.StorageProfile?.OsDisk == null)
                                 {
                                     trustedLaunchDefaultingSecurityValues();
                                     trustedLaunchDefaultingImageValues();
+                                }
+                                // if securityType is Standard explicitly.
+                                else if (this.VirtualMachineScaleSet.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == ConstantValues.StandardSecurityType
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference == null
+                                    && this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk == null)
+                                {
+                                    this.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
+                                    /*
+                                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.ImageReference = new ImageReference
+                                    {
+                                        Publisher = "MicrosoftWindowsServer",
+                                        Offer = "WindowsServer",
+                                        Sku = "2022-Datacenter-Azure-Edition",
+                                        Version = "latest"
+                                    };
+                                    */
                                 }
 
                                 if (this.VirtualMachineScaleSet.VirtualMachineProfile?.SecurityProfile?.SecurityType == null
@@ -97,6 +111,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                     specificImageRespone = retrieveSpecificImageFromNotId();
                                     setHyperVGenForImageCheckAndTLDefaulting(specificImageRespone);
                                 }
+
                             }
 
                             string resourceGroupName = this.ResourceGroupName;
@@ -131,6 +146,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                     parameters.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings(true, true);
                                 }
                             }
+
 
                             // For Cross-tenant RBAC sharing
                             Dictionary<string, List<string>> auxAuthHeader = null;
@@ -168,17 +184,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 {
                                     parameters.VirtualMachineProfile.SecurityProfile.SecurityType = null;
                                 }
-                            }
-
-                            if (parameters.VirtualMachineProfile?.SecurityProfile?.SecurityType?.ToLower() == "standard")
-                            {
-                                parameters.VirtualMachineProfile.StorageProfile.ImageReference = new ImageReference
-                                {
-                                    Publisher = "MicrosoftWindowsServer",
-                                    Offer = "WindowsServer",
-                                    Sku = "2022-Datacenter-Azure-Edition",
-                                    Version = "latest"
-                                };
                             }
 
                             VirtualMachineScaleSet result;

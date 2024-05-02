@@ -7488,3 +7488,50 @@ function Test-CapacityReservationSharingProfile
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machines default to SecurityType = TrustedLaunch.
+Other necessary defaults also occur for TL support.
+EncryptionAtHost (a feature requiring a feature flag) must be null.
+#>
+function Test-VMDefaultsToTrustedLaunchImgWhenStnd
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        $rgname = "adsandstdvm1";
+        $loc = "eastus";
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        # SimpleParameterSet, no config, scenario.
+        # create credential 
+        $password = "Testing1234567";#Get-PasswordForVM;
+        $user = "usertest";#Get-ComputeTestResourceName;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Add one VM from creation 
+        $vmname = 'vm' + $rgname;
+        $domainNameLabel = "d1" + $rgname;
+        $securityTypeST = "Standard";
+        $SKU = "2022-datacenter-azure-edition";
+        $disable = $false;
+        $enable = $true;
+
+        $vm = New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -SecurityType $securityTypeST -DomainNameLabel $domainNameLabel; 
+
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+
+        # Validate
+        Assert-AreEqual $vm.StorageProfile.ImageReference.Sku $SKU;
+        Assert-Null $vm.SecurityProfile;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}

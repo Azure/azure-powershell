@@ -767,9 +767,15 @@ namespace Microsoft.Azure.Commands.Compute
                     this.EnableVtpm = this.EnableVtpm ?? true;
                     this.EnableSecureBoot = this.EnableSecureBoot ?? true;
                 }
+                // Default in TL Image to ease later migration. 
                 else if (this.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
                 {
-                    this.SecurityType = this.SecurityType;
+                    if (!this.IsParameterBound(c => c.Image)
+                    && !this.IsParameterBound(c => c.ImageReferenceId)
+                    && !this.IsParameterBound(c => c.SharedGalleryImageId))
+                    {
+                        this.Image = ConstantValues.TrustedLaunchDefaultImageAlias;
+                    }
                 }
                 
             }

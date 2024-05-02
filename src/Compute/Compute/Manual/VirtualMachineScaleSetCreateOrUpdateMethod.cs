@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "Win2012R2Datacenter", 
             "Win2012Datacenter")]
         [Alias("Image")]
-        public string ImageName { get; set; } = "Win2016Datacenter";
+        public string ImageName { get; set; } = ConstantValues.DefaultVMandVMSSImage;
 
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
         public PSCredential Credential { get; set; }
@@ -540,15 +540,66 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 {
                     if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
                     {
-                        _cmdlet.SecurityType = _cmdlet.SecurityType;
                         _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
                         _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
                     }
                     else if (_cmdlet.SecurityType?.ToLower() == ConstantValues.StandardSecurityType)
                     {
-                        _cmdlet.SecurityType = _cmdlet.SecurityType;
+                        // default the imagereference or image parameter to Win2022AzureEdition img.
+                        if (!_cmdlet.IsParameterBound(c => c.ImageName) && !_cmdlet.IsParameterBound(c => c.ImageReferenceId)
+                        && !_cmdlet.IsParameterBound(c => c.SharedGalleryImageId))
+                        {
+                            _cmdlet.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
+                        }
                     }
                 }
+                // TL default for Simple Param Set, no config object
+                //reached this code too.
+                else if (!_cmdlet.IsParameterBound(c => c.SecurityType)
+                    && !_cmdlet.IsParameterBound(c => c.ImageName)
+                    && !_cmdlet.IsParameterBound(c => c.ImageReferenceId)
+                    && !_cmdlet.IsParameterBound(c => c.SharedGalleryImageId))
+                {
+                    _cmdlet.SecurityType = ConstantValues.TrustedLaunchSecurityType;
+                    if (!_cmdlet.IsParameterBound(c => c.ImageName) && !_cmdlet.IsParameterBound(c => c.ImageReferenceId) 
+                        && !_cmdlet.IsParameterBound(c => c.SharedGalleryImageId))
+                    {
+                        _cmdlet.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
+                    }
+                    if (!_cmdlet.IsParameterBound(c => c.EnableSecureBoot))
+                    {
+                        _cmdlet.EnableSecureBoot = true;
+                    }
+                    if (!_cmdlet.IsParameterBound(c => c.EnableVtpm))
+                    {
+                        _cmdlet.EnableVtpm = true;
+                    }
+                }
+
+                // API does not currently support Standard securityType value, so need to null it out here. 
+                if (_cmdlet.IsParameterBound(c => c.SecurityType)
+                    && _cmdlet.SecurityType != null
+                    && _cmdlet.SecurityType.ToString().ToLower() == ConstantValues.StandardSecurityType)
+                {
+                    _cmdlet.SecurityType = null;
+                }
+
+                //TrustedLaunch value defaulting for UEFI values.
+                if (_cmdlet.IsParameterBound(c => c.SecurityType))
+                {
+                    if (_cmdlet.SecurityType?.ToLower() == ConstantValues.TrustedLaunchSecurityType || _cmdlet.SecurityType?.ToLower() == ConstantValues.ConfidentialVMSecurityType)
+                    {
+                        _cmdlet.EnableVtpm = _cmdlet.EnableVtpm ?? true;
+                        _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot ?? true;
+                    }
+                }
+
+
+
+
+
+
+
                 _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
 
                 var networkSecurityGroup = noZones
@@ -630,7 +681,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 && !this.IsParameterBound(c => c.SharedGalleryImageId))
             {
                 this.SecurityType = ConstantValues.TrustedLaunchSecurityType;
-                if (!this.IsParameterBound(c => c.ImageName) && !this.IsParameterBound(c => c.ImageReferenceId) && !this.IsParameterBound(c => c.SharedGalleryImageId))
+                if (!this.IsParameterBound(c => c.ImageName) && !this.IsParameterBound(c => c.ImageReferenceId) 
+                    && !this.IsParameterBound(c => c.SharedGalleryImageId))
                 {
                     this.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
                 }
@@ -643,7 +695,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.EnableVtpm = true;
                 }
             }
-            
+            // default Win2022AzureEdition img for explicitly set Standard.
+            // handles when default img was set for ImageName parameter.
+            this.ImageReferenceId = this.ImageReferenceId;
+            this.SharedGalleryImageId = this.SharedGalleryImageId;
+            if (this.IsParameterBound(c => c.SecurityType)
+                && this.SecurityType.ToLower() == ConstantValues.StandardSecurityType
+                && this.ImageName == ConstantValues.DefaultVMandVMSSImage
+                && !this.IsParameterBound(c => c.ImageReferenceId)
+                && !this.IsParameterBound(c => c.SharedGalleryImageId))
+            {
+                this.ImageName = ConstantValues.TrustedLaunchDefaultImageAlias;
+            }
+
             // API does not currently support Standard securityType value, so need to null it out here. 
             if (this.IsParameterBound(c => c.SecurityType)
                 && this.SecurityType != null
