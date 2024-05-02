@@ -1,25 +1,25 @@
 ---
 external help file:
 Module Name: Az.SqlVirtualMachine
-online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/Assert-AzSqlVMADAuth
+online version: https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/Assert-AzSqlVMEntraAuth
 schema: 2.0.0
 ---
 
 # Assert-AzSqlVMADAuth
 
 ## SYNOPSIS
-Validates a SQL virtual machine AD Authentication.
+Validates a SQL virtual machine Entra Authentication.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### AssertExpanded (Default)
 ```
 Assert-AzSqlVMADAuth -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-AzureAdAuthenticationSettingClientId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentity
+### AssertViaIdentity
 ```
 Assert-AzSqlVMADAuth -InputObject <ISqlVirtualMachineIdentity>
  [-AzureAdAuthenticationSettingClientId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
@@ -27,35 +27,31 @@ Assert-AzSqlVMADAuth -InputObject <ISqlVirtualMachineIdentity>
 ```
 
 ## DESCRIPTION
-Validates a SQL virtual machine AD Authentication.
+Validates a SQL virtual machine Entra Authentication.
 
 ## EXAMPLES
 
-### Example 1:
+### Example 1: {{ Add title here }}
 ```powershell
-Assert-AzSqlVMADAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingClientId ''
+{{ Add code here }}
 ```
 
 ```output
-Location	Name		ResourceGroupName
---------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+{{ Add output here }}
 ```
 
-Validate Microsoft Entra authentication with a system-assigned managed identity
+{{ Add description here }}
 
-### Example 2:
+### Example 2: {{ Add title here }}
 ```powershell
-Assert-AzSqlVMADAuth -ResourceGroupName 'ResourceGroup01' -Name 'sqlvm1' -AzureAdAuthenticationSettingClientId '11111111-2222-3333-4444-555555555555'
+{{ Add code here }}
 ```
 
 ```output
-Location	Name		ResourceGroupName
---------	----		-----------------
-eastus		sqlvm1		ResourceGroup01	
+{{ Add output here }}
 ```
 
-Validate Microsoft Entra authentication with a user-assigned managed identity
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -111,7 +107,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Models.ISqlVirtualMachineIdentity
-Parameter Sets: UpdateViaIdentity
+Parameter Sets: AssertViaIdentity
 Aliases:
 
 Required: True
@@ -126,7 +122,7 @@ Name of the SQL virtual machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: AssertExpanded
 Aliases: SqlVirtualMachineName, SqlVMName
 
 Required: True
@@ -157,7 +153,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: AssertExpanded
 Aliases:
 
 Required: True
@@ -172,7 +168,7 @@ Subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: AssertExpanded
 Aliases:
 
 Required: False

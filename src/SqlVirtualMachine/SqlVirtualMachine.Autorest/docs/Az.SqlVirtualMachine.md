@@ -12,7 +12,10 @@ Microsoft Azure PowerShell: SqlVirtualMachine cmdlets
 
 ## Az.SqlVirtualMachine Cmdlets
 ### [Assert-AzSqlVMADAuth](Assert-AzSqlVMADAuth.md)
-Validates a SQL virtual machine AD Authentication.
+Validates a SQL virtual machine Entra Authentication.
+
+### [Assert-MsiValidOnVm](Assert-MsiValidOnVm.md)
+Validate the provided MSI is associated with SQL VM or not
 
 ### [Get-AzAvailabilityGroupListener](Get-AzAvailabilityGroupListener.md)
 Gets an availability group listener.
