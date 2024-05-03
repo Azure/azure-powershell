@@ -19,17 +19,18 @@ namespace Microsoft.Azure.Management.Maintenance
           {
               return new Tuple<string, string, string>[]
               {
-                new Tuple<string, string, string>("Maintenance", "ApplyUpdateForResourceGroup", "2023-09-01-preview"),
-                new Tuple<string, string, string>("Maintenance", "ApplyUpdates", "2023-09-01-preview"),
-                new Tuple<string, string, string>("Maintenance", "ConfigurationAssignments", "2023-09-01-preview"),
-                new Tuple<string, string, string>("Maintenance", "ConfigurationAssignmentsForResourceGroup", "2023-09-01-preview"),
-                new Tuple<string, string, string>("Maintenance", "ConfigurationAssignmentsForSubscriptions", "2023-09-01-preview"),
-                new Tuple<string, string, string>("Maintenance", "ConfigurationAssignmentsWithinSubscription", "2023-09-01-preview"),
-                new Tuple<string, string, string>("Maintenance", "MaintenanceConfigurations", "2023-09-01-preview"),
-                new Tuple<string, string, string>("Maintenance", "MaintenanceConfigurationsForResourceGroup", "2023-09-01-preview"),
-                new Tuple<string, string, string>("Maintenance", "Operations", "2023-09-01-preview"),
-                new Tuple<string, string, string>("Maintenance", "PublicMaintenanceConfigurations", "2023-09-01-preview"),
-                new Tuple<string, string, string>("Maintenance", "Updates", "2023-09-01-preview"),
+                new Tuple<string, string, string>("Compute", "ScheduledEvent", "2023-10-01-preview"),
+                new Tuple<string, string, string>("Maintenance", "ApplyUpdateForResourceGroup", "2023-10-01-preview"),
+                new Tuple<string, string, string>("Maintenance", "ApplyUpdates", "2023-10-01-preview"),
+                new Tuple<string, string, string>("Maintenance", "ConfigurationAssignments", "2023-10-01-preview"),
+                new Tuple<string, string, string>("Maintenance", "ConfigurationAssignmentsForResourceGroup", "2023-10-01-preview"),
+                new Tuple<string, string, string>("Maintenance", "ConfigurationAssignmentsForSubscriptions", "2023-10-01-preview"),
+                new Tuple<string, string, string>("Maintenance", "ConfigurationAssignmentsWithinSubscription", "2023-10-01-preview"),
+                new Tuple<string, string, string>("Maintenance", "MaintenanceConfigurations", "2023-10-01-preview"),
+                new Tuple<string, string, string>("Maintenance", "MaintenanceConfigurationsForResourceGroup", "2023-10-01-preview"),
+                new Tuple<string, string, string>("Maintenance", "Operations", "2023-10-01-preview"),
+                new Tuple<string, string, string>("Maintenance", "PublicMaintenanceConfigurations", "2023-10-01-preview"),
+                new Tuple<string, string, string>("Maintenance", "Updates", "2023-10-01-preview"),
               }.AsEnumerable();
           }
       }

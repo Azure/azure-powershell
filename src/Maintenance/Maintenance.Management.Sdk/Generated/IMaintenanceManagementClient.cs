@@ -72,6 +72,11 @@ namespace Microsoft.Azure.Management.Maintenance
 
 
         /// <summary>
+        /// Gets the IScheduledEventOperations.
+        /// </summary>
+        IScheduledEventOperations ScheduledEvent { get; }
+
+        /// <summary>
         /// Gets the IPublicMaintenanceConfigurationsOperations.
         /// </summary>
         IPublicMaintenanceConfigurationsOperations PublicMaintenanceConfigurations { get; }

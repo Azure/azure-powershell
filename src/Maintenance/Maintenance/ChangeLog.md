@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+Add support for acknowledging scheduled event
 
 ## Version 1.4.1
 * Removed outdated upcoming breaking change warning
