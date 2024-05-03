@@ -29,12 +29,14 @@ function Test-AzScheduledEventAcknowledge
         New-AzResourceGroup -Name $resourceGroupName -Location $location
         Write-Host "Created RG $location"
 
-        New-VM -Name $resourceName -MemoryStartupBytes 512MB
+        Import-Module "Hyper-V"
+
+        New-AzVM -Name $resourceName -MemoryStartupBytes 512MB
         Write-Host "Created $resourceName"
 
         Assert-ThrowsContains { 
          Set-AzScheduledEvent -ResourceGroupName $resourceGroupName -ResourceType $resourceType -ResourceName $resourceName -ScheduledEventId $scheduledEventId
-        } "Operation returned an invalid status code 'NotFound'";
+        } "Operation returned an invalid status code 'NotFound'" > $null
 
         Write-Host "Assertion succeeded"
     }
