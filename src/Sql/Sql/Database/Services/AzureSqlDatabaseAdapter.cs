@@ -349,7 +349,6 @@ namespace Microsoft.Azure.Commands.Sql.Database.Services
                         Description = r.Description,
                         IsCancellable = r.IsCancellable,
                         OperationPhaseDetails = r.OperationPhaseDetails,
-                        OperationPhaseDetailsDescription = JsonConvert.SerializeObject(r.OperationPhaseDetails)
                     };
                 });
 

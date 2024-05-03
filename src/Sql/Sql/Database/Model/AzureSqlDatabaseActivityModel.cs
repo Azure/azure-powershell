@@ -119,9 +119,5 @@ namespace Microsoft.Azure.Commands.Sql.Database.Model
         /// </summary>
         public PhaseDetails OperationPhaseDetails { get; set; }
 
-        /// <summary>
-        /// Gets or sets the PperationPhaseDetails description for Sterling to Hyperscale migration
-        /// </summary>
-        public string OperationPhaseDetailsDescription { get; set; }
     }
 }
