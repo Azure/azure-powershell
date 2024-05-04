@@ -775,7 +775,10 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "inboundNatRuleParameters");
             }
-
+            if (inboundNatRuleParameters != null)
+            {
+                inboundNatRuleParameters.Validate();
+            }
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");

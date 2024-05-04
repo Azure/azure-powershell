@@ -766,7 +766,10 @@ namespace Microsoft.Azure.Management.Network
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "tapConfigurationParameters");
             }
-
+            if (tapConfigurationParameters != null)
+            {
+                tapConfigurationParameters.Validate();
+            }
             if (resourceGroupName == null)
             {
                 throw new Microsoft.Rest.ValidationException(Microsoft.Rest.ValidationRules.CannotBeNull, "resourceGroupName");

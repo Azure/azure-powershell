@@ -157,6 +157,30 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestCRUDVnetFlowLogWithManagedIdentity()
+        {
+            TestRunner.RunTestScript("Test-CRUDVnetFlowLogWithManagedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestCRUDVnetFlowLogWithNoneManagedIdentity()
+        {
+            TestRunner.RunTestScript("Test-CRUDVnetFlowLogWithNoneManagedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
+        public void TestSetVnetFlowLogWithManagedIdentityFromNoMIInput()
+        {
+            TestRunner.RunTestScript("Test-SetVnetFlowLogWithManagedIdentity");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Trait(Category.Owner, NrpTeamAlias.netanalyticsdev)]
         public void TestCRUDSubnetFlowLog()
         {
             TestRunner.RunTestScript("Test-CRUDSubnetFlowLog");
