@@ -65,7 +65,7 @@ param(
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
     [System.String[]]
-    # .
+    # ResourceGuardOperationRequests on which LAC check will be performed
     ${ResourceGuardOperationRequest},
 
     [Parameter()]

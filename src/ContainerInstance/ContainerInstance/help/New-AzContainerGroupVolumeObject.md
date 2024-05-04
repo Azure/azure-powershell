@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ContainerInstance-help.xml
 Module Name: Az.ContainerInstance
 online version: https://learn.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerGroupVolumeObject
 schema: 2.0.0
@@ -16,7 +16,8 @@ Create an in-memory object for Volume.
 New-AzContainerGroupVolumeObject -Name <String> [-AzureFileReadOnly] [-AzureFileShareName <String>]
  [-AzureFileStorageAccountKey <SecureString>] [-AzureFileStorageAccountName <String>]
  [-EmptyDir <IVolumeEmptyDir>] [-GitRepoDirectoryName <String>] [-GitRepoRepositoryUrl <String>]
- [-GitRepoRevision <String>] [-Secret <ISecretVolume>] [<CommonParameters>]
+ [-GitRepoRevision <String>] [-Secret <ISecretVolume>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -227,18 +228,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`EMPTYDIR <IVolumeEmptyDir>`: The empty directory volume.
-  - `[(Any) <Object>]`: This indicates any property can be added to this object.
-
-`SECRET <ISecretVolume>`: The secret volume.
-  - `[(Any) <String>]`: This indicates any property can be added to this object.
-
 ## RELATED LINKS
-

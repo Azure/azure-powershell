@@ -11,10 +11,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices
     using GetParameterDelegate = global::System.Func<string, string, global::System.Management.Automation.InvocationInfo, string, string, object>;
     using ModuleLoadPipelineDelegate = global::System.Action<string, string, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>>;
     using ArgumentCompleterDelegate = global::System.Func<string, global::System.Management.Automation.InvocationInfo, string, string[], string[], string[]>;
+    using GetTelemetryIdDelegate = global::System.Func<string>;
+    using TelemetryDelegate = global::System.Action<string, global::System.Management.Automation.InvocationInfo, string, global::System.Management.Automation.PSCmdlet>;
     using NewRequestPipelineDelegate = global::System.Action<global::System.Management.Automation.InvocationInfo, string, string, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>, global::System.Action<global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>>>;
     using SignalDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>;
     using EventListenerDelegate = global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Management.Automation.InvocationInfo, string, string, string, global::System.Exception, global::System.Threading.Tasks.Task>;
     using NextDelegate = global::System.Func<global::System.Net.Http.HttpRequestMessage, global::System.Threading.CancellationToken, global::System.Action, global::System.Func<string, global::System.Threading.CancellationToken, global::System.Func<global::System.EventArgs>, global::System.Threading.Tasks.Task>, global::System.Threading.Tasks.Task<global::System.Net.Http.HttpResponseMessage>>;
+    using SanitizerDelegate = global::System.Action<object, string>;
+    using GetTelemetryInfoDelegate = global::System.Func<string, global::System.Collections.Generic.Dictionary<global::System.String,global::System.String>>;
 
     /// <summary>A class that contains the module-common code and data.</summary>
     public partial class Module
@@ -30,6 +34,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices
         /// <summary>the ISendAsync pipeline instance (when proxy is enabled)</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.HttpPipeline _pipelineWithProxy;
 
+        public bool _useProxy = false;
+
         public global::System.Net.WebProxy _webProxy = new global::System.Net.WebProxy();
 
         /// <summary>Gets completion data for azure specific fields</summary>
@@ -43,6 +49,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices
 
         /// <summary>The delegate to call to get parameter data from a common module.</summary>
         public GetParameterDelegate GetParameterValue { get; set; }
+
+        /// <summary>The delegate to get the telemetry Id.</summary>
+        public GetTelemetryIdDelegate GetTelemetryId { get; set; }
+
+        /// <summary>The delegate to get the telemetry info.</summary>
+        public GetTelemetryInfoDelegate GetTelemetryInfo { get; set; }
 
         /// <summary>Backing field for <see cref="Instance" /> property.</summary>
         private static Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Module _instance;
@@ -64,6 +76,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices
 
         /// <summary>The ResourceID for this module (azure arm).</summary>
         public string ResourceId => @"Az.ManagedServices";
+
+        /// <summary>The delegate to call in WriteObject to sanitize the output object.</summary>
+        public SanitizerDelegate SanitizeOutput { get; set; }
+
+        /// <summary>The delegate for creating a telemetry.</summary>
+        public TelemetryDelegate Telemetry { get; set; }
 
         /// <param name="invocationInfo">The <see cref="System.Management.Automation.InvocationInfo" /> from the cmdlet</param>
         /// <param name="pipeline">The HttpPipeline for the request</param>
@@ -88,7 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices
         {
             Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.HttpPipeline pipeline = null;
             BeforeCreatePipeline(invocationInfo, ref pipeline);
-            pipeline = (pipeline ?? (_handler.UseProxy ? _pipelineWithProxy : _pipeline)).Clone();
+            pipeline = (pipeline ?? (_useProxy ? _pipelineWithProxy : _pipeline)).Clone();
             AfterCreatePipeline(invocationInfo, ref pipeline);
             pipeline.Append(new Runtime.CmdInfoHandler(processRecordId, invocationInfo, parameterSetName).SendAsync);
             OnNewRequest?.Invoke( invocationInfo, correlationId,processRecordId, (step)=> { pipeline.Prepend(step); } , (step)=> { pipeline.Append(step); } );
@@ -115,7 +133,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices
         /// <summary>Creates the module instance.</summary>
         private Module()
         {
-            /// constructor
+            // constructor
             ClientAPI = new Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.ManagedServices();
             _handler.Proxy = _webProxy;
             _pipeline = new Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.HttpPipeline(new Microsoft.Azure.PowerShell.Cmdlets.ManagedServices.Runtime.HttpClientFactory(new global::System.Net.Http.HttpClient()));
@@ -127,12 +145,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ManagedServices
         /// <param name="proxyUseDefaultCredentials">True if the proxy should use default credentials</param>
         public void SetProxyConfiguration(global::System.Uri proxy, global::System.Management.Automation.PSCredential proxyCredential, bool proxyUseDefaultCredentials)
         {
+            _useProxy = proxy != null;
+            if (proxy == null)
+            {
+                return;
+            }
             // set the proxy configuration
             _webProxy.Address = proxy;
             _webProxy.BypassProxyOnLocal = false;
-            _webProxy.Credentials = proxyCredential ?.GetNetworkCredential();
-            _webProxy.UseDefaultCredentials = proxyUseDefaultCredentials;
-            _handler.UseProxy = proxy != null;
+            if (proxyUseDefaultCredentials)
+            {
+                _webProxy.Credentials = null;
+                _webProxy.UseDefaultCredentials = true;
+            }
+            else
+            {
+                _webProxy.UseDefaultCredentials = false;
+                _webProxy.Credentials = proxyCredential ?.GetNetworkCredential();
+            }
         }
 
         /// <summary>Called to dispatch events to the common module listener</summary>

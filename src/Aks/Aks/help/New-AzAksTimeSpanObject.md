@@ -13,7 +13,8 @@ Create an in-memory object for TimeSpan.
 ## SYNTAX
 
 ```
-New-AzAksTimeSpanObject [-End <DateTime>] [-Start <DateTime>] [<CommonParameters>]
+New-AzAksTimeSpanObject [-End <DateTime>] [-Start <DateTime>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,7 +80,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20230201.TimeSpan
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

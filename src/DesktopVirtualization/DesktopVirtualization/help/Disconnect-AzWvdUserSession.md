@@ -15,8 +15,8 @@ Disconnect a userSession.
 ### Disconnect (Default)
 ```
 Disconnect-AzWvdUserSession -HostPoolName <String> -Id <String> -ResourceGroupName <String>
- -SessionHostName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ -SessionHostName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DisconnectViaIdentity

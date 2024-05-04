@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-The operation to update a hybrid machine.
+The operation to Update a hybrid machine.
 .Description
-The operation to update a hybrid machine.
+The operation to Update a hybrid machine.
 .Example
 Update-AzConnectedMachine -Name surface -ResourceGroupName rg -PrivateLinkScopeResourceId privateLinkScopeId -WindowsConfigurationPatchSettingsAssessmentMode AutomaticByOS -Tag @{"key"="value"}
 .Example

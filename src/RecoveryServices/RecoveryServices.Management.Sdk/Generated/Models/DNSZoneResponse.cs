@@ -26,8 +26,8 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 
         /// <param name="subResource">Subresource type for vault AzureBackup, AzureBackup_secondary or
         /// AzureSiteRecovery
-        /// Possible values include: 'AzureBackup', 'AzureBackup_secondary',
-        /// 'AzureSiteRecovery'</param>
+        /// Possible values include: &#39;AzureBackup&#39;, &#39;AzureBackup_secondary&#39;,
+        /// &#39;AzureSiteRecovery&#39;</param>
 
         /// <param name="requiredZoneNames">The private link resource Private link DNS zone names.
         /// </param>

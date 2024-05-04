@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.ProviderHub-help.xml
 Module Name: Az.ProviderHub
 online version: https://learn.microsoft.com/powershell/module/az.providerhub/new-azproviderhubresourcetyperegistration
 schema: 2.0.0
@@ -21,10 +21,9 @@ New-AzProviderHubResourceTypeRegistration -ProviderNamespace <String> -ResourceT
  [-DefaultApiVersion <String>] [-DisallowedActionVerb <String[]>] [-EnableAsyncOperation]
  [-EnableThirdPartyS2S] [-Endpoint <IResourceTypeEndpoint[]>] [-ExtendedLocation <IExtendedLocationOptions[]>]
  [-FeatureRuleRequiredFeaturesPolicy <String>] [-IdentityManagementApplicationId <String>]
- [-IdentityManagementType <IdentityManagementTypes>] [-IsPureProxy]
- [-LinkedAccessCheck <ILinkedAccessCheck[]>] [-LoggingRule <ILoggingRule[]>] [-MarketplaceType <String>]
- [-ProvisioningState <ProvisioningState>] [-Regionality <Regionality>]
- [-RequestHeaderOptionOptInHeader <OptInHeaderType>] [-RequiredFeature <String[]>]
+ [-IdentityManagementType <IdentityManagementTypes>] [-IsPureProxy] [-LinkedAccessCheck <ILinkedAccessCheck[]>]
+ [-LoggingRule <ILoggingRule[]>] [-MarketplaceType <String>] [-ProvisioningState <ProvisioningState>]
+ [-Regionality <Regionality>] [-RequestHeaderOptionOptInHeader <OptInHeaderType>] [-RequiredFeature <String[]>]
  [-ResourceCreationBeginRequest <ExtensionOptionType[]>]
  [-ResourceCreationBeginResponse <ExtensionOptionType[]>] [-ResourceDeletionPolicy <ResourceDeletionPolicy>]
  [-ResourceMovePolicyCrossResourceGroupMoveEnabled] [-ResourceMovePolicyCrossSubscriptionMoveEnabled]
@@ -33,8 +32,8 @@ New-AzProviderHubResourceTypeRegistration -ProviderNamespace <String> -ResourceT
  [-SubscriptionLifecycleNotificationSpecificationSubscriptionStateOverrideAction <ISubscriptionStateOverrideAction[]>]
  [-SubscriptionStateRule <ISubscriptionStateRule[]>] [-SwaggerSpecification <ISwaggerSpecification[]>]
  [-TemplateDeploymentOptionPreflightOption <PreflightOption[]>] [-TemplateDeploymentOptionPreflightSupported]
- [-ThrottlingRule <IThrottlingRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-ThrottlingRule <IThrottlingRule[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -752,70 +751,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-AUTHORIZATIONACTIONMAPPING <IAuthorizationActionMapping[]>: .
-  - `[Desired <String>]`: 
-  - `[Original <String>]`: 
-
-ENDPOINT <IResourceTypeEndpoint[]>: .
-  - `[ApiVersion <String[]>]`: 
-  - `[Enabled <Boolean?>]`: 
-  - `[Extension <IResourceTypeExtension[]>]`: 
-    - `[EndpointUri <String>]`: 
-    - `[ExtensionCategory <ExtensionCategory[]>]`: 
-    - `[Timeout <TimeSpan?>]`: 
-  - `[FeatureRuleRequiredFeaturesPolicy <String>]`: 
-  - `[Location <String[]>]`: 
-  - `[RequiredFeature <String[]>]`: 
-  - `[Timeout <TimeSpan?>]`: 
-
-EXTENDEDLOCATION <IExtendedLocationOptions[]>: .
-  - `[SupportedPolicy <String>]`: 
-  - `[Type <String>]`: 
-
-LINKEDACCESSCHECK <ILinkedAccessCheck[]>: .
-  - `[ActionName <String>]`: 
-  - `[LinkedAction <String>]`: 
-  - `[LinkedActionVerb <String>]`: 
-  - `[LinkedProperty <String>]`: 
-  - `[LinkedType <String>]`: 
-
-LOGGINGRULE <ILoggingRule[]>: .
-  - `Action <String>`: 
-  - `DetailLevel <LoggingDetails>`: 
-  - `Direction <LoggingDirections>`: 
-  - `[HiddenPropertyPathHiddenPathsOnRequest <String[]>]`: 
-  - `[HiddenPropertyPathHiddenPathsOnResponse <String[]>]`: 
-
-SERVICETREEINFO <IServiceTreeInfo[]>: .
-  - `[ComponentId <String>]`: 
-  - `[ServiceId <String>]`: 
-
-SUBSCRIPTIONLIFECYCLENOTIFICATIONSPECIFICATIONSUBSCRIPTIONSTATEOVERRIDEACTION <ISubscriptionStateOverrideAction[]>: .
-  - `Action <SubscriptionNotificationOperation>`: 
-  - `State <SubscriptionTransitioningState>`: 
-
-SUBSCRIPTIONSTATERULE <ISubscriptionStateRule[]>: .
-  - `[AllowedAction <String[]>]`: 
-  - `[State <SubscriptionState?>]`: 
-
-SWAGGERSPECIFICATION <ISwaggerSpecification[]>: .
-  - `[ApiVersion <String[]>]`: 
-  - `[SwaggerSpecFolderUri <String>]`: 
-
-THROTTLINGRULE <IThrottlingRule[]>: .
-  - `Action <String>`: 
-  - `Metric <IThrottlingMetric[]>`: 
-    - `Limit <Int64>`: 
-    - `Type <ThrottlingMetricType>`: 
-    - `[Interval <TimeSpan?>]`: 
-  - `[RequiredFeature <String[]>]`: 
-
 ## RELATED LINKS
-

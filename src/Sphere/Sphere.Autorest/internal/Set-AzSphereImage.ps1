@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a Image
+Update a Image
 .Description
-Create a Image
+Update a Image
 .Example
 {{ Add code here }}
 .Example

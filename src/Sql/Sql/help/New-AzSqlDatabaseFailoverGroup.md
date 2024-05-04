@@ -128,7 +128,7 @@ Accepted values: Automatic, Manual
 
 Required: False
 Position: Named
-Default value: Automatic
+Default value: Manual
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

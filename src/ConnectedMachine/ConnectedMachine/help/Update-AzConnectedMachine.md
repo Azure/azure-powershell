@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedMachine
 
 ## SYNOPSIS
-The operation to update a hybrid machine.
+The operation to Update a hybrid machine.
 
 ## SYNTAX
 
@@ -66,7 +66,7 @@ Update-AzConnectedMachine -InputObject <IConnectedMachineIdentity> -Parameter <I
 ```
 
 ## DESCRIPTION
-The operation to update a hybrid machine.
+The operation to Update a hybrid machine.
 
 ## EXAMPLES
 

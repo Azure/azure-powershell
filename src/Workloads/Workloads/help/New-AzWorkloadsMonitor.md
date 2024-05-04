@@ -17,7 +17,8 @@ New-AzWorkloadsMonitor -Name <String> -ResourceGroupName <String> [-Subscription
  [-AppLocation <String>] [-IdentityType <ManagedServiceIdentityType>] [-LogAnalyticsWorkspaceArmId <String>]
  [-ManagedResourceGroupName <String>] [-MonitorSubnet <String>] [-RoutingPreference <RoutingPreference>]
  [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-ZoneRedundancyPreference <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -326,7 +327,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Workloads.Models.Api20230401.IMonitor
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

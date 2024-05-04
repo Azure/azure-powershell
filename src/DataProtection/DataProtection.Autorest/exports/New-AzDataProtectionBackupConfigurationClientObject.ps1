@@ -95,7 +95,7 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.NamespacedNameResource[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.NamespacedNameResource[]]
     # Hook reference to be executed during backup.
     # To construct, see NOTES section for BACKUPHOOKREFERENCE properties and create a hash table.
     ${BackupHookReference},

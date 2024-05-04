@@ -1,7 +1,7 @@
 ---
-external help file:
+external help file: Az.Peering-help.xml
 Module Name: Az.Peering
-online version: https://learn.microsoft.com/powershell/module/az.Peering/new-AzPeeringDirectConnectionObject
+online version: https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringDirectConnectionObject
 schema: 2.0.0
 ---
 
@@ -38,7 +38,6 @@ New-AzPeeringDirectConnectionObject -BandwidthInMbps 10000 -BgpSessionMaxPrefixe
 BandwidthInMbps ConnectionIdentifier ConnectionState ErrorMessage MicrosoftTrackingId PeeringDbFacilityId ProvisionedBandwidthInMbps
 --------------- -------------------- --------------- ------------ ------------------- ------------------- --------------------------
 10000           c111111111111        PendingApproval                                  82
-
 ```
 
 Creates an in-memory direct connection object
@@ -266,7 +265,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -20,8 +20,8 @@ Get-AzAksCluster [[-ResourceGroupName] <String>] [-DefaultProfile <IAzureContext
 
 ### IdParameterSet
 ```
-Get-AzAksCluster [-Id] <String> [-DefaultProfile <IAzureContextContainer>] [-SubscriptionId <String>]
- [<CommonParameters>]
+Get-AzAksCluster [-Id] <String> [-DefaultProfile <IAzureContextContainer>]
+ [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ### NameParameterSet

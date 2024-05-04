@@ -26,7 +26,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
     /// <summary>
     ///     Sets the Recovery Services vault context to be used for subsequent Azure Site Recovery operations in the current PowerShell session.
     /// </summary>
-    [CmdletOutputBreakingChangeWithVersion(typeof(ASRVaultSettings), "12.0.0", "7.0.0", DeprecatedOutputProperties = new string[] { "ResouceType" }, NewOutputProperties = new string[] { "ResourceType" })]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesAsrVaultContext", DefaultParameterSetName = ASRParameterSets.ARSVault, SupportsShouldProcess = true)]
     [Alias(
         "Set-ASRVaultContext",

@@ -15,13 +15,15 @@ Delete ACR manifest.
 ### ByManifestParameterSet (Default)
 ```
 Remove-AzContainerRegistryManifest -RepositoryName <String> -Manifest <String> -RegistryName <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByTagParameterSet
 ```
 Remove-AzContainerRegistryManifest -RepositoryName <String> -Tag <String> -RegistryName <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

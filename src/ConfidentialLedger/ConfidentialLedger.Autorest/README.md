@@ -3,7 +3,6 @@
 This directory contains the PowerShell module for the ConfidentialLedger service.
 
 ---
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -28,10 +27,10 @@ For information on how to develop for `Az.ConfidentialLedger`, see [how-to.md](h
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: c2d2b523575031790b8672640ea762bdf9ad4964
+commit: c2d2b523575031790b8672640ea762bdf9ad4964
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - $(this-folder)/../readme.azure.noprofile.md
+  - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
   - $(repo)/specification/confidentialledger/resource-manager/Microsoft.ConfidentialLedger/stable/2022-05-13/confidentialledger.json
@@ -45,6 +44,10 @@ subject-prefix: $(service-name)
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
+
+# For new modules, please avoid setting 3.x using the use-extension method and instead, use 4.x as the default option
+use-extension:
+  "@autorest/powershell": "3.x"
 
 directive:
   # Following is two common directive which are normally required in all the RPs

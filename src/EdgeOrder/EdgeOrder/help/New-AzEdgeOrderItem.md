@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.EdgeOrder-help.xml
 Module Name: Az.EdgeOrder
 online version: https://learn.microsoft.com/powershell/module/az.edgeorder/new-azedgeorderitem
 schema: 2.0.0
@@ -14,10 +14,11 @@ Existing order item cannot be updated with this api and should instead be update
 ## SYNTAX
 
 ```
-New-AzEdgeOrderItem -Name <String> -ResourceGroupName <String> -ForwardAddressContactDetail <IContactDetails>
- -Location <String> -OrderId <String> -OrderItemDetail <IOrderItemDetails> [-SubscriptionId <String>]
- [-ForwardShippingAddress <IShippingAddress>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzEdgeOrderItem -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -ForwardAddressContactDetail <IContactDetails> -Location <String> -OrderId <String>
+ -OrderItemDetail <IOrderItemDetails> [-ForwardShippingAddress <IShippingAddress>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,7 +68,6 @@ StartTime                      : 11/16/2021 10:34:51 AM
 SystemData                     : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.SystemData
 Tag                            : Microsoft.Azure.PowerShell.Cmdlets.EdgeOrder.Models.Api20.TrackedResourceTags
 Type                           : Microsoft.EdgeOrder/orderItems
-
 ```
 
 Creates a new orderItem.
@@ -108,7 +108,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -318,51 +319,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-FORWARDADDRESSCONTACTDETAIL `<IContactDetails>`: Contact details for the address
-  - `ContactName <String>`: Contact name of the person.
-  - `EmailList <String[]>`: List of Email-ids to be notified about job progress.
-  - `Phone <String>`: Phone number of the contact person.
-  - `[Mobile <String>]`: Mobile number of the contact person.
-  - `[PhoneExtension <String>]`: Phone extension number of the contact person.
-
-FORWARDSHIPPINGADDRESS `<IShippingAddress>`: Shipping details for the address
-  - `Country <String>`: Name of the Country.
-  - `StreetAddress1 <String>`: Street Address line 1.
-  - `[AddressType <AddressType?>]`: Type of address.
-  - `[City <String>]`: Name of the City.
-  - `[CompanyName <String>]`: Name of the company.
-  - `[PostalCode <String>]`: Postal code.
-  - `[StateOrProvince <String>]`: Name of the State or Province.
-  - `[StreetAddress2 <String>]`: Street Address line 2.
-  - `[StreetAddress3 <String>]`: Street Address line 3.
-  - `[ZipExtendedCode <String>]`: Extended Zip Code.
-
-ORDERITEMDETAIL `<IOrderItemDetails>`: Represents order item details.
-  - `OrderItemType <OrderItemType>`: Order item type.
-  - `ProductDetail <IProductDetails>`: Unique identifier for configuration.
-    - `HierarchyInformation <IHierarchyInformation>`: Hierarchy of the product which uniquely identifies the product
-      - `[ConfigurationName <String>]`: Represents configuration name that uniquely identifies configuration
-      - `[ProductFamilyName <String>]`: Represents product family name that uniquely identifies product family
-      - `[ProductLineName <String>]`: Represents product line name that uniquely identifies product line
-      - `[ProductName <String>]`: Represents product name that uniquely identifies product
-  - `[NotificationEmailList <String[]>]`: Additional notification email list
-  - `[Preference <IPreferences>]`: Customer notification Preferences
-    - `[EncryptionPreference <IEncryptionPreferences>]`: Preferences related to the Encryption.
-      - `[DoubleEncryptionStatus <DoubleEncryptionStatus?>]`: Double encryption status as entered by the customer. It is compulsory to give this parameter if the 'Deny' or 'Disabled' policy is configured.
-    - `[ManagementResourcePreference <IManagementResourcePreferences>]`: Preferences related to the Management resource.
-      - `[PreferredManagementResourceId <String>]`: Customer preferred Management resource ARM ID
-    - `[NotificationPreference <INotificationPreference[]>]`: Notification preferences.
-      - `SendNotification <Boolean>`: Notification is required or not.
-      - `StageName <NotificationStageName>`: Name of the stage.
-    - `[TransportPreference <ITransportPreferences>]`: Preferences related to the shipment logistics of the order.
-      - `PreferredShipmentType <TransportShipmentTypes>`: Indicates Shipment Logistics type that the customer preferred.
-
 ## RELATED LINKS
-

@@ -31,7 +31,7 @@ $continueRequest = [ordered]@{
 Invoke-AzSelfHelpContinueTroubleshooter  -Scope "/subscriptions/6bded6d5-a6af-43e1-96d3-bf71f6f5f8ba"  -TroubleshooterName  "02d59989-f8a9-4b69-9919-1ef51df4eff6" -ContinueRequestBody $continueRequest 
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IContinueRequestBody
+Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IContinueRequestBody
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.ISelfHelpIdentity
 .Outputs
@@ -44,20 +44,23 @@ To create the parameters described below, construct a hash table containing the 
 CONTINUEREQUESTBODY <IContinueRequestBody>: Troubleshooter ContinueRequest body.
   [Response <ITroubleshooterResponse[]>]: 
     [QuestionId <String>]: id of the question.
-    [QuestionType <QuestionType?>]: Text Input. Will be a single line input.
+    [QuestionType <QuestionType?>]: Type of Question
     [Response <String>]: Response key for SingleInput. For Multi-line test/open ended question it is free form text
   [StepId <String>]: Unique id of the result.
 
 INPUTOBJECT <ISelfHelpIdentity>: Identity Parameter
   [DiagnosticsResourceName <String>]: Unique resource name for insight resources
   [Id <String>]: Resource identity path
-  [Scope <String>]: This is an extension resource provider and only resource level extension is supported at the moment.
+  [Scope <String>]: scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read 
+  [SimplifiedSolutionsResourceName <String>]: Simplified Solutions Resource Name.
+  [SolutionId <String>]: SolutionId is a unique id to identify a solution. You can retrieve the solution id using the Discovery api - https://learn.microsoft.com/en-us/rest/api/help/discovery-solution/list?view=rest-help-2023-09-01-preview&tabs=HTTP
   [SolutionResourceName <String>]: Solution resource Name.
+  [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [TroubleshooterName <String>]: Troubleshooter resource Name.
 
 RESPONSE <ITroubleshooterResponse[]>: .
   [QuestionId <String>]: id of the question.
-  [QuestionType <QuestionType?>]: Text Input. Will be a single line input.
+  [QuestionType <QuestionType?>]: Type of Question
   [Response <String>]: Response key for SingleInput. For Multi-line test/open ended question it is free form text
 .Link
 https://learn.microsoft.com/powershell/module/az.selfhelp/invoke-azselfhelpcontinuetroubleshooter
@@ -70,7 +73,7 @@ param(
     [Parameter(ParameterSetName='ContinueExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Path')]
     [System.String]
-    # This is an extension resource provider and only resource level extension is supported at the moment.
+    # scope = resourceUri of affected resource.<br/> For example: /subscriptions/0d0fcd2e-c4fd-4349-8497-200edb3923c6/resourcegroups/myresourceGroup/providers/Microsoft.KeyVault/vaults/test-keyvault-non-read
     ${Scope},
 
     [Parameter(ParameterSetName='Continue', Mandatory)]
@@ -91,7 +94,7 @@ param(
     [Parameter(ParameterSetName='Continue', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ContinueViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.IContinueRequestBody]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.IContinueRequestBody]
     # Troubleshooter ContinueRequest body.
     # To construct, see NOTES section for CONTINUEREQUESTBODY properties and create a hash table.
     ${ContinueRequestBody},
@@ -100,7 +103,7 @@ param(
     [Parameter(ParameterSetName='ContinueViaIdentityExpanded')]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20230901Preview.ITroubleshooterResponse[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.SelfHelp.Models.Api20240301Preview.ITroubleshooterResponse[]]
     # .
     # To construct, see NOTES section for RESPONSE properties and create a hash table.
     ${Response},

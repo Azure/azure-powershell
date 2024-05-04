@@ -42,7 +42,7 @@ The operation to Create the extension.
 The operation to Create a run command.
 
 ### [New-AzConnectedPrivateLinkScope](New-AzConnectedPrivateLinkScope.md)
-Creates (or updates) a Azure Arc PrivateLinkScope.
+Create (or Create) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ### [Remove-AzConnectedMachine](Remove-AzConnectedMachine.md)
@@ -58,25 +58,25 @@ The operation to delete a run command.
 Deletes a Azure Arc PrivateLinkScope.
 
 ### [Set-AzConnectedMachineExtension](Set-AzConnectedMachineExtension.md)
-The operation to Create the extension.
+The operation to Update the extension.
 
 ### [Set-AzConnectedPrivateLinkScope](Set-AzConnectedPrivateLinkScope.md)
-Creates (or updates) a Azure Arc PrivateLinkScope.
+Update (or Update) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 
 ### [Update-AzConnectedExtension](Update-AzConnectedExtension.md)
 The operation to Upgrade Machine Extensions.
 
 ### [Update-AzConnectedMachine](Update-AzConnectedMachine.md)
-The operation to update a hybrid machine.
+The operation to Update a hybrid machine.
 
 ### [Update-AzConnectedMachineExtension](Update-AzConnectedMachineExtension.md)
 The operation to Update the extension.
 
 ### [Update-AzConnectedMachineRunCommand](Update-AzConnectedMachineRunCommand.md)
-The operation to Create a run command.
+The operation to Update a run command.
 
 ### [Update-AzConnectedPrivateLinkScopeTag](Update-AzConnectedPrivateLinkScopeTag.md)
-Updates an existing PrivateLinkScope's tags.
-To update other fields use the CreateOrUpdate method.
+Update an existing PrivateLinkScope's tags.
+To Update other fields use the UpdateOrUpdate method.
 

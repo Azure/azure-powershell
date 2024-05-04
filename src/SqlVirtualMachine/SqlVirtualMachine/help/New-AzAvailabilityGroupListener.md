@@ -373,23 +373,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`AVAILABILITYGROUPCONFIGURATIONREPLICA <IAgReplica[]>`: Replica configurations.
-  - `[Commit <Commit?>]`: Replica commit mode in availability group.
-  - `[Failover <Failover?>]`: Replica failover mode in availability group.
-  - `[ReadableSecondary <ReadableSecondary?>]`: Replica readable secondary mode in availability group.
-  - `[Role <Role?>]`: Replica Role in availability group.
-  - `[SqlVirtualMachineInstanceId <String>]`: Sql VirtualMachine Instance Id.
-
-`MULTISUBNETIPCONFIGURATION <IMultiSubnetIPConfiguration[]>`: List of multi subnet IP configurations for an AG listener.
-  - `SqlVirtualMachineInstance <String>`: SQL virtual machine instance resource id that are enrolled into the availability group listener.
-  - `[PrivateIPAddressIpaddress <String>]`: Private IP address bound to the availability group listener.
-  - `[PrivateIPAddressSubnetResourceId <String>]`: Subnet used to include private IP.
-
 ## RELATED LINKS

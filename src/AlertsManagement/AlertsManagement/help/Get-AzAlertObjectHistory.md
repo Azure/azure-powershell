@@ -14,7 +14,8 @@ Gets Alert History information
 
 ### ByAlertId (Default)
 ```
-Get-AzAlertObjectHistory -AlertId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAlertObjectHistory -AlertId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### ByInputObject

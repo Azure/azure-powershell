@@ -23,7 +23,7 @@ Create an in-memory object for ExchangeConnection.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ExchangeConnection
 .Link
-https://learn.microsoft.com/powershell/module/az.Peering/new-AzPeeringExchangeConnectionObject
+https://learn.microsoft.com/powershell/module/Az.Peering/new-AzPeeringExchangeConnectionObject
 #>
 function New-AzPeeringExchangeConnectionObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Peering.Models.Api20221001.ExchangeConnection')]

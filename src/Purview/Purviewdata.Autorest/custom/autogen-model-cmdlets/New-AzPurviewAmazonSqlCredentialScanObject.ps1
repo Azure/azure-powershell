@@ -23,7 +23,7 @@ Create an in-memory object for AmazonSqlCredentialScan.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlCredentialScan
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAmazonSqlCredentialScanObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAmazonSqlCredentialScanObject
 #>
 function New-AzPurviewAmazonSqlCredentialScanObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AmazonSqlCredentialScan')]

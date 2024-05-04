@@ -1,0 +1,37 @@
+{
+  "resourceType": "selfHelp",
+  "apiVersion": "2024-03-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.selfhelp"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSelfHelpSolutionSelfHelp",
+      "description": "Finds and Executes a Self Help Solution based on the Solution Id.\nThese are static self help content to help users troubleshoot their issues.",
+      "path": "/providers/Microsoft.Help/selfHelp/{solutionId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.selfhelp/get-azselfhelpsolutionselfhelp"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-SolutionId <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Finds and Executes a Self Help Solution based on the Solution Id. These are static self help content to help users troubleshoot their issues.",
+          "parameters": [
+            {
+              "name": "-SolutionId",
+              "value": "[Path.solutionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -15,8 +15,8 @@ Create or update a custom certificate.
 ```
 New-AzWebPubSubCustomCertificate -Name <String> -ResourceGroupName <String> -ResourceName <String>
  [-SubscriptionId <String>] -KeyVaultBaseUri <String> -KeyVaultSecretName <String>
- [-KeyVaultSecretVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-KeyVaultSecretVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -231,7 +231,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.WebPubSub.Models.Api20220801Preview.ICustomCertificate
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

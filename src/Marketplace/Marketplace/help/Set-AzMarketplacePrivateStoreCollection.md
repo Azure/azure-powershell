@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzMarketplacePrivateStoreCollection
 
 ## SYNOPSIS
-Create private store collection
+Update private store collection
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Set-AzMarketplacePrivateStoreCollection -CollectionId <String> -PrivateStoreId <
 ```
 
 ## DESCRIPTION
-Create private store collection
+Update private store collection
 
 ## EXAMPLES
 

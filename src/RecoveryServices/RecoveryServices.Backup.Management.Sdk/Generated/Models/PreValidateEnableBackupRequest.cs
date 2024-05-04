@@ -9,11 +9,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup.Models
 
     /// <summary>
     /// Contract to validate if backup can be enabled on the given resource in a
-    /// given vault and given configuration.
-    /// It will validate followings
-    /// 1. Vault capacity
-    /// 2. VM is already protected
-    /// 3. Any VM related configuration passed in properties.
+    /// given vault and given configuration. It will validate followings 1. Vault
+    /// capacity 2. VM is already protected 3. Any VM related configuration passed
+    /// in properties.
     /// </summary>
     public partial class PreValidateEnableBackupRequest
     {
