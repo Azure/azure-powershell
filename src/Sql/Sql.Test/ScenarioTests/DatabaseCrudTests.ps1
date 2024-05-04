@@ -908,7 +908,8 @@ function Test-UpdateDatabaseFromSterlingToHyperscaleWithManualCutover ()
 
 		$startTime = Get-Date
 		$timeout = New-TimeSpan -Minutes 20
-		$job1 = do 
+
+		do 
 		{  
 			# list database operation to check if the db is ready for cutover
 			$dbactivity = Get-AzSqlDatabaseActivity -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName
@@ -919,13 +920,7 @@ function Test-UpdateDatabaseFromSterlingToHyperscaleWithManualCutover ()
 					Assert-AreEqual $dbactivity[0].DatabaseName $databaseName
 					Assert-AreEqual $dbactivity[0].Operation "UpdateLogicalDatabase"
 					if($dbactivity[0].OperationPhaseDetails.Phase -eq "WaitingForCutover")
-					{
-						# Trigger manual cutover
-						$job2 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
-								-PerformCutover -AsJob
-						$job2 | Wait-Job
-						$db2 = $job2.Output
-						Assert-AreEqual $db2.DatabaseName $db.DatabaseName
+					{						
 						break
 					}
 			}
@@ -935,9 +930,9 @@ function Test-UpdateDatabaseFromSterlingToHyperscaleWithManualCutover ()
 			}
 		}while ($true) 
 		
-		# verify the updated db slo
-		$job | Wait-Job
-		$db1=  Receive-Job $job
+		
+		$db1 = Set-AzSqlDatabase -ResourceGroupName $db.ResourceGroupName -ServerName $db.ServerName -DatabaseName $db.DatabaseName `
+				-PerformCutover
 		Assert-AreEqual $db1.DatabaseName $db.DatabaseName
 		Assert-AreEqual $db1.CurrentServiceObjectiveName HS_Gen5_8
 	}

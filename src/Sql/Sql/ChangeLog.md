@@ -20,7 +20,7 @@
 ## Upcoming Release
 * Made 1.2 as default for MinimalTlsVersion when creating new Sql Server from Powershell
 * Added `ManualCutover` and `PerformCutover` parameters to `Set-AzSqlInstance` for Azure Sql Sterling database to Azure Sql Hyperscale database
-* Added `OperationPhaseDetails` parameter to `Get-AzSqlDatabaseActivity` for tracking Ongoing Sql Database Operation
+* Added `OperationPhaseDetails` parameter to `Get-AzSqlDatabaseActivity` and updated `DatabaseOperations` Api to version `2022-11-01-preview` for .Net Sdk
 
 ## Version 4.14.0
 * Added `DatabaseFormat` and `PricingModel` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance`
