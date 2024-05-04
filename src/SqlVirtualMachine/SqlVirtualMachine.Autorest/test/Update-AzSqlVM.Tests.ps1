@@ -149,4 +149,41 @@ Describe 'Update-AzSqlVM' {
         $sqlVM2 = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName_HA2 -Expand *
         $sqlVM2.GroupResourceId | Should -Be $null
         }
+	
+		It 'Update-AdAuthenticationEnable1' {
+        $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location
+
+        $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -AzureAdAuthenticationSettingClientId '6d81e2bc-dcc5-45c9-9327-1cfee9612933'
+                
+        $sqlVM.Name | Should -Be $env.SqlVMName
+        $sqlVM.SqlImageOffer | Should -Be 'SQL2022-WS2022'
+        $sqlVM.SqlManagement | Should -Be 'Full'
+        
+		Start-Sleep -Seconds 60
+        $sqlVM1 = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Expand *
+        $sqlVM1.AzureAdAuthenticationSettingClientId | Should -Be '6d81e2bc-dcc5-45c9-9327-1cfee9612933'
+        
+        # Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
+        }
+		
+		It 'Update-AdAuthenticationEnable2' {
+        $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location
+
+        $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -AzureAdAuthenticationSettingClientId ''
+                
+        $sqlVM.Name | Should -Be $env.SqlVMName
+        $sqlVM.SqlImageOffer | Should -Be 'SQL2022-WS2022'
+        $sqlVM.SqlManagement | Should -Be 'Full'
+        
+		Start-Sleep -Seconds 60
+        $sqlVM2 = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Expand *		
+        $sqlVM2.AzureAdAuthenticationSettingClientId | Should -Be ''
+        
+        # Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
+        }
+		
+		It 'AdAuthenticationFailurescenario' {
+		$sqlVM = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
+		{$sqlVM | Update-AzSqlVMADAuth -AzureAdAuthenticationSettingClientId 'random value'} | Should -Throw		
+    }
 }

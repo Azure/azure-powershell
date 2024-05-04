@@ -169,10 +169,29 @@ process {
         if ($PSCmdlet.ShouldProcess("SQL virtual machine $($sqlvm.Name)", "Assert")) {
 		# All validations go here
 		# validate the SQL VM supports Azure Entra authentication, i.e. it is on Windows platform and is SQL 2022 or later
+		# region - verify accounts and compute module start
+		$accountmodule = Get-Module Az.Accounts 
+		if ($accountmodule -ne $null -and $accountmodule.Version -lt [System.Version]"2.19.0") 
+		{ 
+			Write-Error "This module requires Az.Accounts version 2.19.0. An earlier version of Az.Accounts is imported in the current PowerShell session. Please open a new session before importing this module. This error could indicate that multiple incompatible versions of the Azure PowerShell cmdlets are installed on your system. Please see https://aka.ms/azps-version-error for troubleshooting information." -ErrorAction Stop 
+		} 
+		elseif ($accountmodule -eq $null) 
+		{ 
+			Install-Module -Name Az.Accounts -Scope CurrentUser -AllowClobber -Force 
+			Import-Module Az.Accounts -MinimumVersion 2.19.0 -Scope Global 
+		}
+
+		$computemodule = Get-Module Az.Compute
+		if ($computemodule -eq $null) 
+		{ 
+			Install-Module -Name Az.Compute -Scope CurrentUser -AllowClobber -Force
+			Import-Module Az.Compute 
+		}
+		# # region - verify accounts and compute module end
 		# region Assert-AzureEntraAuthenticationSupportedOnSqlVM start 
 			try {        
 			# Get the SQL VM instance
-			$statuses = Get-AzVMExtension -ResourceGroupName $ResourceGroupName -VMName $Name -Name "SqlIaasExtension" -Status
+			$statuses = Get-AzVMExtension -ResourceGroupName $sqlvm.ResourceGroupName -VMName $sqlvm.Name -Name "SqlIaasExtension" -Status
 			$resourceProviderPluginStatus = $statuses.SubStatuses | Where-Object { $_.Code -like "*Resource Provider Plugin*" }
 
 			if ($resourceProviderPluginStatus) {
@@ -207,7 +226,7 @@ process {
 		# region Assert-AzureEntraAuthenticationSupportedOnSqlVM end
 		# validate the MSI is valid on the Azure virtual machine		
 		#region Assert-MsiValidOnVm start 
-        $PrincipalId = Assert-MsiValidOnVm -ResourceGroupName $ResourceGroupName -SqlVirtualMachineName $Name -MsiClientId $AzureAdAuthenticationSettingClientId
+        $PrincipalId = Assert-MsiValidOnVm -ResourceGroupName $sqlvm.ResourceGroupName -SqlVirtualMachineName $sqlvm.Name -MsiClientId $AzureAdAuthenticationSettingClientId
 		#region Assert-MsiValidOnVm end
 		
 		# validate the MSI has appropriate permission to query Microsoft Graph API
@@ -251,7 +270,7 @@ process {
 			# Check if the MSI has the "Directory Readers" role
 			if ($directoryRoles.DisplayName -contains "Directory Readers") {
 				Write-Host "Sql virtual machine $($sqlvm.Name) is valid for Azure Entra authentication."
-				return
+				return $true
 			}
 
 			# Retrieve app role IDs for required roles
@@ -271,8 +290,9 @@ process {
 		# region Assert-MsiWithEnoughPermission end
 		
 		Write-Host "Sql virtual machine $($sqlvm.Name) is valid for Azure Entra authentication."
+		return $true
         }
-    } catch {
+    } catch {		
         throw "Azure Entra authentication failed. Error: $_"
     }
 }
@@ -333,7 +353,7 @@ function Find-RoleId {
 	.PARAMETER MsiClientId
     Msi Client Id
 #>
-function Assert-MsiValidOnVm {	
+function Assert-MsiValidOnVm {
 	param(
         [Parameter(Mandatory = $true)]
         [string] $ResourceGroupName,
@@ -345,24 +365,6 @@ function Assert-MsiValidOnVm {
 
     try {
 		
-		$accountmodule = Get-Module Az.Accounts 
-		if ($accountmodule -ne $null -and $accountmodule.Version -lt [System.Version]"2.19.0") 
-		{ 
-			Write-Error "This module requires Az.Accounts version 2.19.0. An earlier version of Az.Accounts is imported in the current PowerShell session. Please open a new session before importing this module. This error could indicate that multiple incompatible versions of the Azure PowerShell cmdlets are installed on your system. Please see https://aka.ms/azps-version-error for troubleshooting information." -ErrorAction Stop 
-		} 
-		elseif ($accountmodule -eq $null) 
-		{ 
-			Install-Module -Name Az.Accounts -Scope CurrentUser -AllowClobber -Force 
-			Import-Module Az.Accounts -MinimumVersion 2.19.0 -Scope Global 
-		}
-
-		$computemodule = Get-Module Az.Compute
-		if ($computemodule -eq $null) 
-		{ 
-			Install-Module -Name Az.Compute -Scope CurrentUser -AllowClobber -Force
-			Import-Module Az.Compute 
-		}
-
         # Get the VM instance
         $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $SqlVirtualMachineName
     }
