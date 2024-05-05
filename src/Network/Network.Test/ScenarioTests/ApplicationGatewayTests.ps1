@@ -5595,7 +5595,7 @@ function Test-ApplicationGatewayHeaderValueMatcher
 		$hvm = New-AzApplicationGatewayHeaderValueMatcher -Pattern ".*" -IgnoreCase -Negate
 
 		#Rewrite Rule Set
-		$headerConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "abc" -HeaderValue "def" -HeaderValueMatcher $hvm
+		$headerConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Set-Cookie" -HeaderValue "def" -HeaderValueMatcher $hvm
 		$actionSet = New-AzApplicationGatewayRewriteRuleActionSet -ResponseHeaderConfiguration $headerConfiguration
 		$rewriteRule = New-AzApplicationGatewayRewriteRule -Name $rewriteRuleName -ActionSet $actionSet
 		$rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name $rewriteRuleSetName -RewriteRule $rewriteRule
@@ -5645,5 +5645,3 @@ function Test-ApplicationGatewayHeaderValueMatcher
 		Clean-ResourceGroup $rgname
 	}
 }
-
-Test-ApplicationGatewayHeaderValueMatcher
