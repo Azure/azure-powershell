@@ -1,0 +1,57 @@
+{
+  "resourceType": "vaults/backupPolicies/operations",
+  "apiVersion": "2023-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.recoveryservices"
+  },
+  "commands": [
+    {
+      "name": "Get-AzRecoveryServicesProtectionPolicyOperationStatuses",
+      "description": "Provides the status of the asynchronous operations like backup, restore.\nThe status can be in progress, completed\\r\\nor failed.\nYou can refer to the Operation Status enum for all the possible states of an operation.\nSome operations\\r\\ncreate jobs.\nThis method returns the list of jobs associated with operation.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupPolicies/{policyName}/operations/{operationId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesprotectionpolicyoperationstatuses"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-OperationId <String>",
+              "-PolicyName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-VaultName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Provides the status of the asynchronous operations like backup, restore. The status can be in progress, completed\\r\\nor failed. You can refer to the Operation Status enum for all the possible states of an operation. Some operations\\r\\ncreate jobs. This method returns the list of jobs associated with operation.",
+          "parameters": [
+            {
+              "name": "-OperationId",
+              "value": "[Path.operationId]"
+            },
+            {
+              "name": "-PolicyName",
+              "value": "[Path.policyName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VaultName",
+              "value": "[Path.vaultName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

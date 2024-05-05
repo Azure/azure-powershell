@@ -90,7 +90,7 @@
                 $inquiryContainerType = $manifest.containerInquiryType
             }
         }
-
+        
         $null = $PSBoundParameters.Remove("ContainerType")
         $null = $PSBoundParameters.Remove("FriendlyName")
         $null = $PSBoundParameters.Remove("DatasourceType")
@@ -103,12 +103,12 @@
         $containersList = Az.RecoveryServices.Internal\Get-AzRecoveryServicesBackupProtectionContainer @PSBoundParameters
         
         # filter by container resource group
-        if($containerResourceGroupName -ne ""){
+        if($containerResourceGroupName -ne ""){            
             $containersList = $containersList | Where-Object { $_.Id.Split(';')[-2] -eq $containerResourceGroupName }
         }
 
         # filter by worloadType -  MSSQL, SAPHANA
-        if($inquiryContainerType -ne ""){
+        if($inquiryContainerType -ne ""){                       
             $containersList = $containersList | Where-Object { $_.Property.ExtendedInfo.InquiryInfo.InquiryDetail.Type -match $inquiryContainerType }
         }        
 

@@ -45,6 +45,7 @@ title: RecoveryServices
 use-extension:
   "@autorest/powershell": "3.x"
 
+inlining-threshold: 0
 directive:
   - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/protectedItems/{protectedItemName}"].put
@@ -56,7 +57,13 @@ directive:
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/refreshContainers"].post
     transform: $["x-ms-long-running-operation"] = true
   - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/inquire"].post
+    transform: $["x-ms-long-running-operation"] = true
+  - from: swagger-document
     where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}"].put
+    transform: $["x-ms-long-running-operation"] = true
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}"].delete
     transform: $["x-ms-long-running-operation"] = true
   - where:
       verb: New
@@ -88,7 +95,7 @@ directive:
     set:
       subject: BackupPolicy
   - where:      
-      subject: Job|BackupEngine|OperationResult|OperationStatuses|EncryptionConfig|StorageConfigsNonCrr|VaultConfig|BackupStatus|BackupUsageSummary|JobDetail|PrivateEndpointConnection|RecoveryPoint|RecommendedForMove|ResourceGuardProxy|SecurityPiN|ItemLevelRecoveryConnection|Restore|Cancellation|ValidateOperation|ResourceGuardProxyDelete|Prepare|FeatureSupport|WorkloadItem|DeletedProtectionContainer|InquireProtectionContainer|PrivateEndpointOperationStatus|^ProtectionIntent
+      subject: Job|BackupEngine|EncryptionConfig|StorageConfigsNonCrr|VaultConfig|BackupUsageSummary|JobDetail|PrivateEndpointConnection|RecoveryPoint|RecommendedForMove|ResourceGuardProxy|SecurityPiN|ItemLevelRecoveryConnection|Restore|Cancellation|ValidateOperation|ResourceGuardProxyDelete|Prepare|FeatureSupport|WorkloadItem|DeletedProtectionContainer|PrivateEndpointOperationStatus|^ProtectionIntent
     remove: true
   - where:      
       verb: Start
@@ -97,7 +104,7 @@ directive:
       verb: Set
       subject: BackupPolicy
     remove: true
-  - where:      
+  - where:
       verb: Get
       subject: BackupPolicy
     hide: true
@@ -109,16 +116,16 @@ directive:
   - where:
       subject: BackupProtectableItem
     hide: true
-  - where:
-      verb: Unregister
-      subject: ProtectionContainer
-    remove: true
   - where:      
-      verb: New|Remove|Set
+      verb: Remove|Set
       subject: ProtectedItem
     remove: true
   - where:
-      subject: ProtectedItem|ProtectionIntent|OperationStatus|ProtectionContainer|ProtectableContainer
+      subject: ProtectedItem|ProtectionIntent|ProtectableContainer
+    hide: true
+  - where:
+      verb: Get|Update|^Register$|Unregister
+      subject: .*ProtectionContainer$
     hide: true
   - no-inline:
     - DailyRetentionSchedule
@@ -159,4 +166,7 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IRecoveryPoint Property', 'public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IRecoveryPoint Property');
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('internal Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IOperationStatusExtendedInfo Property', 'public Microsoft.Azure.PowerShell.Cmdlets.RecoveryServices.Models.Api20230201.IOperationStatusExtendedInfo Property');
 ```

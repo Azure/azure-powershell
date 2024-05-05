@@ -69,7 +69,7 @@ function setupEnv() {
 
     $env.add("TestBackupSchedulePolicy", $TestBackupSchedulePolicyVariables) | Out-Null          
     $env.add("TestBackupPolicy", $BackupRetentionPolicyTestVariables) | Out-Null     
-    $env.add("TestBackup", $BackupTestVariables) | Out-Null
+    $env.add("TestBackup", $BackupTestVariables) | Out-Null  
     $env.add("TestCommon", $CommonTestVariables) | Out-Null
     $env.add("TestRegisterContainer", $RegisterContainerVariables) | Out-Null
     $env.add("TestProtectableItem", $ProtectableItemVariables) | Out-Null

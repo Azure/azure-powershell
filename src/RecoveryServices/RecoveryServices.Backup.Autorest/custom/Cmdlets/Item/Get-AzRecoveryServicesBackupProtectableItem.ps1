@@ -152,7 +152,7 @@
                 $intentList = Az.RecoveryServices.Internal\Get-AzRecoveryServicesBackupProtectionIntent @PSBoundParameters
                 $null = $PSBoundParameters.Remove('Filter')
 
-                foreach($intent in $intentList){                    
+                foreach($intent in $intentList){
                     Write-Debug "AutoProtectionPolicy - $($intent.PolicyId)"                    
                     $proItem.AutoProtectionPolicy = $intent.PolicyId
                 }
@@ -160,14 +160,14 @@
 
             if($proItem.ProtectableItemType -eq "SQLAvailabilityGroup"){
                 try{
-                    # get container
+                    # get container 
                     $PSBoundParameters.Add('FabricName', 'Azure')
                     $PSBoundParameters.Add('ContainerName', $containerUri)
                     $container = Az.RecoveryServices.Internal\Get-AzRecoveryServicesProtectionContainer @PSBoundParameters
                     $null = $PSBoundParameters.Remove('FabricName')
                     $null = $PSBoundParameters.Remove('ContainerName')
 
-                    if($container -ne $null -and $container.Property.ExtendedInfo -ne $null){                        
+                    if($container -ne $null -and $container.Property.ExtendedInfo -ne $null){
                         Write-Host "NodesList - $($container.Property.ExtendedInfo.NodesList)"
                         $proItem.NodesList = $container.Property.ExtendedInfo.NodesList
                     }

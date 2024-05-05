@@ -12,8 +12,11 @@ function LoadManifest {
     )
 
     process {
-        # validate datasource type is valid 
-        $manifestPath = $PSScriptRoot + "\" + $DatasourceType + ".json"
+        # validate datasource type is valid
+
+        $manifestFileName = $DatasourceType + ".json"
+        $manifestPath =  Join-Path -Path $PSScriptRoot -ChildPath $manifestFileName
+        
         $manifest = Get-Content -Path $manifestPath | ConvertFrom-Json
         
         return $manifest

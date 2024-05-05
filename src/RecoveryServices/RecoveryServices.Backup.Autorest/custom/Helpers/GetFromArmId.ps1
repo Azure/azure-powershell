@@ -45,3 +45,11 @@ function Get-VaultNameFromArmId {
 	$vaultName = (($Id -split "/vaults/")[1] -split "/")[0]
 	return $vaultName
 }
+
+function Get-PolicyNameFromArmId {
+	param(
+		[System.String]$Id
+	)	
+	$policyName = (($Id -split "backupPolicies/")[1] -split "/")[0]
+	return $policyName
+}

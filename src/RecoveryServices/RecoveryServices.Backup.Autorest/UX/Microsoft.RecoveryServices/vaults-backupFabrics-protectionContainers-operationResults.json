@@ -1,0 +1,62 @@
+{
+  "resourceType": "vaults/backupFabrics/protectionContainers/operationResults",
+  "apiVersion": "2023-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.recoveryservices"
+  },
+  "commands": [
+    {
+      "name": "Get-AzRecoveryServicesProtectionContainerOperationResult",
+      "description": "Fetches the result of any operation on the container.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/protectionContainers/{containerName}/operationResults/{operationId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesprotectioncontaineroperationresult"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-ContainerName <String>",
+              "-FabricName <String>",
+              "-OperationId <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-VaultName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Fetches the result of any operation on the container.",
+          "parameters": [
+            {
+              "name": "-ContainerName",
+              "value": "[Path.containerName]"
+            },
+            {
+              "name": "-FabricName",
+              "value": "[Path.fabricName]"
+            },
+            {
+              "name": "-OperationId",
+              "value": "[Path.operationId]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VaultName",
+              "value": "[Path.vaultName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

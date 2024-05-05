@@ -1,0 +1,57 @@
+{
+  "resourceType": "vaults/backupFabrics/operationResults",
+  "apiVersion": "2023-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.recoveryservices"
+  },
+  "commands": [
+    {
+      "name": "Get-AzRecoveryServicesProtectionContainerRefreshOperationResult",
+      "description": "Provides the result of the refresh operation triggered by the BeginRefresh operation.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupFabrics/{fabricName}/operationResults/{operationId}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesprotectioncontainerrefreshoperationresult"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-FabricName <String>",
+              "-OperationId <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]",
+              "-VaultName <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Provides the result of the refresh operation triggered by the BeginRefresh operation.",
+          "parameters": [
+            {
+              "name": "-FabricName",
+              "value": "[Path.fabricName]"
+            },
+            {
+              "name": "-OperationId",
+              "value": "[Path.operationId]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            },
+            {
+              "name": "-VaultName",
+              "value": "[Path.vaultName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
