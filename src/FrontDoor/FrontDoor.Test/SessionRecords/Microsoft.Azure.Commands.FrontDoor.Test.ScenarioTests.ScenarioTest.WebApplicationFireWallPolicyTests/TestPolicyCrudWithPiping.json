@@ -6,7 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5371aa6a-63f0-4498-b2ae-2486237e07c3"
+          "ab0af585-57e7-46e1-bd78-689d7335e858"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,16 +27,16 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11996"
+          "11999"
         ],
         "x-ms-request-id": [
-          "2b886e73-eae6-499a-99c1-187f0e5aab8d"
+          "3dac0316-f1f8-48bf-a9d4-3ad2d9f83db8"
         ],
         "x-ms-correlation-request-id": [
-          "2b886e73-eae6-499a-99c1-187f0e5aab8d"
+          "3dac0316-f1f8-48bf-a9d4-3ad2d9f83db8"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240506T030721Z:2b886e73-eae6-499a-99c1-187f0e5aab8d"
+          "SOUTHEASTASIA:20240506T085240Z:3dac0316-f1f8-48bf-a9d4-3ad2d9f83db8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -48,10 +48,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 975900F3949541BFBD810A04DBAB0004 Ref B: MAA201060514049 Ref C: 2024-05-06T03:07:19Z"
+          "Ref A: E81BE5DD2D1F412B8E0671843994ABBE Ref B: MAA201060513031 Ref C: 2024-05-06T08:52:39Z"
         ],
         "Date": [
-          "Mon, 06 May 2024 03:07:20 GMT"
+          "Mon, 06 May 2024 08:52:40 GMT"
         ],
         "Content-Length": [
           "19433"
@@ -67,12 +67,12 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/ps2077?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlZ3JvdXBzL3BzMjA3Nz9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/ps9311?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlZ3JvdXBzL3BzOTMxMT9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "968d4153-fe73-4dc7-8152-bbd9cc963733"
+          "7e54f624-ebf1-49e8-a979-d5d670520214"
         ],
         "Accept-Language": [
           "en-US"
@@ -102,13 +102,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "7874ff74-c8df-46bd-9b22-2a0204410d8a"
+          "28fbbdbb-9491-49db-87a9-1af4b03fff54"
         ],
         "x-ms-correlation-request-id": [
-          "7874ff74-c8df-46bd-9b22-2a0204410d8a"
+          "28fbbdbb-9491-49db-87a9-1af4b03fff54"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240506T030724Z:7874ff74-c8df-46bd-9b22-2a0204410d8a"
+          "SOUTHEASTASIA:20240506T085244Z:28fbbdbb-9491-49db-87a9-1af4b03fff54"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -120,10 +120,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 21FC32E172A546AA957B0F32AB030401 Ref B: MAA201060514031 Ref C: 2024-05-06T03:07:21Z"
+          "Ref A: 868D4E90AAFF4CFD90CC335CE9350799 Ref B: MAA201060516047 Ref C: 2024-05-06T08:52:41Z"
         ],
         "Date": [
-          "Mon, 06 May 2024 03:07:24 GMT"
+          "Mon, 06 May 2024 08:52:44 GMT"
         ],
         "Content-Length": [
           "165"
@@ -135,16 +135,16 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/ps2077\",\r\n  \"name\": \"ps2077\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/ps9311\",\r\n  \"name\": \"ps9311\",\r\n  \"location\": \"westus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/ps2077/providers/Microsoft.Network/frontDoorWebApplicationFirewallPolicies?api-version=2024-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL3BzMjA3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjQtMDItMDE=",
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/ps9311/providers/Microsoft.Network/frontDoorWebApplicationFirewallPolicies?api-version=2024-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL3BzOTMxMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjQtMDItMDE=",
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8bc32ae5-9a39-41c3-a90d-29037806b963"
+          "4778eb3f-74a1-4f10-9c6c-f56f1c89928c"
         ],
         "Accept-Language": [
           "en-US"
@@ -168,13 +168,13 @@
           "11999"
         ],
         "x-ms-request-id": [
-          "42aa8c50-7598-4b6b-92ca-76cc0b72c740"
+          "e4178463-01c7-439a-8236-19d723873f37"
         ],
         "x-ms-correlation-request-id": [
-          "42aa8c50-7598-4b6b-92ca-76cc0b72c740"
+          "e4178463-01c7-439a-8236-19d723873f37"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240506T030725Z:42aa8c50-7598-4b6b-92ca-76cc0b72c740"
+          "SOUTHEASTASIA:20240506T085245Z:e4178463-01c7-439a-8236-19d723873f37"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -186,10 +186,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: 90915631FC5D494D9C21654B9D89CB08 Ref B: MAA201060514025 Ref C: 2024-05-06T03:07:25Z"
+          "Ref A: A04960305B3445FD93ECBCC59C195373 Ref B: MAA201060516017 Ref C: 2024-05-06T08:52:44Z"
         ],
         "Date": [
-          "Mon, 06 May 2024 03:07:24 GMT"
+          "Mon, 06 May 2024 08:52:44 GMT"
         ],
         "Content-Length": [
           "12"
@@ -205,12 +205,150 @@
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/ps2077/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps3280?api-version=2024-02-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL3BzMjA3Ny9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzMzI4MD9hcGktdmVyc2lvbj0yMDI0LTAyLTAx",
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/ps9311/providers/Microsoft.Network/frontDoorWebApplicationFirewallPolicies?api-version=2024-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL3BzOTMxMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjQtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9623b8ef-0c63-41a0-b4ab-4174982dff49"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2924.17105",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorClient/6.0.2"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "f3150138-b15a-4b1e-8bde-26667e93973b"
+        ],
+        "x-ms-client-request-id": [
+          "9623b8ef-0c63-41a0-b4ab-4174982dff49"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "bdf88c3d-e202-40fb-8eeb-abe4e0a869de"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20240506T085251Z:bdf88c3d-e202-40fb-8eeb-abe4e0a869de"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: C988B0CBB37641BE8FCBDB6DC95272E6 Ref B: MAA201060514031 Ref C: 2024-05-06T08:52:50Z"
+        ],
+        "Date": [
+          "Mon, 06 May 2024 08:52:50 GMT"
+        ],
+        "Content-Length": [
+          "1464"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/ps9311/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps9085\",\r\n      \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n      \"name\": \"ps9085\",\r\n      \"location\": \"Global\",\r\n      \"tags\": {},\r\n      \"sku\": {\r\n        \"name\": \"Classic_AzureFrontDoor\"\r\n      },\r\n      \"properties\": {\r\n        \"policySettings\": {\r\n          \"enabledState\": \"Enabled\",\r\n          \"mode\": \"Prevention\",\r\n          \"redirectUrl\": null,\r\n          \"customBlockResponseStatusCode\": null,\r\n          \"customBlockResponseBody\": null,\r\n          \"requestBodyCheck\": \"Disabled\",\r\n          \"javascriptChallengeExpirationInMinutes\": null,\r\n          \"logScrubbing\": null\r\n        },\r\n        \"customRules\": {\r\n          \"rules\": [\r\n            {\r\n              \"name\": \"Rule1\",\r\n              \"enabledState\": \"Enabled\",\r\n              \"priority\": 2,\r\n              \"ruleType\": \"MatchRule\",\r\n              \"rateLimitDurationInMinutes\": 1,\r\n              \"rateLimitThreshold\": null,\r\n              \"matchConditions\": [\r\n                {\r\n                  \"matchVariable\": \"RequestHeader\",\r\n                  \"selector\": \"UserAgent\",\r\n                  \"operator\": \"Contains\",\r\n                  \"negateCondition\": false,\r\n                  \"matchValue\": [\r\n                    \"WINDOWS\"\r\n                  ],\r\n                  \"transforms\": [\r\n                    \"Uppercase\"\r\n                  ]\r\n                }\r\n              ],\r\n              \"action\": \"Block\",\r\n              \"groupBy\": []\r\n            }\r\n          ]\r\n        },\r\n        \"managedRules\": {\r\n          \"managedRuleSets\": [\r\n            {\r\n              \"ruleSetType\": \"DefaultRuleSet\",\r\n              \"ruleSetVersion\": \"1.0\",\r\n              \"ruleSetAction\": null,\r\n              \"ruleGroupOverrides\": [\r\n                {\r\n                  \"ruleGroupName\": \"SQLI\",\r\n                  \"rules\": [\r\n                    {\r\n                      \"ruleId\": \"942100\",\r\n                      \"enabledState\": \"Enabled\",\r\n                      \"action\": \"Log\",\r\n                      \"exclusions\": []\r\n                    }\r\n                  ],\r\n                  \"exclusions\": []\r\n                }\r\n              ],\r\n              \"exclusions\": []\r\n            },\r\n            {\r\n              \"ruleSetType\": \"BotProtection\",\r\n              \"ruleSetVersion\": \"preview-0.1\",\r\n              \"ruleSetAction\": null,\r\n              \"ruleGroupOverrides\": [],\r\n              \"exclusions\": []\r\n            }\r\n          ]\r\n        },\r\n        \"frontendEndpointLinks\": [],\r\n        \"securityPolicyLinks\": [],\r\n        \"resourceState\": \"Enabled\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/ps9311/providers/Microsoft.Network/frontDoorWebApplicationFirewallPolicies?api-version=2024-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL3BzOTMxMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvZnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzP2FwaS12ZXJzaW9uPTIwMjQtMDItMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6f7d7f90-6f95-457b-8d3c-0a08705bd1ff"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2924.17105",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorClient/6.0.2"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "8417dd59-57e7-4c0f-9965-bfabb97736eb"
+        ],
+        "x-ms-client-request-id": [
+          "6f7d7f90-6f95-457b-8d3c-0a08705bd1ff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "0ac6ab2d-e7de-42f8-98c9-437c156bc828"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20240506T085255Z:0ac6ab2d-e7de-42f8-98c9-437c156bc828"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 3057F8FF3ACD4EA39E7FEA0C2DF01C18 Ref B: MAA201060515009 Ref C: 2024-05-06T08:52:54Z"
+        ],
+        "Date": [
+          "Mon, 06 May 2024 08:52:54 GMT"
+        ],
+        "Content-Length": [
+          "1462"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"value\": [\r\n    {\r\n      \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/ps9311/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps9085\",\r\n      \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n      \"name\": \"ps9085\",\r\n      \"location\": \"Global\",\r\n      \"tags\": {},\r\n      \"sku\": {\r\n        \"name\": \"Classic_AzureFrontDoor\"\r\n      },\r\n      \"properties\": {\r\n        \"policySettings\": {\r\n          \"enabledState\": \"Enabled\",\r\n          \"mode\": \"Prevention\",\r\n          \"redirectUrl\": null,\r\n          \"customBlockResponseStatusCode\": null,\r\n          \"customBlockResponseBody\": null,\r\n          \"requestBodyCheck\": \"Disabled\",\r\n          \"javascriptChallengeExpirationInMinutes\": null,\r\n          \"logScrubbing\": null\r\n        },\r\n        \"customRules\": {\r\n          \"rules\": [\r\n            {\r\n              \"name\": \"Rule2\",\r\n              \"enabledState\": \"Enabled\",\r\n              \"priority\": 2,\r\n              \"ruleType\": \"MatchRule\",\r\n              \"rateLimitDurationInMinutes\": 1,\r\n              \"rateLimitThreshold\": null,\r\n              \"matchConditions\": [\r\n                {\r\n                  \"matchVariable\": \"RequestHeader\",\r\n                  \"selector\": \"UserAgent\",\r\n                  \"operator\": \"Contains\",\r\n                  \"negateCondition\": false,\r\n                  \"matchValue\": [\r\n                    \"WINDOWS\"\r\n                  ],\r\n                  \"transforms\": [\r\n                    \"Uppercase\"\r\n                  ]\r\n                }\r\n              ],\r\n              \"action\": \"Log\",\r\n              \"groupBy\": []\r\n            }\r\n          ]\r\n        },\r\n        \"managedRules\": {\r\n          \"managedRuleSets\": [\r\n            {\r\n              \"ruleSetType\": \"DefaultRuleSet\",\r\n              \"ruleSetVersion\": \"1.0\",\r\n              \"ruleSetAction\": null,\r\n              \"ruleGroupOverrides\": [\r\n                {\r\n                  \"ruleGroupName\": \"SQLI\",\r\n                  \"rules\": [\r\n                    {\r\n                      \"ruleId\": \"942100\",\r\n                      \"enabledState\": \"Enabled\",\r\n                      \"action\": \"Log\",\r\n                      \"exclusions\": []\r\n                    }\r\n                  ],\r\n                  \"exclusions\": []\r\n                }\r\n              ],\r\n              \"exclusions\": []\r\n            },\r\n            {\r\n              \"ruleSetType\": \"BotProtection\",\r\n              \"ruleSetVersion\": \"preview-0.1\",\r\n              \"ruleSetAction\": null,\r\n              \"ruleGroupOverrides\": [],\r\n              \"exclusions\": []\r\n            }\r\n          ]\r\n        },\r\n        \"frontendEndpointLinks\": [],\r\n        \"securityPolicyLinks\": [],\r\n        \"resourceState\": \"Enabled\",\r\n        \"provisioningState\": \"Succeeded\"\r\n      }\r\n    }\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/ps9311/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps9085?api-version=2024-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL3BzOTMxMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzOTA4NT9hcGktdmVyc2lvbj0yMDI0LTAyLTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8bc32ae5-9a39-41c3-a90d-29037806b963"
+          "4778eb3f-74a1-4f10-9c6c-f56f1c89928c"
         ],
         "Accept-Language": [
           "en-US"
@@ -240,19 +378,19 @@
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-request-id": [
-          "1e35a054-c52a-404c-907c-6fc7863d0fe5"
+          "4a4757da-ce52-467e-be78-f1dc052fad65"
         ],
         "x-ms-client-request-id": [
-          "8bc32ae5-9a39-41c3-a90d-29037806b963"
+          "4778eb3f-74a1-4f10-9c6c-f56f1c89928c"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "15e8f7d8-1314-40bd-bf68-ee1fbe3e7498"
+          "cef87ba2-5660-42a5-88e9-0b805ec1c87f"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHEASTASIA:20240506T030728Z:15e8f7d8-1314-40bd-bf68-ee1fbe3e7498"
+          "SOUTHEASTASIA:20240506T085247Z:cef87ba2-5660-42a5-88e9-0b805ec1c87f"
         ],
         "X-Content-Type-Options": [
           "nosniff"
@@ -261,10 +399,10 @@
           "CONFIG_NOCACHE"
         ],
         "X-MSEdge-Ref": [
-          "Ref A: D705B50C79044FB2A484D6994BB91FBF Ref B: MAA201060514025 Ref C: 2024-05-06T03:07:25Z"
+          "Ref A: 9119645DD7CF43539A22305E89425637 Ref B: MAA201060516017 Ref C: 2024-05-06T08:52:45Z"
         ],
         "Date": [
-          "Mon, 06 May 2024 03:07:27 GMT"
+          "Mon, 06 May 2024 08:52:47 GMT"
         ],
         "Content-Length": [
           "1452"
@@ -276,14 +414,356 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/ps2077/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps3280\",\r\n  \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n  \"name\": \"ps3280\",\r\n  \"location\": \"Global\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"Classic_AzureFrontDoor\"\r\n  },\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"redirectUrl\": null,\r\n      \"customBlockResponseStatusCode\": null,\r\n      \"customBlockResponseBody\": null,\r\n      \"requestBodyCheck\": \"Disabled\",\r\n      \"javascriptChallengeExpirationInMinutes\": null,\r\n      \"logScrubbing\": null\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule1\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"priority\": 2,\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"rateLimitThreshold\": null,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Block\",\r\n          \"groupBy\": []\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleSetAction\": null,\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\",\r\n                  \"exclusions\": []\r\n                }\r\n              ],\r\n              \"exclusions\": []\r\n            }\r\n          ],\r\n          \"exclusions\": []\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\",\r\n          \"ruleSetAction\": null,\r\n          \"ruleGroupOverrides\": [],\r\n          \"exclusions\": []\r\n        }\r\n      ]\r\n    },\r\n    \"frontendEndpointLinks\": [],\r\n    \"securityPolicyLinks\": [],\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/ps9311/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps9085\",\r\n  \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n  \"name\": \"ps9085\",\r\n  \"location\": \"Global\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"Classic_AzureFrontDoor\"\r\n  },\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"redirectUrl\": null,\r\n      \"customBlockResponseStatusCode\": null,\r\n      \"customBlockResponseBody\": null,\r\n      \"requestBodyCheck\": \"Disabled\",\r\n      \"javascriptChallengeExpirationInMinutes\": null,\r\n      \"logScrubbing\": null\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule1\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"priority\": 2,\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"rateLimitThreshold\": null,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Block\",\r\n          \"groupBy\": []\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleSetAction\": null,\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\",\r\n                  \"exclusions\": []\r\n                }\r\n              ],\r\n              \"exclusions\": []\r\n            }\r\n          ],\r\n          \"exclusions\": []\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\",\r\n          \"ruleSetAction\": null,\r\n          \"ruleGroupOverrides\": [],\r\n          \"exclusions\": []\r\n        }\r\n      ]\r\n    },\r\n    \"frontendEndpointLinks\": [],\r\n    \"securityPolicyLinks\": [],\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
+    },
+    {
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/ps9311/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps9085?api-version=2024-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL3BzOTMxMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzOTA4NT9hcGktdmVyc2lvbj0yMDI0LTAyLTAx",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9623b8ef-0c63-41a0-b4ab-4174982dff49"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2924.17105",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorClient/6.0.2"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "1681"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"requestBodyCheck\": \"Disabled\"\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule2\",\r\n          \"priority\": 2,\r\n          \"enabledState\": \"Enabled\",\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Log\"\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"exclusions\": [],\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"exclusions\": [],\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\",\r\n                  \"exclusions\": []\r\n                }\r\n              ]\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\",\r\n          \"exclusions\": [],\r\n          \"ruleGroupOverrides\": []\r\n        }\r\n      ]\r\n    }\r\n  },\r\n  \"sku\": {\r\n    \"name\": \"Classic_AzureFrontDoor\"\r\n  },\r\n  \"location\": \"global\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "a3c1e0bb-b129-47d4-80e1-c6bc11720b73"
+        ],
+        "x-ms-client-request-id": [
+          "9623b8ef-0c63-41a0-b4ab-4174982dff49"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1199"
+        ],
+        "x-ms-correlation-request-id": [
+          "bbfe0077-a397-4d2e-88f0-88244f657212"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20240506T085252Z:bbfe0077-a397-4d2e-88f0-88244f657212"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: C5DEE39C03A342819DCE481EDF3951BD Ref B: MAA201060514031 Ref C: 2024-05-06T08:52:51Z"
+        ],
+        "Date": [
+          "Mon, 06 May 2024 08:52:51 GMT"
+        ],
+        "Content-Length": [
+          "1450"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/ps9311/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps9085\",\r\n  \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n  \"name\": \"ps9085\",\r\n  \"location\": \"Global\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"Classic_AzureFrontDoor\"\r\n  },\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"redirectUrl\": null,\r\n      \"customBlockResponseStatusCode\": null,\r\n      \"customBlockResponseBody\": null,\r\n      \"requestBodyCheck\": \"Disabled\",\r\n      \"javascriptChallengeExpirationInMinutes\": null,\r\n      \"logScrubbing\": null\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule2\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"priority\": 2,\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"rateLimitThreshold\": null,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Log\",\r\n          \"groupBy\": []\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleSetAction\": null,\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\",\r\n                  \"exclusions\": []\r\n                }\r\n              ],\r\n              \"exclusions\": []\r\n            }\r\n          ],\r\n          \"exclusions\": []\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\",\r\n          \"ruleSetAction\": null,\r\n          \"ruleGroupOverrides\": [],\r\n          \"exclusions\": []\r\n        }\r\n      ]\r\n    },\r\n    \"frontendEndpointLinks\": [],\r\n    \"securityPolicyLinks\": [],\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/ps9311/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps9085?api-version=2024-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL3BzOTMxMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzOTA4NT9hcGktdmVyc2lvbj0yMDI0LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "9623b8ef-0c63-41a0-b4ab-4174982dff49"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2924.17105",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorClient/6.0.2"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "dd712ea3-d350-462c-b1e5-4f68bd1f1753"
+        ],
+        "x-ms-client-request-id": [
+          "9623b8ef-0c63-41a0-b4ab-4174982dff49"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "98cc5b7e-9602-4932-ae0d-3e517d0d5bff"
+        ],
+        "x-ms-routing-request-id": [
+          "MALAYSIASOUTH:20240506T085249Z:98cc5b7e-9602-4932-ae0d-3e517d0d5bff"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 7E31F48FE9864A70B2E6BF680A5DEC35 Ref B: MAA201060513009 Ref C: 2024-05-06T08:52:48Z"
+        ],
+        "Date": [
+          "Mon, 06 May 2024 08:52:49 GMT"
+        ],
+        "Content-Length": [
+          "1452"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/ps9311/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps9085\",\r\n  \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n  \"name\": \"ps9085\",\r\n  \"location\": \"Global\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"Classic_AzureFrontDoor\"\r\n  },\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"redirectUrl\": null,\r\n      \"customBlockResponseStatusCode\": null,\r\n      \"customBlockResponseBody\": null,\r\n      \"requestBodyCheck\": \"Disabled\",\r\n      \"javascriptChallengeExpirationInMinutes\": null,\r\n      \"logScrubbing\": null\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule1\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"priority\": 2,\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"rateLimitThreshold\": null,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Block\",\r\n          \"groupBy\": []\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleSetAction\": null,\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\",\r\n                  \"exclusions\": []\r\n                }\r\n              ],\r\n              \"exclusions\": []\r\n            }\r\n          ],\r\n          \"exclusions\": []\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\",\r\n          \"ruleSetAction\": null,\r\n          \"ruleGroupOverrides\": [],\r\n          \"exclusions\": []\r\n        }\r\n      ]\r\n    },\r\n    \"frontendEndpointLinks\": [],\r\n    \"securityPolicyLinks\": [],\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/ps9311/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps9085?api-version=2024-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL3BzOTMxMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzOTA4NT9hcGktdmVyc2lvbj0yMDI0LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6f7d7f90-6f95-457b-8d3c-0a08705bd1ff"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2924.17105",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorClient/6.0.2"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "b82c5b5c-c4af-4319-93d7-8757be8e64c2"
+        ],
+        "x-ms-client-request-id": [
+          "6f7d7f90-6f95-457b-8d3c-0a08705bd1ff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "dffbdb7d-7ee7-4474-8c57-a633b6fccecd"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20240506T085254Z:dffbdb7d-7ee7-4474-8c57-a633b6fccecd"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: 808F8C10C386417A943BA05B6625BE19 Ref B: MAA201060513039 Ref C: 2024-05-06T08:52:52Z"
+        ],
+        "Date": [
+          "Mon, 06 May 2024 08:52:53 GMT"
+        ],
+        "Content-Length": [
+          "1450"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourcegroups/ps9311/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/ps9085\",\r\n  \"type\": \"Microsoft.Network/frontdoorwebapplicationfirewallpolicies\",\r\n  \"name\": \"ps9085\",\r\n  \"location\": \"Global\",\r\n  \"tags\": {},\r\n  \"sku\": {\r\n    \"name\": \"Classic_AzureFrontDoor\"\r\n  },\r\n  \"properties\": {\r\n    \"policySettings\": {\r\n      \"enabledState\": \"Enabled\",\r\n      \"mode\": \"Prevention\",\r\n      \"redirectUrl\": null,\r\n      \"customBlockResponseStatusCode\": null,\r\n      \"customBlockResponseBody\": null,\r\n      \"requestBodyCheck\": \"Disabled\",\r\n      \"javascriptChallengeExpirationInMinutes\": null,\r\n      \"logScrubbing\": null\r\n    },\r\n    \"customRules\": {\r\n      \"rules\": [\r\n        {\r\n          \"name\": \"Rule2\",\r\n          \"enabledState\": \"Enabled\",\r\n          \"priority\": 2,\r\n          \"ruleType\": \"MatchRule\",\r\n          \"rateLimitDurationInMinutes\": 1,\r\n          \"rateLimitThreshold\": null,\r\n          \"matchConditions\": [\r\n            {\r\n              \"matchVariable\": \"RequestHeader\",\r\n              \"selector\": \"UserAgent\",\r\n              \"operator\": \"Contains\",\r\n              \"negateCondition\": false,\r\n              \"matchValue\": [\r\n                \"WINDOWS\"\r\n              ],\r\n              \"transforms\": [\r\n                \"Uppercase\"\r\n              ]\r\n            }\r\n          ],\r\n          \"action\": \"Log\",\r\n          \"groupBy\": []\r\n        }\r\n      ]\r\n    },\r\n    \"managedRules\": {\r\n      \"managedRuleSets\": [\r\n        {\r\n          \"ruleSetType\": \"DefaultRuleSet\",\r\n          \"ruleSetVersion\": \"1.0\",\r\n          \"ruleSetAction\": null,\r\n          \"ruleGroupOverrides\": [\r\n            {\r\n              \"ruleGroupName\": \"SQLI\",\r\n              \"rules\": [\r\n                {\r\n                  \"ruleId\": \"942100\",\r\n                  \"enabledState\": \"Enabled\",\r\n                  \"action\": \"Log\",\r\n                  \"exclusions\": []\r\n                }\r\n              ],\r\n              \"exclusions\": []\r\n            }\r\n          ],\r\n          \"exclusions\": []\r\n        },\r\n        {\r\n          \"ruleSetType\": \"BotProtection\",\r\n          \"ruleSetVersion\": \"preview-0.1\",\r\n          \"ruleSetAction\": null,\r\n          \"ruleGroupOverrides\": [],\r\n          \"exclusions\": []\r\n        }\r\n      ]\r\n    },\r\n    \"frontendEndpointLinks\": [],\r\n    \"securityPolicyLinks\": [],\r\n    \"resourceState\": \"Enabled\",\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/ps9311/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps9085?api-version=2024-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL3BzOTMxMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzOTA4NT9hcGktdmVyc2lvbj0yMDI0LTAyLTAx",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "70062d63-38d6-4b07-b1fc-9a54c2cd8a45"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2924.17105",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorClient/6.0.2"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "f2e5377e-6ddb-4744-af92-4e5dd6165b65"
+        ],
+        "x-ms-correlation-request-id": [
+          "f2e5377e-6ddb-4744-af92-4e5dd6165b65"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20240506T085303Z:f2e5377e-6ddb-4744-af92-4e5dd6165b65"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: F17DE272B1004802AA8570680F5CC62D Ref B: MAA201060516011 Ref C: 2024-05-06T08:53:03Z"
+        ],
+        "Date": [
+          "Mon, 06 May 2024 08:53:03 GMT"
+        ],
+        "Content-Length": [
+          "242"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Network/frontdoorWebApplicationFirewallPolicies/ps9085' under resource group 'ps9311' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/ps9311/providers/Microsoft.Network/FrontDoorWebApplicationFirewallPolicies/ps9085?api-version=2024-02-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMjdjYWZjYTgtYjlhNC00MjY0LWIzOTktNDVkMGM5Y2NhMWFiL3Jlc291cmNlR3JvdXBzL3BzOTMxMS9wcm92aWRlcnMvTWljcm9zb2Z0Lk5ldHdvcmsvRnJvbnREb29yV2ViQXBwbGljYXRpb25GaXJld2FsbFBvbGljaWVzL3BzOTA4NT9hcGktdmVyc2lvbj0yMDI0LTAyLTAx",
+      "RequestMethod": "DELETE",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "6f7d7f90-6f95-457b-8d3c-0a08705bd1ff"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/6.0.2924.17105",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22631",
+          "Microsoft.Azure.Management.FrontDoor.FrontDoorClient/6.0.2"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "8ed7a9cb-d927-4cea-91e9-87a1bcc4a9f1"
+        ],
+        "x-ms-client-request-id": [
+          "6f7d7f90-6f95-457b-8d3c-0a08705bd1ff"
+        ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14999"
+        ],
+        "x-ms-correlation-request-id": [
+          "3b8e63eb-9ffe-4c67-a475-dc9c5c134b32"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHEASTASIA:20240506T085302Z:3b8e63eb-9ffe-4c67-a475-dc9c5c134b32"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "X-Cache": [
+          "CONFIG_NOCACHE"
+        ],
+        "X-MSEdge-Ref": [
+          "Ref A: D999D985E66E42FDBE1DD94EF53E7D5D Ref B: MAA201060515009 Ref C: 2024-05-06T08:52:55Z"
+        ],
+        "Date": [
+          "Mon, 06 May 2024 08:53:01 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
     }
   ],
   "Names": {
     "Test-PolicyCrudWithPiping": [
-      "ps3280",
-      "ps2077"
+      "ps9085",
+      "ps9311"
     ]
   },
   "Variables": {

@@ -29,3 +29,7 @@ directive:
   - from: swagger-document
     where: $.definitions.RouteUpdatePropertiesParameters.properties.supportedProtocols
     transform: delete $.default
+
+  - from: swagger-document
+    where: $.definitions.PolicySettings.properties.logScrubbing
+    transform: $['x-ms-client-flatten'] = false;

@@ -156,7 +156,7 @@ function Test-PolicyAction
     $Name = getAssetName
     $resourceGroup = TestSetup-CreateResourceGroup
     $resourceGroupName = $resourceGroup.ResourceGroupName
-    $managedSet = New-AzFrontDoorWafManagedRuleObject -Type Microsoft_DefaultRuleSet -Version 1.1 -RuleGroupOverride $ruleGroupOverride -Action Block # Should use v2.0 but it's not enabled for all subscriptions
+    $managedSet = New-AzFrontDoorWafManagedRuleObject -Type Microsoft_DefaultRuleSet -Version 2.0 -RuleGroupOverride $ruleGroupOverride -Action Block # Should use v2.0 but it's not enabled for all subscriptions
     New-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName -ManagedRule $managedSet -EnabledState Enabled -Mode Prevention -Sku Premium_AzureFrontDoor
     $retrievedPolicy = Get-AzFrontDoorWafPolicy -Name $Name -ResourceGroupName $resourceGroupName
 

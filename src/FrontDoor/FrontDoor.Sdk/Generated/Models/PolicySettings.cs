@@ -7,16 +7,12 @@
 namespace Microsoft.Azure.Management.FrontDoor.Models
 {
     using Microsoft.Rest;
-    using Microsoft.Rest.Serialization;
     using Newtonsoft.Json;
-    using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     /// <summary>
     /// Defines top-level WebApplicationFirewallPolicy configuration settings.
     /// </summary>
-    [Rest.Serialization.JsonTransformation]
     public partial class PolicySettings
     {
         /// <summary>
@@ -51,12 +47,9 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         /// setting is only applicable to Premium_AzureFrontDoor. Value must be
         /// an integer between 5 and 1440 with the default value being
         /// 30.</param>
-        /// <param name="state">State of the log scrubbing config. Default
-        /// value is Enabled. Possible values include: 'Enabled',
-        /// 'Disabled'</param>
-        /// <param name="scrubbingRules">List of log scrubbing rules applied to
-        /// the Web Application Firewall logs.</param>
-        public PolicySettings(string enabledState = default(string), string mode = default(string), string redirectUrl = default(string), int? customBlockResponseStatusCode = default(int?), string customBlockResponseBody = default(string), string requestBodyCheck = default(string), int? javascriptChallengeExpirationInMinutes = default(int?), string state = default(string), IList<WebApplicationFirewallScrubbingRules> scrubbingRules = default(IList<WebApplicationFirewallScrubbingRules>))
+        /// <param name="logScrubbing">Defines rules that scrub sensitive
+        /// fields in the Web Application Firewall logs.</param>
+        public PolicySettings(string enabledState = default(string), string mode = default(string), string redirectUrl = default(string), int? customBlockResponseStatusCode = default(int?), string customBlockResponseBody = default(string), string requestBodyCheck = default(string), int? javascriptChallengeExpirationInMinutes = default(int?), PolicySettingsLogScrubbing logScrubbing = default(PolicySettingsLogScrubbing))
         {
             EnabledState = enabledState;
             Mode = mode;
@@ -65,8 +58,7 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
             CustomBlockResponseBody = customBlockResponseBody;
             RequestBodyCheck = requestBodyCheck;
             JavascriptChallengeExpirationInMinutes = javascriptChallengeExpirationInMinutes;
-            State = state;
-            ScrubbingRules = scrubbingRules;
+            LogScrubbing = logScrubbing;
             CustomInit();
         }
 
@@ -130,18 +122,11 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
         public int? JavascriptChallengeExpirationInMinutes { get; set; }
 
         /// <summary>
-        /// Gets or sets state of the log scrubbing config. Default value is
-        /// Enabled. Possible values include: 'Enabled', 'Disabled'
-        /// </summary>
-        [JsonProperty(PropertyName = "logScrubbing.state")]
-        public string State { get; set; }
-
-        /// <summary>
-        /// Gets or sets list of log scrubbing rules applied to the Web
+        /// Gets or sets defines rules that scrub sensitive fields in the Web
         /// Application Firewall logs.
         /// </summary>
-        [JsonProperty(PropertyName = "logScrubbing.scrubbingRules")]
-        public IList<WebApplicationFirewallScrubbingRules> ScrubbingRules { get; set; }
+        [JsonProperty(PropertyName = "logScrubbing")]
+        public PolicySettingsLogScrubbing LogScrubbing { get; set; }
 
         /// <summary>
         /// Validate the object.
@@ -167,16 +152,6 @@ namespace Microsoft.Azure.Management.FrontDoor.Models
                 if (JavascriptChallengeExpirationInMinutes < 5)
                 {
                     throw new ValidationException(ValidationRules.InclusiveMinimum, "JavascriptChallengeExpirationInMinutes", 5);
-                }
-            }
-            if (ScrubbingRules != null)
-            {
-                foreach (var element in ScrubbingRules)
-                {
-                    if (element != null)
-                    {
-                        element.Validate();
-                    }
                 }
             }
         }
