@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 7.3.0
 * Added cmdlet `Invoke-AzSpotPlacementRecommender`.
 * Fixed `Update-AzCapacityReservationGroup` to remove Subscriptions from SharingProfile.
 * Added new optional parameter `SecureVMGuestStateSAS` to cmdlet `Grant-AzDiskAccess`.

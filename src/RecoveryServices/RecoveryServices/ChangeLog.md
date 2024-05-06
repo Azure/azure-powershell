@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 * [Breaking Change] Renamed the property `ResouceType` of `ASRVaultSettings` to `ResourceType`. 
+
+## Version 6.9.0
 * Added support for MUA for disabling vault Immutability, increasing RPO for policy schedule, restore, stop protection with retain data.
 * Added support for Enabling/Disabling the azure monitor and email notification alerts for site recovery in recovery services vault.
 

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.2
 * Fixed for various docs erroneously pointing to Postgres instead of MySQL
 
 ## Version 1.1.1
