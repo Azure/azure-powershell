@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters
             this.Applications = new ApplicationsOperations(this);
             this.Services = new ServicesOperations(this);
             this.BaseUri = new System.Uri("https://management.azure.com");
-            this.ApiVersion = "2023-12-01-preview";
+            this.ApiVersion = "2024-04-01";
             this.AcceptLanguage = "en-US";
             this.LongRunningOperationRetryTimeout = 30;
             this.GenerateClientRequestId = true;

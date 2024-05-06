@@ -382,12 +382,12 @@ function Get-ManagedAppTypeV2Name
 
 function Get-ManagedAppPackageV1
 {
-    return "https://sfmcstorageacc.blob.core.windows.net/sfmccontainer/Voting.sfpkg?sp=r&st=2024-02-06T19:13:51Z&se=2024-03-06T03:13:51Z&sv=2022-11-02&sr=b&sig=lH%2BLZ3AgdSixYhPd9h0TuAmuMC%2Fz9%2FAAy1XN0%2BcgcyQ%3D"
+    return "https://sfmcpstest.blob.core.windows.net/powcontainer/Voting.sfpkg?sp=racwdyti&st=2024-05-03T20:27:35Z&se=2024-05-10T04:27:35Z&sv=2022-11-02&sr=b&sig=%2F4HcteYvwfiDU0vPRfA5N2Pkz7civ5Qw0BBfMtKbyWA%3D"
 }
 
 function Get-ManagedAppPackageV2
 {
-    return "https://sfmcstorageacc.blob.core.windows.net/sfmccontainer/Voting.2.0.0.sfpkg?sp=r&st=2024-02-06T19:14:55Z&se=2024-03-06T03:14:55Z&sv=2022-11-02&sr=b&sig=GaNxS%2Fp1lt6vMcCGZRjuJzOKB5Otkue%2BLfUigD%2B0jks%3D"
+    return "https://sfmcpstest.blob.core.windows.net/powcontainer/Voting.2.0.0.sfpkg?sp=racwdyti&st=2024-05-03T20:28:38Z&se=2024-05-10T04:28:38Z&sv=2022-11-02&sr=b&sig=JF0wGUOMWDV38HaDifwuGou8zKRFtganAlnEo43P0dE%3D"
 }
 
 function Get-ManagedStatelessServiceTypeName

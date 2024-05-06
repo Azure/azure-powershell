@@ -18,5 +18,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// machines.
         /// </summary>
         public const string TrustedLaunch = "TrustedLaunch";
+        /// <summary>
+        /// Standard is the default security type for all machines.
+        /// </summary>
+        public const string Standard = "Standard";
     }
 }

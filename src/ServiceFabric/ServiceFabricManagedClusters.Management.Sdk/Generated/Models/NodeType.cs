@@ -44,9 +44,9 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// <param name="sku">The node type sku.
         /// </param>
 
-        /// <param name="securityType">Specifies the security type of the nodeType. Only TrustedLaunch is
-        /// currently supported
-        /// Possible values include: &#39;TrustedLaunch&#39;</param>
+        /// <param name="securityType">Specifies the security type of the nodeType. Only Standard and
+        /// TrustedLaunch are currently supported
+        /// Possible values include: &#39;TrustedLaunch&#39;, &#39;Standard&#39;</param>
 
         /// <param name="isPrimary">Indicates the Service Fabric system services for the cluster will run on
         /// this node type. This setting cannot be changed once the node type is
@@ -225,6 +225,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// node type. Node type must use custom load balancer.
         /// </param>
 
+        /// <param name="natConfigurations">Specifies the NAT configuration on default public Load Balancer for the
+        /// node type. This is only supported for node types use the default public
+        /// Load Balancer.
+        /// </param>
+
         /// <param name="vmImagePlan">Specifies information about the marketplace image used to create the
         /// virtual machine. This element is only used for marketplace images. Before
         /// you can use a marketplace image from an API, you must enable the image for
@@ -245,7 +250,11 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// <param name="additionalNetworkInterfaceConfigurations">Specifies the settings for any additional secondary network interfaces to
         /// attach to the node type.
         /// </param>
-        public NodeType(string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), NodeTypeSku sku = default(NodeTypeSku), string securityType = default(string), bool? isPrimary = default(bool?), int? vmInstanceCount = default(int?), int? dataDiskSizeGb = default(int?), string dataDiskType = default(string), string dataDiskLetter = default(string), System.Collections.Generic.IDictionary<string, string> placementProperties = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> capacities = default(System.Collections.Generic.IDictionary<string, string>), EndpointRangeDescription applicationPorts = default(EndpointRangeDescription), EndpointRangeDescription ephemeralPorts = default(EndpointRangeDescription), string vmSize = default(string), string vmImagePublisher = default(string), string vmImageOffer = default(string), string vmImageSku = default(string), string vmImageVersion = default(string), System.Collections.Generic.IList<VaultSecretGroup> vmSecrets = default(System.Collections.Generic.IList<VaultSecretGroup>), System.Collections.Generic.IList<VmssExtension> vmExtensions = default(System.Collections.Generic.IList<VmssExtension>), VmManagedIdentity vmManagedIdentity = default(VmManagedIdentity), bool? isStateless = default(bool?), bool? multiplePlacementGroups = default(bool?), System.Collections.Generic.IList<FrontendConfiguration> frontendConfigurations = default(System.Collections.Generic.IList<FrontendConfiguration>), System.Collections.Generic.IList<NetworkSecurityRule> networkSecurityRules = default(System.Collections.Generic.IList<NetworkSecurityRule>), System.Collections.Generic.IList<VmssDataDisk> additionalDataDisks = default(System.Collections.Generic.IList<VmssDataDisk>), bool? enableEncryptionAtHost = default(bool?), string provisioningState = default(string), bool? enableAcceleratedNetworking = default(bool?), bool? useDefaultPublicLoadBalancer = default(bool?), bool? useTempDataDisk = default(bool?), bool? enableOverProvisioning = default(bool?), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), bool? isSpotVM = default(bool?), string hostGroupId = default(string), bool? useEphemeralOSDisk = default(bool?), string spotRestoreTimeout = default(string), string evictionPolicy = default(string), string vmImageResourceId = default(string), string subnetId = default(string), System.Collections.Generic.IList<string> vmSetupActions = default(System.Collections.Generic.IList<string>), bool? secureBootEnabled = default(bool?), bool? enableNodePublicIP = default(bool?), bool? enableNodePublicIPv6 = default(bool?), string vmSharedGalleryImageId = default(string), string natGatewayId = default(string), VmImagePlan vmImagePlan = default(VmImagePlan), string serviceArtifactReferenceId = default(string), string dscpConfigurationId = default(string), System.Collections.Generic.IList<AdditionalNetworkInterfaceConfiguration> additionalNetworkInterfaceConfigurations = default(System.Collections.Generic.IList<AdditionalNetworkInterfaceConfiguration>))
+
+        /// <param name="computerNamePrefix">Specifies the computer name prefix. Limited to 9 characters. If specified,
+        /// allows for a longer name to be specified for the node type name.
+        /// </param>
+        public NodeType(string id = default(string), string name = default(string), string type = default(string), System.Collections.Generic.IDictionary<string, string> tags = default(System.Collections.Generic.IDictionary<string, string>), SystemData systemData = default(SystemData), NodeTypeSku sku = default(NodeTypeSku), string securityType = default(string), bool? isPrimary = default(bool?), int? vmInstanceCount = default(int?), int? dataDiskSizeGb = default(int?), string dataDiskType = default(string), string dataDiskLetter = default(string), System.Collections.Generic.IDictionary<string, string> placementProperties = default(System.Collections.Generic.IDictionary<string, string>), System.Collections.Generic.IDictionary<string, string> capacities = default(System.Collections.Generic.IDictionary<string, string>), EndpointRangeDescription applicationPorts = default(EndpointRangeDescription), EndpointRangeDescription ephemeralPorts = default(EndpointRangeDescription), string vmSize = default(string), string vmImagePublisher = default(string), string vmImageOffer = default(string), string vmImageSku = default(string), string vmImageVersion = default(string), System.Collections.Generic.IList<VaultSecretGroup> vmSecrets = default(System.Collections.Generic.IList<VaultSecretGroup>), System.Collections.Generic.IList<VmssExtension> vmExtensions = default(System.Collections.Generic.IList<VmssExtension>), VmManagedIdentity vmManagedIdentity = default(VmManagedIdentity), bool? isStateless = default(bool?), bool? multiplePlacementGroups = default(bool?), System.Collections.Generic.IList<FrontendConfiguration> frontendConfigurations = default(System.Collections.Generic.IList<FrontendConfiguration>), System.Collections.Generic.IList<NetworkSecurityRule> networkSecurityRules = default(System.Collections.Generic.IList<NetworkSecurityRule>), System.Collections.Generic.IList<VmssDataDisk> additionalDataDisks = default(System.Collections.Generic.IList<VmssDataDisk>), bool? enableEncryptionAtHost = default(bool?), string provisioningState = default(string), bool? enableAcceleratedNetworking = default(bool?), bool? useDefaultPublicLoadBalancer = default(bool?), bool? useTempDataDisk = default(bool?), bool? enableOverProvisioning = default(bool?), System.Collections.Generic.IList<string> zones = default(System.Collections.Generic.IList<string>), bool? isSpotVM = default(bool?), string hostGroupId = default(string), bool? useEphemeralOSDisk = default(bool?), string spotRestoreTimeout = default(string), string evictionPolicy = default(string), string vmImageResourceId = default(string), string subnetId = default(string), System.Collections.Generic.IList<string> vmSetupActions = default(System.Collections.Generic.IList<string>), bool? secureBootEnabled = default(bool?), bool? enableNodePublicIP = default(bool?), bool? enableNodePublicIPv6 = default(bool?), string vmSharedGalleryImageId = default(string), string natGatewayId = default(string), System.Collections.Generic.IList<NodeTypeNatConfig> natConfigurations = default(System.Collections.Generic.IList<NodeTypeNatConfig>), VmImagePlan vmImagePlan = default(VmImagePlan), string serviceArtifactReferenceId = default(string), string dscpConfigurationId = default(string), System.Collections.Generic.IList<AdditionalNetworkInterfaceConfiguration> additionalNetworkInterfaceConfigurations = default(System.Collections.Generic.IList<AdditionalNetworkInterfaceConfiguration>), string computerNamePrefix = default(string))
 
         : base(id, name, type, tags, systemData)
         {
@@ -293,10 +302,12 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
             this.EnableNodePublicIPv6 = enableNodePublicIPv6;
             this.VMSharedGalleryImageId = vmSharedGalleryImageId;
             this.NatGatewayId = natGatewayId;
+            this.NatConfigurations = natConfigurations;
             this.VMImagePlan = vmImagePlan;
             this.ServiceArtifactReferenceId = serviceArtifactReferenceId;
             this.DscpConfigurationId = dscpConfigurationId;
             this.AdditionalNetworkInterfaceConfigurations = additionalNetworkInterfaceConfigurations;
+            this.ComputerNamePrefix = computerNamePrefix;
             CustomInit();
         }
 
@@ -313,8 +324,8 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         public NodeTypeSku Sku {get; set; }
 
         /// <summary>
-        /// Gets or sets specifies the security type of the nodeType. Only
-        /// TrustedLaunch is currently supported Possible values include: &#39;TrustedLaunch&#39;
+        /// Gets or sets specifies the security type of the nodeType. Only Standard and
+        /// TrustedLaunch are currently supported Possible values include: &#39;TrustedLaunch&#39;, &#39;Standard&#39;
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.securityType")]
         public string SecurityType {get; set; }
@@ -630,6 +641,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         public string NatGatewayId {get; set; }
 
         /// <summary>
+        /// Gets or sets specifies the NAT configuration on default public Load
+        /// Balancer for the node type. This is only supported for node types use the
+        /// default public Load Balancer.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.natConfigurations")]
+        public System.Collections.Generic.IList<NodeTypeNatConfig> NatConfigurations {get; set; }
+
+        /// <summary>
         /// Gets or sets specifies information about the marketplace image used to
         /// create the virtual machine. This element is only used for marketplace
         /// images. Before you can use a marketplace image from an API, you must enable
@@ -661,6 +680,14 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "properties.additionalNetworkInterfaceConfigurations")]
         public System.Collections.Generic.IList<AdditionalNetworkInterfaceConfiguration> AdditionalNetworkInterfaceConfigurations {get; set; }
+
+        /// <summary>
+        /// Gets or sets specifies the computer name prefix. Limited to 9 characters.
+        /// If specified, allows for a longer name to be specified for the node type
+        /// name.
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "properties.computerNamePrefix")]
+        public string ComputerNamePrefix {get; set; }
         /// <summary>
         /// Validate the object.
         /// </summary>
@@ -760,6 +787,16 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
 
 
 
+            if (this.NatConfigurations != null)
+            {
+                foreach (var element in this.NatConfigurations)
+                {
+                    if (element != null)
+                    {
+                        element.Validate();
+                    }
+                }
+            }
 
 
 
@@ -773,6 +810,7 @@ namespace Microsoft.Azure.Management.ServiceFabricManagedClusters.Models
                     }
                 }
             }
+
         }
     }
 }
