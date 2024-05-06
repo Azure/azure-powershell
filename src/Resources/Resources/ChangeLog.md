@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.16.2
 * Introduced secrets detection feature to safeguard sensitive data.
 * Migrated SDK generation from autorest csharp to autorest powershell.
 * Fixed deployment and deployment stack New/Set cmdlets to fail if template/parameter uri fails to downloads.

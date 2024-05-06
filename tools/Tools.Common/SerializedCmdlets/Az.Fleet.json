@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.Fleet",
-  "ModuleVersion": "0.1.1",
+  "ModuleVersion": "0.2.0",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -4050,11 +4050,11 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "IdentityType",
+          "Name": "EnableSystemAssignedIdentity",
           "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            "Namespace": "System.Management.Automation",
+            "Name": "System.Management.Automation.SwitchParameter",
+            "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -4070,9 +4070,10 @@
         {
           "Name": "UserAssignedIdentity",
           "Type": {
-            "Namespace": "System.Collections",
-            "Name": "System.Collections.Hashtable",
-            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            "Namespace": "System",
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "ElementType": "System.String"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -4729,11 +4730,11 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "IdentityType",
+                "Name": "EnableSystemAssignedIdentity",
                 "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4761,9 +4762,10 @@
               "ParameterMetadata": {
                 "Name": "UserAssignedIdentity",
                 "Type": {
-                  "Namespace": "System.Collections",
-                  "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -4989,11 +4991,11 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "IdentityType",
+                "Name": "EnableSystemAssignedIdentity",
                 "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "Namespace": "System.Management.Automation",
+                  "Name": "System.Management.Automation.SwitchParameter",
+                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -5021,9 +5023,10 @@
               "ParameterMetadata": {
                 "Name": "UserAssignedIdentity",
                 "Type": {
-                  "Namespace": "System.Collections",
-                  "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -16828,11 +16831,23 @@
           "ValidateNotNullOrEmpty": false
         },
         {
-          "Name": "IdentityType",
+          "Name": "IfNoneMatch",
           "Type": {
             "Namespace": "System",
             "Name": "System.String",
             "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+          },
+          "ValidateNotNullOrEmpty": false
+        },
+        {
+          "Name": "EnableSystemAssignedIdentity",
+          "Type": {
+            "Namespace": "System",
+            "Name": "System.Nullable`1[System.Boolean]",
+            "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "GenericTypeArguments": [
+              "System.Boolean"
+            ]
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -16848,27 +16863,10 @@
         {
           "Name": "UserAssignedIdentity",
           "Type": {
-            "Namespace": "System.Collections",
-            "Name": "System.Collections.Hashtable",
-            "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "JsonFilePath",
-          "Type": {
             "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-          },
-          "ValidateNotNullOrEmpty": false
-        },
-        {
-          "Name": "JsonString",
-          "Type": {
-            "Namespace": "System",
-            "Name": "System.String",
-            "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+            "Name": "System.String[]",
+            "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+            "ElementType": "System.String"
           },
           "ValidateNotNullOrEmpty": false
         },
@@ -16962,454 +16960,6 @@
       ],
       "ParameterSets": [
         {
-          "Name": "UpdateViaJsonString",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "Name",
-                "AliasList": [
-                  "FleetName"
-                ],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ResourceGroupName",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "SubscriptionId",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "JsonString",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "IfMatch",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRMContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "AsJob",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Break",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelineAppend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[], Az.Fleet.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelinePrepend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[], Az.Fleet.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "NoWait",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Proxy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyCredential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyUseDefaultCredentials",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        },
-        {
-          "Name": "UpdateViaJsonFilePath",
-          "Parameters": [
-            {
-              "ParameterMetadata": {
-                "Name": "Name",
-                "AliasList": [
-                  "FleetName"
-                ],
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ResourceGroupName",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "SubscriptionId",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "JsonFilePath",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": true,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "IfMatch",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "DefaultProfile",
-                "AliasList": [
-                  "AzureRMContext",
-                  "AzureCredential"
-                ],
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSObject",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSObject, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "AsJob",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Break",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelineAppend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[], Az.Fleet.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "HttpPipelinePrepend",
-                "Type": {
-                  "Namespace": "Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime",
-                  "Name": "Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[]",
-                  "AssemblyQualifiedName": "Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[], Az.Fleet.private, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
-                  "ElementType": "Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "NoWait",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "Proxy",
-                "Type": {
-                  "Namespace": "System",
-                  "Name": "System.Uri",
-                  "AssemblyQualifiedName": "System.Uri, System.Private.Uri, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyCredential",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.PSCredential",
-                  "AssemblyQualifiedName": "System.Management.Automation.PSCredential, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "ProxyUseDefaultCredentials",
-                "Type": {
-                  "Namespace": "System.Management.Automation",
-                  "Name": "System.Management.Automation.SwitchParameter",
-                  "AssemblyQualifiedName": "System.Management.Automation.SwitchParameter, System.Management.Automation, Version=7.2.10.500, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            }
-          ]
-        },
-        {
           "Name": "UpdateExpanded",
           "Parameters": [
             {
@@ -17462,11 +17012,44 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "IdentityType",
+                "Name": "IfMatch",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "IfNoneMatch",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableSystemAssignedIdentity",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Nullable`1[System.Boolean]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "GenericTypeArguments": [
+                    "System.Boolean"
+                  ]
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -17494,24 +17077,10 @@
               "ParameterMetadata": {
                 "Name": "UserAssignedIdentity",
                 "Type": {
-                  "Namespace": "System.Collections",
-                  "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "IfMatch",
-                "Type": {
                   "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -17692,11 +17261,44 @@
             },
             {
               "ParameterMetadata": {
-                "Name": "IdentityType",
+                "Name": "IfMatch",
                 "Type": {
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "IfNoneMatch",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableSystemAssignedIdentity",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Nullable`1[System.Boolean]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "GenericTypeArguments": [
+                    "System.Boolean"
+                  ]
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -17724,24 +17326,10 @@
               "ParameterMetadata": {
                 "Name": "UserAssignedIdentity",
                 "Type": {
-                  "Namespace": "System.Collections",
-                  "Name": "System.Collections.Hashtable",
-                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
-                },
-                "ValidateNotNullOrEmpty": false
-              },
-              "Mandatory": false,
-              "Position": -2147483648,
-              "ValueFromPipeline": false,
-              "ValueFromPipelineByPropertyName": false
-            },
-            {
-              "ParameterMetadata": {
-                "Name": "IfMatch",
-                "Type": {
                   "Namespace": "System",
-                  "Name": "System.String",
-                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
                 },
                 "ValidateNotNullOrEmpty": false
               },
@@ -17903,6 +17491,70 @@
                   "Namespace": "System",
                   "Name": "System.String",
                   "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "IfNoneMatch",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String",
+                  "AssemblyQualifiedName": "System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "EnableSystemAssignedIdentity",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.Nullable`1[System.Boolean]",
+                  "AssemblyQualifiedName": "System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "GenericTypeArguments": [
+                    "System.Boolean"
+                  ]
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "Tag",
+                "Type": {
+                  "Namespace": "System.Collections",
+                  "Name": "System.Collections.Hashtable",
+                  "AssemblyQualifiedName": "System.Collections.Hashtable, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e"
+                },
+                "ValidateNotNullOrEmpty": false
+              },
+              "Mandatory": false,
+              "Position": -2147483648,
+              "ValueFromPipeline": false,
+              "ValueFromPipelineByPropertyName": false
+            },
+            {
+              "ParameterMetadata": {
+                "Name": "UserAssignedIdentity",
+                "Type": {
+                  "Namespace": "System",
+                  "Name": "System.String[]",
+                  "AssemblyQualifiedName": "System.String[], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+                  "ElementType": "System.String"
                 },
                 "ValidateNotNullOrEmpty": false
               },
