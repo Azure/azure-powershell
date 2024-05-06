@@ -107,11 +107,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IEhNamespaceIdContainer
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEhNamespaceIdListResult
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
