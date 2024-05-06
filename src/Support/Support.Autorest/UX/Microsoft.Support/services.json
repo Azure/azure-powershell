@@ -1,0 +1,37 @@
+{
+  "resourceType": "services",
+  "apiVersion": "2024-04-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.support"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSupportService",
+      "description": "Gets a specific Azure service for support ticket creation.",
+      "path": "/providers/Microsoft.Support/services/{serviceName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.support/get-azsupportservice"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets a specific Azure service for support ticket creation.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.serviceName]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
