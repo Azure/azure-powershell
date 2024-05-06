@@ -19,7 +19,7 @@ Set-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGro
  [-DeadLetteringOnFilterEvaluationException] [-DeadLetteringOnMessageExpiration]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
  [-EnableBatchedOperations] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>]
- [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-Status <EntityStatus>] [-DefaultProfile <PSObject>]
+ [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-Status <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -29,7 +29,7 @@ Set-AzServiceBusSubscription -InputObject <IServiceBusIdentity> [-AutoDeleteOnId
  [-DeadLetteringOnFilterEvaluationException] [-DeadLetteringOnMessageExpiration]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
  [-EnableBatchedOperations] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>]
- [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-Status <EntityStatus>] [-DefaultProfile <PSObject>]
+ [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-Status <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -385,7 +385,7 @@ Accept wildcard characters: False
 Enumerates the possible values for the status of a messaging entity.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -466,7 +466,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription
 
 ## NOTES
 

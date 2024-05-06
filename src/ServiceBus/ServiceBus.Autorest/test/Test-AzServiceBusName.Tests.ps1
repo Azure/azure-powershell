@@ -16,11 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzServiceBusName'))
 
 Describe 'Test-AzServiceBusName' {
     It 'NamespaceAvailability' {
-        $checkName = Test-AzServiceBusName -NamespaceName $env.namespace
+        $checkName = Test-AzServiceBusName -NamespaceName $env.standardNamespace
         $checkName.NameAvailable | Should -Be $false
     }
 
-    It 'AliasAvailability' {
+    It 'AliasAvailability'{
         $checkName = Test-AzServiceBusName -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -AliasName $env.alias
         $checkName.NameAvailable | Should -Be $true
     }

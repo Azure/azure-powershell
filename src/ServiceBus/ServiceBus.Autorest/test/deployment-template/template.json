@@ -2,38 +2,68 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "location": {
+      "defaultValue": "[resourceGroup().location]",
+      "type": "string"
+    },
+    "secondaryLocation": {
+      "defaultValue": "southcentralus",
+      "type": "string"
+    },
     "namespace_name": {
       "defaultValue": "testSBARMTemplate",
-      "type": "String"
-    },
-    "system_assigned_namespace_name": {
-      "defaultValue": "AutomatedPSTesting",
-      "type": "String"
+      "type": "string"
     },
     "standard_namespace_name": {
       "defaultValue": "testSBARMTemplate",
-      "type": "String"
+      "type": "string"
     },
-    "namespaceResourceId": {
+    "system_assigned_namespace_name": {
+      "defaultValue": "AutomatedPSTesting",
+      "type": "string"
+    },
+    "primarynamespace_name": {
+      "defaultValue": "AutomatedPSTesting",
+      "type": "string"
+    },
+    "secondarynamespace_name": {
+      "defaultValue": "testnamespace",
+      "type": "string"
+    },
+    "migrationPrimaryNamespace": {
+      "defaultValue": "testnamespace",
+      "type": "string"
+    },
+    "migrationSecondaryNamespace": {
+      "defaultValue": "testnamespace",
+      "type": "string"
+    },
+    "subnet1Id": {
       "defaultValue": "/",
-      "type": "String"
+      "type": "string"
     },
     "peName1": {
       "defaultValue": "/",
-      "type": "String"
+      "type": "string"
     },
     "peName2": {
       "defaultValue": "/",
-      "type": "String"
+      "type": "string"
+    },
+    "useZoneRedundancy": {
+      "defaultValue": true,
+      "type": "bool"
     }
   },
-  "variables": {},
+  "variables": {
+    "deploySecondaryNamespace": "[not(empty(parameters('secondaryLocation')))]"
+  },
   "resources": [
     {
       "type": "Microsoft.ServiceBus/namespaces",
       "apiVersion": "2022-01-01-preview",
       "name": "[parameters('namespace_name')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "sku": {
         "name": "Premium",
         "tier": "Premium"
@@ -49,7 +79,7 @@
       "type": "Microsoft.ServiceBus/namespaces",
       "apiVersion": "2022-01-01-preview",
       "name": "[parameters('standard_namespace_name')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "sku": {
         "name": "Standard",
         "tier": "Standard"
@@ -65,7 +95,7 @@
       "type": "Microsoft.ServiceBus/namespaces",
       "apiVersion": "2022-01-01-preview",
       "name": "[parameters('system_assigned_namespace_name')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "sku": {
         "name": "Premium",
         "tier": "Premium",
@@ -78,19 +108,34 @@
         "minimumTlsVersion": "1.2",
         "publicNetworkAccess": "Enabled",
         "disableLocalAuth": false,
-        "zoneRedundant": true,
+        "zoneRedundant": "[parameters('useZoneRedundancy')]",
         "isAutoInflateEnabled": false
       }
     },
     {
       "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
       "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('namespace_name'), '/RootManageSharedAccessKey')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Listen",
+          "Manage",
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
+      "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/namespaceAuthRule1')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]",
-        "[resourceId('Microsoft.ServiceBus/namespaces/AuthorizationRules', parameters('namespace_name'), 'RootManageSharedAccessKey')]",
-        "[resourceId('Microsoft.ServiceBus/namespaces/AuthorizationRules', parameters('namespace_name'), 'namespaceAuthRule2')]"
+        "[resourceId('Microsoft.ServiceBus/namespaces/AuthorizationRules', parameters('namespace_name'), 'RootManageSharedAccessKey')]"
       ],
       "properties": {
         "rights": [
@@ -104,10 +149,9 @@
       "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/namespaceAuthRule2')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]",
-        "[resourceId('Microsoft.ServiceBus/namespaces/AuthorizationRules', parameters('namespace_name'), 'RootManageSharedAccessKey')]"
+        "[resourceId('Microsoft.ServiceBus/namespaces/AuthorizationRules', parameters('namespace_name'), 'namespaceAuthRule1')]"
       ],
       "properties": {
         "rights": [
@@ -118,15 +162,13 @@
     {
       "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
       "apiVersion": "2022-01-01-preview",
-      "name": "[concat(parameters('namespace_name'), '/RootManageSharedAccessKey')]",
-      "location": "eastus",
+      "name": "[concat(parameters('namespace_name'), '/namespaceAuthRule3')]",
+      "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+        "[resourceId('Microsoft.ServiceBus/namespaces/AuthorizationRules', parameters('namespace_name'), 'namespaceAuthRule2')]"
       ],
       "properties": {
         "rights": [
-          "Listen",
-          "Manage",
           "Send"
         ]
       }
@@ -135,7 +177,7 @@
       "type": "Microsoft.ServiceBus/namespaces/queues",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/queue1')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
       ],
@@ -146,7 +188,7 @@
       "type": "Microsoft.ServiceBus/namespaces/topics",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/topic1')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
       ],
@@ -157,7 +199,7 @@
       "type": "Microsoft.ServiceBus/namespaces/queues/authorizationrules",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/queue1/queueAuthRule1')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('namespace_name'), 'queue1')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
@@ -174,7 +216,24 @@
       "type": "Microsoft.ServiceBus/namespaces/queues/authorizationrules",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/queue1/queueAuthRule2')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('namespace_name'), 'queue1')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Manage",
+          "Listen",
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/queues/authorizationrules",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('namespace_name'), '/queue1/queueAuthRule3')]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('namespace_name'), 'queue1')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
@@ -191,7 +250,7 @@
       "type": "Microsoft.ServiceBus/namespaces/topics/authorizationrules",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/topic1/topicAuthRule1')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespace_name'), 'topic1')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
@@ -208,7 +267,22 @@
       "type": "Microsoft.ServiceBus/namespaces/topics/authorizationrules",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/topic1/topicAuthRule2')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespace_name'), 'topic1')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Listen"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/authorizationrules",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('namespace_name'), '/topic1/topicAuthRule3')]",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespace_name'), 'topic1')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
@@ -223,7 +297,7 @@
       "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/topic1/subscription1')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespace_name'), 'topic1')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
@@ -235,7 +309,7 @@
       "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/topic1/subscription1/sqlRule1')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespace_name'), 'topic1', 'subscription1')]",
         "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespace_name'), 'topic1')]",
@@ -254,7 +328,7 @@
       "type": "Microsoft.Network/privateEndpoints",
       "apiVersion": "2020-11-01",
       "name": "[parameters('peName1')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
       ],
@@ -264,7 +338,7 @@
           {
             "name": "connection1",
             "properties": {
-              "privateLinkServiceId": "[parameters('namespaceResourceId')]",
+              "privateLinkServiceId": "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]",
               "groupIds": [
                 "namespace"
               ],
@@ -276,7 +350,7 @@
           }
         ],
         "subnet": {
-          "id": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn/subnets/default"
+          "id": "[parameters('subnet1Id')]"
         }
       }
     },
@@ -284,7 +358,7 @@
       "type": "Microsoft.Network/privateEndpoints",
       "apiVersion": "2020-11-01",
       "name": "[parameters('peName2')]",
-      "location": "eastus",
+      "location": "[parameters('location')]",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
       ],
@@ -294,7 +368,7 @@
           {
             "name": "connection2",
             "properties": {
-              "privateLinkServiceId": "[parameters('namespaceResourceId')]",
+              "privateLinkServiceId": "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]",
               "groupIds": [
                 "namespace"
               ],
@@ -306,8 +380,74 @@
           }
         ],
         "subnet": {
-          "id": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn/subnets/default"
+          "id": "[parameters('subnet1Id')]"
         }
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('primarynamespace_name')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Premium",
+        "tier": "Premium"
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": false
+      }
+    },
+    {
+      "condition": "[variables('deploySecondaryNamespace')]",
+      "type": "Microsoft.ServiceBus/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('secondarynamespace_name')]",
+      "location": "[parameters('secondaryLocation')]",
+      "sku": {
+        "name": "Premium",
+        "tier": "Premium"
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": false
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('migrationPrimaryNamespace')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard",
+        "tier": "Standard"
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": false
+      }
+    },
+    {
+      "condition": "[variables('deploySecondaryNamespace')]",
+      "type": "Microsoft.ServiceBus/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('migrationSecondaryNamespace')]",
+      "location": "[parameters('secondaryLocation')]",
+      "sku": {
+        "name": "Premium",
+        "tier": "Premium"
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": false
       }
     }
   ]

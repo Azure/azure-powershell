@@ -16,20 +16,32 @@ Returns a subscription description for the specified topic.
 ```
 Get-AzServiceBusSubscription -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  -TopicName <String> [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentityTopic
+```
+Get-AzServiceBusSubscription -Name <String> -TopicInputObject <IServiceBusIdentity>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
+```
+
+### GetViaIdentityNamespace
+```
+Get-AzServiceBusSubscription -Name <String> -TopicName <String> -NamespaceInputObject <IServiceBusIdentity>
+ [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] -TopicName <String> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzServiceBusSubscription -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,7 +115,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -122,13 +133,28 @@ The subscription name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: GetViaIdentityTopic, GetViaIdentityNamespace, Get
 Aliases: SubscriptionName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: GetViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -141,6 +167,21 @@ Parameter Sets: List, Get
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -193,12 +234,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TopicInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: GetViaIdentityTopic
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -TopicName
 The topic name.
 
 ```yaml
 Type: System.String
-Parameter Sets: List, Get
+Parameter Sets: List, GetViaIdentityNamespace, Get
 Aliases:
 
 Required: True
@@ -233,8 +289,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription
 
 ## NOTES
 
 ## RELATED LINKS
+
+[https://msdn.microsoft.com/en-us/library/azure/mt639402.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639402.aspx)
+
+[https://msdn.microsoft.com/en-us/library/azure/mt639400.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639400.aspx)
+
