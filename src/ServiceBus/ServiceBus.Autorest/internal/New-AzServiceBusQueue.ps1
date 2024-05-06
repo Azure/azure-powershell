@@ -16,20 +16,20 @@
 
 <#
 .Synopsis
-Creates or updates a Service Bus queue.
+Create a Service Bus queue.
 This operation is idempotent.
 .Description
-Creates or updates a Service Bus queue.
+Create a Service Bus queue.
 This operation is idempotent.
 .Example
 New-AzServiceBusQueue -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myQueue -AutoDeleteOnIdle (New-TimeSpan -Days 1 -Minutes 3 -Seconds 4) -DefaultMessageTimeToLive (New-TimeSpan -Days 5) -EnablePartitioning
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbQueue
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbQueue
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,7 +38,7 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <MigrationConfigurationName?>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be "$default".
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -65,32 +65,26 @@ PARAMETER <ISbQueue>: Description of queue Resource.
   [MaxSizeInMegabytes <Int32?>]: The maximum size of the queue in megabytes, which is the size of memory allocated for the queue. Default is 1024.
   [RequiresDuplicateDetection <Boolean?>]: A value indicating if this queue requires duplicate detection.
   [RequiresSession <Boolean?>]: A value that indicates whether the queue supports the concept of sessions.
-  [Status <EntityStatus?>]: Enumerates the possible values for the status of a messaging entity.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The type of identity that last modified the resource.
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Status <String>]: Enumerates the possible values for the status of a messaging entity.
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueue
+.Link
+https://msdn.microsoft.com/en-us/library/azure/mt639395.aspx
 #>
 function New-AzServiceBusQueue {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbQueue])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue])]
 [CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
     [Parameter(Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbQueue]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbQueue]
     # Description of queue Resource.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter()]
