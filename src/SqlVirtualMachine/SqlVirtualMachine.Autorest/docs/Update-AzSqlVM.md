@@ -26,11 +26,11 @@ Update-AzSqlVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <Stri
  [-AutoPatchingSettingDayOfWeek <DayOfWeek>] [-AutoPatchingSettingEnable]
  [-AutoPatchingSettingMaintenanceWindowDuration <Int32>]
  [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-AzureAdAuthenticationSettingClientId <String>]
- [-AzureAdAuthenticationSettingEnable] [-EnableAutomaticUpgrade] [-LicenseType <SqlServerLicenseType>]
- [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>] [-ScheduleEnable]
- [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>] [-ScheduleWeeklyInterval <Int32>]
- [-Sku <SqlImageSku>] [-SqlManagementType <SqlManagementMode>] [-SqlVirtualMachineGroupResourceId <String>]
- [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
+ [-AzureAdAuthenticationSettingEnable] [-AzureAdAuthenticationSkipClientValidation] [-EnableAutomaticUpgrade]
+ [-LicenseType <SqlServerLicenseType>] [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>]
+ [-ScheduleEnable] [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>]
+ [-ScheduleWeeklyInterval <Int32>] [-Sku <SqlImageSku>] [-SqlManagementType <SqlManagementMode>]
+ [-SqlVirtualMachineGroupResourceId <String>] [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
  [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
@@ -51,11 +51,11 @@ Update-AzSqlVM -InputObject <ISqlVirtualMachineIdentity> [-AssessmentSettingEnab
  [-AutoPatchingSettingDayOfWeek <DayOfWeek>] [-AutoPatchingSettingEnable]
  [-AutoPatchingSettingMaintenanceWindowDuration <Int32>]
  [-AutoPatchingSettingMaintenanceWindowStartingHour <Int32>] [-AzureAdAuthenticationSettingClientId <String>]
- [-AzureAdAuthenticationSettingEnable] [-EnableAutomaticUpgrade] [-LicenseType <SqlServerLicenseType>]
- [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>] [-ScheduleEnable]
- [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>] [-ScheduleWeeklyInterval <Int32>]
- [-Sku <SqlImageSku>] [-SqlManagementType <SqlManagementMode>] [-SqlVirtualMachineGroupResourceId <String>]
- [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
+ [-AzureAdAuthenticationSettingEnable] [-AzureAdAuthenticationSkipClientValidation] [-EnableAutomaticUpgrade]
+ [-LicenseType <SqlServerLicenseType>] [-Offer <String>] [-ScheduleDayOfWeek <AssessmentDayOfWeek>]
+ [-ScheduleEnable] [-ScheduleMonthlyOccurrence <Int32>] [-ScheduleStartTime <String>]
+ [-ScheduleWeeklyInterval <Int32>] [-Sku <SqlImageSku>] [-SqlManagementType <SqlManagementMode>]
+ [-SqlVirtualMachineGroupResourceId <String>] [-Tag <Hashtable>] [-VirtualMachineResourceId <String>]
  [-WsfcDomainCredentialsClusterBootstrapAccountPassword <SecureString>]
  [-WsfcDomainCredentialsClusterOperatorAccountPassword <SecureString>]
  [-WsfcDomainCredentialsSqlServiceAccountPassword <SecureString>] [-WsfcStaticIP <String>]
@@ -576,6 +576,21 @@ Accept wildcard characters: False
 
 ### -AzureAdAuthenticationSettingEnable
 Enable Azure Ad Authentication on SQL virtual machine.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureAdAuthenticationSkipClientValidation
+Skip client validation while enabling Azure Ad Authentication on SQL virtual machine.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

@@ -42,7 +42,7 @@ INPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
   [SubscriptionId <String>]: Subscription ID that identifies an Azure subscription.
 
 .Link
-https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/Assert-AzSqlVMEntraAuth
+https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/Assert-AzSqlVMADAuth
 #>
 function Assert-AzSqlVMADAuth {
 [CmdletBinding(DefaultParameterSetName='AssertExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
@@ -167,9 +167,75 @@ process {
         }				
 		
         if ($PSCmdlet.ShouldProcess("SQL virtual machine $($sqlvm.Name)", "Assert")) {
-		# All validations go here
-		# validate the SQL VM supports Azure Entra authentication, i.e. it is on Windows platform and is SQL 2022 or later
-		# region - verify accounts and compute module start
+           Assert-All -VmName $sqlvm.Name -ResourceGroup $sqlvm.ResourceGroupName -MsiClientId $AzureAdAuthenticationSettingClientId
+		   return $true
+        }
+    } catch {
+        throw
+    }
+}
+}
+
+<#
+    .SYNOPSIS
+    Given a VM, check if it's eligible for Azure AD authentication
+	
+	.Description
+	Given a VM, check if it's eligible for Azure AD authentication
+
+    .PARAMETER VmName
+    Name of the VM
+
+    .PARAMETER ResourceGroup
+    Name of the resource group
+
+    .OUTPUTS
+    bool if the validation passed or not
+#>
+function Assert-All {	
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute()]
+    param(
+    [Parameter(Mandatory = $true)]
+    [string] $VmName,
+    [Parameter(Mandatory = $true)]
+    [string] $ResourceGroup,
+    [Parameter(Mandatory = $false)]
+    [string] $MsiClientId)
+
+	
+		    # All validations go here
+			# validate the SQL VM supports Azure AD authentication, i.e. it is on Windows platform and is SQL 2022 or later
+			$null = Assert-AzureADAuthenticationSupportedOnSqlVM -ResourceGroupName $ResourceGroup -SqlVirtualMachineName $VmName
+	        # validate the MSI is valid on the Azure virtual machine
+			$PrincipalId = Assert-MsiValidOnVm -ResourceGroupName $ResourceGroup -SqlVirtualMachineName $VmName -MsiClientId $MsiClientId
+			# validate the MSI has appropriate permission to query Microsoft Graph API
+			$null = Assert-MsiWithEnoughPermission -PrincipalId $PrincipalId
+            Write-Host "Sql virtual machine $($sqlvm.Name) is valid for Azure AD authentication."
+}
+
+<#
+    .SYNOPSIS
+    Check if SQL VM version is minimum SQL2022
+	
+	.Description
+	Check if SQL VM version is minimum SQL2022
+
+    .PARAMETER SqlVirtualMachineName
+    Name of the VM
+
+    .PARAMETER ResourceGroupName
+    Name of the resource group
+#>
+function Assert-AzureADAuthenticationSupportedOnSqlVM {
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [string] $ResourceGroupName,
+        [Parameter(Mandatory = $true)]
+        [string] $SqlVirtualMachineName
+    )
+
+    try {
 		$accountmodule = Get-Module Az.Accounts 
 		if ($accountmodule -ne $null -and $accountmodule.Version -lt [System.Version]"2.19.0") 
 		{ 
@@ -187,67 +253,175 @@ process {
 			Install-Module -Name Az.Compute -Scope CurrentUser -AllowClobber -Force
 			Import-Module Az.Compute 
 		}
-		# # region - verify accounts and compute module end
-		# region Assert-AzureEntraAuthenticationSupportedOnSqlVM start 
-			try {        
-			# Get the SQL VM instance
-			$statuses = Get-AzVMExtension -ResourceGroupName $sqlvm.ResourceGroupName -VMName $sqlvm.Name -Name "SqlIaasExtension" -Status
-			$resourceProviderPluginStatus = $statuses.SubStatuses | Where-Object { $_.Code -like "*Resource Provider Plugin*" }
-
-			if ($resourceProviderPluginStatus) {
-				$sqlVersion = $resourceProviderPluginStatus | Select-Object @{Name='SqlVersion'; Expression={$_.Message | ConvertFrom-Json | Select-Object -ExpandProperty SqlVersion}}
-				$osVersion = $resourceProviderPluginStatus | Select-Object @{Name='OSVersion'; Expression={$_.Message | ConvertFrom-Json | Select-Object -ExpandProperty OSVersion}}
-			} else {
-				throw "Unable to validate sql version from extension status."
-			}
-			}
-			catch {
-				throw "Unable to validate Azure Entra authentication due to an error: $_"
-			}
-
-			# Construct error message for unsupported SQL server version or OS platform.
-			$unsupportedError = "Azure Entra authentication requires SQL Server 2022 on Windows platform, but the SQL version of this SQL VM is $($sqlVersion)"
-			
-			if (-not $sqlVersion -or -not $osVersion) {
-				throw $unsupportedError
-			}
-
-			try {
-				$intVersion = [int]($sqlVersion.SqlVersion.Substring(3))
-			}
-			catch {
-				throw $unsupportedError
-			}
-
-			if ($intVersion -lt 2022 -or -not $osVersion.OSVersion.StartsWith("WS")) {
-				$unsupportedError += "`n Recommendation: Upgrade SQL Server to SQL Server 2022 or later."
-				throw $unsupportedError
-			}
-		# region Assert-AzureEntraAuthenticationSupportedOnSqlVM end
-		# validate the MSI is valid on the Azure virtual machine		
-		#region Assert-MsiValidOnVm start 
-        $PrincipalId = Assert-MsiValidOnVm -ResourceGroupName $sqlvm.ResourceGroupName -SqlVirtualMachineName $sqlvm.Name -MsiClientId $AzureAdAuthenticationSettingClientId
-		#region Assert-MsiValidOnVm end
 		
-		# validate the MSI has appropriate permission to query Microsoft Graph API
-		# region Assert-MsiWithEnoughPermission start
-     		# Install and connect to Microsoft Graph
-			Install-Module Microsoft.Graph.Authentication -Scope CurrentUser -AllowClobber -Force
+		# Get the SQL VM instance
+		$statuses = Get-AzVMExtension -ResourceGroupName $ResourceGroupName -VMName $SqlVirtualMachineName -Name "SqlIaasExtension" -Status
+		$resourceProviderPluginStatus = $statuses.SubStatuses | Where-Object { $_.Code -like "*Resource Provider Plugin*" }
 
-			# Install and import Microsoft.Graph.Applications module
-			Install-Module -Name Microsoft.Graph.Applications -Scope CurrentUser -AllowClobber -Force
-			Import-Module Microsoft.Graph.Applications
+		if ($resourceProviderPluginStatus) {
+			$sqlVersion = $resourceProviderPluginStatus | Select-Object @{Name='SqlVersion'; Expression={$_.Message | ConvertFrom-Json | Select-Object -ExpandProperty SqlVersion}}
+			$osVersion = $resourceProviderPluginStatus | Select-Object @{Name='OSVersion'; Expression={$_.Message | ConvertFrom-Json | Select-Object -ExpandProperty OSVersion}}
+		} else {
+			throw "Unable to validate sql version from extension status."
+		}
+    }
+    catch {
+        throw "Unable to validate Azure AD authentication due to an error: $_"
+    }
 
-			#connect to Microsoft graph
-			# Connect-MgGraphViaCred start
-			try {
-			
-			#$credential = Get-Credential
-		    #$tenantId = (Get-AzContext).Subscription.TenantId
-			#Write-Host "tenant id: $tenantId"
-			# Connect to Azure using credentials
-			#$null = Connect-AzAccount -Credential $credential -Tenant $tenantId -Force -ErrorAction Stop
+    # Construct error message for unsupported SQL server version or OS platform.
+    $unsupportedError = "Azure AD authentication requires SQL Server 2022 on Windows platform, but the current version of this SQL VM is $($sqlVersion.SqlVersion) - $($osVersion.OSVersion)"
+	
+    if (-not $sqlVersion -or -not $osVersion) {
+        throw $unsupportedError
+    }
 
+	try {
+		$intVersion = [int]($sqlVersion.SqlVersion.Substring(3))
+	}
+	catch {
+		throw $unsupportedError
+	}
+
+	if ($intVersion -lt 2022 -or -not $osVersion.OSVersion.StartsWith("WS")) {
+		$unsupportedError += "`n Recommendation: Upgrade SQL Server to SQL Server 2022 or later."
+		throw $unsupportedError
+	}
+}
+
+<#
+    .SYNOPSIS
+    Validate the provided MSI is associated with SQL VM or not
+	
+	.Description
+	Validate the provided MSI is associated with SQL VM or not
+
+    .PARAMETER SqlVirtualMachineName
+    Name of the VM
+
+    .PARAMETER ResourceGroupName
+    Name of the resource group
+	
+	.PARAMETER MsiClientId
+    Msi Client Id
+#>
+function Assert-MsiValidOnVm {
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [string] $ResourceGroupName,
+        [Parameter(Mandatory = $true)]
+        [string] $SqlVirtualMachineName,
+        [Parameter(Mandatory = $false)]
+        [string] $MsiClientId
+    )
+
+    try {
+        # Get the VM instance
+        $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $SqlVirtualMachineName
+    }
+    catch {
+        throw "Unable to validate Azure AD authentication due to retrieving the Azure virtual machine instance encountering an error: $_"
+    }
+
+    # The system-assigned MSI case.
+    if (-not $MsiClientId) {
+        if ($vm.Identity -eq $null -or $vm.Identity.PrincipalId -eq $null) {
+            $azError = "Enable Azure AD authentication with system-assigned managed identity, but the system-assigned managed identity is not enabled on this Azure virtual machine."
+            $azError += "`n Recommendation: Enable the system-assigned managed identity on the Azure virtual machine: $SqlVirtualMachineName."
+            throw $azError
+        }
+
+        return $vm.Identity.PrincipalId
+    }
+
+    # The user-assigned MSI case.
+    if ($vm.Identity -eq $null -or $vm.Identity.UserAssignedIdentities -eq $null) {
+        $azError = "Enable Azure AD authentication with user-assigned managed identity $MsiClientId, but the managed identity is not attached to this Azure virtual machine."
+        $azError += "`n Recommendation: Attach the user-assigned managed identity $MsiClientId to the Azure virtual machine $SqlVirtualMachineName."
+        throw $azError
+    }
+
+    foreach ($umi in $vm.Identity.UserAssignedIdentities.Values) {
+        if ($umi.ClientId -eq $MsiClientId) {
+            return $umi.PrincipalId
+        }
+    }
+	
+	$azError = "Enable Azure AD authentication with user-assigned managed identity $MsiClientId, but the managed identity is not attached to this Azure virtual machine."
+	$azError += "`n Recommendation: Attach the user-assigned managed identity $MsiClientId to the Azure virtual machine $SqlVirtualMachineName."
+	throw $azError
+
+}
+
+<#
+    .SYNOPSIS
+    Validate the provided MSI has required permissions or not
+	
+	.Description
+	Validate the provided MSI has required permissions or not
+	
+	.PARAMETER PrincipalId
+    Msi Principal Id
+#>
+function Assert-MsiWithEnoughPermission {    
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute()]
+    param(
+        [Parameter(Mandatory = $true)]
+        [string] $PrincipalId
+    )    
+		# Install and connect to Microsoft Graph
+		Install-Module Microsoft.Graph.Authentication -Scope CurrentUser -AllowClobber -Force
+
+		# Install and import Microsoft.Graph.Applications module
+		Install-Module -Name Microsoft.Graph.Applications -Scope CurrentUser -AllowClobber -Force
+		Import-Module Microsoft.Graph.Applications
+
+		#connect to Microsoft graph
+		Connect-MgGraphViaToken
+		
+		# Get directory roles assigned to the MSI
+		$directoryRoles = Get-DirectoryRoleList -PrincipalId $PrincipalId
+
+		# Check if the MSI has the "Directory Readers" role
+		if ($directoryRoles.DisplayName -contains "Directory Readers") {
+			return
+		}
+
+		# Retrieve app role IDs for required roles
+		$appRoleIdMap = Find-RoleId
+
+		# Retrieve all assigned app role IDs for the MSI
+		$allAssignedRoleIds = (Get-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $PrincipalId).AppRoleId
+
+		# Find missing roles
+		$missingRoles = @("User.Read.All", "Application.Read.All", "GroupMember.Read.All") | Where-Object { $appRoleIdMap[$_] -notin $allAssignedRoleIds }
+
+		if ($missingRoles.Count -gt 0) {
+			$azError = "The managed identity is lacking the following roles for Azure AD authentication: $($missingRoles -join ', ')."
+			$azError += "`n Recommendation: Grant the managed identity EITHER the Directory.Readers role OR the three App roles 'User.Read.All', 'Application.Read.All', 'GroupMember.Read.All'"
+			throw $azError
+		}		
+}
+
+  
+function Connect-MgGraphViaToken {
+      <#
+      .SYNOPSIS
+      Function for connecting to the Microsoft Graph.
+      This option is unavailable with official Connect-MgGraph command.
+
+      .DESCRIPTION
+      Function for connecting to the Microsoft Graph.
+      This option is unavailable with official Connect-MgGraph command.
+
+      .EXAMPLE
+      $cred = Get-Credential
+      Connect-MgGraphViaToken
+      #>
+      [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute()]
+      param()	  
+		try {
 			# Retrieve token for MSGraph
 			$token = (Get-AzAccessToken -ResourceTypeName MSGraph -ErrorAction Stop).Token
 
@@ -258,47 +432,14 @@ process {
 
 			# Use token for connecting to Microsoft Graph
 			$null = Connect-MgGraph -AccessToken $token -ErrorAction Stop
-			}
-			catch {
-				throw "Error connecting to Microsoft Graph: $_"
-			}
-			#Connect-MgGraphViaCred end
-			
-			# Get directory roles assigned to the MSI
-			$directoryRoles = Get-MgServicePrincipalTransitiveMemberOfAsDirectoryRole -ServicePrincipalId $PrincipalId
-
-			# Check if the MSI has the "Directory Readers" role
-			if ($directoryRoles.DisplayName -contains "Directory Readers") {
-				Write-Host "Sql virtual machine $($sqlvm.Name) is valid for Azure Entra authentication."
-				return $true
-			}
-
-			# Retrieve app role IDs for required roles
-			$appRoleIdMap = Find-RoleId
-
-			# Retrieve all assigned app role IDs for the MSI
-			$allAssignedRoleIds = (Get-MgServicePrincipalAppRoleAssignment -ServicePrincipalId $PrincipalId).AppRoleId
-
-			# Find missing roles
-			$missingRoles = @("User.Read.All", "Application.Read.All", "GroupMember.Read.All") | Where-Object { $appRoleIdMap[$_] -notin $allAssignedRoleIds }
-
-			if ($missingRoles.Count -gt 0) {
-				$azError = "The managed identity is lacking the following roles for Azure Entra authentication: $($missingRoles -join ', ')."
-				$azError += "`n Recommendation: Grant the managed identity EITHER the Directory.Readers role OR the three App roles 'User.Read.All', 'Application.Read.All', 'GroupMember.Read.All'"
-				throw $azError
-			}
-		# region Assert-MsiWithEnoughPermission end
-		
-		Write-Host "Sql virtual machine $($sqlvm.Name) is valid for Azure Entra authentication."
-		return $true
-        }
-    } catch {		
-        throw "Azure Entra authentication failed. Error: $_"
-    }
-}
+		}
+		catch {
+			throw "Error connecting to Microsoft Graph: $_"
+		}
 }
 
-function Find-RoleId {        
+function Find-RoleId {
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute()]
         param()
 		try {
 			$servicePrincipals = Get-MgServicePrincipal -Filter "displayName eq 'Microsoft Graph'"
@@ -337,67 +478,18 @@ function Find-RoleId {
 		return $appRoleIdMap
 }
 
-<#
-    .SYNOPSIS
-    Validate the provided MSI is associated with SQL VM or not
-	
-	.Description
-	Validate the provided MSI is associated with SQL VM or not
-
-    .PARAMETER SqlVirtualMachineName
-    Name of the VM
-
-    .PARAMETER ResourceGroupName
-    Name of the resource group
-	
-	.PARAMETER MsiClientId
-    Msi Client Id
-#>
-function Assert-MsiValidOnVm {
-	param(
+function Get-DirectoryRoleList {	    
+        [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.DoNotExportAttribute()]
+        param(
         [Parameter(Mandatory = $true)]
-        [string] $ResourceGroupName,
-        [Parameter(Mandatory = $true)]
-        [string] $SqlVirtualMachineName,
-        [Parameter(Mandatory = $false)]
-        [string] $MsiClientId
-    )
-
-    try {
-		
-        # Get the VM instance
-        $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $SqlVirtualMachineName
-    }
-    catch {
-        throw "Unable to validate Azure AD authentication due to retrieving the Azure virtual machine instance encountering an error: $_"
-    }
-
-    # The system-assigned MSI case.
-    if (-not $MsiClientId) {
-        if ($vm.Identity -eq $null -or $vm.Identity.PrincipalId -eq $null) {
-            $azError = "Enable Azure AD authentication with system-assigned managed identity, but the system-assigned managed identity is not enabled on this Azure virtual machine."
-            $azError += "`n Recommendation: Enable the system-assigned managed identity on the Azure virtual machine: $SqlVirtualMachineName."
-            throw $azError
-        }
-
-        return $vm.Identity.PrincipalId
-    }
-
-    # The user-assigned MSI case.
-    if ($vm.Identity -eq $null -or $vm.Identity.UserAssignedIdentities -eq $null) {
-        $azError = "Enable Azure AD authentication with user-assigned managed identity $MsiClientId, but the managed identity is not attached to this Azure virtual machine."
-        $azError += "`n Recommendation: Attach the user-assigned managed identity $MsiClientId to the Azure virtual machine $SqlVirtualMachineName."
-        throw $azError
-    }
-
-    foreach ($umi in $vm.Identity.UserAssignedIdentities.Values) {
-        if ($umi.ClientId -eq $MsiClientId) {
-            return $umi.PrincipalId
-        }
-    }
+        [string] $PrincipalId
+		)
 	
-	$azError = "Enable Azure AD authentication with user-assigned managed identity $MsiClientId, but the managed identity is not attached to this Azure virtual machine."
-	$azError += "`n Recommendation: Attach the user-assigned managed identity $MsiClientId to the Azure virtual machine $SqlVirtualMachineName."
-	throw $azError
-
+		try {
+			$RoleList = Get-MgServicePrincipalTransitiveMemberOfAsDirectoryRole -ServicePrincipalId $PrincipalId
+			return $RoleList
+		}
+		catch {
+			throw "Microsoft Graph API Error: $_"
+		}
 }

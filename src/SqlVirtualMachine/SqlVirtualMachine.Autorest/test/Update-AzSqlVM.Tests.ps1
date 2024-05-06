@@ -154,7 +154,7 @@ Describe 'Update-AzSqlVM' {
         $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location
 
         $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -AzureAdAuthenticationSettingClientId '6d81e2bc-dcc5-45c9-9327-1cfee9612933'
-                
+        # note: user assigned managed identity is associated to sql vm and it has the required permissions
         $sqlVM.Name | Should -Be $env.SqlVMName
         $sqlVM.SqlImageOffer | Should -Be 'SQL2022-WS2022'
         $sqlVM.SqlManagement | Should -Be 'Full'
@@ -170,7 +170,7 @@ Describe 'Update-AzSqlVM' {
         $sqlVM = New-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -Location $env.Location
 
         $sqlVM = Update-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName -AzureAdAuthenticationSettingClientId ''
-                
+        # note: system managed identity is enabled on sql vm and it has the required permissions
         $sqlVM.Name | Should -Be $env.SqlVMName
         $sqlVM.SqlImageOffer | Should -Be 'SQL2022-WS2022'
         $sqlVM.SqlManagement | Should -Be 'Full'
@@ -182,8 +182,15 @@ Describe 'Update-AzSqlVM' {
         # Remove-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
         }
 		
-		It 'AdAuthenticationFailurescenario' {
+		It 'AdAuthenticationFailurescenario1' {
 		$sqlVM = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
+		# note: id 'random value' is not associated to sql vm so it throws the error
 		{$sqlVM | Update-AzSqlVMADAuth -AzureAdAuthenticationSettingClientId 'random value'} | Should -Throw		
-    }
+		}
+		
+		It 'AdAuthenticationFailurescenario2' {
+		$sqlVM = Get-AzSqlVM -ResourceGroupName $env.ResourceGroupName -Name $env.SqlVMName
+		# note: id '47c329a2-0bb1-48c5-9966-b84b957c6a77' is associated to sql vm but doesn't have required permissions. so it throws the error
+		{$sqlVM | Update-AzSqlVMADAuth -AzureAdAuthenticationSettingClientId '47c329a2-0bb1-48c5-9966-b84b957c6a77'} | Should -Throw		
+		}
 }

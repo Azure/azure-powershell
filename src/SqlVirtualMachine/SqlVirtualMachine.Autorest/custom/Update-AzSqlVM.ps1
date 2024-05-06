@@ -327,6 +327,12 @@ param(
 	
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Skip client validation while enabling Azure Ad Authentication on SQL virtual machine.
+    ${AzureAdAuthenticationSkipClientValidation},	
+	
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SqlVirtualMachine.Category('Body')]
     [System.String]
     # The client Id of the Managed Identity to query Microsoft Graph API.
     # An empty string must be used for the system assigned Managed Identity
@@ -434,7 +440,8 @@ process {
         $hasWsfcStaticIP = $PSBoundParameters.Remove('WsfcStaticIP')
         $hasEnableAutomaticUpgrade = $PSBoundParameters.Remove('EnableAutomaticUpgrade')
         $hasAzureAdAuthenticationSettingEnable = $PSBoundParameters.Remove('AzureAdAuthenticationSettingEnable')
-        $hasAzureAdAuthenticationSettingClientId = $PSBoundParameters.Remove('AzureAdAuthenticationSettingClientId')		
+        $hasAzureAdAuthenticationSettingClientId = $PSBoundParameters.Remove('AzureAdAuthenticationSettingClientId')
+        $hasAzureAdAuthenticationSkipClientValidation = $PSBoundParameters.Remove('AzureAdAuthenticationSkipClientValidation')		
         
         $hasAsJob = $PSBoundParameters.Remove('AsJob')
         $null = $PSBoundParameters.Remove('WhatIf')
@@ -574,10 +581,13 @@ process {
             throw $azError
         }
 
-        if ($AzureAdAuthenticationSettingEnable -or $hasAzureAdAuthenticationSettingClientId)
-        {		
-        Assert-AzSqlVMADAuth -ResourceGroupName $sqlVM.ResourceGroupName -Name $sqlVM.Name -AzureAdAuthenticationSettingClientId $AzureAdAuthenticationSettingClientId
-        }
+        if (($AzureAdAuthenticationSettingEnable -or $hasAzureAdAuthenticationSettingClientId) -and -not $AzureAdAuthenticationSkipClientValidation)
+        {
+            Assert-AzSqlVMADAuth -ResourceGroupName $sqlVM.ResourceGroupName -Name $sqlVM.Name -AzureAdAuthenticationSettingClientId $AzureAdAuthenticationSettingClientId
+        } elseif (($AzureAdAuthenticationSettingEnable -or $hasAzureAdAuthenticationSettingClientId) -and $AzureAdAuthenticationSkipClientValidation) {
+		   Write-Host "Skipping client-side validation ..."
+		}
+		
         if ($PSCmdlet.ShouldProcess("SQL virtual machine $($sqlvm.Name)", "Update")) {
             Az.SqlVirtualMachine.internal\New-AzSqlVM -InputObject $sqlvm -Parameter $sqlvm @PSBoundParameters
         }		
