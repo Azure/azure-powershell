@@ -28,55 +28,55 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Registered".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Registered", "Registered", global::System.Management.Automation.CompletionResultType.ParameterValue, "Registered");
+                yield return new global::System.Management.Automation.CompletionResult("'Registered'", "Registered", global::System.Management.Automation.CompletionResultType.ParameterValue, "Registered");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unregistered".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Unregistered", "Unregistered", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unregistered");
+                yield return new global::System.Management.Automation.CompletionResult("'Unregistered'", "Unregistered", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unregistered");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Warned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Warned", "Warned", global::System.Management.Automation.CompletionResultType.ParameterValue, "Warned");
+                yield return new global::System.Management.Automation.CompletionResult("'Warned'", "Warned", global::System.Management.Automation.CompletionResultType.ParameterValue, "Warned");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Suspended".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Suspended", "Suspended", global::System.Management.Automation.CompletionResultType.ParameterValue, "Suspended");
+                yield return new global::System.Management.Automation.CompletionResult("'Suspended'", "Suspended", global::System.Management.Automation.CompletionResultType.ParameterValue, "Suspended");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Deleted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Deleted", "Deleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleted");
+                yield return new global::System.Management.Automation.CompletionResult("'Deleted'", "Deleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleted");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WarnedToRegistered".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WarnedToRegistered", "WarnedToRegistered", global::System.Management.Automation.CompletionResultType.ParameterValue, "WarnedToRegistered");
+                yield return new global::System.Management.Automation.CompletionResult("'WarnedToRegistered'", "WarnedToRegistered", global::System.Management.Automation.CompletionResultType.ParameterValue, "WarnedToRegistered");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WarnedToSuspended".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WarnedToSuspended", "WarnedToSuspended", global::System.Management.Automation.CompletionResultType.ParameterValue, "WarnedToSuspended");
+                yield return new global::System.Management.Automation.CompletionResult("'WarnedToSuspended'", "WarnedToSuspended", global::System.Management.Automation.CompletionResultType.ParameterValue, "WarnedToSuspended");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WarnedToDeleted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WarnedToDeleted", "WarnedToDeleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "WarnedToDeleted");
+                yield return new global::System.Management.Automation.CompletionResult("'WarnedToDeleted'", "WarnedToDeleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "WarnedToDeleted");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "WarnedToUnregistered".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("WarnedToUnregistered", "WarnedToUnregistered", global::System.Management.Automation.CompletionResultType.ParameterValue, "WarnedToUnregistered");
+                yield return new global::System.Management.Automation.CompletionResult("'WarnedToUnregistered'", "WarnedToUnregistered", global::System.Management.Automation.CompletionResultType.ParameterValue, "WarnedToUnregistered");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SuspendedToRegistered".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SuspendedToRegistered", "SuspendedToRegistered", global::System.Management.Automation.CompletionResultType.ParameterValue, "SuspendedToRegistered");
+                yield return new global::System.Management.Automation.CompletionResult("'SuspendedToRegistered'", "SuspendedToRegistered", global::System.Management.Automation.CompletionResultType.ParameterValue, "SuspendedToRegistered");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SuspendedToWarned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SuspendedToWarned", "SuspendedToWarned", global::System.Management.Automation.CompletionResultType.ParameterValue, "SuspendedToWarned");
+                yield return new global::System.Management.Automation.CompletionResult("'SuspendedToWarned'", "SuspendedToWarned", global::System.Management.Automation.CompletionResultType.ParameterValue, "SuspendedToWarned");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SuspendedToDeleted".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SuspendedToDeleted", "SuspendedToDeleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "SuspendedToDeleted");
+                yield return new global::System.Management.Automation.CompletionResult("'SuspendedToDeleted'", "SuspendedToDeleted", global::System.Management.Automation.CompletionResultType.ParameterValue, "SuspendedToDeleted");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "SuspendedToUnregistered".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("SuspendedToUnregistered", "SuspendedToUnregistered", global::System.Management.Automation.CompletionResultType.ParameterValue, "SuspendedToUnregistered");
+                yield return new global::System.Management.Automation.CompletionResult("'SuspendedToUnregistered'", "SuspendedToUnregistered", global::System.Management.Automation.CompletionResultType.ParameterValue, "SuspendedToUnregistered");
             }
         }
     }

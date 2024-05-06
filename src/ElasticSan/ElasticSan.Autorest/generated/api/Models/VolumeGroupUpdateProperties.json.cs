@@ -107,9 +107,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models
             {
                 return;
             }
-            {_encryptionProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("encryptionProperties"), out var __jsonEncryptionProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.EncryptionProperties.FromJson(__jsonEncryptionProperties) : EncryptionProperty;}
-            {_protocolType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("protocolType"), out var __jsonProtocolType) ? (string)__jsonProtocolType : (string)ProtocolType;}
-            {_encryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("encryption"), out var __jsonEncryption) ? (string)__jsonEncryption : (string)Encryption;}
+            {_encryptionProperty = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonObject>("encryptionProperties"), out var __jsonEncryptionProperties) ? Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.EncryptionProperties.FromJson(__jsonEncryptionProperties) : _encryptionProperty;}
+            {_protocolType = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("protocolType"), out var __jsonProtocolType) ? (string)__jsonProtocolType : (string)_protocolType;}
+            {_encryption = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Runtime.Json.JsonString>("encryption"), out var __jsonEncryption) ? (string)__jsonEncryption : (string)_encryption;}
             AfterFromJson(json);
         }
     }

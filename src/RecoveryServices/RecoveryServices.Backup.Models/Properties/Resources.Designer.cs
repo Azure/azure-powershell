@@ -2371,7 +2371,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        /// Looks up a localized string similar to Invalid parameter Token: Stop protection with retain backup data is not MUA protected
+        /// Looks up a localized string similar to Invalid parameter Token: Stop protection with retain backup data as per policy is not MUA protected
         /// </summary>
         public static string DisableWithRetainBackupNotCrititcal{
             get

@@ -66,9 +66,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the resource group where the recovery services vault is
         /// present.
         /// </param>
-        public static BackupResourceVaultConfigResource Update(this IBackupResourceVaultConfigsOperations operations, string vaultName, string resourceGroupName, BackupResourceVaultConfigResource parameters)
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
+        public static BackupResourceVaultConfigResource Update(this IBackupResourceVaultConfigsOperations operations, string vaultName, string resourceGroupName, BackupResourceVaultConfigResource parameters, string xMsAuthorizationAuxiliary = default(string))
         {
-                return ((IBackupResourceVaultConfigsOperations)operations).UpdateAsync(vaultName, resourceGroupName, parameters).GetAwaiter().GetResult();
+                return ((IBackupResourceVaultConfigsOperations)operations).UpdateAsync(vaultName, resourceGroupName, parameters, xMsAuthorizationAuxiliary).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -84,12 +87,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the resource group where the recovery services vault is
         /// present.
         /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BackupResourceVaultConfigResource> UpdateAsync(this IBackupResourceVaultConfigsOperations operations, string vaultName, string resourceGroupName, BackupResourceVaultConfigResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BackupResourceVaultConfigResource> UpdateAsync(this IBackupResourceVaultConfigsOperations operations, string vaultName, string resourceGroupName, BackupResourceVaultConfigResource parameters, string xMsAuthorizationAuxiliary = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.UpdateWithHttpMessagesAsync(vaultName, resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.UpdateWithHttpMessagesAsync(vaultName, resourceGroupName, parameters, xMsAuthorizationAuxiliary, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }
@@ -107,9 +113,12 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the resource group where the recovery services vault is
         /// present.
         /// </param>
-        public static BackupResourceVaultConfigResource Put(this IBackupResourceVaultConfigsOperations operations, string vaultName, string resourceGroupName, BackupResourceVaultConfigResource parameters)
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
+        public static BackupResourceVaultConfigResource Put(this IBackupResourceVaultConfigsOperations operations, string vaultName, string resourceGroupName, BackupResourceVaultConfigResource parameters, string xMsAuthorizationAuxiliary = default(string))
         {
-                return ((IBackupResourceVaultConfigsOperations)operations).PutAsync(vaultName, resourceGroupName, parameters).GetAwaiter().GetResult();
+                return ((IBackupResourceVaultConfigsOperations)operations).PutAsync(vaultName, resourceGroupName, parameters, xMsAuthorizationAuxiliary).GetAwaiter().GetResult();
         }
 
         /// <summary>
@@ -125,12 +134,15 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         /// The name of the resource group where the recovery services vault is
         /// present.
         /// </param>
+        /// <param name='xMsAuthorizationAuxiliary'>
+        /// 
+        /// </param>
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public static async System.Threading.Tasks.Task<BackupResourceVaultConfigResource> PutAsync(this IBackupResourceVaultConfigsOperations operations, string vaultName, string resourceGroupName, BackupResourceVaultConfigResource parameters, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public static async System.Threading.Tasks.Task<BackupResourceVaultConfigResource> PutAsync(this IBackupResourceVaultConfigsOperations operations, string vaultName, string resourceGroupName, BackupResourceVaultConfigResource parameters, string xMsAuthorizationAuxiliary = default(string), System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            using (var _result = await operations.PutWithHttpMessagesAsync(vaultName, resourceGroupName, parameters, null, cancellationToken).ConfigureAwait(false))
+            using (var _result = await operations.PutWithHttpMessagesAsync(vaultName, resourceGroupName, parameters, xMsAuthorizationAuxiliary, null, cancellationToken).ConfigureAwait(false))
             {
                 return _result.Body;
             }

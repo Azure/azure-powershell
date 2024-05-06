@@ -28,10 +28,18 @@ Please note some properties can be set only during logical network creation.
 
 ## EXAMPLES
 
-### EXAMPLE 1
-```
+### Example 1: Create a Logical Network
+```powershell
 New-AzStackHCIVMLogicalNetwork  -Name "testLnet" -ResourceGroupName "test-rg" -CustomLocationId "/subscriptions/{subscriptionID}/resourcegroups/{resourceGroupName}/providers/microsoft.extendedlocation/customlocations/{customLocationName}"  -Location "eastus" -VmSwitchName "testswitch"
 ```
+
+```output
+Name            ResourceGroupName
+----            -----------------
+testLnet       test-rg
+```
+
+This command creates a logical network in the specified resource group.
 
 ## PARAMETERS
 
@@ -60,7 +68,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -226,7 +234,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -302,7 +310,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -332,7 +340,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: 0
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -391,8 +399,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ILogicalNetworks
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmlogicalnetwork](https://learn.microsoft.com/powershell/module/az.stackhcivm/new-azstackhcivmlogicalnetwork)

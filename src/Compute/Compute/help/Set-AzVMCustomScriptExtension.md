@@ -19,7 +19,8 @@ Set-AzVMCustomScriptExtension [-ResourceGroupName] <String> [-VMName] <String> [
  -ContainerName <String> -FileName <String[]> [-StorageAccountName <String>] [-StorageEndpointSuffix <String>]
  [-StorageAccountKey <String>] [-Run <String>] [-Argument <String>] [-SecureExecution]
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
- [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByNameWithFileUriParameterSet
@@ -27,7 +28,8 @@ Set-AzVMCustomScriptExtension [-ResourceGroupName] <String> [-VMName] <String> [
 Set-AzVMCustomScriptExtension [-ResourceGroupName] <String> [-VMName] <String> [-Name <String>]
  [-FileUri <String[]>] [-Run <String>] [-Argument <String>] [-SecureExecution] [-TypeHandlerVersion <String>]
  [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>] [-NoWait]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectWithContainerAndFileNamesParameterSet
@@ -36,7 +38,8 @@ Set-AzVMCustomScriptExtension -Name <String> -VMObject <PSVirtualMachine> -Conta
  -FileName <String[]> [-StorageAccountName <String>] [-StorageEndpointSuffix <String>]
  [-StorageAccountKey <String>] [-Run <String>] [-Argument <String>] [-SecureExecution]
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
- [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByParentObjectWithFileUriParameterSet
@@ -60,8 +63,8 @@ Set-AzVMCustomScriptExtension -ResourceId <String> -ContainerName <String> -File
 ```
 Set-AzVMCustomScriptExtension -ResourceId <String> [-FileUri <String[]>] [-Run <String>] [-Argument <String>]
  [-SecureExecution] [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion]
- [-ForceRerun <String>] [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-ForceRerun <String>] [-NoWait] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObjectWithContainerAndFileNamesParameterSet
@@ -70,7 +73,8 @@ Set-AzVMCustomScriptExtension -InputObject <VirtualMachineCustomScriptExtensionC
  -FileName <String[]> [-StorageAccountName <String>] [-StorageEndpointSuffix <String>]
  [-StorageAccountKey <String>] [-Run <String>] [-Argument <String>] [-SecureExecution]
  [-TypeHandlerVersion <String>] [-Location <String>] [-DisableAutoUpgradeMinorVersion] [-ForceRerun <String>]
- [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### ByInputObjectWithFileUriParameterSet
@@ -564,5 +568,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Get-AzVMCustomScriptExtension](./Get-AzVMCustomScriptExtension.md)
 
 [Remove-AzVMCustomScriptExtension](./Remove-AzVMCustomScriptExtension.md)
-
-

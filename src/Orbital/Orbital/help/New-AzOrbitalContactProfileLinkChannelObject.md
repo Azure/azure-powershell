@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Orbital-help.xml
 Module Name: Az.Orbital
 online version: https://learn.microsoft.com/powershell/module/az.Orbital/new-AzOrbitalContactProfileLinkChannelObject
 schema: 2.0.0
@@ -16,7 +16,8 @@ Create an in-memory object for ContactProfileLinkChannel.
 New-AzOrbitalContactProfileLinkChannelObject -BandwidthMHz <Single> -CenterFrequencyMHz <Single>
  -EndPointIPAddress <String> -EndPointName <String> -EndPointPort <String> -EndPointProtocol <Protocol>
  -Name <String> [-DecodingConfiguration <String>] [-DemodulationConfiguration <String>]
- [-EncodingConfiguration <String>] [-ModulationConfiguration <String>] [<CommonParameters>]
+ [-EncodingConfiguration <String>] [-ModulationConfiguration <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -215,7 +216,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

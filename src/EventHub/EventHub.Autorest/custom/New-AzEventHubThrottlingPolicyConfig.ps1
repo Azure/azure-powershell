@@ -35,7 +35,8 @@ function New-AzEventHubThrottlingPolicyConfig{
 		[Parameter(Mandatory, HelpMessage = "Metric Id on which the throttle limit should be set, MetricId can be discovered by hovering over Metric in the Metrics section of Event Hub Namespace inside Azure Portal")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.MetricId]
 		# Metric Id on which the throttle limit should be set, MetricId can be discovered by hovering over Metric in the Metrics section of Event Hub Namespace inside Azure Portal.
-        ${MetricId}
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.ParameterBreakingChangeAttribute("MetricId","12.0.0", "5.0.0","2024-05-21" )]
+		${MetricId}
 	)
 
 	process{

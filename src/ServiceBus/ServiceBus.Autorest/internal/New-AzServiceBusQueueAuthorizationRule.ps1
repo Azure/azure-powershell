@@ -16,20 +16,20 @@
 
 <#
 .Synopsis
-Creates an authorization rule for a queue.
+Create an authorization rule for a queue.
 .Description
-Creates an authorization rule for a queue.
+Create an authorization rule for a queue.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -38,7 +38,21 @@ To create the parameters described below, construct a hash table containing the 
 INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [Alias <String>]: The Disaster Recovery configuration name
   [AuthorizationRuleName <String>]: The authorization rule name.
-  [ConfigName <MigrationConfigurationName?>]: The configuration name. Should always be "$default".
+  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [QueueName <String>]: The queue name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [RuleName <String>]: The rule name.
+  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionName <String>]: The subscription name.
+  [TopicName <String>]: The topic name.
+
+NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
+  [Alias <String>]: The Disaster Recovery configuration name
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [ConfigName <String>]: The configuration name. Should always be "$default".
   [Id <String>]: Resource identity path
   [NamespaceName <String>]: The namespace name
   [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
@@ -50,21 +64,33 @@ INPUTOBJECT <IServiceBusIdentity>: Identity Parameter
   [TopicName <String>]: The topic name.
 
 PARAMETER <ISbAuthorizationRule>: Description of a namespace authorization rule.
-  [Rights <AccessRights[]>]: The rights associated with the rule.
-  [SystemDataCreatedAt <DateTime?>]: The timestamp of resource creation (UTC).
-  [SystemDataCreatedBy <String>]: The identity that created the resource.
-  [SystemDataCreatedByType <CreatedByType?>]: The type of identity that created the resource.
-  [SystemDataLastModifiedAt <DateTime?>]: The type of identity that last modified the resource.
-  [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
-  [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
+  [Rights <List<String>>]: The rights associated with the rule.
+
+QUEUEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
+  [Alias <String>]: The Disaster Recovery configuration name
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [QueueName <String>]: The queue name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [RuleName <String>]: The rule name.
+  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionName <String>]: The subscription name.
+  [TopicName <String>]: The topic name.
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebusqueueauthorizationrule
 #>
 function New-AzServiceBusQueueAuthorizationRule {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespace', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityQueue', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityQueueExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     # The authorization rule name.
@@ -77,6 +103,8 @@ param(
     ${NamespaceName},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespace', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     # The queue name.
@@ -100,22 +128,38 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity]
     # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
 
+    [Parameter(ParameterSetName='CreateViaIdentityNamespace', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity]
+    # Identity Parameter
+    ${NamespaceInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityQueue', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityQueueExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity]
+    # Identity Parameter
+    ${QueueInputObject},
+
     [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityQueueExpanded')]
     [AllowEmptyCollection()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights])]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Manage", "Send", "Listen")]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.AccessRights[]]
+    [System.String[]]
     # The rights associated with the rule.
     ${Rights},
 
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespace', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityQueue', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbAuthorizationRule]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbAuthorizationRule]
     # Description of a namespace authorization rule.
-    # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
 
     [Parameter()]
@@ -178,9 +222,19 @@ begin {
         $mapping = @{
             CreateExpanded = 'Az.ServiceBus.private\New-AzServiceBusQueueAuthorizationRule_CreateExpanded';
             CreateViaIdentity = 'Az.ServiceBus.private\New-AzServiceBusQueueAuthorizationRule_CreateViaIdentity';
+            CreateViaIdentityNamespace = 'Az.ServiceBus.private\New-AzServiceBusQueueAuthorizationRule_CreateViaIdentityNamespace';
+            CreateViaIdentityNamespaceExpanded = 'Az.ServiceBus.private\New-AzServiceBusQueueAuthorizationRule_CreateViaIdentityNamespaceExpanded';
+            CreateViaIdentityQueue = 'Az.ServiceBus.private\New-AzServiceBusQueueAuthorizationRule_CreateViaIdentityQueue';
+            CreateViaIdentityQueueExpanded = 'Az.ServiceBus.private\New-AzServiceBusQueueAuthorizationRule_CreateViaIdentityQueueExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
 
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)

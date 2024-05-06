@@ -96,6 +96,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.PowerShell
         public override string ToString() => HasValidateNotNull ? $"{Indent}[ValidateNotNull()]{Environment.NewLine}" : String.Empty;
     }
 
+    internal class AllowEmptyArrayOutput
+    {
+        public bool HasAllowEmptyArray { get; }
+
+        public AllowEmptyArrayOutput(bool hasAllowEmptyArray)
+        {
+            HasAllowEmptyArray = hasAllowEmptyArray;
+        }
+
+        public override string ToString() => HasAllowEmptyArray ? $"{Indent}[AllowEmptyCollection()]{Environment.NewLine}" : String.Empty;
+    }
     internal class ArgumentCompleterOutput
     {
         public CompleterInfo CompleterInfo { get; }
@@ -157,15 +168,63 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.PowerShell
         public override string ToString() => $"{Indent}${{{ParameterName}}}{(IsLast ? String.Empty : $",{Environment.NewLine}")}{Environment.NewLine}";
     }
 
-    internal class BeginOutput
+    internal class BaseOutput
     {
         public VariantGroup VariantGroup { get; }
 
-        public BeginOutput(VariantGroup variantGroup)
+        protected static readonly bool IsAzure = Convert.ToBoolean(@"true");
+        public BaseOutput(VariantGroup variantGroup)
         {
             VariantGroup = variantGroup;
         }
+        public string ClearTelemetryContext()
+        {
+            return (!VariantGroup.IsInternal && IsAzure) ? $@"{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()" : "";
+        }
+    }
 
+    internal class BeginOutput : BaseOutput
+    {
+        public BeginOutput(VariantGroup variantGroup) : base(variantGroup)
+        {
+        }
+
+        public string GetProcessCustomAttributesAtRuntime()
+        {
+            return VariantGroup.IsInternal ? "" : IsAzure ? $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]
+{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){{
+{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+{Indent}{Indent}}}" : $@"{Indent}{Indent}$cmdInfo = Get-Command -Name $mapping[$parameterSet]{Environment.NewLine}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)";
+        }
+
+        private string GetTelemetry()
+        {
+            if (!VariantGroup.IsInternal && IsAzure)
+            {
+                return $@"
+{Indent}{Indent}if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {{
+{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $PSVersionTable.PSVersion.ToString()
+{Indent}{Indent}}}         
+{Indent}{Indent}$preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+{Indent}{Indent}if ($preTelemetryId -eq '') {{
+{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.HealthBot.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}}} else {{
+{Indent}{Indent}{Indent}$internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+{Indent}{Indent}{Indent}if ($internalCalledCmdlets -eq '') {{
+{Indent}{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+{Indent}{Indent}{Indent}}} else {{
+{Indent}{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+{Indent}{Indent}{Indent}}}
+{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+{Indent}{Indent}}}
+";
+            }
+            return "";
+        }
         public override string ToString() => $@"begin {{
 {Indent}try {{
 {Indent}{Indent}$outBuffer = $null
@@ -173,12 +232,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.PowerShell
 {Indent}{Indent}{Indent}$PSBoundParameters['OutBuffer'] = 1
 {Indent}{Indent}}}
 {Indent}{Indent}$parameterSet = $PSCmdlet.ParameterSetName
+{GetTelemetry()}
 {GetParameterSetToCmdletMapping()}{GetDefaultValuesStatements()}
+{GetProcessCustomAttributesAtRuntime()}
 {Indent}{Indent}$wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
 {Indent}{Indent}$scriptCmd = {{& $wrappedCmd @PSBoundParameters}}
 {Indent}{Indent}$steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
 {Indent}{Indent}$steppablePipeline.Begin($PSCmdlet)
 {Indent}}} catch {{
+{ClearTelemetryContext()}
 {Indent}{Indent}throw
 {Indent}}}
 }}
@@ -207,36 +269,94 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.PowerShell
                 var variantListString = defaultInfo.ParameterGroup.VariantNames.ToPsList();
                 var parameterName = defaultInfo.ParameterGroup.ParameterName;
                 sb.AppendLine();
-                sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}')) {{");
-                sb.AppendLine($"{Indent}{Indent}{Indent}$PSBoundParameters['{parameterName}'] = {defaultInfo.Script}");
-                sb.Append($"{Indent}{Indent}}}");
+                //Yabo: this is bad to hard code the subscription id, but autorest load input README.md reversely (entry readme -> required readme), there are no other way to 
+                //override default value set in required readme
+                if ("SubscriptionId".Equals(parameterName))
+                {
+                    sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}')) {{");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}$testPlayback = $false");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}$PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object {{ if ($_) {{ $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) }} }}");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}if ($testPlayback) {{");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}{Indent}$PSBoundParameters['{parameterName}'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}}} else {{");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}{Indent}$PSBoundParameters['{parameterName}'] = {defaultInfo.Script}");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}}}");
+                    sb.Append($"{Indent}{Indent}}}");
+                }
+                else
+                {
+                    sb.AppendLine($"{Indent}{Indent}if (({variantListString}) -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('{parameterName}')) {{");
+                    sb.AppendLine($"{Indent}{Indent}{Indent}$PSBoundParameters['{parameterName}'] = {defaultInfo.Script}");
+                    sb.Append($"{Indent}{Indent}}}");
+                }
             }
             return sb.ToString();
         }
     }
 
-    internal class ProcessOutput
+    internal class ProcessOutput : BaseOutput
     {
+        public ProcessOutput(VariantGroup variantGroup) : base(variantGroup)
+        {
+        }
+
+        private string GetFinally()
+        {
+            if (IsAzure && !VariantGroup.IsInternal)
+            {
+                return $@"
+{Indent}finally {{
+{Indent}{Indent}$backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+{Indent}{Indent}$backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+{Indent}}}
+";
+            }
+            return "";
+        }
         public override string ToString() => $@"process {{
 {Indent}try {{
 {Indent}{Indent}$steppablePipeline.Process($_)
 {Indent}}} catch {{
+{ClearTelemetryContext()}
 {Indent}{Indent}throw
 {Indent}}}
+{GetFinally()}
 }}
-
 ";
     }
 
-    internal class EndOutput
+    internal class EndOutput : BaseOutput
     {
+        public EndOutput(VariantGroup variantGroup) : base(variantGroup)
+        {
+        }
+
+        private string GetTelemetry()
+        {
+            if (!VariantGroup.IsInternal && IsAzure)
+            {
+                return $@"
+{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+{Indent}{Indent}if ($preTelemetryId -eq '') {{
+{Indent}{Indent}{Indent}[Microsoft.Azure.PowerShell.Cmdlets.HealthBot.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+{Indent}{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+{Indent}{Indent}}}
+{Indent}{Indent}[Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+";
+            }
+            return "";
+        }
         public override string ToString() => $@"end {{
 {Indent}try {{
 {Indent}{Indent}$steppablePipeline.End()
+{GetTelemetry()}
 {Indent}}} catch {{
+{ClearTelemetryContext()}
 {Indent}{Indent}throw
 {Indent}}}
-}}
+}} 
 ";
     }
 
@@ -290,7 +410,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.PowerShell
 
         public override string ToString() => !String.IsNullOrEmpty(Description)
             ? Description.ToDescriptionFormat(false).NormalizeNewLines()
-                .Split(new [] { Environment.NewLine }, StringSplitOptions.None)
+                .Split(new[] { Environment.NewLine }, StringSplitOptions.None)
                 .Aggregate(String.Empty, (c, n) => c + $"{Indent}# {n}{Environment.NewLine}")
             : String.Empty;
     }
@@ -366,7 +486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.PowerShell
         public Type ParameterType { get; }
         public bool IsMandatory { get; }
         public int? Position { get; }
-        
+
         public bool IncludeSpace { get; }
         public bool IncludeDash { get; }
 
@@ -432,7 +552,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.PowerShell
         // https://stackoverflow.com/a/5284606/294804
         private static string RemoveEnd(this string text, string suffix) => text.EndsWith(suffix) ? text.Substring(0, text.Length - suffix.Length) : text;
 
-        public static string ToPsSingleLine(this string value, string replacer = " ") => value.ReplaceNewLines(replacer, new []{"<br>", "\r\n", "\n"});
+        public static string ToPsSingleLine(this string value, string replacer = " ") => value.ReplaceNewLines(replacer, new[] { "<br>", "\r\n", "\n" });
 
         public static string ToPsStringLiteral(this string value) => value?.Replace("'", "''").Replace("‘", "''").Replace("’", "''").ToPsSingleLine().Trim() ?? String.Empty;
 
@@ -465,6 +585,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.PowerShell
 
         public static ValidateNotNullOutput ToValidateNotNullOutput(this bool hasValidateNotNull) => new ValidateNotNullOutput(hasValidateNotNull);
 
+        public static AllowEmptyArrayOutput ToAllowEmptyArray(this bool hasAllowEmptyArray) => new AllowEmptyArrayOutput(hasAllowEmptyArray);
+
         public static ArgumentCompleterOutput ToArgumentCompleterOutput(this CompleterInfo completerInfo) => new ArgumentCompleterOutput(completerInfo);
 
         public static DefaultInfoOutput ToDefaultInfoOutput(this ParameterGroup parameterGroup) => new DefaultInfoOutput(parameterGroup);
@@ -475,9 +597,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.PowerShell
 
         public static BeginOutput ToBeginOutput(this VariantGroup variantGroup) => new BeginOutput(variantGroup);
 
-        public static ProcessOutput ToProcessOutput(this VariantGroup variantGroup) => new ProcessOutput();
+        public static ProcessOutput ToProcessOutput(this VariantGroup variantGroup) => new ProcessOutput(variantGroup);
 
-        public static EndOutput ToEndOutput(this VariantGroup variantGroup) => new EndOutput();
+        public static EndOutput ToEndOutput(this VariantGroup variantGroup) => new EndOutput(variantGroup);
 
         public static HelpCommentOutput ToHelpCommentOutput(this VariantGroup variantGroup) => new HelpCommentOutput(variantGroup);
 
@@ -497,7 +619,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.PowerShell
 
         public static string ToNoteOutput(this ComplexInterfaceInfo complexInterfaceInfo, string currentIndent = "", bool includeDashes = false, bool includeBackticks = false, bool isFirst = true)
         {
-            string RenderProperty(ComplexInterfaceInfo info, string indent, bool dash, bool backtick) => 
+            string RenderProperty(ComplexInterfaceInfo info, string indent, bool dash, bool backtick) =>
                 $"{indent}{(dash ? "- " : String.Empty)}{(backtick ? "`" : String.Empty)}{info.ToPropertySyntaxOutput()}{(backtick ? "`" : String.Empty)}: {info.Description}";
 
             var nested = complexInterfaceInfo.NestedInfos.Select(ni =>
@@ -506,7 +628,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthBot.Runtime.PowerShell
                 return ni.IsComplexInterface
                     ? ni.ToNoteOutput(nestedIndent, includeDashes, includeBackticks, false)
                     : RenderProperty(ni, nestedIndent, includeDashes, includeBackticks);
-            }).Prepend(RenderProperty(complexInterfaceInfo, currentIndent, !isFirst && includeDashes, !isFirst && includeBackticks));
+            }).Prepend(RenderProperty(complexInterfaceInfo, currentIndent, !isFirst && includeDashes, includeBackticks));
             return String.Join(Environment.NewLine, nested);
         }
     }

@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-The operation to Create a virtual machine instance.
+The operation to Update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Description
-The operation to Create a virtual machine instance.
+The operation to Update a virtual machine instance.
 Please note some properties can be set only during virtual machine instance creation.
 .Example
 {{ Add code here }}
@@ -172,7 +172,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey[]]
     # The list of SSH public keys used to authenticate with linux based VMs.
-    # .
     ${LinuxConfigurationSshPublicKey},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -180,7 +179,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesNetworkProfileNetworkInterfacesItem[]]
     # NetworkInterfaces - list of network interfaces to be attached to the virtual machine instance
-    # .
     ${NetworkProfileNetworkInterface},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -240,7 +238,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IVirtualMachineInstancePropertiesStorageProfileDataDisksItem[]]
     # adds data disks to the virtual machine instance
-    # .
     ${StorageProfileDataDisk},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -284,7 +281,6 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.ISshPublicKey[]]
     # The list of SSH public keys used to authenticate with linux based VMs.
-    # .
     ${WindowsConfigurationSshPublicKey},
 
     [Parameter(ParameterSetName='UpdateViaJsonFilePath', Mandatory)]
@@ -317,7 +313,7 @@ param(
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
-    # Wait forNET debugger to attach
+    # Wait for .NET debugger to attach
     ${Break},
 
     [Parameter(DontShow)]

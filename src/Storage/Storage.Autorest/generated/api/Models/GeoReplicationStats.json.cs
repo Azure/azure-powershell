@@ -80,12 +80,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
             {
                 return;
             }
-            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)Status;}
-            {_lastSyncTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("lastSyncTime"), out var __jsonLastSyncTime) ? global::System.DateTime.TryParse((string)__jsonLastSyncTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastSyncTimeValue) ? __jsonLastSyncTimeValue : LastSyncTime : LastSyncTime;}
-            {_canFailover = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("canFailover"), out var __jsonCanFailover) ? (bool?)__jsonCanFailover : CanFailover;}
-            {_canPlannedFailover = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("canPlannedFailover"), out var __jsonCanPlannedFailover) ? (bool?)__jsonCanPlannedFailover : CanPlannedFailover;}
-            {_postFailoverRedundancy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("postFailoverRedundancy"), out var __jsonPostFailoverRedundancy) ? (string)__jsonPostFailoverRedundancy : (string)PostFailoverRedundancy;}
-            {_postPlannedFailoverRedundancy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("postPlannedFailoverRedundancy"), out var __jsonPostPlannedFailoverRedundancy) ? (string)__jsonPostPlannedFailoverRedundancy : (string)PostPlannedFailoverRedundancy;}
+            {_status = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("status"), out var __jsonStatus) ? (string)__jsonStatus : (string)_status;}
+            {_lastSyncTime = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("lastSyncTime"), out var __jsonLastSyncTime) ? global::System.DateTime.TryParse((string)__jsonLastSyncTime, global::System.Globalization.CultureInfo.InvariantCulture, global::System.Globalization.DateTimeStyles.AdjustToUniversal, out var __jsonLastSyncTimeValue) ? __jsonLastSyncTimeValue : _lastSyncTime : _lastSyncTime;}
+            {_canFailover = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("canFailover"), out var __jsonCanFailover) ? (bool?)__jsonCanFailover : _canFailover;}
+            {_canPlannedFailover = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonBoolean>("canPlannedFailover"), out var __jsonCanPlannedFailover) ? (bool?)__jsonCanPlannedFailover : _canPlannedFailover;}
+            {_postFailoverRedundancy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("postFailoverRedundancy"), out var __jsonPostFailoverRedundancy) ? (string)__jsonPostFailoverRedundancy : (string)_postFailoverRedundancy;}
+            {_postPlannedFailoverRedundancy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonString>("postPlannedFailoverRedundancy"), out var __jsonPostPlannedFailoverRedundancy) ? (string)__jsonPostPlannedFailoverRedundancy : (string)_postPlannedFailoverRedundancy;}
             AfterFromJson(json);
         }
 

@@ -14,7 +14,7 @@ Create an in-memory object for UrlRewriteAction.
 
 ```
 New-AzCdnUrlRewriteActionObject -ParameterDestination <String> -ParameterSourcePattern <String>
- -Name <DeliveryRuleAction> [-ParameterPreserveUnmatchedPath <Boolean>] [-ProgressAction <ActionPreference>]
+ -Name <DeliveryRuleAction> [-ParameterPreserveUnmatchedPath <Boolean>]
  [<CommonParameters>]
 ```
 
@@ -100,21 +100,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -122,10 +107,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlRewriteAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRewriteAction
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

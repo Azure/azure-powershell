@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkFabricExternalNetwork
 
 ## SYNOPSIS
-Creates ExternalNetwork PUT method.
+Create ExternalNetwork PUT method.
 
 ## SYNTAX
 
@@ -61,7 +61,7 @@ New-AzNetworkFabricExternalNetwork -L3IsolationDomainName <String> -Name <String
 ```
 
 ## DESCRIPTION
-Creates ExternalNetwork PUT method.
+Create ExternalNetwork PUT method.
 
 ## EXAMPLES
 
@@ -148,7 +148,6 @@ Accept wildcard characters: False
 
 ### -Body
 Defines the External Network resource.
-To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExternalNetwork
@@ -180,7 +179,6 @@ Accept wildcard characters: False
 
 ### -ExportRoutePolicy
 Export Route Policy either IPv4 or IPv6.
-To construct, see NOTES section for EXPORTROUTEPOLICY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IExportRoutePolicy
@@ -212,7 +210,6 @@ Accept wildcard characters: False
 
 ### -ImportRoutePolicy
 Import Route Policy either IPv4 or IPv6.
-To construct, see NOTES section for IMPORTROUTEPOLICY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IImportRoutePolicy
@@ -274,7 +271,6 @@ Accept wildcard characters: False
 
 ### -L3IsolationDomainInputObject
 Identity Parameter
-To construct, see NOTES section for L3ISOLATIONDOMAININPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IManagedNetworkFabricIdentity
@@ -335,7 +331,6 @@ Accept wildcard characters: False
 
 ### -OptionAPropertyBfdConfiguration
 BFD configuration properties
-To construct, see NOTES section for OPTIONAPROPERTYBFDCONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IBfdConfiguration
@@ -489,7 +484,6 @@ Accept wildcard characters: False
 
 ### -OptionBProperty
 option B properties object
-To construct, see NOTES section for OPTIONBPROPERTY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IL3OptionBProperties

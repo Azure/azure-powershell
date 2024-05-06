@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzSecurityConnectorAzureDevOpsProject
 
 ## SYNOPSIS
-Updates a monitored Azure DevOps project resource.
+Update a monitored Azure DevOps project resource.
 
 ## SYNTAX
 
@@ -28,7 +28,7 @@ Update-AzSecurityConnectorAzureDevOpsProject -InputObject <ISecurityIdentity>
 ```
 
 ## DESCRIPTION
-Updates a monitored Azure DevOps project resource.
+Update a monitored Azure DevOps project resource.
 
 ## EXAMPLES
 
@@ -78,7 +78,6 @@ Type                            : Microsoft.Security/securityConnectors/devops/a
 
 ### -ActionableRemediation
 Configuration payload for PR Annotations.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IActionableRemediation
@@ -125,7 +124,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityIdentity

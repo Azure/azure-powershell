@@ -76,8 +76,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Storage.Models
                 return;
             }
             __resource = new Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.Resource(json);
-            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.LocalUserProperties.FromJson(__jsonProperties) : Property;}
-            {_systemData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("systemData"), out var __jsonSystemData) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SystemData.FromJson(__jsonSystemData) : SystemData;}
+            {_property = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("properties"), out var __jsonProperties) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.LocalUserProperties.FromJson(__jsonProperties) : _property;}
+            {_systemData = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Storage.Runtime.Json.JsonObject>("systemData"), out var __jsonSystemData) ? Microsoft.Azure.PowerShell.Cmdlets.Storage.Models.SystemData.FromJson(__jsonSystemData) : _systemData;}
             AfterFromJson(json);
         }
 

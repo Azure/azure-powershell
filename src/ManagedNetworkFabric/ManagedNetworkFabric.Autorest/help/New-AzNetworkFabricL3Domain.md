@@ -73,7 +73,6 @@ This command creates the L3 Isolation Domain resource.
 
 ### -AggregateRouteConfiguration
 Aggregate route configurations.
-To construct, see NOTES section for AGGREGATEROUTECONFIGURATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IAggregateRouteConfiguration
@@ -119,7 +118,6 @@ Accept wildcard characters: False
 
 ### -ConnectedSubnetRoutePolicy
 Connected Subnet RoutePolicy
-To construct, see NOTES section for CONNECTEDSUBNETROUTEPOLICY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ManagedNetworkFabric.Models.IConnectedSubnetRoutePolicy

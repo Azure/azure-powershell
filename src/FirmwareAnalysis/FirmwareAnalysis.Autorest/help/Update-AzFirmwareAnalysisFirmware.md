@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzFirmwareAnalysisFirmware
 
 ## SYNOPSIS
-The operation to update firmware.
+The operation to Update firmware.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzFirmwareAnalysisFirmware -Id <String> -WorkspaceInputObject <IFirmwareA
 ```
 
 ## DESCRIPTION
-The operation to update firmware.
+The operation to Update firmware.
 
 ## EXAMPLES
 
@@ -150,7 +150,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity
@@ -212,7 +211,6 @@ Accept wildcard characters: False
 
 ### -StatusMessage
 A list of errors or other messages generated during firmware analysis
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IStatusMessage[]
@@ -274,7 +272,6 @@ Accept wildcard characters: False
 
 ### -WorkspaceInputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.FirmwareAnalysis.Models.IFirmwareAnalysisIdentity

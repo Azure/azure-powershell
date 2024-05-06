@@ -24,9 +24,28 @@ Create a DevOps Configuration.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new DevOps Configuration for the security connector
 ```powershell
 New-AzSecurityConnectorDevOpsConfiguration -ResourceGroupName "securityconnectors-pwsh-tmp" -SecurityConnectorName "ado-sdk-pwsh-test03" -AutoDiscovery Disabled -TopLevelInventoryList @("org1", "org2") -AuthorizationCode "myAuthorizationCode"
+```
+
+```output
+AuthorizationCode               : 
+AutoDiscovery                   : Disabled
+Id                              : /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourceGroups/securityconnectors-pwsh-tmp/providers/Microsoft.Security/securityConnectors/ado-sdk-pwsh-test03/devops/default
+Name                            : default
+ProvisioningState               : Succeeded
+ProvisioningStatusMessage       : Resource creation successful.
+ProvisioningStatusUpdateTimeUtc : 
+ResourceGroupName               : securityconnectors-pwsh-tmp
+SystemDataCreatedAt             : 
+SystemDataCreatedBy             : 
+SystemDataCreatedByType         : 
+SystemDataLastModifiedAt        : 
+SystemDataLastModifiedBy        : 
+SystemDataLastModifiedByType    : 
+TopLevelInventoryList           : 
+Type                            : Microsoft.Security/securityConnectors/devops
 ```
 
 ## PARAMETERS
@@ -35,13 +54,13 @@ New-AzSecurityConnectorDevOpsConfiguration -ResourceGroupName "securityconnector
 Run the command as a job
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -51,7 +70,7 @@ Gets or sets one-time OAuth code to exchange for refresh and access tokens.Only 
 The secret is cleared during GET.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,7 +85,7 @@ Accept wildcard characters: False
 AutoDiscovery states.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +101,7 @@ The DefaultProfile parameter is not functional.
 Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
-Type: PSObject
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
@@ -97,13 +116,13 @@ Accept wildcard characters: False
 Run the command asynchronously
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -113,7 +132,7 @@ The name of the resource group.
 The name is case insensitive.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -128,7 +147,7 @@ Accept wildcard characters: False
 The security connector name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -143,13 +162,13 @@ Accept wildcard characters: False
 Azure subscription ID
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -158,7 +177,7 @@ Accept wildcard characters: False
 List of top-level inventory to select when AutoDiscovery is disabled.This field is ignored when AutoDiscovery is enabled.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -173,7 +192,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -189,7 +208,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -208,8 +227,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.IDevOpsConfiguration
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/az.security/new-azsecurityconnectordevopsconfiguration](https://learn.microsoft.com/powershell/module/az.security/new-azsecurityconnectordevopsconfiguration)

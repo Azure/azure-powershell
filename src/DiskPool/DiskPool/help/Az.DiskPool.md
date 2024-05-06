@@ -37,10 +37,10 @@ This create or update operation can take 15 minutes to complete.
 This is expected service behavior.
 
 ### [New-AzDiskPoolAclObject](New-AzDiskPoolAclObject.md)
-Create a in-memory object for Acl
+Create an in-memory object for Acl.
 
 ### [New-AzDiskPoolIscsiLunObject](New-AzDiskPoolIscsiLunObject.md)
-Create a in-memory object for IscsiLun
+Create an in-memory object for IscsiLun.
 
 ### [New-AzDiskPoolIscsiTarget](New-AzDiskPoolIscsiTarget.md)
 Create or Update an iSCSI Target.

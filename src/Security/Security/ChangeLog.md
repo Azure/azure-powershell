@@ -20,6 +20,12 @@
 
 ## Upcoming Release
 
+## Version 1.6.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## Version 1.6.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 1.6.0
 * Added new cmdlets for Security Connectors
 * Added new cmdlets for ApiCollections Security

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStackHCIVMVirtualHardDisk
 
 ## SYNOPSIS
-The operation to update a virtual hard disk.
+The operation to Update a virtual hard disk.
 
 ## SYNTAX
 
@@ -44,7 +44,7 @@ Update-AzStackHCIVMVirtualHardDisk -Name <String> -ResourceGroupName <String> -J
 ```
 
 ## DESCRIPTION
-The operation to update a virtual hard disk.
+The operation to Update a virtual hard disk.
 
 ## EXAMPLES
 
@@ -96,7 +96,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StackHCIVM.Models.IStackHcivmIdentity
@@ -187,7 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The ARM Resource ID of the virtual hard disk
+The ARM Resource ID of the virtual hard disk .
 
 ```yaml
 Type: System.String

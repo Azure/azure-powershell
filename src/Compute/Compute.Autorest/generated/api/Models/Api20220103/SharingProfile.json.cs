@@ -77,9 +77,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
             {
                 return;
             }
+            {_communityGalleryInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonObject>("communityGalleryInfo"), out var __jsonCommunityGalleryInfo) ? Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.CommunityGalleryInfo.FromJson(__jsonCommunityGalleryInfo) : CommunityGalleryInfo;}
             {_permission = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString>("permissions"), out var __jsonPermissions) ? (string)__jsonPermissions : (string)Permission;}
             {_group = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonArray>("groups"), out var __jsonGroups) ? If( __jsonGroups as Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileGroup[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ISharingProfileGroup) (Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.SharingProfileGroup.FromJson(__u) )) ))() : null : Group;}
-            {_communityGalleryInfo = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonObject>("communityGalleryInfo"), out var __jsonCommunityGalleryInfo) ? Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Any.FromJson(__jsonCommunityGalleryInfo) : CommunityGalleryInfo;}
             AfterFromJson(json);
         }
 
@@ -102,6 +102,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
             {
                 return container;
             }
+            AddIf( null != this._communityGalleryInfo ? (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode) this._communityGalleryInfo.ToJson(null,serializationMode) : null, "communityGalleryInfo" ,container.Add );
             AddIf( null != (((object)this._permission)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonString(this._permission.ToString()) : null, "permissions" ,container.Add );
             if (serializationMode.HasFlag(Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.SerializationMode.IncludeReadOnly))
             {
@@ -115,7 +116,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103
                     container.Add("groups",__w);
                 }
             }
-            AddIf( null != this._communityGalleryInfo ? (Microsoft.Azure.PowerShell.Cmdlets.Compute.Runtime.Json.JsonNode) this._communityGalleryInfo.ToJson(null,serializationMode) : null, "communityGalleryInfo" ,container.Add );
             AfterToJson(ref container);
             return container;
         }

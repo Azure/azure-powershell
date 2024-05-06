@@ -16,19 +16,75 @@
 
 <#
 .Synopsis
-Creates a topic subscription.
+Create a topic subscription.
 .Description
-Creates a topic subscription.
+Create a topic subscription.
 .Example
 New-AzServiceBusSubscription -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name mySubscription -DefaultMessageTimeToLive (New-TimeSpan -Days 6) -EnableBatchedOperations
 
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription
+.Inputs
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+NAMESPACEINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
+  [Alias <String>]: The Disaster Recovery configuration name
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [QueueName <String>]: The queue name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [RuleName <String>]: The rule name.
+  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionName <String>]: The subscription name.
+  [TopicName <String>]: The topic name.
+
+PARAMETER <ISbSubscription>: Description of subscription resource.
+  [AutoDeleteOnIdle <TimeSpan?>]: ISO 8061 timeSpan idle interval after which the topic is automatically deleted. The minimum duration is 5 minutes.
+  [ClientId <String>]: Indicates the Client ID of the application that created the client-affine subscription.
+  [DeadLetteringOnFilterEvaluationException <Boolean?>]: Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.
+  [DeadLetteringOnMessageExpiration <Boolean?>]: Value that indicates whether a subscription has dead letter support when a message expires.
+  [DefaultMessageTimeToLive <TimeSpan?>]: ISO 8061 Default message timespan to live value. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself.
+  [DuplicateDetectionHistoryTimeWindow <TimeSpan?>]: ISO 8601 timeSpan structure that defines the duration of the duplicate detection history. The default value is 10 minutes.
+  [EnableBatchedOperations <Boolean?>]: Value that indicates whether server-side batched operations are enabled.
+  [ForwardDeadLetteredMessagesTo <String>]: Queue/Topic name to forward the Dead Letter message
+  [ForwardTo <String>]: Queue/Topic name to forward the messages
+  [IsClientAffine <Boolean?>]: Value that indicates whether the subscription has an affinity to the client id.
+  [IsDurable <Boolean?>]: For client-affine subscriptions, this value indicates whether the subscription is durable or not.
+  [IsShared <Boolean?>]: For client-affine subscriptions, this value indicates whether the subscription is shared or not.
+  [LockDuration <TimeSpan?>]: ISO 8061 lock duration timespan for the subscription. The default value is 1 minute.
+  [MaxDeliveryCount <Int32?>]: Number of maximum deliveries.
+  [RequiresSession <Boolean?>]: Value indicating if a subscription supports the concept of sessions.
+  [Status <String>]: Enumerates the possible values for the status of a messaging entity.
+
+TOPICINPUTOBJECT <IServiceBusIdentity>: Identity Parameter
+  [Alias <String>]: The Disaster Recovery configuration name
+  [AuthorizationRuleName <String>]: The authorization rule name.
+  [ConfigName <String>]: The configuration name. Should always be "$default".
+  [Id <String>]: Resource identity path
+  [NamespaceName <String>]: The namespace name
+  [PrivateEndpointConnectionName <String>]: The PrivateEndpointConnection name
+  [QueueName <String>]: The queue name.
+  [ResourceGroupName <String>]: Name of the Resource group within the Azure subscription.
+  [RuleName <String>]: The rule name.
+  [SubscriptionId <String>]: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  [SubscriptionName <String>]: The subscription name.
+  [TopicName <String>]: The topic name.
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/new-azservicebussubscription
+.Link
+https://msdn.microsoft.com/en-us/library/azure/mt639385.aspx
 #>
 function New-AzServiceBusSubscription {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -38,25 +94,19 @@ param(
     # The subscription name.
     ${Name},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     # The namespace name
     ${NamespaceName},
 
-    [Parameter(Mandatory)]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
     # Name of the Resource group within the Azure subscription.
     ${ResourceGroupName},
 
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
-    [System.String]
-    # The topic name.
-    ${TopicName},
-
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -64,106 +114,167 @@ param(
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespace', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [System.String]
+    # The topic name.
+    ${TopicName},
+
+    [Parameter(ParameterSetName='CreateViaIdentityNamespace', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity]
+    # Identity Parameter
+    ${NamespaceInputObject},
+
+    [Parameter(ParameterSetName='CreateViaIdentityTopic', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityTopicExpanded', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity]
+    # Identity Parameter
+    ${TopicInputObject},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityTopicExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.TimeSpan]
     # Idle interval after which the queue is automatically deleted.
     # The minimum duration is 5 minutes.
     ${AutoDeleteOnIdle},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityTopicExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.String]
     # Indicates the Client ID of the application that created the client-affine subscription.
     ${ClientId},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityTopicExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Value that indicates whether a subscription has dead letter support on filter evaluation exceptions.
     ${DeadLetteringOnFilterEvaluationException},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityTopicExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Value that indicates whether a subscription has dead letter support when a message expires.
     ${DeadLetteringOnMessageExpiration},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityTopicExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.TimeSpan]
     # This is the duration after which the message expires, starting from when the message is sent to Service Bus.
     # This is the default value used when TimeToLive is not set on a message itself.
     ${DefaultMessageTimeToLive},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityTopicExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.TimeSpan]
     # Defines the duration of the duplicate detection history.
     # The default value is 10 minutes.
     ${DuplicateDetectionHistoryTimeWindow},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityTopicExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Value that indicates whether server-side batched operations are enabled.
     ${EnableBatchedOperations},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityTopicExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.String]
     # Queue/Topic name to forward the Dead Letter message
     ${ForwardDeadLetteredMessagesTo},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityTopicExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.String]
     # Queue/Topic name to forward the messages
     ${ForwardTo},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityTopicExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Value that indicates whether the subscription has an affinity to the client id.
     ${IsClientAffine},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityTopicExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # For client-affine subscriptions, this value indicates whether the subscription is durable or not.
     ${IsDurable},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityTopicExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # For client-affine subscriptions, this value indicates whether the subscription is shared or not.
     ${IsShared},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityTopicExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.TimeSpan]
     # Timespan duration of a peek-lock; that is, the amount of time that the message is locked for other receivers.
     # The maximum value for LockDuration is 5 minutes; the default value is 1 minute.
     ${LockDuration},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityTopicExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.Int32]
     # Number of maximum deliveries.
     ${MaxDeliveryCount},
 
-    [Parameter()]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityTopicExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Value indicating if a subscription supports the concept of sessions.
     ${RequiresSession},
 
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus])]
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityNamespaceExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityTopicExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.PSArgumentCompleterAttribute("Active", "Disabled", "Restoring", "SendDisabled", "ReceiveDisabled", "Creating", "Deleting", "Renaming", "Unknown")]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus]
+    [System.String]
     # Enumerates the possible values for the status of a messaging entity.
     ${Status},
+
+    [Parameter(ParameterSetName='CreateViaIdentityNamespace', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='CreateViaIdentityTopic', Mandatory, ValueFromPipeline)]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription]
+    # Description of subscription resource.
+    ${Parameter},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -241,12 +352,26 @@ begin {
 
         $mapping = @{
             CreateExpanded = 'Az.ServiceBus.private\New-AzServiceBusSubscription_CreateExpanded';
+            CreateViaIdentityNamespace = 'Az.ServiceBus.private\New-AzServiceBusSubscription_CreateViaIdentityNamespace';
+            CreateViaIdentityNamespaceExpanded = 'Az.ServiceBus.private\New-AzServiceBusSubscription_CreateViaIdentityNamespaceExpanded';
+            CreateViaIdentityTopic = 'Az.ServiceBus.private\New-AzServiceBusSubscription_CreateViaIdentityTopic';
+            CreateViaIdentityTopicExpanded = 'Az.ServiceBus.private\New-AzServiceBusSubscription_CreateViaIdentityTopicExpanded';
         }
-        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if (('CreateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId') ) {
+            $testPlayback = $false
+            $PSBoundParameters['HttpPipelinePrepend'] | Foreach-Object { if ($_) { $testPlayback = $testPlayback -or ('Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.PipelineMock' -eq $_.Target.GetType().FullName -and 'Playback' -eq $_.Target.Mode) } }
+            if ($testPlayback) {
+                $PSBoundParameters['SubscriptionId'] = . (Join-Path $PSScriptRoot '..' 'utils' 'Get-SubscriptionIdTestSafe.ps1')
+            } else {
+                $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            }
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+        if ($null -ne $MyInvocation.MyCommand -and [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets -notcontains $MyInvocation.MyCommand.Name -and [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.MessageAttributeHelper]::ContainsPreviewAttribute($cmdInfo, $MyInvocation)){
+            [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.MessageAttributeHelper]::ProcessPreviewMessageAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PromptedPreviewMessageCmdlets.Enqueue($MyInvocation.MyCommand.Name)
+        }
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)

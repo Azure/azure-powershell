@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.2.0
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 0.1.0
 * the first preview release
 

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
 online version: https://learn.microsoft.com/powershell/module/az.networkcloud/get-aznetworkcloudkubernetescluster
 schema: 2.0.0
@@ -24,16 +24,16 @@ Get-AzNetworkCloudKubernetesCluster -Name <String> -ResourceGroupName <String> [
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzNetworkCloudKubernetesCluster -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ### List1
 ```
 Get-AzNetworkCloudKubernetesCluster -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzNetworkCloudKubernetesCluster -InputObject <INetworkCloudIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,7 +53,6 @@ location kubernetesCluster1            06/30/2023 20:39:44 <Identity>           
 location kubernetesCluster2            07/11/2023 02:49:35 <Identity>                           User                    08/03/2023 20:26:32      <Identity>                           Application                  resourceGroupName
 location kubernetesCluster3            07/15/2023 22:04:00 <Identity>                           Application             07/15/2023 22:18:48      <Identity>                           Application                  resourceGroupName
 location kubernetesCluster4            07/25/2023 21:00:31 <Identity>                           User                    08/03/2023 20:26:37      <Identity>                           Application                  resourceGroupName
-
 ```
 
 This command lists all Kubernetes clusters under a subscription.
@@ -155,7 +154,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List, Get, List1
 Aliases:
 
 Required: False
@@ -178,35 +177,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <INetworkCloudIdentity>`: Identity Parameter
-  - `[AgentPoolName <String>]`: The name of the Kubernetes cluster agent pool.
-  - `[BareMetalMachineKeySetName <String>]`: The name of the bare metal machine key set.
-  - `[BareMetalMachineName <String>]`: The name of the bare metal machine.
-  - `[BmcKeySetName <String>]`: The name of the baseboard management controller key set.
-  - `[CloudServicesNetworkName <String>]`: The name of the cloud services network.
-  - `[ClusterManagerName <String>]`: The name of the cluster manager.
-  - `[ClusterName <String>]`: The name of the cluster.
-  - `[ConsoleName <String>]`: The name of the virtual machine console.
-  - `[Id <String>]`: Resource identity path
-  - `[KubernetesClusterName <String>]`: The name of the Kubernetes cluster.
-  - `[L2NetworkName <String>]`: The name of the L2 network.
-  - `[L3NetworkName <String>]`: The name of the L3 network.
-  - `[MetricsConfigurationName <String>]`: The name of the metrics configuration for the cluster.
-  - `[RackName <String>]`: The name of the rack.
-  - `[RackSkuName <String>]`: The name of the rack SKU.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[StorageApplianceName <String>]`: The name of the storage appliance.
-  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
-  - `[TrunkedNetworkName <String>]`: The name of the trunked network.
-  - `[VirtualMachineName <String>]`: The name of the virtual machine.
-  - `[VolumeName <String>]`: The name of the volume.
-
 ## RELATED LINKS
-

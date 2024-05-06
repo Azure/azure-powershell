@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.7.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 1.7.1
 * Fixed an issue regarding Custom Managed Key.[#22463] [#22898]
 

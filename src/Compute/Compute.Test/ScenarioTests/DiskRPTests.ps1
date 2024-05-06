@@ -1792,3 +1792,75 @@ function Test-SnapshotConfigElasticSanResourceId
         Clean-ResourceGroup $rgname
     }
 }
+
+
+<#
+.SYNOPSIS
+Testing SnapshotConfig create with TierOption 'EnhancedSpeed'
+#>
+function Test-SnapshotConfigTierOptionEnhancedSpeed
+{
+    $rgname = Get-ComputeTestResourceName;
+	$loc = 'eastus2';
+
+    try
+    {
+        
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+        
+        # Config and create test
+        $snapshotconfig = New-AzSnapshotConfig -Location $loc -AccountType Standard_LRS -CreateOption CopyFromSanSnapshot -TierOption 'Enhanced'
+        Assert-AreEqual EnhancedSpeed $snapshotconfig.CreationData.ProvisionedBandwidthCopySpeed
+
+        $snapshot = New-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotname -Snapshot $snapshotconfig
+        Assert-AreEqual CopyFromSanSnapshot $snapshot.CreationData.CreateOption
+
+        $snapshot = Get-AzSnapshot -ResourceGroupName $rgname
+        Assert-AreEqual CopyFromSanSnapshot $snapshot.CreationData.CreateOption
+        Assert-AreEqual EnhancedSpeed $snapshot.CreationData.ProvisionedBandwidthCopySpeed
+
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Using a TL disk, use the SecureVmGuestStateSas parameter to get the securityDataAccessSAS value.
+#>
+function Test-DiskGrantAccessGetSASWithTL
+{
+    $rgname = Get-ComputeTestResourceName;
+	$loc = Get-ComputeVMLocation;
+
+	try
+    {
+		New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $diskname = "d" + $rgname;
+
+        $image = Get-AzVMImage -Skus 2022-datacenter-azure-edition -Offer WindowsServer -PublisherName MicrosoftWindowsServer -Location $loc -Version latest;
+        $diskconfig = New-AzDiskConfig -DiskSizeGB 127 -AccountType Premium_LRS -OsType Windows -CreateOption FromImage -Location $loc;
+
+        $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id $image.Id;
+
+        $disk = New-AzDisk -ResourceGroupName $rgname -DiskName $diskname -Disk $diskconfig;
+
+        $grantAccess = Grant-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access 'Read' -DurationInSecond 60 -SecureVMGuestStateSAS;
+        Assert-NotNull $grantAccess.securityDataAccessSAS;
+        Assert-NotNull $grantAccess.AccessSAS;
+
+        $grantAccess = Grant-AzDiskAccess -ResourceGroupName $rgname -DiskName $diskname -Access 'Read' -DurationInSecond 60;
+        Assert-NotNull $grantAccess.AccessSAS;
+        Assert-Null $grantAccess.securityDataAccessSAS;
+
+	}
+    finally 
+    {
+		# Cleanup
+		Clean-ResourceGroup $rgname;
+	}
+}

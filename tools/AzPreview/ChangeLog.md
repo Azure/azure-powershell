@@ -1,3 +1,607 @@
+## 11.6.0 - April 2024
+#### Az.Accounts 2.19.0
+> [!IMPORTANT]
+> Preannouncement: The default interactive login experience will change from browser based to 'Web Account Manager' (WAM) based on supported platforms, [learn more](https://learn.microsoft.com/en-us/entra/msal/dotnet/acquiring-tokens/desktop-mobile/wam). Only interactive login flow is influeced by WAM. This will take effect from the release of **May 21st**.
+* Fixed secrets detection issues.
+
+#### Az.ADDomainServices 0.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Advisor 2.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Aks 6.0.3
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Alb 0.1.3
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.AlertsManagement 0.6.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.AppConfiguration 1.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ApplicationInsights 2.2.5
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ArcResourceBridge 1.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Attestation 2.0.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Automanage 1.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.BareMetal 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Batch 3.6.0
+* Added new properties 'ResourceTags'  and 'UpgradePolicy' to 'PSCloudPool' and 'PSPoolSpecification'.
+* Added new property 'UpgradingOS' to 'PSNodeCounts'.
+* Added new properties 'Caching', 'DiskSizeGB', 'ManagedDisk' and 'WriteAcceleratorEnabled' to 'PSOSDisk'.
+* Added new properties 'SecurityProfile' and 'ServiceArtifactReference' to 'PSVirtualMachineConfigurations'.
+* Added new property 'ScaleSetVmResourceId' to 'PSVirtualMachineInfo'.
+
+#### Az.BillingBenefits 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.BotService 0.5.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Cdn 3.2.0
+* Introduced secrets detection feature to safeguard sensitive data.
+* Upgrade API version to 2024-02-01
+* Added support to configure rules to scrub PII values from the AFDx logs when new or update a AFDx resource.
+
+#### Az.ChangeAnalysis 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.CloudService 2.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Communication 0.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Compute 7.3.0
+* Added cmdlet 'Invoke-AzSpotPlacementRecommender'.
+* Fixed 'Update-AzCapacityReservationGroup' to remove Subscriptions from SharingProfile.
+
+#### Az.ConfidentialLedger 1.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Confluent 0.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ConnectedKubernetes 0.10.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ConnectedMachine 0.7.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ConnectedNetwork 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ConnectedVMware 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ContainerInstance 4.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ContainerRegistry 4.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.CostManagement 0.3.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.CustomLocation 0.1.3
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.CustomProviders 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Dashboard 0.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.DataBox 0.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Databricks 1.7.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Datadog 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.DataMigration 0.14.6
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.DataProtection 2.4.0
+* Added vault tier restore and update backup instance for blobs.
+* Added CmkEnryption parameters to Get-AzDataProtectionBackupVault, New-AzDataProtectionBackupVault and Update-AzDataProtectionBackupVault cmdlets.
+* Added MUA support for DisableVaultImmutability, Restore, Stop-Protection, Suspend-backup, Disable soft delete operations.
+
+#### Az.DedicatedHsm 0.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.DesktopVirtualization 4.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.DevCenter 1.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.DeviceUpdate 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.DigitalTwins 0.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.DiskPool 0.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Dns 1.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.DnsResolver 0.2.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.DynatraceObservability 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.EdgeOrder 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.EdgeZones 0.1.0
+* First preview release for module Az.EdgeZones
+
+#### Az.Elastic 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ElasticSan 1.0.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.EventHub 4.2.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.FirmwareAnalysis 0.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Fleet 0.2.0
+* Introduced secrets detection feature to safeguard sensitive data.
+* Upgraded managed identity parameters
+* Updated example for new managed identity
+* Updated command description
+
+#### Az.FluidRelay 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Functions 4.0.8
+* Updated logic to populate tab completers and cache in the New-AzFunctionApp cmdlet
+
+#### Az.GraphServices 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.GuestConfiguration 0.11.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.HanaOnAzure 0.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.HdInsightOnAks 0.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.HealthBot 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.HealthcareApis 2.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ImageBuilder 0.4.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ImportExport 0.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.KeyVault 5.3.0
+* Introduced secrets detection feature to safeguard sensitive data.
+* [Upcoming Breaking Change] Added breaking change warning message for parameter 'UseDefaultCVMPolicy' of 'Add-AzKeyVaultKey'.
+    - The offline fallback policy will be removed. Key creation will fail if unable to get regional default CVM SKR policy from MAA Service Discovery API.
+* Added parameter 'PolicyPath' in 'Add-AzKeyVaultCertificate' to support custom policy in the process of certificate enrollment. 
+* Upgraded the API version of merging certificate to 7.5. [#24323]
+
+#### Az.KubernetesConfiguration 0.7.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Kusto 2.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.LabServices 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.LoadTesting 1.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Logz 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ManagedNetworkFabric 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ManagedServiceIdentity 1.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ManagedServices 3.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Maps 0.8.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.MariaDb 0.2.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Marketplace 0.5.0
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.MarketplaceOrdering 2.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Migrate 2.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.MixedReality 0.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.MobileNetwork 0.4.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Monitor 5.2.0
+* '-Location' parameter was removed from 'Update-AzActionGroup' and 'Update-AzDataCollectionRule' because they do not support updating the location.
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.MonitoringSolutions 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.MySql 1.1.2
+* Fixed for various docs erroneously pointing to Postgres instead of MySQL
+
+#### Az.Network 7.5.0
+* Added cmdlet 'Convert-AzNetworkWatcherClassicConnectionMonitor' for converting a classic connection monitor to V2 connection monitor.
+
+#### Az.NetworkAnalytics 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.NetworkCloud 1.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.NetworkFunction 0.1.3
+* Introduced secrets detection feature to safeguard sensitive data.
+* Added validation in New/Update collector policy cmdlets to throw exception if ExpressRoute Circuit bandwidth is less than 1G.
+
+#### Az.NewRelic 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Nginx 1.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Orbital 0.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.PaloAltoNetworks 0.2.3
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Peering 0.4.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Portal 0.2.0
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.PostgreSql 1.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ProviderHub 0.3.0
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Purview 0.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Quantum 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Qumulo 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Quota 0.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.RecoveryServices 6.9.0
+* Added support for MUA for disabling vault Immutability, increasing RPO for policy schedule, restore, stop protection with retain data.
+* Added support for Enabling/Disabling the azure monitor and email notification alerts for site recovery in recovery services vault.
+
+#### Az.RedisEnterpriseCache 1.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Relay 2.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Reservations 0.13.0
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ResourceGraph 0.13.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ResourceMover 1.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Resources 6.16.2
+* Introduced secrets detection feature to safeguard sensitive data.
+* Migrated SDK generation from autorest csharp to autorest powershell.
+
+#### Az.Security 1.6.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.SecurityInsights 3.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.SelfHelp 0.2.0
+* Added support for Discovery NLP API at Subscription and Tenant levels.
+* Added support for SelfHelp API and Discovery API at Tenant level.
+* Added support for Simplified Solutions API.
+
+#### Az.ServiceBus 3.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ServiceLinker 0.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.SignalR 2.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Sphere 0.1.0
+* First preview release for module Az.Sphere
+
+#### Az.Sql 4.14.1
+* Made 1.2 as default for MinimalTlsVersion when creating new Sql Server from Powershell
+* Fixed an existing issue with 'Set-AzSqlInstanceActiveDirectoryAdministrator'
+
+#### Az.SqlVirtualMachine 2.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.StackHCI 2.3.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.StackHCIVM 1.0.3
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.StandbyPool 0.1.0
+* First preview release for module Az.StandbyPool
+
+#### Az.Storage 6.2.0
+* Introduced secrets detection feature to safeguard sensitive data.
+* Fixed object replication policy time format parsing issue [#24434]
+* Updated download offset and content length calculation logic for downloading files 
+    - 'Get-AzStorageFileContent'
+
+#### Az.StorageCache 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.StorageMover 1.3.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.StreamAnalytics 2.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Subscription 0.11.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Synapse 3.0.7
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.TimeSeriesInsights 0.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.VMware 0.6.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.VoiceServices 0.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Websites 3.2.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.WindowsIotServices 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Workloads 0.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+## 11.5.0 - April 2024
+#### Az.Accounts 2.17.0
+* Enabled globally disabling instance discovery before token acquisition [#22535].
+* Implemented secrets detection feature for autorest modules.
+* Added 'AsSecureString' to 'Get-AzAccessToken' to convert the returned token to SecureString [#24190].
+* Upgraded Azure.Core to 1.37.0.
+
+#### Az.Aks 6.0.2
+* Fixed the 'Non-static method requires a target' error when updating the image version of the node pool. [#24337]
+
+#### Az.Alb 0.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ApplicationInsights 2.2.4
+* Fixed the issue that Update-AzApplicationInsights would incorrectly remove existing tags.
+
+#### Az.Attestation 2.0.1
+* Fixed vulnerability https://github.com/advisories/GHSA-8g9c-28fc-mcx2
+
+#### Az.CodeSigning 0.1.1
+* Upgraded Azure.Core to 1.37.0.
+
+#### Az.Communication 0.3.0
+* First preview release for module Az.EmailService
+
+#### Az.Compute 7.2.0
+* Added parameters '-scriptUriManagedIdentity', '-outputBlobManagedIdentity', '-errorBlobMangedIdentity', and '-TreatFailureAsDeploymentFailure' to cmdlets 'Set-AzVmRunCommand' and 'Set-AzVmssRunCommand'. 
+* Added new parameter '-EnableAutomaticOSUpgrade' to 'New-AzVmss' cmdlet.
+* Renamed parameter '-AutoOSUpgrade' to '-EnableAutomaticOSUpgrade' in 'New-AzVmssConfig' cmdlet for consistency. Using '-AutoOSUpgrade' as parameter name will continue to work as it is added as an alias.
+* Upgraded Azure.Core to 1.37.0.
+* Az.Compute is updated to use the 2023-07-03 GalleryRP, 2024-03-01 ComputeRP and 2023-10-02 DiskRP API.
+* Added new parameter '-TierOption' to 'New-AzSnapshotConfig'.
+* Added breaking change warnings for the May 2024 release. The warnings are for:
+  'New-AzGalleryImageVersion' defaulting to turn on TrustedLaunchSupported and HyperVGeneration to V2.
+  'New-AzVM' and 'New-AzVmss' will default to the image 'Windows Server 2022 Azure Edition' instead of 'Windows 2016 Datacenter' by default.
+  'Get-AzVmss' will no longer allow empty values to 'ResourceGroupName' and 'VMScaleSetName' to avoid a bug where it will just return nothing.
+* Added a new parameter '-SharingProfile' to 'New-AzCapacityReservationGroup' and 'Update-AzCapacityReservationGroup'.
+* Added the new parameter 'SourceImageVMId' to the 'New-AzGalleryImageVersion' cmdlet. Also added some error messages for this new parameter and the existing parameter 'SourceImageId'. 
+
+#### Az.ConnectedMachine 0.7.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ContainerRegistry 4.2.0
+* Upgraded Azure.Core to 1.37.0.
+* Fixed vulnerability https://github.com/advisories/GHSA-8g9c-28fc-mcx2
+* Added exposeToken parameter for Connect-AzContainerRegistry to get token
+
+#### Az.CosmosDB 1.14.2
+* Upgraded Azure.Core to 1.37.0.
+
+#### Az.CustomLocation 0.1.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.DataFactory 1.18.3
+* Added ServiceNowV2, PostgreSqlV2, GoogleBigQuery in ADF
+* Fixed headers property schema deserialize issue
+* Fixed vulnerability https://github.com/advisories/GHSA-98g6-xh36-x2p7
+
+#### Az.DataMigration 0.14.5
+* Changed the Login Migration Console App source to NuGet.org and added versioning support for updating the console app.
+
+#### Az.DataProtection 2.3.0
+* Onboarded new workloads AzureDatabaseForPGFlexServer, AzureDatabaseForMySQL for data protection.
+
+#### Az.ElasticSan 1.0.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.EventGrid 1.6.1
+* Added breaking change messages due to structure update:
+  - The cmdlet 'Set-AzEventGridTopic' will be removed.
+  - In the 'Remove-AzEventGridSubscription' parameters will be deprecated.
+  - In the 'Get-AzEventGrid*' the parameter 'ODataQuery', 'NextLink', 'ResourceId' will be removed.
+  - In the 'New/Update-AzEventGrid*' parameters will be deprecated.
+
+#### Az.EventHub 4.2.1
+* Added Breaking Change Warning for parameter datatype change.
+
+#### Az.FirmwareAnalysis 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Fleet 0.1.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.HdInsightOnAks 0.1.1
+* Changes in the Cluster Pool
+  - Enable create cluster pool with user network profile.
+  - Enable get cluster pool available upgrade versions.
+  - Enable upgrade cluster pool.
+* Changes in the Cluster
+  - Enable create Ranger cluster.
+  - Enable get cluster available upgrade versions.
+  - Enable set internal ingress.
+  - Enable upgrade cluster.
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.KeyVault 5.2.2
+* Introduced secrets detection feature to safeguard sensitive data.
+* Formatted the output of Azure Key Vault certificate in removed state. [#24333]
+* [Upcoming Breaking Change] Added breaking change warning message for parameter 'EnableRbacAuthorization' of 'New-AzKeyVault' and 'Update-AzKeyVault'.
+    - RBAC will be enabled by default during the process of key vault creation. To disable RBAC authorization, please use parameter 'DisableRbacAuthorization'.
+    - Parameter 'EnableRbacAuthorization' is expected to be removed in Az.KeyVault 6.0.0 and Az 12.0.0.
+    - Parameter 'EnableRbacAuthorization' is expected to be replaced by  'DisableRbacAuthorization'.
+* Upgraded Azure.Core to 1.37.0.
+
+#### Az.MobileNetwork 0.4.0
+* Three cmdlets were added: 'Remove-AzMobileNetworkBulkSimDelete', 'Update-AzMobileNetworkBulkSimUpload', 'Update-AzMobileNetworkBulkSimUploadEncrypted'.
+
+#### Az.Monitor 5.1.1
+* Added breaking change warning messages for Metric Management Plane
+    * Get-AzMetric
+    * Get-AzMetricDefinition
+    * New-AzMetricFilter
+
+#### Az.NetAppFiles 0.15.2
+* Upgraded Azure.Core to 1.37.0.
+
+#### Az.Network 7.4.1
+* Fixed a bug caused by the introduction of the new property 'GlobalConfiguration' in 'PSApplicationGateway'
+
+#### Az.PaloAltoNetworks 0.2.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.PolicyInsights 1.6.5
+* Upgraded Azure.Core to 1.37.0.
+
+#### Az.RecoveryServices 6.8.0
+* Added option to set snapshot consistency type in policy cmdlets for creating or updating enhanced AzureVM policies.
+* Fixed an issue while setting soft delete vault property. 
+
+#### Az.Resources 6.16.1
+* Added null check to the permissions object in the ToPSRoleDefinition method.
+* Added dynamic parameters to stack New/Set cmdlets.
+* Used correct JSON serializer settings for all templates-related deserialization.
+
+#### Az.Security 1.6.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.ServiceBus 3.1.0
+* Added Breaking Change Warning for parameter datatype change.
+
+#### Az.StackHCIVM 1.0.2
+* Updated API to 2024-01-01 version.
+* Introduced secrets detection feature to safeguard sensitive data.
+
+#### Az.Storage 6.1.3
+* Introduced secrets detection feature to safeguard sensitive data.
+* Upgraded Azure.Core to 1.37.0.
+* Fixed upload file with OAuth authentication issue [#24289] 
+    - 'Set-AzStorageFileContent'
+
+#### Az.Support 1.0.1
+* Added breaking change warning messages for cmdlet deprecation
+    - New-AzSupportContactProfileObject
+* Added breaking change warning messages for cmdlet rename
+    - Get-AzSupportTicketCommunication
+    - New-AzSupportTicketCommunication
+* Added breaking change warning messages for parameter name and/or structure changes
+    - Get-AzSupportService
+    - Get-AzSupportProblemClassification
+    - Get-AzSupportTicketCommunication
+    - Get-AzSupportTicket
+    - New-AzSupportTicket
+    - Update-AzSupportTicket
+* Added breaking change warning messages for output property name and/or structure changes
+    - Get-AzSupportService
+    - Get-AzSupportTicket
+    - New-AzSupportTicket
+    - Update-AzSupportTicket
+* Added breaking change warning messages for new required parameters
+    - New-AzSupportTicket
+* Added breaking change warning messages for removed parameters
+    - Get-AzSupportTicket
+    - Get-AzSupportTicketCommunication
+    - New-AzSupportTicket
+* Added breaking change warning message for removal of pipe parameter set for list/new
+    - New-AzSupportTicketCommunication
+    - Get-AzSupportProblemClassification
+    - Get-AzSupportTicketCommunication
+* Added breaking change warning message for Get-AzSupportTicket retrieving tickets from the past week if no other parameters are specified
+    - Get-AzSupportTicket
+
+#### Az.Synapse 3.0.6
+* Upgraded Azure.Core to 1.37.0.
+* Fixed vulnerability https://github.com/advisories/GHSA-98g6-xh36-x2p7
+
+#### Az.VMware 0.6.1
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## 11.4.0 - March 2024
 #### Az.Accounts 2.16.0
 * Added a preview feature to detect secrets and sensitive information from the output of Azure PowerShell cmdlets to prevent leakage. Enable it by 'Set-AzConfig -DisplaySecretsWarning True'. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844

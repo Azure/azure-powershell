@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://learn.microsoft.com/powershell/module/az.compute/new-azdiskencryptionsetconfig.md
+online version: https://learn.microsoft.com/powershell/module/az.compute/new-azdiskencryptionsetconfig
 schema: 2.0.0
 ---
 
@@ -16,8 +16,8 @@ Creates a configurable disk encryption set object.
 New-AzDiskEncryptionSetConfig [-Location] <String> [[-Tag] <Hashtable>] [[-IdentityType] <String>]
  [[-SourceVaultId] <String>] [-KeyUrl <String>] [-EncryptionType <String>]
  [-RotationToLatestKeyVersionEnabled <Boolean>] [-FederatedClientId <String>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

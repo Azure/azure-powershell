@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 Create a security connector.
-If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
+If a security connector is already Created and a subsequent request is issued for the same security connector id, then it will be Created.
 
 ## SYNTAX
 
@@ -22,7 +22,7 @@ New-AzSecurityConnector -Name <String> -ResourceGroupName <String> [-Subscriptio
 
 ## DESCRIPTION
 Create a security connector.
-If a security connector is already created and a subsequent request is issued for the same security connector id, then it will be updated.
+If a security connector is already Created and a subsequent request is issued for the same security connector id, then it will be Created.
 
 ## EXAMPLES
 
@@ -400,7 +400,6 @@ Accept wildcard characters: False
 
 ### -EnvironmentData
 The security connector environment data.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ISecurityConnectorEnvironment
@@ -506,7 +505,6 @@ Accept wildcard characters: False
 
 ### -Offering
 A collection of offerings for the security connector.
-.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Security.Models.ICloudOffering[]

@@ -14,8 +14,8 @@ Locks a key-value.
 
 ```
 Set-AzAppConfigurationLock -Endpoint <String> -Key <String> [-Label <String>] [-IfMatch <String>]
- [-IfNoneMatch <String>] [-SyncToken <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-IfNoneMatch <String>] [-SyncToken <String>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

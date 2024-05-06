@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzDataProtectionJob
 
 ## SYNOPSIS
-Gets a job with id in a backup vault
+Gets or lists jobs in a backup vault
 
 ## SYNTAX
 
@@ -21,7 +21,8 @@ Get-AzDataProtectionJob -ResourceGroupName <String> -VaultName <String> [-Subscr
 ### Get
 ```
 Get-AzDataProtectionJob -ResourceGroupName <String> -VaultName <String> [-SubscriptionId <String[]>]
- [-UseSecondaryRegion] [-DefaultProfile <PSObject>] -Id <String> [<CommonParameters>]
+ [-UseSecondaryRegion] [-DefaultProfile <PSObject>] -Id <String>
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -31,7 +32,7 @@ Get-AzDataProtectionJob [-DefaultProfile <PSObject>] -InputObject <IDataProtecti
 ```
 
 ## DESCRIPTION
-Gets a job with id in a backup vault
+Gets or lists jobs in a backup vault
 
 ## EXAMPLES
 
@@ -53,7 +54,7 @@ a6a4879d-f914-4174-b129-0e27da8a4fb0 Microsoft.DataProtection/backupVaults/backu
 
 This command gets all the backup jobs in a given backup vault.
 
-### Example 2: Get a single Job
+### Example 2: Get a single Job with Id
 ```powershell
 Get-AzDataProtectionJob -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -Id 4abaea8c-f53a-4bb1-9963-59f96b597165
 ```
@@ -66,11 +67,23 @@ Name                                 Type
 
 This command returns a single job entity with given Id.
 
+### Example 3: Get backup Jobs in a backup vault from secondary region
+```powershell
+Get-AzDataProtectionJob -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -UseSecondaryRegion
+```
+
+```output
+Name                                 Type
+----                                 ----
+a6a4879d-f914-4174-b129-0e27da8a4fb0 Microsoft.DataProtection/backupVaults/backupJobs
+1a402664-a245-4a9d-8bb5-a6bafbb40d26 Microsoft.DataProtection/backupVaults/backupJobs
+```
+
+This command gets cross region restore jobs in a backup vault from secondary region.
+
 ## PARAMETERS
 
 ### -DefaultProfile
-The DefaultProfile parameter is not functional.
-Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -85,9 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-The Job ID.
-This is a GUID-formatted string (e.g.
-00000000-0000-0000-0000-000000000000).
+Job ID to get a particular Job
 
 ```yaml
 Type: System.String
@@ -118,8 +129,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+Resource Group of the backup vault
 
 ```yaml
 Type: System.String
@@ -134,8 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-The ID of the target subscription.
-The value must be an UUID.
+Subscription Id of the vault
 
 ```yaml
 Type: System.String[]
@@ -144,7 +153,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -159,13 +168,13 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -VaultName
-The name of the backup vault.
+Name of the backup vault
 
 ```yaml
 Type: System.String
@@ -188,30 +197,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20230501.IAzureBackupJobResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IAzureBackupJobResource
 
 ## NOTES
-
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IDataProtectionIdentity>`: Identity Parameter
-  - `[BackupInstanceName <String>]`: The name of the backup instance.
-  - `[BackupPolicyName <String>]`: 
-  - `[Id <String>]`: Resource identity path
-  - `[JobId <String>]`: The Job ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
-  - `[Location <String>]`: The location in which uniqueness will be verified.
-  - `[OperationId <String>]`: 
-  - `[RecoveryPointId <String>]`: 
-  - `[RequestName <String>]`: 
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[ResourceGuardProxyName <String>]`: name of the resource guard proxy
-  - `[ResourceGuardsName <String>]`: The name of ResourceGuard
-  - `[SubscriptionId <String>]`: The ID of the target subscription. The value must be an UUID.
-  - `[VaultName <String>]`: The name of the backup vault.
 
 ## RELATED LINKS

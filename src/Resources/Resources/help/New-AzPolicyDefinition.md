@@ -24,7 +24,8 @@ New-AzPolicyDefinition -Name <String> [-DisplayName <String>] [-Description <Str
 ```
 New-AzPolicyDefinition -Name <String> [-DisplayName <String>] [-Description <String>] -Policy <String>
  [-Metadata <String>] [-Parameter <String>] [-Mode <String>] -ManagementGroupName <String>
- [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-ApiVersion <String>] [-Pre] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### SubscriptionIdParameterSet
@@ -327,5 +328,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzPolicyDefinition](./Remove-AzPolicyDefinition.md)
 
 [Set-AzPolicyDefinition](./Set-AzPolicyDefinition.md)
-
-

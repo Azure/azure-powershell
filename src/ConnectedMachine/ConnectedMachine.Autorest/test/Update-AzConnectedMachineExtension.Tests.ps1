@@ -87,16 +87,10 @@ Describe 'Update-AzConnectedMachineExtension' {
         # Tests include -SubscriptionId automatically but it causes
         # piping to fail. This temporarily removes that default value for
         # this test.
-        $before = $PSDefaultParameterValues["*:SubscriptionId"]
-        $PSDefaultParameterValues.Remove("*:SubscriptionId")
-        try {
-            $result = $currentExtension | Update-AzConnectedMachineExtension -Settings @{
-                commandToExecute = $newCommand
-            }
-            $result.Setting["commandToExecute"] | Should -Be $newCommand
-        } finally {
-            $PSDefaultParameterValues["*:SubscriptionId"] = $before
+        $result = $currentExtension | Update-AzConnectedMachineExtension -Settings @{
+            commandToExecute = $newCommand
         }
+        $result.Setting["commandToExecute"] | Should -Be $newCommand
     }
 
     It 'UpdateViaIdentity parameter set' {
@@ -107,13 +101,7 @@ Describe 'Update-AzConnectedMachineExtension' {
         # Tests include -SubscriptionId automatically but it causes
         # piping to fail. This temporarily removes that default value for
         # this test.
-        $before = $PSDefaultParameterValues["*:SubscriptionId"]
-        $PSDefaultParameterValues.Remove("*:SubscriptionId")
-        try {
-            $result = $currentExtension | Update-AzConnectedMachineExtension -ExtensionParameter $currentExtension
-            $result.Setting["commandToExecute"] | Should -Be $newCommand
-        } finally {
-            $PSDefaultParameterValues["*:SubscriptionId"] = $before
-        }
-    }   
+        $result = $currentExtension | Update-AzConnectedMachineExtension -ExtensionParameter $currentExtension
+        $result.Setting["commandToExecute"] | Should -Be $newCommand
+    }     
 }

@@ -21,7 +21,8 @@ Get-AzMigrateRunAsAccount -ResourceGroupName <String> -SiteName <String> [-Subsc
 ### Get
 ```
 Get-AzMigrateRunAsAccount -ResourceGroupName <String> -SiteName <String> -AccountName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -144,7 +145,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareRunAsAccount
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

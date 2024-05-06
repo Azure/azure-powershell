@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Logz-help.xml
 Module Name: Az.Logz
 online version: https://learn.microsoft.com/powershell/module/az.logz/get-azlogzmonitorvmhost
 schema: 2.0.0
@@ -14,7 +14,7 @@ List the compute resources currently being monitored by the Logz main account re
 
 ```
 Get-AzLogzMonitorVMHost -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,7 +38,8 @@ This command lists the compute resources currently being monitored by the monito
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -140,7 +141,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

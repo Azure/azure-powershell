@@ -77,6 +77,7 @@ Get the defaults set by the user in the current context.
 
 ### [Get-AzEnvironment](Get-AzEnvironment.md)
 Get endpoints and metadata for an instance of Azure services.
+`GalleryUrl` will be removed from ArmMetadata and so Azure PowerShell will no longer provide for its value in `PSAzureEnvironment`. Currently `GalleryUrl` is not used in Azure PowerShell products. Please do not reply on `GalleryUrl` anymore. 
 
 ### [Get-AzSubscription](Get-AzSubscription.md)
 Get subscriptions that the current account can access.

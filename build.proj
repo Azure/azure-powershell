@@ -221,7 +221,7 @@
 
   <Target Name="StaticAnalysisExample" Condition="'$(RunStaticAnalysis)' == 'true'" AfterTargets="StaticAnalysisHelp">
     <Message Importance="high" Text="Running static analysis for PowerShell examples..." />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)StaticAnalysis/ExampleAnalyzer/Measure-MarkdownOrScript.ps1 -MarkdownPaths $(RepoArtifacts)FilesChanged.txt -RulePaths $(RepoTools)StaticAnalysis/ExampleAnalyzer/AnalyzeRules/*.psm1 &quot;"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)StaticAnalysis/ExampleAnalyzer/Measure-MarkdownOrScript.ps1 -MarkdownPaths $(RepoArtifacts)FilesChanged.txt -RulePaths $(RepoTools)StaticAnalysis/ExampleAnalyzer/AnalyzeRules/*.psm1 -NotCleanScripts &quot;"/>
   </Target>
 
   <Target Name="StaticAnalysisFileChange" Condition="'$(RunStaticAnalysis)' == 'true'">
@@ -256,13 +256,7 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)CleanupBuild.ps1 -BuildConfig $(Configuration) -GenerateDocumentationFile $(GenerateDocumentationFile) &quot;" />
 
     <Error Condition="'$(NuGetKey)' == ''" Text="You must provide the NuGetKey parameter to the build: /p:NuGetKey=YOUR_PUBLISHING_KEY" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)PublishModules.ps1 -TargetBuild $(TargetBuild) -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope $(Scope) -ApiKey $(NuGetKey) -RepositoryLocation /&quot;$(NuGetPublishingSource)/&quot;&quot; -NugetExe $(NuGetCommand)" />
-  </Target>
-
-  <Target Name="BuildInstaller" AfterTargets="Publish" Condition="('$(Scope)' == 'All' or '$(Scope)' == 'Latest' or '$(Scope)' == 'Netcore')">
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. Register-PSRepository -Name MSIcreationrepository -SourceLocation $(RepoArtifacts) -InstallationPolicy Trusted &quot;" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoRoot)/setup/generate.ps1 -repository MSIcreationrepository &quot;" />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. Unregister-PSRepository -Name MSIcreationrepository &quot;" />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)PublishModules.ps1 -TargetBuild $(TargetBuild) -IsNetCore:$$(NetCore) -BuildConfig $(Configuration) -Scope $(Scope) -ApiKey $(NuGetKey) -RepositoryLocation &quot;$(NuGetPublishingSource)&quot;&quot; -NugetExe $(NuGetCommand)" />
   </Target>
 
   <Target Name="BuildImages">

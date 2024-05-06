@@ -20,7 +20,7 @@ Updates a ServiceBus Topic
 #>
 
 function Set-AzServiceBusTopic{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbTopic])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbTopic])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the Topic.")]
@@ -105,10 +105,9 @@ function Set-AzServiceBusTopic{
         # Maximum size (in KB) of the message payload that can be accepted by the topic. This property is only used in Premium today and default is 1024.
         ${MaxMessageSizeInKilobytes},
 
-        [Parameter(HelpMessage = "Maximum size (in KB) of the message payload that can be accepted by the topic. This property is only used in Premium today and default is 1024.")]
+        [Parameter(HelpMessage = "Enumerates the possible values for the status of a messaging entity.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.EntityStatus]
-        # Maximum size (in KB) of the message payload that can be accepted by the topic. This property is only used in Premium today and default is 1024.
+        [System.String]
         ${Status},
         
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]

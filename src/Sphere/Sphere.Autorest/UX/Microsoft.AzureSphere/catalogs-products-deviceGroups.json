@@ -1,0 +1,153 @@
+{
+  "resourceType": "catalogs/products/deviceGroups",
+  "apiVersion": "2024-04-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.sphere"
+  },
+  "commands": [
+    {
+      "name": "Get-AzSphereDeviceGroup",
+      "description": "Get a DeviceGroup.\n'.default' and '.unassigned' are system defined values and cannot be used for product or device group name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.sphere/get-azspheredevicegroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CatalogName <String>",
+              "-Name <String>",
+              "-ProductName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.",
+          "parameters": [
+            {
+              "name": "-CatalogName",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.deviceGroupName]"
+            },
+            {
+              "name": "-ProductName",
+              "value": "[Path.productName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoke-AzSphereCountDeviceGroupDevice",
+      "description": "Counts devices in device group.\n'.default' and '.unassigned' are system defined values and cannot be used for product or device group name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}/countDevices",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.sphere/invoke-azspherecountdevicegroupdevice"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CatalogName <String>",
+              "-DeviceGroupName <String>",
+              "-ProductName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Counts devices in device group. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.",
+          "parameters": [
+            {
+              "name": "-CatalogName",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-DeviceGroupName",
+              "value": "[Path.deviceGroupName]"
+            },
+            {
+              "name": "-ProductName",
+              "value": "[Path.productName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzSphereDeviceGroup",
+      "description": "Delete a DeviceGroup.\n'.default' and '.unassigned' are system defined values and cannot be used for product or device group name.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureSphere/catalogs/{catalogName}/products/{productName}/deviceGroups/{deviceGroupName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.sphere/remove-azspheredevicegroup"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CatalogName <String>",
+              "-Name <String>",
+              "-ProductName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.",
+          "parameters": [
+            {
+              "name": "-CatalogName",
+              "value": "[Path.catalogName]"
+            },
+            {
+              "name": "-Name",
+              "value": "[Path.deviceGroupName]"
+            },
+            {
+              "name": "-ProductName",
+              "value": "[Path.productName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

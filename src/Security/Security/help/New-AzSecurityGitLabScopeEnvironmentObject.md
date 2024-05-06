@@ -21,9 +21,15 @@ Create an in-memory object for GitLabScopeEnvironment.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create new GitLabScopeEnvironment object
 ```powershell
 New-AzSecurityGitLabScopeEnvironmentObject
+```
+
+```output
+EnvironmentType
+---------------
+GitlabScope
 ```
 
 ## PARAMETERS
@@ -36,8 +42,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Security.Models.GitLabScopeEnvironment
+
 ## NOTES
 
 ## RELATED LINKS
-
-[https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritygitlabscopeenvironmentobject](https://learn.microsoft.com/powershell/module/Az.Security/new-azsecuritygitlabscopeenvironmentobject)

@@ -17,7 +17,8 @@ Modifies a policy exemption.
 Set-AzPolicyExemption -Name <String> [-Scope <String>] [-DisplayName <String>] [-Description <String>]
  [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>] [-ExpiresOn <DateTime>]
  [-ClearExpiration] [-Metadata <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### IdParameterSet
@@ -25,7 +26,8 @@ Set-AzPolicyExemption -Name <String> [-Scope <String>] [-DisplayName <String>] [
 Set-AzPolicyExemption -Id <String> [-DisplayName <String>] [-Description <String>]
  [-ExemptionCategory <String>] [-PolicyDefinitionReferenceId <String[]>] [-ExpiresOn <DateTime>]
  [-ClearExpiration] [-Metadata <String>] [-ApiVersion <String>] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet

@@ -68,6 +68,7 @@ namespace Microsoft.Azure.PowerShell.Authenticators
             options.Username = silentParameters.UserId;
             options.AuthorityHost = new Uri(authority);
             options.TenantId = tenantId;
+            options.DisableInstanceDiscovery = silentParameters.DisableInstanceDiscovery ?? options.DisableInstanceDiscovery;
             return options;
         }
 

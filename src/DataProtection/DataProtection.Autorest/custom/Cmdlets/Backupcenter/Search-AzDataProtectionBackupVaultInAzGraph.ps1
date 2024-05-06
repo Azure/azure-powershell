@@ -6,14 +6,17 @@
     
     param (
         [Parameter(Mandatory, HelpMessage='Subscription of Vault')]
+        [Alias('SubscriptionId')]
         [System.String[]]
-        ${Subscription},
+        ${Subscription}, # TODO: add alias to all ARG command params
 
         [Parameter(Mandatory=$false, HelpMessage='Resource Group of Vault')]
+        [Alias('ResourceGroupName')]
         [System.String[]]
         ${ResourceGroup},
 
         [Parameter(Mandatory=$false, HelpMessage='Name of the vault')]
+        [Alias('VaultName')]
         [System.String[]]
         ${Vault},
         
@@ -67,7 +70,7 @@
     process 
     {
         CheckResourceGraphModuleDependency
-
+        
         # $manifest = LoadManifest -DatasourceType $DatasourceType
         $query = GetBackupVaultARGQuery
 
@@ -91,7 +94,7 @@
         foreach($argVault in $argAllVaults)
         {
             $jsonStringResponse = $argVault | ConvertTo-Json -Depth 100                                                 
-            $backupVaults += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231101.BackupVaultResource]::FromJsonString($jsonStringResponse)
+            $backupVaults += [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.BackupVaultResource]::FromJsonString($jsonStringResponse)
         }
         return $backupVaults
     }

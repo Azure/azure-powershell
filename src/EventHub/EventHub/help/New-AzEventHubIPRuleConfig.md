@@ -13,7 +13,8 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHu
 ## SYNTAX
 
 ```
-New-AzEventHubIPRuleConfig -IPMask <String> [-Action <NetworkRuleIPAction>] [<CommonParameters>]
+New-AzEventHubIPRuleConfig -IPMask <String> [-Action <NetworkRuleIPAction>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

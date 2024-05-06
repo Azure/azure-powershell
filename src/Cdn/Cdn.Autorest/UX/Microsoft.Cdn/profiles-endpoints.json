@@ -1,10 +1,53 @@
 {
   "resourceType": "profiles/endpoints",
-  "apiVersion": "2023-05-01",
+  "apiVersion": "2024-02-01",
   "learnMore": {
     "url": "https://learn.microsoft.com/powershell/module/az.cdn"
   },
   "commands": [
+    {
+      "name": "Clear-AzCdnEndpointContent",
+      "description": "Removes a content from CDN.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/purge",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/clear-azcdnendpointcontent"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EndpointName <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Removes a content from CDN.",
+          "parameters": [
+            {
+              "name": "-EndpointName",
+              "value": "[Path.endpointName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "Get-AzCdnEndpoint",
       "description": "Gets an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.",
@@ -30,6 +73,49 @@
           "parameters": [
             {
               "name": "-Name",
+              "value": "[Path.endpointName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Import-AzCdnEndpointContent",
+      "description": "Pre-loads a content to CDN.\nAvailable for Verizon Profiles.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/load",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/import-azcdnendpointcontent"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EndpointName <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Pre-loads a content to CDN. Available for Verizon Profiles.",
+          "parameters": [
+            {
+              "name": "-EndpointName",
               "value": "[Path.endpointName]"
             },
             {

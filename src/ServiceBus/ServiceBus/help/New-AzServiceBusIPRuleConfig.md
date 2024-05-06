@@ -13,7 +13,8 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzService
 ## SYNTAX
 
 ```
-New-AzServiceBusIPRuleConfig -IPMask <String> [-Action <NetworkRuleIPAction>] [<CommonParameters>]
+New-AzServiceBusIPRuleConfig -IPMask <String> [-Action <String>] [-ProgressAction <ActionPreference>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +41,7 @@ Please refer examples for Set-AzServiceBusNetworkRuleSet to know more.
 The IP Filter Action
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.NetworkRuleIPAction
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -66,6 +67,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -73,10 +89,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.INwRuleSetIPRules
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.INwRuleSetIPRules
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

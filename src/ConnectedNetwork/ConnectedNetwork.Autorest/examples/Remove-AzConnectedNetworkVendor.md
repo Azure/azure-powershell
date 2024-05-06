@@ -1,7 +1,6 @@
 ### Example 1: Remove-AzConnectedNetworkVendor via vendor name
 ```powershell
 Remove-AzConnectedNetworkVendor -Name MyVendor
-
 ```
 
 Deleting the vendor with name MyVendor
@@ -10,7 +9,6 @@ Deleting the vendor with name MyVendor
 ```powershell
 $vendor = Get-AzConnectedNetworkVendor -Name MyVendor1
 Remove-AzConnectedNetworkVendor -InputObject $vendor
-
 ```
 
 Deleting the vendor with name MyVendor1
