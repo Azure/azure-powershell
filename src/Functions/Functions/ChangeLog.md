@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.0.8
 * Updated logic to populate tab completers and cache in the New-AzFunctionApp cmdlet
 
 ## Version 4.0.7

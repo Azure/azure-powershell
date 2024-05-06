@@ -86,6 +86,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
                 if (Uri.IsWellFormedUriString(templateFilePath, UriKind.Absolute))
                 {
                     templateContent = GeneralUtilities.DownloadFile(templateFilePath);
+                    if (templateContent == null)
+                    {
+                        throw new PSArgumentException("Unable to download template file from provided uri.");
+                    }
                 }
                 else if (FileUtilities.DataStore.FileExists(templateFilePath))
                 {
@@ -158,7 +162,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Utilities
             {
                 if (Uri.IsWellFormedUriString(templateParameterFilePath, UriKind.Absolute))
                 {
-                    templateParameterContent = new Hashtable(ParseTemplateParameterContent(GeneralUtilities.DownloadFile(templateParameterFilePath)));
+                    var fileContent = GeneralUtilities.DownloadFile(templateParameterFilePath);
+                    if (fileContent == null)
+                    {
+                        throw new PSArgumentException("Unable to download template parameter file from provided uri.");
+                    }
+                    templateParameterContent = new Hashtable(ParseTemplateParameterContent(fileContent));
                 }
                 else if (FileUtilities.DataStore.FileExists(templateParameterFilePath))
                 {
