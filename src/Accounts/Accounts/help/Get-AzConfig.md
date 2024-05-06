@@ -17,7 +17,7 @@ Get-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzu
  [-ProgressAction <ActionPreference>] [-CheckForUpgrade] [-DefaultSubscriptionForLogin]
  [-DisableInstanceDiscovery] [-DisplayBreakingChangeWarning] [-DisplayRegionIdentified]
  [-DisplaySecretsWarning] [-DisplaySurveyMessage] [-EnableDataCollection] [-EnableErrorRecordsPersistence]
- [-EnableLoginByWam] [-TestCoverageLocation] [<CommonParameters>]
+ [-EnableLoginByWam] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -276,21 +276,6 @@ Type: Microsoft.Azure.PowerShell.Common.Config.ConfigScope
 Parameter Sets: (All)
 Aliases:
 Accepted values: CurrentUser, Process, Default, Environment
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TestCoverageLocation
-Only takes effect when EnableTestCoverage equals to TRUE. Use this config to redirect the test coverage data location.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named
