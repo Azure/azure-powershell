@@ -18,7 +18,7 @@ Update-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <I
  [-DefaultSubscriptionForLogin <String>] [-DisableInstanceDiscovery <Boolean>]
  [-DisplayBreakingChangeWarning <Boolean>] [-DisplayRegionIdentified <Boolean>]
  [-DisplaySecretsWarning <Boolean>] [-DisplaySurveyMessage <Boolean>] [-EnableDataCollection <Boolean>]
- [-EnableErrorRecordsPersistence <Boolean>] [-EnableLoginByWam <Boolean>] [-TestCoverageLocation <String>] [<CommonParameters>]
+ [-EnableErrorRecordsPersistence <Boolean>] [-EnableLoginByWam <Boolean>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -306,21 +306,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TestCoverageLocation
-Only takes effect when EnableTestCoverage equals to TRUE. Use this config to redirect the test coverage data location.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
