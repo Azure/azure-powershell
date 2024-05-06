@@ -45,6 +45,7 @@ INPUTOBJECT <ISqlVirtualMachineIdentity>: Identity Parameter
 https://learn.microsoft.com/powershell/module/az.sqlvirtualmachine/Assert-AzSqlVMADAuth
 #>
 function Assert-AzSqlVMADAuth {
+[OutputType([bool])]
 [CmdletBinding(DefaultParameterSetName='AssertExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='AssertExpanded', Mandatory)]
