@@ -176,25 +176,27 @@ process {
       $rg = $PSBoundParameters.ResourceGroupName
 
       # 2. Ensure exr circuit bandwidth 1G or more
-      Import-Module Az.Network -Force
-      # Ensure exr circuit bandwidth 1G or more
-      $ResourceIdSplit = $IngestionPolicyIngestionSource.ResourceId.Split(' ')
-      foreach ($ResourceId in $ResourceIdSplit)
-      {
-        $cktname = ParseCircuitName $ResourceId
-        $exrCircuit = Get-AzExpressRouteCircuit -Name $cktname -ResourceGroupName $rg
-        $bandwidthInGbps = $exrCircuit.BandwidthInGbps
-        $bandwidthInMbps = $exrCircuit.ServiceProviderProperties.BandwidthInMbps
+      if ($hasIngestionPolicyIngestionSource) {
+        Import-Module Az.Network -Force
+        # Ensure exr circuit bandwidth 1G or more
+        $ResourceIdSplit = $IngestionPolicyIngestionSource.ResourceId.Split(' ')
+        foreach ($ResourceId in $ResourceIdSplit)
+        {
+          $cktname = ParseCircuitName $ResourceId
+          $exrCircuit = Get-AzExpressRouteCircuit -Name $cktname -ResourceGroupName $rg
+          $bandwidthInGbps = $exrCircuit.BandwidthInGbps
+          $bandwidthInMbps = $exrCircuit.ServiceProviderProperties.BandwidthInMbps
 
-        if ($bandwidthInGbps -and ($bandwidthInGbps -lt 1)) {
-          throw "CollectorPolicy can not be updated because circuit has bandwidth less than 1G. Circuit size with a bandwidth of 1G or more is supported."
-        }
+          if ($bandwidthInGbps -and ($bandwidthInGbps -lt 1)) {
+            throw "CollectorPolicy can not be updated because circuit has bandwidth less than 1G. Circuit size with a bandwidth of 1G or more is supported."
+          }
 
-        if ($bandwidthInMbps -and ($bandwidthInMbps -lt 1000)) {
-          throw "CollectorPolicy can not be updated because circuit has bandwidth less than 1G. Circuit size with a bandwidth of 1G or more is supported."
+          if ($bandwidthInMbps -and ($bandwidthInMbps -lt 1000)) {
+            throw "CollectorPolicy can not be updated because circuit has bandwidth less than 1G. Circuit size with a bandwidth of 1G or more is supported."
+          }
         }
       }
-
+      
       $cp = Get-AzNetworkFunctionCollectorPolicy @PSBoundParameters
       
       # 3. PUT
