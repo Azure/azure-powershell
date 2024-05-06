@@ -385,12 +385,12 @@ This case should only been ran in Playback model, live run requires the resource
 #>
 function Test-FrontDoorEndpointCustomDomainHTTPS-BYOC-SpecificVersion
 {
-    $frontDoorName = "frontdoorpstest2"
-    $resourceGroupName = "bzhanafdtest"
-    $customFrontendEndpointName = "afd-byoc-latest-localdev-cdn-azure-cn"
-    $vaultId = "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest"
-    $secretName = "frontdoorpstest2"
-    $secretVersion = "d6b1f0ffd2a142efb2a8a89289802c77"
+    $frontDoorName = "frontdoorclitest"
+    $resourceGroupName = "CliDevReservedGroup"
+    $customFrontendEndpointName = "afdbyoc-specific-localdev-cdn-azure-cn"
+    $vaultId = "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.KeyVault/vaults/clibyoc-int"
+    $secretName = "localdev-multi"
+    $secretVersion = "6244bbfa61c241d78403a6e394cc2d30"
 
     $customDomain = Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -FrontendEndpointName $customFrontendEndpointName -MinimumTlsVersion "1.2" -VaultId $vaultId -SecretName $secretName -SecretVersion $secretVersion
     Assert-AreEqual $customDomain.SecretVersion $secretVersion
@@ -404,11 +404,11 @@ This case should only been ran in Playback model, live run requires the resource
 #>
 function Test-FrontDoorEndpointCustomDomainHTTPS-BYOC-LatestVersion
 {
-    $frontDoorName = "frontdoorpstest2"
-    $resourceGroupName = "bzhanafdtest"
-    $customFrontendEndpointName = "afd-byoc-latest-localdev-cdn-azure-cn"
-    $vaultId = "/subscriptions/d7cfdb98-c118-458d-8bdf-246be66b1f5e/resourceGroups/bzhanafdtest/providers/Microsoft.KeyVault/vaults/bzhanbyostest"
-    $secretName = "frontdoorpstest2"
+    $frontDoorName = "frontdoorclitest"
+    $resourceGroupName = "CliDevReservedGroup"
+    $customFrontendEndpointName = "afdbyoc-latest-localdev-cdn-azure-cn"
+    $vaultId = "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.KeyVault/vaults/clibyoc-int"
+    $secretName = "localdev-multi"
 
     $customDomain = Enable-AzFrontDoorCustomDomainHttps -ResourceGroupName $resourceGroupName -FrontDoorName $frontDoorName -FrontendEndpointName $customFrontendEndpointName -MinimumTlsVersion "1.2" -VaultId $vaultId -SecretName $secretName
     Assert-Null $customDomain.SecretVersion
@@ -429,8 +429,8 @@ function Test-FrontDoorCrudPrivateLink
     $hostName = "$Name.azurefd.net"
 
     $routingrule1 = New-AzFrontDoorRoutingRuleObject -Name "routingrule1" -FrontDoorName $Name -ResourceGroupName $resourceGroupName -FrontendEndpointName "frontendEndpoint1" -BackendPoolName "backendPool1"
-    $backend1 = New-AzFrontDoorBackendObject -Address "contoso1.azurewebsites.net" -PrivateLinkAlias "pls-east-3.39a4adbb-b81a-4aff-8ca1-39211e3e6a66.eastus.azure.privatelinkservice" -PrivateLinkApprovalMessage "please approve connection"
-    $backend2 = New-AzFrontDoorBackendObject -Address "contoso2.azurewebsites.net" -PrivateLinkResourceId  "/subscriptions/47f4bc68-6fe4-43a2-be8b-dfd0e290efa2/resourceGroups/FrontDoorResourceGroup6715/providers/Microsoft.Network/privateLinkServices/fd-pls9614" -PrivateLinkLocation "eastus" -PrivateLinkApprovalMessage "please approve connection request"
+    $backend1 = New-AzFrontDoorBackendObject -Address "20.81.102.49" -PrivateLinkAlias "pls-service1.854b143c-1d50-4008-b778-694fbcfd4154.eastus.azure.privatelinkservice" -PrivateLinkApprovalMessage "please approve connection"
+    $backend2 = New-AzFrontDoorBackendObject -Address "plstestcli.blob.core.windows.net" -PrivateLinkResourceId "/subscriptions/27cafca8-b9a4-4264-b399-45d0c9cca1ab/resourceGroups/CliDevReservedGroup/providers/Microsoft.Storage/storageAccounts/plstestcli/privateLinkResources/blob" -PrivateLinkLocation "eastus" -PrivateLinkApprovalMessage "please approve connection request"
     $healthProbeSetting1 = New-AzFrontDoorHealthProbeSettingObject -Name "healthProbeSetting1"
     $loadBalancingSetting1 = New-AzFrontDoorLoadBalancingSettingObject -Name "loadbalancingsetting1" 
     $frontendEndpoint1 = New-AzFrontDoorFrontendEndpointObject -Name "frontendendpoint1" -HostName $hostName

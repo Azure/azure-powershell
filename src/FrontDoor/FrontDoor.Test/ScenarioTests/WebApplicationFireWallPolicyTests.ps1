@@ -125,26 +125,26 @@ WAF managed rule set definitions retrieval
 function Test-ManagedRuleSetDefinition
 {
     $definitions = Get-AzFrontDoorWafManagedRuleSetDefinition
-    Assert-AreEqual $definitions.Count 5
+    Assert-AreEqual $definitions.Count 9
     Assert-AreEqual $definitions[0].RuleSetType "Microsoft_DefaultRuleSet"
-    Assert-AreEqual $definitions[0].RuleSetVersion "1.1"
-    Assert-AreEqual $definitions[0].RuleGroups.Count 13
+    Assert-AreEqual $definitions[0].RuleSetVersion "2.0"
+    Assert-AreEqual $definitions[0].RuleGroups.Count 17
 
-    Assert-AreEqual $definitions[1].RuleSetType "DefaultRuleSet"
-    Assert-AreEqual $definitions[1].RuleSetVersion "1.0"
-    Assert-AreEqual $definitions[1].RuleGroups.Count 9
+    Assert-AreEqual $definitions[1].RuleSetType "Microsoft_DefaultRuleSet"
+    Assert-AreEqual $definitions[1].RuleSetVersion "2.1"
+    Assert-AreEqual $definitions[1].RuleGroups.Count 17
 
     Assert-AreEqual $definitions[2].RuleSetType "Microsoft_BotManagerRuleSet"
-    Assert-AreEqual $definitions[2].RuleSetVersion "1.0"
+    Assert-AreEqual $definitions[2].RuleSetVersion "1.1"
     Assert-AreEqual $definitions[2].RuleGroups.Count 3
 
-    Assert-AreEqual $definitions[3].RuleSetType "DefaultRuleSet"
-    Assert-AreEqual $definitions[3].RuleSetVersion "preview-0.1"
-    Assert-AreEqual $definitions[3].RuleGroups.Count 8
+    Assert-AreEqual $definitions[3].RuleSetType "Microsoft_DefaultRuleSet"
+    Assert-AreEqual $definitions[3].RuleSetVersion "1.2"
+    Assert-AreEqual $definitions[3].RuleGroups.Count 13
 
-    Assert-AreEqual $definitions[4].RuleSetType "BotProtection"
-    Assert-AreEqual $definitions[4].RuleSetVersion "preview-0.1"
-    Assert-AreEqual $definitions[4].RuleGroups.Count 1
+    Assert-AreEqual $definitions[4].RuleSetType "Microsoft_DefaultRuleSet"
+    Assert-AreEqual $definitions[4].RuleSetVersion "1.1"
+    Assert-AreEqual $definitions[4].RuleGroups.Count 13
 }
 
 <#
