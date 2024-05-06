@@ -1,34 +1,34 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayrewriteruleheaderconfiguration
+online version: https://learn.microsoft.com/powershell/module/az.network/new-azapplicationgatewayheadervaluematcher
 schema: 2.0.0
 ---
 
-# New-AzApplicationGatewayRewriteRuleHeaderConfiguration
+# New-AzApplicationGatewayHeaderValueMatcher
 
 ## SYNOPSIS
-Creates a rewrite rule header configuration for an application gateway.
+Creates a **HeaderValueMatcher** object configuration to use in **ApplicationGatewayRewriteRuleHeaderConfiguration** for an application gateway.
 
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName <String> [-HeaderValue <String>]
- [-HeaderValueMatcher <PSApplicationGatewayHeaderValueMatcher>] [-DefaultProfile <IAzureContextContainer>]
- [-ProgressAction <ActionPreference>] [<CommonParameters>]
+New-AzApplicationGatewayHeaderValueMatcher -Pattern <String> [-IgnoreCase] [-Negate]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-**The AzApplicationGatewayRewriteRuleHeaderConfiguration** cmdlet creates a rewrite rule action set for an Azure application gateway.
+**The New-AzApplicationGatewayHeaderValueMatcher** cmdlet creates a Header Value Matcher object for an Azure application gateway.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-$hc = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName abc -HeaderValue def
+$hvm = New-AzApplicationGatewayHeaderValueMatcher -Pattern ".*" -IgnoreCase -Negate
+$requestHeaderConfiguration01 = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Set-Cookie" -HeaderValue "val" -HeaderValueMatcher $headerValueMatcher
 ```
 
-This command creates a rewrite rule header configuration and stores the result in the variable named $hc.
+This command creates a HeaderValueMatcher configuration and stores the result in the variable named $hvm and then use it in a ApplicationGatewayRewriteRuleHeaderConfiguration object.
 
 ## PARAMETERS
 
@@ -47,8 +47,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -HeaderName
-Name of the Header to rewrite
+### -IgnoreCase
+Set this flag to ignore during pattern matching
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Negate
+Set this flag to negate the result of pattern matching against a header value
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Pattern
+Pattern to look for in the header values
 
 ```yaml
 Type: System.String
@@ -56,37 +86,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HeaderValue
-Header value to the set for the given header name.
-Header will be deleted if this is omitted
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -HeaderValueMatcher
-An optional field under 'Rewrite Action'. It lets you capture and modify the value(s) of a specific header when multiple headers with the same name exist. Currently supported for Set-Cookie Response header only. For more details, visit https://aka.ms/appgwheadercrud
-
-```yaml
-Type: Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHeaderValueMatcher
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -117,11 +116,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHeaderConfiguration
+### Microsoft.Azure.Commands.Network.Models.PSApplicationGatewayHeaderValueMatcher
 
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzApplicationGatewayRewriteRuleHeaderConfiguration](./New-AzApplicationGatewayRewriteRuleHeaderConfiguration.md)
 
 [Add-AzApplicationGatewayRewriteRuleSet](./Add-AzApplicationGatewayRewriteRuleSet.md)
 
@@ -137,4 +138,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 [New-AzApplicationGatewayRewriteRuleActionSet](./New-AzApplicationGatewayRewriteRuleActionSet.md)
 
-[New-AzApplicationGatewayHeaderValueMatcher](./New-AzApplicationGatewayHeaderValueMatcher.md)
+[Rewrite HTTP headers and URL with Application Gateway](https://aka.ms/appgwheadercrud)

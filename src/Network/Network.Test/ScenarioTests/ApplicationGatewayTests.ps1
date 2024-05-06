@@ -5532,3 +5532,97 @@ function Test-ApplicationGatewayFirewallPolicyWithCustomBlockResponse
 		Clean-ResourceGroup $rgname
 	}
 }
+
+function Test-ApplicationGatewayHeaderValueMatcher
+{
+	param
+	(
+		$basedir = "./"
+	)
+
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US"
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+
+	$frontendPort01Name = Get-ResourceName
+	$fipconfigName = Get-ResourceName
+	$listener01Name = Get-ResourceName
+
+	$poolName = Get-ResourceName
+	$poolSetting01Name = Get-ResourceName
+
+	$rewriteRuleName = Get-ResourceName
+	$rewriteRuleSetName = Get-ResourceName
+    $rewriteRuleSetName2 = Get-ResourceName
+	$rule01Name = Get-ResourceName
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		# Create the Virtual Network
+		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		# Create public ip
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+
+		# Create ip configuration
+		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
+
+		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
+		$fp01 = New-AzApplicationGatewayFrontendPort -Name $frontendPort01Name  -Port 80
+		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
+
+		# backend part
+		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.httpbin.org
+		$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 80 -Protocol Http -CookieBasedAffinity Enabled
+		$hvm = New-AzApplicationGatewayHeaderValueMatcher -Pattern ".*" -IgnoreCase -Negate
+
+		#Rewrite Rule Set
+		$headerConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Set-Cookie" -HeaderValue "def" -HeaderValueMatcher $hvm
+		$actionSet = New-AzApplicationGatewayRewriteRuleActionSet -ResponseHeaderConfiguration $headerConfiguration
+		$rewriteRule = New-AzApplicationGatewayRewriteRule -Name $rewriteRuleName -ActionSet $actionSet
+		$rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name $rewriteRuleSetName -RewriteRule $rewriteRule
+		
+		#rule
+		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -Priority 100 -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool -RewriteRuleSet $rewriteRuleSet
+
+		# sku
+		$sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
+
+		# autoscale configuration
+		$autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
+
+		# security part
+		$sslPolicy = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+
+		# Create Application Gateway
+		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -SslPolicy $sslPolicy -TrustedRootCertificate $trustedRoot01 -AutoscaleConfiguration $autoscaleConfig -RewriteRuleSet $rewriteRuleSet
+
+		# Get Application Gateway
+		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
+
+        $rewriteRuleSet = Get-AzApplicationGatewayRewriteRuleSet -Name $rewriteRuleSetName -ApplicationGateway $getgw
+        Assert-NotNull $rewriteRuleSet
+        Assert-AreEqual $rewriteRuleSet.RewriteRules.Count 1
+        Assert-NotNull $rewriteRuleSet.RewriteRules[0].ActionSet
+		Assert-NotNull $rewriteRuleSet.RewriteRules[0].ActionSet[0].ResponseHeaderConfigurations.HeaderValueMatcher
+		Assert-AreEqual $rewriteRuleSet.RewriteRules[0].ActionSet[0].ResponseHeaderConfigurations.HeaderValueMatcher.Pattern ".*"
+		Assert-AreEqual $rewriteRuleSet.RewriteRules[0].ActionSet[0].ResponseHeaderConfigurations.HeaderValueMatcher.IgnoreCase $true
+		Assert-AreEqual $rewriteRuleSet.RewriteRules[0].ActionSet[0].ResponseHeaderConfigurations.HeaderValueMatcher.Negate $true
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}

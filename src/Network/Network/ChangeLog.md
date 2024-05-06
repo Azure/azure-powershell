@@ -31,6 +31,8 @@
 * Added support for AzureFirewallPacketCapture
 * Updated cmdlet to add the property of JSChallengeCookieExpirationInMins
     - `New-AzApplicationGatewayFirewallPolicySetting`
+* Added optional property `HeaderValueMatcher` to `New-AzApplicationGatewayRewriteRuleHeaderConfiguration`
+* Added new cmdlet `New-AzApplicationGatewayHeaderValueMatcher` to support for the new property `HeaderValueMatcher`
 
 ## Version 7.3.0
 * Fixed a few minor issues
