@@ -1,0 +1,141 @@
+{
+  "resourceType": "eventSubscriptions",
+  "apiVersion": "2023-06-01-preview",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.eventgrid"
+  },
+  "commands": [
+    {
+      "name": "Get-AzEventGridSubscriptionDeliveryAttribute",
+      "description": "Get all delivery attributes for an event subscription.",
+      "path": "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}/getDeliveryAttributes",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridsubscriptiondeliveryattribute"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EventSubscriptionName <String>",
+              "-Scope <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get all delivery attributes for an event subscription.",
+          "parameters": [
+            {
+              "name": "-EventSubscriptionName",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-Scope",
+              "value": "[Path.scope]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzEventGridSubscriptionFullUrl",
+      "description": "Get the full endpoint URL for an event subscription.",
+      "path": "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}/getFullUrl",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridsubscriptionfullurl"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-EventSubscriptionName <String>",
+              "-Scope <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get the full endpoint URL for an event subscription.",
+          "parameters": [
+            {
+              "name": "-EventSubscriptionName",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-Scope",
+              "value": "[Path.scope]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Get-AzEventGridSubscription",
+      "description": "Get properties of an event subscription.",
+      "path": "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/get-azeventgridsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-Scope <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Get properties of an event subscription.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-Scope",
+              "value": "[Path.scope]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzEventGridSubscription",
+      "description": "Delete an existing event subscription.",
+      "path": "/{scope}/providers/Microsoft.EventGrid/eventSubscriptions/{eventSubscriptionName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.eventgrid/remove-azeventgridsubscription"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-Name <String>",
+              "-Scope <String>"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Delete an existing event subscription.",
+          "parameters": [
+            {
+              "name": "-Name",
+              "value": "[Path.eventSubscriptionName]"
+            },
+            {
+              "name": "-Scope",
+              "value": "[Path.scope]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
