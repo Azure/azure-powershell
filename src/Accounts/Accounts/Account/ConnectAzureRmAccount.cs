@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Commands.Profile
             Guid subscriptionIdGuid;
             string subscriptionName = null;
             string subscriptionId = null;
-            bool isInteractiveAuthentication = IsInteractiveAuthentication();
+            bool isInteractiveAuthenticationFlow = IsInteractiveAuthenticationFlow();
             if (MyInvocation.BoundParameters.ContainsKey(nameof(Subscription)))
             {
                 if (Guid.TryParse(Subscription, out subscriptionIdGuid))
@@ -542,7 +542,8 @@ namespace Microsoft.Azure.Commands.Profile
                         MaxContextPopulation,
                         resourceId,
                         Prompt,
-                        isInteractiveAuthentication));
+                        isInteractiveAuthenticationFlow,
+                        GetContextSelectionMode()));
                     task.Start();
                     while (!task.IsCompleted)
                     {
@@ -589,7 +590,12 @@ namespace Microsoft.Azure.Commands.Profile
             }
         }
 
-        private bool IsInteractiveAuthentication()
+        private string GetContextSelectionMode()
+        {
+            return AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out IConfigManager configManager) ? configManager.GetConfigValue<string>(ConfigKeys.ContextSelectionMode) : string.Empty;
+        }
+
+        private bool IsInteractiveAuthenticationFlow()
         {
             return ParameterSetName.Equals(UserParameterSet);
         }

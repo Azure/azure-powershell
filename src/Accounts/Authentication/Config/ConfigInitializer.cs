@@ -208,6 +208,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 true,
                 ConfigKeys.EnvCheckForUpgrade,
                 new[] { AppliesTo.Az }));
+            configManager.RegisterConfig(new SimpleTypedConfig<string>(
+                ConfigKeys.ContextSelectionMode,
+                Resources.HelpMessageOfContextSelectionMode,
+                "Manual",
+                string.Format("AzPS{0}", ConfigKeys.ContextSelectionMode),
+                new[] { AppliesTo.Az }));
 #if DEBUG || TESTCOVERAGE
             configManager.RegisterConfig(new SimpleTypedConfig<bool>(
                 ConfigKeys.EnableTestCoverage,

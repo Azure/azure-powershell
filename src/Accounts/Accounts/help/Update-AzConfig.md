@@ -14,11 +14,20 @@ Updates the configs of Azure PowerShell.
 
 ```
 Update-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzureContextContainer>]
+<<<<<<< HEAD
  [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [-CheckForUpgrade <Boolean>]
  [-DefaultSubscriptionForLogin <String>] [-DisableInstanceDiscovery <Boolean>]
  [-DisplayBreakingChangeWarning <Boolean>] [-DisplayRegionIdentified <Boolean>]
  [-DisplaySecretsWarning <Boolean>] [-DisplaySurveyMessage <Boolean>] [-EnableDataCollection <Boolean>]
  [-EnableErrorRecordsPersistence <Boolean>] [-EnableLoginByWam <Boolean>] [<CommonParameters>]
+=======
+ [-WhatIf] [-Confirm] [-CheckForUpgrade <Boolean>] [-ContextSelectionMode <String>]
+ [-DefaultSubscriptionForLogin <String>] [-DisableErrorRecordsPersistence <Boolean>]
+ [-DisableInstanceDiscovery <Boolean>] [-DisplayBreakingChangeWarning <Boolean>]
+ [-DisplayRegionIdentified <Boolean>] [-DisplaySecretsWarning <Boolean>] [-DisplaySurveyMessage <Boolean>]
+ [-EnableDataCollection <Boolean>] [-EnableLoginByWam <Boolean>] [-EnableTestCoverage <Boolean>]
+ [-TestCoverageLocation <String>] [<CommonParameters>]
+>>>>>>> ec9baf0d968 (add config to switch back context selection)
 ```
 
 ## DESCRIPTION
@@ -112,6 +121,21 @@ When enabled, Azure PowerShell will check for updates automatically and display 
 
 ```yaml
 Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ContextSelectionMode
+Specify the way to select a context from available tenants and their subscriptions. Valid values are 'Manual' (default value) and 'Auto'. 'Manual' requires user's input to decide context. 'Auto' uses the first tenant and subscription returned by API.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -277,6 +301,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+<<<<<<< HEAD
 ### -ProgressAction
 {{ Fill ProgressAction Description }}
 
@@ -284,11 +309,24 @@ Accept wildcard characters: False
 Type: System.Management.Automation.ActionPreference
 Parameter Sets: (All)
 Aliases: proga
+=======
+### -EnableTestCoverage
+When enabled, the test framework will generate data during test run as a preliminary for the test coverage calculation
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+>>>>>>> ec9baf0d968 (add config to switch back context selection)
 
 Required: False
 Position: Named
 Default value: None
+<<<<<<< HEAD
 Accept pipeline input: False
+=======
+Accept pipeline input: True (ByPropertyName)
+>>>>>>> ec9baf0d968 (add config to switch back context selection)
 Accept wildcard characters: False
 ```
 
@@ -306,6 +344,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TestCoverageLocation
+Only takes effect when EnableTestCoverage equals to TRUE. Use this config to redirect the test coverage data location.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

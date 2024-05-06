@@ -148,17 +148,21 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             int maxContextPopulation = Profile.ConnectAzureRmAccountCommand.DefaultMaxContextPopulation,
             string authScope = null,
             Prompt prompt = null,
-            bool isInteractiveAuthentication = false)
+            bool isInteractiveAuthenticationFlow = false,
+            string contextSelectionMode = "")
         {
-            if(isInteractiveAuthentication) WriteInformationMessage($"{Foreground.BrightYellow}{Resources.PleaseSelectAccount}{PSStyle.Reset}{System.Environment.NewLine}");
+            if(isInteractiveAuthenticationFlow) WriteInformationMessage($"{PSStyle.ForegroundColor.BrightYellow}{Resources.PleaseSelectAccount}{PSStyle.Reset}{System.Environment.NewLine}");
 
             IAzureSubscription defaultSubscription = null;
             IAzureTenant defaultTenant = null;
             List<AzureSubscription> subscriptions = new List<AzureSubscription>();
             List<AzureSubscription> tempSubscriptions = null;
             string tenantDomainName = null;
-            var lastUsedSubscription = isInteractiveAuthentication && string.IsNullOrEmpty(subscriptionId) && string.IsNullOrEmpty(subscriptionName) ? _profile?.DefaultContext?.Subscription : null;
             
+            var lastUsedSubscription = isInteractiveAuthenticationFlow && string.IsNullOrEmpty(subscriptionId) && string.IsNullOrEmpty(subscriptionName) ? _profile?.DefaultContext?.Subscription : null;
+            bool isManualSelectionMode = string.IsNullOrEmpty(contextSelectionMode) || !contextSelectionMode.Equals("Auto", StringComparison.OrdinalIgnoreCase);
+            bool shouldWriteSubscriptionSelectionTable = isInteractiveAuthenticationFlow && isManualSelectionMode;
+
             string promptBehavior =
                 (password == null &&
                  account.Type != AzureAccount.AccountType.AccessToken &&
@@ -262,7 +266,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         out defaultSubscription,
                         out defaultTenant,
                         out tempSubscriptions,
-                        isInteractiveAuthentication))
+                        isInteractiveAuthenticationFlow))
                     {
                         account.SetOrAppendProperty(AzureAccount.Property.Tenants, new[] { defaultTenant.Id.ToString() });
 
@@ -270,7 +274,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                         {
                             subscriptions.AddRange(tempSubscriptions);
                         }
-                        var shouldWriteSubscriptionSelectionTable = isInteractiveAuthentication && subscriptions?.Count > 1;
+                        shouldWriteSubscriptionSelectionTable = shouldWriteSubscriptionSelectionTable && subscriptions?.Count > 1;
                         if (shouldWriteSubscriptionSelectionTable && prompt != null)
                         {
                             InteractiveSubscriptionSelection(subscriptions, prompt, ref defaultSubscription, ref defaultTenant, tenantIdOrName, tenantDomainName, lastUsedSubscription);
@@ -331,7 +335,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
                         if (token != null &&
                             defaultTenant == null &&
-                            TryGetTenantSubscription(token, account, environment, subscriptionId, subscriptionName, false, out tempSubscription, out tempTenant, out tempSubscriptions, isInteractiveAuthentication))
+                            TryGetTenantSubscription(token, account, environment, subscriptionId, subscriptionName, false, out tempSubscription, out tempTenant, out tempSubscriptions, isInteractiveAuthenticationFlow))
                         {
                             // If no subscription found for the given token/tenant，discard tempTenant value.
                             // Continue to look for matched subscripitons until one subscription retrived by its home tenant is found.
@@ -353,7 +357,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     defaultTenant = defaultTenant ??
                         (defaultSubscription != null ? new AzureTenant() { Id = defaultSubscription.GetTenant() } : tempTenant);
 
-                    var shouldWriteSubscriptionSelectionTable = isInteractiveAuthentication && subscriptions?.Count > 1;
+                    shouldWriteSubscriptionSelectionTable = shouldWriteSubscriptionSelectionTable && subscriptions?.Count > 1;
                     if (shouldWriteSubscriptionSelectionTable && prompt != null)
                     {
                         InteractiveSubscriptionSelection(subscriptions, prompt, ref defaultSubscription, ref defaultTenant, tenantIdOrName, tenantDomainName, lastUsedSubscription);
@@ -404,7 +408,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             if (shouldPopulateContextList && maxContextPopulation != 0)
             {
                 var defaultContext = _profile.DefaultContext;
-                var populatedSubscriptions = maxContextPopulation > 0 && !isInteractiveAuthentication ? ListSubscriptions(tenantIdOrName).Take(maxContextPopulation) : ListSubscriptions(tenantIdOrName);
+                var populatedSubscriptions = maxContextPopulation > 0 && !isInteractiveAuthenticationFlow ? ListSubscriptions(tenantIdOrName).Take(maxContextPopulation) : ListSubscriptions(tenantIdOrName);
                 
                 foreach (var subscription in populatedSubscriptions)
                 {
@@ -434,7 +438,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         }
 
         int ColumnNoWidth = 4, ColumnSubNameWidth = 36, ColumnSubIdWidth = 40, ColumnTenantWidth = 26, ColumnIdentsWidth = 4;
-        string defaultSubscriptionMark = $"{Foreground.White} * {PSStyle.Reset}";
+        string defaultSubscriptionMark = $"{PSStyle.ForegroundColor.White} * {PSStyle.Reset}";
 
         private void InteractiveSubscriptionSelection(IEnumerable<IAzureSubscription> subscriptions, Prompt prompt, ref IAzureSubscription defaultSubscription, ref IAzureTenant defaultTenant, string tenantId, string tenantDomainName, IAzureSubscription lastUsedSubscription = null)
         {   
@@ -446,7 +450,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
 
             if (markDefaultSubscription)
             {
-                WriteInformationMessage($"{Environment.NewLine}The default is marked with an {Foreground.White}*{PSStyle.Reset}; " +
+                WriteInformationMessage($"{Environment.NewLine}The default is marked with an {PSStyle.ForegroundColor.White}*{PSStyle.Reset}; " +
                     $"the default tenant is '{GetDetailedTenantFromQueryHistory(GetDefaultDomain(lastUsedSubscription?.GetProperty(AzureSubscription.Property.Tenants)))}' " +
                     $"and subscription is '{lastUsedSubscription?.Name} ({lastUsedSubscription?.Id})'.");
             }
@@ -524,7 +528,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 subNameRowValue = String.Format($"{{0,-{ColumnSubNameWidth + ColumnIdentsWidth}}}", truncatedSubName),
                 subIdRowValue = String.Format($"{{0,-{ColumnSubIdWidth + ColumnIdentsWidth}}}", subscription.Id),
                 tenantDomainNameRowValue = String.Format($"{{0,-{ColumnTenantWidth}}}", truncatedDomainName);
-            WriteInformationMessage($"{(isDefaultSubscription && markDefaultSubscription ? Foreground.Bold : "")}{subIndexRowValue}{(isDefaultSubscription && markDefaultSubscription ? PSStyle.Reset : "")}{(isDefaultSubscription && markDefaultSubscription ? Foreground.BrightCyan : "")}{subNameRowValue}{subIdRowValue}{tenantDomainNameRowValue}{(isDefaultSubscription && markDefaultSubscription ? PSStyle.Reset : "")}");
+            WriteInformationMessage($"{(isDefaultSubscription && markDefaultSubscription ? PSStyle.Bold : "")}{subIndexRowValue}{(isDefaultSubscription && markDefaultSubscription ? PSStyle.Reset : "")}{(isDefaultSubscription && markDefaultSubscription ? PSStyle.ForegroundColor.BrightCyan : "")}{subNameRowValue}{subIdRowValue}{tenantDomainNameRowValue}{(isDefaultSubscription && markDefaultSubscription ? PSStyle.Reset : "")}");
         }
 
         private void WriteSelectedSubscriptionTable(string subscription, string tenant)

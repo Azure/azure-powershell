@@ -22,10 +22,17 @@ Clear-AzConfig [-Force] [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
 ### ClearByKey
 ```
 Clear-AzConfig [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
+<<<<<<< HEAD
  [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
  [-CheckForUpgrade] [-DefaultSubscriptionForLogin] [-DisableInstanceDiscovery] [-DisplayBreakingChangeWarning]
  [-DisplayRegionIdentified] [-DisplaySecretsWarning] [-DisplaySurveyMessage] [-EnableDataCollection]
  [-EnableErrorRecordsPersistence] [-EnableLoginByWam] [<CommonParameters>]
+=======
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-CheckForUpgrade] [-ContextSelectionMode]
+ [-DefaultSubscriptionForLogin] [-DisableErrorRecordsPersistence] [-DisableInstanceDiscovery]
+ [-DisplayBreakingChangeWarning] [-DisplayRegionIdentified] [-DisplaySecretsWarning] [-DisplaySurveyMessage]
+ [-EnableDataCollection] [-EnableLoginByWam] [-EnableTestCoverage] [-TestCoverageLocation] [<CommonParameters>]
+>>>>>>> ec9baf0d968 (add config to switch back context selection)
 ```
 
 ## DESCRIPTION
@@ -73,6 +80,21 @@ Accept wildcard characters: False
 
 ### -CheckForUpgrade
 When enabled, Azure PowerShell will check for updates automatically and display a hint message when an update is available. The default value is true.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ContextSelectionMode
+Specify the way to select a context from available tenants and their subscriptions. Valid values are 'Manual' (default value) and 'Auto'. 'Manual' requires user's input to decide context. 'Auto' uses the first tenant and subscription returned by API.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -241,6 +263,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableTestCoverage
+When enabled, the test framework will generate data during test run as a preliminary for the test coverage calculation
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Force
 Do not ask for confirmation when clearing all configs.
 
@@ -295,6 +332,21 @@ Type: Microsoft.Azure.PowerShell.Common.Config.ConfigScope
 Parameter Sets: (All)
 Aliases:
 Accepted values: CurrentUser, Process, Default, Environment
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TestCoverageLocation
+Only takes effect when EnableTestCoverage equals to TRUE. Use this config to redirect the test coverage data location.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
 
 Required: False
 Position: Named
