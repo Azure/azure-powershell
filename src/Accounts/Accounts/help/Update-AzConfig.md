@@ -18,8 +18,7 @@ Update-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <I
  [-DefaultSubscriptionForLogin <String>] [-DisableInstanceDiscovery <Boolean>]
  [-DisplayBreakingChangeWarning <Boolean>] [-DisplayRegionIdentified <Boolean>]
  [-DisplaySecretsWarning <Boolean>] [-DisplaySurveyMessage <Boolean>] [-EnableDataCollection <Boolean>]
- [-EnableErrorRecordsPersistence <Boolean>] [-EnableLoginByWam <Boolean>] [-EnableTestCoverage <Boolean>]
- [-TestCoverageLocation <String>] [<CommonParameters>]
+ [-EnableErrorRecordsPersistence <Boolean>] [-EnableLoginByWam <Boolean>] [-TestCoverageLocation <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -265,21 +264,6 @@ Accept wildcard characters: False
 It will fall back to using the browser if the platform does not support WAM.
 Note that this feature is under preview. Microsoft Account (MSA) is currently not supported.
 Feel free to reach out to Azure PowerShell team if you have any feedbacks: https://aka.ms/azpsissue
-
-```yaml
-Type: System.Boolean
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -EnableTestCoverage
-When enabled, the test framework will generate data during test run as a preliminary for the test coverage calculation
 
 ```yaml
 Type: System.Boolean
