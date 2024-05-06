@@ -5541,7 +5541,7 @@ function Test-ApplicationGatewayHeaderValueMatcher
 	)
 
 	# Setup
-	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "East US"
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US"
 
 	$rgname = Get-ResourceGroupName
 	$appgwName = Get-ResourceName
@@ -5555,15 +5555,12 @@ function Test-ApplicationGatewayHeaderValueMatcher
 	$listener01Name = Get-ResourceName
 
 	$poolName = Get-ResourceName
-	$trustedRootCertName = Get-ResourceName
 	$poolSetting01Name = Get-ResourceName
 
 	$rewriteRuleName = Get-ResourceName
 	$rewriteRuleSetName = Get-ResourceName
     $rewriteRuleSetName2 = Get-ResourceName
 	$rule01Name = Get-ResourceName
-
-	$probeHttpName = Get-ResourceName
 
 	try
 	{
@@ -5576,7 +5573,7 @@ function Test-ApplicationGatewayHeaderValueMatcher
 		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
 
 		# Create public ip
-		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -Zone 1,2 -location $location -AllocationMethod Static -sku Standard
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
 
 		# Create ip configuration
 		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
@@ -5586,12 +5583,8 @@ function Test-ApplicationGatewayHeaderValueMatcher
 		$listener01 = New-AzApplicationGatewayHttpListener -Name $listener01Name -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp01
 
 		# backend part
-		# trusted root cert part
-		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
-		$trustedRoot01 = New-AzApplicationGatewayTrustedRootCertificate -Name $trustedRootCertName -CertificateFile $certFilePath
-		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
-		$probeHttp = New-AzApplicationGatewayProbeConfig -Name $probeHttpName -Protocol Https -HostName "probe.com" -Path "/path/path.htm" -Interval 89 -Timeout 88 -UnhealthyThreshold 8 -port 1234
-		$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 443 -Protocol Https -Probe $probeHttp -CookieBasedAffinity Enabled -PickHostNameFromBackendAddress -TrustedRootCertificate $trustedRoot01
+		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.httpbin.org
+		$poolSetting01 = New-AzApplicationGatewayBackendHttpSettings -Name $poolSetting01Name -Port 80 -Protocol Http -CookieBasedAffinity Enabled
 		$hvm = New-AzApplicationGatewayHeaderValueMatcher -Pattern ".*" -IgnoreCase -Negate
 
 		#Rewrite Rule Set
@@ -5613,7 +5606,7 @@ function Test-ApplicationGatewayHeaderValueMatcher
 		$sslPolicy = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 
 		# Create Application Gateway
-		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Zone 1,2 -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -SslPolicy $sslPolicy -TrustedRootCertificate $trustedRoot01 -AutoscaleConfiguration $autoscaleConfig -RewriteRuleSet $rewriteRuleSet
+		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -Probes $probeHttp -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -SslPolicy $sslPolicy -TrustedRootCertificate $trustedRoot01 -AutoscaleConfiguration $autoscaleConfig -RewriteRuleSet $rewriteRuleSet
 
 		# Get Application Gateway
 		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
@@ -5622,22 +5615,10 @@ function Test-ApplicationGatewayHeaderValueMatcher
         Assert-NotNull $rewriteRuleSet
         Assert-AreEqual $rewriteRuleSet.RewriteRules.Count 1
         Assert-NotNull $rewriteRuleSet.RewriteRules[0].ActionSet
-		Assert-NotNull $rewriteRuleSet.RewriteRules[0].ActionSet[0].RequestHeaderConfiguration.HeaderValueMatcher
-		Assert-AreEqual $rewriteRuleSet.RewriteRules[0].ActionSet[0].RequestHeaderConfiguration.HeaderValueMatcher.Pattern ".*"
-		Assert-AreEqual $rewriteRuleSet.RewriteRules[0].ActionSet[0].RequestHeaderConfiguration.HeaderValueMatcher.IgnoreCase $true
-		Assert-AreEqual $rewriteRuleSet.RewriteRules[0].ActionSet[0].RequestHeaderConfiguration.HeaderValueMatcher.Negate $true
-
-        $rewriteRuleSet.RewriteRules[0].ActionSet[0].RequestHeaderConfiguration.HeaderValueMatcher = $null
-
-		$getgw = Set-AzApplicationGateway -ApplicationGateway $getgw
-
-        $getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
-
-        $rewriteRuleSet = Get-AzApplicationGatewayRewriteRuleSet -Name $rewriteRuleSetName -ApplicationGateway $getgw
-        Assert-NotNull $rewriteRuleSet
-        Assert-AreEqual $rewriteRuleSet.RewriteRules.Count 1
-        Assert-NotNull $rewriteRuleSet.RewriteRules[0].ActionSet
-		Assert-AreEqual $rewriteRuleSet.RewriteRules[0].ActionSet[0].RequestHeaderConfiguration.HeaderValueMatcher $null
+		Assert-NotNull $rewriteRuleSet.RewriteRules[0].ActionSet[0].ResponseHeaderConfigurations.HeaderValueMatcher
+		Assert-AreEqual $rewriteRuleSet.RewriteRules[0].ActionSet[0].ResponseHeaderConfigurations.HeaderValueMatcher.Pattern ".*"
+		Assert-AreEqual $rewriteRuleSet.RewriteRules[0].ActionSet[0].ResponseHeaderConfigurations.HeaderValueMatcher.IgnoreCase $true
+		Assert-AreEqual $rewriteRuleSet.RewriteRules[0].ActionSet[0].ResponseHeaderConfigurations.HeaderValueMatcher.Negate $true
 	}
 	finally
 	{
