@@ -94,7 +94,7 @@ directive:
     transform: $['required'] = ['clusterExtensionIds', 'hostResourceId', 'namespace']
 
   - where:
-      variant: ^(Create|Update).*(?<!Expanded|JsonFilePath|JsonString)$
+      variant: ^(Create|Update)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
   - where:
       subject: CustomLocation
