@@ -55,30 +55,36 @@ $slnPath = Join-Path $moduleRootPath "$ModuleRootName.sln"
     create parent module for new module
 #>
 if (-not (Test-Path $parentModulePath)) {
+    Write-Host "New module detected, creating parent module $parentModulePath ..." -ForegroundColor DarkGreen
     New-Item -ItemType Directory -Force -Path $parentModulePath
     <#
         create csproj for parent module if not existed
     #>
+    Write-Host "Creating $parentModulePath/Az.$parentModuleName.csproj ..." -ForegroundColor DarkGreen
     New-GeneratedFileFromTemplate -TemplateName 'HandcraftedModule.csproj' -GeneratedFileName "Az.$parentModuleName.csproj" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
     <#
         create AsemblyInfo.cs for parent module if not existed
     #>
     $propertiesPath = Join-Path $parentModulePath 'Properties'
     New-Item -ItemType Directory -Force -Path $propertiesPath
+    Write-Host "Creating $propertiesPath/AssemblyInfo.cs ..." -ForegroundColor DarkGreen
     New-GeneratedFileFromTemplate -TemplateName 'AssemblyInfo.cs' -GeneratedFileName "AssemblyInfo.cs" -GeneratedDirectory $propertiesPath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
     <#
         create psd1 for parent module if not existed
     #>
+    Write-Host "Creating $parentModulePath/Az.$ModuleRootName.psd1 ..." -ForegroundColor DarkGreen
     New-GeneratedFileFromTemplate -TemplateName 'Module.psd1' -GeneratedFileName "Az.$ModuleRootName.psd1" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
     <#
         create ChangeLog.md for parent module if not existed
     #>
+    Write-Host "Creating $parentModulePath/ChangeLog.md ..." -ForegroundColor DarkGreen
     New-GeneratedFileFromTemplate -TemplateName 'ChangeLog.md' -GeneratedFileName "ChangeLog.md" -GeneratedDirectory $parentModulePath -ModuleRootName $ModuleRootName -SubModuleName $parentModuleName
 }
 <#
     merge sub module to parent module psd1
 #>
 $parentModulePsd1Path = Join-Path $ParentModulePath "Az.$ModuleRootName.psd1"
+Write-Host "Merging metadata of $SubModulePath/Az.$subModuleNameTrimmed.psd1 to $parentModulePsd1Path ..." -ForegroundColor DarkGreen
 if (Test-Path $parentModulePsd1Path) {
     $parentModuleMetadata = Import-LocalizedData -BaseDirectory $ParentModulePath -FileName "Az.$ModuleRootName.psd1"
 } else {
@@ -109,6 +115,7 @@ New-ModuleManifest -Path $parentModulePsd1Path @parentModuleMetadata
     create module root sln for new module
 #>
 if (-not (Test-Path $slnPath)) {
+    Write-Host "Creating $slnPath ..." -ForegroundColor DarkGreen
     dotnet new sln -n $ModuleRootName -o $moduleRootPath
     Join-Path $SourceDirectory 'Accounts' | Get-ChildItem -Filter "*.csproj" -File -Recurse | Where-Object { $_.FullName -notmatch '^*.test.csproj$' } | Foreach-Object {
         dotnet sln $slnPath add $_.FullName --solution-folder 'Accounts'
@@ -124,9 +131,11 @@ if (-not (Test-Path $slnPath)) {
         6. restore submodule csproj, delete temporary submodule csproj from src/moduleroot/sln
 #>
 $subModuleCsprojPath = Join-Path $subModulePath "Az.$subModuleNameTrimmed.csproj"
-Remove-Item $subModuleCsprojPath -Force
+$tempCsprojPath = Join-Path $subModulePath 'tmp'
+Move-Item $subModuleCsprojPath $tempCsprojPath
 New-GeneratedFileFromTemplate -TemplateName 'Az.ModuleName.csproj' -GeneratedFileName "Az.$subModuleNameTrimmed.csproj" -GeneratedDirectory $subModulePath -ModuleRootName $ModuleRootName -SubModuleName $subModuleNameTrimmed
 dotnet sln $slnPath add $subModuleCsprojPath
+Write-Host "Building $slnPath ..." -ForegroundColor DarkGreen
 dotnet build $slnPath
 <#
     generate help markdown by platyPS
@@ -144,7 +153,7 @@ $job = start-job {
     $parentModulePath = Join-Path $RepoRoot 'src' $ModuleRootName $ParentModuleName
 
     $assemblyToRemove = "YamlDotNet.dll"
-    $psd1Data = Import-PowerSHellDataFile -Path $artifactPsd1Path
+    $psd1Data = Import-PowerShellDataFile -Path $artifactPsd1Path
     if ($psd1Data.ContainsKey('RequiredAssemblies') -and $psd1Data.RequiredAssemblies -contains $assemblyToRemove) {
         $psd1Data.RequiredAssemblies = $psd1Data.RequiredAssemblies | Where-Object { $_ -ne $assemblyToRemove }
         Update-ModuleManifest -Path $artifactPsd1Path -RequiredAssemblies $psd1Data.RequiredAssemblies
@@ -159,11 +168,13 @@ $job = start-job {
     # Clean up the help folder and remove the help files which are not exported by the module.
     $moduleMetadata = Get-Module "Az.$ModuleRootName"
     $exportedCommands = $moduleMetadata.ExportedCommands.Values | Where-Object {$_.CommandType -ne 'Alias'} | ForEach-Object { $_.Name}
+    Write-Host "Refreshing help markdown files under: $helpPath ..."
     Update-MarkdownHelpModule -Path $helpPath -RefreshModulePage -AlphabeticParamsOrder -UseFullTypeName -ExcludeDontShow
     foreach ($helpFile in (Get-ChildItem $helpPath -Recurse)) {
         $cmdeltName = $helpFile.Name.Replace(".md", "")
         if ($exportedCommands -notcontains $cmdeltName)
         {
+            Write-Host "Redundant help markdown detected, removing $helpFile.FullName ..."
             Remove-Item $helpFile.FullName
         }
     }
@@ -176,7 +187,7 @@ $job | Remove-Job
     merge actual sub module csproj to parent module sln
 #>
 dotnet sln $slnPath remove $subModuleCsprojPath
-git restore $subModuleCsprojPath
+Move-Item $tempCsprojPath $subModuleCsprojPath
 $subModuleCsprojPath = Join-Path $GeneratedDirectory $ModuleRootName $SubModuleName "Az.$subModuleNameTrimmed.csproj"
 dotnet sln $slnPath add $subModuleCsprojPath
 

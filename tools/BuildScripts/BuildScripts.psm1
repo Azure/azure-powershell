@@ -9,17 +9,17 @@ function Get-CsprojFromModule {
     $SourceDirectory = Join-Path $RepoRoot 'src'
     $GeneratedDirectory = Join-Path $RepoRoot 'generated'
     $modulePath = @()
-    Write-Host "----------Start finding modules under /src and /generated----------" -ForegroundColor DarkYellow
+    Write-Host "Finding modules under /src and /generated ..." -ForegroundColor DarkGreen
     foreach ($moduleName in $BuildModuleList) {
         $src = Join-Path $SourceDirectory $moduleName
         $gen = Join-Path $GeneratedDirectory $moduleName
         if (Test-Path $src) {
             $modulePath += $src
-            Write-Host "find $moduleName under $src" -ForegroundColor Cyan
+            Write-Host "Found $moduleName under $src" -ForegroundColor Cyan
         }
         if (Test-Path $gen) {
             $modulePath += $gen
-            Write-Host "find $moduleName under $gen" -ForegroundColor Cyan
+            Write-Host "Found $moduleName under $gen" -ForegroundColor Cyan
         }
     }
 
@@ -35,7 +35,7 @@ function Get-CsprojFromModule {
     }
     $testCsprojPattern = ($testCsprojPattern | Join-String -Separator '|')
 
-    Write-Host "----------Start finding projects to include----------" -ForegroundColor DarkYellow
+    Write-Host "Finding projects to include ..." -ForegroundColor DarkGreen
     $result = @()
     foreach ($module in $modulePath) {
         foreach ($csproj in (Get-ChildItem -Path $module -Recurse -Filter *.csproj)) {
@@ -78,10 +78,13 @@ function Get-OutdatedSubModule {
         if (Test-Path $generateInfoGenerated) {
             $generateIdSource = (Get-Content -Path $generateInfoSource | ConvertFrom-Json).generate_Id
             $generateIdGenerated = (Get-Content -Path $generateInfoGenerated | ConvertFrom-Json).generate_Id
+            Write-Host "Submodule $subModule generate Id src: $generateIdSource" -ForegroundColor Cyan
+            Write-Host "Submodule $subModule generate Id generated: $generateIdGenerated" -ForegroundColor Cyan
             if ($generateIdSource && $generateIdGenerated && ($generateIdSource -eq $generateIdGenerated) && (-not $ForceRegenerate)) {
                 continue
             }
-        } 
+        }
+        Write-Host "Found outdated submodule: $subModule" -ForegroundColor DarkMagenta
         $outDatedSubModule += $subModule
     }
     return $outDatedSubModule
@@ -92,15 +95,18 @@ function Invoke-SubModuleGeneration {
         [string]$GeneratedDirectory,
         [string]$GenerateLog
     )
+    Write-Host "----------Start code generation for $GenerateDirectory----------" -ForegroundColor DarkGreen
     Set-Location -Path $GenerateDirectory
+    npx autorest --reset
     npx autorest --max-memory-size=8192 >> $GenerateLog
     if ($lastexitcode -ne 0) {
         return $false
     } else {
-        #TODO: disable after build tasks
         ./build-module.ps1 -DisableAfterBuildTasks
+        Write-Host "----------End code generation for $GenerateDirectory----------" -ForegroundColor DarkGreen
         return $true
     }
+
 }
 
 function Update-GeneratedSubModule {
@@ -113,6 +119,7 @@ function Update-GeneratedSubModule {
     $SourceDirectory = Join-Path $SourceDirectory $ModuleRootName $SubModuleName
     $GeneratedDirectory = Join-Path $GeneratedDirectory $ModuleRootName $SubModuleName
     #clean generated directory before update
+    Write-Host "Cleaning directory: $GeneratedDirectory ..." -ForegroundColor DarkGreen
     Get-ChildItem $GeneratedDirectory | Foreach-Object { Remove-Item -Path $_.FullName -Recurse -Force }
     # remove $sourceDirectory/generated/modules
     $localModulesPath = Join-Path $SourceDirectory 'generated' 'modules'
@@ -125,6 +132,7 @@ function Update-GeneratedSubModule {
     $fileToUpdate | Foreach-Object {
         $moveFrom = Join-Path $SourceDirectory $_
         $moveTo = Join-Path $GeneratedDirectory $_
+        Write-Host "Copying $moveFrom to $moveTo ..." -ForegroundColor Cyan
         Copy-Item -Path $moveFrom -Destination $moveTo -Recurse -Force
     }
     # regenerate csproj

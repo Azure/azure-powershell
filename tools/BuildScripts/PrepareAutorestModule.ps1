@@ -46,6 +46,7 @@ $AutorestOutputDir = Join-Path $RepoRoot "artifacts" "autorest"
 New-Item -ItemType Directory -Force -Path $AutorestOutputDir
 $moduleRootSource = Join-Path $sourceDirectory $ModuleRootName
 $moduleRootGenerated = Join-Path $generatedDirectory $ModuleRootName
+Write-Host "Calculating outdated submodules for $ModuleRootName ..." -ForegroundColor DarkGreen
 $outdatedSubModule = Get-OutdatedSubModule -SourceDirectory $moduleRootSource -GeneratedDirectory $moduleRootGenerated -ForceRegenerate:$ForceRegenerate
 $jobs = @()
 foreach ($subModuleName in $outdatedSubModule) {
