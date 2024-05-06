@@ -83,13 +83,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             bool deleteBackupData = ProviderData.ContainsKey(ItemParams.DeleteBackupData) ?
                 (bool)ProviderData[ItemParams.DeleteBackupData] : false;
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
 
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
 
             AzureFileShareItem item = (AzureFileShareItem)ProviderData[ItemParams.Item];
 
             AzureFileshareProtectedItem properties = new AzureFileshareProtectedItem();
-
+                        
             return EnableOrModifyProtection(disableWithRetentionData: true);
 
         }
@@ -218,6 +219,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 (string)ProviderData[RestoreFSBackupItemParams.TargetFolder] : null;
             string[] multipleSourceFilePaths = ProviderData.ContainsKey(RestoreFSBackupItemParams.MultipleSourceFilePath) ?
                 (string[])ProviderData[RestoreFSBackupItemParams.MultipleSourceFilePath] : null;
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
 
             //validate file recovery request
             ValidateFileRestoreRequest(sourceFilePath, sourceFileType, multipleSourceFilePaths);
@@ -330,13 +333,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             RestoreRequestResource triggerRestoreRequest = new RestoreRequestResource();
             triggerRestoreRequest.Properties = restoreRequest;
 
+            // check for MUA
+            bool isMUAProtected = isMUAOperation;
+
             var response = ServiceClientAdapter.RestoreDisk(
                 recoveryPoint,
                 targetStorageAccountLocation = targetStorageAccountLocation ?? storageAccountResource.Location,
                 triggerRestoreRequest,
                 vaultName: vaultName,
                 resourceGroupName: resourceGroupName,
-                vaultLocation: vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation());
+                vaultLocation: vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation(),
+                auxiliaryAccessToken,
+                isMUAProtected);
             return response;
         }
 
@@ -1041,6 +1049,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 isMUAProtected = AzureWorkloadProviderHelper.checkMUAForModifyPolicy(oldPolicy, newPolicy, isMUAOperation);
             }
+            if (disableWithRetentionData)
+            {
+                isMUAProtected = true;
+            }
 
             return ServiceClientAdapter.CreateOrUpdateProtectedItem(
                 containerUri,
@@ -1049,7 +1061,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 vaultName: vaultName,
                 resourceGroupName: vaultResourceGroupName,
                 auxiliaryAccessToken,
-                isMUAProtected);
+                isMUAProtected,
+                disableWithRetentionData);
         }
 
         private void ValidateAzureStorageBackupManagementType(

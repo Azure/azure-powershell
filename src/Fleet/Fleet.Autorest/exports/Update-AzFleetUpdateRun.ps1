@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Create a UpdateRun
+Update a UpdateRun
 .Description
-Create a UpdateRun
+Update a UpdateRun
 .Example
 Update-AzFleetUpdateRun -FleetName testfleet01 -Name run1 -ResourceGroupName K8sFleet-Test -UpgradeKubernetesVersion "1.28.3"
 

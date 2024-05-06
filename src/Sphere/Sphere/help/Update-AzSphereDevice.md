@@ -17,27 +17,27 @@ Use '.unassigned' or '.default' for the device group and product names to move a
 ```
 Update-AzSphereDevice -CatalogName <String> -GroupName <String> -Name <String> -ProductName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] [-DeviceGroupId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonString
 ```
 Update-AzSphereDevice -CatalogName <String> -GroupName <String> -Name <String> -ProductName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonString <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaJsonFilePath
 ```
 Update-AzSphereDevice -CatalogName <String> -GroupName <String> -Name <String> -ProductName <String>
  -ResourceGroupName <String> [-SubscriptionId <String>] -JsonFilePath <String> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityProductExpanded
 ```
 Update-AzSphereDevice -GroupName <String> -Name <String> -ProductInputObject <ISphereIdentity>
- [-DeviceGroupId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>]
+ [-DeviceGroupId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -45,20 +45,20 @@ Update-AzSphereDevice -GroupName <String> -Name <String> -ProductInputObject <IS
 ```
 Update-AzSphereDevice -GroupName <String> -Name <String> -ProductName <String>
  -CatalogInputObject <ISphereIdentity> [-DeviceGroupId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityDeviceGroupExpanded
 ```
 Update-AzSphereDevice -Name <String> -DeviceGroupInputObject <ISphereIdentity> [-DeviceGroupId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzSphereDevice -InputObject <ISphereIdentity> [-DeviceGroupId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AsJob] [-NoWait] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -330,21 +330,6 @@ Parameter Sets: UpdateExpanded, UpdateViaJsonString, UpdateViaJsonFilePath, Upda
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

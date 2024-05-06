@@ -15,8 +15,8 @@ Remove a SessionHost.
 ### Delete (Default)
 ```
 Remove-AzWvdSessionHost -HostPoolName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.EdgeOrder-help.xml
 Module Name: Az.EdgeOrder
 online version: https://learn.microsoft.com/powershell/module/az.edgeorder/get-azedgeorderproductfamilymetadata
 schema: 2.0.0
@@ -13,8 +13,8 @@ This method provides the list of product families metadata for the given subscri
 ## SYNTAX
 
 ```
-Get-AzEdgeOrderProductFamilyMetadata [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Get-AzEdgeOrderProductFamilyMetadata [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -44,7 +44,8 @@ To get details of any family use Get-AzEdgeOrderProductFamily command
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -115,7 +116,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

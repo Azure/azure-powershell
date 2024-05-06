@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Subscription-help.xml
 Module Name: Az.Subscription
 online version: https://learn.microsoft.com/powershell/module/az.subscription/remove-azsubscriptionalias
 schema: 2.0.0
@@ -14,14 +14,14 @@ Delete Alias.
 
 ### Delete (Default)
 ```
-Remove-AzSubscriptionAlias -AliasName <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzSubscriptionAlias -AliasName <String> [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
 Remove-AzSubscriptionAlias -InputObject <ISubscriptionIdentity> [-DefaultProfile <PSObject>] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,7 +40,7 @@ Delete Alias.
 
 ### -AliasName
 AliasName is the name for the subscription creation request.
-Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.
+Note that this is not the same as subscription name and this doesn't have any other lifecycle need beyond the request for subscription creation.
 
 ```yaml
 Type: System.String
@@ -146,4 +146,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
-

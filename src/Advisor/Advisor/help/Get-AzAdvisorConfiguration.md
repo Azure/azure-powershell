@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Advisor-help.xml
 Module Name: Az.Advisor
 online version: https://learn.microsoft.com/powershell/module/az.advisor/get-azadvisorconfiguration
 schema: 2.0.0
@@ -14,12 +14,13 @@ Retrieve Azure Advisor configurations and also retrieve configurations of contai
 
 ### List (Default)
 ```
-Get-AzAdvisorConfiguration [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzAdvisorConfiguration [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzAdvisorConfiguration -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzAdvisorConfiguration [-SubscriptionId <String[]>] -ResourceGroupName <String>
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -57,7 +58,8 @@ Get Configuration by ResourceGroupName
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -112,7 +114,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

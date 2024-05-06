@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 7.5.0
+* Added cmdlet `Convert-AzNetworkWatcherClassicConnectionMonitor` for converting a classic connection monitor to V2 connection monitor.
+
 ## Version 7.4.1
 * Fixed a bug caused by the introduction of the new property `GlobalConfiguration` in `PSApplicationGateway`
 * Added support for Bring Your Own Public IP feature for Hub Firewalls

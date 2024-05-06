@@ -40,8 +40,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
 
         /// <summary>
         /// Provides a pageable list of protectable objects within your subscription
-        /// according to the query filter and the
-        /// pagination parameters.
+        /// according to the query filter and the pagination parameters.
         /// </summary>
         /// <param name='odataQuery'>
         /// 
@@ -278,8 +277,7 @@ namespace Microsoft.Azure.Management.RecoveryServices.Backup
         }
         /// <summary>
         /// Provides a pageable list of protectable objects within your subscription
-        /// according to the query filter and the
-        /// pagination parameters.
+        /// according to the query filter and the pagination parameters.
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

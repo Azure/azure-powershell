@@ -107,7 +107,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.UrlRewriteAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.UrlRewriteAction
 
 ## NOTES
 

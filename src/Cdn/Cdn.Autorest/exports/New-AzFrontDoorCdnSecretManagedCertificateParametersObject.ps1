@@ -23,12 +23,12 @@ Create an in-memory object for ManagedCertificateParameters.
 New-AzFrontDoorCdnSecretManagedCertificateParametersObject -Type ManagedCert
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ManagedCertificateParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ManagedCertificateParameters
 .Link
 https://learn.microsoft.com/powershell/module/az.Cdn/new-AzFrontDoorCdnSecretManagedCertificateParametersObject
 #>
 function New-AzFrontDoorCdnSecretManagedCertificateParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ManagedCertificateParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ManagedCertificateParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

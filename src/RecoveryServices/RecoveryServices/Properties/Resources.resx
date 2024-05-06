@@ -323,7 +323,7 @@ Please provide a storage account with the same location as that of the vault.</v
     <value>Invalid parameter set</value>
   </data>
   <data name="MissingParameterForAlerts" xml:space="preserve">
-    <value>Please provide the value for DisableAzureMonitorAlertsForJobFailure and DisableClassicAlerts parameters to configure alerts</value>
+    <value>Please provide the value for DisableAzureMonitorAlertsForJobFailure, DisableClassicAlerts, DisableAzureMonitorAlertsForAllReplicationIssues, DisableAzureMonitorAlertsForAllReplicationIssues and DisableEmailNotificationsForSiteRecovery parameters to configure alerts</value>
   </data>
   <data name="ImmutabilityNotUnlocked" xml:space="preserve">
     <value>Immutability State can't be updated once enabled and locked.</value>
@@ -333,5 +333,8 @@ Please provide a storage account with the same location as that of the vault.</v
   </data>
   <data name="PublicNetworkAccessEnabledByDefault" xml:space="preserve">
     <value>Public Network Access is by default enabled for this vault and can be updated using Update-AzRecoveryServicesVault cmdlet</value>
+  </data>
+  <data name="UnexpectedParameterToken" xml:space="preserve">
+    <value>{0} is not protected via MUA, either protect or try without the Token parameter</value>
   </data>
 </root>

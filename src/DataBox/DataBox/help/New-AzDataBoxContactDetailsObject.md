@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.DataBox-help.xml
 Module Name: Az.DataBox
 online version: https://learn.microsoft.com/powershell/module/Az.DataBox/new-AzDataBoxContactDetailsObject
 schema: 2.0.0
@@ -23,7 +23,7 @@ Create an in-memory object for ContactDetails.
 
 ## EXAMPLES
 
-### Example 1: Create a in-memory object for ContactDetails 
+### Example 1: Create a in-memory object for ContactDetails
 ```powershell
 New-AzDataBoxContactDetailsObject -ContactName "random" -EmailList @("emailId") -Phone "1234567891"
 ```
@@ -140,16 +140,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`NOTIFICATIONPREFERENCE <INotificationPreference[]>`: Notification preference for a job stage.
-  - `SendNotification <Boolean>`: Notification is required or not.
-  - `StageName <NotificationStageName>`: Name of the stage.
-
 ## RELATED LINKS
-

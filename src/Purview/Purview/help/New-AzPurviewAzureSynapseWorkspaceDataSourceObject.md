@@ -1,7 +1,7 @@
 ---
 external help file: Az.Purview-help.xml
 Module Name: Az.Purview
-online version: https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureSynapseWorkspaceDataSourceObject
+online version: https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureSynapseWorkspaceDataSourceObject
 schema: 2.0.0
 ---
 
@@ -15,7 +15,8 @@ Create an in-memory object for AzureSynapseWorkspaceDataSource.
 ```
 New-AzPurviewAzureSynapseWorkspaceDataSourceObject -Kind <DataSourceType> [-CollectionReferenceName <String>]
  [-CollectionType <String>] [-DedicatedSqlEndpoint <String>] [-Location <String>] [-ResourceGroup <String>]
- [-ResourceName <String>] [-ServerlessSqlEndpoint <String>] [-SubscriptionId <String>] [<CommonParameters>]
+ [-ResourceName <String>] [-ServerlessSqlEndpoint <String>] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -186,7 +187,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureSynapseWorkspaceDataSource
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

@@ -26,7 +26,7 @@ New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject  -Associa
             -WafPolicyId $wafPolicyId
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SecurityPolicyWebApplicationFirewallParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyWebApplicationFirewallParameters
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -40,12 +40,12 @@ ASSOCIATION <ISecurityPolicyWebApplicationFirewallAssociation[]>: Waf associatio
 https://learn.microsoft.com/powershell/module/az.Cdn/new-azfrontdoorcdnsecuritypolicywebapplicationfirewallparametersobject
 #>
 function New-AzFrontDoorCdnSecurityPolicyWebApplicationFirewallParametersObject {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.SecurityPolicyWebApplicationFirewallParameters])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.SecurityPolicyWebApplicationFirewallParameters])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.ISecurityPolicyWebApplicationFirewallAssociation[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.ISecurityPolicyWebApplicationFirewallAssociation[]]
     # Waf associations.
     # To construct, see NOTES section for ASSOCIATION properties and create a hash table.
     ${Association},

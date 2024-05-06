@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 4.2.2
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 4.2.1
 * Added Breaking Change Warning for parameter datatype change.
 

@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.NetworkCloud-help.xml
 Module Name: Az.NetworkCloud
 online version: https://learn.microsoft.com/powershell/module/Az.NetworkCloud/new-AzNetworkCloudNetworkAttachmentObject
 schema: 2.0.0
@@ -15,7 +15,8 @@ Create an in-memory object for NetworkAttachment.
 ```
 New-AzNetworkCloudNetworkAttachmentObject -AttachedNetworkId <String>
  -IPAllocationMethod <VirtualMachineIPAllocationMethod> [-DefaultGateway <DefaultGateway>]
- [-Ipv4Address <String>] [-Ipv6Address <String>] [-Name <String>] [<CommonParameters>]
+ [-Ipv4Address <String>] [-Ipv6Address <String>] [-Name <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +33,6 @@ New-AzNetworkCloudNetworkAttachmentObject -AttachedNetworkId "/subscriptions/sub
 AttachedNetworkId                                                                                                        DefaultGateway IPAllocationMethod Ipv4Address  Ipv6Address
 -----------------                                                                                                        -------------- ------------------ -----------  -----------                   
 /subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.NetworkCloud/l3Networks/l3NetworkName True           Dynamic            198.51.100.1 2001:0db8:0000:0000:0000:0000…
-
 ```
 
 Create an in-memory object for NetworkAttachment.
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 ### -Name
 The associated network's interface name.
         If specified, the network attachment name has a maximum length of 15 characters and must be unique to this virtual machine.
-        If the user doesn’t specify this value, the default interface name of the network resource will be used.
+        If the user doesn't specify this value, the default interface name of the network resource will be used.
         For a CloudServicesNetwork resource, this name will be ignored.
 
 ```yaml
@@ -161,7 +161,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

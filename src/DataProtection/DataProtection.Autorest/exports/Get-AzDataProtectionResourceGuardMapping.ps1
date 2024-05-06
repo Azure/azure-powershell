@@ -26,7 +26,7 @@ $mapping | fl
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IResourceGuardProxyBaseResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IResourceGuardProxyBaseResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -44,13 +44,14 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group. The name is case insensitive.
   [ResourceGuardProxyName <String>]: name of the resource guard proxy
   [ResourceGuardsName <String>]: The name of ResourceGuard
+  [ResourceId <String>]: ARM path of the resource to be protected using Microsoft.DataProtection
   [SubscriptionId <String>]: The ID of the target subscription. The value must be an UUID.
   [VaultName <String>]: The name of the backup vault.
 .Link
 https://learn.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionresourceguardmapping
 #>
 function Get-AzDataProtectionResourceGuardMapping {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20231201.IResourceGuardProxyBaseResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20240401.IResourceGuardProxyBaseResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

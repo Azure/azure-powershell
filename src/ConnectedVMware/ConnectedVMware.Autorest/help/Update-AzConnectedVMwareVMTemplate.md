@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzConnectedVMwareVMTemplate
 
 ## SYNOPSIS
-API to update certain properties of the virtual machine template resource.
+API to Update certain properties of the virtual machine template resource.
 
 ## SYNTAX
 
@@ -37,7 +37,7 @@ Update-AzConnectedVMwareVMTemplate -Name <String> -ResourceGroupName <String> -J
 ```
 
 ## DESCRIPTION
-API to update certain properties of the virtual machine template resource.
+API to Update certain properties of the virtual machine template resource.
 
 ## EXAMPLES
 
@@ -138,7 +138,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity

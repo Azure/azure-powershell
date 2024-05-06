@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEmailService
 
 ## SYNOPSIS
-Create a new EmailService or update an existing EmailService.
+Create a new EmailService or Create an existing EmailService.
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzEmailService -Name <String> -ResourceGroupName <String> [-SubscriptionId <
 ```
 
 ## DESCRIPTION
-Create a new EmailService or update an existing EmailService.
+Create a new EmailService or Create an existing EmailService.
 
 ## EXAMPLES
 

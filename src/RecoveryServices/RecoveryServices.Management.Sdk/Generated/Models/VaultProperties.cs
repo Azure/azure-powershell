@@ -34,10 +34,10 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </param>
 
         /// <param name="privateEndpointStateForBackup">Private endpoint state for backup.
-        /// Possible values include: 'None', 'Enabled'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Enabled&#39;</param>
 
         /// <param name="privateEndpointStateForSiteRecovery">Private endpoint state for site recovery.
-        /// Possible values include: 'None', 'Enabled'</param>
+        /// Possible values include: &#39;None&#39;, &#39;Enabled&#39;</param>
 
         /// <param name="encryption">Customer Managed Key details of the resource.
         /// </param>
@@ -46,16 +46,16 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </param>
 
         /// <param name="moveState">The State of the Resource after the move operation
-        /// Possible values include: 'Unknown', 'InProgress', 'PrepareFailed',
-        /// 'CommitFailed', 'PrepareTimedout', 'CommitTimedout', 'MoveSucceeded',
-        /// 'Failure', 'CriticalFailure', 'PartialSuccess'</param>
+        /// Possible values include: &#39;Unknown&#39;, &#39;InProgress&#39;, &#39;PrepareFailed&#39;,
+        /// &#39;CommitFailed&#39;, &#39;PrepareTimedout&#39;, &#39;CommitTimedout&#39;, &#39;MoveSucceeded&#39;,
+        /// &#39;Failure&#39;, &#39;CriticalFailure&#39;, &#39;PartialSuccess&#39;</param>
 
         /// <param name="backupStorageVersion">Backup storage version
-        /// Possible values include: 'V1', 'V2', 'Unassigned'</param>
+        /// Possible values include: &#39;V1&#39;, &#39;V2&#39;, &#39;Unassigned&#39;</param>
 
         /// <param name="publicNetworkAccess">property to enable or disable resource provider inbound network traffic
         /// from public clients
-        /// Possible values include: 'Enabled', 'Disabled'</param>
+        /// Possible values include: &#39;Enabled&#39;, &#39;Disabled&#39;</param>
 
         /// <param name="monitoringSettings">Monitoring Settings of the vault
         /// </param>
@@ -68,7 +68,17 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
 
         /// <param name="securitySettings">Security Settings of the vault
         /// </param>
-        public VaultProperties(string provisioningState = default(string), UpgradeDetails upgradeDetails = default(UpgradeDetails), System.Collections.Generic.IList<PrivateEndpointConnectionVaultProperties> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnectionVaultProperties>), string privateEndpointStateForBackup = default(string), string privateEndpointStateForSiteRecovery = default(string), VaultPropertiesEncryption encryption = default(VaultPropertiesEncryption), VaultPropertiesMoveDetails moveDetails = default(VaultPropertiesMoveDetails), string moveState = default(string), string backupStorageVersion = default(string), string publicNetworkAccess = default(string), MonitoringSettings monitoringSettings = default(MonitoringSettings), RestoreSettings restoreSettings = default(RestoreSettings), VaultPropertiesRedundancySettings redundancySettings = default(VaultPropertiesRedundancySettings), SecuritySettings securitySettings = default(SecuritySettings))
+
+        /// <param name="secureScore">Secure Score of Recovery Services Vault
+        /// Possible values include: &#39;None&#39;, &#39;Minimum&#39;, &#39;Adequate&#39;, &#39;Maximum&#39;</param>
+
+        /// <param name="bcdrSecurityLevel">Security levels of Recovery Services Vault for business continuity and
+        /// disaster recovery
+        /// Possible values include: &#39;Poor&#39;, &#39;Fair&#39;, &#39;Good&#39;, &#39;Excellent&#39;</param>
+
+        /// <param name="resourceGuardOperationRequests">ResourceGuardOperationRequests on which LAC check will be performed
+        /// </param>
+        public VaultProperties(string provisioningState = default(string), UpgradeDetails upgradeDetails = default(UpgradeDetails), System.Collections.Generic.IList<PrivateEndpointConnectionVaultProperties> privateEndpointConnections = default(System.Collections.Generic.IList<PrivateEndpointConnectionVaultProperties>), string privateEndpointStateForBackup = default(string), string privateEndpointStateForSiteRecovery = default(string), VaultPropertiesEncryption encryption = default(VaultPropertiesEncryption), VaultPropertiesMoveDetails moveDetails = default(VaultPropertiesMoveDetails), string moveState = default(string), string backupStorageVersion = default(string), string publicNetworkAccess = default(string), MonitoringSettings monitoringSettings = default(MonitoringSettings), RestoreSettings restoreSettings = default(RestoreSettings), VaultPropertiesRedundancySettings redundancySettings = default(VaultPropertiesRedundancySettings), SecuritySettings securitySettings = default(SecuritySettings), string secureScore = default(string), string bcdrSecurityLevel = default(string), System.Collections.Generic.IList<string> resourceGuardOperationRequests = default(System.Collections.Generic.IList<string>))
 
         {
             this.ProvisioningState = provisioningState;
@@ -85,6 +95,9 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
             this.RestoreSettings = restoreSettings;
             this.RedundancySettings = redundancySettings;
             this.SecuritySettings = securitySettings;
+            this.SecureScore = secureScore;
+            this.BcdrSecurityLevel = bcdrSecurityLevel;
+            this.ResourceGuardOperationRequests = resourceGuardOperationRequests;
             CustomInit();
         }
 
@@ -179,5 +192,25 @@ namespace Microsoft.Azure.Management.RecoveryServices.Models
         /// </summary>
         [Newtonsoft.Json.JsonProperty(PropertyName = "securitySettings")]
         public SecuritySettings SecuritySettings {get; set; }
+
+        /// <summary>
+        /// Gets secure Score of Recovery Services Vault Possible values include: &#39;None&#39;, &#39;Minimum&#39;, &#39;Adequate&#39;, &#39;Maximum&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "secureScore")]
+        public string SecureScore {get; private set; }
+
+        /// <summary>
+        /// Gets security levels of Recovery Services Vault for business continuity and
+        /// disaster recovery Possible values include: &#39;Poor&#39;, &#39;Fair&#39;, &#39;Good&#39;, &#39;Excellent&#39;
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "bcdrSecurityLevel")]
+        public string BcdrSecurityLevel {get; private set; }
+
+        /// <summary>
+        /// Gets or sets resourceGuardOperationRequests on which LAC check will be
+        /// performed
+        /// </summary>
+        [Newtonsoft.Json.JsonProperty(PropertyName = "resourceGuardOperationRequests")]
+        public System.Collections.Generic.IList<string> ResourceGuardOperationRequests {get; set; }
     }
 }

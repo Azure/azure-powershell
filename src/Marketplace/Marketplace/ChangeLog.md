@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.5.0
+* Introduced secrets detection feature to safeguard sensitive data.
+
 ## Version 0.4.0
 * Added new features and capabilities to user and marketplace-admins:
     - Approve offer and plans with subscription granularity.

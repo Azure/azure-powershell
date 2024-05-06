@@ -36,7 +36,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.RecordDate = (Get-Date -Year 2024 -Month 03 -Day 25 -Hour 13 -Minute 11 -Second 11).ToString('dd-MM-yyyy-h-m-s')
+    $env.RecordDate = (Get-Date -Year 2024 -Month 04 -Day 22 -Hour 15 -Minute 11 -Second 11).ToString('dd-MM-yyyy-h-m-s')
     # For any resources you created for test, you should add it to $env here.
 
     $BackupInstanceTestVariables = @{
@@ -58,6 +58,7 @@ function setupEnv() {
         ResourceGroupName = "sarath-rg"
         VaultName = "sarath-vault"
         NewVaultName = "new-pstest-vault"
+        NewCSRVault = "csr-pstest-vault"
     }
 
     $BackupJobTestVariables = @{
@@ -184,6 +185,8 @@ function setupEnv() {
         ResourceGroupName = "blob-eus-pstest-rg"
         VaultName = "blob-eus-pstest-vault"
         PolicyName = "operational-vaulted-policy"
+        UpdatePolicyName = "op-vault-pstest-policy"
+        UpdatedContainersList = @( "conaaa", "conabb", "coneee", "conwxy", "conzzz" )
         StorageAccountName = "blobeuspstestsa"
         OperationalPolicyName = "op-pstest-policy"
         VaultPolicyName = "vaulted-pstest-policy"
@@ -234,6 +237,26 @@ function setupEnv() {
         ResourceGuardId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/hiaga-rg/providers/Microsoft.DataProtection/ResourceGuards/mua-pstest-dpp-ccy-resguard"
     }
 
+    $PGFlexRestoreVariables = @{
+        SubscriptionId = "38304e13-357e-405e-9e9a-220351dcce8c" # "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        ResourceGroupName = "zubairRG" #"vdhingraRG"
+        VaultName = "zpgflex" #"vdhingraBackupVault"
+        NewPolicyName = "pstest-pgflex-policy"
+        PolicyName = "OssFlexiblePolicy1" # "pgflexArchivePolicy1"
+        TargetContainerURI = "https://akneemasaecy.blob.core.windows.net/oss-csr-container" # "https://vdhingra1psa.blob.core.windows.net/powershellpgflexrestore"
+        BackupInstanceName = "zubair-pgflex-cli1" # "archive-test"
+    }
+
+    $MySQLRetoreVariables = @{
+        SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+        ResourceGroupName = "MySQLTest" # "vdhingraRG"
+        VaultName = "MYSQLBugBashCCY" #"vdhingraBackupVault"
+        NewPolicyName = "pstest-mysql-policy"
+        PolicyName = "LowRetention" #"pstest-simple-mysql"
+        TargetContainerURI = "https://adityaccy.blob.core.windows.net/ads" # "https://vdhingra1psa.blob.core.windows.net/powershellpgflexrestore"
+        BackupInstanceName = "bugbash-02" # "arhive-test"
+    }
+
     $PGFlexVariables = @{
         SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
         ResourceGroupName = "vdhingraRG"
@@ -250,6 +273,16 @@ function setupEnv() {
         NewPolicyName = "pstest-mysql-policy"
         PolicyName = "pstest-simple-mysql"
         TargetContainerURI = "https://vdhingra1psa.blob.core.windows.net/powershellpgflexrestore"
+    }
+
+    $CmkEncryptionVariables = @{
+        SubscriptionId = "191973cd-9c54-41e0-ac19-25dd9a92d5a8"
+        ResourceGroupName = "jeevan-wrk-vms"
+        VaultName = "pstestvault-automated"
+        Location = "eastasia"
+        CmkUserAssignedIdentityId = "/subscriptions/191973cd-9c54-41e0-ac19-25dd9a92d5a8/resourcegroups/jeevan-wrk-vms/providers/Microsoft.ManagedIdentity/userAssignedIdentities/userMSIpstest"
+        CmkEncryptionKeyUri = "https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1"
+        CmkEncryptionKeyUriUpdated = "https://jeevantestkeyvaultcmk.vault.azure.net/keys/pstest/3cd5235ad6ac4c11b40a6f35444bcbe1"
     }
 
     $env.add("TestBackupInstance", $BackupInstanceTestVariables) | Out-Null
@@ -273,6 +306,9 @@ function setupEnv() {
     $env.add("TestMUA", $MUAVariables) | Out-Null
     $env.add("TestPGFlex", $PGFlexVariables) | Out-Null
     $env.add("TestMySQL", $MySQLVariables) | Out-Null
+    $env.add("TestPGFlexRestore", $PGFlexRestoreVariables) | Out-Null
+    $env.add("TestMySQLRestore", $MySQLRestoreVariables) | Out-Null
+    $env.add("TestCmkEncryption", $CmkEncryptionVariables) | Out-Null
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

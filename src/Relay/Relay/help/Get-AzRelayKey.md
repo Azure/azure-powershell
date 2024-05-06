@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Relay-help.xml
 Module Name: Az.Relay
 online version: https://learn.microsoft.com/powershell/module/az.relay/get-azrelaykey
 schema: 2.0.0
@@ -15,19 +15,21 @@ Primary and secondary connection strings to the namespace.
 ### List (Default)
 ```
 Get-AzRelayKey -Name <String> -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzRelayKey -HybridConnection <String> -Name <String> -Namespace <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzRelayKey -Name <String> -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -HybridConnection <String> [-DefaultProfile <PSObject>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### List2
 ```
-Get-AzRelayKey -Name <String> -Namespace <String> -ResourceGroupName <String> -WcfRelay <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzRelayKey -Name <String> -Namespace <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ -WcfRelay <String> [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -231,7 +233,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

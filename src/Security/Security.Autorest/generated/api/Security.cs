@@ -2098,7 +2098,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -2150,7 +2150,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps organization resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -2212,7 +2212,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps organization resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -2272,7 +2272,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -2323,7 +2323,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -2372,7 +2372,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -3737,7 +3737,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -3789,7 +3789,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps organization resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -3851,7 +3851,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps organization resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -3911,7 +3911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -3962,7 +3962,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -4011,7 +4011,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates monitored Azure DevOps organization details.</summary>
+        /// <summary>Update monitored Azure DevOps organization details.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -4376,7 +4376,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -4431,7 +4431,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps project resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -4496,7 +4496,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps project resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -4559,7 +4559,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -4613,7 +4613,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -4665,7 +4665,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -5727,7 +5727,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -5782,7 +5782,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps project resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -5847,7 +5847,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps project resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -5910,7 +5910,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -5964,7 +5964,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -6016,7 +6016,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps project resource.</summary>
+        /// <summary>Update a monitored Azure DevOps project resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -6388,7 +6388,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -6446,7 +6446,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps repository resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -6514,7 +6514,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps repository resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -6580,7 +6580,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -6637,7 +6637,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -6692,7 +6692,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -7787,7 +7787,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -7845,7 +7845,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps repository resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -7913,7 +7913,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The Azure DevOps repository resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -7979,7 +7979,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8036,7 +8036,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8091,7 +8091,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a monitored Azure DevOps repository resource.</summary>
+        /// <summary>Update a monitored Azure DevOps repository resource.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8466,7 +8466,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8516,7 +8516,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The DevOps configuration resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -8576,7 +8576,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The DevOps configuration resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -8634,7 +8634,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8683,7 +8683,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -8730,7 +8730,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Create a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -10018,7 +10018,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -10068,7 +10068,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The DevOps configuration resource payload.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -10128,7 +10128,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The DevOps configuration resource payload.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -10186,7 +10186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -10235,7 +10235,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -10282,7 +10282,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a DevOps Configuration.</summary>
+        /// <summary>Update a DevOps Configuration.</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -14724,8 +14724,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Create a security connector. If a security connector is already created and a subsequent request is issued for the same
-        /// security connector id, then it will be updated.
+        /// Update a security connector. If a security connector is already Updated and a subsequent request is issued for the same
+        /// security connector id, then it will be Updated.
         /// </summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
@@ -14777,8 +14777,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Create a security connector. If a security connector is already created and a subsequent request is issued for the same
-        /// security connector id, then it will be updated.
+        /// Update a security connector. If a security connector is already Updated and a subsequent request is issued for the same
+        /// security connector id, then it will be Updated.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The security connector resource</param>
@@ -14840,8 +14840,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Create a security connector. If a security connector is already created and a subsequent request is issued for the same
-        /// security connector id, then it will be updated.
+        /// Update a security connector. If a security connector is already Updated and a subsequent request is issued for the same
+        /// security connector id, then it will be Updated.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The security connector resource</param>
@@ -14900,8 +14900,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Create a security connector. If a security connector is already created and a subsequent request is issued for the same
-        /// security connector id, then it will be updated.
+        /// Update a security connector. If a security connector is already Updated and a subsequent request is issued for the same
+        /// security connector id, then it will be Updated.
         /// </summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
@@ -14952,8 +14952,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Create a security connector. If a security connector is already created and a subsequent request is issued for the same
-        /// security connector id, then it will be updated.
+        /// Update a security connector. If a security connector is already Updated and a subsequent request is issued for the same
+        /// security connector id, then it will be Updated.
         /// </summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
@@ -15001,8 +15001,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
         }
 
         /// <summary>
-        /// Create a security connector. If a security connector is already created and a subsequent request is issued for the same
-        /// security connector id, then it will be updated.
+        /// Update a security connector. If a security connector is already Updated and a subsequent request is issued for the same
+        /// security connector id, then it will be Updated.
         /// </summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
@@ -16343,7 +16343,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a security connector</summary>
+        /// <summary>Update a security connector</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -16392,7 +16392,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a security connector</summary>
+        /// <summary>Update a security connector</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The security connector resource</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -16451,7 +16451,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a security connector</summary>
+        /// <summary>Update a security connector</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">The security connector resource</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Security.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -16508,7 +16508,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a security connector</summary>
+        /// <summary>Update a security connector</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -16556,7 +16556,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a security connector</summary>
+        /// <summary>Update a security connector</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>
@@ -16602,7 +16602,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Security
             }
         }
 
-        /// <summary>Updates a security connector</summary>
+        /// <summary>Update a security connector</summary>
         /// <param name="subscriptionId">Azure subscription ID</param>
         /// <param name="resourceGroupName">The name of the resource group within the user's subscription. The name is case insensitive.</param>
         /// <param name="securityConnectorName">The security connector name.</param>

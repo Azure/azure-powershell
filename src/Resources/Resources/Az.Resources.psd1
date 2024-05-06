@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '6.16.1'
+ModuleVersion = '6.16.2'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.17.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.19.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Authorization.Autorest/bin/Az.Authorization.private.dll', 
@@ -260,9 +260,8 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Added null check to the permissions object in the ToPSRoleDefinition method.
-* Added dynamic parameters to stack New/Set cmdlets.
-* Used correct JSON serializer settings for all templates-related deserialization.'
+        ReleaseNotes = '* Introduced secrets detection feature to safeguard sensitive data.
+* Migrated SDK generation from autorest csharp to autorest powershell.'
 
         # Prerelease string of this module
         # Prerelease = ''

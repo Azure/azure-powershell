@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzFrontDoorCdnRoute'))
 
 Describe 'New-AzFrontDoorCdnRoute'  {
     It 'CreateExpanded' {
-        $endpointName = 'end-pstest050'
+        $endpointName = 'e-clipstest050'
         Write-Host -ForegroundColor Green "Use frontDoorCdnEndpointName : $($endpointName)"
         $endpoint = New-AzFrontDoorCdnEndpoint -EndpointName $endpointName -ProfileName $env.FrontDoorCdnProfileName -ResourceGroupName $env.ResourceGroupName -Location Global
 

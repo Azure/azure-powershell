@@ -17,8 +17,8 @@ Creates an Azure Web App.
 ```
 New-AzWebApp [[-ResourceGroupName] <String>] [-Name] <String> [[-Location] <String>]
  [[-AppServicePlan] <String>] [-ContainerImageName <String>] [-EnableContainerContinuousDeployment] [-AsJob]
- [-GitRepositoryPath <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-GitRepositoryPath <String>] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### PrivateRegistry
@@ -26,7 +26,8 @@ New-AzWebApp [[-ResourceGroupName] <String>] [-Name] <String> [[-Location] <Stri
 New-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [[-Location] <String>] [[-AppServicePlan] <String>]
  -ContainerImageName <String> -ContainerRegistryUrl <String> -ContainerRegistryUser <String>
  -ContainerRegistryPassword <SecureString> [-EnableContainerContinuousDeployment] [-AsJob] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### WebAppParameterSet
@@ -35,7 +36,8 @@ New-AzWebApp [-ResourceGroupName] <String> [-Name] <String> [-Location] <String>
  [[-SourceWebApp] <PSSite>] [[-TrafficManagerProfile] <String>] [-EnableContainerContinuousDeployment]
  [-IgnoreSourceControl] [-IgnoreCustomHostNames] [[-AppSettingsOverrides] <Hashtable>] [[-AseName] <String>]
  [[-AseResourceGroupName] <String>] [-IncludeSourceWebAppSlots] [-AsJob] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -462,5 +464,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Start-AzWebApp](./Start-AzWebApp.md)
 
 [Stop-AzWebApp](./Stop-AzWebApp.md)
-
-

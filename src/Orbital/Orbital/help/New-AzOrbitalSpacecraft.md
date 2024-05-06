@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Orbital-help.xml
 Module Name: Az.Orbital
 online version: https://learn.microsoft.com/powershell/module/az.orbital/new-azorbitalspacecraft
 schema: 2.0.0
@@ -13,10 +13,10 @@ Creates or updates a spacecraft resource.
 ## SYNTAX
 
 ```
-New-AzOrbitalSpacecraft -Name <String> -ResourceGroupName <String> -Link <ISpacecraftLink[]>
- -Location <String> -TitleLine <String> -TleLine1 <String> -TleLine2 <String> [-SubscriptionId <String>]
- [-NoradId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzOrbitalSpacecraft -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ -Link <ISpacecraftLink[]> -Location <String> -TitleLine <String> -TleLine1 <String> -TleLine2 <String>
+ [-NoradId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -282,19 +282,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`LINK <ISpacecraftLink[]>`: Immutable list of Spacecraft links.
-  - `BandwidthMHz <Single>`: Bandwidth in MHz.
-  - `CenterFrequencyMHz <Single>`: Center Frequency in MHz.
-  - `Direction <Direction>`: Direction (Uplink or Downlink).
-  - `Name <String>`: Link name.
-  - `Polarization <Polarization>`: Polarization. e.g. (RHCP, LHCP).
-
 ## RELATED LINKS
-

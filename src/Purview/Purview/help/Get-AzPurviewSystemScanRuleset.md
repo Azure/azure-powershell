@@ -14,7 +14,8 @@ Get a system scan ruleset for a data source
 
 ### List (Default)
 ```
-Get-AzPurviewSystemScanRuleset -Endpoint <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzPurviewSystemScanRuleset -Endpoint <String> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get1
@@ -139,7 +140,8 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -194,7 +196,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.ISystemScanRuleset
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

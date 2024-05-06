@@ -23,7 +23,7 @@ Create an in-memory object for PowerBIDataSource.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBIDataSource
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewPowerBIDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewPowerBIDataSourceObject
 #>
 function New-AzPurviewPowerBIDataSourceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.PowerBIDataSource')]

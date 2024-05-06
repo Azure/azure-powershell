@@ -1,0 +1,32 @@
+{
+  "attributes": {
+    "enabled": true,
+    "expires": null,
+    "not_before": null
+  },
+  "issuer_parameters": {
+    "name": "Unknown"
+  },
+  "key_properties": {
+    "exportable": true,
+    "key_size": 2048,
+    "key_type": "RSA",
+    "reuse_key": false
+  },
+  "secret_properties": {
+    "content_type": "application/x-pkcs12"
+  },
+  "x509_certificate_properties": {
+    "ekus": null,
+    "key_usage": [
+      "digitalSignature",
+      "nonRepudiation",
+      "keyEncipherment",
+      "keyAgreement",
+      "keyCertSign"
+    ],
+    "subject": "C=US, ST=WA, L=Redmond, O=TestO, OU=TestOU, CN=www.bez.com",
+    "subject_alternative_names": null,
+    "validity_in_months": 50
+  }
+}

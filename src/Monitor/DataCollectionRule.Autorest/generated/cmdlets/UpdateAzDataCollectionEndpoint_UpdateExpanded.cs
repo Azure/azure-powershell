@@ -10,13 +10,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Updates part of a data collection endpoint.</summary>
+    /// <summary>Update part of a data collection endpoint.</summary>
     /// <remarks>
     /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionEndpoints/{dataCollectionEndpointName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzDataCollectionEndpoint_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Models.IDataCollectionEndpointResource))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Description(@"Updates part of a data collection endpoint.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Description(@"Update part of a data collection endpoint.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Generated]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionEndpoints/{dataCollectionEndpointName}", ApiVersion = "2022-06-01")]
     public partial class UpdateAzDataCollectionEndpoint_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -260,6 +260,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
                 // Flush buffer
                 WriteObject(_firstResponse);
             }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -431,6 +449,21 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Cmdlets
         public UpdateAzDataCollectionEndpoint_UpdateExpanded()
         {
 
+        }
+
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.Monitor.DataCollection.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
         }
 
         /// <summary>

@@ -28,7 +28,10 @@ function Test-AzureVmWorkloadCrossRegionRestore
 	$vaultId = "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/hiagarg/providers/Microsoft.RecoveryServices/vaults/hiagaVault"
 	$sourceDBName = "model"
 	$location = "centraluseuap"
-	$recoveryPointId = "173566778191977" # $rp[1].RecoveryPointId
+	$recoveryPointId = "174141832383313" # $rp[1].RecoveryPointId
+	$itemName = "SQLDataBase;mssqlserver;model"
+	$containerNameSubstr = "sql-pstest-vm1"
+
 
 	$targetResourceGroup = "clitest-rg-donotuse"
 	$targetVault = "clitest-vault-secondary-donotuse"
@@ -38,7 +41,8 @@ function Test-AzureVmWorkloadCrossRegionRestore
 	try
 	{   
 		$secvault = Get-AzRecoveryServicesVault -ResourceGroupName $targetResourceGroup -Name $targetVault
-		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vaultId -UseSecondaryRegion | Where-Object { $_.Name -match "model" }
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vaultId -UseSecondaryRegion | Where-Object { $_.Name -eq $itemName -and $_.ContainerName -match $containerNameSubstr}
+
 		$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $item[0] -VaultId $vaultId -UseSecondaryRegion -RecoveryPointId $recoveryPointId
 
 		$seccontainer =  Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -VaultId $secvault.ID
@@ -330,12 +334,13 @@ function Test-AzureVmWorkloadBackupProtectionItem
 	$resourceGroupName = "hiagarg"
 	$vaultName = "hiagaVault"	
 	$sourceDBName = "master"
+	$containerFriendlyName = "sql-pstest-vm1"
 
 	try
 	{   
 		# test trigger adhoc backup
 		$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID | Where-Object { $_.Name -match $sourceDBName }
+		$item = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID | Where-Object { $_.Name -match $sourceDBName -and $_.ContainerName -match $containerFriendlyName}
 
 		$backupJob = Backup-AzRecoveryServicesBackupItem `
 			-VaultId $vault.ID `

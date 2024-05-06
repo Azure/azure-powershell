@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzAppConfigurationKeyValue
 
 ## SYNOPSIS
-Creates a key-value.
+Put a key-value.
 
 ## SYNTAX
 
@@ -35,7 +35,7 @@ Set-AzAppConfigurationKeyValue -Endpoint <String> -Key <String> -JsonString <Str
 ```
 
 ## DESCRIPTION
-Creates a key-value.
+Put a key-value.
 
 ## EXAMPLES
 

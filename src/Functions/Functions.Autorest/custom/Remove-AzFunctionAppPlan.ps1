@@ -84,6 +84,9 @@ function Remove-AzFunctionAppPlan {
     )
     
     process {
+
+        RegisterFunctionsTabCompleters
+
         if ($PsCmdlet.ParameterSetName -eq "ByObjectInput")
         {
             if ($PSBoundParameters.ContainsKey("InputObject"))

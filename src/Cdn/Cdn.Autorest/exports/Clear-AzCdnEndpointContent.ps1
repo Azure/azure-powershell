@@ -27,7 +27,7 @@ $contentFilePath = New-AzCdnPurgeParametersObject -ContentPath $contentPath
 Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentFilePath $contentFilePath
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IPurgeParameters
+Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 .Outputs
@@ -101,7 +101,7 @@ param(
     [Parameter(ParameterSetName='Purge1', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='PurgeViaIdentity1', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IPurgeParameters]
+    [Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters]
     # Parameters required for content purge.
     # To construct, see NOTES section for CONTENTFILEPATH properties and create a hash table.
     ${ContentFilePath},

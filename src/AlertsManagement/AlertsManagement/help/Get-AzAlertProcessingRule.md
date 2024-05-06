@@ -14,7 +14,8 @@ Get AlertProcessing Rules Information
 
 ### ListAlertProcessingRules (Default)
 ```
-Get-AzAlertProcessingRule [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAlertProcessingRule [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### AlertProcessingRuleByName
@@ -31,7 +32,8 @@ Get-AzAlertProcessingRule -ResourceGroupName <String> [-DefaultProfile <IAzureCo
 
 ### ResourceId
 ```
-Get-AzAlertProcessingRule -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzAlertProcessingRule -ResourceId <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

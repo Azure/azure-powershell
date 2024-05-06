@@ -81,7 +81,7 @@ Parameters required for content purge.
 To construct, see NOTES section for CONTENTFILEPATH properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IPurgeParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters
 Parameter Sets: Purge1, PurgeViaIdentity1
 Aliases:
 
@@ -266,7 +266,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IPurgeParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IPurgeParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 

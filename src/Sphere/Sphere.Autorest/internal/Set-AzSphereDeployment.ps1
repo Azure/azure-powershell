@@ -16,10 +16,10 @@
 
 <#
 .Synopsis
-Create a Deployment.
+Update a Deployment.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 .Description
-Create a Deployment.
+Update a Deployment.
 '.default' and '.unassigned' are system defined values and cannot be used for product or device group name.
 .Example
 {{ Add code here }}

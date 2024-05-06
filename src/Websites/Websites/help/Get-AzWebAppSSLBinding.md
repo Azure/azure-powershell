@@ -16,7 +16,8 @@ Gets an Azure Web App certificate SSL binding.
 ### S1
 ```
 Get-AzWebAppSSLBinding [[-Name] <String>] [-ResourceGroupName] <String> [-WebAppName] <String>
- [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [[-Slot] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### S2
@@ -166,5 +167,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [Remove-AzWebAppSSLBinding](./Remove-AzWebAppSSLBinding.md)
 
 [Get-AzWebApp](./Get-AzWebApp.md)
-
-

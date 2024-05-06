@@ -21,6 +21,11 @@
 -->
 ## Upcoming Release
 
+## Version 7.3.0
+* Added cmdlet `Invoke-AzSpotPlacementRecommender`.
+* Fixed `Update-AzCapacityReservationGroup` to remove Subscriptions from SharingProfile.
+* Added new optional parameter `SecureVMGuestStateSAS` to cmdlet `Grant-AzDiskAccess`.
+
 ## Version 7.2.0
 * Added parameters `-scriptUriManagedIdentity`, `-outputBlobManagedIdentity`, `-errorBlobMangedIdentity`, and `-TreatFailureAsDeploymentFailure` to cmdlets `Set-AzVmRunCommand` and `Set-AzVmssRunCommand`. 
 * Added new parameter `-EnableAutomaticOSUpgrade` to `New-AzVmss` cmdlet.
@@ -34,6 +39,7 @@
   `Get-AzVmss` will no longer allow empty values to `ResourceGroupName` and `VMScaleSetName` to avoid a bug where it will just return nothing.
 * Added a new parameter `-SharingProfile` to `New-AzCapacityReservationGroup` and `Update-AzCapacityReservationGroup`.
 * Added the new parameter `SourceImageVMId` to the `New-AzGalleryImageVersion` cmdlet. Also added some error messages for this new parameter and the existing parameter `SourceImageId`. 
+* Updated parameter `-TargetRegion` in `New-AzGalleryImageVersion` and `Update-AzGalleryImageVersion` to accept `ExcludeFromLatest` field. 
 
 ## Version 7.1.2
 * Fixed `New-AzVM` when a source image is specified to avoid an error on the `Version` value.

@@ -339,9 +339,6 @@
           <TableColumnHeader>
             <Label>Location</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -354,9 +351,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>Location</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -522,9 +516,6 @@
           <TableColumnHeader>
             <Label>SingleSignOnUrl</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -540,9 +531,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>SingleSignOnUrl</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -646,9 +634,6 @@
           <TableColumnHeader>
             <Label>ProvisioningState</Label>
           </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>ResourceGroupName</Label>
-          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
@@ -658,9 +643,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <PropertyName>ProvisioningState</PropertyName>
-              </TableColumnItem>
-              <TableColumnItem>
-                <PropertyName>ResourceGroupName</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

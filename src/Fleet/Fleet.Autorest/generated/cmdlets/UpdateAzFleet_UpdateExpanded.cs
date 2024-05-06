@@ -10,15 +10,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
     using Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Cmdlets;
     using System;
 
-    /// <summary>Update a Fleet</summary>
+    /// <summary>Update a Fleet.</summary>
     /// <remarks>
-    /// [OpenAPI] Update=>PATCH:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}"
+    /// [OpenAPI] Get=>GET:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsData.Update, @"AzFleet_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleet))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Update a Fleet")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Description(@"Update a Fleet.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Generated]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.HttpPath(Path = "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/fleets/{fleetName}", ApiVersion = "2023-10-15")]
     public partial class UpdateAzFleet_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IEventListener,
         Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IContext
@@ -43,8 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
         /// <summary>A buffer to record first returned object in response.</summary>
         private object _firstResponse = null;
 
-        /// <summary>Properties of a Fleet that can be patched.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetPatch _propertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.FleetPatch();
+        /// <summary>The Fleet resource.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleet _resourceBody = new Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.Fleet();
 
         /// <summary>
         /// A flag to tell whether it is the first returned object in a call. Zero means no response yet. One means 1 returned object.
@@ -78,6 +78,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ParameterCategory.Azure)]
         public global::System.Management.Automation.PSObject DefaultProfile { get; set; }
 
+        /// <summary>Decides if enable a system assigned identity for the resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Decides if enable a system assigned identity for the resource.")]
+        public System.Boolean? EnableSystemAssignedIdentity { get; set; }
+
         /// <summary>Accessor for extensibleParameters.</summary>
         public global::System.Collections.Generic.IDictionary<global::System.String,global::System.Object> ExtensibleParameters { get => _extensibleParameters ; }
 
@@ -93,20 +97,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ParameterCategory.Runtime)]
         public Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
-        /// <summary>
-        /// Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
-        /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).",
-        SerializedName = @"type",
-        PossibleTypes = new [] { typeof(string) })]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.PSArgumentCompleterAttribute("None", "SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned")]
-        public string IdentityType { get => _propertiesBody.IdentityType ?? null; set => _propertiesBody.IdentityType = value; }
-
         /// <summary>Backing field for <see cref="IfMatch" /> property.</summary>
         private string _ifMatch;
 
@@ -120,6 +110,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ParameterCategory.Header)]
         public string IfMatch { get => this._ifMatch; set => this._ifMatch = value; }
+
+        /// <summary>Backing field for <see cref="IfNoneMatch" /> property.</summary>
+        private string _ifNoneMatch;
+
+        /// <summary>The request should only proceed if no entity matches this string.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The request should only proceed if no entity matches this string.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The request should only proceed if no entity matches this string.",
+        SerializedName = @"If-None-Match",
+        PossibleTypes = new [] { typeof(string) })]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ParameterCategory.Header)]
+        public string IfNoneMatch { get => this._ifNoneMatch; set => this._ifNoneMatch = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -218,24 +222,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags.",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetPatchTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IFleetPatchTags Tag { get => _propertiesBody.Tag ?? null /* object */; set => _propertiesBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.ITrackedResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.ITrackedResourceTags Tag { get => _resourceBody.Tag ?? null /* object */; set => _resourceBody.Tag = value; }
 
         /// <summary>
-        /// The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM
-        /// resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-        /// The dictionary values can be empty objects ({}) in requests.
+        /// The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in
+        /// the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
         /// </summary>
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ExportAs(typeof(global::System.Collections.Hashtable))]
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Fleet.ParameterCategory.Body)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Info(
-        Required = false,
-        ReadOnly = false,
-        Description = @"The set of user assigned identities associated with the resource. The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}. The dictionary values can be empty objects ({}) in requests.",
-        SerializedName = @"userAssignedIdentities",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUserAssignedIdentities) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.IUserAssignedIdentities UserAssignedIdentity { get => _propertiesBody.IdentityUserAssignedIdentity ?? null /* object */; set => _propertiesBody.IdentityUserAssignedIdentity = value; }
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The array of user assigned identities associated with the resource. The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'")]
+        [global::System.Management.Automation.AllowEmptyCollection]
+        public string[] UserAssignedIdentity { get; set; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -296,10 +292,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone._propertiesBody = this._propertiesBody;
+            clone._resourceBody = this._resourceBody;
             clone.SubscriptionId = this.SubscriptionId;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.IfMatch = this.IfMatch;
+            clone.IfNoneMatch = this.IfNoneMatch;
             clone.Name = this.Name;
             return clone;
         }
@@ -315,11 +312,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
             var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.Fleet.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
             if (telemetryInfo != null)
             {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
                 telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
                 telemetryInfo.TryGetValue("InvocationName", out var invocationName);
-                if (!string.IsNullOrEmpty(sanitizedProperties))
+                if (showSecretsWarning == "true")
                 {
-                    WriteWarning($"The output of cmdlet {invocationName ?? "Unknown"} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
                 }
             }
         }
@@ -437,6 +442,44 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
             }
         }
 
+        private void PreProcessManagedIdentityParametersWithGetResult()
+        {
+            bool supportsSystemAssignedIdentity = (true == this.EnableSystemAssignedIdentity || null == this.EnableSystemAssignedIdentity && true == _resourceBody?.IdentityType?.Contains("SystemAssigned"));
+            bool supportsUserAssignedIdentity = false;
+            if (this.UserAssignedIdentity?.Length > 0)
+            {
+                // calculate UserAssignedIdentity
+                _resourceBody.IdentityUserAssignedIdentity.Clear();
+                foreach( var id in this.UserAssignedIdentity )
+                {
+                    _resourceBody.IdentityUserAssignedIdentity.Add(id, new Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.UserAssignedIdentity());
+                }
+            }
+            supportsUserAssignedIdentity = true == this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && this.UserAssignedIdentity?.Length > 0 ||
+                    true != this.MyInvocation?.BoundParameters?.ContainsKey("UserAssignedIdentity") && true == _resourceBody.IdentityType?.Contains("UserAssigned");
+            if (!supportsUserAssignedIdentity)
+            {
+                _resourceBody.IdentityUserAssignedIdentity = null;
+            }
+            // calculate IdentityType
+            if ((supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _resourceBody.IdentityType = "SystemAssigned,UserAssigned";
+            }
+            else if ((supportsUserAssignedIdentity && !supportsSystemAssignedIdentity))
+            {
+                _resourceBody.IdentityType = "UserAssigned";
+            }
+            else if ((!supportsUserAssignedIdentity && supportsSystemAssignedIdentity))
+            {
+                _resourceBody.IdentityType = "SystemAssigned";
+            }
+            else
+            {
+                _resourceBody.IdentityType = "None";
+            }
+        }
+
         /// <summary>Performs execution of the command.</summary>
         protected override void ProcessRecord()
         {
@@ -445,7 +488,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
             try
             {
                 // work
-                if (ShouldProcess($"Call remote 'FleetsUpdate' operation"))
+                if (ShouldProcess($"Call remote 'FleetsCreateOrUpdate' operation"))
                 {
                     if (true == MyInvocation?.BoundParameters?.ContainsKey("AsJob"))
                     {
@@ -509,12 +552,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.FleetsUpdate(SubscriptionId, ResourceGroupName, Name, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, _propertiesBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeUpdate);
+                    _resourceBody = await this.Client.FleetsGetWithResult(SubscriptionId, ResourceGroupName, Name, this, Pipeline);
+                    this.PreProcessManagedIdentityParametersWithGetResult();
+                    this.Update_resourceBody();
+                    await this.Client.FleetsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null, this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null, _resourceBody, onOk, onDefault, this, Pipeline, Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeCreate|Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.SerializationMode.IncludeUpdate);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Fleet.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,Name=Name})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,IfMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfMatch") ? IfMatch : null,IfNoneMatch=this.InvocationInformation.BoundParameters.ContainsKey("IfNoneMatch") ? IfNoneMatch : null,Name=Name})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -539,6 +585,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Fleet.Cmdlets
         public UpdateAzFleet_UpdateExpanded()
         {
 
+        }
+
+        private void Update_resourceBody()
+        {
+            if ((bool)(true == this.MyInvocation?.BoundParameters.ContainsKey("Tag")))
+            {
+                this.Tag = (Microsoft.Azure.PowerShell.Cmdlets.Fleet.Models.ITrackedResourceTags)(this.MyInvocation?.BoundParameters["Tag"]);
+            }
         }
 
         /// <param name="sendToPipeline"></param>
