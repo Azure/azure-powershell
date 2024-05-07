@@ -21,7 +21,7 @@
 -->
 ## Upcoming Release
 * Added `Etag` property to PSVirtualMachine and PSVirtualMachineScaleSet objects.   
-* Added parameters `-IfMatch` and `-IfNoneMatch` to `Update-AzVM`, `Update-AzVmss`, `New-AzVm`, `New-AzVmss`, `New-AzVmConfig`, and `New-AzVmssConfig` cmdlets.
+* Added parameters `-IfMatch` and `-IfNoneMatch` to `Update-AzVM`, `Update-AzVmss`, `New-AzVm`, and `New-AzVmss`, cmdlets.
 * Added cmdlet `Invoke-AzSpotPlacementRecommender`.
 * Fixed `Update-AzCapacityReservationGroup` to remove Subscriptions from SharingProfile.
 
