@@ -18,12 +18,12 @@ Describe 'Remove-AzEventHubPrivateEndpointConnection' {
     $listOfPrivateEndpoints = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
     It 'Delete'  {
         Remove-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[0].Name
-        { Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[0].Name } | Should -Throw
+        { Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[0].Name -ErrorAction Stop } | Should -Throw
     }
 
     It 'DeleteViaIdentity'  {
         $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[1].Name
         Remove-AzEventHubPrivateEndpointConnection -InputObject $privateEndpoint
-        { Get-AzEventHubPrivateEndpointConnection -InputObject $privateEndpoint } | Should -Throw
+        { Get-AzEventHubPrivateEndpointConnection -InputObject $privateEndpoint -ErrorAction Stop } | Should -Throw
     }
 }
