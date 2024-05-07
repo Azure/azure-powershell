@@ -8,50 +8,41 @@ schema: 2.0.0
 # Update-AzStorageActionTask
 
 ## SYNOPSIS
-Update storage task properties
+Asynchronously creates a new storage task resource with the specified parameters.
+If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated.
+If a storage task is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
 Update-AzStorageActionTask -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Description <String>] [-ElseOperation <IStorageTaskOperation[]>] [-Enabled] [-IdentityType <String>]
- [-IfCondition <String>] [-IfOperation <IStorageTaskOperation[]>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Description <String>] [-ElseOperation <IStorageTaskOperation[]>] [-Enabled]
+ [-EnableSystemAssignedIdentity <Boolean?>] [-IfCondition <String>] [-IfOperation <IStorageTaskOperation[]>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzStorageActionTask -InputObject <IStorageActionIdentity> [-Description <String>]
- [-ElseOperation <IStorageTaskOperation[]>] [-Enabled] [-IdentityType <String>] [-IfCondition <String>]
- [-IfOperation <IStorageTaskOperation[]>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaJsonFilePath
-```
-Update-AzStorageActionTask -Name <String> -ResourceGroupName <String> -JsonFilePath <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### UpdateViaJsonString
-```
-Update-AzStorageActionTask -Name <String> -ResourceGroupName <String> -JsonString <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-ElseOperation <IStorageTaskOperation[]>] [-Enabled] [-EnableSystemAssignedIdentity <Boolean?>]
+ [-IfCondition <String>] [-IfOperation <IStorageTaskOperation[]>] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update storage task properties
+Asynchronously creates a new storage task resource with the specified parameters.
+If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated.
+If a storage task is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
 
 ## EXAMPLES
 
 ### Example 1: Update storage action task with conditions
 ```powershell
 $elseoperation = New-AzStorageActionTaskOperationObject -Name DeleteBlob -OnFailure break -OnSuccess continue
-Update-AzStorageActionTask -Name mytask1 -ResourceGroupName ps1-test -IfCondition "[[equals(AccessTier, 'Cool')]]" -IfOperation $ifoperation -ElseOperation $elseoperation
+Update-AzStorageActionTask -Name mytask1 -ResourceGroupName ps1-test -ElseOperation $elseoperation
 ```
 
 ```output
@@ -82,6 +73,99 @@ Location                     : eastus2euap
 Name                         : mytask1
 ProvisioningState            : Succeeded
 ResourceGroupName            : ps1-test
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Tag                          : {
+                               }
+TaskVersion                  : 1
+Type                         : Microsoft.StorageActions/storageTasks
+```
+
+This command updates storage action task.
+
+### Example 2: Update storage action task with conditions
+```powershell
+$ifOperation = New-AzStorageActionTaskOperationObject -Name SetBlobTier -Parameter @{"tier"= "Hot"} -OnFailure break -OnSuccess continue
+Update-AzStorageActionTask -Name mytask3 -ResourceGroupName joyer-test -IfCondition "[[equals(AccessTier, 'Hot')]]" -IfOperation $ifoperation
+```
+
+```output
+CreationTimeInUtc            : 4/12/2024 9:56:05 AM
+Description                  : my storage task 3
+ElseOperation                : {{
+                                 "name": "DeleteBlob",
+                                 "onSuccess": "continue",
+                                 "onFailure": "break"
+                               }}
+Enabled                      : True
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/myta 
+                               sk3
+IdentityPrincipalId          : ea96114b-ac3c-4350-87f5-4db5a91c656c
+IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
+IdentityType                 : SystemAssigned
+IdentityUserAssignedIdentity : {
+                               }
+IfCondition                  : [[equals(AccessTier, 'Hot')]]
+IfOperation                  : {{
+                                 "name": "SetBlobTier",
+                                 "parameters": {
+                                   "tier": "Hot"
+                                 },
+                                 "onSuccess": "continue",
+                                 "onFailure": "break"
+                               }}
+Location                     : eastus2euap
+Name                         : mytask3
+ProvisioningState            : Succeeded
+ResourceGroupName            : joyer-test
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Tag                          : {
+                               }
+TaskVersion                  : 1
+Type                         : Microsoft.StorageActions/storageTasks
+```
+
+This command updates storage action task.
+
+### Example 3: Update storage action task with system assigned
+```powershell
+Update-AzStorageActionTask -Name mytask1 -ResourceGroupName joyer-test -EnableSystemAssignedIdentity 1
+```
+
+```output
+CreationTimeInUtc            : 2/27/2024 6:48:18 AM
+Description                  : my storage task
+ElseOperation                : 
+Enabled                      : True
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/myta 
+                               sk1
+IdentityPrincipalId          : 66aefa04-060e-4eeb-9342-7228e31d1596
+IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
+IdentityType                 : SystemAssigned
+IdentityUserAssignedIdentity : {
+                               }
+IfCondition                  : [[equals(AccessTier, 'Cool')]]
+IfOperation                  : {{
+                                 "name": "SetBlobTier",
+                                 "parameters": {
+                                   "tier": "Hot"
+                                 },
+                                 "onSuccess": "continue",
+                                 "onFailure": "break"
+                               }}
+Location                     : eastus2euap
+Name                         : mytask1
+ProvisioningState            : Succeeded
+ResourceGroupName            : joyer-test
 SystemDataCreatedAt          : 
 SystemDataCreatedBy          : 
 SystemDataCreatedByType      : 
@@ -134,7 +218,7 @@ Text that describes the purpose of the storage task
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -146,11 +230,10 @@ Accept wildcard characters: False
 
 ### -ElseOperation
 List of operations to execute in the else block
-To construct, see NOTES section for ELSEOPERATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -165,7 +248,7 @@ Storage Task is enabled when set to true and disabled when set to false
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -175,12 +258,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: System.Nullable`1[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -195,7 +278,7 @@ The condition predicate which is composed of object properties, eg: blob and con
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -207,11 +290,10 @@ Accept wildcard characters: False
 
 ### -IfOperation
 List of operations to execute when the condition predicate satisfies.
-To construct, see NOTES section for IFOPERATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -223,7 +305,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity
@@ -237,43 +318,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -JsonFilePath
-Path of Json file supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonFilePath
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -JsonString
-Json string supplied to the Update operation
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateViaJsonString
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
 The name of the storage task within the specified resource group.
 Storage task names must be between 3 and 18 characters in length and use numbers and lower-case letters only.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases: StorageTaskName
 
 Required: True
@@ -304,7 +355,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -320,7 +371,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaJsonFilePath, UpdateViaJsonString
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -331,14 +382,11 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Gets or sets a list of key value pairs that describe the resource.
-These tags can be used in viewing and grouping this resource (across resource groups).
-A maximum of 15 tags can be provided for a resource.
-Each tag must have a key no greater in length than 128 characters and a value no greater in length than 256 characters.
+Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -349,13 +397,12 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False

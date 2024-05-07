@@ -26,7 +26,7 @@ Runs the input conditions against input object metadata properties and designate
 ### [New-AzStorageActionTask](New-AzStorageActionTask.md)
 Asynchronously creates a new storage task resource with the specified parameters.
 If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated.
-If a storage task is already created and a subsequent Create request is issued with the exact same set of properties, the request will succeed.
+If a storage task is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
 
 ### [New-AzStorageActionTaskOperationObject](New-AzStorageActionTaskOperationObject.md)
 Create an in-memory object for StorageTaskOperation.
@@ -41,5 +41,7 @@ Create an in-memory object for StorageTaskPreviewKeyValueProperties.
 Delete the storage task resource.
 
 ### [Update-AzStorageActionTask](Update-AzStorageActionTask.md)
-Update storage task properties
+Asynchronously creates a new storage task resource with the specified parameters.
+If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated.
+If a storage task is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
 

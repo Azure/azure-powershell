@@ -54,7 +54,6 @@ This command create a blob property object.
 
 ### -Metadata
 metadata key value pairs to be tested for a match against the provided condition.
-To construct, see NOTES section for METADATA properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[]
@@ -85,7 +84,6 @@ Accept wildcard characters: False
 
 ### -Property
 properties key value pairs to be tested for a match against the provided condition.
-To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[]
@@ -101,7 +99,6 @@ Accept wildcard characters: False
 
 ### -Tag
 tags key value pairs to be tested for a match against the provided condition.
-To construct, see NOTES section for TAG properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[]

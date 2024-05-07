@@ -17,8 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzStorageActionTask'))
 Describe 'Update-AzStorageActionTask' {
     It 'UpdateExpanded' {
         {
-            $elseoperation = New-AzStorageActionTaskOperationObject -Name DeleteBlob -OnFailure break -OnSuccess continue
-            Update-AzStorageActionTask -Name mytask1 -ResourceGroupName ps1-test -IfCondition "[[equals(AccessTier, 'Cool')]]" -IfOperation $ifoperation -ElseOperation $elseoperation
+            $elseoperation = New-AzStorageActionTaskOperationObject -Name SetBlobTier -OnFailure break -OnSuccess continue -Parameter @{"tier"= "Hot"}
+            Update-AzStorageActionTask -Name $env.testTaskName1 -ResourceGroupName $env.resourceGroup -ElseOperation $elseoperation
         } | Should -Not -Throw
     }
 

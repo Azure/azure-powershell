@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzStorageActionTasksRepor
 Describe 'Get-AzStorageActionTasksReport' {
     It 'List' {
         {
-            $report = Get-AzStorageActionTasksReport -ResourceGroupName joyer-test -StorageTaskName mytask1
+            $report = Get-AzStorageActionTasksReport -ResourceGroupName $env.resourceGroup -StorageTaskName $env.assignmentTask
             $report.count | Should -BeGreaterThan 1
         } | Should -Not -Throw
     }

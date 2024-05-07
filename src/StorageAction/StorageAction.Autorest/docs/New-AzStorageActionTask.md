@@ -10,25 +10,17 @@ schema: 2.0.0
 ## SYNOPSIS
 Asynchronously creates a new storage task resource with the specified parameters.
 If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated.
-If a storage task is already created and a subsequent Create request is issued with the exact same set of properties, the request will succeed.
+If a storage task is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
-New-AzStorageActionTask -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-Description <String>] [-ElseOperation <IStorageTaskOperation[]>] [-Enabled]
- [-IdentityType <String>] [-IfCondition <String>] [-IfOperation <IStorageTaskOperation[]>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+New-AzStorageActionTask -Name <String> -ResourceGroupName <String> -Description <String> -Enabled
+ -IfCondition <String> -IfOperation <IStorageTaskOperation[]> -Location <String> [-SubscriptionId <String>]
+ [-ElseOperation <IStorageTaskOperation[]>] [-EnableSystemAssignedIdentity] [-Tag <Hashtable>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzStorageActionTask -InputObject <IStorageActionIdentity> -Location <String> [-Description <String>]
- [-ElseOperation <IStorageTaskOperation[]>] [-Enabled] [-IdentityType <String>] [-IfCondition <String>]
- [-IfOperation <IStorageTaskOperation[]>] [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaJsonFilePath
@@ -48,14 +40,14 @@ New-AzStorageActionTask -Name <String> -ResourceGroupName <String> -JsonString <
 ## DESCRIPTION
 Asynchronously creates a new storage task resource with the specified parameters.
 If a storage task is already created and a subsequent create request is issued with different properties, the storage task properties will be updated.
-If a storage task is already created and a subsequent Create request is issued with the exact same set of properties, the request will succeed.
+If a storage task is already created and a subsequent create or update request is issued with the exact same set of properties, the request will succeed.
 
 ## EXAMPLES
 
 ### Example 1: Create storage task with if operation
 ```powershell
 $ifoperation = New-AzStorageActionTaskOperationObject -Name SetBlobTier -Parameter @{"tier"= "Hot"} -OnFailure break -OnSuccess continue
-New-AzStorageActionTask -Name mytask1 -ResourceGroupName ps1-test -Location eastus2euap -Enabled -Description 'my storage task' -IfCondition "[[equals(AccessTier, 'Cool')]]" -IfOperation $ifoperation -IdentityType None
+New-AzStorageActionTask -Name mytask1 -ResourceGroupName ps1-test -Location eastus2euap -Enabled -Description 'my storage task' -IfCondition "[[equals(AccessTier, 'Cool')]]" -IfOperation $ifoperation
 ```
 
 ```output
@@ -97,6 +89,58 @@ Type                         : Microsoft.StorageActions/storageTasks
 The first command creates a if operation object.
 The second command creates a storage task.
 
+### Example 2: Create storage task with if and else operation
+```powershell
+$ifOperation = New-AzStorageActionTaskOperationObject -Name SetBlobTier -Parameter @{"tier"= "Cool"} -OnFailure break -OnSuccess continue
+$elseoperation = New-AzStorageActionTaskOperationObject -Name DeleteBlob -OnFailure break -OnSuccess continue
+New-AzStorageActionTask -Name mytask3 -ResourceGroupName joyer-test -Location eastus2euap -Enabled -Description 'my storage task 3' -IfCondition "[[equals(AccessTier, 'Cool')]]" -IfOperation $ifoperation -ElseOperation $elseoperation -EnableSystemAssignedIdentity
+```
+
+```output
+CreationTimeInUtc            : 4/12/2024 9:56:05 AM
+Description                  : my storage task 3
+ElseOperation                : {{
+                                 "name": "DeleteBlob",
+                                 "onSuccess": "continue",
+                                 "onFailure": "break"
+                               }}
+Enabled                      : True
+Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/joyer-test/providers/Microsoft.StorageActions/storageTasks/myta 
+                               sk3
+IdentityPrincipalId          : ea96114b-ac3c-4350-87f5-4db5a91c656c
+IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
+IdentityType                 : SystemAssigned
+IdentityUserAssignedIdentity : {
+                               }
+IfCondition                  : [[equals(AccessTier, 'Cool')]]
+IfOperation                  : {{
+                                 "name": "SetBlobTier",
+                                 "parameters": {
+                                   "tier": "Cool"
+                                 },
+                                 "onSuccess": "continue",
+                                 "onFailure": "break"
+                               }}
+Location                     : eastus2euap
+Name                         : mytask3
+ProvisioningState            : Succeeded
+ResourceGroupName            : joyer-test
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Tag                          : {
+                               }
+TaskVersion                  : 1
+Type                         : Microsoft.StorageActions/storageTasks
+```
+
+The first command creates a if operation object.
+The second command creates a else operation object.
+This third command creates a storage task.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -135,10 +179,10 @@ Text that describes the purpose of the storage task
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -147,11 +191,10 @@ Accept wildcard characters: False
 
 ### -ElseOperation
 List of operations to execute in the else block
-To construct, see NOTES section for ELSEOPERATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -166,22 +209,22 @@ Storage Task is enabled when set to true and disabled when set to false
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
+### -EnableSystemAssignedIdentity
+Decides if enable a system assigned identity for the resource.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -196,10 +239,10 @@ The condition predicate which is composed of object properties, eg: blob and con
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -208,33 +251,16 @@ Accept wildcard characters: False
 
 ### -IfOperation
 List of operations to execute when the condition predicate satisfies.
-To construct, see NOTES section for IFOPERATION properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperation[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity
-Parameter Sets: CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -273,7 +299,7 @@ The geo-location where the resource lives
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: True
@@ -289,7 +315,7 @@ Storage task names must be between 3 and 18 characters in length and use numbers
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases: StorageTaskName
 
 Required: True
@@ -320,7 +346,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -336,7 +362,7 @@ The value must be an UUID.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaJsonFilePath, CreateViaJsonString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -351,7 +377,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -362,13 +388,12 @@ Accept wildcard characters: False
 ```
 
 ### -UserAssignedIdentity
-The set of user assigned identities associated with the resource.
-The userAssignedIdentities dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.
-The dictionary values can be empty objects ({}) in requests.
+The array of user assigned identities associated with the resource.
+The elements in array will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}.'
 
 ```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.String[]
+Parameter Sets: CreateExpanded
 Aliases:
 
 Required: False
@@ -413,8 +438,6 @@ Accept wildcard characters: False
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
-
-### Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity
 
 ## OUTPUTS
 

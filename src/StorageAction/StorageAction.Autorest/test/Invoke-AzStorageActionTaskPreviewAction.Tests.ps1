@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzStorageActionTaskPre
 }
 
 Describe 'Invoke-AzStorageActionTaskPreviewAction' {
-    It 'PreviewExpanded' -skip {
+    It 'PreviewExpanded' {
         {
             $creationTime = New-AzStorageActionTaskPreviewKeyValuePropertiesObject -Key "Creation-Time" -Value "Wed, 07 Jun 2023 05:23:29 GMT"
             $lastModified = New-AzStorageActionTaskPreviewKeyValuePropertiesObject -Key "Last-Modified" -Value "Wed, 07 Jun 2023 05:23:29 GMT"
@@ -37,7 +37,7 @@ Describe 'Invoke-AzStorageActionTaskPreviewAction' {
             $tagCount = New-AzStorageActionTaskPreviewKeyValuePropertiesObject -Key "TagCount" -Value "1"
             $metadata = New-AzStorageActionTaskPreviewKeyValuePropertiesObject -Key "mKey1" -Value "mValue1"
             $tags = New-AzStorageActionTaskPreviewKeyValuePropertiesObject -Key "tKey1" -Value "tValue1"
-            $blob1 = New-AzStorageActionTaskPreviewBlobPropertiesObject -Name 'folder1/file1.txt' -Metadata $metadata -Property $creationTime,$lastModified,$etag,$contentLength,$contentType,$contentEncoding,$contentLanguage,$contentCRC64,$contentMD5,$cacheControl,$contentDisposition,$blobType,$accessTier,$accessTierInferred,$leaseStatus,$leaseState,$serverEncrypted,$tagCount -Tag $tags
+            $blob1 = New-AzStorageActionTaskPreviewBlobPropertiesObject -Name 'folder1/file1.txt' -Metadata $metadata -Tag $tags -Property $creationTime,$lastModified,$etag,$contentLength,$contentType,$contentEncoding,$contentLanguage,$contentCRC64,$contentMD5,$cacheControl,$contentDisposition,$blobType,$accessTier,$accessTierInferred,$leaseStatus,$leaseState,$serverEncrypted,$tagCount
 
             $creationTime2 = New-AzStorageActionTaskPreviewKeyValuePropertiesObject -Key "Creation-Time" -Value "Wed, 06 Jun 2023 05:23:29 GMT"
             $lastModified2 = New-AzStorageActionTaskPreviewKeyValuePropertiesObject -Key "Last-Modified" -Value "Wed, 06 Jun 2023 05:23:29 GMT"
@@ -47,7 +47,7 @@ Describe 'Invoke-AzStorageActionTaskPreviewAction' {
             $blob2 = New-AzStorageActionTaskPreviewBlobPropertiesObject -Name 'folder2/file1.txt' -Metadata $metadata2 -Property $creationTime2,$lastModified2,$etag2 -Tag $tags2
             
             $conmetadata = New-AzStorageActionTaskPreviewKeyValuePropertiesObject -Key "mContainerKey1" -Value "mContainerValue1"
-            Invoke-AzStorageActionTaskPreviewAction -Location eastus2euap -ActionElseBlockExist -Blob $blob1,$blob2 -ContainerMetadata $conmetadata -ContainerName firstContainer -IfCondition "[[equals(AccessTier, 'Hot')]]"
+            Invoke-AzStorageActionTaskPreviewAction -Location $env.region -ActionElseBlockExist -Blob $blob1,$blob2 -ContainerMetadata $conmetadata -ContainerName firstContainer -IfCondition "[[equals(AccessTier, 'Hot')]]"
         } | Should -Not -Throw
     }
 

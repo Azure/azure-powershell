@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStorageActionTask'))
 Describe 'Remove-AzStorageActionTask' {
     It 'Delete' {
         {
-            Remove-AzStorageActionTask -Name mytask2 -ResourceGroupName joyer-test
+            Remove-AzStorageActionTask -Name $env.testTaskName2 -ResourceGroupName $env.resourceGroup
         } | Should -Not -Throw
     }
 

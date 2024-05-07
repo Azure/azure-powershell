@@ -45,8 +45,36 @@ function setupEnv() {
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
 
-    $ifoperation = New-AzStorageActionTaskOperationObject -Name SetBlobTier -Parameter @{"tier"= "Hot"} -OnFailure break -OnSuccess continue
-    New-AzStorageActionTask -Name mytask1 -ResourceGroupName joyer-test -Location eastus2euap -Enabled -Description 'my storage task' -IfCondition "[[equals(AccessTier, 'Cool')]]" -IfOperation $ifoperation -IdentityType None
+    $env.resourceGroup = 'joyer-test'
+    $env.region = 'eastus2euap'
+    $env.testTaskName1 = 'storageactiontest1'
+    $env.testTaskName2 = 'storageactiontest2'
+    $env.assignmentTask = 'mytask1'
+    
+    Write-Host 'Start to create test resource group' $env.resourceGroup
+    try {
+        Get-AzResourceGroup -Name $env.resourceGroup -ErrorAction Stop
+        Write-Host 'Get created group'
+    } catch {
+        New-AzResourceGroup -Name $env.resourceGroup -Location $env.region
+    }
+
+    # Make sure the user assigned identity is registered
+    # Get-AzProviderFeature -ProviderNamespace "Microsoft.StorageActions" -ListAvailable
+    # FeatureName          ProviderName             RegistrationState
+    # -----------          ------------             -----------------
+    # UserAssignedIdentity Microsoft.StorageActions NotRegistered
+    # AzureStorageTask     Microsoft.StorageActions Registered
+    # Register-AzProviderFeature -ProviderNamespace "Microsoft.StorageActions" -FeatureName "UserAssignedIdentity"
+
+    try {
+        $null = Get-AzStorageActionTask -Name $env.testTaskName1 -ResourceGroupName $env.resourceGroup -ErrorAction Stop
+    }
+    catch {
+        $ifoperation = New-AzStorageActionTaskOperationObject -Name SetBlobTier -Parameter @{"tier"= "Hot"} -OnFailure break -OnSuccess continue
+        $null = New-AzStorageActionTask -Name $env.testTaskName1 -ResourceGroupName $env.resourceGroup -Location $env.region -Enabled -Description 'test storage task 1' -IfCondition "[[equals(AccessTier, 'Cool')]]" -IfOperation $ifoperation
+    }
+    #Add assignment and report without command 
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -56,5 +84,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzStorageActionTask -Name $env.testTaskName1 -ResourceGroupName $env.resourceGroup
 }
 

@@ -3,9 +3,6 @@
 This directory contains the PowerShell module for the StorageAction service.
 
 ---
-## Status
-[![Az.StorageAction](https://img.shields.io/powershellgallery/v/Az.StorageAction.svg?style=flat-square&label=Az.StorageAction "Az.StorageAction")](https://www.powershellgallery.com/packages/Az.StorageAction/)
-
 ## Info
 - Modifiable: yes
 - Generated: all
@@ -32,6 +29,7 @@ For information on how to develop for `Az.StorageAction`, see [how-to.md](how-to
 ```yaml
 # pin the swagger version by using the commit id instead of branch name
 commit: 13f09225c7d1cf42c55536e41c090bb8438cebd7
+tag: package-2023-01-01
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../../readme.azure.noprofile.md
@@ -54,6 +52,9 @@ title: StorageAction
 subject-prefix: $(service-name)
 
 directive:
+  - from: swagger-document
+    where: $.definitions.StorageTask
+    transform: $['required'] = ['identity','properties']
 #   # Following are common directives which are normally required in all the RPs
 #   # 1. Remove the unexpanded parameter set
 #   # 2. For New-* cmdlets, ViaIdentity is not required
@@ -61,6 +62,10 @@ directive:
   - where:
       variant: ^(Create|Update|Preview)(?!.*?(Expanded|JsonFilePath|JsonString))
     remove: true
+  - where:
+      variant: ^CreateViaIdentity.*$
+    remove: true
+  # Rename commands
   - where:
       subject: StorageTask
     set:
@@ -78,6 +83,7 @@ directive:
       subject: StorageTasksReport
     set:
       subject: TasksReport
+  # Add model
   - model-cmdlet:
     - model-name: StorageTaskOperation
       cmdlet-name: New-AzStorageActionTaskOperationObject
@@ -85,8 +91,4 @@ directive:
       cmdlet-name: New-AzStorageActionTaskPreviewBlobPropertiesObject
     - model-name: StorageTaskPreviewKeyValueProperties
       cmdlet-name: New-AzStorageActionTaskPreviewKeyValuePropertiesObject
-  - where:
-      parameter-name: IdentityUserAssignedIdentity
-    set:
-      parameter-name: UserAssignedIdentity
 ```

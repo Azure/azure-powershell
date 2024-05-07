@@ -229,7 +229,6 @@ Accept wildcard characters: False
 
 ### -Blob
 Preview action container properties to be tested for a match with the provided condition.
-To construct, see NOTES section for BLOB properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewBlobProperties[]
@@ -245,7 +244,6 @@ Accept wildcard characters: False
 
 ### -ContainerMetadata
 metadata key value pairs to be tested for a match against the provided condition.
-To construct, see NOTES section for CONTAINERMETADATA properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskPreviewKeyValueProperties[]
@@ -307,7 +305,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageActionIdentity

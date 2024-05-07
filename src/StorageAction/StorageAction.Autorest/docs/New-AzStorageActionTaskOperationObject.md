@@ -87,7 +87,6 @@ Accept wildcard characters: False
 
 ### -Parameter
 Key-value parameters for the operation.
-To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.StorageAction.Models.IStorageTaskOperationParameters

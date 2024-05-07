@@ -15,10 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzStorageActionTask'))
 }
 
 Describe 'New-AzStorageActionTask' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         {
-            $ifOperation = New-AzStorageActionTaskOperationObject -Name DeleteBlob -OnFailure break -OnSuccess continue
-            New-AzStorageActionTask -Name mytask1 -ResourceGroupName joyer-test -Location eastus2euap -Enabled -Description 'my storage task' -IfCondition "[[equals(AccessTier, 'Cool')]]" -IfOperation $ifoperation -IdentityType None
+            $ifOperation = New-AzStorageActionTaskOperationObject -Name SetBlobTier -Parameter @{"tier"= "Hot"} -OnFailure break -OnSuccess continue
+            New-AzStorageActionTask -Name $env.testTaskName2 -ResourceGroupName $env.resourceGroup -Location $env.region -Enabled -Description 'test storage task 2' -IfCondition "[[equals(AccessTier, 'Cool')]]" -IfOperation $ifoperation
         } | Should -Not -Throw
     }
 
@@ -29,16 +29,7 @@ Describe 'New-AzStorageActionTask' {
     It 'CreateViaJsonFilePath' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
-
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'CreateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
