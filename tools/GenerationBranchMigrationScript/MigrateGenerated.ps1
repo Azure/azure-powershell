@@ -56,7 +56,12 @@ Get-ChildItem -Path $sourceFolderPath -Directory -Filter "*.Autorest" -Recurse |
             dotnet sln $slnPath remove $fromPath
         }
         if (Test-Path $fromPath) {
-            Move-Item $fromPath $toPath
+            if ('generate-info.json' -eq $_) {
+                Copy-Item $fromPath $toPath
+            } else {
+                Move-Item $fromPath $toPath
+            }
+            
         }
         if ("Az.$subModuleNameTrimmed.csproj" -eq $_) {
             $slnPath = (Join-Path $sourceModuleRootPath "$moduleRootName.sln")
