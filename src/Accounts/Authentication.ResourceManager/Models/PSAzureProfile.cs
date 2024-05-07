@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.Profile.Models
         /// The current credentials and metadata for connecting with the current Azure cloud instance.
         /// </summary>
         [Ps1Xml(Label = "Subscription name", Target = ViewControl.Table, ScriptBlock = "if($null -ne $_.Context.Subscription.Name){$_.Context.Subscription.Name}else{$_.Context.Subscription.Id}", Position = 0)]
-        [Ps1Xml(Label = "Tenant", Target = ViewControl.Table, ScriptBlock = "if($null -ne $_.Context.Tenant.DefaultDomain){$_.Context.Tenant.DefaultDomain}else{$_.Context.Tenant.Id}", Position = 1)]
+        [Ps1Xml(Label = "Tenant", Target = ViewControl.Table, ScriptBlock = "if($null -ne $_.Context.Tenant.Name){$_.Context.Tenant.Name}else{$_.Context.Tenant.Id}", Position = 1)]
         public PSAzureContext Context { get; set; }
 
         public override string ToString()

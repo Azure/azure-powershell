@@ -26,7 +26,7 @@
               </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
-                <ScriptBlock>if($null -ne $_.Context.Tenant.DefaultDomain){$_.Context.Tenant.DefaultDomain}else{$_.Context.Tenant.Id}</ScriptBlock>
+                <ScriptBlock>if($null -ne $_.Context.Tenant.Name){$_.Context.Tenant.Name}else{$_.Context.Tenant.Id}</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
