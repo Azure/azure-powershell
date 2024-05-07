@@ -1,22 +1,30 @@
-### Example 1: {{ Add title here }}
+### Example 1: Cancel a running Experiment resource.
 ```powershell
-{{ Add code here }}
+Stop-AzChaosExperiment -Name experiment-test -ResourceGroupName azps_test_group_chaos
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                           :
+IdentityPrincipalId          :
+IdentityTenantId             :
+IdentityType                 :
+IdentityUserAssignedIdentity : {
+                               }
+Location                     :
+Name                         : EXPERIMENT-TEST
+ProvisioningState            :
+ResourceGroupName            :
+Selector                     :
+Step                         :
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : {
+                               }
+Type                         :
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
-
+Cancel a running Experiment resource.

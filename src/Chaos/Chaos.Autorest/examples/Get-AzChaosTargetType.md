@@ -21,7 +21,7 @@ Get-AzChaosTargetType -LocationName eastus -Name Microsoft-KeyVault
 ```output
 Description                  :
 DisplayName                  :
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Chaos/locations/eastus/targetTypes/Microsoft-KeyVault
+Id                           : /subscriptions/{subId}/providers/Microsoft.Chaos/locations/eastus/targetTypes/Microsoft-KeyVault
 Location                     : eastus
 Name                         : Microsoft-KeyVault
 PropertiesSchema             : https://schema-tc.eastus.chaos-prod.azure.com/targetTypes/Microsoft-KeyVault/propertiesSchema.json

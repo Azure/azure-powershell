@@ -15,27 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzChaosExperiment'))
 }
 
 Describe 'New-AzChaosExperiment' {
-    It 'CreateViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaJsonString' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'CreateViaJsonFilePath' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Create' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'CreateViaIdentityExpanded' -skip {
+    It 'CreateViaJsonString' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

@@ -29,27 +29,38 @@ Start a Experiment resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Start a Experiment resource.
 ```powershell
-{{ Add code here }}
+Start-AzChaosExperiment -Name experiment-test -ResourceGroupName azps_test_group_chaos
 ```
 
 ```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
+Id                           :
+IdentityPrincipalId          :
+IdentityTenantId             :
+IdentityType                 :
+IdentityUserAssignedIdentity : {
+                               }
+Location                     :
+Name                         : experiment-test
+ProvisioningState            :
+ResourceGroupName            :
+Selector                     :
+Step                         :
+SystemDataCreatedAt          :
+SystemDataCreatedBy          :
+SystemDataCreatedByType      :
+SystemDataLastModifiedAt     :
+SystemDataLastModifiedBy     :
+SystemDataLastModifiedByType :
+Tag                          : {
+                               }
+Type                         :
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here (remove the output block if the example doesn't have an output) }}
-```
-
-{{ Add description here }}
+Start a Experiment resource.
+Give experiment permission to your VM
+https://learn.microsoft.com/en-us/azure/chaos-studio/chaos-studio-quickstart-azure-portal#give-experiment-permission-to-your-vm
 
 ## PARAMETERS
 
@@ -199,7 +210,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Chaos.Models.IExperiment
 
 ## NOTES
 

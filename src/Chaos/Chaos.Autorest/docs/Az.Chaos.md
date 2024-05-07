@@ -26,9 +26,6 @@ Get a Experiment resource.
 ### [Get-AzChaosExperimentExecution](Get-AzChaosExperimentExecution.md)
 Get an execution of an Experiment resource.
 
-### [Get-AzChaosOperationStatuses](Get-AzChaosOperationStatuses.md)
-Get the status of a long running azure asynchronous operation.
-
 ### [Get-AzChaosTarget](Get-AzChaosTarget.md)
 Get a Target resource that extends a tracked regional resource.
 
@@ -72,11 +69,11 @@ Start a Experiment resource.
 Cancel a running Experiment resource.
 
 ### [Update-AzChaosCapability](Update-AzChaosCapability.md)
-Create a Capability resource that extends a Target resource.
+Update a Capability resource that extends a Target resource.
 
 ### [Update-AzChaosExperiment](Update-AzChaosExperiment.md)
-Create a Experiment resource.
+Update a Experiment resource.
 
 ### [Update-AzChaosTarget](Update-AzChaosTarget.md)
-Create a Target resource that extends a tracked regional resource.
+Update a Target resource that extends a tracked regional resource.
 

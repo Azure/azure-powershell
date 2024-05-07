@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Chaos.private.dll'
   FormatsToProcess = './Az.Chaos.format.ps1xml'
-  FunctionsToExport = 'Get-AzChaosCapability', 'Get-AzChaosCapabilityType', 'Get-AzChaosExecutionExperimentDetail', 'Get-AzChaosExperiment', 'Get-AzChaosExperimentExecution', 'Get-AzChaosOperationStatuses', 'Get-AzChaosTarget', 'Get-AzChaosTargetType', 'New-AzChaosActionObject', 'New-AzChaosBranchObject', 'New-AzChaosCapability', 'New-AzChaosExperiment', 'New-AzChaosSelectorObject', 'New-AzChaosStepObject', 'New-AzChaosTarget', 'Remove-AzChaosCapability', 'Remove-AzChaosExperiment', 'Remove-AzChaosTarget', 'Start-AzChaosExperiment', 'Stop-AzChaosExperiment', 'Update-AzChaosCapability', 'Update-AzChaosExperiment', 'Update-AzChaosTarget'
+  FunctionsToExport = 'Get-AzChaosCapability', 'Get-AzChaosCapabilityType', 'Get-AzChaosExecutionExperimentDetail', 'Get-AzChaosExperiment', 'Get-AzChaosExperimentExecution', 'Get-AzChaosTarget', 'Get-AzChaosTargetType', 'New-AzChaosActionObject', 'New-AzChaosBranchObject', 'New-AzChaosCapability', 'New-AzChaosExperiment', 'New-AzChaosSelectorObject', 'New-AzChaosStepObject', 'New-AzChaosTarget', 'Remove-AzChaosCapability', 'Remove-AzChaosExperiment', 'Remove-AzChaosTarget', 'Start-AzChaosExperiment', 'Stop-AzChaosExperiment', 'Update-AzChaosCapability', 'Update-AzChaosExperiment', 'Update-AzChaosTarget'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Chaos'

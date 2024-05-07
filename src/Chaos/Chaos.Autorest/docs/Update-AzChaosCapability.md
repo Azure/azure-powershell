@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzChaosCapability
 
 ## SYNOPSIS
-Create a Capability resource that extends a Target resource.
+Update a Capability resource that extends a Target resource.
 
 ## SYNTAX
 
@@ -32,7 +32,7 @@ Update-AzChaosCapability -Name <String> -TargetInputObject <IChaosIdentity> [-De
 ```
 
 ## DESCRIPTION
-Create a Capability resource that extends a Target resource.
+Update a Capability resource that extends a Target resource.
 
 ## EXAMPLES
 
@@ -43,16 +43,16 @@ Update-AzChaosCapability -Name Shutdown-1.0 -ParentProviderNamespace Microsoft.C
 
 ```output
 Description                  :
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/exampleVM/providers/Microsoft.Chaos/targets/
+Id                           : /subscriptions/{subId}/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/exampleVM/providers/Microsoft.Chaos/targets/
                                microsoft-virtualmachine/capabilities/Shutdown-1.0
 Name                         : Shutdown-1.0
 ParametersSchema             : https://schema-tc.eastus.chaos-prod.azure.com/targetTypes/Microsoft-VirtualMachine/capabilityTypes/Shutdown-1.0/parametersSchema.json
 Publisher                    : microsoft
 ResourceGroupName            : azps_test_group_chaos
-SystemDataCreatedAt          : 2024-03-18 上午 10:28:43
+SystemDataCreatedAt          : 2024-03-18 10:28:43 AM
 SystemDataCreatedBy          :
 SystemDataCreatedByType      : User
-SystemDataLastModifiedAt     : 2024-03-18 上午 11:35:18
+SystemDataLastModifiedAt     : 2024-03-18 11:35:18 AM
 SystemDataLastModifiedBy     :
 SystemDataLastModifiedByType :
 TargetType                   : virtualmachine

@@ -4,14 +4,14 @@ New-AzChaosExperiment -Name experiment-test -ResourceGroupName azps_test_group_c
 ```
 
 ```output
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Chaos/experiments/EXPERIMENT-TEST
+Id                           : /subscriptions/{subId}/resourceGroups/azps_test_group_chaos/providers/Microsoft.Chaos/experiments/EXPERIMENT-TEST
 IdentityPrincipalId          : 72f14040-8265-4f10-b5ea-377c6fc2671c
 IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
 IdentityType                 : SystemAssigned
 IdentityUserAssignedIdentity : {
                                }
-Location                     : eastus2euap
-Name                         : EXPERIMENT-TEST0410
+Location                     : eastus
+Name                         : EXPERIMENT-TEST
 ProvisioningState            : Succeeded
 ResourceGroupName            : azps_test_group_chaos
 Selector                     : {{
@@ -20,7 +20,7 @@ Selector                     : {{
                                  "targets": [
                                    {
                                      "type": "ChaosTarget",
-                                     "id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/exampleVM/providers/Microso
+                                     "id": "/subscriptions/{subId}/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/exampleVM/providers/Microso
                                ft.Chaos/targets/Microsoft-VirtualMachine"
                                    }
                                  ]
@@ -64,7 +64,7 @@ Create Or Update a Experiment resource for Json File Path.
 ```powershell
 $jsonStr = '
 {
-  "location": "eastus2euap",
+  "location": "eastus",
   "identity": {
     "type": "SystemAssigned"
   },
@@ -100,7 +100,7 @@ $jsonStr = '
         "targets": [
           {
             "type": "ChaosTarget",
-            "id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/exampleVM0410/providers/Microsoft.Chaos/targets/Microsoft-VirtualMachine"
+            "id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/azpstest1/providers/Microsoft.Chaos/targets/microsoft-virtualmachine"
           }
         ]
       }
@@ -112,14 +112,14 @@ New-AzChaosExperiment -Name experiment-test -ResourceGroupName azps_test_group_c
 ```
 
 ```output
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Chaos/experiments/EXPERIMENT-TEST
+Id                           : /subscriptions/{subId}/resourceGroups/azps_test_group_chaos/providers/Microsoft.Chaos/experiments/EXPERIMENT-TEST
 IdentityPrincipalId          : 72f14040-8265-4f10-b5ea-377c6fc2671c
 IdentityTenantId             : 72f988bf-86f1-41af-91ab-2d7cd011db47
 IdentityType                 : SystemAssigned
 IdentityUserAssignedIdentity : {
                                }
-Location                     : eastus2euap
-Name                         : EXPERIMENT-TEST0410
+Location                     : eastus
+Name                         : EXPERIMENT-TEST
 ProvisioningState            : Succeeded
 ResourceGroupName            : azps_test_group_chaos
 Selector                     : {{
@@ -128,7 +128,7 @@ Selector                     : {{
                                  "targets": [
                                    {
                                      "type": "ChaosTarget",
-                                     "id": "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/exampleVM/providers/Microso
+                                     "id": "/subscriptions/{subId}/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/exampleVM/providers/Microso
                                ft.Chaos/targets/Microsoft-VirtualMachine"
                                    }
                                  ]

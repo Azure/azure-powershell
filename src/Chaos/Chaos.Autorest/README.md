@@ -130,6 +130,48 @@ directive:
         }
       }
 
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/start"].post.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "Ok.",
+          "schema": {
+            "$ref": "./types/experiments.json#/definitions/experiment"
+          }
+        },
+        "202": {
+          "description": "Long running start experiment operation."
+        },
+        "default": {
+          "description": "Error response returned if request was unsuccessful.",
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/907b79c0a6a660826e54dc1f16ea14b831b201d2/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+          }
+        }
+      }
+
+  - from: swagger-document
+    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Chaos/experiments/{experimentName}/cancel"].post.responses
+    transform: >-
+      return {
+        "200": {
+          "description": "Ok.",
+          "schema": {
+            "$ref": "./types/experiments.json#/definitions/experiment"
+          }
+        },
+        "202": {
+          "description": "Long running start experiment operation."
+        },
+        "default": {
+          "description": "Error response returned if request was unsuccessful.",
+          "schema": {
+            "$ref": "https://github.com/Azure/azure-rest-api-specs/blob/907b79c0a6a660826e54dc1f16ea14b831b201d2/specification/common-types/resource-management/v5/types.json#/definitions/ErrorResponse"
+          }
+        }
+      }
+
   - where:
       verb: New
       subject: Experiment
@@ -144,9 +186,9 @@ directive:
       verb: Set
     remove: true
 
-  # - where:
-  #     subject: OperationStatuses
-  #   remove: true
+  - where:
+      subject: OperationStatuses
+    remove: true
 
   - where:
       verb: Invoke

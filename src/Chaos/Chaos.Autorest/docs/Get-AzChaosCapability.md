@@ -63,7 +63,7 @@ Get-AzChaosCapability -Name Shutdown-1.0 -ParentProviderNamespace Microsoft.Comp
 
 ```output
 Description                  :
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/exampleVM/providers/Microsoft.Chaos/targets/
+Id                           : /subscriptions/{subId}/resourceGroups/azps_test_group_chaos/providers/Microsoft.Compute/virtualMachines/exampleVM/providers/Microsoft.Chaos/targets/
                                microsoft-virtualmachine/capabilities/Shutdown-1.0
 Name                         : Shutdown-1.0
 ParametersSchema             : https://schema-tc.eastus.chaos-prod.azure.com/targetTypes/Microsoft-VirtualMachine/capabilityTypes/Shutdown-1.0/parametersSchema.json

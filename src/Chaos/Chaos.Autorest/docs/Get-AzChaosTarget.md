@@ -42,7 +42,7 @@ Get-AzChaosTarget -ParentProviderNamespace Microsoft.Compute -ParentResourceName
 ```
 
 ```output
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/microsoft.compute/virtualmachines/exampleVM/providers/Microsoft.Chaos/targets/
+Id                           : /subscriptions/{subId}/resourceGroups/azps_test_group_chaos/providers/microsoft.compute/virtualmachines/exampleVM/providers/Microsoft.Chaos/targets/
                                microsoft-virtualmachine
 Location                     : eastus
 Name                         : microsoft-virtualmachine
@@ -66,7 +66,7 @@ Get-AzChaosTarget -ParentProviderNamespace Microsoft.Compute -ParentResourceName
 ```
 
 ```output
-Id                           : /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azps_test_group_chaos/providers/microsoft.compute/virtualmachines/exampleVM/providers/Microsoft.Chaos/targets/
+Id                           : /subscriptions/{subId}/resourceGroups/azps_test_group_chaos/providers/microsoft.compute/virtualmachines/exampleVM/providers/Microsoft.Chaos/targets/
                                microsoft-virtualmachine
 Location                     : eastus
 Name                         : microsoft-virtualmachine
