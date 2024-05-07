@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Added null check to the permissions object in the ToPSRoleDefinition method to return if the whole permissions object array is null.
 
 ## Version 6.16.2
 * Introduced secrets detection feature to safeguard sensitive data.
