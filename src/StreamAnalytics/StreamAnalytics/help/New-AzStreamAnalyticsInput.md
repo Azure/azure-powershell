@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.StreamAnalytics-help.xml
 Module Name: Az.StreamAnalytics
 online version: https://learn.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput
 schema: 2.0.0
@@ -13,9 +13,9 @@ Creates an input or replaces an already existing input under an existing streami
 ## SYNTAX
 
 ```
-New-AzStreamAnalyticsInput -File <String> -JobName <String> -Name <String> -ResourceGroupName <String>
+New-AzStreamAnalyticsInput -JobName <String> -Name <String> -ResourceGroupName <String> -File <String>
  [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,6 +27,7 @@ Creates an input or replaces an already existing input under an existing streami
 ```powershell
 New-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name input-01 -File .\test\template-json\EventHub.json
 ```
+
 ```output
 Name     Type                                           ETag
 ----     ----                                           ----
@@ -66,6 +67,7 @@ This command creates an input from the file EventHub.json.
 ```powershell
 New-AzStreamAnalyticsInput -ResourceGroupName azure-rg-test -JobName sajob-02-pwsh -Name input-01 -File .\test\template-json\IotHub.json
 ```
+
 ```output
 Name     Type                                           ETag
 ----     ----                                           ----
@@ -273,7 +275,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

@@ -15,7 +15,8 @@ Run a triggered web job for an app.
 ### Run (Default)
 ```
 Start-AzWebAppTriggeredWebJob -AppName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### RunViaIdentity

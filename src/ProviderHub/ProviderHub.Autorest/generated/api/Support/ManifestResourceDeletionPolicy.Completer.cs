@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ProviderHub.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NotSpecified".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NotSpecified", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
+                yield return new global::System.Management.Automation.CompletionResult("'NotSpecified'", "NotSpecified", global::System.Management.Automation.CompletionResultType.ParameterValue, "NotSpecified");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Cascade".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Cascade", "Cascade", global::System.Management.Automation.CompletionResultType.ParameterValue, "Cascade");
+                yield return new global::System.Management.Automation.CompletionResult("'Cascade'", "Cascade", global::System.Management.Automation.CompletionResultType.ParameterValue, "Cascade");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Force".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Force", "Force", global::System.Management.Automation.CompletionResultType.ParameterValue, "Force");
+                yield return new global::System.Management.Automation.CompletionResult("'Force'", "Force", global::System.Management.Automation.CompletionResultType.ParameterValue, "Force");
             }
         }
     }

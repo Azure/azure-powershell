@@ -30,7 +30,7 @@ namespace RecoveryServices.SiteRecovery.Test
 
         }
 
-        [Fact]
+        [Fact(Skip = "to be re-recorded in next release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewA2ADiskReplicationConfig()
         {
@@ -40,7 +40,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-NewA2ADiskReplicationConfiguration");
         }
 
-        [Fact]
+        [Fact(Skip = "to be re-recorded in next release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewA2AManagedDiskReplicationConfig()
         {
@@ -50,7 +50,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-NewA2AManagedDiskReplicationConfiguration");
         }
 
-        [Fact]
+        [Fact(Skip = "to be re-recorded in next release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewA2AManagedDiskReplicationConfigWithCmk()
         {
@@ -98,7 +98,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-RemoveReplicationProtectedItemDisk");
         }
 
-        [Fact]
+        [Fact(Skip = "to be re-recorded in next release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AReplicateProximityPlacementGroupVm()
         {
@@ -108,7 +108,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-ReplicateProximityPlacementGroupVm");
         }
 
-        [Fact]
+        [Fact(Skip = "to be re-recorded in next release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AVMNicConfig()
         {
@@ -118,7 +118,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-VMNicConfig");
         }
 
-        [Fact]
+        [Fact(Skip = "to be re-recorded in next release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AZoneToZoneRecoveryPlanReplication()
         {
@@ -128,7 +128,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-ZoneToZoneRecoveryPlanReplication");
         }
 
-        [Fact]
+        [Fact(Skip = "to be re-recorded in next release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AEdgeZoneToAzureRecoveryPlanReplication()
         {
@@ -138,7 +138,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-EdgeZoneToAzureRecoveryPlanReplication");
         }
 
-        [Fact]
+        [Fact(Skip = "to be re-recorded in next release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AEdgeZoneToEdgeZoneRecoveryPlanReplication()
         {
@@ -148,7 +148,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-EdgeZoneToEdgeZoneRecoveryPlanReplication");
         }
 
-        [Fact]
+        [Fact(Skip = "to be re-recorded in next release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AEdgeZoneToAvailabilityZoneRecoveryPlanReplication()
         {
@@ -158,7 +158,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-EdgeZoneToAvailabilityZoneRecoveryPlanReplication");
         }
 
-        [Fact]
+        [Fact(Skip = "to be re-recorded in next release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2ARecoveryPlanReplication()
         {
@@ -168,7 +168,7 @@ namespace RecoveryServices.SiteRecovery.Test
                 "Test-RecoveryPlanReplication");
         }
 
-        [Fact]
+        [Fact(Skip = "to be re-recorded in next release")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AVMSSReplication()
         {

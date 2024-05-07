@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNetworkFabricNeighborGroup
 
 ## SYNOPSIS
-Updates the Neighbor Group.
+Update the Neighbor Group.
 
 ## SYNTAX
 
@@ -42,7 +42,7 @@ Update-AzNetworkFabricNeighborGroup -InputObject <IManagedNetworkFabricIdentity>
 ```
 
 ## DESCRIPTION
-Updates the Neighbor Group.
+Update the Neighbor Group.
 
 ## EXAMPLES
 

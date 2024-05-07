@@ -15,14 +15,14 @@ Solution discovery using natural language processing.
 ### PostExpanded (Default)
 ```
 Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope [-AdditionalContext <String>] [-IssueSummary <String>]
- [-ResourceId <String>] [-ServiceId <String>] [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>]
+ [-ResourceId <String>] [-ServiceId <String>] [-DefaultProfile <PSObject>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Post
 ```
 Invoke-AzSelfHelpDiscoverySolutionNlpTenantScope -DiscoverSolutionRequest <IDiscoveryNlpRequest>
- [-DefaultProfile <PSObject>] [-ProgressAction <ActionPreference>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -105,21 +105,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ProgressAction
-{{ Fill ProgressAction Description }}
-
-```yaml
-Type: System.Management.Automation.ActionPreference
-Parameter Sets: (All)
-Aliases: proga
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceId
 Provide resourceId of affected resource
 
@@ -137,7 +122,7 @@ Accept wildcard characters: False
 
 ### -ServiceId
 Service Classification id for the resource.
-You can find required serviceId from Services API: https://learn.microsoft.com/rest/api/support/services/listtabs=HTTP Service Id is the GUID which can be found under name field in Services List response
+You can find required serviceId from Services API: https://learn.microsoft.com/rest/api/support/services/list Service Id is the GUID which can be found under name field in Services List response
 
 ```yaml
 Type: System.String

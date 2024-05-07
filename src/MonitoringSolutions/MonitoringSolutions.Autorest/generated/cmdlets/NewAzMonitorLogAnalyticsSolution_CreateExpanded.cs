@@ -6,16 +6,18 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Extensions;
+    using System;
 
     /// <summary>Creates or updates the Solution.</summary>
     /// <remarks>
-    /// [OpenAPI] Solutions_CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationsManagement/solutions/{solutionName}"
+    /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationsManagement/solutions/{solutionName}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMonitorLogAnalyticsSolution_CreateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Description(@"Creates or updates the Solution.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Generated]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.HttpPath(Path = "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationsManagement/solutions/{solutionName}", ApiVersion = "2015-11-01-preview")]
     public partial class NewAzMonitorLogAnalyticsSolution_CreateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.IEventListener
     {
@@ -32,6 +34,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>The container for solution.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.Solution();
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -54,12 +59,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
         Description = @"The azure resources that will be contained within the solutions. They will be locked and gets deleted automatically when the solution is deleted.",
         SerializedName = @"containedResources",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] ContainedResource { get => ParametersBody.ContainedResource ?? null /* arrayOf */; set => ParametersBody.ContainedResource = value; }
+        public string[] ContainedResource { get => _parametersBody.ContainedResource ?? null /* arrayOf */; set => _parametersBody.ContainedResource = value; }
 
         /// <summary>
-        /// The credentials, account, tenant, and subscription used for communication with Azure
+        /// The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet
+        /// against a different subscription
         /// </summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The DefaultProfile parameter is not functional. Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.")]
         [global::System.Management.Automation.ValidateNotNull]
         [global::System.Management.Automation.Alias("AzureRMContext", "AzureCredential")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.ParameterCategory.Azure)]
@@ -89,14 +95,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
         Description = @"Resource location",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => ParametersBody.Location ?? null; set => ParametersBody.Location = value; }
+        public string Location { get => _parametersBody.Location ?? null; set => _parametersBody.Location = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -113,12 +119,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
         [global::System.Management.Automation.Alias("SolutionName")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.ParameterCategory.Path)]
         public string Name { get => this._name; set => this._name = value; }
-
-        /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.Solution();
-
-        /// <summary>The container for solution.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.HttpPipeline" /> that the remote call will use.
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
         Description = @"name of the solution to be created. For Microsoft published solution it should be in the format of solutionType(workspaceName). SolutionType part is case sensitive. For third party solution, it can be anything.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        public string PlanName { get => ParametersBody.PlanName ?? null; set => ParametersBody.PlanName = value; }
+        public string PlanName { get => _parametersBody.PlanName ?? null; set => _parametersBody.PlanName = value; }
 
         /// <summary>
         /// name of the solution to enabled/add. For Microsoft published gallery solution it should be in the format of OMSGallery/<solutionType>.
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
         Description = @"name of the solution to enabled/add. For Microsoft published gallery solution it should be in the format of OMSGallery/<solutionType>. This is case sensitive",
         SerializedName = @"product",
         PossibleTypes = new [] { typeof(string) })]
-        public string PlanProduct { get => ParametersBody.PlanProduct ?? null; set => ParametersBody.PlanProduct = value; }
+        public string PlanProduct { get => _parametersBody.PlanProduct ?? null; set => _parametersBody.PlanProduct = value; }
 
         /// <summary>promotionCode, Not really used now, can you left as empty</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "promotionCode, Not really used now, can you left as empty")]
@@ -162,7 +162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
         Description = @"promotionCode, Not really used now, can you left as empty",
         SerializedName = @"promotionCode",
         PossibleTypes = new [] { typeof(string) })]
-        public string PlanPromotionCode { get => ParametersBody.PlanPromotionCode ?? null; set => ParametersBody.PlanPromotionCode = value; }
+        public string PlanPromotionCode { get => _parametersBody.PlanPromotionCode ?? null; set => _parametersBody.PlanPromotionCode = value; }
 
         /// <summary>Publisher name. For gallery solution, it is Microsoft.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Publisher name. For gallery solution, it is Microsoft.")]
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
         Description = @"Publisher name. For gallery solution, it is Microsoft.",
         SerializedName = @"publisher",
         PossibleTypes = new [] { typeof(string) })]
-        public string PlanPublisher { get => ParametersBody.PlanPublisher ?? null; set => ParametersBody.PlanPublisher = value; }
+        public string PlanPublisher { get => _parametersBody.PlanPublisher ?? null; set => _parametersBody.PlanPublisher = value; }
 
         /// <summary>The URI for the proxy server to use</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "The URI for the proxy server to use")]
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
         Description = @"The resources that will be referenced from this solution. Deleting any of those solution out of band will break the solution.",
         SerializedName = @"referencedResources",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] ReferencedResource { get => ParametersBody.ReferencedResource ?? null /* arrayOf */; set => ParametersBody.ReferencedResource = value; }
+        public string[] ReferencedResource { get => _parametersBody.ReferencedResource ?? null /* arrayOf */; set => _parametersBody.ReferencedResource = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -250,7 +250,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
         Description = @"Resource tags",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolutionTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolutionTags Tag { get => ParametersBody.Tag ?? null /* object */; set => ParametersBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolutionTags Tag { get => _parametersBody.Tag ?? null /* object */; set => _parametersBody.Tag = value; }
 
         /// <summary>
         /// The azure resourceId for the workspace where the solution will be deployed/enabled.
@@ -263,15 +263,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
         Description = @"The azure resourceId for the workspace where the solution will be deployed/enabled.",
         SerializedName = @"workspaceResourceId",
         PossibleTypes = new [] { typeof(string) })]
-        public string WorkspaceResourceId { get => ParametersBody.WorkspaceResourceId ?? null; set => ParametersBody.WorkspaceResourceId = value; }
+        public string WorkspaceResourceId { get => _parametersBody.WorkspaceResourceId ?? null; set => _parametersBody.WorkspaceResourceId = value; }
 
         /// <summary>
         /// <c>overrideOnCreated</c> will be called before the regular onCreated has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution">Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onCreated method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -282,8 +282,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ICodeMessageError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ICodeMessageError">Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ICodeMessageError</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -294,6 +294,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -305,7 +310,24 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+            var telemetryInfo = Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Module.Instance.GetTelemetryInfo?.Invoke(__correlationId);
+            if (telemetryInfo != null)
+            {
+                telemetryInfo.TryGetValue("ShowSecretsWarning", out var showSecretsWarning);
+                telemetryInfo.TryGetValue("SanitizedProperties", out var sanitizedProperties);
+                telemetryInfo.TryGetValue("InvocationName", out var invocationName);
+                if (showSecretsWarning == "true")
+                {
+                    if (string.IsNullOrEmpty(sanitizedProperties))
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing secrets. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                    else
+                    {
+                        WriteWarning($"The output of cmdlet {invocationName} may compromise security by showing the following secrets: {sanitizedProperties}. Learn more at https://go.microsoft.com/fwlink/?linkid=2258844");
+                    }
+                }
+            }
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -339,7 +361,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
                     case Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Events.Information:
                     {
                         var data = messageData();
-                        WriteInformation(data, new[] { data.Message });
+                        WriteInformation(data.Message, new string[]{});
                         return ;
                     }
                     case Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Events.Debug:
@@ -416,7 +438,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -431,12 +452,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.SolutionsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, ParametersBody, onCreated, onDefault, this, Pipeline);
+                    await this.Client.SolutionsCreateOrUpdate(SubscriptionId, ResourceGroupName, Name, _parametersBody, onCreated, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=ParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  SubscriptionId=SubscriptionId,ResourceGroupName=ResourceGroupName,Name=Name,body=_parametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -455,10 +476,25 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
             base.StopProcessing();
         }
 
+        /// <param name="sendToPipeline"></param>
+        new protected void WriteObject(object sendToPipeline)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline);
+        }
+
+        /// <param name="sendToPipeline"></param>
+        /// <param name="enumerateCollection"></param>
+        new protected void WriteObject(object sendToPipeline, bool enumerateCollection)
+        {
+            Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Module.Instance.SanitizeOutput?.Invoke(sendToPipeline, __correlationId);
+            base.WriteObject(sendToPipeline, enumerateCollection);
+        }
+
         /// <summary>a delegate that is called when the remote service returns 201 (Created).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution">Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ISolution</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -483,8 +519,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ICodeMessageError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ICodeMessageError">Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ICodeMessageError</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -506,14 +542,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.MonitoringSolutions.Models.Api20151101Preview.ICodeMessageError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { SubscriptionId=SubscriptionId, ResourceGroupName=ResourceGroupName, Name=Name, body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

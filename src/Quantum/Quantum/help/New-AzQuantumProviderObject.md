@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Quantum-help.xml
 Module Name: Az.Quantum
 online version: https://learn.microsoft.com/powershell/module/Az.Quantum/new-AzQuantumProviderObject
 schema: 2.0.0
@@ -14,7 +14,8 @@ Create an in-memory object for Provider.
 
 ```
 New-AzQuantumProviderObject [-ApplicationName <String>] [-Id <String>] [-InstanceUri <String>]
- [-ProvisioningState <Status>] [-ResourceUsageId <String>] [-Sku <String>] [<CommonParameters>]
+ [-ProvisioningState <Status>] [-ResourceUsageId <String>] [-Sku <String>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -138,7 +139,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

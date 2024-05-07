@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzEmailServiceSenderUsername
 
 ## SYNOPSIS
-Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
+Add a new SenderUsername resource under the parent Domains resource or Create an existing SenderUsername resource.
 
 ## SYNTAX
 
@@ -61,7 +61,7 @@ New-AzEmailServiceSenderUsername -DomainName <String> -EmailServiceName <String>
 ```
 
 ## DESCRIPTION
-Add a new SenderUsername resource under the parent Domains resource or update an existing SenderUsername resource.
+Add a new SenderUsername resource under the parent Domains resource or Create an existing SenderUsername resource.
 
 ## EXAMPLES
 

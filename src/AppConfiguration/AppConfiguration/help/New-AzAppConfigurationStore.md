@@ -17,8 +17,8 @@ New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> [-Subscri
  -Location <String> -Sku <String> [-CreateMode <CreateMode>] [-DisableLocalAuth] [-EnablePurgeProtection]
  [-EncryptionKeyIdentifier <String>] [-IdentityType <IdentityType>] [-KeyVaultIdentityClientId <String>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-SoftDeleteRetentionInDay <Int32>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -374,7 +374,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS

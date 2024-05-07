@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Reservations-help.xml
 Module Name: Az.Reservations
 online version: https://learn.microsoft.com/powershell/module/az.reservations/split-azreservation
 schema: 2.0.0
@@ -13,8 +13,8 @@ Split a Reservation order.
 ## SYNTAX
 
 ```
-Split-AzReservation -OrderId <String> -Quantity <Int32[]> -ReservationId <String> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Split-AzReservation -OrderId <String> -ReservationId <String> -Quantity <Int32[]> [-DefaultProfile <PSObject>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -25,7 +25,6 @@ Split a Reservation order.
 ### Example 1: Split one reservation order into two reservations
 ```powershell
 Split-AzReservation -ReservationOrderId "c615c897-aaaa-4123-8527-c42cc0da41e0" -ReservationId "1bdfaf4a-159d-46ec-be3a-f4aa527d423c" -Quantity @(2,8)
-
 ```
 
 ```output
@@ -144,7 +143,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

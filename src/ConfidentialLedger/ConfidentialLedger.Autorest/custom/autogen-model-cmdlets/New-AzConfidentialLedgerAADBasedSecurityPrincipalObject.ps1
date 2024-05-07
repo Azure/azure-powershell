@@ -23,7 +23,7 @@ Create an in-memory object for AADBasedSecurityPrincipal.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.AADBasedSecurityPrincipal
 .Link
-https://learn.microsoft.com/powershell/module/az.ConfidentialLedger/new-AzConfidentialLedgerAADBasedSecurityPrincipalObject
+https://learn.microsoft.com/powershell/module/Az.ConfidentialLedger/new-AzConfidentialLedgerAADBasedSecurityPrincipalObject
 #>
 function New-AzConfidentialLedgerAADBasedSecurityPrincipalObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.ConfidentialLedger.Models.Api20220513.AADBasedSecurityPrincipal')]

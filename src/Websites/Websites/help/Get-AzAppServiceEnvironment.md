@@ -14,7 +14,8 @@ Gets App Service Environment. If only Resource Group is specified, it will retur
 
 ```
 Get-AzAppServiceEnvironment [-ResourceGroupName] <String> [-Name] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION

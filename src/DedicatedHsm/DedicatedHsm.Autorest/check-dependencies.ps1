@@ -25,7 +25,7 @@ if(-not $Isolated) {
 function DownloadModule ([bool]$predicate, [string]$path, [string]$moduleName, [string]$versionMinimum, [string]$requiredVersion) {
   if($predicate) {
     $module = Get-Module -ListAvailable -Name $moduleName
-    if((-not $module) -or ($versionMinimum -and ($module | ForEach-Object { $_.Version } | Where-Object { $_ -ge [System.Version]$versionMinimum } | Measure-Object).Count -eq 0)) {
+    if((-not $module) -or ($versionMinimum -and ($module | ForEach-Object { $_.Version } | Where-Object { $_ -ge [System.Version]$versionMinimum } | Measure-Object).Count -eq 0) -or ($requiredVersion -and ($module | ForEach-Object { $_.Version } | Where-Object { $_ -eq [System.Version]$requiredVersion } | Measure-Object).Count -eq 0)) {
       $null = New-Item -ItemType Directory -Force -Path $path
       Write-Host -ForegroundColor Green "Installing local $moduleName module into '$path'..."
       if ($requiredVersion) {

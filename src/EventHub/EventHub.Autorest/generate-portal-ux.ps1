@@ -15,13 +15,13 @@
 # This Script will create a folder dedicated to Azure-specific content and includes metadata files essential for enhancing the user experience (UX) within the Azure portal. 
 # These files are utilized by the Azure portal to effectively present the usage of cmdlets related to specific resources on portal pages.
 # ----------------------------------------------------------------------------------
-param([switch]$Isolated)
+param([switch]$NotIsolated)
 $ErrorActionPreference = 'Stop'
 
 $pwsh = [System.Diagnostics.Process]::GetCurrentProcess().Path
-if(-not $Isolated) {
+if(-not $NotIsolated) {
   Write-Host -ForegroundColor Green 'Creating isolated process...'
-  & "$pwsh" -NonInteractive -NoLogo -NoProfile -File $MyInvocation.MyCommand.Path @PSBoundParameters -Isolated
+  & "$pwsh" -NonInteractive -NoLogo -NoProfile -File $MyInvocation.MyCommand.Path @PSBoundParameters -NotIsolated
   return
 }
 
@@ -42,8 +42,6 @@ $instance = [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Module]::Instance
 $moduleInfo = Get-Module -Name $moduleName
 $parameterSetsInfo = Get-Module -Name "$moduleName.private"
 
-$buildinFunctions = @("Export-CmdletSurface", "Export-ExampleStub", "Export-FormatPs1xml", "Export-HelpMarkdown", "Export-ModelSurface", "Export-ProxyCmdlet", "Export-Psd1", "Export-TestStub", "Get-CommonParameter", "Get-ModuleGuid", "Get-ScriptCmdlet")
-
 function Test-FunctionSupported()
 {
     [CmdletBinding()]
@@ -53,12 +51,12 @@ function Test-FunctionSupported()
         $FunctionName
     )
 
-    If ($buildinfunctions.Contains($FunctionName)) {
+    If (-not $FunctionName.Contains("_")) {
         return $false
     }
 
     $cmdletName, $parameterSetName = $FunctionName.Split("_")
-    If ($parameterSetName.Contains("List") -or $parameterSetName.Contains("ViaIdentity")) {
+    If ($parameterSetName.Contains("List") -or $parameterSetName.Contains("ViaIdentity")  -or $parameterSetName.Contains("ViaJson")) {
         return $false
     }
     If ($cmdletName.StartsWith("New") -or $cmdletName.StartsWith("Set") -or $cmdletName.StartsWith("Update")) {
@@ -79,6 +77,7 @@ function Test-FunctionSupported()
     $customFiles = Get-ChildItem -Path custom -Filter "$cmdletName.*"
     if ($customFiles.Length -ne 0)
     {
+        Write-Host -ForegroundColor Yellow "There are come custom files for $cmdletName, skip generate UX data for it."
         return $false
     }
 
@@ -93,7 +92,7 @@ function Get-MappedCmdletFromFunctionName()
         [string]
         $FunctionName
     )
-
+    
     $cmdletName, $parameterSetName = $FunctionName.Split("_")
 
     return $cmdletName
@@ -137,7 +136,7 @@ function Get-CmdletDescription()
         $CmdletName
     )
     $helpInfo = Get-Help $CmdletName -Full
-
+    
     $description = $helpInfo.Description.Text
     if ($null -eq $description)
     {
@@ -161,7 +160,7 @@ function Test-ParameterFromSwagger()
     {
         return $false
     }
-
+    
     $valideCategory = @('Path')
     if ($valideCategory -contains $category)
     {
@@ -310,7 +309,7 @@ function New-MetadataForCmdlet()
     return $result
 }
 
-$parameterSets = $parameterSetsInfo.ExportedCmdlets.Keys | Where-Object { Test-functionSupported($_) }
+$parameterSets = $parameterSetsInfo.ExportedCmdlets.Keys | Where-Object { Test-FunctionSupported($_) }
 $resourceTypes = @{}
 foreach ($parameterSetName in $parameterSets)
 {

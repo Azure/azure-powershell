@@ -341,7 +341,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Create a Catalog</summary>
+        /// <summary>Update a Catalog</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -390,7 +390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Create a Catalog</summary>
+        /// <summary>Update a Catalog</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -449,7 +449,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Create a Catalog</summary>
+        /// <summary>Update a Catalog</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -506,7 +506,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Create a Catalog</summary>
+        /// <summary>Update a Catalog</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -554,7 +554,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Create a Catalog</summary>
+        /// <summary>Update a Catalog</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -600,7 +600,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Create a Catalog</summary>
+        /// <summary>Update a Catalog</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -4278,7 +4278,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Creates an image. Use this action when the image ID is unknown.</summary>
+        /// <summary>Upload an image. Use this action when the image ID is unknown.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -4327,7 +4327,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Creates an image. Use this action when the image ID is unknown.</summary>
+        /// <summary>Upload an image. Use this action when the image ID is unknown.</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Image upload request body.</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -4386,7 +4386,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Creates an image. Use this action when the image ID is unknown.</summary>
+        /// <summary>Upload an image. Use this action when the image ID is unknown.</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -6131,7 +6131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
+        /// Update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
         /// name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -6193,7 +6193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
+        /// Update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
         /// name.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -6264,7 +6264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
+        /// Update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
         /// name.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -6333,7 +6333,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
+        /// Update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
         /// name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -6394,7 +6394,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
+        /// Update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
         /// name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -6453,7 +6453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
+        /// Update a Deployment. '.default' and '.unassigned' are system defined values and cannot be used for product or device group
         /// name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -8665,7 +8665,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -8723,7 +8723,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -8791,7 +8791,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -8857,7 +8857,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -8914,7 +8914,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -8969,7 +8969,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
+        /// Update a DeviceGroup. '.default' and '.unassigned' are system defined values and cannot be used for product or device
         /// group name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -11096,7 +11096,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
+        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
         /// only.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -11157,7 +11157,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
+        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
         /// only.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -11228,7 +11228,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
+        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
         /// only.
         /// </summary>
         /// <param name="viaIdentity"></param>
@@ -11297,7 +11297,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
+        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
         /// only.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -11357,7 +11357,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
+        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
         /// only.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -11415,7 +11415,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
+        /// Update a Device. Use '.unassigned' or '.default' for the device group and product names to claim a device to the catalog
         /// only.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
@@ -14255,7 +14255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Create a Image</summary>
+        /// <summary>Update a Image</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -14307,7 +14307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Create a Image</summary>
+        /// <summary>Update a Image</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
@@ -14369,7 +14369,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Create a Image</summary>
+        /// <summary>Update a Image</summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Sphere.Runtime.IEventListener" /> instance that will receive events.</param>
@@ -14429,7 +14429,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Create a Image</summary>
+        /// <summary>Update a Image</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -14480,7 +14480,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Create a Image</summary>
+        /// <summary>Update a Image</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -14529,7 +14529,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
             }
         }
 
-        /// <summary>Create a Image</summary>
+        /// <summary>Update a Image</summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
         /// <param name="catalogName">Name of catalog</param>
@@ -16522,7 +16522,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -16576,7 +16576,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
@@ -16640,7 +16640,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="viaIdentity"></param>
         /// <param name="body">Resource create parameters.</param>
@@ -16702,7 +16702,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -16755,7 +16755,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>
@@ -16806,7 +16806,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Sphere
         }
 
         /// <summary>
-        /// Create a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
+        /// Update a Product. '.default' and '.unassigned' are system defined values and cannot be used for product name.
         /// </summary>
         /// <param name="subscriptionId">The ID of the target subscription.</param>
         /// <param name="resourceGroupName">The name of the resource group. The name is case insensitive.</param>

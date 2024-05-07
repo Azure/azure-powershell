@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.MixedReality-help.xml
 Module Name: Az.MixedReality
 online version: https://learn.microsoft.com/powershell/module/az.mixedreality/test-azmixedrealitynameavailability
 schema: 2.0.0
@@ -14,14 +14,14 @@ Check Name Availability for local uniqueness
 
 ### CheckExpanded (Default)
 ```
-Test-AzMixedRealityNameAvailability -Location <String> -Name <String> -Type <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzMixedRealityNameAvailability -Location <String> [-SubscriptionId <String>] -Name <String> -Type <String>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### CheckViaIdentityExpanded
 ```
 Test-AzMixedRealityNameAvailability -InputObject <IMixedRealityIdentity> -Name <String> -Type <String>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,7 +71,8 @@ Check Spatial Anchors Accounts Name Availability for local uniqueness.
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+The DefaultProfile parameter is not functional.
+Use the SubscriptionId parameter when available if executing the cmdlet against a different subscription.
 
 ```yaml
 Type: System.Management.Automation.PSObject
@@ -207,19 +208,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMixedRealityIdentity>`: Identity Parameter
-  - `[AccountName <String>]`: Name of an Mixed Reality Account.
-  - `[Id <String>]`: Resource identity path
-  - `[Location <String>]`: The location in which uniqueness will be verified.
-  - `[ResourceGroupName <String>]`: Name of an Azure resource group.
-  - `[SubscriptionId <String>]`: The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
-
 ## RELATED LINKS
-

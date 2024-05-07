@@ -269,24 +269,19 @@
       </TableControl>
     </View>
     <View>
-      <Name>Microsoft.Azure.Storage.Queue.CloudQueue</Name>
+      <Name>Azure.Storage.Queues.QueueClient</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Azure.Storage.Queue.CloudQueue</TypeName>
+        <TypeName>Azure.Storage.Queues.QueueClient</TypeName>
       </ViewSelectedBy>
       <GroupBy>
-        <ScriptBlock>$_.ServiceClient.BaseUri</ScriptBlock>
-        <Label>Queue End Point</Label>
+        <ScriptBlock>$_.QueueClient.AccountName</ScriptBlock>
+        <Label>Storage Account Name</Label>
       </GroupBy>
       <TableControl>
         <TableHeaders>
           <TableColumnHeader>
             <Label>Name</Label>
             <Width>30</Width>
-            <Alignment>Left</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>EncodeMessage</Label>
-            <width>20</width>
             <Alignment>Left</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
@@ -305,9 +300,6 @@
             <TableColumnItems>
               <TableColumnItem>
                 <ScriptBlock>$_.Name</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.EncodeMessage</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>

@@ -18,8 +18,12 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.14.1
 * Made 1.2 as default for MinimalTlsVersion when creating new Sql Server from Powershell
 * Fixed an existing issue with `Set-AzSqlInstanceActiveDirectoryAdministrator`
+* Added multi-secondary support for `Get-AzSqlDatabaseFailoverGroup`, `Remove-AzSqlDatabaseFromFailoverGroup` and `Add-AzSqlDatabaseFromFailoverGroup`
+* Changed default FailoverPolicy value for `New-AzSqlDatabaseFailoverGroup`, `Set-AzSqlDatabaseFailoverGroup` from `Automatic` to `Manual`
 
 ## Version 4.14.0
 * Added `DatabaseFormat` and `PricingModel` parameters to `New-AzSqlInstance`, `Set-AzSqlInstance`

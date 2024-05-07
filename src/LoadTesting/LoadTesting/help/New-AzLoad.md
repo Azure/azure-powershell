@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.LoadTesting-help.xml
 Module Name: Az.LoadTesting
 online version: https://learn.microsoft.com/powershell/module/az.loadtesting/new-azload
 schema: 2.0.0
@@ -13,10 +13,10 @@ Create a new Azure Load Testing resource.
 ## SYNTAX
 
 ```
-New-AzLoad -Name <String> -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
+New-AzLoad -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] -Location <String>
  [-EncryptionIdentity <String>] [-EncryptionKey <String>] [-IdentityType <ManagedServiceIdentityType>]
  [-IdentityUserAssigned <Hashtable>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -311,7 +311,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
 ## RELATED LINKS
-

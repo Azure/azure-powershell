@@ -1,6 +1,6 @@
 ---
-external help file:
-Module Name: Az.MySql
+external help file: Az.MySql-help.xml
+Module Name: Az.Mysql
 online version: https://learn.microsoft.com/powershell/module/az.mysql/get-azmysqlflexibleserver
 schema: 2.0.0
 ---
@@ -14,7 +14,8 @@ Gets information about a server.
 
 ### List1 (Default)
 ```
-Get-AzMySqlFlexibleServer [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMySqlFlexibleServer [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### Get
@@ -23,15 +24,16 @@ Get-AzMySqlFlexibleServer -Name <String> -ResourceGroupName <String> [-Subscript
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzMySqlFlexibleServer -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
 ### List
 ```
-Get-AzMySqlFlexibleServer -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMySqlFlexibleServer -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzMySqlFlexibleServer -InputObject <IMySqlIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,7 +50,6 @@ Get-AzMySqlFlexibleServer
 Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
 ----         --------  -------          -------        ------------------ ------- -------------
 mysql-test   West US 2 Standard_D2ds_v4 GeneralPurpose admin              5.7     32
-
 ```
 
 This cmdlet gets MySql servers with default context.
@@ -164,7 +165,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: List1, Get, List
 Aliases:
 
 Required: False
@@ -187,25 +188,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## NOTES
 
-ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMySqlIdentity>`: Identity Parameter
-  - `[BackupName <String>]`: The name of the backup.
-  - `[ConfigurationName <String>]`: The name of the server configuration.
-  - `[DatabaseName <String>]`: The name of the database.
-  - `[FirewallRuleName <String>]`: The name of the server firewall rule.
-  - `[Id <String>]`: Resource identity path
-  - `[LocationName <String>]`: The name of the location.
-  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
-  - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
-  - `[ServerName <String>]`: The name of the server.
-  - `[SubscriptionId <String>]`: The ID of the target subscription.
-  - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
-
 ## RELATED LINKS
-

@@ -20,7 +20,7 @@ Updates a ServiceBus Rule
 #>
 
 function Set-AzServiceBusRule{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IRule])]
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IRule])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the Rule.")]
@@ -143,9 +143,8 @@ function Set-AzServiceBusRule{
 
         [Parameter(HelpMessage = "Filter type that is evaluated against a BrokeredMessage.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.FilterType]
+        [System.String]
         # Filter type that is evaluated against a BrokeredMessage.
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.ParameterBreakingChangeAttribute("FilterType","12.0.0", "4.0.0","2024-05-21" )]
         ${FilterType},
 
         [Parameter(HelpMessage = "Value that indicates whether the rule action requires preprocessing.")]

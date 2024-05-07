@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.StreamAnalytics.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UTF8".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UTF8", "UTF8", global::System.Management.Automation.CompletionResultType.ParameterValue, "UTF8");
+                yield return new global::System.Management.Automation.CompletionResult("'UTF8'", "UTF8", global::System.Management.Automation.CompletionResultType.ParameterValue, "UTF8");
             }
         }
     }

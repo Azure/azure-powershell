@@ -23,7 +23,7 @@ Create an in-memory object for AzureFileServiceDataSource.
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceDataSource
 .Link
-https://learn.microsoft.com/powershell/module/az.Purview/new-AzPurviewAzureFileServiceDataSourceObject
+https://learn.microsoft.com/powershell/module/Az.Purview/new-AzPurviewAzureFileServiceDataSourceObject
 #>
 function New-AzPurviewAzureFileServiceDataSourceObject {
     [OutputType('Microsoft.Azure.PowerShell.Cmdlets.Purviewdata.Models.Api20211001Preview.AzureFileServiceDataSource')]

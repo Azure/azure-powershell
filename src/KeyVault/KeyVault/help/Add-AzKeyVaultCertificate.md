@@ -13,17 +13,19 @@ Adds a certificate to a key vault.
 
 ## SYNTAX
 
+### EnrollCertWithPolicyPath (Default)
+```
+Add-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-PolicyPath] <String> [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
 ### EnrollCertWithPolicyObject
 ```
 Add-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String>
  [-CertificatePolicy] <PSKeyVaultCertificatePolicy> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### EnrollCertWithPolicyPath
-```
-Add-AzKeyVaultCertificate [-VaultName] <String> [-Name] <String> [-PolicyPath] <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
