@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.ConnectedKubernetes",
-  "ModuleVersion": "0.10.1",
+  "ModuleVersion": "0.10.2",
   "Cmdlets": [
     {
       "VerbName": "Get",

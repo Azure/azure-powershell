@@ -6,7 +6,7 @@ Invoke-LiveTestScenario -Name "Create new standard key vault" -Description "Test
     $vaultName = New-LiveTestResourceName
     $vaultLocation = "westus"
 
-    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $vaultLocation
+    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $vaultLocation -DisableRbacAuthorization
     $actual = Get-AzKeyVault -ResourceGroupName $rgName -VaultName $vaultName
     Assert-AreEqual $vaultName $actual.VaultName
     Assert-AreEqual $rgName $actual.ResourceGroupName
@@ -15,7 +15,7 @@ Invoke-LiveTestScenario -Name "Create new standard key vault" -Description "Test
     Assert-AreEqual $false $actual.EnabledForDeployment
     Assert-True { $actual.EnableSoftDelete } "By default EnableSoftDelete should be true"
     Assert-Null $actual.EnablePurgeProtection "By default EnablePurgeProtection should be null"
-    Assert-False { $actual.EnableRbacAuthorization } "By default EnableRbacAuthorization should be false"
+    Assert-False { $actual.EnableRbacAuthorization } "EnableRbacAuthorization should be false"
     Assert-AreEqual 90 $actual.SoftDeleteRetentionInDays "By default SoftDeleteRetentionInDays should be 90"
 }
 
@@ -27,7 +27,7 @@ Invoke-LiveTestScenario -Name "Create new premium key vault" -Description "Test 
     $vaultName = New-LiveTestResourceName
     $vaultLocation = "eastus"
 
-    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $vaultLocation -Sku premium -EnabledForDeployment
+    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $vaultLocation -Sku premium -EnabledForDeployment -DisableRbacAuthorization
     $actual = Get-AzKeyVault -ResourceGroupName $rgName -VaultName $vaultName
     Assert-AreEqual $vaultName $actual.VaultName
     Assert-AreEqual $rgName $actual.ResourceGroupName
@@ -45,9 +45,9 @@ Invoke-LiveTestScenario -Name "Update key vault" -Description "Test updating pro
     $vaultLocation = "eastus"
 
     # Update EnableRbacAuthorization
-    $vault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $vaultLocation
+    $vault = New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $vaultLocation -DisableRbacAuthorization
 
-    $vault = $vault | Update-AzKeyVault -EnableRbacAuthorization $false
+    $vault = $vault | Update-AzKeyVault -DisableRbacAuthorization $true
     Assert-False { $vault.EnableRbacAuthorization } "EnableRbacAuthorization should be false"
 
     # Update Tags
@@ -69,7 +69,7 @@ Invoke-LiveTestScenario -Name "Delete key vault" -Description "Test deleting key
     $vaultName = New-LiveTestResourceName
     $vaultLocation = "westus"
 
-    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $vaultLocation
+    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgname -Location $vaultLocation -DisableRbacAuthorization
     Remove-AzKeyVault -VaultName $vaultName -Force
 
     $deletedVault = Get-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName
@@ -88,7 +88,7 @@ Invoke-LiveTestScenario -Name "Create key vault secret" -Description "Test creat
     $vaultLocation = "eastus"
     $secretName = New-LiveTestResourceName
 
-    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $vaultLocation
+    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $vaultLocation -DisableRbacAuthorization
     $sp = Get-AzADServicePrincipal -ApplicationId (Get-AzContext).Account.Id
     $objectId = $sp.Id
     Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ObjectId $objectId -PermissionsToSecrets get, set, list
@@ -111,7 +111,7 @@ Invoke-LiveTestScenario -Name "Create key vault secret with multi-versions" -Des
     $vaultLocation = "westus"
     $secretName = New-LiveTestResourceName
 
-    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $vaultLocation
+    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $vaultLocation -DisableRbacAuthorization
     $sp = Get-AzADServicePrincipal -ApplicationId (Get-AzContext).Account.Id
     $objectId = $sp.Id
     Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ObjectId $objectId -PermissionsToSecrets get, set, list
@@ -134,7 +134,7 @@ Invoke-LiveTestScenario -Name "Update key vault secret attributes" -Description 
     $vaultLocation = "westus"
     $secretName = New-LiveTestResourceName
 
-    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $vaultLocation
+    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $vaultLocation -DisableRbacAuthorization
     $sp = Get-AzADServicePrincipal -ApplicationId (Get-AzContext).Account.Id
     $objectId = $sp.Id
     Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ObjectId $objectId -PermissionsToSecrets get, set, list
@@ -163,7 +163,7 @@ Invoke-LiveTestScenario -Name "Remove key vault secret" -Description "Test remov
     $vaultLocation = "eastus"
     $secretName = New-LiveTestResourceName
 
-    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $vaultLocation
+    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $vaultLocation -DisableRbacAuthorization
     $sp = Get-AzADServicePrincipal -ApplicationId (Get-AzContext).Account.Id
     $objectId = $sp.Id
     Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ObjectId $objectId -PermissionsToSecrets get, set, list, delete
@@ -187,8 +187,8 @@ Invoke-LiveTestScenario -Name "Backup and restore key vault secret" -Description
     $vaultLocation = "eastus"
     $secretName = New-LiveTestResourceName
 
-    New-AzKeyVault -VaultName $vaultName1 -ResourceGroupName $rgName -Location $vaultLocation
-    New-AzKeyVault -VaultName $vaultName2 -ResourceGroupName $rgName -Location $vaultLocation
+    New-AzKeyVault -VaultName $vaultName1 -ResourceGroupName $rgName -Location $vaultLocation -DisableRbacAuthorization
+    New-AzKeyVault -VaultName $vaultName2 -ResourceGroupName $rgName -Location $vaultLocation -DisableRbacAuthorization
     $sp = Get-AzADServicePrincipal -ApplicationId (Get-AzContext).Account.Id
     $objectId = $sp.Id
     Set-AzKeyVaultAccessPolicy -VaultName $vaultName1 -ObjectId $objectId -PermissionsToSecrets get, set, list, backup

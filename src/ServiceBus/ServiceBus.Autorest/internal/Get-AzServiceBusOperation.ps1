@@ -25,12 +25,12 @@ Lists all of the available ServiceBus REST API operations.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IOperation
+Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperation
 .Link
 https://learn.microsoft.com/powershell/module/az.servicebus/get-azservicebusoperation
 #>
 function Get-AzServiceBusOperation {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IOperation])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IOperation])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter()]
