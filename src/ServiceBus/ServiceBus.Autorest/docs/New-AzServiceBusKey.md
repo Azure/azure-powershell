@@ -14,7 +14,7 @@ Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 
 ### NewExpandedNamespace (Default)
 ```
-New-AzServiceBusKey -Name <String> -NamespaceName <String> -ResourceGroupName <String> -KeyType <KeyType>
+New-AzServiceBusKey -Name <String> -NamespaceName <String> -ResourceGroupName <String> -KeyType <String>
  [-SubscriptionId <String>] [-KeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -22,14 +22,14 @@ New-AzServiceBusKey -Name <String> -NamespaceName <String> -ResourceGroupName <S
 ### NewExpandedQueue
 ```
 New-AzServiceBusKey -Name <String> -NamespaceName <String> -QueueName <String> -ResourceGroupName <String>
- -KeyType <KeyType> [-SubscriptionId <String>] [-KeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ -KeyType <String> [-SubscriptionId <String>] [-KeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### NewExpandedTopic
 ```
 New-AzServiceBusKey -Name <String> -NamespaceName <String> -ResourceGroupName <String> -TopicName <String>
- -KeyType <KeyType> [-SubscriptionId <String>] [-KeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ -KeyType <String> [-SubscriptionId <String>] [-KeyValue <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -119,7 +119,7 @@ Accept wildcard characters: False
 The access key to regenerate.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Support.KeyType
+Type: System.String
 Parameter Sets: (All)
 Aliases: RegenerateKey
 
@@ -289,11 +289,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.IAccessKeys
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IAccessKeys
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 
