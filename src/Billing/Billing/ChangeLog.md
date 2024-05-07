@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed the outdated deps.json file.
 
 ## Version 2.0.3
 * Fixed page continuation for Consumption PriceSheet cmdlet

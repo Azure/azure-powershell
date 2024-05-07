@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Removed the outdated deps.json file.
 
 ## Version 3.2.0
 * Added new cmdlets for Table resource: 'New-AzOperationalInsightsRestoreTable', 'New-AzOperationalInsightsSearchTable', 'New-AzOperationalInsightsTable','Remove-AzOperationalInsightsTable','Update-AzOperationalInsightsTable', 'Convert-AzOperationalInsightsMigrateTable'
@@ -60,14 +61,14 @@
 
 ## Version 2.2.0
 * Fixed bug PSWorkspace doesn't implement IOperationalInsightsWorkspace [#12135]
-* Added "pergb2018" to valid value set of parameter `Sku` in `Set-AzOperationalInsightsWorkspace` 
+* Added "pergb2018" to valid value set of parameter `Sku` in `Set-AzOperationalInsightsWorkspace`
 * Added alias "FunctionParameters" for parameter `FunctionParameter` to
     - `New-AzOperationalInsightsSavedSearch`
     - `Set-AzOperationalInsightsSavedSearch`
 
 ## Version 2.1.0
 * Upgraded SDK to 0.21.0
-* Added optional parameters to 
+* Added optional parameters to
     - `New-AzOperationalInsightsSavedSearch`
     - `Set-AzOperationalInsightsSavedSearch`
 
@@ -93,7 +94,7 @@
 * Changed the description of the -Name parameter for New-AzOperationalInsightsWindowsEventDataSource
 
 ## Version 1.3.2
-* Updated default version for saved searches to be 1. 
+* Updated default version for saved searches to be 1.
 * Fixed custom log null regex handling
 
 ## Version 1.3.1
@@ -107,8 +108,8 @@
 
 ## Version 1.1.0
 * Additional support for New and Get ApplicationInsights data source.
-    - Added new 'ApplicationInsights' kind to support Get specific and Get all ApplicationInsights data sources for given workspace. 
-    - Added New-AzOperationalInsightsApplicationInsightsDataSource cmdlet for creating data source by given Application-Insights resource parameters: subscription Id, resourceGroupName and name. 
+    - Added new 'ApplicationInsights' kind to support Get specific and Get all ApplicationInsights data sources for given workspace.
+    - Added New-AzOperationalInsightsApplicationInsightsDataSource cmdlet for creating data source by given Application-Insights resource parameters: subscription Id, resourceGroupName and name.
 
 ## Version 1.0.0
 * General availability of `Az.OperationalInsights` module
