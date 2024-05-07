@@ -84,8 +84,14 @@ function setupEnv() {
     New-AzCdnProfile -SkuName "Standard_Microsoft" -Name $classicCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
 
     # Hard-coding host and endpoint names due to requirement for DNS CNAME
-    $classicCdnEndpointName = 'aa-powershell-20230421-oigr9w'
-    $customDomainHostName = 'aa-powershell-20230421-oigr9w.cdne2e.azfdtest.xyz'
+    # DNA mapping use DNS Zone resource: ps.cdne2e.azfdtest.xyz 
+    # Add RecordSets in 'DNS Management' blade: 
+    #    Name: ps-20240402-domain020
+    #    Tyep: CName
+    #    Alias Record Set: No
+    #    Alias: ps-20240402-domain020.azureedge.net
+    $classicCdnEndpointName = 'ps-20240402-domain020'
+    $customDomainHostName = 'ps-20240402-domain020.ps.cdne2e.azfdtest.xyz'
     $customDomainName = 'cd-' + (RandomString -allChars $false -len 6);
     $location = "westus"
     $origin = @{
@@ -116,6 +122,7 @@ function setupEnv() {
     $env.Add("ClassicCustomDomainHostName", $customDomainHostName)
     Write-Host -ForegroundColor Green "Standard_Microsoft Standard SKU resources have been added to the environment."
 
+    # Create profile, Stand_AzureFrontDoor SKU
     $frontDoorCdnProfileName = 'fdp-' + (RandomString -allChars $false -len 6);
     Write-Host -ForegroundColor Green "Start to create Stand_AzureFrontDoor SKU profile : $($frontDoorCdnProfileName)"
     New-AzFrontDoorCdnProfile -SkuName "Standard_AzureFrontDoor" -Name $frontDoorCdnProfileName -ResourceGroupName $resourceGroupName -Location Global | Out-Null
@@ -134,6 +141,7 @@ function setupEnv() {
     $env.Add("FrontDoorEndpointName", $frontDoorEndpointName)
     Write-Host -ForegroundColor Green "Standard_AzureFrontDoor SKU resources have been added to the environment."
 
+    # Create Classic Afd resources use to test classic AFD migrated to AFDX resources scenarios
     $classicFDName01 = 'fdp-' + (RandomString -allChars $false -len 6);
     Write-Host -ForegroundColor Green "Use frontDoorName : $($classicFDName01)"
 
@@ -187,7 +195,7 @@ function setupEnv() {
     $env.Add("ClassicResourceId02", $classicResourceId02)
     $env.Add("ClassicResourceId03", $classicResourceId03)
 
-    Write-Host -ForegroundColor Green "Classic Afd resources have been added to the environment."
+    Write-Host -ForegroundColor Green "Classic Afd resources use for testing classic AFD migration scenarios have been added to the environment."
 
     # Create
     $envFile = 'env.json'

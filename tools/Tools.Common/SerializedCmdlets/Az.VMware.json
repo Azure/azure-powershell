@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.VMware",
-  "ModuleVersion": "0.6.1",
+  "ModuleVersion": "0.6.2",
   "Cmdlets": [
     {
       "VerbName": "Get",

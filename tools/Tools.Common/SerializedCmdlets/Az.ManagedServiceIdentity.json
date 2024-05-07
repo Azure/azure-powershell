@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.ManagedServiceIdentity",
-  "ModuleVersion": "1.2.0",
+  "ModuleVersion": "1.2.1",
   "Cmdlets": [
     {
       "VerbName": "Get",

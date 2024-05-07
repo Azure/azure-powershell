@@ -125,11 +125,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20230501.IValidateProbeOutput
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20240201.IValidateProbeOutput
 
 ## NOTES
-
-ALIASES
 
 ## RELATED LINKS
 

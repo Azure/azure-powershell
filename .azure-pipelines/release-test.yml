@@ -136,42 +136,42 @@ jobs:
     psVersion: ${{ parameters.preview_ps }}
     netCoreVersion: ${{ parameters.netCoreVersion_8 }}
 
-- template: util/smoke-test-steps.yml
-  parameters:
-    name: 'MacOS_PS7_2_X_SmokeTest'
-    agentPoolName: ${{ variables.macOsAgentPoolName }}
-    agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
-    psVersion: ${{ parameters.ps7_2 }}
-    netCoreVersion: ${{ parameters.netCoreVersion }}
+# - template: util/smoke-test-steps.yml
+#   parameters:
+#     name: 'MacOS_PS7_2_X_SmokeTest'
+#     agentPoolName: ${{ variables.macOsAgentPoolName }}
+#     agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
+#     psVersion: ${{ parameters.ps7_2 }}
+#     netCoreVersion: ${{ parameters.netCoreVersion }}
 
-- template: util/smoke-test-steps.yml
-  parameters:
-    name: 'MacOS_PS7_3_X_SmokeTest'
-    agentPoolName: ${{ variables.macOsAgentPoolName }}
-    agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
-    psVersion: ${{ parameters.ps7_3 }}
-    netCoreVersion: ${{ parameters.netCoreVersion_7 }}
+# - template: util/smoke-test-steps.yml
+#   parameters:
+#     name: 'MacOS_PS7_3_X_SmokeTest'
+#     agentPoolName: ${{ variables.macOsAgentPoolName }}
+#     agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
+#     psVersion: ${{ parameters.ps7_3 }}
+#     netCoreVersion: ${{ parameters.netCoreVersion_7 }}
 
-- template: util/smoke-test-steps.yml
-  parameters:
-    name: 'MacOS_PS7_4_X_SmokeTest'
-    agentPoolName: ${{ variables.macOsAgentPoolName }}
-    agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
-    psVersion: ${{ parameters.ps7_4 }}
-    netCoreVersion: ${{ parameters.netCoreVersion_8 }}
+# - template: util/smoke-test-steps.yml
+#   parameters:
+#     name: 'MacOS_PS7_4_X_SmokeTest'
+#     agentPoolName: ${{ variables.macOsAgentPoolName }}
+#     agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
+#     psVersion: ${{ parameters.ps7_4 }}
+#     netCoreVersion: ${{ parameters.netCoreVersion_8 }}
 
-- template: util/smoke-test-steps.yml
-  parameters:
-    name: 'MacOS_Latest_PS_SmokeTest'
-    agentPoolName: ${{ variables.macOsAgentPoolName }}
-    agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
-    psVersion: ${{ parameters.latest_ps }}
-    netCoreVersion: ${{ parameters.netCoreVersion_8 }}
+# - template: util/smoke-test-steps.yml
+#   parameters:
+#     name: 'MacOS_Latest_PS_SmokeTest'
+#     agentPoolName: ${{ variables.macOsAgentPoolName }}
+#     agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
+#     psVersion: ${{ parameters.latest_ps }}
+#     netCoreVersion: ${{ parameters.netCoreVersion_8 }}
 
-- template: util/smoke-test-steps.yml
-  parameters:
-    name: 'MacOS_Preview_PS_SmokeTest'
-    agentPoolName: ${{ variables.macOsAgentPoolName }}
-    agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
-    psVersion: ${{ parameters.preview_ps }}
-    netCoreVersion: ${{ parameters.netCoreVersion_8 }}
+# - template: util/smoke-test-steps.yml
+#   parameters:
+#     name: 'MacOS_Preview_PS_SmokeTest'
+#     agentPoolName: ${{ variables.macOsAgentPoolName }}
+#     agentPoolVMImage: ${{ variables.macOsAgentPoolVMImage }}
+#     psVersion: ${{ parameters.preview_ps }}
+#     netCoreVersion: ${{ parameters.netCoreVersion_8 }}

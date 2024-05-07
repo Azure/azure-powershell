@@ -1,0 +1,95 @@
+{
+  "resourceType": "profiles/customDomains",
+  "apiVersion": "2024-02-01",
+  "learnMore": {
+    "url": "https://learn.microsoft.com/powershell/module/az.cdn"
+  },
+  "commands": [
+    {
+      "name": "Get-AzFrontDoorCdnCustomDomain",
+      "description": "Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/get-azfrontdoorcdncustomdomain"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CustomDomainName <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String[]>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Gets an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.",
+          "parameters": [
+            {
+              "name": "-CustomDomainName",
+              "value": "[Path.customDomainName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Remove-AzFrontDoorCdnCustomDomain",
+      "description": "Deletes an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.",
+      "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/customDomains/{customDomainName}",
+      "help": {
+        "learnMore": {
+          "url": "https://learn.microsoft.com/powershell/module/az.cdn/remove-azfrontdoorcdncustomdomain"
+        },
+        "parameterSets": [
+          {
+            "parameters": [
+              "-CustomDomainName <String>",
+              "-ProfileName <String>",
+              "-ResourceGroupName <String>",
+              "[-SubscriptionId <String>]"
+            ]
+          }
+        ]
+      },
+      "examples": [
+        {
+          "description": "Deletes an existing AzureFrontDoor domain with the specified domain name under the specified subscription, resource group and profile.",
+          "parameters": [
+            {
+              "name": "-CustomDomainName",
+              "value": "[Path.customDomainName]"
+            },
+            {
+              "name": "-ProfileName",
+              "value": "[Path.profileName]"
+            },
+            {
+              "name": "-ResourceGroupName",
+              "value": "[Path.resourceGroupName]"
+            },
+            {
+              "name": "-SubscriptionId",
+              "value": "[Path.subscriptionId]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
