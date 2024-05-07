@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed the outdated deps.json file.
 
 ## Version 0.10.0
 * Allowed update of attestation information (e.g. keys, certificates) for exsting device enrollments and enrollment groups

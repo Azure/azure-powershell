@@ -23,7 +23,6 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
     /// Get the list of metric definitions for a resource.
     /// </summary>
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MetricDefinition"), OutputType(typeof(PSMetricDefinition))]
-    [Microsoft.WindowsAzure.Commands.Common.CustomAttributes.CmdletOutputBreakingChangeWithVersion(typeof(PSMetricDefinition), "12.0.0", "6.0.0", "2024/05/21", ReplacementCmdletOutputTypeName = "Microsoft.Azure.PowerShell.Cmdlets.Metric.Models.IMetricDefinition")]
     public class GetAzureRmMetricDefinitionCommand : ManagementCmdletBase
     {
         /// <summary>
@@ -36,7 +35,6 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// <summary>
         /// Gets or sets the metricnames parameter of the cmdlet
         /// </summary>
-        [Microsoft.WindowsAzure.Commands.Common.CustomAttributes.CmdletParameterBreakingChangeWithVersion("Parameter MetricName will be removed", "12.0.0", "6.0.0", "2024/05/21")]
         [Parameter(ValueFromPipelineByPropertyName = true, HelpMessage = "The metric names of the query")]
         [ValidateNotNullOrEmpty]
         public string[] MetricName { get; set; }
@@ -50,7 +48,6 @@ namespace Microsoft.Azure.Commands.Insights.Metrics
         /// <summary>
         /// Gets or sets the detailedoutput parameter of the cmdlet
         /// </summary>
-        [Microsoft.WindowsAzure.Commands.Common.CustomAttributes.CmdletParameterBreakingChangeWithVersion("Parameter DetailedOutput will be removed", "12.0.0", "6.0.0", "2024/05/21")]
         [Parameter(HelpMessage = "Return object with all the details of the records (the default is to return only some attributes, i.e. no detail)")]
         public SwitchParameter DetailedOutput { get; set; }
 

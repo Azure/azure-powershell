@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed pattern for access policy resource names
 
 ## Version 1.9.0
 * Upgraded API version to 2023-08-01

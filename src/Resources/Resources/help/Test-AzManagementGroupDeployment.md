@@ -16,7 +16,7 @@ Validates a deployment at a management group.
 ```
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterObject
@@ -24,7 +24,7 @@ Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -L
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateParameterObject <Hashtable> -TemplateObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterObject
@@ -32,7 +32,7 @@ Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -L
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateParameterObject <Hashtable> -TemplateFile <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterObject
@@ -40,7 +40,7 @@ Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -L
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateParameterObject <Hashtable> -TemplateUri <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceIdAndParamsObject
@@ -48,7 +48,7 @@ Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -L
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateParameterObject <Hashtable> -TemplateSpecId <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterFile
@@ -56,21 +56,21 @@ Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -L
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateParameterFile <String> -TemplateObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterFile
 ```
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateParameterFile <String> -TemplateFile <String> [-SkipTemplateParameterPrompt]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterFile
 ```
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateParameterFile <String> -TemplateUri <String> [-SkipTemplateParameterPrompt]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceIdAndParams
@@ -78,14 +78,14 @@ Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -L
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateParameterFile <String> -TemplateSpecId <String>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByParameterFileWithNoTemplate
 ```
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateParameterFile <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectAndParameterUri
@@ -93,49 +93,49 @@ Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -L
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateParameterUri <String> -TemplateObject <Hashtable>
  [-SkipTemplateParameterPrompt] [-Pre] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateFileAndParameterUri
 ```
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateParameterUri <String> -TemplateFile <String> [-SkipTemplateParameterPrompt]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriAndParameterUri
 ```
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateParameterUri <String> -TemplateUri <String> [-SkipTemplateParameterPrompt]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceIdAndParamsUri
 ```
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateParameterUri <String> -TemplateSpecId <String> [-SkipTemplateParameterPrompt]
- [-Pre] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-Pre] [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateObjectWithNoParameters
 ```
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateObject <Hashtable> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateUriWithNoParameters
 ```
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateUri <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ### ByTemplateSpecResourceId
 ```
 Test-AzManagementGroupDeployment [-Name <String>] -ManagementGroupId <String> -Location <String>
  [-QueryString <String>] -TemplateSpecId <String> [-SkipTemplateParameterPrompt] [-Pre]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -236,6 +236,21 @@ When set, indicates that the cmdlet should use pre-release API versions when aut
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
 
 Required: False
 Position: Named

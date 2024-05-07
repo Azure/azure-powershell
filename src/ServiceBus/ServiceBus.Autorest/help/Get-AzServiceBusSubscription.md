@@ -30,6 +30,18 @@ Get-AzServiceBusSubscription -InputObject <IServiceBusIdentity> [-DefaultProfile
  [<CommonParameters>]
 ```
 
+### GetViaIdentityNamespace
+```
+Get-AzServiceBusSubscription -Name <String> -NamespaceInputObject <IServiceBusIdentity> -TopicName <String>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentityTopic
+```
+Get-AzServiceBusSubscription -Name <String> -TopicInputObject <IServiceBusIdentity>
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Returns a subscription description for the specified topic.
 
@@ -101,7 +113,6 @@ Accept wildcard characters: False
 
 ### -InputObject
 Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -120,13 +131,28 @@ The subscription name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, GetViaIdentityNamespace, GetViaIdentityTopic
 Aliases: SubscriptionName
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: GetViaIdentityNamespace
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -207,12 +233,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TopicInputObject
+Identity Parameter
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: GetViaIdentityTopic
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -TopicName
 The topic name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get, GetViaIdentityNamespace, List
 Aliases:
 
 Required: True
@@ -231,9 +272,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api20221001Preview.ISbSubscription
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.ISbSubscription
 
 ## NOTES
 
 ## RELATED LINKS
+
+[https://msdn.microsoft.com/en-us/library/azure/mt639402.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639402.aspx)
+
+[https://msdn.microsoft.com/en-us/library/azure/mt639400.aspx](https://msdn.microsoft.com/en-us/library/azure/mt639400.aspx)
 

@@ -14,7 +14,7 @@ List the quantity of available pre-provisioned Event Hubs Clusters, indexed by A
 
 ```
 Get-AzEventHubClustersAvailableRegion [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+ [-ProgressAction <ActionPreference>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,6 +47,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ProgressAction
+{{ Fill ProgressAction Description }}
+
+```yaml
+Type: System.Management.Automation.ActionPreference
+Parameter Sets: (All)
+Aliases: proga
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 Subscription credentials that uniquely identify a Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -70,7 +85,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202301Preview.IAvailableCluster
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IAvailableClustersList
 
 ## NOTES
 

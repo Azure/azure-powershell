@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed the outdated deps.json file.
 
 ## Version 1.0.2
 * Remove the broken link in Get-AzDtlAllowedVMSizesPolicy.md

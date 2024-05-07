@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.StackHCIVM",
-  "ModuleVersion": "1.0.2",
+  "ModuleVersion": "1.0.3",
   "Cmdlets": [
     {
       "VerbName": "Add",
