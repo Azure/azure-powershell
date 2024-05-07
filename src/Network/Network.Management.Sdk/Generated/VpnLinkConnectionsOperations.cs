@@ -67,7 +67,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Lists IKE Security Associations for Vpn Site Link Connection in the specified resource group.
+        /// Lists IKE Security Associations for Vpn Site Link Connection in the
+        /// specified resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

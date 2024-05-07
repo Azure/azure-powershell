@@ -954,7 +954,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets the backend health of the specified application gateway in a resource group.
+        /// Gets the backend health of the specified application gateway in a resource
+        /// group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -980,7 +981,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets the backend health for given combination of backend pool and http setting of the specified application gateway in a resource group.
+        /// Gets the backend health for given combination of backend pool and http
+        /// setting of the specified application gateway in a resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

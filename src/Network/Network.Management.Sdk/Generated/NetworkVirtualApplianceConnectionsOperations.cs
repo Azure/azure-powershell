@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Network
         public NetworkManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Creates a connection to Network Virtual Appliance, if it doesn&#39;t exist else updates the existing NVA connection&#39;
+        /// Creates a connection to Network Virtual Appliance, if it doesn&#39;t exist else
+        /// updates the existing NVA connection&#39;
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

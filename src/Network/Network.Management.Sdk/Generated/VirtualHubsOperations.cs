@@ -249,7 +249,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Creates a VirtualHub resource if it doesn&#39;t exist else updates the existing VirtualHub.
+        /// Creates a VirtualHub resource if it doesn&#39;t exist else updates the existing
+        /// VirtualHub.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VirtualHub.
@@ -910,7 +911,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Gets the effective routes configured for the Virtual Hub resource or the specified resource .
+        /// Gets the effective routes configured for the Virtual Hub resource or the
+        /// specified resource .
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VirtualHub.
@@ -935,7 +937,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets the inbound routes configured for the Virtual Hub on a particular connection.
+        /// Gets the inbound routes configured for the Virtual Hub on a particular
+        /// connection.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VirtualHub.
@@ -960,7 +963,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets the outbound routes configured for the Virtual Hub on a particular connection.
+        /// Gets the outbound routes configured for the Virtual Hub on a particular
+        /// connection.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VirtualHub.

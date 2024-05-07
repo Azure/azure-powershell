@@ -1352,7 +1352,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Gets the Ddos Protection Status of all IP Addresses under the Virtual Network
+        /// Gets the Ddos Protection Status of all IP Addresses under the Virtual
+        /// Network
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -2590,7 +2591,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Gets the Ddos Protection Status of all IP Addresses under the Virtual Network
+        /// Gets the Ddos Protection Status of all IP Addresses under the Virtual
+        /// Network
         /// </summary>
         /// <param name='nextPageLink'>
         /// The NextLink from the previous successful call to List operation.

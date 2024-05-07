@@ -249,7 +249,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Creates a VpnServerConfiguration resource if it doesn&#39;t exist else updates the existing VpnServerConfiguration.
+        /// Creates a VpnServerConfiguration resource if it doesn&#39;t exist else updates
+        /// the existing VpnServerConfiguration.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VpnServerConfiguration.

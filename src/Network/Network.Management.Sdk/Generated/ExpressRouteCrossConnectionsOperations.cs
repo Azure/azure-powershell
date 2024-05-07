@@ -888,7 +888,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Gets the currently advertised ARP table associated with the express route cross connection in a resource group.
+        /// Gets the currently advertised ARP table associated with the express route
+        /// cross connection in a resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -916,7 +917,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets the route table summary associated with the express route cross connection in a resource group.
+        /// Gets the route table summary associated with the express route cross
+        /// connection in a resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -944,7 +946,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets the currently advertised routes table associated with the express route cross connection in a resource group.
+        /// Gets the currently advertised routes table associated with the express
+        /// route cross connection in a resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

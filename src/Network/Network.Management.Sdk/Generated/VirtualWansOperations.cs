@@ -249,7 +249,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Creates a VirtualWAN resource if it doesn&#39;t exist else updates the existing VirtualWAN.
+        /// Creates a VirtualWAN resource if it doesn&#39;t exist else updates the existing
+        /// VirtualWAN.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VirtualWan.

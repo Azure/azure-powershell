@@ -259,7 +259,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Creates a nat rule to a scalable vpn gateway if it doesn&#39;t exist else updates the existing nat rules.
+        /// Creates a nat rule to a scalable vpn gateway if it doesn&#39;t exist else
+        /// updates the existing nat rules.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VpnGateway.

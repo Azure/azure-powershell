@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Network
         public NetworkManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Creates or updates a virtual network gateway in the specified resource group.
+        /// Creates or updates a virtual network gateway in the specified resource
+        /// group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -731,7 +732,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Resets the primary of the virtual network gateway in the specified resource group.
+        /// Resets the primary of the virtual network gateway in the specified resource
+        /// group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -757,7 +759,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Resets the VPN client shared key of the virtual network gateway in the specified resource group.
+        /// Resets the VPN client shared key of the virtual network gateway in the
+        /// specified resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -779,7 +782,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Generates VPN client package for P2S client of the virtual network gateway in the specified resource group.
+        /// Generates VPN client package for P2S client of the virtual network gateway
+        /// in the specified resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -805,7 +809,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Generates VPN profile for P2S client of the virtual network gateway in the specified resource group. Used for IKEV2 and radius based authentication.
+        /// Generates VPN profile for P2S client of the virtual network gateway in the
+        /// specified resource group. Used for IKEV2 and radius based authentication.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -831,7 +836,9 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets pre-generated VPN profile for P2S client of the virtual network gateway in the specified resource group. The profile needs to be generated first using generateVpnProfile.
+        /// Gets pre-generated VPN profile for P2S client of the virtual network
+        /// gateway in the specified resource group. The profile needs to be generated
+        /// first using generateVpnProfile.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1088,7 +1095,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// This operation retrieves a list of routes the virtual network gateway has learned, including routes learned from BGP peers.
+        /// This operation retrieves a list of routes the virtual network gateway has
+        /// learned, including routes learned from BGP peers.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1110,7 +1118,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// This operation retrieves a list of routes the virtual network gateway is advertising to the specified peer.
+        /// This operation retrieves a list of routes the virtual network gateway is
+        /// advertising to the specified peer.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1135,7 +1144,9 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy for P2S client of virtual network gateway in the specified resource group through Network resource provider.
+        /// The Set VpnclientIpsecParameters operation sets the vpnclient ipsec policy
+        /// for P2S client of virtual network gateway in the specified resource group
+        /// through Network resource provider.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1161,7 +1172,9 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// The Get VpnclientIpsecParameters operation retrieves information about the vpnclient ipsec policy for P2S client of virtual network gateway in the specified resource group through Network resource provider.
+        /// The Get VpnclientIpsecParameters operation retrieves information about the
+        /// vpnclient ipsec policy for P2S client of virtual network gateway in the
+        /// specified resource group through Network resource provider.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1409,7 +1422,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Starts packet capture on virtual network gateway in the specified resource group.
+        /// Starts packet capture on virtual network gateway in the specified resource
+        /// group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1435,7 +1449,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Stops packet capture on virtual network gateway in the specified resource group.
+        /// Stops packet capture on virtual network gateway in the specified resource
+        /// group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1461,7 +1476,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Get VPN client connection health detail per P2S client connection of the virtual network gateway in the specified resource group.
+        /// Get VPN client connection health detail per P2S client connection of the
+        /// virtual network gateway in the specified resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1483,7 +1499,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Disconnect vpn connections of virtual network gateway in the specified resource group.
+        /// Disconnect vpn connections of virtual network gateway in the specified
+        /// resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

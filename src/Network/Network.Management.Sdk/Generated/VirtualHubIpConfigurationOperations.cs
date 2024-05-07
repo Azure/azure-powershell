@@ -259,7 +259,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Creates a VirtualHubIpConfiguration resource if it doesn&#39;t exist else updates the existing VirtualHubIpConfiguration.
+        /// Creates a VirtualHubIpConfiguration resource if it doesn&#39;t exist else
+        /// updates the existing VirtualHubIpConfiguration.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VirtualHub.

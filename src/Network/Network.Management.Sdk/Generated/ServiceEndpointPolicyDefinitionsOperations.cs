@@ -285,7 +285,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Creates or updates a service endpoint policy definition in the specified service endpoint policy.
+        /// Creates or updates a service endpoint policy definition in the specified
+        /// service endpoint policy.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

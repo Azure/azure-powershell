@@ -1136,7 +1136,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Delete private end point connection for a private link service in a subscription.
+        /// Delete private end point connection for a private link service in a
+        /// subscription.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1388,7 +1389,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Checks whether the subscription is visible to private link service in the specified resource group.
+        /// Checks whether the subscription is visible to private link service in the
+        /// specified resource group.
         /// </summary>
         /// <param name='location'>
         /// The location of the domain name.

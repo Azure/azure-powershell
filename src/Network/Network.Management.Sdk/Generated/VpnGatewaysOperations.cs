@@ -249,7 +249,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Creates a virtual wan vpn gateway if it doesn&#39;t exist else updates the existing gateway.
+        /// Creates a virtual wan vpn gateway if it doesn&#39;t exist else updates the
+        /// existing gateway.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VpnGateway.

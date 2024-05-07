@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Network
         public NetworkManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Creates or updates the specified Network Virtual Appliance Inbound Security Rules.
+        /// Creates or updates the specified Network Virtual Appliance Inbound Security
+        /// Rules.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
