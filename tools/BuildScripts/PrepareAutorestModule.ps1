@@ -47,7 +47,10 @@ $outdatedSubModule = Get-OutdatedSubModule -SourceDirectory $moduleRootSource -G
 foreach ($subModuleName in $outdatedSubModule) {
     $subModuleSourceDirectory = Join-Path $sourceDirectory $ModuleRootName $subModuleName
     $generatedLog = Join-Path $AutorestOutputDir $ModuleRootName "$subModuleName.log"
-    if (-not (Invoke-SubModuleGeneration -GenerateDirectory $subModuleSourceDirectory -GeneratedLog $generatedLog)) {
+    if (-not (Test-Path $generatedLog)) {
+        New-Item -ItemType File -Force -Path $generatedLog
+    }
+    if (-not (Invoke-SubModuleGeneration -GenerateDirectory $subModuleSourceDirectory -GenerateLog $generatedLog)) {
         Write-Error "Failed to generate code for module: $ModuleRootName, $subModuleName"
         Write-Error "========= Start of error log for $ModuleRootName, $subModuleName ========="
         Write-Error "log can be found at $generatedLog"

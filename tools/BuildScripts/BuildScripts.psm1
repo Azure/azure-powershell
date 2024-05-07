@@ -80,7 +80,7 @@ function Get-OutdatedSubModule {
             $generateIdGenerated = (Get-Content -Path $generateInfoGenerated | ConvertFrom-Json).generate_Id
             Write-Host "Submodule $subModule generate Id src: $generateIdSource" -ForegroundColor Cyan
             Write-Host "Submodule $subModule generate Id generated: $generateIdGenerated" -ForegroundColor Cyan
-            if ($generateIdSource && $generateIdGenerated && ($generateIdSource -eq $generateIdGenerated) && (-not $ForceRegenerate)) {
+            if ($generateIdSource -And $generateIdGenerated -And ($generateIdSource -eq $generateIdGenerated) -And (-not $ForceRegenerate)) {
                 continue
             }
         }
@@ -92,13 +92,12 @@ function Get-OutdatedSubModule {
 
 function Invoke-SubModuleGeneration {
     param (
-        [string]$GeneratedDirectory,
+        [string]$GenerateDirectory,
         [string]$GenerateLog
     )
     Write-Host "----------Start code generation for $GenerateDirectory----------" -ForegroundColor DarkGreen
     Set-Location -Path $GenerateDirectory
-    npx autorest --reset
-    npx autorest --max-memory-size=8192 >> $GenerateLog
+    autorest --max-memory-size=8192 >> $GenerateLog
     if ($lastexitcode -ne 0) {
         return $false
     } else {
