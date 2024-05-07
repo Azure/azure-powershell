@@ -249,7 +249,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Creates a VpnSite resource if it doesn&#39;t exist else updates the existing VpnSite.
+        /// Creates a VpnSite resource if it doesn&#39;t exist else updates the existing
+        /// VpnSite.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VpnSite.

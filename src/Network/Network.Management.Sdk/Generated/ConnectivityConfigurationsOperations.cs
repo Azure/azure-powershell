@@ -514,7 +514,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Deletes a network manager connectivity configuration, specified by the resource group, network manager name, and connectivity configuration name
+        /// Deletes a network manager connectivity configuration, specified by the
+        /// resource group, network manager name, and connectivity configuration name
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

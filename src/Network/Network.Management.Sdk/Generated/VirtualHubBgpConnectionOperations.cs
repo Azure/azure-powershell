@@ -259,7 +259,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Creates a VirtualHubBgpConnection resource if it doesn&#39;t exist else updates the existing VirtualHubBgpConnection.
+        /// Creates a VirtualHubBgpConnection resource if it doesn&#39;t exist else updates
+        /// the existing VirtualHubBgpConnection.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VirtualHub.

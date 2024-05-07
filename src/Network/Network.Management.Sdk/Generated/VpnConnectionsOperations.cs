@@ -259,7 +259,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Creates a vpn connection to a scalable vpn gateway if it doesn&#39;t exist else updates the existing connection.
+        /// Creates a vpn connection to a scalable vpn gateway if it doesn&#39;t exist else
+        /// updates the existing connection.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VpnGateway.

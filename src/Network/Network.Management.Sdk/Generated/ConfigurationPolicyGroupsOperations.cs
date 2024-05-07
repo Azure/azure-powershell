@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Network
         public NetworkManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Creates a ConfigurationPolicyGroup if it doesn&#39;t exist else updates the existing one.
+        /// Creates a ConfigurationPolicyGroup if it doesn&#39;t exist else updates the
+        /// existing one.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the ConfigurationPolicyGroup.

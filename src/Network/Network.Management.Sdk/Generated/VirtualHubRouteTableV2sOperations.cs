@@ -254,7 +254,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Creates a VirtualHubRouteTableV2 resource if it doesn&#39;t exist else updates the existing VirtualHubRouteTableV2.
+        /// Creates a VirtualHubRouteTableV2 resource if it doesn&#39;t exist else updates
+        /// the existing VirtualHubRouteTableV2.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VirtualHub.

@@ -249,7 +249,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Creates a virtual wan p2s vpn gateway if it doesn&#39;t exist else updates the existing gateway.
+        /// Creates a virtual wan p2s vpn gateway if it doesn&#39;t exist else updates the
+        /// existing gateway.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the P2SVpnGateway.
@@ -733,7 +734,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Generates VPN profile for P2S client of the P2SVpnGateway in the specified resource group.
+        /// Generates VPN profile for P2S client of the P2SVpnGateway in the specified
+        /// resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -759,7 +761,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets the connection health of P2S clients of the virtual wan P2SVpnGateway in the specified resource group.
+        /// Gets the connection health of P2S clients of the virtual wan P2SVpnGateway
+        /// in the specified resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -781,7 +784,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets the sas url to get the connection health detail of P2S clients of the virtual wan P2SVpnGateway in the specified resource group.
+        /// Gets the sas url to get the connection health detail of P2S clients of the
+        /// virtual wan P2SVpnGateway in the specified resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -806,7 +810,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the specified resource group.
+        /// Disconnect P2S vpn connections of the virtual wan P2SVpnGateway in the
+        /// specified resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

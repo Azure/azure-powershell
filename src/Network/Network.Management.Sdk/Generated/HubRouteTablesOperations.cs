@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Network
         public NetworkManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Creates a RouteTable resource if it doesn&#39;t exist else updates the existing RouteTable.
+        /// Creates a RouteTable resource if it doesn&#39;t exist else updates the existing
+        /// RouteTable.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name of the VirtualHub.

@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Network
         public NetworkManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Deletes the specified Express Route Circuit Connection from the specified express route circuit.
+        /// Deletes the specified Express Route Circuit Connection from the specified
+        /// express route circuit.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -298,7 +299,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Creates or updates a Express Route Circuit Connection in the specified express route circuits.
+        /// Creates or updates a Express Route Circuit Connection in the specified
+        /// express route circuits.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

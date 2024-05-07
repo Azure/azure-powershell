@@ -274,7 +274,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Retrieves a list of routes the virtual hub bgp connection is advertising to the specified peer.
+        /// Retrieves a list of routes the virtual hub bgp connection is advertising to
+        /// the specified peer.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

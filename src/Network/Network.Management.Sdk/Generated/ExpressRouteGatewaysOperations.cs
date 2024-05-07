@@ -689,7 +689,9 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Deletes the specified ExpressRoute gateway in a resource group. An ExpressRoute gateway resource can only be deleted when there are no connection subresources.
+        /// Deletes the specified ExpressRoute gateway in a resource group. An
+        /// ExpressRoute gateway resource can only be deleted when there are no
+        /// connection subresources.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

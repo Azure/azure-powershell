@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Network
         public NetworkManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Creates a connection between an ExpressRoute gateway and an ExpressRoute circuit.
+        /// Creates a connection between an ExpressRoute gateway and an ExpressRoute
+        /// circuit.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

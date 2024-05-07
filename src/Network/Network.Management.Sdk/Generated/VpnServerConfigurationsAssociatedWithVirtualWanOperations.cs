@@ -39,7 +39,8 @@ namespace Microsoft.Azure.Management.Network
         public NetworkManagementClient Client { get; private set; }
 
         /// <summary>
-        /// Gives the list of VpnServerConfigurations associated with Virtual Wan in a resource group.
+        /// Gives the list of VpnServerConfigurations associated with Virtual Wan in a
+        /// resource group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name.

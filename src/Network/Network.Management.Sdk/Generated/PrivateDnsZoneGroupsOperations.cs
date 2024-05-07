@@ -285,7 +285,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Creates or updates a private dns zone group in the specified private endpoint.
+        /// Creates or updates a private dns zone group in the specified private
+        /// endpoint.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

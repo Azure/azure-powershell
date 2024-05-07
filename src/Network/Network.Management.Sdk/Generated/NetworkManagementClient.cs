@@ -1040,7 +1040,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Deletes the Bastion Shareable Links for all the VMs specified in the request.
+        /// Deletes the Bastion Shareable Links for all the VMs specified in the
+        /// request.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1065,7 +1066,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Deletes the Bastion Shareable Links for all the tokens specified in the request.
+        /// Deletes the Bastion Shareable Links for all the tokens specified in the
+        /// request.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -3170,7 +3172,9 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Generates a unique VPN profile for P2S clients for VirtualWan and associated VpnServerConfiguration combination in the specified resource group.
+        /// Generates a unique VPN profile for P2S clients for VirtualWan and
+        /// associated VpnServerConfiguration combination in the specified resource
+        /// group.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The resource group name.

@@ -1323,7 +1323,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Verify IP flow from the specified VM to a location given the currently configured NSG rules.
+        /// Verify IP flow from the specified VM to a location given the currently
+        /// configured NSG rules.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
@@ -1448,7 +1449,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Configures flow log and traffic analytics (optional) on a specified resource.
+        /// Configures flow log and traffic analytics (optional) on a specified
+        /// resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the network watcher resource group.
@@ -1473,7 +1475,8 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Queries status of flow log and traffic analytics (optional) on a specified resource.
+        /// Queries status of flow log and traffic analytics (optional) on a specified
+        /// resource.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the network watcher resource group.
@@ -1499,7 +1502,9 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Verifies the possibility of establishing a direct TCP connection from a virtual machine to a given endpoint including another VM or an arbitrary remote server.
+        /// Verifies the possibility of establishing a direct TCP connection from a
+        /// virtual machine to a given endpoint including another VM or an arbitrary
+        /// remote server.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the network watcher resource group.
@@ -1524,7 +1529,9 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// NOTE: This feature is currently in preview and still being tested for stability. Gets the relative latency score for internet service providers from a specified location to Azure regions.
+        /// NOTE: This feature is currently in preview and still being tested for
+        /// stability. Gets the relative latency score for internet service providers
+        /// from a specified location to Azure regions.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the network watcher resource group.
@@ -1549,7 +1556,9 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// NOTE: This feature is currently in preview and still being tested for stability. Lists all available internet service providers for a specified Azure region.
+        /// NOTE: This feature is currently in preview and still being tested for
+        /// stability. Lists all available internet service providers for a specified
+        /// Azure region.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the network watcher resource group.
@@ -1574,7 +1583,13 @@ namespace Microsoft.Azure.Management.Network
         }
 
         /// <summary>
-        /// Gets Network Configuration Diagnostic data to help customers understand and debug network behavior. It provides detailed information on what security rules were applied to a specified traffic flow and the result of evaluating these rules. Customers must provide details of a flow like source, destination, protocol, etc. The API returns whether traffic was allowed or denied, the rules evaluated for the specified flow and the evaluation results.
+        /// Gets Network Configuration Diagnostic data to help customers understand and
+        /// debug network behavior. It provides detailed information on what security
+        /// rules were applied to a specified traffic flow and the result of evaluating
+        /// these rules. Customers must provide details of a flow like source,
+        /// destination, protocol, etc. The API returns whether traffic was allowed or
+        /// denied, the rules evaluated for the specified flow and the evaluation
+        /// results.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.

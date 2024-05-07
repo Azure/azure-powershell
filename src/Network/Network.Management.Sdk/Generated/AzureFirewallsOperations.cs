@@ -711,7 +711,8 @@ namespace Microsoft.Azure.Management.Network
 
         }
         /// <summary>
-        /// Retrieves a list of all IP prefixes that azure firewall has learned to not SNAT.
+        /// Retrieves a list of all IP prefixes that azure firewall has learned to not
+        /// SNAT.
         /// </summary>
         /// <param name='resourceGroupName'>
         /// The name of the resource group.
