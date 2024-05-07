@@ -1,6 +1,6 @@
 ### Example 1: Download resource list (csv) of a report.
 ```powershell
-Invoke-AzAcatDownloadReport -ReportName "test-report" -DownloadType ResourceList -Path "C:\Documents" -Name "test-report-resourceList"
+Invoke-AzAcatDownloadReport -Name "test-report" -DownloadType ResourceList -Path "C:\Documents" -FileName "test-report-resourceList"
 ```
 
 ```output
@@ -15,7 +15,7 @@ Download resource list (csv) of a report.
 
 ### Example 2: Download compliance assessments (csv) of a report.
 ```powershell
-Invoke-AzAcatDownloadReport -ReportName "test-report" -DownloadType ComplianceReport -Path "C:\Documents" -Name "test-report-assessments"
+Invoke-AzAcatDownloadReport -Name "test-report" -DownloadType ComplianceReport -Path "C:\Documents" -FileName "test-report-assessments"
 ```
 
 ```output
@@ -30,7 +30,7 @@ Download compliance assessments (csv) of a report.
 
 ### Example 3: Download compliance report (pdf) of a report.
 ```powershell
-Invoke-AzAcatDownloadReport -ReportName "test-report" -DownloadType CompliancePdfReport -Path "C:\Documents" -Name "test-report-complianceReport"
+Invoke-AzAcatDownloadReport -Name "test-report" -DownloadType CompliancePdfReport -Path "C:\Documents" -FileName "test-report-complianceReport"
 ```
 
 ```output
@@ -45,7 +45,7 @@ Download compliance report (pdf) of a report.
 
 ### Example 4: Download detailed compliance report (pdf) of a report.
 ```powershell
-Invoke-AzAcatDownloadReport -ReportName "test-report" -DownloadType ComplianceDetailedPdfReport -Path "C:\Documents" -Name "test-report-detailedComplianceReport"
+Invoke-AzAcatDownloadReport -Name "test-report" -DownloadType ComplianceDetailedPdfReport -Path "C:\Documents" -FileName "test-report-detailedComplianceReport"
 ```
 
 ```output

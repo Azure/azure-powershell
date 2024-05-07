@@ -20,7 +20,7 @@ Describe 'Invoke-AzAcatDownloadReport' {
         $fullFileName = $fileName + ".csv"
         $filePath = Join-Path "." -ChildPath $fullFileName
 
-        Invoke-AzAcatDownloadReport -ReportName $env.GeneratedReportName -DownloadType "ComplianceReport" -Path "." -Name $fileName
+        Invoke-AzAcatDownloadReport -Name $env.GeneratedReportName -DownloadType "ComplianceReport" -Path "." -FileName $fileName
         Test-Path -Path $filePath | Should -BeTrue
         Remove-Item -Path $filePath
     }

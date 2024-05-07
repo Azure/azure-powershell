@@ -32,18 +32,18 @@ branch: 0aa9b6503fee76a80890ca769c6dd9e317bfa878
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
-  - https://github.com/qinzhouxu/azure-rest-api-specs-pr/blob/847f3f6f4ec2d876241a5d4df6721d8cd872bbf3/specification/appcomplianceautomation/resource-manager/readme.md
+  - https://github.com/qinzhouxu/azure-rest-api-specs-pr/blob/c779b50712014a946e731d0777e87726bec40144/specification/appcomplianceautomation/resource-manager/readme.md
 try-require: 
-  - https://github.com/qinzhouxu/azure-rest-api-specs-pr/blob/847f3f6f4ec2d876241a5d4df6721d8cd872bbf3/specification/appcomplianceautomation/resource-manager/readme.powershell.md
+  - https://github.com/qinzhouxu/azure-rest-api-specs-pr/blob/c779b50712014a946e731d0777e87726bec40144/specification/appcomplianceautomation/resource-manager/readme.powershell.md
 input-file:
-  - https://github.com/qinzhouxu/azure-rest-api-specs-pr/blob/847f3f6f4ec2d876241a5d4df6721d8cd872bbf3/specification/appcomplianceautomation/resource-manager/Microsoft.AppComplianceAutomation/preview/2023-02-15-preview/appcomplianceautomation.json
+  - https://github.com/qinzhouxu/azure-rest-api-specs-pr/blob/c779b50712014a946e731d0777e87726bec40144/specification/appcomplianceautomation/resource-manager/Microsoft.AppComplianceAutomation/stable/2024-06-27/appcomplianceautomation.json
 
 module-version: 0.1.0
 title: AppComplianceAutomation
 
 directive:
   - where:
-      variant: ^GetViaIdentity$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^DeleteViaIdentity$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
+      variant: ^GetViaIdentity$|^GetViaIdentityReport$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^DeleteViaIdentity$|^UpdateViaIdentity$|^UpdateViaIdentityExpanded$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
     remove: true
   - where:
       verb: Set|Sync|Test

@@ -28,9 +28,10 @@ function Invoke-AzAcatDownloadReport {
     [CmdletBinding(PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(Mandatory)]
+        [Alias('ReportName')]
         [System.String]
         # Report Name.
-        ${ReportName},
+        ${Name},
 
         [Parameter(Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.AppComplianceAutomation.PSArgumentCompleterAttribute("ComplianceReport", "CompliancePdfReport", "ComplianceDetailedPdfReport", "ResourceList")]
@@ -46,7 +47,7 @@ function Invoke-AzAcatDownloadReport {
         [Parameter(Mandatory)]
         [System.String]
         # Downloaded file name.
-        ${Name},
+        ${FileName},
 
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -113,7 +114,7 @@ function Invoke-AzAcatDownloadReport {
         $RuntimeParams = Get-Runtime-Parameters -PSBoundParameters $PSBoundParameters
 
         $Snapshot = Az.AppComplianceAutomation.internal\Get-AzAppComplianceAutomationSnapshot `
-            -ReportName $ReportName `
+            -ReportName $Name `
             -Select "snapshotName" -SkipToken "0" -Top 1 -XmsAadUserToken $Token `
             @RuntimeParams
         
@@ -123,11 +124,11 @@ function Invoke-AzAcatDownloadReport {
         $SnapshotName = $Snapshot[0].SnapshotName
 
         $Content = Az.AppComplianceAutomation.internal\Invoke-AzAppComplianceAutomationDownloadSnapshot `
-            -ReportName $ReportName -SnapshotName $SnapshotName `
+            -ReportName $Name -SnapshotName $SnapshotName `
             -DownloadType $DownloadType -XmsAadUserToken $Token `
             @RuntimeParams
 
-        $SavePath = Join-Path $Path -ChildPath $Name
+        $SavePath = Join-Path $Path -ChildPath $FileName
 
         if ($DownloadType -eq "ResourceList") {
             $SavePath += ".csv"
