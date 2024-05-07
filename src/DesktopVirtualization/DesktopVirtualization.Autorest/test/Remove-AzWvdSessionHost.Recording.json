@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "350" ],
-        "x-ms-client-request-id": [ "c04341e3-5b5f-4615-8796-6c41211c03a1" ],
+        "x-ms-unique-id": [ "356" ],
+        "x-ms-client-request-id": [ "0bd8ef00-dc4c-448b-a2bf-e26f26bc2718" ],
         "CommandName": [ "Get-AzWvdSessionHost" ],
         "FullCommandName": [ "Get-AzWvdSessionHost_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -27,26 +27,26 @@
         "X-Rate-Limit-Remaining": [ "9223372036854775807" ],
         "X-Rate-Limit-Reset": [ "0" ],
         "x-ms-opsarmpath64": [ "L3N1YnNjcmlwdGlvbnMvZGJlZGVmMjUtMTg0Yy00MzBmLWIzODMtMGVlYjg3YzMyMDVkL3Jlc291cmNlR3JvdXBzL2FsZWNiVXNlclNlc3Npb25UZXN0cy9wcm92aWRlcnMvTWljcm9zb2Z0LkRlc2t0b3BWaXJ0dWFsaXphdGlvbi9ob3N0UG9vbHMvYWxlY2JVc2VyU2Vzc2lvbkhQL3Nlc3Npb25Ib3N0cy9wd3NoRGVsZXRlLTA=" ],
-        "x-ms-lamport-ts": [ "158001314" ],
-        "x-ms-correlation-id": [ "800eb397-e138-41a1-a0db-7232180d908e" ],
-        "x-ms-request-id": [ "c04341e3-5b5f-4615-8796-6c41211c03a1" ],
+        "x-ms-lamport-ts": [ "158170468" ],
+        "x-ms-correlation-id": [ "21d7a7fa-aa67-4115-9e38-6a1d93394bb9" ],
+        "x-ms-request-id": [ "0bd8ef00-dc4c-448b-a2bf-e26f26bc2718" ],
         "X-Powered-By": [ "ASP.NET" ],
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-throttling-version": [ "v1" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
-        "x-ms-correlation-request-id": [ "5e50edff-1d5c-4f54-a979-dac61c93a037" ],
-        "x-ms-routing-request-id": [ "WESTCENTRALUS:20240506T210555Z:5e50edff-1d5c-4f54-a979-dac61c93a037" ],
+        "x-ms-correlation-request-id": [ "6dac23a9-6ff2-4910-a694-b1a4fde8ae33" ],
+        "x-ms-routing-request-id": [ "CENTRALUS:20240507T214329Z:6dac23a9-6ff2-4910-a694-b1a4fde8ae33" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4ED3DE3A87EF457BB5E25B17A82812D7 Ref B: CYS013050703017 Ref C: 2024-05-06T21:05:53Z" ],
-        "Date": [ "Mon, 06 May 2024 21:05:54 GMT" ]
+        "X-MSEdge-Ref": [ "Ref A: 3BC6BF2E95DB4C109F6D05927EDD02E5 Ref B: CYS013050704051 Ref C: 2024-05-07T21:43:28Z" ],
+        "Date": [ "Tue, 07 May 2024 21:43:29 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "119" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"404\",\"message\":\"ActivityId: 800eb397-e138-41a1-a0db-7232180d908e Error: SessionHost does not exist\"}}",
+      "Content": "{\"error\":{\"code\":\"404\",\"message\":\"ActivityId: 21d7a7fa-aa67-4115-9e38-6a1d93394bb9 Error: SessionHost does not exist\"}}",
       "isContentBase64": false
     }
   }

@@ -20,7 +20,8 @@ Describe 'New-AzWvdSessionHostConfiguration' {
             $vmTag = @{
                 "cm-resource-parent" = "/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.DesktopVirtualization/HostPoolPowershellContained1"
             }
-
+            
+            $imageList = Get-AzVMImage -Location $env.Location -PublisherName "microsoftwindowsdesktop" -Offer "office-365" -Sku "win11-23h2-avd-m365" | Select Version
             $hostPool = New-AzWvdHostPool -SubscriptionId $env.SubscriptionId `
                 -ResourceGroupName $env.ResourceGroup `
                 -Name $env.HostPool `
@@ -44,7 +45,7 @@ Describe 'New-AzWvdSessionHostConfiguration' {
                 -NetworkInfoSubnetId "/subscriptions/dbedef25-184c-430f-b383-0eeb87c3205d/resourceGroups/alecbUserSessionTests/providers/Microsoft.Network/virtualNetworks/alecbUserSession-vnet/subnets/default" `
                 -VMAdminCredentialsPasswordKeyvaultSecretUri "https://hpuposhkv.vault.azure.net/secrets/LocalAdminPW" `
                 -VMAdminCredentialsUserNameKeyvaultSecretUri "https://hpuposhkv.vault.azure.net/secrets/LocalAdminUserName" `
-                -VMNamePrefix "createTest" -VMSizeId "Standard_D2s_v3" -MarketplaceInfoExactVersion "22631.2715.231114" `
+                -VMNamePrefix "createTest" -VMSizeId "Standard_D2s_v3" -MarketplaceInfoExactVersion $imageList[0].Version `
                 -MarketplaceInfoOffer "office-365" -MarketplaceInfoPublisher "microsoftwindowsdesktop" `
                 -MarketplaceInfoSku "win11-23h2-avd-m365" `
                 -SecurityInfoSecureBootEnabled `

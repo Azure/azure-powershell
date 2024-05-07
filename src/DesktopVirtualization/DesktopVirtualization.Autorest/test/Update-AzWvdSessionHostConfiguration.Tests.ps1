@@ -16,10 +16,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzWvdSessionHostConfig
 
 Describe 'Update-AzWvdSessionHostConfiguration' {
     It 'UpdateExpanded' {
+        $imageList = Get-AzVMImage -Location $env.Location -PublisherName "microsoftwindowsdesktop" -Offer "office-365" -Sku "win11-23h2-avd-m365" | Select Version
+            
         $configuration = Update-AzWvdSessionHostConfiguration -SubscriptionId $env.SubscriptionId `
         -ResourceGroupName $env.ResourceGroupPersistent `
         -HostPoolName $env.AutomatedHostpoolPersistent `
-        -VMNamePrefix "updateTest"
+        -VMNamePrefix "updateTest" `
+        -MarketplaceInfoExactVersion $imageList[0].Version `
+        -MarketplaceInfoOffer "office-365" -MarketplaceInfoPublisher "microsoftwindowsdesktop" `
+        -MarketplaceInfoSku "win11-23h2-avd-m365" `
 
         $configuration.VMNamePrefix | Should -Be "updateTest"
     }
