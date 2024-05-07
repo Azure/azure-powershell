@@ -13,7 +13,16 @@
             </AliasProperty>
             <ScriptProperty>
             <Name>SubscriptionId</Name>
-            <GetScriptBlock>($this.ServerFarmId -split "/")[2]</GetScriptBlock>
+            <GetScriptBlock>
+            if ($this.ManagedEnvironmentId)
+            {
+                ($this.ManagedEnvironmentId -split "/")[2]
+            }
+            else
+            {
+                ($this.ServerFarmId -split "/")[2]
+            }
+            </GetScriptBlock>
         </ScriptProperty>
         </Members>
     </Type>
